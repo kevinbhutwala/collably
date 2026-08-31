@@ -12,6 +12,7 @@ import { StatsCard } from "@/components/ui/StatsCard";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { SafeImage } from "@/components/ui/SafeImage";
+import { BrandIcon } from "@/components/ui/BrandLogos";
 import { AnimatedEmptyState } from "@/components/ui/AnimatedEmptyState";
 import { ProfileCompletenessCard } from "@/components/creators/ProfileCompletenessCard";
 import { formatCurrency } from "@/core/utils/formatters";
@@ -20,6 +21,7 @@ import {
   TrendingUp,
   Clock,
   Sparkles,
+  ArrowRight,
   ArrowUpRight,
   ShieldCheck,
   Building2,
@@ -218,33 +220,50 @@ export default function DashboardPage() {
               {activeCampaigns.slice(0, 3).map((c) => (
                 <div
                   key={c.id}
-                  className="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-card hover:shadow-elevated transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+                  className="p-6 rounded-3xl bg-white border border-slate-200/90 hover:border-orange-300/80 shadow-card hover:shadow-elevated transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-5 group relative overflow-hidden"
                 >
-                  <div className="space-y-1.5">
-                    <div className="flex items-center gap-2">
-                      <span className="font-bold text-slate-900 font-display text-sm sm:text-base">
-                        {c.title}
-                      </span>
-                      <Badge variant="glow" size="sm">
-                        {c.category}
-                      </Badge>
+                  {/* Subtle top gradient accent */}
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-accent via-rose-500 to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                  <div className="flex items-start gap-4 flex-1">
+                    <div className="w-12 h-12 rounded-2xl bg-slate-950 text-white flex items-center justify-center shrink-0 shadow-md group-hover:scale-105 transition-transform">
+                      <BrandIcon name={c.brand?.companyName || "Brand"} size={22} className="text-white" />
                     </div>
-                    <p className="text-xs text-slate-500 font-sans line-clamp-1">
-                      {c.description}
-                    </p>
+
+                    <div className="space-y-1.5 flex-1 min-w-0">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="font-black text-slate-900 font-display text-base group-hover:text-brand-accent transition-colors truncate">
+                          {c.title}
+                        </span>
+                        <span className="px-2.5 py-0.5 rounded-full bg-orange-50 border border-orange-200 text-brand-accent text-[10px] font-mono font-bold">
+                          {c.category}
+                        </span>
+                      </div>
+                      <p className="text-xs text-slate-600 font-sans line-clamp-1">
+                        {c.tagline || c.description}
+                      </p>
+                      <div className="flex items-center gap-4 text-[11px] font-mono text-slate-400 pt-1">
+                        <span>{c.brand?.companyName || "Verified Sponsor"}</span>
+                        <span>•</span>
+                        <span className="text-emerald-600 font-bold flex items-center gap-1">
+                          <ShieldCheck className="w-3.5 h-3.5" /> Escrow Locked
+                        </span>
+                      </div>
+                    </div>
                   </div>
 
-                  <div className="flex items-center gap-4 shrink-0 font-mono">
-                    <div className="text-right">
-                      <span className="text-[10px] text-slate-400 block">BUDGET</span>
-                      <span className="text-sm font-extrabold text-slate-900">
-                        {formatCurrency(c.budget?.totalBudget || 0)}
+                  <div className="flex items-center gap-4 shrink-0 font-mono pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100 justify-between sm:justify-end">
+                    <div className="text-left sm:text-right">
+                      <span className="text-[10px] text-slate-400 block font-bold">PER CREATOR</span>
+                      <span className="text-base font-black text-slate-950 font-mono">
+                        {formatCurrency(c.budget?.perCreatorBudget || c.budget?.totalBudget || 0)}
                       </span>
                     </div>
                     <Link href={`/campaigns/${c.id}`}>
-                      <Button variant="outline" size="sm">
-                        View Brief
-                      </Button>
+                      <button className="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-brand-accent text-white font-bold text-xs font-display transition-colors flex items-center gap-1.5 shadow-sm">
+                        <span>View Brief</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </button>
                     </Link>
                   </div>
                 </div>
