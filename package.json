@@ -10,9 +10,10 @@
     "test": "node scripts/run-tests.mjs",
     "test:e2e": "node --experimental-strip-types scripts/e2e-full-system-test.ts",
     "test:all": "node scripts/run-tests.mjs && node --experimental-strip-types scripts/e2e-full-system-test.ts",
-    "db:migrate": "node --experimental-strip-types scripts/migrate-legacy-data.ts",
-    "db:seed": "node --experimental-strip-types scripts/seed.ts",
-    "db:validate": "node --experimental-strip-types scripts/db-validate.ts"
+    "db:migrate": "node --env-file=.env.local --experimental-strip-types scripts/migrate-legacy-data.ts",
+    "db:seed": "node --env-file=.env.local --experimental-strip-types scripts/seed.ts",
+    "db:seed:supabase": "node --env-file=.env.local --experimental-strip-types scripts/seed-supabase.ts",
+    "db:validate": "node --env-file=.env.local --experimental-strip-types scripts/db-validate.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

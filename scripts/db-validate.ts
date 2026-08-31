@@ -1,5 +1,27 @@
 import fs from "fs";
 import path from "path";
+
+// Load .env.local if present
+const envPath = path.join(process.cwd(), ".env.local");
+if (fs.existsSync(envPath)) {
+  const content = fs.readFileSync(envPath, "utf-8");
+  for (const line of content.split("\n")) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) continue;
+    const idx = trimmed.indexOf("=");
+    if (idx !== -1) {
+      const key = trimmed.slice(0, idx).trim();
+      let val = trimmed.slice(idx + 1).trim();
+      if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+        val = val.slice(1, -1);
+      }
+      if (!process.env[key]) {
+        process.env[key] = val;
+      }
+    }
+  }
+}
+
 import { isSupabaseConfigured, getSupabaseAdmin } from "../src/server/db/supabase.ts";
 
 async function validateDatabase() {
@@ -25,14 +47,16 @@ async function validateDatabase() {
 
   if (isSupabaseConfigured) {
     console.log("✓ Supabase connection environment detected.");
+    console.log(`✓ Target Project: ${process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL}`);
     const supabase = getSupabaseAdmin();
     if (supabase) {
       try {
-        const { error } = await supabase.from("profiles").select("count").limit(1);
+        const { data, error } = await supabase.from("profiles").select("count").limit(1);
         if (error) {
           console.warn(`⚠️ Supabase ping warning: ${error.message}`);
         } else {
           console.log("✓ Supabase PostgreSQL connection verified and healthy.");
+          console.log("✓ Successfully connected to live remote database.");
         }
       } catch (err: any) {
         console.warn(`⚠️ Supabase connection check: ${err.message}`);

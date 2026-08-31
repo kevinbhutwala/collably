@@ -1,5 +1,5 @@
-import { getInitialSeedDatabase } from "../src/server/db/seed";
-import { isSupabaseConfigured, getSupabaseAdmin } from "../src/server/db/supabase";
+import { getInitialSeedDatabase } from "../src/server/db/seed.ts";
+import { isSupabaseConfigured, getSupabaseAdmin } from "../src/server/db/supabase.ts";
 import fs from "fs";
 import path from "path";
 
