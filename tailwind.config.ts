@@ -79,33 +79,34 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: [
-          "Plus Jakarta Sans",
-          "Inter",
+        display: [
+          "'Outfit'",
+          "'Plus Jakarta Sans'",
           "-apple-system",
           "BlinkMacSystemFont",
-          '"SF Pro Display"',
-          '"Segoe UI"',
-          "Roboto",
-          '"Helvetica Neue"',
-          "Arial",
+          "'SF Pro Display'",
+          "sans-serif",
+        ],
+        sans: [
+          "'Plus Jakarta Sans'",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "'Segoe UI'",
           "sans-serif",
         ],
         mono: [
-          '"JetBrains Mono"',
+          "'JetBrains Mono'",
           "ui-monospace",
           "SFMono-Regular",
           "Menlo",
-          "Monaco",
-          "Consolas",
           "monospace",
         ],
       },
       boxShadow: {
         soft: "0 2px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025)",
         card: "0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05)",
-        elevated: "0 10px 30px -5px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03)",
-        glow: "0 0 25px rgba(255, 94, 58, 0.15)",
+        elevated: "0 20px 40px -15px rgba(0, 0, 0, 0.07), 0 0 1px 1px rgba(0, 0, 0, 0.04)",
+        glow: "0 0 35px rgba(255, 94, 58, 0.18)",
       },
       keyframes: {
         marquee: {

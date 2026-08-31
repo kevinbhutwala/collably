@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -12,20 +12,16 @@ import {
   CheckCircle2,
   Lock,
   Play,
-  Pause,
   RotateCcw,
-  Search,
   Check,
+  Video,
   DollarSign,
   TrendingUp,
-  Clock,
-  Video,
 } from "lucide-react";
 import confetti from "canvas-confetti";
 import { AnimatedCounter } from "@/components/collably/AnimatedCounter";
 
 export function HeroSection() {
-  // Campaign brief presets that users can click to see the whole UI morph live!
   const campaignPresets = [
     {
       id: "fitness",
@@ -157,15 +153,10 @@ export function HeroSection() {
 
   const [activePresetIndex, setActivePresetIndex] = useState(0);
   const activePreset = campaignPresets[activePresetIndex];
-
-  // Stage simulation: 0 = Matching, 1 = Ready For Review, 2 = Milestone Approved & Disbursed
-  const [activeStage, setActiveStage] = useState(1);
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [isEscrowApproved, setIsEscrowApproved] = useState(false);
 
   const handleApproveEscrow = () => {
     setIsEscrowApproved(true);
-    setActiveStage(2);
     confetti({
       particleCount: 120,
       spread: 80,
@@ -176,15 +167,14 @@ export function HeroSection() {
 
   const handleResetStage = () => {
     setIsEscrowApproved(false);
-    setActiveStage(1);
   };
 
   return (
     <section className="relative min-h-[96vh] flex flex-col justify-center items-center pt-24 sm:pt-32 pb-20 sm:pb-28 px-4 sm:px-6 lg:px-8 overflow-hidden bg-transparent select-none">
-      {/* Radiant Multi-Stop Sunset Mesh Background Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[900px] lg:w-[1300px] h-[350px] sm:h-[650px] bg-gradient-radial from-orange-300/40 via-rose-300/25 to-transparent blur-[140px] pointer-events-none -z-10" />
+      {/* Radiant Multi-Stop Sunset Mesh Aura */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[950px] lg:w-[1350px] h-[350px] sm:h-[680px] bg-gradient-radial from-orange-300/40 via-rose-300/25 to-transparent blur-[140px] pointer-events-none -z-10" />
 
-      {/* Floating Satellite Card (Left - Delaware/India Escrow Shield) */}
+      {/* Floating Satellite Card (Left - Escrow Protection) */}
       <motion.div
         animate={{ y: [-8, 8, -8], rotate: [-1.5, 1.5, -1.5] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
@@ -203,7 +193,7 @@ export function HeroSection() {
         </div>
       </motion.div>
 
-      {/* Floating Satellite Card (Right - Frame-Accurate QA & Instant Payout) */}
+      {/* Floating Satellite Card (Right - Automated Disbursement) */}
       <motion.div
         animate={{ y: [8, -8, 8], rotate: [1.5, -1.5, 1.5] }}
         transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
@@ -223,7 +213,7 @@ export function HeroSection() {
       </motion.div>
 
       <div className="max-w-5xl mx-auto text-center space-y-8 sm:space-y-10 relative z-10 w-full">
-        {/* Top Glowing Eyebrow Pill */}
+        {/* Top Eyebrow Badge */}
         <motion.div
           initial={{ opacity: 0, y: -14 }}
           animate={{ opacity: 1, y: 0 }}
@@ -231,24 +221,24 @@ export function HeroSection() {
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-orange-50 via-rose-50 to-pink-50 border border-orange-200/90 text-xs font-mono text-slate-800 shadow-sm"
         >
           <span className="flex h-2 w-2 rounded-full bg-brand-accent animate-ping shrink-0" />
-          <span className="font-bold text-slate-900 tracking-wide">Collably</span>
+          <span className="font-bold text-slate-900 tracking-wide font-display">Collably</span>
           <span className="text-slate-300">•</span>
-          <span className="text-rose-700 font-semibold">Creator × Brand Collaboration Platform</span>
+          <span className="text-rose-700 font-semibold font-sans">Creator × Brand Collaboration Platform</span>
           <span className="hidden sm:inline text-slate-300">•</span>
-          <span className="hidden sm:inline text-emerald-700 font-bold bg-emerald-100/70 px-2 py-0.5 rounded-full text-[10px]">
+          <span className="hidden sm:inline text-emerald-700 font-bold bg-emerald-100/70 px-2 py-0.5 rounded-full text-[10px] font-mono">
             Founding Cohort Open
           </span>
         </motion.div>
 
-        {/* Master Masked Editorial Headline */}
+        {/* Master Editorial Headline with Outfit Display Typography */}
         <div className="space-y-2 max-w-4xl mx-auto px-2">
           <motion.h1
             initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-slate-900 leading-[1.04] font-sans"
+            className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[-0.03em] text-slate-900 leading-[1.03] font-display"
           >
-            <span className="block text-slate-900">
+            <span className="block text-slate-950">
               Create great content.
             </span>
             <span className="block bg-gradient-to-r from-brand-accent via-rose-500 to-pink-500 bg-clip-text text-transparent mt-1 sm:mt-2">
@@ -257,7 +247,7 @@ export function HeroSection() {
           </motion.h1>
         </div>
 
-        {/* Narrative Subtitle */}
+        {/* Narrative Subtitle with Plus Jakarta Sans */}
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -276,7 +266,7 @@ export function HeroSection() {
         >
           <Link
             href="/creator/register"
-            className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-brand-accent via-rose-500 to-amber-500 text-white font-bold text-base shadow-2xl shadow-brand-accent/25 hover:shadow-brand-accent/40 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 group font-sans"
+            className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-brand-accent via-rose-500 to-amber-500 text-white font-bold text-base shadow-2xl shadow-brand-accent/25 hover:shadow-brand-accent/40 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 group font-display tracking-tight"
           >
             <span>Apply to Join Founding Cohort</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -284,7 +274,7 @@ export function HeroSection() {
 
           <Link
             href="/for-brands"
-            className="w-full sm:w-auto px-7 py-4 rounded-2xl bg-white border border-slate-200/90 text-slate-700 font-semibold text-base hover:bg-slate-50 hover:border-slate-300 hover:text-slate-900 shadow-xs transition-all flex items-center justify-center gap-2 font-sans"
+            className="w-full sm:w-auto px-7 py-4 rounded-2xl bg-white border border-slate-200/90 text-slate-700 font-semibold text-base hover:bg-slate-50 hover:border-slate-300 hover:text-slate-900 shadow-xs transition-all flex items-center justify-center gap-2 font-display tracking-tight"
           >
             <Building2 className="w-4 h-4 text-slate-500" />
             <span>I&apos;m Hiring Creators</span>
@@ -292,7 +282,7 @@ export function HeroSection() {
         </motion.div>
 
         {/* ════════════════════════════════════════════════════════════════════
-            THE CRAZY INTERACTIVE HERO COMMAND CENTER (LIVE ECOSYSTEM STAGE)
+            INTERACTIVE HERO COMMAND CENTER (LIVE ECOSYSTEM STAGE)
             ════════════════════════════════════════════════════════════════════ */}
         <motion.div
           initial={{ opacity: 0, y: 40, scale: 0.95 }}
@@ -307,9 +297,9 @@ export function HeroSection() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
             <div className="flex items-center gap-2 text-xs font-mono">
               <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="font-bold text-slate-900 uppercase">COLLABLY LIVE WORKSPACE</span>
+              <span className="font-bold text-slate-900 uppercase font-display">COLLABLY LIVE WORKSPACE</span>
               <span className="text-slate-300">•</span>
-              <span className="text-slate-500 hidden sm:inline">Interactive Command Engine</span>
+              <span className="text-slate-500 hidden sm:inline font-mono">Interactive Command Engine</span>
             </div>
 
             {/* Interactive Brief Preset Switcher */}
@@ -343,7 +333,7 @@ export function HeroSection() {
                 <span className="text-[10px] font-mono uppercase font-bold text-slate-400 block">
                   ACTIVE CAMPAIGN BRIEF
                 </span>
-                <p className="text-xs sm:text-sm font-bold text-slate-900 truncate">
+                <p className="text-xs sm:text-sm font-bold text-slate-900 truncate font-sans">
                   &ldquo;{activePreset.title}&rdquo;
                 </p>
               </div>
@@ -371,7 +361,7 @@ export function HeroSection() {
                       className="w-10 h-10 rounded-xl object-cover border border-slate-200 group-hover:scale-105 transition-transform"
                     />
                     <div className="overflow-hidden">
-                      <h4 className="text-xs font-bold text-slate-900 font-sans truncate">{c.name}</h4>
+                      <h4 className="text-xs font-bold text-slate-900 font-display truncate">{c.name}</h4>
                       <span className="text-[10px] text-slate-400 font-mono block truncate">{c.handle}</span>
                     </div>
                   </div>
@@ -393,7 +383,7 @@ export function HeroSection() {
                 </div>
 
                 <div className="flex items-center justify-between text-xs font-mono">
-                  <span className="text-[10px] text-slate-400 font-medium">{c.niche}</span>
+                  <span className="text-[10px] text-slate-400 font-medium font-sans">{c.niche}</span>
                   <span className="font-black text-slate-900">{c.rate}</span>
                 </div>
               </div>
@@ -405,7 +395,7 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800 text-xs font-mono">
               <div className="flex items-center gap-2">
                 <Video className="w-4 h-4 text-orange-400" />
-                <span className="font-bold text-white uppercase">4K Timecoded Video Review</span>
+                <span className="font-bold text-white uppercase font-display">4K Timecoded Video Review</span>
                 <span className="text-slate-500">•</span>
                 <span className="text-emerald-400 font-bold">Cut v2 (Ready for Approval)</span>
               </div>
@@ -458,7 +448,7 @@ export function HeroSection() {
               ) : (
                 <button
                   onClick={handleApproveEscrow}
-                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-brand-accent via-rose-500 to-amber-500 hover:opacity-95 text-white font-bold text-xs sm:text-sm font-sans shadow-lg shadow-brand-accent/25 active:scale-95 transition-all flex items-center justify-center gap-2"
+                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-brand-accent via-rose-500 to-amber-500 hover:opacity-95 text-white font-bold text-xs sm:text-sm font-display tracking-tight shadow-lg shadow-brand-accent/25 active:scale-95 transition-all flex items-center justify-center gap-2"
                 >
                   <Check className="w-4 h-4" />
                   <span>1-Click Approve &amp; Release Payout ({activePreset.budget})</span>
