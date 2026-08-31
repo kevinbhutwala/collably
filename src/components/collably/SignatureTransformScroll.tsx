@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ShieldCheck, Sparkles } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 
 export function SignatureTransformScroll() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -19,11 +19,11 @@ export function SignatureTransformScroll() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[130vh] flex flex-col justify-center items-center overflow-hidden bg-[#05070D] border-b border-white/[0.08] select-none py-20"
+      className="relative min-h-[130vh] flex flex-col justify-center items-center overflow-hidden bg-slate-50/60 border-b border-slate-200 select-none py-20"
     >
-      {/* Glow Center */}
+      {/* Warm Ambient Glow */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[600px] sm:w-[900px] h-[400px] bg-gradient-radial from-brand-accent/20 via-orange-600/10 to-transparent blur-[140px]" />
+        <div className="w-[600px] sm:w-[900px] h-[400px] bg-gradient-radial from-orange-200/60 via-rose-200/40 to-transparent blur-[140px]" />
       </div>
 
       <div className="sticky top-1/4 w-full max-w-7xl mx-auto px-4 text-center space-y-6">
@@ -31,7 +31,7 @@ export function SignatureTransformScroll() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-slate-300"
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-mono text-slate-700 shadow-xs"
         >
           <ShieldCheck className="w-3.5 h-3.5 text-brand-accent" />
           <span>The Zero-Risk Collaboration Standard</span>
@@ -42,7 +42,7 @@ export function SignatureTransformScroll() {
           {/* Word 1: COLLABORATION */}
           <motion.h2
             style={{ opacity: opacityCollab }}
-            className="absolute text-5xl sm:text-8xl lg:text-9xl font-black uppercase tracking-tighter text-slate-400 font-sans"
+            className="absolute text-5xl sm:text-8xl lg:text-9xl font-black uppercase tracking-tighter text-slate-300 font-sans"
           >
             COLLABORATION
           </motion.h2>
@@ -50,7 +50,7 @@ export function SignatureTransformScroll() {
           {/* Word 2: PAYOUT GUARANTEE */}
           <motion.h2
             style={{ opacity: opacityProtection }}
-            className="absolute text-4xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tighter bg-gradient-to-r from-brand-accent via-orange-500 to-amber-300 bg-clip-text text-transparent drop-shadow-2xl font-sans"
+            className="absolute text-4xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tighter bg-gradient-to-r from-brand-accent via-rose-500 to-amber-500 bg-clip-text text-transparent drop-shadow-sm font-sans"
           >
             MILESTONE ESCROW
           </motion.h2>
@@ -64,10 +64,10 @@ export function SignatureTransformScroll() {
           viewport={{ once: true }}
           className="max-w-2xl mx-auto space-y-3 pt-4"
         >
-          <h3 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight font-sans">
+          <h3 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-sans">
             Collably protects both sides.
           </h3>
-          <p className="text-sm sm:text-base text-slate-400 leading-relaxed font-sans">
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-sans">
             Brands never release funds until the deliverable matches the brief. Creators never start filming until funds are safely held in milestone protection.
           </p>
         </motion.div>

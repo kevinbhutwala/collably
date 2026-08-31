@@ -16,7 +16,7 @@ export default function CollablyLandingPage() {
   return (
     <SmoothScroll>
       <AmbientBackground />
-      <div className="relative min-h-screen bg-[#05070D] text-slate-100 font-sans selection:bg-brand-accent selection:text-white overflow-x-hidden">
+      <div className="relative min-h-screen bg-transparent text-slate-900 font-sans selection:bg-brand-accent/20 selection:text-brand-accent overflow-x-hidden">
         <HeroSection />
         <BrandMarquee />
         <CollaborationCore />
