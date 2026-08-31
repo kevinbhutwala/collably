@@ -21,29 +21,29 @@ export function Badge({
   };
 
   const variantStyles = {
-    default: "bg-slate-100 text-slate-800 border border-slate-200",
-    outline: "bg-white text-slate-700 border border-slate-300",
-    success: "bg-emerald-50 text-emerald-700 border border-emerald-200",
-    warning: "bg-amber-50 text-amber-800 border border-amber-200",
-    danger: "bg-rose-50 text-rose-700 border border-rose-200",
-    purple: "bg-purple-50 text-purple-700 border border-purple-200",
-    glow: "bg-orange-50 text-orange-600 border border-orange-200 font-semibold",
+    default: "bg-white/10 text-slate-200 border border-white/10",
+    outline: "bg-white/[0.04] text-slate-300 border border-white/20",
+    success: "bg-emerald-500/15 text-emerald-300 border border-emerald-500/30",
+    warning: "bg-amber-500/15 text-amber-300 border border-amber-500/30",
+    danger: "bg-rose-500/15 text-rose-300 border border-rose-500/30",
+    purple: "bg-purple-500/15 text-purple-300 border border-purple-500/30",
+    glow: "bg-pink-500/15 text-pink-300 border border-pink-500/30 font-semibold shadow-xs",
   };
 
   const dotStyles = {
-    default: "bg-slate-500",
-    outline: "bg-slate-500",
-    success: "bg-emerald-500",
-    warning: "bg-amber-500",
-    danger: "bg-rose-500",
-    purple: "bg-purple-500",
-    glow: "bg-orange-500",
+    default: "bg-slate-400",
+    outline: "bg-slate-400",
+    success: "bg-emerald-400",
+    warning: "bg-amber-400",
+    danger: "bg-rose-400",
+    purple: "bg-purple-400",
+    glow: "bg-pink-400",
   };
 
   return (
     <div
       className={cn(
-        "inline-flex items-center select-none shadow-sm",
+        "inline-flex items-center select-none shadow-xs",
         sizeStyles[size],
         variantStyles[variant],
         className
