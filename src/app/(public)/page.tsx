@@ -1,26 +1,43 @@
 import React from "react";
-import { Hero } from "@/components/landing/Hero";
-import { BrandMarquee } from "@/components/landing/BrandMarquee";
-import { CreatorShowcase } from "@/components/landing/CreatorShowcase";
-import { HowItWorks } from "@/components/landing/HowItWorks";
-import { CampaignEcosystem } from "@/components/landing/CampaignEcosystem";
-import { CaseStudiesSection } from "@/components/landing/CaseStudiesSection";
-import { StatsSection } from "@/components/landing/StatsSection";
-import { FAQSection } from "@/components/landing/FAQSection";
-import { CTASection } from "@/components/landing/CTASection";
+import { SmoothScroll } from "@/components/flowpilot/SmoothScroll";
+import { CustomCursor } from "@/components/flowpilot/CustomCursor";
+import { AmbientBackground } from "@/components/flowpilot/AmbientBackground";
+import { CinematicNavbar } from "@/components/flowpilot/CinematicNavbar";
+import { HeroCinematic } from "@/components/flowpilot/HeroCinematic";
+import { InteractiveAiCore } from "@/components/flowpilot/InteractiveAiCore";
+import { SignatureTransformScroll } from "@/components/flowpilot/SignatureTransformScroll";
+import { HorizontalStorySection } from "@/components/flowpilot/HorizontalStorySection";
+import { CinematicProductDemo } from "@/components/flowpilot/CinematicProductDemo";
+import { RevenueRecoverySection } from "@/components/flowpilot/RevenueRecoverySection";
+import { InteractiveIndustries } from "@/components/flowpilot/InteractiveIndustries";
+import { CinematicMetrics } from "@/components/flowpilot/CinematicMetrics";
+import { SecurityArchitecture } from "@/components/flowpilot/SecurityArchitecture";
+import { CinematicFAQ } from "@/components/flowpilot/CinematicFAQ";
+import { CinematicCTA } from "@/components/flowpilot/CinematicCTA";
+import { CinematicFooter } from "@/components/flowpilot/CinematicFooter";
 
-export default function LandingPage() {
+export default function FlowPilotLandingPage() {
   return (
-    <div className="w-full">
-      <Hero />
-      <BrandMarquee />
-      <CreatorShowcase />
-      <HowItWorks />
-      <CampaignEcosystem />
-      <CaseStudiesSection />
-      <StatsSection />
-      <FAQSection />
-      <CTASection />
-    </div>
+    <SmoothScroll>
+      <CustomCursor />
+      <AmbientBackground />
+      <div className="relative min-h-screen bg-[#05070D] text-slate-100 font-sans selection:bg-brand-accent selection:text-white overflow-x-hidden">
+        <CinematicNavbar />
+        <main>
+          <HeroCinematic />
+          <InteractiveAiCore />
+          <SignatureTransformScroll />
+          <HorizontalStorySection />
+          <CinematicProductDemo />
+          <RevenueRecoverySection />
+          <InteractiveIndustries />
+          <CinematicMetrics />
+          <SecurityArchitecture />
+          <CinematicFAQ />
+          <CinematicCTA />
+        </main>
+        <CinematicFooter />
+      </div>
+    </SmoothScroll>
   );
 }
