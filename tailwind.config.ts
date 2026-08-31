@@ -80,6 +80,7 @@ const config: Config = {
       },
       fontFamily: {
         display: [
+          "var(--font-display)",
           "'Outfit'",
           "'Plus Jakarta Sans'",
           "-apple-system",
@@ -88,6 +89,7 @@ const config: Config = {
           "sans-serif",
         ],
         sans: [
+          "var(--font-sans)",
           "'Plus Jakarta Sans'",
           "-apple-system",
           "BlinkMacSystemFont",
@@ -95,6 +97,7 @@ const config: Config = {
           "sans-serif",
         ],
         mono: [
+          "var(--font-mono)",
           "'JetBrains Mono'",
           "ui-monospace",
           "SFMono-Regular",
