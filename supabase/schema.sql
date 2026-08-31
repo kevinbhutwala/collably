@@ -780,8 +780,11 @@ END $$;
 DO $$ BEGIN
     DROP POLICY IF EXISTS "Messages viewable by sender or recipient" ON messages;
     CREATE POLICY "Messages viewable by sender or recipient" ON messages FOR SELECT USING (
-        sender_id IN (SELECT id FROM profiles WHERE user_id = auth.uid()) OR 
-        recipient_id IN (SELECT id FROM profiles WHERE user_id = auth.uid())
+        conversation_id IN (
+            SELECT cp.conversation_id FROM conversation_participants cp 
+            WHERE cp.profile_id IN (SELECT p.id FROM profiles p WHERE p.user_id = auth.uid())
+        ) OR 
+        sender_id IN (SELECT p.id FROM profiles p WHERE p.user_id = auth.uid())
     );
 
     DROP POLICY IF EXISTS "Users read self notifications" ON notifications;
