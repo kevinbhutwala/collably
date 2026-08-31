@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { NexusLogo } from "@/components/ui/NexusLogo";
+import { CollablyLogo } from "@/components/ui/CollablyLogo";
 import { ArrowUpRight, ShieldCheck, Sparkles } from "lucide-react";
 
 export function Footer() {
@@ -41,7 +41,7 @@ export function Footer() {
       {/* Main Footer Links */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-2 md:grid-cols-5 gap-8">
         <div className="col-span-2 space-y-4">
-          <NexusLogo href="/" size="sm" subtext="Creator × Brand Intelligence" />
+          <CollablyLogo href="/" size="sm" subtext="Creator × Brand Intelligence" />
           <p className="text-xs text-slate-500 max-w-sm leading-relaxed">
             The next-generation creator intelligence platform and modern marketing agency connecting world-class creators with ambitious brands.
           </p>
@@ -84,9 +84,9 @@ export function Footer() {
           <ul className="space-y-2.5 text-xs">
             <li><Link href="/contact" className="hover:text-slate-900 transition-colors">Contact Support</Link></li>
             <li><Link href="/app/analytics" className="hover:text-slate-900 transition-colors">Creator Rate Benchmarks</Link></li>
-            <li><span className="text-slate-400">Privacy Policy</span></li>
-            <li><span className="text-slate-400">Terms of Service</span></li>
-            <li><span className="text-slate-400">Creator Code of Ethics</span></li>
+            <li><Link href="/privacy" className="hover:text-slate-900 transition-colors">Privacy Policy</Link></li>
+            <li><Link href="/terms" className="hover:text-slate-900 transition-colors">Terms of Service</Link></li>
+            <li><Link href="/pricing" className="hover:text-slate-900 transition-colors">Pricing & Commission</Link></li>
           </ul>
         </div>
       </div>

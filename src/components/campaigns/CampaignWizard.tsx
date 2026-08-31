@@ -382,7 +382,7 @@ export function CampaignWizard() {
               <div>
                 <h4 className="text-xs font-bold text-emerald-900">100% Escrow Protection</h4>
                 <p className="text-xs text-emerald-700">
-                  Your funds are held securely by NEXUS and only released when deliverables meet your satisfaction.
+                  Your funds are held securely by Collably and only released when deliverables meet your satisfaction.
                 </p>
               </div>
             </div>

@@ -14,7 +14,7 @@ export default function PricingPage() {
       subtext: "Take-rate per successful escrow payout",
       description: "Direct discovery and self-serve collaboration tools for fast-moving startups and creator partners.",
       features: [
-        "Full access to 1,400+ vetted creators",
+        "Full access to vetted creator discovery",
         "7-step automated campaign wizard",
         "AI Campaign Brief & Proposal generators",
         "Milestone escrow payment protection",

@@ -68,7 +68,7 @@ export default function SettingsPage() {
             <span>Cross-Platform API & React Native Mobile Sync</span>
           </div>
           <p className="text-xs text-slate-600 leading-relaxed">
-            Your credentials and active campaigns are synced across the NEXUS Next.js Web App and React Native Mobile Companion.
+            Your credentials and active campaigns are synced across the Collably Web Workspace.
           </p>
           <Badge variant="glow" size="sm">Core API: Connected & Ready</Badge>
         </div>

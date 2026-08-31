@@ -26,7 +26,7 @@ import {
   Scale,
   LucideIcon,
 } from "lucide-react";
-import { NexusLogo } from "@/components/ui/NexusLogo";
+import { CollablyLogo } from "@/components/ui/CollablyLogo";
 import { cn } from "@/lib/utils";
 
 interface NavItem {
@@ -90,7 +90,7 @@ export function AppSidebar() {
     <aside className="hidden lg:flex flex-col w-64 border-r border-slate-200 bg-slate-50/50 backdrop-blur-xl p-4 shrink-0 min-h-[calc(100vh-4rem)]">
       {/* Brand logo & workspace badge */}
       <div className="px-3 py-2 mb-6">
-        <NexusLogo
+        <CollablyLogo
           href="/app/dashboard"
           size="sm"
           subtext={role === "agency_admin" ? "Agency Operations" : `${role.toUpperCase()} Workspace`}

@@ -44,7 +44,7 @@ export default function BrandOnboardingWizardPage() {
       addToast({
         type: "success",
         title: "Brand Organization Verified",
-        message: "Welcome to NEXUS! Start discovering top-tier creators or post a campaign brief.",
+        message: "Welcome to Collably! Start discovering top-tier creators or post a campaign brief.",
       });
       router.push("/app/dashboard");
     }
@@ -199,7 +199,7 @@ export default function BrandOnboardingWizardPage() {
                 <div className="space-y-1">
                   <h4 className="text-xs font-bold text-emerald-900">100% Escrow Milestone Protection</h4>
                   <p className="text-xs text-emerald-700 leading-relaxed">
-                    Your campaign funds remain secured in the NEXUS escrow vault until your marketing team reviews and signs off on deliverables.
+                    Your campaign funds remain secured in the Collably escrow vault until your marketing team reviews and signs off on deliverables.
                   </p>
                 </div>
               </div>

@@ -36,13 +36,13 @@ export function CreatorShowcase() {
               Curated talent. Unrivaled retention.
             </h2>
             <p className="text-sm sm:text-base text-slate-600">
-              Every creator on NEXUS undergoes verified audience audits, background vetting, and delivery quality scoring.
+              Every creator on Collably undergoes audience audits, background vetting, and delivery quality scoring.
             </p>
           </div>
 
           <Link href="/creators">
             <Button variant="outline" size="md" rightIcon={<ArrowUpRight className="w-4 h-4" />}>
-              Explore Full 1,400+ Roster
+              Explore Creator Discovery
             </Button>
           </Link>
         </div>

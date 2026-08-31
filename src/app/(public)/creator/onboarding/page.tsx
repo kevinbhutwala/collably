@@ -23,7 +23,7 @@ import {
 
 export default function CreatorOnboardingWizardPage() {
   const router = useRouter();
-  const { setRole } = useAuthStore();
+  const { setRole, currentCreator, updateCreatorProfile } = useAuthStore();
   const { addToast } = useUIStore();
   const [step, setStep] = useState(1);
   const totalSteps = 9;
@@ -58,11 +58,22 @@ export default function CreatorOnboardingWizardPage() {
     availability: "Available",
   });
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (step < totalSteps) {
       setStep(step + 1);
     } else {
       // Complete Onboarding
+      if (currentCreator) {
+        try {
+          await updateCreatorProfile({
+            headline: formData.headline,
+            bio: formData.bio,
+            startingPrice: formData.startingFee,
+          });
+        } catch {
+          // Continue
+        }
+      }
       setRole("creator");
       addToast({
         type: "success",

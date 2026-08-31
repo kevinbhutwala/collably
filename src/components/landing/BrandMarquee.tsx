@@ -1,61 +1,57 @@
 "use client";
 
 import React from "react";
-import {
-  LinearLogo,
-  StripeLogo,
-  NotionLogo,
-  FigmaLogo,
-  VercelLogo,
-  SupabaseLogo,
-  RaycastLogo,
-  OpenAILogo,
-  SpotifyLogo,
-  AirbnbLogo,
-} from "@/components/ui/BrandLogos";
+import Link from "next/link";
+import { Sparkles, ArrowRight, ShieldCheck, CheckCircle2 } from "lucide-react";
 
 export function BrandMarquee() {
-  const brandList = [
-    { name: "Linear", logo: LinearLogo, category: "Engineering & Issue Tracking" },
-    { name: "Stripe", logo: StripeLogo, category: "Financial Infrastructure" },
-    { name: "Notion", logo: NotionLogo, category: "Connected Workspace" },
-    { name: "Figma", logo: FigmaLogo, category: "Collaborative Design" },
-    { name: "Vercel", logo: VercelLogo, category: "Frontend Cloud" },
-    { name: "Supabase", logo: SupabaseLogo, category: "Open Source Backend" },
-    { name: "Raycast", logo: RaycastLogo, category: "Supercharged Productivity" },
-    { name: "OpenAI", logo: OpenAILogo, category: "Applied Intelligence" },
-    { name: "Spotify", logo: SpotifyLogo, category: "Global Audio Streaming" },
-    { name: "Airbnb", logo: AirbnbLogo, category: "Global Travel & Stays" },
+  const highlights = [
+    "Tech & SaaS",
+    "Consumer Apps & Mobile",
+    "Design & Creative Tools",
+    "Health & Biohacking",
+    "E-Commerce & DTC",
+    "Fintech & Crypto",
+    "Developer Ergonomics",
+    "Modern Lifestyle",
   ];
 
   return (
-    <section className="py-14 border-y border-slate-200 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center space-y-2">
-        <p className="text-xs font-extrabold uppercase tracking-widest text-slate-500 font-mono">
-          Trusted by Tier-1 Tech Founders & Global Category Creators
-        </p>
-      </div>
+    <section className="py-12 border-y border-slate-200 bg-slate-50/80 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-3 text-center md:text-left">
+            <div className="w-10 h-10 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-600 shrink-0">
+              <Sparkles className="w-5 h-5" />
+            </div>
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+                Now Launching With Our Founding Cohort
+              </p>
+              <p className="text-xs text-slate-500">
+                Curating forward-thinking brands and vetted top 5% creators across key verticals.
+              </p>
+            </div>
+          </div>
 
-      {/* Marquee Row 1 */}
-      <div className="relative w-full flex overflow-x-hidden group select-none">
-        <div className="animate-marquee whitespace-nowrap flex items-center gap-6 sm:gap-8 py-2">
-          {brandList.concat(brandList).map((brand, idx) => {
-            const LogoComponent = brand.logo;
-            return (
-              <div
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            {highlights.map((niche, idx) => (
+              <span
                 key={idx}
-                className="inline-flex items-center gap-3.5 px-6 py-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 shadow-xs hover:border-slate-300 hover:bg-white transition-all text-slate-800"
+                className="px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-xs font-medium text-slate-700 shadow-xs"
               >
-                <LogoComponent size={22} className="text-slate-900" />
-                <span className="text-sm font-extrabold tracking-tight text-slate-900 font-sans">
-                  {brand.name}
-                </span>
-                <span className="text-[11px] text-slate-500 font-mono hidden md:inline">
-                  / {brand.category}
-                </span>
-              </div>
-            );
-          })}
+                {niche}
+              </span>
+            ))}
+          </div>
+
+          <Link
+            href="/creator/register"
+            className="inline-flex items-center gap-1 text-xs font-bold text-brand-accent hover:text-orange-700 transition-colors shrink-0"
+          >
+            <span>Apply for Early Access</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
       </div>
     </section>

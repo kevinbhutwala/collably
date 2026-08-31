@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/Button";
-import { NexusLogo } from "@/components/ui/NexusLogo";
+import { CollablyLogo } from "@/components/ui/CollablyLogo";
 import { Menu, X, ArrowUpRight, User as UserIcon, LogOut } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuthStore } from "@/stores/auth.store";
@@ -32,7 +32,7 @@ export function Navbar() {
     <header className="sticky top-0 z-40 w-full border-b border-slate-200/90 bg-white/80 backdrop-blur-xl transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
         {/* Brand Logo */}
-        <NexusLogo href="/" size="md" subtext="Creator × Brand Ecosystem" />
+        <CollablyLogo href="/" size="md" subtext="Creator × Brand Ecosystem" />
 
         {/* Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center gap-1 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-full">

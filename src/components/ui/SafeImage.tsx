@@ -83,7 +83,7 @@ export function SafeImage({
           {fallbackName && (
             <span className="font-bold text-xs text-slate-800 line-clamp-1">{fallbackName}</span>
           )}
-          <span className="text-[10px] text-slate-500 font-mono">NEXUS Campaign Asset</span>
+          <span className="text-[10px] text-slate-500 font-mono">Collably Campaign Asset</span>
         </div>
       );
     }

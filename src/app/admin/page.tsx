@@ -61,7 +61,7 @@ export default function AgencyAdminCommandCenter() {
           title="Platform GMV (All-Time)"
           value={formatCurrency(MOCK_ANALYTICS.totalGMV)}
           change="+34.2% MoM"
-          subtitle="Processed through NEXUS Escrow"
+          subtitle="Processed through Collably Escrow"
           icon={<Wallet className="w-5 h-5 text-emerald-600" />}
         />
         <StatsCard

@@ -16,6 +16,7 @@ import {
   Sparkles,
   ArrowUpRight,
   MessageSquare,
+  ExternalLink,
 } from "lucide-react";
 
 export default function CreatorDetailPage() {
@@ -226,16 +227,22 @@ export default function CreatorDetailPage() {
                   </h4>
                   <div className="space-y-2.5">
                     {creator.socialAccounts.map((sa) => (
-                      <div
+                      <a
                         key={sa.id}
-                        className="p-3 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-between text-xs"
+                        href={sa.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 rounded-2xl bg-slate-50 hover:bg-slate-100/80 border border-slate-200/80 transition-colors flex items-center justify-between text-xs group"
                       >
                         <div className="flex items-center gap-2.5">
-                          <div className="p-1.5 rounded-lg bg-white border border-slate-200 shadow-xs">
+                          <div className="p-1.5 rounded-lg bg-white border border-slate-200 shadow-xs group-hover:scale-105 transition-transform">
                             <SocialIcon platform={sa.platform} size={15} colored />
                           </div>
                           <div>
-                            <span className="font-bold text-slate-900 capitalize block">{sa.platform}</span>
+                            <span className="font-bold text-slate-900 capitalize flex items-center gap-1">
+                              {sa.platform}
+                              <ExternalLink className="w-3 h-3 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                            </span>
                             <span className="text-[10px] text-slate-400 font-mono">@{sa.handle}</span>
                           </div>
                         </div>
@@ -243,7 +250,7 @@ export default function CreatorDetailPage() {
                           <span className="font-extrabold text-slate-900 block">{formatNumber(sa.followers)}</span>
                           <span className="text-emerald-600 font-semibold">{sa.engagementRate}% ER</span>
                         </div>
-                      </div>
+                      </a>
                     ))}
                   </div>
                 </div>

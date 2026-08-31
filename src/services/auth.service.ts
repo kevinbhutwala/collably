@@ -1,4 +1,4 @@
-import { User, CreatorProfile, BrandProfile } from "@/core/types";
+import { User, CreatorProfile, BrandProfile, SocialAccount } from "@/core/types";
 
 export interface AuthResponse {
   success?: boolean;
@@ -8,6 +8,31 @@ export interface AuthResponse {
   brandProfile?: BrandProfile | null;
   token?: string;
   error?: string;
+}
+
+export interface RegisterParams {
+  name: string;
+  email: string;
+  password: string;
+  role: "creator" | "brand";
+  handle?: string;
+  companyName?: string;
+  category?: string;
+  industry?: string;
+  location?: string;
+  bio?: string;
+  startingPrice?: number;
+  socialAccounts?: SocialAccount[];
+  youtubeHandle?: string;
+  youtubeSubscribers?: number;
+  instagramHandle?: string;
+  instagramFollowers?: number;
+  tiktokHandle?: string;
+  tiktokFollowers?: number;
+  xHandle?: string;
+  xFollowers?: number;
+  linkedinHandle?: string;
+  linkedinFollowers?: number;
 }
 
 class AuthService {
@@ -22,16 +47,7 @@ class AuthService {
     return data;
   }
 
-  async register(params: {
-    name: string;
-    email: string;
-    password: string;
-    role: "creator" | "brand";
-    handle?: string;
-    companyName?: string;
-    category?: string;
-    industry?: string;
-  }): Promise<AuthResponse> {
+  async register(params: RegisterParams): Promise<AuthResponse> {
     const res = await fetch("/api/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

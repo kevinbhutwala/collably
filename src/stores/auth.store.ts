@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { User, UserRole, CreatorProfile, BrandProfile } from "../core/types";
-import { authService } from "@/services/auth.service";
+import { authService, RegisterParams } from "@/services/auth.service";
 
 interface AuthState {
   user: User | null;
@@ -11,16 +11,8 @@ interface AuthState {
   isLoading: boolean;
   checkSession: () => Promise<boolean>;
   login: (email: string, password: string) => Promise<void>;
-  register: (params: {
-    name: string;
-    email: string;
-    password: string;
-    role: "creator" | "brand";
-    handle?: string;
-    companyName?: string;
-    category?: string;
-    industry?: string;
-  }) => Promise<void>;
+  register: (params: RegisterParams) => Promise<void>;
+  updateCreatorProfile: (updates: Partial<CreatorProfile>) => Promise<CreatorProfile | null>;
   logout: () => Promise<void>;
   setUser: (user: User | null) => void;
   setRole: (role: UserRole) => void;
@@ -82,7 +74,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     }
   },
 
-  register: async (params) => {
+  register: async (params: RegisterParams) => {
     set({ isLoading: true });
     try {
       const data = await authService.register(params);
@@ -99,6 +91,29 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     } catch (error) {
       set({ isLoading: false });
       throw error;
+    }
+  },
+
+  updateCreatorProfile: async (updates: Partial<CreatorProfile>) => {
+    const { currentCreator } = get();
+    if (!currentCreator) return null;
+
+    try {
+      const res = await fetch(`/api/creators/${currentCreator.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updates),
+      });
+      if (!res.ok) throw new Error("Failed to update creator profile");
+      const updated = await res.json();
+      set({ currentCreator: updated });
+      return updated;
+    } catch (err) {
+      console.error("updateCreatorProfile error:", err);
+      // Optimistic fallback
+      const updated = { ...currentCreator, ...updates };
+      set({ currentCreator: updated });
+      return updated;
     }
   },
 
