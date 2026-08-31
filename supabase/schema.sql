@@ -661,23 +661,131 @@ CREATE INDEX IF NOT EXISTS idx_payments_order ON payments(provider_order_id);
 CREATE INDEX IF NOT EXISTS idx_audit_logs_actor ON audit_logs(actor_id, created_at DESC);
 
 -- ==============================================================================
--- 15. ROW LEVEL SECURITY (RLS) POLICIES
+-- 15. ROW LEVEL SECURITY (RLS) POLICIES ON ALL TABLES
 -- ==============================================================================
 ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
+ALTER TABLE organizations ENABLE ROW LEVEL SECURITY;
+ALTER TABLE organization_members ENABLE ROW LEVEL SECURITY;
 ALTER TABLE creator_profiles ENABLE ROW LEVEL SECURITY;
+ALTER TABLE social_accounts ENABLE ROW LEVEL SECURITY;
+ALTER TABLE rate_cards ENABLE ROW LEVEL SECURITY;
 ALTER TABLE brand_profiles ENABLE ROW LEVEL SECURITY;
 ALTER TABLE campaigns ENABLE ROW LEVEL SECURITY;
 ALTER TABLE campaign_applications ENABLE ROW LEVEL SECURITY;
 ALTER TABLE collaborations ENABLE ROW LEVEL SECURITY;
+ALTER TABLE deliverables ENABLE ROW LEVEL SECURITY;
+ALTER TABLE deliverable_submissions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE conversations ENABLE ROW LEVEL SECURITY;
+ALTER TABLE conversation_participants ENABLE ROW LEVEL SECURITY;
 ALTER TABLE messages ENABLE ROW LEVEL SECURITY;
-ALTER TABLE notifications ENABLE ROW LEVEL SECURITY;
 ALTER TABLE payments ENABLE ROW LEVEL SECURITY;
 ALTER TABLE payouts ENABLE ROW LEVEL SECURITY;
+ALTER TABLE tax_profiles ENABLE ROW LEVEL SECURITY;
+ALTER TABLE notifications ENABLE ROW LEVEL SECURITY;
+ALTER TABLE device_tokens ENABLE ROW LEVEL SECURITY;
+ALTER TABLE media_assets ENABLE ROW LEVEL SECURITY;
 ALTER TABLE disputes ENABLE ROW LEVEL SECURITY;
+ALTER TABLE support_tickets ENABLE ROW LEVEL SECURITY;
+ALTER TABLE support_messages ENABLE ROW LEVEL SECURITY;
 ALTER TABLE audit_logs ENABLE ROW LEVEL SECURITY;
+ALTER TABLE ai_usage ENABLE ROW LEVEL SECURITY;
 
--- Base Public Policies (Select)
-CREATE POLICY "Profiles viewable by authenticated users" ON profiles FOR SELECT USING (true);
-CREATE POLICY "Public creators are viewable" ON creator_profiles FOR SELECT USING (true);
-CREATE POLICY "Public brands are viewable" ON brand_profiles FOR SELECT USING (true);
-CREATE POLICY "Active campaigns are viewable" ON campaigns FOR SELECT USING (status IN ('active', 'applications_open', 'completed'));
+-- 1. Profiles & Public Directories
+DO $$ BEGIN
+    DROP POLICY IF EXISTS "Public profiles read" ON profiles;
+    CREATE POLICY "Public profiles read" ON profiles FOR SELECT USING (true);
+    
+    DROP POLICY IF EXISTS "Users can update self profile" ON profiles;
+    CREATE POLICY "Users can update self profile" ON profiles FOR UPDATE USING (auth.uid() = user_id);
+
+    DROP POLICY IF EXISTS "Public creator profiles read" ON creator_profiles;
+    CREATE POLICY "Public creator profiles read" ON creator_profiles FOR SELECT USING (true);
+
+    DROP POLICY IF EXISTS "Creators update self" ON creator_profiles;
+    CREATE POLICY "Creators update self" ON creator_profiles FOR UPDATE USING (auth.uid() = user_id);
+
+    DROP POLICY IF EXISTS "Public social accounts read" ON social_accounts;
+    CREATE POLICY "Public social accounts read" ON social_accounts FOR SELECT USING (true);
+
+    DROP POLICY IF EXISTS "Public rate cards read" ON rate_cards;
+    CREATE POLICY "Public rate cards read" ON rate_cards FOR SELECT USING (true);
+
+    DROP POLICY IF EXISTS "Public brand profiles read" ON brand_profiles;
+    CREATE POLICY "Public brand profiles read" ON brand_profiles FOR SELECT USING (true);
+
+    DROP POLICY IF EXISTS "Brands update self" ON brand_profiles;
+    CREATE POLICY "Brands update self" ON brand_profiles FOR UPDATE USING (auth.uid() = user_id);
+END $$;
+
+-- 2. Campaigns & Briefs
+DO $$ BEGIN
+    DROP POLICY IF EXISTS "Active campaigns viewable" ON campaigns;
+    CREATE POLICY "Active campaigns viewable" ON campaigns FOR SELECT USING (status IN ('active', 'applications_open', 'completed') OR auth.uid() IN (SELECT user_id FROM brand_profiles WHERE id = campaigns.brand_id));
+
+    DROP POLICY IF EXISTS "Brands manage campaigns" ON campaigns;
+    CREATE POLICY "Brands manage campaigns" ON campaigns FOR ALL USING (auth.uid() IN (SELECT user_id FROM brand_profiles WHERE id = campaigns.brand_id));
+
+    DROP POLICY IF EXISTS "Applications viewable by creator or brand" ON campaign_applications;
+    CREATE POLICY "Applications viewable by creator or brand" ON campaign_applications FOR SELECT USING (
+        auth.uid() IN (SELECT user_id FROM creator_profiles WHERE id = campaign_applications.creator_id) OR
+        auth.uid() IN (SELECT bp.user_id FROM brand_profiles bp JOIN campaigns c ON c.brand_id = bp.id WHERE c.id = campaign_applications.campaign_id)
+    );
+
+    DROP POLICY IF EXISTS "Creators submit applications" ON campaign_applications;
+    CREATE POLICY "Creators submit applications" ON campaign_applications FOR INSERT WITH CHECK (
+        auth.uid() IN (SELECT user_id FROM creator_profiles WHERE id = campaign_applications.creator_id)
+    );
+END $$;
+
+-- 3. Collaborations & Deliverables
+DO $$ BEGIN
+    DROP POLICY IF EXISTS "Collaborations viewable by participants" ON collaborations;
+    CREATE POLICY "Collaborations viewable by participants" ON collaborations FOR SELECT USING (
+        auth.uid() IN (SELECT user_id FROM creator_profiles WHERE id = collaborations.creator_id) OR
+        auth.uid() IN (SELECT user_id FROM brand_profiles WHERE id = collaborations.brand_id)
+    );
+
+    DROP POLICY IF EXISTS "Deliverables viewable by participants" ON deliverables;
+    CREATE POLICY "Deliverables viewable by participants" ON deliverables FOR SELECT USING (
+        auth.uid() IN (
+            SELECT c.creator_id FROM collaborations c WHERE c.id = deliverables.collaboration_id
+            UNION
+            SELECT b.user_id FROM brand_profiles b JOIN collaborations c ON c.brand_id = b.id WHERE c.id = deliverables.collaboration_id
+        )
+    );
+END $$;
+
+-- 4. Messaging & Notifications
+DO $$ BEGIN
+    DROP POLICY IF EXISTS "Messages viewable by sender or recipient" ON messages;
+    CREATE POLICY "Messages viewable by sender or recipient" ON messages FOR SELECT USING (
+        auth.uid() = sender_id OR auth.uid() = recipient_id
+    );
+
+    DROP POLICY IF EXISTS "Users read self notifications" ON notifications;
+    CREATE POLICY "Users read self notifications" ON notifications FOR SELECT USING (
+        auth.uid() = user_id
+    );
+END $$;
+
+-- 5. Financial & Auditing Records
+DO $$ BEGIN
+    DROP POLICY IF EXISTS "Payments viewable by brand owner" ON payments;
+    CREATE POLICY "Payments viewable by brand owner" ON payments FOR SELECT USING (
+        auth.uid() IN (SELECT user_id FROM brand_profiles WHERE id = payments.brand_id)
+    );
+
+    DROP POLICY IF EXISTS "Payouts viewable by creator" ON payouts;
+    CREATE POLICY "Payouts viewable by creator" ON payouts FOR SELECT USING (
+        auth.uid() IN (SELECT user_id FROM creator_profiles WHERE id = payouts.creator_id)
+    );
+
+    DROP POLICY IF EXISTS "Disputes viewable by involved parties" ON disputes;
+    CREATE POLICY "Disputes viewable by involved parties" ON disputes FOR SELECT USING (
+        auth.uid() = filed_by_id OR auth.uid() IN (
+            SELECT user_id FROM creator_profiles cp JOIN collaborations c ON c.creator_id = cp.id WHERE c.id = disputes.collaboration_id
+            UNION
+            SELECT user_id FROM brand_profiles bp JOIN collaborations c ON c.brand_id = bp.id WHERE c.id = disputes.collaboration_id
+        )
+    );
+END $$;

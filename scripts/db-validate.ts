@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { isSupabaseConfigured, getSupabaseAdmin } from "../src/server/db/supabase";
+import { isSupabaseConfigured, getSupabaseAdmin } from "../src/server/db/supabase.ts";
 
 async function validateDatabase() {
   console.log("🔍 Validating database integrity and schema compatibility...\n");
