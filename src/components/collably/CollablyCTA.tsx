@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowRight, ShieldCheck, Zap, Lock, Building2 } from "lucide-react";
+import { ScrollRevealText } from "@/components/collably/ScrollRevealText";
 
 export function CollablyCTA() {
   return (
@@ -16,16 +17,25 @@ export function CollablyCTA() {
           <span className="font-bold text-slate-900 truncate">Founding Creator Cohort &amp; Brand Beta Open</span>
         </div>
 
-        <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 tracking-tight leading-[1.08] font-sans px-2">
-          Create great content.{" "}
-          <span className="bg-gradient-to-r from-brand-accent via-rose-500 to-amber-500 bg-clip-text text-transparent">
-            Never chase an invoice.
-          </span>
-        </h2>
+        <div className="max-w-4xl mx-auto">
+          <ScrollRevealText
+            as="h2"
+            gradientWords={["never", "chase", "invoice", "great", "content"]}
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-slate-900 tracking-tight leading-[1.08] font-sans px-2"
+          >
+            Create great content. Never chase an invoice.
+          </ScrollRevealText>
+        </div>
 
-        <p className="text-sm sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-sans px-2">
-          Join the founding cohort of vetted creators and ambitious brands scaling high-performing video partnerships with 100% milestone protection.
-        </p>
+        <div className="max-w-2xl mx-auto">
+          <ScrollRevealText
+            as="p"
+            gradientWords={["founding", "vetted", "creators", "milestone", "protection"]}
+            className="text-sm sm:text-lg md:text-xl text-slate-600 font-medium leading-relaxed px-2"
+          >
+            Join the founding cohort of vetted creators and ambitious brands scaling high-performing video partnerships with 100% milestone protection.
+          </ScrollRevealText>
+        </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2 px-2">
           <Link

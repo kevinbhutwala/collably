@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck, Zap, DollarSign, Clock } from "lucide-react";
 import { AnimatedCounter } from "@/components/collably/AnimatedCounter";
+import { ScrollRevealText } from "@/components/collably/ScrollRevealText";
 
 export function TrustGuarantee() {
   const trustMetrics = [
@@ -48,18 +49,28 @@ export function TrustGuarantee() {
   ];
 
   return (
-    <section className="py-28 bg-slate-50/50 border-b border-slate-200 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-        <div className="text-center max-w-3xl mx-auto space-y-4">
+    <section className="py-24 sm:py-28 bg-slate-50/50 border-b border-slate-200 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
+        <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-orange-50 via-rose-50 to-pink-50 border border-orange-200/80 text-xs font-mono text-brand-accent font-bold shadow-xs">
             <span>The Collably Trust Standard</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight font-sans">
+
+          <ScrollRevealText
+            as="h2"
+            gradientWords={["confidence", "scale"]}
+            className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight font-sans leading-tight"
+          >
             Built for confidence at scale.
-          </h2>
-          <p className="text-sm sm:text-base text-slate-600 font-sans">
+          </ScrollRevealText>
+
+          <ScrollRevealText
+            as="p"
+            gradientWords={["milestone", "accountability", "informal", "delays"]}
+            className="text-sm sm:text-lg text-slate-600 font-sans max-w-2xl mx-auto leading-relaxed"
+          >
             Replacing informal DMs, unverified follower counts, and 90-day invoice delays with milestone accountability.
-          </p>
+          </ScrollRevealText>
         </div>
 
         {/* 4 Cards Grid with Side Sliding Animations */}

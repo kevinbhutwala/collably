@@ -12,6 +12,7 @@ import {
   Sparkles,
   Layers,
 } from "lucide-react";
+import { ScrollRevealText } from "@/components/collably/ScrollRevealText";
 
 export function CollaborationCore() {
   const [activeStep, setActiveStep] = useState(0);
@@ -68,18 +69,28 @@ export function CollaborationCore() {
   return (
     <section className="py-20 sm:py-28 bg-white border-y border-slate-200 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
-        {/* Section Header */}
+        {/* Section Header with Scroll Reveal Illumination */}
         <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-orange-50 to-rose-50 border border-orange-200/80 text-xs font-mono font-bold text-brand-accent shadow-xs">
             <Layers className="w-3.5 h-3.5" />
             <span>The Collably Collaboration Hub</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-sans">
+
+          <ScrollRevealText
+            as="h2"
+            gradientWords={["creator", "partnerships", "collably"]}
+            className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight font-sans leading-tight"
+          >
             How creator partnerships happen on Collably.
-          </h2>
-          <p className="text-xs sm:text-base text-slate-600 font-sans max-w-xl mx-auto">
+          </ScrollRevealText>
+
+          <ScrollRevealText
+            as="p"
+            gradientWords={["milestone", "funding", "instant", "payouts"]}
+            className="text-sm sm:text-lg text-slate-600 font-sans max-w-2xl mx-auto leading-relaxed"
+          >
             From brief matching and milestone funding to timecoded video reviews and instant automated creator payouts.
-          </p>
+          </ScrollRevealText>
         </div>
 
         {/* Visual Core Canvas */}

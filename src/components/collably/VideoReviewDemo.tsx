@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Play, Pause, CheckCircle2, Video, Clock } from "lucide-react";
 import confetti from "canvas-confetti";
+import { ScrollRevealText } from "@/components/collably/ScrollRevealText";
 
 export function VideoReviewDemo() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -38,21 +39,31 @@ export function VideoReviewDemo() {
   };
 
   return (
-    <section className="py-28 bg-slate-50/60 border-b border-slate-200 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-        {/* Section Header */}
+    <section className="py-24 sm:py-28 bg-slate-50/60 border-b border-slate-200 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
+        {/* Section Header with Scroll Reveal */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-orange-50 to-rose-50 border border-orange-200/80 text-xs font-mono font-bold text-brand-accent">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-orange-50 to-rose-50 border border-orange-200/80 text-xs font-mono font-bold text-brand-accent shadow-xs">
               <Video className="w-3.5 h-3.5" />
               <span>Interactive 4K Video Review Player</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight font-sans">
+
+            <ScrollRevealText
+              as="h2"
+              gradientWords={["frame-accurate", "video", "reviews"]}
+              className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight font-sans leading-tight"
+            >
               Frame-accurate deliverable reviews.
-            </h2>
-            <p className="text-sm sm:text-base text-slate-600 font-sans">
+            </ScrollRevealText>
+
+            <ScrollRevealText
+              as="p"
+              gradientWords={["timecoded", "version", "one-click", "payout"]}
+              className="text-sm sm:text-base text-slate-600 font-sans leading-relaxed"
+            >
               Review 4K video drafts with timecoded notes, instant version comparison, and one-click milestone payout approval.
-            </p>
+            </ScrollRevealText>
           </div>
 
           <div className="flex items-center gap-3">
