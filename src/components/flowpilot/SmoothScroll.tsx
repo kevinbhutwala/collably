@@ -1,36 +1,8 @@
 "use client";
 
-import React, { useEffect } from "react";
-import Lenis from "lenis";
+import React from "react";
 
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
-  useEffect(() => {
-    // Disable smooth scroll on mobile to prioritize native 120Hz gesture smoothness
-    const isTouch = window.matchMedia("(pointer: coarse)").matches;
-    if (isTouch) return;
-
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: "vertical",
-      gestureOrientation: "vertical",
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
-    });
-
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    const rafId = requestAnimationFrame(raf);
-
-    return () => {
-      cancelAnimationFrame(rafId);
-      lenis.destroy();
-    };
-  }, []);
-
+  // Use native hardware-accelerated 120Hz/60Hz browser scrolling
   return <>{children}</>;
 }
