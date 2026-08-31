@@ -1,0 +1,142 @@
+import { create } from "zustand";
+import { User, UserRole, CreatorProfile, BrandProfile } from "../core/types";
+import { authService } from "@/services/auth.service";
+
+interface AuthState {
+  user: User | null;
+  role: UserRole;
+  currentCreator: CreatorProfile | null;
+  currentBrand: BrandProfile | null;
+  isAuthenticated: boolean;
+  isLoading: boolean;
+  checkSession: () => Promise<boolean>;
+  login: (email: string, password: string) => Promise<void>;
+  register: (params: {
+    name: string;
+    email: string;
+    password: string;
+    role: "creator" | "brand";
+    handle?: string;
+    companyName?: string;
+    category?: string;
+    industry?: string;
+  }) => Promise<void>;
+  logout: () => Promise<void>;
+  setUser: (user: User | null) => void;
+  setRole: (role: UserRole) => void;
+  setAuthData: (user: User, creator?: CreatorProfile | null, brand?: BrandProfile | null) => void;
+}
+
+export const useAuthStore = create<AuthState>((set, get) => ({
+  user: null,
+  role: "creator",
+  currentCreator: null,
+  currentBrand: null,
+  isAuthenticated: false,
+  isLoading: true,
+
+  checkSession: async () => {
+    try {
+      const data = await authService.getSession();
+      if (data.authenticated && data.user) {
+        set({
+          user: data.user,
+          role: data.user.role,
+          currentCreator: data.creatorProfile || null,
+          currentBrand: data.brandProfile || null,
+          isAuthenticated: true,
+          isLoading: false,
+        });
+        return true;
+      }
+    } catch {
+      // Unauthenticated
+    }
+    set({
+      user: null,
+      currentCreator: null,
+      currentBrand: null,
+      isAuthenticated: false,
+      isLoading: false,
+    });
+    return false;
+  },
+
+  login: async (email: string, password: string) => {
+    set({ isLoading: true });
+    try {
+      const data = await authService.login(email, password);
+      if (data.user) {
+        set({
+          user: data.user,
+          role: data.user.role,
+          currentCreator: data.creatorProfile || null,
+          currentBrand: data.brandProfile || null,
+          isAuthenticated: true,
+          isLoading: false,
+        });
+      }
+    } catch (error) {
+      set({ isLoading: false });
+      throw error;
+    }
+  },
+
+  register: async (params) => {
+    set({ isLoading: true });
+    try {
+      const data = await authService.register(params);
+      if (data.user) {
+        set({
+          user: data.user,
+          role: data.user.role,
+          currentCreator: data.creatorProfile || null,
+          currentBrand: data.brandProfile || null,
+          isAuthenticated: true,
+          isLoading: false,
+        });
+      }
+    } catch (error) {
+      set({ isLoading: false });
+      throw error;
+    }
+  },
+
+  logout: async () => {
+    try {
+      await authService.logout();
+    } catch {
+      // Ignore network errors
+    }
+    set({
+      user: null,
+      role: "creator",
+      currentCreator: null,
+      currentBrand: null,
+      isAuthenticated: false,
+      isLoading: false,
+    });
+  },
+
+  setUser: (user: User | null) => {
+    set({
+      user,
+      role: user?.role || "creator",
+      isAuthenticated: !!user,
+    });
+  },
+
+  setRole: (role: UserRole) => {
+    set({ role });
+  },
+
+  setAuthData: (user: User, creator?: CreatorProfile | null, brand?: BrandProfile | null) => {
+    set({
+      user,
+      role: user.role,
+      isAuthenticated: true,
+      currentCreator: creator || null,
+      currentBrand: brand || null,
+    });
+  },
+}));
