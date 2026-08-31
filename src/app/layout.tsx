@@ -57,10 +57,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`light ${plusJakarta.variable} ${outfit.variable} ${jetbrainsMono.variable}`}
-      style={{ colorScheme: "light" }}
+      className={`dark ${plusJakarta.variable} ${outfit.variable} ${jetbrainsMono.variable}`}
+      style={{ colorScheme: "dark" }}
     >
-      <body className="min-h-screen bg-[#FAFBFC] text-slate-900 antialiased font-sans selection:bg-indigo-500/15 selection:text-indigo-600">
+      <body className="min-h-screen bg-[#0a070a] text-white antialiased font-sans selection:bg-pink-500/25 selection:text-pink-300">
         {children}
         <CommandPalette />
         <ToastContainer />
