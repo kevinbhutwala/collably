@@ -4,9 +4,9 @@ import { ToastContainer } from "@/components/ui/ToastContainer";
 import { CommandPalette } from "@/components/navigation/CommandPalette";
 
 export const metadata: Metadata = {
-  title: "Collably | The Creator × Brand Collaboration Platform",
+  title: "Collably | The Premier Creator × Brand Collaboration Workspace",
   description:
-    "Where great brands collaborate with world-class creators. Milestone escrow, automated deliverable pipelines, and fast creator payouts.",
+    "Where world-class creators and high-growth brands collaborate. Milestone payment protection, 4K timecoded video review, and instant automated creator payouts.",
   keywords: [
     "collably",
     "creator marketplace",
@@ -14,7 +14,8 @@ export const metadata: Metadata = {
     "brand partnerships",
     "creator crm",
     "creator escrow",
-    "content collaboration",
+    "milestone payments",
+    "video review player",
   ],
   icons: {
     icon: [
@@ -32,8 +33,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="light" style={{ colorScheme: "light" }}>
-      <body className="min-h-screen bg-white text-slate-900 antialiased font-sans selection:bg-brand-accent/20 selection:text-brand-accent">
+    <html lang="en" className="dark" style={{ colorScheme: "dark" }}>
+      <body className="min-h-screen bg-[#05070D] text-slate-100 antialiased font-sans selection:bg-brand-accent/30 selection:text-brand-accent">
         {children}
         <CommandPalette />
         <ToastContainer />

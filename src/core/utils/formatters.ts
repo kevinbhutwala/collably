@@ -8,6 +8,8 @@ export function formatNumber(num: number): string {
   return num.toLocaleString();
 }
 
+export const formatCompactNumber = formatNumber;
+
 export function formatCurrency(amount: number, currency: string = 'USD'): string {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
