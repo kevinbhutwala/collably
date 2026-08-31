@@ -87,7 +87,7 @@ export function AppSidebar() {
     role === "creator" ? creatorNavItems : role === "brand" ? brandNavItems : adminNavItems;
 
   return (
-    <aside className="hidden lg:flex flex-col w-64 border-r border-slate-200 bg-slate-50/50 backdrop-blur-xl p-4 shrink-0 min-h-[calc(100vh-4rem)]">
+    <aside className="hidden lg:flex flex-col w-64 border-r border-white/10 bg-[#09090d]/90 backdrop-blur-xl p-4 shrink-0 min-h-[calc(100vh-4rem)]">
       {/* Brand logo & workspace badge */}
       <div className="px-3 py-2 mb-6">
         <CollablyLogo
@@ -110,10 +110,10 @@ export function AppSidebar() {
               className={cn(
                 "flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 group select-none",
                 isActive
-                  ? "bg-white text-slate-900 font-bold shadow-sm border border-slate-200"
+                  ? "bg-white/10 text-white font-bold shadow-md border border-brand-accent/30 text-brand-accent"
                   : item.highlight
-                  ? "bg-orange-50 text-brand-accent border border-orange-200 hover:bg-orange-100/70 font-semibold"
-                  : "text-slate-600 hover:text-slate-900 hover:bg-white/80"
+                  ? "bg-orange-500/15 text-orange-400 border border-orange-500/30 hover:bg-orange-500/25 font-semibold"
+                  : "text-slate-400 hover:text-white hover:bg-white/[0.06]"
               )}
             >
               <div className="flex items-center gap-3">
@@ -123,8 +123,8 @@ export function AppSidebar() {
                     isActive
                       ? "text-brand-accent"
                       : item.highlight
-                      ? "text-brand-accent"
-                      : "text-slate-400 group-hover:text-slate-700"
+                      ? "text-orange-400"
+                      : "text-slate-400 group-hover:text-slate-200"
                   )}
                 />
                 <span>{item.label}</span>
@@ -135,8 +135,8 @@ export function AppSidebar() {
                   className={cn(
                     "text-[10px] px-2 py-0.5 rounded-full font-mono font-bold",
                     isActive
-                      ? "bg-brand-accent/10 text-brand-accent border border-brand-accent/20"
-                      : "bg-slate-200/80 text-slate-600"
+                      ? "bg-brand-accent/20 text-brand-accent border border-brand-accent/30"
+                      : "bg-white/10 text-slate-400"
                   )}
                 >
                   {item.badge}

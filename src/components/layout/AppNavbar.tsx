@@ -44,12 +44,12 @@ export function AppNavbar() {
   };
 
   return (
-    <header className="sticky top-0 z-30 w-full h-16 border-b border-slate-200 bg-white/90 backdrop-blur-xl px-4 sm:px-6 flex items-center justify-between gap-4">
+    <header className="sticky top-0 z-30 w-full h-16 border-b border-white/10 bg-[#09090d]/90 backdrop-blur-xl px-4 sm:px-6 flex items-center justify-between gap-4">
       {/* Left Area: Platform Breadcrumb & Search */}
       <div className="flex items-center gap-4 flex-1 max-w-md">
         <Link href="/" className="lg:hidden flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-accent to-orange-400 flex items-center justify-center font-extrabold text-white text-xs shadow-sm">
-            NX
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-accent via-rose-500 to-amber-500 flex items-center justify-center font-extrabold text-white text-xs shadow-md shadow-brand-accent/20">
+            CB
           </div>
         </Link>
 
@@ -61,16 +61,10 @@ export function AppNavbar() {
               const event = new KeyboardEvent("keydown", { key: "k", metaKey: true, bubbles: true });
               window.dispatchEvent(event);
             }}
-            className="w-full text-left bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-12 py-2 text-xs text-slate-500 hover:border-slate-300 hover:bg-white transition-all shadow-sm flex items-center justify-between"
+            className="w-full h-9 pl-9 pr-3 rounded-xl bg-white/[0.05] border border-white/10 text-xs text-left text-slate-400 hover:text-slate-200 hover:border-brand-accent/40 transition-colors flex items-center justify-between"
           >
-            <span className="truncate">
-              {role === "creator"
-                ? "Search campaigns, briefs, brands..."
-                : role === "brand"
-                ? "Search creators, niches, analytics..."
-                : "Search creators, campaigns, payouts..."}
-            </span>
-            <kbd className="px-1.5 py-0.5 rounded bg-white border border-slate-200 text-[10px] font-mono text-slate-400">
+            <span>Search campaigns, creators, contracts...</span>
+            <kbd className="hidden sm:inline-block px-1.5 py-0.5 text-[10px] font-mono font-semibold text-slate-400 bg-white/10 border border-white/10 rounded">
               ⌘K
             </kbd>
           </button>
