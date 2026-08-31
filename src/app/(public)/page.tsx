@@ -1,6 +1,5 @@
 import React from "react";
 import { SmoothScroll } from "@/components/flowpilot/SmoothScroll";
-import { CustomCursor } from "@/components/flowpilot/CustomCursor";
 import { AmbientBackground } from "@/components/flowpilot/AmbientBackground";
 import { HeroSection } from "@/components/collably/HeroSection";
 import { BrandMarquee } from "@/components/collably/BrandMarquee";
@@ -16,7 +15,6 @@ import { CollablyCTA } from "@/components/collably/CollablyCTA";
 export default function CollablyLandingPage() {
   return (
     <SmoothScroll>
-      <CustomCursor />
       <AmbientBackground />
       <div className="relative min-h-screen bg-[#05070D] text-slate-100 font-sans selection:bg-brand-accent selection:text-white overflow-x-hidden">
         <HeroSection />
