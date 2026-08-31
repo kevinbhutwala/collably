@@ -38,7 +38,7 @@ export function EscrowTrustFlow() {
   useEffect(() => {
     const timer = setInterval(() => {
       setEscrowStage((prev) => (prev + 1) % stages.length);
-    }, 3600);
+    }, 4200);
     return () => clearInterval(timer);
   }, [stages.length]);
 
@@ -55,7 +55,7 @@ export function EscrowTrustFlow() {
           <ScrollRevealText
             as="h2"
             gradientWords={["creators", "get", "paid", "brands", "stay", "protected"]}
-            className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight font-sans leading-tight"
+            className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight font-display leading-tight"
           >
             Creators get paid. Brands stay protected.
           </ScrollRevealText>
@@ -70,23 +70,23 @@ export function EscrowTrustFlow() {
         </div>
 
         {/* Financial Escrow Stage Canvas */}
-        <div className="max-w-4xl mx-auto rounded-3xl bg-slate-900 text-white shadow-2xl p-6 sm:p-10 space-y-8 relative overflow-hidden">
+        <div className="max-w-4xl mx-auto rounded-3xl bg-gradient-to-b from-white via-slate-50/60 to-white border border-slate-200/90 shadow-card hover:shadow-elevated transition-all duration-300 p-6 sm:p-10 space-y-8 relative overflow-hidden">
           {/* Subtle Ambient Glow */}
-          <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 blur-[100px] pointer-events-none" />
+          <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/5 blur-[100px] pointer-events-none" />
 
           {/* Budget Top Card */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-slate-800 border border-slate-700">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs">
             <div className="space-y-1 font-mono">
               <span className="text-[10px] uppercase text-slate-400 font-bold block">CAMPAIGN ESCROW ALLOCATION</span>
               <div className="flex items-baseline gap-2">
-                <span className="text-3xl sm:text-4xl font-black text-white">$3,200.00</span>
+                <span className="text-3xl sm:text-4xl font-black text-slate-900 font-display">$3,200.00</span>
                 <span className="text-xs text-slate-400 font-mono">(₹2,50,000 INR)</span>
               </div>
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="px-3 py-1.5 rounded-xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold flex items-center gap-1.5">
-                <Lock className="w-3.5 h-3.5" /> 100% Pre-Funded
+              <span className="px-3 py-1.5 rounded-xl bg-emerald-50 border border-emerald-200/80 text-emerald-700 text-xs font-mono font-bold flex items-center gap-1.5">
+                <Lock className="w-3.5 h-3.5 text-emerald-600" /> 100% Pre-Funded Escrow
               </span>
             </div>
           </div>
@@ -99,17 +99,19 @@ export function EscrowTrustFlow() {
                 onClick={() => setEscrowStage(i)}
                 className={`p-3.5 rounded-2xl border text-left transition-all ${
                   escrowStage === i
-                    ? "bg-slate-800 border-orange-500 shadow-md shadow-orange-500/10 scale-102"
-                    : "bg-slate-800/40 border-slate-700/60 text-slate-400 hover:bg-slate-800/70"
+                    ? "bg-white border-brand-accent shadow-md shadow-brand-accent/10 scale-102 ring-2 ring-brand-accent/20"
+                    : "bg-white/60 border-slate-200/80 text-slate-500 hover:bg-white hover:text-slate-900"
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-[10px] font-mono font-bold">0{i + 1}</span>
+                  <span className={`text-[10px] font-mono font-bold ${escrowStage === i ? "text-brand-accent" : "text-slate-400"}`}>
+                    0{i + 1}
+                  </span>
                   {escrowStage >= i && (
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                   )}
                 </div>
-                <h4 className="text-xs font-bold text-white font-sans truncate">{st.title}</h4>
+                <h4 className="text-xs font-bold text-slate-900 font-display truncate">{st.title}</h4>
               </button>
             ))}
           </div>
@@ -121,18 +123,18 @@ export function EscrowTrustFlow() {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
-              className="p-6 rounded-2xl bg-slate-800/90 border border-slate-700 space-y-3"
+              className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-3"
             >
               <div className="flex items-center justify-between">
-                <span className="text-xs font-mono text-orange-400 font-bold">
+                <span className="text-xs font-mono text-brand-accent font-bold">
                   PHASE 0{escrowStage + 1} EXECUTION
                 </span>
-                <span className="px-2.5 py-1 rounded-md bg-emerald-950 border border-emerald-500/30 text-emerald-400 text-[10px] font-mono font-bold">
+                <span className="px-2.5 py-1 rounded-md bg-emerald-50 border border-emerald-200 text-emerald-700 text-[10px] font-mono font-bold">
                   {stages[escrowStage].status}
                 </span>
               </div>
-              <h3 className="text-lg font-bold text-white font-sans">{stages[escrowStage].title}</h3>
-              <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed">
+              <h3 className="text-lg font-bold text-slate-900 font-display">{stages[escrowStage].title}</h3>
+              <p className="text-xs sm:text-sm text-slate-600 font-sans leading-relaxed">
                 {stages[escrowStage].desc}
               </p>
             </motion.div>

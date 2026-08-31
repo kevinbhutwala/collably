@@ -277,17 +277,66 @@ export default function DashboardPage() {
           <ProfileCompletenessCard />
 
           {/* Escrow Trust Assurance Box */}
-          <div className="p-6 rounded-3xl bg-slate-900 text-white shadow-xl space-y-4 font-mono">
-            <div className="flex items-center gap-2.5 text-xs text-brand-accent font-bold">
-              <ShieldCheck className="w-4 h-4" />
-              <span>COLLABLY ESCROW SHIELD</span>
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-white via-slate-50/50 to-white border border-slate-200/90 hover:border-emerald-300/80 shadow-card hover:shadow-elevated transition-all duration-300 p-6 space-y-4">
+            {/* Luminous Top Accent */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500" />
+
+            {/* Header */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white flex items-center justify-center shadow-md shadow-emerald-500/20">
+                  <ShieldCheck className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-600 block">
+                    FINANCIAL PROTECTION
+                  </span>
+                  <h3 className="text-sm font-black text-slate-900 font-display tracking-tight">
+                    Collably Escrow Shield™
+                  </h3>
+                </div>
+              </div>
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-700 text-[10px] font-mono font-bold">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                100% Protected
+              </span>
             </div>
-            <p className="text-xs text-slate-300 font-sans leading-relaxed">
-              Every deliverable is pre-funded into Stripe custody before recording begins. Zero payment chasing.
+
+            {/* Reassuring copy */}
+            <p className="text-xs text-slate-600 font-sans leading-relaxed">
+              {role === "creator"
+                ? "Every deliverable milestone is pre-funded into secure escrow custody before production begins. Payouts release automatically upon review approval."
+                : "Your campaign budget is securely held in milestone escrow and only released to creators when you inspect and approve their submitted deliverables."}
             </p>
-            <div className="pt-2 border-t border-slate-800 flex justify-between text-[11px] text-slate-400">
-              <span>Custody Provider:</span>
-              <span className="text-emerald-400 font-bold">Stripe Verified</span>
+
+            {/* Protection Checkpoints */}
+            <div className="space-y-2 pt-1 font-sans">
+              <div className="flex items-center gap-2 text-xs text-slate-700">
+                <div className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                </div>
+                <span>Pre-funded upfront custody</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-slate-700">
+                <div className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                </div>
+                <span>Instant automated disbursement</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-slate-700">
+                <div className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                </div>
+                <span>Built-in fair arbitration guarantee</span>
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono">
+              <span className="text-slate-400">Custody Provider:</span>
+              <span className="text-slate-800 font-bold flex items-center gap-1">
+                <span className="text-emerald-600">●</span> Razorpay / Stripe
+              </span>
             </div>
           </div>
         </div>
