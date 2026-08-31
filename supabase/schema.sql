@@ -711,7 +711,9 @@ DO $$ BEGIN
     CREATE POLICY "Public creator profiles read" ON creator_profiles FOR SELECT USING (true);
 
     DROP POLICY IF EXISTS "Creators update self" ON creator_profiles;
-    CREATE POLICY "Creators update self" ON creator_profiles FOR UPDATE USING (auth.uid() = user_id);
+    CREATE POLICY "Creators update self" ON creator_profiles FOR UPDATE USING (
+        profile_id IN (SELECT id FROM profiles WHERE user_id = auth.uid())
+    );
 
     DROP POLICY IF EXISTS "Public social accounts read" ON social_accounts;
     CREATE POLICY "Public social accounts read" ON social_accounts FOR SELECT USING (true);
@@ -726,26 +728,33 @@ DO $$ BEGIN
     CREATE POLICY "Public brand profiles read" ON brand_profiles FOR SELECT USING (true);
 
     DROP POLICY IF EXISTS "Brands update self" ON brand_profiles;
-    CREATE POLICY "Brands update self" ON brand_profiles FOR UPDATE USING (auth.uid() = user_id);
+    CREATE POLICY "Brands update self" ON brand_profiles FOR UPDATE USING (
+        profile_id IN (SELECT id FROM profiles WHERE user_id = auth.uid())
+    );
 END $$;
 
 -- 2. Campaigns & Briefs
 DO $$ BEGIN
     DROP POLICY IF EXISTS "Active campaigns viewable" ON campaigns;
-    CREATE POLICY "Active campaigns viewable" ON campaigns FOR SELECT USING (status IN ('active', 'applications_open', 'completed') OR auth.uid() IN (SELECT user_id FROM brand_profiles WHERE id = campaigns.brand_id));
+    CREATE POLICY "Active campaigns viewable" ON campaigns FOR SELECT USING (
+        status IN ('active', 'applications_open', 'completed') OR 
+        brand_id IN (SELECT id FROM brand_profiles WHERE profile_id IN (SELECT id FROM profiles WHERE user_id = auth.uid()))
+    );
 
     DROP POLICY IF EXISTS "Brands manage campaigns" ON campaigns;
-    CREATE POLICY "Brands manage campaigns" ON campaigns FOR ALL USING (auth.uid() IN (SELECT user_id FROM brand_profiles WHERE id = campaigns.brand_id));
+    CREATE POLICY "Brands manage campaigns" ON campaigns FOR ALL USING (
+        brand_id IN (SELECT id FROM brand_profiles WHERE profile_id IN (SELECT id FROM profiles WHERE user_id = auth.uid()))
+    );
 
     DROP POLICY IF EXISTS "Applications viewable by creator or brand" ON campaign_applications;
     CREATE POLICY "Applications viewable by creator or brand" ON campaign_applications FOR SELECT USING (
-        auth.uid() IN (SELECT user_id FROM creator_profiles WHERE id = campaign_applications.creator_id) OR
-        auth.uid() IN (SELECT bp.user_id FROM brand_profiles bp JOIN campaigns c ON c.brand_id = bp.id WHERE c.id = campaign_applications.campaign_id)
+        creator_id IN (SELECT id FROM creator_profiles WHERE profile_id IN (SELECT id FROM profiles WHERE user_id = auth.uid())) OR
+        campaign_id IN (SELECT id FROM campaigns WHERE brand_id IN (SELECT id FROM brand_profiles WHERE profile_id IN (SELECT id FROM profiles WHERE user_id = auth.uid())))
     );
 
     DROP POLICY IF EXISTS "Creators submit applications" ON campaign_applications;
     CREATE POLICY "Creators submit applications" ON campaign_applications FOR INSERT WITH CHECK (
-        auth.uid() IN (SELECT user_id FROM creator_profiles WHERE id = campaign_applications.creator_id)
+        creator_id IN (SELECT id FROM creator_profiles WHERE profile_id IN (SELECT id FROM profiles WHERE user_id = auth.uid()))
     );
 END $$;
 
@@ -753,16 +762,16 @@ END $$;
 DO $$ BEGIN
     DROP POLICY IF EXISTS "Collaborations viewable by participants" ON collaborations;
     CREATE POLICY "Collaborations viewable by participants" ON collaborations FOR SELECT USING (
-        auth.uid() IN (SELECT user_id FROM creator_profiles WHERE id = collaborations.creator_id) OR
-        auth.uid() IN (SELECT user_id FROM brand_profiles WHERE id = collaborations.brand_id)
+        creator_id IN (SELECT id FROM creator_profiles WHERE profile_id IN (SELECT id FROM profiles WHERE user_id = auth.uid())) OR
+        brand_id IN (SELECT id FROM brand_profiles WHERE profile_id IN (SELECT id FROM profiles WHERE user_id = auth.uid()))
     );
 
     DROP POLICY IF EXISTS "Deliverables viewable by participants" ON collaboration_deliverables;
     CREATE POLICY "Deliverables viewable by participants" ON collaboration_deliverables FOR SELECT USING (
-        auth.uid() IN (
-            SELECT c.creator_id FROM collaborations c WHERE c.id = collaboration_deliverables.collaboration_id
-            UNION
-            SELECT b.user_id FROM brand_profiles b JOIN collaborations c ON c.brand_id = b.id WHERE c.id = collaboration_deliverables.collaboration_id
+        collaboration_id IN (
+            SELECT id FROM collaborations WHERE 
+            creator_id IN (SELECT id FROM creator_profiles WHERE profile_id IN (SELECT id FROM profiles WHERE user_id = auth.uid())) OR
+            brand_id IN (SELECT id FROM brand_profiles WHERE profile_id IN (SELECT id FROM profiles WHERE user_id = auth.uid()))
         )
     );
 END $$;
@@ -771,12 +780,13 @@ END $$;
 DO $$ BEGIN
     DROP POLICY IF EXISTS "Messages viewable by sender or recipient" ON messages;
     CREATE POLICY "Messages viewable by sender or recipient" ON messages FOR SELECT USING (
-        auth.uid() = sender_id OR auth.uid() = recipient_id
+        sender_id IN (SELECT id FROM profiles WHERE user_id = auth.uid()) OR 
+        recipient_id IN (SELECT id FROM profiles WHERE user_id = auth.uid())
     );
 
     DROP POLICY IF EXISTS "Users read self notifications" ON notifications;
     CREATE POLICY "Users read self notifications" ON notifications FOR SELECT USING (
-        auth.uid() = user_id
+        user_id IN (SELECT id FROM profiles WHERE user_id = auth.uid())
     );
 END $$;
 
@@ -784,20 +794,16 @@ END $$;
 DO $$ BEGIN
     DROP POLICY IF EXISTS "Payments viewable by brand owner" ON payments;
     CREATE POLICY "Payments viewable by brand owner" ON payments FOR SELECT USING (
-        auth.uid() IN (SELECT user_id FROM brand_profiles WHERE id = payments.brand_id)
+        brand_id IN (SELECT id FROM brand_profiles WHERE profile_id IN (SELECT id FROM profiles WHERE user_id = auth.uid()))
     );
 
     DROP POLICY IF EXISTS "Payouts viewable by creator" ON payouts;
     CREATE POLICY "Payouts viewable by creator" ON payouts FOR SELECT USING (
-        auth.uid() IN (SELECT user_id FROM creator_profiles WHERE id = payouts.creator_id)
+        creator_id IN (SELECT id FROM creator_profiles WHERE profile_id IN (SELECT id FROM profiles WHERE user_id = auth.uid()))
     );
 
     DROP POLICY IF EXISTS "Disputes viewable by involved parties" ON disputes;
     CREATE POLICY "Disputes viewable by involved parties" ON disputes FOR SELECT USING (
-        auth.uid() = filed_by_id OR auth.uid() IN (
-            SELECT user_id FROM creator_profiles cp JOIN collaborations c ON c.creator_id = cp.id WHERE c.id = disputes.collaboration_id
-            UNION
-            SELECT user_id FROM brand_profiles bp JOIN collaborations c ON c.brand_id = bp.id WHERE c.id = disputes.collaboration_id
-        )
+        filed_by_id IN (SELECT id FROM profiles WHERE user_id = auth.uid())
     );
 END $$;
