@@ -75,41 +75,43 @@ export function HeroSection() {
           <span className="text-rose-700 font-semibold truncate">Founding Creator Cohort Open</span>
         </motion.div>
 
-        {/* Dynamic Animated Cycling Headline */}
-        <div className="space-y-2 max-w-4xl mx-auto px-2">
-          <h1 className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-slate-900 leading-[1.12] select-none font-sans">
-            <span>Where World-Class </span>
-            <span className="inline-block relative h-[1.15em] overflow-hidden align-baseline">
+        {/* Dynamic Animated Cycling Headline with Baseline Alignment */}
+        <div className="max-w-4xl mx-auto px-2">
+          <h1 className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-slate-900 leading-[1.18] select-none font-sans text-center">
+            <span className="inline-block align-baseline">Where World-Class</span>{" "}
+            <span className="inline-block relative overflow-hidden align-baseline min-w-[4ch] sm:min-w-[4.8ch] text-left">
+              <span className="invisible select-none opacity-0 pointer-events-none">Videographers</span>
               <AnimatePresence mode="wait">
                 <motion.span
                   key={creatorIndex}
-                  initial={{ y: "100%", opacity: 0 }}
+                  initial={{ y: "110%", opacity: 0 }}
                   animate={{ y: "0%", opacity: 1 }}
-                  exit={{ y: "-100%", opacity: 0 }}
-                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                  className="inline-block bg-gradient-to-r from-brand-accent via-rose-500 to-pink-500 bg-clip-text text-transparent px-1 pb-0.5"
+                  exit={{ y: "-110%", opacity: 0 }}
+                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute inset-0 flex items-center bg-gradient-to-r from-brand-accent via-rose-500 to-pink-500 bg-clip-text text-transparent"
                 >
                   {creatorNiches[creatorIndex]}
                 </motion.span>
               </AnimatePresence>
             </span>
             <br className="hidden xs:inline" />
-            <span className="inline-block">and </span>
-            <span className="inline-block relative h-[1.15em] overflow-hidden align-baseline">
+            <span className="inline-block align-baseline">and</span>{" "}
+            <span className="inline-block relative overflow-hidden align-baseline min-w-[3.2ch] sm:min-w-[3.8ch] text-left">
+              <span className="invisible select-none opacity-0 pointer-events-none">Startups</span>
               <AnimatePresence mode="wait">
                 <motion.span
                   key={brandIndex}
-                  initial={{ y: "100%", opacity: 0 }}
+                  initial={{ y: "110%", opacity: 0 }}
                   animate={{ y: "0%", opacity: 1 }}
-                  exit={{ y: "-100%", opacity: 0 }}
-                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                  className="inline-block bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-600 bg-clip-text text-transparent px-1 pb-0.5"
+                  exit={{ y: "-110%", opacity: 0 }}
+                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute inset-0 flex items-center bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-600 bg-clip-text text-transparent"
                 >
                   {brandTypes[brandIndex]}
                 </motion.span>
               </AnimatePresence>
-            </span>
-            <span> Collaborate.</span>
+            </span>{" "}
+            <span className="inline-block align-baseline">Collaborate.</span>
           </h1>
         </div>
 

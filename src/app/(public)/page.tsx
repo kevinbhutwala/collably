@@ -5,6 +5,7 @@ import { HeroSection } from "@/components/collably/HeroSection";
 import { SlidingTickerRail } from "@/components/collably/SlidingTickerRail";
 import { BrandMarquee } from "@/components/collably/BrandMarquee";
 import { CollaborationCore } from "@/components/collably/CollaborationCore";
+import { ScrollTextZoom } from "@/components/collably/ScrollTextZoom";
 import { SignatureTransformScroll } from "@/components/collably/SignatureTransformScroll";
 import { StoryPipeline } from "@/components/collably/StoryPipeline";
 import { VideoReviewDemo } from "@/components/collably/VideoReviewDemo";
@@ -22,6 +23,7 @@ export default function CollablyLandingPage() {
         <SlidingTickerRail />
         <BrandMarquee />
         <CollaborationCore />
+        <ScrollTextZoom />
         <SignatureTransformScroll />
         <StoryPipeline />
         <VideoReviewDemo />
