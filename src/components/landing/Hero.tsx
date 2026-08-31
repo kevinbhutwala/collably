@@ -58,7 +58,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto font-normal leading-relaxed"
           >
-            Pre-funded milestone escrow, verified brand briefs across YouTube, Instagram, and TikTok, and instant automated payouts upon deliverable approval.
+            Milestone-locked payments via Stripe Connect, verified brand briefs across YouTube, Instagram, and TikTok, and instant automated payouts upon deliverable approval.
           </motion.p>
 
           {/* Primary Action Button (Single Primary Flow for Creators) */}
@@ -113,7 +113,7 @@ export function Hero() {
           >
             <div className="flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-emerald-600" />
-              <span>Escrow Funded Before Filming</span>
+              <span>Milestone-Locked Before Filming</span>
             </div>
             <div className="flex items-center gap-1.5">
               <Zap className="w-4 h-4 text-brand-accent" />

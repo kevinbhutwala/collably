@@ -21,7 +21,7 @@ export function CampaignEcosystem() {
               <span>Live Campaign Ecosystem</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-              Active briefs with pre-funded escrow
+              Active briefs with milestone-locked budgets
             </h2>
             <p className="text-sm sm:text-base text-slate-600">
               Browse premier brand briefs open for applications. Clear guidelines, transparent budgets, zero ambiguity.
