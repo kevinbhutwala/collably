@@ -20,11 +20,10 @@ export function Navbar() {
 
   const navLinks = [
     { href: "/creators", label: "Creators" },
-    { href: "/brands", label: "Brands" },
+    { href: "/for-brands", label: "For Brands" },
     { href: "/campaigns", label: "Campaigns" },
-    { href: "/case-studies", label: "Case Studies" },
-    { href: "/services", label: "Services" },
     { href: "/pricing", label: "Pricing" },
+    { href: "/services", label: "Agency" },
     { href: "/about", label: "About" },
   ];
 

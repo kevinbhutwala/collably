@@ -4,14 +4,15 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { Badge } from "@/components/ui/Badge";
 import {
-  ArrowUpRight,
+  ArrowRight,
   Sparkles,
   ShieldCheck,
   Zap,
   CheckCircle2,
   Lock,
+  ArrowUpRight,
+  Building2,
 } from "lucide-react";
 
 export function Hero() {
@@ -32,7 +33,7 @@ export function Hero() {
               <span className="flex h-2 w-2 rounded-full bg-brand-accent animate-ping" />
               <span className="font-bold text-slate-900">Collably</span>
               <span className="text-slate-300">•</span>
-              <span className="text-slate-600">The Creator × Brand Collaboration Platform</span>
+              <span className="text-slate-600">Founding Creator Cohort Open</span>
             </div>
           </motion.div>
         </div>
@@ -45,9 +46,9 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tight leading-[1.08]"
           >
-            Run creator campaigns{" "}
+            Create great content.{" "}
             <span className="bg-gradient-to-r from-brand-accent via-orange-600 to-amber-600 bg-clip-text text-transparent">
-              without chasing invoices.
+              Never chase an invoice.
             </span>
           </motion.h1>
 
@@ -57,36 +58,49 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto font-normal leading-relaxed"
           >
-            Milestone escrow, vetted creators across YouTube, Instagram, and TikTok, and automated deliverable reviews — in one collaborative workspace.
+            Pre-funded milestone escrow, verified brand briefs across YouTube, Instagram, and TikTok, and instant automated payouts upon deliverable approval.
           </motion.p>
 
-          {/* Primary Action Buttons */}
+          {/* Primary Action Button (Single Primary Flow for Creators) */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
           >
-            <Link href="/app/brand/campaigns/create">
+            <Link href="/creator/register">
               <Button
                 variant="accent"
                 size="lg"
-                rightIcon={<ArrowUpRight className="w-5 h-5" />}
-                className="w-full sm:w-auto text-base shadow-xl shadow-brand-accent/25"
+                rightIcon={<ArrowRight className="w-5 h-5" />}
+                className="w-full sm:w-auto text-base shadow-xl shadow-brand-accent/25 px-8"
               >
-                Start a Campaign
+                Apply to Join Founding Cohort
               </Button>
             </Link>
 
-            <Link href="/creator/register">
+            <Link href="/for-brands">
               <Button
                 variant="outline"
                 size="lg"
-                leftIcon={<Sparkles className="w-4 h-4 text-amber-500" />}
+                leftIcon={<Building2 className="w-4 h-4 text-slate-500" />}
                 className="w-full sm:w-auto text-base"
               >
-                I&apos;m a Creator
+                I&apos;m Hiring Creators
               </Button>
+            </Link>
+          </motion.div>
+
+          {/* Direct Brand sublink for clarity */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.35 }}
+            className="text-xs text-slate-500 font-medium pt-1"
+          >
+            Looking to launch a marketing campaign?{" "}
+            <Link href="/for-brands" className="text-brand-accent font-bold hover:underline inline-flex items-center gap-0.5">
+              Explore Collably for Brands <ArrowUpRight className="w-3 h-3" />
             </Link>
           </motion.div>
 
@@ -95,19 +109,19 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="pt-6 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-600 font-medium"
+            className="pt-6 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-600 font-medium border-t border-slate-100 max-w-2xl mx-auto"
           >
             <div className="flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-emerald-600" />
-              <span>100% Escrow Protection</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-              <span>Vetted Quality Creators</span>
+              <span>Escrow Funded Before Filming</span>
             </div>
             <div className="flex items-center gap-1.5">
               <Zap className="w-4 h-4 text-brand-accent" />
-              <span>Instant Milestone Payouts</span>
+              <span>0-Day Payout Turnaround</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+              <span>Keep 90% of Earnings</span>
             </div>
           </motion.div>
         </div>

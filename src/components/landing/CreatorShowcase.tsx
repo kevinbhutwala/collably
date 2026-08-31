@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { formatNumber, formatCurrency } from "@/core/utils/formatters";
-import { ArrowUpRight, Sparkles, Star, Users, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, Sparkles, Star, Users, CheckCircle2, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function CreatorShowcase() {
@@ -30,19 +30,19 @@ export function CreatorShowcase() {
           <div className="space-y-3 max-w-2xl">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-semibold">
               <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-              <span>Vetted Creator Roster</span>
+              <span>Founding Cohort Spotlight</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-              Curated talent. Unrivaled retention.
+              Sample media kits & rate cards
             </h2>
             <p className="text-sm sm:text-base text-slate-600">
-              Every creator on Collably undergoes audience audits, background vetting, and delivery quality scoring.
+              Illustrative creator profiles demonstrating verified multi-platform audience metrics and automated deliverables on Collably.
             </p>
           </div>
 
           <Link href="/creators">
             <Button variant="outline" size="md" rightIcon={<ArrowUpRight className="w-4 h-4" />}>
-              Explore Creator Discovery
+              Explore Creator Directory
             </Button>
           </Link>
         </div>
@@ -84,35 +84,37 @@ export function CreatorShowcase() {
               className="group rounded-3xl bg-white border border-slate-200 hover:border-slate-300 p-6 shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
             >
               <div>
-                {/* Top User Info */}
-                <div className="flex items-start justify-between gap-4 mb-4">
-                  <div className="flex items-center gap-3.5">
-                    <div className="relative w-14 h-14 rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 shrink-0 shadow-sm">
-                      <SafeImage
-                        src={creator.avatarUrl}
-                        alt={creator.fullName}
-                        fallbackType="creator"
-                        fallbackName={creator.fullName}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-1.5">
-                        <h3 className="font-bold text-base text-slate-900 transition-colors">
-                          {creator.fullName}
-                        </h3>
-                        {creator.verified && (
-                          <CheckCircle2 className="w-4 h-4 fill-sky-500 text-white shrink-0" />
-                        )}
-                      </div>
-                      <p className="text-xs text-slate-500 font-mono">@{creator.handle}</p>
-                    </div>
-                  </div>
-
+                {/* Top Label */}
+                <div className="flex items-center justify-between mb-3 text-[10px] font-mono text-slate-400">
+                  <span className="bg-slate-100 px-2 py-0.5 rounded">Sample Profile</span>
                   <Badge variant="glow" size="sm">
                     {creator.primaryCategory}
                   </Badge>
+                </div>
+
+                {/* User Info */}
+                <div className="flex items-center gap-3.5 mb-4">
+                  <div className="relative w-12 h-12 rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 shrink-0 shadow-sm">
+                    <SafeImage
+                      src={creator.avatarUrl}
+                      alt={creator.fullName}
+                      fallbackType="creator"
+                      fallbackName={creator.fullName}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-1.5">
+                      <h3 className="font-bold text-sm text-slate-900 transition-colors">
+                        {creator.fullName}
+                      </h3>
+                      {creator.verified && (
+                        <CheckCircle2 className="w-3.5 h-3.5 fill-sky-500 text-white shrink-0" />
+                      )}
+                    </div>
+                    <p className="text-xs text-slate-500 font-mono">@{creator.handle}</p>
+                  </div>
                 </div>
 
                 {/* Headline & Bio */}
@@ -150,7 +152,7 @@ export function CreatorShowcase() {
               {/* Action Footer */}
               <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] text-slate-400 uppercase block font-mono">From</span>
+                  <span className="text-[10px] text-slate-400 uppercase block font-mono">Starting At</span>
                   <span className="text-sm font-bold text-slate-900 font-mono">
                     {formatCurrency(creator.startingPrice)}
                   </span>
@@ -159,12 +161,12 @@ export function CreatorShowcase() {
                 <div className="flex items-center gap-2">
                   <Link href={`/creators/${creator.id}`}>
                     <Button variant="secondary" size="sm">
-                      View Profile
+                      View Media Kit
                     </Button>
                   </Link>
-                  <Link href="/app/brand/campaigns/create">
+                  <Link href="/creator/register">
                     <Button variant="accent" size="sm">
-                      Invite
+                      Claim Your Rate
                     </Button>
                   </Link>
                 </div>

@@ -82,11 +82,12 @@ export function Footer() {
             Resources & Legal
           </h4>
           <ul className="space-y-2.5 text-xs">
-            <li><Link href="/contact" className="hover:text-slate-900 transition-colors">Contact Support</Link></li>
-            <li><Link href="/app/analytics" className="hover:text-slate-900 transition-colors">Creator Rate Benchmarks</Link></li>
             <li><Link href="/privacy" className="hover:text-slate-900 transition-colors">Privacy Policy</Link></li>
             <li><Link href="/terms" className="hover:text-slate-900 transition-colors">Terms of Service</Link></li>
+            <li><Link href="/dpa" className="hover:text-slate-900 transition-colors">Data Processing (DPA)</Link></li>
+            <li><Link href="/refund-policy" className="hover:text-slate-900 transition-colors">Escrow & Refund Policy</Link></li>
             <li><Link href="/pricing" className="hover:text-slate-900 transition-colors">Pricing & Commission</Link></li>
+            <li><Link href="/login" className="hover:text-slate-900 transition-colors">Member Sign In</Link></li>
           </ul>
         </div>
       </div>
