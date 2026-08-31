@@ -65,9 +65,137 @@
       "verified": false,
       "createdAt": "2026-08-30T19:48:17.421Z",
       "updatedAt": "2026-08-30T19:48:17.421Z"
+    },
+    {
+      "id": "user-1788190134428",
+      "name": "Anna",
+      "email": "annamadan@gmail.com",
+      "passwordHash": "5ce57cef1bae793a413e8d0884e9dac7:d2c7eb4593367cdc93e8a1e048ccb7ac755a9a657ff5a7f8009161c8ff671f71d59db9d48d55df72a0bd68c7e692f8556a8de15ca16e6287069525b79548b455",
+      "role": "creator",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "verified": false,
+      "createdAt": "2026-08-31T15:28:54.428Z",
+      "updatedAt": "2026-08-31T15:28:54.428Z"
     }
   ],
   "creators": [
+    {
+      "id": "creator-1788190134430",
+      "userId": "user-1788190134428",
+      "fullName": "Anna",
+      "handle": "annamadan",
+      "headline": "Fashion & Style Creator & Digital Storyteller",
+      "bio": "heyaa",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+      "location": "United States",
+      "languages": [
+        "English"
+      ],
+      "primaryCategory": "Fashion & Style",
+      "secondaryCategories": [
+        "Design & Creative"
+      ],
+      "verified": false,
+      "featured": false,
+      "tier": "Micro",
+      "rating": 5,
+      "completedCampaignsCount": 0,
+      "totalFollowers": 25000,
+      "avgEngagementRate": 4.2,
+      "startingPrice": 500,
+      "availableForHire": true,
+      "profileCompleteness": 70,
+      "qualityScore": 85,
+      "socialAccounts": [
+        {
+          "id": "sa-1788190134429-ig",
+          "platform": "instagram",
+          "handle": "annamadan",
+          "url": "https://instagram.com/annamadan",
+          "followers": 15000,
+          "engagementRate": 4.6,
+          "avgViews": 3750,
+          "verifiedBadge": false
+        },
+        {
+          "id": "sa-1788190134429-x",
+          "platform": "x",
+          "handle": "annamadan",
+          "url": "https://x.com/annamadan",
+          "followers": 10000,
+          "engagementRate": 3.8,
+          "avgViews": 5000,
+          "verifiedBadge": false
+        }
+      ],
+      "audience": {
+        "topCountries": [
+          {
+            "country": "United States",
+            "percentage": 65
+          },
+          {
+            "country": "United Kingdom",
+            "percentage": 20
+          },
+          {
+            "country": "Canada",
+            "percentage": 15
+          }
+        ],
+        "ageDistribution": [
+          {
+            "range": "18-24",
+            "percentage": 30
+          },
+          {
+            "range": "25-34",
+            "percentage": 55
+          },
+          {
+            "range": "35-44",
+            "percentage": 15
+          }
+        ],
+        "genderSplit": [
+          {
+            "gender": "Male",
+            "percentage": 55
+          },
+          {
+            "gender": "Female",
+            "percentage": 45
+          }
+        ],
+        "interests": [
+          "Fashion & Style",
+          "Digital Products",
+          "Lifestyle"
+        ]
+      },
+      "rateCards": [
+        {
+          "id": "rc-1788190134430-0",
+          "deliverableType": "Instagram Reel",
+          "title": "Dedicated Reel & Story Link Set",
+          "description": "High-aesthetic 9:16 vertical Reel plus 3-frame story sequence with direct swipe link.",
+          "basePrice": 500,
+          "turnaroundDays": 5,
+          "revisionsIncluded": 2
+        },
+        {
+          "id": "rc-1788190134430-1",
+          "deliverableType": "X (Twitter) Thread",
+          "title": "Deep-Dive Sponsored X Thread",
+          "description": "Analytical 5-post thread with trackable link and brand quote reposts.",
+          "basePrice": 300,
+          "turnaroundDays": 3,
+          "revisionsIncluded": 1
+        }
+      ],
+      "updatedAt": "2026-08-31T15:29:32.996Z"
+    },
     {
       "id": "creator-1788119297422",
       "userId": "user-1788119297420",
