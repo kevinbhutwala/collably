@@ -21,7 +21,7 @@ import {
 
 export default function CreatorDetailPage() {
   const params = useParams();
-  const creatorId = params.id as string;
+  const creatorId = (params?.id as string) || "creator-1";
   const [creator, setCreator] = useState<CreatorProfile | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -32,7 +32,9 @@ export default function CreatorDetailPage() {
       setCreator(data || null);
       setLoading(false);
     };
-    fetch();
+    if (creatorId) {
+      fetch();
+    }
   }, [creatorId]);
 
   if (loading) {
@@ -121,7 +123,7 @@ export default function CreatorDetailPage() {
             <div>
               <p className="text-xs text-slate-500 uppercase font-semibold">Total Audience</p>
               <p className="text-2xl font-extrabold text-slate-900 mt-1">
-                {formatNumber(creator.totalFollowers)}
+                {formatNumber(creator.totalFollowers || 0)}
               </p>
             </div>
             <div>
@@ -140,7 +142,7 @@ export default function CreatorDetailPage() {
             <div>
               <p className="text-xs text-slate-500 uppercase font-semibold">Completed Gigs</p>
               <p className="text-2xl font-extrabold text-slate-900 mt-1">
-                {creator.completedCampaignsCount}
+                {creator.completedCampaignsCount || 0}
               </p>
             </div>
           </div>
@@ -152,7 +154,7 @@ export default function CreatorDetailPage() {
           <div className="lg:col-span-7 space-y-6">
             <h2 className="text-2xl font-extrabold text-slate-900">Standard Rate Cards & Formats</h2>
             <div className="space-y-4">
-              {creator.rateCards.map((rc) => (
+              {(creator.rateCards || []).map((rc) => (
                 <div
                   key={rc.id}
                   className="p-6 rounded-3xl bg-white border border-slate-200 shadow-card flex flex-col sm:flex-row sm:items-center justify-between gap-4"
@@ -160,7 +162,7 @@ export default function CreatorDetailPage() {
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
                       <span className="text-xs font-mono font-bold text-brand-accent uppercase">
-                        {rc.deliverableType.replace(/_/g, ' ')}
+                        {rc.deliverableType?.replace(/_/g, ' ')}
                       </span>
                     </div>
                     <h3 className="font-bold text-base text-slate-900">{rc.title}</h3>
@@ -195,7 +197,7 @@ export default function CreatorDetailPage() {
                   Top Geographies
                 </h4>
                 <div className="space-y-2 font-mono text-xs">
-                  {creator.audience.topCountries.map((c, i) => (
+                  {(creator.audience?.topCountries || []).map((c, i) => (
                     <div key={i} className="flex justify-between items-center text-slate-800">
                       <span className="font-sans font-medium">{c.country}</span>
                       <span className="font-bold text-emerald-600">{c.percentage}%</span>
@@ -210,7 +212,7 @@ export default function CreatorDetailPage() {
                   Age Distribution
                 </h4>
                 <div className="space-y-2 font-mono text-xs">
-                  {creator.audience.ageDistribution.map((a, i) => (
+                  {(creator.audience?.ageDistribution || []).map((a, i) => (
                     <div key={i} className="flex justify-between items-center text-slate-800">
                       <span className="font-sans font-medium">{a.range} years</span>
                       <span className="font-bold text-sky-600">{a.percentage}%</span>
