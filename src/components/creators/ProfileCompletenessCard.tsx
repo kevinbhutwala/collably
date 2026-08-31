@@ -8,8 +8,40 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Sparkles, CheckCircle2, AlertCircle, ArrowRight, ShieldCheck } from "lucide-react";
 
-export function ProfileCompletenessCard({ creator }: { creator: CreatorProfile }) {
-  const breakdown = calculateProfileCompleteness(creator);
+export function ProfileCompletenessCard({ creator }: { creator?: CreatorProfile | null }) {
+  const defaultCreator: CreatorProfile = creator || {
+    id: "temp",
+    userId: "temp",
+    fullName: "Creator",
+    handle: "@creator",
+    headline: "",
+    bio: "",
+    avatarUrl: "",
+    coverImageUrl: "",
+    location: "Global",
+    languages: ["English"],
+    primaryCategory: "Technology & AI",
+    secondaryCategories: [],
+    verified: false,
+    featured: false,
+    tier: "Rising",
+    rating: 5.0,
+    completedCampaignsCount: 0,
+    totalFollowers: 0,
+    avgEngagementRate: 0,
+    startingPrice: 500,
+    availableForHire: true,
+    socialAccounts: [],
+    rateCards: [],
+    portfolio: [],
+    audience: {
+      topCountries: [],
+      ageDistribution: [],
+      genderSplit: [],
+      interests: [],
+    },
+  };
+  const breakdown = calculateProfileCompleteness(defaultCreator);
 
   return (
     <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-card space-y-6">

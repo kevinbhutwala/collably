@@ -6,13 +6,15 @@ import { useAuthStore } from "@/stores/auth.store";
 import { campaignService } from "@/services/campaign.service";
 import { creatorService } from "@/services/creator.service";
 import { paymentService } from "@/services/payment.service";
-import { Campaign, CreatorProfile, PayoutRecord } from "@/core/types";
+import { collaborationService } from "@/services/collaboration.service";
+import { Campaign, CreatorProfile, PayoutRecord, Collaboration } from "@/core/types";
 import { StatsCard } from "@/components/ui/StatsCard";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { SafeImage } from "@/components/ui/SafeImage";
+import { AnimatedEmptyState } from "@/components/ui/AnimatedEmptyState";
 import { ProfileCompletenessCard } from "@/components/creators/ProfileCompletenessCard";
-import { formatCurrency, formatNumber } from "@/core/utils/formatters";
+import { formatCurrency } from "@/core/utils/formatters";
 import {
   Wallet,
   TrendingUp,
@@ -23,7 +25,8 @@ import {
   Building2,
   Users,
   CheckCircle2,
-  Bell,
+  FolderPlus,
+  Compass,
 } from "lucide-react";
 
 export default function DashboardPage() {
@@ -31,20 +34,48 @@ export default function DashboardPage() {
   const [activeCampaigns, setActiveCampaigns] = useState<Campaign[]>([]);
   const [featuredCreators, setFeaturedCreators] = useState<CreatorProfile[]>([]);
   const [recentPayouts, setRecentPayouts] = useState<PayoutRecord[]>([]);
+  const [collaborations, setCollaborations] = useState<Collaboration[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
-      const camps = await campaignService.getCampaigns();
-      setActiveCampaigns(camps.slice(0, 3));
+      setIsLoading(true);
+      try {
+        const [camps, creators, payouts, collabs] = await Promise.all([
+          campaignService.getCampaigns(),
+          creatorService.getCreators(),
+          paymentService.getPayouts(),
+          collaborationService.getCollaborations(
+            role === "creator" ? "creator" : "brand",
+            role === "creator" ? currentCreator?.id : currentBrand?.id
+          ),
+        ]);
 
-      const creators = await creatorService.getCreators();
-      setFeaturedCreators(creators.slice(0, 3));
-
-      const payouts = await paymentService.getPayouts();
-      setRecentPayouts(payouts.slice(0, 3));
+        setActiveCampaigns(camps || []);
+        setFeaturedCreators(creators || []);
+        setRecentPayouts(payouts || []);
+        setCollaborations(collabs || []);
+      } catch (err) {
+        console.error("Dashboard fetch error:", err);
+      } finally {
+        setIsLoading(false);
+      }
     };
     fetchData();
-  }, []);
+  }, [role, currentCreator?.id, currentBrand?.id]);
+
+  // Compute dynamic stats from actual state
+  const totalEscrowInTransit = collaborations.reduce(
+    (acc, c) => acc + (c.totalAgreedBudget || 0),
+    0
+  );
+  const activeCollabsCount = collaborations.filter(
+    (c) => c.status === "active" || c.status === "in_review"
+  ).length;
+  const lifetimeEarned = recentPayouts.reduce((acc, p) => acc + (p.netAmount || 0), 0);
+  const brandTotalBudget = activeCampaigns
+    .filter((c) => c.brandId === currentBrand?.id)
+    .reduce((acc, c) => acc + (c.budget?.totalBudget || 0), 0);
 
   return (
     <div className="space-y-10">
@@ -53,15 +84,17 @@ export default function DashboardPage() {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-xs font-mono font-bold uppercase text-brand-accent">
-              Live Session
+              Active Session
             </span>
             <span className="text-slate-300">•</span>
-            <Badge variant="glow" size="sm">Role: {role.replace(/_/g, " ").toUpperCase()}</Badge>
+            <Badge variant="glow" size="sm">
+              Role: {role.replace(/_/g, " ").toUpperCase()}
+            </Badge>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-            Welcome back, {user?.name}
+          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight font-display">
+            Welcome back, {user?.name || "Collaborator"}
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-slate-500 mt-0.5 font-sans">
             Here is your live campaign pipeline, escrow balances, and pending actions today.
           </p>
         </div>
@@ -83,34 +116,32 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* 4 Stats Cards */}
+      {/* 4 Dynamic Computed Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 font-mono">
         {role === "creator" ? (
           <>
             <StatsCard
               title="Escrow In Transit"
-              value={formatCurrency(6300)}
-              change="+$2,200 this week"
-              subtitle="Guaranteed upon delivery"
+              value={formatCurrency(totalEscrowInTransit)}
+              subtitle={totalEscrowInTransit > 0 ? "Guaranteed upon delivery" : "No funds currently locked"}
               icon={<ShieldCheck className="w-5 h-5 text-emerald-600" />}
             />
             <StatsCard
               title="Active Campaigns"
-              value="3"
-              subtitle="2 videos due this week"
+              value={String(activeCollabsCount)}
+              subtitle={activeCollabsCount > 0 ? `${activeCollabsCount} active deliverables` : "Ready for opportunities"}
               icon={<Clock className="w-5 h-5 text-amber-500" />}
             />
             <StatsCard
-              title="Avg Engagement Rate"
-              value={`${currentCreator?.avgEngagementRate || 6.4}%`}
-              change="+0.8% MoM"
-              subtitle="Top 5% in category"
+              title="Engagement Rate"
+              value={currentCreator?.avgEngagementRate ? `${currentCreator.avgEngagementRate}%` : "Auditing..."}
+              subtitle="Social verification active"
               icon={<TrendingUp className="w-5 h-5 text-sky-600" />}
             />
             <StatsCard
               title="Lifetime Earned"
-              value={formatCurrency(48500)}
-              subtitle="Across 42 partnerships"
+              value={formatCurrency(lifetimeEarned)}
+              subtitle={`Across ${currentCreator?.completedCampaignsCount || collaborations.length || 0} partnerships`}
               icon={<Wallet className="w-5 h-5 text-purple-600" />}
             />
           </>
@@ -118,126 +149,128 @@ export default function DashboardPage() {
           <>
             <StatsCard
               title="Active Escrow Pool"
-              value={formatCurrency(45000)}
-              subtitle="Secured for creators"
+              value={formatCurrency(totalEscrowInTransit)}
+              subtitle={totalEscrowInTransit > 0 ? "Funded in Stripe custody" : "Pre-funded on brief launch"}
               icon={<ShieldCheck className="w-5 h-5 text-emerald-600" />}
             />
             <StatsCard
-              title="Active Campaigns"
-              value={currentBrand?.activeCampaignsCount.toString() || "3"}
-              subtitle="12 creators assigned"
-              icon={<Building2 className="w-5 h-5 text-sky-600" />}
+              title="Live Campaigns"
+              value={String(activeCampaigns.filter((c) => c.brandId === currentBrand?.id).length)}
+              subtitle="Receiving creator pitches"
+              icon={<Sparkles className="w-5 h-5 text-brand-accent" />}
             />
             <StatsCard
-              title="Pending Reviews"
-              value="2"
-              subtitle="Drafts awaiting approval"
-              icon={<Clock className="w-5 h-5 text-amber-500" />}
+              title="Creators In Roster"
+              value={String(featuredCreators.length)}
+              subtitle="Verified talent roster"
+              icon={<Users className="w-5 h-5 text-sky-600" />}
             />
             <StatsCard
-              title="Delivered Reach"
-              value="1.2M+"
-              change="+24% vs benchmark"
-              subtitle="Cross-platform impressions"
-              icon={<Users className="w-5 h-5 text-purple-600" />}
+              title="Campaign Budget"
+              value={formatCurrency(brandTotalBudget)}
+              subtitle="Total brief allocation"
+              icon={<Building2 className="w-5 h-5 text-purple-600" />}
             />
           </>
         )}
       </div>
 
-      {/* Creator Profile Completeness Widget for Creators */}
-      {role === "creator" && currentCreator && (
-        <ProfileCompletenessCard creator={currentCreator} />
-      )}
-
-      {/* Main Grid: Active Campaigns & Pipeline */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        {/* Left: Active Campaigns */}
+      {/* Main Split Content */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Left Column: Campaigns / Pipeline */}
         <div className="lg:col-span-8 space-y-6">
-          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-card space-y-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="text-lg font-bold text-slate-900">Active Campaign Pipelines</h3>
-                <p className="text-xs text-slate-500">Live deliverables, timeline milestones, and escrow status.</p>
-              </div>
-              <Link href="/app/campaigns">
-                <Button variant="ghost" size="sm">
-                  View All
-                </Button>
-              </Link>
-            </div>
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-black text-slate-900 tracking-tight font-display">
+              {role === "creator" ? "Your Active Collaborations" : "Your Active Campaign Briefs"}
+            </h2>
+            <Link
+              href={role === "creator" ? "/app/collaborations" : "/app/brand/campaigns"}
+              className="text-xs text-brand-accent font-bold hover:underline font-mono"
+            >
+              View all &rarr;
+            </Link>
+          </div>
 
-            <div className="divide-y divide-slate-100">
-              {activeCampaigns.map((camp) => (
-                <div key={camp.id} className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <div className="flex items-center gap-3.5">
-                    <div className="relative w-12 h-12 rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shrink-0 shadow-sm">
-                      <SafeImage
-                        src={camp.coverImage}
-                        alt={camp.title}
-                        fallbackType="campaign"
-                        fallbackName={camp.title}
-                        fill
-                        className="object-cover"
-                      />
+          {collaborations.length === 0 && role === "creator" ? (
+            <AnimatedEmptyState
+              icon={<Compass className="w-8 h-8" />}
+              badgeText="Opportunities Open"
+              title="No Active Collaborations Yet"
+              description="Browse pre-funded brand briefs and submit your pitch to lock in your first milestone escrow contract."
+              actionText="Explore Brand Briefs"
+              actionHref="/campaigns"
+              secondaryText="Complete Media Kit"
+              secondaryHref="/app/profile"
+            />
+          ) : activeCampaigns.filter((c) => role === "brand" ? c.brandId === currentBrand?.id : true).length === 0 && role === "brand" ? (
+            <AnimatedEmptyState
+              icon={<FolderPlus className="w-8 h-8" />}
+              badgeText="Launch Campaign"
+              title="No Campaign Briefs Launched"
+              description="Create a brief to receive frame-by-frame pitch applications from verified creators in your category."
+              actionText="Create Campaign Brief"
+              actionHref="/app/brand/campaigns/create"
+              secondaryText="Browse Creator Roster"
+              secondaryHref="/app/brand/creators"
+            />
+          ) : (
+            <div className="space-y-4">
+              {activeCampaigns.slice(0, 3).map((c) => (
+                <div
+                  key={c.id}
+                  className="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-card hover:shadow-elevated transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+                >
+                  <div className="space-y-1.5">
+                    <div className="flex items-center gap-2">
+                      <span className="font-bold text-slate-900 font-display text-sm sm:text-base">
+                        {c.title}
+                      </span>
+                      <Badge variant="glow" size="sm">
+                        {c.category}
+                      </Badge>
                     </div>
-                    <div>
-                      <h4 className="font-bold text-sm text-slate-900">{camp.title}</h4>
-                      <p className="text-xs text-slate-500 font-mono">
-                        Brand: {camp.brand.companyName} • Due {camp.timeline.contentSubmissionDeadline}
-                      </p>
-                    </div>
+                    <p className="text-xs text-slate-500 font-sans line-clamp-1">
+                      {c.description}
+                    </p>
                   </div>
 
-                  <div className="flex items-center gap-4 font-mono text-xs">
-                    <span className="font-extrabold text-emerald-600">
-                      {formatCurrency(camp.budget.perCreatorBudget)}
-                    </span>
-                    <Link href={`/app/collaborations`}>
-                      <Button variant="secondary" size="sm">
-                        Workspace
+                  <div className="flex items-center gap-4 shrink-0 font-mono">
+                    <div className="text-right">
+                      <span className="text-[10px] text-slate-400 block">BUDGET</span>
+                      <span className="text-sm font-extrabold text-slate-900">
+                        {formatCurrency(c.budget?.totalBudget || 0)}
+                      </span>
+                    </div>
+                    <Link href={`/campaigns/${c.id}`}>
+                      <Button variant="outline" size="sm">
+                        View Brief
                       </Button>
                     </Link>
                   </div>
                 </div>
               ))}
             </div>
-          </div>
+          )}
         </div>
 
-        {/* Right: Quick Recommendations & AI Insights */}
+        {/* Right Column: Profile Status & Quick Info */}
         <div className="lg:col-span-4 space-y-6">
-          <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-orange-500/10 via-amber-500/5 to-transparent border border-orange-200/80 shadow-card space-y-4">
-            <div className="flex items-center gap-2 text-brand-accent font-bold text-sm">
-              <Sparkles className="w-4 h-4" />
-              <span>AI Opportunity Radar</span>
-            </div>
-            <p className="text-xs text-slate-700 leading-relaxed">
-              Based on verified engagement metrics, 3 new high-ticket developer tool campaigns match your audience with an estimated 94% fit score.
-            </p>
-            <Link href="/campaigns" className="block pt-2">
-              <Button variant="accent" size="sm" className="w-full" rightIcon={<ArrowUpRight className="w-3.5 h-3.5" />}>
-                View Matched Briefs
-              </Button>
-            </Link>
-          </div>
+          <ProfileCompletenessCard />
 
-          {/* Quick Shortcuts for Brands */}
-          {role === "brand" && (
-            <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-card space-y-3">
-              <h4 className="text-xs font-bold uppercase text-slate-500 font-mono">Brand Quick Links</h4>
-              <div className="space-y-2 text-xs">
-                <Link href="/app/brand/shortlists" className="p-3 rounded-xl bg-slate-50 hover:bg-slate-100 flex items-center justify-between transition-colors">
-                  <span className="font-semibold text-slate-800">Creator Shortlists</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
-                </Link>
-                <Link href="/app/brand/crm" className="p-3 rounded-xl bg-slate-50 hover:bg-slate-100 flex items-center justify-between transition-colors">
-                  <span className="font-semibold text-slate-800">Creator CRM & Private Notes</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
-                </Link>
-              </div>
+          {/* Escrow Trust Assurance Box */}
+          <div className="p-6 rounded-3xl bg-slate-900 text-white shadow-xl space-y-4 font-mono">
+            <div className="flex items-center gap-2.5 text-xs text-brand-accent font-bold">
+              <ShieldCheck className="w-4 h-4" />
+              <span>COLLABLY ESCROW SHIELD</span>
             </div>
-          )}
+            <p className="text-xs text-slate-300 font-sans leading-relaxed">
+              Every deliverable is pre-funded into Stripe custody before recording begins. Zero payment chasing.
+            </p>
+            <div className="pt-2 border-t border-slate-800 flex justify-between text-[11px] text-slate-400">
+              <span>Custody Provider:</span>
+              <span className="text-emerald-400 font-bold">Stripe Verified</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>

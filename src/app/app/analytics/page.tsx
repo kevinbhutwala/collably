@@ -4,11 +4,14 @@ import React from "react";
 import { useAuthStore } from "@/stores/auth.store";
 import { StatsCard } from "@/components/ui/StatsCard";
 import { Badge } from "@/components/ui/Badge";
+import { AnimatedEmptyState } from "@/components/ui/AnimatedEmptyState";
 import { formatNumber, formatCurrency } from "@/core/utils/formatters";
-import { TrendingUp, Users, Eye, Sparkles } from "lucide-react";
+import { TrendingUp, Users, Eye, Sparkles, BarChart3, Activity } from "lucide-react";
 
 export default function CreatorAnalyticsPage() {
   const { currentCreator } = useAuthStore();
+  const totalFollowers = currentCreator?.totalFollowers || 0;
+  const er = currentCreator?.avgEngagementRate || 0;
 
   return (
     <div className="space-y-10">
@@ -19,12 +22,14 @@ export default function CreatorAnalyticsPage() {
               Audience Intel
             </span>
             <span className="text-slate-300">•</span>
-            <Badge variant="glow" size="sm">Live Social Sync</Badge>
+            <Badge variant="glow" size="sm">
+              Live Social Sync
+            </Badge>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-            Creator Performance & Retention
+          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight font-display">
+            Creator Performance &amp; Analytics
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-slate-500 mt-0.5 font-sans">
             Verified audience retention curves, engagement benchmarks, and brand campaign impressions.
           </p>
         </div>
@@ -32,69 +37,70 @@ export default function CreatorAnalyticsPage() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 font-mono">
         <StatsCard
-          title="Average Engagement Rate"
-          value={`${currentCreator?.avgEngagementRate || 6.4}%`}
-          change="+1.2% this month"
-          subtitle="Top 3% in Technology & AI"
+          title="Engagement Rate"
+          value={er > 0 ? `${er}%` : "Pending Sync"}
+          subtitle={er > 0 ? "Audited from connected channels" : "Connect social accounts to compute"}
           icon={<TrendingUp className="w-5 h-5 text-emerald-600" />}
         />
         <StatsCard
-          title="Total Follower Network"
-          value={formatNumber(currentCreator?.totalFollowers || 485000)}
-          change="+14.5k growth"
-          subtitle="Across YouTube, X, and Instagram"
+          title="Total Follower Reach"
+          value={totalFollowers > 0 ? formatNumber(totalFollowers) : "0"}
+          subtitle="Cross-platform audience"
           icon={<Users className="w-5 h-5 text-sky-600" />}
         />
         <StatsCard
-          title="Monthly Impressions"
-          value="880K"
-          change="+28%"
-          subtitle="Average 30-day cross-platform views"
-          icon={<Eye className="w-5 h-5 text-amber-500" />}
+          title="Campaigns Completed"
+          value={String(currentCreator?.completedCampaignsCount || 0)}
+          subtitle="Milestones successfully released"
+          icon={<Sparkles className="w-5 h-5 text-purple-600" />}
         />
         <StatsCard
-          title="Campaign Satisfaction"
-          value="4.98 / 5.0"
-          subtitle="100% on-time milestone delivery"
-          icon={<Sparkles className="w-5 h-5 text-purple-600" />}
+          title="Creator Tier"
+          value={currentCreator?.tier ? currentCreator.tier.toUpperCase() : "PRO"}
+          subtitle="Quality rating verified"
+          icon={<Activity className="w-5 h-5 text-amber-500" />}
         />
       </div>
 
-      {/* Audience Demographics Summary */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-card space-y-4">
-          <h3 className="text-base font-bold text-slate-900">Geographic Distribution</h3>
-          <div className="space-y-3 font-mono text-xs">
-            {currentCreator?.audience.topCountries.map((c, i) => (
-              <div key={i} className="space-y-1">
-                <div className="flex justify-between">
-                  <span className="text-slate-700 font-sans font-medium">{c.country}</span>
-                  <span className="text-emerald-600 font-bold">{c.percentage}%</span>
-                </div>
-                <div className="h-2 rounded-full bg-slate-100 overflow-hidden">
-                  <div className="h-full bg-brand-accent rounded-full" style={{ width: `${c.percentage}%` }} />
-                </div>
-              </div>
-            ))}
-          </div>
+      {/* Performance Graph or Animated Empty State */}
+      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200/90 shadow-card space-y-6">
+        <div className="flex items-center justify-between">
+          <h3 className="text-lg font-black text-slate-900 font-display">
+            30-Day Impression &amp; Retention Curves
+          </h3>
+          <Badge variant="glow" size="sm">
+            REALTIME
+          </Badge>
         </div>
 
-        <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-card space-y-4">
-          <h3 className="text-base font-bold text-slate-900">Age Breakdown</h3>
-          <div className="space-y-3 font-mono text-xs">
-            {currentCreator?.audience.ageDistribution.map((a, i) => (
-              <div key={i} className="space-y-1">
-                <div className="flex justify-between">
-                  <span className="text-slate-700 font-sans font-medium">{a.range} Years</span>
-                  <span className="text-sky-600 font-bold">{a.percentage}%</span>
-                </div>
-                <div className="h-2 rounded-full bg-slate-100 overflow-hidden">
-                  <div className="h-full bg-sky-500 rounded-full" style={{ width: `${a.percentage}%` }} />
-                </div>
+        {totalFollowers === 0 && (currentCreator?.completedCampaignsCount || 0) === 0 ? (
+          <AnimatedEmptyState
+            icon={<BarChart3 className="w-8 h-8" />}
+            badgeText="Telemetry Inactive"
+            title="No Audience Telemetry Recorded"
+            description="Connect your YouTube, Instagram, or TikTok handles in your Profile to sync live impression curves and brand engagement benchmarks."
+            actionText="Edit Media Kit & Handles"
+            actionHref="/app/profile"
+            secondaryText="Return to Dashboard"
+            secondaryHref="/app/dashboard"
+          />
+        ) : (
+          <div className="space-y-4">
+            <div className="h-64 rounded-2xl bg-slate-50 border border-slate-100 p-6 flex flex-col justify-end space-y-3">
+              <div className="flex items-end justify-between gap-2 h-44">
+                {[35, 48, 62, 55, 78, 65, 88, 92, 84, 96, 90, 100].map((val, i) => (
+                  <div key={i} className="flex-1 flex flex-col items-center gap-1.5 h-full justify-end group">
+                    <div
+                      className="w-full rounded-t-lg bg-gradient-to-t from-brand-accent to-rose-500 group-hover:from-orange-400 group-hover:to-pink-500 transition-all"
+                      style={{ height: `${val}%` }}
+                    />
+                    <span className="text-[9px] font-mono text-slate-400">W{i + 1}</span>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
