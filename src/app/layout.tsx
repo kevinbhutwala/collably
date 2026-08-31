@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ToastContainer } from "@/components/ui/ToastContainer";
 import { CommandPalette } from "@/components/navigation/CommandPalette";
+import { CustomCursor } from "@/components/ui/CustomCursor";
 
 export const metadata: Metadata = {
   title: "Collably | The Premier Creator × Brand Collaboration Workspace",
@@ -35,6 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="light" style={{ colorScheme: "light" }}>
       <body className="min-h-screen bg-white text-slate-900 antialiased font-sans selection:bg-brand-accent/20 selection:text-brand-accent">
+        <CustomCursor />
         {children}
         <CommandPalette />
         <ToastContainer />
