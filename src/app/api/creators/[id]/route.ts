@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { creatorRepo } from "@/server/repositories/creator.repo";
+import { SecurityService } from "@/server/services/security.service";
 import { calculateTotalFollowers, calculateAvgEngagementRate, getCreatorTier } from "@/core/utils/social";
 
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
@@ -16,11 +17,25 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
 
 export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
   try {
-    const updates = await req.json();
+    // 1. Enforce authenticated session
+    const session = SecurityService.getSession(req);
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized: Session required" }, { status: 401 });
+    }
+
     const existing = creatorRepo.getById(params.id);
     if (!existing) {
       return NextResponse.json({ error: "Creator not found" }, { status: 404 });
     }
+
+    // 2. IDOR Prevention: User must own the profile or be super_admin
+    const isOwner = existing.userId === session.userId;
+    const isAdmin = session.role === "super_admin" || session.role === "agency_admin";
+    if (!isOwner && !isAdmin) {
+      return NextResponse.json({ error: "Forbidden: You cannot modify another creator's profile" }, { status: 403 });
+    }
+
+    const updates = await req.json();
 
     // Auto-recalculate metrics if social accounts changed
     if (updates.socialAccounts && Array.isArray(updates.socialAccounts)) {

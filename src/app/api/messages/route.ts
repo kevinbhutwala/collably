@@ -4,6 +4,11 @@ import { SecurityService } from "@/server/services/security.service";
 
 export async function GET(req: NextRequest) {
   try {
+    const session = SecurityService.getSession(req);
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized: Session required" }, { status: 401 });
+    }
+
     const { searchParams } = new URL(req.url);
     const conversationId = searchParams.get("conversationId");
 
@@ -21,18 +26,22 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const session = SecurityService.getSession(req);
-    const body = await req.json();
-
-    const senderId = session?.userId || body.senderId;
-    if (!senderId || !body.conversationId || !body.content) {
-      return NextResponse.json({ error: "Missing required message parameters" }, { status: 400 });
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized: Session required to send messages" }, { status: 401 });
     }
 
+    const body = await req.json();
+
+    if (!body.conversationId || !body.content) {
+      return NextResponse.json({ error: "Missing required message parameters (conversationId, content)" }, { status: 400 });
+    }
+
+    // Sender identity is strictly derived from verified session token
     const message = await messageRepo.createMessage({
       conversationId: body.conversationId,
-      senderId,
-      senderRole: body.senderRole || session?.role || "creator",
-      senderName: body.senderName || "User",
+      senderId: session.userId,
+      senderRole: session.role,
+      senderName: body.senderName || session.email.split("@")[0],
       senderAvatar: body.senderAvatar || "",
       content: body.content,
       attachments: body.attachments || [],

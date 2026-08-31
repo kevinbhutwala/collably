@@ -4,6 +4,11 @@ import { SecurityService } from "@/server/services/security.service";
 
 export async function GET(req: NextRequest) {
   try {
+    const session = SecurityService.getSession(req);
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized: Session required" }, { status: 401 });
+    }
+
     const { searchParams } = new URL(req.url);
     const creatorId = searchParams.get("creatorId") || undefined;
     const payouts = await paymentService.getPayouts(creatorId);
@@ -16,8 +21,13 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const session = SecurityService.getSession(req);
-    if (session && !SecurityService.hasPermission(session.role, "payment.manage")) {
-      return NextResponse.json({ error: "Unauthorized: Admin privileges required" }, { status: 403 });
+    // Strict authentication and role check (must be admin or finance manager)
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized: Session required" }, { status: 401 });
+    }
+    const adminRoles = ["super_admin", "agency_admin", "agency_owner", "finance_manager"];
+    if (!adminRoles.includes(session.role)) {
+      return NextResponse.json({ error: "Forbidden: Admin privileges required to release payouts" }, { status: 403 });
     }
 
     const body = await req.json();
