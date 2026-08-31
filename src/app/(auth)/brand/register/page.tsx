@@ -8,8 +8,8 @@ import { useUIStore } from "@/stores/ui.store";
 import { authService } from "@/services/auth.service";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import { ValenceLogo } from "@/components/ui/ValenceLogo";
-import { Building2, ArrowRight, AlertCircle } from "lucide-react";
+import { Building2, ArrowRight, ArrowLeft, AlertCircle } from "lucide-react";
+import { CollablyLogo } from "@/components/ui/CollablyLogo";
 
 export default function BrandRegisterPage() {
   const router = useRouter();
@@ -61,20 +61,36 @@ export default function BrandRegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 py-12 bg-slate-50/50">
+    <div className="w-full flex items-center justify-center p-2 py-6">
       <div className="w-full max-w-xl rounded-3xl bg-white border border-slate-200 p-8 sm:p-10 space-y-6 shadow-elevated">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-slate-500 hover:text-slate-900 transition-colors group"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
+            <span>Back to Home</span>
+          </Link>
+          <Link
+            href="/register"
+            className="text-[10px] font-mono text-slate-400 hover:text-slate-600 transition-colors"
+          >
+            Change Account Type &rarr;
+          </Link>
+        </div>
+
         <div className="space-y-2">
           <div className="flex justify-between items-center">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-50 border border-sky-200 text-sky-700 text-xs font-semibold">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-50 border border-sky-200 text-sky-700 text-xs font-semibold font-mono">
               <Building2 className="w-3.5 h-3.5" />
               <span>Brand Onboarding</span>
             </div>
-            <ValenceLogo href="/" size="sm" variant="icon" />
+            <CollablyLogo href="/" size="sm" variant="icon" />
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight font-display">
             Register Brand Account
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500">
+          <p className="text-xs sm:text-sm text-slate-500 font-sans">
             Launch briefs, review creator proposals, and manage deliverables in database storage.
           </p>
         </div>

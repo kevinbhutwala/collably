@@ -5,10 +5,10 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
-import { ValenceLogo } from "@/components/ui/ValenceLogo";
+import { CollablyLogo } from "@/components/ui/CollablyLogo";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import { AlertCircle, Lock, Mail, Loader2 } from "lucide-react";
+import { AlertCircle, Lock, Mail, Loader2, ArrowLeft } from "lucide-react";
 
 function LoginForm() {
   const router = useRouter();
@@ -43,13 +43,31 @@ function LoginForm() {
   };
 
   return (
-    <div className="w-full max-w-md rounded-3xl bg-white border border-slate-200 p-8 space-y-6 shadow-elevated relative z-10">
+    <div className="w-full max-w-md rounded-3xl bg-white border border-slate-200/90 p-8 space-y-6 shadow-elevated relative z-10">
+      {/* Top Header with Back to Home button */}
+      <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-slate-500 hover:text-slate-900 transition-colors group"
+        >
+          <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
+          <span>Back to Home</span>
+        </Link>
+        <span className="text-[10px] font-mono text-brand-accent font-bold uppercase">
+          Portal Login
+        </span>
+      </div>
+
       <div className="text-center space-y-2">
         <div className="flex justify-center mb-2">
-          <ValenceLogo href="/" size="sm" subtext="Creator × Brand Ecosystem" />
+          <CollablyLogo href="/" size="sm" subtext="Creator × Brand Ecosystem" />
         </div>
-        <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">Welcome Back</h1>
-        <p className="text-xs text-slate-500">Sign in to your account</p>
+        <h1 className="text-2xl font-black text-slate-900 tracking-tight font-display">
+          Welcome Back
+        </h1>
+        <p className="text-xs text-slate-500 font-sans">
+          Sign in to access your campaigns, creator roster, and escrow payouts.
+        </p>
       </div>
 
       {errorMessage && (
@@ -79,13 +97,13 @@ function LoginForm() {
           leftIcon={<Lock className="w-4 h-4 text-slate-400" />}
         />
 
-        <Button variant="accent" size="lg" type="submit" isLoading={isLoading} className="w-full">
-          Sign In
+        <Button variant="accent" size="lg" type="submit" isLoading={isLoading} className="w-full font-display">
+          Sign In to Collably
         </Button>
       </form>
 
       <div className="pt-4 border-t border-slate-100 text-center space-y-2">
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-slate-500 font-sans">
           Don&apos;t have an account?{" "}
           <Link href="/register" className="text-brand-accent font-bold hover:underline">
             Create an account
@@ -98,12 +116,12 @@ function LoginForm() {
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 py-12 bg-slate-50/50 relative">
+    <div className="w-full flex items-center justify-center p-2 py-6">
       <Suspense
         fallback={
           <div className="w-full max-w-md rounded-3xl bg-white border border-slate-200 p-12 text-center shadow-elevated">
             <Loader2 className="w-8 h-8 text-brand-accent animate-spin mx-auto mb-2" />
-            <p className="text-xs text-slate-500">Loading workspace...</p>
+            <p className="text-xs text-slate-500 font-mono">Loading workspace...</p>
           </div>
         }
       >
