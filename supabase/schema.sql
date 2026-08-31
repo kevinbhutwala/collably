@@ -668,20 +668,29 @@ ALTER TABLE organizations ENABLE ROW LEVEL SECURITY;
 ALTER TABLE organization_members ENABLE ROW LEVEL SECURITY;
 ALTER TABLE creator_profiles ENABLE ROW LEVEL SECURITY;
 ALTER TABLE social_accounts ENABLE ROW LEVEL SECURITY;
-ALTER TABLE rate_cards ENABLE ROW LEVEL SECURITY;
+ALTER TABLE creator_rate_cards ENABLE ROW LEVEL SECURITY;
+ALTER TABLE creator_portfolio_items ENABLE ROW LEVEL SECURITY;
 ALTER TABLE brand_profiles ENABLE ROW LEVEL SECURITY;
 ALTER TABLE campaigns ENABLE ROW LEVEL SECURITY;
+ALTER TABLE campaign_deliverable_requirements ENABLE ROW LEVEL SECURITY;
 ALTER TABLE campaign_applications ENABLE ROW LEVEL SECURITY;
+ALTER TABLE creator_shortlists ENABLE ROW LEVEL SECURITY;
+ALTER TABLE shortlist_members ENABLE ROW LEVEL SECURITY;
+ALTER TABLE crm_contacts ENABLE ROW LEVEL SECURITY;
+ALTER TABLE crm_notes ENABLE ROW LEVEL SECURITY;
 ALTER TABLE collaborations ENABLE ROW LEVEL SECURITY;
-ALTER TABLE deliverables ENABLE ROW LEVEL SECURITY;
-ALTER TABLE deliverable_submissions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE collaboration_deliverables ENABLE ROW LEVEL SECURITY;
+ALTER TABLE content_submissions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE content_comments ENABLE ROW LEVEL SECURITY;
 ALTER TABLE conversations ENABLE ROW LEVEL SECURITY;
 ALTER TABLE conversation_participants ENABLE ROW LEVEL SECURITY;
 ALTER TABLE messages ENABLE ROW LEVEL SECURITY;
 ALTER TABLE payments ENABLE ROW LEVEL SECURITY;
 ALTER TABLE payouts ENABLE ROW LEVEL SECURITY;
-ALTER TABLE tax_profiles ENABLE ROW LEVEL SECURITY;
+ALTER TABLE payment_webhook_events ENABLE ROW LEVEL SECURITY;
+ALTER TABLE refunds ENABLE ROW LEVEL SECURITY;
 ALTER TABLE notifications ENABLE ROW LEVEL SECURITY;
+ALTER TABLE email_events ENABLE ROW LEVEL SECURITY;
 ALTER TABLE device_tokens ENABLE ROW LEVEL SECURITY;
 ALTER TABLE media_assets ENABLE ROW LEVEL SECURITY;
 ALTER TABLE disputes ENABLE ROW LEVEL SECURITY;
@@ -707,8 +716,11 @@ DO $$ BEGIN
     DROP POLICY IF EXISTS "Public social accounts read" ON social_accounts;
     CREATE POLICY "Public social accounts read" ON social_accounts FOR SELECT USING (true);
 
-    DROP POLICY IF EXISTS "Public rate cards read" ON rate_cards;
-    CREATE POLICY "Public rate cards read" ON rate_cards FOR SELECT USING (true);
+    DROP POLICY IF EXISTS "Public rate cards read" ON creator_rate_cards;
+    CREATE POLICY "Public rate cards read" ON creator_rate_cards FOR SELECT USING (true);
+
+    DROP POLICY IF EXISTS "Public portfolio read" ON creator_portfolio_items;
+    CREATE POLICY "Public portfolio read" ON creator_portfolio_items FOR SELECT USING (true);
 
     DROP POLICY IF EXISTS "Public brand profiles read" ON brand_profiles;
     CREATE POLICY "Public brand profiles read" ON brand_profiles FOR SELECT USING (true);
@@ -745,12 +757,12 @@ DO $$ BEGIN
         auth.uid() IN (SELECT user_id FROM brand_profiles WHERE id = collaborations.brand_id)
     );
 
-    DROP POLICY IF EXISTS "Deliverables viewable by participants" ON deliverables;
-    CREATE POLICY "Deliverables viewable by participants" ON deliverables FOR SELECT USING (
+    DROP POLICY IF EXISTS "Deliverables viewable by participants" ON collaboration_deliverables;
+    CREATE POLICY "Deliverables viewable by participants" ON collaboration_deliverables FOR SELECT USING (
         auth.uid() IN (
-            SELECT c.creator_id FROM collaborations c WHERE c.id = deliverables.collaboration_id
+            SELECT c.creator_id FROM collaborations c WHERE c.id = collaboration_deliverables.collaboration_id
             UNION
-            SELECT b.user_id FROM brand_profiles b JOIN collaborations c ON c.brand_id = b.id WHERE c.id = deliverables.collaboration_id
+            SELECT b.user_id FROM brand_profiles b JOIN collaborations c ON c.brand_id = b.id WHERE c.id = collaboration_deliverables.collaboration_id
         )
     );
 END $$;
