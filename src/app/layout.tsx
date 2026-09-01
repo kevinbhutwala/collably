@@ -33,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" style={{ colorScheme: "light" }}>
+    <html lang="en" style={{ colorScheme: "dark" }}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -42,7 +42,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital,wght@0,400;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
         />
       </head>
-      <body className="min-h-screen bg-[#FAFAF8] text-[#101010] antialiased font-sans selection:bg-[#B7FF3C] selection:text-[#101010]">
+      <body className="min-h-screen bg-[#04060E] text-white antialiased font-sans selection:bg-[#2563EB] selection:text-white">
         {children}
         <CommandPalette />
         <ToastContainer />
