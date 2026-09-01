@@ -15,13 +15,13 @@ export default function AuthLayout({
   const isLoginPage = pathname === "/login";
 
   return (
-    <div className="min-h-screen bg-[#0a070a] text-white flex flex-col justify-between selection:bg-pink-500/25 selection:text-pink-300">
+    <div className="min-h-screen bg-[#FAFAF8] text-[#111111] flex flex-col justify-between selection:bg-[#B7FF3C] selection:text-[#111111]">
       {/* Top Floating Navigation Header with "Back to Home" */}
-      <header className="sticky top-0 z-50 w-full bg-[#0a070a]/90 backdrop-blur-2xl border-b border-white/10 px-4 sm:px-8 py-3.5 flex items-center justify-between">
+      <header className="sticky top-0 z-50 w-full bg-[#FAFAF8]/90 backdrop-blur-2xl border-b border-[#E7E7E4] px-4 sm:px-8 py-3.5 flex items-center justify-between">
         {/* Left: Back to Home Button */}
         <Link
           href="/"
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.05] hover:bg-white/10 text-slate-300 hover:text-white font-mono text-xs font-medium transition-all group border border-white/10"
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-[#FFFFFF] hover:bg-[#FAFAF8] text-[#6B6B6B] hover:text-[#111111] font-mono text-xs font-semibold transition-all group border border-[#E7E7E4] shadow-xs"
         >
           <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
           <span>Back to Home</span>
@@ -37,14 +37,14 @@ export default function AuthLayout({
           {isLoginPage ? (
             <Link
               href="/register"
-              className="px-4 py-1.5 rounded-full bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] hover:brightness-110 text-white font-bold transition-all shadow-md shadow-pink-500/20"
+              className="px-4 py-1.5 rounded-lg bg-[#111111] hover:bg-[#222222] text-[#FAFAF8] font-bold transition-all shadow-xs"
             >
               Sign Up
             </Link>
           ) : (
             <Link
               href="/login"
-              className="px-4 py-1.5 rounded-full bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] hover:brightness-110 text-white font-bold transition-all shadow-md shadow-pink-500/20"
+              className="px-4 py-1.5 rounded-lg bg-[#111111] hover:bg-[#222222] text-[#FAFAF8] font-bold transition-all shadow-xs"
             >
               Sign In
             </Link>
@@ -58,7 +58,7 @@ export default function AuthLayout({
       </main>
 
       {/* Footer copyright */}
-      <footer className="py-4 text-center text-xs font-mono text-slate-400 border-t border-white/10 bg-[#0a070a]/50">
+      <footer className="py-4 text-center text-xs font-mono text-[#6B6B6B] border-t border-[#E7E7E4] bg-[#FAFAF8]">
         © {new Date().getFullYear()} Collably, Inc. All rights reserved. • Protected by Escrow Infrastructure.
       </footer>
     </div>

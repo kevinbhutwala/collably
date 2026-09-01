@@ -51,33 +51,33 @@ export default function BrandOnboardingWizardPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a070a] text-white py-12 px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center">
+    <div className="min-h-screen bg-[#FAFAF8] text-[#111111] py-12 px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center">
       <div className="w-full max-w-3xl space-y-8">
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-[hsl(327,100%,55%)] text-xs font-semibold font-mono">
-            <Building2 className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-xs font-mono font-bold text-[#111111] shadow-xs">
+            <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
             <span>Brand Enterprise Onboarding • Step {step} of {totalSteps}</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111111] tracking-tight font-display">
             Configure Your Brand Workspace
           </h1>
-          <p className="text-sm text-slate-300 font-sans">
+          <p className="text-sm text-[#6B6B6B] font-sans font-medium">
             Set up your company profile, escrow parameters, and target creator cohorts.
           </p>
 
-          <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden mt-4">
+          <div className="w-full h-2 rounded-full bg-[#E7E7E4] overflow-hidden mt-4">
             <div
-              className="h-full bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] transition-all duration-300 rounded-full"
+              className="h-full bg-[#111111] transition-all duration-300 rounded-full"
               style={{ width: `${(step / totalSteps) * 100}%` }}
             />
           </div>
         </div>
 
-        <div className="p-8 sm:p-12 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-6 text-white">
+        <div className="p-8 sm:p-12 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs space-y-6 text-[#111111]">
           {/* Step 1: Company Profile */}
           {step === 1 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-white font-display">Step 1: Company Identity</h3>
+              <h3 className="text-xl font-bold text-[#111111] font-display">Step 1: Company Identity</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
                   label="Company / Organization Name"
@@ -112,7 +112,7 @@ export default function BrandOnboardingWizardPage() {
           {/* Step 2: Value Proposition & Narrative */}
           {step === 2 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-white font-display">Step 2: Brand Tagline &amp; Mission</h3>
+              <h3 className="text-xl font-bold text-[#111111] font-display">Step 2: Brand Tagline &amp; Mission</h3>
               <Input
                 label="Headline Value Proposition"
                 value={formData.headline}
@@ -130,18 +130,18 @@ export default function BrandOnboardingWizardPage() {
           {/* Step 3: Campaign Budget Tiers */}
           {step === 3 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-white font-display">Step 3: Estimated Monthly Campaign Budget</h3>
-              <p className="text-xs text-slate-400 font-sans">Helps match you with creator cohorts within your target budget tier.</p>
+              <h3 className="text-xl font-bold text-[#111111] font-display">Step 3: Estimated Monthly Campaign Budget</h3>
+              <p className="text-xs text-[#6B6B6B] font-sans font-medium">Helps match you with creator cohorts within your target budget tier.</p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
                 {["$5k - $15k / mo", "$25k - $50k / mo", "$100k+ Enterprise / mo"].map((tier) => (
                   <button
                     key={tier}
                     type="button"
                     onClick={() => setFormData({ ...formData, budgetTier: tier })}
-                    className={`p-4 rounded-2xl border text-center font-bold transition-all ${
+                    className={`p-4 rounded-xl border text-center font-bold transition-all ${
                       formData.budgetTier === tier
-                        ? "bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white border-transparent shadow-md shadow-pink-500/25"
-                        : "bg-white/[0.04] text-slate-300 border-white/10 hover:bg-white/[0.08]"
+                        ? "bg-[#111111] text-[#FAFAF8] border-transparent shadow-xs"
+                        : "bg-[#FAFAF8] text-[#6B6B6B] border-[#E7E7E4] hover:text-[#111111]"
                     }`}
                   >
                     {tier}
@@ -154,7 +154,7 @@ export default function BrandOnboardingWizardPage() {
           {/* Step 4: Marketing Objectives */}
           {step === 4 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-white font-display">Step 4: Primary Campaign Objectives</h3>
+              <h3 className="text-xl font-bold text-[#111111] font-display">Step 4: Primary Campaign Objectives</h3>
               <div className="grid grid-cols-2 gap-3 text-xs">
                 {[
                   "Developer Awareness",
@@ -164,7 +164,7 @@ export default function BrandOnboardingWizardPage() {
                   "App Installs & Downloads",
                   "SEO & Thought Leadership",
                 ].map((obj) => (
-                  <label key={obj} className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex items-center gap-2.5 cursor-pointer hover:border-pink-500/40">
+                  <label key={obj} className="p-3.5 rounded-xl bg-[#FAFAF8] border border-[#E7E7E4] flex items-center gap-2.5 cursor-pointer hover:border-[#111111]">
                     <input
                       type="checkbox"
                       checked={formData.targetGoals.includes(obj)}
@@ -172,9 +172,9 @@ export default function BrandOnboardingWizardPage() {
                         if (e.target.checked) setFormData({ ...formData, targetGoals: [...formData.targetGoals, obj] });
                         else setFormData({ ...formData, targetGoals: formData.targetGoals.filter((g) => g !== obj) });
                       }}
-                      className="rounded text-[hsl(327,100%,50%)] focus:ring-[hsl(327,100%,50%)]"
+                      className="rounded text-[#111111] focus:ring-[#111111]"
                     />
-                    <span className="font-medium text-white font-sans">{obj}</span>
+                    <span className="font-medium text-[#111111] font-sans">{obj}</span>
                   </label>
                 ))}
               </div>
@@ -184,17 +184,17 @@ export default function BrandOnboardingWizardPage() {
           {/* Step 5: Team Seats & Escrow Confirmation */}
           {step === 5 && (
             <div className="space-y-6">
-              <h3 className="text-xl font-bold text-white font-display">Step 5: Team Access &amp; Escrow Protection</h3>
+              <h3 className="text-xl font-bold text-[#111111] font-display">Step 5: Team Access &amp; Escrow Protection</h3>
               <Input
                 label="Invite Teammate Emails (Comma Separated)"
                 value={formData.teamMembers}
                 onChange={(e) => setFormData({ ...formData, teamMembers: e.target.value })}
               />
-              <div className="p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-start gap-3">
-                <ShieldCheck className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+              <div className="p-6 rounded-xl bg-[#FAFAF8] border border-[#E7E7E4] flex items-start gap-3">
+                <ShieldCheck className="w-5 h-5 text-[#111111] shrink-0 mt-0.5" />
                 <div className="space-y-1">
-                  <h4 className="text-xs font-bold text-emerald-300 font-display">100% Escrow Milestone Protection</h4>
-                  <p className="text-xs text-slate-300 leading-relaxed font-sans">
+                  <h4 className="text-xs font-bold text-[#111111] font-display">100% Escrow Milestone Protection</h4>
+                  <p className="text-xs text-[#6B6B6B] leading-relaxed font-sans font-medium">
                     Your campaign funds remain secured in the Collably escrow vault until your marketing team reviews and signs off on deliverables.
                   </p>
                 </div>
@@ -203,14 +203,14 @@ export default function BrandOnboardingWizardPage() {
           )}
 
           {/* Navigation Controls */}
-          <div className="flex items-center justify-between pt-6 border-t border-white/10">
+          <div className="flex items-center justify-between pt-6 border-t border-[#E7E7E4]">
             <Button
-              variant="outline"
+              variant="secondary"
               size="md"
               onClick={handleBack}
               disabled={step === 1}
               leftIcon={<ArrowLeft className="w-4 h-4" />}
-              className="rounded-full font-display"
+              className="rounded-[9px]"
             >
               Back
             </Button>
@@ -219,8 +219,8 @@ export default function BrandOnboardingWizardPage() {
               variant="primary"
               size="md"
               onClick={handleNext}
-              rightIcon={<ArrowRight className="w-4 h-4" />}
-              className="shadow-md shadow-pink-500/25 rounded-full font-display font-bold"
+              rightIcon={<ArrowRight className="w-4 h-4 text-[#B7FF3C]" />}
+              className="rounded-[9px]"
             >
               {step === totalSteps ? "Launch Brand Workspace" : "Continue"}
             </Button>

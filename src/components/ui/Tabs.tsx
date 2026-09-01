@@ -30,7 +30,7 @@ export function Tabs({
     return (
       <div
         className={cn(
-          "inline-flex p-1.5 bg-[#120c16] border border-white/10 rounded-full shadow-xs",
+          "inline-flex p-1 bg-[#FAFAF8] border border-[#E7E7E4] rounded-xl shadow-xs",
           className
         )}
       >
@@ -41,14 +41,14 @@ export function Tabs({
               key={tab.id}
               onClick={() => onChange(tab.id)}
               className={cn(
-                "relative px-4 py-2 text-xs sm:text-sm font-medium rounded-full transition-all duration-200 flex items-center gap-2 select-none",
-                isActive ? "text-white font-semibold" : "text-slate-400 hover:text-white"
+                "relative px-3.5 py-1.5 text-xs sm:text-sm font-semibold rounded-lg transition-all duration-200 flex items-center gap-2 select-none",
+                isActive ? "text-[#FAFAF8]" : "text-[#6B6B6B] hover:text-[#111111]"
               )}
             >
               {isActive && (
                 <motion.div
                   layoutId="segment-pill"
-                  className="absolute inset-0 bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] rounded-full shadow-md shadow-pink-500/25"
+                  className="absolute inset-0 bg-[#111111] rounded-lg shadow-xs"
                   transition={{ type: "spring", bounce: 0.15, duration: 0.3 }}
                 />
               )}
@@ -58,8 +58,8 @@ export function Tabs({
                 {typeof tab.count === "number" && (
                   <span
                     className={cn(
-                      "text-[10px] px-1.5 py-0.5 rounded-full font-bold font-mono",
-                      isActive ? "bg-white/20 text-white" : "bg-white/10 text-slate-300"
+                      "text-[10px] px-1.5 py-0.5 rounded-md font-bold font-mono",
+                      isActive ? "bg-[#FFFFFF] text-[#111111]" : "bg-[#FFFFFF] text-[#6B6B6B] border border-[#E7E7E4]"
                     )}
                   >
                     {tab.count}
@@ -74,7 +74,7 @@ export function Tabs({
   }
 
   return (
-    <div className={cn("flex items-center gap-2 overflow-x-auto no-scrollbar", className)}>
+    <div className={cn("flex items-center gap-1.5 overflow-x-auto no-scrollbar", className)}>
       {tabs.map((tab) => {
         const isActive = tab.id === activeTab;
         return (
@@ -82,16 +82,19 @@ export function Tabs({
             key={tab.id}
             onClick={() => onChange(tab.id)}
             className={cn(
-              "px-4 py-2 text-xs sm:text-sm font-medium rounded-full transition-all duration-150 flex items-center gap-2 select-none whitespace-nowrap font-display",
+              "px-3.5 py-1.5 text-xs sm:text-sm font-semibold rounded-lg transition-all duration-150 flex items-center gap-2 select-none whitespace-nowrap font-display",
               isActive
-                ? "bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white font-semibold shadow-md shadow-pink-500/25"
-                : "bg-white/[0.05] text-slate-300 hover:text-white hover:bg-white/10 border border-white/10"
+                ? "bg-[#111111] text-[#FAFAF8] shadow-xs"
+                : "bg-[#FFFFFF] text-[#6B6B6B] hover:text-[#111111] border border-[#E7E7E4]"
             )}
           >
             {tab.icon}
             {tab.label}
             {typeof tab.count === "number" && (
-              <span className="text-xs px-1.5 py-0.5 rounded-full bg-white/10 text-slate-300 font-mono">
+              <span className={cn(
+                "text-xs px-1.5 py-0.5 rounded-md font-mono font-bold",
+                isActive ? "bg-[#FFFFFF] text-[#111111]" : "bg-[#FAFAF8] text-[#6B6B6B]"
+              )}>
                 {tab.count}
               </span>
             )}

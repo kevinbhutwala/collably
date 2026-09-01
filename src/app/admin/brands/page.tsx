@@ -24,22 +24,28 @@ export default function AdminBrandsPage() {
   };
 
   return (
-    <div className="space-y-8 text-white">
-      <div className="pb-6 border-b border-white/10">
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
+    <div className="space-y-8 text-[#111111]">
+      <div className="pb-6 border-b border-[#E7E7E4]">
+        <div className="flex items-center gap-2 mb-1">
+          <span className="text-xs font-mono font-bold uppercase text-[#111111] flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
+            Enterprise Directory
+          </span>
+        </div>
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-[#111111] tracking-tight font-display">
           Brand Accounts &amp; Risk Compliance
         </h1>
-        <p className="text-xs sm:text-sm text-slate-400 mt-0.5 font-sans">
+        <p className="text-xs sm:text-sm text-[#6B6B6B] mt-0.5 font-sans font-medium">
           Manage enterprise brand partnerships, escrow pre-authorizations, and credit terms.
         </p>
       </div>
 
-      <div className="p-8 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-6">
-        <div className="divide-y divide-white/10">
+      <div className="p-6 sm:p-8 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs space-y-6">
+        <div className="divide-y divide-[#E7E7E4]">
           {brands.map((b) => (
             <div key={b.id} className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex items-center gap-3.5">
-                <div className="relative w-12 h-12 rounded-2xl overflow-hidden bg-white/[0.05] border border-white/10 shrink-0">
+                <div className="relative w-12 h-12 rounded-xl overflow-hidden bg-[#FAFAF8] border border-[#E7E7E4] shrink-0">
                   <SafeImage
                     src={b.logoUrl}
                     alt={b.companyName}
@@ -50,11 +56,11 @@ export default function AdminBrandsPage() {
                   />
                 </div>
                 <div>
-                  <h3 className="font-bold text-sm text-white flex items-center gap-1.5 font-display">
+                  <h3 className="font-bold text-sm text-[#111111] flex items-center gap-1.5 font-display">
                     {b.companyName}
-                    {b.verified && <CheckCircle2 className="w-4 h-4 fill-sky-400 text-[#0a070a]" />}
+                    {b.verified && <CheckCircle2 className="w-4 h-4 text-[#111111]" />}
                   </h3>
-                  <p className="text-xs text-slate-400 font-mono">
+                  <p className="text-xs text-[#6B6B6B] font-mono">
                     {b.industry} • {b.location} • {b.companySize} Employees
                   </p>
                 </div>
@@ -62,18 +68,18 @@ export default function AdminBrandsPage() {
 
               <div className="flex items-center gap-6 font-mono text-xs">
                 <div>
-                  <span className="text-slate-400 block text-[10px]">Total Escrow</span>
-                  <span className="text-emerald-400 font-bold">{formatCurrency(b.totalSpent)}</span>
+                  <span className="text-[#6B6B6B] block text-[10px]">Total Escrow</span>
+                  <span className="text-[#111111] font-extrabold">{formatCurrency(b.totalSpent)}</span>
                 </div>
                 <div>
-                  <span className="text-slate-400 block text-[10px]">Active Briefs</span>
-                  <span className="text-white font-bold">{b.activeCampaignsCount}</span>
+                  <span className="text-[#6B6B6B] block text-[10px]">Active Briefs</span>
+                  <span className="text-[#111111] font-bold">{b.activeCampaignsCount}</span>
                 </div>
                 <Button
                   variant={b.verified ? "secondary" : "primary"}
                   size="sm"
                   onClick={() => toggleVerify(b.id)}
-                  className="rounded-full font-display"
+                  className="rounded-[9px]"
                 >
                   {b.verified ? "Verified" : "Verify Brand"}
                 </Button>

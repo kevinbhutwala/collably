@@ -14,22 +14,23 @@ export default function CreatorAnalyticsPage() {
   const er = currentCreator?.avgEngagementRate || 0;
 
   return (
-    <div className="space-y-10 text-white">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+    <div className="space-y-8 text-[#111111]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E7E7E4]">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono font-bold uppercase text-[hsl(327,100%,55%)]">
+            <span className="text-xs font-mono font-bold uppercase text-[#111111] flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
               Audience Intel
             </span>
-            <span className="text-white/20">•</span>
-            <Badge variant="glow" size="sm">
+            <span className="text-[#E7E7E4]">•</span>
+            <span className="px-2 py-0.5 rounded bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] font-mono text-[10px] font-bold">
               Live Social Sync
-            </Badge>
+            </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight font-display">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#111111] tracking-tight font-display">
             Creator Performance &amp; Analytics
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-0.5 font-sans">
+          <p className="text-xs sm:text-sm text-[#6B6B6B] mt-0.5 font-sans font-medium">
             Verified audience retention curves, engagement benchmarks, and brand campaign impressions.
           </p>
         </div>
@@ -40,42 +41,42 @@ export default function CreatorAnalyticsPage() {
           title="Engagement Rate"
           value={er > 0 ? `${er}%` : "Pending Sync"}
           subtitle={er > 0 ? "Audited from connected channels" : "Connect social accounts to compute"}
-          icon={<TrendingUp className="w-5 h-5 text-emerald-400" />}
+          icon={<TrendingUp className="w-5 h-5 text-[#111111]" />}
         />
         <StatsCard
           title="Total Follower Reach"
           value={totalFollowers > 0 ? formatNumber(totalFollowers) : "0"}
           subtitle="Cross-platform audience"
-          icon={<Users className="w-5 h-5 text-sky-400" />}
+          icon={<Users className="w-5 h-5 text-[#111111]" />}
         />
         <StatsCard
           title="Campaigns Completed"
           value={String(currentCreator?.completedCampaignsCount || 0)}
           subtitle="Milestones successfully released"
-          icon={<Sparkles className="w-5 h-5 text-purple-400" />}
+          icon={<Sparkles className="w-5 h-5 text-[#111111]" />}
         />
         <StatsCard
           title="Creator Tier"
           value={currentCreator?.tier ? currentCreator.tier.toUpperCase() : "PRO"}
           subtitle="Quality rating verified"
-          icon={<Activity className="w-5 h-5 text-amber-400" />}
+          icon={<Activity className="w-5 h-5 text-[#111111]" />}
         />
       </div>
 
       {/* Performance Graph or Animated Empty State */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-6 text-white">
-        <div className="flex items-center justify-between">
-          <h3 className="text-lg font-black text-white font-display">
+      <div className="p-6 sm:p-8 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs space-y-6 text-[#111111]">
+        <div className="flex items-center justify-between pb-3 border-b border-[#E7E7E4]">
+          <h3 className="text-base sm:text-lg font-bold text-[#111111] font-display">
             30-Day Impression &amp; Retention Curves
           </h3>
-          <Badge variant="glow" size="sm">
+          <span className="px-2 py-0.5 rounded-full bg-[#B7FF3C] text-[#111111] text-[10px] font-mono font-bold">
             REALTIME
-          </Badge>
+          </span>
         </div>
 
         {totalFollowers === 0 && (currentCreator?.completedCampaignsCount || 0) === 0 ? (
           <AnimatedEmptyState
-            icon={<BarChart3 className="w-8 h-8" />}
+            icon={<BarChart3 className="w-8 h-8 text-[#111111]" />}
             badgeText="Telemetry Inactive"
             title="No Audience Telemetry Recorded"
             description="Connect your YouTube, Instagram, or TikTok handles in your Profile to sync live impression curves and brand engagement benchmarks."
@@ -86,15 +87,15 @@ export default function CreatorAnalyticsPage() {
           />
         ) : (
           <div className="space-y-4">
-            <div className="h-64 rounded-2xl bg-white/[0.03] border border-white/10 p-6 flex flex-col justify-end space-y-3">
+            <div className="h-64 rounded-xl bg-[#FAFAF8] border border-[#E7E7E4] p-6 flex flex-col justify-end space-y-3">
               <div className="flex items-end justify-between gap-2 h-44">
                 {[35, 48, 62, 55, 78, 65, 88, 92, 84, 96, 90, 100].map((val, i) => (
                   <div key={i} className="flex-1 flex flex-col items-center gap-1.5 h-full justify-end group">
                     <div
-                      className="w-full rounded-t-lg bg-gradient-to-t from-[hsl(300,100%,42%)] to-[hsl(327,100%,50%)] group-hover:from-pink-500 group-hover:to-purple-400 transition-all shadow-md shadow-pink-500/20"
+                      className="w-full rounded-t-md bg-[#111111] group-hover:bg-[#B7FF3C] transition-all shadow-xs"
                       style={{ height: `${val}%` }}
                     />
-                    <span className="text-[9px] font-mono text-slate-400">W{i + 1}</span>
+                    <span className="text-[9px] font-mono text-[#6B6B6B]">W{i + 1}</span>
                   </div>
                 ))}
               </div>

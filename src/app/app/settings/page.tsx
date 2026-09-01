@@ -22,27 +22,27 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="space-y-10 max-w-4xl text-white">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+    <div className="space-y-8 max-w-4xl text-[#111111]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E7E7E4]">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#111111] tracking-tight font-display">
             Account &amp; Security Settings
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-0.5 font-sans">
+          <p className="text-xs sm:text-sm text-[#6B6B6B] mt-0.5 font-sans font-medium">
             Manage your payout methods, authentication, and mobile app sync.
           </p>
         </div>
 
-        <Button variant="primary" size="md" onClick={handleSave} leftIcon={<Save className="w-4 h-4" />} className="rounded-full font-display font-bold">
+        <Button variant="primary" size="md" onClick={handleSave} leftIcon={<Save className="w-4 h-4 text-[#B7FF3C]" />} className="rounded-[9px]">
           Save Preferences
         </Button>
       </div>
 
-      <div className="space-y-8">
+      <div className="space-y-6">
         {/* Payout & Escrow Settings */}
-        <div className="p-8 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-4">
-          <div className="flex items-center gap-2 text-emerald-400 font-bold text-sm font-display">
-            <Wallet className="w-4 h-4 text-emerald-400" />
+        <div className="p-6 sm:p-8 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs space-y-4">
+          <div className="flex items-center gap-2 text-[#111111] font-bold text-sm font-display">
+            <Wallet className="w-4 h-4 text-[#111111]" />
             <span>Escrow &amp; Payout Destination</span>
           </div>
 
@@ -61,15 +61,18 @@ export default function SettingsPage() {
         </div>
 
         {/* Cross-Platform App Settings */}
-        <div className="p-8 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-4">
-          <div className="flex items-center gap-2 text-[hsl(327,100%,55%)] font-bold text-sm font-display">
+        <div className="p-6 sm:p-8 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs space-y-4">
+          <div className="flex items-center gap-2 text-[#111111] font-bold text-sm font-display">
             <Smartphone className="w-4 h-4" />
             <span>Cross-Platform API &amp; React Native Mobile Sync</span>
           </div>
-          <p className="text-xs text-slate-300 leading-relaxed font-sans">
+          <p className="text-xs text-[#6B6B6B] leading-relaxed font-sans font-medium">
             Your credentials and active campaigns are synced across the Collably Web Workspace.
           </p>
-          <Badge variant="glow" size="sm">Core API: Connected &amp; Ready</Badge>
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] font-mono text-[10px] font-bold">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
+            Core API: Connected &amp; Ready
+          </span>
         </div>
       </div>
     </div>

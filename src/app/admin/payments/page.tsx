@@ -23,42 +23,53 @@ export default function AdminPaymentsVaultPage() {
   };
 
   return (
-    <div className="space-y-8 text-white">
-      <div className="pb-6 border-b border-white/10">
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
+    <div className="space-y-8 text-[#111111]">
+      <div className="pb-6 border-b border-[#E7E7E4]">
+        <div className="flex items-center gap-2 mb-1">
+          <span className="text-xs font-mono font-bold uppercase text-[#111111] flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
+            Settlement
+          </span>
+        </div>
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-[#111111] tracking-tight font-display">
           Escrow &amp; Payout Vault Control
         </h1>
-        <p className="text-xs sm:text-sm text-slate-400 mt-0.5 font-sans">
+        <p className="text-xs sm:text-sm text-[#6B6B6B] mt-0.5 font-sans font-medium">
           Audited solvency, platform commission take-rate, and manual payout override controls.
         </p>
       </div>
 
-      <div className="p-8 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-6">
-        <div className="divide-y divide-white/10 font-mono text-xs">
+      <div className="p-6 sm:p-8 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs space-y-6">
+        <div className="divide-y divide-[#E7E7E4] font-mono text-xs">
           {escrowVaults.map((v) => (
             <div key={v.id} className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="space-y-1 font-sans">
                 <div className="flex items-center gap-2">
-                  <h4 className="font-bold text-sm text-white font-display">{v.campaign}</h4>
-                  <Badge variant="glow" size="sm">{v.brand}</Badge>
+                  <h4 className="font-bold text-sm text-[#111111] font-display">{v.campaign}</h4>
+                  <span className="px-2 py-0.5 rounded bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] font-mono text-[10px] font-bold">
+                    {v.brand}
+                  </span>
                 </div>
-                <p className="text-xs text-slate-400 font-mono">Vault ID: {v.id}</p>
+                <p className="text-xs text-[#6B6B6B] font-mono">Vault ID: {v.id}</p>
               </div>
 
               <div className="flex items-center gap-6">
                 <div>
-                  <span className="text-slate-400 block text-[10px]">Total Escrow</span>
-                  <span className="text-white font-bold">{formatCurrency(v.amount)}</span>
+                  <span className="text-[#6B6B6B] block text-[10px]">Total Escrow</span>
+                  <span className="text-[#111111] font-extrabold">{formatCurrency(v.amount)}</span>
                 </div>
                 <div>
-                  <span className="text-slate-400 block text-[10px]">Locked</span>
-                  <span className="text-amber-400 font-bold">{formatCurrency(v.locked)}</span>
+                  <span className="text-[#6B6B6B] block text-[10px]">Locked</span>
+                  <span className="text-[#111111] font-bold">{formatCurrency(v.locked)}</span>
                 </div>
                 <div>
-                  <span className="text-slate-400 block text-[10px]">Released</span>
-                  <span className="text-emerald-400 font-bold">{formatCurrency(v.released)}</span>
+                  <span className="text-[#6B6B6B] block text-[10px]">Released</span>
+                  <span className="text-[#111111] font-bold flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
+                    {formatCurrency(v.released)}
+                  </span>
                 </div>
-                <Button variant="primary" size="sm" onClick={() => handleReleaseTranche(v.id)} className="rounded-full font-display font-bold">
+                <Button variant="primary" size="sm" onClick={() => handleReleaseTranche(v.id)} className="rounded-[9px]">
                   Release Tranche
                 </Button>
               </div>

@@ -99,11 +99,11 @@ export function NegotiationTimeline({
   };
 
   return (
-    <div className="p-6 sm:p-8 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-6 text-white">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
+    <div className="p-6 sm:p-8 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs space-y-6 text-[#111111]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#E7E7E4]">
         <div>
-          <h3 className="text-lg font-bold text-white font-display">Structured Terms &amp; Negotiation History</h3>
-          <p className="text-xs text-slate-400 font-sans">
+          <h3 className="text-lg font-bold text-[#111111] font-display">Structured Terms &amp; Negotiation History</h3>
+          <p className="text-xs text-[#6B6B6B] font-sans">
             Immutable audit record of proposals, counter-offers, and agreed deliverable scope.
           </p>
         </div>
@@ -112,8 +112,8 @@ export function NegotiationTimeline({
           variant="secondary"
           size="sm"
           onClick={() => setShowCounterForm(!showCounterForm)}
-          leftIcon={<Plus className="w-3.5 h-3.5" />}
-          className="rounded-full font-display"
+          leftIcon={<Plus className="w-3.5 h-3.5 text-[#111111]" />}
+          className="rounded-[9px]"
         >
           {showCounterForm ? "Cancel Counter" : "Submit Counter Offer"}
         </Button>
@@ -126,50 +126,48 @@ export function NegotiationTimeline({
           return (
             <div
               key={off.id}
-              className={`p-5 rounded-2xl border transition-all ${
+              className={`p-5 rounded-xl border transition-all ${
                 isAccepted
-                  ? "bg-emerald-500/10 border-emerald-500/30 shadow-xs"
-                  : "bg-white/[0.04] border-white/10"
+                  ? "bg-[#FAFAF8] border-[#E7E7E4] shadow-xs"
+                  : "bg-[#FAFAF8] border-[#E7E7E4]"
               }`}
             >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2 font-mono text-xs">
                 <div className="flex items-center gap-2">
-                  <Badge variant={off.senderRole === "brand" ? "glow" : "outline"} size="sm">
+                  <span className="px-2 py-0.5 rounded bg-[#FFFFFF] border border-[#E7E7E4] text-[#111111] text-[10px] font-bold">
                     {off.senderRole.toUpperCase()}
-                  </Badge>
-                  <strong className="font-sans text-sm text-white">{off.senderName}</strong>
-                  <span className="text-slate-400">• {off.createdAt}</span>
+                  </span>
+                  <strong className="font-sans text-sm text-[#111111]">{off.senderName}</strong>
+                  <span className="text-[#6B6B6B]">• {off.createdAt}</span>
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <span className="text-base font-extrabold text-emerald-400 font-mono">
+                  <span className="text-base font-extrabold text-[#111111] font-mono">
                     {formatCurrency(off.amount)}
                   </span>
-                  <Badge
-                    variant={isAccepted ? "success" : off.status === "countered" ? "default" : "warning"}
-                    size="sm"
-                    dot={isAccepted}
-                  >
+                  <span className={`px-2 py-0.5 rounded-md text-[10px] font-mono font-bold ${
+                    isAccepted ? "bg-[#B7FF3C] text-[#111111]" : off.status === "countered" ? "bg-[#FAFAF8] text-[#6B6B6B] border border-[#E7E7E4]" : "bg-[#FEF3C7] text-[#92400E]"
+                  }`}>
                     {off.status.toUpperCase()}
-                  </Badge>
+                  </span>
                 </div>
               </div>
 
-              <p className="text-xs text-slate-200 font-semibold mb-1 font-sans">
+              <p className="text-xs text-[#111111] font-semibold mb-1 font-sans">
                 Scope: {off.deliverableTerms}
               </p>
-              <p className="text-xs text-slate-400 font-sans leading-relaxed">
+              <p className="text-xs text-[#6B6B6B] font-sans leading-relaxed">
                 Note: {off.notes}
               </p>
 
               {off.status === "offered" && off.senderRole !== role && (
-                <div className="pt-3 border-t border-white/10 mt-3 flex justify-end gap-2">
+                <div className="pt-3 border-t border-[#E7E7E4] mt-3 flex justify-end gap-2">
                   <Button
                     variant="primary"
                     size="sm"
                     onClick={() => handleAccept(off.id, off.amount)}
-                    leftIcon={<CheckCircle2 className="w-3.5 h-3.5" />}
-                    className="rounded-full font-display font-bold"
+                    leftIcon={<CheckCircle2 className="w-3.5 h-3.5 text-[#B7FF3C]" />}
+                    className="rounded-[9px]"
                   >
                     Accept Offer
                   </Button>
@@ -182,8 +180,8 @@ export function NegotiationTimeline({
 
       {/* Counter Form Drawer */}
       {showCounterForm && (
-        <form onSubmit={handleSendCounter} className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 space-y-4">
-          <h4 className="text-sm font-bold text-white font-display">Draft Structured Counter Offer</h4>
+        <form onSubmit={handleSendCounter} className="p-6 rounded-xl bg-[#FAFAF8] border border-[#E7E7E4] space-y-4">
+          <h4 className="text-sm font-bold text-[#111111] font-display">Draft Structured Counter Offer</h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input
               label="Proposed Fee ($ USD)"
@@ -209,7 +207,7 @@ export function NegotiationTimeline({
             rows={3}
           />
 
-          <Button variant="primary" size="md" type="submit" className="rounded-full font-display font-bold">
+          <Button variant="primary" size="md" type="submit" className="rounded-[9px]">
             Send Official Counter Offer
           </Button>
         </form>

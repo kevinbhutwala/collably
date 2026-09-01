@@ -32,31 +32,31 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="py-16 sm:py-24 bg-[#0a070a] text-white min-h-screen">
+    <div className="py-16 sm:py-24 bg-[#FAFAF8] text-[#111111] min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Column info */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-[hsl(327,100%,55%)] text-xs font-semibold font-mono">
-              <Mail className="w-3.5 h-3.5 text-gold" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-xs font-mono font-bold text-[#111111] shadow-xs">
+              <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
               <span>Get in Touch</span>
             </div>
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-display">
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-[#111111] tracking-tight font-display">
               Let&apos;s build an iconic campaign together.
             </h1>
-            <p className="text-base text-slate-300 leading-relaxed font-sans">
+            <p className="text-base text-[#6B6B6B] leading-relaxed font-sans font-medium">
               Whether you are a brand looking to launch a managed creator cohort or a talent agency seeking enterprise roster integration, our executive team is ready.
             </p>
 
-            <div className="space-y-4 pt-4 text-xs font-mono text-slate-300">
+            <div className="space-y-4 pt-4 text-xs font-mono text-[#6B6B6B]">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-white/[0.05] border border-white/10 flex items-center justify-center text-[hsl(327,100%,55%)]">
+                <div className="w-8 h-8 rounded-lg bg-[#FFFFFF] border border-[#E7E7E4] flex items-center justify-center text-[#111111] shadow-xs">
                   <Mail className="w-4 h-4" />
                 </div>
-                <span>partnerships@collably.io</span>
+                <span className="text-[#111111] font-bold">partnerships@collably.io</span>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-white/[0.05] border border-white/10 flex items-center justify-center text-emerald-400">
+                <div className="w-8 h-8 rounded-lg bg-[#FFFFFF] border border-[#E7E7E4] flex items-center justify-center text-[#111111] shadow-xs">
                   <Building2 className="w-4 h-4" />
                 </div>
                 <span>San Francisco, CA • New York, NY • London, UK</span>
@@ -65,7 +65,7 @@ export default function ContactPage() {
           </div>
 
           {/* Right Form Card */}
-          <div className="lg:col-span-7 p-8 sm:p-10 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-6 text-white">
+          <div className="lg:col-span-7 p-8 sm:p-10 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs space-y-6 text-[#111111]">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
@@ -93,17 +93,17 @@ export default function ContactPage() {
                   placeholder="Linear Dynamics"
                   required
                 />
-                <div className="space-y-1.5 text-left">
-                  <label className="block text-xs font-semibold text-slate-200">Primary Goal</label>
+                <div className="space-y-1.5 text-left font-sans">
+                  <label className="block text-xs font-semibold text-[#111111]">Primary Goal</label>
                   <select
                     value={formData.interest}
                     onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
-                    className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[hsl(327,100%,50%)]/50 shadow-xs"
+                    className="w-full bg-[#FAFAF8] border border-[#E7E7E4] rounded-xl px-3.5 py-2.5 text-xs text-[#111111] focus:outline-none focus:border-[#111111] shadow-xs"
                   >
-                    <option value="Brand Campaign Management" className="bg-[#120c16] text-white">Brand Campaign Management</option>
-                    <option value="Creator Talent Representation" className="bg-[#120c16] text-white">Creator Talent Representation</option>
-                    <option value="Enterprise Retainer Consultation" className="bg-[#120c16] text-white">Enterprise Retainer Consultation</option>
-                    <option value="Press & Inquiries" className="bg-[#120c16] text-white">Press &amp; Inquiries</option>
+                    <option value="Brand Campaign Management">Brand Campaign Management</option>
+                    <option value="Creator Talent Representation">Creator Talent Representation</option>
+                    <option value="Enterprise Retainer Consultation">Enterprise Retainer Consultation</option>
+                    <option value="Press & Inquiries">Press &amp; Inquiries</option>
                   </select>
                 </div>
               </div>
@@ -123,8 +123,8 @@ export default function ContactPage() {
                   size="lg"
                   type="submit"
                   isLoading={isSubmitting}
-                  className="w-full shadow-lg shadow-pink-500/25 rounded-full font-display font-bold"
-                  rightIcon={<Send className="w-4 h-4" />}
+                  className="w-full rounded-[9px]"
+                  rightIcon={<Send className="w-4 h-4 text-[#B7FF3C]" />}
                 >
                   Send Message to Strategy Team
                 </Button>

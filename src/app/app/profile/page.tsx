@@ -132,33 +132,36 @@ export default function CreatorProfileEditPage() {
       case "youtube":
         return <Youtube className="w-4 h-4 text-rose-500" />;
       case "instagram":
-        return <Instagram className="w-4 h-4 text-pink-400" />;
+        return <Instagram className="w-4 h-4 text-pink-500" />;
       case "tiktok":
-        return <Video className="w-4 h-4 text-white" />;
+        return <Video className="w-4 h-4 text-[#111111]" />;
       case "x":
-        return <Twitter className="w-4 h-4 text-sky-400" />;
+        return <Twitter className="w-4 h-4 text-sky-500" />;
       case "linkedin":
-        return <Linkedin className="w-4 h-4 text-blue-400" />;
+        return <Linkedin className="w-4 h-4 text-blue-500" />;
       default:
-        return <Globe className="w-4 h-4 text-slate-400" />;
+        return <Globe className="w-4 h-4 text-[#6B6B6B]" />;
     }
   };
 
   return (
-    <div className="space-y-10 text-white">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+    <div className="space-y-8 text-[#111111]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E7E7E4]">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono font-bold uppercase text-[hsl(327,100%,55%)]">
+            <span className="text-xs font-mono font-bold uppercase text-[#111111] flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
               Media Kit &amp; Social Manager
             </span>
-            <span className="text-white/20">•</span>
-            <Badge variant="glow" size="sm">Public Link Enabled</Badge>
+            <span className="text-[#E7E7E4]">•</span>
+            <span className="px-2 py-0.5 rounded bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] font-mono text-[10px] font-bold">
+              Public Link Enabled
+            </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#111111] tracking-tight font-display">
             Creator Media Kit
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-0.5 font-sans">
+          <p className="text-xs sm:text-sm text-[#6B6B6B] mt-0.5 font-sans font-medium">
             Manage your connected YouTube, Instagram, TikTok, X, and LinkedIn channels and sponsorship rates.
           </p>
         </div>
@@ -166,7 +169,7 @@ export default function CreatorProfileEditPage() {
         <div className="flex items-center gap-2">
           {currentCreator && (
             <Link href={`/creators/${currentCreator.id}`} target="_blank">
-              <Button variant="secondary" size="md" rightIcon={<ExternalLink className="w-4 h-4" />} className="rounded-full">
+              <Button variant="secondary" size="md" rightIcon={<ExternalLink className="w-4 h-4 text-[#111111]" />} className="rounded-[9px]">
                 Preview Public Kit
               </Button>
             </Link>
@@ -176,8 +179,8 @@ export default function CreatorProfileEditPage() {
             size="md"
             onClick={handleSave}
             isLoading={isSaving}
-            leftIcon={<Save className="w-4 h-4" />}
-            className="rounded-full font-display font-bold"
+            leftIcon={<Save className="w-4 h-4 text-[#B7FF3C]" />}
+            className="rounded-[9px]"
           >
             Save Changes
           </Button>
@@ -188,8 +191,8 @@ export default function CreatorProfileEditPage() {
         {/* Left Column: Form Edit */}
         <div className="lg:col-span-8 space-y-6">
           {/* Section 1: Headline & Bio */}
-          <div className="p-8 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-4">
-            <h3 className="text-base font-bold text-white font-display">Headline &amp; Positioning</h3>
+          <div className="p-6 sm:p-8 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs space-y-4">
+            <h3 className="text-base font-bold text-[#111111] font-display">Headline &amp; Positioning</h3>
             <Input
               label="Creator Tagline / Headline"
               value={headline}
@@ -211,20 +214,20 @@ export default function CreatorProfileEditPage() {
           </div>
 
           {/* Section 2: Connected Social Accounts */}
-          <div className="p-8 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-6">
-            <div className="flex items-center justify-between">
+          <div className="p-6 sm:p-8 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs space-y-6">
+            <div className="flex items-center justify-between pb-3 border-b border-[#E7E7E4]">
               <div>
-                <h3 className="text-base font-bold text-white font-display">Connected Social Channels</h3>
-                <p className="text-xs text-slate-400 mt-0.5 font-sans">
+                <h3 className="text-base font-bold text-[#111111] font-display">Connected Social Channels</h3>
+                <p className="text-xs text-[#6B6B6B] mt-0.5 font-sans">
                   Audience metrics update your public media kit and discovery ranking.
                 </p>
               </div>
               <Button
-                variant="outline"
+                variant="secondary"
                 size="sm"
                 onClick={() => setShowAddModal(true)}
                 leftIcon={<Plus className="w-3.5 h-3.5" />}
-                className="rounded-full"
+                className="rounded-[9px]"
               >
                 Connect Channel
               </Button>
@@ -233,10 +236,10 @@ export default function CreatorProfileEditPage() {
             {/* Social Accounts Grid */}
             <div className="space-y-3">
               {socialAccounts.length === 0 ? (
-                <div className="p-8 text-center bg-white/[0.03] rounded-2xl border border-dashed border-white/20 space-y-3">
-                  <Users className="w-8 h-8 text-slate-400 mx-auto" />
-                  <p className="text-xs text-slate-300 font-sans">No social channels connected yet.</p>
-                  <Button variant="primary" size="sm" onClick={() => setShowAddModal(true)} className="rounded-full">
+                <div className="p-8 text-center bg-[#FAFAF8] rounded-xl border border-dashed border-[#E7E7E4] space-y-3">
+                  <Users className="w-8 h-8 text-[#6B6B6B] mx-auto" />
+                  <p className="text-xs text-[#6B6B6B] font-sans">No social channels connected yet.</p>
+                  <Button variant="primary" size="sm" onClick={() => setShowAddModal(true)} className="rounded-[9px]">
                     Connect Your First Channel
                   </Button>
                 </div>
@@ -244,26 +247,29 @@ export default function CreatorProfileEditPage() {
                 socialAccounts.map((acc) => (
                   <div
                     key={acc.id}
-                    className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-4"
+                    className="p-4 rounded-xl bg-[#FAFAF8] border border-[#E7E7E4] flex items-center justify-between gap-4"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-white/[0.06] border border-white/10 flex items-center justify-center shadow-sm">
+                      <div className="w-10 h-10 rounded-xl bg-[#FFFFFF] border border-[#E7E7E4] flex items-center justify-center shadow-xs">
                         {getPlatformIcon(acc.platform)}
                       </div>
                       <div>
                         <div className="flex items-center gap-2">
-                          <span className="text-xs font-bold text-white capitalize font-display">
+                          <span className="text-xs font-bold text-[#111111] capitalize font-display">
                             {acc.platform}
                           </span>
-                          <span className="text-xs text-slate-400 font-mono">@{acc.handle}</span>
+                          <span className="text-xs text-[#6B6B6B] font-mono">@{acc.handle}</span>
                           {acc.verifiedBadge && (
-                            <CheckCircle2 className="w-3.5 h-3.5 text-sky-400" />
+                            <CheckCircle2 className="w-3.5 h-3.5 text-[#111111]" />
                           )}
                         </div>
-                        <div className="flex items-center gap-3 text-[11px] text-slate-400 mt-1 font-mono">
+                        <div className="flex items-center gap-3 text-[11px] text-[#6B6B6B] mt-1 font-mono">
                           <span>{acc.followers.toLocaleString()} Followers</span>
                           <span>•</span>
-                          <span className="text-emerald-400 font-bold">{acc.engagementRate}% Eng. Rate</span>
+                          <span className="text-[#111111] font-bold flex items-center gap-1">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
+                            {acc.engagementRate}% Eng. Rate
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -273,7 +279,7 @@ export default function CreatorProfileEditPage() {
                         href={acc.url}
                         target="_blank"
                         rel="noreferrer"
-                        className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-white/10 transition-colors"
+                        className="p-2 text-[#6B6B6B] hover:text-[#111111] rounded-lg hover:bg-[#FFFFFF] transition-colors border border-transparent hover:border-[#E7E7E4]"
                         title="Visit Channel"
                       >
                         <ExternalLink className="w-4 h-4" />
@@ -281,7 +287,7 @@ export default function CreatorProfileEditPage() {
                       <button
                         type="button"
                         onClick={() => handleRemoveSocialAccount(acc.id)}
-                        className="p-2 text-slate-400 hover:text-rose-400 rounded-lg hover:bg-rose-500/10 transition-colors"
+                        className="p-2 text-[#6B6B6B] hover:text-rose-600 rounded-lg hover:bg-[#FFFFFF] transition-colors border border-transparent hover:border-[#E7E7E4]"
                         title="Remove Channel"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -294,74 +300,75 @@ export default function CreatorProfileEditPage() {
 
             {/* Add Social Account Modal / Drawer Inline */}
             {showAddModal && (
-              <div className="p-6 rounded-2xl bg-gradient-to-b from-[#1c1122] to-[#120c16] border border-pink-500/30 text-white space-y-4 shadow-xl">
-                <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-pink-300 font-mono">
+              <div className="p-6 rounded-2xl bg-[#FAFAF8] border border-[#111111] text-[#111111] space-y-4 shadow-xs">
+                <div className="flex items-center justify-between border-b border-[#E7E7E4] pb-3">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#111111] font-mono flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
                     Connect New Platform
                   </h4>
                   <button
                     onClick={() => setShowAddModal(false)}
-                    className="text-xs text-slate-400 hover:text-white"
+                    className="text-xs text-[#6B6B6B] hover:text-[#111111]"
                   >
                     Cancel
                   </button>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-1.5 text-left">
-                    <label className="text-xs font-semibold text-slate-200">Platform</label>
+                  <div className="space-y-1.5 text-left font-sans">
+                    <label className="text-xs font-semibold text-[#111111]">Platform</label>
                     <select
                       value={newPlatform}
                       onChange={(e) => setNewPlatform(e.target.value as PlatformType)}
-                      className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[hsl(327,100%,50%)]/50"
+                      className="w-full bg-[#FFFFFF] border border-[#E7E7E4] rounded-xl px-3.5 py-2.5 text-xs text-[#111111] focus:outline-none focus:border-[#111111]"
                     >
-                      <option value="youtube" className="bg-[#120c16] text-white">YouTube</option>
-                      <option value="instagram" className="bg-[#120c16] text-white">Instagram</option>
-                      <option value="tiktok" className="bg-[#120c16] text-white">TikTok</option>
-                      <option value="x" className="bg-[#120c16] text-white">X (Twitter)</option>
-                      <option value="linkedin" className="bg-[#120c16] text-white">LinkedIn</option>
+                      <option value="youtube">YouTube</option>
+                      <option value="instagram">Instagram</option>
+                      <option value="tiktok">TikTok</option>
+                      <option value="x">X (Twitter)</option>
+                      <option value="linkedin">LinkedIn</option>
                     </select>
                   </div>
 
-                  <div className="space-y-1.5 text-left">
-                    <label className="text-xs font-semibold text-slate-200">Handle or Channel URL</label>
+                  <div className="space-y-1.5 text-left font-sans">
+                    <label className="text-xs font-semibold text-[#111111]">Handle or Channel URL</label>
                     <input
                       type="text"
                       placeholder="e.g. @ElenaTech"
                       value={newHandle}
                       onChange={(e) => setNewHandle(e.target.value)}
-                      className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[hsl(327,100%,50%)]/50 placeholder:text-slate-500"
+                      className="w-full bg-[#FFFFFF] border border-[#E7E7E4] rounded-xl px-3.5 py-2.5 text-xs text-[#111111] focus:outline-none focus:border-[#111111] placeholder:text-[#6B6B6B]"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-1.5 text-left">
-                    <label className="text-xs font-semibold text-slate-200">Followers / Subscribers</label>
+                  <div className="space-y-1.5 text-left font-sans">
+                    <label className="text-xs font-semibold text-[#111111]">Followers / Subscribers</label>
                     <input
                       type="number"
                       placeholder="25000"
                       value={newFollowers}
                       onChange={(e) => setNewFollowers(parseInt(e.target.value) || 0)}
-                      className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[hsl(327,100%,50%)]/50"
+                      className="w-full bg-[#FFFFFF] border border-[#E7E7E4] rounded-xl px-3.5 py-2.5 text-xs text-[#111111] focus:outline-none focus:border-[#111111]"
                     />
                   </div>
 
-                  <div className="space-y-1.5 text-left">
-                    <label className="text-xs font-semibold text-slate-200">Average Engagement Rate (%)</label>
+                  <div className="space-y-1.5 text-left font-sans">
+                    <label className="text-xs font-semibold text-[#111111]">Average Engagement Rate (%)</label>
                     <input
                       type="number"
                       step="0.1"
                       placeholder="5.2"
                       value={newEngagement}
                       onChange={(e) => setNewEngagement(parseFloat(e.target.value) || 0)}
-                      className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[hsl(327,100%,50%)]/50"
+                      className="w-full bg-[#FFFFFF] border border-[#E7E7E4] rounded-xl px-3.5 py-2.5 text-xs text-[#111111] focus:outline-none focus:border-[#111111]"
                     />
                   </div>
                 </div>
 
                 <div className="pt-2 flex justify-end">
-                  <Button variant="primary" size="sm" onClick={handleAddSocialAccount} className="rounded-full">
+                  <Button variant="primary" size="sm" onClick={handleAddSocialAccount} className="rounded-[9px]">
                     Add Channel
                   </Button>
                 </div>
@@ -372,9 +379,9 @@ export default function CreatorProfileEditPage() {
 
         {/* Right Column: Live Media Kit Summary Card */}
         <div className="lg:col-span-4 space-y-6">
-          <div className="p-6 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-6 sticky top-24">
+          <div className="p-6 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs space-y-6 sticky top-24">
             <div className="text-center space-y-3">
-              <div className="w-20 h-20 rounded-2xl overflow-hidden mx-auto border-2 border-pink-500/30 shadow-md relative bg-white/[0.05]">
+              <div className="w-20 h-20 rounded-2xl overflow-hidden mx-auto border-2 border-[#111111] shadow-xs relative bg-[#FAFAF8]">
                 {currentCreator?.avatarUrl ? (
                   <Image
                     src={currentCreator.avatarUrl}
@@ -383,49 +390,50 @@ export default function CreatorProfileEditPage() {
                     className="object-cover"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center font-bold text-slate-400">
+                  <div className="w-full h-full flex items-center justify-center font-bold text-[#6B6B6B]">
                     {currentCreator?.fullName?.charAt(0) || "C"}
                   </div>
                 )}
               </div>
 
               <div>
-                <h3 className="text-lg font-bold text-white font-display">{currentCreator?.fullName || "Creator"}</h3>
-                <p className="text-xs text-slate-400 font-mono">@{currentCreator?.handle}</p>
+                <h3 className="text-lg font-bold text-[#111111] font-display">{currentCreator?.fullName || "Creator"}</h3>
+                <p className="text-xs text-[#6B6B6B] font-mono">@{currentCreator?.handle}</p>
               </div>
 
               <div className="flex items-center justify-center gap-2">
-                <Badge variant="glow" size="sm">
-                  {tier} Tier
-                </Badge>
-                <Badge variant="purple" size="sm">
+                <span className="px-2 py-0.5 rounded bg-[#B7FF3C] text-[#111111] text-[10px] font-mono font-bold">
+                  {tier} TIER
+                </span>
+                <span className="px-2 py-0.5 rounded bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] text-[10px] font-mono font-bold">
                   {currentCreator?.primaryCategory || "Technology"}
-                </Badge>
+                </span>
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 space-y-3 text-xs">
+            <div className="p-4 rounded-xl bg-[#FAFAF8] border border-[#E7E7E4] space-y-3 text-xs">
               <div className="flex justify-between items-center">
-                <span className="text-slate-400">Total Combined Reach:</span>
-                <span className="font-extrabold text-white font-mono">
+                <span className="text-[#6B6B6B]">Total Combined Reach:</span>
+                <span className="font-extrabold text-[#111111] font-mono">
                   {totalFollowers.toLocaleString()}
                 </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-slate-400">Avg. Engagement Rate:</span>
-                <span className="font-extrabold text-emerald-400 font-mono">
+                <span className="text-[#6B6B6B]">Avg. Engagement Rate:</span>
+                <span className="font-extrabold text-[#111111] font-mono flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
                   {avgEngagement}%
                 </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-slate-400">Connected Platforms:</span>
-                <span className="font-bold text-white font-mono">
+                <span className="text-[#6B6B6B]">Connected Platforms:</span>
+                <span className="font-bold text-[#111111] font-mono">
                   {socialAccounts.length}
                 </span>
               </div>
-              <div className="flex justify-between items-center pt-2 border-t border-white/10">
-                <span className="text-slate-400">Base Deal Rate:</span>
-                <span className="font-extrabold text-[hsl(327,100%,55%)] font-mono text-sm">
+              <div className="flex justify-between items-center pt-2 border-t border-[#E7E7E4]">
+                <span className="text-[#6B6B6B]">Base Deal Rate:</span>
+                <span className="font-extrabold text-[#111111] font-mono text-sm">
                   {formatCurrency(startingPrice)}
                 </span>
               </div>
@@ -436,8 +444,8 @@ export default function CreatorProfileEditPage() {
               size="md"
               onClick={handleSave}
               isLoading={isSaving}
-              leftIcon={<Save className="w-4 h-4" />}
-              className="w-full rounded-full font-display font-bold"
+              leftIcon={<Save className="w-4 h-4 text-[#B7FF3C]" />}
+              className="w-full rounded-[9px]"
             >
               Publish Live Updates
             </Button>

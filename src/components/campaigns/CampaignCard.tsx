@@ -15,53 +15,50 @@ export function CampaignCard({ campaign }: { campaign: Campaign }) {
   const progressPercent = Math.min(100, Math.round((acceptedCount / maxCreators) * 100));
 
   return (
-    <div className="group rounded-3xl bg-[#120c16] border border-white/10 hover:border-[hsl(327,100%,50%)]/40 overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between relative text-white">
-      {/* Top Subtle Gradient Accent Line */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] opacity-0 group-hover:opacity-100 transition-opacity z-20" />
-
-      {/* Cover Image Stage with Vibrant Overlay */}
-      <div className="relative h-52 w-full bg-[#0a070a] overflow-hidden">
+    <div className="group rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] hover:border-[#111111] overflow-hidden shadow-xs hover:shadow-editorial transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between relative text-[#111111]">
+      {/* Cover Image Stage */}
+      <div className="relative h-52 w-full bg-[#FAFAF8] overflow-hidden border-b border-[#E7E7E4]">
         <SafeImage
           src={campaign.coverImage}
           alt={campaign.title}
           fallbackType="campaign"
           fallbackName={campaign.title}
           fill
-          className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
+          className="object-cover group-hover:scale-105 transition-transform duration-700"
         />
-        {/* Crisp Cinematic Vignette */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#120c16] via-[#120c16]/50 to-transparent" />
+        {/* Crisp Vignette */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/80 via-transparent to-transparent" />
 
-        {/* Top Floating Glass Badges */}
+        {/* Top Floating Badges */}
         <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
-          <span className="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-white border border-white/20 text-[11px] font-display font-bold shadow-md">
+          <span className="px-2.5 py-1 rounded-md bg-[#FFFFFF] text-[#111111] border border-[#E7E7E4] text-[11px] font-display font-bold shadow-xs">
             {campaign.category}
           </span>
-          <span className="px-3 py-1 rounded-full bg-[#0a070a]/80 backdrop-blur-md text-emerald-300 border border-emerald-500/40 text-[11px] font-mono font-black flex items-center gap-1 shadow-lg">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+          <span className="px-2.5 py-1 rounded-md bg-[#111111] text-[#FAFAF8] text-[11px] font-mono font-bold flex items-center gap-1 shadow-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
             <span>{formatCurrency(budgetAmount)}</span>
-            <span className="text-[9px] text-slate-400 font-normal">/creator</span>
+            <span className="text-[9px] text-[#6B6B6B] font-normal">/creator</span>
           </span>
         </div>
 
         {/* Brand Details Bar */}
         <div className="absolute bottom-3.5 left-4 right-4 flex items-center justify-between z-10">
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-white/[0.08] border border-white/20 flex items-center justify-center shrink-0 shadow-lg group-hover:scale-105 transition-transform">
-              <BrandIcon name={campaign.brand?.companyName || "Brand"} size={20} className="text-white" />
+            <div className="w-9 h-9 rounded-xl bg-[#FFFFFF] border border-[#E7E7E4] flex items-center justify-center shrink-0 shadow-xs">
+              <BrandIcon name={campaign.brand?.companyName || "Brand"} size={20} className="text-[#111111]" />
             </div>
             <div className="overflow-hidden">
-              <p className="text-xs font-black text-white leading-tight font-display truncate">
+              <p className="text-xs font-bold text-[#FFFFFF] leading-tight font-display truncate">
                 {campaign.brand?.companyName || "Verified Sponsor"}
               </p>
-              <span className="text-[10px] text-emerald-400 font-mono font-bold flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-[10px] text-[#B7FF3C] font-mono font-bold flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
                 Escrow Pre-Funded
               </span>
             </div>
           </div>
 
-          <span className="px-2.5 py-0.5 rounded-md bg-pink-500/15 backdrop-blur-sm text-pink-300 font-mono text-[10px] border border-pink-500/30 font-bold">
+          <span className="px-2 py-0.5 rounded-md bg-[#FFFFFF] text-[#111111] font-mono text-[10px] border border-[#E7E7E4] font-bold">
             Verified Brief
           </span>
         </div>
@@ -70,10 +67,10 @@ export function CampaignCard({ campaign }: { campaign: Campaign }) {
       {/* Content Body */}
       <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
         <div className="space-y-2">
-          <h3 className="font-black text-base sm:text-lg text-white group-hover:text-[hsl(327,100%,55%)] transition-colors line-clamp-1 font-display tracking-tight">
+          <h3 className="font-extrabold text-base sm:text-lg text-[#111111] line-clamp-1 font-display tracking-tight">
             {campaign.title}
           </h3>
-          <p className="text-xs text-slate-300 line-clamp-2 leading-relaxed font-sans">
+          <p className="text-xs text-[#6B6B6B] line-clamp-2 leading-relaxed font-sans font-medium">
             {campaign.tagline || campaign.description}
           </p>
         </div>
@@ -84,7 +81,7 @@ export function CampaignCard({ campaign }: { campaign: Campaign }) {
             {campaign.deliverables?.map((del) => (
               <span
                 key={del.id}
-                className="text-[11px] px-2.5 py-1 rounded-xl bg-white/[0.05] border border-white/10 text-slate-200 font-mono font-semibold"
+                className="text-[11px] px-2.5 py-1 rounded-lg bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] font-mono font-semibold"
               >
                 {del.count}x {del.type}
               </span>
@@ -93,16 +90,16 @@ export function CampaignCard({ campaign }: { campaign: Campaign }) {
 
           {/* Roster Capacity Progress Bar */}
           <div className="space-y-1.5 pt-1">
-            <div className="flex items-center justify-between text-[11px] font-mono text-slate-400">
+            <div className="flex items-center justify-between text-[11px] font-mono text-[#6B6B6B]">
               <span className="flex items-center gap-1">
-                <Users className="w-3.5 h-3.5 text-slate-400" />
-                <strong className="text-white">{acceptedCount}</strong> of {maxCreators} Spots Filled
+                <Users className="w-3.5 h-3.5 text-[#6B6B6B]" />
+                <strong className="text-[#111111]">{acceptedCount}</strong> of {maxCreators} Spots Filled
               </span>
-              <span className="font-bold text-[hsl(327,100%,55%)]">{progressPercent}%</span>
+              <span className="font-bold text-[#111111]">{progressPercent}%</span>
             </div>
-            <div className="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
+            <div className="w-full bg-[#E7E7E4] h-1.5 rounded-full overflow-hidden">
               <div
-                className="bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] h-full rounded-full transition-all"
+                className="bg-[#111111] h-full rounded-full transition-all"
                 style={{ width: `${Math.max(8, progressPercent)}%` }}
               />
             </div>
@@ -110,12 +107,12 @@ export function CampaignCard({ campaign }: { campaign: Campaign }) {
         </div>
 
         {/* Footer Meta Details */}
-        <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 font-mono">
+        <div className="pt-3 border-t border-[#E7E7E4] flex items-center justify-between text-xs text-[#6B6B6B] font-mono">
           <div className="flex items-center gap-1.5">
-            <Calendar className="w-3.5 h-3.5 text-slate-400" />
+            <Calendar className="w-3.5 h-3.5 text-[#6B6B6B]" />
             <span className="text-[11px]">Due {campaign.timeline?.contentSubmissionDeadline || "In 14 Days"}</span>
           </div>
-          <span className="text-[11px] font-bold text-slate-300 font-display">
+          <span className="text-[11px] font-bold text-[#111111] font-display">
             90% Net Payout
           </span>
         </div>
@@ -124,9 +121,9 @@ export function CampaignCard({ campaign }: { campaign: Campaign }) {
       {/* Action Button */}
       <div className="p-5 pt-0">
         <Link href={`/campaigns/${campaign.id}`} className="w-full block">
-          <button className="w-full py-3 px-4 rounded-full bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] hover:brightness-110 text-white font-bold text-xs sm:text-sm font-display tracking-tight transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-pink-500/25">
+          <button className="w-full py-2.5 px-4 rounded-[9px] bg-[#111111] hover:bg-[#222222] text-[#FAFAF8] font-bold text-xs sm:text-sm font-display tracking-tight transition-all duration-200 flex items-center justify-center gap-2 shadow-xs">
             <span>View Brief &amp; Apply</span>
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-3.5 h-3.5 text-[#B7FF3C] group-hover:translate-x-1 transition-transform" />
           </button>
         </Link>
       </div>

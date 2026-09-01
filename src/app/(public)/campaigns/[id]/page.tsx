@@ -21,7 +21,7 @@ import {
   Calendar,
   Users,
   Sparkles,
-  ArrowUpRight,
+  ArrowRight,
 } from "lucide-react";
 
 export default function CampaignDetailPage() {
@@ -85,18 +85,18 @@ export default function CampaignDetailPage() {
 
   if (loading) {
     return (
-      <div className="py-32 text-center bg-[#0a070a] text-white min-h-screen">
-        <div className="w-8 h-8 rounded-full border-2 border-[hsl(327,100%,50%)] border-t-transparent animate-spin mx-auto" />
+      <div className="py-32 text-center bg-[#FAFAF8] text-[#111111] min-h-screen">
+        <div className="w-8 h-8 rounded-full border-2 border-[#111111] border-t-transparent animate-spin mx-auto" />
       </div>
     );
   }
 
   if (!campaign) {
     return (
-      <div className="py-32 text-center space-y-4 bg-[#0a070a] text-white min-h-screen">
-        <h2 className="text-2xl font-bold text-white font-display">Campaign brief not found</h2>
+      <div className="py-32 text-center space-y-4 bg-[#FAFAF8] text-[#111111] min-h-screen">
+        <h2 className="text-2xl font-bold text-[#111111] font-display">Campaign brief not found</h2>
         <Link href="/campaigns">
-          <Button variant="secondary" size="md" className="rounded-full">
+          <Button variant="secondary" size="md" className="rounded-[9px]">
             Back to Campaigns
           </Button>
         </Link>
@@ -105,12 +105,12 @@ export default function CampaignDetailPage() {
   }
 
   return (
-    <div className="py-12 sm:py-16 bg-[#0a070a] text-white min-h-screen">
+    <div className="py-12 sm:py-16 bg-[#FAFAF8] text-[#111111] min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Campaign Master Card */}
-        <div className="rounded-3xl bg-[#120c16] border border-white/10 overflow-hidden shadow-card">
+        <div className="rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] overflow-hidden shadow-xs">
           {/* Banner Hero */}
-          <div className="relative h-64 sm:h-80 w-full bg-white/[0.05]">
+          <div className="relative h-64 sm:h-80 w-full bg-[#FAFAF8]">
             <SafeImage
               src={campaign.coverImage}
               alt={campaign.title}
@@ -119,12 +119,12 @@ export default function CampaignDetailPage() {
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#120c16] via-[#0a070a]/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/80 via-transparent to-transparent" />
 
             <div className="absolute top-6 left-6 right-6 flex items-center justify-between">
-              <Badge variant="glow" size="md">
+              <span className="px-3 py-1 rounded-md bg-[#FFFFFF] text-[#111111] border border-[#E7E7E4] text-xs font-mono font-bold shadow-xs">
                 {campaign.category}
-              </Badge>
+              </span>
 
               <div className="flex items-center gap-2">
                 <MatchScoreBadge score={94} size="md" />
@@ -133,7 +133,7 @@ export default function CampaignDetailPage() {
 
             <div className="absolute bottom-6 left-6 right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <div className="flex items-center gap-3.5">
-                <div className="relative w-14 h-14 rounded-2xl overflow-hidden bg-white/10 border-2 border-white/20 shrink-0 shadow-sm">
+                <div className="relative w-14 h-14 rounded-xl overflow-hidden bg-[#FFFFFF] border border-[#E7E7E4] shrink-0 shadow-xs">
                   <SafeImage
                     src={campaign.brand.logoUrl}
                     alt={campaign.brand.companyName}
@@ -144,18 +144,19 @@ export default function CampaignDetailPage() {
                   />
                 </div>
                 <div>
-                  <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
+                  <h1 className="text-2xl sm:text-3xl font-extrabold text-[#FFFFFF] tracking-tight font-display">
                     {campaign.title}
                   </h1>
-                  <p className="text-xs sm:text-sm text-slate-400 font-mono">
+                  <p className="text-xs sm:text-sm text-[#FAFAF8]/80 font-mono">
                     By {campaign.brand.companyName} • {campaign.brand.industry}
                   </p>
                 </div>
               </div>
 
               <div className="font-mono text-right shrink-0">
-                <span className="text-xs text-slate-400 block">Creator Budget</span>
-                <span className="text-2xl font-extrabold text-emerald-400">
+                <span className="text-xs text-[#FAFAF8]/80 block">Creator Budget</span>
+                <span className="text-2xl font-extrabold text-[#FFFFFF] flex items-center gap-1">
+                  <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
                   {formatCurrency(campaign.budget.perCreatorBudget)}
                 </span>
               </div>
@@ -163,16 +164,16 @@ export default function CampaignDetailPage() {
           </div>
 
           {/* Quick Action Bar */}
-          <div className="p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 bg-[#120c16]">
-            <div className="flex items-center gap-6 text-xs text-slate-400 font-mono">
+          <div className="p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E7E7E4] bg-[#FFFFFF]">
+            <div className="flex items-center gap-6 text-xs text-[#6B6B6B] font-mono">
               <div className="flex items-center gap-1.5">
-                <Users className="w-4 h-4 text-pink-400" />
+                <Users className="w-4 h-4 text-[#111111]" />
                 <span>
                   {campaign.acceptedCount}/{campaign.maxCreators} Creators Accepted
                 </span>
               </div>
               <div className="flex items-center gap-1.5">
-                <Calendar className="w-4 h-4 text-purple-400" />
+                <Calendar className="w-4 h-4 text-[#111111]" />
                 <span>Content Due: {campaign.timeline.contentSubmissionDeadline}</span>
               </div>
             </div>
@@ -181,8 +182,8 @@ export default function CampaignDetailPage() {
               variant="primary"
               size="lg"
               onClick={() => setIsApplyModalOpen(true)}
-              rightIcon={<ArrowUpRight className="w-5 h-5" />}
-              className="shadow-md shadow-pink-500/25 rounded-full font-display font-bold"
+              rightIcon={<ArrowRight className="w-5 h-5 text-[#B7FF3C]" />}
+              className="rounded-[9px]"
             >
               Pitch Creative Angle &amp; Apply
             </Button>
@@ -193,27 +194,29 @@ export default function CampaignDetailPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Left: Brief Narrative */}
           <div className="lg:col-span-8 space-y-6">
-            <div className="p-8 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-6">
-              <h2 className="text-xl font-bold text-white font-display">Campaign Brief &amp; Direction</h2>
-              <p className="text-sm text-slate-300 leading-relaxed whitespace-pre-line font-sans">
+            <div className="p-8 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs space-y-6">
+              <h2 className="text-xl font-bold text-[#111111] font-display">Campaign Brief &amp; Direction</h2>
+              <p className="text-sm text-[#6B6B6B] leading-relaxed whitespace-pre-line font-sans font-medium">
                 {campaign.description}
               </p>
 
-              <div className="pt-4 border-t border-white/10">
-                <h3 className="text-sm font-bold text-white mb-3 font-display">Required Deliverables</h3>
+              <div className="pt-4 border-t border-[#E7E7E4]">
+                <h3 className="text-sm font-bold text-[#111111] mb-3 font-display">Required Deliverables</h3>
                 <div className="space-y-3">
                   {campaign.deliverables.map((del) => (
                     <div
                       key={del.id}
-                      className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 space-y-1.5"
+                      className="p-4 rounded-xl bg-[#FAFAF8] border border-[#E7E7E4] space-y-1.5"
                     >
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-mono font-bold text-[hsl(327,100%,55%)] uppercase">
+                        <span className="text-xs font-mono font-bold text-[#111111] uppercase">
                           {del.count}x {del.type}
                         </span>
-                        <Badge variant="outline" size="sm">Max {del.maxRevisions} Revisions</Badge>
+                        <span className="px-2 py-0.5 rounded bg-[#FFFFFF] border border-[#E7E7E4] text-[#6B6B6B] text-[10px] font-mono font-bold">
+                          Max {del.maxRevisions} Revisions
+                        </span>
                       </div>
-                      <p className="text-xs text-slate-300 font-sans">{del.guidelines}</p>
+                      <p className="text-xs text-[#6B6B6B] font-sans">{del.guidelines}</p>
                     </div>
                   ))}
                 </div>
@@ -223,31 +226,31 @@ export default function CampaignDetailPage() {
 
           {/* Right: Requirements & Escrow terms */}
           <div className="lg:col-span-4 space-y-6">
-            <div className="p-6 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-4">
-              <h3 className="text-sm font-bold text-white uppercase tracking-wider font-mono">
+            <div className="p-6 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs space-y-4">
+              <h3 className="text-xs font-bold text-[#111111] uppercase tracking-wider font-mono">
                 Creator Criteria
               </h3>
               <div className="space-y-3 font-mono text-xs">
-                <div className="flex justify-between text-slate-400">
+                <div className="flex justify-between text-[#6B6B6B]">
                   <span>Min Followers:</span>
-                  <span className="font-bold text-white">{formatNumber(campaign.creatorRequirements.minFollowers)}</span>
+                  <span className="font-bold text-[#111111]">{formatNumber(campaign.creatorRequirements.minFollowers)}</span>
                 </div>
-                <div className="flex justify-between text-slate-400">
+                <div className="flex justify-between text-[#6B6B6B]">
                   <span>Min Engagement:</span>
-                  <span className="font-bold text-emerald-400">{campaign.creatorRequirements.minEngagementRate}%</span>
+                  <span className="font-bold text-[#111111] flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />{campaign.creatorRequirements.minEngagementRate}%</span>
                 </div>
-                <div className="flex justify-between text-slate-400">
+                <div className="flex justify-between text-[#6B6B6B]">
                   <span>Target Geographies:</span>
-                  <span className="font-bold text-white">{campaign.targetAudience.locations.join(", ")}</span>
+                  <span className="font-bold text-[#111111]">{campaign.targetAudience.locations.join(", ")}</span>
                 </div>
               </div>
             </div>
 
-            <div className="p-6 rounded-3xl bg-emerald-500/10 border border-emerald-500/30 flex items-start gap-3">
-              <ShieldCheck className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+            <div className="p-6 rounded-2xl bg-[#FAFAF8] border border-[#E7E7E4] flex items-start gap-3">
+              <ShieldCheck className="w-5 h-5 text-[#111111] shrink-0 mt-0.5" />
               <div>
-                <h4 className="text-xs font-bold text-emerald-300 font-display">Pre-Funded Escrow Pool</h4>
-                <p className="text-xs text-slate-300 mt-1 leading-relaxed font-sans">
+                <h4 className="text-xs font-bold text-[#111111] font-display">Pre-Funded Escrow Pool</h4>
+                <p className="text-xs text-[#6B6B6B] mt-1 leading-relaxed font-sans font-medium">
                   The brand has deposited 100% of this campaign budget in escrow. Funds are guaranteed upon milestone approval.
                 </p>
               </div>
@@ -264,16 +267,16 @@ export default function CampaignDetailPage() {
         description={`Pitch your angle to ${campaign.brand.companyName}`}
         maxWidth="xl"
       >
-        <form onSubmit={handleApply} className="space-y-4 text-white">
-          <div className="flex justify-between items-center p-3 rounded-xl bg-pink-500/10 border border-pink-500/25 text-xs">
-            <span className="text-slate-300 font-sans">Need inspiration for your pitch?</span>
+        <form onSubmit={handleApply} className="space-y-4 text-[#111111]">
+          <div className="flex justify-between items-center p-3 rounded-xl bg-[#FAFAF8] border border-[#E7E7E4] text-xs">
+            <span className="text-[#6B6B6B] font-sans">Need inspiration for your pitch?</span>
             <Button
               type="button"
-              variant="primary"
+              variant="secondary"
               size="sm"
               onClick={() => setIsAiPitchOpen(true)}
-              leftIcon={<Sparkles className="w-3.5 h-3.5" />}
-              className="rounded-full"
+              leftIcon={<Sparkles className="w-3.5 h-3.5 text-[#111111]" />}
+              className="rounded-[9px]"
             >
               AI Pitch Assistant
             </Button>
@@ -309,7 +312,7 @@ export default function CampaignDetailPage() {
               size="lg"
               type="submit"
               isLoading={isSubmitting}
-              className="w-full rounded-full font-display font-bold"
+              className="w-full rounded-[9px]"
             >
               Submit Application
             </Button>

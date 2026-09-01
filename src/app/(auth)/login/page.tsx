@@ -43,17 +43,18 @@ function LoginForm() {
   };
 
   return (
-    <div className="w-full max-w-md rounded-3xl bg-[#120c16] border border-white/10 p-8 space-y-6 shadow-elevated relative z-10 text-white">
+    <div className="w-full max-w-md rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] p-8 space-y-6 shadow-xs relative z-10 text-[#111111]">
       {/* Top Header with Back to Home button */}
-      <div className="flex items-center justify-between pb-3 border-b border-white/10">
+      <div className="flex items-center justify-between pb-3 border-b border-[#E7E7E4]">
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-slate-400 hover:text-white transition-colors group"
+          className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[#6B6B6B] hover:text-[#111111] transition-colors group"
         >
           <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
           <span>Back to Home</span>
         </Link>
-        <span className="text-[10px] font-mono text-[hsl(327,100%,55%)] font-bold uppercase">
+        <span className="text-[10px] font-mono text-[#111111] font-bold uppercase flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
           Portal Login
         </span>
       </div>
@@ -62,17 +63,17 @@ function LoginForm() {
         <div className="flex justify-center mb-2">
           <CollablyLogo href="/" size="sm" subtext="Creator × Brand Ecosystem" />
         </div>
-        <h1 className="text-2xl font-black text-white tracking-tight font-display">
+        <h1 className="text-2xl font-extrabold text-[#111111] tracking-tight font-display">
           Welcome Back
         </h1>
-        <p className="text-xs text-slate-400 font-sans">
+        <p className="text-xs text-[#6B6B6B] font-sans font-medium">
           Sign in to access your campaigns, creator roster, and escrow payouts.
         </p>
       </div>
 
       {errorMessage && (
-        <div className="p-3.5 rounded-xl bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs flex items-center gap-2">
-          <AlertCircle className="w-4 h-4 shrink-0 text-rose-400" />
+        <div className="p-3.5 rounded-xl bg-[#FEF2F2] border border-[#FEE2E2] text-rose-700 text-xs flex items-center gap-2">
+          <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
           <span>{errorMessage}</span>
         </div>
       )}
@@ -85,7 +86,7 @@ function LoginForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          leftIcon={<Mail className="w-4 h-4 text-slate-400" />}
+          leftIcon={<Mail className="w-4 h-4 text-[#6B6B6B]" />}
         />
         <Input
           label="Password"
@@ -94,18 +95,18 @@ function LoginForm() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-          leftIcon={<Lock className="w-4 h-4 text-slate-400" />}
+          leftIcon={<Lock className="w-4 h-4 text-[#6B6B6B]" />}
         />
 
-        <Button variant="primary" size="lg" type="submit" isLoading={isLoading} className="w-full font-display rounded-full">
+        <Button variant="primary" size="lg" type="submit" isLoading={isLoading} className="w-full font-display rounded-[9px]">
           Sign In to Collably
         </Button>
       </form>
 
-      <div className="pt-4 border-t border-white/10 text-center space-y-2">
-        <p className="text-xs text-slate-400 font-sans">
+      <div className="pt-4 border-t border-[#E7E7E4] text-center space-y-2">
+        <p className="text-xs text-[#6B6B6B] font-sans">
           Don&apos;t have an account?{" "}
-          <Link href="/register" className="text-[hsl(327,100%,55%)] font-bold hover:underline">
+          <Link href="/register" className="text-[#111111] font-bold hover:underline">
             Create an account
           </Link>
         </p>
@@ -119,9 +120,9 @@ export default function LoginPage() {
     <div className="w-full flex items-center justify-center p-2 py-6">
       <Suspense
         fallback={
-          <div className="w-full max-w-md rounded-3xl bg-[#120c16] border border-white/10 p-12 text-center shadow-elevated text-white">
-            <Loader2 className="w-8 h-8 text-[hsl(327,100%,55%)] animate-spin mx-auto mb-2" />
-            <p className="text-xs text-slate-400 font-mono">Loading workspace...</p>
+          <div className="w-full max-w-md rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] p-12 text-center shadow-xs text-[#111111]">
+            <Loader2 className="w-8 h-8 text-[#111111] animate-spin mx-auto mb-2" />
+            <p className="text-xs text-[#6B6B6B] font-mono">Loading workspace...</p>
           </div>
         }
       >

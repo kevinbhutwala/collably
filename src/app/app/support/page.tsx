@@ -93,32 +93,35 @@ export default function SupportAndDisputePage() {
   };
 
   return (
-    <div className="space-y-10 text-white">
+    <div className="space-y-8 text-[#111111]">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E7E7E4]">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono font-bold uppercase text-[hsl(327,100%,55%)]">
+            <span className="text-xs font-mono font-bold uppercase text-[#111111] flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
               Assistance &amp; Mediation
             </span>
-            <span className="text-white/20">•</span>
-            <Badge variant="glow" size="sm">24/7 Operations Desk</Badge>
+            <span className="text-[#E7E7E4]">•</span>
+            <span className="px-2 py-0.5 rounded bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] font-mono text-[10px] font-bold">
+              24/7 Operations Desk
+            </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#111111] tracking-tight font-display">
             Support Center &amp; Dispute Resolution
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-0.5 font-sans">
+          <p className="text-xs sm:text-sm text-[#6B6B6B] mt-0.5 font-sans font-medium">
             Submit operational inquiries, report campaign deliverable disputes, and track resolution arbitration.
           </p>
         </div>
 
         <div className="flex items-center gap-3">
           <Button
-            variant="outline"
+            variant="secondary"
             size="md"
             onClick={() => setIsDisputeModalOpen(true)}
-            leftIcon={<ShieldAlert className="w-4 h-4 text-amber-400" />}
-            className="rounded-full font-display"
+            leftIcon={<ShieldAlert className="w-4 h-4 text-amber-500" />}
+            className="rounded-[9px]"
           >
             File Milestone Dispute
           </Button>
@@ -127,8 +130,8 @@ export default function SupportAndDisputePage() {
             variant="primary"
             size="md"
             onClick={() => setIsTicketModalOpen(true)}
-            leftIcon={<Plus className="w-4 h-4" />}
-            className="rounded-full font-display font-bold"
+            leftIcon={<Plus className="w-4 h-4 text-[#B7FF3C]" />}
+            className="rounded-[9px]"
           >
             Open Support Ticket
           </Button>
@@ -138,28 +141,32 @@ export default function SupportAndDisputePage() {
       {/* 2-Column Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left: Active Support Tickets */}
-        <div className="lg:col-span-6 p-6 sm:p-8 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-6">
-          <div className="flex items-center justify-between">
-            <h3 className="text-lg font-bold text-white flex items-center gap-2 font-display">
-              <HelpCircle className="w-5 h-5 text-sky-400" />
+        <div className="lg:col-span-6 p-6 sm:p-8 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs space-y-6">
+          <div className="flex items-center justify-between pb-3 border-b border-[#E7E7E4]">
+            <h3 className="text-base font-bold text-[#111111] flex items-center gap-2 font-display">
+              <HelpCircle className="w-5 h-5 text-[#111111]" />
               <span>My Support Inquiries ({tickets.length})</span>
             </h3>
-            <Badge variant="glow" size="sm">Active Desk</Badge>
+            <span className="px-2 py-0.5 rounded bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] text-[10px] font-mono font-bold">
+              Active Desk
+            </span>
           </div>
 
-          <div className="divide-y divide-white/10 space-y-3">
+          <div className="divide-y divide-[#E7E7E4] space-y-3">
             {tickets.map((t) => (
               <div key={t.id} className="pt-3 space-y-2">
                 <div className="flex items-center justify-between">
-                  <h4 className="font-bold text-sm text-white font-display">{t.subject}</h4>
-                  <Badge variant={t.status === "Resolved" ? "success" : "warning"} size="sm" dot>
+                  <h4 className="font-bold text-sm text-[#111111] font-display">{t.subject}</h4>
+                  <span className={`px-2 py-0.5 rounded-md text-[10px] font-mono font-bold ${
+                    t.status === "Resolved" ? "bg-[#B7FF3C] text-[#111111]" : "bg-[#FAFAF8] text-[#6B6B6B] border border-[#E7E7E4]"
+                  }`}>
                     {t.status.replace(/_/g, " ")}
-                  </Badge>
+                  </span>
                 </div>
-                <p className="text-xs text-slate-300 leading-relaxed font-sans">
+                <p className="text-xs text-[#6B6B6B] leading-relaxed font-sans font-medium">
                   {t.messages[t.messages.length - 1]?.content}
                 </p>
-                <div className="flex items-center gap-4 text-[10px] text-slate-400 font-mono">
+                <div className="flex items-center gap-4 text-[10px] text-[#6B6B6B] font-mono">
                   <span>Category: {t.category}</span>
                   <span>•</span>
                   <span>Priority: {t.priority}</span>
@@ -172,32 +179,34 @@ export default function SupportAndDisputePage() {
         </div>
 
         {/* Right: Active Disputes & Escrow Mediation */}
-        <div className="lg:col-span-6 p-6 sm:p-8 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-6">
-          <div className="flex items-center justify-between">
-            <h3 className="text-lg font-bold text-white flex items-center gap-2 font-display">
-              <ShieldAlert className="w-5 h-5 text-amber-400" />
+        <div className="lg:col-span-6 p-6 sm:p-8 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs space-y-6">
+          <div className="flex items-center justify-between pb-3 border-b border-[#E7E7E4]">
+            <h3 className="text-base font-bold text-[#111111] flex items-center gap-2 font-display">
+              <ShieldAlert className="w-5 h-5 text-amber-500" />
               <span>Milestone Arbitration Queue ({disputes.length})</span>
             </h3>
-            <Badge variant="warning" size="sm">Escrow Protected</Badge>
+            <span className="px-2 py-0.5 rounded bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] text-[10px] font-mono font-bold">
+              Escrow Protected
+            </span>
           </div>
 
           <div className="space-y-4 font-mono text-xs">
             {disputes.map((d) => (
-              <div key={d.id} className="p-5 rounded-2xl bg-amber-500/10 border border-amber-500/25 space-y-2.5">
+              <div key={d.id} className="p-5 rounded-xl bg-[#FAFAF8] border border-[#E7E7E4] space-y-2.5">
                 <div className="flex justify-between items-center">
-                  <h4 className="font-bold text-sm text-white font-sans">{d.campaignTitle}</h4>
-                  <Badge variant="warning" size="sm">
+                  <h4 className="font-bold text-sm text-[#111111] font-sans">{d.campaignTitle}</h4>
+                  <span className="px-2 py-0.5 rounded bg-[#FEF3C7] border border-[#FDE68A] text-[#92400E] text-[10px] font-mono font-bold">
                     {d.status.replace(/_/g, " ")}
-                  </Badge>
+                  </span>
                 </div>
-                <p className="text-xs text-slate-300 font-sans leading-relaxed">{d.description}</p>
+                <p className="text-xs text-[#6B6B6B] font-sans leading-relaxed">{d.description}</p>
                 {d.adminArbitrationNotes && (
-                  <div className="p-3 rounded-xl bg-white/[0.04] border border-amber-500/30 text-slate-200 text-[11px] font-sans">
-                    <strong className="text-amber-300">Admin Arbitration Note:</strong> {d.adminArbitrationNotes}
+                  <div className="p-3 rounded-lg bg-[#FFFFFF] border border-[#E7E7E4] text-[#111111] text-[11px] font-sans">
+                    <strong>Admin Arbitration Note:</strong> {d.adminArbitrationNotes}
                   </div>
                 )}
-                <div className="flex justify-between text-slate-400 pt-2 border-t border-amber-500/20">
-                  <span>Disputed Amount: <strong className="text-white">${d.amountInDispute}</strong></span>
+                <div className="flex justify-between text-[#6B6B6B] pt-2 border-t border-[#E7E7E4]">
+                  <span>Disputed Amount: <strong className="text-[#111111]">${d.amountInDispute}</strong></span>
                   <span>Reason: {d.reason.replace(/_/g, " ")}</span>
                 </div>
               </div>
@@ -214,7 +223,7 @@ export default function SupportAndDisputePage() {
         description="Our dedicated agency partner operations team will assist with billing, technical, or campaign questions."
         maxWidth="md"
       >
-        <form onSubmit={handleCreateTicket} className="space-y-4">
+        <form onSubmit={handleCreateTicket} className="space-y-4 text-[#111111]">
           <Input
             label="Inquiry Subject"
             value={ticketSubject}
@@ -223,30 +232,30 @@ export default function SupportAndDisputePage() {
             required
           />
           <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-1.5 text-left">
-              <label className="text-xs font-semibold text-slate-200">Category</label>
+            <div className="space-y-1.5 text-left font-sans">
+              <label className="text-xs font-semibold text-[#111111]">Category</label>
               <select
                 value={ticketCategory}
                 onChange={(e) => setTicketCategory(e.target.value as any)}
-                className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[hsl(327,100%,50%)]/50"
+                className="w-full bg-[#FAFAF8] border border-[#E7E7E4] rounded-xl px-3 py-2 text-xs text-[#111111] focus:outline-none focus:border-[#111111]"
               >
-                <option value="Billing" className="bg-[#120c16] text-white">Billing &amp; Payouts</option>
-                <option value="Campaign_Help" className="bg-[#120c16] text-white">Campaign Brief Help</option>
-                <option value="Account_Verification" className="bg-[#120c16] text-white">Account Verification</option>
-                <option value="Technical" className="bg-[#120c16] text-white">Technical Bug</option>
+                <option value="Billing">Billing &amp; Payouts</option>
+                <option value="Campaign_Help">Campaign Brief Help</option>
+                <option value="Account_Verification">Account Verification</option>
+                <option value="Technical">Technical Bug</option>
               </select>
             </div>
-            <div className="space-y-1.5 text-left">
-              <label className="text-xs font-semibold text-slate-200">Priority</label>
+            <div className="space-y-1.5 text-left font-sans">
+              <label className="text-xs font-semibold text-[#111111]">Priority</label>
               <select
                 value={ticketPriority}
                 onChange={(e) => setTicketPriority(e.target.value as any)}
-                className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[hsl(327,100%,50%)]/50"
+                className="w-full bg-[#FAFAF8] border border-[#E7E7E4] rounded-xl px-3 py-2 text-xs text-[#111111] focus:outline-none focus:border-[#111111]"
               >
-                <option value="Low" className="bg-[#120c16] text-white">Low</option>
-                <option value="Medium" className="bg-[#120c16] text-white">Medium</option>
-                <option value="High" className="bg-[#120c16] text-white">High</option>
-                <option value="Urgent" className="bg-[#120c16] text-white">Urgent</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+                <option value="Urgent">Urgent</option>
               </select>
             </div>
           </div>
@@ -258,7 +267,7 @@ export default function SupportAndDisputePage() {
             rows={4}
             required
           />
-          <Button variant="primary" size="md" type="submit" className="w-full rounded-full font-display font-bold">
+          <Button variant="primary" size="md" type="submit" className="w-full rounded-[9px]">
             Submit Ticket
           </Button>
         </form>
@@ -272,7 +281,7 @@ export default function SupportAndDisputePage() {
         description="Formal arbitration freezes escrow release and assigns an agency supervisor to mediate evidence."
         maxWidth="lg"
       >
-        <form onSubmit={handleFileDispute} className="space-y-4">
+        <form onSubmit={handleFileDispute} className="space-y-4 text-[#111111]">
           <Input
             label="Campaign Brief Title"
             value={disputeCampaign}
@@ -280,17 +289,17 @@ export default function SupportAndDisputePage() {
             required
           />
           <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-1.5 text-left">
-              <label className="text-xs font-semibold text-slate-200">Dispute Reason</label>
+            <div className="space-y-1.5 text-left font-sans">
+              <label className="text-xs font-semibold text-[#111111]">Dispute Reason</label>
               <select
                 value={disputeReason}
                 onChange={(e) => setDisputeReason(e.target.value as any)}
-                className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[hsl(327,100%,50%)]/50"
+                className="w-full bg-[#FAFAF8] border border-[#E7E7E4] rounded-xl px-3 py-2 text-xs text-[#111111] focus:outline-none focus:border-[#111111]"
               >
-                <option value="Scope_Mismatch" className="bg-[#120c16] text-white">Scope &amp; Guidelines Mismatch</option>
-                <option value="Quality_Standards" className="bg-[#120c16] text-white">Quality Standards Violation</option>
-                <option value="Missed_Deadline" className="bg-[#120c16] text-white">Missed Submission Deadline</option>
-                <option value="Usage_Rights_Violation" className="bg-[#120c16] text-white">Usage Rights Violation</option>
+                <option value="Scope_Mismatch">Scope &amp; Guidelines Mismatch</option>
+                <option value="Quality_Standards">Quality Standards Violation</option>
+                <option value="Missed_Deadline">Missed Submission Deadline</option>
+                <option value="Usage_Rights_Violation">Usage Rights Violation</option>
               </select>
             </div>
             <Input
@@ -315,7 +324,7 @@ export default function SupportAndDisputePage() {
             onChange={(e) => setDisputeEvidence(e.target.value)}
             required
           />
-          <Button variant="primary" size="md" type="submit" className="w-full rounded-full font-display font-bold">
+          <Button variant="primary" size="md" type="submit" className="w-full rounded-[9px]">
             Submit Dispute &amp; Request Mediation
           </Button>
         </form>
