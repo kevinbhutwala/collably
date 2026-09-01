@@ -94,25 +94,25 @@ export function EditorialProductStory() {
         particleCount: 85,
         spread: 65,
         origin: { y: 0.6 },
-        colors: ["#111111", "#B7FF3C", "#6B6B6B", "#FAFAF8", "#FFFFFF"],
+        colors: ["#101010", "#B7FF3C", "#626262", "#FAFAF8", "#FFFFFF"],
       });
     } catch {}
   };
 
   return (
-    <section className="py-24 sm:py-36 bg-[#FAFAF8] border-b border-[#E7E7E4] relative overflow-hidden select-none text-[#111111]">
+    <section className="py-24 sm:py-36 bg-[#FAFAF8] border-b border-[#E7E7E4] relative overflow-hidden select-none text-[#101010]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-xs font-mono font-bold text-[#111111] shadow-xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-xs font-mono font-bold text-[#101010] shadow-xs">
             <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
             <span>04 / FRAME-ACCURATE REVIEW</span>
           </div>
 
-          <h2 className="text-4xl sm:text-6xl font-extrabold text-[#111111] tracking-tight font-display">
-            Video QA meets <span className="font-serif italic font-normal text-[#6B6B6B]">instant settlement.</span>
+          <h2 className="section-headline text-center">
+            Video QA meets <span className="font-serif italic font-normal text-[#626262]">instant settlement.</span>
           </h2>
-          <p className="text-base text-[#6B6B6B] font-sans font-normal">
+          <p className="editorial-body mx-auto text-center">
             Drop timecoded feedback pins directly onto 4K video drafts. 1-click approve to disburse milestone payouts.
           </p>
         </div>
@@ -121,31 +121,31 @@ export function EditorialProductStory() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-6xl mx-auto">
           {/* LEFT: EDITORIAL CREATOR PORTRAIT ANCHOR */}
           <div className="lg:col-span-5 relative space-y-4">
-            <div className="relative rounded-2xl overflow-hidden border border-[#E7E7E4] bg-[#111111] shadow-editorial group">
+            <div className="relative rounded-2xl overflow-hidden border border-[#E7E7E4] bg-[#101010] shadow-editorial group">
               <div className="aspect-[4/5] w-full overflow-hidden">
                 <img
                   src={creator.imageUrl}
                   alt={creator.name}
                   className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/85 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#101010]/85 via-transparent to-transparent pointer-events-none" />
 
                 {/* Overlapping 98% Match Card with #B7FF3C */}
                 <div className="absolute top-4 left-4 p-3 rounded-xl bg-white/95 backdrop-blur-md border border-[#E7E7E4] shadow-editorial font-mono text-xs">
-                  <span className="text-[10px] text-[#6B6B6B] block font-bold font-sans">MATCH ENGINE</span>
-                  <span className="text-sm font-extrabold text-[#111111] flex items-center gap-1.5 font-display">
+                  <span className="text-[10px] text-[#626262] block font-bold font-sans uppercase tracking-wider">MATCH ENGINE</span>
+                  <span className="text-sm font-extrabold text-[#101010] flex items-center gap-1.5 font-display">
                     <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
-                    98% COMPATIBILITY
+                    <span className="numeric-tabular">98%</span> COMPATIBILITY
                   </span>
                 </div>
 
                 {/* Overlapping Approval Card */}
                 <div className="absolute bottom-4 left-4 right-4 p-3.5 rounded-xl bg-white/95 backdrop-blur-md border border-[#E7E7E4] shadow-editorial font-mono text-xs flex items-center justify-between">
                   <div>
-                    <span className="text-[10px] text-[#6B6B6B] block font-sans">CREATOR RATE</span>
-                    <span className="font-extrabold text-sm text-[#111111] font-display">{creator.verifiedRate}</span>
+                    <span className="text-[10px] text-[#626262] block font-sans uppercase tracking-wider">CREATOR RATE</span>
+                    <span className="font-extrabold text-sm text-[#101010] font-display numeric-tabular">{creator.verifiedRate}</span>
                   </div>
-                  <span className="px-2 py-0.5 rounded bg-[#111111] text-[#B7FF3C] font-bold text-[10px]">
+                  <span className="px-2 py-0.5 rounded bg-[#101010] text-[#B7FF3C] font-bold text-[10px]">
                     ✓ READY FOR SIGN-OFF
                   </span>
                 </div>
@@ -159,12 +159,12 @@ export function EditorialProductStory() {
             <div className="flex items-center justify-between pb-3 border-b border-[#E7E7E4] text-xs font-mono">
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#B7FF3C] animate-pulse" />
-                <span className="text-[#111111] font-display font-bold text-sm">Elena Rostova • AI Smartwatch Reel</span>
-                <span className="text-[#6B6B6B] hidden sm:inline">• Cut v2 (4K 60FPS)</span>
+                <span className="text-[#101010] font-display font-bold text-sm">Elena Rostova • AI Smartwatch Reel</span>
+                <span className="text-[#626262] hidden sm:inline">• Cut v2 (4K 60FPS)</span>
               </div>
-              <span className="px-2.5 py-0.5 rounded-full bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] font-bold flex items-center gap-1.5">
+              <span className="px-2.5 py-0.5 rounded-full bg-[#FAFAF8] border border-[#E7E7E4] text-[#101010] font-bold flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
-                <span>₹32,500 ESCROW</span>
+                <span className="numeric-tabular">₹32,500</span> ESCROW
               </span>
             </div>
 
@@ -217,7 +217,7 @@ export function EditorialProductStory() {
 
                 <div className="flex items-center justify-between text-[11px] font-mono text-white">
                   <div className="flex items-center gap-3">
-                    <span>{formatTime(currentTimeSec)} / {formatTime(duration || 60)}</span>
+                    <span className="numeric-tabular">{formatTime(currentTimeSec)} / {formatTime(duration || 60)}</span>
                     <button type="button" onClick={() => setIsMuted(!isMuted)}>
                       {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
                     </button>
@@ -238,15 +238,15 @@ export function EditorialProductStory() {
                     onClick={() => handleSeek(c.timeSec, i)}
                     className={`p-3 rounded-xl border text-left transition-all ${
                       isActive
-                        ? "bg-[#FAFAF8] border-[#111111] shadow-xs text-[#111111]"
-                        : "bg-[#FFFFFF] border-[#E7E7E4] text-[#6B6B6B] hover:bg-[#F4F4F0]"
+                        ? "bg-[#FAFAF8] border-[#101010] shadow-xs text-[#101010]"
+                        : "bg-[#FFFFFF] border-[#E7E7E4] text-[#626262] hover:bg-[#F4F4F0]"
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1 text-[10px] font-mono">
-                      <span className="font-bold text-[#111111] truncate font-sans">{c.author}</span>
-                      <span className="px-1 py-0.5 rounded bg-[#FAFAF8] text-[#111111] font-bold">@{c.timecode}</span>
+                      <span className="font-bold text-[#101010] truncate font-sans">{c.author}</span>
+                      <span className="px-1 py-0.5 rounded bg-[#FAFAF8] text-[#101010] font-bold">@{c.timecode}</span>
                     </div>
-                    <p className="text-[11px] text-[#6B6B6B] font-sans line-clamp-1">&ldquo;{c.text}&rdquo;</p>
+                    <p className="text-[11px] text-[#626262] font-sans line-clamp-1">&ldquo;{c.text}&rdquo;</p>
                   </button>
                 );
               })}
@@ -255,17 +255,17 @@ export function EditorialProductStory() {
             {/* Bottom Approval & Disburse Bar */}
             <div className="pt-2">
               {approved ? (
-                <div className="p-4 rounded-xl bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] text-xs font-mono flex items-center justify-between">
+                <div className="p-4 rounded-xl bg-[#FAFAF8] border border-[#E7E7E4] text-[#101010] text-xs font-mono flex items-center justify-between">
                   <span className="font-bold flex items-center gap-2 font-sans">
-                    <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" /> ✓ Deliverable approved • ₹29,250 Creator Net Disbursed via Stripe Connect
+                    <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" /> ✓ Deliverable approved • <span className="numeric-tabular">₹29,250</span> Creator Net Disbursed via Stripe Connect
                   </span>
-                  <span className="font-extrabold text-[10px] text-[#111111] bg-[#B7FF3C] px-2 py-0.5 rounded">DISBURSED</span>
+                  <span className="font-extrabold text-[10px] text-[#101010] bg-[#B7FF3C] px-2 py-0.5 rounded">DISBURSED</span>
                 </div>
               ) : (
                 <button
                   type="button"
                   onClick={() => setConfirmModalOpen(true)}
-                  className="w-full py-3.5 rounded-[9px] bg-[#111111] hover:bg-[#262626] active:bg-[#000000] text-[#FAFAF8] font-semibold text-sm shadow-xs flex items-center justify-center gap-2 transition-all font-sans cursor-pointer group"
+                  className="w-full py-3.5 rounded-[9px] bg-[#101010] hover:bg-[#262626] active:bg-[#000000] text-[#FAFAF8] font-semibold text-sm shadow-xs flex items-center justify-center gap-2 transition-all font-sans cursor-pointer group"
                 >
                   <CheckCircle2 className="w-4 h-4 text-[#B7FF3C]" />
                   <span>Approve Deliverable &amp; Disburse Milestone</span>
@@ -284,22 +284,22 @@ export function EditorialProductStory() {
         description="Release pre-funded campaign funds directly to the creator account."
         maxWidth="md"
       >
-        <div className="space-y-4 pt-1 text-xs font-sans">
+        <div className="space-y-4 pt-1 text-xs font-sans text-[#101010]">
           <div className="p-4 rounded-xl bg-[#FAFAF8] border border-[#E7E7E4] space-y-1.5 font-mono">
             <div className="flex justify-between">
-              <span className="text-[#6B6B6B]">Milestone Escrow:</span>
-              <span className="text-[#111111] font-bold">₹32,500</span>
+              <span className="text-[#626262]">Milestone Escrow:</span>
+              <span className="text-[#101010] font-bold numeric-tabular">₹32,500</span>
             </div>
-            <div className="flex justify-between text-[#111111]">
+            <div className="flex justify-between text-[#101010]">
               <span>Creator Payout (90%):</span>
-              <span className="font-bold flex items-center gap-1">
+              <span className="font-bold flex items-center gap-1 numeric-tabular">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
                 ₹29,250
               </span>
             </div>
-            <div className="flex justify-between text-[#6B6B6B] text-[11px]">
+            <div className="flex justify-between text-[#626262] text-[11px]">
               <span>Platform Fee (10%):</span>
-              <span>₹3,250</span>
+              <span className="numeric-tabular">₹3,250</span>
             </div>
           </div>
 
@@ -307,14 +307,14 @@ export function EditorialProductStory() {
             <button
               type="button"
               onClick={() => setConfirmModalOpen(false)}
-              className="px-4 py-2 text-[#6B6B6B] hover:text-[#111111]"
+              className="px-4 py-2 text-[#626262] hover:text-[#101010]"
             >
               Cancel
             </button>
             <button
               type="button"
               onClick={handleConfirmApprove}
-              className="px-5 py-2.5 rounded-[9px] bg-[#111111] hover:bg-[#262626] text-[#FAFAF8] font-semibold flex items-center gap-1.5 shadow-xs transition-all"
+              className="px-5 py-2.5 rounded-[9px] bg-[#101010] hover:bg-[#262626] text-[#FAFAF8] font-semibold flex items-center gap-1.5 shadow-xs transition-all"
             >
               <Check className="w-3.5 h-3.5 text-[#B7FF3C]" />
               <span>Confirm &amp; Disburse</span>

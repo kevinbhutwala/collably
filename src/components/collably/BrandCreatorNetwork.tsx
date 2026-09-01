@@ -49,19 +49,19 @@ export function BrandCreatorNetwork() {
   ];
 
   return (
-    <section className="py-24 sm:py-36 bg-[#FFFFFF] border-b border-[#E7E7E4] relative overflow-hidden select-none text-[#111111]">
+    <section className="py-24 sm:py-36 bg-[#FFFFFF] border-b border-[#E7E7E4] relative overflow-hidden select-none text-[#101010]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAFAF8] border border-[#E7E7E4] text-xs font-mono font-bold text-[#111111]">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAFAF8] border border-[#E7E7E4] text-xs font-mono font-bold text-[#101010]">
             <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
             <span>03 / CREATIVE NETWORK</span>
           </div>
 
-          <h2 className="text-4xl sm:text-6xl font-extrabold text-[#111111] tracking-tight font-display">
-            Direct brand <span className="font-serif italic font-normal text-[#6B6B6B]">× creator ties.</span>
+          <h2 className="section-headline text-center">
+            Direct brand <span className="font-serif italic font-normal text-[#626262]">× creator ties.</span>
           </h2>
-          <p className="text-base text-[#6B6B6B] font-sans font-normal">
+          <p className="editorial-body mx-auto text-center">
             How ambitious brands connect with top-tier creators under 100% pre-funded milestone security.
           </p>
         </div>
@@ -71,29 +71,29 @@ export function BrandCreatorNetwork() {
           {deals.map((deal) => (
             <div
               key={deal.id}
-              className="p-6 rounded-2xl bg-[#FAFAF8] border border-[#E7E7E4] shadow-editorial hover:border-[#111111] transition-all duration-300 space-y-6 flex flex-col justify-between"
+              className="p-6 rounded-2xl bg-[#FAFAF8] border border-[#E7E7E4] shadow-editorial hover:border-[#101010] transition-all duration-300 space-y-6 flex flex-col justify-between"
             >
               {/* Top: Brand Header */}
               <div className="space-y-3">
                 <div className="flex items-center justify-between pb-3 border-b border-[#E7E7E4]">
                   <div className="flex items-center gap-2">
-                    <Building2 className="w-4 h-4 text-[#111111]" />
-                    <span className="font-display text-xs font-extrabold tracking-wider text-[#111111]">
+                    <Building2 className="w-4 h-4 text-[#101010]" />
+                    <span className="font-display text-xs font-extrabold tracking-wider text-[#101010]">
                       {deal.brand}
                     </span>
                   </div>
-                  <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded-md bg-[#111111] text-[#B7FF3C]">
+                  <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded-md bg-[#101010] text-[#B7FF3C]">
                     BRAND
                   </span>
                 </div>
-                <p className="text-[11px] text-[#6B6B6B] font-sans">{deal.brandNiche}</p>
+                <p className="text-[11px] text-[#626262] font-sans">{deal.brandNiche}</p>
               </div>
 
               {/* Middle: Connecting Arrow & Creator Box */}
               <div className="space-y-3">
                 <div className="flex items-center justify-center">
                   <div className="w-full h-px bg-gradient-to-r from-transparent via-[#E7E7E4] to-transparent relative">
-                    <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#FFFFFF] border border-[#111111] flex items-center justify-center text-[8px] font-mono font-bold text-[#111111]">
+                    <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#FFFFFF] border border-[#101010] flex items-center justify-center text-[8px] font-mono font-bold text-[#101010]">
                       ↓
                     </span>
                   </div>
@@ -107,11 +107,11 @@ export function BrandCreatorNetwork() {
                   />
                   <div className="overflow-hidden font-sans text-xs">
                     <div className="flex items-center gap-1">
-                      <span className="font-display font-bold text-[#111111] truncate">{deal.creator.name}</span>
-                      <CheckCircle2 className="w-3 h-3 text-[#111111] shrink-0" />
+                      <span className="font-display font-semibold text-[#101010] truncate">{deal.creator.name}</span>
+                      <CheckCircle2 className="w-3 h-3 text-[#101010] shrink-0" />
                     </div>
-                    <span className="text-[10px] text-[#6B6B6B] block truncate font-mono">
-                      {deal.creator.followersFormatted} • {deal.creator.niche}
+                    <span className="text-[10px] text-[#626262] block truncate font-mono">
+                      <span className="numeric-tabular">{deal.creator.followersFormatted}</span> • {deal.creator.niche}
                     </span>
                   </div>
                 </div>
@@ -120,16 +120,16 @@ export function BrandCreatorNetwork() {
               {/* Bottom: Milestone Deal Terms */}
               <div className="pt-3 border-t border-[#E7E7E4] space-y-2 font-mono text-xs">
                 <div className="flex items-center justify-between">
-                  <span className="text-[#6B6B6B] text-[10px]">DELIVERABLE:</span>
-                  <span className="font-bold text-[#111111] text-[11px] truncate max-w-[170px] font-sans">{deal.deliverable}</span>
+                  <span className="text-[#626262] text-[10px] uppercase tracking-wider">DELIVERABLE:</span>
+                  <span className="font-bold text-[#101010] text-[11px] truncate max-w-[170px] font-sans">{deal.deliverable}</span>
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <span className="text-[#6B6B6B] text-[10px]">ESCROW BUDGET:</span>
-                  <span className="font-extrabold text-[#111111] text-sm font-mono">{deal.budget}</span>
+                  <span className="text-[#626262] text-[10px] uppercase tracking-wider">ESCROW BUDGET:</span>
+                  <span className="font-extrabold text-[#101010] text-sm font-mono numeric-tabular">{deal.budget}</span>
                 </div>
 
-                <div className="flex items-center gap-1.5 text-[10px] text-[#111111] font-bold pt-1 font-sans">
+                <div className="flex items-center gap-1.5 text-[10px] text-[#101010] font-bold pt-1 font-sans">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
                   <span>{deal.status}</span>
                 </div>
@@ -142,7 +142,7 @@ export function BrandCreatorNetwork() {
         <div className="text-center pt-4">
           <Link
             href="/for-brands"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-[9px] bg-[#111111] hover:bg-[#262626] text-[#FAFAF8] text-xs font-semibold shadow-xs transition-all font-sans group"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-[9px] bg-[#101010] hover:bg-[#262626] text-[#FAFAF8] text-xs font-semibold shadow-xs transition-all font-sans group"
           >
             <span>Launch a Brand Collaboration</span>
             <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C] group-hover:scale-125 transition-transform" />

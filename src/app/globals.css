@@ -8,16 +8,31 @@
 @layer base {
   :root {
     /* ══════════════════════════════════════════════════════════════════════════
-       COLLABLY — NEUE MONTREAL × INSTRUMENT SERIF × GEIST DESIGN SYSTEM
+       COLLABLY — INTENTIONAL TYPOGRAPHY & DESIGN SYSTEM TOKENS
        ══════════════════════════════════════════════════════════════════════════ */
+    
+    /* Centralized Typography Tokens */
+    --font-display: 'Neue Montreal', 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-editorial: 'Instrument Serif', Georgia, serif;
+    --font-ui: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+    /* Typographic & Palette Colors */
+    --color-text-primary: #101010;
+    --color-text-secondary: #626262;
+    --color-text-muted: #8A8A8A;
+    --color-ultramarine: #3047FF;
+    --color-infrared: #FF3B30;
+
+    /* Core Canvas & Surfaces */
     --background: #FAFAF8;
     --background-alt: #F4F4F0;
-    --foreground: #111111;
-    --foreground-muted: #6B6B6B;
+    --foreground: #101010;
+    --foreground-muted: #626262;
     
     /* Surfaces */
     --card: #FFFFFF;
-    --card-foreground: #111111;
+    --card-foreground: #101010;
     --surface-secondary: #F4F4F0;
     --surface-chrome: #EFEFEA;
     
@@ -25,22 +40,22 @@
     --border: #E7E7E4;
     --border-light: #F0F0ED;
     --input: #E7E7E4;
-    --ring: #111111;
+    --ring: #101010;
     
     /* Accent & Micro Accent */
-    --accent: #111111;
+    --accent: #101010;
     --accent-foreground: #FAFAF8;
     --micro-accent: #B7FF3C;
-    --micro-accent-text: #111111;
+    --micro-accent-text: #101010;
     
     /* Semantic Compatibility */
-    --primary: #111111;
+    --primary: #101010;
     --primary-foreground: #FFFFFF;
     --secondary: #F4F4F0;
-    --secondary-foreground: #111111;
+    --secondary-foreground: #101010;
     --muted: #F4F4F0;
-    --muted-foreground: #6B6B6B;
-    --destructive: #111111;
+    --muted-foreground: #626262;
+    --destructive: #FF3B30;
     --destructive-foreground: #FFFFFF;
     
     --radius: 12px;
@@ -53,41 +68,101 @@
   }
   html, body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Geist', var(--font-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: var(--font-ui), 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1, "cv02" 1, "cv03" 1, "cv04" 1, "cv11" 1;
+    color: var(--color-text-primary);
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Neue Montreal', 'Satoshi', var(--font-display), -apple-system, BlinkMacSystemFont, sans-serif;
-    letter-spacing: -0.03em;
+    font-family: var(--font-display), 'Neue Montreal', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.04em;
     font-weight: 700;
+    color: var(--color-text-primary);
   }
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
-   CHROME GRADIENT & MICRO ACCENT UTILITIES
+   CENTRALIZED TYPOGRAPHY UTILITIES
    ══════════════════════════════════════════════════════════════════════════ */
 
-.chrome-gradient {
-  background: linear-gradient(135deg, #FFFFFF 0%, #D9D9D6 25%, #FFFFFF 50%, #BFC1C4 75%, #FFFFFF 100%);
+/* Hero Display Clamp Headline: 64px - 132px with tight line-height (0.88-0.95) & negative tracking */
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(3.75rem, 8vw, 8.25rem);
+  line-height: 0.90;
+  letter-spacing: -0.055em;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
 }
 
-.chrome-border {
-  border-image: linear-gradient(to bottom right, #FFFFFF, #D9D9D6, #FFFFFF, #BFC1C4, #FFFFFF) 1;
+/* Section Display Headline: 56px - 88px */
+.section-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 5.5vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  color: var(--color-text-primary);
 }
 
-.chrome-surface {
-  background: linear-gradient(180deg, #FFFFFF 0%, #FAFAF8 100%);
-  border: 1px solid #E7E7E4;
-  border-radius: 14px;
-  box-shadow: 0 20px 60px rgba(17, 17, 17, 0.05);
+/* Editorial Accent Quote / Word */
+.editorial-accent {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
+/* Editorial Body Copy */
+.editorial-body {
+  font-family: var(--font-ui);
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  max-width: 620px;
+}
+
+/* Micro Editorial Metadata Label: 10-12px / 600 / uppercase */
+.micro-label {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+}
+
+/* Tabular Financial Numerics */
+.numeric-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Accents */
+.text-ultramarine {
+  color: var(--color-ultramarine);
+}
+
+.text-infrared {
+  color: var(--color-infrared);
+}
+
+.bg-ultramarine {
+  background-color: var(--color-ultramarine);
+}
+
+.bg-infrared {
+  background-color: var(--color-infrared);
+}
+
+/* Buttons */
 .btn-carbon-primary {
-  font-family: 'Geist', sans-serif;
-  background: #111111;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 600;
+  background: #101010;
   color: #FAFAF8;
   border-radius: 9px;
-  font-weight: 600;
+  letter-spacing: -0.01em;
   transition: all 0.15s ease-in-out;
 }
 .btn-carbon-primary:hover {
@@ -98,12 +173,14 @@
 }
 
 .btn-carbon-secondary {
-  font-family: 'Geist', sans-serif;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 600;
   background: #FFFFFF;
-  color: #111111;
+  color: #101010;
   border: 1px solid #E7E7E4;
   border-radius: 9px;
-  font-weight: 600;
+  letter-spacing: -0.01em;
   transition: all 0.15s ease-in-out;
 }
 .btn-carbon-secondary:hover {
@@ -111,18 +188,16 @@
   border-color: #D6D6D2;
 }
 
-.badge-micro-accent {
-  font-family: 'JetBrains Mono', monospace;
-  background: #B7FF3C;
-  color: #111111;
-  border: 1px solid #9EE61C;
-  font-weight: 700;
+/* Chrome Surfaces */
+.chrome-gradient {
+  background: linear-gradient(135deg, #FFFFFF 0%, #D9D9D6 25%, #FFFFFF 50%, #BFC1C4 75%, #FFFFFF 100%);
 }
 
-.badge-carbon {
-  font-family: 'JetBrains Mono', monospace;
-  background: #111111;
-  color: #FAFAF8;
+.chrome-surface {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAFAF8 100%);
+  border: 1px solid #E7E7E4;
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(16, 16, 16, 0.05);
 }
 
 /* Smooth custom scrollbars */

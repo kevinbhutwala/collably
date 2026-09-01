@@ -61,16 +61,16 @@ export default function PricingPage() {
   ];
 
   return (
-    <div className="bg-[#FAFAF8] text-[#111111] min-h-screen">
+    <div className="bg-[#FAFAF8] text-[#101010] min-h-screen">
       <div className="pt-24 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-        <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-[#111111] text-xs font-semibold font-mono shadow-xs">
+        <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-[#101010] text-[11px] font-semibold font-mono shadow-xs uppercase tracking-wider">
           <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
           <span>Transparent &amp; Escrow Secured</span>
         </div>
-        <h1 className="text-4xl sm:text-6xl font-extrabold text-[#111111] tracking-tight font-display">
-          Simple, Transparent Pricing
+        <h1 className="section-headline text-center">
+          Simple, <span className="font-serif italic font-normal text-[#626262]">transparent pricing.</span>
         </h1>
-        <p className="text-base text-[#6B6B6B] max-w-2xl mx-auto font-sans leading-relaxed">
+        <p className="editorial-body mx-auto text-center">
           No hidden subscription traps. Pay transparent platform fees only on successful milestones or partner with our dedicated agency team.
         </p>
       </div>
@@ -82,13 +82,13 @@ export default function PricingPage() {
               key={i}
               className={`p-8 rounded-2xl border transition-all flex flex-col justify-between space-y-8 ${
                 p.highlight
-                  ? "bg-[#FFFFFF] text-[#111111] shadow-editorial-lg border-[#111111] relative"
-                  : "bg-[#FFFFFF] text-[#111111] border-[#E7E7E4] shadow-xs hover:border-[#111111]"
+                  ? "bg-[#FFFFFF] text-[#101010] shadow-editorial-lg border-[#101010] relative"
+                  : "bg-[#FFFFFF] text-[#101010] border-[#E7E7E4] shadow-xs hover:border-[#101010]"
               }`}
             >
               {p.highlight && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="px-3 py-1 rounded-full bg-[#B7FF3C] text-[#111111] text-xs font-mono font-bold border border-[#9EE61C] shadow-xs">
+                  <span className="px-3 py-1 rounded-full bg-[#B7FF3C] text-[#101010] text-xs font-mono font-bold border border-[#9EE61C] shadow-xs uppercase tracking-wider">
                     Most Popular for Growth Teams
                   </span>
                 </div>
@@ -96,24 +96,24 @@ export default function PricingPage() {
 
               <div className="space-y-4">
                 <div>
-                  <h3 className="text-xl font-bold text-[#111111] font-display">{p.name}</h3>
-                  <p className="text-xs mt-1 leading-relaxed text-[#6B6B6B] font-sans">
+                  <h3 className="text-xl font-bold text-[#101010] font-display">{p.name}</h3>
+                  <p className="text-xs mt-1 leading-relaxed text-[#626262] font-sans">
                     {p.description}
                   </p>
                 </div>
 
                 <div className="pt-2 font-mono">
-                  <span className="text-4xl sm:text-5xl font-extrabold text-[#111111]">
+                  <span className="text-4xl sm:text-5xl font-extrabold text-[#101010] numeric-tabular">
                     {p.price}
                   </span>
-                  <span className="text-xs block mt-1 text-[#6B6B6B] font-sans">{p.subtext}</span>
+                  <span className="text-xs block mt-1 text-[#626262] font-sans">{p.subtext}</span>
                 </div>
 
                 <ul className="space-y-3 pt-4 border-t border-[#E7E7E4] text-xs font-sans">
                   {p.features.map((f, j) => (
                     <li key={j} className="flex items-start gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-[#111111] shrink-0 mt-0.5" />
-                      <span className="text-[#111111] font-medium">{f}</span>
+                      <CheckCircle2 className="w-4 h-4 text-[#101010] shrink-0 mt-0.5" />
+                      <span className="text-[#101010] font-medium">{f}</span>
                     </li>
                   ))}
                 </ul>
@@ -123,7 +123,7 @@ export default function PricingPage() {
                 <Button
                   variant="primary"
                   size="lg"
-                  className="w-full shadow-xs rounded-[9px] font-sans font-bold"
+                  className="w-full shadow-xs rounded-[9px] font-sans font-semibold tracking-tight"
                   rightIcon={<ArrowUpRight className="w-4 h-4" />}
                 >
                   {p.cta}

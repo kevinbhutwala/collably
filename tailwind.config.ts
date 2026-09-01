@@ -22,12 +22,18 @@ const config: Config = {
         },
         /* User Exact Theme Colors */
         canvas: "#FAFAF8",
-        carbon: "#111111",
-        "stone-text": "#6B6B6B",
+        carbon: "#101010",
+        "ink-primary": "#101010",
+        "ink-secondary": "#626262",
+        "ink-muted": "#8A8A8A",
+        "stone-text": "#626262",
         "stone-border": "#E7E7E4",
         "micro-accent": "#B7FF3C",
         "micro-accent-dark": "#9EE61C",
         "micro-accent-soft": "#F4FFE0",
+        /* Editorial Accents */
+        ultramarine: "#3047FF",
+        infrared: "#FF3B30",
       },
       backgroundImage: {
         "chrome-linear":
@@ -36,9 +42,11 @@ const config: Config = {
           "linear-gradient(180deg, #FFFFFF 0%, #F4F4F0 100%)",
       },
       fontFamily: {
-        display: ["'Neue Montreal'", "'Satoshi'", "var(--font-display)", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+        display: ["'Neue Montreal'", "'Satoshi'", "var(--font-display)", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+        editorial: ["'Instrument Serif'", "Georgia", "serif"],
         serif: ["'Instrument Serif'", "Georgia", "serif"],
-        sans: ["'Geist'", "var(--font-sans)", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
+        ui: ["'Geist'", "var(--font-ui)", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
+        sans: ["'Geist'", "var(--font-ui)", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
         mono: ["'JetBrains Mono'", "var(--font-mono)", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
       },
       borderRadius: {
@@ -47,9 +55,11 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        editorial: "0 10px 30px rgba(17, 17, 17, 0.04)",
-        "editorial-lg": "0 20px 50px rgba(17, 17, 17, 0.07)",
+        editorial: "0 10px 30px rgba(16, 16, 16, 0.04)",
+        "editorial-lg": "0 20px 50px rgba(16, 16, 16, 0.07)",
         "micro-glow": "0 0 20px rgba(183, 255, 60, 0.35)",
+        "ultramarine-glow": "0 0 25px rgba(48, 71, 255, 0.25)",
+        "infrared-glow": "0 0 25px rgba(255, 59, 48, 0.25)",
       },
     },
   },
