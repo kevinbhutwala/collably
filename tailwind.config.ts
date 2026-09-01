@@ -20,7 +20,7 @@ const config: Config = {
           DEFAULT: "var(--card)",
           foreground: "var(--card-foreground)",
         },
-        /* User Specific Theme Colors */
+        /* User Exact Theme Colors */
         canvas: "#FAFAF8",
         carbon: "#111111",
         "stone-text": "#6B6B6B",
@@ -36,10 +36,9 @@ const config: Config = {
           "linear-gradient(180deg, #FFFFFF 0%, #F4F4F0 100%)",
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-outfit)", "system-ui", "sans-serif"],
-        mono: ["var(--font-jetbrains)", "monospace"],
-        serif: ["Playfair Display", "Instrument Serif", "Georgia", "serif"],
+        sans: ["var(--font-sans)", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
+        display: ["var(--font-sans)", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
+        mono: ["var(--font-mono)", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -47,9 +46,9 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        editorial: "0 20px 60px rgba(17, 17, 17, 0.05)",
-        "editorial-lg": "0 30px 80px rgba(17, 17, 17, 0.08)",
-        "micro-glow": "0 0 25px rgba(183, 255, 60, 0.40)",
+        editorial: "0 10px 30px rgba(17, 17, 17, 0.04)",
+        "editorial-lg": "0 20px 50px rgba(17, 17, 17, 0.07)",
+        "micro-glow": "0 0 20px rgba(183, 255, 60, 0.35)",
       },
     },
   },

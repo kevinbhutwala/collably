@@ -81,9 +81,9 @@ export function ChatWorkspace() {
 
   if (isLoading) {
     return (
-      <div className="py-24 text-center rounded-3xl bg-[#120c16] border border-white/10 p-8 text-white">
-        <div className="w-8 h-8 rounded-full border-2 border-[hsl(327,100%,50%)] border-t-transparent animate-spin mx-auto mb-3" />
-        <p className="text-xs font-mono text-slate-400">Connecting to secure messaging channel...</p>
+      <div className="py-24 text-center rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] p-8 text-[#111111]">
+        <div className="w-8 h-8 rounded-full border-2 border-[#111111] border-t-transparent animate-spin mx-auto mb-3" />
+        <p className="text-xs font-mono text-[#6B6B6B]">Connecting to secure messaging channel...</p>
       </div>
     );
   }
@@ -91,7 +91,7 @@ export function ChatWorkspace() {
   if (conversations.length === 0) {
     return (
       <AnimatedEmptyState
-        icon={<Inbox className="w-8 h-8" />}
+        icon={<Inbox className="w-8 h-8 text-[#111111]" />}
         badgeText="Real-Time Messenger"
         title="Your Inbox is Ready"
         description="Direct messages, frame-by-frame deliverable reviews, and brand collaboration negotiations will appear here once you apply to briefs or hire creators."
@@ -104,15 +104,15 @@ export function ChatWorkspace() {
   }
 
   return (
-    <div className="rounded-3xl bg-[#120c16] border border-white/10 shadow-card overflow-hidden h-[750px] grid grid-cols-1 lg:grid-cols-12 text-white">
+    <div className="rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs overflow-hidden h-[720px] grid grid-cols-1 lg:grid-cols-12 text-[#111111]">
       {/* Left Conversations Sidebar */}
-      <div className="lg:col-span-4 border-r border-white/10 bg-[#0c080e] flex flex-col h-full">
-        <div className="p-4 border-b border-white/10">
-          <h3 className="font-bold text-sm text-white font-display">Campaign Conversations</h3>
-          <p className="text-[11px] text-slate-400 font-mono">Real-time creator &amp; brand direct messaging</p>
+      <div className="lg:col-span-4 border-r border-[#E7E7E4] bg-[#FAFAF8] flex flex-col h-full">
+        <div className="p-4 border-b border-[#E7E7E4]">
+          <h3 className="font-bold text-sm text-[#111111]">Campaign Conversations</h3>
+          <p className="text-[11px] text-[#6B6B6B] font-mono">Real-time creator &amp; brand direct messaging</p>
         </div>
 
-        <div className="divide-y divide-white/5 overflow-y-auto flex-1">
+        <div className="divide-y divide-[#E7E7E4] overflow-y-auto flex-1">
           {conversations.map((conv) => {
             const isSelected = conv.id === activeConvId;
             return (
@@ -126,10 +126,10 @@ export function ChatWorkspace() {
                   }
                 }}
                 className={`w-full p-4 text-left flex items-start gap-3 transition-colors ${
-                  isSelected ? "bg-white/[0.08] border-l-4 border-[hsl(327,100%,50%)]" : "hover:bg-white/[0.04]"
+                  isSelected ? "bg-[#FFFFFF] border-l-4 border-[#111111] shadow-xs" : "hover:bg-[#FFFFFF]"
                 }`}
               >
-                <div className="relative w-10 h-10 rounded-xl overflow-hidden bg-white/10 shrink-0 border border-white/10">
+                <div className="relative w-10 h-10 rounded-xl overflow-hidden bg-[#FAFAF8] shrink-0 border border-[#E7E7E4]">
                   <Image
                     src={
                       role === "creator"
@@ -144,12 +144,12 @@ export function ChatWorkspace() {
 
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between mb-1">
-                    <h4 className="text-xs font-bold text-white truncate font-display">
+                    <h4 className="text-xs font-bold text-[#111111] truncate">
                       {conv.campaignTitle}
                     </h4>
-                    <span className="text-[10px] text-slate-400 font-mono">10:42 AM</span>
+                    <span className="text-[10px] text-[#6B6B6B] font-mono">10:42 AM</span>
                   </div>
-                  <p className="text-xs text-slate-300 truncate font-sans">
+                  <p className="text-xs text-[#6B6B6B] truncate font-medium">
                     {conv.lastMessage?.content || "No messages yet"}
                   </p>
                 </div>
@@ -160,32 +160,33 @@ export function ChatWorkspace() {
       </div>
 
       {/* Right Chat Area */}
-      <div className="lg:col-span-8 flex flex-col h-full bg-[#120c16]">
+      <div className="lg:col-span-8 flex flex-col h-full bg-[#FFFFFF]">
         {/* Chat Header */}
-        <div className="p-4 border-b border-white/10 flex items-center justify-between bg-[#120c16]">
+        <div className="p-4 border-b border-[#E7E7E4] flex items-center justify-between bg-[#FAFAF8]">
           <div className="flex items-center gap-3">
             <div>
-              <h3 className="font-bold text-sm text-white font-display">
+              <h3 className="font-bold text-sm text-[#111111]">
                 {activeConversation?.campaignTitle || "Campaign Channel"}
               </h3>
-              <p className="text-[11px] text-slate-400 font-mono">
+              <p className="text-[11px] text-[#6B6B6B] font-mono">
                 Escrow Protected • 100% Encrypted
               </p>
             </div>
           </div>
 
-          <Badge variant="success" size="sm" dot>
+          <span className="px-2 py-0.5 rounded-full bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] text-[10px] font-mono font-bold flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
             LIVE SYNC
-          </Badge>
+          </span>
         </div>
 
         {/* Message History */}
-        <div className="flex-1 p-4 overflow-y-auto space-y-4 bg-[#0a070a]/60">
+        <div className="flex-1 p-4 overflow-y-auto space-y-4 bg-[#FAFAF8]">
           {currentMessages.length === 0 ? (
             <div className="h-full flex items-center justify-center text-center p-8">
               <div className="space-y-2">
-                <MessageSquare className="w-8 h-8 text-slate-500 mx-auto" />
-                <p className="text-xs text-slate-400 font-sans">
+                <MessageSquare className="w-8 h-8 text-[#6B6B6B] mx-auto" />
+                <p className="text-xs text-[#6B6B6B] font-medium">
                   Start the conversation by typing your message below.
                 </p>
               </div>
@@ -199,7 +200,7 @@ export function ChatWorkspace() {
                   className={`flex gap-3 ${isMe ? "justify-end" : "justify-start"}`}
                 >
                   {!isMe && (
-                    <div className="relative w-8 h-8 rounded-lg overflow-hidden shrink-0 border border-white/10">
+                    <div className="relative w-8 h-8 rounded-lg overflow-hidden shrink-0 border border-[#E7E7E4]">
                       <Image
                         src={
                           msg.senderAvatar ||
@@ -215,22 +216,22 @@ export function ChatWorkspace() {
                   <div
                     className={`max-w-[75%] rounded-2xl p-3.5 space-y-1 ${
                       isMe
-                        ? "bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white rounded-br-none shadow-md shadow-pink-500/20"
-                        : "bg-white/[0.06] border border-white/10 text-white rounded-bl-none shadow-xs"
+                        ? "bg-[#111111] text-[#FAFAF8] rounded-br-none shadow-xs"
+                        : "bg-[#FFFFFF] border border-[#E7E7E4] text-[#111111] rounded-bl-none shadow-xs"
                     }`}
                   >
                     <div className="flex items-center justify-between gap-4 text-[10px] font-mono">
-                      <span className={isMe ? "text-pink-100 font-bold" : "text-[hsl(327,100%,55%)] font-bold"}>
+                      <span className={isMe ? "text-[#B7FF3C] font-bold" : "text-[#111111] font-bold"}>
                         {msg.senderName}
                       </span>
-                      <span className={isMe ? "text-white/70" : "text-slate-400"}>
+                      <span className={isMe ? "text-white/70" : "text-[#6B6B6B]"}>
                         {new Date(msg.createdAt).toLocaleTimeString([], {
                           hour: "2-digit",
                           minute: "2-digit",
                         })}
                       </span>
                     </div>
-                    <p className="text-xs font-sans leading-relaxed text-slate-100">{msg.content}</p>
+                    <p className="text-xs leading-relaxed font-medium">{msg.content}</p>
                   </div>
                 </div>
               );
@@ -239,15 +240,15 @@ export function ChatWorkspace() {
         </div>
 
         {/* Input Bar */}
-        <form onSubmit={handleSendMessage} className="p-3.5 border-t border-white/10 flex items-center gap-2 bg-[#120c16]">
+        <form onSubmit={handleSendMessage} className="p-3.5 border-t border-[#E7E7E4] flex items-center gap-2 bg-[#FFFFFF]">
           <input
             type="text"
             placeholder="Type your message or revision note..."
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
-            className="flex-1 bg-white/[0.05] border border-white/10 rounded-full px-4 py-2.5 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-[hsl(327,100%,50%)]/50 transition-all font-sans"
+            className="flex-1 bg-[#FAFAF8] border border-[#E7E7E4] rounded-xl px-4 py-2.5 text-xs text-[#111111] placeholder:text-[#6B6B6B] focus:outline-none focus:border-[#111111] transition-all font-sans"
           />
-          <Button variant="primary" size="sm" type="submit" rightIcon={<Send className="w-3.5 h-3.5" />} className="rounded-full font-display">
+          <Button variant="primary" size="sm" type="submit" rightIcon={<Send className="w-3.5 h-3.5 text-[#B7FF3C]" />} className="rounded-[9px]">
             Send
           </Button>
         </form>

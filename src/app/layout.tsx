@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Outfit, JetBrains_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ToastContainer } from "@/components/ui/ToastContainer";
 import { CommandPalette } from "@/components/navigation/CommandPalette";
@@ -11,22 +11,15 @@ const plusJakarta = Plus_Jakarta_Sans({
   weight: ["400", "500", "600", "700", "800"],
 });
 
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-  weight: ["500", "600", "700", "800", "900"],
-});
-
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
   display: "swap",
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Collably | The Premier Creator × Brand Collaboration Workspace",
+  title: "Collably | Creator Commerce & Milestone Collaboration Workspace",
   description:
     "Where world-class creators and high-growth brands collaborate. Milestone payment protection, 4K timecoded video review, and instant automated creator payouts.",
   keywords: [
@@ -57,10 +50,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${plusJakarta.variable} ${outfit.variable} ${jetbrainsMono.variable}`}
-      style={{ colorScheme: "dark" }}
+      className={`${plusJakarta.variable} ${jetbrainsMono.variable}`}
+      style={{ colorScheme: "light" }}
     >
-      <body className="min-h-screen bg-[#0a070a] text-white antialiased font-sans selection:bg-pink-500/25 selection:text-pink-300">
+      <body className="min-h-screen bg-[#FAFAF8] text-[#111111] antialiased font-sans selection:bg-[#B7FF3C] selection:text-[#111111]">
         {children}
         <CommandPalette />
         <ToastContainer />

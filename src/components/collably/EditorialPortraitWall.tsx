@@ -14,15 +14,15 @@ export function EditorialPortraitWall() {
           <div className="space-y-3 max-w-xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-xs font-mono font-bold text-[#111111]">
               <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
-              <span>02 / EDITORIAL PORTRAIT WALL</span>
+              <span>02 / CREATOR ROSTER</span>
             </div>
-            <h2 className="text-4xl sm:text-6xl font-extrabold text-[#111111] tracking-tight font-display">
+            <h2 className="text-4xl sm:text-6xl font-extrabold text-[#111111] tracking-tight">
               Vetted talent. <br />
-              <span className="font-serif italic font-normal text-[#6B6B6B]">Curated for culture.</span>
+              <span className="font-bold text-[#6B6B6B]">Curated for culture.</span>
             </h2>
           </div>
 
-          <p className="text-xs sm:text-sm text-[#6B6B6B] font-sans max-w-sm">
+          <p className="text-xs sm:text-sm text-[#6B6B6B] max-w-sm font-medium">
             Audited creator media kits with verified audience geography, real engagement rates, and standardized commercial rate cards.
           </p>
         </div>
@@ -69,7 +69,7 @@ export function EditorialPortraitWall() {
                 <div className="p-5 space-y-3 bg-[#FFFFFF]">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h4 className="text-base font-bold text-[#111111] font-sans flex items-center gap-1">
+                      <h4 className="text-base font-bold text-[#111111] flex items-center gap-1">
                         {portrait.name}
                         <CheckCircle2 className="w-3.5 h-3.5 text-[#111111]" />
                       </h4>
@@ -90,7 +90,7 @@ export function EditorialPortraitWall() {
 
                     <Link
                       href="/creators"
-                      className="text-[#111111] hover:text-black font-semibold flex items-center gap-1 transition-colors font-sans"
+                      className="text-[#111111] hover:text-black font-bold flex items-center gap-1 transition-colors"
                     >
                       <span>Media Kit</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -111,7 +111,7 @@ export function EditorialPortraitWall() {
 
           <Link
             href="/creators"
-            className="px-5 py-2.5 rounded-[9px] bg-[#111111] hover:bg-[#262626] text-[#FAFAF8] text-xs font-semibold shadow-xs transition-all flex items-center gap-2 font-sans group"
+            className="px-5 py-2.5 rounded-[9px] bg-[#111111] hover:bg-[#262626] text-[#FAFAF8] text-xs font-bold shadow-xs transition-all flex items-center gap-2 group"
           >
             <span>Explore Full Creator Roster</span>
             <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C] group-hover:scale-125 transition-transform" />

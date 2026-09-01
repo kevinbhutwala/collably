@@ -25,12 +25,12 @@ export function EditorialCTA() {
         </div>
 
         <div className="space-y-4">
-          <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-[#111111] tracking-tight leading-[1.04] font-display">
+          <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-[#111111] tracking-tight leading-[1.04]">
             Create great content. <br />
-            <span className="font-serif italic font-normal text-[#6B6B6B]">Never chase an invoice.</span>
+            <span className="font-bold text-[#6B6B6B]">Never chase an invoice.</span>
           </h2>
 
-          <p className="text-sm sm:text-base md:text-lg text-[#6B6B6B] font-normal leading-relaxed max-w-xl mx-auto font-sans">
+          <p className="text-sm sm:text-base md:text-lg text-[#6B6B6B] font-medium leading-relaxed max-w-xl mx-auto">
             Join vetted creators and ambitious brands moving collaboration milestones through one trusted workspace.
           </p>
         </div>
@@ -38,7 +38,7 @@ export function EditorialCTA() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-3">
           <Link
             href="/for-brands"
-            className="w-full sm:w-auto px-8 py-3.5 rounded-[9px] bg-[#111111] hover:bg-[#262626] active:bg-[#000000] text-[#FAFAF8] font-semibold text-sm shadow-xs transition-all flex items-center justify-center gap-2 font-sans group"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-[9px] bg-[#111111] hover:bg-[#262626] active:bg-[#000000] text-[#FAFAF8] font-bold text-sm shadow-xs transition-all flex items-center justify-center gap-2 group"
           >
             <span>Start a Campaign</span>
             <span className="w-2 h-2 rounded-full bg-[#B7FF3C] group-hover:scale-125 transition-transform" />
@@ -46,7 +46,7 @@ export function EditorialCTA() {
 
           <Link
             href="/creator/register"
-            className="w-full sm:w-auto px-7 py-3.5 rounded-[9px] bg-[#FFFFFF] hover:bg-[#F4F4F0] border border-[#E7E7E4] text-[#111111] font-semibold text-sm shadow-xs transition-all flex items-center justify-center gap-2 font-sans"
+            className="w-full sm:w-auto px-7 py-3.5 rounded-[9px] bg-[#FFFFFF] hover:bg-[#F4F4F0] border border-[#E7E7E4] text-[#111111] font-bold text-sm shadow-xs transition-all flex items-center justify-center gap-2"
           >
             <span>Join as a Creator</span>
             <ArrowRight className="w-4 h-4 text-[#111111]" />
@@ -57,15 +57,15 @@ export function EditorialCTA() {
         <div className="pt-8 sm:pt-10 flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-xs font-mono text-[#6B6B6B] border-t border-[#E7E7E4] max-w-2xl mx-auto">
           <div className="flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
-            <span className="text-[#111111] font-semibold">100% Milestone Protection</span>
+            <span className="text-[#111111] font-bold">100% Milestone Protection</span>
           </div>
           <div className="flex items-center gap-1.5">
             <Zap className="w-4 h-4 text-[#111111]" />
-            <span className="text-[#111111] font-semibold">&lt; 24h Creator Payouts</span>
+            <span className="text-[#111111] font-bold">&lt; 24h Creator Payouts</span>
           </div>
           <div className="flex items-center gap-1.5">
             <Lock className="w-4 h-4 text-[#111111]" />
-            <span className="text-[#111111] font-semibold">10% Transparent Fee</span>
+            <span className="text-[#111111] font-bold">10% Transparent Fee</span>
           </div>
         </div>
       </div>

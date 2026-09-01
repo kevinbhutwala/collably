@@ -33,31 +33,32 @@ export default function CollaborationsWorkspacePage() {
   }, [role, currentCreator?.id, currentBrand?.id]);
 
   return (
-    <div className="space-y-8 text-white">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+    <div className="space-y-8 text-[#111111]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E7E7E4]">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono font-bold uppercase text-[hsl(327,100%,55%)]">
+            <span className="text-xs font-mono font-bold uppercase text-[#111111] flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
               Workspace Portal
             </span>
-            <span className="text-white/20">•</span>
-            <Badge variant="glow" size="sm">
+            <span className="text-[#E7E7E4]">•</span>
+            <span className="px-2 py-0.5 rounded bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] font-mono text-[10px] font-bold">
               Milestone Escrow
-            </Badge>
+            </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight font-display">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#111111] tracking-tight">
             Active Collaborations &amp; Content Submissions
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-0.5 font-sans">
+          <p className="text-xs sm:text-sm text-[#6B6B6B] mt-0.5 font-sans font-medium">
             Submit video drafts, review feedback with revision timestamps, and approve milestone payouts.
           </p>
         </div>
       </div>
 
       {loading ? (
-        <div className="py-24 text-center rounded-3xl bg-[#120c16] border border-white/10 p-8 text-white">
-          <div className="w-8 h-8 rounded-full border-2 border-[hsl(327,100%,50%)] border-t-transparent animate-spin mx-auto mb-3" />
-          <p className="text-xs font-mono text-slate-400">Loading collaboration pipelines...</p>
+        <div className="py-24 text-center rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] p-8 text-[#111111]">
+          <div className="w-8 h-8 rounded-full border-2 border-[#111111] border-t-transparent animate-spin mx-auto mb-3" />
+          <p className="text-xs font-mono text-[#6B6B6B]">Loading collaboration pipelines...</p>
         </div>
       ) : collaborations.length === 0 ? (
         <AnimatedEmptyState
