@@ -1,117 +1,141 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
-import { BarChart3, TrendingUp, Users, Target, DollarSign } from "lucide-react";
-import { AnimatedCounter } from "@/components/collably/AnimatedCounter";
 import { ScrollRevealText } from "@/components/collably/ScrollRevealText";
+import { BarChart3, TrendingUp, Users, Target, ArrowUpRight, Sparkles } from "lucide-react";
+import { formatCurrency } from "@/core/utils/currency";
 
 export function PerformanceROI() {
-  const metrics = [
+  const sampleMetrics = [
     {
-      to: 2.4,
-      prefix: "",
-      suffix: "M+",
-      label: "Campaign Reach",
-      subtext: "Verified impressions across targeted consumer demographics.",
+      label: "Campaign Video Impressions",
+      value: "1.42M",
+      subtext: "Across 3 creator deliverables",
+      trend: "+28% vs benchmark",
       icon: Users,
-      color: "from-[hsl(327,100%,50%)] to-pink-400",
     },
     {
-      to: 8.7,
-      prefix: "",
-      suffix: "%",
-      label: "Average Engagement",
-      subtext: "3.2× higher than standard unvetted creator agency benchmarks.",
+      label: "Average Engagement Rate",
+      value: "6.8%",
+      subtext: "Audited organically",
+      trend: "2.1× industry median",
       icon: TrendingUp,
-      color: "from-pink-400 to-[hsl(300,100%,42%)]",
     },
     {
-      to: 14820,
-      prefix: "",
-      suffix: "",
-      label: "Tracked Conversions",
-      subtext: "Direct promo code redemptions and link click attribution.",
+      label: "Tracked Conversions / Signups",
+      value: "3,840",
+      subtext: "Via dedicated UTM & coupons",
+      trend: "$0.91 CAC",
       icon: Target,
-      color: "from-purple-400 to-indigo-400",
     },
     {
-      to: 4.8,
-      prefix: "",
-      suffix: "×",
-      label: "Verifiable ROI",
-      subtext: "Average revenue generated per marketing dollar allocated.",
-      icon: DollarSign,
-      color: "from-emerald-400 to-amber-300",
+      label: "Measured Campaign ROAS",
+      value: "4.8×",
+      subtext: "Attributed 30-day revenue",
+      trend: "Direct revenue ROI",
+      icon: BarChart3,
     },
   ];
 
+  const channelPerformance = [
+    { platform: "YouTube 60s Integration", creator: "Devon Thorne (@devoncodes)", views: "72,000", clicks: "4,120", conversions: "1,840", roas: "5.2×" },
+    { platform: "X Technical Thread", creator: "Elena Rostova (@elenatech)", views: "125,000", clicks: "2,890", conversions: "1,120", roas: "4.6×" },
+    { platform: "Instagram 4K Reel", creator: "Marcus Vance (@marcusvance)", views: "95,000", clicks: "1,650", conversions: "880", roas: "4.1×" },
+  ];
+
   return (
-    <section className="py-24 sm:py-28 bg-transparent border-b border-white/10 relative overflow-hidden select-none text-white">
+    <section className="py-24 sm:py-32 bg-transparent border-b border-white/10 relative overflow-hidden select-none text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
-        {/* Section Header */}
+        {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-xs font-mono font-bold text-[hsl(327,100%,55%)] shadow-xs">
-            <BarChart3 className="w-3.5 h-3.5 text-gold" />
-            <span>11 • Real-Time Performance Telemetry</span>
+            <BarChart3 className="w-3.5 h-3.5" />
+            <span>07 • Measure &amp; Attributions</span>
           </div>
 
           <ScrollRevealText
             as="h2"
-            gradientWords={["measurable", "performance", "verifiable", "roi"]}
+            gradientWords={["audited", "attribution", "telemetry", "conversion"]}
             className="text-3xl sm:text-5xl font-black text-white tracking-tight font-display leading-tight"
           >
-            Measurable performance. Verifiable ROI.
+            Real-time attribution &amp; conversion telemetry.
           </ScrollRevealText>
 
           <ScrollRevealText
             as="p"
-            gradientWords={["real-time", "analytics", "attribution", "telemetry"]}
+            gradientWords={["granularity", "tracking", "utm", "conversion", "roi"]}
             className="text-sm sm:text-lg text-slate-300 font-sans max-w-2xl mx-auto leading-relaxed"
           >
-            Real-time analytics and attribution telemetry track every dollar deployed across your creator roster.
+            Measure audience reach, link click-throughs, and customer acquisition costs with audited post-campaign performance data.
           </ScrollRevealText>
         </div>
 
-        {/* 4 Metric Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-          {metrics.map((m, i) => {
+        {/* 4 Stat Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 font-mono">
+          {sampleMetrics.map((m, idx) => {
             const Icon = m.icon;
             return (
-              <motion.div
-                key={m.label}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-                viewport={{ once: true }}
-                className="p-8 rounded-3xl bg-[#120c16] border border-white/10 hover:border-pink-500/40 transition-all duration-300 shadow-card hover:shadow-elevated flex flex-col justify-between space-y-5 group hover:-translate-y-1 text-white"
+              <div
+                key={idx}
+                className="p-6 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-3"
               >
                 <div className="flex items-center justify-between">
-                  <div className="w-10 h-10 rounded-2xl bg-white/[0.05] border border-white/10 shadow-xs flex items-center justify-center text-white group-hover:scale-105 transition-transform">
-                    <Icon className="w-5 h-5 text-[hsl(327,100%,55%)]" />
+                  <span className="text-[10px] text-slate-400 font-bold uppercase">{m.label}</span>
+                  <div className="p-2 rounded-xl bg-white/[0.05] border border-white/10 text-pink-400">
+                    <Icon className="w-4 h-4" />
                   </div>
-                  <span className="text-[10px] font-mono text-slate-400 font-bold">METRIC 0{i + 1}</span>
                 </div>
-
-                <div className="space-y-2">
-                  <div className={`text-4xl sm:text-5xl font-black font-mono tracking-tight bg-gradient-to-r ${m.color} bg-clip-text text-transparent`}>
-                    <AnimatedCounter
-                      to={m.to}
-                      prefix={m.prefix}
-                      suffix={m.suffix}
-                      duration={1.5}
-                    />
-                  </div>
-                  <h3 className="text-base font-bold text-white font-display">
-                    {m.label}
-                  </h3>
-                  <p className="text-xs text-slate-400 leading-relaxed font-sans">
-                    {m.subtext}
-                  </p>
+                <div className="text-3xl font-black text-white font-mono">{m.value}</div>
+                <div className="flex items-center justify-between text-[11px] pt-2 border-t border-white/10">
+                  <span className="text-slate-400 font-sans">{m.subtext}</span>
+                  <span className="text-emerald-400 font-bold">{m.trend}</span>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
+        </div>
+
+        {/* Channel Breakdown Table */}
+        <div className="max-w-5xl mx-auto p-6 sm:p-8 rounded-3xl bg-[#120c16] border border-white/10 shadow-elevated space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-white/10">
+            <div className="space-y-1">
+              <h4 className="text-base font-bold text-white font-display">Campaign Attribution Breakdown</h4>
+              <p className="text-xs text-slate-400 font-mono">Sample Campaign: Q3 AI Developer SDK ($3,500 Total Spend)</p>
+            </div>
+            <span className="px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 text-[10px] font-mono text-slate-300">
+              Sample Data
+            </span>
+          </div>
+
+          <div className="divide-y divide-white/10 font-mono text-xs">
+            {channelPerformance.map((c, idx) => (
+              <div key={idx} className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div className="space-y-0.5">
+                  <span className="font-bold text-white block">{c.platform}</span>
+                  <span className="text-[11px] text-slate-400 font-sans">{c.creator}</span>
+                </div>
+
+                <div className="grid grid-cols-4 gap-4 text-left sm:text-right shrink-0">
+                  <div>
+                    <span className="text-[9px] text-slate-400 block">VIEWS</span>
+                    <span className="text-white font-bold">{c.views}</span>
+                  </div>
+                  <div>
+                    <span className="text-[9px] text-slate-400 block">CLICKS</span>
+                    <span className="text-white font-bold">{c.clicks}</span>
+                  </div>
+                  <div>
+                    <span className="text-[9px] text-slate-400 block">CONVERSIONS</span>
+                    <span className="text-emerald-400 font-bold">{c.conversions}</span>
+                  </div>
+                  <div>
+                    <span className="text-[9px] text-slate-400 block">ROAS</span>
+                    <span className="text-pink-300 font-bold">{c.roas}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

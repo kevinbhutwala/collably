@@ -3,10 +3,13 @@ import { SmoothScroll } from "@/components/flowpilot/SmoothScroll";
 import { AmbientBackground } from "@/components/flowpilot/AmbientBackground";
 import { HeroSection } from "@/components/collably/HeroSection";
 import { BrandMarquee } from "@/components/collably/BrandMarquee";
-import { VideoReviewDemo } from "@/components/collably/VideoReviewDemo";
+import { SevenStepWorkflow } from "@/components/collably/SevenStepWorkflow";
 import { AIMatchingExperience } from "@/components/collably/AIMatchingExperience";
 import { CreatorShowcase } from "@/components/collably/CreatorShowcase";
+import { VideoReviewDemo } from "@/components/collably/VideoReviewDemo";
 import { EscrowTrustFlow } from "@/components/collably/EscrowTrustFlow";
+import { PerformanceROI } from "@/components/collably/PerformanceROI";
+import { InteractiveIndustriesStage } from "@/components/collably/InteractiveIndustriesStage";
 import { ChaosToOrder } from "@/components/collably/ChaosToOrder";
 import { BrandCreatorSplit } from "@/components/collably/BrandCreatorSplit";
 import { TrustGuarantee } from "@/components/collably/TrustGuarantee";
@@ -18,37 +21,46 @@ export default function CollablyLandingPage() {
     <SmoothScroll>
       <AmbientBackground />
       <div className="relative min-h-screen bg-transparent text-white font-sans selection:bg-pink-500/25 selection:text-pink-300 overflow-x-hidden">
-        {/* 01 — Editorial Hero with Interactive Live Deal & Payout Simulation */}
+        {/* 01 — Hero & Interactive 4-Tab Campaign Workspace Preview */}
         <HeroSection />
 
         {/* 02 — Platform Infrastructure & Direct API Telemetry */}
         <BrandMarquee />
 
-        {/* 03 — Core Product Feature: 4K Frame-Accurate Video Review & 1-Click Escrow Release */}
-        <VideoReviewDemo />
+        {/* 03 — Canonical 7-Stage Collaboration Operating System */}
+        <SevenStepWorkflow />
 
-        {/* 04 — Precision AI Creator Discovery with Natural Language Query */}
+        {/* 04 — Precision AI Creator Discovery with Natural Language Matching */}
         <AIMatchingExperience />
 
         {/* 05 — Sample Creator Media Kits & Live Rate Cards */}
         <CreatorShowcase />
 
-        {/* 06 — Financial Escrow Milestone Custody Architecture */}
+        {/* 06 — 4K Frame-Accurate Video Review Studio with Timecoded Annotations */}
+        <VideoReviewDemo />
+
+        {/* 07 — Financial Milestone-Protected Payment Architecture */}
         <EscrowTrustFlow />
 
-        {/* 07 — "No More Chaos" (Without Collably vs With Collably) */}
+        {/* 08 — Real-Time Conversion & Attribution Telemetry */}
+        <PerformanceROI />
+
+        {/* 09 — Interactive Industry Switcher & Category Playbooks */}
+        <InteractiveIndustriesStage />
+
+        {/* 10 — Traditional Workflow vs Collably Operating System */}
         <ChaosToOrder />
 
-        {/* 08 — Tailored Portals for Brands & Creators */}
+        {/* 11 — Dedicated Portals for Brands & Creators */}
         <BrandCreatorSplit />
 
-        {/* 09 — The Collably Trust Standard (100% Escrow, 0-Day Waiting, 10% Fee, <4h SLA) */}
+        {/* 12 — The Collably Trust Standards */}
         <TrustGuarantee />
 
-        {/* 10 — Operational, Legal & Tax Compliance FAQ */}
+        {/* 13 — Operational, Legal, Tax & Licensing FAQ */}
         <FAQSection />
 
-        {/* 11 — Grand Finale Conversion CTA */}
+        {/* 14 — Grand Finale Conversion CTA */}
         <CollablyCTA />
       </div>
     </SmoothScroll>

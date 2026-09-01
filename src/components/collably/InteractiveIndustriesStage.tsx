@@ -2,218 +2,198 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { INDUSTRY_PRESETS, IndustryPreset } from "@/data/industries";
+import { formatCurrency } from "@/core/utils/currency";
+import { ScrollRevealText } from "@/components/collably/ScrollRevealText";
 import {
   Layers,
+  ArrowRight,
+  TrendingUp,
+  Clock,
+  Users,
+  ShieldCheck,
+  Cpu,
+  Activity,
+  Sparkles,
+  Shirt,
+  Utensils,
+  Gamepad2,
 } from "lucide-react";
-import { ScrollRevealText } from "@/components/collably/ScrollRevealText";
+import Link from "next/link";
+
+const iconMap: Record<string, React.ReactNode> = {
+  Cpu: <Cpu className="w-4 h-4" />,
+  Activity: <Activity className="w-4 h-4" />,
+  Sparkles: <Sparkles className="w-4 h-4" />,
+  Shirt: <Shirt className="w-4 h-4" />,
+  Utensils: <Utensils className="w-4 h-4" />,
+  Gamepad2: <Gamepad2 className="w-4 h-4" />,
+};
 
 export function InteractiveIndustriesStage() {
-  const industries = [
-    {
-      id: "fitness",
-      name: "Fitness & Wellness",
-      badge: "Highest Engagement",
-      brief: "Launch 10 calisthenics & gym training Reels showcasing plant-based protein powder.",
-      budget: "$22,000",
-      avgER: "6.8%",
-      roi: "5.2×",
-      creators: [
-        { name: "Siddharth Nair", followers: "420K", er: "6.8%", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=160&auto=format&fit=crop&q=80" },
-        { name: "Pooja Hegde", followers: "285K", er: "7.2%", avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=160&auto=format&fit=crop&q=80" },
-      ],
-    },
-    {
-      id: "tech",
-      name: "Technology & SaaS",
-      badge: "B2B / Developer Focus",
-      brief: "Explain AI-powered developer tool workflow in 60-second YouTube integrations.",
-      budget: "$35,000",
-      avgER: "5.4%",
-      roi: "4.6×",
-      creators: [
-        { name: "Marcus Vance", followers: "890K", er: "5.4%", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=160&auto=format&fit=crop&q=80" },
-        { name: "Elena Rostova", followers: "485K", er: "6.4%", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=160&auto=format&fit=crop&q=80" },
-      ],
-    },
-    {
-      id: "beauty",
-      name: "Beauty & Cosmetics",
-      badge: "High Conversion",
-      brief: "4K close-up skincare routine and honest ingredient review for clean beauty line.",
-      budget: "$18,500",
-      avgER: "7.9%",
-      roi: "6.1×",
-      creators: [
-        { name: "Chloe Dubois", followers: "340K", er: "7.9%", avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=160&auto=format&fit=crop&q=80" },
-        { name: "Aria Chen", followers: "310K", er: "5.9%", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=160&auto=format&fit=crop&q=80" },
-      ],
-    },
-    {
-      id: "fashion",
-      name: "Fashion & Apparel",
-      badge: "D2C Streetwear",
-      brief: "Lookbook styling videos with dynamic swipe-up promo codes and haul reels.",
-      budget: "$26,000",
-      avgER: "6.1%",
-      roi: "4.4×",
-      creators: [
-        { name: "Devon Thorne", followers: "620K", er: "7.8%", avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=160&auto=format&fit=crop&q=80" },
-        { name: "Siddharth Nair", followers: "420K", er: "6.8%", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=160&auto=format&fit=crop&q=80" },
-      ],
-    },
-    {
-      id: "food",
-      name: "Food & Beverage",
-      badge: "Sensory / ASMR",
-      brief: "4K ASMR recipe creation featuring organic artisanal cold-pressed juices.",
-      budget: "$15,000",
-      avgER: "8.4%",
-      roi: "5.8×",
-      creators: [
-        { name: "Pooja Hegde", followers: "285K", er: "7.2%", avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=160&auto=format&fit=crop&q=80" },
-        { name: "Chloe Dubois", followers: "340K", er: "7.9%", avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=160&auto=format&fit=crop&q=80" },
-      ],
-    },
-    {
-      id: "travel",
-      name: "Travel & Hospitality",
-      badge: "Cinematic 4K Drone",
-      brief: "Luxury boutique resort showcase with drone sweeps and experiential storytelling.",
-      budget: "$40,000",
-      avgER: "7.1%",
-      roi: "4.9×",
-      creators: [
-        { name: "Devon Thorne", followers: "620K", er: "7.8%", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=160&auto=format&fit=crop&q=80" },
-        { name: "Elena Rostova", followers: "485K", er: "6.4%", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=160&auto=format&fit=crop&q=80" },
-      ],
-    },
-  ];
-
-  const [selectedInd, setSelectedInd] = useState(industries[0]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activePreset: IndustryPreset = INDUSTRY_PRESETS[activeIndex] || INDUSTRY_PRESETS[0];
 
   return (
-    <section className="py-24 sm:py-28 bg-transparent border-b border-white/10 relative overflow-hidden select-none text-white">
+    <section className="py-24 sm:py-32 bg-transparent border-b border-white/10 relative overflow-hidden select-none text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
-        {/* Section Header */}
+        {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-xs font-mono font-bold text-[hsl(327,100%,55%)] shadow-xs">
-            <Layers className="w-3.5 h-3.5 text-gold" />
-            <span>12 • Multi-Category Expertise</span>
+            <Layers className="w-3.5 h-3.5" />
+            <span>Category Benchmarks &amp; Briefs</span>
           </div>
 
           <ScrollRevealText
             as="h2"
-            gradientWords={["tailored", "verticals", "collably"]}
+            gradientWords={["tailored", "playbooks", "category"]}
             className="text-3xl sm:text-5xl font-black text-white tracking-tight font-display leading-tight"
           >
-            Built for high-performing industry verticals.
+            Tailored campaign briefs for your industry.
           </ScrollRevealText>
 
           <ScrollRevealText
             as="p"
-            gradientWords={["benchmarks", "rosters", "briefs"]}
+            gradientWords={["industry", "budgets", "creator", "cohorts", "roi"]}
             className="text-sm sm:text-lg text-slate-300 font-sans max-w-2xl mx-auto leading-relaxed"
           >
-            Switch industries to preview dynamic campaign briefs, verified talent rosters, and performance benchmarks.
+            Select your vertical to preview verified creator cohorts, recommended milestone budgets, and expected return on ad spend.
           </ScrollRevealText>
         </div>
 
-        {/* Industry Selector Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 max-w-4xl mx-auto">
-          {industries.map((ind) => (
-            <button
-              key={ind.id}
-              onClick={() => setSelectedInd(ind)}
-              className={`px-4 py-2 rounded-full text-xs font-mono font-bold transition-all ${
-                selectedInd.id === ind.id
-                  ? "bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white shadow-md shadow-pink-500/25 scale-105"
-                  : "bg-white/[0.04] border border-white/10 text-slate-300 hover:text-white hover:bg-white/[0.08] shadow-xs"
-              }`}
-            >
-              {ind.name}
-            </button>
-          ))}
+        {/* Industry Pill Switchers */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none justify-start lg:justify-center">
+          {INDUSTRY_PRESETS.map((preset, idx) => {
+            const isActive = activeIndex === idx;
+            return (
+              <button
+                key={preset.id}
+                onClick={() => setActiveIndex(idx)}
+                className={`px-4 py-2.5 rounded-full text-xs font-display font-bold transition-all duration-200 flex items-center gap-2 whitespace-nowrap ${
+                  isActive
+                    ? "bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white shadow-lg shadow-pink-500/25 scale-[1.02]"
+                    : "bg-[#120c16] text-slate-300 hover:text-white hover:bg-white/[0.06] border border-white/10"
+                }`}
+              >
+                {iconMap[preset.iconName] || <Sparkles className="w-3.5 h-3.5" />}
+                <span>{preset.name}</span>
+              </button>
+            );
+          })}
         </div>
 
-        {/* Dynamic Showcase Stage */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={selectedInd.id}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.3 }}
-            className="max-w-5xl mx-auto rounded-3xl bg-[#120c16] border border-white/10 shadow-card p-6 sm:p-10 space-y-8 text-white"
-          >
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
-              <div>
-                <span className="text-xs font-mono font-bold text-[hsl(327,100%,55%)] uppercase">
-                  {selectedInd.badge}
-                </span>
-                <h3 className="text-2xl sm:text-3xl font-black text-white font-display">
-                  {selectedInd.name} Campaign Matrix
-                </h3>
+        {/* Active Industry Showcase Card */}
+        <div className="max-w-5xl mx-auto">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activePreset.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25 }}
+              className="p-6 sm:p-10 rounded-3xl bg-[#120c16] border border-white/10 shadow-elevated space-y-8 text-white relative overflow-hidden"
+            >
+              {/* Header Info */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-mono font-bold uppercase text-[hsl(327,100%,55%)]">
+                      {activePreset.tag}
+                    </span>
+                    <span className="text-white/20">•</span>
+                    <span className="text-emerald-400 font-mono text-[10px] font-bold">Verified Category Playbook</span>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-black text-white font-display">
+                    {activePreset.briefTitle}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed max-w-3xl">
+                    {activePreset.briefDescription}
+                  </p>
+                </div>
+
+                <div className="text-left sm:text-right shrink-0 font-mono">
+                  <span className="text-[10px] text-slate-400 block font-bold">RECOMMENDED BUDGET</span>
+                  <span className="text-2xl sm:text-3xl font-black text-white font-mono">
+                    {formatCurrency(activePreset.recommendedBudget)}
+                  </span>
+                </div>
               </div>
-              <span className="px-3.5 py-1.5 rounded-full bg-white/[0.05] border border-white/10 font-mono text-xs font-bold text-emerald-400">
-                Recommended Budget: {selectedInd.budget}
-              </span>
-            </div>
 
-            {/* Campaign Brief Showcase */}
-            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1.5">
-              <span className="text-[10px] font-mono uppercase font-bold text-slate-400">SAMPLE CAMPAIGN BRIEF</span>
-              <p className="text-xs sm:text-sm text-slate-200 font-semibold leading-relaxed font-sans">
-                &ldquo;{selectedInd.brief}&rdquo;
-              </p>
-            </div>
+              {/* Benchmark Metrics Strip */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 font-mono text-xs">
+                <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1">
+                  <div className="flex items-center gap-1.5 text-slate-400 text-[10px]">
+                    <Users className="w-3.5 h-3.5 text-pink-400" />
+                    <span>EST. REACH</span>
+                  </div>
+                  <span className="text-base font-bold text-white">{activePreset.expectedReach}</span>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1">
+                  <div className="flex items-center gap-1.5 text-slate-400 text-[10px]">
+                    <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>AVG. ENGAGEMENT</span>
+                  </div>
+                  <span className="text-base font-bold text-emerald-400">{activePreset.expectedEngagement}</span>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1">
+                  <div className="flex items-center gap-1.5 text-slate-400 text-[10px]">
+                    <Clock className="w-3.5 h-3.5 text-amber-400" />
+                    <span>TURNAROUND</span>
+                  </div>
+                  <span className="text-base font-bold text-white">{activePreset.targetTimelineDays} Days</span>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1">
+                  <div className="flex items-center gap-1.5 text-slate-400 text-[10px]">
+                    <ShieldCheck className="w-3.5 h-3.5 text-sky-400" />
+                    <span>EXPECTED ROI</span>
+                  </div>
+                  <span className="text-base font-bold text-white">{activePreset.expectedROIRange}</span>
+                </div>
+              </div>
 
-            {/* Recommended Creator Lineup */}
-            <div className="space-y-3">
-              <span className="text-xs font-mono uppercase font-bold text-slate-400 block">
-                MATCHED TALENT EXAMPLES
-              </span>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {selectedInd.creators.map((c) => (
-                  <div
-                    key={c.name}
-                    className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 shadow-xs flex items-center justify-between"
-                  >
-                    <div className="flex items-center gap-3">
-                      <img
-                        src={c.avatar}
-                        alt={c.name}
-                        className="w-10 h-10 rounded-xl object-cover border border-white/10"
-                      />
-                      <div>
-                        <h4 className="text-xs font-bold text-white font-display">{c.name}</h4>
-                        <span className="text-[11px] text-slate-400 font-mono">{c.followers} followers</span>
+              {/* Creator Cohort Showcase */}
+              <div className="space-y-3">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 block">
+                  Matched Creator Cohort Examples:
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  {activePreset.creators.map((c) => (
+                    <div
+                      key={c.handle}
+                      className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-between gap-3"
+                    >
+                      <div className="flex items-center gap-2.5 overflow-hidden">
+                        <img src={c.avatar} alt={c.name} className="w-9 h-9 rounded-xl object-cover border border-white/10 shrink-0" />
+                        <div className="overflow-hidden">
+                          <h4 className="text-xs font-bold text-white font-display truncate">{c.name}</h4>
+                          <span className="text-[10px] text-slate-400 font-mono block truncate">{c.handle}</span>
+                        </div>
+                      </div>
+                      <div className="text-right font-mono text-xs shrink-0">
+                        <span className="text-emerald-400 font-bold block">{c.rate}</span>
+                        <span className="text-[9px] text-slate-400">{c.followers}</span>
                       </div>
                     </div>
-                    <span className="px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono font-bold text-xs">
-                      {c.er} ER
-                    </span>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* Metrics Footer */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-white/10 font-mono text-xs">
-              <div className="p-3 rounded-xl bg-white/[0.03] border border-white/10">
-                <span className="text-slate-400 block text-[10px]">AVG ENGAGEMENT</span>
-                <span className="font-bold text-white text-sm">{selectedInd.avgER}</span>
+              {/* Bottom Action */}
+              <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10 text-xs font-mono">
+                <span className="text-slate-400">
+                  Target Format: <strong className="text-white font-sans">{activePreset.targetDeliverable}</strong>
+                </span>
+                <Link
+                  href="/app/brand/campaigns/create"
+                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white font-bold font-display shadow-md shadow-pink-500/25 hover:brightness-110 transition-all"
+                >
+                  <span>Launch {activePreset.name} Brief</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
               </div>
-              <div className="p-3 rounded-xl bg-white/[0.03] border border-white/10">
-                <span className="text-slate-400 block text-[10px]">EXPECTED ROI</span>
-                <span className="font-bold text-emerald-400 text-sm">{selectedInd.roi}</span>
-              </div>
-              <div className="col-span-2 sm:col-span-1 p-3 rounded-xl bg-white/[0.03] border border-white/10">
-                <span className="text-slate-400 block text-[10px]">TURNAROUND SLA</span>
-                <span className="font-bold text-white text-sm">&lt; 7 Days</span>
-              </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
     </section>
   );
