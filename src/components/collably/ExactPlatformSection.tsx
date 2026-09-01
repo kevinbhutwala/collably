@@ -17,10 +17,13 @@ export function ExactPlatformSection() {
   ];
 
   return (
-    <section className="py-16 sm:py-24 bg-[#07070B] text-[#101010] select-none">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 sm:py-28 bg-texture-paper-white border-y border-black/10 text-[#0A0A0E] select-none relative overflow-hidden">
+      {/* Subtle background ambient gold flare on light paper */}
+      <div className="absolute top-0 right-1/4 w-[450px] h-[450px] bg-[#FFD21F]/15 rounded-full blur-[140px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Large Rounded Capsule Card with Light Surface */}
-        <div className="rounded-[2.5rem] bg-[#F4F4F6] border border-white/40 p-8 sm:p-12 lg:p-16 shadow-[0_30px_90px_rgba(0,0,0,0.5)] overflow-hidden relative">
+        <div className="rounded-[2.5rem] bg-[#FFFFFF] border border-black/10 p-8 sm:p-12 lg:p-16 shadow-[0_20px_60px_rgba(0,0,0,0.08)] overflow-hidden relative">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
             {/* ══════════════════════════════════════════════════════════════════════
                 LEFT: EDITORIAL STATEMENT & NAVIGATION

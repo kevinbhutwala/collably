@@ -118,9 +118,44 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
 }
 
+/* Background Textures & Scroll Atmospheres */
+.bg-texture-carbon {
+  background-color: #08080C;
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 210, 31, 0.14) 0%, rgba(20, 18, 10, 0.35) 45%, transparent 80%),
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.04) 1px, transparent 0),
+    linear-gradient(180deg, #0A0A0F 0%, #08080C 50%, #050508 100%);
+  background-size: 100% 100%, 24px 24px, 100% 100%;
+}
+
+.bg-texture-paper-white {
+  background-color: #F8F8FA;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(255, 210, 31, 0.12) 0%, rgba(240, 240, 245, 0.5) 40%, transparent 80%),
+    radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.045) 1px, transparent 0),
+    linear-gradient(180deg, #FFFFFF 0%, #F5F5F8 50%, #ECECED 100%);
+  background-size: 100% 100%, 20px 20px, 100% 100%;
+  color: #0A0A0E;
+}
+
+.bg-texture-sand {
+  background-color: #F3F3F5;
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.05) 1px, transparent 0),
+    linear-gradient(180deg, #FAFAFC 0%, #F0F0F4 100%);
+  background-size: 16px 16px, 100% 100%;
+  color: #0A0A0E;
+}
+
 /* Gradient Text */
 .text-gradient-gold {
   background: linear-gradient(135deg, #FFFFFF 15%, #FFE575 60%, #FFD21F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-dark-gold {
+  background: linear-gradient(135deg, #0A0A0E 20%, #3D3512 65%, #C29B00 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
