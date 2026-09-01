@@ -5,8 +5,6 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { creatorService } from "@/services/creator.service";
 import { CreatorProfile } from "@/core/types";
-import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { SocialIcon } from "@/components/ui/SocialIcons";
 import { formatNumber, formatCurrency } from "@/core/utils/formatters";
@@ -16,6 +14,7 @@ import {
   ArrowRight,
   MessageSquare,
   ExternalLink,
+  Sparkles,
 } from "lucide-react";
 
 export default function CreatorDetailPage() {
@@ -38,33 +37,33 @@ export default function CreatorDetailPage() {
 
   if (loading) {
     return (
-      <div className="py-32 text-center bg-[#FAFAF8] text-[#101010] min-h-screen">
-        <div className="w-8 h-8 rounded-full border-2 border-[#101010] border-t-transparent animate-spin mx-auto" />
+      <div className="py-32 text-center bg-[#FAFAFC] text-[#0A0A0E] min-h-screen">
+        <div className="w-8 h-8 rounded-full border-2 border-[#FFD21F] border-t-transparent animate-spin mx-auto" />
       </div>
     );
   }
 
   if (!creator) {
     return (
-      <div className="py-32 text-center space-y-4 bg-[#FAFAF8] text-[#101010] min-h-screen">
-        <h2 className="text-2xl font-bold text-[#101010] font-display">Creator profile not found</h2>
+      <div className="py-32 text-center space-y-4 bg-[#FAFAFC] text-[#0A0A0E] min-h-screen">
+        <h2 className="text-2xl font-bold font-display">Creator profile not found</h2>
         <Link href="/creators">
-          <Button variant="secondary" size="md" className="rounded-[9px]">
+          <button className="px-6 py-2.5 rounded-full bg-white border border-black/10 text-xs font-bold text-[#0A0A0E] hover:bg-[#F5F5F9]">
             Back to Directory
-          </Button>
+          </button>
         </Link>
       </div>
     );
   }
 
   return (
-    <div className="py-12 sm:py-16 bg-[#FAFAF8] text-[#101010] min-h-screen">
+    <div className="py-12 sm:py-16 bg-[#FAFAFC] text-[#0A0A0E] min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Profile Master Card */}
-        <div className="rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] p-8 sm:p-12 shadow-xs space-y-8">
+        <div className="rounded-3xl bg-white border border-black/8 p-8 sm:p-12 shadow-xs space-y-8">
           <div className="flex flex-col md:flex-row md:items-start justify-between gap-8">
             <div className="flex flex-col sm:flex-row items-start gap-6">
-              <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border border-[#E7E7E4] bg-[#FAFAF8] shrink-0 shadow-xs">
+              <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border border-black/8 bg-[#F5F5F9] shrink-0 shadow-xs">
                 <SafeImage
                   src={creator.avatarUrl}
                   alt={creator.fullName}
@@ -77,190 +76,151 @@ export default function CreatorDetailPage() {
 
               <div className="space-y-2">
                 <div className="flex flex-wrap items-center gap-2">
-                  <h1 className="text-3xl sm:text-4xl font-extrabold text-[#101010] tracking-tight font-display">
+                  <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
                     {creator.fullName}
                   </h1>
                   {creator.verified && (
-                    <CheckCircle2 className="w-6 h-6 text-[#101010] shrink-0" />
+                    <CheckCircle2 className="w-6 h-6 text-[#FFD21F] shrink-0 fill-[#0A0A0E]" />
                   )}
-                  <span className="px-2.5 py-0.5 rounded bg-[#FAFAF8] border border-[#E7E7E4] text-[#101010] font-mono text-xs font-bold uppercase tracking-wider">
+                  <span className="px-2.5 py-0.5 rounded-full bg-black/5 border border-black/8 text-[#0A0A0E] font-mono text-xs font-bold uppercase tracking-wider">
                     {creator.primaryCategory}
                   </span>
                 </div>
 
-                <p className="text-sm font-mono text-[#626262]">
+                <p className="text-sm font-mono text-[#6A6A78]">
                   @{creator.handle} • {creator.location}
                 </p>
 
-                {/* Editorial Pull Quote in Instrument Serif */}
-                <p className="text-xl sm:text-2xl text-[#101010] font-serif italic max-w-2xl pt-1 leading-snug">
+                {/* Editorial Pull Quote */}
+                <p className="text-xl sm:text-2xl text-[#0A0A0E] font-serif italic max-w-2xl pt-1 leading-snug">
                   &ldquo;{creator.headline}&rdquo;
                 </p>
 
-                <p className="text-sm text-[#626262] max-w-2xl leading-relaxed font-sans font-normal pt-1">
+                <p className="text-sm text-[#5A5A68] max-w-2xl leading-relaxed font-sans font-normal pt-1">
                   {creator.bio}
                 </p>
+
+                {/* Social Channel Links */}
+                <div className="flex items-center gap-2 pt-2">
+                  {creator.socialAccounts.map((sa) => (
+                    <a
+                      key={sa.id}
+                      href={sa.profileUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-xl bg-[#F8F8FC] border border-black/5 text-[#5A5A68] hover:text-[#0A0A0E] transition-all hover:scale-105"
+                      title={`${sa.platform}: ${formatNumber(sa.followers)} followers`}
+                    >
+                      <SocialIcon platform={sa.platform} className="w-4 h-4" />
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* CTA Box */}
-            <div className="flex flex-col sm:flex-row md:flex-col gap-3 shrink-0 w-full md:w-auto font-sans">
-              <Link href="/app/brand/campaigns/create" className="w-full">
-                <Button variant="primary" size="lg" className="w-full rounded-[9px] font-semibold tracking-tight" rightIcon={<ArrowRight className="w-4 h-4 text-[#B7FF3C]" />}>
-                  Invite to Campaign
-                </Button>
-              </Link>
-              <Link href="/app/messages" className="w-full">
-                <Button variant="secondary" size="md" className="w-full rounded-[9px] font-semibold tracking-tight" leftIcon={<MessageSquare className="w-4 h-4" />}>
-                  Direct Message
-                </Button>
-              </Link>
-            </div>
-          </div>
+            {/* Quick Pricing & Contact CTA */}
+            <div className="p-6 rounded-3xl bg-[#F8F8FC] border border-black/8 font-mono space-y-4 shrink-0 w-full md:w-72">
+              <div className="flex justify-between items-baseline">
+                <span className="text-xs text-[#7A7A8A]">Base Sponsorship</span>
+                <span className="text-2xl font-black text-[#0A0A0E]">
+                  {formatCurrency(creator.startingPrice)}
+                </span>
+              </div>
 
-          {/* Core Metrics Bar */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-6 rounded-xl bg-[#FAFAF8] border border-[#E7E7E4] text-center font-mono">
-            <div>
-              <p className="text-xs text-[#626262] uppercase font-semibold tracking-wider">Total Audience</p>
-              <p className="text-2xl font-extrabold text-[#101010] mt-1 numeric-tabular">
-                {formatNumber(creator.totalFollowers || 0)}
-              </p>
-            </div>
-            <div>
-              <p className="text-xs text-[#626262] uppercase font-semibold tracking-wider">Engagement</p>
-              <p className="text-2xl font-extrabold text-[#101010] mt-1 flex items-center justify-center gap-1 numeric-tabular">
-                <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
-                {creator.avgEngagementRate}%
-              </p>
-            </div>
-            <div>
-              <p className="text-xs text-[#626262] uppercase font-semibold tracking-wider">Creator Rating</p>
-              <p className="text-2xl font-extrabold text-[#101010] mt-1 flex items-center justify-center gap-1 numeric-tabular">
-                <Star className="w-4 h-4 fill-[#101010] text-[#101010]" />
-                {creator.rating}
-              </p>
-            </div>
-            <div>
-              <p className="text-xs text-[#626262] uppercase font-semibold tracking-wider">Completed Gigs</p>
-              <p className="text-2xl font-extrabold text-[#101010] mt-1 numeric-tabular">
-                {creator.completedCampaignsCount || 0}
-              </p>
+              <div className="space-y-2 text-xs border-y border-black/8 py-3">
+                <div className="flex justify-between text-[#6A6A78]">
+                  <span>Status</span>
+                  <span className="font-bold text-emerald-700">Available for Hire</span>
+                </div>
+                <div className="flex justify-between text-[#6A6A78]">
+                  <span>Avg Turnaround</span>
+                  <span className="font-bold text-[#0A0A0E]">4 - 7 Business Days</span>
+                </div>
+                <div className="flex justify-between text-[#6A6A78]">
+                  <span>Past Campaigns</span>
+                  <span className="font-bold text-[#0A0A0E]">{creator.completedCampaignsCount} Completed</span>
+                </div>
+              </div>
+
+              <Link href="/app/brand/campaigns/create" className="block">
+                <button className="w-full py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all shadow-[0_4px_14px_rgba(255,210,31,0.4)] border border-black/10 flex items-center justify-center gap-2">
+                  <span>Send Campaign Brief</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </Link>
             </div>
           </div>
         </div>
 
-        {/* 2-Column Section: Rate Cards & Audience Demographics */}
+        {/* 2-Column: Rate Card & Portfolio Deliverables */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Rate Cards */}
+          {/* Left: Rate Card & Deliverables */}
           <div className="lg:col-span-7 space-y-6">
-            <h2 className="section-headline text-2xl sm:text-3xl font-extrabold text-[#101010] font-display">Standard Rate Cards &amp; Formats</h2>
-            <div className="space-y-4">
-              {(creator.rateCards || []).map((rc) => (
-                <div
-                  key={rc.id}
-                  className="p-6 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] hover:border-[#101010] transition-all shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4"
-                >
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs font-mono font-bold text-[#101010] uppercase tracking-wider">
-                        {rc.deliverableType?.replace(/_/g, ' ')}
+            <div className="p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6">
+              <h2 className="text-xl font-bold text-[#0A0A0E] font-display">Rate Card &amp; Sponsorship Options</h2>
+              <div className="space-y-4">
+                {creator.rateCards.map((rate) => (
+                  <div
+                    key={rate.id}
+                    className="p-5 rounded-2xl bg-[#F8F8FC] border border-black/5 flex items-center justify-between gap-4"
+                  >
+                    <div>
+                      <h3 className="font-bold text-sm text-[#0A0A0E] font-sans">{rate.deliverableType}</h3>
+                      <p className="text-xs text-[#5A5A68] mt-0.5">{rate.description}</p>
+                      <span className="text-[10px] font-mono text-[#7A7A8A] block mt-1">
+                        Turnaround: {rate.turnaroundDays} days • Max {rate.revisions} revisions
                       </span>
                     </div>
-                    <h3 className="font-bold text-base text-[#101010] font-display">{rc.title}</h3>
-                    <p className="text-xs text-[#626262] font-sans font-medium">{rc.description}</p>
-                    <p className="text-[11px] text-[#626262] font-mono pt-1">
-                      Turnaround: {rc.turnaroundDays} Days • Includes {rc.revisionsIncluded} Revision Rounds
-                    </p>
-                  </div>
 
-                  <div className="flex sm:flex-col items-center sm:items-end justify-between gap-2 shrink-0">
-                    <span className="text-xl font-extrabold text-[#101010] font-mono numeric-tabular">
-                      {formatCurrency(rc.basePrice)}
-                    </span>
-                    <Link href="/app/brand/campaigns/create">
-                      <Button variant="secondary" size="sm" className="rounded-[9px] font-sans font-semibold tracking-tight">
-                        Book Format
-                      </Button>
-                    </Link>
+                    <div className="text-right shrink-0">
+                      <span className="text-base font-extrabold text-[#0A0A0E] font-mono block">
+                        {formatCurrency(rate.price)}
+                      </span>
+                      <span className="text-[10px] font-mono text-[#7A7A8A]">per asset</span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Demographics & Channels */}
+          {/* Right: Audited Demographics */}
           <div className="lg:col-span-5 space-y-6">
-            <h2 className="section-headline text-2xl sm:text-3xl font-extrabold text-[#101010] font-display">Audience Geography &amp; Age</h2>
-            <div className="p-6 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs space-y-6">
-              {/* Countries */}
-              <div>
-                <h4 className="text-xs font-bold uppercase text-[#626262] font-mono mb-3 tracking-wider">
-                  Top Geographies
-                </h4>
-                <div className="space-y-2 font-mono text-xs">
-                  {(creator.audience?.topCountries || []).map((c, i) => (
-                    <div key={i} className="flex justify-between items-center text-[#626262]">
-                      <span className="font-sans font-medium text-[#101010]">{c.country}</span>
-                      <span className="font-bold text-[#101010] numeric-tabular">{c.percentage}%</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Age */}
-              <div className="pt-4 border-t border-[#E7E7E4]">
-                <h4 className="text-xs font-bold uppercase text-[#626262] font-mono mb-3 tracking-wider">
-                  Age Distribution
-                </h4>
-                <div className="space-y-2 font-mono text-xs">
-                  {(creator.audience?.ageDistribution || []).map((a, i) => (
-                    <div key={i} className="flex justify-between items-center text-[#626262]">
-                      <span className="font-sans font-medium text-[#101010]">{a.range} years</span>
-                      <span className="font-bold text-[#101010] numeric-tabular">{a.percentage}%</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Verified Social Channels */}
-              {creator.socialAccounts && creator.socialAccounts.length > 0 && (
-                <div className="pt-4 border-t border-[#E7E7E4]">
-                  <h4 className="text-xs font-bold uppercase text-[#626262] font-mono mb-3 tracking-wider">
-                    Connected Channels
-                  </h4>
-                  <div className="space-y-2.5">
-                    {creator.socialAccounts.map((sa) => (
-                      <a
-                        key={sa.id}
-                        href={sa.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-3 rounded-xl bg-[#FAFAF8] hover:bg-[#FFFFFF] border border-[#E7E7E4] transition-colors flex items-center justify-between text-xs group"
-                      >
-                        <div className="flex items-center gap-2.5">
-                          <div className="p-1.5 rounded-lg bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs group-hover:scale-105 transition-transform">
-                            <SocialIcon platform={sa.platform} size={15} colored />
-                          </div>
-                          <div>
-                            <span className="font-bold text-[#101010] capitalize flex items-center gap-1 font-display">
-                              {sa.platform}
-                              <ExternalLink className="w-3 h-3 text-[#626262] opacity-0 group-hover:opacity-100 transition-opacity" />
-                            </span>
-                            <span className="text-[10px] text-[#626262] font-mono">@{sa.handle}</span>
-                          </div>
+            <div className="p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6">
+              <h2 className="text-xl font-bold text-[#0A0A0E] font-display">Audience Telemetry &amp; Geo</h2>
+              <div className="space-y-4 font-mono text-xs">
+                <div>
+                  <span className="text-[11px] text-[#7A7A8A] uppercase font-bold block mb-2">Top Geographies</span>
+                  <div className="space-y-2">
+                    {creator.audience.topCountries.map((geo) => (
+                      <div key={geo.country} className="space-y-1">
+                        <div className="flex justify-between text-[#0A0A0E]">
+                          <span>{geo.country}</span>
+                          <span className="font-bold">{geo.percentage}%</span>
                         </div>
-                        <div className="text-right font-mono text-[11px]">
-                          <span className="font-extrabold text-[#101010] block numeric-tabular">{formatNumber(sa.followers)}</span>
-                          <span className="text-[#101010] font-semibold flex items-center gap-1">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
-                            <span className="numeric-tabular">{sa.engagementRate}%</span> ER
-                          </span>
+                        <div className="w-full h-1.5 rounded-full bg-black/5 overflow-hidden">
+                          <div
+                            className="h-full bg-[#FFD21F] rounded-full"
+                            style={{ width: `${geo.percentage}%` }}
+                          />
                         </div>
-                      </a>
+                      </div>
                     ))}
                   </div>
                 </div>
-              )}
+
+                <div className="pt-4 border-t border-black/8">
+                  <span className="text-[11px] text-[#7A7A8A] uppercase font-bold block mb-2">Gender Breakdown</span>
+                  <div className="grid grid-cols-2 gap-2">
+                    {creator.audience.genderSplit.map((g) => (
+                      <div key={g.gender} className="p-3 rounded-xl bg-[#F8F8FC] border border-black/5 text-center">
+                        <span className="text-[10px] text-[#7A7A8A] uppercase block">{g.gender}</span>
+                        <span className="text-sm font-black text-[#0A0A0E]">{g.percentage}%</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

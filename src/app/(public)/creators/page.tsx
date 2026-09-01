@@ -47,18 +47,18 @@ export default function CreatorsDirectoryPage() {
   ]);
 
   return (
-    <div className="py-12 sm:py-16 bg-[#07070B] text-white min-h-screen select-none">
+    <div className="py-12 sm:py-16 bg-[#FAFAFC] text-[#0A0A0E] min-h-screen select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Header */}
         <div className="space-y-4 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-xs font-mono font-bold text-[#FFD21F]">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-xs font-mono font-bold text-[#0A0A0E]">
             <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
             <span>AUDITED CREATOR TALENT</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight font-display">
+          <h1 className="text-3xl sm:text-5xl font-black text-[#0A0A0E] tracking-tight font-display">
             Discover Verified Creators
           </h1>
-          <p className="text-xs sm:text-sm text-white/60 font-sans max-w-2xl leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#5A5A68] font-sans max-w-2xl leading-relaxed">
             Connect with top video creators across YouTube, TikTok, and Instagram with audited demographic stats and instant escrow protection.
           </p>
         </div>
@@ -72,15 +72,15 @@ export default function CreatorsDirectoryPage() {
               {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
                 <div
                   key={i}
-                  className="rounded-3xl bg-white/[0.04] border border-white/10 p-6 space-y-4 animate-pulse min-h-[340px]"
+                  className="rounded-3xl bg-white border border-black/8 p-6 space-y-4 animate-pulse min-h-[340px] shadow-xs"
                 />
               ))}
             </div>
           ) : creators.length === 0 ? (
-            <div className="py-20 text-center rounded-3xl bg-[#0E0C15]/90 border border-white/10 p-8 space-y-3">
-              <Users className="w-10 h-10 text-white/30 mx-auto" />
-              <h3 className="text-base font-bold text-white font-display">No creators match your filters</h3>
-              <p className="text-xs text-white/50">Try broadening your search criteria or resetting filters.</p>
+            <div className="py-20 text-center rounded-3xl bg-white border border-black/8 p-8 space-y-3 shadow-xs">
+              <Users className="w-10 h-10 text-[#7A7A8A] mx-auto" />
+              <h3 className="text-base font-bold text-[#0A0A0E] font-display">No creators match your filters</h3>
+              <p className="text-xs text-[#6A6A78]">Try broadening your search criteria or resetting filters.</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

@@ -7,7 +7,7 @@ export default function AboutPage() {
     <div className="bg-[#FAFAF8] text-[#111111] min-h-screen">
       <div className="pt-24 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-xs font-mono font-bold text-[#111111] shadow-xs">
-          <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
+          <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
           <span>Our Vision &amp; Philosophy</span>
         </div>
         <h1 className="text-4xl sm:text-6xl font-extrabold text-[#111111] tracking-tight font-display">
