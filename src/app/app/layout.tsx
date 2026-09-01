@@ -11,7 +11,7 @@ export default function AuthenticatedAppLayout({
 }) {
   return (
     <AuthGuard>
-      <div className="min-h-screen flex flex-col bg-[#0a070a] text-white">
+      <div className="min-h-screen flex flex-col bg-[#FCFCFA] text-[#101310]">
         <AppNavbar />
         <div className="flex flex-1">
           <AppSidebar />

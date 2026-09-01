@@ -1,246 +1,252 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import {
-  Sparkles,
   Search,
-  UserPlus,
-  Check,
+  Sparkles,
   CheckCircle2,
-  Zap,
+  ArrowRight,
+  TrendingUp,
+  MapPin,
+  Users,
+  ShieldCheck,
+  Check,
 } from "lucide-react";
-import { CENTRAL_CREATORS, EnrichedCreator } from "@/data/creators";
-import { formatCurrency } from "@/core/utils/currency";
+import { CENTRAL_CREATORS, CentralCreator } from "@/data/creators";
 import { Modal } from "@/components/ui/Modal";
-import { useUIStore } from "@/stores/ui.store";
+import { formatCurrency } from "@/core/utils/currency";
 
 export function AIMatchingExperience() {
-  const { addToast } = useUIStore();
-  const presets = [
-    "Tech & AI creators for developer SDK launch with US audience",
-    "Fitness & wellness creators for biometric recovery showcase",
-    "Clean beauty creators for clinical skincare routine",
-  ];
+  const [searchQuery, setSearchQuery] = useState(
+    "Find Indian fitness creators under ₹15K with 5%+ engagement"
+  );
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [analyzingStep, setAnalyzingStep] = useState("");
+  const [selectedCreator, setSelectedCreator] = useState<CentralCreator | null>(null);
+  const [inviteSent, setInviteSent] = useState(false);
 
-  const [query, setQuery] = useState(presets[0]);
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [selectedCreatorForInvite, setSelectedCreatorForInvite] = useState<EnrichedCreator | null>(null);
-  const [invitedCreators, setInvitedCreators] = useState<Record<string, boolean>>({});
+  const matchedCreators = CENTRAL_CREATORS.slice(0, 3);
 
-  const getMatchedCreators = (): EnrichedCreator[] => {
-    const q = query.toLowerCase();
-    if (q.includes("fitness") || q.includes("wellness")) {
-      return [CENTRAL_CREATORS[2], CENTRAL_CREATORS[5], CENTRAL_CREATORS[0]];
-    }
-    if (q.includes("beauty") || q.includes("skincare")) {
-      return [CENTRAL_CREATORS[4], CENTRAL_CREATORS[7], CENTRAL_CREATORS[1]];
-    }
-    return [CENTRAL_CREATORS[0], CENTRAL_CREATORS[3], CENTRAL_CREATORS[1]];
-  };
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsAnalyzing(true);
+    setAnalyzingStep("Audience fit & demographics");
 
-  const results = getMatchedCreators();
-
-  const handleRunQuery = () => {
-    setIsProcessing(true);
+    setTimeout(() => setAnalyzingStep("Engagement rate verification"), 350);
+    setTimeout(() => setAnalyzingStep("Budget & rate card matching"), 700);
+    setTimeout(() => setAnalyzingStep("Category relevance scoring"), 1050);
     setTimeout(() => {
-      setIsProcessing(false);
-    }, 600);
+      setIsAnalyzing(false);
+      setAnalyzingStep("");
+    }, 1400);
   };
 
-  const handleConfirmInvite = (creator: EnrichedCreator) => {
-    setInvitedCreators((prev) => ({ ...prev, [creator.id]: true }));
-    setSelectedCreatorForInvite(null);
-    addToast({
-      type: "success",
-      title: "Campaign Pitch Dispatched",
-      message: `Proposal dispatched to ${creator.fullName}.`,
-    });
+  const handleSendInvite = () => {
+    setInviteSent(true);
+    setTimeout(() => {
+      setSelectedCreator(null);
+      setInviteSent(false);
+    }, 1200);
   };
 
   return (
-    <section className="py-24 sm:py-32 bg-transparent border-b border-white/10 relative overflow-hidden select-none text-white">
-      {/* Ambient Lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[850px] h-[350px] sm:h-[500px] bg-gradient-radial from-[hsl(327,100%,50%)]/20 via-[hsl(300,100%,42%)]/10 to-transparent blur-[130px] pointer-events-none -z-10" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
-        {/* Header */}
+    <section className="py-20 sm:py-28 bg-[#FCFCFA] border-b border-[#E2E6E1] relative overflow-hidden select-none text-[#101310]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-xs font-mono font-bold text-[hsl(327,100%,55%)] shadow-xs">
-            <Sparkles className="w-3.5 h-3.5 text-gold" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF8F2] border border-[#C3EBDA] text-xs font-mono font-semibold text-[#087F5B]">
+            <Sparkles className="w-3.5 h-3.5" />
             <span>AI Discovery Engine</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight font-display">
-            Instant AI creator matching.
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#101310] tracking-tight font-display">
+            Precision creator matching.
           </h2>
-          <p className="text-sm sm:text-base text-slate-300 font-sans">
-            Describe your campaign requirements in natural language. Match verified talent in seconds.
+          <p className="text-sm sm:text-base text-[#626862] font-sans">
+            Search in plain language. Match with vetted creators by verified engagement, rates, and audience location.
           </p>
         </div>
 
-        {/* Visual Search Bar */}
-        <div className="max-w-3xl mx-auto space-y-3">
-          <div className="p-2 rounded-full bg-[#120c16] border border-white/10 shadow-2xl flex items-center gap-2">
-            <div className="pl-4 text-slate-400">
-              <Search className="w-5 h-5" />
-            </div>
+        {/* Clean Editorial Search Bar */}
+        <form
+          onSubmit={handleSearch}
+          className="max-w-3xl mx-auto relative p-2 rounded-2xl bg-[#FFFFFF] border border-[#E2E6E1] shadow-fintech flex flex-col sm:flex-row items-center gap-2"
+        >
+          <div className="flex items-center gap-3 px-3 flex-1 w-full">
+            <Search className="w-4 h-4 text-[#8A908B] shrink-0" />
             <input
               type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Find creators for your next campaign..."
-              className="flex-1 bg-transparent py-2.5 text-xs sm:text-sm text-white placeholder:text-slate-500 focus:outline-none font-sans"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Describe your target creators, budget, or vertical..."
+              className="w-full bg-transparent text-xs sm:text-sm text-[#101310] placeholder-[#8A908B] focus:outline-hidden font-sans"
             />
-            <button
-              onClick={handleRunQuery}
-              disabled={isProcessing}
-              className="px-6 py-3 rounded-full bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white font-bold text-xs sm:text-sm shadow-md shadow-pink-500/25 hover:brightness-110 active:scale-95 transition-all flex items-center gap-2 shrink-0 font-display"
+          </div>
+
+          <button
+            type="submit"
+            disabled={isAnalyzing}
+            className="w-full sm:w-auto px-5 py-2.5 rounded-[9px] bg-[#087F5B] hover:bg-[#075E45] text-white text-xs font-semibold shadow-xs flex items-center justify-center gap-1.5 transition-all font-sans shrink-0 disabled:opacity-70"
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>{isAnalyzing ? "Analyzing..." : "Find Matches"}</span>
+          </button>
+        </form>
+
+        {/* Analyzing Progress State */}
+        <AnimatePresence>
+          {isAnalyzing && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="max-w-md mx-auto text-center space-y-2 font-mono text-xs text-[#087F5B]"
             >
-              {isProcessing ? (
-                <span className="w-4 h-4 rounded-full border-2 border-white border-t-transparent animate-spin" />
-              ) : (
-                <>
-                  <Sparkles className="w-4 h-4 text-gold" />
-                  <span>Match Talent</span>
-                </>
-              )}
-            </button>
-          </div>
+              <div className="flex items-center justify-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#087F5B] animate-ping" />
+                <span className="font-semibold uppercase tracking-wider">ANALYZING CRITERIA:</span>
+                <span className="text-[#101310]">{analyzingStep}</span>
+              </div>
+              <div className="w-full bg-[#E2E6E1] h-1.5 rounded-full overflow-hidden">
+                <motion.div
+                  initial={{ width: "10%" }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 1.3, ease: "easeInOut" }}
+                  className="bg-[#087F5B] h-full"
+                />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-          {/* Quick Preset Chips */}
-          <div className="flex flex-wrap items-center justify-center gap-2 pt-1 text-xs">
-            {presets.map((p, i) => (
-              <button
-                key={i}
-                onClick={() => {
-                  setQuery(p);
-                  handleRunQuery();
-                }}
-                className="px-3.5 py-1.5 rounded-full bg-white/[0.04] hover:bg-white/[0.08] text-slate-300 text-[11px] font-sans border border-white/10 transition-colors truncate max-w-[260px]"
-              >
-                {p}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* 3 High-Impact Visual Result Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {results.map((c) => (
+        {/* 3 Matched Editorial Creator Cards (Section 12) */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {matchedCreators.map((creator) => (
             <div
-              key={c.id}
-              className="p-5 rounded-3xl bg-[#120c16] border border-white/10 hover:border-pink-500/50 shadow-card hover:shadow-2xl transition-all duration-300 flex flex-col justify-between space-y-4 group hover:-translate-y-1 text-white"
+              key={creator.handle}
+              className="rounded-2xl bg-[#FFFFFF] border border-[#E2E6E1] hover:border-[#087F5B] overflow-hidden shadow-fintech flex flex-col justify-between p-5 space-y-5 transition-all"
             >
+              {/* Creator Header with Large Photo */}
               <div className="space-y-4">
-                {/* Header with Avatar & Match Gauge */}
-                <div className="flex items-center justify-between">
+                <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
                     <img
-                      src={c.avatarUrl}
-                      alt={c.fullName}
-                      className="w-12 h-12 rounded-2xl object-cover border border-white/10 group-hover:scale-105 transition-transform"
+                      src={creator.avatarUrl}
+                      alt={creator.fullName}
+                      className="w-12 h-12 rounded-xl object-cover border border-[#E2E6E1]"
                     />
                     <div>
-                      <h4 className="font-bold text-sm text-white font-display">{c.fullName}</h4>
-                      <span className="text-xs text-slate-400 font-mono">@{c.handle}</span>
+                      <h4 className="text-sm font-bold text-[#101310] font-sans flex items-center gap-1">
+                        {creator.fullName}
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#087F5B]" />
+                      </h4>
+                      <p className="text-xs text-[#626862] font-mono">@{creator.handle}</p>
                     </div>
                   </div>
 
-                  <span className="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono font-black text-xs">
-                    {c.qualityScore || 98}% MATCH
+                  <span className="px-2 py-0.5 rounded-md bg-[#EAF8F2] text-[#087F5B] text-xs font-mono font-bold border border-[#C3EBDA]">
+                    {creator.matchScore || 98}% Match
                   </span>
                 </div>
 
-                {/* Visual Metric Bar */}
-                <div className="grid grid-cols-3 gap-2 p-2.5 bg-white/[0.03] rounded-2xl border border-white/10 text-center font-mono text-xs">
+                {/* Metrics Rail */}
+                <div className="grid grid-cols-3 gap-2 p-3 rounded-xl bg-[#FCFCFA] border border-[#E2E6E1] text-center font-mono">
                   <div>
-                    <span className="text-slate-400 text-[10px] block">REACH</span>
-                    <span className="font-bold text-white">{c.totalFollowers.toLocaleString()}</span>
+                    <span className="text-[10px] text-[#626862] block">REACH</span>
+                    <span className="text-xs font-bold text-[#101310]">{creator.totalFollowers > 999 ? `${(creator.totalFollowers / 1000).toFixed(0)}K` : creator.totalFollowers}</span>
                   </div>
                   <div>
-                    <span className="text-slate-400 text-[10px] block">ENGAGE</span>
-                    <span className="font-bold text-emerald-400">{c.avgEngagementRate}%</span>
+                    <span className="text-[10px] text-[#626862] block">ENGAGEMENT</span>
+                    <span className="text-xs font-bold text-[#087F5B]">{creator.avgEngagementRate}%</span>
                   </div>
                   <div>
-                    <span className="text-slate-400 text-[10px] block">RATE</span>
-                    <span className="font-bold text-white">{formatCurrency(c.startingPrice)}</span>
+                    <span className="text-[10px] text-[#626862] block">RATE</span>
+                    <span className="text-xs font-bold text-[#101310]">{formatCurrency(creator.startingPrice || 18500)}</span>
                   </div>
                 </div>
 
-                {/* 1-Line Match Reason */}
-                <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 text-xs text-slate-300 font-sans flex items-start gap-2">
-                  <Zap className="w-3.5 h-3.5 text-[hsl(327,100%,55%)] shrink-0 mt-0.5" />
-                  <span className="line-clamp-2">
-                    {c.matchReasons?.[0] || `${c.avgEngagementRate}% engagement with ${c.location} verified audience.`}
-                  </span>
+                {/* Subscores & Location */}
+                <div className="space-y-1.5 text-xs text-[#626862] font-sans">
+                  <div className="flex items-center justify-between text-[11px]">
+                    <span>Audience Match:</span>
+                    <span className="font-semibold text-[#101310]">{creator.subscores?.audienceAlignment || 96}%</span>
+                  </div>
+                  <div className="flex items-center justify-between text-[11px]">
+                    <span>Location:</span>
+                    <span className="font-semibold text-[#101310]">{creator.location}</span>
+                  </div>
                 </div>
               </div>
 
-              {/* Action Button */}
-              <button
-                onClick={() => {
-                  if (!invitedCreators[c.id]) {
-                    setSelectedCreatorForInvite(c);
-                  }
-                }}
-                className={`w-full py-3 rounded-full text-xs font-bold font-display transition-all flex items-center justify-center gap-2 ${
-                  invitedCreators[c.id]
-                    ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 cursor-default"
-                    : "bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white shadow-md shadow-pink-500/20 hover:brightness-110"
-                }`}
-              >
-                {invitedCreators[c.id] ? (
-                  <>
-                    <Check className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>Invite Sent</span>
-                  </>
-                ) : (
-                  <>
-                    <UserPlus className="w-3.5 h-3.5" />
-                    <span>Invite to Campaign</span>
-                  </>
-                )}
-              </button>
+              {/* Action Buttons */}
+              <div className="pt-3 border-t border-[#E2E6E1] flex items-center gap-2">
+                <Link
+                  href={`/creators/${creator.id}`}
+                  className="flex-1 py-2 rounded-[9px] bg-[#FCFCFA] hover:bg-[#F6F7F3] border border-[#E2E6E1] text-[#101310] text-xs font-semibold text-center transition-colors font-sans"
+                >
+                  View Profile
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => setSelectedCreator(creator)}
+                  className="flex-1 py-2 rounded-[9px] bg-[#087F5B] hover:bg-[#075E45] text-white text-xs font-semibold text-center transition-colors font-sans shadow-xs"
+                >
+                  Invite
+                </button>
+              </div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Invite Modal */}
-      {selectedCreatorForInvite && (
+      {/* Direct Invite Modal */}
+      {selectedCreator && (
         <Modal
-          isOpen={Boolean(selectedCreatorForInvite)}
-          onClose={() => setSelectedCreatorForInvite(null)}
-          title={`Invite ${selectedCreatorForInvite.fullName}`}
-          description="Send campaign brief and lock in rates."
+          isOpen={Boolean(selectedCreator)}
+          onClose={() => setSelectedCreator(null)}
+          title={`Invite ${selectedCreator.fullName}`}
+          description={`Propose a milestone-protected collaboration brief for ${selectedCreator.primaryCategory}.`}
           maxWidth="md"
         >
-          <div className="space-y-4 pt-1 text-xs">
-            <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center gap-3">
-              <img
-                src={selectedCreatorForInvite.avatarUrl}
-                alt={selectedCreatorForInvite.fullName}
-                className="w-12 h-12 rounded-xl object-cover border border-white/10"
-              />
-              <div className="font-mono">
-                <h4 className="font-bold text-white font-display text-sm">{selectedCreatorForInvite.fullName}</h4>
-                <p className="text-slate-400">Rate: {formatCurrency(selectedCreatorForInvite.startingPrice)}</p>
+          <div className="space-y-4 pt-1 text-xs font-sans">
+            <div className="p-3.5 rounded-xl bg-[#FCFCFA] border border-[#E2E6E1] space-y-1 font-mono">
+              <div className="flex justify-between">
+                <span className="text-[#626862]">Target Deliverable:</span>
+                <span className="text-[#101310] font-bold">1x 4K Dedicated Video Review</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-[#626862]">Starting Rate:</span>
+                <span className="text-[#087F5B] font-bold">₹18,500</span>
               </div>
             </div>
 
-            <div className="flex items-center justify-end gap-3 pt-3 border-t border-white/10">
+            <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#E2E6E1]">
               <button
-                onClick={() => setSelectedCreatorForInvite(null)}
-                className="px-4 py-2 text-xs text-slate-400 hover:text-white"
+                type="button"
+                onClick={() => setSelectedCreator(null)}
+                className="px-4 py-2 text-[#626862] hover:text-[#101310]"
               >
                 Cancel
               </button>
               <button
-                onClick={() => handleConfirmInvite(selectedCreatorForInvite)}
-                className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white font-bold text-xs font-display shadow-md shadow-pink-500/25"
+                type="button"
+                onClick={handleSendInvite}
+                disabled={inviteSent}
+                className="px-5 py-2.5 rounded-[9px] bg-[#087F5B] hover:bg-[#075E45] text-white font-semibold flex items-center gap-1.5 shadow-xs transition-all"
               >
-                Send Proposal
+                {inviteSent ? (
+                  <>
+                    <Check className="w-3.5 h-3.5" />
+                    <span>Invitation Sent</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Dispatch Brief</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </>
+                )}
               </button>
             </div>
           </div>

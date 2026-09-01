@@ -13,26 +13,26 @@ export default function CollablyLandingPage() {
   return (
     <SmoothScroll>
       <AmbientBackground />
-      <div className="relative min-h-screen bg-transparent text-white font-sans selection:bg-pink-500/25 selection:text-pink-300 overflow-x-hidden">
-        {/* 01 — Cinematic Hero with Interactive 4-Tab Workspace */}
+      <div className="relative min-h-screen bg-[#FCFCFA] text-[#101310] font-sans selection:bg-[#EAF8F2] selection:text-[#087F5B] overflow-x-hidden">
+        {/* 01 — Editorial Hero with Financial Flow Visualizer */}
         <HeroSection />
 
-        {/* 02 — Live Animated 4K Creator Video Reels Marquee */}
+        {/* 02 — Approved 4K Creator Video Deliverables Marquee */}
         <CreatorReelsMarquee />
 
-        {/* 03 — AI Creator Discovery Engine */}
+        {/* 03 — AI Creator Discovery & Matching Engine */}
         <AIMatchingExperience />
 
-        {/* 04 — Cinematic 4K Video Review QA Studio */}
+        {/* 04 — Frame-Accurate Video QA & Milestone Sign-Off */}
         <VideoReviewDemo />
 
-        {/* 05 — Dedicated Brand & Creator Portals */}
+        {/* 05 — Dedicated Brand & Creator Workspaces */}
         <BrandCreatorSplit />
 
-        {/* 06 — Compact FAQ Accordion */}
+        {/* 06 — Operational FAQ Accordion */}
         <FAQSection />
 
-        {/* 07 — Grand Finale Conversion CTA */}
+        {/* 07 — Editorial Conversion CTA */}
         <CollablyCTA />
       </div>
     </SmoothScroll>

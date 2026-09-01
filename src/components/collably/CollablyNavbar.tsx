@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { CollablyLogo } from "@/components/ui/CollablyLogo";
 import {
-  ArrowUpRight,
+  ArrowRight,
   Menu,
   X,
   Building2,
@@ -13,7 +13,7 @@ import {
   Users,
   Compass,
   FileCheck2,
-  Layers,
+  ShieldCheck,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Modal } from "@/components/ui/Modal";
@@ -23,28 +23,29 @@ export function CollablyNavbar() {
   const [roleModalOpen, setRoleModalOpen] = useState(false);
 
   const navLinks = [
-    { href: "/creators", label: "Creators", icon: Users },
-    { href: "/campaigns", label: "Campaigns", icon: Compass },
-    { href: "/for-brands", label: "For Brands", icon: Building2 },
-    { href: "/pricing", label: "Fee Model", icon: Sparkles },
+    { href: "/campaigns", label: "Platform" },
+    { href: "/for-brands", label: "For Brands" },
+    { href: "/creators", label: "For Creators" },
+    { href: "/#workflow", label: "How It Works" },
+    { href: "/pricing", label: "Pricing" },
   ];
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-40 bg-[#0a070a]/80 backdrop-blur-2xl border-b border-white/10 select-none">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between gap-4">
+      <header className="fixed top-0 left-0 right-0 z-40 bg-[#FCFCFA]/90 backdrop-blur-md border-b border-[#E2E6E1] select-none transition-all">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-4">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <CollablyLogo href="/" size="md" subtext="Milestone Protected" />
+            <CollablyLogo href="/" size="md" subtext="Creator Commerce" />
           </div>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-8 text-xs font-semibold tracking-wide uppercase font-display text-white/80">
+          <nav className="hidden lg:flex items-center gap-8 text-xs font-semibold tracking-normal font-sans text-[#626862]">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
-                className="hover:text-[hsl(327,100%,55%)] transition-colors"
+                className="hover:text-[#101310] transition-colors"
               >
                 {link.label}
               </Link>
@@ -52,20 +53,20 @@ export function CollablyNavbar() {
           </nav>
 
           {/* Right Action CTAs */}
-          <div className="hidden sm:flex items-center gap-3">
+          <div className="hidden sm:flex items-center gap-4">
             <Link
               href="/login"
-              className="px-4 py-2 text-xs font-medium text-white/80 hover:text-white transition-colors font-display"
+              className="text-xs font-semibold text-[#101310] hover:text-[#087F5B] transition-colors font-sans"
             >
               Sign In
             </Link>
 
             <button
               onClick={() => setRoleModalOpen(true)}
-              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-xs font-bold text-white bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] shadow-lg shadow-[hsl(327,100%,50%)]/25 hover:shadow-xl hover:shadow-[hsl(327,100%,50%)]/35 hover:brightness-110 active:scale-[0.98] transition-all font-display"
+              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-[9px] text-xs font-semibold text-white bg-[#087F5B] hover:bg-[#075E45] active:bg-[#064B39] shadow-xs transition-all font-sans"
             >
               <span>Get Started</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
 
@@ -73,53 +74,49 @@ export function CollablyNavbar() {
           <div className="flex sm:hidden items-center gap-2">
             <button
               onClick={() => setRoleModalOpen(true)}
-              className="px-3.5 py-1.5 rounded-full text-[11px] font-bold text-white bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] shadow-sm font-display"
+              className="px-3.5 py-1.5 rounded-[9px] text-xs font-semibold text-white bg-[#087F5B] shadow-xs font-sans"
             >
               Start
             </button>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="p-2 rounded-xl bg-white/[0.05] border border-white/10 text-white hover:bg-white/10 transition-colors"
+              className="p-2 rounded-lg bg-[#F1F2EE] border border-[#E2E6E1] text-[#101310] hover:bg-[#E2E6E1] transition-colors"
               aria-label="Toggle Menu"
             >
-              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile Trending Drawer */}
+      {/* Mobile Drawer */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -15 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-[72px] z-30 p-5 bg-[#0e0910]/98 backdrop-blur-3xl border-b border-white/10 shadow-2xl flex flex-col gap-4 lg:hidden text-white"
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.18 }}
+            className="fixed inset-x-0 top-[72px] z-30 p-5 bg-[#FCFCFA] border-b border-[#E2E6E1] shadow-lg flex flex-col gap-3 lg:hidden text-[#101310]"
           >
             <div className="space-y-1">
-              {navLinks.map((link) => {
-                const Icon = link.icon;
-                return (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="flex items-center gap-3 px-3.5 py-2.5 text-xs font-semibold rounded-xl text-slate-200 hover:text-white hover:bg-white/[0.06] font-display"
-                  >
-                    <Icon className="w-4 h-4 text-pink-400" />
-                    <span>{link.label}</span>
-                  </Link>
-                );
-              })}
+              {navLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="block px-3.5 py-2.5 text-xs font-semibold rounded-lg text-[#101310] hover:bg-[#F1F2EE] font-sans"
+                >
+                  {link.label}
+                </Link>
+              ))}
             </div>
 
-            <div className="pt-3 border-t border-white/10 flex flex-col gap-2">
+            <div className="pt-3 border-t border-[#E2E6E1] flex flex-col gap-2">
               <Link
                 href="/login"
                 onClick={() => setMobileOpen(false)}
-                className="w-full py-2.5 text-center text-xs font-semibold text-white/90 bg-white/[0.05] border border-white/10 rounded-full font-display"
+                className="w-full py-2.5 text-center text-xs font-semibold text-[#101310] bg-[#FFFFFF] border border-[#E2E6E1] rounded-[9px] font-sans"
               >
                 Sign In
               </Link>
@@ -128,7 +125,7 @@ export function CollablyNavbar() {
                   setMobileOpen(false);
                   setRoleModalOpen(true);
                 }}
-                className="w-full py-2.5 text-center text-xs font-bold text-white bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] rounded-full font-display shadow-lg shadow-pink-500/25"
+                className="w-full py-2.5 text-center text-xs font-semibold text-white bg-[#087F5B] rounded-[9px] font-sans shadow-xs"
               >
                 Get Started
               </button>
@@ -145,28 +142,28 @@ export function CollablyNavbar() {
         description="Choose your account type to proceed."
         maxWidth="md"
       >
-        <div className="space-y-4 pt-2">
+        <div className="space-y-3 pt-2">
           {/* Brand Option */}
           <Link
             href="/brand/register"
             onClick={() => setRoleModalOpen(false)}
-            className="block p-5 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-pink-500/50 hover:bg-white/[0.08] transition-all group"
+            className="block p-4 rounded-xl bg-[#FCFCFA] border border-[#E2E6E1] hover:border-[#087F5B] hover:bg-[#F2FAF6] transition-all group"
           >
-            <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-pink-500/15 border border-pink-500/30 flex items-center justify-center text-[hsl(327,100%,55%)]">
+                <div className="w-10 h-10 rounded-lg bg-[#EAF8F2] border border-[#C3EBDA] flex items-center justify-center text-[#087F5B]">
                   <Building2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-white font-display group-hover:text-pink-300 transition-colors">
+                  <h4 className="text-sm font-bold text-[#101310] font-sans group-hover:text-[#087F5B] transition-colors">
                     I&apos;m a Brand or Agency
                   </h4>
-                  <p className="text-xs text-slate-400 font-sans">
+                  <p className="text-xs text-[#626862] font-sans">
                     Launch campaign briefs &amp; hire vetted creators
                   </p>
                 </div>
               </div>
-              <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-white transition-colors" />
+              <ArrowRight className="w-4 h-4 text-[#8A908B] group-hover:text-[#087F5B] transition-colors" />
             </div>
           </Link>
 
@@ -174,23 +171,23 @@ export function CollablyNavbar() {
           <Link
             href="/creator/register"
             onClick={() => setRoleModalOpen(false)}
-            className="block p-5 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-pink-500/50 hover:bg-white/[0.08] transition-all group"
+            className="block p-4 rounded-xl bg-[#FCFCFA] border border-[#E2E6E1] hover:border-[#087F5B] hover:bg-[#F2FAF6] transition-all group"
           >
-            <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-purple-300">
+                <div className="w-10 h-10 rounded-lg bg-[#EAF8F2] border border-[#C3EBDA] flex items-center justify-center text-[#087F5B]">
                   <Video className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-white font-display group-hover:text-purple-300 transition-colors">
+                  <h4 className="text-sm font-bold text-[#101310] font-sans group-hover:text-[#087F5B] transition-colors">
                     I&apos;m a Creator
                   </h4>
-                  <p className="text-xs text-slate-400 font-sans">
+                  <p className="text-xs text-[#626862] font-sans">
                     Apply to paid briefs with protected milestone payouts
                   </p>
                 </div>
               </div>
-              <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-white transition-colors" />
+              <ArrowRight className="w-4 h-4 text-[#8A908B] group-hover:text-[#087F5B] transition-colors" />
             </div>
           </Link>
         </div>

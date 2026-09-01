@@ -1,6 +1,7 @@
 import { CreatorProfile } from "@/core/types";
 
 export interface EnrichedCreator extends CreatorProfile {
+  matchScore?: number;
   matchReasons?: string[];
   subscores?: {
     audienceAlignment: number;
@@ -9,6 +10,8 @@ export interface EnrichedCreator extends CreatorProfile {
     brandSafety: number;
   };
 }
+
+export type CentralCreator = EnrichedCreator;
 
 export const CENTRAL_CREATORS: EnrichedCreator[] = [
   {

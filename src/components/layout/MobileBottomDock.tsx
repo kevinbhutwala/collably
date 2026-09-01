@@ -48,7 +48,7 @@ export function MobileBottomDock() {
 
   return (
     <div className="lg:hidden fixed bottom-3 inset-x-0 z-40 px-4 pointer-events-none">
-      <nav className="max-w-md mx-auto rounded-full bg-[#120c16]/95 backdrop-blur-2xl border border-white/15 p-1.5 shadow-2xl flex items-center justify-around pointer-events-auto">
+      <nav className="max-w-md mx-auto rounded-full bg-[#FFFFFF]/95 backdrop-blur-xl border border-[#E2E6E1] p-1.5 shadow-fintech flex items-center justify-around pointer-events-auto">
         {tabs.map((tab) => {
           const isActive = pathname === tab.href;
           const Icon = tab.icon;
@@ -58,16 +58,16 @@ export function MobileBottomDock() {
               key={tab.href}
               href={tab.href}
               className={cn(
-                "relative flex flex-col items-center justify-center py-1.5 px-3 rounded-full text-[10px] font-mono transition-all duration-200 select-none",
+                "relative flex flex-col items-center justify-center py-1.5 px-3 rounded-full text-[10px] font-mono transition-all duration-150 select-none",
                 isActive
-                  ? "text-white font-bold bg-gradient-to-r from-[hsl(327,100%,50%)]/30 to-[hsl(300,100%,42%)]/30 border border-[hsl(327,100%,50%)]/50 shadow-md shadow-pink-500/20"
-                  : "text-slate-400 hover:text-white"
+                  ? "text-[#087F5B] font-bold bg-[#EAF8F2] border border-[#C3EBDA] shadow-xs"
+                  : "text-[#626862] hover:text-[#101310]"
               )}
             >
-              <Icon className={cn("w-4 h-4 mb-0.5", isActive ? "text-[hsl(327,100%,55%)]" : "text-slate-400")} />
-              <span className="truncate max-w-[54px]">{tab.label}</span>
+              <Icon className={cn("w-4 h-4 mb-0.5", isActive ? "text-[#087F5B]" : "text-[#8A908B]")} />
+              <span className="truncate max-w-[54px] font-sans">{tab.label}</span>
               {isActive && (
-                <span className="absolute -top-1 w-1.5 h-1.5 rounded-full bg-[hsl(327,100%,50%)] animate-pulse" />
+                <span className="absolute -top-1 w-1.5 h-1.5 rounded-full bg-[#087F5B] animate-pulse" />
               )}
             </Link>
           );

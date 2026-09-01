@@ -52,44 +52,44 @@ export function Modal({
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
-          {/* Hardware-accelerated Backdrop with fast response on mobile */}
+          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.15, ease: "easeOut" }}
+            transition={{ duration: 0.15 }}
             onClick={onClose}
-            className="fixed inset-0 bg-[#0a070a]/85 backdrop-blur-sm will-change-[opacity]"
+            className="fixed inset-0 bg-[#101310]/40 backdrop-blur-xs will-change-[opacity]"
           />
 
-          {/* Instant Snappy Modal Card */}
+          {/* Modal Card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.98, y: 8 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.98, y: 8 }}
             transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
             className={cn(
-              "relative w-full z-10 bg-[#120c16] border border-white/10 rounded-3xl shadow-2xl overflow-hidden my-auto text-white will-change-[transform,opacity]",
+              "relative w-full z-10 bg-[#FFFFFF] border border-[#E2E6E1] rounded-2xl shadow-fintech overflow-hidden my-auto text-[#101310] will-change-[transform,opacity]",
               maxWidthMap[maxWidth],
               className
             )}
           >
             {/* Header */}
             {(title || description) && (
-              <div className="p-5 sm:p-6 pb-3 sm:pb-4 border-b border-white/10 flex items-start justify-between">
+              <div className="p-5 sm:p-6 pb-3 sm:pb-4 border-b border-[#E2E6E1] flex items-start justify-between">
                 <div>
                   {title && (
-                    <h2 className="text-lg sm:text-xl font-bold text-white tracking-tight font-display">{title}</h2>
+                    <h2 className="text-lg sm:text-xl font-bold text-[#101310] tracking-tight font-display">{title}</h2>
                   )}
                   {description && (
-                    <p className="text-xs sm:text-sm text-slate-400 mt-0.5 sm:mt-1 font-sans">{description}</p>
+                    <p className="text-xs sm:text-sm text-[#626862] mt-0.5 sm:mt-1 font-sans">{description}</p>
                   )}
                 </div>
                 <button
                   onClick={onClose}
                   type="button"
                   aria-label="Close dialog"
-                  className="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-white/10 transition-colors"
+                  className="text-[#8A908B] hover:text-[#101310] p-1.5 rounded-lg hover:bg-[#F1F2EE] transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>

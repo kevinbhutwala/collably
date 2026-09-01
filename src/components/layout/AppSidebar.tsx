@@ -85,13 +85,13 @@ export function AppSidebar() {
     role === "creator" ? creatorNavItems : role === "brand" ? brandNavItems : adminNavItems;
 
   return (
-    <aside className="hidden lg:flex flex-col w-64 border-r border-white/10 bg-[#0d090e]/95 backdrop-blur-2xl p-4 shrink-0 min-h-[calc(100vh-4rem)]">
+    <aside className="hidden lg:flex flex-col w-64 border-r border-[#E2E6E1] bg-[#F6F7F3] p-4 shrink-0 min-h-[calc(100vh-4rem)] text-[#101310]">
       {/* Brand logo & workspace badge */}
-      <div className="px-3 py-2 mb-6">
+      <div className="px-3 py-2 mb-4">
         <CollablyLogo
           href="/app/dashboard"
           size="sm"
-          subtext={role === "agency_admin" ? "Agency Operations" : `${role.toUpperCase()} Workspace`}
+          subtext={role === "agency_admin" ? "Operations" : `${role.toUpperCase()} Workspace`}
         />
       </div>
 
@@ -106,12 +106,12 @@ export function AppSidebar() {
               key={item.href}
               href={item.href}
               className={cn(
-                "flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all duration-150 group select-none",
+                "flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all select-none",
                 isActive
-                  ? "bg-gradient-to-r from-[hsl(327,100%,50%)]/20 to-[hsl(300,100%,42%)]/20 text-white font-bold border border-[hsl(327,100%,50%)]/40 shadow-sm"
+                  ? "bg-[#EAF8F2] text-[#087F5B] font-bold border border-[#C3EBDA] shadow-xs"
                   : item.highlight
-                  ? "bg-[hsl(327,100%,50%)]/15 text-pink-300 border border-[hsl(327,100%,50%)]/30 hover:bg-[hsl(327,100%,50%)]/25 font-semibold"
-                  : "text-slate-300 hover:text-white hover:bg-white/[0.06]"
+                  ? "bg-[#087F5B] text-white hover:bg-[#075E45] font-semibold shadow-xs"
+                  : "text-[#626862] hover:text-[#101310] hover:bg-[#E2E6E1]/50"
               )}
             >
               <div className="flex items-center gap-3">
@@ -119,10 +119,10 @@ export function AppSidebar() {
                   className={cn(
                     "w-4 h-4 transition-colors",
                     isActive
-                      ? "text-[hsl(327,100%,55%)]"
+                      ? "text-[#087F5B]"
                       : item.highlight
-                      ? "text-pink-400"
-                      : "text-slate-400 group-hover:text-slate-200"
+                      ? "text-white"
+                      : "text-[#8A908B] group-hover:text-[#101310]"
                   )}
                 />
                 <span>{item.label}</span>
@@ -133,8 +133,8 @@ export function AppSidebar() {
                   className={cn(
                     "text-[10px] px-2 py-0.5 rounded-full font-mono font-bold",
                     isActive
-                      ? "bg-[hsl(327,100%,50%)]/25 text-pink-200 border border-[hsl(327,100%,50%)]/40"
-                      : "bg-white/10 text-slate-300"
+                      ? "bg-[#087F5B]/15 text-[#087F5B]"
+                      : "bg-[#E2E6E1] text-[#626862]"
                   )}
                 >
                   {item.badge}

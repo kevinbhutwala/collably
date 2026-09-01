@@ -10,35 +10,35 @@ export function FAQSection() {
   const faqs = [
     {
       q: "How does milestone payment protection work?",
-      a: "Brands deposit campaign funds into milestone custody via Stripe Connect before filming begins. Payouts are automatically released to the creator within 24 hours of deliverable approval.",
+      a: "When a campaign brief is confirmed, 100% of agreed milestone funds are pre-funded into segregated custody via Stripe Connect. Funds remain locked until the brand reviews and approves the video deliverable. Once approved, payout disburses to the creator in <24 hours.",
     },
     {
-      q: "What are the platform fees?",
-      a: "Collably charges a flat 10% platform fee on completed collaborations. There are zero monthly subscription paywalls or listing fees. Creators keep 90% of their gross contract earnings.",
+      q: "What are the platform fees and creator take-rates?",
+      a: "Collably charges a flat 10% platform fee on completed collaborations. There are zero monthly subscription fees or listing paywalls. Creators keep 90% of their gross earnings.",
     },
     {
-      q: "How fast are creator payouts processed?",
-      a: "Instantaneous. When the brand approves a video deliverable in the review player, payouts disburse directly to the creator's connected bank account in <24 hours.",
+      q: "How fast are creator payouts disbursed upon approval?",
+      a: "Instantaneous. As soon as the brand approves the submitted deliverable in the review player, the automated payout pipeline triggers direct transfer to the creator's connected bank account.",
     },
     {
-      q: "How are revisions and brief guidelines handled?",
-      a: "Brands drop frame-accurate timecoded annotations directly on 4K video drafts. Creators receive timestamped revision notes with structured turn-around windows.",
+      q: "How are video revisions and feedback handled?",
+      a: "Brands use the frame-accurate 4K review player to drop timestamped annotations directly onto video cuts. Creators receive clear, structured change requests with turnaround windows.",
     },
     {
-      q: "How is commercial licensing and digital usage transferred?",
-      a: "Standardized commercial rights (organic social, paid digital ad whitelisting, or buyout) transfer automatically to the brand upon milestone approval and payment release.",
+      q: "How are commercial licensing and digital usage rights transferred?",
+      a: "Standardized commercial usage terms (organic social, paid digital ad whitelisting, or buyout) transfer automatically to the brand upon milestone approval and payment release.",
     },
   ];
 
   return (
-    <section className="py-24 sm:py-32 bg-transparent border-b border-white/10 relative overflow-hidden text-white select-none">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <section className="py-20 sm:py-28 bg-[#FCFCFA] border-b border-[#E2E6E1] relative overflow-hidden text-[#101310] select-none">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-xs font-mono font-bold text-[hsl(327,100%,55%)]">
-            <HelpCircle className="w-3.5 h-3.5 text-gold" />
-            <span>FAQ</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF8F2] border border-[#C3EBDA] text-xs font-mono font-semibold text-[#087F5B]">
+            <HelpCircle className="w-3.5 h-3.5" />
+            <span>Questions &amp; Answers</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight font-display">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#101310] tracking-tight font-display">
             Frequently asked questions.
           </h2>
         </div>
@@ -50,17 +50,18 @@ export function FAQSection() {
             return (
               <div
                 key={index}
-                className="rounded-2xl bg-[#120c16] border border-white/10 overflow-hidden transition-all duration-300"
+                className="rounded-xl bg-[#FFFFFF] border border-[#E2E6E1] overflow-hidden shadow-xs transition-all"
               >
                 <button
+                  type="button"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full p-5 text-left flex items-center justify-between gap-4 select-none hover:bg-white/[0.04] transition-colors"
+                  className="w-full p-5 text-left flex items-center justify-between gap-4 select-none hover:bg-[#F6F7F3] transition-colors"
                 >
-                  <span className="text-sm sm:text-base font-bold text-white font-display">
+                  <span className="text-sm sm:text-base font-bold text-[#101310] font-sans">
                     {faq.q}
                   </span>
-                  <div className="w-7 h-7 rounded-full bg-white/[0.06] border border-white/10 flex items-center justify-center shrink-0 text-slate-300">
-                    {isOpen ? <Minus className="w-3.5 h-3.5 text-pink-400" /> : <Plus className="w-3.5 h-3.5" />}
+                  <div className="w-7 h-7 rounded-lg bg-[#F1F2EE] border border-[#E2E6E1] flex items-center justify-center shrink-0 text-[#101310]">
+                    {isOpen ? <Minus className="w-3.5 h-3.5 text-[#087F5B]" /> : <Plus className="w-3.5 h-3.5" />}
                   </div>
                 </button>
 
@@ -70,9 +71,9 @@ export function FAQSection() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
+                      transition={{ duration: 0.18 }}
                     >
-                      <div className="px-5 pb-5 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-3 font-sans">
+                      <div className="px-5 pb-5 text-xs sm:text-sm text-[#626862] leading-relaxed border-t border-[#E2E6E1] pt-3 font-sans">
                         {faq.a}
                       </div>
                     </motion.div>

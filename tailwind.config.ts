@@ -18,75 +18,65 @@ const config: Config = {
     },
     extend: {
       colors: {
-        border: "rgba(255, 255, 255, 0.10)",
-        input: "rgba(255, 255, 255, 0.12)",
-        ring: "hsl(327, 100%, 50%)",
-        background: "#0a070a",
-        foreground: "#ffffff",
+        border: "#E2E6E1",
+        input: "#E2E6E1",
+        ring: "#087F5B",
+        background: "#FCFCFA",
+        foreground: "#101310",
         primary: {
-          DEFAULT: "hsl(327, 100%, 50%)",
+          DEFAULT: "#087F5B",
           foreground: "#ffffff",
         },
         secondary: {
-          DEFAULT: "hsl(300, 100%, 42%)",
+          DEFAULT: "#075E45",
           foreground: "#ffffff",
         },
         destructive: {
-          DEFAULT: "#ef4444",
+          DEFAULT: "#C53030",
           foreground: "#ffffff",
         },
         muted: {
-          DEFAULT: "#18111c",
-          foreground: "#a1a1aa",
+          DEFAULT: "#F1F2EE",
+          foreground: "#626862",
         },
         accent: {
-          DEFAULT: "hsl(327, 100%, 50%)",
-          foreground: "#ffffff",
+          DEFAULT: "#EAF8F2",
+          foreground: "#087F5B",
         },
-        gold: {
-          DEFAULT: "#d4af37",
-          50: "#fdfbf2",
-          100: "#faf4dc",
-          200: "#f5e8b7",
-          300: "#eed58a",
-          400: "#e6be5c",
-          500: "#d4af37",
-          600: "#b89028",
-          700: "#936e20",
-          800: "#79571f",
-          900: "#67481f",
+        emerald: {
+          DEFAULT: "#087F5B",
+          50: "#F2FAF6",
+          100: "#EAF8F2",
+          200: "#C3EBDA",
+          300: "#8DD9BA",
+          400: "#4EC296",
+          500: "#087F5B", // Primary Emerald
+          600: "#075E45", // Deep Emerald
+          700: "#064B39", // Dark Emerald
+          800: "#053B2D",
+          900: "#042D22",
         },
-        magenta: {
-          DEFAULT: "hsl(327, 100%, 50%)",
-          glow: "hsl(327, 100%, 46%)",
-          purple: "hsl(300, 100%, 42%)",
-        },
-        brand: {
-          50: "#fdf2f8",
-          100: "#fce7f3",
-          200: "#fbcfe8",
-          300: "#f472b6",
-          400: "#ec4899",
-          500: "#db2777",
-          600: "#be185d",
-          700: "#9d174d",
-          800: "#831843",
-          900: "#500724",
-          accent: "hsl(327, 100%, 50%)", // Hot Magenta
-          purple: "hsl(300, 100%, 42%)", // Royal Purple
-          gold: "#d4af37", // Luxury Gold
+        stone: {
+          DEFAULT: "#F1F2EE",
+          50: "#FCFCFA",
+          100: "#F6F7F3",
+          200: "#E2E6E1",
+          300: "#D3D9D2",
+          400: "#8A908B",
+          500: "#626862",
+          900: "#101310",
         },
         surface: {
-          DEFAULT: "#120c16",
-          subtle: "#18101e",
-          muted: "#201428",
-          border: "rgba(255, 255, 255, 0.08)",
+          DEFAULT: "#FFFFFF",
+          secondary: "#F6F7F3",
+          stone: "#F1F2EE",
+          border: "#E2E6E1",
         },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        lg: "0.75rem", // 12px
+        md: "0.5625rem", // 9px (button radius)
+        sm: "0.375rem",
       },
       fontFamily: {
         display: [
@@ -111,11 +101,10 @@ const config: Config = {
         ],
       },
       boxShadow: {
-        soft: "0 4px 20px -2px rgba(0, 0, 0, 0.5)",
-        card: "0 2px 12px -2px rgba(0, 0, 0, 0.6), 0 0 1px 1px rgba(255, 255, 255, 0.06)",
-        elevated: "0 20px 50px -10px rgba(0, 0, 0, 0.8), 0 0 1px 1px rgba(255, 0, 128, 0.2)",
-        glow: "0 0 35px rgba(255, 0, 128, 0.35)",
-        gold: "0 0 30px rgba(212, 175, 55, 0.30)",
+        fintech: "0 20px 60px rgba(15, 30, 22, 0.06)",
+        card: "0 2px 10px rgba(15, 30, 22, 0.04), 0 0 1px 1px #E2E6E1",
+        elevated: "0 24px 70px rgba(15, 30, 22, 0.09)",
+        subtle: "0 1px 3px rgba(15, 30, 22, 0.04)",
       },
       keyframes: {
         marquee: {
