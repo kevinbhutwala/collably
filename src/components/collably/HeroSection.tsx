@@ -7,20 +7,17 @@ import {
   ArrowRight,
   ShieldCheck,
   Zap,
-  Building2,
   CheckCircle2,
   Lock,
-  RotateCcw,
-  Check,
+  Play,
   Video,
   Sparkles,
   Users,
   Wallet,
   LayoutDashboard,
-  Layers,
-  Clock,
-  Play,
-  FileCheck2,
+  Star,
+  Check,
+  RotateCcw,
 } from "lucide-react";
 import confetti from "canvas-confetti";
 import { CENTRAL_CREATORS } from "@/data/creators";
@@ -30,28 +27,15 @@ export function HeroSection() {
   const [activeTab, setActiveTab] = useState<"overview" | "creators" | "content" | "payments">("overview");
   const [isApproved, setIsApproved] = useState(false);
 
-  const sampleCampaign = {
-    title: "Q3 AI Developer SDK Video Campaign",
-    brandName: "Linear Dynamics",
-    totalBudget: 3500,
-    status: "In Review (Milestone 2/3)",
-    selectedCreatorsCount: 3,
-    deliverablesTotal: 3,
-    deliverablesApproved: 2,
-    escrowStatus: "100% Pre-Funded",
-    activeDeliverableTimecode: "00:18.04",
-    activeDeliverableNote: "Terminal code integration is crisp. Add the custom promo link in the top description.",
-  };
+  const feeBreakdown = calculateMilestoneFeeBreakdown(3500, 0.1, "USD");
+  const topCreators = CENTRAL_CREATORS.slice(0, 3);
 
-  const feeBreakdown = calculateMilestoneFeeBreakdown(sampleCampaign.totalBudget, 0.1, "USD");
-  const previewCreators = CENTRAL_CREATORS.slice(0, 3);
-
-  const handleApproveMilestone = () => {
+  const handleApprove = () => {
     setIsApproved(true);
     try {
       confetti({
-        particleCount: 75,
-        spread: 60,
+        particleCount: 80,
+        spread: 65,
         origin: { y: 0.6 },
         colors: ["#ff007f", "#b300b3", "#d4af37", "#10b981", "#ffffff"],
       });
@@ -61,59 +45,62 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-[92vh] flex flex-col justify-center items-center pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-transparent select-none text-white">
-      {/* Ambient Lighting Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[950px] lg:w-[1300px] h-[350px] sm:h-[650px] bg-gradient-radial from-[hsl(327,100%,50%)]/20 via-[hsl(300,100%,42%)]/15 to-transparent blur-[140px] pointer-events-none -z-10" />
+    <section className="relative min-h-[95vh] flex flex-col justify-center items-center pt-28 sm:pt-36 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-transparent select-none text-white">
+      {/* Ambient Spotlight Lighting */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[850px] lg:w-[1200px] h-[350px] sm:h-[600px] bg-gradient-radial from-[hsl(327,100%,50%)]/25 via-[hsl(300,100%,42%)]/15 to-transparent blur-[130px] pointer-events-none -z-10" />
 
-      <div className="max-w-5xl mx-auto text-center space-y-8 sm:space-y-10 relative z-10 w-full">
-        {/* Eyebrow Badge */}
+      {/* Subtle Floating Star / Flare Accents */}
+      <div className="absolute top-20 left-[10%] w-72 h-72 bg-pink-500/10 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-40 right-[10%] w-80 h-80 bg-purple-600/10 rounded-full blur-3xl pointer-events-none -z-10" />
+
+      <div className="max-w-6xl mx-auto text-center space-y-8 sm:space-y-10 relative z-10 w-full">
+        {/* Eyebrow Pill */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-xs font-mono text-white shadow-xs"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono backdrop-blur-xl text-white shadow-xl hover:border-pink-500/40 transition-colors"
         >
-          <Sparkles className="w-3.5 h-3.5 text-gold" />
-          <span className="font-bold text-white tracking-wide font-display">Collably</span>
+          <span className="w-2 h-2 rounded-full bg-[hsl(327,100%,50%)] animate-pulse" />
+          <span className="font-bold text-white tracking-wide font-display">COLLABLY</span>
           <span className="text-white/20">•</span>
-          <span className="text-pink-300 font-medium font-sans">Creator × Brand Collaboration Operating System</span>
+          <span className="text-pink-300 font-medium">The Creator Collaboration OS</span>
         </motion.div>
 
-        {/* Master Headline */}
-        <div className="space-y-2 max-w-4xl mx-auto px-2">
+        {/* Master Punchy Headline */}
+        <div className="space-y-4 max-w-5xl mx-auto">
           <motion.h1
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[-0.03em] text-white leading-[1.03] font-display"
+            className="text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-[5.5rem] font-black tracking-[-0.035em] text-white leading-[0.98] font-display"
           >
-            <span className="block text-white">Create great content.</span>
-            <span className="block bg-gradient-to-r from-[hsl(327,100%,50%)] via-pink-400 to-[hsl(300,100%,42%)] bg-clip-text text-transparent mt-1 sm:mt-2">
+            <span className="block">Create great content.</span>
+            <span className="block bg-gradient-to-r from-[hsl(327,100%,55%)] via-pink-400 to-[hsl(300,100%,48%)] bg-clip-text text-transparent mt-1">
               Never chase an invoice.
             </span>
           </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="text-base sm:text-xl text-slate-300 max-w-2xl mx-auto font-sans font-normal leading-relaxed"
+          >
+            The milestone-protected workspace connecting vetted creators with high-growth brands.
+          </motion.p>
         </div>
 
-        {/* Concise Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="text-base sm:text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed px-2 font-sans"
-        >
-          Brands find the right creators. Creators get paid on time. Everything happens in one milestone-protected workspace.
-        </motion.p>
-
-        {/* Primary CTAs */}
+        {/* Action CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.25 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-1 px-2"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2"
         >
           <Link
             href="/for-brands"
-            className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white font-bold text-base shadow-xl shadow-pink-500/25 hover:shadow-pink-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 group font-display"
+            className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white font-bold text-sm sm:text-base shadow-2xl shadow-pink-500/30 hover:shadow-pink-500/50 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 group font-display"
           >
             <span>Start a Campaign</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-gold" />
@@ -121,7 +108,7 @@ export function HeroSection() {
 
           <Link
             href="/creator/register"
-            className="w-full sm:w-auto px-7 py-4 rounded-full bg-white/[0.06] border border-white/10 text-white font-semibold text-base hover:bg-white/10 hover:border-white/20 shadow-xs transition-all flex items-center justify-center gap-2 font-display"
+            className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 text-white font-semibold text-sm sm:text-base backdrop-blur-xl shadow-xs transition-all flex items-center justify-center gap-2 font-display"
           >
             <Sparkles className="w-4 h-4 text-pink-400" />
             <span>Join as a Creator</span>
@@ -129,35 +116,36 @@ export function HeroSection() {
         </motion.div>
 
         {/* ════════════════════════════════════════════════════════════════════
-            INTERACTIVE 4-TAB PRODUCT CAMPAIGN WORKSPACE PREVIEW
+            CINEMATIC INTERACTIVE WORKSPACE PREVIEW
             ════════════════════════════════════════════════════════════════════ */}
         <motion.div
-          initial={{ opacity: 0, y: 35, scale: 0.96 }}
+          initial={{ opacity: 0, y: 35, scale: 0.97 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full max-w-5xl mx-auto rounded-3xl bg-[#120c16] border border-white/10 shadow-2xl p-5 sm:p-7 space-y-6 text-left relative overflow-hidden text-white"
+          className="w-full max-w-5xl mx-auto rounded-3xl bg-[#120c16]/90 backdrop-blur-2xl border border-white/10 shadow-2xl p-4 sm:p-7 space-y-6 text-left relative overflow-hidden text-white"
         >
-          {/* Top Rail Gradient */}
-          <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[hsl(327,100%,50%)] via-pink-400 to-[hsl(300,100%,42%)]" />
+          {/* Luminous Top Rail */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[hsl(327,100%,50%)] via-pink-400 to-[hsl(300,100%,42%)]" />
 
-          {/* Workspace Header & Tab Bar */}
+          {/* Navigation Bar */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
-            <div className="flex items-center gap-2 text-xs font-mono">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="font-bold text-white uppercase font-display">CAMPAIGN WORKSPACE</span>
-              <span className="text-white/20">•</span>
-              <span className="text-pink-300 font-mono text-[11px] bg-pink-500/15 px-2.5 py-0.5 rounded-full border border-pink-500/30 font-bold">
-                Interactive Preview
-              </span>
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center text-white shadow-md">
+                <Sparkles className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-sm font-bold text-white font-display">AI Developer SDK Video Launch</h3>
+                <p className="text-[11px] text-slate-400 font-mono">Sponsor: Linear Dynamics • $3,500 Protected</p>
+              </div>
             </div>
 
-            {/* 4 Working Tabs */}
+            {/* Interactive Tabs */}
             <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
               {[
                 { id: "overview", label: "Overview", icon: LayoutDashboard },
                 { id: "creators", label: "Creators (3)", icon: Users },
-                { id: "content", label: "Content Review", icon: Video },
-                { id: "payments", label: "Payments & Milestones", icon: Wallet },
+                { id: "content", label: "4K Video QA", icon: Video },
+                { id: "payments", label: "Milestones", icon: Wallet },
               ].map((t) => {
                 const Icon = t.icon;
                 const isActive = activeTab === t.id;
@@ -180,56 +168,70 @@ export function HeroSection() {
           </div>
 
           {/* Dynamic Tab Body */}
-          <div className="min-h-[260px]">
+          <div className="min-h-[220px]">
             <AnimatePresence mode="wait">
               {/* TAB 1: OVERVIEW */}
               {activeTab === "overview" && (
                 <motion.div
                   key="overview"
-                  initial={{ opacity: 0, y: 8 }}
+                  initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
+                  exit={{ opacity: 0, y: -6 }}
                   transition={{ duration: 0.2 }}
                   className="space-y-4"
                 >
-                  <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                    <div className="space-y-1">
-                      <span className="text-[10px] font-mono uppercase font-bold text-slate-400 block">
-                        CAMPAIGN BRIEF
-                      </span>
-                      <h4 className="text-sm sm:text-base font-bold text-white font-display">
-                        {sampleCampaign.title}
-                      </h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    {/* Visual Card 1 */}
+                    <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3 relative overflow-hidden group">
+                      <div className="flex items-center justify-between text-xs font-mono">
+                        <span className="text-slate-400 font-semibold uppercase text-[10px]">CREATOR TALENT</span>
+                        <span className="text-emerald-400 font-bold">3 ACCEPTED</span>
+                      </div>
+                      <div className="flex items-center -space-x-2 pt-1">
+                        {topCreators.map((c) => (
+                          <img
+                            key={c.id}
+                            src={c.avatarUrl}
+                            alt={c.fullName}
+                            className="w-10 h-10 rounded-full object-cover border-2 border-[#120c16]"
+                          />
+                        ))}
+                      </div>
                       <p className="text-xs text-slate-300 font-sans">
-                        Sponsor: <strong className="text-white">{sampleCampaign.brandName}</strong> • Target: Software Developers &amp; AI Engineers
+                        Elena Rostova, Devon Thorne, Marcus Vance
                       </p>
                     </div>
 
-                    <div className="flex items-center gap-2 font-mono text-xs shrink-0">
-                      <span className="px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-bold flex items-center gap-1.5">
-                        <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                        <span>{formatCurrency(sampleCampaign.totalBudget)} Protected</span>
-                      </span>
+                    {/* Visual Card 2 */}
+                    <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3">
+                      <div className="flex items-center justify-between text-xs font-mono">
+                        <span className="text-slate-400 font-semibold uppercase text-[10px]">DELIVERABLES QA</span>
+                        <span className="text-pink-300 font-bold">2 OF 3 READY</span>
+                      </div>
+                      <div className="space-y-1.5 font-mono text-xs">
+                        <div className="flex justify-between text-[11px]">
+                          <span className="text-slate-300">Production Cut v2</span>
+                          <span className="text-emerald-400 font-bold">Approved</span>
+                        </div>
+                        <div className="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
+                          <div className="bg-gradient-to-r from-pink-500 to-emerald-400 h-full w-[66%]" />
+                        </div>
+                      </div>
+                      <p className="text-xs text-slate-400 font-sans">Final 4K reel awaiting brand sign-off</p>
                     </div>
-                  </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs">
-                    <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1">
-                      <span className="text-slate-400 text-[10px] block font-semibold">CREATOR ROSTER</span>
-                      <span className="text-base font-bold text-white">3 Verified Creators</span>
-                      <span className="text-[11px] text-emerald-400 block font-sans">All accepted brief scope</span>
-                    </div>
-                    <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1">
-                      <span className="text-slate-400 text-[10px] block font-semibold">DELIVERABLES PROGRESS</span>
-                      <span className="text-base font-bold text-white">2 / 3 Approved</span>
-                      <span className="text-[11px] text-pink-300 block font-sans">1 draft awaiting brand sign-off</span>
-                    </div>
-                    <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1">
-                      <span className="text-slate-400 text-[10px] block font-semibold">MILESTONE DISBURSEMENT</span>
-                      <span className="text-base font-bold text-emerald-400">
-                        {formatCurrency(feeBreakdown.creatorNetAmount)} Net
-                      </span>
-                      <span className="text-[11px] text-slate-400 block font-sans">10% platform fee reconciled</span>
+                    {/* Visual Card 3 */}
+                    <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2">
+                      <div className="flex items-center justify-between text-xs font-mono">
+                        <span className="text-slate-400 font-semibold uppercase text-[10px]">ESCROW CUSTODY</span>
+                        <span className="text-emerald-400 font-bold flex items-center gap-1">
+                          <ShieldCheck className="w-3.5 h-3.5" /> SECURED
+                        </span>
+                      </div>
+                      <div className="text-2xl font-black text-white font-mono">{formatCurrency(3500)}</div>
+                      <p className="text-[11px] text-slate-400 font-sans">
+                        {formatCurrency(feeBreakdown.creatorNetAmount)} net to creator • 10% platform fee
+                      </p>
                     </div>
                   </div>
                 </motion.div>
@@ -239,113 +241,75 @@ export function HeroSection() {
               {activeTab === "creators" && (
                 <motion.div
                   key="creators"
-                  initial={{ opacity: 0, y: 8 }}
+                  initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
+                  exit={{ opacity: 0, y: -6 }}
                   transition={{ duration: 0.2 }}
                   className="grid grid-cols-1 sm:grid-cols-3 gap-4"
                 >
-                  {previewCreators.map((c) => (
+                  {topCreators.map((c) => (
                     <div
                       key={c.id}
                       className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3"
                     >
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2.5">
-                          <img
-                            src={c.avatarUrl}
-                            alt={c.fullName}
-                            className="w-10 h-10 rounded-xl object-cover border border-white/10"
-                          />
-                          <div className="overflow-hidden">
-                            <h4 className="text-xs font-bold text-white font-display truncate">{c.fullName}</h4>
-                            <span className="text-[10px] text-slate-400 font-mono block truncate">@{c.handle}</span>
-                          </div>
-                        </div>
-                        <span className="px-2 py-0.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-[hsl(327,100%,55%)] font-mono font-bold text-[10px]">
-                          {c.qualityScore}% FIT
-                        </span>
-                      </div>
-
-                      <div className="grid grid-cols-2 gap-1 py-1.5 border-y border-white/10 text-[10px] font-mono">
-                        <div>
-                          <span className="text-slate-400 block text-[9px]">REACH</span>
-                          <span className="font-bold text-white">{c.totalFollowers.toLocaleString()}</span>
-                        </div>
-                        <div>
-                          <span className="text-slate-400 block text-[9px]">ENGAGEMENT</span>
-                          <span className="font-bold text-emerald-400">{c.avgEngagementRate}%</span>
+                      <div className="flex items-center gap-3">
+                        <img
+                          src={c.avatarUrl}
+                          alt={c.fullName}
+                          className="w-11 h-11 rounded-xl object-cover border border-white/10"
+                        />
+                        <div className="overflow-hidden">
+                          <h4 className="text-xs font-bold text-white font-display truncate">{c.fullName}</h4>
+                          <span className="text-[10px] text-slate-400 font-mono block">@{c.handle}</span>
                         </div>
                       </div>
 
-                      <div className="flex items-center justify-between text-xs font-mono">
-                        <span className="text-[10px] text-slate-400 font-sans">{c.primaryCategory}</span>
-                        <span className="font-bold text-white">{formatCurrency(c.startingPrice)}</span>
+                      <div className="flex items-center justify-between text-[11px] font-mono border-t border-white/10 pt-2 text-slate-300">
+                        <span>{c.totalFollowers.toLocaleString()} reach</span>
+                        <span className="text-emerald-400 font-bold">{c.avgEngagementRate}% ER</span>
                       </div>
                     </div>
                   ))}
                 </motion.div>
               )}
 
-              {/* TAB 3: CONTENT REVIEW */}
+              {/* TAB 3: CONTENT */}
               {activeTab === "content" && (
                 <motion.div
                   key="content"
-                  initial={{ opacity: 0, y: 8 }}
+                  initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
+                  exit={{ opacity: 0, y: -6 }}
                   transition={{ duration: 0.2 }}
-                  className="p-5 rounded-2xl bg-black/40 border border-white/10 space-y-4"
+                  className="p-4 rounded-2xl bg-black/40 border border-white/10 space-y-4"
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-white/10 text-xs font-mono">
-                    <div className="flex items-center gap-2">
-                      <Video className="w-4 h-4 text-pink-400" />
-                      <span className="font-bold text-white">4K Timecoded Video QA</span>
-                      <span className="text-white/20">•</span>
-                      <span className="text-emerald-400 font-bold">Draft Cut v2</span>
-                    </div>
-                    <span className="text-slate-400">Timecode: <strong className="text-white">{sampleCampaign.activeDeliverableTimecode}</strong> / 01:30</span>
+                  <div className="flex items-center justify-between text-xs font-mono">
+                    <span className="font-bold text-white">4K Master Video Review • Timecode 00:18</span>
+                    <span className="text-emerald-400 font-bold">Cut v2</span>
                   </div>
 
-                  <div className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-3 text-xs font-sans">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-6 h-6 rounded-lg bg-pink-500/20 text-pink-300 flex items-center justify-center font-mono font-bold text-[10px]">
-                        QA
-                      </div>
-                      <p className="text-slate-200 text-xs">
-                        &ldquo;{sampleCampaign.activeDeliverableNote}&rdquo;
-                      </p>
-                    </div>
-                    <span className="px-2 py-0.5 rounded-md bg-white/10 text-slate-300 font-mono text-[10px]">
-                      @{sampleCampaign.activeDeliverableTimecode}
+                  <div className="p-3 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-3 text-xs font-sans">
+                    <span className="text-slate-200">
+                      &ldquo;Terminal code integration is crisp. Add custom promo link in top comment.&rdquo;
+                    </span>
+                    <span className="px-2 py-0.5 rounded bg-white/10 text-slate-300 font-mono text-[10px]">
+                      @00:18
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-between pt-2">
-                    <span className="text-xs text-slate-400 font-mono">
-                      Milestone Value: <strong className="text-white">{formatCurrency(sampleCampaign.totalBudget)}</strong>
-                    </span>
+                  <div className="flex items-center justify-end pt-1">
                     {isApproved ? (
-                      <div className="flex items-center gap-2">
-                        <span className="px-3.5 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-mono font-bold flex items-center gap-1.5">
-                          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                          <span>Approved &amp; Disbursed</span>
-                        </span>
-                        <button
-                          onClick={() => setIsApproved(false)}
-                          className="p-1.5 rounded-full bg-white/10 text-slate-400 hover:text-white"
-                          title="Reset"
-                        >
-                          <RotateCcw className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
+                      <span className="px-4 py-2 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-xs font-mono font-bold flex items-center gap-1.5">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                        <span>Deliverable Approved • Payout Released</span>
+                      </span>
                     ) : (
                       <button
-                        onClick={handleApproveMilestone}
-                        className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] hover:brightness-110 text-white font-bold text-xs font-display flex items-center gap-1.5 shadow-md shadow-pink-500/25 transition-all"
+                        onClick={handleApprove}
+                        className="px-5 py-2 rounded-full bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] hover:brightness-110 text-white font-bold text-xs font-display flex items-center gap-1.5 shadow-md shadow-pink-500/25 transition-all"
                       >
                         <Check className="w-3.5 h-3.5" />
-                        <span>Approve &amp; Release Milestone ({formatCurrency(sampleCampaign.totalBudget)})</span>
+                        <span>Approve Deliverable ({formatCurrency(3500)})</span>
                       </button>
                     )}
                   </div>
@@ -356,36 +320,23 @@ export function HeroSection() {
               {activeTab === "payments" && (
                 <motion.div
                   key="payments"
-                  initial={{ opacity: 0, y: 8 }}
+                  initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
+                  exit={{ opacity: 0, y: -6 }}
                   transition={{ duration: 0.2 }}
-                  className="space-y-4"
+                  className="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-xs"
                 >
-                  <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 font-mono text-xs">
-                    <div className="space-y-1">
-                      <span className="text-[10px] uppercase text-slate-400 font-bold block">PROTECTED MILESTONE ALLOCATION</span>
-                      <span className="text-2xl font-black text-white font-display">{formatCurrency(sampleCampaign.totalBudget)}</span>
-                    </div>
-                    <span className="px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-bold flex items-center gap-1.5">
-                      <Lock className="w-3.5 h-3.5 text-emerald-400" />
-                      <span>Pre-Funded Milestone Holding</span>
-                    </span>
+                  <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1">
+                    <span className="text-slate-400 text-[10px] block font-semibold">TOTAL BUDGET</span>
+                    <span className="text-xl font-bold text-white">{formatCurrency(feeBreakdown.grossAmount)}</span>
                   </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs">
-                    <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10">
-                      <span className="text-slate-400 text-[10px] block">GROSS BUDGET</span>
-                      <span className="text-base font-bold text-white">{formatCurrency(feeBreakdown.grossAmount)}</span>
-                    </div>
-                    <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10">
-                      <span className="text-slate-400 text-[10px] block">PLATFORM FEE (10%)</span>
-                      <span className="text-base font-bold text-pink-400">{formatCurrency(feeBreakdown.platformFeeAmount)}</span>
-                    </div>
-                    <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10">
-                      <span className="text-slate-400 text-[10px] block">CREATOR NET DISBURSEMENT</span>
-                      <span className="text-base font-bold text-emerald-400">{formatCurrency(feeBreakdown.creatorNetAmount)}</span>
-                    </div>
+                  <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1">
+                    <span className="text-slate-400 text-[10px] block font-semibold">PLATFORM FEE (10%)</span>
+                    <span className="text-xl font-bold text-pink-400">{formatCurrency(feeBreakdown.platformFeeAmount)}</span>
+                  </div>
+                  <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1">
+                    <span className="text-slate-400 text-[10px] block font-semibold">CREATOR PAYOUT (90%)</span>
+                    <span className="text-xl font-bold text-emerald-400">{formatCurrency(feeBreakdown.creatorNetAmount)}</span>
                   </div>
                 </motion.div>
               )}
@@ -393,24 +344,24 @@ export function HeroSection() {
           </div>
         </motion.div>
 
-        {/* Trust Badges Bar */}
+        {/* Minimal High-Impact Stats Bar */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.45 }}
-          className="pt-4 flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-xs font-mono text-slate-400 border-t border-white/10 max-w-3xl mx-auto px-2"
+          className="pt-6 flex flex-wrap items-center justify-center gap-6 sm:gap-12 text-xs font-mono text-slate-400 border-t border-white/10 max-w-4xl mx-auto"
         >
           <div className="flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-            <span>100% Milestone-Protected Capital</span>
+            <ShieldCheck className="w-4 h-4 text-emerald-400" />
+            <span>100% Pre-Funded Milestones</span>
           </div>
           <div className="flex items-center gap-2">
-            <Zap className="w-4 h-4 text-[hsl(327,100%,55%)] shrink-0" />
-            <span>0-Day Invoice Delays</span>
+            <Zap className="w-4 h-4 text-[hsl(327,100%,55%)]" />
+            <span>&lt;24h Automated Payouts</span>
           </div>
           <div className="flex items-center gap-2">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-            <span>Creators Keep 90% Net Earnings</span>
+            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+            <span>Zero Invoice Chasing</span>
           </div>
         </motion.div>
       </div>

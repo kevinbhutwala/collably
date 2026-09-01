@@ -3,16 +3,12 @@ import { SmoothScroll } from "@/components/flowpilot/SmoothScroll";
 import { AmbientBackground } from "@/components/flowpilot/AmbientBackground";
 import { HeroSection } from "@/components/collably/HeroSection";
 import { BrandMarquee } from "@/components/collably/BrandMarquee";
-import { SevenStepWorkflow } from "@/components/collably/SevenStepWorkflow";
-import { AIMatchingExperience } from "@/components/collably/AIMatchingExperience";
 import { CreatorShowcase } from "@/components/collably/CreatorShowcase";
 import { VideoReviewDemo } from "@/components/collably/VideoReviewDemo";
-import { EscrowTrustFlow } from "@/components/collably/EscrowTrustFlow";
-import { PerformanceROI } from "@/components/collably/PerformanceROI";
+import { AIMatchingExperience } from "@/components/collably/AIMatchingExperience";
+import { SevenStepWorkflow } from "@/components/collably/SevenStepWorkflow";
 import { InteractiveIndustriesStage } from "@/components/collably/InteractiveIndustriesStage";
-import { ChaosToOrder } from "@/components/collably/ChaosToOrder";
 import { BrandCreatorSplit } from "@/components/collably/BrandCreatorSplit";
-import { TrustGuarantee } from "@/components/collably/TrustGuarantee";
 import { FAQSection } from "@/components/collably/FAQSection";
 import { CollablyCTA } from "@/components/collably/CollablyCTA";
 
@@ -21,46 +17,34 @@ export default function CollablyLandingPage() {
     <SmoothScroll>
       <AmbientBackground />
       <div className="relative min-h-screen bg-transparent text-white font-sans selection:bg-pink-500/25 selection:text-pink-300 overflow-x-hidden">
-        {/* 01 — Hero & Interactive 4-Tab Campaign Workspace Preview */}
+        {/* 01 — Cinematic Hero with Interactive 4-Tab Workspace */}
         <HeroSection />
 
-        {/* 02 — Platform Infrastructure & Direct API Telemetry */}
+        {/* 02 — Platform API Infrastructure Marquee */}
         <BrandMarquee />
 
-        {/* 03 — Canonical 7-Stage Collaboration Operating System */}
-        <SevenStepWorkflow />
-
-        {/* 04 — Precision AI Creator Discovery with Natural Language Matching */}
-        <AIMatchingExperience />
-
-        {/* 05 — Sample Creator Media Kits & Live Rate Cards */}
+        {/* 03 — Visual Creator Roster & Media Kits */}
         <CreatorShowcase />
 
-        {/* 06 — 4K Frame-Accurate Video Review Studio with Timecoded Annotations */}
+        {/* 04 — Cinematic 4K Video Review Studio */}
         <VideoReviewDemo />
 
-        {/* 07 — Financial Milestone-Protected Payment Architecture */}
-        <EscrowTrustFlow />
+        {/* 05 — AI Creator Discovery Engine */}
+        <AIMatchingExperience />
 
-        {/* 08 — Real-Time Conversion & Attribution Telemetry */}
-        <PerformanceROI />
+        {/* 06 — 7-Step Visual Collaboration Pipeline */}
+        <SevenStepWorkflow />
 
-        {/* 09 — Interactive Industry Switcher & Category Playbooks */}
+        {/* 07 — Interactive Industry Playbooks */}
         <InteractiveIndustriesStage />
 
-        {/* 10 — Traditional Workflow vs Collably Operating System */}
-        <ChaosToOrder />
-
-        {/* 11 — Dedicated Portals for Brands & Creators */}
+        {/* 08 — Dedicated Brand & Creator Portals */}
         <BrandCreatorSplit />
 
-        {/* 12 — The Collably Trust Standards */}
-        <TrustGuarantee />
-
-        {/* 13 — Operational, Legal, Tax & Licensing FAQ */}
+        {/* 09 — Compact Operational FAQ */}
         <FAQSection />
 
-        {/* 14 — Grand Finale Conversion CTA */}
+        {/* 10 — Grand Finale Conversion CTA */}
         <CollablyCTA />
       </div>
     </SmoothScroll>
