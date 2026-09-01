@@ -4,6 +4,7 @@ import { AmbientBackground } from "@/components/flowpilot/AmbientBackground";
 import { HeroEditorialCollage } from "@/components/collably/HeroEditorialCollage";
 import { EditorialBigTextSection } from "@/components/collably/EditorialBigTextSection";
 import { EditorialPortraitWall } from "@/components/collably/EditorialPortraitWall";
+import { EditorialLookbookGrid } from "@/components/collably/EditorialLookbookGrid";
 import { BrandCreatorNetwork } from "@/components/collably/BrandCreatorNetwork";
 import { EditorialProductStory } from "@/components/collably/EditorialProductStory";
 import { FAQSection } from "@/components/collably/FAQSection";
@@ -23,16 +24,19 @@ export default function CollablyLandingPage() {
         {/* 03 — Art-Directed Editorial Portrait Wall */}
         <EditorialPortraitWall />
 
-        {/* 04 — Creative Brand × Creator Network */}
+        {/* 04 — Big, Medium & Small Portrait Lookbook + Brand Emblems */}
+        <EditorialLookbookGrid />
+
+        {/* 05 — Creative Brand × Creator Network */}
         <BrandCreatorNetwork />
 
-        {/* 05 — Blended Product UI QA & Settlement Studio */}
+        {/* 06 — Blended Product UI QA & Settlement Studio */}
         <EditorialProductStory />
 
-        {/* 06 — Compact FAQ Accordion */}
+        {/* 07 — Compact FAQ Accordion */}
         <FAQSection />
 
-        {/* 07 — Magazine Grand Finale CTA */}
+        {/* 08 — Magazine Grand Finale CTA */}
         <EditorialCTA />
       </div>
     </SmoothScroll>
