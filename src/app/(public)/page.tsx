@@ -1,39 +1,39 @@
 import React from "react";
 import { SmoothScroll } from "@/components/flowpilot/SmoothScroll";
 import { AmbientBackground } from "@/components/flowpilot/AmbientBackground";
-import { HeroSection } from "@/components/collably/HeroSection";
-import { CreatorReelsMarquee } from "@/components/collably/CreatorReelsMarquee";
-import { AIMatchingExperience } from "@/components/collably/AIMatchingExperience";
-import { VideoReviewDemo } from "@/components/collably/VideoReviewDemo";
-import { BrandCreatorSplit } from "@/components/collably/BrandCreatorSplit";
+import { HeroEditorialCollage } from "@/components/collably/HeroEditorialCollage";
+import { EditorialBigTextSection } from "@/components/collably/EditorialBigTextSection";
+import { EditorialPortraitWall } from "@/components/collably/EditorialPortraitWall";
+import { BrandCreatorNetwork } from "@/components/collably/BrandCreatorNetwork";
+import { EditorialProductStory } from "@/components/collably/EditorialProductStory";
 import { FAQSection } from "@/components/collably/FAQSection";
-import { CollablyCTA } from "@/components/collably/CollablyCTA";
+import { EditorialCTA } from "@/components/collably/EditorialCTA";
 
 export default function CollablyLandingPage() {
   return (
     <SmoothScroll>
       <AmbientBackground />
-      <div className="relative min-h-screen bg-[#FCFCFA] text-[#101310] font-sans selection:bg-[#EAF8F2] selection:text-[#087F5B] overflow-x-hidden">
-        {/* 01 — Editorial Hero with Financial Flow Visualizer */}
-        <HeroSection />
+      <div className="relative min-h-screen bg-[#FFFFFF] text-[#08090C] font-sans selection:bg-[#EEF0FF] selection:text-[#3047FF] overflow-x-hidden">
+        {/* 01 — High-Fashion Editorial Hero with Layered Portraits & Overlapping UI */}
+        <HeroEditorialCollage />
 
-        {/* 02 — Approved 4K Creator Video Deliverables Marquee */}
-        <CreatorReelsMarquee />
+        {/* 02 — Giant Kinetic Typography Section (CREATORS. BRANDS. ONE WORKSPACE.) */}
+        <EditorialBigTextSection />
 
-        {/* 03 — AI Creator Discovery & Matching Engine */}
-        <AIMatchingExperience />
+        {/* 03 — Art-Directed Editorial Portrait Wall */}
+        <EditorialPortraitWall />
 
-        {/* 04 — Frame-Accurate Video QA & Milestone Sign-Off */}
-        <VideoReviewDemo />
+        {/* 04 — Creative Brand × Creator Network */}
+        <BrandCreatorNetwork />
 
-        {/* 05 — Dedicated Brand & Creator Workspaces */}
-        <BrandCreatorSplit />
+        {/* 05 — Blended Product UI QA & Settlement Studio */}
+        <EditorialProductStory />
 
-        {/* 06 — Operational FAQ Accordion */}
+        {/* 06 — Compact FAQ Accordion */}
         <FAQSection />
 
-        {/* 07 — Editorial Conversion CTA */}
-        <CollablyCTA />
+        {/* 07 — Magazine Grand Finale CTA */}
+        <EditorialCTA />
       </div>
     </SmoothScroll>
   );

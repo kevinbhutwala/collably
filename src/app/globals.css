@@ -4,117 +4,125 @@
 
 @layer base {
   :root {
-    --background: 60 14% 98%; /* #FCFCFA */
-    --foreground: 120 9% 7%;   /* #101310 */
-    --card: 0 0% 100%;         /* #FFFFFF */
-    --card-foreground: 120 9% 7%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 120 9% 7%;
-    --primary: 162 88% 26%;    /* #087F5B (Primary Emerald) */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 161 86% 20%;  /* #075E45 (Deep Emerald) */
-    --secondary-foreground: 0 0% 100%;
-    --muted: 80 10% 95%;       /* #F1F2EE (Stone) */
-    --muted-foreground: 120 4% 40%; /* #626862 */
-    --accent: 154 50% 95%;     /* #EAF8F2 (Soft Mint) */
-    --accent-foreground: 162 88% 26%;
-    --destructive: 0 60% 48%;  /* #C53030 */
-    --destructive-foreground: 0 0% 100%;
-    --border: 110 8% 89%;      /* #E2E6E1 */
-    --input: 110 8% 89%;
-    --ring: 162 88% 26%;
-    --radius: 0.75rem;         /* 12px */
+    /* ══════════════════════════════════════════════════════════════════════════
+       COLLABLY — ULTRAMARINE × INFRARED EDITORIAL DESIGN SYSTEM
+       ══════════════════════════════════════════════════════════════════════════ */
+    --background: #FFFFFF;
+    --background-alt: #FAFAFA;
+    --foreground: #08090C;
+    --foreground-muted: #6B7280;
+    
+    /* Surfaces */
+    --card: #FFFFFF;
+    --card-foreground: #08090C;
+    --surface-secondary: #F6F7F9;
+    --surface-stone: #F1F2EE;
+    
+    /* Borders & Hairlines */
+    --border: #E6E6E8;
+    --border-light: #F0F0F2;
+    --input: #E6E6E8;
+    --ring: #3047FF;
+    
+    /* Primary Ultramarine */
+    --ultramarine: #3047FF;
+    --ultramarine-deep: #1726C7;
+    --ultramarine-soft: #EEF0FF;
+    --ultramarine-border: #C8CEFF;
+    
+    /* Infrared Signal */
+    --infrared: #FF3B30;
+    --infrared-soft: #FFF0EE;
+    --infrared-border: #FFD0CC;
+    
+    /* Semantic Compatibility */
+    --primary: #3047FF;
+    --primary-foreground: #FFFFFF;
+    --secondary: #F6F7F9;
+    --secondary-foreground: #08090C;
+    --muted: #F6F7F9;
+    --muted-foreground: #6B7280;
+    --accent: #EEF0FF;
+    --accent-foreground: #3047FF;
+    --destructive: #FF3B30;
+    --destructive-foreground: #FFFFFF;
+    
+    --radius: 12px;
   }
+}
 
+@layer base {
+  * {
+    @apply border-border;
+  }
   body {
-    background-color: #FCFCFA;
-    background-image: 
-      radial-gradient(ellipse at 60% 25%, rgba(172, 235, 210, 0.55) 0%, rgba(235, 248, 241, 0.35) 30%, rgba(252, 252, 250, 0) 68%),
-      radial-gradient(circle at 20% 50%, rgba(224, 242, 234, 0.45), transparent 55%);
-    background-attachment: fixed;
-    color: #101310;
-    font-family: var(--font-sans), 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    @apply bg-background text-foreground antialiased;
     font-feature-settings: "rlig" 1, "calt" 1, "cv02" 1, "cv03" 1, "cv04" 1, "cv11" 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    overflow-x: hidden;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display), 'Outfit', 'Plus Jakarta Sans', sans-serif;
-    letter-spacing: -0.025em;
-    font-weight: 700;
-    color: #101310;
-  }
-
-  code, pre, kbd {
-    font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
   }
 }
 
-/* Emerald Finance Environmental Surfaces & Cards */
-.fintech-card {
+/* ══════════════════════════════════════════════════════════════════════════
+   EDITORIAL UTILITY CLASSES
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.editorial-card {
   background: #FFFFFF;
-  border: 1px solid #E2E6E1;
-  border-radius: 12px;
-  box-shadow: 0 20px 60px rgba(15, 30, 22, 0.06);
+  border: 1px solid #E6E6E8;
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(8, 9, 12, 0.06);
 }
 
-.fintech-card:hover {
-  border-color: #C8D1C7;
-  box-shadow: 0 24px 70px rgba(15, 30, 22, 0.09);
-}
-
-.fintech-card-stone {
-  background: #F6F7F3;
-  border: 1px solid #E2E6E1;
-  border-radius: 12px;
-}
-
-/* Emerald Finance Primary & Secondary Buttons */
-.btn-emerald-primary {
-  background-color: #087F5B;
+.btn-ultramarine {
+  background: #3047FF;
   color: #FFFFFF;
   border-radius: 9px;
   font-weight: 600;
   transition: all 0.15s ease-in-out;
 }
-
-.btn-emerald-primary:hover {
-  background-color: #075E45;
+.btn-ultramarine:hover {
+  background: #1726C7;
+}
+.btn-ultramarine:active {
+  background: #0E1A9E;
 }
 
-.btn-emerald-primary:active {
-  background-color: #064B39;
-}
-
-.btn-emerald-secondary {
-  background-color: #FFFFFF;
-  color: #101310;
-  border: 1px solid #E2E6E1;
+.btn-editorial-secondary {
+  background: #FFFFFF;
+  color: #08090C;
+  border: 1px solid #E6E6E8;
   border-radius: 9px;
   font-weight: 600;
   transition: all 0.15s ease-in-out;
 }
-
-.btn-emerald-secondary:hover {
-  background-color: #F4F6F3;
-  border-color: #D3D9D2;
+.btn-editorial-secondary:hover {
+  background: #F6F7F9;
+  border-color: #D1D5DB;
 }
 
-/* Subtle Clean Scrollbars */
+.badge-ultramarine {
+  background: #EEF0FF;
+  color: #3047FF;
+  border: 1px solid #C8CEFF;
+}
+
+.badge-infrared {
+  background: #FFF0EE;
+  color: #FF3B30;
+  border: 1px solid #FFD0CC;
+}
+
+/* Smooth custom scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F6F7F3;
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D3D9D2;
+  background: #E6E6E8;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #087F5B;
+  background: #D1D5DB;
 }

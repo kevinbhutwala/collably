@@ -6,117 +6,79 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/features/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
     extend: {
       colors: {
-        border: "#E2E6E1",
-        input: "#E2E6E1",
-        ring: "#087F5B",
-        background: "#FCFCFA",
-        foreground: "#101310",
-        primary: {
-          DEFAULT: "#087F5B",
-          foreground: "#ffffff",
+        background: "var(--background)",
+        "background-alt": "var(--background-alt)",
+        foreground: "var(--foreground)",
+        border: "var(--border)",
+        input: "var(--input)",
+        ring: "var(--ring)",
+        card: {
+          DEFAULT: "var(--card)",
+          foreground: "var(--card-foreground)",
         },
-        secondary: {
-          DEFAULT: "#075E45",
-          foreground: "#ffffff",
+        /* Ultramarine Palette */
+        ultramarine: {
+          DEFAULT: "#3047FF",
+          50: "#EEF0FF",
+          100: "#DDE1FF",
+          200: "#BCC4FF",
+          300: "#9BA7FF",
+          400: "#6B7CFF",
+          500: "#3047FF",
+          600: "#1726C7",
+          700: "#0E1A9E",
+          800: "#08106B",
+          900: "#040838",
         },
-        destructive: {
-          DEFAULT: "#C53030",
-          foreground: "#ffffff",
+        /* Infrared Palette */
+        infrared: {
+          DEFAULT: "#FF3B30",
+          50: "#FFF0EE",
+          100: "#FFE1DC",
+          200: "#FFC2B9",
+          300: "#FFA396",
+          400: "#FF6F63",
+          500: "#FF3B30",
+          600: "#D92218",
+          700: "#A8140C",
+          800: "#750B05",
+          900: "#420401",
         },
-        muted: {
-          DEFAULT: "#F1F2EE",
-          foreground: "#626862",
+        /* Editorial Neutrals */
+        editorial: {
+          black: "#08090C",
+          charcoal: "#1A1C23",
+          slate: "#4B5563",
+          muted: "#6B7280",
+          border: "#E6E6E8",
+          surface: "#F6F7F9",
+          canvas: "#FFFFFF",
         },
-        accent: {
-          DEFAULT: "#EAF8F2",
-          foreground: "#087F5B",
-        },
-        emerald: {
-          DEFAULT: "#087F5B",
-          50: "#F2FAF6",
-          100: "#EAF8F2",
-          200: "#C3EBDA",
-          300: "#8DD9BA",
-          400: "#4EC296",
-          500: "#087F5B", // Primary Emerald
-          600: "#075E45", // Deep Emerald
-          700: "#064B39", // Dark Emerald
-          800: "#053B2D",
-          900: "#042D22",
-        },
-        stone: {
-          DEFAULT: "#F1F2EE",
-          50: "#FCFCFA",
-          100: "#F6F7F3",
-          200: "#E2E6E1",
-          300: "#D3D9D2",
-          400: "#8A908B",
-          500: "#626862",
-          900: "#101310",
-        },
-        surface: {
-          DEFAULT: "#FFFFFF",
-          secondary: "#F6F7F3",
-          stone: "#F1F2EE",
-          border: "#E2E6E1",
-        },
-      },
-      borderRadius: {
-        lg: "0.75rem", // 12px
-        md: "0.5625rem", // 9px (button radius)
-        sm: "0.375rem",
       },
       fontFamily: {
-        display: [
-          "var(--font-display)",
-          "'Outfit'",
-          "'Plus Jakarta Sans'",
-          "-apple-system",
-          "BlinkMacSystemFont",
-          "sans-serif",
-        ],
-        sans: [
-          "var(--font-sans)",
-          "'Plus Jakarta Sans'",
-          "-apple-system",
-          "BlinkMacSystemFont",
-          "sans-serif",
-        ],
-        mono: [
-          "var(--font-mono)",
-          "'JetBrains Mono'",
-          "monospace",
-        ],
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        display: ["var(--font-outfit)", "system-ui", "sans-serif"],
+        mono: ["var(--font-jetbrains)", "monospace"],
+        serif: ["Playfair Display", "Instrument Serif", "Georgia", "serif"],
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        fintech: "0 20px 60px rgba(15, 30, 22, 0.06)",
-        card: "0 2px 10px rgba(15, 30, 22, 0.04), 0 0 1px 1px #E2E6E1",
-        elevated: "0 24px 70px rgba(15, 30, 22, 0.09)",
-        subtle: "0 1px 3px rgba(15, 30, 22, 0.04)",
-      },
-      keyframes: {
-        marquee: {
-          "0%": { transform: "translateX(0%)" },
-          "100%": { transform: "translateX(-50%)" },
-        },
-      },
-      animation: {
-        marquee: "marquee 35s linear infinite",
+        editorial: "0 20px 60px rgba(8, 9, 12, 0.06)",
+        "editorial-lg": "0 30px 80px rgba(8, 9, 12, 0.09)",
+        "ultramarine-glow": "0 10px 30px rgba(48, 71, 255, 0.20)",
+        "infrared-glow": "0 10px 30px rgba(255, 59, 48, 0.20)",
       },
     },
   },
   plugins: [],
 };
+
 export default config;

@@ -18,7 +18,7 @@ export function CollablyLogo({
   size = "md",
   className,
   href = "/",
-  subtext = "Creator Commerce & Milestones",
+  subtext = "Creator Commerce & Escrow",
   showTag = false,
 }: CollablyLogoProps) {
   const iconSizes = {
@@ -39,7 +39,7 @@ export function CollablyLogo({
     <div
       className={cn(
         "relative flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:scale-102 shadow-xs",
-        "bg-[#087F5B] text-white",
+        "bg-[#3047FF] text-white",
         iconSizes[size]
       )}
     >
@@ -56,7 +56,7 @@ export function CollablyLogo({
           strokeWidth="2.75"
           strokeLinecap="round"
         />
-        <circle cx="16.5" cy="12" r="2.25" fill="#EAF8F2" />
+        <circle cx="16.5" cy="12" r="2.25" fill="#EEF0FF" />
       </svg>
     </div>
   );
@@ -79,20 +79,20 @@ export function CollablyLogo({
         <div className="flex items-center gap-1.5">
           <span
             className={cn(
-              "font-extrabold text-[#101310] leading-none font-display flex items-center tracking-tight",
+              "font-extrabold text-[#08090C] leading-none font-display flex items-center tracking-tight",
               textSizes[size]
             )}
           >
             Collably
           </span>
           {showTag && (
-            <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded-md bg-[#EAF8F2] text-[#087F5B] border border-[#C3EBDA] font-bold tracking-wider leading-none">
+            <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded-md bg-[#EEF0FF] text-[#3047FF] border border-[#C8CEFF] font-bold tracking-wider leading-none">
               PRO
             </span>
           )}
         </div>
         {subtext && variant !== "minimal" && (
-          <span className="text-[11px] text-[#626862] font-medium tracking-tight mt-0.5 leading-none hidden sm:inline font-sans">
+          <span className="text-[11px] text-[#6B7280] font-medium tracking-tight mt-0.5 leading-none hidden sm:inline font-sans">
             {subtext}
           </span>
         )}
