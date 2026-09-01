@@ -16,7 +16,7 @@ export function BrandCreatorSplit() {
         <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-xs font-mono font-bold text-[hsl(327,100%,55%)] shadow-xs">
             <Sparkles className="w-3.5 h-3.5 text-gold" />
-            <span>13 • Two Tailored Portals</span>
+            <span>08 • Dedicated Portals</span>
           </div>
 
           <ScrollRevealText
@@ -32,7 +32,7 @@ export function BrandCreatorSplit() {
             gradientWords={["enterprise", "speed", "creator", "security"]}
             className="text-sm sm:text-lg text-slate-300 font-sans max-w-2xl mx-auto leading-relaxed"
           >
-            Whether you&apos;re deploying a \$250K growth campaign or earning \$10K/month as an independent creator.
+            Whether you&apos;re deploying a targeted growth campaign or earning as an independent creator.
           </ScrollRevealText>
         </div>
 
@@ -63,22 +63,22 @@ export function BrandCreatorSplit() {
                   Build campaigns without the chaos.
                 </h3>
                 <p className="text-xs sm:text-base text-slate-300 font-sans leading-relaxed">
-                  Discover 50,000+ verified creators, lock milestones in Stripe Connect escrow, and approve 4K video drafts with frame-accurate timecodes.
+                  Discover vetted creators, protect campaign milestones with pre-funded custody, and review 4K video drafts with frame-accurate timecodes.
                 </p>
               </div>
 
               <div className="space-y-2.5 pt-2 text-xs font-mono text-slate-300">
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                  <span>100% Milestone-Protected Capital</span>
+                  <span>Protected Milestone Payments</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Zap className="w-4 h-4 text-[hsl(327,100%,55%)]" />
-                  <span>AI Creator Compatibility Engine</span>
+                  <span>Natural Language Creator Discovery</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Lock className="w-4 h-4 text-sky-400" />
-                  <span>Full Commercial IP Transfer Automations</span>
+                  <span>Standardized Commercial Usage Rights</span>
                 </div>
               </div>
             </div>
@@ -108,7 +108,7 @@ export function BrandCreatorSplit() {
                   <Video className="w-6 h-6" />
                 </div>
                 <span className="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 font-mono text-xs font-bold border border-emerald-500/30">
-                  FOR VERIFIED CREATORS
+                  FOR CREATORS
                 </span>
               </div>
 
@@ -117,22 +117,22 @@ export function BrandCreatorSplit() {
                   Get paid for creating great work.
                 </h3>
                 <p className="text-xs sm:text-base text-slate-300 font-sans leading-relaxed">
-                  Never chase an invoice again. Every collaboration is pre-funded before you film, with 90% net earnings disbursed directly in &lt;24 hours.
+                  Never chase an invoice again. Every collaboration is funded before you film, with 90% net earnings disbursed within 24 hours of approval.
                 </p>
               </div>
 
               <div className="space-y-2.5 pt-2 text-xs font-mono text-slate-300">
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                  <span>Funds Guaranteed Before Filming Starts</span>
+                  <span>Protected Milestone Custody</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Zap className="w-4 h-4 text-[hsl(327,100%,55%)]" />
-                  <span>Disbursed &lt;24h via Stripe Connect</span>
+                  <span>Direct Bank Payouts via Stripe Connect</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Lock className="w-4 h-4 text-amber-400" />
-                  <span>Automated W-9 &amp; 1099-K Tax Compliance</span>
+                  <span>Transparent 10% Flat Platform Fee</span>
                 </div>
               </div>
             </div>
