@@ -53,6 +53,13 @@ export default function RootLayout({
       className={`${plusJakarta.variable} ${jetbrainsMono.variable}`}
       style={{ colorScheme: "light" }}
     >
+      <head>
+        <link rel="preconnect" href="https://api.fontshare.com" />
+        <link
+          rel="stylesheet"
+          href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700,800,900&display=swap"
+        />
+      </head>
       <body className="min-h-screen bg-[#FAFAF8] text-[#111111] antialiased font-sans selection:bg-[#B7FF3C] selection:text-[#111111]">
         {children}
         <CommandPalette />
