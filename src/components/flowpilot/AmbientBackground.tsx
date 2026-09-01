@@ -5,26 +5,26 @@ import React from "react";
 export function AmbientBackground() {
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none">
-      {/* Editorial Canvas Base */}
-      <div className="absolute inset-0 bg-[#FFFFFF]" />
+      {/* Architectural Base Canvas #FAFAF8 */}
+      <div className="absolute inset-0 bg-[#FAFAF8]" />
 
-      {/* Dual Independent Studio Light Sources (Ultramarine @ 20% 20% + Infrared @ 80% 30%) */}
+      {/* Chrome Environmental Sheen & Micro-Accent Glow (#B7FF3C @ 15% 15% + Chrome Sheen) */}
       <div
-        className="absolute inset-0 opacity-80"
+        className="absolute inset-0 opacity-70"
         style={{
           background: `
-            radial-gradient(circle at 18% 18%, rgba(48, 71, 255, 0.18) 0%, transparent 35%),
-            radial-gradient(circle at 82% 28%, rgba(255, 59, 48, 0.12) 0%, transparent 32%),
-            radial-gradient(circle at 50% 85%, rgba(48, 71, 255, 0.08) 0%, transparent 40%)
+            radial-gradient(circle at 15% 15%, rgba(183, 255, 60, 0.09) 0%, transparent 28%),
+            radial-gradient(circle at 85% 25%, rgba(217, 217, 214, 0.5) 0%, transparent 35%),
+            radial-gradient(circle at 50% 85%, rgba(191, 193, 196, 0.3) 0%, transparent 40%)
           `,
         }}
       />
 
       {/* Subtle Studio Grain Texture */}
       <div
-        className="absolute inset-0 opacity-[0.025] mix-blend-overlay pointer-events-none"
+        className="absolute inset-0 opacity-[0.02] mix-blend-overlay pointer-events-none"
         style={{
-          backgroundImage: `radial-gradient(#08090C 1px, transparent 1px)`,
+          backgroundImage: `radial-gradient(#111111 1px, transparent 1px)`,
           backgroundSize: "24px 24px",
         }}
       />

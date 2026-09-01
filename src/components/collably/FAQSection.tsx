@@ -31,14 +31,14 @@ export function FAQSection() {
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#FCFCFA] border-b border-[#E2E6E1] relative overflow-hidden text-[#101310] select-none">
+    <section className="py-20 sm:py-28 bg-[#FAFAF8] border-b border-[#E7E7E4] relative overflow-hidden text-[#111111] select-none">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF8F2] border border-[#C3EBDA] text-xs font-mono font-semibold text-[#087F5B]">
-            <HelpCircle className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-xs font-mono font-semibold text-[#111111] shadow-xs">
+            <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
             <span>Questions &amp; Answers</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#101310] tracking-tight font-display">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#111111] tracking-tight font-display">
             Frequently asked questions.
           </h2>
         </div>
@@ -50,18 +50,18 @@ export function FAQSection() {
             return (
               <div
                 key={index}
-                className="rounded-xl bg-[#FFFFFF] border border-[#E2E6E1] overflow-hidden shadow-xs transition-all"
+                className="rounded-xl bg-[#FFFFFF] border border-[#E7E7E4] overflow-hidden shadow-xs transition-all"
               >
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full p-5 text-left flex items-center justify-between gap-4 select-none hover:bg-[#F6F7F3] transition-colors"
+                  className="w-full p-5 text-left flex items-center justify-between gap-4 select-none hover:bg-[#F4F4F0] transition-colors"
                 >
-                  <span className="text-sm sm:text-base font-bold text-[#101310] font-sans">
+                  <span className="text-sm sm:text-base font-bold text-[#111111] font-sans">
                     {faq.q}
                   </span>
-                  <div className="w-7 h-7 rounded-lg bg-[#F1F2EE] border border-[#E2E6E1] flex items-center justify-center shrink-0 text-[#101310]">
-                    {isOpen ? <Minus className="w-3.5 h-3.5 text-[#087F5B]" /> : <Plus className="w-3.5 h-3.5" />}
+                  <div className="w-7 h-7 rounded-lg bg-[#FAFAF8] border border-[#E7E7E4] flex items-center justify-center shrink-0 text-[#111111]">
+                    {isOpen ? <Minus className="w-3.5 h-3.5 text-[#111111]" /> : <Plus className="w-3.5 h-3.5 text-[#6B6B6B]" />}
                   </div>
                 </button>
 
@@ -73,7 +73,7 @@ export function FAQSection() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.18 }}
                     >
-                      <div className="px-5 pb-5 text-xs sm:text-sm text-[#626862] leading-relaxed border-t border-[#E2E6E1] pt-3 font-sans">
+                      <div className="px-5 pb-5 text-xs sm:text-sm text-[#6B6B6B] leading-relaxed border-t border-[#E7E7E4] pt-3 font-sans">
                         {faq.a}
                       </div>
                     </motion.div>

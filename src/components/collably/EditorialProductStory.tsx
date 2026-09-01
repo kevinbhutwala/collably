@@ -10,7 +10,6 @@ import {
   ShieldCheck,
   Check,
   Sparkles,
-  Zap,
 } from "lucide-react";
 import confetti from "canvas-confetti";
 import { Modal } from "@/components/ui/Modal";
@@ -95,55 +94,58 @@ export function EditorialProductStory() {
         particleCount: 85,
         spread: 65,
         origin: { y: 0.6 },
-        colors: ["#3047FF", "#1726C7", "#FF3B30", "#EEF0FF", "#08090C"],
+        colors: ["#111111", "#B7FF3C", "#6B6B6B", "#FAFAF8", "#FFFFFF"],
       });
     } catch {}
   };
 
   return (
-    <section className="py-24 sm:py-36 bg-[#FFFFFF] border-b border-[#E6E6E8] relative overflow-hidden select-none text-[#08090C]">
+    <section className="py-24 sm:py-36 bg-[#FAFAF8] border-b border-[#E7E7E4] relative overflow-hidden select-none text-[#111111]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EEF0FF] border border-[#C8CEFF] text-xs font-mono font-bold text-[#3047FF]">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-xs font-mono font-bold text-[#111111] shadow-xs">
+            <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
             <span>04 / FRAME-ACCURATE REVIEW</span>
           </div>
 
-          <h2 className="text-4xl sm:text-6xl font-extrabold text-[#08090C] tracking-tight font-display">
+          <h2 className="text-4xl sm:text-6xl font-extrabold text-[#111111] tracking-tight font-display">
             Video QA meets instant settlement.
           </h2>
-          <p className="text-sm sm:text-base text-[#6B7280] font-sans">
+          <p className="text-sm sm:text-base text-[#6B6B6B] font-sans">
             Drop timecoded feedback pins directly onto 4K video drafts. 1-click approve to disburse milestone payouts.
           </p>
         </div>
 
-        {/* ── BLENDED PRODUCT UI + EDITORIAL COMPOSITION (Section 19) ── */}
+        {/* ── BLENDED PRODUCT UI + EDITORIAL COMPOSITION ── */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-6xl mx-auto">
           {/* LEFT: EDITORIAL CREATOR PORTRAIT ANCHOR */}
           <div className="lg:col-span-5 relative space-y-4">
-            <div className="relative rounded-2xl overflow-hidden border border-[#E6E6E8] bg-[#08090C] shadow-editorial group">
+            <div className="relative rounded-2xl overflow-hidden border border-[#E7E7E4] bg-[#111111] shadow-editorial group">
               <div className="aspect-[4/5] w-full overflow-hidden">
                 <img
                   src={creator.imageUrl}
                   alt={creator.name}
                   className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#08090C]/80 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/85 via-transparent to-transparent pointer-events-none" />
 
-                {/* Overlapping 98% Match Card */}
-                <div className="absolute top-4 left-4 p-3 rounded-xl bg-white/95 backdrop-blur-md border border-[#C8CEFF] shadow-editorial font-mono text-xs">
-                  <span className="text-[10px] text-[#6B7280] block font-bold">MATCH ENGINE</span>
-                  <span className="text-sm font-extrabold text-[#3047FF]">98% COMPATIBILITY</span>
+                {/* Overlapping 98% Match Card with #B7FF3C */}
+                <div className="absolute top-4 left-4 p-3 rounded-xl bg-white/95 backdrop-blur-md border border-[#E7E7E4] shadow-editorial font-mono text-xs">
+                  <span className="text-[10px] text-[#6B6B6B] block font-bold">MATCH ENGINE</span>
+                  <span className="text-sm font-extrabold text-[#111111] flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
+                    98% COMPATIBILITY
+                  </span>
                 </div>
 
                 {/* Overlapping Approval Card */}
-                <div className="absolute bottom-4 left-4 right-4 p-3.5 rounded-xl bg-white/95 backdrop-blur-md border border-[#E6E6E8] shadow-editorial font-mono text-xs flex items-center justify-between">
+                <div className="absolute bottom-4 left-4 right-4 p-3.5 rounded-xl bg-white/95 backdrop-blur-md border border-[#E7E7E4] shadow-editorial font-mono text-xs flex items-center justify-between">
                   <div>
-                    <span className="text-[10px] text-[#6B7280] block">CREATOR RATE</span>
-                    <span className="font-extrabold text-sm text-[#08090C]">{creator.verifiedRate}</span>
+                    <span className="text-[10px] text-[#6B6B6B] block">CREATOR RATE</span>
+                    <span className="font-extrabold text-sm text-[#111111]">{creator.verifiedRate}</span>
                   </div>
-                  <span className="px-2 py-0.5 rounded bg-[#FFF0EE] text-[#FF3B30] font-bold text-[10px]">
+                  <span className="px-2 py-0.5 rounded bg-[#111111] text-[#B7FF3C] font-bold text-[10px]">
                     ✓ READY FOR SIGN-OFF
                   </span>
                 </div>
@@ -152,22 +154,22 @@ export function EditorialProductStory() {
           </div>
 
           {/* RIGHT: 4K VIDEO PLAYER STUDIO */}
-          <div className="lg:col-span-7 p-5 sm:p-7 rounded-2xl bg-[#FAFAFA] border border-[#E6E6E8] shadow-editorial space-y-5">
+          <div className="lg:col-span-7 p-5 sm:p-7 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-editorial space-y-5">
             {/* Top HUD */}
-            <div className="flex items-center justify-between pb-3 border-b border-[#E6E6E8] text-xs font-mono">
+            <div className="flex items-center justify-between pb-3 border-b border-[#E7E7E4] text-xs font-mono">
               <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#3047FF] animate-pulse" />
-                <span className="text-[#08090C] font-bold font-sans">Elena Rostova • AI Smartwatch Reel</span>
-                <span className="text-[#6B7280] hidden sm:inline">• Cut v2 (4K 60FPS)</span>
+                <span className="w-2.5 h-2.5 rounded-full bg-[#B7FF3C] animate-pulse" />
+                <span className="text-[#111111] font-bold font-sans">Elena Rostova • AI Smartwatch Reel</span>
+                <span className="text-[#6B6B6B] hidden sm:inline">• Cut v2 (4K 60FPS)</span>
               </div>
-              <span className="px-2.5 py-0.5 rounded-full bg-[#EEF0FF] border border-[#C8CEFF] text-[#3047FF] font-bold flex items-center gap-1">
-                <ShieldCheck className="w-3.5 h-3.5" />
+              <span className="px-2.5 py-0.5 rounded-full bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] font-bold flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
                 <span>₹32,500 ESCROW</span>
               </span>
             </div>
 
             {/* Video Viewport */}
-            <div className="relative aspect-video rounded-xl bg-black border border-[#E6E6E8] overflow-hidden group shadow-inner">
+            <div className="relative aspect-video rounded-xl bg-black border border-[#E7E7E4] overflow-hidden group shadow-inner">
               <video
                 ref={videoRef}
                 src={videoSrc}
@@ -208,7 +210,7 @@ export function EditorialProductStory() {
                   className="w-full bg-white/30 hover:bg-white/40 h-2 rounded-full overflow-hidden relative cursor-pointer"
                 >
                   <div
-                    className="bg-[#3047FF] h-full"
+                    className="bg-[#B7FF3C] h-full"
                     style={{ width: `${((currentTimeSec / (duration || 60)) * 100).toFixed(1)}%` }}
                   />
                 </div>
@@ -220,7 +222,7 @@ export function EditorialProductStory() {
                       {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
                     </button>
                   </div>
-                  <span className="text-[#C8CEFF] font-bold">Cut v2 Verified</span>
+                  <span className="text-[#B7FF3C] font-bold">Cut v2 Verified</span>
                 </div>
               </div>
             </div>
@@ -236,15 +238,15 @@ export function EditorialProductStory() {
                     onClick={() => handleSeek(c.timeSec, i)}
                     className={`p-3 rounded-xl border text-left transition-all ${
                       isActive
-                        ? "bg-[#EEF0FF] border-[#3047FF] shadow-xs text-[#3047FF]"
-                        : "bg-[#FFFFFF] border-[#E6E6E8] text-[#6B7280] hover:bg-[#F6F7F9]"
+                        ? "bg-[#FAFAF8] border-[#111111] shadow-xs text-[#111111]"
+                        : "bg-[#FFFFFF] border-[#E7E7E4] text-[#6B6B6B] hover:bg-[#F4F4F0]"
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1 text-[10px] font-mono">
-                      <span className="font-bold text-[#08090C] truncate">{c.author}</span>
-                      <span className="px-1 py-0.5 rounded bg-[#FAFAFA] text-[#3047FF] font-bold">@{c.timecode}</span>
+                      <span className="font-bold text-[#111111] truncate">{c.author}</span>
+                      <span className="px-1 py-0.5 rounded bg-[#FAFAF8] text-[#111111] font-bold">@{c.timecode}</span>
                     </div>
-                    <p className="text-[11px] text-[#6B7280] font-sans line-clamp-1">&ldquo;{c.text}&rdquo;</p>
+                    <p className="text-[11px] text-[#6B6B6B] font-sans line-clamp-1">&ldquo;{c.text}&rdquo;</p>
                   </button>
                 );
               })}
@@ -253,19 +255,19 @@ export function EditorialProductStory() {
             {/* Bottom Approval & Disburse Bar */}
             <div className="pt-2">
               {approved ? (
-                <div className="p-4 rounded-xl bg-[#EEF0FF] border border-[#C8CEFF] text-[#1726C7] text-xs font-mono flex items-center justify-between">
+                <div className="p-4 rounded-xl bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] text-xs font-mono flex items-center justify-between">
                   <span className="font-bold flex items-center gap-2 font-sans">
-                    <CheckCircle2 className="w-4 h-4 text-[#3047FF]" /> ✓ Deliverable approved • ₹29,250 Creator Net Disbursed via Stripe Connect
+                    <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" /> ✓ Deliverable approved • ₹29,250 Creator Net Disbursed via Stripe Connect
                   </span>
-                  <span className="font-extrabold text-[10px] text-[#3047FF]">DISBURSED</span>
+                  <span className="font-extrabold text-[10px] text-[#111111] bg-[#B7FF3C] px-2 py-0.5 rounded">DISBURSED</span>
                 </div>
               ) : (
                 <button
                   type="button"
                   onClick={() => setConfirmModalOpen(true)}
-                  className="w-full py-3.5 rounded-[9px] bg-[#3047FF] hover:bg-[#1726C7] active:bg-[#0E1A9E] text-white font-semibold text-sm shadow-ultramarine-glow flex items-center justify-center gap-2 transition-all font-sans cursor-pointer"
+                  className="w-full py-3.5 rounded-[9px] bg-[#111111] hover:bg-[#262626] active:bg-[#000000] text-[#FAFAF8] font-semibold text-sm shadow-xs flex items-center justify-center gap-2 transition-all font-sans cursor-pointer group"
                 >
-                  <CheckCircle2 className="w-4 h-4" />
+                  <CheckCircle2 className="w-4 h-4 text-[#B7FF3C]" />
                   <span>Approve Deliverable &amp; Disburse Milestone</span>
                 </button>
               )}
@@ -283,35 +285,38 @@ export function EditorialProductStory() {
         maxWidth="md"
       >
         <div className="space-y-4 pt-1 text-xs font-sans">
-          <div className="p-4 rounded-xl bg-[#FAFAFA] border border-[#E6E6E8] space-y-1.5 font-mono">
+          <div className="p-4 rounded-xl bg-[#FAFAF8] border border-[#E7E7E4] space-y-1.5 font-mono">
             <div className="flex justify-between">
-              <span className="text-[#6B7280]">Milestone Escrow:</span>
-              <span className="text-[#08090C] font-bold">₹32,500</span>
+              <span className="text-[#6B6B6B]">Milestone Escrow:</span>
+              <span className="text-[#111111] font-bold">₹32,500</span>
             </div>
-            <div className="flex justify-between text-[#3047FF]">
+            <div className="flex justify-between text-[#111111]">
               <span>Creator Payout (90%):</span>
-              <span className="font-bold">₹29,250</span>
+              <span className="font-bold flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
+                ₹29,250
+              </span>
             </div>
-            <div className="flex justify-between text-[#6B7280] text-[11px]">
+            <div className="flex justify-between text-[#6B6B6B] text-[11px]">
               <span>Platform Fee (10%):</span>
               <span>₹3,250</span>
             </div>
           </div>
 
-          <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#E6E6E8]">
+          <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#E7E7E4]">
             <button
               type="button"
               onClick={() => setConfirmModalOpen(false)}
-              className="px-4 py-2 text-[#6B7280] hover:text-[#08090C]"
+              className="px-4 py-2 text-[#6B6B6B] hover:text-[#111111]"
             >
               Cancel
             </button>
             <button
               type="button"
               onClick={handleConfirmApprove}
-              className="px-5 py-2.5 rounded-[9px] bg-[#3047FF] hover:bg-[#1726C7] text-white font-semibold flex items-center gap-1.5 shadow-xs transition-all"
+              className="px-5 py-2.5 rounded-[9px] bg-[#111111] hover:bg-[#262626] text-[#FAFAF8] font-semibold flex items-center gap-1.5 shadow-xs transition-all"
             >
-              <Check className="w-3.5 h-3.5" />
+              <Check className="w-3.5 h-3.5 text-[#B7FF3C]" />
               <span>Confirm &amp; Disburse</span>
             </button>
           </div>

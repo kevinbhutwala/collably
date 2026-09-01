@@ -14,7 +14,7 @@ export default function CollablyLandingPage() {
   return (
     <SmoothScroll>
       <AmbientBackground />
-      <div className="relative min-h-screen bg-[#FFFFFF] text-[#08090C] font-sans selection:bg-[#EEF0FF] selection:text-[#3047FF] overflow-x-hidden">
+      <div className="relative min-h-screen bg-[#FAFAF8] text-[#111111] font-sans selection:bg-[#B7FF3C] selection:text-[#111111] overflow-x-hidden">
         {/* 01 — High-Fashion Editorial Hero with Layered Portraits & Overlapping UI */}
         <HeroEditorialCollage />
 

@@ -5,46 +5,39 @@
 @layer base {
   :root {
     /* ══════════════════════════════════════════════════════════════════════════
-       COLLABLY — ULTRAMARINE × INFRARED EDITORIAL DESIGN SYSTEM
+       COLLABLY — CHROME MONOCHROME × ELECTRIC ACID LIME DESIGN SYSTEM
        ══════════════════════════════════════════════════════════════════════════ */
-    --background: #FFFFFF;
-    --background-alt: #FAFAFA;
-    --foreground: #08090C;
-    --foreground-muted: #6B7280;
+    --background: #FAFAF8;
+    --background-alt: #F4F4F0;
+    --foreground: #111111;
+    --foreground-muted: #6B6B6B;
     
     /* Surfaces */
     --card: #FFFFFF;
-    --card-foreground: #08090C;
-    --surface-secondary: #F6F7F9;
-    --surface-stone: #F1F2EE;
+    --card-foreground: #111111;
+    --surface-secondary: #F4F4F0;
+    --surface-chrome: #EFEFEA;
     
     /* Borders & Hairlines */
-    --border: #E6E6E8;
-    --border-light: #F0F0F2;
-    --input: #E6E6E8;
-    --ring: #3047FF;
+    --border: #E7E7E4;
+    --border-light: #F0F0ED;
+    --input: #E7E7E4;
+    --ring: #111111;
     
-    /* Primary Ultramarine */
-    --ultramarine: #3047FF;
-    --ultramarine-deep: #1726C7;
-    --ultramarine-soft: #EEF0FF;
-    --ultramarine-border: #C8CEFF;
-    
-    /* Infrared Signal */
-    --infrared: #FF3B30;
-    --infrared-soft: #FFF0EE;
-    --infrared-border: #FFD0CC;
+    /* Accent & Micro Accent */
+    --accent: #111111;
+    --accent-foreground: #FAFAF8;
+    --micro-accent: #B7FF3C;
+    --micro-accent-text: #111111;
     
     /* Semantic Compatibility */
-    --primary: #3047FF;
+    --primary: #111111;
     --primary-foreground: #FFFFFF;
-    --secondary: #F6F7F9;
-    --secondary-foreground: #08090C;
-    --muted: #F6F7F9;
-    --muted-foreground: #6B7280;
-    --accent: #EEF0FF;
-    --accent-foreground: #3047FF;
-    --destructive: #FF3B30;
+    --secondary: #F4F4F0;
+    --secondary-foreground: #111111;
+    --muted: #F4F4F0;
+    --muted-foreground: #6B6B6B;
+    --destructive: #111111;
     --destructive-foreground: #FFFFFF;
     
     --radius: 12px;
@@ -62,53 +55,61 @@
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
-   EDITORIAL UTILITY CLASSES
+   CHROME GRADIENT & MICRO ACCENT UTILITIES
    ══════════════════════════════════════════════════════════════════════════ */
 
-.editorial-card {
-  background: #FFFFFF;
-  border: 1px solid #E6E6E8;
+.chrome-gradient {
+  background: linear-gradient(135deg, #FFFFFF 0%, #D9D9D6 25%, #FFFFFF 50%, #BFC1C4 75%, #FFFFFF 100%);
+}
+
+.chrome-border {
+  border-image: linear-gradient(to bottom right, #FFFFFF, #D9D9D6, #FFFFFF, #BFC1C4, #FFFFFF) 1;
+}
+
+.chrome-surface {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAFAF8 100%);
+  border: 1px solid #E7E7E4;
   border-radius: 14px;
-  box-shadow: 0 20px 60px rgba(8, 9, 12, 0.06);
+  box-shadow: 0 20px 60px rgba(17, 17, 17, 0.05);
 }
 
-.btn-ultramarine {
-  background: #3047FF;
-  color: #FFFFFF;
+.btn-carbon-primary {
+  background: #111111;
+  color: #FAFAF8;
   border-radius: 9px;
   font-weight: 600;
   transition: all 0.15s ease-in-out;
 }
-.btn-ultramarine:hover {
-  background: #1726C7;
+.btn-carbon-primary:hover {
+  background: #262626;
 }
-.btn-ultramarine:active {
-  background: #0E1A9E;
+.btn-carbon-primary:active {
+  background: #000000;
 }
 
-.btn-editorial-secondary {
+.btn-carbon-secondary {
   background: #FFFFFF;
-  color: #08090C;
-  border: 1px solid #E6E6E8;
+  color: #111111;
+  border: 1px solid #E7E7E4;
   border-radius: 9px;
   font-weight: 600;
   transition: all 0.15s ease-in-out;
 }
-.btn-editorial-secondary:hover {
-  background: #F6F7F9;
-  border-color: #D1D5DB;
+.btn-carbon-secondary:hover {
+  background: #F4F4F0;
+  border-color: #D6D6D2;
 }
 
-.badge-ultramarine {
-  background: #EEF0FF;
-  color: #3047FF;
-  border: 1px solid #C8CEFF;
+.badge-micro-accent {
+  background: #B7FF3C;
+  color: #111111;
+  border: 1px solid #9EE61C;
+  font-weight: 700;
 }
 
-.badge-infrared {
-  background: #FFF0EE;
-  color: #FF3B30;
-  border: 1px solid #FFD0CC;
+.badge-carbon {
+  background: #111111;
+  color: #FAFAF8;
 }
 
 /* Smooth custom scrollbars */
@@ -120,9 +121,9 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #E6E6E8;
+  background: #E7E7E4;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #D1D5DB;
+  background: #D6D6D2;
 }
