@@ -35,16 +35,16 @@ export function Navbar() {
     <header
       className={`sticky top-0 z-40 w-full transition-all duration-300 select-none ${
         scrolled
-          ? "border-b border-[#FFD21F]/20 bg-[#08080C]/95 backdrop-blur-xl py-3 shadow-[0_10px_30px_rgba(0,0,0,0.6)]"
-          : "border-b border-white/10 bg-[#08080C]/80 backdrop-blur-md py-4"
+          ? "border-b border-black/8 bg-white/95 backdrop-blur-xl py-3 shadow-[0_4px_20px_rgba(0,0,0,0.04)]"
+          : "border-b border-black/5 bg-white/80 backdrop-blur-md py-4"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 text-[#0A0A0E]">
         {/* Brand Logo */}
         <CollablyLogo href="/" size="md" subtext="Creator Commerce" />
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-1 bg-[#12121A]/90 border border-[#FFD21F]/20 px-2 py-1 rounded-full shadow-lg backdrop-blur-md">
+        <nav className="hidden lg:flex items-center gap-1 bg-[#F5F5F9] border border-black/5 px-2 py-1 rounded-full shadow-xs backdrop-blur-md">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -54,8 +54,8 @@ export function Navbar() {
                 className={cn(
                   "px-4 py-1.5 text-xs font-semibold rounded-full transition-all select-none font-sans tracking-tight",
                   isActive
-                    ? "bg-[#FFD21F] text-[#0A0A0E] shadow-[0_0_15px_rgba(255,210,31,0.45)] font-bold border border-white/40"
-                    : "text-white/70 hover:text-white hover:bg-white/[0.06]"
+                    ? "bg-[#FFD21F] text-[#0A0A0E] shadow-[0_2px_10px_rgba(255,210,31,0.4)] font-bold border border-black/10"
+                    : "text-[#5A5A68] hover:text-[#0A0A0E] hover:bg-black/[0.04]"
                 )}
               >
                 {link.label}
@@ -70,14 +70,14 @@ export function Navbar() {
             <div className="flex items-center gap-2">
               <Link
                 href="/app/dashboard"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#FFD21F] text-xs font-mono text-[#0A0A0E] transition-all font-extrabold shadow-[0_0_20px_rgba(255,210,31,0.4)] border border-white/40"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#FFD21F] text-xs font-mono text-[#0A0A0E] transition-all font-extrabold shadow-[0_4px_14px_rgba(255,210,31,0.4)] border border-black/10"
               >
                 <UserIcon className="w-3.5 h-3.5 text-[#0A0A0E]" />
                 <span>Dashboard</span>
               </Link>
               <button
                 onClick={() => logout()}
-                className="p-2 rounded-full text-white/60 hover:text-white hover:bg-white/10 transition-colors"
+                className="p-2 rounded-full text-[#6A6A78] hover:text-[#0A0A0E] hover:bg-black/5 transition-colors"
                 title="Log out"
               >
                 <LogOut className="w-4 h-4" />
@@ -87,13 +87,13 @@ export function Navbar() {
             <div className="flex items-center gap-3 font-sans">
               <Link
                 href="/login"
-                className="px-4 py-2 text-xs font-semibold text-white/80 hover:text-white transition-colors"
+                className="px-4 py-2 text-xs font-semibold text-[#4A4A58] hover:text-[#0A0A0E] transition-colors"
               >
                 Sign In
               </Link>
               <Link
                 href="/creator/register"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold text-[#0A0A0E] bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] shadow-[0_0_25px_rgba(255,210,31,0.45)] border border-white/40 transition-all group tracking-tight"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold text-[#0A0A0E] bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] shadow-[0_4px_16px_rgba(255,210,31,0.4)] border border-black/10 transition-all group tracking-tight"
               >
                 <Sparkles className="w-3.5 h-3.5 text-[#0A0A0E] fill-[#0A0A0E]" />
                 <span>Launch Media Kit</span>
@@ -105,7 +105,7 @@ export function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-2 text-white rounded-xl bg-white/[0.05] border border-white/10"
+          className="lg:hidden p-2 text-[#0A0A0E] rounded-xl bg-black/5 border border-black/10"
           aria-label="Toggle navigation menu"
         >
           {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -114,33 +114,32 @@ export function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-[#FFD21F]/20 bg-[#08080C] p-5 flex flex-col gap-2 shadow-2xl text-white">
+        <div className="lg:hidden border-t border-black/8 bg-white p-5 flex flex-col gap-2 shadow-2xl text-[#0A0A0E]">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3.5 py-2.5 rounded-xl text-xs font-semibold text-white/70 hover:text-white hover:bg-white/[0.05] transition-colors font-sans"
+              className="px-3.5 py-2.5 rounded-xl text-xs font-semibold text-[#5A5A68] hover:text-[#0A0A0E] hover:bg-black/[0.04] transition-colors font-sans"
             >
               {link.label}
             </Link>
           ))}
 
-          <div className="pt-3 border-t border-white/10 flex flex-col gap-2 font-sans">
+          <div className="pt-3 border-t border-black/10 flex flex-col gap-2 font-sans">
             <Link
               href="/login"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-2.5 rounded-full bg-white/[0.05] border border-white/10 text-white font-semibold text-center text-xs"
+              className="w-full py-2.5 rounded-full bg-black/5 border border-black/10 text-[#0A0A0E] font-semibold text-center text-xs"
             >
               Sign In
             </Link>
             <Link
               href="/creator/register"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-2.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] font-bold text-center text-xs shadow-md flex items-center justify-center gap-1.5"
+              className="w-full py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] font-bold text-center text-xs shadow-md"
             >
-              <span>Get Started</span>
-              <Sparkles className="w-3.5 h-3.5 fill-[#0A0A0E]" />
+              Launch Media Kit
             </Link>
           </div>
         </div>

@@ -84,18 +84,18 @@ export function AppSidebar() {
     role === "creator" ? creatorNavItems : role === "brand" ? brandNavItems : adminNavItems;
 
   return (
-    <aside className="hidden lg:flex flex-col w-64 border-r border-[#FFD21F]/15 bg-gradient-to-b from-[#0C0C14] via-[#08080C] to-[#050508] p-4 shrink-0 min-h-[calc(100vh-4rem)] text-white shadow-2xl">
+    <aside className="hidden lg:flex flex-col w-64 border-r border-black/8 bg-white p-4 shrink-0 min-h-[calc(100vh-4rem)] text-[#0A0A0E] shadow-xs">
       {/* Brand logo & workspace badge */}
-      <div className="px-3 py-2 mb-4 flex items-center justify-between">
+      <div className="px-3 py-2 mb-4 flex items-center justify-between border-b border-black/5 pb-4">
         <Link href="/app/dashboard" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FFD21F] to-[#FFAE00] border border-white/40 flex items-center justify-center text-[#0A0A0E] group-hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,210,31,0.45)]">
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FFD21F] to-[#FFAE00] border border-black/10 flex items-center justify-center text-[#0A0A0E] group-hover:scale-105 transition-transform shadow-[0_2px_10px_rgba(255,210,31,0.3)]">
             <Sparkles className="w-4 h-4 fill-[#0A0A0E] text-[#0A0A0E]" />
           </div>
-          <span className="font-display font-extrabold text-base tracking-tight text-white">
+          <span className="font-display font-extrabold text-base tracking-tight text-[#0A0A0E]">
             Collably
           </span>
         </Link>
-        <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#FFD21F] uppercase font-extrabold">
+        <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] uppercase font-bold">
           {role === "agency_admin" ? "Admin" : role}
         </span>
       </div>
@@ -113,10 +113,10 @@ export function AppSidebar() {
               className={cn(
                 "flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-medium transition-all select-none",
                 isActive
-                  ? "bg-gradient-to-r from-[#FFD21F] to-[#FFE052] text-[#0A0A0E] font-extrabold shadow-[0_0_20px_rgba(255,210,31,0.45)] border border-white/50"
+                  ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] font-bold shadow-[0_2px_10px_rgba(255,210,31,0.35)] border border-black/10"
                   : item.highlight
-                  ? "bg-white/[0.08] text-white hover:bg-white/[0.12] border border-[#FFD21F]/20 font-semibold"
-                  : "text-white/70 hover:text-white hover:bg-white/[0.06]"
+                  ? "bg-black/[0.04] text-[#0A0A0E] hover:bg-black/[0.08] border border-black/5 font-bold"
+                  : "text-[#5A5A68] hover:text-[#0A0A0E] hover:bg-black/[0.04]"
               )}
             >
               <div className="flex items-center gap-3">
@@ -126,8 +126,8 @@ export function AppSidebar() {
                     isActive
                       ? "text-[#0A0A0E]"
                       : item.highlight
-                      ? "text-[#FFD21F]"
-                      : "text-white/50 group-hover:text-white"
+                      ? "text-[#A37F00]"
+                      : "text-[#7A7A8A] group-hover:text-[#0A0A0E]"
                   )}
                 />
                 <span>{item.label}</span>
@@ -138,8 +138,8 @@ export function AppSidebar() {
                   className={cn(
                     "text-[10px] px-2 py-0.5 rounded-full font-mono font-bold",
                     isActive
-                      ? "bg-[#0A0A0E] text-[#FFD21F]"
-                      : "bg-[#FFD21F]/15 text-[#FFD21F] border border-[#FFD21F]/30"
+                      ? "bg-[#0A0A0E] text-white"
+                      : "bg-[#FFD21F]/20 text-[#0A0A0E] border border-[#FFD21F]/30"
                   )}
                 >
                   {item.badge}
