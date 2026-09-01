@@ -57,7 +57,7 @@ export function ExactSuccessStoriesSection() {
           {/* Floating Play Story Pill */}
           <div className="relative z-10 w-full flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <span className="text-[10px] font-mono text-[#B7FF3C] font-bold uppercase tracking-wider block">
+              <span className="text-[10px] font-mono text-[#FFD21F] font-bold uppercase tracking-wider block">
                 FEATURED STORY • NIKE RUNNING 2026
               </span>
               <h3 className="text-xl sm:text-2xl font-bold text-white font-display">

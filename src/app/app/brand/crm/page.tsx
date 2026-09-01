@@ -106,7 +106,7 @@ export default function BrandCRMPage() {
             onClick={() => setSelectedStage("all")}
             className={`px-3 py-1.5 rounded-full font-mono text-xs transition-all ${
               selectedStage === "all"
-                ? "bg-[#2A5CFF] text-white shadow-[0_0_12px_rgba(42,92,255,0.4)] font-bold"
+                ? "bg-[#FFD21F] text-[#0A0A0E] shadow-[0_0_12px_rgba(255,210,31,0.45)] font-bold border border-white/40"
                 : "text-white/60 hover:text-white"
             }`}
           >
@@ -118,7 +118,7 @@ export default function BrandCRMPage() {
               onClick={() => setSelectedStage(s.key)}
               className={`px-3 py-1.5 rounded-full font-mono text-xs transition-all whitespace-nowrap ${
                 selectedStage === s.key
-                  ? "bg-[#2A5CFF] text-white shadow-[0_0_12px_rgba(42,92,255,0.4)] font-bold"
+                  ? "bg-[#FFD21F] text-[#0A0A0E] shadow-[0_0_12px_rgba(255,210,31,0.45)] font-bold border border-white/40"
                   : "text-white/60 hover:text-white"
               }`}
             >
@@ -133,7 +133,7 @@ export default function BrandCRMPage() {
         {filtered.map((c) => (
           <div
             key={c.id}
-            className="p-6 rounded-3xl bg-[#0E0C15]/90 border border-white/10 hover:border-blue-500/40 transition-all space-y-4 flex flex-col justify-between shadow-2xl backdrop-blur-xl"
+            className="p-6 rounded-3xl bg-[#101018] border border-white/10 hover:border-[#FFD21F]/40 transition-all space-y-4 flex flex-col justify-between shadow-2xl backdrop-blur-xl"
           >
             <div className="space-y-3">
               <div className="flex items-start justify-between gap-3">
@@ -166,7 +166,7 @@ export default function BrandCRMPage() {
                 </div>
                 <div>
                   <span className="text-[10px] text-white/40 block">Starting Rate</span>
-                  <span className="font-bold text-white text-sm">{formatCurrency(c.creator.startingPrice)}</span>
+                  <span className="font-bold text-[#FFD21F] text-sm">{formatCurrency(c.creator.startingPrice)}</span>
                 </div>
               </div>
 
@@ -179,7 +179,7 @@ export default function BrandCRMPage() {
                   className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-3 py-2 text-xs text-white focus:outline-none"
                 >
                   {stages.map((s) => (
-                    <option key={s.key} value={s.key} className="bg-[#0E0C15]">
+                    <option key={s.key} value={s.key} className="bg-[#101018]">
                       {s.label}
                     </option>
                   ))}
@@ -189,8 +189,8 @@ export default function BrandCRMPage() {
               {/* Recent Internal Notes */}
               {c.privateNotes.length > 0 && (
                 <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/10 text-xs text-white/60 space-y-1">
-                  <span className="font-bold text-white flex items-center gap-1 text-[11px]">
-                    <FileText className="w-3.5 h-3.5 text-blue-400" />
+                  <span className="font-bold text-[#FFD21F] flex items-center gap-1 text-[11px]">
+                    <FileText className="w-3.5 h-3.5 text-[#FFD21F]" />
                     Latest Note:
                   </span>
                   <p className="line-clamp-2 italic font-sans">&quot;{c.privateNotes[0].content}&quot;</p>
@@ -210,7 +210,7 @@ export default function BrandCRMPage() {
                 <span>Add Note</span>
               </button>
               <Link href="/app/messages" className="flex-1">
-                <button className="w-full py-2 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] hover:from-[#234FE6] hover:to-[#3264E6] text-white text-xs font-semibold transition-all shadow-md">
+                <button className="w-full py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-md">
                   Message
                 </button>
               </Link>
@@ -238,7 +238,7 @@ export default function BrandCRMPage() {
           />
           <button
             type="submit"
-            className="w-full py-3 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] text-white text-xs font-semibold shadow-[0_0_15px_rgba(42,92,255,0.4)]"
+            className="w-full py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] text-xs font-bold shadow-[0_0_15px_rgba(255,210,31,0.4)]"
           >
             Save Internal Note
           </button>

@@ -37,7 +37,7 @@ export function ExactHeroSection() {
                 <h1 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight uppercase leading-[0.95] text-white font-display">
                   GET PAID.
                 </h1>
-                {/* Electric Blue Brush Swoosh Underline */}
+                {/* Electric Gold Brush Swoosh Underline */}
                 <svg
                   className="absolute -bottom-3 left-0 w-full h-4 overflow-visible pointer-events-none"
                   viewBox="0 0 300 20"
@@ -46,10 +46,10 @@ export function ExactHeroSection() {
                 >
                   <path
                     d="M 5,14 Q 90,6 170,10 Q 240,14 295,6"
-                    stroke="#2F6BFF"
-                    strokeWidth="5"
+                    stroke="#FFD21F"
+                    strokeWidth="6"
                     strokeLinecap="round"
-                    className="drop-shadow-[0_0_12px_rgba(47,107,255,0.8)]"
+                    className="drop-shadow-[0_0_15px_rgba(255,210,31,0.9)]"
                   />
                 </svg>
               </div>
@@ -63,14 +63,14 @@ export function ExactHeroSection() {
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-3.5 pt-2">
               <Link href="/for-brands">
-                <button className="px-6 py-3.5 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] hover:from-[#234FE6] hover:to-[#3264E6] text-white font-semibold text-xs sm:text-sm transition-all shadow-[0_0_25px_rgba(42,92,255,0.45)] hover:shadow-[0_0_35px_rgba(42,92,255,0.65)] flex items-center gap-2 group active:scale-[0.98]">
+                <button className="px-6 py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs sm:text-sm transition-all shadow-[0_0_25px_rgba(255,210,31,0.45)] hover:shadow-[0_0_35px_rgba(255,210,31,0.7)] flex items-center gap-2 group active:scale-[0.98] border border-white/50">
                   <span>Start a Campaign</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                  <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-0.5 transition-transform" />
                 </button>
               </Link>
 
               <Link href="/creator/register">
-                <button className="px-6 py-3.5 rounded-full bg-white/[0.07] hover:bg-white/[0.12] border border-white/15 text-white font-semibold text-xs sm:text-sm transition-all shadow-xs active:scale-[0.98]">
+                <button className="px-6 py-3.5 rounded-full bg-white/[0.07] hover:bg-white/[0.12] border border-[#FFD21F]/30 text-white font-semibold text-xs sm:text-sm transition-all shadow-xs active:scale-[0.98]">
                   <span>Join as a Creator</span>
                 </button>
               </Link>

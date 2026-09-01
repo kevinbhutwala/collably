@@ -141,7 +141,7 @@ export default function AgencyAdminCommandCenter() {
                   className={`px-4 py-2 rounded-full text-xs font-semibold font-mono transition-all ${
                     creator.verified
                       ? "bg-white/10 text-white/60 hover:text-white"
-                      : "bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] text-white shadow-[0_0_15px_rgba(42,92,255,0.4)]"
+                      : "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] font-bold shadow-[0_0_15px_rgba(255,210,31,0.4)]"
                   }`}
                 >
                   {creator.verified ? "Revoke Badge" : "Grant Verified"}
@@ -152,13 +152,13 @@ export default function AgencyAdminCommandCenter() {
         </div>
 
         {/* Live Escrow Custody Rail */}
-        <div className="lg:col-span-5 p-6 sm:p-8 rounded-3xl bg-[#0E0C15]/90 border border-white/10 shadow-2xl backdrop-blur-xl space-y-6">
+        <div className="lg:col-span-5 p-6 sm:p-8 rounded-3xl bg-[#101018] border border-white/10 shadow-2xl backdrop-blur-xl space-y-6">
           <div className="flex items-center justify-between pb-3 border-b border-white/10">
             <div>
               <h3 className="text-lg font-bold text-white font-display">Active Campaign Escrows</h3>
               <p className="text-xs text-white/50 font-sans">Milestone custody status across deals.</p>
             </div>
-            <span className="px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-400 text-xs font-mono font-bold">
+            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/15 text-[#FFD21F] text-xs font-mono font-bold">
               {campaigns.length} Active
             </span>
           </div>
@@ -173,7 +173,7 @@ export default function AgencyAdminCommandCenter() {
                   <h4 className="font-bold text-sm text-white font-sans truncate max-w-[200px]">
                     {camp.title}
                   </h4>
-                  <span className="text-emerald-400 font-extrabold text-sm">
+                  <span className="text-[#FFD21F] font-extrabold text-sm">
                     {formatCurrency(camp.budget.totalBudget)}
                   </span>
                 </div>
@@ -185,7 +185,7 @@ export default function AgencyAdminCommandCenter() {
                 </div>
                 <div className="w-full h-1.5 rounded-full bg-white/10 overflow-hidden">
                   <div
-                    className="h-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] rounded-full"
+                    className="h-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] rounded-full"
                     style={{
                       width: `${Math.min(100, (camp.acceptedCount / camp.maxCreators) * 100)}%`,
                     }}

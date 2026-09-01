@@ -140,7 +140,7 @@ export default function ApplicationsManagementPage() {
 
               {app.status === "accepted" && (
                 <Link href="/app/collaborations">
-                  <button className="px-4 py-2 rounded-full bg-white/10 hover:bg-gradient-to-r hover:from-[#2A5CFF] hover:to-[#3B73FF] text-white font-semibold text-xs transition-all flex items-center gap-1.5">
+                  <button className="px-4 py-2 rounded-full bg-white/10 hover:bg-gradient-to-r hover:from-[#FFD21F] hover:to-[#FFD21F] hover:text-black text-white font-semibold text-xs transition-all flex items-center gap-1.5">
                     <span>Open Deliverable Workspace</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>

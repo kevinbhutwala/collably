@@ -55,8 +55,8 @@ export default function CollaborationsWorkspacePage() {
       </div>
 
       {loading ? (
-        <div className="py-24 text-center rounded-3xl bg-[#0E0C15]/90 border border-white/10 p-8 text-white">
-          <div className="w-8 h-8 rounded-full border-2 border-[#2A5CFF] border-t-transparent animate-spin mx-auto mb-3" />
+        <div className="py-24 text-center rounded-3xl bg-[#101018] border border-white/10 p-8 text-white">
+          <div className="w-8 h-8 rounded-full border-2 border-[#FFD21F] border-t-transparent animate-spin mx-auto mb-3" />
           <p className="text-xs font-mono text-white/50">Loading collaboration pipelines...</p>
         </div>
       ) : collaborations.length === 0 ? (

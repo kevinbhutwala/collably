@@ -79,9 +79,9 @@ export default function BrandShortlistsPage() {
         <div className="flex items-center gap-3">
           <button
             onClick={() => setIsCreateModalOpen(true)}
-            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] hover:from-[#234FE6] hover:to-[#3264E6] text-white text-xs font-semibold transition-all shadow-[0_0_20px_rgba(42,92,255,0.4)] flex items-center gap-1.5"
+            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-[0_0_20px_rgba(255,210,31,0.4)] border border-white/40 flex items-center gap-1.5"
           >
-            <Plus className="w-4 h-4" />
+            <Plus className="w-4 h-4 text-[#0A0A0E]" />
             <span>Create Shortlist</span>
           </button>
         </div>
@@ -97,13 +97,13 @@ export default function BrandShortlistsPage() {
               onClick={() => setActiveShortlistId(s.id)}
               className={`px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap flex items-center gap-2 ${
                 isActive
-                  ? "bg-[#2A5CFF] text-white shadow-[0_0_12px_rgba(42,92,255,0.4)] font-bold"
+                  ? "bg-[#FFD21F] text-[#0A0A0E] shadow-[0_0_12px_rgba(255,210,31,0.45)] font-bold border border-white/40"
                   : "bg-white/[0.04] text-white/60 hover:text-white border border-white/10"
               }`}
             >
               <span>{s.name}</span>
               <span className={`px-2 py-0.5 rounded-full text-[10px] ${
-                isActive ? "bg-white text-[#07070B] font-bold" : "bg-white/10 text-white/70"
+                isActive ? "bg-[#0A0A0E] text-[#FFD21F] font-bold" : "bg-white/10 text-white/70"
               }`}>
                 {s.creators.length}
               </span>
@@ -115,7 +115,7 @@ export default function BrandShortlistsPage() {
       {/* Active Shortlist Details & Grid */}
       {activeShortlist ? (
         <div className="space-y-6">
-          <div className="p-6 rounded-3xl bg-[#0E0C15]/90 border border-white/10 shadow-2xl backdrop-blur-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="p-6 rounded-3xl bg-[#101018] border border-white/10 shadow-2xl backdrop-blur-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <h2 className="text-xl font-bold text-white font-display">{activeShortlist.name}</h2>
               <p className="text-xs text-white/50 font-sans mt-0.5">{activeShortlist.description}</p>
@@ -126,7 +126,7 @@ export default function BrandShortlistsPage() {
                 onClick={() => setIsCompareOpen(true)}
                 className="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition-all flex items-center gap-1.5 border border-white/15"
               >
-                <Scale className="w-4 h-4 text-blue-400" />
+                <Scale className="w-4 h-4 text-[#FFD21F]" />
                 <span>Side-by-Side Compare</span>
               </button>
             )}
@@ -136,7 +136,7 @@ export default function BrandShortlistsPage() {
             {activeShortlist.creators.map((c) => (
               <div
                 key={c.id}
-                className="p-6 rounded-3xl bg-[#0E0C15]/90 border border-white/10 hover:border-blue-500/40 transition-all space-y-4 flex flex-col justify-between shadow-2xl backdrop-blur-xl"
+                className="p-6 rounded-3xl bg-[#101018] border border-white/10 hover:border-[#FFD21F]/40 transition-all space-y-4 flex flex-col justify-between shadow-2xl backdrop-blur-xl"
               >
                 <div className="space-y-3">
                   <div className="flex items-start justify-between gap-3">
@@ -168,7 +168,7 @@ export default function BrandShortlistsPage() {
                     </div>
                     <div>
                       <span className="text-[10px] text-white/40 block">Engagement</span>
-                      <span className="font-bold text-[#B7FF3C] text-sm">{c.avgEngagementRate}% ER</span>
+                      <span className="font-bold text-[#FFD21F] text-sm">{c.avgEngagementRate}% ER</span>
                     </div>
                   </div>
                 </div>
@@ -180,7 +180,7 @@ export default function BrandShortlistsPage() {
                     </button>
                   </Link>
                   <Link href="/app/brand/campaigns/create" className="flex-1">
-                    <button className="w-full py-2 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] hover:from-[#234FE6] hover:to-[#3264E6] text-white text-xs font-semibold transition-all shadow-md">
+                    <button className="w-full py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-md">
                       Invite
                     </button>
                   </Link>
@@ -190,7 +190,7 @@ export default function BrandShortlistsPage() {
           </div>
         </div>
       ) : (
-        <div className="py-24 text-center rounded-3xl bg-[#0E0C15]/90 border border-white/10 p-8 space-y-3">
+        <div className="py-24 text-center rounded-3xl bg-[#101018] border border-white/10 p-8 space-y-3">
           <Users className="w-8 h-8 text-white/30 mx-auto" />
           <h3 className="text-base font-bold text-white font-display">No shortlists available</h3>
         </div>
@@ -221,7 +221,7 @@ export default function BrandShortlistsPage() {
           />
           <button
             type="submit"
-            className="w-full py-3 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] text-white text-xs font-semibold shadow-[0_0_15px_rgba(42,92,255,0.4)]"
+            className="w-full py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] text-xs font-bold shadow-[0_0_15px_rgba(255,210,31,0.4)]"
           >
             Create Shortlist
           </button>

@@ -104,9 +104,9 @@ export default function AdminDisputesArbitrationPage() {
                       setSelectedDispute(d);
                       setIsResolveModalOpen(true);
                     }}
-                    className="px-4 py-2 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] text-white text-xs font-semibold shadow-[0_0_15px_rgba(42,92,255,0.4)] flex items-center gap-1.5"
+                    className="px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-[0_0_15px_rgba(255,210,31,0.4)] flex items-center gap-1.5"
                   >
-                    <Scale className="w-3.5 h-3.5" />
+                    <Scale className="w-3.5 h-3.5 text-[#0A0A0E]" />
                     <span>Issue Arbitration Ruling</span>
                   </button>
                 )}
@@ -132,7 +132,7 @@ export default function AdminDisputesArbitrationPage() {
             rows={4}
             required
           />
-          <button type="submit" className="w-full py-3 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] text-white text-xs font-semibold shadow-[0_0_15px_rgba(42,92,255,0.4)]">
+          <button type="submit" className="w-full py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] text-xs font-bold shadow-[0_0_15px_rgba(255,210,31,0.4)]">
             Log Ruling &amp; Release Escrow
           </button>
         </form>

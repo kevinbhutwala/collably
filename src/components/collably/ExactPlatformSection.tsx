@@ -106,7 +106,7 @@ export function ExactPlatformSection() {
 
               {/* Handwritten Script Overlay: "Better Together" */}
               <div className="absolute -bottom-2 sm:bottom-4 -left-4 sm:left-2 z-20 pointer-events-none transform -rotate-12 select-none">
-                <span className="font-serif italic font-normal text-3xl sm:text-5xl text-[#2F6BFF] drop-shadow-[0_4px_12px_rgba(47,107,255,0.4)] tracking-wide">
+                <span className="font-serif italic font-normal text-3xl sm:text-5xl text-[#FFD21F] drop-shadow-[0_4px_12px_rgba(255,210,31,0.6)] tracking-wide">
                   Better Together
                 </span>
               </div>
@@ -127,14 +127,14 @@ export function ExactPlatformSection() {
                     className={cn(
                       "w-full text-left p-3.5 sm:p-4 rounded-2xl border transition-all flex items-center gap-3.5 group",
                       isActive
-                        ? "bg-[#FFFFFF] border-blue-500/40 shadow-md translate-x-1"
+                        ? "bg-[#FFFFFF] border-[#FFD21F] shadow-[0_0_15px_rgba(255,210,31,0.3)] translate-x-1"
                         : "bg-[#FFFFFF]/60 hover:bg-[#FFFFFF] border-black/5 hover:border-black/10"
                     )}
                   >
                     <div
                       className={cn(
                         "w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-colors",
-                        isActive ? "bg-[#2F6BFF] text-white shadow-sm" : "bg-[#EFEFEF] text-[#101010] group-hover:bg-[#E2E2E2]"
+                        isActive ? "bg-[#FFD21F] text-[#0A0A0E] font-bold shadow-sm" : "bg-[#EFEFEF] text-[#101010] group-hover:bg-[#E2E2E2]"
                       )}
                     >
                       <Icon className="w-4 h-4" />

@@ -67,9 +67,9 @@ export default function AdminCampaignsQueuePage() {
                   </Link>
                   <button
                     onClick={() => handleApprove(c.id)}
-                    className="px-4 py-2 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] hover:from-[#234FE6] hover:to-[#3264E6] text-white text-xs font-semibold transition-all shadow-md"
+                    className="px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-md"
                   >
-                    Approve
+                    Approve Brief
                   </button>
                 </div>
               </div>

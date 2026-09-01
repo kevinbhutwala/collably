@@ -183,9 +183,9 @@ export default function CreatorProfileEditPage() {
           <button
             onClick={handleSaveProfile}
             disabled={isSaving}
-            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] hover:from-[#234FE6] hover:to-[#3264E6] text-white text-xs font-semibold transition-all shadow-[0_0_20px_rgba(42,92,255,0.4)] flex items-center gap-1.5 disabled:opacity-50"
+            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-[0_0_20px_rgba(255,210,31,0.4)] border border-white/40 flex items-center gap-1.5 disabled:opacity-50"
           >
-            <Save className="w-3.5 h-3.5" />
+            <Save className="w-3.5 h-3.5 text-[#0A0A0E]" />
             <span>{isSaving ? "Saving..." : "Save Changes"}</span>
           </button>
         </div>
@@ -193,7 +193,7 @@ export default function CreatorProfileEditPage() {
 
       <form onSubmit={handleSaveProfile} className="space-y-8">
         {/* Basic Positioning Card */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-[#0E0C15]/90 border border-white/10 shadow-2xl backdrop-blur-xl space-y-6">
+        <div className="p-6 sm:p-8 rounded-3xl bg-[#101018] border border-white/10 shadow-2xl backdrop-blur-xl space-y-6">
           <h3 className="text-base font-bold text-white font-display">
             1. Positioning &amp; Starting Rates
           </h3>
@@ -227,7 +227,7 @@ export default function CreatorProfileEditPage() {
         </div>
 
         {/* Connected Social Accounts */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-[#0E0C15]/90 border border-white/10 shadow-2xl backdrop-blur-xl space-y-6">
+        <div className="p-6 sm:p-8 rounded-3xl bg-[#101018] border border-white/10 shadow-2xl backdrop-blur-xl space-y-6">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-base font-bold text-white font-display">
@@ -282,7 +282,7 @@ export default function CreatorProfileEditPage() {
       {/* Add Modal */}
       {showAddModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-          <div className="w-full max-w-md rounded-3xl bg-[#0E0C15] border border-white/15 p-6 space-y-4 shadow-2xl">
+          <div className="w-full max-w-md rounded-3xl bg-[#101018] border border-white/15 p-6 space-y-4 shadow-2xl">
             <h3 className="text-base font-bold text-white font-display">Connect Social Channel</h3>
             <div className="space-y-3">
               <div>
@@ -292,11 +292,11 @@ export default function CreatorProfileEditPage() {
                   onChange={(e) => setNewPlatform(e.target.value as PlatformType)}
                   className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-3 py-2 text-xs text-white focus:outline-none"
                 >
-                  <option value="youtube" className="bg-[#0E0C15]">YouTube</option>
-                  <option value="instagram" className="bg-[#0E0C15]">Instagram</option>
-                  <option value="tiktok" className="bg-[#0E0C15]">TikTok</option>
-                  <option value="x" className="bg-[#0E0C15]">X / Twitter</option>
-                  <option value="linkedin" className="bg-[#0E0C15]">LinkedIn</option>
+                  <option value="youtube" className="bg-[#101018]">YouTube</option>
+                  <option value="instagram" className="bg-[#101018]">Instagram</option>
+                  <option value="tiktok" className="bg-[#101018]">TikTok</option>
+                  <option value="x" className="bg-[#101018]">X / Twitter</option>
+                  <option value="linkedin" className="bg-[#101018]">LinkedIn</option>
                 </select>
               </div>
 
@@ -333,7 +333,7 @@ export default function CreatorProfileEditPage() {
               <button
                 type="button"
                 onClick={handleAddSocialAccount}
-                className="px-5 py-2 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] text-white text-xs font-semibold shadow-[0_0_15px_rgba(42,92,255,0.4)]"
+                className="px-5 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] text-xs font-bold shadow-[0_0_15px_rgba(255,210,31,0.4)]"
               >
                 Add Channel
               </button>

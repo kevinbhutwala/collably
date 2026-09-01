@@ -69,7 +69,7 @@ export default function AdminPaymentsVaultPage() {
                 </div>
                 <button
                   onClick={() => handleReleaseTranche(v.id)}
-                  className="px-4 py-2 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] text-white text-xs font-semibold shadow-md"
+                  className="px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold shadow-md transition-all"
                 >
                   Release Tranche
                 </button>

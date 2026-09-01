@@ -29,31 +29,31 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       "inline-flex items-center justify-center font-semibold transition-all duration-150 select-none disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98] font-sans";
 
     const sizeStyles = {
-      sm: "text-xs px-3.5 py-1.5 rounded-[9px] gap-1.5",
-      md: "text-xs px-4 py-2.5 rounded-[9px] gap-2",
-      lg: "text-sm px-6 py-3.5 rounded-[9px] gap-2.5",
-      icon: "p-2.5 rounded-[9px]",
+      sm: "text-xs px-3.5 py-1.5 rounded-full gap-1.5",
+      md: "text-xs px-4 py-2.5 rounded-full gap-2",
+      lg: "text-sm px-6 py-3.5 rounded-full gap-2.5",
+      icon: "p-2.5 rounded-full",
     };
 
     const variantStyles = {
       primary:
-        "bg-[#111111] hover:bg-[#262626] active:bg-[#000000] text-[#FAFAF8] shadow-xs",
+        "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold shadow-[0_0_20px_rgba(255,210,31,0.4)] border border-white/50",
       secondary:
-        "bg-[#FFFFFF] hover:bg-[#F4F4F0] text-[#111111] border border-[#E7E7E4] shadow-xs",
+        "bg-gradient-to-r from-[#1E1E28] to-[#12121A] hover:from-[#282836] hover:to-[#1A1A24] text-white border border-[#FFD21F]/30 shadow-md",
       outline:
-        "bg-transparent text-[#111111] border border-[#E7E7E4] hover:bg-[#F4F4F0]",
+        "bg-transparent text-white border border-[#FFD21F]/40 hover:bg-[#FFD21F]/10",
       ghost:
-        "bg-transparent text-[#6B6B6B] hover:text-[#111111] hover:bg-[#F4F4F0]",
+        "bg-transparent text-white/70 hover:text-white hover:bg-white/[0.06]",
       glass:
-        "bg-white/80 backdrop-blur-md text-[#111111] border border-[#E7E7E4] hover:bg-white shadow-xs",
+        "bg-white/10 backdrop-blur-md text-white border border-white/20 hover:bg-white/15 shadow-md",
       accent:
-        "bg-[#B7FF3C] text-[#111111] hover:bg-[#9EE61C] border border-[#9EE61C] shadow-xs font-bold",
+        "bg-[#FFD21F] text-[#0A0A0E] hover:bg-[#FFE052] border border-white/40 shadow-[0_0_15px_rgba(255,210,31,0.4)] font-bold",
       carbon:
-        "bg-[#111111] text-[#FAFAF8] hover:bg-[#262626]",
+        "bg-[#12121A] text-white hover:bg-[#1A1A24] border border-white/10",
       micro:
-        "bg-[#B7FF3C] text-[#111111] hover:bg-[#9EE61C] font-bold shadow-xs",
+        "bg-[#FFD21F] text-[#0A0A0E] hover:bg-[#FFE052] font-bold shadow-xs",
       danger:
-        "bg-[#FEE2E2] text-[#991B1B] border border-[#FECACA] hover:bg-[#FCA5A5]",
+        "bg-red-500/20 text-red-400 border border-red-500/30 hover:bg-red-500/30",
     };
 
     return (

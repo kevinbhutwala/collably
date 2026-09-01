@@ -79,10 +79,10 @@ export default function AdminBrandsPage() {
                   className={`px-4 py-2 rounded-full text-xs font-semibold font-mono transition-all ${
                     b.verified
                       ? "bg-white/10 text-white/60 hover:text-white"
-                      : "bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] text-white shadow-md"
+                      : "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] font-bold shadow-md"
                   }`}
                 >
-                  {b.verified ? "Verified ✓" : "Verify Brand"}
+                  {b.verified ? "Revoke Verification" : "Approve Brand"}
                 </button>
               </div>
             </div>

@@ -14,12 +14,12 @@ export default function AuthLayout({
   const isLoginPage = pathname === "/login";
 
   return (
-    <div className="min-h-screen bg-[#07070B] text-white flex flex-col justify-between selection:bg-[#2A5CFF] selection:text-white relative overflow-hidden select-none">
+    <div className="min-h-screen bg-[#08080C] text-white flex flex-col justify-between selection:bg-[#FFD21F] selection:text-[#0A0A0E] relative overflow-hidden select-none">
       {/* Background ambient lighting */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-blue-600/10 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#FFD21F]/10 rounded-full blur-[160px] pointer-events-none" />
 
       {/* Top Floating Navigation Header */}
-      <header className="sticky top-0 z-50 w-full bg-[#07070B]/80 backdrop-blur-2xl border-b border-white/10 px-4 sm:px-8 py-3.5 flex items-center justify-between">
+      <header className="sticky top-0 z-50 w-full bg-[#08080C]/85 backdrop-blur-2xl border-b border-white/10 px-4 sm:px-8 py-3.5 flex items-center justify-between">
         {/* Left: Back to Home Button */}
         <Link
           href="/"
@@ -31,8 +31,8 @@ export default function AuthLayout({
 
         {/* Center: Brand Logo */}
         <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 rounded-xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(42,92,255,0.4)]">
-            <Sparkles className="w-4 h-4 fill-blue-400 text-blue-400" />
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FFD21F] to-[#FFAE00] border border-white/40 flex items-center justify-center text-[#0A0A0E] group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(255,210,31,0.45)]">
+            <Sparkles className="w-4 h-4 fill-[#0A0A0E] text-[#0A0A0E]" />
           </div>
           <span className="font-display font-extrabold text-lg tracking-tight text-white">
             Collably
@@ -44,7 +44,7 @@ export default function AuthLayout({
           {isLoginPage ? (
             <Link
               href="/register"
-              className="px-4 py-2 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] text-white font-bold transition-all shadow-[0_0_15px_rgba(42,92,255,0.4)]"
+              className="px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] font-extrabold transition-all shadow-[0_0_15px_rgba(255,210,31,0.4)] border border-white/40"
             >
               Sign Up
             </Link>
@@ -65,7 +65,7 @@ export default function AuthLayout({
       </main>
 
       {/* Footer copyright */}
-      <footer className="py-4 text-center text-xs font-mono text-white/40 border-t border-white/10 bg-[#07070B]/90 relative z-10">
+      <footer className="py-4 text-center text-xs font-mono text-white/40 border-t border-white/10 bg-[#08080C]/90 relative z-10">
         © {new Date().getFullYear()} Collably, Inc. All rights reserved. • Protected by Escrow Infrastructure.
       </footer>
     </div>

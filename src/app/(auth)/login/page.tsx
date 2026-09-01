@@ -62,7 +62,7 @@ function LoginForm() {
   };
 
   return (
-    <div className="w-full max-w-md rounded-3xl bg-[#0E0C15]/90 border border-white/15 p-8 space-y-6 shadow-2xl backdrop-blur-2xl relative z-10 text-white select-none">
+    <div className="w-full max-w-md rounded-3xl bg-[#101018]/95 border border-[#FFD21F]/25 p-8 space-y-6 shadow-[0_20px_50px_rgba(0,0,0,0.7),0_0_30px_rgba(255,210,31,0.15)] backdrop-blur-2xl relative z-10 text-white select-none">
       {/* Top Header with Back to Home button */}
       <div className="flex items-center justify-between pb-3 border-b border-white/10">
         <Link
@@ -72,16 +72,16 @@ function LoginForm() {
           <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
           <span>Back to Home</span>
         </Link>
-        <span className="text-[10px] font-mono text-white/80 font-bold uppercase flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#2A5CFF] animate-pulse" />
+        <span className="text-[10px] font-mono text-[#FFD21F] font-extrabold uppercase flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-pulse" />
           Portal Login
         </span>
       </div>
 
       <div className="text-center space-y-1.5">
         <Link href="/" className="inline-flex items-center gap-2 group mb-2">
-          <div className="w-8 h-8 rounded-xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 shadow-[0_0_15px_rgba(42,92,255,0.4)]">
-            <Sparkles className="w-4 h-4 fill-blue-400 text-blue-400" />
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FFD21F] to-[#FFAE00] border border-white/40 flex items-center justify-center text-[#0A0A0E] shadow-[0_0_15px_rgba(255,210,31,0.45)]">
+            <Sparkles className="w-4 h-4 fill-[#0A0A0E] text-[#0A0A0E]" />
           </div>
           <span className="font-display font-extrabold text-xl tracking-tight text-white">
             Collably
@@ -104,34 +104,34 @@ function LoginForm() {
 
       {/* Demo Credentials Quick Switcher */}
       <div className="space-y-2 pt-1 pb-1">
-        <span className="text-[10px] font-mono text-white/40 uppercase font-bold block text-center">
+        <span className="text-[10px] font-mono text-[#FFD21F] uppercase font-extrabold block text-center">
           ⚡ 1-Click Demo Personas
         </span>
         <div className="grid grid-cols-3 gap-2 text-[11px] font-mono">
           <button
             type="button"
             onClick={() => handleDemoLogin("elena@example.com")}
-            className="p-2 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-white/80 hover:text-white transition-all flex flex-col items-center gap-1"
+            className="p-2 rounded-2xl bg-white/[0.04] hover:bg-[#FFD21F]/15 border border-white/10 hover:border-[#FFD21F]/40 text-white/80 hover:text-white transition-all flex flex-col items-center gap-1"
           >
-            <UserCheck className="w-3.5 h-3.5 text-[#B7FF3C]" />
+            <UserCheck className="w-3.5 h-3.5 text-[#FFD21F]" />
             <span className="font-bold">Creator</span>
           </button>
 
           <button
             type="button"
             onClick={() => handleDemoLogin("alex@hypeagency.com")}
-            className="p-2 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-white/80 hover:text-white transition-all flex flex-col items-center gap-1"
+            className="p-2 rounded-2xl bg-white/[0.04] hover:bg-[#FFD21F]/15 border border-white/10 hover:border-[#FFD21F]/40 text-white/80 hover:text-white transition-all flex flex-col items-center gap-1"
           >
-            <Building2 className="w-3.5 h-3.5 text-blue-400" />
+            <Building2 className="w-3.5 h-3.5 text-white" />
             <span className="font-bold">Brand</span>
           </button>
 
           <button
             type="button"
             onClick={() => handleDemoLogin("admin@collably.com")}
-            className="p-2 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-white/80 hover:text-white transition-all flex flex-col items-center gap-1"
+            className="p-2 rounded-2xl bg-white/[0.04] hover:bg-[#FFD21F]/15 border border-white/10 hover:border-[#FFD21F]/40 text-white/80 hover:text-white transition-all flex flex-col items-center gap-1"
           >
-            <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
+            <ShieldCheck className="w-3.5 h-3.5 text-[#FFD21F]" />
             <span className="font-bold">Admin</span>
           </button>
         </div>
@@ -169,11 +169,11 @@ function LoginForm() {
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] hover:from-[#234FE6] hover:to-[#3264E6] text-white font-semibold text-xs transition-all shadow-[0_0_20px_rgba(42,92,255,0.4)] flex items-center justify-center gap-2 disabled:opacity-50"
+          className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all shadow-[0_0_25px_rgba(255,210,31,0.45)] border border-white/50 flex items-center justify-center gap-2 disabled:opacity-50"
         >
           {isLoading ? (
             <>
-              <Loader2 className="w-4 h-4 animate-spin text-white" />
+              <Loader2 className="w-4 h-4 animate-spin text-[#0A0A0E]" />
               <span>Verifying...</span>
             </>
           ) : (
@@ -182,15 +182,11 @@ function LoginForm() {
         </button>
       </form>
 
-      <div className="space-y-2 pt-2 border-t border-white/10 text-center text-xs text-white/50 font-sans">
-        <p>
-          Don&apos;t have an account?{" "}
-          <Link href="/creator/register" className="text-white hover:text-blue-400 font-bold">
-            Sign up as Creator
-          </Link>
-          {" · "}
-          <Link href="/brand/register" className="text-white hover:text-blue-400 font-bold">
-            Sign up as Brand
+      <div className="text-center pt-2 space-y-2">
+        <p className="text-xs text-white/50">
+          New to Collably?{" "}
+          <Link href="/register" className="text-[#FFD21F] hover:underline font-bold">
+            Create an Account
           </Link>
         </p>
       </div>
@@ -200,7 +196,14 @@ function LoginForm() {
 
 export default function LoginPage() {
   return (
-    <Suspense fallback={<div className="text-white/40 font-mono text-xs">Loading...</div>}>
+    <Suspense
+      fallback={
+        <div className="w-full max-w-md p-8 rounded-3xl bg-[#101018] border border-white/10 text-center text-white">
+          <div className="w-8 h-8 rounded-full border-2 border-[#FFD21F] border-t-transparent animate-spin mx-auto mb-3" />
+          <p className="text-xs font-mono text-white/50">Loading sign in...</p>
+        </div>
+      }
+    >
       <LoginForm />
     </Suspense>
   );

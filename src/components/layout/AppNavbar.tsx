@@ -122,9 +122,9 @@ export function AppNavbar() {
             <Menu className="w-4 h-4 text-white" />
           </button>
 
-          <Link href="/app/dashboard" className="flex items-center gap-2 group">
-            <div className="w-7 h-7 rounded-lg bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(42,92,255,0.4)]">
-              <Sparkles className="w-3.5 h-3.5 fill-blue-400 text-blue-400" />
+          <Link href="/app/dashboard" className="flex items-center gap-2.5 group">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FFD21F] to-[#FFAE00] border border-white/40 flex items-center justify-center text-[#0A0A0E] group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(255,210,31,0.4)]">
+              <Sparkles className="w-4 h-4 fill-[#0A0A0E] text-[#0A0A0E]" />
             </div>
             <span className="font-bold text-white text-sm font-display hidden xs:inline">Collably</span>
           </Link>
@@ -137,10 +137,10 @@ export function AppNavbar() {
                 const event = new KeyboardEvent("keydown", { key: "k", metaKey: true, bubbles: true });
                 window.dispatchEvent(event);
               }}
-              className="w-full text-left bg-white/[0.04] border border-white/10 rounded-xl pl-9 pr-12 py-2 text-xs text-white/50 hover:border-white/20 hover:bg-white/[0.07] transition-all flex items-center justify-between"
+              className="w-full text-left bg-white/[0.04] border border-white/10 rounded-full pl-9 pr-12 py-2 text-xs text-white/50 hover:border-[#FFD21F]/40 hover:bg-white/[0.07] transition-all flex items-center justify-between"
             >
               <span className="truncate">Search campaigns, creators, analytics...</span>
-              <kbd className="px-1.5 py-0.5 rounded bg-white/10 border border-white/10 text-[10px] font-mono text-white/60">
+              <kbd className="px-1.5 py-0.5 rounded-full bg-white/10 border border-white/10 text-[10px] font-mono text-white/60">
                 ⌘K
               </kbd>
             </button>
@@ -152,8 +152,8 @@ export function AppNavbar() {
           {/* Quick Action Button for Brand */}
           {role === "brand" && (
             <Link href="/app/brand/campaigns/create">
-              <button className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] hover:from-[#234FE6] hover:to-[#3264E6] text-white font-semibold text-xs shadow-[0_0_15px_rgba(42,92,255,0.4)] transition-all font-sans">
-                <Plus className="w-3.5 h-3.5 text-white" />
+              <button className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs shadow-[0_0_15px_rgba(255,210,31,0.4)] transition-all font-sans">
+                <Plus className="w-3.5 h-3.5 text-[#0A0A0E]" />
                 <span>Create Brief</span>
               </button>
             </Link>

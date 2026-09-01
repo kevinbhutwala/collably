@@ -24,7 +24,7 @@ export function CollablyLogo({
   const iconSizes = {
     sm: "w-8 h-8 rounded-lg",
     md: "w-9 h-9 rounded-xl",
-    lg: "w-11 h-11 rounded-xl",
+    lg: "w-11 h-11 rounded-2xl",
     xl: "w-14 h-14 rounded-2xl",
   };
 
@@ -38,12 +38,12 @@ export function CollablyLogo({
   const logoIcon = (
     <div
       className={cn(
-        "relative flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:scale-102 shadow-xs",
-        "bg-[#111111] text-white",
+        "relative flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:scale-105 shadow-[0_0_20px_rgba(255,210,31,0.35)]",
+        "bg-gradient-to-br from-[#12121A] to-[#0A0A10] border border-[#FFD21F]/40 text-white",
         iconSizes[size]
       )}
     >
-      {/* Collably Geometric C / Flow Emblem with #B7FF3C Micro Accent Dot */}
+      {/* Collably Geometric C / Flow Emblem with #FFD21F Theme Accent Dot */}
       <svg
         viewBox="0 0 24 24"
         fill="none"
@@ -52,11 +52,11 @@ export function CollablyLogo({
       >
         <path
           d="M17 8C15.5 6 13.5 5 11 5C7.13401 5 4 8.13401 4 12C4 15.866 7.13401 19 11 19C13.5 19 15.5 18 17 16"
-          stroke="#FAFAF8"
+          stroke="#FFFFFF"
           strokeWidth="2.75"
           strokeLinecap="round"
         />
-        <circle cx="16.5" cy="12" r="2.25" fill="#B7FF3C" />
+        <circle cx="16.5" cy="12" r="2.25" fill="#FFD21F" />
       </svg>
     </div>
   );
@@ -79,20 +79,20 @@ export function CollablyLogo({
         <div className="flex items-center gap-1.5">
           <span
             className={cn(
-              "font-extrabold text-[#111111] leading-none font-display flex items-center tracking-tight",
+              "font-extrabold text-white leading-none font-display flex items-center tracking-tight",
               textSizes[size]
             )}
           >
             Collably
           </span>
           {showTag && (
-            <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded-md bg-[#B7FF3C] text-[#111111] font-bold tracking-wider leading-none">
+            <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] font-extrabold tracking-wider leading-none shadow-[0_0_10px_rgba(255,210,31,0.4)]">
               PRO
             </span>
           )}
         </div>
         {subtext && variant !== "minimal" && (
-          <span className="text-[11px] text-[#6B6B6B] font-medium tracking-tight mt-0.5 leading-none hidden sm:inline font-sans">
+          <span className="text-[11px] text-white/60 font-medium tracking-tight mt-0.5 leading-none hidden sm:inline font-sans">
             {subtext}
           </span>
         )}

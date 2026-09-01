@@ -32,16 +32,16 @@ export default function AdminSettingsPage() {
 
         <button
           onClick={handleSave}
-          className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] hover:from-[#234FE6] hover:to-[#3264E6] text-white text-xs font-semibold transition-all shadow-[0_0_20px_rgba(42,92,255,0.4)] flex items-center gap-1.5"
+          className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-[0_0_20px_rgba(255,210,31,0.4)] border border-white/40 flex items-center gap-1.5"
         >
-          <Save className="w-4 h-4" />
+          <Save className="w-4 h-4 text-[#0A0A0E]" />
           <span>Save Configuration</span>
         </button>
       </div>
 
-      <div className="p-6 sm:p-8 rounded-3xl bg-[#0E0C15]/90 border border-white/10 shadow-2xl backdrop-blur-xl space-y-6">
+      <div className="p-6 sm:p-8 rounded-3xl bg-[#101018] border border-white/10 shadow-2xl backdrop-blur-xl space-y-6">
         <div className="flex items-center gap-2 text-white font-bold text-sm font-display">
-          <Sliders className="w-4 h-4 text-blue-400" />
+          <Sliders className="w-4 h-4 text-[#FFD21F]" />
           <span>Financial Parameters</span>
         </div>
 

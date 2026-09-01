@@ -84,18 +84,18 @@ export function AppSidebar() {
     role === "creator" ? creatorNavItems : role === "brand" ? brandNavItems : adminNavItems;
 
   return (
-    <aside className="hidden lg:flex flex-col w-64 border-r border-blue-500/15 bg-gradient-to-b from-[#060917] via-[#080D21] to-[#04060E] p-4 shrink-0 min-h-[calc(100vh-4rem)] text-white shadow-2xl">
+    <aside className="hidden lg:flex flex-col w-64 border-r border-[#FFD21F]/15 bg-gradient-to-b from-[#0C0C14] via-[#08080C] to-[#050508] p-4 shrink-0 min-h-[calc(100vh-4rem)] text-white shadow-2xl">
       {/* Brand logo & workspace badge */}
       <div className="px-3 py-2 mb-4 flex items-center justify-between">
         <Link href="/app/dashboard" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-700 border border-blue-400/40 flex items-center justify-center text-white group-hover:scale-105 transition-transform shadow-[0_0_20px_rgba(37,99,235,0.5)]">
-            <Sparkles className="w-4 h-4 fill-white text-white" />
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FFD21F] to-[#FFAE00] border border-white/40 flex items-center justify-center text-[#0A0A0E] group-hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,210,31,0.45)]">
+            <Sparkles className="w-4 h-4 fill-[#0A0A0E] text-[#0A0A0E]" />
           </div>
           <span className="font-display font-extrabold text-base tracking-tight text-white">
             Collably
           </span>
         </Link>
-        <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-blue-500/15 border border-blue-400/25 text-blue-300 uppercase font-bold">
+        <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#FFD21F] uppercase font-extrabold">
           {role === "agency_admin" ? "Admin" : role}
         </span>
       </div>
@@ -113,10 +113,10 @@ export function AppSidebar() {
               className={cn(
                 "flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-medium transition-all select-none",
                 isActive
-                  ? "bg-gradient-to-r from-[#1D4ED8] via-[#2563EB] to-[#3B82F6] text-white font-bold shadow-[0_0_20px_rgba(37,99,235,0.5)] border border-blue-300/30"
+                  ? "bg-gradient-to-r from-[#FFD21F] to-[#FFE052] text-[#0A0A0E] font-extrabold shadow-[0_0_20px_rgba(255,210,31,0.45)] border border-white/50"
                   : item.highlight
-                  ? "bg-gradient-to-r from-blue-900/40 to-indigo-900/30 text-white hover:bg-blue-800/40 border border-blue-500/20 font-semibold"
-                  : "text-white/60 hover:text-white hover:bg-white/[0.05]"
+                  ? "bg-white/[0.08] text-white hover:bg-white/[0.12] border border-[#FFD21F]/20 font-semibold"
+                  : "text-white/70 hover:text-white hover:bg-white/[0.06]"
               )}
             >
               <div className="flex items-center gap-3">
@@ -124,10 +124,10 @@ export function AppSidebar() {
                   className={cn(
                     "w-4 h-4 transition-colors",
                     isActive
-                      ? "text-white"
+                      ? "text-[#0A0A0E]"
                       : item.highlight
-                      ? "text-blue-400"
-                      : "text-blue-200/50 group-hover:text-white"
+                      ? "text-[#FFD21F]"
+                      : "text-white/50 group-hover:text-white"
                   )}
                 />
                 <span>{item.label}</span>
@@ -138,8 +138,8 @@ export function AppSidebar() {
                   className={cn(
                     "text-[10px] px-2 py-0.5 rounded-full font-mono font-bold",
                     isActive
-                      ? "bg-white text-[#0B132B]"
-                      : "bg-blue-500/20 text-blue-300 border border-blue-400/20"
+                      ? "bg-[#0A0A0E] text-[#FFD21F]"
+                      : "bg-[#FFD21F]/15 text-[#FFD21F] border border-[#FFD21F]/30"
                   )}
                 >
                   {item.badge}

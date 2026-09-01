@@ -89,7 +89,7 @@ export function ExactBentoSection() {
 
           {/* Center: For Creators Copy (Cols 5-8) */}
           <div className="lg:col-span-4 space-y-5 px-2 sm:px-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/15 border border-blue-500/30 text-blue-400 text-[10px] font-mono font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#FFD21F] text-[10px] font-mono font-extrabold uppercase tracking-wider">
               <span>FOR CREATORS</span>
             </div>
 
@@ -104,9 +104,9 @@ export function ExactBentoSection() {
 
             <div className="pt-2">
               <Link href="/creator/register">
-                <button className="px-6 py-3.5 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] hover:from-[#234FE6] hover:to-[#3264E6] text-white font-semibold text-xs sm:text-sm transition-all shadow-[0_0_20px_rgba(42,92,255,0.4)] flex items-center gap-2 group">
+                <button className="px-6 py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs sm:text-sm transition-all shadow-[0_0_20px_rgba(255,210,31,0.4)] flex items-center gap-2 group border border-white/40">
                   <span>Join as a Creator</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                  <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-0.5 transition-transform" />
                 </button>
               </Link>
             </div>

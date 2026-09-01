@@ -59,7 +59,7 @@ export default function AppCampaignsPage() {
             className={cn(
               "px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap",
               selectedCategory === "all"
-                ? "bg-[#2A5CFF] text-white shadow-[0_0_12px_rgba(42,92,255,0.4)]"
+                ? "bg-[#FFD21F] text-[#0A0A0E] shadow-[0_0_12px_rgba(255,210,31,0.45)] font-bold border border-white/40"
                 : "bg-white/[0.04] text-white/60 hover:text-white border border-white/10"
             )}
           >
@@ -72,7 +72,7 @@ export default function AppCampaignsPage() {
               className={cn(
                 "px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap",
                 selectedCategory === cat
-                  ? "bg-[#2A5CFF] text-white shadow-[0_0_12px_rgba(42,92,255,0.4)]"
+                  ? "bg-[#FFD21F] text-[#0A0A0E] shadow-[0_0_12px_rgba(255,210,31,0.45)] font-bold border border-white/40"
                   : "bg-white/[0.04] text-white/60 hover:text-white border border-white/10"
               )}
             >
@@ -88,7 +88,7 @@ export default function AppCampaignsPage() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search campaigns, brands..."
-            className="w-full bg-white/[0.04] border border-white/10 rounded-full pl-9 pr-4 py-2 text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-blue-500 transition-all"
+            className="w-full bg-white/[0.04] border border-white/10 rounded-full pl-9 pr-4 py-2 text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-[#FFD21F]/50 transition-all"
           />
         </div>
       </div>
@@ -96,10 +96,10 @@ export default function AppCampaignsPage() {
       {/* Grid */}
       {loading ? (
         <div className="py-24 text-center">
-          <div className="w-8 h-8 rounded-full border-2 border-[#2A5CFF] border-t-transparent animate-spin mx-auto" />
+          <div className="w-8 h-8 rounded-full border-2 border-[#FFD21F] border-t-transparent animate-spin mx-auto" />
         </div>
       ) : campaigns.length === 0 ? (
-        <div className="py-24 text-center rounded-3xl bg-[#0E0C15]/90 border border-white/10 p-8 space-y-3">
+        <div className="py-24 text-center rounded-3xl bg-[#101018] border border-white/10 p-8 space-y-3">
           <Compass className="w-8 h-8 text-white/30 mx-auto" />
           <h3 className="text-base font-bold text-white font-display">No campaigns found</h3>
         </div>
