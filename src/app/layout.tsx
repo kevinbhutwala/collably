@@ -37,14 +37,12 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://fonts.cdnfonts.com" />
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Instrument+Serif:ital,wght@0,400;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital,wght@0,400;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
         />
-        <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/neue-montreal" />
       </head>
-      <body className="min-h-screen bg-[#FAFAF8] text-[#111111] antialiased font-sans selection:bg-[#B7FF3C] selection:text-[#111111]">
+      <body className="min-h-screen bg-[#FAFAF8] text-[#101010] antialiased font-sans selection:bg-[#B7FF3C] selection:text-[#101010]">
         {children}
         <CommandPalette />
         <ToastContainer />

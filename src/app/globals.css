@@ -1,5 +1,4 @@
-@import url('https://fonts.cdnfonts.com/css/neue-montreal');
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Instrument+Serif:ital,wght@0,400;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital,wght@0,400;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,13 +7,13 @@
 @layer base {
   :root {
     /* ══════════════════════════════════════════════════════════════════════════
-       COLLABLY — INTENTIONAL TYPOGRAPHY & DESIGN SYSTEM TOKENS
+       COLLABLY — HARMONIOUS DESIGN SYSTEM & FONT SYSTEM
        ══════════════════════════════════════════════════════════════════════════ */
     
-    /* Centralized Typography Tokens */
-    --font-display: 'Neue Montreal', 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    /* Typography Tokens */
+    --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-editorial: 'Instrument Serif', Georgia, serif;
-    --font-ui: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-ui: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-mono: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
     /* Typographic & Palette Colors */
@@ -68,39 +67,40 @@
   }
   html, body {
     @apply bg-background text-foreground antialiased;
-    font-family: var(--font-ui), 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-feature-settings: "rlig" 1, "calt" 1, "cv02" 1, "cv03" 1, "cv04" 1, "cv11" 1;
+    font-family: var(--font-ui), 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     color: var(--color-text-primary);
+    letter-spacing: -0.011em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display), 'Neue Montreal', -apple-system, BlinkMacSystemFont, sans-serif;
-    letter-spacing: -0.04em;
+    font-family: var(--font-display), 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.035em;
     font-weight: 700;
     color: var(--color-text-primary);
   }
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
-   CENTRALIZED TYPOGRAPHY UTILITIES
+   HARMONIOUS TYPOGRAPHY UTILITIES
    ══════════════════════════════════════════════════════════════════════════ */
 
-/* Hero Display Clamp Headline: 64px - 132px with tight line-height (0.88-0.95) & negative tracking */
+/* Hero Display Headline: clean, balanced, confident */
 .hero-headline {
   font-family: var(--font-display);
-  font-size: clamp(3.75rem, 8vw, 8.25rem);
-  line-height: 0.90;
-  letter-spacing: -0.055em;
+  font-size: clamp(2.75rem, 6.5vw, 6.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
   font-weight: 800;
   color: var(--color-text-primary);
-  text-transform: uppercase;
 }
 
-/* Section Display Headline: 56px - 88px */
+/* Section Display Headline */
 .section-headline {
   font-family: var(--font-display);
-  font-size: clamp(2.25rem, 5.5vw, 5.5rem);
-  line-height: 0.95;
-  letter-spacing: -0.04em;
+  font-size: clamp(2rem, 4.5vw, 4.25rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
   font-weight: 700;
   color: var(--color-text-primary);
 }
@@ -116,10 +116,10 @@
 /* Editorial Body Copy */
 .editorial-body {
   font-family: var(--font-ui);
-  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  font-size: clamp(0.9375rem, 1.05vw, 1.0625rem);
   line-height: 1.6;
   color: var(--color-text-secondary);
-  max-width: 620px;
+  max-width: 600px;
 }
 
 /* Micro Editorial Metadata Label: 10-12px / 600 / uppercase */
@@ -135,6 +135,7 @@
 /* Tabular Financial Numerics */
 .numeric-tabular {
   font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
 }
 
 /* Accents */

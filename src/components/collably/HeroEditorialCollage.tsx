@@ -16,10 +16,10 @@ import { EDITORIAL_PORTRAITS } from "@/data/editorialPortraits";
 export function HeroEditorialCollage() {
   const [activeWordIndex, setActiveWordIndex] = useState(0);
   const kineticWords = [
-    { text: "CREATE.", accent: "text-[#101010]" },
-    { text: "COLLABORATE.", accent: "text-[#3047FF]" },
-    { text: "APPROVE.", accent: "text-[#101010]" },
-    { text: "GET PAID.", accent: "text-[#FF3B30]" },
+    { text: "CREATE", accent: "text-[#101010]" },
+    { text: "COLLABORATE", accent: "text-[#3047FF]" },
+    { text: "APPROVE", accent: "text-[#101010]" },
+    { text: "GET PAID", accent: "text-[#FF3B30]" },
   ];
 
   useEffect(() => {
@@ -34,50 +34,46 @@ export function HeroEditorialCollage() {
   const supportingFemale = EDITORIAL_PORTRAITS.supportingFemale1;
 
   return (
-    <section className="relative min-h-[92vh] lg:min-h-[105vh] bg-[#FAFAF8] border-b border-[#E7E7E4] overflow-hidden pt-6 pb-20 sm:pb-32 select-none text-[#101010]">
+    <section className="relative min-h-[90vh] lg:min-h-[100vh] bg-[#FAFAF8] border-b border-[#E7E7E4] overflow-hidden pt-6 pb-20 sm:pb-32 select-none text-[#101010]">
       {/* ════════════════════════════════════════════════════════════════════
-          OVERSIZED WATERMARK TYPOGRAPHY (Neue Montreal Display)
+          OVERSIZED WATERMARK TYPOGRAPHY
           ════════════════════════════════════════════════════════════════════ */}
-      <div className="absolute top-8 sm:top-2 inset-x-0 flex justify-center pointer-events-none z-0 opacity-[0.035] select-none overflow-hidden font-display">
-        <span className="text-[22vw] font-black tracking-tighter leading-none text-[#101010]">
+      <div className="absolute top-6 sm:top-0 inset-x-0 flex justify-center pointer-events-none z-0 opacity-[0.03] select-none overflow-hidden font-display">
+        <span className="text-[20vw] font-black tracking-tighter leading-none text-[#101010]">
           COLLABLY
         </span>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10 lg:space-y-14">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10 lg:space-y-12">
         {/* ════════════════════════════════════════════════════════════════════
-            TOP EDITORIAL HEADER & HIGH-FASHION HEADLINE
+            TOP EDITORIAL HEADER & CLEAN LUXURY HEADLINE
             ════════════════════════════════════════════════════════════════════ */}
-        <div className="text-center max-w-5xl mx-auto space-y-6 pt-2 sm:pt-4">
-          {/* Micro Label Eyebrow: Geist 10–12px / 600 / uppercase tracking 0.08em */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-[11px] font-sans font-semibold uppercase tracking-[0.1em] text-[#101010] shadow-xs">
+        <div className="text-center max-w-4xl mx-auto space-y-6 pt-2 sm:pt-4">
+          {/* Micro Label Eyebrow: 11px uppercase tracking */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-[11px] font-sans font-semibold uppercase tracking-[0.08em] text-[#101010] shadow-xs">
             <span className="w-2 h-2 rounded-full bg-[#B7FF3C] animate-pulse" />
             <span>CREATOR × BRAND COLLABORATION PLATFORM</span>
           </div>
 
-          {/* 3-Tier Typography Hero Headline:
-              - Neue Montreal clamp(64px, 8vw, 132px), line-height 0.88-0.92, tracking -0.055em
-              - Instrument Serif italic accent word
-          */}
+          {/* Harmonious Hero Headline */}
           <div className="space-y-4">
             <h1 className="hero-headline">
-              CREATE <br className="hidden sm:inline" />
-              <span className="font-serif italic font-normal normal-case tracking-normal text-[#101010] lowercase text-[clamp(4.25rem,9.5vw,9.5rem)] px-1 sm:px-3">
-                great content.
-              </span> <br />
-              <span className="text-[#626262] tracking-tight">WITHOUT THE CHAOS.</span>
+              Create great content. <br className="hidden sm:inline" />
+              <span className="font-serif italic font-normal text-[#626262]">
+                Without the chaos.
+              </span>
             </h1>
 
-            {/* Dynamic Kinetic Word Loop */}
+            {/* Kinetic Stage Word Loop */}
             <div className="h-10 sm:h-12 flex items-center justify-center overflow-hidden pt-1">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeWordIndex}
-                  initial={{ y: 24, opacity: 0, filter: "blur(4px)" }}
+                  initial={{ y: 20, opacity: 0, filter: "blur(3px)" }}
                   animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-                  exit={{ y: -24, opacity: 0, filter: "blur(4px)" }}
-                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                  className="font-mono text-xs sm:text-sm font-bold uppercase tracking-widest text-[#101010] flex items-center gap-2 bg-[#B7FF3C] px-4 py-1.5 rounded-lg shadow-xs"
+                  exit={{ y: -20, opacity: 0, filter: "blur(3px)" }}
+                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-[#101010] flex items-center gap-2 bg-[#B7FF3C] px-4 py-1.5 rounded-lg shadow-xs"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-[#101010]" />
                   <span>
@@ -87,13 +83,13 @@ export function HeroEditorialCollage() {
               </AnimatePresence>
             </div>
 
-            {/* Body Text: Geist 16-18px / 400, color #626262, max-width 600px */}
-            <p className="editorial-body mx-auto text-center">
-              One unified workspace for vetted creator cohorts, brief management, 4K frame-accurate review, and protected milestone settlements.
+            {/* Clean Body Text */}
+            <p className="editorial-body mx-auto text-center font-normal">
+              One unified workspace for vetted creator discovery, brief management, 4K frame-accurate review, and protected milestone settlements.
             </p>
           </div>
 
-          {/* Buttons: Geist 14–15px / 600 */}
+          {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2 font-sans font-semibold text-sm">
             <Link
               href="/for-brands"
@@ -114,25 +110,18 @@ export function HeroEditorialCollage() {
         </div>
 
         {/* ════════════════════════════════════════════════════════════════════
-            HIGH-FASHION EDITORIAL COLLAGE COMPOSITION (INTERSECTING TYPOGRAPHY)
+            HIGH-FASHION EDITORIAL COLLAGE COMPOSITION
             ════════════════════════════════════════════════════════════════════ */}
-        <div className="relative w-full max-w-6xl mx-auto min-h-[580px] sm:min-h-[720px] lg:min-h-[840px] mt-8 select-none">
+        <div className="relative w-full max-w-6xl mx-auto min-h-[560px] sm:min-h-[700px] lg:min-h-[800px] mt-6 select-none">
           {/* Background Ambient Surface */}
-          <div className="absolute inset-x-6 top-10 bottom-10 rounded-3xl bg-[#FFFFFF] border border-[#E7E7E4] pointer-events-none -z-10 shadow-xs" />
+          <div className="absolute inset-x-6 top-8 bottom-8 rounded-3xl bg-[#FFFFFF] border border-[#E7E7E4] pointer-events-none -z-10 shadow-xs" />
 
-          {/* ── 01. OVERSIZED EDITORIAL ARTWORK WORD "CREA" ── */}
-          <div className="absolute top-2 sm:top-6 left-0 sm:left-4 z-0 pointer-events-none font-display">
-            <span className="text-7xl sm:text-9xl lg:text-[11rem] font-black text-[#101010]/[0.04] tracking-tighter leading-none">
-              CREA
-            </span>
-          </div>
-
-          {/* ── 02. MAIN HERO PORTRAIT: MALE ANCHOR (Marcus Vance) ── */}
+          {/* ── 01. MAIN HERO PORTRAIT: MALE ANCHOR (Marcus Vance) ── */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute top-10 sm:top-12 left-1/2 -translate-x-1/2 sm:-translate-x-28 lg:-translate-x-36 z-10 w-64 sm:w-80 lg:w-96 rounded-2xl overflow-hidden border border-[#E7E7E4] bg-[#101010] shadow-editorial-lg group"
+            className="absolute top-8 sm:top-10 left-1/2 -translate-x-1/2 sm:-translate-x-28 lg:-translate-x-36 z-10 w-64 sm:w-80 lg:w-96 rounded-2xl overflow-hidden border border-[#E7E7E4] bg-[#101010] shadow-editorial-lg group"
           >
             <div className="relative aspect-[4/5] w-full overflow-hidden">
               <img
@@ -155,12 +144,12 @@ export function HeroEditorialCollage() {
             </div>
           </motion.div>
 
-          {/* ── 03. SECONDARY HERO PORTRAIT: FEMALE ANCHOR (Elena Rostova) ── */}
+          {/* ── 02. SECONDARY HERO PORTRAIT: FEMALE ANCHOR (Elena Rostova) ── */}
           <motion.div
             initial={{ opacity: 0, x: 30, y: 30 }}
             animate={{ opacity: 1, x: 0, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="hidden sm:block absolute top-28 sm:top-24 right-4 lg:right-12 z-20 w-56 sm:w-72 lg:w-84 rounded-2xl overflow-hidden border border-[#E7E7E4] bg-[#FFFFFF] shadow-editorial"
+            className="hidden sm:block absolute top-24 sm:top-20 right-4 lg:right-12 z-20 w-56 sm:w-72 lg:w-84 rounded-2xl overflow-hidden border border-[#E7E7E4] bg-[#FFFFFF] shadow-editorial"
           >
             <div className="relative aspect-[3/4] w-full overflow-hidden">
               <img
@@ -177,12 +166,12 @@ export function HeroEditorialCollage() {
             </div>
           </motion.div>
 
-          {/* ── 04. SUPPORTING PORTRAIT: FEMALE HALF-BODY (Aanya Patel) ── */}
+          {/* ── 03. SUPPORTING PORTRAIT: FEMALE HALF-BODY (Aanya Patel) ── */}
           <motion.div
             initial={{ opacity: 0, x: -30, y: 20 }}
             animate={{ opacity: 1, x: 0, y: 0 }}
             transition={{ duration: 0.65, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="hidden md:block absolute bottom-24 left-6 lg:left-10 z-20 w-44 lg:w-52 rounded-xl overflow-hidden border border-[#E7E7E4] bg-[#FFFFFF] shadow-editorial"
+            className="hidden md:block absolute bottom-20 left-6 lg:left-10 z-20 w-44 lg:w-52 rounded-xl overflow-hidden border border-[#E7E7E4] bg-[#FFFFFF] shadow-editorial"
           >
             <div className="relative aspect-square w-full overflow-hidden">
               <img
@@ -200,19 +189,12 @@ export function HeroEditorialCollage() {
             </div>
           </motion.div>
 
-          {/* ── 05. OVERSIZED WORD "GET PAID." ── */}
-          <div className="absolute bottom-4 sm:bottom-8 right-2 sm:right-8 z-30 pointer-events-none font-display">
-            <span className="text-6xl sm:text-8xl lg:text-[10rem] font-black text-[#101010]/[0.04] tracking-tighter leading-none">
-              GET PAID.
-            </span>
-          </div>
-
-          {/* ── 06. FLOATING REAL PRODUCT UI: 98% MATCH CARD with #B7FF3C ── */}
+          {/* ── 04. FLOATING REAL PRODUCT UI: 98% MATCH CARD with #B7FF3C ── */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="absolute top-4 sm:top-8 right-8 sm:right-28 lg:right-44 z-30 p-3 sm:p-4 rounded-xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-editorial max-w-[200px] sm:max-w-[230px]"
+            className="absolute top-4 sm:top-6 right-8 sm:right-28 lg:right-44 z-30 p-3 sm:p-4 rounded-xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-editorial max-w-[200px] sm:max-w-[230px]"
           >
             <div className="flex items-center justify-between gap-2 pb-1.5 border-b border-[#E7E7E4] text-xs font-mono">
               <span className="font-display font-bold text-[#101010] truncate">Elena Rostova</span>
@@ -232,12 +214,12 @@ export function HeroEditorialCollage() {
             </div>
           </motion.div>
 
-          {/* ── 07. FLOATING PRODUCT UI: SETTLEMENT CARD ── */}
+          {/* ── 05. FLOATING PRODUCT UI: SETTLEMENT CARD ── */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.4 }}
-            className="absolute bottom-16 sm:bottom-28 left-4 sm:left-1/2 sm:-translate-x-20 z-30 p-3.5 sm:p-4 rounded-xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-editorial-lg min-w-[210px] sm:min-w-[250px]"
+            className="absolute bottom-12 sm:bottom-24 left-4 sm:left-1/2 sm:-translate-x-20 z-30 p-3.5 sm:p-4 rounded-xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-editorial-lg min-w-[210px] sm:min-w-[250px]"
           >
             <div className="flex items-center justify-between gap-2 text-xs font-mono mb-1">
               <span className="text-[10px] text-[#626262] font-bold uppercase tracking-wider">SETTLEMENT DISBURSED</span>
@@ -258,12 +240,12 @@ export function HeroEditorialCollage() {
             </p>
           </motion.div>
 
-          {/* ── 08. FLOATING CAMPAIGN TELEMETRY BADGE with Ultramarine Accent ── */}
+          {/* ── 06. FLOATING CAMPAIGN TELEMETRY BADGE ── */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.45 }}
-            className="hidden sm:flex items-center gap-3 absolute top-64 left-2 sm:left-16 z-30 px-3.5 py-2 rounded-xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-editorial"
+            className="hidden sm:flex items-center gap-3 absolute top-60 left-2 sm:left-16 z-30 px-3.5 py-2 rounded-xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-editorial"
           >
             <div className="w-8 h-8 rounded-lg bg-[#101010] text-[#B7FF3C] flex items-center justify-center shrink-0">
               <Zap className="w-4 h-4" />
@@ -276,32 +258,10 @@ export function HeroEditorialCollage() {
               <p className="text-[10px] text-[#626262] font-sans">12 Creators • <strong className="text-[#101010] numeric-tabular">₹2,50,000</strong> LIVE</p>
             </div>
           </motion.div>
-
-          {/* ── 09. EDITORIAL BRAND LABELS ── */}
-          <div className="absolute top-1/2 left-0 -translate-y-1/2 hidden lg:flex flex-col gap-3 font-mono text-[10px] text-[#626262] z-20">
-            <span className="px-2.5 py-1 rounded-md bg-[#FFFFFF] border border-[#E7E7E4] font-bold text-[#101010] tracking-widest shadow-xs">
-              VERTEX / STUDIO
-            </span>
-            <span className="px-2.5 py-1 rounded-md bg-[#FFFFFF] border border-[#E7E7E4] font-bold text-[#101010] tracking-widest shadow-xs">
-              NOVA LABS
-            </span>
-            <span className="px-2.5 py-1 rounded-md bg-[#FFFFFF] border border-[#E7E7E4] font-bold text-[#101010] tracking-widest shadow-xs">
-              NORTH FORM
-            </span>
-          </div>
-
-          <div className="absolute top-1/3 right-2 hidden xl:flex flex-col gap-2 font-mono text-[10px] text-[#626262] z-20">
-            <span className="px-2 py-0.5 rounded bg-[#101010] text-[#B7FF3C] font-bold tracking-wider">
-              CREATOR × BRAND NETWORK
-            </span>
-            <span className="px-2 py-0.5 rounded bg-[#FFFFFF] border border-[#E7E7E4] text-[#101010] font-bold tracking-wider">
-              100% PRE-FUNDED ESCROW
-            </span>
-          </div>
         </div>
 
         {/* ════════════════════════════════════════════════════════════════════
-            TRUST RAIL: Geist 12px / JetBrains Mono
+            TRUST RAIL
             ════════════════════════════════════════════════════════════════════ */}
         <div className="pt-4 sm:pt-6 border-t border-[#E7E7E4] flex flex-wrap items-center justify-between gap-4 text-xs font-sans text-[#626262]">
           <div className="flex items-center gap-2">
