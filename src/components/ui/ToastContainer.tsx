@@ -10,16 +10,16 @@ export function ToastContainer() {
   const { toasts, removeToast } = useUIStore();
 
   const iconMap = {
-    success: <CheckCircle2 className="w-5 h-5 text-[#111111] shrink-0" />,
-    error: <AlertCircle className="w-5 h-5 text-rose-600 shrink-0" />,
-    info: <Info className="w-5 h-5 text-[#111111] shrink-0" />,
+    success: <CheckCircle2 className="w-5 h-5 text-[#101010] shrink-0" />,
+    error: <AlertCircle className="w-5 h-5 text-[#FF3B30] shrink-0" />,
+    info: <Info className="w-5 h-5 text-[#101010] shrink-0" />,
     warning: <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0" />,
   };
 
   const borderMap = {
-    success: "border-[#E7E7E4] bg-[#FFFFFF] text-[#111111]",
+    success: "border-[#E7E7E4] bg-[#FFFFFF] text-[#101010]",
     error: "border-[#FEE2E2] bg-[#FEF2F2] text-[#991B1B]",
-    info: "border-[#E7E7E4] bg-[#FFFFFF] text-[#111111]",
+    info: "border-[#E7E7E4] bg-[#FFFFFF] text-[#101010]",
     warning: "border-[#FEF3C7] bg-[#FFFBEB] text-[#92400E]",
   };
 
@@ -40,12 +40,12 @@ export function ToastContainer() {
           >
             {iconMap[toast.type]}
             <div className="flex-1 min-w-0">
-              <h4 className="text-sm font-bold text-[#111111] font-display">{toast.title}</h4>
-              <p className="text-xs text-[#6B6B6B] mt-0.5 leading-relaxed font-sans">{toast.message}</p>
+              <h4 className="text-sm font-bold text-[#101010] font-display">{toast.title}</h4>
+              <p className="text-xs text-[#626262] mt-0.5 leading-relaxed font-sans">{toast.message}</p>
             </div>
             <button
               onClick={() => removeToast(toast.id)}
-              className="text-[#6B6B6B] hover:text-[#111111] p-1 -mr-1 -mt-1 rounded-full hover:bg-[#FAFAF8] transition-colors"
+              className="text-[#626262] hover:text-[#101010] p-1 -mr-1 -mt-1 rounded-full hover:bg-[#FAFAF8] transition-colors"
             >
               <X className="w-4 h-4" />
             </button>

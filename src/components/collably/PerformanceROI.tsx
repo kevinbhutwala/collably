@@ -44,51 +44,50 @@ export function PerformanceROI() {
   ];
 
   return (
-    <section className="py-24 sm:py-32 bg-transparent border-b border-white/10 relative overflow-hidden select-none text-white">
+    <section className="py-24 sm:py-32 bg-[#FAFAF8] border-b border-[#E7E7E4] relative overflow-hidden select-none text-[#101010]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-xs font-mono font-bold text-[hsl(327,100%,55%)] shadow-xs">
-            <BarChart3 className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-xs font-mono font-bold text-[#101010] shadow-xs uppercase tracking-wider">
+            <BarChart3 className="w-3.5 h-3.5 text-[#101010]" />
             <span>07 • Measure &amp; Attributions</span>
           </div>
 
-          <ScrollRevealText
-            as="h2"
-            gradientWords={["audited", "attribution", "telemetry", "conversion"]}
-            className="text-3xl sm:text-5xl font-black text-white tracking-tight font-display leading-tight"
-          >
-            Real-time attribution &amp; conversion telemetry.
-          </ScrollRevealText>
+          <h2 className="section-headline text-center">
+            Real performance, <span className="font-serif italic font-normal text-[#626262]">audited telemetry.</span>
+          </h2>
 
-          <ScrollRevealText
-            as="p"
-            gradientWords={["granularity", "tracking", "utm", "conversion", "roi"]}
-            className="text-sm sm:text-lg text-slate-300 font-sans max-w-2xl mx-auto leading-relaxed"
-          >
-            Measure audience reach, link click-throughs, and customer acquisition costs with audited post-campaign performance data.
-          </ScrollRevealText>
+          <p className="editorial-body mx-auto text-center">
+            Track direct clickthrough conversions, authentic engagement multipliers, and ROI attribution across every partnered channel.
+          </p>
         </div>
 
-        {/* 4 Stat Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 font-mono">
-          {sampleMetrics.map((m, idx) => {
+        {/* 4 Metric Summary Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+          {sampleMetrics.map((m, i) => {
             const Icon = m.icon;
             return (
               <div
-                key={idx}
-                className="p-6 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-3"
+                key={i}
+                className="p-6 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-editorial hover:border-[#101010] transition-all space-y-3 group"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] text-slate-400 font-bold uppercase">{m.label}</span>
-                  <div className="p-2 rounded-xl bg-white/[0.05] border border-white/10 text-pink-400">
+                  <span className="text-xs font-mono text-[#626262] uppercase tracking-wider">{m.label}</span>
+                  <div className="w-8 h-8 rounded-lg bg-[#FAFAF8] border border-[#E7E7E4] flex items-center justify-center text-[#101010] group-hover:scale-105 transition-transform">
                     <Icon className="w-4 h-4" />
                   </div>
                 </div>
-                <div className="text-3xl font-black text-white font-mono">{m.value}</div>
-                <div className="flex items-center justify-between text-[11px] pt-2 border-t border-white/10">
-                  <span className="text-slate-400 font-sans">{m.subtext}</span>
-                  <span className="text-emerald-400 font-bold">{m.trend}</span>
+
+                <div className="space-y-1">
+                  <p className="text-3xl sm:text-4xl font-extrabold text-[#101010] font-display numeric-tabular tracking-tight">
+                    {m.value}
+                  </p>
+                  <div className="flex items-center justify-between text-xs font-mono pt-1">
+                    <span className="text-[#626262]">{m.subtext}</span>
+                    <span className="text-[#101010] font-bold bg-[#B7FF3C] px-1.5 py-0.5 rounded text-[10px]">
+                      {m.trend}
+                    </span>
+                  </div>
                 </div>
               </div>
             );
@@ -96,45 +95,45 @@ export function PerformanceROI() {
         </div>
 
         {/* Channel Breakdown Table */}
-        <div className="max-w-5xl mx-auto p-6 sm:p-8 rounded-3xl bg-[#120c16] border border-white/10 shadow-elevated space-y-6">
-          <div className="flex items-center justify-between pb-4 border-b border-white/10">
-            <div className="space-y-1">
-              <h4 className="text-base font-bold text-white font-display">Campaign Attribution Breakdown</h4>
-              <p className="text-xs text-slate-400 font-mono">Sample Campaign: Q3 AI Developer SDK ($3,500 Total Spend)</p>
+        <div className="rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-editorial overflow-hidden">
+          <div className="p-6 border-b border-[#E7E7E4] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <h3 className="text-base font-bold text-[#101010] font-display">Attributed Deliverable Performance</h3>
+              <p className="text-xs text-[#626262] font-sans">Live telemetry for Vertex Pro AI campaign (Last 30 Days)</p>
             </div>
-            <span className="px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 text-[10px] font-mono text-slate-300">
-              Sample Data
+            <span className="text-xs font-mono font-bold text-[#101010] flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-[#B7FF3C] animate-pulse" />
+              Real-Time Tracking Active
             </span>
           </div>
 
-          <div className="divide-y divide-white/10 font-mono text-xs">
-            {channelPerformance.map((c, idx) => (
-              <div key={idx} className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div className="space-y-0.5">
-                  <span className="font-bold text-white block">{c.platform}</span>
-                  <span className="text-[11px] text-slate-400 font-sans">{c.creator}</span>
-                </div>
-
-                <div className="grid grid-cols-4 gap-4 text-left sm:text-right shrink-0">
-                  <div>
-                    <span className="text-[9px] text-slate-400 block">VIEWS</span>
-                    <span className="text-white font-bold">{c.views}</span>
-                  </div>
-                  <div>
-                    <span className="text-[9px] text-slate-400 block">CLICKS</span>
-                    <span className="text-white font-bold">{c.clicks}</span>
-                  </div>
-                  <div>
-                    <span className="text-[9px] text-slate-400 block">CONVERSIONS</span>
-                    <span className="text-emerald-400 font-bold">{c.conversions}</span>
-                  </div>
-                  <div>
-                    <span className="text-[9px] text-slate-400 block">ROAS</span>
-                    <span className="text-pink-300 font-bold">{c.roas}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-xs font-sans">
+              <thead className="bg-[#FAFAF8] border-b border-[#E7E7E4] text-[#626262] font-mono uppercase tracking-wider">
+                <tr>
+                  <th className="py-3.5 px-6 font-semibold">Format &amp; Channel</th>
+                  <th className="py-3.5 px-6 font-semibold">Creator Partner</th>
+                  <th className="py-3.5 px-6 font-semibold text-right">Views</th>
+                  <th className="py-3.5 px-6 font-semibold text-right">Clicks</th>
+                  <th className="py-3.5 px-6 font-semibold text-right">Conversions</th>
+                  <th className="py-3.5 px-6 font-semibold text-right">Attributed ROAS</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[#E7E7E4] text-[#101010]">
+                {channelPerformance.map((row, idx) => (
+                  <tr key={idx} className="hover:bg-[#FAFAF8] transition-colors">
+                    <td className="py-4 px-6 font-semibold">{row.platform}</td>
+                    <td className="py-4 px-6 text-[#626262] font-mono">{row.creator}</td>
+                    <td className="py-4 px-6 text-right font-mono font-bold numeric-tabular">{row.views}</td>
+                    <td className="py-4 px-6 text-right font-mono font-bold numeric-tabular">{row.clicks}</td>
+                    <td className="py-4 px-6 text-right font-mono font-bold numeric-tabular">{row.conversions}</td>
+                    <td className="py-4 px-6 text-right font-mono font-extrabold text-[#101010] numeric-tabular">
+                      <span className="bg-[#B7FF3C] px-2 py-0.5 rounded text-[#101010]">{row.roas}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

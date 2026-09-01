@@ -33,9 +33,11 @@ export function AuthGuard({ children, requiredRole }: AuthGuardProps) {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen w-full flex flex-col items-center justify-center bg-[#0a070a] text-white gap-3">
-        <Loader2 className="w-8 h-8 text-[hsl(327,100%,50%)] animate-spin" />
-        <p className="text-xs text-slate-400 font-mono font-medium tracking-wide">Authenticating session...</p>
+      <div className="min-h-screen w-full flex flex-col items-center justify-center bg-[#FAFAF8] text-[#101010] gap-3 select-none font-sans">
+        <div className="w-8 h-8 rounded-full border-2 border-[#101010] border-t-transparent animate-spin" />
+        <p className="text-xs text-[#626262] font-mono font-medium tracking-wide">
+          Authenticating session...
+        </p>
       </div>
     );
   }

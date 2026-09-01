@@ -15,7 +15,7 @@ export function ScrollRevealText({
   children,
   className = "",
   gradientWords = [],
-  gradientClass = "bg-gradient-to-r from-brand-accent via-rose-500 to-pink-500 bg-clip-text text-transparent font-black",
+  gradientClass = "text-[#101010] font-black",
   as = "h2",
 }: ScrollRevealTextProps) {
   const words = children.split(" ");
