@@ -2,10 +2,11 @@ import React from "react";
 import { SmoothScroll } from "@/components/flowpilot/SmoothScroll";
 import { AmbientBackground } from "@/components/flowpilot/AmbientBackground";
 import { HeroSection } from "@/components/collably/HeroSection";
-import { BrandMarquee } from "@/components/collably/BrandMarquee";
-import { CreatorShowcase } from "@/components/collably/CreatorShowcase";
+import { CreatorReelsMarquee } from "@/components/collably/CreatorReelsMarquee";
 import { VideoReviewDemo } from "@/components/collably/VideoReviewDemo";
 import { AIMatchingExperience } from "@/components/collably/AIMatchingExperience";
+import { CreatorShowcase } from "@/components/collably/CreatorShowcase";
+import { VisualEscrowMotion } from "@/components/collably/VisualEscrowMotion";
 import { SevenStepWorkflow } from "@/components/collably/SevenStepWorkflow";
 import { InteractiveIndustriesStage } from "@/components/collably/InteractiveIndustriesStage";
 import { BrandCreatorSplit } from "@/components/collably/BrandCreatorSplit";
@@ -20,31 +21,34 @@ export default function CollablyLandingPage() {
         {/* 01 — Cinematic Hero with Interactive 4-Tab Workspace */}
         <HeroSection />
 
-        {/* 02 — Platform API Infrastructure Marquee */}
-        <BrandMarquee />
+        {/* 02 — Live Animated 4K Creator Video Reels Marquee */}
+        <CreatorReelsMarquee />
 
-        {/* 03 — Visual Creator Roster & Media Kits */}
-        <CreatorShowcase />
-
-        {/* 04 — Cinematic 4K Video Review Studio */}
+        {/* 03 — Cinematic 4K Video Review QA Studio */}
         <VideoReviewDemo />
 
-        {/* 05 — AI Creator Discovery Engine */}
+        {/* 04 — AI Creator Matching Engine */}
         <AIMatchingExperience />
 
-        {/* 06 — 7-Step Visual Collaboration Pipeline */}
+        {/* 05 — Visual Creator Photography Roster & Media Kits */}
+        <CreatorShowcase />
+
+        {/* 06 — Interactive Milestone Custody Flow Visualizer */}
+        <VisualEscrowMotion />
+
+        {/* 07 — 7-Step Visual Collaboration Pipeline */}
         <SevenStepWorkflow />
 
-        {/* 07 — Interactive Industry Playbooks */}
+        {/* 08 — Category Playbooks & Creator Examples */}
         <InteractiveIndustriesStage />
 
-        {/* 08 — Dedicated Brand & Creator Portals */}
+        {/* 09 — Dedicated Brand & Creator Portals */}
         <BrandCreatorSplit />
 
-        {/* 09 — Compact Operational FAQ */}
+        {/* 10 — Compact FAQ Accordion */}
         <FAQSection />
 
-        {/* 10 — Grand Finale Conversion CTA */}
+        {/* 11 — Grand Finale Conversion CTA */}
         <CollablyCTA />
       </div>
     </SmoothScroll>
