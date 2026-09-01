@@ -13,7 +13,7 @@ import {
   Check,
 } from "lucide-react";
 import confetti from "canvas-confetti";
-import { INITIAL_VIDEO_COMMENTS, ReviewAnnotation } from "@/data/reviews";
+import { INITIAL_VIDEO_COMMENTS } from "@/data/reviews";
 import { Modal } from "@/components/ui/Modal";
 import { formatCurrency } from "@/core/utils/currency";
 
@@ -66,6 +66,14 @@ export function VideoReviewDemo() {
     return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
   };
 
+  const handleOpenApproveModal = () => {
+    if (videoRef.current && isPlaying) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+    setConfirmModalOpen(true);
+  };
+
   const handleConfirmApprove = () => {
     setConfirmModalOpen(false);
     setApproved(true);
@@ -82,7 +90,7 @@ export function VideoReviewDemo() {
   };
 
   return (
-    <section className="py-24 sm:py-32 bg-transparent border-b border-white/10 relative overflow-hidden select-none text-white">
+    <section className="py-20 sm:py-28 bg-transparent border-b border-white/10 relative overflow-hidden select-none text-white">
       {/* Background Ambient Glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[950px] h-[350px] sm:h-[600px] bg-gradient-radial from-[hsl(327,100%,50%)]/20 via-[hsl(300,100%,42%)]/10 to-transparent blur-[140px] pointer-events-none" />
 
@@ -149,6 +157,7 @@ export function VideoReviewDemo() {
             {/* Play Button Overlay */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               <button
+                type="button"
                 onClick={handleTogglePlay}
                 className={`w-16 h-16 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 flex items-center justify-center text-white transition-all pointer-events-auto hover:scale-105 shadow-2xl ${
                   isPlaying ? "opacity-0 group-hover:opacity-100" : "opacity-100"
@@ -180,7 +189,7 @@ export function VideoReviewDemo() {
               <div className="flex items-center justify-between text-[11px] font-mono text-slate-300">
                 <div className="flex items-center gap-3">
                   <span>{formatTime(currentTimeSec)} / {formatTime(duration || 60)}</span>
-                  <button onClick={() => setIsMuted(!isMuted)}>
+                  <button type="button" onClick={() => setIsMuted(!isMuted)}>
                     {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
                   </button>
                 </div>
@@ -196,6 +205,7 @@ export function VideoReviewDemo() {
               return (
                 <button
                   key={c.id}
+                  type="button"
                   onClick={() => handleSeek(c.timeSec, i)}
                   className={`p-3.5 rounded-2xl border text-left transition-all ${
                     isActive
@@ -224,8 +234,9 @@ export function VideoReviewDemo() {
               </div>
             ) : (
               <button
-                onClick={() => setConfirmModalOpen(true)}
-                className="w-full py-4 rounded-full bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] hover:brightness-110 text-white font-bold text-sm shadow-xl shadow-pink-500/25 flex items-center justify-center gap-2 transition-all font-display"
+                type="button"
+                onClick={handleOpenApproveModal}
+                className="w-full py-4 rounded-full bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] hover:brightness-110 active:scale-[0.98] text-white font-bold text-sm shadow-xl shadow-pink-500/25 flex items-center justify-center gap-2 transition-all font-display touch-manipulation cursor-pointer"
               >
                 <CheckCircle2 className="w-4 h-4" />
                 <span>Approve Deliverable &amp; Release Milestone ({formatCurrency(3200)})</span>
@@ -257,14 +268,16 @@ export function VideoReviewDemo() {
 
           <div className="flex items-center justify-end gap-3 pt-3 border-t border-white/10">
             <button
+              type="button"
               onClick={() => setConfirmModalOpen(false)}
               className="px-4 py-2 text-slate-400 hover:text-white"
             >
               Cancel
             </button>
             <button
+              type="button"
               onClick={handleConfirmApprove}
-              className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white font-bold font-display shadow-md shadow-pink-500/25 flex items-center gap-1.5"
+              className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white font-bold font-display shadow-md shadow-pink-500/25 flex items-center gap-1.5 active:scale-95 transition-all"
             >
               <Check className="w-3.5 h-3.5" />
               <span>Confirm &amp; Disburse</span>
