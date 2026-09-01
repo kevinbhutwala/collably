@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
-import { CheckCircle2, User } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 
 export interface AvatarProps {
@@ -25,7 +25,7 @@ export function Avatar({ src, name, size = "md", verified = false, className }: 
   };
 
   const getInitials = (n: string) => {
-    if (!n) return "NX";
+    if (!n) return "CB";
     return n
       .split(" ")
       .map((part) => part[0])
@@ -38,7 +38,7 @@ export function Avatar({ src, name, size = "md", verified = false, className }: 
 
   return (
     <div className={cn("relative inline-block shrink-0", currentSize.cls, className)}>
-      <div className="w-full h-full rounded-full overflow-hidden border border-slate-200 bg-slate-100 flex items-center justify-center shadow-sm">
+      <div className="w-full h-full rounded-full overflow-hidden border border-white/10 bg-[#120c16] flex items-center justify-center shadow-sm">
         {src && !hasError ? (
           <Image
             src={src}
@@ -49,15 +49,15 @@ export function Avatar({ src, name, size = "md", verified = false, className }: 
             onError={() => setHasError(true)}
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-tr from-brand-accent/20 to-orange-100 flex items-center justify-center">
-            <span className={cn("font-bold text-brand-accent font-mono", currentSize.text)}>
+          <div className="w-full h-full bg-gradient-to-tr from-[hsl(327,100%,50%)]/20 to-[hsl(300,100%,42%)]/20 flex items-center justify-center">
+            <span className={cn("font-bold text-[hsl(327,100%,55%)] font-mono", currentSize.text)}>
               {getInitials(name)}
             </span>
           </div>
         )}
       </div>
       {verified && (
-        <span className="absolute -bottom-0.5 -right-0.5 bg-white rounded-full p-0.5 text-sky-500 shadow-sm">
+        <span className="absolute -bottom-0.5 -right-0.5 bg-[#0a070a] rounded-full p-0.5 text-sky-400 shadow-sm border border-white/10">
           <CheckCircle2 className="w-3.5 h-3.5 fill-sky-500 text-white" />
         </span>
       )}

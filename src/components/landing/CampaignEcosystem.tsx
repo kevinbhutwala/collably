@@ -11,19 +11,19 @@ import { ArrowUpRight, Users, Calendar, Sparkles } from "lucide-react";
 
 export function CampaignEcosystem() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-transparent border-b border-white/10 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-purple-700 text-xs font-semibold">
-              <Sparkles className="w-3.5 h-3.5 text-purple-600" />
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-pink-300 text-xs font-mono font-bold">
+              <Sparkles className="w-3.5 h-3.5 text-gold" />
               <span>Live Campaign Ecosystem</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-display">
               Active briefs with milestone-locked budgets
             </h2>
-            <p className="text-sm sm:text-base text-slate-600">
+            <p className="text-sm sm:text-base text-slate-300 font-sans">
               Browse premier brand briefs open for applications. Clear guidelines, transparent budgets, zero ambiguity.
             </p>
           </div>
@@ -40,10 +40,10 @@ export function CampaignEcosystem() {
           {MOCK_CAMPAIGNS.slice(0, 3).map((campaign) => (
             <div
               key={campaign.id}
-              className="group rounded-3xl bg-white border border-slate-200 hover:border-slate-300 overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
+              className="group rounded-3xl bg-[#120c16] border border-white/10 hover:border-pink-500/40 overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
             >
               {/* Cover Image */}
-              <div className="relative h-48 w-full bg-slate-100 overflow-hidden">
+              <div className="relative h-48 w-full bg-white/[0.04] overflow-hidden">
                 <SafeImage
                   src={campaign.coverImage}
                   alt={campaign.title}
@@ -52,7 +52,7 @@ export function CampaignEcosystem() {
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#120c16] via-black/40 to-transparent" />
 
                 {/* Top Floating Badges */}
                 <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
@@ -66,7 +66,7 @@ export function CampaignEcosystem() {
 
                 {/* Brand Logo & Name overlay */}
                 <div className="absolute bottom-3 left-4 flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-xl overflow-hidden bg-white border border-white/80 relative shrink-0 shadow-sm">
+                  <div className="w-8 h-8 rounded-xl overflow-hidden bg-white/10 border border-white/20 relative shrink-0 shadow-sm">
                     <SafeImage
                       src={campaign.brand.logoUrl}
                       alt={campaign.brand.companyName}
@@ -77,18 +77,18 @@ export function CampaignEcosystem() {
                     />
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-white">{campaign.brand.companyName}</p>
-                    <p className="text-[10px] text-slate-300 font-mono">Verified Brand</p>
+                    <p className="text-xs font-bold text-white font-display">{campaign.brand.companyName}</p>
+                    <p className="text-[10px] text-slate-400 font-mono">Verified Brand</p>
                   </div>
                 </div>
               </div>
 
               {/* Content Body */}
               <div className="p-6 space-y-4">
-                <h3 className="font-bold text-base text-slate-900 group-hover:text-brand-accent transition-colors line-clamp-1">
+                <h3 className="font-bold text-base text-white group-hover:text-[hsl(327,100%,55%)] transition-colors line-clamp-1 font-display">
                   {campaign.title}
                 </h3>
-                <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+                <p className="text-xs text-slate-300 line-clamp-2 leading-relaxed font-sans">
                   {campaign.tagline}
                 </p>
 
@@ -97,7 +97,7 @@ export function CampaignEcosystem() {
                   {campaign.deliverables.map((del) => (
                     <span
                       key={del.id}
-                      className="text-[11px] px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200 text-slate-700 font-medium"
+                      className="text-[11px] px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 font-medium font-mono"
                     >
                       {del.count}x {del.type}
                     </span>
@@ -105,7 +105,7 @@ export function CampaignEcosystem() {
                 </div>
 
                 {/* Meta details */}
-                <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
+                <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 font-medium">
                   <div className="flex items-center gap-1.5">
                     <Users className="w-3.5 h-3.5 text-slate-400" />
                     <span>
