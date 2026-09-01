@@ -13,6 +13,7 @@ import {
   RotateCcw,
   Check,
   Video,
+  Sparkles,
 } from "lucide-react";
 import confetti from "canvas-confetti";
 import { AnimatedCounter } from "@/components/collably/AnimatedCounter";
@@ -21,11 +22,10 @@ export function HeroSection() {
   const campaignPresets = [
     {
       id: "fitness",
-      tag: "🔥 Fitness & Tech",
-      title: "10 Fitness & Calisthenics Creators for Q3 Smartwatch Launch",
-      budget: "$28,500",
-      budgetInr: "₹23,50,000",
-      payout: "$25,650",
+      tag: "🔥 Fitness & Wearables",
+      title: "Sponsored 4K Video Integration: Q3 Smartwatch Launch",
+      budget: "$2,400",
+      payout: "$2,160",
       creators: [
         {
           name: "Siddharth Nair",
@@ -59,15 +59,14 @@ export function HeroSection() {
         },
       ],
       videoTimecode: "00:42.18",
-      videoNote: "Ensure the biometric pulse sensor close-up is color graded to match the brand guide.",
+      videoNote: "Biometric sensor close-up looks perfect. Color grade matches brand specs.",
     },
     {
       id: "dev-tools",
-      tag: "⚡ SaaS & Developer AI",
-      title: "Developer Evangelist Campaign: 60s Integration for Next.js AI SDK",
-      budget: "$45,000",
-      budgetInr: "₹37,00,000",
-      payout: "$40,500",
+      tag: "⚡ Developer Tools & AI",
+      title: "Developer Evangelist: 60s Integration for Next.js AI SDK",
+      budget: "$3,500",
+      payout: "$3,150",
       creators: [
         {
           name: "Alex Chen",
@@ -82,7 +81,7 @@ export function HeroSection() {
         {
           name: "Elena Rostova",
           handle: "@elena.creative",
-          niche: "AI Tool Architecture",
+          niche: "AI Architecture",
           followers: "485K",
           er: "6.4%",
           rate: "$2,800",
@@ -101,20 +100,19 @@ export function HeroSection() {
         },
       ],
       videoTimecode: "00:18.04",
-      videoNote: "The terminal code completion looks crisp! Add the affiliate discount link on screen overlay.",
+      videoNote: "Terminal demo is clear and concise. Ready for public release.",
     },
     {
-      id: "luxury",
-      tag: "✨ Luxury & Timepieces",
-      title: "Cinematic Showcase for Swiss Automatic Skeleton Collection",
-      budget: "$36,000",
-      budgetInr: "₹29,80,000",
-      payout: "$32,400",
+      id: "lifestyle",
+      tag: "✨ Creator Gear & Audio",
+      title: "Studio Microphone & Audio Interface Cinematic Showcase",
+      budget: "$2,800",
+      payout: "$2,520",
       creators: [
         {
           name: "Chloe Dupont",
           handle: "@chloedupont",
-          niche: "Horology & Minimalism",
+          niche: "Audio Engineering",
           followers: "520K",
           er: "6.2%",
           rate: "$3,200",
@@ -134,7 +132,7 @@ export function HeroSection() {
         {
           name: "Aanya Verma",
           handle: "@aanya.aesthetics",
-          niche: "High Fashion & Macro",
+          niche: "Macro Cinematography",
           followers: "410K",
           er: "6.9%",
           rate: "$2,600",
@@ -143,7 +141,7 @@ export function HeroSection() {
         },
       ],
       videoTimecode: "01:05.12",
-      videoNote: "Macro lens movement on the escapement wheel is breathtaking. 100% approved.",
+      videoNote: "Acoustic comparison tests sound incredible. 100% approved.",
     },
   ];
 
@@ -161,7 +159,7 @@ export function HeroSection() {
         colors: ["#ff007f", "#b300b3", "#d4af37", "#10b981", "#ffffff"],
       });
     } catch {
-      // fallback if canvas-confetti is not loaded
+      // fallback
     }
   };
 
@@ -170,47 +168,9 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-[96vh] flex flex-col justify-center items-center pt-24 sm:pt-32 pb-20 sm:pb-28 px-4 sm:px-6 lg:px-8 overflow-hidden bg-transparent select-none text-white">
-      {/* Radiant Multi-Stop Sunset Mesh Aura */}
+    <section className="relative min-h-[92vh] flex flex-col justify-center items-center pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-transparent select-none text-white">
+      {/* Ambient Glow Aura */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[950px] lg:w-[1350px] h-[350px] sm:h-[680px] bg-gradient-radial from-[hsl(327,100%,50%)]/20 via-[hsl(300,100%,42%)]/15 to-transparent blur-[140px] pointer-events-none -z-10" />
-
-      {/* Floating Satellite Card (Left - Escrow Protection) */}
-      <motion.div
-        animate={{ y: [-8, 8, -8], rotate: [-1.5, 1.5, -1.5] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        className="hidden 2xl:flex absolute left-8 top-40 items-center gap-3.5 px-4 py-3 rounded-3xl bg-[#120c16]/95 border border-white/10 shadow-2xl backdrop-blur-xl z-20 text-white"
-      >
-        <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] flex items-center justify-center text-white font-bold text-sm shadow-md shadow-pink-500/25">
-          <ShieldCheck className="w-5 h-5 text-gold" />
-        </div>
-        <div className="text-left font-mono">
-          <span className="text-[10px] text-slate-400 block font-bold uppercase tracking-wider">
-            STRIPE ESCROW CUSTODY
-          </span>
-          <span className="text-xs font-black text-white">
-            {activePreset.budget} Pre-Funded
-          </span>
-        </div>
-      </motion.div>
-
-      {/* Floating Satellite Card (Right - Automated Disbursement) */}
-      <motion.div
-        animate={{ y: [8, -8, 8], rotate: [1.5, -1.5, 1.5] }}
-        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
-        className="hidden 2xl:flex absolute right-8 top-48 items-center gap-3.5 px-4 py-3 rounded-3xl bg-[#120c16]/95 border border-white/10 shadow-2xl backdrop-blur-xl z-20 text-white"
-      >
-        <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-pink-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm shadow-md shadow-pink-500/25">
-          <Zap className="w-5 h-5 text-amber-300" />
-        </div>
-        <div className="text-left font-mono">
-          <span className="text-[10px] text-slate-400 block font-bold uppercase tracking-wider">
-            AUTOMATED DISBURSEMENT
-          </span>
-          <span className="text-xs font-black text-emerald-400">
-            &lt;24h Net Payout
-          </span>
-        </div>
-      </motion.div>
 
       <div className="max-w-5xl mx-auto text-center space-y-8 sm:space-y-10 relative z-10 w-full">
         {/* Top Eyebrow Badge */}
@@ -220,17 +180,17 @@ export function HeroSection() {
           transition={{ duration: 0.4 }}
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-500/15 border border-pink-500/30 text-xs font-mono text-white shadow-sm"
         >
-          <span className="flex h-2 w-2 rounded-full bg-[hsl(327,100%,50%)] animate-ping shrink-0" />
+          <Sparkles className="w-3.5 h-3.5 text-gold" />
           <span className="font-bold text-white tracking-wide font-display">Collably</span>
           <span className="text-white/20">•</span>
-          <span className="text-pink-300 font-semibold font-sans">Creator × Brand Collaboration Platform</span>
+          <span className="text-pink-300 font-semibold font-sans">Milestone-Protected Creator Partnerships</span>
           <span className="hidden sm:inline text-white/20">•</span>
           <span className="hidden sm:inline text-emerald-300 font-bold bg-emerald-500/20 border border-emerald-500/30 px-2 py-0.5 rounded-full text-[10px] font-mono">
             Founding Cohort Open
           </span>
         </motion.div>
 
-        {/* Master Editorial Headline with Outfit Display Typography */}
+        {/* Master Headline */}
         <div className="space-y-2 max-w-4xl mx-auto px-2">
           <motion.h1
             initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
@@ -247,17 +207,17 @@ export function HeroSection() {
           </motion.h1>
         </div>
 
-        {/* Narrative Subtitle with Plus Jakarta Sans */}
+        {/* Simplified, Clear Subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-base sm:text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed px-2 font-sans"
         >
-          Pre-funded milestone payment protection, 4K frame-accurate video review, and instant payouts. Built for creators and brands who ship at the highest standard.
+          Brands deposit funds into Stripe Connect escrow before filming starts. Creators receive guaranteed payouts within 24 hours of deliverable approval.
         </motion.p>
 
-        {/* Action CTAs */}
+        {/* Primary CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -277,12 +237,12 @@ export function HeroSection() {
             className="w-full sm:w-auto px-7 py-4 rounded-full bg-white/[0.06] border border-white/10 text-white font-semibold text-base hover:bg-white/10 hover:border-white/20 shadow-xs transition-all flex items-center justify-center gap-2 font-display tracking-tight"
           >
             <Building2 className="w-4 h-4 text-pink-400" />
-            <span>I&apos;m Hiring Creators</span>
+            <span>Launch Brand Campaign</span>
           </Link>
         </motion.div>
 
         {/* ════════════════════════════════════════════════════════════════════
-            INTERACTIVE HERO COMMAND CENTER (LIVE ECOSYSTEM STAGE)
+            INTERACTIVE LIVE SIMULATION WORKSPACE
             ════════════════════════════════════════════════════════════════════ */}
         <motion.div
           initial={{ opacity: 0, y: 40, scale: 0.95 }}
@@ -290,19 +250,21 @@ export function HeroSection() {
           transition={{ duration: 0.75, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="w-full max-w-5xl mx-auto rounded-3xl bg-[#120c16] border border-white/10 shadow-elevated p-5 sm:p-8 space-y-6 text-left relative overflow-hidden text-white"
         >
-          {/* Top Multi-Color Gradient Rail */}
+          {/* Top Rail */}
           <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[hsl(327,100%,50%)] via-pink-400 to-[hsl(300,100%,42%)]" />
 
-          {/* Header Bar with Live Interactive Brief Selector Tabs */}
+          {/* Header Bar */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
             <div className="flex items-center gap-2 text-xs font-mono">
               <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="font-bold text-white uppercase font-display">COLLABLY LIVE WORKSPACE</span>
+              <span className="font-bold text-white uppercase font-display">LIVE WORKSPACE SIMULATOR</span>
               <span className="text-white/20">•</span>
-              <span className="text-slate-400 hidden sm:inline font-mono">Interactive Command Engine</span>
+              <span className="text-pink-300 font-mono text-[11px] bg-pink-500/15 px-2 py-0.5 rounded-full border border-pink-500/30">
+                Interactive Demo
+              </span>
             </div>
 
-            {/* Interactive Brief Preset Switcher */}
+            {/* Category Selector */}
             <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
               {campaignPresets.map((preset, idx) => (
                 <button
@@ -331,7 +293,7 @@ export function HeroSection() {
               </div>
               <div className="overflow-hidden">
                 <span className="text-[10px] font-mono uppercase font-bold text-slate-400 block">
-                  ACTIVE CAMPAIGN BRIEF
+                  SAMPLE CAMPAIGN BRIEF
                 </span>
                 <p className="text-xs sm:text-sm font-bold text-white truncate font-sans">
                   &ldquo;{activePreset.title}&rdquo;
@@ -346,7 +308,7 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Live Matched Creator Cards Grid */}
+          {/* Matched Creators */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {activePreset.creators.map((c) => (
               <div
@@ -390,14 +352,14 @@ export function HeroSection() {
             ))}
           </div>
 
-          {/* Interactive 4K Video Review & Instant Escrow Release Box */}
+          {/* Video Review & Escrow Release Box */}
           <div className="p-5 sm:p-6 rounded-2xl bg-black/40 border border-white/10 text-white shadow-xl space-y-5">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/10 text-xs font-mono">
               <div className="flex items-center gap-2">
                 <Video className="w-4 h-4 text-pink-400" />
-                <span className="font-bold text-white uppercase font-display">4K Timecoded Video Review</span>
+                <span className="font-bold text-white uppercase font-display">4K Timecoded Video QA</span>
                 <span className="text-white/20">•</span>
-                <span className="text-emerald-400 font-bold">Cut v2 (Ready for Approval)</span>
+                <span className="text-emerald-400 font-bold">Draft Cut v2 (Ready for Approval)</span>
               </div>
 
               <span className="text-slate-400 font-mono text-[11px]">
@@ -405,7 +367,7 @@ export function HeroSection() {
               </span>
             </div>
 
-            {/* Video Annotation Strip */}
+            {/* Video Annotation */}
             <div className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-3 text-xs font-sans">
               <div className="flex items-center gap-2.5">
                 <div className="w-6 h-6 rounded-lg bg-pink-500/20 text-pink-300 flex items-center justify-center font-mono font-bold text-[10px]">
@@ -420,17 +382,17 @@ export function HeroSection() {
               </span>
             </div>
 
-            {/* Action Bottom Bar */}
+            {/* Action Bar */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
               <div className="space-y-1 font-mono text-xs">
                 <div className="flex items-center gap-2">
                   <Lock className="w-3.5 h-3.5 text-emerald-400" />
-                  <span className="text-slate-300">Escrow Balance: <strong className="text-white">{activePreset.budget}</strong></span>
+                  <span className="text-slate-300">Escrow Locked: <strong className="text-white">{activePreset.budget}</strong></span>
                 </div>
                 <span className="text-[11px] text-slate-400">Creator Net Payout (90%): <strong className="text-emerald-400">{activePreset.payout}</strong></span>
               </div>
 
-              {/* Instant Approval Button */}
+              {/* Approval Button */}
               {isEscrowApproved ? (
                 <div className="flex items-center gap-3">
                   <div className="px-4 py-2.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-mono font-bold flex items-center gap-2">
@@ -468,7 +430,7 @@ export function HeroSection() {
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
             <span>
-              <AnimatedCounter to={100} suffix="%" className="font-bold text-white" /> Milestone-Locked Before Filming
+              <AnimatedCounter to={100} suffix="%" className="font-bold text-white" /> Pre-Funded Escrow Custody
             </span>
           </div>
           <div className="flex items-center gap-2">
@@ -480,7 +442,7 @@ export function HeroSection() {
           <div className="flex items-center gap-2">
             <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
             <span>
-              Keep <AnimatedCounter to={90} suffix="%" className="font-bold text-white" /> Earnings
+              Creators Keep <AnimatedCounter to={90} suffix="%" className="font-bold text-white" /> Net
             </span>
           </div>
         </motion.div>

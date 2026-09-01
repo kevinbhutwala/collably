@@ -1,16 +1,16 @@
 "use client";
 
 import React from "react";
-import { XCircle, CheckCircle2, AlertTriangle, Sparkles, Layers } from "lucide-react";
+import { XCircle, CheckCircle2, AlertTriangle, Layers } from "lucide-react";
 import { ScrollRevealText } from "@/components/collably/ScrollRevealText";
 
 export function ChaosToOrder() {
   const chaosItems = [
-    "Scattered Google Sheets & WhatsApp DMs",
+    "Scattered Google Sheets, DMs & lost email threads",
     "Net 60-90 day invoice waiting & delayed wire transfers",
-    "Missing FTC disclosures & unverified follower fraud",
-    "Vague revision requests over email threads",
-    "Manual contract drafting and lost NDA files",
+    "Missing FTC disclosures & unverified follower metrics",
+    "Vague, timestamp-less revision requests",
+    "Manual PDF contracts and unmanaged usage licenses",
     "Zero post-campaign ROI or conversion tracking",
   ];
 
@@ -20,7 +20,7 @@ export function ChaosToOrder() {
     "Verified engagement rates & authentic audience analytics",
     "4K frame-accurate video review with timecode annotations",
     "Automated standard digital contracts & commercial IP licensing",
-    "Real-time campaign telemetry & verified 4.8× ROI reporting",
+    "Real-time campaign telemetry & link conversion tracking",
   ];
 
   return (
@@ -30,7 +30,7 @@ export function ChaosToOrder() {
         <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-xs font-mono font-bold text-[hsl(327,100%,55%)] shadow-xs">
             <Layers className="w-3.5 h-3.5" />
-            <span>10 • Transformation</span>
+            <span>07 • Comparison</span>
           </div>
 
           <ScrollRevealText
@@ -46,11 +46,11 @@ export function ChaosToOrder() {
             gradientWords={["fragmented", "tools", "unified", "infrastructure"]}
             className="text-sm sm:text-lg text-slate-300 font-sans max-w-2xl mx-auto leading-relaxed"
           >
-            See how Collably replaces broken legacy agency habits with intelligent product infrastructure.
+            See how Collably replaces broken legacy habits with intelligent, milestone-protected infrastructure.
           </ScrollRevealText>
         </div>
 
-        {/* Side-by-Side Comparison Canvas */}
+        {/* Side-by-Side Comparison */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* Left Card: WITHOUT COLLABLY */}
           <div className="p-8 sm:p-10 rounded-3xl bg-[#120c16] border border-rose-500/30 shadow-card space-y-6 relative overflow-hidden group text-white">
@@ -62,7 +62,7 @@ export function ChaosToOrder() {
                 </h3>
               </div>
               <span className="px-2.5 py-0.5 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-300 font-mono text-[10px] font-bold">
-                Broken &amp; Chaotic
+                Broken &amp; Risky
               </span>
             </div>
 
@@ -80,13 +80,13 @@ export function ChaosToOrder() {
           <div className="p-8 sm:p-10 rounded-3xl bg-[#120c16] border border-pink-500/40 shadow-elevated space-y-6 relative overflow-hidden group text-white">
             <div className="flex items-center justify-between pb-4 border-b border-white/10">
               <div className="flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-gold" />
+                <CheckCircle2 className="w-5 h-5 text-emerald-400" />
                 <h3 className="font-mono font-bold text-xs uppercase tracking-wider text-emerald-400 font-display">
                   WITH COLLABLY
                 </h3>
               </div>
               <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-mono text-[10px] font-bold">
-                Automated &amp; Crystalline
+                Automated &amp; Secure
               </span>
             </div>
 
