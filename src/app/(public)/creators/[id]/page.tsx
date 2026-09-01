@@ -105,7 +105,7 @@ export default function CreatorDetailPage() {
                   {creator.socialAccounts.map((sa) => (
                     <a
                       key={sa.id}
-                      href={sa.profileUrl}
+                      href={sa.url || "#"}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-2 rounded-xl bg-[#F8F8FC] border border-black/5 text-[#5A5A68] hover:text-[#0A0A0E] transition-all hover:scale-105"
@@ -165,16 +165,16 @@ export default function CreatorDetailPage() {
                     className="p-5 rounded-2xl bg-[#F8F8FC] border border-black/5 flex items-center justify-between gap-4"
                   >
                     <div>
-                      <h3 className="font-bold text-sm text-[#0A0A0E] font-sans">{rate.deliverableType}</h3>
+                      <h3 className="font-bold text-sm text-[#0A0A0E] font-sans">{rate.title || rate.deliverableType}</h3>
                       <p className="text-xs text-[#5A5A68] mt-0.5">{rate.description}</p>
                       <span className="text-[10px] font-mono text-[#7A7A8A] block mt-1">
-                        Turnaround: {rate.turnaroundDays} days • Max {rate.revisions} revisions
+                        Turnaround: {rate.turnaroundDays} days • Max {rate.revisionsIncluded || 2} revisions
                       </span>
                     </div>
 
                     <div className="text-right shrink-0">
                       <span className="text-base font-extrabold text-[#0A0A0E] font-mono block">
-                        {formatCurrency(rate.price)}
+                        {formatCurrency(rate.basePrice || (rate as any).price || 500)}
                       </span>
                       <span className="text-[10px] font-mono text-[#7A7A8A]">per asset</span>
                     </div>
