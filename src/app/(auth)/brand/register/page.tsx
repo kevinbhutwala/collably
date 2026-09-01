@@ -6,10 +6,8 @@ import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
 import { authService } from "@/services/auth.service";
-import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import { Building2, ArrowRight, ArrowLeft, AlertCircle } from "lucide-react";
-import { CollablyLogo } from "@/components/ui/CollablyLogo";
+import { Building2, ArrowRight, ArrowLeft, AlertCircle, Sparkles } from "lucide-react";
 
 export default function BrandRegisterPage() {
   const router = useRouter();
@@ -61,19 +59,19 @@ export default function BrandRegisterPage() {
   };
 
   return (
-    <div className="w-full flex items-center justify-center p-2 py-6 text-[#111111]">
-      <div className="w-full max-w-xl rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] p-8 sm:p-10 space-y-6 shadow-xs">
-        <div className="flex items-center justify-between pb-3 border-b border-[#E7E7E4]">
+    <div className="w-full flex items-center justify-center p-2 py-6 text-white select-none">
+      <div className="w-full max-w-xl rounded-3xl bg-[#0E0C15]/90 border border-white/15 p-8 sm:p-10 space-y-6 shadow-2xl backdrop-blur-2xl">
+        <div className="flex items-center justify-between pb-3 border-b border-white/10">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[#6B6B6B] hover:text-[#111111] transition-colors group"
+            className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-white/50 hover:text-white transition-colors group"
           >
             <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
             <span>Back to Home</span>
           </Link>
           <Link
             href="/register"
-            className="text-[10px] font-mono text-[#6B6B6B] hover:text-[#111111] transition-colors"
+            className="text-[10px] font-mono text-white/50 hover:text-white transition-colors"
           >
             Change Account Type &rarr;
           </Link>
@@ -81,23 +79,25 @@ export default function BrandRegisterPage() {
 
         <div className="space-y-2">
           <div className="flex justify-between items-center">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] text-xs font-semibold font-mono">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/15 border border-blue-500/30 text-blue-400 text-xs font-semibold font-mono">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               <span>Brand Onboarding</span>
             </div>
-            <CollablyLogo href="/" size="sm" variant="icon" />
+            <div className="w-7 h-7 rounded-lg bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400">
+              <Sparkles className="w-3.5 h-3.5 fill-blue-400" />
+            </div>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#111111] tracking-tight font-display">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
             Register Brand Account
           </h1>
-          <p className="text-xs sm:text-sm text-[#6B6B6B] font-sans font-medium">
-            Launch briefs, review creator proposals, and manage deliverables in database storage.
+          <p className="text-xs sm:text-sm text-white/50 font-sans">
+            Launch briefs, review creator proposals, and manage escrow disbursements.
           </p>
         </div>
 
         {errorMessage && (
-          <div className="p-3.5 rounded-xl bg-[#FEF2F2] border border-[#FEE2E2] text-rose-700 text-xs flex items-center gap-2">
-            <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
+          <div className="p-3.5 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs flex items-center gap-2">
+            <AlertCircle className="w-4 h-4 shrink-0" />
             <span>{errorMessage}</span>
           </div>
         )}
@@ -155,23 +155,21 @@ export default function BrandRegisterPage() {
           </div>
 
           <div className="pt-2">
-            <Button
-              variant="primary"
-              size="lg"
+            <button
               type="submit"
-              isLoading={isSubmitting}
-              rightIcon={<ArrowRight className="w-4 h-4 text-[#B7FF3C]" />}
-              className="w-full rounded-[9px]"
+              disabled={isSubmitting}
+              className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] hover:from-[#234FE6] hover:to-[#3264E6] text-white font-semibold text-xs transition-all shadow-[0_0_20px_rgba(42,92,255,0.4)] flex items-center justify-center gap-2 disabled:opacity-50"
             >
-              Launch Brand Workspace
-            </Button>
+              <span>Launch Brand Workspace</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </div>
         </form>
 
-        <div className="pt-4 border-t border-[#E7E7E4] text-center">
-          <p className="text-xs text-[#6B6B6B]">
+        <div className="pt-4 border-t border-white/10 text-center">
+          <p className="text-xs text-white/50">
             Already registered?{" "}
-            <Link href="/login" className="text-[#111111] font-bold hover:underline">
+            <Link href="/login" className="text-white hover:text-blue-400 font-bold">
               Sign in
             </Link>
           </p>
