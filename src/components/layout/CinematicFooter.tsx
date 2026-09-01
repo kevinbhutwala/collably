@@ -1,0 +1,79 @@
+"use client";
+
+import React from "react";
+import Link from "next/link";
+import { Sparkles, ArrowRight, ShieldCheck, Mail, MapPin } from "lucide-react";
+
+export function CinematicFooter() {
+  return (
+    <footer className="border-t border-white/10 bg-[#07070B] text-white/60 text-xs font-sans select-none">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-2 md:grid-cols-5 gap-8">
+        <div className="col-span-2 space-y-4">
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="w-7 h-7 rounded-lg bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(42,92,255,0.4)]">
+              <Sparkles className="w-3.5 h-3.5 fill-blue-400 text-blue-400" />
+            </div>
+            <span className="font-display font-extrabold text-lg sm:text-xl tracking-tight text-white">
+              Collably
+            </span>
+          </Link>
+          <p className="text-xs text-white/50 max-w-sm font-sans leading-relaxed">
+            The creator × brand collaboration platform. Run high-impact campaigns, discover vetted talent, and receive secure milestone payments.
+          </p>
+          <div className="space-y-1 text-xs text-white/40 font-mono">
+            <p>support@collably.io / kevinbhutwala417@gmail.com</p>
+            <p>Delaware, United States &amp; Mumbai, India</p>
+          </div>
+          <div className="flex items-center gap-2 text-xs text-white/80 font-sans pt-1 font-semibold">
+            <span className="w-2 h-2 rounded-full bg-[#2F6BFF] animate-pulse" />
+            <span>Escrow-Protected Milestone Rails via Stripe Connect</span>
+          </div>
+        </div>
+
+        <div>
+          <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4 font-mono">
+            Platform
+          </h4>
+          <ul className="space-y-2.5 text-xs text-white/60 font-sans">
+            <li><Link href="/for-brands" className="hover:text-white transition-colors">For Brands</Link></li>
+            <li><Link href="/creators" className="hover:text-white transition-colors">For Creators</Link></li>
+            <li><Link href="/campaigns" className="hover:text-white transition-colors">Campaigns</Link></li>
+            <li><Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4 font-mono">
+            Resources
+          </h4>
+          <ul className="space-y-2.5 text-xs text-white/60 font-sans">
+            <li><Link href="/case-studies" className="hover:text-white transition-colors">Case Studies</Link></li>
+            <li><Link href="/services" className="hover:text-white transition-colors">Agency Solutions</Link></li>
+            <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
+            <li><Link href="/contact" className="hover:text-white transition-colors">Contact Sales</Link></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4 font-mono">
+            Legal &amp; Trust
+          </h4>
+          <ul className="space-y-2.5 text-xs text-white/60 font-sans">
+            <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+            <li><Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
+            <li><Link href="/dpa" className="hover:text-white transition-colors">Data Processing (DPA)</Link></li>
+            <li><Link href="/refund-policy" className="hover:text-white transition-colors">Escrow Protection SLA</Link></li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="border-t border-white/10 py-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40">
+        <p>© {new Date().getFullYear()} Collably Inc. All rights reserved.</p>
+        <p className="font-mono text-[11px] text-white/50 flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#2F6BFF]" />
+          <span>The Creator × Brand Collaboration Platform</span>
+        </p>
+      </div>
+    </footer>
+  );
+}

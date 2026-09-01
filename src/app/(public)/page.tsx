@@ -1,48 +1,23 @@
 import React from "react";
-import { SmoothScroll } from "@/components/flowpilot/SmoothScroll";
-import { AmbientBackground } from "@/components/flowpilot/AmbientBackground";
-import { HeroEditorialCollage } from "@/components/collably/HeroEditorialCollage";
-import { FeatureBentoGrid } from "@/components/collably/FeatureBentoGrid";
-import { InteractiveDashboardShowcase } from "@/components/collably/InteractiveDashboardShowcase";
-import { EditorialPortraitWall } from "@/components/collably/EditorialPortraitWall";
-import { EditorialLookbookGrid } from "@/components/collably/EditorialLookbookGrid";
-import { PricingComparisonModule } from "@/components/collably/PricingComparisonModule";
-import { BrandCreatorNetwork } from "@/components/collably/BrandCreatorNetwork";
-import { FAQSection } from "@/components/collably/FAQSection";
-import { EditorialCTA } from "@/components/collably/EditorialCTA";
+import { ExactHeroSection } from "@/components/collably/ExactHeroSection";
+import { ExactPlatformSection } from "@/components/collably/ExactPlatformSection";
+import { ExactBentoSection } from "@/components/collably/ExactBentoSection";
+import { ExactSuccessStoriesSection } from "@/components/collably/ExactSuccessStoriesSection";
 
 export default function CollablyLandingPage() {
   return (
-    <SmoothScroll>
-      <AmbientBackground />
-      <div className="relative min-h-screen bg-[#FAFAF8] text-[#101010] font-sans selection:bg-[#B7FF3C] selection:text-[#101010] overflow-x-hidden">
-        {/* 01 — Modern Editorial Hero Section with Floating Trust Badges & 3D Layered Composition */}
-        <HeroEditorialCollage />
+    <div className="relative min-h-screen bg-[#07070B] text-white font-sans selection:bg-[#2A5CFF] selection:text-white overflow-x-hidden">
+      {/* 01 — Hero Section: CREATE COLLABORATE GET PAID. with 3D models and floating cards */}
+      <ExactHeroSection />
 
-        {/* 02 — Asymmetric 5-Card Bento Grid (4K QA Studio, AI Affinity, Milestone Escrow, Rights QA, Arbitration) */}
-        <FeatureBentoGrid />
+      {/* 02 — High-Contrast Capsule: BUILT FOR CREATORS. MADE FOR BRANDS. */}
+      <ExactPlatformSection />
 
-        {/* 03 — Interactive Dashboard Showcase (High Data-Ink Ratio, Live Telemetry Sparkline, Activity Timeline) */}
-        <InteractiveDashboardShowcase />
+      {/* 03 — Dark Bento: FOR CREATORS & FOR BRANDS with Live Campaigns and Creator Grid */}
+      <ExactBentoSection />
 
-        {/* 04 — Art-Directed Editorial Creator Portrait Wall */}
-        <EditorialPortraitWall />
-
-        {/* 05 — Big, Medium & Small Creator Lookbook + Brand Emblems */}
-        <EditorialLookbookGrid />
-
-        {/* 06 — 3-Tier Pricing & Feature Comparison Matrix with Annual Discount Toggle */}
-        <PricingComparisonModule />
-
-        {/* 07 — Creative Brand × Creator Verified Deal Flow */}
-        <BrandCreatorNetwork />
-
-        {/* 08 — Minimalist Accordion FAQ Section */}
-        <FAQSection />
-
-        {/* 09 — Grand Finale Magazine CTA */}
-        <EditorialCTA />
-      </div>
-    </SmoothScroll>
+      {/* 04 — Bottom Showcase: CREATOR SUCCESS STORIES with Video Spotlight & Metrics Rail */}
+      <ExactSuccessStoriesSection />
+    </div>
   );
 }

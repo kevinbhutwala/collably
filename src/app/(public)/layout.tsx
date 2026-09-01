@@ -1,6 +1,6 @@
 import React from "react";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
+import { CinematicNavbar } from "@/components/layout/CinematicNavbar";
+import { CinematicFooter } from "@/components/layout/CinematicFooter";
 
 export default function PublicLayout({
   children,
@@ -8,10 +8,10 @@ export default function PublicLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col min-h-screen bg-[#FAFAF8] text-[#111111]">
-      <Navbar />
+    <div className="flex flex-col min-h-screen bg-[#07070B] text-white">
+      <CinematicNavbar />
       <main className="flex-1">{children}</main>
-      <Footer />
+      <CinematicFooter />
     </div>
   );
 }
