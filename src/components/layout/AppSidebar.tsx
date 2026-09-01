@@ -26,7 +26,6 @@ import {
   Scale,
   LucideIcon,
 } from "lucide-react";
-import { CollablyLogo } from "@/components/ui/CollablyLogo";
 import { cn } from "@/lib/utils";
 
 interface NavItem {
@@ -85,14 +84,20 @@ export function AppSidebar() {
     role === "creator" ? creatorNavItems : role === "brand" ? brandNavItems : adminNavItems;
 
   return (
-    <aside className="hidden lg:flex flex-col w-64 border-r border-[#E7E7E4] bg-[#FAFAF8] p-4 shrink-0 min-h-[calc(100vh-4rem)] text-[#111111]">
+    <aside className="hidden lg:flex flex-col w-64 border-r border-white/10 bg-[#07070B] p-4 shrink-0 min-h-[calc(100vh-4rem)] text-white">
       {/* Brand logo & workspace badge */}
-      <div className="px-3 py-2 mb-4">
-        <CollablyLogo
-          href="/app/dashboard"
-          size="sm"
-          subtext={role === "agency_admin" ? "Operations" : `${role.toUpperCase()} Workspace`}
-        />
+      <div className="px-3 py-2 mb-4 flex items-center justify-between">
+        <Link href="/app/dashboard" className="flex items-center gap-2 group">
+          <div className="w-7 h-7 rounded-lg bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(42,92,255,0.4)]">
+            <Sparkles className="w-3.5 h-3.5 fill-blue-400 text-blue-400" />
+          </div>
+          <span className="font-display font-extrabold text-base tracking-tight text-white">
+            Collably
+          </span>
+        </Link>
+        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/10 border border-white/10 text-white/60 uppercase">
+          {role === "agency_admin" ? "Admin" : role}
+        </span>
       </div>
 
       {/* Nav List */}
@@ -108,10 +113,10 @@ export function AppSidebar() {
               className={cn(
                 "flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all select-none",
                 isActive
-                  ? "bg-[#111111] text-[#FAFAF8] font-bold shadow-xs"
+                  ? "bg-[#2A5CFF] text-white font-bold shadow-[0_0_18px_rgba(42,92,255,0.45)]"
                   : item.highlight
-                  ? "bg-[#111111] text-[#FAFAF8] hover:bg-[#262626] font-semibold shadow-xs"
-                  : "text-[#6B6B6B] hover:text-[#111111] hover:bg-[#FFFFFF]"
+                  ? "bg-white/10 text-white hover:bg-white/15 font-semibold"
+                  : "text-white/60 hover:text-white hover:bg-white/[0.06]"
               )}
             >
               <div className="flex items-center gap-3">
@@ -119,10 +124,10 @@ export function AppSidebar() {
                   className={cn(
                     "w-4 h-4 transition-colors",
                     isActive
-                      ? "text-[#B7FF3C]"
+                      ? "text-white"
                       : item.highlight
-                      ? "text-[#B7FF3C]"
-                      : "text-[#6B6B6B] group-hover:text-[#111111]"
+                      ? "text-blue-400"
+                      : "text-white/50 group-hover:text-white"
                   )}
                 />
                 <span>{item.label}</span>
@@ -133,8 +138,8 @@ export function AppSidebar() {
                   className={cn(
                     "text-[10px] px-2 py-0.5 rounded-full font-mono font-bold",
                     isActive
-                      ? "bg-[#B7FF3C] text-[#111111]"
-                      : "bg-[#FFFFFF] text-[#6B6B6B] border border-[#E7E7E4]"
+                      ? "bg-white text-[#07070B]"
+                      : "bg-white/10 text-white/70 border border-white/10"
                   )}
                 >
                   {item.badge}

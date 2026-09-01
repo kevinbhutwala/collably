@@ -4,90 +4,94 @@ import { cn } from "@/lib/utils";
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
-  helperText?: string;
-  leftIcon?: React.ReactNode;
-  rightIcon?: React.ReactNode;
+  hint?: string;
+  icon?: React.ReactNode;
 }
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, label, error, helperText, leftIcon, rightIcon, id, ...props }, ref) => {
+  ({ className, type = "text", label, error, hint, icon, id, ...props }, ref) => {
     const inputId = id || (label ? label.toLowerCase().replace(/\s+/g, "-") : undefined);
 
     return (
-      <div className="w-full space-y-1.5 text-left font-sans">
+      <div className="w-full space-y-1.5 font-sans">
         {label && (
-          <label htmlFor={inputId} className="block text-xs font-semibold text-[#101010]">
+          <label
+            htmlFor={inputId}
+            className="block text-xs font-semibold text-white/80"
+          >
             {label}
           </label>
         )}
-        <div className="relative flex items-center">
-          {leftIcon && (
-            <span className="absolute left-3.5 text-[#626262] pointer-events-none shrink-0">
-              {leftIcon}
-            </span>
+
+        <div className="relative rounded-xl">
+          {icon && (
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-white/40">
+              {icon}
+            </div>
           )}
+
           <input
             id={inputId}
+            type={type}
             ref={ref}
             className={cn(
-              "w-full bg-[#FFFFFF] border border-[#E7E7E4] text-[#101010] placeholder:text-[#8A8A8A] text-sm rounded-[9px] px-3.5 py-2.5 outline-none transition-all duration-150 shadow-xs",
-              "focus:border-[#101010] focus:ring-1 focus:ring-[#101010] hover:border-[#D6D6D2]",
-              leftIcon && "pl-10",
-              rightIcon && "pr-10",
-              error && "border-[#FF3B30] focus:border-[#FF3B30] focus:ring-[#FF3B30]/20",
+              "w-full rounded-xl bg-white/[0.05] border border-white/15 px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder:text-white/30 transition-all",
+              "focus:outline-none focus:border-[#2A5CFF] focus:ring-1 focus:ring-[#2A5CFF] focus:bg-white/[0.08]",
+              "disabled:opacity-50 disabled:cursor-not-allowed",
+              icon ? "pl-9" : "",
+              error ? "border-red-500/80 focus:border-red-500 focus:ring-red-500" : "",
               className
             )}
             {...props}
           />
-          {rightIcon && (
-            <span className="absolute right-3.5 text-[#626262] shrink-0">
-              {rightIcon}
-            </span>
-          )}
         </div>
-        {error && <p className="text-xs text-[#FF3B30] font-medium">{error}</p>}
-        {!error && helperText && <p className="text-xs text-[#626262]">{helperText}</p>}
+
+        {error && <p className="text-[11px] font-medium text-red-400">{error}</p>}
+        {hint && !error && <p className="text-[11px] text-white/50">{hint}</p>}
       </div>
     );
   }
 );
-
 Input.displayName = "Input";
 
 export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   error?: string;
-  helperText?: string;
+  hint?: string;
 }
 
 export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ className, label, error, helperText, id, rows = 4, ...props }, ref) => {
-    const inputId = id || (label ? label.toLowerCase().replace(/\s+/g, "-") : undefined);
+  ({ className, label, error, hint, id, ...props }, ref) => {
+    const textareaId = id || (label ? label.toLowerCase().replace(/\s+/g, "-") : undefined);
 
     return (
-      <div className="w-full space-y-1.5 text-left font-sans">
+      <div className="w-full space-y-1.5 font-sans">
         {label && (
-          <label htmlFor={inputId} className="block text-xs font-semibold text-[#101010]">
+          <label
+            htmlFor={textareaId}
+            className="block text-xs font-semibold text-white/80"
+          >
             {label}
           </label>
         )}
+
         <textarea
-          id={inputId}
+          id={textareaId}
           ref={ref}
-          rows={rows}
           className={cn(
-            "w-full bg-[#FFFFFF] border border-[#E7E7E4] text-[#101010] placeholder:text-[#8A8A8A] text-sm rounded-[9px] p-3.5 outline-none transition-all duration-150 resize-y shadow-xs",
-            "focus:border-[#101010] focus:ring-1 focus:ring-[#101010] hover:border-[#D6D6D2]",
-            error && "border-[#FF3B30] focus:border-[#FF3B30] focus:ring-[#FF3B30]/20",
+            "w-full rounded-xl bg-white/[0.05] border border-white/15 px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder:text-white/30 transition-all",
+            "focus:outline-none focus:border-[#2A5CFF] focus:ring-1 focus:ring-[#2A5CFF] focus:bg-white/[0.08]",
+            "disabled:opacity-50 disabled:cursor-not-allowed resize-y",
+            error ? "border-red-500/80 focus:border-red-500 focus:ring-red-500" : "",
             className
           )}
           {...props}
         />
-        {error && <p className="text-xs text-[#FF3B30] font-medium">{error}</p>}
-        {!error && helperText && <p className="text-xs text-[#626262]">{helperText}</p>}
+
+        {error && <p className="text-[11px] font-medium text-red-400">{error}</p>}
+        {hint && !error && <p className="text-[11px] text-white/50">{hint}</p>}
       </div>
     );
   }
 );
-
 Textarea.displayName = "Textarea";

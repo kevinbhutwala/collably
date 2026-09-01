@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Check, Sparkles, ArrowRight, ShieldCheck, HelpCircle } from "lucide-react";
+import { Check, Sparkles, ArrowRight, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function PricingComparisonModule() {
@@ -58,58 +58,43 @@ export function PricingComparisonModule() {
       features: [
         "Everything in Growth Pro, plus:",
         "Reduced 5% Milestone Platform Take-Rate",
-        "Dedicated Talent Concierge & Campaign QA",
-        "Custom DPA, Invoicing & Net-30 Terms",
-        "Unlimited Team Workspace Seats",
-        "Custom Whitelist & Dark-Posting Rights Engine",
-        "Dedicated Account Executive & 1h Emergency SLA",
+        "Dedicated Account Executive & Talent Strategist",
+        "Custom Automated Invoicing & Stripe Rails",
+        "Unlimited Workspace Seats & Permissions",
+        "Custom Security SLA & White-Label Reporting",
+        "Instant Human Mediation & Escrow Arbitration",
       ],
     },
   ];
 
-  const comparisonRows = [
-    { feature: "Milestone Escrow Protection", starter: true, pro: true, enterprise: true },
-    { feature: "4K Frame-Accurate Video Review", starter: true, pro: true, enterprise: true },
-    { feature: "Direct Messaging & Attachments", starter: true, pro: true, enterprise: true },
-    { feature: "AI Matching & Recommendation Engine", starter: false, pro: true, enterprise: true },
-    { feature: "Creator CRM & Shortlist Tool", starter: false, pro: true, enterprise: true },
-    { feature: "Team Collaboration Seats", starter: "1 Seat", pro: "5 Seats", enterprise: "Unlimited" },
-    { feature: "Platform Take-Rate", starter: "10%", pro: "7%", enterprise: "5%" },
-    { feature: "Dispute Arbitration SLA", starter: "24 Hours", pro: "4 Hours", enterprise: "1 Hour" },
-    { feature: "White-Glove Campaign Management", starter: false, pro: false, enterprise: true },
-  ];
-
   return (
-    <section className="py-24 sm:py-32 bg-[#FAFAF8] border-b border-[#E7E7E4] relative overflow-hidden select-none text-[#101010]">
+    <section className="py-20 sm:py-28 bg-[#07070B] text-white select-none relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-[11px] font-sans font-semibold uppercase tracking-[0.08em] text-[#101010] shadow-xs">
-            <Sparkles className="w-3.5 h-3.5 text-[#101010]" />
-            <span>03 • Transparent Economics</span>
+        {/* Header */}
+        <div className="text-center space-y-4 max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/15 border border-blue-500/30 text-blue-400 text-[10px] font-mono font-bold uppercase tracking-wider">
+            <span>TRANSPARENT VALUE ARCHITECTURE</span>
           </div>
 
-          <h2 className="section-headline">
-            Simple pricing. <br className="hidden sm:inline" />
-            <span className="font-serif italic font-normal text-[#626262]">
-              Aligned with your growth.
-            </span>
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.05] font-display">
+            Simple, honest pricing for <br />
+            <span className="font-serif italic font-normal text-white/80">creators &amp; brands.</span>
           </h2>
 
-          <p className="editorial-body mx-auto text-center">
-            No hidden platform retainers. Keep 90% to 95% of your campaign capital going directly to creative production.
+          <p className="text-xs sm:text-sm text-white/60 font-sans max-w-xl mx-auto">
+            Zero hidden fees. Pay only for successful milestone completions or unlock pro tooling for high-volume workflows.
           </p>
 
           {/* Billing Cycle Toggle */}
-          <div className="pt-4 flex items-center justify-center">
-            <div className="inline-flex items-center p-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs font-sans text-xs">
+          <div className="pt-4 flex items-center justify-center gap-3">
+            <div className="inline-flex items-center p-1 rounded-full bg-white/[0.05] border border-white/10 text-xs font-sans">
               <button
                 onClick={() => setBillingCycle("monthly")}
                 className={cn(
-                  "px-4 py-1.5 rounded-full transition-all font-semibold select-none",
+                  "px-4 py-1.5 rounded-full transition-all font-semibold",
                   billingCycle === "monthly"
-                    ? "bg-[#101010] text-[#FAFAF8] shadow-xs"
-                    : "text-[#626262] hover:text-[#101010]"
+                    ? "bg-white text-[#07070B] shadow-xs"
+                    : "text-white/60 hover:text-white"
                 )}
               >
                 Monthly Billing
@@ -117,153 +102,96 @@ export function PricingComparisonModule() {
               <button
                 onClick={() => setBillingCycle("annual")}
                 className={cn(
-                  "px-4 py-1.5 rounded-full transition-all font-semibold flex items-center gap-1.5 select-none",
+                  "px-4 py-1.5 rounded-full transition-all font-semibold flex items-center gap-1.5",
                   billingCycle === "annual"
-                    ? "bg-[#101010] text-[#FAFAF8] shadow-xs"
-                    : "text-[#626262] hover:text-[#101010]"
+                    ? "bg-[#2A5CFF] text-white shadow-xs"
+                    : "text-white/60 hover:text-white"
                 )}
               >
-                <span>Annual Billing</span>
-                <span className="px-1.5 py-0.5 rounded-full bg-[#B7FF3C] text-[#101010] text-[10px] font-bold">
-                  Save 20%
+                <span>Annual</span>
+                <span className="text-[10px] font-mono px-1.5 py-0.2 rounded-full bg-white text-[#07070B] font-bold">
+                  SAVE 20%
                 </span>
               </button>
             </div>
           </div>
         </div>
 
-        {/* 3 Pricing Tier Cards */}
+        {/* 3 Pricing Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-          {plans.map((p, idx) => {
-            const price = billingCycle === "annual" ? p.priceAnnual : p.priceMonthly;
+          {plans.map((plan, i) => {
+            const price = billingCycle === "annual" ? plan.priceAnnual : plan.priceMonthly;
 
             return (
               <div
-                key={idx}
+                key={i}
                 className={cn(
-                  "rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-200 relative",
-                  p.popular
-                    ? "bg-[#FFFFFF] border-2 border-[#101010] shadow-editorial-lg ring-4 ring-[#101010]/5 lg:-translate-y-2"
-                    : "bg-[#FFFFFF] border border-[#E7E7E4] shadow-editorial hover:border-[#101010]"
+                  "rounded-3xl p-8 flex flex-col justify-between space-y-8 relative backdrop-blur-2xl transition-all duration-300",
+                  plan.popular
+                    ? "bg-[#0F0D1B] border-2 border-blue-500/60 shadow-[0_20px_60px_rgba(42,92,255,0.25)] lg:-translate-y-2"
+                    : "bg-[#0E0C15]/90 border border-white/10 hover:border-white/20 shadow-xl"
                 )}
               >
-                {/* Popular Pill */}
-                {p.popular && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-[#101010] text-[#B7FF3C] text-[11px] font-mono font-bold tracking-wider uppercase shadow-xs">
-                    ★ {p.badge}
+                {plan.popular && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-[#2A5CFF] text-white text-[10px] font-mono font-bold tracking-wider uppercase shadow-[0_0_15px_rgba(42,92,255,0.6)]">
+                    ★ MOST POPULAR
                   </div>
                 )}
 
                 <div className="space-y-6">
-                  {/* Title & Badge */}
                   <div className="flex items-center justify-between">
-                    <div>
-                      <h3 className="text-xl font-bold font-display text-[#101010]">{p.name}</h3>
-                      <p className="text-xs text-[#626262] mt-1 font-sans">{p.description}</p>
-                    </div>
-                    {!p.popular && (
-                      <span className="px-2.5 py-1 rounded-full bg-[#FAFAF8] border border-[#E7E7E4] text-[10px] font-mono font-bold text-[#626262]">
-                        {p.badge}
-                      </span>
-                    )}
+                    <h3 className="text-xl font-bold text-white font-display">{plan.name}</h3>
+                    <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-white/10 text-white/70 border border-white/10 font-bold uppercase">
+                      {plan.badge}
+                    </span>
                   </div>
 
-                  {/* Price */}
                   <div className="flex items-baseline gap-1 font-display">
-                    <span className="text-4xl sm:text-5xl font-extrabold text-[#101010] tracking-tight numeric-tabular">
+                    <span className="text-4xl sm:text-5xl font-black text-white numeric-tabular">
                       ${price}
                     </span>
-                    <span className="text-xs font-mono text-[#626262]">/month {billingCycle === "annual" && price > 0 && "(billed annually)"}</span>
+                    <span className="text-xs text-white/50 font-sans">
+                      {price === 0 ? "forever" : "/ month billed annually"}
+                    </span>
                   </div>
 
-                  {/* Features List */}
-                  <div className="pt-2 border-t border-[#E7E7E4] space-y-3 font-sans text-xs">
-                    {p.features.map((f, fi) => (
-                      <div key={fi} className="flex items-start gap-2.5">
-                        <div className="w-4 h-4 rounded-full bg-[#FAFAF8] border border-[#E7E7E4] flex items-center justify-center shrink-0 mt-0.5">
-                          <Check className="w-2.5 h-2.5 text-[#101010]" />
-                        </div>
-                        <span className={cn("text-[#101010]", fi === 0 && "font-semibold")}>
-                          {f}
-                        </span>
-                      </div>
-                    ))}
+                  <p className="text-xs text-white/60 font-sans leading-relaxed">
+                    {plan.description}
+                  </p>
+
+                  <div className="pt-4 border-t border-white/10 space-y-3">
+                    <span className="text-[11px] font-mono uppercase text-white/40 font-bold block">
+                      INCLUDED CAPABILITIES:
+                    </span>
+                    <ul className="space-y-2.5 text-xs text-white/80 font-sans">
+                      {plan.features.map((feat, fIdx) => (
+                        <li key={fIdx} className="flex items-start gap-2.5">
+                          <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                          <span>{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
 
-                {/* CTA Button */}
-                <div className="pt-8">
-                  <Link
-                    href={p.ctaHref}
-                    className={cn(
-                      "w-full py-3.5 rounded-[9px] font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all font-sans",
-                      p.popular
-                        ? "bg-[#101010] hover:bg-[#262626] text-[#FAFAF8] shadow-xs"
-                        : "bg-[#FAFAF8] hover:bg-[#FFFFFF] border border-[#E7E7E4] text-[#101010]"
-                    )}
-                  >
-                    <span>{p.ctaText}</span>
-                    <ArrowRight className={cn("w-4 h-4", p.popular ? "text-[#B7FF3C]" : "text-[#101010]")} />
+                <div className="pt-4">
+                  <Link href={plan.ctaHref} className="w-full block">
+                    <button
+                      className={cn(
+                        "w-full py-3.5 rounded-full text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-1.5 shadow-md",
+                        plan.popular
+                          ? "bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] hover:from-[#234FE6] hover:to-[#3264E6] text-white shadow-[0_0_20px_rgba(42,92,255,0.4)]"
+                          : "bg-white/10 hover:bg-white/15 border border-white/15 text-white"
+                      )}
+                    >
+                      <span>{plan.ctaText}</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
                   </Link>
                 </div>
               </div>
             );
           })}
-        </div>
-
-        {/* Feature Comparison Table */}
-        <div className="rounded-3xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-editorial overflow-hidden">
-          <div className="p-6 border-b border-[#E7E7E4] flex items-center justify-between">
-            <div>
-              <h3 className="text-base font-bold font-display text-[#101010]">Full Feature Matrix</h3>
-              <p className="text-xs text-[#626262] font-sans">Compare detailed plan limits, arbitration SLAs, and platform take-rates.</p>
-            </div>
-            <div className="flex items-center gap-2 text-xs font-mono text-[#101010] font-semibold">
-              <ShieldCheck className="w-4 h-4 text-[#101010]" />
-              <span>30-Day Money-Back Guarantee</span>
-            </div>
-          </div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs font-sans">
-              <thead className="bg-[#FAFAF8] border-b border-[#E7E7E4] text-[#626262] font-mono uppercase tracking-wider">
-                <tr>
-                  <th className="py-4 px-6 font-semibold">Feature / Capability</th>
-                  <th className="py-4 px-6 font-semibold text-center">Starter</th>
-                  <th className="py-4 px-6 font-semibold text-center text-[#101010]">Growth Pro</th>
-                  <th className="py-4 px-6 font-semibold text-center">Enterprise</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-[#E7E7E4] text-[#101010]">
-                {comparisonRows.map((r, idx) => (
-                  <tr key={idx} className="hover:bg-[#FAFAF8] transition-colors">
-                    <td className="py-4 px-6 font-medium text-[#101010]">{r.feature}</td>
-                    <td className="py-4 px-6 text-center">
-                      {typeof r.starter === "boolean" ? (
-                        r.starter ? <Check className="w-4 h-4 text-[#101010] mx-auto" /> : <span className="text-[#8A8A8A]">—</span>
-                      ) : (
-                        <span className="font-mono font-bold">{r.starter}</span>
-                      )}
-                    </td>
-                    <td className="py-4 px-6 text-center bg-[#FAFAF8]/50 font-semibold">
-                      {typeof r.pro === "boolean" ? (
-                        r.pro ? <Check className="w-4 h-4 text-[#101010] mx-auto" /> : <span className="text-[#8A8A8A]">—</span>
-                      ) : (
-                        <span className="font-mono font-bold text-[#101010]">{r.pro}</span>
-                      )}
-                    </td>
-                    <td className="py-4 px-6 text-center">
-                      {typeof r.enterprise === "boolean" ? (
-                        r.enterprise ? <Check className="w-4 h-4 text-[#101010] mx-auto" /> : <span className="text-[#8A8A8A]">—</span>
-                      ) : (
-                        <span className="font-mono font-bold">{r.enterprise}</span>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
         </div>
       </div>
     </section>

@@ -37,7 +37,6 @@ import {
 import { NotificationItem } from "@/core/types";
 import { notificationService } from "@/services/notification.service";
 import { Badge } from "@/components/ui/Badge";
-import { CollablyLogo } from "@/components/ui/CollablyLogo";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -110,38 +109,38 @@ export function AppNavbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-30 w-full h-16 border-b border-[#E7E7E4] bg-[#FAFAF8]/95 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between gap-4 text-[#111111]">
+      <header className="sticky top-0 z-30 w-full h-16 border-b border-white/10 bg-[#07070B]/90 backdrop-blur-xl px-4 sm:px-6 flex items-center justify-between gap-4 text-white">
         {/* Left Area: Mobile Drawer Trigger & Search */}
         <div className="flex items-center gap-3 flex-1 max-w-md">
           {/* Mobile Sidebar Hamburger Trigger */}
           <button
             type="button"
             onClick={() => setShowMobileSidebar(!showMobileSidebar)}
-            className="lg:hidden p-2 rounded-lg bg-[#FFFFFF] border border-[#E7E7E4] text-[#111111] hover:bg-[#F4F4F0] transition-colors"
+            className="lg:hidden p-2 rounded-xl bg-white/[0.05] border border-white/10 text-white hover:bg-white/[0.1] transition-colors"
             aria-label="Open Workspace Menu"
           >
-            <Menu className="w-4 h-4 text-[#111111]" />
+            <Menu className="w-4 h-4 text-white" />
           </button>
 
-          <Link href="/app/dashboard" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-[#111111] flex items-center justify-center font-bold text-[#FAFAF8] text-xs shadow-xs">
-              <span className="text-[#B7FF3C]">CB</span>
+          <Link href="/app/dashboard" className="flex items-center gap-2 group">
+            <div className="w-7 h-7 rounded-lg bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(42,92,255,0.4)]">
+              <Sparkles className="w-3.5 h-3.5 fill-blue-400 text-blue-400" />
             </div>
-            <span className="font-bold text-[#111111] text-sm font-display hidden xs:inline">Collably</span>
+            <span className="font-bold text-white text-sm font-display hidden xs:inline">Collably</span>
           </Link>
 
           <div className="relative w-full hidden sm:block">
-            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-[#6B6B6B]" />
+            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-white/40" />
             <button
               type="button"
               onClick={() => {
                 const event = new KeyboardEvent("keydown", { key: "k", metaKey: true, bubbles: true });
                 window.dispatchEvent(event);
               }}
-              className="w-full text-left bg-[#FFFFFF] border border-[#E7E7E4] rounded-lg pl-9 pr-12 py-2 text-xs text-[#6B6B6B] hover:border-[#111111] hover:bg-[#FAFAF8] transition-all shadow-xs flex items-center justify-between"
+              className="w-full text-left bg-white/[0.04] border border-white/10 rounded-xl pl-9 pr-12 py-2 text-xs text-white/50 hover:border-white/20 hover:bg-white/[0.07] transition-all flex items-center justify-between"
             >
               <span className="truncate">Search campaigns, creators, analytics...</span>
-              <kbd className="px-1.5 py-0.5 rounded bg-[#FAFAF8] border border-[#E7E7E4] text-[10px] font-mono text-[#6B6B6B]">
+              <kbd className="px-1.5 py-0.5 rounded bg-white/10 border border-white/10 text-[10px] font-mono text-white/60">
                 ⌘K
               </kbd>
             </button>
@@ -153,8 +152,8 @@ export function AppNavbar() {
           {/* Quick Action Button for Brand */}
           {role === "brand" && (
             <Link href="/app/brand/campaigns/create">
-              <button className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-[9px] bg-[#111111] hover:bg-[#262626] text-[#FAFAF8] font-semibold text-xs shadow-xs transition-all font-sans group">
-                <Plus className="w-3.5 h-3.5 text-[#B7FF3C]" />
+              <button className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] hover:from-[#234FE6] hover:to-[#3264E6] text-white font-semibold text-xs shadow-[0_0_15px_rgba(42,92,255,0.4)] transition-all font-sans">
+                <Plus className="w-3.5 h-3.5 text-white" />
                 <span>Create Brief</span>
               </button>
             </Link>
@@ -163,8 +162,8 @@ export function AppNavbar() {
           {/* Quick Action Button for Creator */}
           {role === "creator" && (
             <Link href="/campaigns">
-              <button className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-[9px] bg-[#111111] hover:bg-[#262626] text-[#FAFAF8] font-semibold text-xs shadow-xs transition-all font-sans group">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
+              <button className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] hover:from-[#234FE6] hover:to-[#3264E6] text-white font-semibold text-xs shadow-[0_0_15px_rgba(42,92,255,0.4)] transition-all font-sans">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                 <span>Explore Briefs</span>
               </button>
             </Link>
@@ -174,22 +173,22 @@ export function AppNavbar() {
           <div className="relative">
             <button
               onClick={() => setShowNotifs(!showNotifs)}
-              className="relative p-2 rounded-lg text-[#6B6B6B] hover:text-[#111111] hover:bg-[#FFFFFF] border border-transparent hover:border-[#E7E7E4] transition-colors"
+              className="relative p-2 rounded-xl text-white/60 hover:text-white hover:bg-white/[0.06] border border-transparent hover:border-white/10 transition-colors"
               aria-label="Notifications"
             >
               <Bell className="w-4 h-4" />
               {unreadCount > 0 && (
-                <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#B7FF3C]" />
+                <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#2A5CFF] shadow-[0_0_6px_#2A5CFF]" />
               )}
             </button>
 
             {showNotifs && (
-              <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xl p-4 z-50 animate-in fade-in zoom-in-95 duration-100">
-                <div className="flex items-center justify-between pb-3 border-b border-[#E7E7E4]">
+              <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-2xl bg-[#0E0C15]/95 backdrop-blur-2xl border border-white/15 shadow-2xl p-4 z-50 animate-in fade-in zoom-in-95 duration-100">
+                <div className="flex items-center justify-between pb-3 border-b border-white/10">
                   <div className="flex items-center gap-2">
-                    <h4 className="text-xs font-bold text-[#111111]">Notifications</h4>
+                    <h4 className="text-xs font-bold text-white">Notifications</h4>
                     {unreadCount > 0 && (
-                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-[#B7FF3C] text-[#111111]">
+                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-[#2A5CFF] text-white">
                         {unreadCount} new
                       </span>
                     )}
@@ -197,16 +196,16 @@ export function AppNavbar() {
                   {unreadCount > 0 && (
                     <button
                       onClick={markAllRead}
-                      className="text-[11px] font-bold text-[#6B6B6B] hover:text-[#111111]"
+                      className="text-[11px] font-bold text-white/60 hover:text-white"
                     >
                       Mark all read
                     </button>
                   )}
                 </div>
 
-                <div className="divide-y divide-[#E7E7E4] max-h-80 overflow-y-auto mt-2">
+                <div className="divide-y divide-white/10 max-h-80 overflow-y-auto mt-2">
                   {notifications.length === 0 ? (
-                    <div className="py-8 text-center text-xs text-[#6B6B6B]">
+                    <div className="py-8 text-center text-xs text-white/40">
                       No notifications yet.
                     </div>
                   ) : (
@@ -214,14 +213,14 @@ export function AppNavbar() {
                       <div
                         key={notif.id}
                         className={cn(
-                          "py-2.5 px-2 rounded-lg text-xs transition-colors flex items-start gap-3",
-                          notif.read ? "opacity-60" : "bg-[#FAFAF8] font-medium"
+                          "py-2.5 px-2 rounded-xl text-xs transition-colors flex items-start gap-3",
+                          notif.read ? "opacity-60" : "bg-white/[0.04] font-medium"
                         )}
                       >
-                        <div className="w-2 h-2 rounded-full bg-[#B7FF3C] shrink-0 mt-1.5" />
+                        <div className="w-2 h-2 rounded-full bg-[#2A5CFF] shrink-0 mt-1.5" />
                         <div className="flex-1 space-y-0.5">
-                          <p className="text-[#111111] font-bold">{notif.title}</p>
-                          <p className="text-[#6B6B6B] text-[11px] leading-relaxed">
+                          <p className="text-white font-bold">{notif.title}</p>
+                          <p className="text-white/60 text-[11px] leading-relaxed">
                             {notif.message}
                           </p>
                         </div>
@@ -237,67 +236,67 @@ export function AppNavbar() {
           <div className="relative">
             <button
               onClick={() => setShowProfileMenu(!showProfileMenu)}
-              className="flex items-center gap-2 p-1 rounded-lg hover:bg-[#FFFFFF] border border-transparent hover:border-[#E7E7E4] transition-colors"
+              className="flex items-center gap-2 p-1 rounded-xl hover:bg-white/[0.06] border border-transparent hover:border-white/10 transition-colors"
             >
               <Avatar
                 src={user?.avatarUrl}
                 name={user?.name || "User"}
                 size="sm"
-                className="border border-[#E7E7E4]"
+                className="border border-white/20"
               />
               <div className="hidden md:block text-left text-xs pr-1">
-                <span className="font-bold text-[#111111] block leading-tight">{user?.name}</span>
-                <span className="text-[10px] text-[#6B6B6B] capitalize">{role}</span>
+                <span className="font-bold text-white block leading-tight">{user?.name}</span>
+                <span className="text-[10px] text-white/50 capitalize">{role}</span>
               </div>
-              <ChevronDown className="w-3.5 h-3.5 text-[#6B6B6B] hidden sm:block" />
+              <ChevronDown className="w-3.5 h-3.5 text-white/50 hidden sm:block" />
             </button>
 
             {showProfileMenu && (
-              <div className="absolute right-0 mt-2 w-56 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xl p-2 z-50 animate-in fade-in zoom-in-95 duration-100">
-                <div className="px-3 py-2 border-b border-[#E7E7E4] mb-1">
-                  <p className="text-xs font-bold text-[#111111] truncate">{user?.name}</p>
-                  <p className="text-[11px] text-[#6B6B6B] truncate">{user?.email}</p>
-                  <Badge variant="outline" className="mt-1.5 text-[9px] uppercase tracking-wider bg-[#FAFAF8] text-[#111111] border-[#E7E7E4]">
+              <div className="absolute right-0 mt-2 w-56 rounded-2xl bg-[#0E0C15]/95 backdrop-blur-2xl border border-white/15 shadow-2xl p-2 z-50 animate-in fade-in zoom-in-95 duration-100">
+                <div className="px-3 py-2 border-b border-white/10 mb-1">
+                  <p className="text-xs font-bold text-white truncate">{user?.name}</p>
+                  <p className="text-[11px] text-white/50 truncate">{user?.email}</p>
+                  <Badge variant="outline" className="mt-1.5 text-[9px] uppercase tracking-wider bg-white/5 text-white/80 border-white/10">
                     {role}
                   </Badge>
                 </div>
 
-                <div className="space-y-0.5 text-xs font-medium text-[#6B6B6B]">
+                <div className="space-y-0.5 text-xs font-medium text-white/70">
                   <Link
                     href={role === "creator" ? "/app/profile" : "/app/settings"}
                     onClick={() => setShowProfileMenu(false)}
-                    className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-[#FAFAF8] hover:text-[#111111] transition-colors"
+                    className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-white/[0.08] hover:text-white transition-colors"
                   >
-                    <Sparkles className="w-3.5 h-3.5 text-[#111111]" />
+                    <Sparkles className="w-3.5 h-3.5 text-blue-400" />
                     <span>Profile &amp; Media Kit</span>
                   </Link>
 
                   <Link
                     href="/app/settings"
                     onClick={() => setShowProfileMenu(false)}
-                    className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-[#FAFAF8] hover:text-[#111111] transition-colors"
+                    className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-white/[0.08] hover:text-white transition-colors"
                   >
-                    <Shield className="w-3.5 h-3.5 text-[#6B6B6B]" />
+                    <Shield className="w-3.5 h-3.5 text-white/50" />
                     <span>Security &amp; Account</span>
                   </Link>
 
                   <Link
                     href="/"
                     onClick={() => setShowProfileMenu(false)}
-                    className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-[#FAFAF8] hover:text-[#111111] transition-colors"
+                    className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-white/[0.08] hover:text-white transition-colors"
                   >
-                    <ExternalLink className="w-3.5 h-3.5 text-[#6B6B6B]" />
+                    <ExternalLink className="w-3.5 h-3.5 text-white/50" />
                     <span>Public Website</span>
                   </Link>
                 </div>
 
-                <div className="pt-1 mt-1 border-t border-[#E7E7E4]">
+                <div className="pt-1 mt-1 border-t border-white/10">
                   <button
                     onClick={() => {
                       setShowProfileMenu(false);
                       logout();
                     }}
-                    className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-bold text-[#991B1B] hover:bg-[#FEE2E2] transition-colors text-left"
+                    className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold text-red-400 hover:bg-red-500/15 transition-colors text-left"
                   >
                     <LogOut className="w-3.5 h-3.5" />
                     <span>Sign Out</span>
@@ -313,29 +312,32 @@ export function AppNavbar() {
       <AnimatePresence>
         {showMobileSidebar && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setShowMobileSidebar(false)}
-              className="fixed inset-0 z-50 bg-[#111111]/30 backdrop-blur-xs lg:hidden"
+              className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm lg:hidden"
             />
 
-            {/* Sliding Drawer */}
             <motion.div
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed inset-y-0 left-0 z-50 w-72 bg-[#FAFAF8] border-r border-[#E7E7E4] shadow-2xl p-5 flex flex-col justify-between lg:hidden text-[#111111] overflow-y-auto"
+              className="fixed inset-y-0 left-0 z-50 w-72 bg-[#0E0C15] border-r border-white/15 shadow-2xl p-5 flex flex-col justify-between lg:hidden text-white overflow-y-auto"
             >
               <div className="space-y-6">
-                <div className="flex items-center justify-between pb-4 border-b border-[#E7E7E4]">
-                  <CollablyLogo href="/app/dashboard" size="sm" subtext={`${role.toUpperCase()} Workspace`} />
+                <div className="flex items-center justify-between pb-4 border-b border-white/10">
+                  <div className="flex items-center gap-2">
+                    <div className="w-7 h-7 rounded-lg bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 shadow-[0_0_15px_rgba(42,92,255,0.4)]">
+                      <Sparkles className="w-3.5 h-3.5 fill-blue-400 text-blue-400" />
+                    </div>
+                    <span className="font-bold text-white text-sm font-display">Collably</span>
+                  </div>
                   <button
                     onClick={() => setShowMobileSidebar(false)}
-                    className="p-1.5 rounded-lg bg-[#FFFFFF] text-[#6B6B6B] hover:text-[#111111] border border-[#E7E7E4]"
+                    className="p-1.5 rounded-xl bg-white/[0.05] text-white/60 hover:text-white border border-white/10"
                   >
                     <X className="w-5 h-5" />
                   </button>
@@ -355,18 +357,18 @@ export function AppNavbar() {
                         className={cn(
                           "flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all select-none",
                           isActive
-                            ? "bg-[#111111] text-[#FAFAF8] font-bold shadow-xs"
-                            : "text-[#6B6B6B] hover:text-[#111111] hover:bg-[#FFFFFF]"
+                            ? "bg-[#2A5CFF] text-white font-bold shadow-[0_0_15px_rgba(42,92,255,0.4)]"
+                            : "text-white/60 hover:text-white hover:bg-white/[0.06]"
                         )}
                       >
                         <div className="flex items-center gap-3">
-                          <Icon className={cn("w-4 h-4", isActive ? "text-[#B7FF3C]" : "text-[#6B6B6B]")} />
+                          <Icon className={cn("w-4 h-4", isActive ? "text-white" : "text-white/50")} />
                           <span>{item.label}</span>
                         </div>
                         {item.badge && (
                           <span className={cn(
                             "text-[10px] px-2 py-0.5 rounded-full font-mono font-bold",
-                            isActive ? "bg-[#B7FF3C] text-[#111111]" : "bg-[#FFFFFF] text-[#6B6B6B] border border-[#E7E7E4]"
+                            isActive ? "bg-white text-[#07070B]" : "bg-white/10 text-white/70 border border-white/10"
                           )}>
                             {item.badge}
                           </span>
@@ -377,13 +379,13 @@ export function AppNavbar() {
                 </nav>
               </div>
 
-              <div className="pt-4 border-t border-[#E7E7E4]">
+              <div className="pt-4 border-t border-white/10">
                 <button
                   onClick={() => {
                     setShowMobileSidebar(false);
                     logout();
                   }}
-                  className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold text-[#991B1B] hover:bg-[#FEE2E2] transition-colors"
+                  className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold text-red-400 hover:bg-red-500/15 transition-colors"
                 >
                   <LogOut className="w-4 h-4" />
                   <span>Sign Out</span>

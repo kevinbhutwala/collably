@@ -5,7 +5,6 @@ import { campaignService } from "@/services/campaign.service";
 import { Campaign, CreatorCategory } from "@/core/types";
 import { CampaignCard } from "@/components/campaigns/CampaignCard";
 import { CATEGORIES } from "@/core/constants";
-import { Badge } from "@/components/ui/Badge";
 import { Sparkles, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -30,17 +29,17 @@ export default function CampaignsDirectoryPage() {
   }, [selectedCategory, searchQuery]);
 
   return (
-    <div className="py-12 sm:py-16 bg-[#FAFAF8] text-[#111111] min-h-screen">
+    <div className="py-12 sm:py-16 bg-[#07070B] text-white min-h-screen select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="space-y-4 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-xs font-mono font-bold text-[#111111] shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
-            <span>Pre-Funded Escrow Briefs</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/15 border border-blue-500/30 text-xs font-mono font-bold text-blue-400">
+            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+            <span>PRE-FUNDED ESCROW BRIEFS</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#111111] tracking-tight font-display">
+          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight font-display">
             Live Campaign Briefs
           </h1>
-          <p className="text-base text-[#6B6B6B] font-sans font-medium">
+          <p className="text-xs sm:text-sm text-white/60 font-sans max-w-xl leading-relaxed">
             Discover opportunities from premier verified brands. Pitch custom creative angles and receive guaranteed milestone payouts.
           </p>
         </div>
@@ -51,10 +50,10 @@ export default function CampaignsDirectoryPage() {
             <button
               onClick={() => setSelectedCategory("all")}
               className={cn(
-                "px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all select-none whitespace-nowrap",
+                "px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap",
                 selectedCategory === "all"
-                  ? "bg-[#111111] text-[#FAFAF8] shadow-xs"
-                  : "bg-[#FFFFFF] text-[#6B6B6B] hover:text-[#111111] border border-[#E7E7E4]"
+                  ? "bg-[#2A5CFF] text-white shadow-[0_0_12px_rgba(42,92,255,0.4)]"
+                  : "bg-white/[0.04] text-white/60 hover:text-white border border-white/10"
               )}
             >
               All Categories
@@ -62,12 +61,12 @@ export default function CampaignsDirectoryPage() {
             {CATEGORIES.map((cat) => (
               <button
                 key={cat}
-                onClick={() => setSelectedCategory(cat)}
+                onClick={() => setSelectedCategory(cat as CreatorCategory)}
                 className={cn(
-                  "px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all select-none whitespace-nowrap",
+                  "px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap",
                   selectedCategory === cat
-                    ? "bg-[#111111] text-[#FAFAF8] shadow-xs"
-                    : "bg-[#FFFFFF] text-[#6B6B6B] hover:text-[#111111] border border-[#E7E7E4]"
+                    ? "bg-[#2A5CFF] text-white shadow-[0_0_12px_rgba(42,92,255,0.4)]"
+                    : "bg-white/[0.04] text-white/60 hover:text-white border border-white/10"
                 )}
               >
                 {cat}
@@ -76,44 +75,40 @@ export default function CampaignsDirectoryPage() {
           </div>
 
           <div className="relative w-full md:w-72">
-            <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#6B6B6B]" />
+            <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-white/40" />
             <input
               type="text"
-              placeholder="Search briefs or keywords..."
+              placeholder="Search briefs..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-[#FFFFFF] border border-[#E7E7E4] rounded-xl pl-9 pr-4 py-2 text-xs text-[#111111] placeholder:text-[#6B6B6B] focus:outline-none focus:border-[#111111] transition-all shadow-xs"
+              className="w-full pl-9 pr-4 py-2 rounded-full bg-white/[0.04] border border-white/10 text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-blue-500 transition-all"
             />
           </div>
         </div>
 
-        {/* Results Grid */}
-        <div className="space-y-6">
-          <div className="flex items-center justify-between text-xs text-[#6B6B6B] font-mono">
-            <span>Showing {campaigns.length} live campaign briefs</span>
-            <span className="px-2 py-0.5 rounded bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] font-bold">
-              Pre-Funded Escrow
-            </span>
+        {/* Grid */}
+        {loading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <div
+                key={i}
+                className="rounded-3xl bg-white/[0.04] border border-white/10 p-6 space-y-4 animate-pulse min-h-[260px]"
+              />
+            ))}
           </div>
-
-          {loading ? (
-            <div className="py-24 text-center">
-              <div className="w-8 h-8 rounded-full border-2 border-[#111111] border-t-transparent animate-spin mx-auto" />
-            </div>
-          ) : campaigns.length === 0 ? (
-            <div className="py-24 text-center rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] p-8 space-y-3 shadow-xs text-[#111111]">
-              <Sparkles className="w-8 h-8 text-[#111111] mx-auto" />
-              <h3 className="text-base font-bold text-[#111111] font-display">No campaigns match your search</h3>
-              <p className="text-xs text-[#6B6B6B] font-sans">Check back shortly or browse all categories.</p>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {campaigns.map((c) => (
-                <CampaignCard key={c.id} campaign={c} />
-              ))}
-            </div>
-          )}
-        </div>
+        ) : campaigns.length === 0 ? (
+          <div className="py-20 text-center rounded-3xl bg-[#0E0C15]/90 border border-white/10 p-8 space-y-3">
+            <Sparkles className="w-10 h-10 text-white/30 mx-auto" />
+            <h3 className="text-base font-bold text-white font-display">No campaigns found</h3>
+            <p className="text-xs text-white/50">Check back soon or broaden your search criteria.</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {campaigns.map((camp) => (
+              <CampaignCard key={camp.id} campaign={camp} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

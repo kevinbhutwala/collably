@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus, HelpCircle } from "lucide-react";
+import { Plus, Minus } from "lucide-react";
 
 export function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -31,14 +31,14 @@ export function FAQSection() {
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#FAFAF8] border-b border-[#E7E7E4] relative overflow-hidden text-[#101010] select-none">
+    <section className="py-20 sm:py-28 bg-[#07070B] border-t border-white/10 relative overflow-hidden text-white select-none">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-xs font-mono font-semibold text-[#101010] shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono font-semibold text-white/80">
+            <span className="w-2 h-2 rounded-full bg-blue-400" />
             <span>Questions &amp; Answers</span>
           </div>
-          <h2 className="section-headline text-center">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-display text-center">
             Frequently asked questions.
           </h2>
         </div>
@@ -50,18 +50,18 @@ export function FAQSection() {
             return (
               <div
                 key={index}
-                className="rounded-xl bg-[#FFFFFF] border border-[#E7E7E4] overflow-hidden shadow-xs transition-all"
+                className="rounded-2xl bg-[#0E0C15]/90 border border-white/10 overflow-hidden shadow-xl transition-all backdrop-blur-xl"
               >
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full p-5 text-left flex items-center justify-between gap-4 select-none hover:bg-[#F4F4F0] transition-colors"
+                  className="w-full p-5 text-left flex items-center justify-between gap-4 select-none hover:bg-white/[0.04] transition-colors"
                 >
-                  <span className="text-sm sm:text-base font-bold text-[#101010] font-sans">
+                  <span className="text-sm sm:text-base font-bold text-white font-sans">
                     {faq.q}
                   </span>
-                  <div className="w-7 h-7 rounded-lg bg-[#FAFAF8] border border-[#E7E7E4] flex items-center justify-center shrink-0 text-[#101010]">
-                    {isOpen ? <Minus className="w-3.5 h-3.5 text-[#101010]" /> : <Plus className="w-3.5 h-3.5 text-[#626262]" />}
+                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 text-white">
+                    {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                   </div>
                 </button>
 
@@ -71,9 +71,9 @@ export function FAQSection() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.18 }}
+                      transition={{ duration: 0.2 }}
                     >
-                      <div className="px-5 pb-5 text-xs sm:text-sm text-[#626262] leading-relaxed border-t border-[#E7E7E4] pt-3 font-sans">
+                      <div className="p-5 pt-0 text-xs sm:text-sm text-white/60 leading-relaxed font-sans border-t border-white/5">
                         {faq.a}
                       </div>
                     </motion.div>

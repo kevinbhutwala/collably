@@ -5,10 +5,8 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
-import { CollablyLogo } from "@/components/ui/CollablyLogo";
-import { Button } from "@/components/ui/Button";
+import { Sparkles, AlertCircle, Lock, Mail, Loader2, ArrowLeft } from "lucide-react";
 import { Input } from "@/components/ui/Input";
-import { AlertCircle, Lock, Mail, Loader2, ArrowLeft } from "lucide-react";
 
 function LoginForm() {
   const router = useRouter();
@@ -43,37 +41,42 @@ function LoginForm() {
   };
 
   return (
-    <div className="w-full max-w-md rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] p-8 space-y-6 shadow-xs relative z-10 text-[#111111]">
+    <div className="w-full max-w-md rounded-3xl bg-[#0E0C15]/90 border border-white/15 p-8 space-y-6 shadow-2xl backdrop-blur-2xl relative z-10 text-white select-none">
       {/* Top Header with Back to Home button */}
-      <div className="flex items-center justify-between pb-3 border-b border-[#E7E7E4]">
+      <div className="flex items-center justify-between pb-3 border-b border-white/10">
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[#6B6B6B] hover:text-[#111111] transition-colors group"
+          className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-white/50 hover:text-white transition-colors group"
         >
           <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
           <span>Back to Home</span>
         </Link>
-        <span className="text-[10px] font-mono text-[#111111] font-bold uppercase flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
+        <span className="text-[10px] font-mono text-white/80 font-bold uppercase flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#2A5CFF] animate-pulse" />
           Portal Login
         </span>
       </div>
 
-      <div className="text-center space-y-2">
-        <div className="flex justify-center mb-2">
-          <CollablyLogo href="/" size="sm" subtext="Creator × Brand Ecosystem" />
-        </div>
-        <h1 className="text-2xl font-extrabold text-[#111111] tracking-tight font-display">
-          Welcome Back
-        </h1>
-        <p className="text-xs text-[#6B6B6B] font-sans font-medium">
-          Sign in to access your campaigns, creator roster, and escrow payouts.
+      <div className="text-center space-y-1.5">
+        <Link href="/" className="inline-flex items-center gap-2 group mb-2">
+          <div className="w-8 h-8 rounded-lg bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 shadow-[0_0_15px_rgba(42,92,255,0.4)]">
+            <Sparkles className="w-4 h-4 fill-blue-400 text-blue-400" />
+          </div>
+          <span className="font-display font-extrabold text-xl tracking-tight text-white">
+            Collably
+          </span>
+        </Link>
+        <h2 className="text-2xl font-extrabold text-white tracking-tight font-display">
+          Welcome back
+        </h2>
+        <p className="text-xs text-white/50 font-sans">
+          Access your brand briefs, milestone escrows, and 4K QA studio.
         </p>
       </div>
 
       {errorMessage && (
-        <div className="p-3.5 rounded-xl bg-[#FEF2F2] border border-[#FEE2E2] text-rose-700 text-xs flex items-center gap-2">
-          <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
+        <div className="p-3.5 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs flex items-center gap-2">
+          <AlertCircle className="w-4 h-4 shrink-0" />
           <span>{errorMessage}</span>
         </div>
       )}
@@ -82,32 +85,50 @@ function LoginForm() {
         <Input
           label="Email Address"
           type="email"
-          placeholder="you@example.com"
+          required
+          placeholder="name@agency.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          required
-          leftIcon={<Mail className="w-4 h-4 text-[#6B6B6B]" />}
-        />
-        <Input
-          label="Password"
-          type="password"
-          placeholder="••••••••"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          leftIcon={<Lock className="w-4 h-4 text-[#6B6B6B]" />}
+          icon={<Mail className="w-4 h-4" />}
         />
 
-        <Button variant="primary" size="lg" type="submit" isLoading={isLoading} className="w-full font-display rounded-[9px]">
-          Sign In to Collably
-        </Button>
+        <div className="space-y-1">
+          <Input
+            label="Password"
+            type="password"
+            required
+            placeholder="••••••••"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            icon={<Lock className="w-4 h-4" />}
+          />
+        </div>
+
+        <button
+          type="submit"
+          disabled={isLoading}
+          className="w-full py-3 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] hover:from-[#234FE6] hover:to-[#3264E6] text-white font-semibold text-xs transition-all shadow-[0_0_20px_rgba(42,92,255,0.4)] flex items-center justify-center gap-2 disabled:opacity-50"
+        >
+          {isLoading ? (
+            <>
+              <Loader2 className="w-4 h-4 animate-spin text-white" />
+              <span>Verifying...</span>
+            </>
+          ) : (
+            <span>Sign In to Workspace</span>
+          )}
+        </button>
       </form>
 
-      <div className="pt-4 border-t border-[#E7E7E4] text-center space-y-2">
-        <p className="text-xs text-[#6B6B6B] font-sans">
+      <div className="space-y-2 pt-2 border-t border-white/10 text-center text-xs text-white/50 font-sans">
+        <p>
           Don&apos;t have an account?{" "}
-          <Link href="/register" className="text-[#111111] font-bold hover:underline">
-            Create an account
+          <Link href="/creator/register" className="text-white hover:text-blue-400 font-bold">
+            Sign up as Creator
+          </Link>
+          {" · "}
+          <Link href="/brand/register" className="text-white hover:text-blue-400 font-bold">
+            Sign up as Brand
           </Link>
         </p>
       </div>
@@ -117,15 +138,9 @@ function LoginForm() {
 
 export default function LoginPage() {
   return (
-    <div className="w-full flex items-center justify-center p-2 py-6">
-      <Suspense
-        fallback={
-          <div className="w-full max-w-md rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] p-12 text-center shadow-xs text-[#111111]">
-            <Loader2 className="w-8 h-8 text-[#111111] animate-spin mx-auto mb-2" />
-            <p className="text-xs text-[#6B6B6B] font-mono">Loading workspace...</p>
-          </div>
-        }
-      >
+    <div className="min-h-screen bg-[#07070B] text-white flex items-center justify-center p-4 relative overflow-hidden">
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
+      <Suspense fallback={<div className="text-white/40 font-mono text-xs">Loading...</div>}>
         <LoginForm />
       </Suspense>
     </div>

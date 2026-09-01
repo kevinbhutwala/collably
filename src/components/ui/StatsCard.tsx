@@ -24,33 +24,33 @@ export function StatsCard({
   return (
     <div
       className={cn(
-        "p-5 sm:p-6 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] hover:border-[#111111] shadow-xs hover:shadow-editorial transition-all duration-200 relative group overflow-hidden text-[#111111]",
+        "p-5 sm:p-6 rounded-3xl bg-[#0E0C15]/90 border border-white/10 hover:border-white/25 shadow-2xl backdrop-blur-xl transition-all duration-300 relative group overflow-hidden text-white",
         className
       )}
     >
       <div className="flex items-center justify-between relative z-10">
-        <p className="text-xs font-bold uppercase tracking-wider text-[#6B6B6B] font-mono">
+        <p className="text-[11px] font-bold uppercase tracking-wider text-white/60 font-mono">
           {title}
         </p>
         {icon && (
-          <div className="p-2 rounded-xl bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] shadow-xs">
+          <div className="p-2 rounded-xl bg-white/[0.06] border border-white/10 text-white shadow-xs group-hover:scale-105 transition-transform">
             {icon}
           </div>
         )}
       </div>
 
       <div className="mt-3.5 flex items-baseline justify-between gap-2 relative z-10">
-        <h3 className="text-2xl sm:text-3xl font-extrabold text-[#111111] tracking-tight font-mono">
+        <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display numeric-tabular">
           {value}
         </h3>
 
         {change && (
           <div
             className={cn(
-              "inline-flex items-center text-[11px] font-bold px-2 py-0.5 rounded-md font-mono shadow-xs",
-              trend === "up" && "bg-[#B7FF3C] text-[#111111] border border-[#9EE61C]",
-              trend === "down" && "bg-[#FEE2E2] text-[#991B1B] border border-[#FECACA]",
-              trend === "neutral" && "bg-[#FAFAF8] text-[#6B6B6B] border border-[#E7E7E4]"
+              "inline-flex items-center text-[10px] font-bold px-2 py-0.5 rounded-full font-mono shadow-xs",
+              trend === "up" && "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30",
+              trend === "down" && "bg-red-500/20 text-red-400 border border-red-500/30",
+              trend === "neutral" && "bg-white/10 text-white/70 border border-white/10"
             )}
           >
             {trend === "up" && <ArrowUpRight className="w-3 h-3 mr-0.5" />}
@@ -61,7 +61,7 @@ export function StatsCard({
       </div>
 
       {subtitle && (
-        <p className="mt-2 text-xs text-[#6B6B6B] font-medium font-sans relative z-10">
+        <p className="mt-2 text-xs text-white/50 font-normal font-sans relative z-10">
           {subtitle}
         </p>
       )}

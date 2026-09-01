@@ -10,17 +10,17 @@ export function ToastContainer() {
   const { toasts, removeToast } = useUIStore();
 
   const iconMap = {
-    success: <CheckCircle2 className="w-5 h-5 text-[#101010] shrink-0" />,
-    error: <AlertCircle className="w-5 h-5 text-[#FF3B30] shrink-0" />,
-    info: <Info className="w-5 h-5 text-[#101010] shrink-0" />,
-    warning: <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0" />,
+    success: <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />,
+    error: <AlertCircle className="w-5 h-5 text-red-400 shrink-0" />,
+    info: <Info className="w-5 h-5 text-[#2A5CFF] shrink-0" />,
+    warning: <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0" />,
   };
 
   const borderMap = {
-    success: "border-[#E7E7E4] bg-[#FFFFFF] text-[#101010]",
-    error: "border-[#FEE2E2] bg-[#FEF2F2] text-[#991B1B]",
-    info: "border-[#E7E7E4] bg-[#FFFFFF] text-[#101010]",
-    warning: "border-[#FEF3C7] bg-[#FFFBEB] text-[#92400E]",
+    success: "border-emerald-500/30 bg-[#0E0C15]/95 text-white",
+    error: "border-red-500/30 bg-[#160D12]/95 text-white",
+    info: "border-blue-500/30 bg-[#0E0C15]/95 text-white",
+    warning: "border-amber-500/30 bg-[#16120D]/95 text-white",
   };
 
   return (
@@ -34,18 +34,18 @@ export function ToastContainer() {
             exit={{ opacity: 0, x: 20, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 350, damping: 25 }}
             className={cn(
-              "p-4 rounded-xl border shadow-lg backdrop-blur-xl pointer-events-auto flex items-start gap-3",
+              "p-4 rounded-2xl border shadow-2xl backdrop-blur-xl pointer-events-auto flex items-start gap-3",
               borderMap[toast.type]
             )}
           >
             {iconMap[toast.type]}
             <div className="flex-1 min-w-0">
-              <h4 className="text-sm font-bold text-[#101010] font-display">{toast.title}</h4>
-              <p className="text-xs text-[#626262] mt-0.5 leading-relaxed font-sans">{toast.message}</p>
+              <h4 className="text-xs font-bold text-white font-display">{toast.title}</h4>
+              <p className="text-xs text-white/70 mt-0.5 leading-relaxed font-sans">{toast.message}</p>
             </div>
             <button
               onClick={() => removeToast(toast.id)}
-              className="text-[#626262] hover:text-[#101010] p-1 -mr-1 -mt-1 rounded-full hover:bg-[#FAFAF8] transition-colors"
+              className="text-white/50 hover:text-white p-1 -mr-1 -mt-1 rounded-full hover:bg-white/10 transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
