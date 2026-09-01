@@ -3,13 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Sparkles,
   Layers,
-  CheckCircle2,
-  ArrowRight,
-  TrendingUp,
-  DollarSign,
-  Users,
 } from "lucide-react";
 import { ScrollRevealText } from "@/components/collably/ScrollRevealText";
 
@@ -98,19 +92,19 @@ export function InteractiveIndustriesStage() {
   const [selectedInd, setSelectedInd] = useState(industries[0]);
 
   return (
-    <section className="py-24 sm:py-28 bg-slate-50/50 border-b border-slate-200 relative overflow-hidden select-none">
+    <section className="py-24 sm:py-28 bg-transparent border-b border-white/10 relative overflow-hidden select-none text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-orange-50 to-rose-50 border border-orange-200/80 text-xs font-mono font-bold text-brand-accent shadow-xs">
-            <Layers className="w-3.5 h-3.5 text-brand-accent" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-xs font-mono font-bold text-[hsl(327,100%,55%)] shadow-xs">
+            <Layers className="w-3.5 h-3.5 text-gold" />
             <span>12 • Multi-Category Expertise</span>
           </div>
 
           <ScrollRevealText
             as="h2"
             gradientWords={["tailored", "verticals", "collably"]}
-            className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight font-sans leading-tight"
+            className="text-3xl sm:text-5xl font-black text-white tracking-tight font-display leading-tight"
           >
             Built for high-performing industry verticals.
           </ScrollRevealText>
@@ -118,7 +112,7 @@ export function InteractiveIndustriesStage() {
           <ScrollRevealText
             as="p"
             gradientWords={["benchmarks", "rosters", "briefs"]}
-            className="text-sm sm:text-lg text-slate-600 font-sans max-w-2xl mx-auto leading-relaxed"
+            className="text-sm sm:text-lg text-slate-300 font-sans max-w-2xl mx-auto leading-relaxed"
           >
             Switch industries to preview dynamic campaign briefs, verified talent rosters, and performance benchmarks.
           </ScrollRevealText>
@@ -130,10 +124,10 @@ export function InteractiveIndustriesStage() {
             <button
               key={ind.id}
               onClick={() => setSelectedInd(ind)}
-              className={`px-4 py-2 rounded-2xl text-xs font-mono font-bold transition-all ${
+              className={`px-4 py-2 rounded-full text-xs font-mono font-bold transition-all ${
                 selectedInd.id === ind.id
-                  ? "bg-slate-900 text-white shadow-md scale-105"
-                  : "bg-white border border-slate-200 text-slate-700 hover:border-slate-300 shadow-xs"
+                  ? "bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white shadow-md shadow-pink-500/25 scale-105"
+                  : "bg-white/[0.04] border border-white/10 text-slate-300 hover:text-white hover:bg-white/[0.08] shadow-xs"
               }`}
             >
               {ind.name}
@@ -149,53 +143,53 @@ export function InteractiveIndustriesStage() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.3 }}
-            className="max-w-5xl mx-auto rounded-3xl bg-white border border-slate-200 shadow-card p-6 sm:p-10 space-y-8"
+            className="max-w-5xl mx-auto rounded-3xl bg-[#120c16] border border-white/10 shadow-card p-6 sm:p-10 space-y-8 text-white"
           >
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
               <div>
-                <span className="text-xs font-mono font-bold text-brand-accent uppercase">
+                <span className="text-xs font-mono font-bold text-[hsl(327,100%,55%)] uppercase">
                   {selectedInd.badge}
                 </span>
-                <h3 className="text-2xl sm:text-3xl font-black text-slate-900 font-sans">
+                <h3 className="text-2xl sm:text-3xl font-black text-white font-display">
                   {selectedInd.name} Campaign Matrix
                 </h3>
               </div>
-              <span className="px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 font-mono text-xs font-bold text-slate-800">
+              <span className="px-3.5 py-1.5 rounded-full bg-white/[0.05] border border-white/10 font-mono text-xs font-bold text-emerald-400">
                 Recommended Budget: {selectedInd.budget}
               </span>
             </div>
 
             {/* Campaign Brief Showcase */}
-            <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1.5">
               <span className="text-[10px] font-mono uppercase font-bold text-slate-400">SAMPLE CAMPAIGN BRIEF</span>
-              <p className="text-xs sm:text-sm text-slate-900 font-semibold leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-200 font-semibold leading-relaxed font-sans">
                 &ldquo;{selectedInd.brief}&rdquo;
               </p>
             </div>
 
             {/* Recommended Creator Lineup */}
             <div className="space-y-3">
-              <span className="text-xs font-mono uppercase font-bold text-slate-500 block">
+              <span className="text-xs font-mono uppercase font-bold text-slate-400 block">
                 MATCHED TALENT EXAMPLES
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {selectedInd.creators.map((c) => (
                   <div
                     key={c.name}
-                    className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs flex items-center justify-between"
+                    className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 shadow-xs flex items-center justify-between"
                   >
                     <div className="flex items-center gap-3">
                       <img
                         src={c.avatar}
                         alt={c.name}
-                        className="w-10 h-10 rounded-xl object-cover border border-slate-200"
+                        className="w-10 h-10 rounded-xl object-cover border border-white/10"
                       />
                       <div>
-                        <h4 className="text-xs font-bold text-slate-900 font-sans">{c.name}</h4>
-                        <span className="text-[11px] text-slate-500 font-mono">{c.followers} followers</span>
+                        <h4 className="text-xs font-bold text-white font-display">{c.name}</h4>
+                        <span className="text-[11px] text-slate-400 font-mono">{c.followers} followers</span>
                       </div>
                     </div>
-                    <span className="px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 font-mono font-bold text-xs">
+                    <span className="px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono font-bold text-xs">
                       {c.er} ER
                     </span>
                   </div>
@@ -204,18 +198,18 @@ export function InteractiveIndustriesStage() {
             </div>
 
             {/* Metrics Footer */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-100 font-mono text-xs">
-              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/70">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-white/10 font-mono text-xs">
+              <div className="p-3 rounded-xl bg-white/[0.03] border border-white/10">
                 <span className="text-slate-400 block text-[10px]">AVG ENGAGEMENT</span>
-                <span className="font-bold text-slate-900 text-sm">{selectedInd.avgER}</span>
+                <span className="font-bold text-white text-sm">{selectedInd.avgER}</span>
               </div>
-              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/70">
+              <div className="p-3 rounded-xl bg-white/[0.03] border border-white/10">
                 <span className="text-slate-400 block text-[10px]">EXPECTED ROI</span>
-                <span className="font-bold text-emerald-600 text-sm">{selectedInd.roi}</span>
+                <span className="font-bold text-emerald-400 text-sm">{selectedInd.roi}</span>
               </div>
-              <div className="col-span-2 sm:col-span-1 p-3 rounded-xl bg-slate-50 border border-slate-200/70">
+              <div className="col-span-2 sm:col-span-1 p-3 rounded-xl bg-white/[0.03] border border-white/10">
                 <span className="text-slate-400 block text-[10px]">TURNAROUND SLA</span>
-                <span className="font-bold text-slate-900 text-sm">&lt; 7 Days</span>
+                <span className="font-bold text-white text-sm">&lt; 7 Days</span>
               </div>
             </div>
           </motion.div>

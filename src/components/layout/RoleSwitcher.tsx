@@ -33,46 +33,46 @@ export function RoleSwitcher({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "inline-flex items-center p-1 bg-slate-100 border border-slate-200 rounded-xl shadow-inner",
+        "inline-flex items-center p-1 bg-white/[0.04] border border-white/10 rounded-full shadow-inner",
         className
       )}
     >
       <button
         onClick={() => handleRoleChange("creator")}
         className={cn(
-          "px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 flex items-center gap-1.5 select-none",
+          "px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 flex items-center gap-1.5 select-none",
           role === "creator"
-            ? "bg-white text-slate-900 shadow-sm border border-slate-200/80 font-bold"
-            : "text-slate-600 hover:text-slate-900"
+            ? "bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white shadow-md shadow-pink-500/25 font-bold"
+            : "text-slate-300 hover:text-white"
         )}
       >
-        <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+        <Sparkles className="w-3.5 h-3.5 text-gold" />
         <span>Creator</span>
       </button>
 
       <button
         onClick={() => handleRoleChange("brand")}
         className={cn(
-          "px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 flex items-center gap-1.5 select-none",
+          "px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 flex items-center gap-1.5 select-none",
           role === "brand"
-            ? "bg-white text-slate-900 shadow-sm border border-slate-200/80 font-bold"
-            : "text-slate-600 hover:text-slate-900"
+            ? "bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white shadow-md shadow-pink-500/25 font-bold"
+            : "text-slate-300 hover:text-white"
         )}
       >
-        <Building2 className="w-3.5 h-3.5 text-sky-600" />
+        <Building2 className="w-3.5 h-3.5 text-sky-400" />
         <span>Brand</span>
       </button>
 
       <button
         onClick={() => handleRoleChange("agency_admin")}
         className={cn(
-          "px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 flex items-center gap-1.5 select-none",
+          "px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 flex items-center gap-1.5 select-none",
           role === "agency_admin"
-            ? "bg-white text-slate-900 shadow-sm border border-slate-200/80 font-bold"
-            : "text-slate-600 hover:text-slate-900"
+            ? "bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white shadow-md shadow-pink-500/25 font-bold"
+            : "text-slate-300 hover:text-white"
         )}
       >
-        <ShieldAlert className="w-3.5 h-3.5 text-brand-accent" />
+        <ShieldAlert className="w-3.5 h-3.5 text-pink-400" />
         <span>Agency</span>
       </button>
     </div>

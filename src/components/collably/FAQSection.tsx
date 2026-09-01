@@ -43,17 +43,17 @@ export function FAQSection() {
   ];
 
   return (
-    <section className="py-28 bg-white border-b border-slate-200 relative overflow-hidden">
+    <section className="py-28 bg-transparent border-b border-white/10 relative overflow-hidden text-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         <div className="text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-orange-50 to-rose-50 border border-orange-200/80 text-xs font-mono font-bold text-brand-accent">
-            <HelpCircle className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-xs font-mono font-bold text-[hsl(327,100%,55%)]">
+            <HelpCircle className="w-3.5 h-3.5 text-gold" />
             <span>Operational &amp; Legal FAQ</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight font-sans">
+          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight font-display">
             Frequently asked questions.
           </h2>
-          <p className="text-sm sm:text-base text-slate-600 font-sans">
+          <p className="text-sm sm:text-base text-slate-300 font-sans">
             Everything you need to know about milestone protection, tax compliance, and automated payouts.
           </p>
         </div>
@@ -65,17 +65,17 @@ export function FAQSection() {
             return (
               <div
                 key={index}
-                className="rounded-2xl bg-slate-50 border border-slate-200/90 overflow-hidden transition-all duration-300"
+                className="rounded-2xl bg-[#120c16] border border-white/10 overflow-hidden transition-all duration-300"
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full p-6 text-left flex items-center justify-between gap-4 select-none hover:bg-slate-100/60 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between gap-4 select-none hover:bg-white/[0.04] transition-colors"
                 >
-                  <span className="text-base font-bold text-slate-900 tracking-tight font-sans">
+                  <span className="text-base font-bold text-white tracking-tight font-display">
                     {faq.q}
                   </span>
-                  <div className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center shrink-0 text-slate-600 shadow-xs">
-                    {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+                  <div className="w-8 h-8 rounded-full bg-white/[0.06] border border-white/10 flex items-center justify-center shrink-0 text-slate-300 shadow-xs">
+                    {isOpen ? <Minus className="w-4 h-4 text-pink-400" /> : <Plus className="w-4 h-4" />}
                   </div>
                 </button>
 
@@ -87,7 +87,7 @@ export function FAQSection() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.25 }}
                     >
-                      <div className="px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-200/60 pt-4 font-sans">
+                      <div className="px-6 pb-6 text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-4 font-sans">
                         {faq.a}
                       </div>
                     </motion.div>

@@ -6,7 +6,6 @@ import { CreatorProfile } from "@/core/types";
 import { CreatorCard } from "@/components/creators/CreatorCard";
 import { CreatorFilterPanel } from "@/components/creators/CreatorFilterPanel";
 import { Badge } from "@/components/ui/Badge";
-import { Sparkles, Users } from "lucide-react";
 
 export default function BrandCreatorDiscoveryPage() {
   const [creators, setCreators] = useState<CreatorProfile[]>([]);
@@ -20,20 +19,20 @@ export default function BrandCreatorDiscoveryPage() {
   }, []);
 
   return (
-    <div className="space-y-8">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-zinc-800">
+    <div className="space-y-8 text-white">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono font-bold uppercase text-brand-accent">
+            <span className="text-xs font-mono font-bold uppercase text-[hsl(327,100%,55%)]">
               Creator Roster
             </span>
-            <span className="text-zinc-600">•</span>
+            <span className="text-white/20">•</span>
             <Badge variant="glow" size="sm">Audited Demographics</Badge>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-white font-display tracking-tight">
             Discover Talent for Your Brand
           </h1>
-          <p className="text-xs sm:text-sm text-zinc-400 mt-0.5">
+          <p className="text-xs sm:text-sm text-slate-400 mt-0.5 font-sans">
             Directly invite verified creators or add them to your campaign shortlists.
           </p>
         </div>

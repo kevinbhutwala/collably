@@ -38,14 +38,14 @@ export function CollablyLogo({
   const logoIcon = (
     <div
       className={cn(
-        "relative flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-brand-accent/25 transition-all duration-300 shadow-md shadow-brand-accent/15",
-        "bg-gradient-to-tr from-brand-accent via-rose-500 to-amber-400 p-[1.5px]",
+        "relative flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-pink-500/25 transition-all duration-300 shadow-md shadow-pink-500/15",
+        "bg-gradient-to-tr from-[hsl(327,100%,50%)] via-pink-500 to-[hsl(300,100%,42%)] p-[1.5px]",
         iconSizes[size]
       )}
     >
-      <div className="w-full h-full bg-[#0B0F19] rounded-[inherit] flex items-center justify-center relative overflow-hidden">
-        {/* Ambient warm gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-accent/20 via-transparent to-amber-500/10 pointer-events-none" />
+      <div className="w-full h-full bg-[#0a070a] rounded-[inherit] flex items-center justify-center relative overflow-hidden">
+        {/* Ambient magenta glow */}
+        <div className="absolute inset-0 bg-gradient-to-br from-pink-500/20 via-transparent to-purple-500/10 pointer-events-none" />
 
         {/* Collably Interlocking 'C' Collaborative Emblem */}
         <svg
@@ -63,14 +63,14 @@ export function CollablyLogo({
           />
           {/* Inner spark node */}
           <circle cx="16" cy="16" r="3.2" fill="#FFFFFF" />
-          <circle cx="23" cy="10" r="2" fill="#FF4D00" />
-          <circle cx="23" cy="22" r="2" fill="#F59E0B" />
+          <circle cx="23" cy="10" r="2" fill="#FF007F" />
+          <circle cx="23" cy="22" r="2" fill="#D4AF37" />
 
           <defs>
             <linearGradient id="collablyGrad" x1="6" y1="6" x2="26" y2="26" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#FF4D00" />
-              <stop offset="0.5" stopColor="#F43F5E" />
-              <stop offset="1" stopColor="#F59E0B" />
+              <stop stopColor="#FF007F" />
+              <stop offset="0.5" stopColor="#B300B3" />
+              <stop offset="1" stopColor="#D4AF37" />
             </linearGradient>
           </defs>
         </svg>
@@ -96,20 +96,20 @@ export function CollablyLogo({
         <div className="flex items-center gap-1.5">
           <span
             className={cn(
-              "font-black text-slate-900 leading-none font-sans flex items-center tracking-tight",
+              "font-extrabold text-white leading-none font-display flex items-center tracking-tight",
               textSizes[size]
             )}
           >
             Collably
           </span>
           {showTag && (
-            <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded-md bg-brand-accent/10 text-brand-accent border border-brand-accent/20 font-bold tracking-wider leading-none">
+            <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded-full bg-pink-500/15 text-pink-300 border border-pink-500/30 font-bold tracking-wider leading-none">
               PRO
             </span>
           )}
         </div>
         {subtext && variant !== "minimal" && (
-          <span className="text-[11px] text-slate-500 font-medium tracking-tight mt-0.5 leading-none hidden sm:inline font-sans">
+          <span className="text-[11px] text-slate-400 font-medium tracking-tight mt-0.5 leading-none hidden sm:inline font-sans">
             {subtext}
           </span>
         )}

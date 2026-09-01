@@ -1,19 +1,15 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import { campaignService } from "@/services/campaign.service";
 import { Campaign, CreatorCategory } from "@/core/types";
-import { useAuthStore } from "@/stores/auth.store";
 import { CATEGORIES } from "@/core/constants";
 import { CampaignCard } from "@/components/campaigns/CampaignCard";
 import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
 import { Search, Compass } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function AppCampaignsPage() {
-  const { currentCreator } = useAuthStore();
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<CreatorCategory | "all">("all");
   const [searchQuery, setSearchQuery] = useState("");
@@ -33,21 +29,21 @@ export default function AppCampaignsPage() {
   }, [selectedCategory, searchQuery]);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 text-white">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono font-bold uppercase text-brand-accent">
+            <span className="text-xs font-mono font-bold uppercase text-[hsl(327,100%,55%)]">
               Creator Marketplace
             </span>
-            <span className="text-slate-300">•</span>
+            <span className="text-white/20">•</span>
             <Badge variant="glow" size="sm">Escrow Backed</Badge>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-white font-display tracking-tight">
             Discover Campaign Briefs
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-slate-400 mt-0.5 font-sans">
             Apply to verified brand briefs with customized creative pitches and guaranteed escrow milestones.
           </p>
         </div>
@@ -59,10 +55,10 @@ export default function AppCampaignsPage() {
           <button
             onClick={() => setSelectedCategory("all")}
             className={cn(
-              "px-4 py-2 rounded-xl text-xs font-medium transition-all select-none whitespace-nowrap",
+              "px-4 py-2 rounded-full text-xs font-medium transition-all select-none whitespace-nowrap",
               selectedCategory === "all"
-                ? "bg-slate-900 text-white font-bold shadow-sm"
-                : "bg-white text-slate-600 hover:text-slate-900 border border-slate-200"
+                ? "bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white font-bold shadow-md shadow-pink-500/25"
+                : "bg-white/[0.04] text-slate-300 hover:text-white hover:bg-white/[0.08] border border-white/10"
             )}
           >
             All Categories
@@ -72,10 +68,10 @@ export default function AppCampaignsPage() {
               key={cat}
               onClick={() => setSelectedCategory(cat)}
               className={cn(
-                "px-4 py-2 rounded-xl text-xs font-medium transition-all select-none whitespace-nowrap",
+                "px-4 py-2 rounded-full text-xs font-medium transition-all select-none whitespace-nowrap",
                 selectedCategory === cat
-                  ? "bg-slate-900 text-white font-bold shadow-sm"
-                  : "bg-white text-slate-600 hover:text-slate-900 border border-slate-200"
+                  ? "bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white font-bold shadow-md shadow-pink-500/25"
+                  : "bg-white/[0.04] text-slate-300 hover:text-white hover:bg-white/[0.08] border border-white/10"
               )}
             >
               {cat}
@@ -90,7 +86,7 @@ export default function AppCampaignsPage() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search campaigns, brands..."
-            className="w-full bg-white border border-slate-200 rounded-xl pl-9 pr-4 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-slate-400 transition-all shadow-sm"
+            className="w-full bg-white/[0.05] border border-white/10 rounded-full pl-9 pr-4 py-2 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-pink-500/50 transition-all shadow-sm"
           />
         </div>
       </div>
@@ -98,12 +94,12 @@ export default function AppCampaignsPage() {
       {/* Grid */}
       {loading ? (
         <div className="py-24 text-center">
-          <div className="w-8 h-8 rounded-full border-2 border-brand-accent border-t-transparent animate-spin mx-auto" />
+          <div className="w-8 h-8 rounded-full border-2 border-[hsl(327,100%,50%)] border-t-transparent animate-spin mx-auto" />
         </div>
       ) : campaigns.length === 0 ? (
-        <div className="py-24 text-center rounded-3xl bg-white border border-slate-200 p-8 space-y-3 shadow-card">
-          <Compass className="w-8 h-8 text-slate-400 mx-auto" />
-          <h3 className="text-base font-bold text-slate-800">No campaigns found</h3>
+        <div className="py-24 text-center rounded-3xl bg-[#120c16] border border-white/10 p-8 space-y-3 shadow-card">
+          <Compass className="w-8 h-8 text-slate-500 mx-auto" />
+          <h3 className="text-base font-bold text-slate-300 font-display">No campaigns found</h3>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

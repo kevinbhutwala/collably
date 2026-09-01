@@ -19,11 +19,11 @@ export function SignatureTransformScroll() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[100vh] sm:min-h-[120vh] flex flex-col justify-center items-center overflow-hidden bg-slate-50/60 border-b border-slate-200 select-none py-16 sm:py-20"
+      className="relative min-h-[100vh] sm:min-h-[120vh] flex flex-col justify-center items-center overflow-hidden bg-transparent border-b border-white/10 select-none py-16 sm:py-20 text-white"
     >
-      {/* Warm Ambient Glow */}
+      {/* Ambient Glow */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[320px] sm:w-[600px] lg:w-[900px] h-[300px] sm:h-[400px] bg-gradient-radial from-orange-200/60 via-rose-200/40 to-transparent blur-[100px] sm:blur-[140px]" />
+        <div className="w-[320px] sm:w-[600px] lg:w-[900px] h-[300px] sm:h-[400px] bg-gradient-radial from-[hsl(327,100%,50%)]/20 via-[hsl(300,100%,42%)]/15 to-transparent blur-[100px] sm:blur-[140px]" />
       </div>
 
       <div className="sticky top-1/4 w-full max-w-7xl mx-auto px-4 text-center space-y-4 sm:space-y-6">
@@ -31,9 +31,9 @@ export function SignatureTransformScroll() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-[11px] sm:text-xs font-mono text-slate-700 shadow-xs"
+          className="inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 rounded-full bg-pink-500/15 border border-pink-500/30 text-[11px] sm:text-xs font-mono text-white shadow-xs"
         >
-          <ShieldCheck className="w-3.5 h-3.5 text-brand-accent shrink-0" />
+          <ShieldCheck className="w-3.5 h-3.5 text-[hsl(327,100%,55%)] shrink-0" />
           <span>The Zero-Risk Collaboration Standard</span>
         </motion.div>
 
@@ -42,7 +42,7 @@ export function SignatureTransformScroll() {
           {/* Word 1: COLLABORATION */}
           <motion.h2
             style={{ opacity: opacityCollab }}
-            className="absolute text-3xl xs:text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter text-slate-300 font-sans px-2"
+            className="absolute text-3xl xs:text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter text-white/20 font-display px-2"
           >
             COLLABORATION
           </motion.h2>
@@ -50,7 +50,7 @@ export function SignatureTransformScroll() {
           {/* Word 2: PAYOUT GUARANTEE */}
           <motion.h2
             style={{ opacity: opacityProtection }}
-            className="absolute text-2xl xs:text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter bg-gradient-to-r from-brand-accent via-rose-500 to-amber-500 bg-clip-text text-transparent drop-shadow-xs font-sans px-2"
+            className="absolute text-2xl xs:text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter bg-gradient-to-r from-[hsl(327,100%,50%)] via-pink-400 to-[hsl(300,100%,42%)] bg-clip-text text-transparent drop-shadow-xs font-display px-2"
           >
             MILESTONE ESCROW
           </motion.h2>
@@ -64,10 +64,10 @@ export function SignatureTransformScroll() {
           viewport={{ once: true }}
           className="max-w-2xl mx-auto space-y-2 sm:space-y-3 pt-2 sm:pt-4 px-2"
         >
-          <h3 className="text-xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight font-sans">
+          <h3 className="text-xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight font-display">
             Collably protects both sides.
           </h3>
-          <p className="text-xs sm:text-base text-slate-600 leading-relaxed font-sans">
+          <p className="text-xs sm:text-base text-slate-300 leading-relaxed font-sans">
             Brands never release funds until the deliverable matches the brief. Creators never start filming until funds are safely held in milestone protection.
           </p>
         </motion.div>

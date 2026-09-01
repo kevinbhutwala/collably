@@ -1,19 +1,15 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import {
   Play,
   Pause,
   CheckCircle2,
-  Video,
   Clock,
   Volume2,
   VolumeX,
-  Maximize2,
   RotateCcw,
   Sparkles,
-  MessageSquare,
-  Layers,
   ShieldCheck,
 } from "lucide-react";
 import confetti from "canvas-confetti";
@@ -58,97 +54,97 @@ export function VideoReviewDemo() {
     {
       timeSec: 55,
       timecode: "00:55",
-      author: "Elena Rostova (Lead Creator)",
-      role: "Verified Creator",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=160&auto=format&fit=crop&q=80",
-      tag: "FTC Disclosure",
-      text: "Verified FTC audio tag & visual '#ad' watermark added. Ready for final commercial sign-off.",
-      box: { top: "15%", left: "15%", width: "70%", height: "60%" },
+      author: "David Ross (Product Marketing)",
+      role: "Legal & Compliance",
+      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=160&auto=format&fit=crop&q=80",
+      tag: "FTC Sponsorship Tag",
+      text: "FTC #ad disclosure is clearly legible in the top right corner. 100% compliant.",
+      box: { top: "10%", left: "70%", width: "25%", height: "20%" },
     },
   ];
-
-  const handleTogglePlay = () => {
-    if (!videoRef.current) return;
-    if (isPlaying) {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    } else {
-      videoRef.current.play().catch(() => {});
-      setIsPlaying(true);
-    }
-  };
-
-  const handleSeek = (timeSec: number, index: number) => {
-    if (videoRef.current) {
-      videoRef.current.currentTime = timeSec;
-      setCurrentTimeSec(timeSec);
-    }
-    setActiveCommentIndex(index);
-  };
 
   const handleTimeUpdate = () => {
     if (videoRef.current) {
       setCurrentTimeSec(videoRef.current.currentTime);
-      if (videoRef.current.duration) {
-        setDuration(videoRef.current.duration);
+      setDuration(videoRef.current.duration || 60);
+    }
+  };
+
+  const handleSeek = (timeSec: number, commentIndex: number) => {
+    setActiveCommentIndex(commentIndex);
+    if (videoRef.current) {
+      videoRef.current.currentTime = timeSec;
+      setCurrentTimeSec(timeSec);
+    }
+  };
+
+  const handleTogglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play().catch(() => {});
       }
+      setIsPlaying(!isPlaying);
     }
   };
 
   const handleApprove = () => {
     setApproved(true);
-    confetti({
-      particleCount: 120,
-      spread: 80,
-      origin: { y: 0.6 },
-      colors: ["#FF5E3A", "#F43F5E", "#10B981", "#FBBF24", "#6366F1"],
-    });
+    try {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ["#ff007f", "#b300b3", "#d4af37", "#10b981", "#ffffff"],
+      });
+    } catch {
+      // fallback if canvas-confetti is not loaded
+    }
   };
 
-  const formatTime = (secs: number) => {
-    const m = Math.floor(secs / 60);
-    const s = Math.floor(secs % 60);
-    return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
   };
 
   return (
-    <section className="py-24 sm:py-32 bg-white border-b border-slate-200 relative overflow-hidden select-none">
-      {/* Ambient Radial Mesh Background */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[900px] h-[350px] sm:h-[550px] bg-gradient-radial from-orange-200/35 via-rose-100/20 to-transparent blur-[130px] pointer-events-none" />
+    <section className="py-24 sm:py-36 bg-transparent border-b border-white/10 relative overflow-hidden select-none text-white">
+      {/* Background Ambient Glow */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[950px] h-[350px] sm:h-[600px] bg-gradient-radial from-[hsl(327,100%,50%)]/15 via-[hsl(300,100%,42%)]/10 to-transparent blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-orange-50 to-rose-50 border border-orange-200/80 text-xs font-mono font-bold text-brand-accent shadow-xs">
-              <Video className="w-3.5 h-3.5" />
-              <span>Interactive 4K Video Review Studio</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-xs font-mono font-bold text-[hsl(327,100%,55%)] shadow-xs">
+              <Sparkles className="w-3.5 h-3.5 text-gold" />
+              <span>Frame-Accurate Video Review Engine</span>
             </div>
-
             <ScrollRevealText
               as="h2"
-              gradientWords={["frame-accurate", "video", "reviews"]}
-              className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight font-display leading-tight"
+              gradientWords={["frame-accurate", "video", "review", "collably"]}
+              className="text-3xl sm:text-5xl font-black text-white tracking-tight font-display leading-tight"
             >
-              Frame-accurate deliverable reviews.
+              Timecoded feedback directly on 4K footage.
             </ScrollRevealText>
-
             <ScrollRevealText
               as="p"
-              gradientWords={["timecoded", "version", "one-click", "payout"]}
-              className="text-sm sm:text-base text-slate-600 font-sans leading-relaxed"
+              gradientWords={["eliminate", "lost", "emails", "instant", "approval"]}
+              className="text-sm sm:text-base text-slate-300 font-sans leading-relaxed"
             >
-              Review 4K video drafts with timecoded notes, instant frame inspection, and one-click milestone payout approval.
+              Click anywhere on the video player scrub bar to anchor feedback pins. When revisions pass QA, 1-click approves and triggers escrow disbursement.
             </ScrollRevealText>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 shrink-0">
             <button
               onClick={() => {
                 setApproved(false);
-                handleSeek(42, 1);
+                handleSeek(14, 0);
               }}
-              className="px-4 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono font-bold text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-all shadow-xs flex items-center gap-1.5"
+              className="px-4 py-2 rounded-full bg-white/[0.05] border border-white/10 text-xs font-mono font-bold text-slate-200 hover:text-white hover:bg-white/10 transition-all shadow-xs flex items-center gap-1.5"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Reset Review Demo</span>
@@ -159,22 +155,22 @@ export function VideoReviewDemo() {
         {/* Video Player Canvas */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left: Interactive 4K Video Review Studio Frame */}
-          <div className="lg:col-span-7 rounded-3xl bg-white border border-slate-200/90 p-5 sm:p-7 space-y-5 shadow-elevated relative overflow-hidden">
+          <div className="lg:col-span-7 rounded-3xl bg-[#120c16] border border-white/10 p-5 sm:p-7 space-y-5 shadow-elevated relative overflow-hidden text-white">
             {/* Player Studio Header */}
-            <div className="flex items-center justify-between pb-3.5 border-b border-slate-100 text-xs font-mono">
+            <div className="flex items-center justify-between pb-3.5 border-b border-white/10 text-xs font-mono">
               <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-slate-900 font-bold font-display">Elena Rostova • AI Smartwatch Review</span>
-                <span className="text-slate-300 hidden sm:inline">•</span>
-                <span className="text-slate-500 hidden sm:inline">Cut v2 (4K ProRes)</span>
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="text-white font-bold font-display">Elena Rostova • AI Smartwatch Review</span>
+                <span className="text-white/20 hidden sm:inline">•</span>
+                <span className="text-slate-400 hidden sm:inline">Cut v2 (4K ProRes)</span>
               </div>
-              <span className="px-2 py-0.5 rounded-md bg-orange-50 border border-orange-200 text-brand-accent font-bold text-[10px]">
+              <span className="px-2.5 py-0.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-[hsl(327,100%,55%)] font-bold text-[10px]">
                 3840×2160 • 60 FPS
               </span>
             </div>
 
             {/* Video Stage with Real HTML5 Video */}
-            <div className="relative aspect-video rounded-2xl bg-slate-950 border border-slate-900 overflow-hidden group shadow-inner">
+            <div className="relative aspect-video rounded-2xl bg-black border border-white/10 overflow-hidden group shadow-inner">
               <video
                 ref={videoRef}
                 src={videoSrc}
@@ -193,10 +189,10 @@ export function VideoReviewDemo() {
               {/* Active Timestamp Annotation Frame Overlay */}
               {comments[activeCommentIndex] && (
                 <div
-                  className="absolute border-2 border-brand-accent bg-brand-accent/15 rounded-xl transition-all duration-300 pointer-events-none flex items-start justify-end p-2"
+                  className="absolute border-2 border-[hsl(327,100%,50%)] bg-pink-500/20 rounded-xl transition-all duration-300 pointer-events-none flex items-start justify-end p-2"
                   style={comments[activeCommentIndex].box}
                 >
-                  <span className="px-2 py-0.5 rounded-md bg-brand-accent text-white font-mono text-[9px] font-bold shadow-md">
+                  <span className="px-2.5 py-0.5 rounded-full bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white font-mono text-[9px] font-bold shadow-md shadow-pink-500/30">
                     @{comments[activeCommentIndex].timecode} {comments[activeCommentIndex].tag}
                   </span>
                 </div>
@@ -205,7 +201,7 @@ export function VideoReviewDemo() {
               {/* Top HUD Controls */}
               <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10 font-mono text-[11px]">
                 <span className="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-white border border-white/15 font-bold flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5 text-brand-accent" />
+                  <Clock className="w-3.5 h-3.5 text-[hsl(327,100%,55%)]" />
                   <span>TIMECODE: {formatTime(currentTimeSec)}</span>
                 </span>
 
@@ -246,7 +242,7 @@ export function VideoReviewDemo() {
                   className="w-full bg-white/25 hover:bg-white/35 h-2 rounded-full overflow-hidden relative cursor-pointer transition-colors"
                 >
                   <div
-                    className="bg-gradient-to-r from-brand-accent via-rose-500 to-amber-500 h-full transition-all"
+                    className="bg-gradient-to-r from-[hsl(327,100%,50%)] via-pink-400 to-[hsl(300,100%,42%)] h-full transition-all"
                     style={{
                       width: `${((currentTimeSec / (duration || 60)) * 100).toFixed(1)}%`,
                     }}
@@ -278,16 +274,16 @@ export function VideoReviewDemo() {
             {/* 1-Click Approve Escrow Payout Button */}
             <div className="pt-2">
               {approved ? (
-                <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs font-mono flex items-center justify-between shadow-xs">
+                <div className="p-4 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-mono flex items-center justify-between shadow-xs">
                   <span className="font-bold flex items-center gap-2 font-display">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600" /> Milestone Approved! $2,880 Disbursed to Elena Rostova.
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400" /> Milestone Approved! $2,880 Disbursed to Elena Rostova.
                   </span>
-                  <span className="text-emerald-800 font-extrabold font-mono">STATUS: DISBURSED</span>
+                  <span className="text-emerald-300 font-extrabold font-mono">STATUS: DISBURSED</span>
                 </div>
               ) : (
                 <button
                   onClick={handleApprove}
-                  className="w-full py-4 rounded-2xl bg-gradient-to-r from-brand-accent via-rose-500 to-amber-500 hover:opacity-95 text-white font-bold text-sm shadow-xl shadow-brand-accent/25 flex items-center justify-center gap-2 transition-all font-display tracking-tight"
+                  className="w-full py-4 rounded-full bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] hover:brightness-110 text-white font-bold text-sm shadow-xl shadow-pink-500/25 flex items-center justify-center gap-2 transition-all font-display tracking-tight"
                 >
                   <CheckCircle2 className="w-4 h-4" />
                   <span>1-Click Approve Deliverable &amp; Release Escrow Payout ($3,200)</span>
@@ -298,11 +294,11 @@ export function VideoReviewDemo() {
 
           {/* Right: Timecoded Review Comments Stream (Interactive Jump Links) */}
           <div className="lg:col-span-5 space-y-4">
-            <div className="flex items-center justify-between text-xs font-mono text-slate-500 pb-1">
-              <span className="text-slate-900 font-bold uppercase font-display">
+            <div className="flex items-center justify-between text-xs font-mono text-slate-400 pb-1">
+              <span className="text-white font-bold uppercase font-display">
                 Timecoded Review Annotations
               </span>
-              <span className="text-brand-accent font-bold">Click Note to Seek &rarr;</span>
+              <span className="text-[hsl(327,100%,55%)] font-bold">Click Note to Seek &rarr;</span>
             </div>
 
             <div className="space-y-3">
@@ -314,8 +310,8 @@ export function VideoReviewDemo() {
                     onClick={() => handleSeek(c.timeSec, i)}
                     className={`p-4 sm:p-5 rounded-2xl border transition-all duration-300 cursor-pointer select-none ${
                       isActive
-                        ? "bg-white border-brand-accent shadow-md shadow-brand-accent/15 scale-102"
-                        : "bg-white border-slate-200/90 hover:border-slate-300 shadow-xs hover:bg-slate-50/50"
+                        ? "bg-[#160f1c] border-[hsl(327,100%,50%)] shadow-md shadow-pink-500/20 scale-102"
+                        : "bg-[#120c16] border-white/10 hover:border-pink-500/30 shadow-xs hover:bg-white/[0.04]"
                     }`}
                   >
                     <div className="flex items-center justify-between mb-2">
@@ -323,24 +319,24 @@ export function VideoReviewDemo() {
                         <img
                           src={c.avatar}
                           alt={c.author}
-                          className="w-8 h-8 rounded-full object-cover border border-slate-200"
+                          className="w-8 h-8 rounded-full object-cover border border-white/10"
                         />
                         <div>
-                          <h4 className="text-xs font-bold text-slate-900 font-display">{c.author}</h4>
+                          <h4 className="text-xs font-bold text-white font-display">{c.author}</h4>
                           <span className="text-[10px] text-slate-400 font-mono block">{c.role}</span>
                         </div>
                       </div>
 
-                      <span className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold border ${
+                      <span className={`px-2.5 py-1 rounded-full text-xs font-mono font-bold border ${
                         isActive
-                          ? "bg-orange-50 text-brand-accent border-orange-200"
-                          : "bg-slate-50 text-slate-600 border-slate-200"
+                          ? "bg-pink-500/20 text-[hsl(327,100%,55%)] border-pink-500/40"
+                          : "bg-white/[0.04] text-slate-300 border-white/10"
                       }`}>
                         @{c.timecode}
                       </span>
                     </div>
 
-                    <p className="text-xs text-slate-700 font-sans leading-relaxed pl-10">
+                    <p className="text-xs text-slate-300 font-sans leading-relaxed pl-10">
                       &ldquo;{c.text}&rdquo;
                     </p>
                   </div>

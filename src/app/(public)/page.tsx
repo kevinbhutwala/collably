@@ -24,7 +24,7 @@ export default function CollablyLandingPage() {
   return (
     <SmoothScroll>
       <AmbientBackground />
-      <div className="relative min-h-screen bg-transparent text-slate-900 font-sans selection:bg-brand-accent/20 selection:text-brand-accent overflow-x-hidden">
+      <div className="relative min-h-screen bg-transparent text-white font-sans selection:bg-pink-500/25 selection:text-pink-300 overflow-x-hidden">
         {/* 01, 02 & 03 — Editorial Hero with Masked Reveal & Live Miniature Product Ecosystem */}
         <HeroSection />
 

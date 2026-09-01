@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Building2, Video, Sparkles, CheckCircle2, Lock, ArrowRight, Zap } from "lucide-react";
+import { Building2, Video, Sparkles } from "lucide-react";
 import { ScrollRevealText } from "@/components/collably/ScrollRevealText";
 
 export function SignatureConnection() {
@@ -35,23 +35,23 @@ export function SignatureConnection() {
   return (
     <section
       ref={containerRef}
-      className="py-24 sm:py-36 bg-gradient-to-b from-white via-slate-50/80 to-white border-y border-slate-200 relative overflow-hidden select-none"
+      className="py-24 sm:py-36 bg-transparent border-y border-white/10 relative overflow-hidden select-none text-white"
     >
       {/* Background Radial Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[800px] h-[350px] sm:h-[500px] bg-gradient-radial from-orange-200/50 via-rose-200/30 to-transparent blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[800px] h-[350px] sm:h-[500px] bg-gradient-radial from-[hsl(327,100%,50%)]/15 via-[hsl(300,100%,42%)]/10 to-transparent blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-20 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-orange-50 via-rose-50 to-pink-50 border border-orange-200/80 text-xs font-mono font-bold text-brand-accent shadow-xs">
-            <Sparkles className="w-3.5 h-3.5 text-brand-accent animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-xs font-mono font-bold text-[hsl(327,100%,55%)] shadow-xs">
+            <Sparkles className="w-3.5 h-3.5 text-gold animate-pulse" />
             <span>The Signature Collably Connection</span>
           </div>
 
           <ScrollRevealText
             as="h2"
             gradientWords={["two", "sides", "one", "workspace", "collably"]}
-            className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight font-sans leading-tight"
+            className="text-3xl sm:text-5xl font-black text-white tracking-tight font-display leading-tight"
           >
             Two sides. One seamless workspace.
           </ScrollRevealText>
@@ -59,7 +59,7 @@ export function SignatureConnection() {
           <ScrollRevealText
             as="p"
             gradientWords={["chaos", "clarity", "milestone", "protection"]}
-            className="text-sm sm:text-lg text-slate-600 font-sans max-w-2xl mx-auto leading-relaxed"
+            className="text-sm sm:text-lg text-slate-300 font-sans max-w-2xl mx-auto leading-relaxed"
           >
             Watch how brand capital and creator talent converge through automated milestone protection.
           </ScrollRevealText>
@@ -70,41 +70,41 @@ export function SignatureConnection() {
           {/* Animated Horizontal Laser Connecting Line */}
           <motion.div
             style={{ scaleX: lineScaleX }}
-            className="absolute h-1 w-full max-w-4xl bg-gradient-to-r from-brand-accent via-rose-500 to-indigo-600 rounded-full shadow-lg shadow-brand-accent/30 pointer-events-none"
+            className="absolute h-1 w-full max-w-4xl bg-gradient-to-r from-[hsl(327,100%,50%)] via-pink-400 to-[hsl(300,100%,42%)] rounded-full shadow-lg shadow-pink-500/30 pointer-events-none"
           />
 
           {/* Left: BRAND Node */}
           <motion.div
             style={{ x: brandX }}
-            className="absolute left-4 sm:left-12 z-20 w-64 sm:w-80 p-5 sm:p-6 rounded-3xl bg-white border border-slate-200/90 shadow-card hover:shadow-elevated transition-shadow"
+            className="absolute left-4 sm:left-12 z-20 w-64 sm:w-80 p-5 sm:p-6 rounded-3xl bg-[#120c16] border border-white/10 shadow-card hover:border-pink-500/40 transition-all text-white"
           >
-            <div className="flex items-center justify-between mb-3 pb-2 border-b border-slate-100">
+            <div className="flex items-center justify-between mb-3 pb-2 border-b border-white/10">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-xs font-mono">
+                <div className="w-8 h-8 rounded-xl bg-pink-500/15 border border-pink-500/30 text-[hsl(327,100%,55%)] flex items-center justify-center font-bold text-xs font-mono">
                   <Building2 className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="text-xs font-black text-slate-900">THE BRAND</h3>
+                  <h3 className="text-xs font-black text-white font-display">THE BRAND</h3>
                   <span className="text-[10px] font-mono text-slate-400">Marketing &amp; Growth</span>
                 </div>
               </div>
-              <span className="px-2 py-0.5 rounded-md bg-orange-50 border border-orange-200 text-brand-accent font-mono text-[10px] font-bold">
+              <span className="px-2 py-0.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-[hsl(327,100%,55%)] font-mono text-[10px] font-bold">
                 $28,500 Locked
               </span>
             </div>
 
-            <p className="text-xs text-slate-600 mb-3 font-sans">
+            <p className="text-xs text-slate-300 mb-3 font-sans leading-relaxed">
               Looking for 10 verified creators for product launch. Zero manual outreach or invoice overhead.
             </p>
 
-            <div className="space-y-1 text-[10px] font-mono text-slate-500 bg-slate-50 p-2.5 rounded-xl">
+            <div className="space-y-1 text-[10px] font-mono text-slate-300 bg-white/[0.04] p-2.5 rounded-xl border border-white/5">
               <div className="flex justify-between">
-                <span>Milestone Status:</span>
-                <span className="font-bold text-emerald-600">Funded in Escrow</span>
+                <span className="text-slate-400">Milestone Status:</span>
+                <span className="font-bold text-emerald-400">Funded in Escrow</span>
               </div>
               <div className="flex justify-between">
-                <span>Usage Rights:</span>
-                <span className="font-bold text-slate-900">Commercial 12-Mo</span>
+                <span className="text-slate-400">Usage Rights:</span>
+                <span className="font-bold text-white">Commercial 12-Mo</span>
               </div>
             </div>
           </motion.div>
@@ -112,22 +112,22 @@ export function SignatureConnection() {
           {/* Center: COLLABLY Fusion Core */}
           <motion.div
             style={{ scale: coreScale, opacity: coreOpacity }}
-            className="relative z-30 w-32 h-32 sm:w-40 sm:h-40 rounded-3xl bg-white border-2 border-brand-accent shadow-2xl shadow-brand-accent/25 flex flex-col items-center justify-center text-center p-3"
+            className="relative z-30 w-32 h-32 sm:w-40 sm:h-40 rounded-3xl bg-[#120c16] border-2 border-[hsl(327,100%,50%)] shadow-2xl shadow-pink-500/25 flex flex-col items-center justify-center text-center p-3 text-white"
           >
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-              className="absolute -inset-2 rounded-3xl border border-dashed border-brand-accent/40 pointer-events-none"
+              className="absolute -inset-2 rounded-3xl border border-dashed border-[hsl(327,100%,50%)]/40 pointer-events-none"
             />
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-accent via-rose-500 to-amber-500 p-[1.5px] mb-1.5 flex items-center justify-center shadow-md">
-              <div className="w-full h-full bg-slate-950 rounded-[inherit] flex items-center justify-center">
-                <Sparkles className="w-5 h-5 text-amber-300 animate-pulse" />
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] p-[1.5px] mb-1.5 flex items-center justify-center shadow-md shadow-pink-500/30">
+              <div className="w-full h-full bg-[#0a070a] rounded-[inherit] flex items-center justify-center">
+                <Sparkles className="w-5 h-5 text-gold animate-pulse" />
               </div>
             </div>
-            <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-slate-900 font-sans">
+            <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-white font-display">
               Collably
             </span>
-            <span className="text-[9px] font-mono font-bold text-emerald-600">
+            <span className="text-[9px] font-mono font-bold text-emerald-400">
               TRUST ENGINE
             </span>
           </motion.div>
@@ -135,54 +135,54 @@ export function SignatureConnection() {
           {/* Right: CREATOR Node */}
           <motion.div
             style={{ x: creatorX }}
-            className="absolute right-4 sm:right-12 z-20 w-64 sm:w-80 p-5 sm:p-6 rounded-3xl bg-white border border-slate-200/90 shadow-card hover:shadow-elevated transition-shadow"
+            className="absolute right-4 sm:right-12 z-20 w-64 sm:w-80 p-5 sm:p-6 rounded-3xl bg-[#120c16] border border-white/10 shadow-card hover:border-pink-500/40 transition-all text-white"
           >
-            <div className="flex items-center justify-between mb-3 pb-2 border-b border-slate-100">
+            <div className="flex items-center justify-between mb-3 pb-2 border-b border-white/10">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-brand-accent to-pink-500 text-white flex items-center justify-center font-bold text-xs">
+                <div className="w-8 h-8 rounded-xl bg-purple-500/15 border border-purple-500/30 text-purple-300 flex items-center justify-center font-bold text-xs">
                   <Video className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="text-xs font-black text-slate-900">THE CREATOR</h3>
+                  <h3 className="text-xs font-black text-white font-display">THE CREATOR</h3>
                   <span className="text-[10px] font-mono text-slate-400">Verified Talent</span>
                 </div>
               </div>
-              <span className="px-2 py-0.5 rounded-md bg-emerald-50 border border-emerald-200 text-emerald-700 font-mono text-[10px] font-bold">
+              <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono text-[10px] font-bold">
                 90% Net Payout
               </span>
             </div>
 
-            <p className="text-xs text-slate-600 mb-3 font-sans">
+            <p className="text-xs text-slate-300 mb-3 font-sans leading-relaxed">
               Creates 4K frame-accurate content. Funds guaranteed in escrow before recording a single second.
             </p>
 
-            <div className="space-y-1 text-[10px] font-mono text-slate-500 bg-slate-50 p-2.5 rounded-xl">
+            <div className="space-y-1 text-[10px] font-mono text-slate-300 bg-white/[0.04] p-2.5 rounded-xl border border-white/5">
               <div className="flex justify-between">
-                <span>Disbursement:</span>
-                <span className="font-bold text-emerald-600">&lt; 24h via Stripe</span>
+                <span className="text-slate-400">Disbursement:</span>
+                <span className="font-bold text-emerald-400">&lt; 24h via Stripe</span>
               </div>
               <div className="flex justify-between">
-                <span>Invoice Chasing:</span>
-                <span className="font-bold text-brand-accent">0 Days</span>
+                <span className="text-slate-400">Invoice Chasing:</span>
+                <span className="font-bold text-[hsl(327,100%,55%)]">0 Days</span>
               </div>
             </div>
           </motion.div>
         </div>
 
         {/* 7-Step Convergence Horizontal Track */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 pt-6 border-t border-slate-200/80">
-          {stages.map((st, i) => (
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 pt-6 border-t border-white/10">
+          {stages.map((st) => (
             <div
               key={st.num}
-              className="p-3 rounded-2xl bg-white border border-slate-200/90 hover:border-orange-300 transition-colors shadow-xs text-center space-y-1 group"
+              className="p-3 rounded-2xl bg-[#120c16] border border-white/10 hover:border-pink-500/40 transition-colors shadow-card text-center space-y-1 group"
             >
-              <span className="text-[10px] font-mono font-bold text-slate-400 block group-hover:text-brand-accent transition-colors">
+              <span className="text-[10px] font-mono font-bold text-pink-300/60 block group-hover:text-[hsl(327,100%,55%)] transition-colors">
                 {st.num}
               </span>
-              <h4 className="text-xs font-black text-slate-900 font-sans tracking-wide">
+              <h4 className="text-xs font-black text-white font-display tracking-wide">
                 {st.name}
               </h4>
-              <p className="text-[10px] text-slate-500 leading-tight">
+              <p className="text-[10px] text-slate-400 leading-tight font-sans">
                 {st.desc}
               </p>
             </div>
