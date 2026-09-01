@@ -85,7 +85,7 @@ export default function AdminDisputesArbitrationPage() {
                 </div>
                 {d.adminArbitrationNotes && (
                   <div className="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 text-white text-xs">
-                    <strong className="text-blue-400">Official Ruling:</strong> {d.adminArbitrationNotes}
+                    <strong className="text-[#FFD21F]">Official Ruling:</strong> {d.adminArbitrationNotes}
                   </div>
                 )}
               </div>

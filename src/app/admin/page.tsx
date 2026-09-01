@@ -43,7 +43,7 @@ export default function AgencyAdminCommandCenter() {
               Agency Master Operations
             </span>
             <span className="text-white/20">•</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-400 font-mono text-[10px] font-bold">
+            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#FFD21F] font-mono text-[10px] font-bold">
               System Level: Optimal
             </span>
           </div>
@@ -64,7 +64,7 @@ export default function AgencyAdminCommandCenter() {
           change="+34.2% MoM"
           trend="up"
           subtitle="Pre-funded in Stripe Connect"
-          icon={<Wallet className="w-5 h-5 text-emerald-400" />}
+          icon={<Wallet className="w-5 h-5 text-[#FFD21F]" />}
         />
         <StatsCard
           title="Net Platform Take-Rate (10%)"
@@ -72,7 +72,7 @@ export default function AgencyAdminCommandCenter() {
           change="+28.4% MoM"
           trend="up"
           subtitle="Realized transaction fees"
-          icon={<Sparkles className="w-5 h-5 text-[#B7FF3C]" />}
+          icon={<Sparkles className="w-5 h-5 text-[#FFD21F]" />}
         />
         <StatsCard
           title="Verified Creator Roster"
@@ -80,7 +80,7 @@ export default function AgencyAdminCommandCenter() {
           change="+42 this week"
           trend="up"
           subtitle="Audited demographics"
-          icon={<Users className="w-5 h-5 text-blue-400" />}
+          icon={<Users className="w-5 h-5 text-white" />}
         />
         <StatsCard
           title="Active Brand Sponsors"

@@ -42,9 +42,9 @@ export default function SettingsPage() {
 
       <div className="space-y-6">
         {/* Payout & Escrow Settings */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-[#0E0C15]/90 border border-white/10 shadow-2xl backdrop-blur-xl space-y-4">
+        <div className="p-6 sm:p-8 rounded-3xl bg-[#101018] border border-white/10 shadow-2xl backdrop-blur-xl space-y-4">
           <div className="flex items-center gap-2 text-white font-bold text-sm font-display">
-            <Wallet className="w-4 h-4 text-blue-400" />
+            <Wallet className="w-4 h-4 text-[#FFD21F]" />
             <span>Escrow &amp; Payout Destination</span>
           </div>
 
@@ -63,16 +63,16 @@ export default function SettingsPage() {
         </div>
 
         {/* Cross-Platform App Settings */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-[#0E0C15]/90 border border-white/10 shadow-2xl backdrop-blur-xl space-y-4">
+        <div className="p-6 sm:p-8 rounded-3xl bg-[#101018] border border-white/10 shadow-2xl backdrop-blur-xl space-y-4">
           <div className="flex items-center gap-2 text-white font-bold text-sm font-display">
-            <Smartphone className="w-4 h-4 text-blue-400" />
+            <Smartphone className="w-4 h-4 text-[#FFD21F]" />
             <span>Cross-Platform API &amp; React Native Mobile Sync</span>
           </div>
           <p className="text-xs text-white/50 leading-relaxed font-sans">
             Your credentials and active campaigns are synced across the Collably Web Workspace.
           </p>
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 text-white/80 font-mono text-[10px] font-bold">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-pulse" />
             Core API: Connected &amp; Ready
           </span>
         </div>

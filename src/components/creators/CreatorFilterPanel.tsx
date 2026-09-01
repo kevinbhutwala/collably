@@ -24,11 +24,11 @@ export function CreatorFilterPanel() {
   } = useFilterStore();
 
   return (
-    <div className="p-6 rounded-3xl bg-[#0E0C15]/90 border border-white/10 shadow-2xl backdrop-blur-xl space-y-6 text-white select-none">
+    <div className="p-6 rounded-3xl bg-[#101018] border border-white/10 shadow-2xl backdrop-blur-xl space-y-6 text-white select-none">
       {/* Header */}
       <div className="flex items-center justify-between pb-4 border-b border-white/10">
         <div className="flex items-center gap-2 text-white font-bold text-sm font-display">
-          <Filter className="w-4 h-4 text-blue-400" />
+          <Filter className="w-4 h-4 text-[#FFD21F]" />
           <span>Filter Creators</span>
         </div>
         <button
@@ -50,7 +50,7 @@ export function CreatorFilterPanel() {
             value={creatorSearchQuery}
             onChange={(e) => setCreatorSearchQuery(e.target.value)}
             placeholder="Search AI, fashion, photography..."
-            className="w-full bg-white/[0.04] border border-white/10 rounded-xl pl-9 pr-3 py-2 text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-blue-500 transition-all"
+            className="w-full bg-white/[0.04] border border-white/10 rounded-xl pl-9 pr-3 py-2 text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-[#FFD21F]/50 transition-all"
           />
         </div>
       </div>
@@ -58,61 +58,64 @@ export function CreatorFilterPanel() {
       {/* Primary Category */}
       <div className="space-y-2">
         <label className="text-xs font-bold text-white/80">Category &amp; Niche</label>
-        <div className="flex flex-wrap gap-1.5">
-          <button
-            onClick={() => setCreatorCategory("all")}
-            className={`px-3 py-1.5 rounded-full text-xs font-mono transition-all ${
-              creatorCategory === "all"
-                ? "bg-[#2A5CFF] text-white font-bold shadow-[0_0_12px_rgba(42,92,255,0.4)]"
-                : "bg-white/[0.04] text-white/60 hover:text-white border border-white/5"
-            }`}
-          >
-            All Niches
-          </button>
-          {CATEGORIES.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setCreatorCategory(cat as CreatorCategory)}
-              className={`px-3 py-1.5 rounded-full text-xs font-mono transition-all ${
-                creatorCategory === cat
-                  ? "bg-[#2A5CFF] text-white font-bold shadow-[0_0_12px_rgba(42,92,255,0.4)]"
-                  : "bg-white/[0.04] text-white/60 hover:text-white border border-white/5"
-              }`}
-            >
-              {cat}
-            </button>
+        <select
+          value={creatorCategory || "all"}
+          onChange={(e) =>
+            setCreatorCategory(e.target.value as CreatorCategory | "all")
+          }
+          className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#FFD21F]/50 transition-all"
+        >
+          <option value="all" className="bg-[#101018]">All Categories</option>
+          {CATEGORIES.map((c) => (
+            <option key={c} value={c} className="bg-[#101018]">
+              {c}
+            </option>
           ))}
+        </select>
+      </div>
+
+      {/* Primary Platform */}
+      <div className="space-y-2">
+        <label className="text-xs font-bold text-white/80">Primary Social Channel</label>
+        <div className="grid grid-cols-2 gap-2">
+          {PLATFORMS.map((p) => {
+            const isSelected = creatorPlatform === p.id;
+            return (
+              <button
+                key={p.id}
+                onClick={() => setCreatorPlatform(isSelected ? "all" : p.id)}
+                className={`py-2 px-3 rounded-xl border text-xs font-mono transition-all flex items-center justify-between ${
+                  isSelected
+                    ? "bg-[#FFD21F] text-[#0A0A0E] font-bold border-white/40 shadow-sm"
+                    : "bg-white/[0.03] border-white/10 text-white/70 hover:bg-white/[0.08]"
+                }`}
+              >
+                <span className="capitalize">{p.name}</span>
+                {isSelected && <Check className="w-3 h-3 text-[#0A0A0E]" />}
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      {/* Platforms & Verified Checkbox */}
-      <div className="flex flex-wrap items-center justify-between gap-4 pt-2 border-t border-white/10">
-        <div className="flex items-center gap-2">
-          <label className="text-xs font-bold text-white/80 mr-2">Platform:</label>
-          {["all", "youtube", "tiktok", "instagram"].map((p) => (
-            <button
-              key={p}
-              onClick={() => setCreatorPlatform(p as any)}
-              className={`px-2.5 py-1 rounded-full text-[11px] font-mono capitalize transition-all ${
-                creatorPlatform === p
-                  ? "bg-white text-[#07070B] font-bold"
-                  : "bg-white/[0.04] text-white/60 hover:text-white border border-white/5"
-              }`}
-            >
-              {p}
-            </button>
-          ))}
+      {/* Verified Only Toggle */}
+      <div className="pt-2 border-t border-white/10 flex items-center justify-between">
+        <div>
+          <p className="text-xs font-bold text-white font-sans">Verified Profiles Only</p>
+          <p className="text-[10px] text-white/50">Show audited identity badge</p>
         </div>
-
-        <label className="flex items-center gap-2 cursor-pointer select-none text-xs text-white/80">
-          <input
-            type="checkbox"
-            checked={creatorVerifiedOnly}
-            onChange={(e) => setCreatorVerifiedOnly(e.target.checked)}
-            className="w-4 h-4 rounded bg-white/10 border-white/20 text-[#2A5CFF] focus:ring-0"
+        <button
+          onClick={() => setCreatorVerifiedOnly(!creatorVerifiedOnly)}
+          className={`w-11 h-6 rounded-full transition-colors relative ${
+            creatorVerifiedOnly ? "bg-[#FFD21F]" : "bg-white/15"
+          }`}
+        >
+          <div
+            className={`w-4 h-4 rounded-full bg-white transition-transform absolute top-1 ${
+              creatorVerifiedOnly ? "right-1" : "left-1"
+            }`}
           />
-          <span>Verified Creators Only</span>
-        </label>
+        </button>
       </div>
     </div>
   );

@@ -66,7 +66,7 @@ export function ExactPlatformSection() {
               <div className="pt-2">
                 <Link
                   href="/campaigns"
-                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#101010] hover:text-blue-600 transition-colors font-sans group"
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#101010] hover:text-[#0A0A0E] transition-colors font-sans group"
                 >
                   <span>Explore the Platform</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -81,13 +81,13 @@ export function ExactPlatformSection() {
               {/* Layered Split Images Container */}
               <div className="relative w-full max-w-[340px] sm:max-w-[400px] h-[340px] sm:h-[400px] rounded-3xl overflow-hidden shadow-2xl flex">
                 {/* Left Side: Female Portrait with Warm Orange Backdrop */}
-                <div className="w-1/2 h-full relative overflow-hidden bg-gradient-to-br from-amber-500 to-red-600">
+                <div className="w-1/2 h-full relative overflow-hidden bg-gradient-to-br from-amber-500 to-[#FFD21F]">
                   <img
                     src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=85"
                     alt="Female Creator"
                     className="w-full h-full object-cover object-center filter contrast-110"
                   />
-                  <div className="absolute inset-0 bg-red-500/10 pointer-events-none" />
+                  <div className="absolute inset-0 bg-[#FFD21F]/10 pointer-events-none" />
                 </div>
 
                 {/* Right Side: Male Creator with Cap */}
@@ -97,7 +97,7 @@ export function ExactPlatformSection() {
                     alt="Male Creator"
                     className="w-full h-full object-cover object-center filter contrast-115 brightness-95"
                   />
-                  <div className="absolute inset-0 bg-blue-900/15 pointer-events-none" />
+                  <div className="absolute inset-0 bg-[#FFD21F]/10 pointer-events-none" />
                 </div>
 
                 {/* 3D Glass Chrome Fluid Reflection Circle Overlay */}

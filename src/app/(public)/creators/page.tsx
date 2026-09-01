@@ -51,8 +51,8 @@ export default function CreatorsDirectoryPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Header */}
         <div className="space-y-4 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/15 border border-blue-500/30 text-xs font-mono font-bold text-blue-400">
-            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-xs font-mono font-bold text-[#FFD21F]">
+            <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
             <span>AUDITED CREATOR TALENT</span>
           </div>
           <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight font-display">

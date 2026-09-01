@@ -22,7 +22,7 @@ export default function CreatorAnalyticsPage() {
               Audience Intel
             </span>
             <span className="text-white/20">•</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-400 font-mono text-[10px] font-bold">
+            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#FFD21F] font-mono text-[10px] font-bold">
               Live Social Sync
             </span>
           </div>
@@ -40,19 +40,19 @@ export default function CreatorAnalyticsPage() {
           title="Engagement Rate"
           value={er > 0 ? `${er}%` : "6.8% ER"}
           subtitle="Audited from connected channels"
-          icon={<TrendingUp className="w-5 h-5 text-emerald-400" />}
+          icon={<TrendingUp className="w-5 h-5 text-[#FFD21F]" />}
         />
         <StatsCard
           title="Total Follower Reach"
           value={totalFollowers > 0 ? formatNumber(totalFollowers) : "125K"}
           subtitle="Cross-platform audience"
-          icon={<Users className="w-5 h-5 text-blue-400" />}
+          icon={<Users className="w-5 h-5 text-white" />}
         />
         <StatsCard
           title="Campaigns Completed"
           value={String(currentCreator?.completedCampaignsCount || 8)}
           subtitle="Milestones successfully released"
-          icon={<Sparkles className="w-5 h-5 text-white" />}
+          icon={<Sparkles className="w-5 h-5 text-[#FFD21F]" />}
         />
         <StatsCard
           title="Creator Tier"
@@ -63,12 +63,12 @@ export default function CreatorAnalyticsPage() {
       </div>
 
       {/* Performance Graph */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-[#0E0C15]/90 border border-white/10 shadow-2xl backdrop-blur-xl space-y-6 text-white">
+      <div className="p-6 sm:p-8 rounded-3xl bg-[#101018] border border-white/10 shadow-2xl backdrop-blur-xl space-y-6 text-white">
         <div className="flex items-center justify-between pb-3 border-b border-white/10">
           <h3 className="text-base sm:text-lg font-bold text-white font-display">
             30-Day Impression &amp; Retention Curves
           </h3>
-          <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-mono font-bold">
+          <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#FFD21F] border border-[#FFD21F]/30 text-[10px] font-mono font-bold">
             REALTIME
           </span>
         </div>
@@ -79,7 +79,7 @@ export default function CreatorAnalyticsPage() {
               {[35, 48, 62, 55, 78, 65, 88, 92, 84, 96, 90, 100].map((val, i) => (
                 <div key={i} className="flex-1 flex flex-col items-center gap-1.5 h-full justify-end group">
                   <div
-                    className="w-full rounded-t-md bg-white/20 group-hover:bg-[#2A5CFF] group-hover:shadow-[0_0_12px_rgba(42,92,255,0.6)] transition-all"
+                    className="w-full rounded-t-md bg-white/20 group-hover:bg-[#FFD21F] group-hover:shadow-[0_0_12px_rgba(255,210,31,0.6)] transition-all"
                     style={{ height: `${val}%` }}
                   />
                   <span className="text-[9px] font-mono text-white/40">W{i + 1}</span>

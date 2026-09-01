@@ -114,7 +114,7 @@ export function ChatWorkspace() {
       <div className="md:col-span-4 border-r border-white/10 flex flex-col h-full bg-[#07070B]/50">
         <div className="p-4 border-b border-white/10 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <MessageSquare className="w-4 h-4 text-blue-400" />
+            <MessageSquare className="w-4 h-4 text-[#FFD21F]" />
             <span className="font-bold text-xs uppercase font-mono tracking-wider text-white">
               Channels ({conversations.length})
             </span>
@@ -130,7 +130,7 @@ export function ChatWorkspace() {
                 key={conv.id}
                 onClick={() => handleSelectConv(conv.id)}
                 className={`w-full p-4 text-left flex items-start gap-3 transition-colors ${
-                  isActive ? "bg-white/[0.08] border-l-2 border-[#2A5CFF]" : "hover:bg-white/[0.04]"
+                  isActive ? "bg-white/[0.08] border-l-2 border-[#FFD21F]" : "hover:bg-white/[0.04]"
                 }`}
               >
                 <div className="relative w-10 h-10 rounded-2xl overflow-hidden bg-white/10 shrink-0">
@@ -218,7 +218,7 @@ export function ChatWorkspace() {
                       <div
                         className={`max-w-md p-3.5 rounded-2xl text-xs font-sans leading-relaxed ${
                           isMine
-                            ? "bg-[#2A5CFF] text-white shadow-[0_0_15px_rgba(42,92,255,0.4)]"
+                            ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] font-medium shadow-[0_0_15px_rgba(255,210,31,0.35)]"
                             : "bg-white/[0.06] border border-white/10 text-white"
                         }`}
                       >
@@ -237,15 +237,15 @@ export function ChatWorkspace() {
                 placeholder="Type your message or timestamped note..."
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
-                className="flex-1 bg-white/[0.05] border border-white/10 rounded-full px-4 py-2.5 text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-blue-500 transition-all"
+                className="flex-1 bg-white/[0.05] border border-white/10 rounded-full px-4 py-2.5 text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-[#FFD21F]/50 transition-all"
               />
               <button
                 type="submit"
                 disabled={!inputText.trim()}
-                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] text-white text-xs font-semibold shadow-[0_0_15px_rgba(42,92,255,0.4)] flex items-center gap-1.5 disabled:opacity-50"
+                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] text-xs font-bold shadow-[0_0_15px_rgba(255,210,31,0.4)] border border-white/40 flex items-center gap-1.5 disabled:opacity-50"
               >
                 <span>Send</span>
-                <Send className="w-3.5 h-3.5" />
+                <Send className="w-3.5 h-3.5 text-[#0A0A0E]" />
               </button>
             </form>
           </>

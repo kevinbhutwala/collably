@@ -9,8 +9,8 @@ export function ExactHeroSection() {
   return (
     <section className="relative min-h-[92vh] lg:min-h-[96vh] bg-[#07070B] text-white overflow-hidden pt-8 pb-16 sm:pb-20 select-none">
       {/* Background Ambient Glows */}
-      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-blue-600/15 rounded-full blur-[140px] pointer-events-none -z-0" />
-      <div className="absolute top-1/3 right-10 w-[400px] h-[400px] bg-red-600/10 rounded-full blur-[130px] pointer-events-none -z-0" />
+      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#FFD21F]/10 rounded-full blur-[140px] pointer-events-none -z-0" />
+      <div className="absolute top-1/3 right-10 w-[400px] h-[400px] bg-[#FFD21F]/5 rounded-full blur-[130px] pointer-events-none -z-0" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 items-center min-h-[75vh]">
@@ -108,7 +108,7 @@ export function ExactHeroSection() {
           <div className="lg:col-span-6 relative min-h-[460px] sm:min-h-[580px] flex items-center justify-center">
             {/* Chrome Ring Halo Graphic Background */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[480px] h-[340px] sm:h-[480px] rounded-full border border-white/10 pointer-events-none -z-0" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[400px] h-[280px] sm:h-[400px] rounded-full border border-blue-500/20 pointer-events-none -z-0" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[400px] h-[280px] sm:h-[400px] rounded-full border border-[#FFD21F]/20 pointer-events-none -z-0" />
 
             {/* 1. Main Female Portrait with Sunglasses & Ambient Sun Halo */}
             <motion.div
@@ -127,7 +127,7 @@ export function ExactHeroSection() {
               </div>
             </motion.div>
 
-            {/* 2. Secondary Male Creator Portrait with Blue Rim Lighting */}
+            {/* 2. Secondary Male Creator Portrait with Gold Rim Lighting */}
             <motion.div
               initial={{ opacity: 0, x: 30, y: 30 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
@@ -140,7 +140,7 @@ export function ExactHeroSection() {
                   alt="Tech Creator"
                   className="w-full h-full object-cover filter contrast-115 brightness-95"
                 />
-                <div className="absolute inset-0 bg-blue-900/20 mix-blend-color pointer-events-none" />
+                <div className="absolute inset-0 bg-[#FFD21F]/10 mix-blend-color pointer-events-none" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#07070B]/90 via-transparent to-transparent pointer-events-none" />
               </div>
             </motion.div>

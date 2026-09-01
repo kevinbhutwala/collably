@@ -7,11 +7,11 @@ import { SafeImage } from "@/components/ui/SafeImage";
 
 export function SlidingTickerRail() {
   const topCampaigns = [
-    { brand: "Supabase", title: "Developer Tools 60s YouTube Integration", budget: "$4,200", badge: "Milestone Locked", color: "from-emerald-500/20 to-teal-500/20 border-emerald-500/40 text-emerald-300" },
-    { brand: "Figma", title: "Design Systems Reel & Tutorial", budget: "$3,800", badge: "Brief Dispatched", color: "from-pink-500/20 to-rose-500/20 border-pink-500/40 text-pink-300" },
-    { brand: "Notion AI", title: "Productivity Workflow Deep Dive", budget: "$5,500", badge: "Milestone Locked", color: "from-amber-500/20 to-orange-500/20 border-amber-500/40 text-amber-300" },
-    { brand: "Raycast", title: "macOS Extension Setup Showcase", budget: "$2,900", badge: "In 4K Review", color: "from-purple-500/20 to-indigo-500/20 border-purple-500/40 text-purple-300" },
-    { brand: "Linear", title: "Engineering Sprint Management Breakdown", budget: "$4,600", badge: "Payout Disbursed", color: "from-sky-500/20 to-blue-500/20 border-sky-500/40 text-sky-300" },
+    { brand: "Supabase", title: "Developer Tools 60s YouTube Integration", budget: "$4,200", badge: "Milestone Locked", color: "bg-[#FFD21F]/15 border-[#FFD21F]/30 text-[#FFD21F]" },
+    { brand: "Figma", title: "Design Systems Reel & Tutorial", budget: "$3,800", badge: "Brief Dispatched", color: "bg-white/10 border-white/20 text-white" },
+    { brand: "Notion AI", title: "Productivity Workflow Deep Dive", budget: "$5,500", badge: "Milestone Locked", color: "bg-[#FFD21F]/15 border-[#FFD21F]/30 text-[#FFD21F]" },
+    { brand: "Raycast", title: "macOS Extension Setup Showcase", budget: "$2,900", badge: "In 4K Review", color: "bg-white/10 border-white/20 text-white" },
+    { brand: "Linear", title: "Engineering Sprint Management Breakdown", budget: "$4,600", badge: "Payout Disbursed", color: "bg-[#FFD21F]/15 border-[#FFD21F]/30 text-[#FFD21F]" },
   ];
 
   const bottomCreators = [
@@ -26,8 +26,8 @@ export function SlidingTickerRail() {
   return (
     <section className="py-16 overflow-hidden bg-transparent relative select-none">
       {/* Side Vignette Fades */}
-      <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-44 bg-gradient-to-r from-[#0a070a] via-[#0a070a]/80 to-transparent z-20 pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-44 bg-gradient-to-l from-[#0a070a] via-[#0a070a]/80 to-transparent z-20 pointer-events-none" />
+      <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-44 bg-gradient-to-r from-[#08080C] via-[#08080C]/80 to-transparent z-20 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-44 bg-gradient-to-l from-[#08080C] via-[#08080C]/80 to-transparent z-20 pointer-events-none" />
 
       <div className="space-y-6">
         {/* Rail 1: Fast Sliding Live Campaign Deals (Leftward) */}
@@ -40,19 +40,19 @@ export function SlidingTickerRail() {
             {[...topCampaigns, ...topCampaigns, ...topCampaigns].map((deal, idx) => (
               <div
                 key={idx}
-                className="flex items-center gap-3.5 px-5 py-3 rounded-2xl bg-[#120c16] border border-white/10 shadow-card hover:border-pink-500/40 transition-all shrink-0 w-[340px] sm:w-[380px] text-white"
+                className="flex items-center gap-3.5 px-5 py-3 rounded-2xl bg-[#101018] border border-white/10 hover:border-[#FFD21F]/40 transition-all shrink-0 w-[340px] sm:w-[380px] text-white"
               >
-                <div className="w-10 h-10 rounded-xl bg-pink-500/15 border border-pink-500/30 text-[hsl(327,100%,55%)] flex items-center justify-center font-bold text-xs font-mono shrink-0 shadow-xs">
+                <div className="w-10 h-10 rounded-xl bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#FFD21F] flex items-center justify-center font-bold text-xs font-mono shrink-0 shadow-xs">
                   {deal.brand[0]}
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between gap-2 mb-0.5">
                     <span className="font-bold text-xs text-white truncate font-display">{deal.brand}</span>
-                    <span className="font-mono text-xs font-black text-emerald-400">{deal.budget}</span>
+                    <span className="font-mono text-xs font-extrabold text-[#FFD21F]">{deal.budget}</span>
                   </div>
-                  <p className="text-[11px] text-slate-300 truncate font-sans">{deal.title}</p>
+                  <p className="text-[11px] text-white/70 truncate font-sans">{deal.title}</p>
                 </div>
-                <span className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-bold border shrink-0 bg-gradient-to-r ${deal.color}`}>
+                <span className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-bold border shrink-0 ${deal.color}`}>
                   {deal.badge}
                 </span>
               </div>
@@ -70,7 +70,7 @@ export function SlidingTickerRail() {
             {[...bottomCreators, ...bottomCreators, ...bottomCreators].map((creator, idx) => (
               <div
                 key={idx}
-                className="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-[#120c16] border border-white/10 shadow-card hover:border-pink-500/40 transition-all shrink-0 w-[300px] sm:w-[340px] text-white"
+                className="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-[#101018] border border-white/10 hover:border-[#FFD21F]/40 transition-all shrink-0 w-[300px] sm:w-[340px] text-white"
               >
                 <div className="relative w-10 h-10 rounded-xl overflow-hidden border border-white/10 shrink-0">
                   <SafeImage
@@ -85,13 +85,13 @@ export function SlidingTickerRail() {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-1">
                     <span className="font-bold text-xs text-white truncate font-display">{creator.name}</span>
-                    <CheckCircle2 className="w-3 h-3 text-sky-400 shrink-0" />
+                    <CheckCircle2 className="w-3 h-3 text-[#FFD21F] shrink-0" />
                   </div>
-                  <span className="text-[10px] text-slate-400 font-mono block">{creator.niche}</span>
+                  <span className="text-[10px] text-white/50 font-mono block">{creator.niche}</span>
                 </div>
                 <div className="text-right shrink-0">
-                  <span className="text-xs font-black text-white font-mono block">{creator.followers}</span>
-                  <span className="text-[10px] text-emerald-400 font-mono font-bold">{creator.engagement} ER</span>
+                  <span className="text-xs font-extrabold text-white font-mono block">{creator.followers}</span>
+                  <span className="text-[10px] text-[#FFD21F] font-mono font-bold">{creator.engagement} ER</span>
                 </div>
               </div>
             ))}

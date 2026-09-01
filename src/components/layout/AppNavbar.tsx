@@ -267,7 +267,7 @@ export function AppNavbar() {
                     onClick={() => setShowProfileMenu(false)}
                     className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-white/[0.08] hover:text-white transition-colors"
                   >
-                    <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+                    <Sparkles className="w-3.5 h-3.5 text-[#FFD21F]" />
                     <span>Profile &amp; Media Kit</span>
                   </Link>
 
@@ -329,9 +329,9 @@ export function AppNavbar() {
             >
               <div className="space-y-6">
                 <div className="flex items-center justify-between pb-4 border-b border-white/10">
-                  <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-lg bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 shadow-[0_0_15px_rgba(42,92,255,0.4)]">
-                      <Sparkles className="w-3.5 h-3.5 fill-blue-400 text-blue-400" />
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FFD21F] to-[#FFAE00] border border-white/40 flex items-center justify-center text-[#0A0A0E] shadow-[0_0_15px_rgba(255,210,31,0.45)]">
+                      <Sparkles className="w-4 h-4 fill-[#0A0A0E] text-[#0A0A0E]" />
                     </div>
                     <span className="font-bold text-white text-sm font-display">Collably</span>
                   </div>

@@ -40,9 +40,9 @@ export function CinematicNavbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 text-white">
         {/* Exact Collably Logo with Sparkle */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-7 h-7 rounded-lg bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(42,92,255,0.4)]">
-            <Sparkles className="w-3.5 h-3.5 fill-blue-400 text-blue-400" />
+        <Link href="/" className="flex items-center gap-2.5 group">
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FFD21F] to-[#FFAE00] border border-white/40 flex items-center justify-center text-[#0A0A0E] group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(255,210,31,0.45)]">
+            <Sparkles className="w-4 h-4 fill-[#0A0A0E] text-[#0A0A0E]" />
           </div>
           <span className="font-display font-extrabold text-lg sm:text-xl tracking-tight text-white">
             Collably
@@ -60,7 +60,7 @@ export function CinematicNavbar() {
                 className={cn(
                   "text-xs sm:text-[13px] font-sans transition-colors tracking-tight",
                   isActive
-                    ? "text-white font-semibold"
+                    ? "text-[#FFD21F] font-bold"
                     : "text-white/70 hover:text-white font-normal"
                 )}
               >
@@ -76,9 +76,9 @@ export function CinematicNavbar() {
             <div className="flex items-center gap-3">
               <Link
                 href="/app/dashboard"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 hover:bg-white/15 border border-white/20 text-xs font-mono text-white transition-all shadow-xs"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 hover:bg-white/15 border border-[#FFD21F]/30 text-xs font-mono text-white transition-all shadow-xs"
               >
-                <User className="w-3.5 h-3.5 text-blue-400" />
+                <User className="w-3.5 h-3.5 text-[#FFD21F]" />
                 <span>Dashboard</span>
               </Link>
               <button
@@ -93,13 +93,13 @@ export function CinematicNavbar() {
             <>
               <Link
                 href="/login"
-                className="text-xs sm:text-[13px] font-normal text-white/80 hover:text-white transition-colors px-2 py-1"
+                className="text-xs sm:text-[13px] font-medium text-white/80 hover:text-white transition-colors px-2 py-1"
               >
                 Log in
               </Link>
 
               <Link href="/creator/register">
-                <button className="px-5 py-2.5 rounded-full bg-[#2A5CFF] hover:bg-[#2049E0] text-white text-xs sm:text-[13px] font-semibold transition-all shadow-[0_0_20px_rgba(42,92,255,0.45)] hover:shadow-[0_0_28px_rgba(42,92,255,0.65)] active:scale-95">
+                <button className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs sm:text-[13px] font-bold transition-all shadow-[0_0_20px_rgba(255,210,31,0.4)] border border-white/40 active:scale-95">
                   <span>Get Started</span>
                 </button>
               </Link>

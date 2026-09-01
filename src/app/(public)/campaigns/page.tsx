@@ -32,8 +32,8 @@ export default function CampaignsDirectoryPage() {
     <div className="py-12 sm:py-16 bg-[#07070B] text-white min-h-screen select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="space-y-4 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/15 border border-blue-500/30 text-xs font-mono font-bold text-blue-400">
-            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-xs font-mono font-bold text-[#FFD21F]">
+            <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
             <span>PRE-FUNDED ESCROW BRIEFS</span>
           </div>
           <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight font-display">
@@ -52,7 +52,7 @@ export default function CampaignsDirectoryPage() {
               className={cn(
                 "px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap",
                 selectedCategory === "all"
-                  ? "bg-[#2A5CFF] text-white shadow-[0_0_12px_rgba(42,92,255,0.4)]"
+                  ? "bg-[#FFD21F] text-[#0A0A0E] shadow-[0_0_12px_rgba(255,210,31,0.45)] font-bold border border-white/40"
                   : "bg-white/[0.04] text-white/60 hover:text-white border border-white/10"
               )}
             >
@@ -65,7 +65,7 @@ export default function CampaignsDirectoryPage() {
                 className={cn(
                   "px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap",
                   selectedCategory === cat
-                    ? "bg-[#2A5CFF] text-white shadow-[0_0_12px_rgba(42,92,255,0.4)]"
+                    ? "bg-[#FFD21F] text-[#0A0A0E] shadow-[0_0_12px_rgba(255,210,31,0.45)] font-bold border border-white/40"
                     : "bg-white/[0.04] text-white/60 hover:text-white border border-white/10"
                 )}
               >
@@ -81,7 +81,7 @@ export default function CampaignsDirectoryPage() {
               placeholder="Search briefs..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 rounded-full bg-white/[0.04] border border-white/10 text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-blue-500 transition-all"
+              className="w-full pl-9 pr-4 py-2 rounded-full bg-white/[0.04] border border-white/10 text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-[#FFD21F]/50 transition-all"
             />
           </div>
         </div>

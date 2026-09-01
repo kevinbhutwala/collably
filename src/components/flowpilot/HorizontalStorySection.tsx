@@ -29,8 +29,8 @@ export function HorizontalStorySection() {
         "Instantly listen to WhatsApp, Instagram DMs, Website Live Chat, SMS, and Facebook Messenger. No lost inquiries, no manual tab-switching.",
       metrics: "0ms Ingest Delay • 100% Inbound Capture Rate",
       icon: Inbox,
-      gradient: "from-blue-500/20 to-sky-500/5",
-      accent: "text-sky-400 border-sky-500/30",
+      gradient: "from-[#FFD21F]/20 to-[#FFD21F]/5",
+      accent: "text-[#FFD21F] border-[#FFD21F]/30",
       uiPreview: (
         <div className="space-y-3 p-5 rounded-2xl bg-slate-900/90 border border-white/10 font-mono text-xs text-slate-300">
           <div className="flex items-center justify-between text-[11px] text-slate-400 pb-2 border-b border-white/10">

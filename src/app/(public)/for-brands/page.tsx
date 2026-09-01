@@ -1,28 +1,23 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
-import { FAQSection } from "@/components/collably/FAQSection";
 import {
-  ArrowRight,
   ShieldCheck,
-  Lock,
-  Search,
   Video,
   Sparkles,
-  Zap,
+  ArrowRight,
+  Search,
 } from "lucide-react";
 
 export default function ForBrandsPage() {
   return (
-    <div className="bg-[#07070B] text-white min-h-screen select-none">
+    <div className="bg-[#08080C] text-white min-h-screen select-none">
       {/* Brand Hero */}
       <section className="relative pt-24 pb-20 lg:pt-32 lg:pb-32 overflow-hidden border-b border-white/10">
-        <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#FFD21F]/10 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-4xl mx-auto space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/15 border border-blue-500/30 text-blue-400 text-[11px] font-mono font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#FFD21F] text-[11px] font-mono font-bold uppercase tracking-wider">
               <span>FOR GROWTH MARKETERS &amp; BRAND LEADERS</span>
             </div>
 
@@ -39,15 +34,15 @@ export default function ForBrandsPage() {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-4 font-sans text-sm">
               <Link href="/app/brand/campaigns/create">
-                <button className="px-6 py-3.5 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] hover:from-[#234FE6] hover:to-[#3264E6] text-white font-semibold text-xs sm:text-sm transition-all shadow-[0_0_20px_rgba(42,92,255,0.4)] flex items-center gap-2">
+                <button className="px-6 py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs sm:text-sm transition-all shadow-[0_0_20px_rgba(255,210,31,0.4)] border border-white/50 flex items-center gap-2">
                   <span>Create a Campaign Brief</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 text-[#0A0A0E]" />
                 </button>
               </Link>
 
               <Link href="/creators">
-                <button className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 text-white font-semibold text-xs sm:text-sm transition-all flex items-center gap-2">
-                  <Search className="w-4 h-4 text-blue-400" />
+                <button className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/15 border border-[#FFD21F]/30 text-white font-semibold text-xs sm:text-sm transition-all flex items-center gap-2">
+                  <Search className="w-4 h-4 text-[#FFD21F]" />
                   <span>Browse Creator Roster</span>
                 </button>
               </Link>
@@ -68,8 +63,8 @@ export default function ForBrandsPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-8 rounded-3xl bg-[#0E0C15]/90 border border-white/10 shadow-2xl backdrop-blur-xl space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400">
+          <div className="p-8 rounded-3xl bg-[#101018] border border-white/10 shadow-2xl backdrop-blur-xl space-y-4">
+            <div className="w-12 h-12 rounded-2xl bg-[#FFD21F]/15 border border-[#FFD21F]/30 flex items-center justify-center text-[#FFD21F]">
               <ShieldCheck className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold text-white font-display">FDIC-Insured Escrow Custody</h3>
@@ -78,7 +73,7 @@ export default function ForBrandsPage() {
             </p>
           </div>
 
-          <div className="p-8 rounded-3xl bg-[#0E0C15]/90 border border-white/10 shadow-2xl backdrop-blur-xl space-y-4">
+          <div className="p-8 rounded-3xl bg-[#101018] border border-white/10 shadow-2xl backdrop-blur-xl space-y-4">
             <div className="w-12 h-12 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-white">
               <Video className="w-6 h-6" />
             </div>
@@ -88,7 +83,7 @@ export default function ForBrandsPage() {
             </p>
           </div>
 
-          <div className="p-8 rounded-3xl bg-[#0E0C15]/90 border border-white/10 shadow-2xl backdrop-blur-xl space-y-4">
+          <div className="p-8 rounded-3xl bg-[#101018] border border-white/10 shadow-2xl backdrop-blur-xl space-y-4">
             <div className="w-12 h-12 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-white">
               <Sparkles className="w-6 h-6" />
             </div>
@@ -99,8 +94,6 @@ export default function ForBrandsPage() {
           </div>
         </div>
       </section>
-
-      <FAQSection />
     </div>
   );
 }

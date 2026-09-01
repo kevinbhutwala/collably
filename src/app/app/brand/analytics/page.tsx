@@ -16,7 +16,7 @@ export default function BrandAnalyticsPage() {
               Attribution &amp; ROI
             </span>
             <span className="text-white/20">•</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-400 font-mono text-[10px] font-bold">
+            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#FFD21F] font-mono text-[10px] font-bold">
               Realtime Multiplier
             </span>
           </div>
@@ -35,14 +35,14 @@ export default function BrandAnalyticsPage() {
           value="5.2x"
           change="+18% vs benchmark"
           subtitle="Revenue generated / Creator budget"
-          icon={<TrendingUp className="w-5 h-5 text-emerald-400" />}
+          icon={<TrendingUp className="w-5 h-5 text-[#FFD21F]" />}
         />
         <StatsCard
           title="Total Reach Delivered"
           value="2.4M"
           change="+420k organic"
           subtitle="Audited impressions across cohort"
-          icon={<Users className="w-5 h-5 text-blue-400" />}
+          icon={<Users className="w-5 h-5 text-white" />}
         />
         <StatsCard
           title="Average CPA"
@@ -50,7 +50,7 @@ export default function BrandAnalyticsPage() {
           trend="down"
           change="-22% CAC reduction"
           subtitle="Per qualified software signup"
-          icon={<Target className="w-5 h-5 text-[#B7FF3C]" />}
+          icon={<Target className="w-5 h-5 text-[#FFD21F]" />}
         />
         <StatsCard
           title="Total Escrow Invested"

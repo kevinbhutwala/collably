@@ -33,10 +33,10 @@ export default function AdminAuditLogsPage() {
         </p>
       </div>
 
-      <div className="p-6 sm:p-8 rounded-3xl bg-[#0E0C15]/90 border border-white/10 shadow-2xl backdrop-blur-xl space-y-6">
+      <div className="p-6 sm:p-8 rounded-3xl bg-[#101018] border border-white/10 shadow-2xl backdrop-blur-xl space-y-6">
         <div className="flex items-center justify-between pb-3 border-b border-white/10">
           <h3 className="text-base font-bold text-white flex items-center gap-2 font-display">
-            <Database className="w-4 h-4 text-blue-400" />
+            <Database className="w-4 h-4 text-[#FFD21F]" />
             <span>Audit Trail ({events.length} Events)</span>
           </h3>
           <span className="px-2.5 py-0.5 rounded-full bg-white/10 text-white/80 font-mono text-[10px] font-bold">
@@ -49,7 +49,7 @@ export default function AdminAuditLogsPage() {
             <div key={ev.id} className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="space-y-1">
                 <div className="flex items-center gap-2 font-sans">
-                  <span className="px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-400 text-[10px] font-mono font-bold uppercase">
+                  <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#FFD21F] text-[10px] font-mono font-bold uppercase">
                     {ev.entityType}
                   </span>
                   <strong className="text-sm font-bold text-white">{ev.action}</strong>

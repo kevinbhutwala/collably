@@ -9,9 +9,9 @@ export function CinematicFooter() {
     <footer className="border-t border-white/10 bg-[#07070B] text-white/60 text-xs font-sans select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-2 md:grid-cols-5 gap-8">
         <div className="col-span-2 space-y-4">
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-7 h-7 rounded-lg bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(42,92,255,0.4)]">
-              <Sparkles className="w-3.5 h-3.5 fill-blue-400 text-blue-400" />
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FFD21F] to-[#FFAE00] border border-white/40 flex items-center justify-center text-[#0A0A0E] group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(255,210,31,0.45)]">
+              <Sparkles className="w-4 h-4 fill-[#0A0A0E] text-[#0A0A0E]" />
             </div>
             <span className="font-display font-extrabold text-lg sm:text-xl tracking-tight text-white">
               Collably
@@ -25,7 +25,7 @@ export function CinematicFooter() {
             <p>Delaware, United States &amp; Mumbai, India</p>
           </div>
           <div className="flex items-center gap-2 text-xs text-white/80 font-sans pt-1 font-semibold">
-            <span className="w-2 h-2 rounded-full bg-[#2F6BFF] animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
             <span>Escrow-Protected Milestone Rails via Stripe Connect</span>
           </div>
         </div>

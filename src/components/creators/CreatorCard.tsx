@@ -4,11 +4,11 @@ import { CreatorProfile } from "@/core/types";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { SocialIcon } from "@/components/ui/SocialIcons";
 import { formatNumber, formatCurrency } from "@/core/utils/formatters";
-import { CheckCircle2, Star, ArrowRight } from "lucide-react";
+import { CheckCircle2, ArrowRight } from "lucide-react";
 
 export function CreatorCard({ creator }: { creator: CreatorProfile }) {
   return (
-    <div className="group rounded-3xl bg-[#0E0C15]/90 border border-white/10 hover:border-blue-500/40 p-6 shadow-2xl backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between text-white relative overflow-hidden select-none">
+    <div className="group rounded-3xl bg-[#101018] border border-white/10 hover:border-[#FFD21F]/40 p-6 shadow-2xl backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between text-white relative overflow-hidden select-none">
       <div>
         {/* Top Info */}
         <div className="flex items-start justify-between gap-4 mb-4">
@@ -25,11 +25,11 @@ export function CreatorCard({ creator }: { creator: CreatorProfile }) {
             </div>
             <div>
               <div className="flex items-center gap-1.5">
-                <h3 className="font-semibold text-base text-white group-hover:text-blue-400 transition-colors font-display">
+                <h3 className="font-bold text-base text-white group-hover:text-[#FFD21F] transition-colors font-display">
                   {creator.fullName}
                 </h3>
                 {creator.verified && (
-                  <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#FFD21F] shrink-0" />
                 )}
               </div>
               <p className="text-xs text-white/50 font-mono">@{creator.handle}</p>
@@ -74,7 +74,7 @@ export function CreatorCard({ creator }: { creator: CreatorProfile }) {
           </div>
           <div>
             <span className="text-[10px] text-white/40 uppercase font-bold block">Engagement</span>
-            <span className="font-extrabold text-[#B7FF3C] text-sm numeric-tabular">
+            <span className="font-extrabold text-[#FFD21F] text-sm numeric-tabular">
               {creator.avgEngagementRate}% ER
             </span>
           </div>
@@ -91,7 +91,7 @@ export function CreatorCard({ creator }: { creator: CreatorProfile }) {
         </div>
 
         <Link href={`/creators/${creator.id}`}>
-          <button className="px-4 py-2 rounded-full bg-white/10 hover:bg-gradient-to-r hover:from-[#2A5CFF] hover:to-[#3B73FF] hover:text-white text-white/80 font-semibold text-xs transition-all flex items-center gap-1.5">
+          <button className="px-4 py-2 rounded-full bg-white/10 hover:bg-gradient-to-r hover:from-[#FFD21F] hover:to-[#FFC700] hover:text-[#0A0A0E] text-white font-bold text-xs transition-all flex items-center gap-1.5 border border-white/15">
             <span>Media Kit</span>
             <ArrowRight className="w-3 h-3" />
           </button>

@@ -101,7 +101,7 @@ export default function SupportAndDisputePage() {
               Assistance &amp; Mediation
             </span>
             <span className="text-white/20">•</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-400 font-mono text-[10px] font-bold">
+            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#FFD21F] font-mono text-[10px] font-bold">
               24/7 Operations Desk
             </span>
           </div>
@@ -118,15 +118,15 @@ export default function SupportAndDisputePage() {
             onClick={() => setIsDisputeModalOpen(true)}
             className="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition-all flex items-center gap-1.5 border border-white/15"
           >
-            <ShieldAlert className="w-4 h-4 text-amber-400" />
+            <ShieldAlert className="w-4 h-4 text-[#FFD21F]" />
             <span>File Milestone Dispute</span>
           </button>
 
           <button
             onClick={() => setIsTicketModalOpen(true)}
-            className="px-5 py-2 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] hover:from-[#234FE6] hover:to-[#3264E6] text-white text-xs font-semibold transition-all shadow-[0_0_20px_rgba(42,92,255,0.4)] flex items-center gap-1.5"
+            className="px-5 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-[0_0_20px_rgba(255,210,31,0.4)] border border-white/40 flex items-center gap-1.5"
           >
-            <Plus className="w-4 h-4" />
+            <Plus className="w-4 h-4 text-[#0A0A0E]" />
             <span>Open Support Ticket</span>
           </button>
         </div>
@@ -135,10 +135,10 @@ export default function SupportAndDisputePage() {
       {/* 2-Column Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left: Active Support Tickets */}
-        <div className="lg:col-span-6 p-6 sm:p-8 rounded-3xl bg-[#0E0C15]/90 border border-white/10 shadow-2xl backdrop-blur-xl space-y-6">
+        <div className="lg:col-span-6 p-6 sm:p-8 rounded-3xl bg-[#101018] border border-white/10 shadow-2xl backdrop-blur-xl space-y-6">
           <div className="flex items-center justify-between pb-3 border-b border-white/10">
             <h3 className="text-base font-bold text-white flex items-center gap-2 font-display">
-              <HelpCircle className="w-5 h-5 text-blue-400" />
+              <HelpCircle className="w-5 h-5 text-[#FFD21F]" />
               <span>My Support Inquiries ({tickets.length})</span>
             </h3>
             <span className="px-2.5 py-0.5 rounded-full bg-white/10 text-white/80 text-[10px] font-mono font-bold">
@@ -196,7 +196,7 @@ export default function SupportAndDisputePage() {
                 <p className="text-xs text-white/60 font-sans leading-relaxed">{d.description}</p>
                 {d.adminArbitrationNotes && (
                   <div className="p-3 rounded-xl bg-white/[0.04] border border-white/10 text-white text-[11px] font-sans">
-                    <strong className="text-blue-400">Admin Arbitration Note:</strong> {d.adminArbitrationNotes}
+                    <strong className="text-[#FFD21F]">Admin Arbitration Note:</strong> {d.adminArbitrationNotes}
                   </div>
                 )}
                 <div className="flex justify-between text-white/50 pt-2 border-t border-white/10">

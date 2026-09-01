@@ -25,7 +25,7 @@ export default function AdminReportsPage() {
         </div>
 
         <button className="px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition-all flex items-center gap-1.5 border border-white/15">
-          <Download className="w-4 h-4 text-blue-400" />
+          <Download className="w-4 h-4 text-[#FFD21F]" />
           <span>Download Financial Audit PDF</span>
         </button>
       </div>

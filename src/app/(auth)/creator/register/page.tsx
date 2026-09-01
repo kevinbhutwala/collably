@@ -130,12 +130,12 @@ export default function CreatorRegisterPage() {
 
         <div className="space-y-2">
           <div className="flex justify-between items-center">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/15 border border-blue-500/30 text-blue-400 text-xs font-semibold font-mono">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#FFD21F] text-xs font-bold font-mono">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-pulse" />
               <span>Creator Onboarding &amp; Media Kit</span>
             </div>
-            <div className="w-7 h-7 rounded-lg bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400">
-              <Sparkles className="w-3.5 h-3.5 fill-blue-400" />
+            <div className="w-7 h-7 rounded-lg bg-[#FFD21F]/20 border border-[#FFD21F]/30 flex items-center justify-center text-[#FFD21F]">
+              <Sparkles className="w-3.5 h-3.5 fill-[#FFD21F]" />
             </div>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
@@ -379,10 +379,10 @@ export default function CreatorRegisterPage() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] hover:from-[#234FE6] hover:to-[#3264E6] text-white font-semibold text-xs transition-all shadow-[0_0_20px_rgba(42,92,255,0.4)] flex items-center justify-center gap-2 disabled:opacity-50"
+              className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all shadow-[0_0_20px_rgba(255,210,31,0.4)] border border-white/50 flex items-center justify-center gap-2 disabled:opacity-50"
             >
               <span>Activate &amp; Publish Media Kit</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 text-[#0A0A0E]" />
             </button>
           </div>
         </form>
@@ -390,7 +390,7 @@ export default function CreatorRegisterPage() {
         <div className="pt-4 border-t border-white/10 text-center">
           <p className="text-xs text-white/50">
             Already have an account?{" "}
-            <Link href="/login" className="text-white hover:text-blue-400 font-bold">
+            <Link href="/login" className="text-[#FFD21F] hover:underline font-bold">
               Sign in
             </Link>
           </p>

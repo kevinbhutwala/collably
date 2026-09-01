@@ -64,7 +64,7 @@ export default function BrandShortlistsPage() {
               Talent Curation
             </span>
             <span className="text-white/20">•</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-400 font-mono text-[10px] font-bold">
+            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#FFD21F] font-mono text-[10px] font-bold">
               Team Shortlists
             </span>
           </div>
