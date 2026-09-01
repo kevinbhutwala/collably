@@ -1,61 +1,58 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { CollablyLogo } from "@/components/ui/CollablyLogo";
-import { Modal } from "@/components/ui/Modal";
+import {
+  ArrowUpRight,
+  Menu,
+  X,
+  Building2,
+  Video,
+  Sparkles,
+  Users,
+  Compass,
+  FileCheck2,
+  Layers,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Menu, X, Building2, Sparkles, ArrowRight } from "lucide-react";
+import { Modal } from "@/components/ui/Modal";
 
 export function CollablyNavbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [roleModalOpen, setRoleModalOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const navLinks = [
-    { label: "Platform", href: "/for-brands" },
-    { label: "For Brands", href: "/for-brands" },
-    { label: "For Creators", href: "/creators" },
-    { label: "How It Works", href: "/#workflow" },
-    { label: "Pricing", href: "/pricing" },
+    { href: "/creators", label: "Creators", icon: Users },
+    { href: "/campaigns", label: "Campaigns", icon: Compass },
+    { href: "/for-brands", label: "For Brands", icon: Building2 },
+    { href: "/pricing", label: "Fee Model", icon: Sparkles },
   ];
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-          scrolled
-            ? "py-3.5 bg-[#0a070a]/90 backdrop-blur-2xl border-b border-white/[0.08] shadow-2xl"
-            : "py-6 bg-transparent"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
-          {/* Collably Brand Logo */}
-          <CollablyLogo href="/" size="md" subtext="Creator × Brand Ecosystem" />
+      <header className="fixed top-0 left-0 right-0 z-40 bg-[#0a070a]/80 backdrop-blur-2xl border-b border-white/10 select-none">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between gap-4">
+          {/* Logo */}
+          <div className="flex items-center gap-3">
+            <CollablyLogo href="/" size="md" subtext="Milestone Protected" />
+          </div>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-xl">
+          {/* Desktop Nav Links */}
+          <nav className="hidden lg:flex items-center gap-8 text-xs font-semibold tracking-wide uppercase font-display text-white/80">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
-                className="relative px-3.5 py-1.5 text-xs font-medium text-white/70 hover:text-white transition-colors font-display"
+                className="hover:text-[hsl(327,100%,55%)] transition-colors"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
 
-          {/* Right Actions */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Right Action CTAs */}
+          <div className="hidden sm:flex items-center gap-3">
             <Link
               href="/login"
               className="px-4 py-2 text-xs font-medium text-white/80 hover:text-white transition-colors font-display"
@@ -73,44 +70,56 @@ export function CollablyNavbar() {
           </div>
 
           {/* Mobile Menu Trigger */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 rounded-xl bg-white/[0.05] border border-white/10 text-white hover:bg-white/10 transition-colors"
-            aria-label="Toggle Menu"
-          >
-            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+          <div className="flex sm:hidden items-center gap-2">
+            <button
+              onClick={() => setRoleModalOpen(true)}
+              className="px-3.5 py-1.5 rounded-full text-[11px] font-bold text-white bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] shadow-sm font-display"
+            >
+              Start
+            </button>
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="p-2 rounded-xl bg-white/[0.05] border border-white/10 text-white hover:bg-white/10 transition-colors"
+              aria-label="Toggle Menu"
+            >
+              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
       </header>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Trending Drawer */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-[72px] z-30 p-6 bg-[#0a070a]/98 backdrop-blur-3xl border-b border-white/10 shadow-2xl flex flex-col gap-4 lg:hidden"
+            className="fixed inset-x-0 top-[72px] z-30 p-5 bg-[#0e0910]/98 backdrop-blur-3xl border-b border-white/10 shadow-2xl flex flex-col gap-4 lg:hidden text-white"
           >
             <div className="space-y-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="block px-3 py-2 text-sm font-medium rounded-lg text-white/80 hover:text-white hover:bg-white/[0.06] font-display"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const Icon = link.icon;
+                return (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center gap-3 px-3.5 py-2.5 text-xs font-semibold rounded-xl text-slate-200 hover:text-white hover:bg-white/[0.06] font-display"
+                  >
+                    <Icon className="w-4 h-4 text-pink-400" />
+                    <span>{link.label}</span>
+                  </Link>
+                );
+              })}
             </div>
 
-            <div className="pt-4 border-t border-white/10 flex flex-col gap-2">
+            <div className="pt-3 border-t border-white/10 flex flex-col gap-2">
               <Link
                 href="/login"
                 onClick={() => setMobileOpen(false)}
-                className="w-full py-2.5 text-center text-xs font-semibold text-white/80 border border-white/10 rounded-full font-display"
+                className="w-full py-2.5 text-center text-xs font-semibold text-white/90 bg-white/[0.05] border border-white/10 rounded-full font-display"
               >
                 Sign In
               </Link>
@@ -119,7 +128,7 @@ export function CollablyNavbar() {
                   setMobileOpen(false);
                   setRoleModalOpen(true);
                 }}
-                className="w-full py-2.5 text-center text-xs font-bold text-white bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] rounded-full font-display"
+                className="w-full py-2.5 text-center text-xs font-bold text-white bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] rounded-full font-display shadow-lg shadow-pink-500/25"
               >
                 Get Started
               </button>
@@ -132,50 +141,56 @@ export function CollablyNavbar() {
       <Modal
         isOpen={roleModalOpen}
         onClose={() => setRoleModalOpen(false)}
-        title="Get Started on Collably"
-        description="Choose your account type to proceed to customized onboarding."
-        maxWidth="lg"
+        title="Welcome to Collably"
+        description="Choose your account type to proceed."
+        maxWidth="md"
       >
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-          {/* Brand Track */}
+        <div className="space-y-4 pt-2">
+          {/* Brand Option */}
           <Link
             href="/brand/register"
             onClick={() => setRoleModalOpen(false)}
-            className="p-6 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-pink-500/50 hover:bg-white/[0.07] transition-all group flex flex-col justify-between space-y-4"
+            className="block p-5 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-pink-500/50 hover:bg-white/[0.08] transition-all group"
           >
-            <div className="space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-pink-500/15 border border-pink-500/30 text-[hsl(327,100%,55%)] flex items-center justify-center group-hover:scale-105 transition-transform">
-                <Building2 className="w-6 h-6" />
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-pink-500/15 border border-pink-500/30 flex items-center justify-center text-[hsl(327,100%,55%)]">
+                  <Building2 className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-white font-display group-hover:text-pink-300 transition-colors">
+                    I&apos;m a Brand or Agency
+                  </h4>
+                  <p className="text-xs text-slate-400 font-sans">
+                    Launch campaign briefs &amp; hire vetted creators
+                  </p>
+                </div>
               </div>
-              <h3 className="text-base font-bold text-white font-display">I&apos;m a Brand or Agency</h3>
-              <p className="text-xs text-slate-300 font-sans leading-relaxed">
-                Discover vetted creators, launch campaign briefs, and manage deliverables with protected milestone payments.
-              </p>
-            </div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[hsl(327,100%,55%)] font-mono pt-2">
-              <span>Continue as Brand</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-white transition-colors" />
             </div>
           </Link>
 
-          {/* Creator Track */}
+          {/* Creator Option */}
           <Link
             href="/creator/register"
             onClick={() => setRoleModalOpen(false)}
-            className="p-6 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-purple-500/50 hover:bg-white/[0.07] transition-all group flex flex-col justify-between space-y-4"
+            className="block p-5 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-pink-500/50 hover:bg-white/[0.08] transition-all group"
           >
-            <div className="space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-purple-500/15 border border-purple-500/30 text-purple-300 flex items-center justify-center group-hover:scale-105 transition-transform">
-                <Sparkles className="w-6 h-6" />
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-purple-300">
+                  <Video className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-white font-display group-hover:text-purple-300 transition-colors">
+                    I&apos;m a Creator
+                  </h4>
+                  <p className="text-xs text-slate-400 font-sans">
+                    Apply to paid briefs with protected milestone payouts
+                  </p>
+                </div>
               </div>
-              <h3 className="text-base font-bold text-white font-display">I&apos;m a Creator</h3>
-              <p className="text-xs text-slate-300 font-sans leading-relaxed">
-                Publish your verified media kit, connect with high-growth brands, and receive guaranteed milestone payouts.
-              </p>
-            </div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-300 font-mono pt-2">
-              <span>Continue as Creator</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-white transition-colors" />
             </div>
           </Link>
         </div>
