@@ -1,13 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
 import { Input, Textarea } from "@/components/ui/Input";
 import { SocialAccount, PlatformType } from "@/core/types";
-import { formatCurrency } from "@/core/utils/formatters";
 import { calculateTotalFollowers, calculateAvgEngagementRate, getCreatorTier } from "@/core/utils/social";
 import {
   ExternalLink,
@@ -20,8 +18,6 @@ import {
   Linkedin,
   Video,
   Globe,
-  CheckCircle2,
-  Users,
 } from "lucide-react";
 
 export default function CreatorProfileEditPage() {
@@ -131,39 +127,39 @@ export default function CreatorProfileEditPage() {
   const getPlatformIcon = (platform: PlatformType) => {
     switch (platform) {
       case "youtube":
-        return <Youtube className="w-4 h-4 text-red-400" />;
+        return <Youtube className="w-4 h-4 text-red-500" />;
       case "instagram":
-        return <Instagram className="w-4 h-4 text-pink-400" />;
+        return <Instagram className="w-4 h-4 text-pink-500" />;
       case "tiktok":
-        return <Video className="w-4 h-4 text-cyan-400" />;
+        return <Video className="w-4 h-4 text-black" />;
       case "x":
-        return <Twitter className="w-4 h-4 text-white" />;
+        return <Twitter className="w-4 h-4 text-black" />;
       case "linkedin":
-        return <Linkedin className="w-4 h-4 text-sky-400" />;
+        return <Linkedin className="w-4 h-4 text-sky-600" />;
       default:
-        return <Globe className="w-4 h-4 text-white" />;
+        return <Globe className="w-4 h-4 text-black" />;
     }
   };
 
   return (
-    <div className="space-y-8 text-white select-none">
+    <div className="space-y-8 text-[#0A0A0E] select-none">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-black/8">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono font-bold uppercase text-white/80 flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-xs font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               Creator Media Kit
             </span>
-            <span className="text-white/20">•</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#FFD21F] font-mono text-[10px] font-bold">
+            <span className="text-[#8A8A9A]">•</span>
+            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
               Public Pitch Card
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
             Creator Profile &amp; Rate Card
           </h1>
-          <p className="text-xs sm:text-sm text-white/50 mt-0.5 font-sans">
+          <p className="text-xs sm:text-sm text-[#5A5A68] mt-0.5 font-sans">
             Customize your bio, connect social audience channels, and set starting collaboration rates.
           </p>
         </div>
@@ -173,7 +169,7 @@ export default function CreatorProfileEditPage() {
             <Link
               href={`/creators/${currentCreator.id}`}
               target="_blank"
-              className="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition-all flex items-center gap-1.5 border border-white/15"
+              className="px-4 py-2 rounded-full bg-black/5 hover:bg-black/10 text-[#0A0A0E] text-xs font-semibold transition-all flex items-center gap-1.5 border border-black/10 shadow-xs"
             >
               <span>View Public Page</span>
               <ExternalLink className="w-3.5 h-3.5" />
@@ -183,7 +179,7 @@ export default function CreatorProfileEditPage() {
           <button
             onClick={handleSaveProfile}
             disabled={isSaving}
-            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-[0_0_20px_rgba(255,210,31,0.4)] border border-white/40 flex items-center gap-1.5 disabled:opacity-50"
+            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5 disabled:opacity-50"
           >
             <Save className="w-3.5 h-3.5 text-[#0A0A0E]" />
             <span>{isSaving ? "Saving..." : "Save Changes"}</span>
@@ -193,8 +189,8 @@ export default function CreatorProfileEditPage() {
 
       <form onSubmit={handleSaveProfile} className="space-y-8">
         {/* Basic Positioning Card */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-[#101018] border border-white/10 shadow-2xl backdrop-blur-xl space-y-6">
-          <h3 className="text-base font-bold text-white font-display">
+        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6">
+          <h3 className="text-base font-bold text-[#0A0A0E] font-display">
             1. Positioning &amp; Starting Rates
           </h3>
 
@@ -227,13 +223,13 @@ export default function CreatorProfileEditPage() {
         </div>
 
         {/* Connected Social Accounts */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-[#101018] border border-white/10 shadow-2xl backdrop-blur-xl space-y-6">
+        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-base font-bold text-white font-display">
+              <h3 className="text-base font-bold text-[#0A0A0E] font-display">
                 2. Connected Social Channels
               </h3>
-              <p className="text-xs text-white/50">
+              <p className="text-xs text-[#5A5A68]">
                 Audience reach: {totalFollowers.toLocaleString()} total followers ({tier} Tier)
               </p>
             </div>
@@ -241,7 +237,7 @@ export default function CreatorProfileEditPage() {
             <button
               type="button"
               onClick={() => setShowAddModal(true)}
-              className="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition-all flex items-center gap-1.5"
+              className="px-4 py-2 rounded-full bg-black/5 hover:bg-black/10 text-[#0A0A0E] text-xs font-bold transition-all flex items-center gap-1.5 border border-black/10 shadow-xs"
             >
               <Plus className="w-3.5 h-3.5" />
               <span>Connect Channel</span>
@@ -252,15 +248,15 @@ export default function CreatorProfileEditPage() {
             {socialAccounts.map((sa) => (
               <div
                 key={sa.id}
-                className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-between"
+                className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/5 flex items-center justify-between"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center">
+                  <div className="w-9 h-9 rounded-xl bg-white border border-black/8 flex items-center justify-center shadow-xs">
                     {getPlatformIcon(sa.platform)}
                   </div>
                   <div>
-                    <h4 className="font-bold text-xs text-white">@{sa.handle}</h4>
-                    <p className="text-[11px] font-mono text-white/50">
+                    <h4 className="font-bold text-xs text-[#0A0A0E]">@{sa.handle}</h4>
+                    <p className="text-[11px] font-mono text-[#6A6A78]">
                       {sa.followers.toLocaleString()} followers • {sa.engagementRate}% ER
                     </p>
                   </div>
@@ -269,7 +265,7 @@ export default function CreatorProfileEditPage() {
                 <button
                   type="button"
                   onClick={() => handleRemoveSocial(sa.id)}
-                  className="text-white/40 hover:text-red-400 p-1.5 rounded-lg transition-colors"
+                  className="text-[#7A7A8A] hover:text-red-600 p-1.5 rounded-lg transition-colors"
                 >
                   <Trash2 className="w-4 h-4" />
                 </button>
@@ -281,22 +277,22 @@ export default function CreatorProfileEditPage() {
 
       {/* Add Modal */}
       {showAddModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-          <div className="w-full max-w-md rounded-3xl bg-[#101018] border border-white/15 p-6 space-y-4 shadow-2xl">
-            <h3 className="text-base font-bold text-white font-display">Connect Social Channel</h3>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-md">
+          <div className="w-full max-w-md rounded-3xl bg-white border border-black/10 p-6 space-y-4 shadow-2xl text-[#0A0A0E]">
+            <h3 className="text-base font-bold text-[#0A0A0E] font-display">Connect Social Channel</h3>
             <div className="space-y-3">
               <div>
-                <label className="text-xs font-bold text-white/80 block mb-1">Platform</label>
+                <label className="text-xs font-bold text-[#0A0A0E] block mb-1">Platform</label>
                 <select
                   value={newPlatform}
                   onChange={(e) => setNewPlatform(e.target.value as PlatformType)}
-                  className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-3 py-2 text-xs text-white focus:outline-none"
+                  className="w-full bg-[#F8F8FC] border border-black/10 rounded-xl px-3 py-2 text-xs text-[#0A0A0E] focus:outline-none"
                 >
-                  <option value="youtube" className="bg-[#101018]">YouTube</option>
-                  <option value="instagram" className="bg-[#101018]">Instagram</option>
-                  <option value="tiktok" className="bg-[#101018]">TikTok</option>
-                  <option value="x" className="bg-[#101018]">X / Twitter</option>
-                  <option value="linkedin" className="bg-[#101018]">LinkedIn</option>
+                  <option value="youtube">YouTube</option>
+                  <option value="instagram">Instagram</option>
+                  <option value="tiktok">TikTok</option>
+                  <option value="x">X / Twitter</option>
+                  <option value="linkedin">LinkedIn</option>
                 </select>
               </div>
 
@@ -322,18 +318,18 @@ export default function CreatorProfileEditPage() {
               />
             </div>
 
-            <div className="flex items-center justify-end gap-2 pt-2 border-t border-white/10">
+            <div className="flex items-center justify-end gap-2 pt-2 border-t border-black/8">
               <button
                 type="button"
                 onClick={() => setShowAddModal(false)}
-                className="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold"
+                className="px-4 py-2 rounded-full bg-black/5 hover:bg-black/10 text-[#0A0A0E] text-xs font-semibold"
               >
                 Cancel
               </button>
               <button
                 type="button"
                 onClick={handleAddSocialAccount}
-                className="px-5 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] text-xs font-bold shadow-[0_0_15px_rgba(255,210,31,0.4)]"
+                className="px-5 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] text-xs font-bold shadow-xs border border-black/10"
               >
                 Add Channel
               </button>

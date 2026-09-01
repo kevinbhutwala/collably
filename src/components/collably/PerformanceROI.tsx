@@ -84,7 +84,7 @@ export function PerformanceROI() {
                   </p>
                   <div className="flex items-center justify-between text-xs font-mono pt-1">
                     <span className="text-[#626262]">{m.subtext}</span>
-                    <span className="text-[#101010] font-bold bg-[#B7FF3C] px-1.5 py-0.5 rounded text-[10px]">
+                    <span className="text-[#101010] font-bold bg-[#FFD21F] px-1.5 py-0.5 rounded text-[10px]">
                       {m.trend}
                     </span>
                   </div>
@@ -102,7 +102,7 @@ export function PerformanceROI() {
               <p className="text-xs text-[#626262] font-sans">Live telemetry for Vertex Pro AI campaign (Last 30 Days)</p>
             </div>
             <span className="text-xs font-mono font-bold text-[#101010] flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#B7FF3C] animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
               Real-Time Tracking Active
             </span>
           </div>
@@ -128,7 +128,7 @@ export function PerformanceROI() {
                     <td className="py-4 px-6 text-right font-mono font-bold numeric-tabular">{row.clicks}</td>
                     <td className="py-4 px-6 text-right font-mono font-bold numeric-tabular">{row.conversions}</td>
                     <td className="py-4 px-6 text-right font-mono font-extrabold text-[#101010] numeric-tabular">
-                      <span className="bg-[#B7FF3C] px-2 py-0.5 rounded text-[#101010]">{row.roas}</span>
+                      <span className="bg-[#FFD21F] px-2 py-0.5 rounded text-[#101010]">{row.roas}</span>
                     </td>
                   </tr>
                 ))}

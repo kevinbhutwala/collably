@@ -68,23 +68,23 @@ export default function EarningsAndEscrowPage() {
   };
 
   return (
-    <div className="space-y-8 text-white select-none">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+    <div className="space-y-8 text-[#0A0A0E] select-none">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-black/8">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono font-bold uppercase text-white/80 flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-xs font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               Financial Ledger
             </span>
-            <span className="text-white/20">•</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#FFD21F] font-mono text-[10px] font-bold">
+            <span className="text-[#8A8A9A]">•</span>
+            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
               Stripe / Escrow Secured
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
             {role === "creator" ? "Earnings & Milestone Payouts" : "Brand Escrow & Invoices"}
           </h1>
-          <p className="text-xs sm:text-sm text-white/50 mt-0.5 font-sans">
+          <p className="text-xs sm:text-sm text-[#5A5A68] mt-0.5 font-sans">
             {role === "creator"
               ? "View funds currently secured in escrow, released payouts, and withdraw to bank."
               : "Manage funded campaign pools, released tranches, and tax receipts."}
@@ -94,7 +94,7 @@ export default function EarningsAndEscrowPage() {
         {role === "creator" && (
           <button
             onClick={handleWithdraw}
-            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-[0_0_20px_rgba(255,210,31,0.4)] border border-white/40 flex items-center gap-1.5"
+            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5"
           >
             <span>Withdraw Available Balance</span>
             <ArrowRight className="w-3.5 h-3.5 text-[#0A0A0E]" />
@@ -114,25 +114,25 @@ export default function EarningsAndEscrowPage() {
           title="Secured in Escrow"
           value={formatCurrency(securedInEscrow || 35000)}
           subtitle="Locked pending deliverable approval"
-          icon={<ShieldCheck className="w-5 h-5 text-white" />}
+          icon={<ShieldCheck className="w-5 h-5 text-[#0A0A0E]" />}
         />
         <StatsCard
           title="Lifetime Processed"
           value={formatCurrency(lifetimeProcessed || 94500)}
           subtitle={`Across ${payouts.length || 6} milestone releases`}
-          icon={<CheckCircle2 className="w-5 h-5 text-white" />}
+          icon={<CheckCircle2 className="w-5 h-5 text-[#0A0A0E]" />}
         />
       </div>
 
       {/* Transaction History Table */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-[#0E0C15]/90 border border-white/10 shadow-2xl backdrop-blur-xl space-y-6 text-white">
-        <div className="flex items-center justify-between pb-3 border-b border-white/10">
+      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6 text-[#0A0A0E]">
+        <div className="flex items-center justify-between pb-3 border-b border-black/8">
           <div>
-            <h3 className="text-base sm:text-lg font-bold text-white font-display">Tranche Payout History</h3>
-            <p className="text-xs text-white/50">All milestone settlements and escrow releases.</p>
+            <h3 className="text-base sm:text-lg font-bold text-[#0A0A0E] font-display">Tranche Payout History</h3>
+            <p className="text-xs text-[#5A5A68]">All milestone settlements and escrow releases.</p>
           </div>
           {payouts.length > 0 && (
-            <button className="px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-mono transition-all flex items-center gap-1.5">
+            <button className="px-3.5 py-1.5 rounded-full bg-black/5 hover:bg-black/10 text-[#0A0A0E] text-xs font-mono transition-all flex items-center gap-1.5 border border-black/5">
               <Download className="w-3.5 h-3.5" />
               <span>Export CSV</span>
             </button>
@@ -141,7 +141,7 @@ export default function EarningsAndEscrowPage() {
 
         {payouts.length === 0 ? (
           <AnimatedEmptyState
-            icon={<Receipt className="w-8 h-8 text-white" />}
+            icon={<Receipt className="w-8 h-8 text-[#0A0A0E]" />}
             badgeText="Financial Custody"
             title="No Payout Records Yet"
             description="Once you complete milestone deliverables or approve submitted content, official Stripe payout disbursement receipts will be logged here."
@@ -151,30 +151,30 @@ export default function EarningsAndEscrowPage() {
             secondaryHref="/app/dashboard"
           />
         ) : (
-          <div className="divide-y divide-white/10 font-mono text-xs">
+          <div className="divide-y divide-black/5 font-mono text-xs">
             {payouts.map((p) => (
               <div key={p.id} className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-white text-sm font-sans">{p.campaignTitle}</span>
-                    <span className="px-2 py-0.5 rounded-full bg-white/10 border border-white/10 text-white/80 text-[10px] font-bold">
+                    <span className="font-bold text-[#0A0A0E] text-sm font-sans">{p.campaignTitle}</span>
+                    <span className="px-2 py-0.5 rounded-full bg-black/5 border border-black/10 text-[#0A0A0E] text-[10px] font-bold">
                       {p.brandName}
                     </span>
                   </div>
-                  <p className="text-white/40 font-sans text-xs">
+                  <p className="text-[#6A6A78] font-sans text-xs">
                     Method: {p.paymentMethod} • ID: {p.id}
                   </p>
                 </div>
 
                 <div className="flex items-center gap-6">
                   <div>
-                    <span className="text-white/40 block text-[10px]">Net Payout</span>
-                    <span className="text-white font-extrabold text-sm numeric-tabular">
+                    <span className="text-[#6A6A78] block text-[10px]">Net Payout</span>
+                    <span className="text-[#0A0A0E] font-extrabold text-sm numeric-tabular">
                       {formatCurrency(p.netAmount)}
                     </span>
                   </div>
                   <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono uppercase ${
-                    p.status === "paid" ? "bg-emerald-500/20 text-emerald-400" : "bg-white/10 text-white/60"
+                    p.status === "paid" ? "bg-emerald-50 text-emerald-700 border border-emerald-200" : "bg-black/5 text-[#5A5A68]"
                   }`}>
                     {p.status}
                   </span>

@@ -58,6 +58,84 @@ export const MOCK_CONVERSATIONS: Conversation[] = [
     },
     unreadCount: 0,
     updatedAt: "2026-08-26T12:10:00Z",
+  },
+  {
+    id: "conv-3",
+    campaignId: "camp-3",
+    campaignTitle: "Raycast Pro Developer Extensions Launch",
+    participants: [
+      {
+        userId: "user-b3",
+        name: "Raycast DevRel",
+        role: "brand",
+        avatarUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
+      },
+      {
+        userId: "user-c3",
+        name: "Devon Thorne",
+        role: "creator",
+        avatarUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=80",
+      }
+    ],
+    lastMessage: {
+      content: "Can we include the custom Raycast API extension script in your pinned GitHub repo link?",
+      senderName: "Raycast DevRel",
+      createdAt: "2026-08-29T10:15:00Z",
+    },
+    unreadCount: 2,
+    updatedAt: "2026-08-29T10:15:00Z",
+  },
+  {
+    id: "conv-4",
+    campaignId: "camp-4",
+    campaignTitle: "Clean Botanical Morning Routine",
+    participants: [
+      {
+        userId: "user-b4",
+        name: "Studio 09 Botanical",
+        role: "brand",
+        avatarUrl: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=200&auto=format&fit=crop&q=80",
+      },
+      {
+        userId: "user-c4",
+        name: "Aanya Patel",
+        role: "creator",
+        avatarUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&auto=format&fit=crop&q=80",
+      }
+    ],
+    lastMessage: {
+      content: "Color grading on the outdoor sunrise sequence is stunning! Payout escrow tranche cleared.",
+      senderName: "Studio 09 Botanical",
+      createdAt: "2026-08-30T14:20:00Z",
+    },
+    unreadCount: 0,
+    updatedAt: "2026-08-30T14:20:00Z",
+  },
+  {
+    id: "conv-5",
+    campaignId: "camp-vip",
+    campaignTitle: "Collably VIP Creator Escrow & Priority Match Desk",
+    participants: [
+      {
+        userId: "user-admin",
+        name: "Collably Talent Concierge",
+        role: "agency_admin",
+        avatarUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop&q=80",
+      },
+      {
+        userId: "user-c1",
+        name: "Elena Rostova",
+        role: "creator",
+        avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      }
+    ],
+    lastMessage: {
+      content: "You've been matched with 3 Tier-1 enterprise SaaS brand briefs this week with guaranteed escrow funding.",
+      senderName: "Collably Talent Concierge",
+      createdAt: "2026-08-31T09:00:00Z",
+    },
+    unreadCount: 1,
+    updatedAt: "2026-08-31T09:00:00Z",
   }
 ];
 
@@ -92,7 +170,7 @@ export const MOCK_MESSAGES: Record<string, ChatMessage[]> = {
       senderRole: "creator",
       senderName: "Elena Rostova",
       senderAvatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
-      content: "Just submitted the rough cut video deliverable for review under Deliverables tab!",
+      content: "Just submitted the rough cut video deliverable for review under Deliverables tab! 4K ProRes cut with timecoded chapter markers.",
       readBy: ["user-b1"],
       createdAt: "2026-08-28T14:32:00Z",
     },
@@ -141,6 +219,100 @@ export const MOCK_MESSAGES: Record<string, ChatMessage[]> = {
       content: "The first reel is officially approved and payout tranche 1 has been released to your escrow balance.",
       readBy: ["user-c2"],
       createdAt: "2026-08-26T12:10:00Z",
+    }
+  ],
+  "conv-3": [
+    {
+      id: "msg-301",
+      conversationId: "conv-3",
+      senderId: "user-b3",
+      senderRole: "brand",
+      senderName: "Raycast DevRel",
+      senderAvatar: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
+      content: "Hey Devon, we are loving your speed-coding workflows on YouTube. We'd like to sponsor a 90s deep dive on our new Extension Store API.",
+      readBy: ["user-c3"],
+      createdAt: "2026-08-28T09:30:00Z",
+    },
+    {
+      id: "msg-302",
+      conversationId: "conv-3",
+      senderId: "user-c3",
+      senderRole: "creator",
+      senderName: "Devon Thorne",
+      senderAvatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=80",
+      content: "Raycast is already a core part of my daily dotfiles setup! I'll build a live custom GitHub pull-request reviewer extension on video.",
+      readBy: ["user-b3"],
+      createdAt: "2026-08-28T11:45:00Z",
+    },
+    {
+      id: "msg-303",
+      conversationId: "conv-3",
+      senderId: "user-b3",
+      senderRole: "brand",
+      senderName: "Raycast DevRel",
+      senderAvatar: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
+      content: "Can we include the custom Raycast API extension script in your pinned GitHub repo link?",
+      readBy: [],
+      createdAt: "2026-08-29T10:15:00Z",
+    }
+  ],
+  "conv-4": [
+    {
+      id: "msg-401",
+      conversationId: "conv-4",
+      senderId: "user-b4",
+      senderRole: "brand",
+      senderName: "Studio 09 Botanical",
+      senderAvatar: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=200&auto=format&fit=crop&q=80",
+      content: "Hello Aanya, your clean aesthetic is a perfect match for our botanical serum launch. $2,200 escrow pre-authorized.",
+      readBy: ["user-c4"],
+      createdAt: "2026-08-29T11:00:00Z",
+    },
+    {
+      id: "msg-402",
+      conversationId: "conv-4",
+      senderId: "user-c4",
+      senderRole: "creator",
+      senderName: "Aanya Patel",
+      senderAvatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&auto=format&fit=crop&q=80",
+      content: "Draft reel uploaded! Natural lighting with high-contrast macro texture shots.",
+      readBy: ["user-b4"],
+      createdAt: "2026-08-30T09:15:00Z",
+    },
+    {
+      id: "msg-403",
+      conversationId: "conv-4",
+      senderId: "user-b4",
+      senderRole: "brand",
+      senderName: "Studio 09 Botanical",
+      senderAvatar: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=200&auto=format&fit=crop&q=80",
+      content: "Color grading on the outdoor sunrise sequence is stunning! Payout escrow tranche cleared.",
+      readBy: ["user-c4"],
+      createdAt: "2026-08-30T14:20:00Z",
+    }
+  ],
+  "conv-5": [
+    {
+      id: "msg-501",
+      conversationId: "conv-5",
+      senderId: "user-admin",
+      senderRole: "agency_admin",
+      senderName: "Collably Talent Concierge",
+      senderAvatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop&q=80",
+      content: "Welcome to the Collably VIP Creator Cohort, Elena! Your rate card and audience authenticity score (98.4%) have been verified.",
+      readBy: ["user-c1"],
+      createdAt: "2026-08-30T08:00:00Z",
+    },
+    {
+      id: "msg-502",
+      conversationId: "conv-5",
+      senderId: "user-admin",
+      senderRole: "agency_admin",
+      senderName: "Collably Talent Concierge",
+      senderAvatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop&q=80",
+      content: "You've been matched with 3 Tier-1 enterprise SaaS brand briefs this week with guaranteed escrow funding.",
+      readBy: [],
+      createdAt: "2026-08-31T09:00:00Z",
     }
   ]
 };

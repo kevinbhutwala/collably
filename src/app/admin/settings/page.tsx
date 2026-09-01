@@ -19,28 +19,28 @@ export default function AdminSettingsPage() {
   };
 
   return (
-    <div className="space-y-8 max-w-4xl text-white select-none">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+    <div className="space-y-8 max-w-4xl text-[#0A0A0E] select-none">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-black/8">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
             Agency Global Platform Configuration
           </h1>
-          <p className="text-xs sm:text-sm text-white/50 mt-0.5 font-sans">
+          <p className="text-xs sm:text-sm text-[#5A5A68] mt-0.5 font-sans">
             Set global take-rate percentages, escrow thresholds, and AI model endpoints.
           </p>
         </div>
 
         <button
           onClick={handleSave}
-          className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-[0_0_20px_rgba(255,210,31,0.4)] border border-white/40 flex items-center gap-1.5"
+          className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5"
         >
           <Save className="w-4 h-4 text-[#0A0A0E]" />
           <span>Save Configuration</span>
         </button>
       </div>
 
-      <div className="p-6 sm:p-8 rounded-3xl bg-[#101018] border border-white/10 shadow-2xl backdrop-blur-xl space-y-6">
-        <div className="flex items-center gap-2 text-white font-bold text-sm font-display">
+      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6">
+        <div className="flex items-center gap-2 text-[#0A0A0E] font-bold text-sm font-display">
           <Sliders className="w-4 h-4 text-[#FFD21F]" />
           <span>Financial Parameters</span>
         </div>

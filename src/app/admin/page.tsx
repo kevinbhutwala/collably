@@ -33,24 +33,24 @@ export default function AgencyAdminCommandCenter() {
   };
 
   return (
-    <div className="space-y-8 text-white select-none">
+    <div className="space-y-8 text-[#0A0A0E] select-none">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-black/8">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono font-bold uppercase text-white/80 flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-xs font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               Agency Master Operations
             </span>
-            <span className="text-white/20">•</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#FFD21F] font-mono text-[10px] font-bold">
+            <span className="text-[#8A8A9A]">•</span>
+            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
               System Level: Optimal
             </span>
           </div>
-          <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
+          <h1 className="text-2xl sm:text-4xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
             Agency Admin Command Center
           </h1>
-          <p className="text-xs sm:text-sm text-white/50 mt-0.5 font-sans">
+          <p className="text-xs sm:text-sm text-[#5A5A68] mt-0.5 font-sans">
             Realtime platform gross volume, creator roster verification, and escrow settlement control.
           </p>
         </div>
@@ -80,7 +80,7 @@ export default function AgencyAdminCommandCenter() {
           change="+42 this week"
           trend="up"
           subtitle="Audited demographics"
-          icon={<Users className="w-5 h-5 text-white" />}
+          icon={<Users className="w-5 h-5 text-[#0A0A0E]" />}
         />
         <StatsCard
           title="Active Brand Sponsors"
@@ -88,32 +88,32 @@ export default function AgencyAdminCommandCenter() {
           change="89% Retention"
           trend="up"
           subtitle="Direct contracting accounts"
-          icon={<Building2 className="w-5 h-5 text-white" />}
+          icon={<Building2 className="w-5 h-5 text-[#0A0A0E]" />}
         />
       </div>
 
       {/* 2-Column Admin Control Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Creator Verification Approval Queue */}
-        <div className="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-[#0E0C15]/90 border border-white/10 shadow-2xl backdrop-blur-xl space-y-6">
-          <div className="flex items-center justify-between pb-3 border-b border-white/10">
+        <div className="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6">
+          <div className="flex items-center justify-between pb-3 border-b border-black/8">
             <div>
-              <h3 className="text-lg font-bold text-white font-display">Creator Verification &amp; Badge Control</h3>
-              <p className="text-xs text-white/50 font-sans">Toggle verified checkmarks for algorithmic spotlight ranking.</p>
+              <h3 className="text-lg font-bold text-[#0A0A0E] font-display">Creator Verification &amp; Badge Control</h3>
+              <p className="text-xs text-[#5A5A68] font-sans">Toggle verified checkmarks for algorithmic spotlight ranking.</p>
             </div>
-            <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-mono font-bold">
+            <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-mono font-bold">
               {creators.filter((c) => c.verified).length} Verified
             </span>
           </div>
 
-          <div className="divide-y divide-white/10 space-y-3">
+          <div className="divide-y divide-black/5 space-y-3">
             {creators.map((creator) => (
               <div
                 key={creator.id}
                 className="pt-3 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
               >
                 <div className="flex items-center gap-3">
-                  <div className="relative w-11 h-11 rounded-2xl overflow-hidden bg-white/5 border border-white/10 shrink-0">
+                  <div className="relative w-11 h-11 rounded-2xl overflow-hidden bg-[#F5F5F9] border border-black/8 shrink-0">
                     <SafeImage
                       src={creator.avatarUrl}
                       alt={creator.fullName}
@@ -125,12 +125,12 @@ export default function AgencyAdminCommandCenter() {
                   </div>
                   <div>
                     <div className="flex items-center gap-1.5">
-                      <h4 className="font-bold text-sm text-white font-display">{creator.fullName}</h4>
+                      <h4 className="font-bold text-sm text-[#0A0A0E] font-display">{creator.fullName}</h4>
                       {creator.verified && (
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                       )}
                     </div>
-                    <p className="text-xs text-white/50 font-mono">
+                    <p className="text-xs text-[#7A7A8A] font-mono">
                       @{creator.handle} • {creator.primaryCategory} • {formatNumber(creator.totalFollowers)} Reach
                     </p>
                   </div>
@@ -138,10 +138,10 @@ export default function AgencyAdminCommandCenter() {
 
                 <button
                   onClick={() => handleVerifyCreator(creator.id)}
-                  className={`px-4 py-2 rounded-full text-xs font-semibold font-mono transition-all ${
+                  className={`px-4 py-2 rounded-full text-xs font-semibold font-mono transition-all border ${
                     creator.verified
-                      ? "bg-white/10 text-white/60 hover:text-white"
-                      : "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] font-bold shadow-[0_0_15px_rgba(255,210,31,0.4)]"
+                      ? "bg-black/5 text-[#5A5A68] hover:text-[#0A0A0E] border-black/10"
+                      : "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] font-bold shadow-xs border-black/10"
                   }`}
                 >
                   {creator.verified ? "Revoke Badge" : "Grant Verified"}
@@ -152,13 +152,13 @@ export default function AgencyAdminCommandCenter() {
         </div>
 
         {/* Live Escrow Custody Rail */}
-        <div className="lg:col-span-5 p-6 sm:p-8 rounded-3xl bg-[#101018] border border-white/10 shadow-2xl backdrop-blur-xl space-y-6">
-          <div className="flex items-center justify-between pb-3 border-b border-white/10">
+        <div className="lg:col-span-5 p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6">
+          <div className="flex items-center justify-between pb-3 border-b border-black/8">
             <div>
-              <h3 className="text-lg font-bold text-white font-display">Active Campaign Escrows</h3>
-              <p className="text-xs text-white/50 font-sans">Milestone custody status across deals.</p>
+              <h3 className="text-lg font-bold text-[#0A0A0E] font-display">Active Campaign Escrows</h3>
+              <p className="text-xs text-[#5A5A68] font-sans">Milestone custody status across deals.</p>
             </div>
-            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/15 text-[#FFD21F] text-xs font-mono font-bold">
+            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] border border-[#FFD21F]/40 text-xs font-mono font-bold">
               {campaigns.length} Active
             </span>
           </div>
@@ -167,25 +167,25 @@ export default function AgencyAdminCommandCenter() {
             {campaigns.map((camp) => (
               <div
                 key={camp.id}
-                className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2"
+                className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/5 space-y-2"
               >
                 <div className="flex justify-between items-start">
-                  <h4 className="font-bold text-sm text-white font-sans truncate max-w-[200px]">
+                  <h4 className="font-bold text-sm text-[#0A0A0E] font-sans truncate max-w-[200px]">
                     {camp.title}
                   </h4>
-                  <span className="text-[#FFD21F] font-extrabold text-sm">
+                  <span className="text-[#0A0A0E] font-extrabold text-sm">
                     {formatCurrency(camp.budget.totalBudget)}
                   </span>
                 </div>
-                <div className="flex justify-between text-white/50 text-[11px]">
+                <div className="flex justify-between text-[#6A6A78] text-[11px]">
                   <span>Sponsor: {camp.brand.companyName}</span>
-                  <span className="text-white">
+                  <span className="text-[#0A0A0E] font-bold">
                     {camp.acceptedCount}/{camp.maxCreators} Creators Funded
                   </span>
                 </div>
-                <div className="w-full h-1.5 rounded-full bg-white/10 overflow-hidden">
+                <div className="w-full h-1.5 rounded-full bg-black/10 overflow-hidden">
                   <div
-                    className="h-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] rounded-full"
+                    className="h-full bg-[#FFD21F] rounded-full"
                     style={{
                       width: `${Math.min(100, (camp.acceptedCount / camp.maxCreators) * 100)}%`,
                     }}

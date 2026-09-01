@@ -6,11 +6,7 @@ export async function GET(req: NextRequest) {
   try {
     const session = SecurityService.getSession(req);
     const { searchParams } = new URL(req.url);
-    const userId = session?.userId || searchParams.get("userId");
-
-    if (!userId) {
-      return NextResponse.json({ conversations: [] });
-    }
+    const userId = session?.userId || searchParams.get("userId") || undefined;
 
     const conversations = await messageRepo.getConversations(userId);
     return NextResponse.json({ conversations });

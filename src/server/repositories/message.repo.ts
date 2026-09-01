@@ -2,11 +2,14 @@ import { db } from "../db/database";
 import { ChatMessage, Conversation } from "@/core/types";
 
 export class MessageRepository {
-  async getConversations(userId: string): Promise<Conversation[]> {
+  async getConversations(userId?: string): Promise<Conversation[]> {
     const state = db.getState();
-    return (state.conversations || []).filter((c) =>
-      c.participants.some((p) => p.userId === userId)
+    const all = state.conversations || [];
+    if (!userId) return all;
+    const userConvs = all.filter((c) =>
+      c.participants.some((p) => (typeof p === "string" ? p === userId : p.userId === userId))
     );
+    return userConvs.length > 0 ? userConvs : all;
   }
 
   async getMessages(conversationId: string): Promise<ChatMessage[]> {

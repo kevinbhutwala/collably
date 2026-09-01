@@ -22,7 +22,7 @@ export default function BrandCRMPage() {
   useEffect(() => {
     const fetch = async () => {
       const data = await crmService.getContacts("brand-1");
-      setContacts(data);
+      setContacts(data || []);
     };
     fetch();
   }, []);
@@ -78,36 +78,36 @@ export default function BrandCRMPage() {
   const filtered = selectedStage === "all" ? contacts : contacts.filter((c) => c.stage === selectedStage);
 
   return (
-    <div className="space-y-8 text-white select-none">
+    <div className="space-y-8 text-[#0A0A0E] select-none">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-black/8">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono font-bold uppercase text-white/80 flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-xs font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               Talent Operations
             </span>
-            <span className="text-white/20">•</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#FFD21F] font-mono text-[10px] font-bold">
+            <span className="text-[#8A8A9A]">•</span>
+            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
               Creator Pipeline CRM
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
             Creator Relationship Management
           </h1>
-          <p className="text-xs sm:text-sm text-white/50 mt-0.5 font-sans">
+          <p className="text-xs sm:text-sm text-[#5A5A68] mt-0.5 font-sans">
             Track talent across discovery, outreach, contract stages, and record private agency evaluation notes.
           </p>
         </div>
 
         {/* Stage Filter */}
-        <div className="flex items-center gap-1.5 p-1 bg-white/[0.04] rounded-full border border-white/10 text-xs font-semibold overflow-x-auto no-scrollbar">
+        <div className="flex items-center gap-1.5 p-1 bg-[#F5F5F9] rounded-full border border-black/8 text-xs font-semibold overflow-x-auto no-scrollbar">
           <button
             onClick={() => setSelectedStage("all")}
             className={`px-3 py-1.5 rounded-full font-mono text-xs transition-all ${
               selectedStage === "all"
-                ? "bg-[#FFD21F] text-[#0A0A0E] shadow-[0_0_12px_rgba(255,210,31,0.45)] font-bold border border-white/40"
-                : "text-white/60 hover:text-white"
+                ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs font-bold border border-black/10"
+                : "text-[#6A6A78] hover:text-[#0A0A0E]"
             }`}
           >
             All ({contacts.length})
@@ -118,8 +118,8 @@ export default function BrandCRMPage() {
               onClick={() => setSelectedStage(s.key)}
               className={`px-3 py-1.5 rounded-full font-mono text-xs transition-all whitespace-nowrap ${
                 selectedStage === s.key
-                  ? "bg-[#FFD21F] text-[#0A0A0E] shadow-[0_0_12px_rgba(255,210,31,0.45)] font-bold border border-white/40"
-                  : "text-white/60 hover:text-white"
+                  ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs font-bold border border-black/10"
+                  : "text-[#6A6A78] hover:text-[#0A0A0E]"
               }`}
             >
               {s.label}
@@ -133,12 +133,12 @@ export default function BrandCRMPage() {
         {filtered.map((c) => (
           <div
             key={c.id}
-            className="p-6 rounded-3xl bg-[#101018] border border-white/10 hover:border-[#FFD21F]/40 transition-all space-y-4 flex flex-col justify-between shadow-2xl backdrop-blur-xl"
+            className="p-6 rounded-3xl bg-white border border-black/8 hover:border-[#FFD21F] transition-all space-y-4 flex flex-col justify-between shadow-xs"
           >
             <div className="space-y-3">
               <div className="flex items-start justify-between gap-3">
                 <div className="flex items-center gap-3">
-                  <div className="relative w-12 h-12 rounded-2xl overflow-hidden bg-white/5 border border-white/10 shrink-0">
+                  <div className="relative w-12 h-12 rounded-2xl overflow-hidden bg-[#F5F5F9] border border-black/8 shrink-0">
                     <SafeImage
                       src={c.creator.avatarUrl}
                       alt={c.creator.fullName}
@@ -149,37 +149,37 @@ export default function BrandCRMPage() {
                     />
                   </div>
                   <div>
-                    <h3 className="font-bold text-base text-white font-display">{c.creator.fullName}</h3>
-                    <p className="text-xs text-white/50 font-mono">@{c.creator.handle}</p>
+                    <h3 className="font-bold text-base text-[#0A0A0E] font-display">{c.creator.fullName}</h3>
+                    <p className="text-xs text-[#7A7A8A] font-mono">@{c.creator.handle}</p>
                   </div>
                 </div>
-                <span className="px-2.5 py-0.5 rounded-full bg-white/10 text-white/80 text-[10px] font-mono font-bold uppercase">
+                <span className="px-2.5 py-0.5 rounded-full bg-black/5 text-[#0A0A0E] text-[10px] font-mono font-bold uppercase">
                   {c.creator.primaryCategory}
                 </span>
               </div>
 
               {/* Metrics */}
-              <div className="grid grid-cols-2 gap-2 p-3 rounded-2xl bg-white/[0.03] border border-white/10 text-xs font-mono">
+              <div className="grid grid-cols-2 gap-2 p-3 rounded-2xl bg-[#F8F8FC] border border-black/5 text-xs font-mono">
                 <div>
-                  <span className="text-[10px] text-white/40 block">Audience Reach</span>
-                  <span className="font-bold text-white text-sm">{formatNumber(c.creator.totalFollowers)}</span>
+                  <span className="text-[10px] text-[#7A7A8A] block">Audience Reach</span>
+                  <span className="font-bold text-[#0A0A0E] text-sm">{formatNumber(c.creator.totalFollowers)}</span>
                 </div>
                 <div>
-                  <span className="text-[10px] text-white/40 block">Starting Rate</span>
-                  <span className="font-bold text-[#FFD21F] text-sm">{formatCurrency(c.creator.startingPrice)}</span>
+                  <span className="text-[10px] text-[#7A7A8A] block">Starting Rate</span>
+                  <span className="font-bold text-[#0A0A0E] text-sm">{formatCurrency(c.creator.startingPrice)}</span>
                 </div>
               </div>
 
               {/* Stage Selector */}
               <div className="space-y-1">
-                <label className="text-[11px] font-bold text-white/80 font-mono">Pipeline Stage:</label>
+                <label className="text-[11px] font-bold text-[#0A0A0E] font-mono">Pipeline Stage:</label>
                 <select
                   value={c.stage}
                   onChange={(e) => handleStageChange(c.id, e.target.value as CRMStage)}
-                  className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-3 py-2 text-xs text-white focus:outline-none"
+                  className="w-full bg-[#F5F5F9] border border-black/8 rounded-xl px-3 py-2 text-xs text-[#0A0A0E] focus:outline-none"
                 >
                   {stages.map((s) => (
-                    <option key={s.key} value={s.key} className="bg-[#101018]">
+                    <option key={s.key} value={s.key} className="bg-white text-[#0A0A0E]">
                       {s.label}
                     </option>
                   ))}
@@ -188,9 +188,9 @@ export default function BrandCRMPage() {
 
               {/* Recent Internal Notes */}
               {c.privateNotes.length > 0 && (
-                <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/10 text-xs text-white/60 space-y-1">
-                  <span className="font-bold text-[#FFD21F] flex items-center gap-1 text-[11px]">
-                    <FileText className="w-3.5 h-3.5 text-[#FFD21F]" />
+                <div className="p-3 rounded-2xl bg-[#F8F8FC] border border-black/5 text-xs text-[#5A5A68] space-y-1">
+                  <span className="font-bold text-[#0A0A0E] flex items-center gap-1 text-[11px]">
+                    <FileText className="w-3.5 h-3.5 text-[#0A0A0E]" />
                     Latest Note:
                   </span>
                   <p className="line-clamp-2 italic font-sans">&quot;{c.privateNotes[0].content}&quot;</p>
@@ -204,13 +204,13 @@ export default function BrandCRMPage() {
                   setSelectedContact(c);
                   setIsNoteModalOpen(true);
                 }}
-                className="flex-1 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition-all flex items-center justify-center gap-1.5"
+                className="flex-1 py-2 rounded-full bg-black/5 hover:bg-black/10 text-[#0A0A0E] text-xs font-semibold transition-all flex items-center justify-center gap-1.5 border border-black/5"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span>Add Note</span>
               </button>
               <Link href="/app/messages" className="flex-1">
-                <button className="w-full py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-md">
+                <button className="w-full py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs">
                   Message
                 </button>
               </Link>
@@ -227,7 +227,7 @@ export default function BrandCRMPage() {
         description="Private notes visible only to your team and account executives."
         maxWidth="md"
       >
-        <form onSubmit={handleAddNote} className="space-y-4 text-white">
+        <form onSubmit={handleAddNote} className="space-y-4 text-[#0A0A0E]">
           <Textarea
             label="Note Content"
             value={newNote}
@@ -238,7 +238,7 @@ export default function BrandCRMPage() {
           />
           <button
             type="submit"
-            className="w-full py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] text-xs font-bold shadow-[0_0_15px_rgba(255,210,31,0.4)]"
+            className="w-full py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] text-xs font-bold shadow-xs border border-black/10"
           >
             Save Internal Note
           </button>

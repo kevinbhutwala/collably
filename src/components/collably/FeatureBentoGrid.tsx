@@ -1,23 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import {
-  ShieldCheck,
   Sparkles,
-  Zap,
-  Play,
   CheckCircle2,
   Lock,
-  ArrowRight,
-  TrendingUp,
   FileCheck2,
   Scale,
-  Users,
-  Eye,
-  Sliders,
 } from "lucide-react";
-import { formatCurrency } from "@/core/utils/currency";
 
 export function FeatureBentoGrid() {
   const [activeTimestamp, setActiveTimestamp] = useState<number>(42);
@@ -58,7 +48,7 @@ export function FeatureBentoGrid() {
                   Core Feature
                 </span>
                 <span className="flex items-center gap-1.5 text-xs font-mono text-[#626262]">
-                  <span className="w-2 h-2 rounded-full bg-[#B7FF3C] animate-pulse" />
+                  <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
                   Live QA Studio
                 </span>
               </div>
@@ -93,7 +83,7 @@ export function FeatureBentoGrid() {
                       key={i}
                       style={{ height: `${h}%` }}
                       className={`flex-1 rounded-full transition-colors ${
-                        i * 4 <= activeTimestamp ? "bg-[#B7FF3C]" : "bg-white/20"
+                        i * 4 <= activeTimestamp ? "bg-[#FFD21F]" : "bg-white/20"
                       }`}
                     />
                   ))}
@@ -116,7 +106,7 @@ export function FeatureBentoGrid() {
                       onClick={() => setActiveTimestamp(t.sec)}
                       className={`px-2.5 py-1 rounded-md border transition-all ${
                         activeTimestamp === t.sec
-                          ? "bg-[#B7FF3C] text-[#101010] border-[#B7FF3C] font-bold"
+                          ? "bg-[#FFD21F] text-[#101010] border-[#FFD21F] font-bold"
                           : "bg-white/10 text-white/70 border-white/10 hover:bg-white/20"
                       }`}
                     >
@@ -135,11 +125,11 @@ export function FeatureBentoGrid() {
                   onClick={() => setIsApproved(!isApproved)}
                   className={`px-4 py-2 rounded-lg font-mono text-xs font-bold transition-all flex items-center gap-1.5 ${
                     isApproved
-                      ? "bg-[#B7FF3C] text-[#101010]"
-                      : "bg-white text-[#101010] hover:bg-[#FAFAF8]"
+                      ? "bg-[#FFD21F] text-[#101010]"
+                      : "bg-[#FFD21F] text-[#0A0A0E] hover:brightness-105"
                   }`}
                 >
-                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#0A0A0E]" />
                   <span>{isApproved ? "Milestone Disbursed ✓" : "1-Click Approve & Disburse"}</span>
                 </button>
               </div>
@@ -153,7 +143,7 @@ export function FeatureBentoGrid() {
                 <span className="px-3 py-1 rounded-full bg-[#FAFAF8] border border-[#E7E7E4] text-[10px] font-mono font-bold uppercase tracking-wider text-[#101010]">
                   AI Matching
                 </span>
-                <span className="px-2 py-0.5 rounded bg-[#B7FF3C] text-[#101010] font-mono text-[10px] font-bold">
+                <span className="px-2 py-0.5 rounded bg-[#FFD21F] text-[#101010] font-mono text-[10px] font-bold">
                   98% ACCURACY
                 </span>
               </div>
@@ -193,7 +183,7 @@ export function FeatureBentoGrid() {
                   <span className="font-bold numeric-tabular">92.0%</span>
                 </div>
                 <div className="w-full h-2 rounded-full bg-[#FAFAF8] border border-[#E7E7E4] overflow-hidden">
-                  <div className="h-full bg-[#B7FF3C] rounded-full w-[92%]" />
+                  <div className="h-full bg-[#FFD21F] rounded-full w-[92%]" />
                 </div>
               </div>
             </div>
@@ -226,7 +216,7 @@ export function FeatureBentoGrid() {
                 <span className="text-[9px] text-[#626262] font-bold">STEP 02</span>
                 <p className="font-bold text-[#101010]">QA Review</p>
               </div>
-              <div className="p-3 rounded-xl bg-[#B7FF3C] border border-[#9EE61C] text-center space-y-1">
+              <div className="p-3 rounded-xl bg-[#FFD21F] border border-[#FFD21F] text-center space-y-1">
                 <span className="text-[9px] text-[#101010] font-bold">STEP 03</span>
                 <p className="font-bold text-[#101010]">Instant Payout</p>
               </div>

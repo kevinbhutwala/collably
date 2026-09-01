@@ -62,7 +62,7 @@ export function InteractiveDashboardShowcase() {
       amount: "₹35,000",
       time: "4 mins ago",
       status: "COMPLETED",
-      statusBg: "bg-[#B7FF3C] text-[#101010]",
+      statusBg: "bg-[#FFD21F] text-[#101010]",
     },
     {
       action: "Video Deliverable V2 Submitted",
@@ -113,7 +113,7 @@ export function InteractiveDashboardShowcase() {
           {/* Top Bar / Mode Tabs */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E7E7E4]">
             <div className="flex items-center gap-3">
-              <div className="w-3 h-3 rounded-full bg-[#B7FF3C] animate-pulse" />
+              <div className="w-3 h-3 rounded-full bg-[#FFD21F] animate-pulse" />
               <div>
                 <h3 className="text-lg font-bold font-display text-[#101010]">Active Portfolio Telemetry</h3>
                 <p className="text-xs text-[#626262] font-sans">Synced in real-time with Stripe Connect &amp; Razorpay Escrow</p>
@@ -173,7 +173,7 @@ export function InteractiveDashboardShowcase() {
                       {card.value}
                     </p>
                     <div className="flex items-center gap-1.5 text-xs font-mono">
-                      <span className="px-1.5 py-0.5 rounded bg-[#B7FF3C] text-[#101010] font-bold text-[10px]">
+                      <span className="px-1.5 py-0.5 rounded bg-[#FFD21F] text-[#101010] font-bold text-[10px]">
                         {card.change}
                       </span>
                       <span className="text-[#626262] text-[11px]">{card.period}</span>
@@ -217,7 +217,7 @@ export function InteractiveDashboardShowcase() {
                 <circle cx="140" cy="80" r="4" fill="#101010" />
                 <circle cx="260" cy="60" r="4" fill="#3047FF" />
                 <circle cx="380" cy="30" r="4" fill="#101010" />
-                <circle cx="500" cy="10" r="5" fill="#B7FF3C" stroke="#101010" strokeWidth="2" />
+                <circle cx="500" cy="10" r="5" fill="#FFD21F" stroke="#101010" strokeWidth="2" />
               </svg>
             </div>
 

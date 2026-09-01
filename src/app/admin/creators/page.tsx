@@ -23,28 +23,28 @@ export default function AdminCreatorsPage() {
   };
 
   return (
-    <div className="space-y-8 text-white select-none">
-      <div className="pb-6 border-b border-white/10">
+    <div className="space-y-8 text-[#0A0A0E] select-none">
+      <div className="pb-6 border-b border-black/8">
         <div className="flex items-center gap-2 mb-1">
-          <span className="text-xs font-mono font-bold uppercase text-white/80 flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="text-xs font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             Talent Moderation
           </span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
           Creator Talent Roster &amp; Moderation
         </h1>
-        <p className="text-xs sm:text-sm text-white/50 mt-0.5 font-sans">
+        <p className="text-xs sm:text-sm text-[#5A5A68] mt-0.5 font-sans">
           Audit creator metrics, manage verified badges, and inspect engagement authenticity.
         </p>
       </div>
 
-      <div className="p-6 sm:p-8 rounded-3xl bg-[#0E0C15]/90 border border-white/10 shadow-2xl backdrop-blur-xl space-y-6">
-        <div className="divide-y divide-white/10">
+      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6">
+        <div className="divide-y divide-black/5">
           {creators.map((c) => (
             <div key={c.id} className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex items-center gap-3.5">
-                <div className="relative w-12 h-12 rounded-2xl overflow-hidden bg-white/5 border border-white/10 shrink-0">
+                <div className="relative w-12 h-12 rounded-2xl overflow-hidden bg-[#F5F5F9] border border-black/8 shrink-0">
                   <SafeImage
                     src={c.avatarUrl}
                     alt={c.fullName}
@@ -55,11 +55,11 @@ export default function AdminCreatorsPage() {
                   />
                 </div>
                 <div>
-                  <h3 className="font-bold text-sm text-white flex items-center gap-1.5 font-display">
+                  <h3 className="font-bold text-sm text-[#0A0A0E] flex items-center gap-1.5 font-display">
                     {c.fullName}
-                    {c.verified && <CheckCircle2 className="w-4 h-4 text-emerald-400" />}
+                    {c.verified && <CheckCircle2 className="w-4 h-4 text-emerald-600" />}
                   </h3>
-                  <p className="text-xs text-white/50 font-mono">
+                  <p className="text-xs text-[#7A7A8A] font-mono">
                     @{c.handle} • {c.primaryCategory} • {c.location}
                   </p>
                 </div>
@@ -67,25 +67,25 @@ export default function AdminCreatorsPage() {
 
               <div className="flex items-center gap-6 font-mono text-xs">
                 <div>
-                  <span className="text-white/40 block text-[10px]">Followers</span>
-                  <span className="text-white font-bold">{formatNumber(c.totalFollowers)}</span>
+                  <span className="text-[#7A7A8A] block text-[10px]">Followers</span>
+                  <span className="text-[#0A0A0E] font-bold">{formatNumber(c.totalFollowers)}</span>
                 </div>
                 <div>
-                  <span className="text-white/40 block text-[10px]">Engagement</span>
-                  <span className="text-[#B7FF3C] font-bold flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
+                  <span className="text-[#7A7A8A] block text-[10px]">Engagement</span>
+                  <span className="text-emerald-700 font-bold flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                     {c.avgEngagementRate}%
                   </span>
                 </div>
                 <button
                   onClick={() => toggleVerify(c.id)}
-                  className={`px-4 py-2 rounded-full text-xs font-semibold font-mono transition-all ${
+                  className={`px-4 py-2 rounded-full text-xs font-semibold font-mono transition-all border ${
                     c.verified
-                      ? "bg-white/10 text-white/60 hover:text-white"
-                      : "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] font-bold shadow-md"
+                      ? "bg-black/5 text-[#5A5A68] hover:text-[#0A0A0E] border-black/10"
+                      : "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] font-bold shadow-xs border-black/10"
                   }`}
                 >
-                  {c.verified ? "Revoke Verification" : "Approve & Verify"}
+                  {c.verified ? "Revoke Badge" : "Grant Verified"}
                 </button>
               </div>
             </div>

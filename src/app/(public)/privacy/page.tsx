@@ -6,21 +6,21 @@ import { ShieldCheck, ArrowLeft } from "lucide-react";
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="py-16 sm:py-24 bg-[#FAFAF8] text-[#111111] min-h-screen">
+    <div className="py-16 sm:py-24 bg-[#FAFAFC] text-[#0A0A0E] min-h-screen">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="space-y-4">
-          <Link href="/" className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[#6B6B6B] hover:text-[#111111] transition-colors">
+          <Link href="/" className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[#7A7A8A] hover:text-[#0A0A0E] transition-colors">
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Back to Home</span>
           </Link>
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-xs font-mono font-bold text-[#111111] shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-black/8 text-xs font-mono font-bold text-[#0A0A0E] shadow-xs">
+            <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
             <span>Privacy &amp; Data Protection</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#111111] tracking-tight font-display">
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
             Privacy Policy
           </h1>
-          <p className="text-sm text-[#6B6B6B] font-mono">
+          <p className="text-sm text-[#7A7A8A] font-mono">
             Last Updated: August 31, 2026 • Collably Inc.
           </p>
         </div>

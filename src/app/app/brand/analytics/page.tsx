@@ -7,23 +7,23 @@ import { TrendingUp, Users, Target, DollarSign } from "lucide-react";
 
 export default function BrandAnalyticsPage() {
   return (
-    <div className="space-y-8 text-white select-none">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+    <div className="space-y-8 text-[#0A0A0E] select-none">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-black/8">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono font-bold uppercase text-white/80 flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-xs font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               Attribution &amp; ROI
             </span>
-            <span className="text-white/20">•</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#FFD21F] font-mono text-[10px] font-bold">
+            <span className="text-[#8A8A9A]">•</span>
+            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
               Realtime Multiplier
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white font-display tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0A0A0E] font-display tracking-tight">
             Campaign Performance Intelligence
           </h1>
-          <p className="text-xs sm:text-sm text-white/50 mt-0.5 font-sans">
+          <p className="text-xs sm:text-sm text-[#5A5A68] mt-0.5 font-sans">
             Audit creator retention, coupon redemptions, and cost per acquisition.
           </p>
         </div>
@@ -42,7 +42,7 @@ export default function BrandAnalyticsPage() {
           value="2.4M"
           change="+420k organic"
           subtitle="Audited impressions across cohort"
-          icon={<Users className="w-5 h-5 text-white" />}
+          icon={<Users className="w-5 h-5 text-[#0A0A0E]" />}
         />
         <StatsCard
           title="Average CPA"
@@ -56,23 +56,23 @@ export default function BrandAnalyticsPage() {
           title="Total Escrow Invested"
           value={formatCurrency(45000)}
           subtitle="Across 3 live campaigns"
-          icon={<DollarSign className="w-5 h-5 text-white" />}
+          icon={<DollarSign className="w-5 h-5 text-[#0A0A0E]" />}
         />
       </div>
 
       {/* Cohort Performance Breakdown */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-[#0E0C15]/90 border border-white/10 shadow-2xl backdrop-blur-xl space-y-6">
-        <div className="flex items-center justify-between pb-3 border-b border-white/10">
+      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6">
+        <div className="flex items-center justify-between pb-3 border-b border-black/8">
           <div>
-            <h3 className="text-lg font-bold text-white font-display">Creator Cohort Breakdown</h3>
-            <p className="text-xs text-white/50 font-sans">Individual conversion metrics across your roster.</p>
+            <h3 className="text-lg font-bold text-[#0A0A0E] font-display">Creator Cohort Breakdown</h3>
+            <p className="text-xs text-[#5A5A68] font-sans">Individual conversion metrics across your roster.</p>
           </div>
-          <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-mono font-bold">
+          <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-mono font-bold">
             Top Quartile
           </span>
         </div>
 
-        <div className="divide-y divide-white/10 font-mono text-xs">
+        <div className="divide-y divide-black/5 font-mono text-xs">
           {[
             { name: "Elena Rostova", platform: "YouTube 60s", views: "142,000", signups: "1,840", spend: "$3,500", roi: "6.4x" },
             { name: "Marcus Vance", platform: "Instagram Reel", views: "185,000", signups: "940", spend: "$2,800", roi: "4.8x" },
@@ -80,27 +80,27 @@ export default function BrandAnalyticsPage() {
           ].map((row, i) => (
             <div key={i} className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <h4 className="text-sm font-bold text-white font-sans">{row.name}</h4>
-                <p className="text-[11px] text-white/50 font-sans">{row.platform}</p>
+                <h4 className="text-sm font-bold text-[#0A0A0E] font-sans">{row.name}</h4>
+                <p className="text-[11px] text-[#6A6A78] font-sans">{row.platform}</p>
               </div>
 
               <div className="flex items-center gap-6 text-xs">
                 <div>
-                  <span className="text-white/40 block text-[10px]">Views</span>
-                  <span className="text-white font-bold">{row.views}</span>
+                  <span className="text-[#7A7A8A] block text-[10px]">Views</span>
+                  <span className="text-[#0A0A0E] font-bold">{row.views}</span>
                 </div>
                 <div>
-                  <span className="text-white/40 block text-[10px]">Conversions</span>
-                  <span className="text-white font-bold">{row.signups}</span>
+                  <span className="text-[#7A7A8A] block text-[10px]">Conversions</span>
+                  <span className="text-[#0A0A0E] font-bold">{row.signups}</span>
                 </div>
                 <div>
-                  <span className="text-white/40 block text-[10px]">Spend</span>
-                  <span className="text-white font-bold">{row.spend}</span>
+                  <span className="text-[#7A7A8A] block text-[10px]">Spend</span>
+                  <span className="text-[#0A0A0E] font-bold">{row.spend}</span>
                 </div>
                 <div>
-                  <span className="text-white/40 block text-[10px]">ROI</span>
-                  <span className="text-emerald-400 font-extrabold text-sm flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="text-[#7A7A8A] block text-[10px]">ROI</span>
+                  <span className="text-emerald-700 font-extrabold text-sm flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                     {row.roi}
                   </span>
                 </div>

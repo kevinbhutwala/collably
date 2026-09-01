@@ -15,7 +15,7 @@ export function EditorialBigTextSection() {
         {/* Eyebrow */}
         <div className="flex items-center justify-between border-b border-[#E7E7E4] pb-4">
           <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-[#101010]">
-            <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
+            <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
             <span>01 / PLATFORM ARCHITECTURE</span>
           </div>
           <span className="font-mono text-xs text-[#626262] uppercase tracking-wider">THE CREATOR COMMERCE STANDARD</span>
@@ -69,7 +69,7 @@ export function EditorialBigTextSection() {
               />
               <div className="font-mono text-xs pr-2">
                 <span className="font-display font-bold text-[#101010] block">{malePortrait.name}</span>
-                <span className="text-[#101010] font-bold text-[10px] bg-[#B7FF3C] px-1.5 py-0.5 rounded numeric-tabular">
+                <span className="text-[#101010] font-bold text-[10px] bg-[#FFD21F] px-1.5 py-0.5 rounded numeric-tabular">
                   {malePortrait.verifiedRate}
                 </span>
               </div>
@@ -88,7 +88,7 @@ export function EditorialBigTextSection() {
             className="inline-flex items-center gap-2 text-xs font-sans font-semibold text-[#101010] hover:text-black transition-colors shrink-0 bg-[#FFFFFF] px-4 py-2.5 rounded-[9px] border border-[#E7E7E4] shadow-xs"
           >
             <span>DISCOVER PLATFORM CAPABILITIES</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F]" />
           </Link>
         </div>
       </div>

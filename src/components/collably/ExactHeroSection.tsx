@@ -201,10 +201,12 @@ export function ExactHeroSection() {
                   <div className="flex -space-x-1.5">
                     <img
                       src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=50&auto=format&fit=crop&q=80"
+                      alt="Matched Creator"
                       className="w-5 h-5 rounded-full border border-white object-cover"
                     />
                     <img
                       src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&auto=format&fit=crop&q=80"
+                      alt="Matched Creator"
                       className="w-5 h-5 rounded-full border border-white object-cover"
                     />
                   </div>

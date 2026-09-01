@@ -110,19 +110,19 @@ export default function CreatorRegisterPage() {
   };
 
   return (
-    <div className="w-full flex items-center justify-center p-2 py-6 text-white select-none">
-      <div className="w-full max-w-2xl rounded-3xl bg-[#0E0C15]/90 border border-white/15 p-8 sm:p-10 space-y-6 shadow-2xl backdrop-blur-2xl">
-        <div className="flex items-center justify-between pb-3 border-b border-white/10">
+    <div className="w-full flex items-center justify-center p-2 py-6 text-[#0A0A0E] select-none">
+      <div className="w-full max-w-2xl rounded-3xl bg-white border border-black/8 p-8 sm:p-10 space-y-6 shadow-xl">
+        <div className="flex items-center justify-between pb-3 border-b border-black/8">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-white/50 hover:text-white transition-colors group"
+            className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[#7A7A8A] hover:text-[#0A0A0E] transition-colors group"
           >
             <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
             <span>Back to Home</span>
           </Link>
           <Link
             href="/register"
-            className="text-[10px] font-mono text-white/50 hover:text-white transition-colors"
+            className="text-[10px] font-mono text-[#7A7A8A] hover:text-[#0A0A0E] transition-colors"
           >
             Change Account Type &rarr;
           </Link>
@@ -130,24 +130,24 @@ export default function CreatorRegisterPage() {
 
         <div className="space-y-2">
           <div className="flex justify-between items-center">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#FFD21F] text-xs font-bold font-mono">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-pulse" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] text-xs font-bold font-mono">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               <span>Creator Onboarding &amp; Media Kit</span>
             </div>
-            <div className="w-7 h-7 rounded-lg bg-[#FFD21F]/20 border border-[#FFD21F]/30 flex items-center justify-center text-[#FFD21F]">
-              <Sparkles className="w-3.5 h-3.5 fill-[#FFD21F]" />
+            <div className="w-7 h-7 rounded-lg bg-[#FFD21F]/20 border border-[#FFD21F]/40 flex items-center justify-center text-[#0A0A0E]">
+              <Sparkles className="w-3.5 h-3.5 fill-[#FFD21F] text-[#0A0A0E]" />
             </div>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
             Create Your Creator Profile
           </h1>
-          <p className="text-xs sm:text-sm text-white/50 font-sans">
+          <p className="text-xs sm:text-sm text-[#5A5A68] font-sans">
             Connect your primary platforms to generate your verified rate card and audited telemetry.
           </p>
         </div>
 
         {errorMessage && (
-          <div className="p-3.5 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs flex items-center gap-2">
+          <div className="p-3.5 rounded-2xl bg-red-50 border border-red-200 text-red-600 text-xs flex items-center gap-2">
             <AlertCircle className="w-4 h-4 shrink-0" />
             <span>{errorMessage}</span>
           </div>
@@ -156,7 +156,7 @@ export default function CreatorRegisterPage() {
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Section 1: Basic Information */}
           <div className="space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-white/80 font-mono">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-[#0A0A0E] font-mono">
               1. Basic Information
             </h3>
 
@@ -198,16 +198,16 @@ export default function CreatorRegisterPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5 text-left font-sans">
-                <label className="block text-xs font-semibold text-white/80">Primary Content Niche</label>
+                <label className="block text-xs font-semibold text-[#0A0A0E]">Primary Content Niche</label>
                 <select
                   value={formData.primaryCategory}
                   onChange={(e) =>
                     setFormData({ ...formData, primaryCategory: e.target.value as CreatorCategory })
                   }
-                  className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500 transition-all"
+                  className="w-full bg-[#F8F8FC] border border-black/10 rounded-xl px-3.5 py-2.5 text-xs text-[#0A0A0E] focus:outline-none focus:border-[#FFD21F] transition-all"
                 >
                   {CATEGORIES.map((cat) => (
-                    <option key={cat} value={cat} className="bg-[#0E0C15] text-white">
+                    <option key={cat} value={cat} className="bg-white text-[#0A0A0E]">
                       {cat}
                     </option>
                   ))}
@@ -227,21 +227,21 @@ export default function CreatorRegisterPage() {
           </div>
 
           {/* Section 2: Social Media Channels */}
-          <div className="space-y-4 pt-2 border-t border-white/10">
+          <div className="space-y-4 pt-2 border-t border-black/8">
             <div className="flex items-center justify-between">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-white/80 font-mono">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-[#0A0A0E] font-mono">
                 2. Connect Social Channels
               </h3>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.05] text-white/80 text-[11px] font-mono font-bold border border-white/10">
-                <Users className="w-3 h-3 text-blue-400" />
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/5 text-[#0A0A0E] text-[11px] font-mono font-bold border border-black/8">
+                <Users className="w-3 h-3 text-[#0A0A0E]" />
                 <span>Est. Reach: {totalReach.toLocaleString()} ({currentTier} Tier)</span>
               </div>
             </div>
 
             {/* YouTube */}
-            <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2">
-              <div className="flex items-center gap-2 text-xs font-bold text-white">
-                <div className="w-6 h-6 rounded-lg bg-red-600/20 border border-red-500/30 text-red-400 flex items-center justify-center">
+            <div className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/5 space-y-2">
+              <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E]">
+                <div className="w-6 h-6 rounded-lg bg-red-50 border border-red-200 text-red-600 flex items-center justify-center">
                   <Youtube className="w-3.5 h-3.5" />
                 </div>
                 <span>YouTube Channel</span>
@@ -264,9 +264,9 @@ export default function CreatorRegisterPage() {
             </div>
 
             {/* Instagram */}
-            <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2">
-              <div className="flex items-center gap-2 text-xs font-bold text-white">
-                <div className="w-6 h-6 rounded-lg bg-pink-600/20 border border-pink-500/30 text-pink-400 flex items-center justify-center">
+            <div className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/5 space-y-2">
+              <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E]">
+                <div className="w-6 h-6 rounded-lg bg-pink-50 border border-pink-200 text-pink-600 flex items-center justify-center">
                   <Instagram className="w-3.5 h-3.5" />
                 </div>
                 <span>Instagram Profile</span>
@@ -289,9 +289,9 @@ export default function CreatorRegisterPage() {
             </div>
 
             {/* TikTok */}
-            <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2">
-              <div className="flex items-center gap-2 text-xs font-bold text-white">
-                <div className="w-6 h-6 rounded-lg bg-cyan-600/20 border border-cyan-500/30 text-cyan-400 flex items-center justify-center">
+            <div className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/5 space-y-2">
+              <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E]">
+                <div className="w-6 h-6 rounded-lg bg-black/5 border border-black/10 text-black flex items-center justify-center">
                   <Video className="w-3.5 h-3.5" />
                 </div>
                 <span>TikTok Channel</span>
@@ -314,9 +314,9 @@ export default function CreatorRegisterPage() {
             </div>
 
             {/* X / Twitter */}
-            <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2">
-              <div className="flex items-center gap-2 text-xs font-bold text-white">
-                <div className="w-6 h-6 rounded-lg bg-white/10 border border-white/15 text-white flex items-center justify-center">
+            <div className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/5 space-y-2">
+              <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E]">
+                <div className="w-6 h-6 rounded-lg bg-black/5 border border-black/10 text-black flex items-center justify-center">
                   <Twitter className="w-3.5 h-3.5" />
                 </div>
                 <span>X (Twitter) Profile</span>
@@ -339,9 +339,9 @@ export default function CreatorRegisterPage() {
             </div>
 
             {/* LinkedIn */}
-            <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2">
-              <div className="flex items-center gap-2 text-xs font-bold text-white">
-                <div className="w-6 h-6 rounded-lg bg-sky-600/20 border border-sky-500/30 text-sky-400 flex items-center justify-center">
+            <div className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/5 space-y-2">
+              <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E]">
+                <div className="w-6 h-6 rounded-lg bg-sky-50 border border-sky-200 text-sky-600 flex items-center justify-center">
                   <Linkedin className="w-3.5 h-3.5" />
                 </div>
                 <span>LinkedIn Profile (Optional)</span>
@@ -365,7 +365,7 @@ export default function CreatorRegisterPage() {
           </div>
 
           {/* Section 3: Bio */}
-          <div className="space-y-2 pt-2 border-t border-white/10">
+          <div className="space-y-2 pt-2 border-t border-black/8">
             <Textarea
               label="Bio & Audience Positioning"
               value={formData.bio}
@@ -379,7 +379,7 @@ export default function CreatorRegisterPage() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all shadow-[0_0_20px_rgba(255,210,31,0.4)] border border-white/50 flex items-center justify-center gap-2 disabled:opacity-50"
+              className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all shadow-xs border border-black/10 flex items-center justify-center gap-2 disabled:opacity-50"
             >
               <span>Activate &amp; Publish Media Kit</span>
               <ArrowRight className="w-4 h-4 text-[#0A0A0E]" />
@@ -387,10 +387,10 @@ export default function CreatorRegisterPage() {
           </div>
         </form>
 
-        <div className="pt-4 border-t border-white/10 text-center">
-          <p className="text-xs text-white/50">
+        <div className="pt-4 border-t border-black/8 text-center">
+          <p className="text-xs text-[#5A5A68]">
             Already have an account?{" "}
-            <Link href="/login" className="text-[#FFD21F] hover:underline font-bold">
+            <Link href="/login" className="text-[#0A0A0E] underline font-bold">
               Sign in
             </Link>
           </p>

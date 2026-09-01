@@ -32,36 +32,36 @@ export default function CollaborationsWorkspacePage() {
   }, [role, currentCreator?.id, currentBrand?.id]);
 
   return (
-    <div className="space-y-8 text-white select-none">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+    <div className="space-y-8 text-[#0A0A0E] select-none">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-black/8">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono font-bold uppercase text-white/80 flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-xs font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               Workspace Portal
             </span>
-            <span className="text-white/20">•</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#FFD21F] font-mono text-[10px] font-bold">
+            <span className="text-[#8A8A9A]">•</span>
+            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
               Milestone Escrow
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
             Active Collaborations &amp; Content Submissions
           </h1>
-          <p className="text-xs sm:text-sm text-white/50 mt-0.5 font-sans">
+          <p className="text-xs sm:text-sm text-[#5A5A68] mt-0.5 font-sans">
             Submit video drafts, review feedback with revision timestamps, and approve milestone payouts.
           </p>
         </div>
       </div>
 
       {loading ? (
-        <div className="py-24 text-center rounded-3xl bg-[#101018] border border-white/10 p-8 text-white">
+        <div className="py-24 text-center rounded-3xl bg-white border border-black/8 p-8 text-[#0A0A0E] shadow-xs">
           <div className="w-8 h-8 rounded-full border-2 border-[#FFD21F] border-t-transparent animate-spin mx-auto mb-3" />
-          <p className="text-xs font-mono text-white/50">Loading collaboration pipelines...</p>
+          <p className="text-xs font-mono text-[#7A7A8A]">Loading collaboration pipelines...</p>
         </div>
       ) : collaborations.length === 0 ? (
         <AnimatedEmptyState
-          icon={<FolderGit2 className="w-8 h-8 text-white" />}
+          icon={<FolderGit2 className="w-8 h-8 text-[#0A0A0E]" />}
           badgeText="Active Pipeline"
           title="No Active Collaborations Yet"
           description={

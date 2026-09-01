@@ -4,14 +4,12 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { Input, Textarea } from "@/components/ui/Input";
-import { Badge } from "@/components/ui/Badge";
 import { CATEGORIES } from "@/core/constants";
 import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
 import {
   ArrowRight,
   ArrowLeft,
-  Sparkles,
   Upload,
 } from "lucide-react";
 
@@ -81,35 +79,35 @@ export default function CreatorOnboardingWizardPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAFAF8] text-[#111111] py-12 px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center">
+    <div className="min-h-screen bg-[#FAFAFC] text-[#0A0A0E] py-12 px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center">
       <div className="w-full max-w-3xl space-y-8">
         {/* Progress Bar & Header */}
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-xs font-mono font-bold text-[#111111] shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-black/8 text-xs font-mono font-bold text-[#0A0A0E] shadow-xs">
+            <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
             <span>Progressive Creator Onboarding • Step {step} of {totalSteps}</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111111] tracking-tight font-display">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
             Build Your Media Kit &amp; Rate Card
           </h1>
-          <p className="text-sm text-[#6B6B6B] font-sans font-medium">
+          <p className="text-sm text-[#5A5A68] font-sans font-medium">
             Takes under 3 minutes. Zero fluff. Connect with vetted brands paying guaranteed escrow.
           </p>
 
-          <div className="w-full h-2 rounded-full bg-[#E7E7E4] overflow-hidden mt-4">
+          <div className="w-full h-2 rounded-full bg-black/5 overflow-hidden mt-4">
             <div
-              className="h-full bg-[#111111] transition-all duration-300 rounded-full"
+              className="h-full bg-[#FFD21F] transition-all duration-300 rounded-full"
               style={{ width: `${(step / totalSteps) * 100}%` }}
             />
           </div>
         </div>
 
         {/* Step Card Container */}
-        <div className="p-8 sm:p-12 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs space-y-6 text-[#111111]">
+        <div className="p-8 sm:p-12 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6 text-[#0A0A0E]">
           {/* Step 1: Basic Info */}
           {step === 1 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-[#111111] font-display">Step 1: Creator Identity &amp; Handle</h3>
+              <h3 className="text-xl font-bold text-[#0A0A0E] font-display">Step 1: Creator Identity &amp; Handle</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
                   label="Full Name / Brand Name"
@@ -145,13 +143,13 @@ export default function CreatorOnboardingWizardPage() {
           {/* Step 2: Niche & Narrative */}
           {step === 2 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-[#111111] font-display">Step 2: Niche &amp; Positioning</h3>
+              <h3 className="text-xl font-bold text-[#0A0A0E] font-display">Step 2: Niche &amp; Positioning</h3>
               <div className="space-y-1.5 text-left font-sans">
-                <label className="text-xs font-semibold text-[#111111]">Primary Category</label>
+                <label className="text-xs font-semibold text-[#0A0A0E]">Primary Category</label>
                 <select
                   value={formData.primaryCategory}
                   onChange={(e) => setFormData({ ...formData, primaryCategory: e.target.value })}
-                  className="w-full bg-[#FAFAF8] border border-[#E7E7E4] rounded-xl px-3.5 py-2.5 text-xs text-[#111111] focus:outline-none focus:border-[#111111] shadow-xs"
+                  className="w-full bg-[#F8F8FC] border border-black/10 rounded-xl px-3.5 py-2.5 text-xs text-[#0A0A0E] focus:outline-none focus:border-[#FFD21F] shadow-xs"
                 >
                   {CATEGORIES.map((cat) => (
                     <option key={cat} value={cat}>{cat}</option>
@@ -175,8 +173,8 @@ export default function CreatorOnboardingWizardPage() {
           {/* Step 3: Social Channels */}
           {step === 3 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-[#111111] font-display">Step 3: Social Media Channels</h3>
-              <p className="text-xs text-[#6B6B6B] font-sans font-medium">Provide handles for audience verification and OAuth sync.</p>
+              <h3 className="text-xl font-bold text-[#0A0A0E] font-display">Step 3: Social Media Channels</h3>
+              <p className="text-xs text-[#5A5A68] font-sans font-medium">Provide handles for audience verification and OAuth sync.</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
                   label="YouTube Channel Handle"
@@ -209,7 +207,7 @@ export default function CreatorOnboardingWizardPage() {
           {/* Step 4: Audience Metrics */}
           {step === 4 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-[#111111] font-display">Step 4: Audience Metrics &amp; Reach</h3>
+              <h3 className="text-xl font-bold text-[#0A0A0E] font-display">Step 4: Audience Metrics &amp; Reach</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono text-xs">
                 <Input
                   label="Combined Total Follower Reach"
@@ -236,17 +234,17 @@ export default function CreatorOnboardingWizardPage() {
           {/* Step 5: Portfolio Assets */}
           {step === 5 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-[#111111] font-display">Step 5: Previous Sponsorship Portfolio</h3>
+              <h3 className="text-xl font-bold text-[#0A0A0E] font-display">Step 5: Previous Sponsorship Portfolio</h3>
               <Input
                 label="Primary Portfolio / Best Work URL"
                 value={formData.portfolioLink}
                 onChange={(e) => setFormData({ ...formData, portfolioLink: e.target.value })}
                 placeholder="https://youtube.com/@yourhandle/videos"
               />
-              <div className="p-8 border-2 border-dashed border-[#E7E7E4] rounded-2xl text-center space-y-2 bg-[#FAFAF8]">
-                <Upload className="w-8 h-8 text-[#6B6B6B] mx-auto" />
-                <p className="text-xs text-[#111111] font-bold font-sans">Drag &amp; drop raw campaign video files or PDF case studies</p>
-                <p className="text-[11px] text-[#6B6B6B] font-mono">Supports MP4, MOV, PDF up to 500MB</p>
+              <div className="p-8 border-2 border-dashed border-black/10 rounded-2xl text-center space-y-2 bg-[#F8F8FC]">
+                <Upload className="w-8 h-8 text-[#7A7A8A] mx-auto" />
+                <p className="text-xs text-[#0A0A0E] font-bold font-sans">Drag &amp; drop raw campaign video files or PDF case studies</p>
+                <p className="text-[11px] text-[#7A7A8A] font-mono">Supports MP4, MOV, PDF up to 500MB</p>
               </div>
             </div>
           )}
@@ -254,11 +252,11 @@ export default function CreatorOnboardingWizardPage() {
           {/* Step 6: Services */}
           {step === 6 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-[#111111] font-display">Step 6: Supported Deliverable Formats</h3>
-              <p className="text-xs text-[#6B6B6B] font-sans">Select formats you regularly produce for brand partners.</p>
+              <h3 className="text-xl font-bold text-[#0A0A0E] font-display">Step 6: Supported Deliverable Formats</h3>
+              <p className="text-xs text-[#5A5A68] font-sans">Select formats you regularly produce for brand partners.</p>
               <div className="grid grid-cols-2 gap-3 text-xs">
                 {["YouTube 60s Integration", "Instagram Reel", "TikTok Video", "X (Twitter) Thread", "UGC Video Ad", "Keynote Appearance"].map((srv) => (
-                  <label key={srv} className="p-3.5 rounded-xl bg-[#FAFAF8] border border-[#E7E7E4] flex items-center gap-2.5 cursor-pointer hover:border-[#111111]">
+                  <label key={srv} className="p-3.5 rounded-xl bg-[#F8F8FC] border border-black/5 flex items-center gap-2.5 cursor-pointer hover:border-[#FFD21F]">
                     <input
                       type="checkbox"
                       checked={formData.services.includes(srv)}
@@ -266,9 +264,9 @@ export default function CreatorOnboardingWizardPage() {
                         if (e.target.checked) setFormData({ ...formData, services: [...formData.services, srv] });
                         else setFormData({ ...formData, services: formData.services.filter((s) => s !== srv) });
                       }}
-                      className="rounded text-[#111111] focus:ring-[#111111]"
+                      className="rounded text-[#FFD21F] focus:ring-[#FFD21F]"
                     />
-                    <span className="font-medium text-[#111111] font-sans">{srv}</span>
+                    <span className="font-medium text-[#0A0A0E] font-sans">{srv}</span>
                   </label>
                 ))}
               </div>
@@ -278,14 +276,14 @@ export default function CreatorOnboardingWizardPage() {
           {/* Step 7: Pricing */}
           {step === 7 && (
             <div className="space-y-4 font-mono text-xs">
-              <h3 className="text-xl font-bold text-[#111111] font-display">Step 7: Minimum Starting Fee</h3>
+              <h3 className="text-xl font-bold text-[#0A0A0E] font-display">Step 7: Minimum Starting Fee</h3>
               <Input
                 label="Minimum Starting Fee ($ USD)"
                 type="number"
                 value={formData.startingFee}
                 onChange={(e) => setFormData({ ...formData, startingFee: parseInt(e.target.value) || 0 })}
               />
-              <p className="text-[11px] text-[#6B6B6B] font-sans">
+              <p className="text-[11px] text-[#5A5A68] font-sans">
                 Brands will see this on your public card. You can still submit custom rates during campaign applications.
               </p>
             </div>
@@ -294,7 +292,7 @@ export default function CreatorOnboardingWizardPage() {
           {/* Step 8: Availability */}
           {step === 8 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-[#111111] font-display">Step 8: Current Booking Availability</h3>
+              <h3 className="text-xl font-bold text-[#0A0A0E] font-display">Step 8: Current Booking Availability</h3>
               <div className="grid grid-cols-3 gap-3 text-xs">
                 {["Available", "Busy (2 Wk Delay)", "Booked (Waitlist)"].map((av) => (
                   <button
@@ -303,8 +301,8 @@ export default function CreatorOnboardingWizardPage() {
                     onClick={() => setFormData({ ...formData, availability: av })}
                     className={`p-4 rounded-xl border text-center font-bold transition-all ${
                       formData.availability === av
-                        ? "bg-[#111111] text-[#FAFAF8] border-transparent shadow-xs"
-                        : "bg-[#FAFAF8] text-[#6B6B6B] border-[#E7E7E4] hover:text-[#111111]"
+                        ? "bg-[#FFD21F] text-[#0A0A0E] border-black/10 shadow-xs"
+                        : "bg-[#F8F8FC] text-[#6A6A78] border-black/5 hover:text-[#0A0A0E]"
                     }`}
                   >
                     {av}
@@ -317,43 +315,43 @@ export default function CreatorOnboardingWizardPage() {
           {/* Step 9: Preview & Submit */}
           {step === 9 && (
             <div className="space-y-6">
-              <div className="flex items-center justify-between pb-3 border-b border-[#E7E7E4]">
-                <h3 className="text-xl font-bold text-[#111111] font-display">Step 9: Final Media Kit Preview</h3>
-                <span className="px-2 py-0.5 rounded bg-[#B7FF3C] text-[#111111] text-[10px] font-mono font-bold">
+              <div className="flex items-center justify-between pb-3 border-b border-black/8">
+                <h3 className="text-xl font-bold text-[#0A0A0E] font-display">Step 9: Final Media Kit Preview</h3>
+                <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] border border-[#FFD21F]/40 text-[10px] font-mono font-bold">
                   Ready to Publish
                 </span>
               </div>
 
-              <div className="p-6 rounded-2xl bg-[#FAFAF8] border border-[#E7E7E4] space-y-4">
+              <div className="p-6 rounded-2xl bg-[#F8F8FC] border border-black/5 space-y-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-[#111111] text-[#B7FF3C] flex items-center justify-center font-bold text-base font-mono">
+                  <div className="w-12 h-12 rounded-xl bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center font-bold text-base font-mono shadow-xs border border-black/10">
                     {formData.fullName.slice(0, 2).toUpperCase()}
                   </div>
                   <div>
-                    <h4 className="font-bold text-sm text-[#111111] font-display">{formData.fullName}</h4>
-                    <p className="text-xs text-[#6B6B6B] font-mono">@{formData.handle} • {formData.location}</p>
+                    <h4 className="font-bold text-sm text-[#0A0A0E] font-display">{formData.fullName}</h4>
+                    <p className="text-xs text-[#6A6A78] font-mono">@{formData.handle} • {formData.location}</p>
                   </div>
                 </div>
-                <p className="text-xs text-[#111111] font-semibold font-sans">{formData.headline}</p>
-                <p className="text-xs text-[#6B6B6B] leading-relaxed font-sans">{formData.bio}</p>
-                <div className="flex gap-4 font-mono text-xs pt-2 border-t border-[#E7E7E4]">
-                  <span>Reach: <strong className="text-[#111111]">{formData.totalReach.toLocaleString()}</strong></span>
-                  <span>Engagement: <strong className="text-[#111111] flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />{formData.avgEngagement}%</strong></span>
-                  <span>Starting: <strong className="text-[#111111]">${formData.startingFee}</strong></span>
+                <p className="text-xs text-[#0A0A0E] font-semibold font-sans">{formData.headline}</p>
+                <p className="text-xs text-[#5A5A68] leading-relaxed font-sans">{formData.bio}</p>
+                <div className="flex gap-4 font-mono text-xs pt-2 border-t border-black/5">
+                  <span>Reach: <strong className="text-[#0A0A0E]">{formData.totalReach.toLocaleString()}</strong></span>
+                  <span>Engagement: <strong className="text-[#0A0A0E] flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />{formData.avgEngagement}%</strong></span>
+                  <span>Starting: <strong className="text-[#0A0A0E]">${formData.startingFee}</strong></span>
                 </div>
               </div>
             </div>
           )}
 
           {/* Navigation Controls */}
-          <div className="flex items-center justify-between pt-6 border-t border-[#E7E7E4]">
+          <div className="flex items-center justify-between pt-6 border-t border-black/8">
             <Button
               variant="secondary"
               size="md"
               onClick={handleBack}
               disabled={step === 1}
               leftIcon={<ArrowLeft className="w-4 h-4" />}
-              className="rounded-[9px]"
+              className="rounded-full"
             >
               Back
             </Button>
@@ -362,8 +360,8 @@ export default function CreatorOnboardingWizardPage() {
               variant="primary"
               size="md"
               onClick={handleNext}
-              rightIcon={<ArrowRight className="w-4 h-4 text-[#B7FF3C]" />}
-              className="rounded-[9px]"
+              rightIcon={<ArrowRight className="w-4 h-4 text-[#0A0A0E]" />}
+              className="rounded-full"
             >
               {step === totalSteps ? "Publish Media Kit & Launch" : "Continue"}
             </Button>

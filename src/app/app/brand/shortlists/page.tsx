@@ -28,8 +28,8 @@ export default function BrandShortlistsPage() {
   useEffect(() => {
     const fetch = async () => {
       const data = await crmService.getShortlists("brand-1");
-      setShortlists(data);
-      if (data.length > 0) setActiveShortlistId(data[0].id);
+      setShortlists(data || []);
+      if (data && data.length > 0) setActiveShortlistId(data[0].id);
     };
     fetch();
   }, []);
@@ -54,24 +54,24 @@ export default function BrandShortlistsPage() {
   };
 
   return (
-    <div className="space-y-8 text-white select-none">
+    <div className="space-y-8 text-[#0A0A0E] select-none">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-black/8">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono font-bold uppercase text-white/80 flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-xs font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               Talent Curation
             </span>
-            <span className="text-white/20">•</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#FFD21F] font-mono text-[10px] font-bold">
+            <span className="text-[#8A8A9A]">•</span>
+            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
               Team Shortlists
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white font-display tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0A0A0E] font-display tracking-tight">
             Creator Shortlists &amp; Side-by-Side Comparison
           </h1>
-          <p className="text-xs sm:text-sm text-white/50 mt-0.5 font-sans">
+          <p className="text-xs sm:text-sm text-[#5A5A68] mt-0.5 font-sans">
             Curate collections for upcoming launches and benchmark creator metrics side-by-side.
           </p>
         </div>
@@ -79,7 +79,7 @@ export default function BrandShortlistsPage() {
         <div className="flex items-center gap-3">
           <button
             onClick={() => setIsCreateModalOpen(true)}
-            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-[0_0_20px_rgba(255,210,31,0.4)] border border-white/40 flex items-center gap-1.5"
+            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5"
           >
             <Plus className="w-4 h-4 text-[#0A0A0E]" />
             <span>Create Shortlist</span>
@@ -97,13 +97,13 @@ export default function BrandShortlistsPage() {
               onClick={() => setActiveShortlistId(s.id)}
               className={`px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap flex items-center gap-2 ${
                 isActive
-                  ? "bg-[#FFD21F] text-[#0A0A0E] shadow-[0_0_12px_rgba(255,210,31,0.45)] font-bold border border-white/40"
-                  : "bg-white/[0.04] text-white/60 hover:text-white border border-white/10"
+                  ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs font-bold border border-black/10"
+                  : "bg-white text-[#6A6A78] hover:text-[#0A0A0E] border border-black/8"
               }`}
             >
               <span>{s.name}</span>
               <span className={`px-2 py-0.5 rounded-full text-[10px] ${
-                isActive ? "bg-[#0A0A0E] text-[#FFD21F] font-bold" : "bg-white/10 text-white/70"
+                isActive ? "bg-[#0A0A0E] text-white font-bold" : "bg-black/5 text-[#5A5A68]"
               }`}>
                 {s.creators.length}
               </span>
@@ -115,18 +115,18 @@ export default function BrandShortlistsPage() {
       {/* Active Shortlist Details & Grid */}
       {activeShortlist ? (
         <div className="space-y-6">
-          <div className="p-6 rounded-3xl bg-[#101018] border border-white/10 shadow-2xl backdrop-blur-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="p-6 rounded-3xl bg-white border border-black/8 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <h2 className="text-xl font-bold text-white font-display">{activeShortlist.name}</h2>
-              <p className="text-xs text-white/50 font-sans mt-0.5">{activeShortlist.description}</p>
+              <h2 className="text-xl font-bold text-[#0A0A0E] font-display">{activeShortlist.name}</h2>
+              <p className="text-xs text-[#5A5A68] font-sans mt-0.5">{activeShortlist.description}</p>
             </div>
 
             {activeShortlist.creators.length > 1 && (
               <button
                 onClick={() => setIsCompareOpen(true)}
-                className="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition-all flex items-center gap-1.5 border border-white/15"
+                className="px-4 py-2 rounded-full bg-black/5 hover:bg-black/10 text-[#0A0A0E] text-xs font-semibold transition-all flex items-center gap-1.5 border border-black/10"
               >
-                <Scale className="w-4 h-4 text-[#FFD21F]" />
+                <Scale className="w-4 h-4 text-[#0A0A0E]" />
                 <span>Side-by-Side Compare</span>
               </button>
             )}
@@ -136,12 +136,12 @@ export default function BrandShortlistsPage() {
             {activeShortlist.creators.map((c) => (
               <div
                 key={c.id}
-                className="p-6 rounded-3xl bg-[#101018] border border-white/10 hover:border-[#FFD21F]/40 transition-all space-y-4 flex flex-col justify-between shadow-2xl backdrop-blur-xl"
+                className="p-6 rounded-3xl bg-white border border-black/8 hover:border-[#FFD21F] transition-all space-y-4 flex flex-col justify-between shadow-xs"
               >
                 <div className="space-y-3">
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex items-center gap-3">
-                      <div className="relative w-12 h-12 rounded-2xl overflow-hidden bg-white/5 border border-white/10 shrink-0">
+                      <div className="relative w-12 h-12 rounded-2xl overflow-hidden bg-[#F5F5F9] border border-black/8 shrink-0">
                         <SafeImage
                           src={c.avatarUrl}
                           alt={c.fullName}
@@ -152,35 +152,35 @@ export default function BrandShortlistsPage() {
                         />
                       </div>
                       <div>
-                        <h3 className="font-bold text-base text-white font-display">{c.fullName}</h3>
-                        <p className="text-xs text-white/50 font-mono">@{c.handle}</p>
+                        <h3 className="font-bold text-base text-[#0A0A0E] font-display">{c.fullName}</h3>
+                        <p className="text-xs text-[#7A7A8A] font-mono">@{c.handle}</p>
                       </div>
                     </div>
-                    <span className="px-2.5 py-0.5 rounded-full bg-white/10 text-white/80 text-[10px] font-mono font-bold uppercase">
+                    <span className="px-2.5 py-0.5 rounded-full bg-black/5 text-[#0A0A0E] text-[10px] font-mono font-bold uppercase">
                       {c.primaryCategory}
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2 p-3 rounded-2xl bg-white/[0.03] border border-white/10 text-xs font-mono">
+                  <div className="grid grid-cols-2 gap-2 p-3 rounded-2xl bg-[#F8F8FC] border border-black/5 text-xs font-mono">
                     <div>
-                      <span className="text-[10px] text-white/40 block">Audience Reach</span>
-                      <span className="font-bold text-white text-sm">{formatNumber(c.totalFollowers)}</span>
+                      <span className="text-[10px] text-[#7A7A8A] block">Audience Reach</span>
+                      <span className="font-bold text-[#0A0A0E] text-sm">{formatNumber(c.totalFollowers)}</span>
                     </div>
                     <div>
-                      <span className="text-[10px] text-white/40 block">Engagement</span>
-                      <span className="font-bold text-[#FFD21F] text-sm">{c.avgEngagementRate}% ER</span>
+                      <span className="text-[10px] text-[#7A7A8A] block">Engagement</span>
+                      <span className="font-bold text-[#0A0A0E] text-sm">{c.avgEngagementRate}% ER</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="pt-2 flex gap-2">
                   <Link href={`/creators/${c.id}`} className="flex-1">
-                    <button className="w-full py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition-all">
+                    <button className="w-full py-2 rounded-full bg-black/5 hover:bg-black/10 text-[#0A0A0E] text-xs font-bold transition-all border border-black/10">
                       Media Kit
                     </button>
                   </Link>
                   <Link href="/app/brand/campaigns/create" className="flex-1">
-                    <button className="w-full py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-md">
+                    <button className="w-full py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs">
                       Invite
                     </button>
                   </Link>
@@ -190,9 +190,9 @@ export default function BrandShortlistsPage() {
           </div>
         </div>
       ) : (
-        <div className="py-24 text-center rounded-3xl bg-[#101018] border border-white/10 p-8 space-y-3">
-          <Users className="w-8 h-8 text-white/30 mx-auto" />
-          <h3 className="text-base font-bold text-white font-display">No shortlists available</h3>
+        <div className="py-24 text-center rounded-3xl bg-white border border-black/8 p-8 space-y-3 shadow-xs">
+          <Users className="w-8 h-8 text-[#7A7A8A] mx-auto" />
+          <h3 className="text-base font-bold text-[#0A0A0E] font-display">No shortlists available</h3>
         </div>
       )}
 
@@ -204,7 +204,7 @@ export default function BrandShortlistsPage() {
         description="Organize creators into campaign cohorts for internal review."
         maxWidth="md"
       >
-        <form onSubmit={handleCreate} className="space-y-4 text-white">
+        <form onSubmit={handleCreate} className="space-y-4 text-[#0A0A0E]">
           <Input
             label="Shortlist Name"
             value={newTitle}
@@ -221,7 +221,7 @@ export default function BrandShortlistsPage() {
           />
           <button
             type="submit"
-            className="w-full py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] text-xs font-bold shadow-[0_0_15px_rgba(255,210,31,0.4)]"
+            className="w-full py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] text-xs font-bold shadow-xs border border-black/10"
           >
             Create Shortlist
           </button>

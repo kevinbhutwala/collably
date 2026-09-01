@@ -4,6 +4,7 @@ import { MOCK_CREATORS } from "@/mock/creators.mock";
 import { MOCK_BRANDS } from "@/mock/brands.mock";
 import { MOCK_CAMPAIGNS } from "@/mock/campaigns.mock";
 import { MOCK_COLLABORATIONS } from "@/mock/collaborations.mock";
+import { MOCK_CONVERSATIONS, MOCK_MESSAGES } from "@/mock/messages.mock";
 
 export function getInitialSeedDatabase(): DatabaseState {
   const defaultPasswordHash = hashPassword("password123");
@@ -222,8 +223,8 @@ export function getInitialSeedDatabase(): DatabaseState {
     ],
     payments: [],
     mediaAssets: [],
-    conversations: [],
-    messages: [],
+    conversations: [...MOCK_CONVERSATIONS],
+    messages: Object.values(MOCK_MESSAGES).flat(),
     notifications: [],
     webhookEvents: [],
     aiUsage: [],

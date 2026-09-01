@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { EDITORIAL_ROSTER } from "@/data/editorialPortraits";
-import { Sparkles, ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 export function EditorialPortraitWall() {
   return (
@@ -13,7 +13,7 @@ export function EditorialPortraitWall() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#E7E7E4] pb-6">
           <div className="space-y-3 max-w-xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-xs font-mono font-bold text-[#101010]">
-              <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
+              <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
               <span>02 / CREATOR ROSTER</span>
             </div>
             <h2 className="section-headline">
@@ -55,7 +55,7 @@ export function EditorialPortraitWall() {
 
                   {/* Niche Badge */}
                   <div className="absolute top-3 left-3 flex items-center gap-2">
-                    <span className="px-2.5 py-0.5 rounded-full text-[9px] font-mono font-bold uppercase tracking-wider backdrop-blur-md bg-[#101010] text-[#B7FF3C] border border-[#B7FF3C]/30">
+                    <span className="px-2.5 py-0.5 rounded-full text-[9px] font-mono font-bold uppercase tracking-wider backdrop-blur-md bg-[#101010] text-[#FFD21F] border border-[#FFD21F]/30">
                       {portrait.category}
                     </span>
                   </div>
@@ -63,7 +63,7 @@ export function EditorialPortraitWall() {
                   {/* Bottom Stats Overlay */}
                   <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs font-mono">
                     <span className="font-bold numeric-tabular">{portrait.followersFormatted} Reach</span>
-                    <span className="font-bold text-[#B7FF3C] numeric-tabular">{portrait.engagementFormatted} ER</span>
+                    <span className="font-bold text-[#FFD21F] numeric-tabular">{portrait.engagementFormatted} ER</span>
                   </div>
                 </div>
 
@@ -86,7 +86,7 @@ export function EditorialPortraitWall() {
 
                   <div className="pt-2.5 border-t border-[#E7E7E4] flex items-center justify-between text-xs font-sans">
                     <span className="text-[#101010] font-semibold flex items-center gap-1.5 font-mono">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F]" />
                       <span className="numeric-tabular">{portrait.matchScore}%</span> Fit
                     </span>
 
@@ -113,10 +113,10 @@ export function EditorialPortraitWall() {
 
           <Link
             href="/creators"
-            className="px-5 py-2.5 rounded-[9px] bg-[#101010] hover:bg-[#262626] text-[#FAFAF8] text-xs font-sans font-semibold shadow-xs transition-all flex items-center gap-2 group"
+            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] text-xs font-sans font-bold shadow-xs transition-all flex items-center gap-2 group border border-black/10"
           >
             <span>Explore Full Creator Roster</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C] group-hover:scale-125 transition-transform" />
+            <ArrowRight className="w-3.5 h-3.5 text-[#0A0A0E]" />
           </Link>
         </div>
       </div>

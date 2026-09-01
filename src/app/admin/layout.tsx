@@ -11,7 +11,7 @@ export default function AdminLayout({
 }) {
   return (
     <AuthGuard requiredRole={["agency_admin", "super_admin", "agency_owner"]}>
-      <div className="min-h-screen flex flex-col bg-[#07070B] text-white selection:bg-[#FFD21F] selection:text-white">
+      <div className="min-h-screen flex flex-col bg-[#FAFAFC] text-[#0A0A0E] selection:bg-[#FFD21F] selection:text-[#0A0A0E]">
         <AppNavbar />
         <div className="flex flex-1">
           <AppSidebar />

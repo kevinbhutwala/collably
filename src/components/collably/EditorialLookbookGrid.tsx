@@ -1,19 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
 import {
   EDITORIAL_PORTRAITS,
   EDITORIAL_BRANDS,
 } from "@/data/editorialPortraits";
-import {
-  Sparkles,
-  ArrowRight,
-  CheckCircle2,
-  Building2,
-  ShieldCheck,
-  Zap,
-} from "lucide-react";
 
 export function EditorialLookbookGrid() {
   const [activeFilter, setActiveFilter] = useState<"ALL" | "BIG" | "MEDIUM" | "SMALL">("ALL");
@@ -52,7 +43,7 @@ export function EditorialLookbookGrid() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#E7E7E4] pb-6">
           <div className="space-y-3 max-w-xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-xs font-mono font-bold text-[#101010] shadow-xs">
-              <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
+              <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
               <span>05 / TALENT &amp; BRAND ROSTER</span>
             </div>
             <h2 className="section-headline">
@@ -93,7 +84,7 @@ export function EditorialLookbookGrid() {
           <div className="space-y-6">
             <div className="flex items-center justify-between font-mono text-xs text-[#626262] pb-2 border-b border-[#E7E7E4]/60">
               <span className="font-bold text-[#101010] tracking-wider uppercase flex items-center gap-1.5 font-sans">
-                <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
+                <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
                 [SECTION A] LARGE EDITORIAL ANCHORS &amp; FLAGSHIP BRANDS
               </span>
               <span className="tracking-wider">1000PX HI-RES MASTER SHOTS</span>
@@ -111,19 +102,19 @@ export function EditorialLookbookGrid() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#101010]/90 via-black/20 to-transparent" />
                   
                   {/* Top Stamp */}
-                  <div className="absolute top-4 left-4 px-2.5 py-1 rounded-md bg-[#101010] text-[#B7FF3C] font-mono text-[10px] font-bold border border-[#B7FF3C]/30">
+                  <div className="absolute top-4 left-4 px-2.5 py-1 rounded-md bg-[#101010] text-[#FFD21F] font-mono text-[10px] font-bold border border-[#FFD21F]/30">
                     BIG ANCHOR • {bigPortraits[0].category}
                   </div>
 
                   <div className="absolute bottom-4 left-4 right-4 text-white space-y-1.5 font-sans">
                     <div className="flex items-center justify-between text-xs font-mono">
                       <span className="text-white/80">FEATURED PARTNER:</span>
-                      <span className="text-[#B7FF3C] font-bold">{bigPortraits[0].featuredBrand}</span>
+                      <span className="text-[#FFD21F] font-bold">{bigPortraits[0].featuredBrand}</span>
                     </div>
                     <h3 className="text-xl font-display font-bold text-[#FAFAF8]">{bigPortraits[0].name}</h3>
                     <div className="flex items-center justify-between text-xs text-white/90 pt-1 border-t border-white/20 font-mono">
                       <span className="numeric-tabular">{bigPortraits[0].followersFormatted} Reach</span>
-                      <span className="font-bold text-[#B7FF3C] numeric-tabular">{bigPortraits[0].verifiedRate}</span>
+                      <span className="font-bold text-[#FFD21F] numeric-tabular">{bigPortraits[0].verifiedRate}</span>
                     </div>
                   </div>
                 </div>
@@ -139,19 +130,19 @@ export function EditorialLookbookGrid() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#101010]/90 via-transparent to-transparent" />
 
-                  <div className="absolute top-4 left-4 px-2.5 py-1 rounded-md bg-[#101010] text-[#B7FF3C] font-mono text-[10px] font-bold border border-[#B7FF3C]/30">
+                  <div className="absolute top-4 left-4 px-2.5 py-1 rounded-md bg-[#101010] text-[#FFD21F] font-mono text-[10px] font-bold border border-[#FFD21F]/30">
                     FEATURED • {bigPortraits[1].category}
                   </div>
 
                   <div className="absolute bottom-4 left-4 right-4 text-white space-y-1.5 font-sans">
                     <div className="flex items-center justify-between text-xs font-mono">
                       <span className="text-white/80">COLLABORATING WITH:</span>
-                      <span className="text-[#B7FF3C] font-bold">{bigPortraits[1].featuredBrand}</span>
+                      <span className="text-[#FFD21F] font-bold">{bigPortraits[1].featuredBrand}</span>
                     </div>
                     <h3 className="text-xl font-display font-bold text-[#FAFAF8]">{bigPortraits[1].name}</h3>
                     <div className="flex items-center justify-between text-xs text-white/90 pt-1 border-t border-white/20 font-mono">
                       <span className="numeric-tabular">{bigPortraits[1].engagementFormatted} ER</span>
-                      <span className="font-bold text-[#B7FF3C] numeric-tabular">{bigPortraits[1].verifiedRate}</span>
+                      <span className="font-bold text-[#FFD21F] numeric-tabular">{bigPortraits[1].verifiedRate}</span>
                     </div>
                   </div>
                 </div>
@@ -167,7 +158,7 @@ export function EditorialLookbookGrid() {
                     <div className="flex items-start justify-between">
                       <div className="space-y-1">
                         <div className="flex items-center gap-2">
-                          <span className="w-8 h-8 rounded-lg bg-[#101010] text-[#B7FF3C] flex items-center justify-center font-mono font-bold text-xs">
+                          <span className="w-8 h-8 rounded-lg bg-[#101010] text-[#FFD21F] flex items-center justify-center font-mono font-bold text-xs">
                             {brand.logoEmblem}
                           </span>
                           <h4 className="font-display font-extrabold text-lg text-[#101010]">{brand.name}</h4>
@@ -175,7 +166,7 @@ export function EditorialLookbookGrid() {
                         <p className="text-xs text-[#626262] font-sans">{brand.tagline}</p>
                       </div>
 
-                      <span className="px-2 py-0.5 rounded bg-[#101010] text-[#B7FF3C] font-mono text-[10px] font-bold">
+                      <span className="px-2 py-0.5 rounded bg-[#101010] text-[#FFD21F] font-mono text-[10px] font-bold">
                         BIG BRAND
                       </span>
                     </div>
@@ -188,7 +179,7 @@ export function EditorialLookbookGrid() {
                       <div>
                         <span className="text-[10px] text-[#626262] block uppercase tracking-wider">ROSTER TALENT</span>
                         <span className="font-bold text-[#101010] flex items-center gap-1 font-sans">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F]" />
                           {brand.featuredCreator}
                         </span>
                       </div>
@@ -205,7 +196,7 @@ export function EditorialLookbookGrid() {
           <div className="space-y-6 pt-4">
             <div className="flex items-center justify-between font-mono text-xs text-[#626262] pb-2 border-b border-[#E7E7E4]/60">
               <span className="font-bold text-[#101010] tracking-wider uppercase flex items-center gap-1.5 font-sans">
-                <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
+                <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
                 [SECTION B] MEDIUM POLAROID LOOKBOOK &amp; NICHE PARTNERS
               </span>
               <span className="tracking-wider">800PX STUDIO SHOTS &bull; ROTATED MATTES</span>
@@ -230,7 +221,7 @@ export function EditorialLookbookGrid() {
                       alt={portrait.name}
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-[#101010]/85 backdrop-blur-md text-[#B7FF3C] font-mono text-[9px] font-bold">
+                    <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-[#101010]/85 backdrop-blur-md text-[#FFD21F] font-mono text-[9px] font-bold">
                       {portrait.category}
                     </div>
                   </div>
@@ -247,7 +238,7 @@ export function EditorialLookbookGrid() {
                     <div className="pt-2 border-t border-[#E7E7E4] flex items-center justify-between text-[11px] text-[#626262]">
                       <span>Brand: <strong className="text-[#101010]">{portrait.featuredBrand}</strong></span>
                       <span className="text-[#101010] font-semibold flex items-center gap-1 font-mono">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F]" />
                         <span className="numeric-tabular">{portrait.matchScore}%</span> FIT
                       </span>
                     </div>
@@ -264,7 +255,7 @@ export function EditorialLookbookGrid() {
                   className="p-4 rounded-xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs flex items-center justify-between gap-3 font-sans text-xs"
                 >
                   <div className="flex items-center gap-2.5 overflow-hidden">
-                    <div className="w-8 h-8 rounded-lg bg-[#101010] text-[#B7FF3C] flex items-center justify-center font-bold text-[11px] shrink-0 font-mono">
+                    <div className="w-8 h-8 rounded-lg bg-[#101010] text-[#FFD21F] flex items-center justify-center font-bold text-[11px] shrink-0 font-mono">
                       {brand.logoEmblem}
                     </div>
                     <div className="overflow-hidden">
@@ -286,7 +277,7 @@ export function EditorialLookbookGrid() {
           <div className="space-y-6 pt-4">
             <div className="flex items-center justify-between font-mono text-xs text-[#626262] pb-2 border-b border-[#E7E7E4]/60">
               <span className="font-bold text-[#101010] tracking-wider uppercase flex items-center gap-1.5 font-sans">
-                <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
+                <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
                 [SECTION C] MICRO-CREATOR BADGES &amp; MONOGRAM CAPSULES
               </span>
               <span className="tracking-wider">POSTAGE STAMP COMPOSITIONS &bull; EMBEDDED LENSES</span>
@@ -319,7 +310,7 @@ export function EditorialLookbookGrid() {
 
                   <div className="text-right font-mono shrink-0">
                     <span className="text-xs font-bold text-[#101010] block numeric-tabular">{portrait.verifiedRate}</span>
-                    <span className="text-[9px] text-[#101010] font-bold bg-[#B7FF3C] px-1.5 py-0.5 rounded">VERIFIED</span>
+                    <span className="text-[9px] text-[#101010] font-bold bg-[#FFD21F] px-1.5 py-0.5 rounded">VERIFIED</span>
                   </div>
                 </div>
               ))}
@@ -328,7 +319,7 @@ export function EditorialLookbookGrid() {
             {/* Small Brand Monogram Ticker Strip */}
             <div className="p-4 rounded-xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs flex flex-wrap items-center justify-around gap-4 text-xs font-sans text-[#626262]">
               <span className="text-[10px] text-[#101010] font-bold uppercase tracking-wider flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F]" />
                 ACTIVE DEAL RAILS:
               </span>
               {smallBrands.map((b) => (

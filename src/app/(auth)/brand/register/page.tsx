@@ -7,7 +7,7 @@ import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
 import { authService } from "@/services/auth.service";
 import { Input } from "@/components/ui/Input";
-import { Building2, ArrowRight, ArrowLeft, AlertCircle, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowLeft, AlertCircle, Sparkles } from "lucide-react";
 
 export default function BrandRegisterPage() {
   const router = useRouter();
@@ -59,19 +59,19 @@ export default function BrandRegisterPage() {
   };
 
   return (
-    <div className="w-full flex items-center justify-center p-2 py-6 text-white select-none">
-      <div className="w-full max-w-xl rounded-3xl bg-[#0E0C15]/90 border border-white/15 p-8 sm:p-10 space-y-6 shadow-2xl backdrop-blur-2xl">
-        <div className="flex items-center justify-between pb-3 border-b border-white/10">
+    <div className="w-full flex items-center justify-center p-2 py-6 text-[#0A0A0E] select-none">
+      <div className="w-full max-w-xl rounded-3xl bg-white border border-black/8 p-8 sm:p-10 space-y-6 shadow-xl">
+        <div className="flex items-center justify-between pb-3 border-b border-black/8">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-white/50 hover:text-white transition-colors group"
+            className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[#7A7A8A] hover:text-[#0A0A0E] transition-colors group"
           >
             <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
             <span>Back to Home</span>
           </Link>
           <Link
             href="/register"
-            className="text-[10px] font-mono text-white/50 hover:text-white transition-colors"
+            className="text-[10px] font-mono text-[#7A7A8A] hover:text-[#0A0A0E] transition-colors"
           >
             Change Account Type &rarr;
           </Link>
@@ -79,24 +79,24 @@ export default function BrandRegisterPage() {
 
         <div className="space-y-2">
           <div className="flex justify-between items-center">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#FFD21F] text-xs font-bold font-mono">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-pulse" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] text-xs font-bold font-mono">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               <span>Brand Onboarding</span>
             </div>
-            <div className="w-7 h-7 rounded-lg bg-[#FFD21F]/20 border border-[#FFD21F]/30 flex items-center justify-center text-[#FFD21F]">
-              <Sparkles className="w-3.5 h-3.5 fill-[#FFD21F]" />
+            <div className="w-7 h-7 rounded-lg bg-[#FFD21F]/20 border border-[#FFD21F]/40 flex items-center justify-center text-[#0A0A0E]">
+              <Sparkles className="w-3.5 h-3.5 fill-[#FFD21F] text-[#0A0A0E]" />
             </div>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
             Register Brand Account
           </h1>
-          <p className="text-xs sm:text-sm text-white/50 font-sans">
+          <p className="text-xs sm:text-sm text-[#5A5A68] font-sans">
             Launch briefs, review creator proposals, and manage escrow disbursements.
           </p>
         </div>
 
         {errorMessage && (
-          <div className="p-3.5 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs flex items-center gap-2">
+          <div className="p-3.5 rounded-2xl bg-red-50 border border-red-200 text-red-600 text-xs flex items-center gap-2">
             <AlertCircle className="w-4 h-4 shrink-0" />
             <span>{errorMessage}</span>
           </div>
@@ -158,7 +158,7 @@ export default function BrandRegisterPage() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all shadow-[0_0_20px_rgba(255,210,31,0.4)] border border-white/50 flex items-center justify-center gap-2 disabled:opacity-50"
+              className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all shadow-xs border border-black/10 flex items-center justify-center gap-2 disabled:opacity-50"
             >
               <span>Launch Brand Workspace</span>
               <ArrowRight className="w-4 h-4 text-[#0A0A0E]" />
@@ -166,10 +166,10 @@ export default function BrandRegisterPage() {
           </div>
         </form>
 
-        <div className="pt-4 border-t border-white/10 text-center">
-          <p className="text-xs text-white/50">
+        <div className="pt-4 border-t border-black/8 text-center">
+          <p className="text-xs text-[#5A5A68]">
             Already registered?{" "}
-            <Link href="/login" className="text-[#FFD21F] hover:underline font-bold">
+            <Link href="/login" className="text-[#0A0A0E] underline font-bold">
               Sign in
             </Link>
           </p>

@@ -5,9 +5,6 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
-  ShieldCheck,
-  Sparkles,
-  CheckCircle2,
   Lock,
   Zap,
 } from "lucide-react";
@@ -51,7 +48,7 @@ export function HeroEditorialCollage() {
         <div className="text-center max-w-4xl mx-auto space-y-6 pt-2 sm:pt-4">
           {/* Micro Label Eyebrow: 11px uppercase tracking */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-[11px] font-sans font-semibold uppercase tracking-[0.08em] text-[#101010] shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-[#B7FF3C] animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
             <span>CREATOR × BRAND COLLABORATION PLATFORM</span>
           </div>
 
@@ -73,7 +70,7 @@ export function HeroEditorialCollage() {
                   animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
                   exit={{ y: -20, opacity: 0, filter: "blur(3px)" }}
                   transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                  className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-[#101010] flex items-center gap-2 bg-[#B7FF3C] px-4 py-1.5 rounded-lg shadow-xs"
+                  className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-[#101010] flex items-center gap-2 bg-[#FFD21F] px-4 py-1.5 rounded-lg shadow-xs"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-[#101010]" />
                   <span>
@@ -93,15 +90,15 @@ export function HeroEditorialCollage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2 font-sans font-semibold text-sm">
             <Link
               href="/for-brands"
-              className="w-full sm:w-auto px-8 py-3.5 rounded-[9px] bg-[#101010] hover:bg-[#262626] active:bg-[#000000] text-[#FAFAF8] shadow-xs transition-all flex items-center justify-center gap-2 group tracking-tight"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold shadow-xs transition-all flex items-center justify-center gap-2 group tracking-tight border border-black/10"
             >
               <span>Start a Campaign</span>
-              <span className="w-2 h-2 rounded-full bg-[#B7FF3C] group-hover:scale-125 transition-transform" />
+              <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-0.5 transition-transform" />
             </Link>
 
             <Link
               href="/creator/register"
-              className="w-full sm:w-auto px-7 py-3.5 rounded-[9px] bg-[#FFFFFF] hover:bg-[#F4F4F0] border border-[#E7E7E4] text-[#101010] shadow-xs transition-all flex items-center justify-center gap-2 tracking-tight"
+              className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#FFFFFF] hover:bg-[#F4F4F0] border border-[#E7E7E4] text-[#101010] shadow-xs transition-all flex items-center justify-center gap-2 tracking-tight font-bold"
             >
               <span>Join as a Creator</span>
               <ArrowRight className="w-4 h-4 text-[#101010]" />
@@ -137,7 +134,7 @@ export function HeroEditorialCollage() {
                   <h3 className="font-display font-bold text-sm text-[#FAFAF8]">{maleHero.name}</h3>
                   <p className="text-[11px] text-white/70 font-sans">@{maleHero.handle} • {maleHero.niche}</p>
                 </div>
-                <span className="px-2 py-0.5 rounded-md bg-[#B7FF3C] text-[#101010] text-[10px] font-bold">
+                <span className="px-2 py-0.5 rounded-md bg-[#FFD21F] text-[#101010] text-[10px] font-bold">
                   TECH LEAD
                 </span>
               </div>
@@ -160,7 +157,7 @@ export function HeroEditorialCollage() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#101010]/85 via-transparent to-transparent pointer-events-none" />
 
               <div className="absolute bottom-4 left-4 right-4 text-[#FAFAF8] text-xs font-mono">
-                <span className="text-[10px] text-[#B7FF3C] uppercase font-bold block">PARTNER</span>
+                <span className="text-[10px] text-[#FFD21F] uppercase font-bold block">PARTNER</span>
                 <h4 className="font-display font-bold text-sm">{femaleHero.name}</h4>
               </div>
             </div>
@@ -179,7 +176,7 @@ export function HeroEditorialCollage() {
                 alt={supportingFemale.name}
                 className="w-full h-full object-cover filter contrast-[1.08]"
               />
-              <div className="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-[#101010] text-[#B7FF3C] text-[9px] font-mono font-bold">
+              <div className="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-[#101010] text-[#FFD21F] text-[9px] font-mono font-bold">
                 {supportingFemale.category}
               </div>
             </div>
@@ -189,7 +186,7 @@ export function HeroEditorialCollage() {
             </div>
           </motion.div>
 
-          {/* ── 04. FLOATING REAL PRODUCT UI: 98% MATCH CARD with #B7FF3C ── */}
+          {/* ── 04. FLOATING REAL PRODUCT UI: 98% MATCH CARD with #FFD21F ── */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -198,7 +195,7 @@ export function HeroEditorialCollage() {
           >
             <div className="flex items-center justify-between gap-2 pb-1.5 border-b border-[#E7E7E4] text-xs font-mono">
               <span className="font-display font-bold text-[#101010] truncate">Elena Rostova</span>
-              <span className="px-1.5 py-0.5 rounded bg-[#B7FF3C] text-[#101010] font-bold text-[10px]">
+              <span className="px-1.5 py-0.5 rounded bg-[#FFD21F] text-[#101010] font-bold text-[10px]">
                 98% MATCH
               </span>
             </div>
@@ -223,7 +220,7 @@ export function HeroEditorialCollage() {
           >
             <div className="flex items-center justify-between gap-2 text-xs font-mono mb-1">
               <span className="text-[10px] text-[#626262] font-bold uppercase tracking-wider">SETTLEMENT DISBURSED</span>
-              <span className="px-1.5 py-0.5 rounded bg-[#101010] text-[#B7FF3C] text-[9px] font-bold">
+              <span className="px-1.5 py-0.5 rounded bg-[#101010] text-[#FFD21F] text-[9px] font-bold">
                 ✓ APPROVED
               </span>
             </div>
@@ -247,13 +244,13 @@ export function HeroEditorialCollage() {
             transition={{ duration: 0.5, delay: 0.45 }}
             className="hidden sm:flex items-center gap-3 absolute top-60 left-2 sm:left-16 z-30 px-3.5 py-2 rounded-xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-editorial"
           >
-            <div className="w-8 h-8 rounded-lg bg-[#101010] text-[#B7FF3C] flex items-center justify-center shrink-0">
+            <div className="w-8 h-8 rounded-lg bg-[#101010] text-[#FFD21F] flex items-center justify-center shrink-0">
               <Zap className="w-4 h-4" />
             </div>
             <div className="font-mono text-xs">
               <div className="flex items-center gap-1.5">
                 <span className="font-display font-bold text-[#101010]">TECH LAUNCH</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#3047FF] animate-ping" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-ping" />
               </div>
               <p className="text-[10px] text-[#626262] font-sans">12 Creators • <strong className="text-[#101010] numeric-tabular">₹2,50,000</strong> LIVE</p>
             </div>
@@ -265,7 +262,7 @@ export function HeroEditorialCollage() {
             ════════════════════════════════════════════════════════════════════ */}
         <div className="pt-4 sm:pt-6 border-t border-[#E7E7E4] flex flex-wrap items-center justify-between gap-4 text-xs font-sans text-[#626262]">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
+            <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
             <span className="text-[#101010] font-semibold">100% Milestone Protection</span>
           </div>
           <div className="flex items-center gap-2">
