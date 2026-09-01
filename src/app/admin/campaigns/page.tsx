@@ -3,8 +3,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { MOCK_CAMPAIGNS } from "@/mock/campaigns.mock";
-import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
 import { formatCurrency } from "@/core/utils/formatters";
 import { useUIStore } from "@/stores/ui.store";
 
@@ -21,55 +19,58 @@ export default function AdminCampaignsQueuePage() {
   };
 
   return (
-    <div className="space-y-8 text-[#111111]">
-      <div className="pb-6 border-b border-[#E7E7E4]">
+    <div className="space-y-8 text-white select-none">
+      <div className="pb-6 border-b border-white/10">
         <div className="flex items-center gap-2 mb-1">
-          <span className="text-xs font-mono font-bold uppercase text-[#111111] flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
+          <span className="text-xs font-mono font-bold uppercase text-white/80 flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             Moderation Queue
           </span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-[#111111] tracking-tight font-display">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
           Campaign Approval &amp; Quality Queue
         </h1>
-        <p className="text-xs sm:text-sm text-[#6B6B6B] mt-0.5 font-sans font-medium">
+        <p className="text-xs sm:text-sm text-white/50 mt-0.5 font-sans">
           Review incoming brand campaign briefs, deliverables feasibility, and budget escrow deposits.
         </p>
       </div>
 
-      <div className="p-6 sm:p-8 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs space-y-6">
-        <div className="divide-y divide-[#E7E7E4]">
+      <div className="p-6 sm:p-8 rounded-3xl bg-[#0E0C15]/90 border border-white/10 shadow-2xl backdrop-blur-xl space-y-6">
+        <div className="divide-y divide-white/10">
           {campaigns.map((c) => (
             <div key={c.id} className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                  <span className="font-bold text-sm text-[#111111] font-display">{c.title}</span>
-                  <span className="px-2 py-0.5 rounded bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] font-mono text-[10px] font-bold">
+                  <span className="font-bold text-sm text-white font-display">{c.title}</span>
+                  <span className="px-2.5 py-0.5 rounded-full bg-white/10 border border-white/10 text-white/80 font-mono text-[10px] font-bold">
                     {c.brand.companyName}
                   </span>
                 </div>
-                <p className="text-xs text-[#6B6B6B] font-mono">
+                <p className="text-xs text-white/50 font-mono">
                   {c.category} • {c.deliverables.length} Deliverable Types • {c.acceptedCount}/{c.maxCreators} Creators
                 </p>
               </div>
 
               <div className="flex items-center gap-4 font-mono text-xs">
                 <div>
-                  <span className="text-[#6B6B6B] block text-[10px]">Total Escrow</span>
-                  <span className="text-[#111111] font-extrabold">{formatCurrency(c.budget.totalBudget)}</span>
+                  <span className="text-white/40 block text-[10px]">Total Escrow</span>
+                  <span className="text-white font-extrabold">{formatCurrency(c.budget.totalBudget)}</span>
                 </div>
-                <span className="px-2 py-0.5 rounded-full bg-[#B7FF3C] text-[#111111] text-[10px] font-mono font-bold">
-                  {c.status.toUpperCase()}
+                <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-mono font-bold uppercase">
+                  {c.status}
                 </span>
                 <div className="flex gap-2">
                   <Link href={`/campaigns/${c.id}`} target="_blank">
-                    <Button variant="secondary" size="sm" className="rounded-[9px]">
+                    <button className="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition-all">
                       Inspect
-                    </Button>
+                    </button>
                   </Link>
-                  <Button variant="primary" size="sm" onClick={() => handleApprove(c.id)} className="rounded-[9px]">
+                  <button
+                    onClick={() => handleApprove(c.id)}
+                    className="px-4 py-2 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] hover:from-[#234FE6] hover:to-[#3264E6] text-white text-xs font-semibold transition-all shadow-md"
+                  >
                     Approve
-                  </Button>
+                  </button>
                 </div>
               </div>
             </div>

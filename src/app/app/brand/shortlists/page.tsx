@@ -4,8 +4,6 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { crmService } from "@/services/crm.service";
 import { CreatorShortlist } from "@/core/types";
-import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
 import { Input, Textarea } from "@/components/ui/Input";
 import { SafeImage } from "@/components/ui/SafeImage";
@@ -14,10 +12,8 @@ import { formatNumber, formatCurrency } from "@/core/utils/formatters";
 import { useUIStore } from "@/stores/ui.store";
 import {
   Plus,
-  ArrowRight,
   Scale,
   Users,
-  CheckCircle2,
 } from "lucide-react";
 
 export default function BrandShortlistsPage() {
@@ -58,201 +54,182 @@ export default function BrandShortlistsPage() {
   };
 
   return (
-    <div className="space-y-8 text-[#111111]">
+    <div className="space-y-8 text-white select-none">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E7E7E4]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono font-bold uppercase text-[#111111] flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
-              Talent Organization
+            <span className="text-xs font-mono font-bold uppercase text-white/80 flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              Talent Curation
             </span>
-            <span className="text-[#E7E7E4]">•</span>
-            <span className="px-2 py-0.5 rounded bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] font-mono text-[10px] font-bold">
-              Creator Lists
+            <span className="text-white/20">•</span>
+            <span className="px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-400 font-mono text-[10px] font-bold">
+              Team Shortlists
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#111111] tracking-tight font-display">
-            Campaign Shortlists &amp; Cohort Comparison
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-white font-display tracking-tight">
+            Creator Shortlists &amp; Side-by-Side Comparison
           </h1>
-          <p className="text-xs sm:text-sm text-[#6B6B6B] mt-0.5 font-sans font-medium">
-            Group creator candidates by campaign topic, compare side-by-side metrics, and batch invite.
+          <p className="text-xs sm:text-sm text-white/50 mt-0.5 font-sans">
+            Curate collections for upcoming launches and benchmark creator metrics side-by-side.
           </p>
         </div>
 
         <div className="flex items-center gap-3">
-          <Button
-            variant="secondary"
-            size="md"
-            onClick={() => setIsCompareOpen(true)}
-            leftIcon={<Scale className="w-4 h-4 text-[#111111]" />}
-            disabled={!activeShortlist || activeShortlist.creators.length < 2}
-            className="rounded-[9px]"
-          >
-            Compare Creators
-          </Button>
-
-          <Button
-            variant="primary"
-            size="md"
+          <button
             onClick={() => setIsCreateModalOpen(true)}
-            leftIcon={<Plus className="w-4 h-4 text-[#B7FF3C]" />}
-            className="rounded-[9px]"
+            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] hover:from-[#234FE6] hover:to-[#3264E6] text-white text-xs font-semibold transition-all shadow-[0_0_20px_rgba(42,92,255,0.4)] flex items-center gap-1.5"
           >
-            New Shortlist
-          </Button>
+            <Plus className="w-4 h-4" />
+            <span>Create Shortlist</span>
+          </button>
         </div>
       </div>
 
-      {/* Main Layout: Left Shortlists Sidebar, Right Creator Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* Left Column: Shortlist Categories */}
-        <div className="lg:col-span-4 p-6 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs space-y-3">
-          <h3 className="text-xs font-bold text-[#111111] uppercase font-mono tracking-wider mb-2">
-            My Campaign Lists ({shortlists.length})
-          </h3>
+      {/* Tabs for Shortlists */}
+      <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-2">
+        {shortlists.map((s) => {
+          const isActive = s.id === activeShortlistId;
+          return (
+            <button
+              key={s.id}
+              onClick={() => setActiveShortlistId(s.id)}
+              className={`px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap flex items-center gap-2 ${
+                isActive
+                  ? "bg-[#2A5CFF] text-white shadow-[0_0_12px_rgba(42,92,255,0.4)] font-bold"
+                  : "bg-white/[0.04] text-white/60 hover:text-white border border-white/10"
+              }`}
+            >
+              <span>{s.name}</span>
+              <span className={`px-2 py-0.5 rounded-full text-[10px] ${
+                isActive ? "bg-white text-[#07070B] font-bold" : "bg-white/10 text-white/70"
+              }`}>
+                {s.creators.length}
+              </span>
+            </button>
+          );
+        })}
+      </div>
 
-          <div className="space-y-2">
-            {shortlists.map((sl) => {
-              const isSelected = sl.id === activeShortlistId;
-              return (
-                <button
-                  key={sl.id}
-                  onClick={() => setActiveShortlistId(sl.id)}
-                  className={`w-full p-4 rounded-xl text-left transition-all flex items-start justify-between gap-3 ${
-                    isSelected
-                      ? "bg-[#111111] text-[#FAFAF8] shadow-xs"
-                      : "bg-[#FAFAF8] text-[#6B6B6B] hover:text-[#111111] border border-[#E7E7E4]"
-                  }`}
-                >
-                  <div>
-                    <h4 className="font-bold text-xs font-display">{sl.name}</h4>
-                    <p className={`text-[11px] mt-0.5 line-clamp-1 font-sans ${isSelected ? "text-white/80" : "text-[#6B6B6B]"}`}>
-                      {sl.description}
-                    </p>
-                  </div>
-                  <span className={`text-xs font-mono font-bold px-2 py-0.5 rounded-md ${isSelected ? "bg-[#FFFFFF] text-[#111111]" : "bg-[#FFFFFF] text-[#6B6B6B] border border-[#E7E7E4]"}`}>
-                    {sl.creators.length}
-                  </span>
-                </button>
-              );
-            })}
+      {/* Active Shortlist Details & Grid */}
+      {activeShortlist ? (
+        <div className="space-y-6">
+          <div className="p-6 rounded-3xl bg-[#0E0C15]/90 border border-white/10 shadow-2xl backdrop-blur-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h2 className="text-xl font-bold text-white font-display">{activeShortlist.name}</h2>
+              <p className="text-xs text-white/50 font-sans mt-0.5">{activeShortlist.description}</p>
+            </div>
+
+            {activeShortlist.creators.length > 1 && (
+              <button
+                onClick={() => setIsCompareOpen(true)}
+                className="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition-all flex items-center gap-1.5 border border-white/15"
+              >
+                <Scale className="w-4 h-4 text-blue-400" />
+                <span>Side-by-Side Compare</span>
+              </button>
+            )}
           </div>
-        </div>
 
-        {/* Right Column: Creators inside Active Shortlist */}
-        <div className="lg:col-span-8 space-y-6">
-          {activeShortlist && (
-            <div className="p-6 sm:p-8 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs space-y-6 text-[#111111]">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#E7E7E4]">
-                <div>
-                  <h3 className="text-lg font-bold text-[#111111] font-display">{activeShortlist.name}</h3>
-                  <p className="text-xs text-[#6B6B6B] font-sans">{activeShortlist.description}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {activeShortlist.creators.map((c) => (
+              <div
+                key={c.id}
+                className="p-6 rounded-3xl bg-[#0E0C15]/90 border border-white/10 hover:border-blue-500/40 transition-all space-y-4 flex flex-col justify-between shadow-2xl backdrop-blur-xl"
+              >
+                <div className="space-y-3">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex items-center gap-3">
+                      <div className="relative w-12 h-12 rounded-2xl overflow-hidden bg-white/5 border border-white/10 shrink-0">
+                        <SafeImage
+                          src={c.avatarUrl}
+                          alt={c.fullName}
+                          fallbackType="creator"
+                          fallbackName={c.fullName}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-base text-white font-display">{c.fullName}</h3>
+                        <p className="text-xs text-white/50 font-mono">@{c.handle}</p>
+                      </div>
+                    </div>
+                    <span className="px-2.5 py-0.5 rounded-full bg-white/10 text-white/80 text-[10px] font-mono font-bold uppercase">
+                      {c.primaryCategory}
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2 p-3 rounded-2xl bg-white/[0.03] border border-white/10 text-xs font-mono">
+                    <div>
+                      <span className="text-[10px] text-white/40 block">Audience Reach</span>
+                      <span className="font-bold text-white text-sm">{formatNumber(c.totalFollowers)}</span>
+                    </div>
+                    <div>
+                      <span className="text-[10px] text-white/40 block">Engagement</span>
+                      <span className="font-bold text-[#B7FF3C] text-sm">{c.avgEngagementRate}% ER</span>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="flex items-center gap-2">
-                  <Link href="/app/brand/campaigns/create">
-                    <Button variant="primary" size="sm" rightIcon={<ArrowRight className="w-3.5 h-3.5 text-[#B7FF3C]" />} className="rounded-[9px]">
-                      Batch Invite All
-                    </Button>
+                <div className="pt-2 flex gap-2">
+                  <Link href={`/creators/${c.id}`} className="flex-1">
+                    <button className="w-full py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition-all">
+                      Media Kit
+                    </button>
+                  </Link>
+                  <Link href="/app/brand/campaigns/create" className="flex-1">
+                    <button className="w-full py-2 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] hover:from-[#234FE6] hover:to-[#3264E6] text-white text-xs font-semibold transition-all shadow-md">
+                      Invite
+                    </button>
                   </Link>
                 </div>
               </div>
-
-              {activeShortlist.creators.length === 0 ? (
-                <div className="py-12 text-center space-y-3">
-                  <Users className="w-8 h-8 text-[#6B6B6B] mx-auto" />
-                  <p className="text-xs text-[#6B6B6B] font-medium font-sans">No creators added to this list yet.</p>
-                  <Link href="/creators">
-                    <Button variant="secondary" size="sm" className="rounded-[9px]">
-                      Browse Creator Directory
-                    </Button>
-                  </Link>
-                </div>
-              ) : (
-                <div className="divide-y divide-[#E7E7E4]">
-                  {activeShortlist.creators.map((c) => (
-                    <div key={c.id} className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                      <div className="flex items-center gap-3.5">
-                        <div className="relative w-12 h-12 rounded-xl overflow-hidden bg-[#FAFAF8] border border-[#E7E7E4] shrink-0">
-                          <SafeImage
-                            src={c.avatarUrl}
-                            alt={c.fullName}
-                            fallbackType="creator"
-                            fallbackName={c.fullName}
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                        <div>
-                          <h4 className="font-bold text-sm text-[#111111] flex items-center gap-1.5 font-display">
-                            {c.fullName}
-                            {c.verified && <CheckCircle2 className="w-4 h-4 text-[#111111]" />}
-                          </h4>
-                          <p className="text-xs text-[#6B6B6B] font-mono">
-                            @{c.handle} • {c.primaryCategory} • {formatNumber(c.totalFollowers)} Reach
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-6 font-mono text-xs">
-                        <div>
-                          <span className="text-[#6B6B6B] block text-[10px]">Engagement</span>
-                          <span className="text-[#111111] font-bold flex items-center gap-1">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
-                            {c.avgEngagementRate}%
-                          </span>
-                        </div>
-                        <div>
-                          <span className="text-[#6B6B6B] block text-[10px]">Base Rate</span>
-                          <span className="text-[#111111] font-bold">{formatCurrency(c.startingPrice)}</span>
-                        </div>
-                        <Link href={`/creators/${c.id}`}>
-                          <Button variant="secondary" size="sm" className="rounded-[9px]">
-                            Media Kit
-                          </Button>
-                        </Link>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="py-24 text-center rounded-3xl bg-[#0E0C15]/90 border border-white/10 p-8 space-y-3">
+          <Users className="w-8 h-8 text-white/30 mx-auto" />
+          <h3 className="text-base font-bold text-white font-display">No shortlists available</h3>
+        </div>
+      )}
 
       {/* Create Shortlist Modal */}
       <Modal
         isOpen={isCreateModalOpen}
         onClose={() => setIsCreateModalOpen(false)}
-        title="Create New Creator Shortlist"
-        description="Group creators by marketing initiative, seasonal drop, or audience demographic."
+        title="Create Talent Shortlist"
+        description="Organize creators into campaign cohorts for internal review."
         maxWidth="md"
       >
-        <form onSubmit={handleCreate} className="space-y-4 text-[#111111]">
+        <form onSubmit={handleCreate} className="space-y-4 text-white">
           <Input
             label="Shortlist Name"
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
-            placeholder="e.g. Q4 Black Friday UGC Cohort"
+            placeholder="e.g. Q4 AI DevTools Influencer Campaign"
             required
           />
           <Textarea
-            label="Description / Objective"
+            label="Description / Campaign Objectives"
             value={newDesc}
             onChange={(e) => setNewDesc(e.target.value)}
-            placeholder="Describe target creator criteria or brief notes..."
+            placeholder="Outline target demographics, required formats, and timelines..."
             rows={3}
           />
-          <Button variant="primary" size="md" type="submit" className="w-full rounded-[9px]">
-            Create List
-          </Button>
+          <button
+            type="submit"
+            className="w-full py-3 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] text-white text-xs font-semibold shadow-[0_0_15px_rgba(42,92,255,0.4)]"
+          >
+            Create Shortlist
+          </button>
         </form>
       </Modal>
 
       {/* Comparison Modal */}
-      {activeShortlist && (
+      {isCompareOpen && activeShortlist && (
         <CreatorComparisonModal
           isOpen={isCompareOpen}
           onClose={() => setIsCompareOpen(false)}

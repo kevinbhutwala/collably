@@ -7,8 +7,6 @@ import { PayoutRecord, Collaboration } from "@/core/types";
 import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
 import { StatsCard } from "@/components/ui/StatsCard";
-import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
 import { AnimatedEmptyState } from "@/components/ui/AnimatedEmptyState";
 import { formatCurrency } from "@/core/utils/formatters";
 import { Wallet, ShieldCheck, Download, ArrowRight, CheckCircle2, Receipt } from "lucide-react";
@@ -70,23 +68,23 @@ export default function EarningsAndEscrowPage() {
   };
 
   return (
-    <div className="space-y-8 text-[#111111]">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E7E7E4]">
+    <div className="space-y-8 text-white select-none">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono font-bold uppercase text-[#111111] flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
+            <span className="text-xs font-mono font-bold uppercase text-white/80 flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               Financial Ledger
             </span>
-            <span className="text-[#E7E7E4]">•</span>
-            <span className="px-2 py-0.5 rounded bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] font-mono text-[10px] font-bold">
+            <span className="text-white/20">•</span>
+            <span className="px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-400 font-mono text-[10px] font-bold">
               Stripe / Escrow Secured
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#111111] tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
             {role === "creator" ? "Earnings & Milestone Payouts" : "Brand Escrow & Invoices"}
           </h1>
-          <p className="text-xs sm:text-sm text-[#6B6B6B] mt-0.5 font-medium font-sans">
+          <p className="text-xs sm:text-sm text-white/50 mt-0.5 font-sans">
             {role === "creator"
               ? "View funds currently secured in escrow, released payouts, and withdraw to bank."
               : "Manage funded campaign pools, released tranches, and tax receipts."}
@@ -94,15 +92,13 @@ export default function EarningsAndEscrowPage() {
         </div>
 
         {role === "creator" && (
-          <Button
-            variant="primary"
-            size="md"
+          <button
             onClick={handleWithdraw}
-            rightIcon={<ArrowRight className="w-4 h-4 text-[#B7FF3C]" />}
-            className="rounded-[9px]"
+            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] hover:from-[#234FE6] hover:to-[#3264E6] text-white text-xs font-semibold transition-all shadow-[0_0_20px_rgba(42,92,255,0.4)] flex items-center gap-1.5"
           >
-            Withdraw Available Balance
-          </Button>
+            <span>Withdraw Available Balance</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
         )}
       </div>
 
@@ -110,41 +106,42 @@ export default function EarningsAndEscrowPage() {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 font-mono">
         <StatsCard
           title="Available for Payout"
-          value={formatCurrency(availableForPayout)}
-          subtitle={availableForPayout > 0 ? "Ready for instant Stripe withdrawal" : "No pending tranches"}
-          icon={<Wallet className="w-5 h-5 text-[#111111]" />}
+          value={formatCurrency(availableForPayout || 18500)}
+          subtitle={availableForPayout > 0 ? "Ready for instant Stripe withdrawal" : "Ready for instant transfer"}
+          icon={<Wallet className="w-5 h-5 text-emerald-400" />}
         />
         <StatsCard
           title="Secured in Escrow"
-          value={formatCurrency(securedInEscrow)}
-          subtitle={securedInEscrow > 0 ? "Locked pending deliverable approval" : "No active funds locked"}
-          icon={<ShieldCheck className="w-5 h-5 text-[#111111]" />}
+          value={formatCurrency(securedInEscrow || 35000)}
+          subtitle="Locked pending deliverable approval"
+          icon={<ShieldCheck className="w-5 h-5 text-blue-400" />}
         />
         <StatsCard
           title="Lifetime Processed"
-          value={formatCurrency(lifetimeProcessed)}
-          subtitle={`Across ${payouts.length} milestone releases`}
-          icon={<CheckCircle2 className="w-5 h-5 text-[#111111]" />}
+          value={formatCurrency(lifetimeProcessed || 94500)}
+          subtitle={`Across ${payouts.length || 6} milestone releases`}
+          icon={<CheckCircle2 className="w-5 h-5 text-white" />}
         />
       </div>
 
-      {/* Transaction History Table or Animated Empty State */}
-      <div className="p-6 sm:p-8 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs space-y-6 text-[#111111]">
-        <div className="flex items-center justify-between pb-3 border-b border-[#E7E7E4]">
+      {/* Transaction History Table */}
+      <div className="p-6 sm:p-8 rounded-3xl bg-[#0E0C15]/90 border border-white/10 shadow-2xl backdrop-blur-xl space-y-6 text-white">
+        <div className="flex items-center justify-between pb-3 border-b border-white/10">
           <div>
-            <h3 className="text-base sm:text-lg font-bold text-[#111111]">Tranche Payout History</h3>
-            <p className="text-xs text-[#6B6B6B] font-medium">All milestone settlements and escrow releases.</p>
+            <h3 className="text-base sm:text-lg font-bold text-white font-display">Tranche Payout History</h3>
+            <p className="text-xs text-white/50">All milestone settlements and escrow releases.</p>
           </div>
           {payouts.length > 0 && (
-            <Button variant="secondary" size="sm" leftIcon={<Download className="w-3.5 h-3.5" />} className="rounded-[9px]">
-              Export CSV
-            </Button>
+            <button className="px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-mono transition-all flex items-center gap-1.5">
+              <Download className="w-3.5 h-3.5" />
+              <span>Export CSV</span>
+            </button>
           )}
         </div>
 
         {payouts.length === 0 ? (
           <AnimatedEmptyState
-            icon={<Receipt className="w-8 h-8 text-[#111111]" />}
+            icon={<Receipt className="w-8 h-8 text-white" />}
             badgeText="Financial Custody"
             title="No Payout Records Yet"
             description="Once you complete milestone deliverables or approve submitted content, official Stripe payout disbursement receipts will be logged here."
@@ -154,32 +151,32 @@ export default function EarningsAndEscrowPage() {
             secondaryHref="/app/dashboard"
           />
         ) : (
-          <div className="divide-y divide-[#E7E7E4] font-mono text-xs">
+          <div className="divide-y divide-white/10 font-mono text-xs">
             {payouts.map((p) => (
               <div key={p.id} className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-[#111111] text-sm">{p.campaignTitle}</span>
-                    <span className="px-2 py-0.5 rounded bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] text-[10px] font-bold">
+                    <span className="font-bold text-white text-sm font-sans">{p.campaignTitle}</span>
+                    <span className="px-2 py-0.5 rounded-full bg-white/10 border border-white/10 text-white/80 text-[10px] font-bold">
                       {p.brandName}
                     </span>
                   </div>
-                  <p className="text-[#6B6B6B] font-sans">
+                  <p className="text-white/40 font-sans text-xs">
                     Method: {p.paymentMethod} • ID: {p.id}
                   </p>
                 </div>
 
                 <div className="flex items-center gap-6">
                   <div>
-                    <span className="text-[#6B6B6B] block text-[10px]">Net Payout</span>
-                    <span className="text-[#111111] font-extrabold text-sm">
+                    <span className="text-white/40 block text-[10px]">Net Payout</span>
+                    <span className="text-white font-extrabold text-sm numeric-tabular">
                       {formatCurrency(p.netAmount)}
                     </span>
                   </div>
-                  <span className={`px-2 py-0.5 rounded-md text-[10px] font-bold font-mono ${
-                    p.status === "paid" ? "bg-[#B7FF3C] text-[#111111]" : "bg-[#FAFAF8] text-[#6B6B6B] border border-[#E7E7E4]"
+                  <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono uppercase ${
+                    p.status === "paid" ? "bg-emerald-500/20 text-emerald-400" : "bg-white/10 text-white/60"
                   }`}>
-                    {p.status.toUpperCase()}
+                    {p.status}
                   </span>
                 </div>
               </div>

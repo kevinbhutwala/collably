@@ -5,9 +5,6 @@ import Image from "next/image";
 import { useAuthStore } from "@/stores/auth.store";
 import { messageService } from "@/services/message.service";
 import { ChatMessage, Conversation } from "@/core/types";
-import { Button } from "@/components/ui/Button";
-import { Badge } from "@/components/ui/Badge";
-import { AnimatedEmptyState } from "@/components/ui/AnimatedEmptyState";
 import { Send, MessageSquare, Inbox } from "lucide-react";
 
 export function ChatWorkspace() {
@@ -39,21 +36,24 @@ export function ChatWorkspace() {
   }, [user?.id]);
 
   const activeConversation = conversations.find((c) => c.id === activeConvId);
+  const activePartner = activeConversation?.participants?.find((p) => p.userId !== user?.id) || activeConversation?.participants?.[0];
   const currentMessages = messagesMap[activeConvId] || [];
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputText.trim() || !activeConvId) return;
 
+    const senderRole = role || "creator";
+    const senderName = user?.name || (role === "creator" ? "Elena Rostova" : "Linear Dynamics");
+    const senderAvatar = user?.avatarUrl || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80";
+
     const newMsg: ChatMessage = {
       id: `msg-${Date.now()}`,
       conversationId: activeConvId,
       senderId: user?.id || "user-temp",
-      senderName: user?.name || "Collaborator",
-      senderAvatar:
-        user?.avatarUrl ||
-        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80",
-      senderRole: role,
+      senderName,
+      senderAvatar,
+      senderRole,
       content: inputText,
       createdAt: new Date().toISOString(),
       readBy: [user?.id || "user-temp"],
@@ -63,94 +63,98 @@ export function ChatWorkspace() {
       ...prev,
       [activeConvId]: [...(prev[activeConvId] || []), newMsg],
     }));
+
     setInputText("");
 
     try {
       await messageService.sendMessage(
         activeConvId,
-        user?.id || "user-temp",
-        role,
-        user?.name || "Collaborator",
-        user?.avatarUrl || "",
+        newMsg.senderId,
+        newMsg.senderRole,
+        newMsg.senderName,
+        newMsg.senderAvatar,
         newMsg.content
       );
-    } catch {
-      // Message already reflected in local state
+    } catch (err) {
+      console.error("Failed to persist message:", err);
+    }
+  };
+
+  const handleSelectConv = async (convId: string) => {
+    setActiveConvId(convId);
+    if (!messagesMap[convId]) {
+      const msgs = await messageService.getMessages(convId);
+      setMessagesMap((prev) => ({ ...prev, [convId]: msgs || [] }));
     }
   };
 
   if (isLoading) {
     return (
-      <div className="py-24 text-center rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] p-8 text-[#111111]">
-        <div className="w-8 h-8 rounded-full border-2 border-[#111111] border-t-transparent animate-spin mx-auto mb-3" />
-        <p className="text-xs font-mono text-[#6B6B6B]">Connecting to secure messaging channel...</p>
+      <div className="h-[600px] flex items-center justify-center rounded-3xl bg-[#0E0C15]/90 border border-white/10 text-white">
+        <div className="w-8 h-8 rounded-full border-2 border-[#2A5CFF] border-t-transparent animate-spin" />
       </div>
     );
   }
 
   if (conversations.length === 0) {
     return (
-      <AnimatedEmptyState
-        icon={<Inbox className="w-8 h-8 text-[#111111]" />}
-        badgeText="Real-Time Messenger"
-        title="Your Inbox is Ready"
-        description="Direct messages, frame-by-frame deliverable reviews, and brand collaboration negotiations will appear here once you apply to briefs or hire creators."
-        actionText={role === "creator" ? "Browse Brand Briefs" : "Browse Creator Roster"}
-        actionHref={role === "creator" ? "/campaigns" : "/app/brand/creators"}
-        secondaryText="View Dashboard"
-        secondaryHref="/app/dashboard"
-      />
+      <div className="p-12 text-center rounded-3xl bg-[#0E0C15]/90 border border-white/10 space-y-3 text-white">
+        <Inbox className="w-10 h-10 text-white/30 mx-auto" />
+        <h3 className="text-base font-bold font-display">No Conversations Started</h3>
+        <p className="text-xs text-white/50 max-w-sm mx-auto">
+          Direct messaging opens automatically once an application is pitched or a milestone collaboration begins.
+        </p>
+      </div>
     );
   }
 
   return (
-    <div className="rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs overflow-hidden h-[720px] grid grid-cols-1 lg:grid-cols-12 text-[#111111]">
+    <div className="grid grid-cols-1 md:grid-cols-12 rounded-3xl bg-[#0E0C15]/90 border border-white/10 shadow-2xl backdrop-blur-xl overflow-hidden h-[680px] text-white select-none">
       {/* Left Conversations Sidebar */}
-      <div className="lg:col-span-4 border-r border-[#E7E7E4] bg-[#FAFAF8] flex flex-col h-full">
-        <div className="p-4 border-b border-[#E7E7E4]">
-          <h3 className="font-bold text-sm text-[#111111]">Campaign Conversations</h3>
-          <p className="text-[11px] text-[#6B6B6B] font-mono">Real-time creator &amp; brand direct messaging</p>
+      <div className="md:col-span-4 border-r border-white/10 flex flex-col h-full bg-[#07070B]/50">
+        <div className="p-4 border-b border-white/10 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <MessageSquare className="w-4 h-4 text-blue-400" />
+            <span className="font-bold text-xs uppercase font-mono tracking-wider text-white">
+              Channels ({conversations.length})
+            </span>
+          </div>
         </div>
 
-        <div className="divide-y divide-[#E7E7E4] overflow-y-auto flex-1">
+        <div className="flex-1 overflow-y-auto divide-y divide-white/5">
           {conversations.map((conv) => {
-            const isSelected = conv.id === activeConvId;
+            const partner = conv.participants?.find((p) => p.userId !== user?.id) || conv.participants?.[0];
+            const isActive = conv.id === activeConvId;
             return (
               <button
                 key={conv.id}
-                onClick={async () => {
-                  setActiveConvId(conv.id);
-                  if (!messagesMap[conv.id]) {
-                    const msgs = await messageService.getMessages(conv.id);
-                    setMessagesMap((prev) => ({ ...prev, [conv.id]: msgs || [] }));
-                  }
-                }}
+                onClick={() => handleSelectConv(conv.id)}
                 className={`w-full p-4 text-left flex items-start gap-3 transition-colors ${
-                  isSelected ? "bg-[#FFFFFF] border-l-4 border-[#111111] shadow-xs" : "hover:bg-[#FFFFFF]"
+                  isActive ? "bg-white/[0.08] border-l-2 border-[#2A5CFF]" : "hover:bg-white/[0.04]"
                 }`}
               >
-                <div className="relative w-10 h-10 rounded-xl overflow-hidden bg-[#FAFAF8] shrink-0 border border-[#E7E7E4]">
+                <div className="relative w-10 h-10 rounded-2xl overflow-hidden bg-white/10 shrink-0">
                   <Image
                     src={
-                      role === "creator"
-                        ? "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80"
-                        : "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80"
+                      partner?.avatarUrl ||
+                      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80"
                     }
-                    alt="Avatar"
+                    alt={partner?.name || "Partner"}
                     fill
                     className="object-cover"
                   />
                 </div>
-
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center justify-between mb-1">
-                    <h4 className="text-xs font-bold text-[#111111] truncate">
-                      {conv.campaignTitle}
-                    </h4>
-                    <span className="text-[10px] text-[#6B6B6B] font-mono">10:42 AM</span>
+                  <div className="flex items-center justify-between gap-1 mb-0.5">
+                    <span className="font-bold text-xs text-white truncate font-sans">
+                      {partner?.name || conv.campaignTitle}
+                    </span>
+                    <span className="text-[10px] font-mono text-white/40 shrink-0">
+                      {conv.lastMessage?.createdAt ? new Date(conv.lastMessage.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : "Now"}
+                    </span>
                   </div>
-                  <p className="text-xs text-[#6B6B6B] truncate font-medium">
-                    {conv.lastMessage?.content || "No messages yet"}
+                  <p className="text-xs text-white/50 truncate font-sans">
+                    {conv.lastMessage?.content || conv.campaignTitle || "Tap to chat..."}
                   </p>
                 </div>
               </button>
@@ -159,99 +163,97 @@ export function ChatWorkspace() {
         </div>
       </div>
 
-      {/* Right Chat Area */}
-      <div className="lg:col-span-8 flex flex-col h-full bg-[#FFFFFF]">
-        {/* Chat Header */}
-        <div className="p-4 border-b border-[#E7E7E4] flex items-center justify-between bg-[#FAFAF8]">
-          <div className="flex items-center gap-3">
-            <div>
-              <h3 className="font-bold text-sm text-[#111111]">
-                {activeConversation?.campaignTitle || "Campaign Channel"}
-              </h3>
-              <p className="text-[11px] text-[#6B6B6B] font-mono">
-                Escrow Protected • 100% Encrypted
-              </p>
-            </div>
-          </div>
-
-          <span className="px-2 py-0.5 rounded-full bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] text-[10px] font-mono font-bold flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
-            LIVE SYNC
-          </span>
-        </div>
-
-        {/* Message History */}
-        <div className="flex-1 p-4 overflow-y-auto space-y-4 bg-[#FAFAF8]">
-          {currentMessages.length === 0 ? (
-            <div className="h-full flex items-center justify-center text-center p-8">
-              <div className="space-y-2">
-                <MessageSquare className="w-8 h-8 text-[#6B6B6B] mx-auto" />
-                <p className="text-xs text-[#6B6B6B] font-medium">
-                  Start the conversation by typing your message below.
-                </p>
+      {/* Right Chat Message Pane */}
+      <div className="md:col-span-8 flex flex-col h-full">
+        {activeConversation ? (
+          <>
+            {/* Thread Header */}
+            <div className="p-4 border-b border-white/10 flex items-center justify-between bg-white/[0.02]">
+              <div className="flex items-center gap-3">
+                <div className="relative w-9 h-9 rounded-2xl overflow-hidden bg-white/10 shrink-0">
+                  <Image
+                    src={
+                      activePartner?.avatarUrl ||
+                      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80"
+                    }
+                    alt={activePartner?.name || "Partner"}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <h4 className="font-bold text-sm text-white font-sans">
+                    {activePartner?.name || activeConversation.campaignTitle}
+                  </h4>
+                  <p className="text-[11px] font-mono text-emerald-400 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    {activeConversation.campaignTitle || "Live Channel"}
+                  </p>
+                </div>
               </div>
             </div>
-          ) : (
-            currentMessages.map((msg) => {
-              const isMe = msg.senderId === user?.id;
-              return (
-                <div
-                  key={msg.id}
-                  className={`flex gap-3 ${isMe ? "justify-end" : "justify-start"}`}
-                >
-                  {!isMe && (
-                    <div className="relative w-8 h-8 rounded-lg overflow-hidden shrink-0 border border-[#E7E7E4]">
-                      <Image
-                        src={
-                          msg.senderAvatar ||
-                          "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80"
-                        }
-                        alt={msg.senderName}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  )}
 
-                  <div
-                    className={`max-w-[75%] rounded-2xl p-3.5 space-y-1 ${
-                      isMe
-                        ? "bg-[#111111] text-[#FAFAF8] rounded-br-none shadow-xs"
-                        : "bg-[#FFFFFF] border border-[#E7E7E4] text-[#111111] rounded-bl-none shadow-xs"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between gap-4 text-[10px] font-mono">
-                      <span className={isMe ? "text-[#B7FF3C] font-bold" : "text-[#111111] font-bold"}>
-                        {msg.senderName}
-                      </span>
-                      <span className={isMe ? "text-white/70" : "text-[#6B6B6B]"}>
-                        {new Date(msg.createdAt).toLocaleTimeString([], {
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        })}
-                      </span>
-                    </div>
-                    <p className="text-xs leading-relaxed font-medium">{msg.content}</p>
-                  </div>
+            {/* Messages Scroll Area */}
+            <div className="flex-1 p-6 overflow-y-auto space-y-4">
+              {currentMessages.length === 0 ? (
+                <div className="h-full flex items-center justify-center text-center text-white/40 text-xs">
+                  Say hello to initiate collaboration review notes.
                 </div>
-              );
-            })
-          )}
-        </div>
+              ) : (
+                currentMessages.map((m) => {
+                  const isMine = m.senderId === user?.id || m.senderRole === role;
+                  return (
+                    <div
+                      key={m.id}
+                      className={`flex flex-col ${isMine ? "items-end" : "items-start"}`}
+                    >
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-[10px] font-mono text-white/40">
+                          {m.senderName}
+                        </span>
+                        <span className="text-[9px] font-mono text-white/30">
+                          {new Date(m.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                        </span>
+                      </div>
+                      <div
+                        className={`max-w-md p-3.5 rounded-2xl text-xs font-sans leading-relaxed ${
+                          isMine
+                            ? "bg-[#2A5CFF] text-white shadow-[0_0_15px_rgba(42,92,255,0.4)]"
+                            : "bg-white/[0.06] border border-white/10 text-white"
+                        }`}
+                      >
+                        {m.content}
+                      </div>
+                    </div>
+                  );
+                })
+              )}
+            </div>
 
-        {/* Input Bar */}
-        <form onSubmit={handleSendMessage} className="p-3.5 border-t border-[#E7E7E4] flex items-center gap-2 bg-[#FFFFFF]">
-          <input
-            type="text"
-            placeholder="Type your message or revision note..."
-            value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
-            className="flex-1 bg-[#FAFAF8] border border-[#E7E7E4] rounded-xl px-4 py-2.5 text-xs text-[#111111] placeholder:text-[#6B6B6B] focus:outline-none focus:border-[#111111] transition-all font-sans"
-          />
-          <Button variant="primary" size="sm" type="submit" rightIcon={<Send className="w-3.5 h-3.5 text-[#B7FF3C]" />} className="rounded-[9px]">
-            Send
-          </Button>
-        </form>
+            {/* Input Bar */}
+            <form onSubmit={handleSendMessage} className="p-4 border-t border-white/10 bg-white/[0.02] flex items-center gap-3">
+              <input
+                type="text"
+                placeholder="Type your message or timestamped note..."
+                value={inputText}
+                onChange={(e) => setInputText(e.target.value)}
+                className="flex-1 bg-white/[0.05] border border-white/10 rounded-full px-4 py-2.5 text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-blue-500 transition-all"
+              />
+              <button
+                type="submit"
+                disabled={!inputText.trim()}
+                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] text-white text-xs font-semibold shadow-[0_0_15px_rgba(42,92,255,0.4)] flex items-center gap-1.5 disabled:opacity-50"
+              >
+                <span>Send</span>
+                <Send className="w-3.5 h-3.5" />
+              </button>
+            </form>
+          </>
+        ) : (
+          <div className="h-full flex items-center justify-center text-white/40 text-xs">
+            Select a conversation to view chat history.
+          </div>
+        )}
       </div>
     </div>
   );

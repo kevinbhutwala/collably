@@ -2,8 +2,6 @@
 
 import React, { useState } from "react";
 import { StatsCard } from "@/components/ui/StatsCard";
-import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { formatCurrency, formatNumber } from "@/core/utils/formatters";
 import { MOCK_ANALYTICS } from "@/mock/notifications.mock";
@@ -35,134 +33,163 @@ export default function AgencyAdminCommandCenter() {
   };
 
   return (
-    <div className="space-y-8 text-[#111111]">
+    <div className="space-y-8 text-white select-none">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E7E7E4]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono font-bold uppercase text-[#111111] flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
+            <span className="text-xs font-mono font-bold uppercase text-white/80 flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               Agency Master Operations
             </span>
-            <span className="text-[#E7E7E4]">•</span>
-            <span className="px-2 py-0.5 rounded bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] font-mono text-[10px] font-bold">
+            <span className="text-white/20">•</span>
+            <span className="px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-400 font-mono text-[10px] font-bold">
               System Level: Optimal
             </span>
           </div>
-          <h1 className="text-2xl sm:text-4xl font-extrabold text-[#111111] tracking-tight font-display">
+          <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
             Agency Admin Command Center
           </h1>
-          <p className="text-xs sm:text-sm text-[#6B6B6B] mt-0.5 font-sans font-medium">
+          <p className="text-xs sm:text-sm text-white/50 mt-0.5 font-sans">
             Realtime platform gross volume, creator roster verification, and escrow settlement control.
           </p>
         </div>
       </div>
 
-      {/* 4 Master Metric Cards */}
+      {/* Global System Telemetry */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 font-mono">
         <StatsCard
-          title="Platform GMV (All-Time)"
+          title="Gross Escrow Volume (GMV)"
           value={formatCurrency(MOCK_ANALYTICS.totalGMV)}
           change="+34.2% MoM"
-          subtitle="Processed through Collably Escrow"
-          icon={<Wallet className="w-5 h-5 text-[#111111]" />}
+          trend="up"
+          subtitle="Pre-funded in Stripe Connect"
+          icon={<Wallet className="w-5 h-5 text-emerald-400" />}
         />
         <StatsCard
-          title="Active Live Campaigns"
-          value={MOCK_ANALYTICS.activeCampaigns}
-          subtitle="Across 230 brand accounts"
-          icon={<Building2 className="w-5 h-5 text-[#111111]" />}
+          title="Net Platform Take-Rate (10%)"
+          value={formatCurrency(MOCK_ANALYTICS.totalGMV * 0.1)}
+          change="+28.4% MoM"
+          trend="up"
+          subtitle="Realized transaction fees"
+          icon={<Sparkles className="w-5 h-5 text-[#B7FF3C]" />}
         />
         <StatsCard
-          title="Vetted Creator Roster"
-          value={formatNumber(MOCK_ANALYTICS.creatorsCount)}
-          change="+85 this week"
-          subtitle="Top 5% admitted creators"
-          icon={<Users className="w-5 h-5 text-[#111111]" />}
+          title="Verified Creator Roster"
+          value={String(MOCK_ANALYTICS.creatorsCount)}
+          change="+42 this week"
+          trend="up"
+          subtitle="Audited demographics"
+          icon={<Users className="w-5 h-5 text-blue-400" />}
         />
         <StatsCard
-          title="Agency Commission Earned"
-          value={formatCurrency(485000)}
-          change="+28.4%"
-          subtitle="Platform take-rate revenue"
-          icon={<Sparkles className="w-5 h-5 text-[#111111]" />}
+          title="Active Brand Sponsors"
+          value={String(MOCK_ANALYTICS.brandsCount)}
+          change="89% Retention"
+          trend="up"
+          subtitle="Direct contracting accounts"
+          icon={<Building2 className="w-5 h-5 text-white" />}
         />
       </div>
 
-      {/* 2-Column Moderation Grid */}
+      {/* 2-Column Admin Control Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        {/* Left: Creator Verification Queue */}
-        <div className="lg:col-span-6 p-6 sm:p-8 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs space-y-6">
-          <div className="flex items-center justify-between pb-3 border-b border-[#E7E7E4]">
+        {/* Creator Verification Approval Queue */}
+        <div className="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-[#0E0C15]/90 border border-white/10 shadow-2xl backdrop-blur-xl space-y-6">
+          <div className="flex items-center justify-between pb-3 border-b border-white/10">
             <div>
-              <h3 className="text-base sm:text-lg font-bold text-[#111111] font-display">Creator Verification Queue</h3>
-              <p className="text-xs text-[#6B6B6B] font-sans">Review audience authenticity and toggle verified badges.</p>
+              <h3 className="text-lg font-bold text-white font-display">Creator Verification &amp; Badge Control</h3>
+              <p className="text-xs text-white/50 font-sans">Toggle verified checkmarks for algorithmic spotlight ranking.</p>
             </div>
-            <span className="px-2 py-0.5 rounded bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] font-mono text-[10px] font-bold">
-              Audited
+            <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-mono font-bold">
+              {creators.filter((c) => c.verified).length} Verified
             </span>
           </div>
 
-          <div className="divide-y divide-[#E7E7E4]">
-            {creators.slice(0, 5).map((c) => (
-              <div key={c.id} className="py-4 flex items-center justify-between gap-4">
+          <div className="divide-y divide-white/10 space-y-3">
+            {creators.map((creator) => (
+              <div
+                key={creator.id}
+                className="pt-3 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+              >
                 <div className="flex items-center gap-3">
-                  <div className="relative w-10 h-10 rounded-xl overflow-hidden bg-[#FAFAF8] border border-[#E7E7E4] shrink-0">
+                  <div className="relative w-11 h-11 rounded-2xl overflow-hidden bg-white/5 border border-white/10 shrink-0">
                     <SafeImage
-                      src={c.avatarUrl}
-                      alt={c.fullName}
+                      src={creator.avatarUrl}
+                      alt={creator.fullName}
                       fallbackType="creator"
-                      fallbackName={c.fullName}
+                      fallbackName={creator.fullName}
                       fill
                       className="object-cover"
                     />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-[#111111] flex items-center gap-1 font-display">
-                      {c.fullName}
-                      {c.verified && <CheckCircle2 className="w-3.5 h-3.5 text-[#111111]" />}
-                    </h4>
-                    <p className="text-[11px] text-[#6B6B6B] font-mono">
-                      {c.primaryCategory} • {formatNumber(c.totalFollowers)} Reach
+                    <div className="flex items-center gap-1.5">
+                      <h4 className="font-bold text-sm text-white font-display">{creator.fullName}</h4>
+                      {creator.verified && (
+                        <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                      )}
+                    </div>
+                    <p className="text-xs text-white/50 font-mono">
+                      @{creator.handle} • {creator.primaryCategory} • {formatNumber(creator.totalFollowers)} Reach
                     </p>
                   </div>
                 </div>
 
-                <Button
-                  variant={c.verified ? "secondary" : "primary"}
-                  size="sm"
-                  onClick={() => handleVerifyCreator(c.id)}
-                  className="rounded-[9px]"
+                <button
+                  onClick={() => handleVerifyCreator(creator.id)}
+                  className={`px-4 py-2 rounded-full text-xs font-semibold font-mono transition-all ${
+                    creator.verified
+                      ? "bg-white/10 text-white/60 hover:text-white"
+                      : "bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] text-white shadow-[0_0_15px_rgba(42,92,255,0.4)]"
+                  }`}
                 >
-                  {c.verified ? "Revoke" : "Verify & Badge"}
-                </Button>
+                  {creator.verified ? "Revoke Badge" : "Grant Verified"}
+                </button>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Right: Escrow Vault Status */}
-        <div className="lg:col-span-6 p-6 sm:p-8 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs space-y-6">
-          <div className="flex items-center justify-between pb-3 border-b border-[#E7E7E4]">
+        {/* Live Escrow Custody Rail */}
+        <div className="lg:col-span-5 p-6 sm:p-8 rounded-3xl bg-[#0E0C15]/90 border border-white/10 shadow-2xl backdrop-blur-xl space-y-6">
+          <div className="flex items-center justify-between pb-3 border-b border-white/10">
             <div>
-              <h3 className="text-base sm:text-lg font-bold text-[#111111] font-display">Escrow Settlement Vault</h3>
-              <p className="text-xs text-[#6B6B6B] font-sans">Funds secured in platform vault for active campaigns.</p>
+              <h3 className="text-lg font-bold text-white font-display">Active Campaign Escrows</h3>
+              <p className="text-xs text-white/50 font-sans">Milestone custody status across deals.</p>
             </div>
-            <span className="px-2 py-0.5 rounded-full bg-[#B7FF3C] text-[#111111] text-xs font-mono font-bold">
-              100% Solvency
+            <span className="px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-400 text-xs font-mono font-bold">
+              {campaigns.length} Active
             </span>
           </div>
 
-          <div className="space-y-3 font-mono text-xs">
+          <div className="space-y-4 font-mono text-xs">
             {campaigns.map((camp) => (
-              <div key={camp.id} className="p-4 rounded-xl bg-[#FAFAF8] border border-[#E7E7E4] flex items-center justify-between">
-                <div>
-                  <h4 className="font-bold text-[#111111] font-sans text-xs">{camp.title}</h4>
-                  <p className="text-[#6B6B6B] font-sans text-[11px]">{camp.brand.companyName}</p>
+              <div
+                key={camp.id}
+                className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2"
+              >
+                <div className="flex justify-between items-start">
+                  <h4 className="font-bold text-sm text-white font-sans truncate max-w-[200px]">
+                    {camp.title}
+                  </h4>
+                  <span className="text-emerald-400 font-extrabold text-sm">
+                    {formatCurrency(camp.budget.totalBudget)}
+                  </span>
                 </div>
-                <div className="text-right">
-                  <span className="text-[#111111] font-extrabold block">{formatCurrency(camp.budget.totalBudget)}</span>
-                  <span className="text-[10px] text-[#6B6B6B]">Escrow Locked</span>
+                <div className="flex justify-between text-white/50 text-[11px]">
+                  <span>Sponsor: {camp.brand.companyName}</span>
+                  <span className="text-white">
+                    {camp.acceptedCount}/{camp.maxCreators} Creators Funded
+                  </span>
+                </div>
+                <div className="w-full h-1.5 rounded-full bg-white/10 overflow-hidden">
+                  <div
+                    className="h-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] rounded-full"
+                    style={{
+                      width: `${Math.min(100, (camp.acceptedCount / camp.maxCreators) * 100)}%`,
+                    }}
+                  />
                 </div>
               </div>
             ))}

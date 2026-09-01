@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { useUIStore } from "@/stores/ui.store";
 import { Save, Sliders } from "lucide-react";
@@ -20,25 +19,29 @@ export default function AdminSettingsPage() {
   };
 
   return (
-    <div className="space-y-8 max-w-4xl text-[#111111]">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E7E7E4]">
+    <div className="space-y-8 max-w-4xl text-white select-none">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#111111] tracking-tight font-display">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
             Agency Global Platform Configuration
           </h1>
-          <p className="text-xs sm:text-sm text-[#6B6B6B] mt-0.5 font-sans font-medium">
+          <p className="text-xs sm:text-sm text-white/50 mt-0.5 font-sans">
             Set global take-rate percentages, escrow thresholds, and AI model endpoints.
           </p>
         </div>
 
-        <Button variant="primary" size="md" onClick={handleSave} leftIcon={<Save className="w-4 h-4 text-[#B7FF3C]" />} className="rounded-[9px]">
-          Save Configuration
-        </Button>
+        <button
+          onClick={handleSave}
+          className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#2A5CFF] to-[#3B73FF] hover:from-[#234FE6] hover:to-[#3264E6] text-white text-xs font-semibold transition-all shadow-[0_0_20px_rgba(42,92,255,0.4)] flex items-center gap-1.5"
+        >
+          <Save className="w-4 h-4" />
+          <span>Save Configuration</span>
+        </button>
       </div>
 
-      <div className="p-6 sm:p-8 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs space-y-6">
-        <div className="flex items-center gap-2 text-[#111111] font-bold text-sm font-display">
-          <Sliders className="w-4 h-4" />
+      <div className="p-6 sm:p-8 rounded-3xl bg-[#0E0C15]/90 border border-white/10 shadow-2xl backdrop-blur-xl space-y-6">
+        <div className="flex items-center gap-2 text-white font-bold text-sm font-display">
+          <Sliders className="w-4 h-4 text-blue-400" />
           <span>Financial Parameters</span>
         </div>
 
