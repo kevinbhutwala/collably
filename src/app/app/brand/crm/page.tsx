@@ -6,22 +6,14 @@ import { crmService } from "@/services/crm.service";
 import { CRMContact, CRMStage } from "@/core/types";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { Input, Textarea } from "@/components/ui/Input";
+import { Textarea } from "@/components/ui/Input";
 import { Modal } from "@/components/ui/Modal";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { formatCurrency, formatNumber } from "@/core/utils/formatters";
 import { useUIStore } from "@/stores/ui.store";
 import {
-  Users,
-  Star,
   Plus,
-  Tag,
-  MessageSquare,
-  ArrowUpRight,
-  Sparkles,
   FileText,
-  Clock,
-  ShieldCheck,
 } from "lucide-react";
 
 export default function BrandCRMPage() {
@@ -58,49 +50,27 @@ export default function BrandCRMPage() {
     if (!selectedContact || !newNote.trim()) return;
 
     await crmService.addNote(selectedContact.id, "Sarah (Growth Lead)", newNote);
+    const updatedNotes = [
+      {
+        id: `note-${Date.now()}`,
+        authorName: "Sarah (Growth Lead)",
+        content: newNote,
+        createdAt: "Just now",
+      },
+      ...selectedContact.privateNotes,
+    ];
+
+    setSelectedContact({ ...selectedContact, privateNotes: updatedNotes });
     setContacts((prev) =>
       prev.map((c) =>
-        c.id === selectedContact.id
-          ? {
-              ...c,
-              privateNotes: [
-                {
-                  id: `note-${Date.now()}`,
-                  authorName: "Sarah (Growth Lead)",
-                  content: newNote,
-                  createdAt: new Date().toISOString().split("T")[0],
-                },
-                ...c.privateNotes,
-              ],
-            }
-          : c
+        c.id === selectedContact.id ? { ...c, privateNotes: updatedNotes } : c
       )
     );
-
+    setNewNote("");
     addToast({
       type: "success",
-      title: "Private Note Saved",
-      message: "Internal team note added to creator CRM record.",
-    });
-    setNewNote("");
-    setIsNoteModalOpen(false);
-  };
-
-  const handleAddTag = async (contactId: string) => {
-    if (!newTag.trim()) return;
-    await crmService.addTag(contactId, newTag.trim());
-    setContacts((prev) =>
-      prev.map((c) =>
-        c.id === contactId && !c.tags.includes(newTag.trim())
-          ? { ...c, tags: [...c.tags, newTag.trim()] }
-          : c
-      )
-    );
-    setNewTag("");
-    addToast({
-      type: "info",
-      title: "Tag Added",
-      message: `Tagged creator with #${newTag.trim()}`,
+      title: "Private Note Logged",
+      message: "Encrypted internal note added to creator profile.",
     });
   };
 
@@ -110,28 +80,28 @@ export default function BrandCRMPage() {
       : contacts.filter((c) => c.stage === selectedStage);
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-10 text-white">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono font-bold uppercase text-brand-accent">
+            <span className="text-xs font-mono font-bold uppercase text-[hsl(327,100%,55%)]">
               Creator Relationship Management
             </span>
-            <span className="text-slate-300">•</span>
+            <span className="text-white/20">•</span>
             <Badge variant="glow" size="sm">Brand CRM</Badge>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-            Creator Roster CRM & Private Notes
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
+            Creator Roster CRM &amp; Private Notes
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-slate-400 mt-0.5 font-sans">
             Manage your brand&apos;s proprietary talent relationships, private team performance notes, and pipeline stages.
           </p>
         </div>
 
         <div className="flex items-center gap-2">
           <Link href="/creators">
-            <Button variant="accent" size="md" rightIcon={<Plus className="w-4 h-4" />}>
+            <Button variant="primary" size="md" rightIcon={<Plus className="w-4 h-4" />} className="rounded-full font-display font-bold">
               Add Creator to CRM
             </Button>
           </Link>
@@ -144,10 +114,10 @@ export default function BrandCRMPage() {
           <button
             key={st}
             onClick={() => setSelectedStage(st)}
-            className={`px-3.5 py-1.5 rounded-xl capitalize font-sans transition-all whitespace-nowrap ${
+            className={`px-4 py-2 rounded-full capitalize font-sans transition-all whitespace-nowrap ${
               selectedStage === st
-                ? "bg-slate-900 text-white font-bold shadow-sm"
-                : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-50"
+                ? "bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white font-bold shadow-md shadow-pink-500/25"
+                : "bg-white/[0.04] text-slate-300 border border-white/10 hover:bg-white/[0.08]"
             }`}
           >
             {st.replace(/_/g, " ")}
@@ -160,12 +130,12 @@ export default function BrandCRMPage() {
         {filteredContacts.map((contact) => (
           <div
             key={contact.id}
-            className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-card space-y-6"
+            className="p-6 sm:p-8 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-6 text-white"
           >
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
               {/* Creator Info */}
               <div className="flex items-center gap-4">
-                <div className="relative w-14 h-14 rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shrink-0 shadow-sm">
+                <div className="relative w-14 h-14 rounded-2xl overflow-hidden bg-white/[0.05] border border-white/10 shrink-0 shadow-sm">
                   <SafeImage
                     src={contact.creator.avatarUrl}
                     alt={contact.creator.fullName}
@@ -177,14 +147,14 @@ export default function BrandCRMPage() {
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <h3 className="font-bold text-base text-slate-900">
+                    <h3 className="font-bold text-base text-white font-display">
                       {contact.creator.fullName}
                     </h3>
                     <Badge variant="glow" size="sm">
                       {contact.creator.primaryCategory}
                     </Badge>
                   </div>
-                  <p className="text-xs text-slate-500 font-mono">
+                  <p className="text-xs text-slate-400 font-mono">
                     @{contact.creator.handle} • Reach: {formatNumber(contact.creator.totalFollowers)} • Engagement: {contact.creator.avgEngagementRate}%
                   </p>
                 </div>
@@ -194,24 +164,24 @@ export default function BrandCRMPage() {
               <div className="flex items-center gap-4 font-mono text-xs">
                 <div>
                   <span className="text-slate-400 block text-[10px]">Past Spend</span>
-                  <span className="text-emerald-600 font-bold text-sm">
+                  <span className="text-emerald-400 font-bold text-sm">
                     {formatCurrency(contact.totalPaid)}
                   </span>
                 </div>
 
-                <div className="space-y-1">
+                <div className="space-y-1 text-left">
                   <span className="text-slate-400 block text-[10px]">Stage</span>
                   <select
                     value={contact.stage}
                     onChange={(e) => handleStageChange(contact.id, e.target.value as CRMStage)}
-                    className="bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1 text-xs text-slate-900 font-sans font-bold focus:outline-none"
+                    className="bg-white/[0.05] border border-white/10 rounded-xl px-2.5 py-1 text-xs text-white font-sans font-bold focus:outline-none focus:border-[hsl(327,100%,50%)]/50"
                   >
-                    <option value="Prospect">Prospect</option>
-                    <option value="Outreach">Outreach</option>
-                    <option value="Negotiating">Negotiating</option>
-                    <option value="Active_Partner">Active Partner</option>
-                    <option value="Preferred">Preferred Tier</option>
-                    <option value="Dormant">Dormant</option>
+                    <option value="Prospect" className="bg-[#120c16] text-white">Prospect</option>
+                    <option value="Outreach" className="bg-[#120c16] text-white">Outreach</option>
+                    <option value="Negotiating" className="bg-[#120c16] text-white">Negotiating</option>
+                    <option value="Active_Partner" className="bg-[#120c16] text-white">Active Partner</option>
+                    <option value="Preferred" className="bg-[#120c16] text-white">Preferred Tier</option>
+                    <option value="Dormant" className="bg-[#120c16] text-white">Dormant</option>
                   </select>
                 </div>
 
@@ -223,6 +193,7 @@ export default function BrandCRMPage() {
                     setIsNoteModalOpen(true);
                   }}
                   leftIcon={<FileText className="w-3.5 h-3.5" />}
+                  className="rounded-full"
                 >
                   Internal Notes ({contact.privateNotes.length})
                 </Button>
@@ -230,13 +201,13 @@ export default function BrandCRMPage() {
             </div>
 
             {/* Tags & Internal Notes Summary */}
-            <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs">
+            <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs">
               <div className="flex flex-wrap items-center gap-1.5">
                 <span className="text-slate-400 font-mono text-[11px] mr-1">Tags:</span>
                 {contact.tags.map((t) => (
                   <span
                     key={t}
-                    className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-mono text-[11px] border border-slate-200"
+                    className="px-2.5 py-0.5 rounded-full bg-white/[0.06] text-pink-300 font-mono text-[11px] border border-white/10"
                   >
                     #{t}
                   </span>
@@ -244,8 +215,8 @@ export default function BrandCRMPage() {
               </div>
 
               {contact.privateNotes[0] && (
-                <div className="p-2.5 rounded-xl bg-amber-50/60 border border-amber-200/60 text-slate-800 text-[11px] max-w-lg font-sans">
-                  <strong>Latest Note ({contact.privateNotes[0].authorName}):</strong> {contact.privateNotes[0].content}
+                <div className="p-2.5 rounded-xl bg-pink-500/10 border border-pink-500/20 text-slate-200 text-[11px] max-w-lg font-sans">
+                  <strong className="text-pink-300">Latest Note ({contact.privateNotes[0].authorName}):</strong> {contact.privateNotes[0].content}
                 </div>
               )}
             </div>
@@ -261,7 +232,7 @@ export default function BrandCRMPage() {
         description="Private notes are strictly confidential to your brand team and invisible to creators."
         maxWidth="lg"
       >
-        <div className="space-y-6">
+        <div className="space-y-6 text-white">
           <form onSubmit={handleAddNote} className="space-y-3">
             <Textarea
               label="Add New Confidential Note"
@@ -271,21 +242,21 @@ export default function BrandCRMPage() {
               rows={3}
               required
             />
-            <Button variant="accent" size="sm" type="submit">
+            <Button variant="primary" size="sm" type="submit" className="rounded-full font-display font-bold">
               Save Private Note
             </Button>
           </form>
 
-          <div className="space-y-3 pt-4 border-t border-slate-100">
-            <h4 className="text-xs font-bold uppercase text-slate-500 font-mono">Note History</h4>
+          <div className="space-y-3 pt-4 border-t border-white/10">
+            <h4 className="text-xs font-bold uppercase text-slate-400 font-mono">Note History</h4>
             <div className="space-y-2 max-h-60 overflow-y-auto">
               {selectedContact?.privateNotes.map((note) => (
-                <div key={note.id} className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-1">
+                <div key={note.id} className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 text-xs space-y-1">
                   <div className="flex justify-between text-[10px] text-slate-400 font-mono">
-                    <strong className="text-slate-800 font-sans">{note.authorName}</strong>
+                    <strong className="text-white font-sans">{note.authorName}</strong>
                     <span>{note.createdAt}</span>
                   </div>
-                  <p className="text-slate-700 leading-relaxed">{note.content}</p>
+                  <p className="text-slate-300 leading-relaxed font-sans">{note.content}</p>
                 </div>
               ))}
             </div>

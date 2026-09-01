@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown, HelpCircle, ShieldCheck } from "lucide-react";
+import { ChevronDown, HelpCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function FAQSection() {
@@ -51,17 +51,17 @@ export function FAQSection() {
   ];
 
   return (
-    <section className="py-24 bg-slate-50/50 border-t border-slate-200" id="faq">
+    <section className="py-24 bg-[#0a070a] border-t border-white/10 text-white" id="faq">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 space-y-3">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-50 border border-orange-200 text-brand-accent text-xs font-semibold">
+          <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-[hsl(327,100%,55%)] text-xs font-semibold font-mono">
             <HelpCircle className="w-3.5 h-3.5" />
-            <span>Honest & Detailed Answers</span>
+            <span>Honest &amp; Detailed Answers</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
             Frequently Asked Questions
           </h2>
-          <p className="text-sm text-slate-600">
+          <p className="text-sm text-slate-400 font-sans">
             Everything you need to know about escrow legality, taxes, vetting, payouts, and IP terms.
           </p>
         </div>
@@ -72,22 +72,22 @@ export function FAQSection() {
             return (
               <div
                 key={idx}
-                className="rounded-2xl border border-slate-200 bg-white shadow-card overflow-hidden transition-colors"
+                className="rounded-2xl border border-white/10 bg-[#120c16] shadow-card overflow-hidden transition-all hover:border-pink-500/30"
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-slate-900 hover:text-brand-accent transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-white hover:text-[hsl(327,100%,55%)] transition-colors font-display"
                 >
                   <span className="text-sm sm:text-base">{faq.q}</span>
                   <ChevronDown
                     className={cn(
                       "w-4 h-4 text-slate-400 shrink-0 transition-transform duration-200",
-                      isOpen && "rotate-180 text-brand-accent"
+                      isOpen && "rotate-180 text-[hsl(327,100%,55%)]"
                     )}
                   />
                 </button>
                 {isOpen && (
-                  <div className="px-6 pb-6 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+                  <div className="px-6 pb-6 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-4 font-sans">
                     {faq.a}
                   </div>
                 )}

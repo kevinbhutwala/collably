@@ -5,12 +5,12 @@ import { CTASection } from "@/components/landing/CTASection";
 
 export default function CaseStudiesPage() {
   return (
-    <div className="bg-white min-h-screen">
-      <div className="pt-16 pb-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-        <h1 className="text-4xl sm:text-6xl font-extrabold text-slate-900 tracking-tight">
+    <div className="bg-[#0a070a] text-white min-h-screen">
+      <div className="pt-24 pb-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+        <h1 className="text-4xl sm:text-6xl font-extrabold text-white tracking-tight font-display">
           Verified Brand Growth Case Studies
         </h1>
-        <p className="text-base text-slate-600 max-w-2xl mx-auto">
+        <p className="text-base text-slate-300 max-w-2xl mx-auto font-sans leading-relaxed">
           Explore how category-defining brands scale high-converting creator campaigns with audited ROI.
         </p>
       </div>

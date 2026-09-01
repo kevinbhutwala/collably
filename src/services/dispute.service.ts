@@ -1,4 +1,17 @@
-import { DisputeRecord, SupportTicket } from "@/core/types";
+import { DisputeRecord, SupportTicket, DisputeReason, UserRole } from "@/core/types";
+
+export interface CreateDisputeInput {
+  collaborationId: string;
+  campaignTitle: string;
+  raisedByRole: UserRole;
+  raisedByName: string;
+  respondentRole: UserRole;
+  respondentName: string;
+  reason: DisputeReason;
+  amountInDispute: number;
+  description: string;
+  evidenceMediaUrls?: string[];
+}
 
 class DisputeService {
   async getDisputes(): Promise<DisputeRecord[]> {
@@ -19,6 +32,21 @@ class DisputeService {
     });
     if (!res.ok) throw new Error("Failed to file dispute");
     return await res.json();
+  }
+
+  async createDispute(input: CreateDisputeInput): Promise<DisputeRecord> {
+    const isBrand = input.raisedByRole === "brand";
+    return this.fileDispute({
+      collaborationId: input.collaborationId,
+      campaignTitle: input.campaignTitle,
+      brandName: isBrand ? input.raisedByName : input.respondentName,
+      creatorName: isBrand ? input.respondentName : input.raisedByName,
+      reason: input.reason,
+      description: input.description,
+      amountInDispute: input.amountInDispute,
+      filedBy: input.raisedByRole,
+      evidenceLinks: input.evidenceMediaUrls || [],
+    });
   }
 
   async resolveDispute(id: string, adminNotes: string): Promise<void> {

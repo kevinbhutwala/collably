@@ -9,8 +9,8 @@ import { Button } from "@/components/ui/Button";
 import { Input, Textarea } from "@/components/ui/Input";
 import { Badge } from "@/components/ui/Badge";
 import { SocialAccount, PlatformType } from "@/core/types";
-import { formatCurrency, formatNumber } from "@/core/utils/formatters";
-import { formatPlatformUrl, calculateTotalFollowers, calculateAvgEngagementRate, getCreatorTier } from "@/core/utils/social";
+import { formatCurrency } from "@/core/utils/formatters";
+import { calculateTotalFollowers, calculateAvgEngagementRate, getCreatorTier } from "@/core/utils/social";
 import {
   ExternalLink,
   Save,
@@ -58,32 +58,33 @@ export default function CreatorProfileEditPage() {
 
   const handleAddSocialAccount = () => {
     if (!newHandle.trim()) {
-      addToast({ type: "error", title: "Missing Handle", message: "Please provide a valid account handle or URL." });
+      addToast({
+        type: "error",
+        title: "Handle Required",
+        message: "Please enter your channel handle or profile URL.",
+      });
       return;
     }
 
-    const cleanHandle = newHandle.trim().replace(/^@/, "");
+    const cleanHandle = newHandle.replace(/^@/, "").trim();
     const newAcc: SocialAccount = {
-      id: `sa-${Date.now()}-${newPlatform}`,
+      id: `sa_${Date.now()}`,
       platform: newPlatform,
       handle: cleanHandle,
-      url: formatPlatformUrl(newPlatform, cleanHandle),
-      followers: Number(newFollowers) || 1000,
-      engagementRate: Number(newEngagement) || 4.5,
-      avgViews: Math.round(Number(newFollowers) * 0.3),
-      verifiedBadge: Number(newFollowers) >= 50000,
+      url: `https://${newPlatform}.com/${cleanHandle}`,
+      followers: Number(newFollowers) || 0,
+      engagementRate: Number(newEngagement) || 0,
+      avgViews: 0,
+      verifiedBadge: false,
     };
 
-    // Remove existing account for the same platform if replacing
-    const updated = [...socialAccounts.filter((a) => a.platform !== newPlatform), newAcc];
-    setSocialAccounts(updated);
-    setNewHandle("");
+    setSocialAccounts([...socialAccounts, newAcc]);
     setShowAddModal(false);
-
+    setNewHandle("");
     addToast({
       type: "success",
-      title: "Platform Linked",
-      message: `Connected ${newPlatform.toUpperCase()} (@${cleanHandle}) with ${newFollowers.toLocaleString()} followers.`,
+      title: "Social Channel Added",
+      message: `Added @${cleanHandle} (${newPlatform}). Click Save to persist changes.`,
     });
   };
 
@@ -129,35 +130,35 @@ export default function CreatorProfileEditPage() {
   const getPlatformIcon = (platform: PlatformType) => {
     switch (platform) {
       case "youtube":
-        return <Youtube className="w-4 h-4 text-rose-600" />;
+        return <Youtube className="w-4 h-4 text-rose-500" />;
       case "instagram":
-        return <Instagram className="w-4 h-4 text-pink-600" />;
+        return <Instagram className="w-4 h-4 text-pink-400" />;
       case "tiktok":
-        return <Video className="w-4 h-4 text-slate-900" />;
+        return <Video className="w-4 h-4 text-white" />;
       case "x":
-        return <Twitter className="w-4 h-4 text-sky-500" />;
+        return <Twitter className="w-4 h-4 text-sky-400" />;
       case "linkedin":
-        return <Linkedin className="w-4 h-4 text-blue-700" />;
+        return <Linkedin className="w-4 h-4 text-blue-400" />;
       default:
-        return <Globe className="w-4 h-4 text-slate-600" />;
+        return <Globe className="w-4 h-4 text-slate-400" />;
     }
   };
 
   return (
-    <div className="space-y-10">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
+    <div className="space-y-10 text-white">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono font-bold uppercase text-brand-accent">
-              Media Kit & Social Manager
+            <span className="text-xs font-mono font-bold uppercase text-[hsl(327,100%,55%)]">
+              Media Kit &amp; Social Manager
             </span>
-            <span className="text-slate-300">•</span>
+            <span className="text-white/20">•</span>
             <Badge variant="glow" size="sm">Public Link Enabled</Badge>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
             Creator Media Kit
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-slate-400 mt-0.5 font-sans">
             Manage your connected YouTube, Instagram, TikTok, X, and LinkedIn channels and sponsorship rates.
           </p>
         </div>
@@ -165,17 +166,18 @@ export default function CreatorProfileEditPage() {
         <div className="flex items-center gap-2">
           {currentCreator && (
             <Link href={`/creators/${currentCreator.id}`} target="_blank">
-              <Button variant="secondary" size="md" rightIcon={<ExternalLink className="w-4 h-4" />}>
+              <Button variant="secondary" size="md" rightIcon={<ExternalLink className="w-4 h-4" />} className="rounded-full">
                 Preview Public Kit
               </Button>
             </Link>
           )}
           <Button
-            variant="accent"
+            variant="primary"
             size="md"
             onClick={handleSave}
             isLoading={isSaving}
             leftIcon={<Save className="w-4 h-4" />}
+            className="rounded-full font-display font-bold"
           >
             Save Changes
           </Button>
@@ -186,8 +188,8 @@ export default function CreatorProfileEditPage() {
         {/* Left Column: Form Edit */}
         <div className="lg:col-span-8 space-y-6">
           {/* Section 1: Headline & Bio */}
-          <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-card space-y-4">
-            <h3 className="text-base font-bold text-slate-900">Headline & Positioning</h3>
+          <div className="p-8 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-4">
+            <h3 className="text-base font-bold text-white font-display">Headline &amp; Positioning</h3>
             <Input
               label="Creator Tagline / Headline"
               value={headline}
@@ -209,11 +211,11 @@ export default function CreatorProfileEditPage() {
           </div>
 
           {/* Section 2: Connected Social Accounts */}
-          <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-card space-y-6">
+          <div className="p-8 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-6">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-base font-bold text-slate-900">Connected Social Channels</h3>
-                <p className="text-xs text-slate-500 mt-0.5">
+                <h3 className="text-base font-bold text-white font-display">Connected Social Channels</h3>
+                <p className="text-xs text-slate-400 mt-0.5 font-sans">
                   Audience metrics update your public media kit and discovery ranking.
                 </p>
               </div>
@@ -222,6 +224,7 @@ export default function CreatorProfileEditPage() {
                 size="sm"
                 onClick={() => setShowAddModal(true)}
                 leftIcon={<Plus className="w-3.5 h-3.5" />}
+                className="rounded-full"
               >
                 Connect Channel
               </Button>
@@ -230,10 +233,10 @@ export default function CreatorProfileEditPage() {
             {/* Social Accounts Grid */}
             <div className="space-y-3">
               {socialAccounts.length === 0 ? (
-                <div className="p-8 text-center bg-slate-50 rounded-2xl border border-dashed border-slate-300 space-y-3">
+                <div className="p-8 text-center bg-white/[0.03] rounded-2xl border border-dashed border-white/20 space-y-3">
                   <Users className="w-8 h-8 text-slate-400 mx-auto" />
-                  <p className="text-xs text-slate-600">No social channels connected yet.</p>
-                  <Button variant="accent" size="sm" onClick={() => setShowAddModal(true)}>
+                  <p className="text-xs text-slate-300 font-sans">No social channels connected yet.</p>
+                  <Button variant="primary" size="sm" onClick={() => setShowAddModal(true)} className="rounded-full">
                     Connect Your First Channel
                   </Button>
                 </div>
@@ -241,26 +244,26 @@ export default function CreatorProfileEditPage() {
                 socialAccounts.map((acc) => (
                   <div
                     key={acc.id}
-                    className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-4"
+                    className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-4"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center shadow-sm">
+                      <div className="w-10 h-10 rounded-xl bg-white/[0.06] border border-white/10 flex items-center justify-center shadow-sm">
                         {getPlatformIcon(acc.platform)}
                       </div>
                       <div>
                         <div className="flex items-center gap-2">
-                          <span className="text-xs font-bold text-slate-900 capitalize">
+                          <span className="text-xs font-bold text-white capitalize font-display">
                             {acc.platform}
                           </span>
-                          <span className="text-xs text-slate-500 font-mono">@{acc.handle}</span>
+                          <span className="text-xs text-slate-400 font-mono">@{acc.handle}</span>
                           {acc.verifiedBadge && (
-                            <CheckCircle2 className="w-3.5 h-3.5 text-sky-500 fill-sky-100" />
+                            <CheckCircle2 className="w-3.5 h-3.5 text-sky-400" />
                           )}
                         </div>
-                        <div className="flex items-center gap-3 text-[11px] text-slate-600 mt-1 font-mono">
+                        <div className="flex items-center gap-3 text-[11px] text-slate-400 mt-1 font-mono">
                           <span>{acc.followers.toLocaleString()} Followers</span>
                           <span>•</span>
-                          <span className="text-emerald-600 font-bold">{acc.engagementRate}% Eng. Rate</span>
+                          <span className="text-emerald-400 font-bold">{acc.engagementRate}% Eng. Rate</span>
                         </div>
                       </div>
                     </div>
@@ -270,7 +273,7 @@ export default function CreatorProfileEditPage() {
                         href={acc.url}
                         target="_blank"
                         rel="noreferrer"
-                        className="p-2 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-white transition-colors"
+                        className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-white/10 transition-colors"
                         title="Visit Channel"
                       >
                         <ExternalLink className="w-4 h-4" />
@@ -278,7 +281,7 @@ export default function CreatorProfileEditPage() {
                       <button
                         type="button"
                         onClick={() => handleRemoveSocialAccount(acc.id)}
-                        className="p-2 text-slate-400 hover:text-rose-600 rounded-lg hover:bg-rose-50 transition-colors"
+                        className="p-2 text-slate-400 hover:text-rose-400 rounded-lg hover:bg-rose-500/10 transition-colors"
                         title="Remove Channel"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -291,9 +294,9 @@ export default function CreatorProfileEditPage() {
 
             {/* Add Social Account Modal / Drawer Inline */}
             {showAddModal && (
-              <div className="p-6 rounded-2xl bg-slate-900 text-white space-y-4">
-                <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300 font-mono">
+              <div className="p-6 rounded-2xl bg-gradient-to-b from-[#1c1122] to-[#120c16] border border-pink-500/30 text-white space-y-4 shadow-xl">
+                <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-pink-300 font-mono">
                     Connect New Platform
                   </h4>
                   <button
@@ -305,60 +308,60 @@ export default function CreatorProfileEditPage() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-slate-300">Platform</label>
+                  <div className="space-y-1.5 text-left">
+                    <label className="text-xs font-semibold text-slate-200">Platform</label>
                     <select
                       value={newPlatform}
                       onChange={(e) => setNewPlatform(e.target.value as PlatformType)}
-                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-brand-accent"
+                      className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[hsl(327,100%,50%)]/50"
                     >
-                      <option value="youtube">YouTube</option>
-                      <option value="instagram">Instagram</option>
-                      <option value="tiktok">TikTok</option>
-                      <option value="x">X (Twitter)</option>
-                      <option value="linkedin">LinkedIn</option>
+                      <option value="youtube" className="bg-[#120c16] text-white">YouTube</option>
+                      <option value="instagram" className="bg-[#120c16] text-white">Instagram</option>
+                      <option value="tiktok" className="bg-[#120c16] text-white">TikTok</option>
+                      <option value="x" className="bg-[#120c16] text-white">X (Twitter)</option>
+                      <option value="linkedin" className="bg-[#120c16] text-white">LinkedIn</option>
                     </select>
                   </div>
 
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-slate-300">Handle or Channel URL</label>
+                  <div className="space-y-1.5 text-left">
+                    <label className="text-xs font-semibold text-slate-200">Handle or Channel URL</label>
                     <input
                       type="text"
                       placeholder="e.g. @ElenaTech"
                       value={newHandle}
                       onChange={(e) => setNewHandle(e.target.value)}
-                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-brand-accent placeholder:text-slate-500"
+                      className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[hsl(327,100%,50%)]/50 placeholder:text-slate-500"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-slate-300">Followers / Subscribers</label>
+                  <div className="space-y-1.5 text-left">
+                    <label className="text-xs font-semibold text-slate-200">Followers / Subscribers</label>
                     <input
                       type="number"
                       placeholder="25000"
                       value={newFollowers}
                       onChange={(e) => setNewFollowers(parseInt(e.target.value) || 0)}
-                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-brand-accent"
+                      className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[hsl(327,100%,50%)]/50"
                     />
                   </div>
 
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-slate-300">Average Engagement Rate (%)</label>
+                  <div className="space-y-1.5 text-left">
+                    <label className="text-xs font-semibold text-slate-200">Average Engagement Rate (%)</label>
                     <input
                       type="number"
                       step="0.1"
                       placeholder="5.2"
                       value={newEngagement}
                       onChange={(e) => setNewEngagement(parseFloat(e.target.value) || 0)}
-                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-brand-accent"
+                      className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[hsl(327,100%,50%)]/50"
                     />
                   </div>
                 </div>
 
                 <div className="pt-2 flex justify-end">
-                  <Button variant="accent" size="sm" onClick={handleAddSocialAccount}>
+                  <Button variant="primary" size="sm" onClick={handleAddSocialAccount} className="rounded-full">
                     Add Channel
                   </Button>
                 </div>
@@ -369,9 +372,9 @@ export default function CreatorProfileEditPage() {
 
         {/* Right Column: Live Media Kit Summary Card */}
         <div className="lg:col-span-4 space-y-6">
-          <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-card space-y-6 sticky top-24">
+          <div className="p-6 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-6 sticky top-24">
             <div className="text-center space-y-3">
-              <div className="w-20 h-20 rounded-2xl overflow-hidden mx-auto border-2 border-brand-accent/20 shadow-md relative bg-slate-100">
+              <div className="w-20 h-20 rounded-2xl overflow-hidden mx-auto border-2 border-pink-500/30 shadow-md relative bg-white/[0.05]">
                 {currentCreator?.avatarUrl ? (
                   <Image
                     src={currentCreator.avatarUrl}
@@ -387,8 +390,8 @@ export default function CreatorProfileEditPage() {
               </div>
 
               <div>
-                <h3 className="text-lg font-bold text-slate-900">{currentCreator?.fullName || "Creator"}</h3>
-                <p className="text-xs text-slate-500 font-mono">@{currentCreator?.handle}</p>
+                <h3 className="text-lg font-bold text-white font-display">{currentCreator?.fullName || "Creator"}</h3>
+                <p className="text-xs text-slate-400 font-mono">@{currentCreator?.handle}</p>
               </div>
 
               <div className="flex items-center justify-center gap-2">
@@ -401,40 +404,40 @@ export default function CreatorProfileEditPage() {
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs">
+            <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 space-y-3 text-xs">
               <div className="flex justify-between items-center">
-                <span className="text-slate-500">Total Combined Reach:</span>
-                <span className="font-extrabold text-slate-900 font-mono">
+                <span className="text-slate-400">Total Combined Reach:</span>
+                <span className="font-extrabold text-white font-mono">
                   {totalFollowers.toLocaleString()}
                 </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-slate-500">Avg. Engagement Rate:</span>
-                <span className="font-extrabold text-emerald-600 font-mono">
+                <span className="text-slate-400">Avg. Engagement Rate:</span>
+                <span className="font-extrabold text-emerald-400 font-mono">
                   {avgEngagement}%
                 </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-slate-500">Connected Platforms:</span>
-                <span className="font-bold text-slate-900 font-mono">
+                <span className="text-slate-400">Connected Platforms:</span>
+                <span className="font-bold text-white font-mono">
                   {socialAccounts.length}
                 </span>
               </div>
-              <div className="flex justify-between items-center pt-2 border-t border-slate-200">
-                <span className="text-slate-500">Base Deal Rate:</span>
-                <span className="font-extrabold text-brand-accent font-mono text-sm">
+              <div className="flex justify-between items-center pt-2 border-t border-white/10">
+                <span className="text-slate-400">Base Deal Rate:</span>
+                <span className="font-extrabold text-[hsl(327,100%,55%)] font-mono text-sm">
                   {formatCurrency(startingPrice)}
                 </span>
               </div>
             </div>
 
             <Button
-              variant="accent"
+              variant="primary"
               size="md"
               onClick={handleSave}
               isLoading={isSaving}
               leftIcon={<Save className="w-4 h-4" />}
-              className="w-full"
+              className="w-full rounded-full font-display font-bold"
             >
               Publish Live Updates
             </Button>

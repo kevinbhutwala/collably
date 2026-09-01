@@ -61,19 +61,19 @@ export default function BrandRegisterPage() {
   };
 
   return (
-    <div className="w-full flex items-center justify-center p-2 py-6">
-      <div className="w-full max-w-xl rounded-3xl bg-white border border-slate-200 p-8 sm:p-10 space-y-6 shadow-elevated">
-        <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+    <div className="w-full flex items-center justify-center p-2 py-6 text-white">
+      <div className="w-full max-w-xl rounded-3xl bg-[#120c16] border border-white/10 p-8 sm:p-10 space-y-6 shadow-elevated">
+        <div className="flex items-center justify-between pb-3 border-b border-white/10">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-slate-500 hover:text-slate-900 transition-colors group"
+            className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-slate-400 hover:text-white transition-colors group"
           >
             <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
             <span>Back to Home</span>
           </Link>
           <Link
             href="/register"
-            className="text-[10px] font-mono text-slate-400 hover:text-slate-600 transition-colors"
+            className="text-[10px] font-mono text-slate-400 hover:text-[hsl(327,100%,55%)] transition-colors"
           >
             Change Account Type &rarr;
           </Link>
@@ -81,23 +81,23 @@ export default function BrandRegisterPage() {
 
         <div className="space-y-2">
           <div className="flex justify-between items-center">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-50 border border-sky-200 text-sky-700 text-xs font-semibold font-mono">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-300 text-xs font-semibold font-mono">
               <Building2 className="w-3.5 h-3.5" />
               <span>Brand Onboarding</span>
             </div>
             <CollablyLogo href="/" size="sm" variant="icon" />
           </div>
-          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight font-display">
+          <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight font-display">
             Register Brand Account
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 font-sans">
+          <p className="text-xs sm:text-sm text-slate-400 font-sans">
             Launch briefs, review creator proposals, and manage deliverables in database storage.
           </p>
         </div>
 
         {errorMessage && (
-          <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-center gap-2">
-            <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
+          <div className="p-3.5 rounded-xl bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs flex items-center gap-2">
+            <AlertCircle className="w-4 h-4 shrink-0 text-rose-400" />
             <span>{errorMessage}</span>
           </div>
         )}
@@ -156,22 +156,22 @@ export default function BrandRegisterPage() {
 
           <div className="pt-2">
             <Button
-              variant="accent"
+              variant="primary"
               size="lg"
               type="submit"
               isLoading={isSubmitting}
               rightIcon={<ArrowRight className="w-4 h-4" />}
-              className="w-full"
+              className="w-full rounded-full font-display font-bold"
             >
               Launch Brand Workspace
             </Button>
           </div>
         </form>
 
-        <div className="pt-4 border-t border-slate-100 text-center">
-          <p className="text-xs text-slate-500">
+        <div className="pt-4 border-t border-white/10 text-center">
+          <p className="text-xs text-slate-400">
             Already registered?{" "}
-            <Link href="/login" className="text-brand-accent font-bold hover:underline">
+            <Link href="/login" className="text-[hsl(327,100%,55%)] font-bold hover:underline">
               Sign in
             </Link>
           </p>

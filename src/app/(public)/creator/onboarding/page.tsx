@@ -5,20 +5,14 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { Input, Textarea } from "@/components/ui/Input";
 import { Badge } from "@/components/ui/Badge";
-import { CATEGORIES, PLATFORMS } from "@/core/constants";
+import { CATEGORIES } from "@/core/constants";
 import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
 import {
-  CheckCircle2,
   ArrowRight,
   ArrowLeft,
   Sparkles,
-  ShieldCheck,
   Upload,
-  Layers,
-  DollarSign,
-  User,
-  ExternalLink,
 } from "lucide-react";
 
 export default function CreatorOnboardingWizardPage() {
@@ -62,23 +56,21 @@ export default function CreatorOnboardingWizardPage() {
     if (step < totalSteps) {
       setStep(step + 1);
     } else {
-      // Complete Onboarding
+      // Save profile
       if (currentCreator) {
-        try {
-          await updateCreatorProfile({
-            headline: formData.headline,
-            bio: formData.bio,
-            startingPrice: formData.startingFee,
-          });
-        } catch {
-          // Continue
-        }
+        await updateCreatorProfile({
+          headline: formData.headline,
+          bio: formData.bio,
+          startingPrice: formData.startingFee,
+          totalFollowers: formData.totalReach,
+          avgEngagementRate: formData.avgEngagement,
+        });
       }
       setRole("creator");
       addToast({
         type: "success",
-        title: "Onboarding Complete",
-        message: "Your creator media kit is published to the discovery index!",
+        title: "Creator Profile Published!",
+        message: "Welcome to the Collably creator talent roster.",
       });
       router.push("/app/dashboard");
     }
@@ -89,35 +81,35 @@ export default function CreatorOnboardingWizardPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50/50 py-12 px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center">
+    <div className="min-h-screen bg-[#0a070a] text-white py-12 px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center">
       <div className="w-full max-w-3xl space-y-8">
         {/* Progress Bar & Header */}
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-200 text-brand-accent text-xs font-semibold">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-[hsl(327,100%,55%)] text-xs font-semibold font-mono">
+            <Sparkles className="w-3.5 h-3.5 text-gold" />
             <span>Progressive Creator Onboarding • Step {step} of {totalSteps}</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Build Your Media Kit & Rate Card
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
+            Build Your Media Kit &amp; Rate Card
           </h1>
-          <p className="text-sm text-slate-600">
+          <p className="text-sm text-slate-300 font-sans">
             Takes under 3 minutes. Zero fluff. Connect with vetted brands paying guaranteed escrow.
           </p>
 
-          <div className="w-full h-2 rounded-full bg-slate-200 overflow-hidden mt-4">
+          <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden mt-4">
             <div
-              className="h-full bg-brand-accent transition-all duration-300 rounded-full"
+              className="h-full bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] transition-all duration-300 rounded-full"
               style={{ width: `${(step / totalSteps) * 100}%` }}
             />
           </div>
         </div>
 
         {/* Step Card Container */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-white border border-slate-200 shadow-card space-y-6">
+        <div className="p-8 sm:p-12 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-6 text-white">
           {/* Step 1: Basic Info */}
           {step === 1 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-slate-900">Step 1: Creator Identity & Handle</h3>
+              <h3 className="text-xl font-bold text-white font-display">Step 1: Creator Identity &amp; Handle</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
                   label="Full Name / Brand Name"
@@ -153,16 +145,16 @@ export default function CreatorOnboardingWizardPage() {
           {/* Step 2: Niche & Narrative */}
           {step === 2 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-slate-900">Step 2: Niche & Positioning</h3>
-              <div className="space-y-1.5">
-                <label className="text-xs font-semibold text-slate-700">Primary Category</label>
+              <h3 className="text-xl font-bold text-white font-display">Step 2: Niche &amp; Positioning</h3>
+              <div className="space-y-1.5 text-left">
+                <label className="text-xs font-semibold text-slate-200">Primary Category</label>
                 <select
                   value={formData.primaryCategory}
                   onChange={(e) => setFormData({ ...formData, primaryCategory: e.target.value })}
-                  className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-slate-400 shadow-sm"
+                  className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[hsl(327,100%,50%)]/50 shadow-xs"
                 >
                   {CATEGORIES.map((cat) => (
-                    <option key={cat} value={cat}>{cat}</option>
+                    <option key={cat} value={cat} className="bg-[#120c16] text-white">{cat}</option>
                   ))}
                 </select>
               </div>
@@ -183,8 +175,8 @@ export default function CreatorOnboardingWizardPage() {
           {/* Step 3: Social Channels */}
           {step === 3 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-slate-900">Step 3: Social Media Channels</h3>
-              <p className="text-xs text-slate-500">Provide handles for audience verification and OAuth sync.</p>
+              <h3 className="text-xl font-bold text-white font-display">Step 3: Social Media Channels</h3>
+              <p className="text-xs text-slate-400 font-sans">Provide handles for audience verification and OAuth sync.</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
                   label="YouTube Channel Handle"
@@ -217,7 +209,7 @@ export default function CreatorOnboardingWizardPage() {
           {/* Step 4: Audience Metrics */}
           {step === 4 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-slate-900">Step 4: Audience Metrics & Reach</h3>
+              <h3 className="text-xl font-bold text-white font-display">Step 4: Audience Metrics &amp; Reach</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono text-xs">
                 <Input
                   label="Combined Total Follower Reach"
@@ -244,16 +236,16 @@ export default function CreatorOnboardingWizardPage() {
           {/* Step 5: Portfolio Assets */}
           {step === 5 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-slate-900">Step 5: Previous Sponsorship Portfolio</h3>
+              <h3 className="text-xl font-bold text-white font-display">Step 5: Previous Sponsorship Portfolio</h3>
               <Input
                 label="Primary Portfolio / Best Work URL"
                 value={formData.portfolioLink}
                 onChange={(e) => setFormData({ ...formData, portfolioLink: e.target.value })}
                 placeholder="https://youtube.com/@yourhandle/videos"
               />
-              <div className="p-8 border-2 border-dashed border-slate-200 rounded-2xl text-center space-y-2 bg-slate-50">
+              <div className="p-8 border-2 border-dashed border-white/20 rounded-2xl text-center space-y-2 bg-white/[0.02]">
                 <Upload className="w-8 h-8 text-slate-400 mx-auto" />
-                <p className="text-xs text-slate-700 font-bold">Drag & drop raw campaign video files or PDF case studies</p>
+                <p className="text-xs text-white font-bold font-sans">Drag &amp; drop raw campaign video files or PDF case studies</p>
                 <p className="text-[11px] text-slate-400 font-mono">Supports MP4, MOV, PDF up to 500MB</p>
               </div>
             </div>
@@ -262,11 +254,11 @@ export default function CreatorOnboardingWizardPage() {
           {/* Step 6: Services */}
           {step === 6 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-slate-900">Step 6: Supported Deliverable Formats</h3>
-              <p className="text-xs text-slate-500">Select formats you regularly produce for brand partners.</p>
+              <h3 className="text-xl font-bold text-white font-display">Step 6: Supported Deliverable Formats</h3>
+              <p className="text-xs text-slate-400 font-sans">Select formats you regularly produce for brand partners.</p>
               <div className="grid grid-cols-2 gap-3 text-xs">
                 {["YouTube 60s Integration", "Instagram Reel", "TikTok Video", "X (Twitter) Thread", "UGC Video Ad", "Keynote Appearance"].map((srv) => (
-                  <label key={srv} className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2.5 cursor-pointer hover:border-slate-300">
+                  <label key={srv} className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex items-center gap-2.5 cursor-pointer hover:border-pink-500/40">
                     <input
                       type="checkbox"
                       checked={formData.services.includes(srv)}
@@ -274,9 +266,9 @@ export default function CreatorOnboardingWizardPage() {
                         if (e.target.checked) setFormData({ ...formData, services: [...formData.services, srv] });
                         else setFormData({ ...formData, services: formData.services.filter((s) => s !== srv) });
                       }}
-                      className="rounded text-brand-accent focus:ring-brand-accent"
+                      className="rounded text-[hsl(327,100%,50%)] focus:ring-[hsl(327,100%,50%)]"
                     />
-                    <span className="font-medium text-slate-800">{srv}</span>
+                    <span className="font-medium text-white font-sans">{srv}</span>
                   </label>
                 ))}
               </div>
@@ -286,14 +278,14 @@ export default function CreatorOnboardingWizardPage() {
           {/* Step 7: Pricing */}
           {step === 7 && (
             <div className="space-y-4 font-mono text-xs">
-              <h3 className="text-xl font-bold text-slate-900 font-sans">Step 7: Minimum Starting Fee</h3>
+              <h3 className="text-xl font-bold text-white font-display">Step 7: Minimum Starting Fee</h3>
               <Input
                 label="Minimum Starting Fee ($ USD)"
                 type="number"
                 value={formData.startingFee}
                 onChange={(e) => setFormData({ ...formData, startingFee: parseInt(e.target.value) || 0 })}
               />
-              <p className="text-[11px] text-slate-500 font-sans">
+              <p className="text-[11px] text-slate-400 font-sans">
                 Brands will see this on your public card. You can still submit custom rates during campaign applications.
               </p>
             </div>
@@ -302,7 +294,7 @@ export default function CreatorOnboardingWizardPage() {
           {/* Step 8: Availability */}
           {step === 8 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-slate-900">Step 8: Current Booking Availability</h3>
+              <h3 className="text-xl font-bold text-white font-display">Step 8: Current Booking Availability</h3>
               <div className="grid grid-cols-3 gap-3 text-xs">
                 {["Available", "Busy (2 Wk Delay)", "Booked (Waitlist)"].map((av) => (
                   <button
@@ -311,8 +303,8 @@ export default function CreatorOnboardingWizardPage() {
                     onClick={() => setFormData({ ...formData, availability: av })}
                     className={`p-4 rounded-2xl border text-center font-bold transition-all ${
                       formData.availability === av
-                        ? "bg-slate-900 text-white border-slate-900 shadow-sm"
-                        : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
+                        ? "bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white border-transparent shadow-md shadow-pink-500/25"
+                        : "bg-white/[0.04] text-slate-300 border-white/10 hover:bg-white/[0.08]"
                     }`}
                   >
                     {av}
@@ -326,49 +318,50 @@ export default function CreatorOnboardingWizardPage() {
           {step === 9 && (
             <div className="space-y-6">
               <div className="flex items-center justify-between">
-                <h3 className="text-xl font-bold text-slate-900">Step 9: Final Media Kit Preview</h3>
+                <h3 className="text-xl font-bold text-white font-display">Step 9: Final Media Kit Preview</h3>
                 <Badge variant="glow" size="sm">Ready to Publish</Badge>
               </div>
 
-              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
+              <div className="p-6 rounded-2xl bg-white/[0.04] border border-white/10 space-y-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-orange-100 text-brand-accent flex items-center justify-center font-bold text-base font-mono">
+                  <div className="w-12 h-12 rounded-xl bg-pink-500/15 text-[hsl(327,100%,55%)] border border-pink-500/30 flex items-center justify-center font-bold text-base font-mono">
                     {formData.fullName.slice(0, 2).toUpperCase()}
                   </div>
                   <div>
-                    <h4 className="font-bold text-sm text-slate-900">{formData.fullName}</h4>
-                    <p className="text-xs text-slate-500 font-mono">@{formData.handle} • {formData.location}</p>
+                    <h4 className="font-bold text-sm text-white font-display">{formData.fullName}</h4>
+                    <p className="text-xs text-slate-400 font-mono">@{formData.handle} • {formData.location}</p>
                   </div>
                 </div>
-                <p className="text-xs text-slate-800 font-semibold">{formData.headline}</p>
-                <p className="text-xs text-slate-600 leading-relaxed">{formData.bio}</p>
-                <div className="flex gap-4 font-mono text-xs pt-2 border-t border-slate-200">
-                  <span>Reach: <strong>{formData.totalReach.toLocaleString()}</strong></span>
-                  <span>Engagement: <strong>{formData.avgEngagement}%</strong></span>
-                  <span>Starting: <strong>${formData.startingFee}</strong></span>
+                <p className="text-xs text-pink-200 font-semibold font-sans">{formData.headline}</p>
+                <p className="text-xs text-slate-300 leading-relaxed font-sans">{formData.bio}</p>
+                <div className="flex gap-4 font-mono text-xs pt-2 border-t border-white/10">
+                  <span>Reach: <strong className="text-white">{formData.totalReach.toLocaleString()}</strong></span>
+                  <span>Engagement: <strong className="text-emerald-400">{formData.avgEngagement}%</strong></span>
+                  <span>Starting: <strong className="text-[hsl(327,100%,55%)]">${formData.startingFee}</strong></span>
                 </div>
               </div>
             </div>
           )}
 
           {/* Navigation Controls */}
-          <div className="flex items-center justify-between pt-6 border-t border-slate-100">
+          <div className="flex items-center justify-between pt-6 border-t border-white/10">
             <Button
               variant="outline"
               size="md"
               onClick={handleBack}
               disabled={step === 1}
               leftIcon={<ArrowLeft className="w-4 h-4" />}
+              className="rounded-full font-display"
             >
               Back
             </Button>
 
             <Button
-              variant="accent"
+              variant="primary"
               size="md"
               onClick={handleNext}
               rightIcon={<ArrowRight className="w-4 h-4" />}
-              className="shadow-md shadow-brand-accent/20"
+              className="shadow-md shadow-pink-500/25 rounded-full font-display font-bold"
             >
               {step === totalSteps ? "Publish Media Kit & Launch" : "Continue"}
             </Button>

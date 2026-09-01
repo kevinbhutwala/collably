@@ -20,24 +20,24 @@ export default function AdminSettingsPage() {
   };
 
   return (
-    <div className="space-y-8 max-w-4xl">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
+    <div className="space-y-8 max-w-4xl text-white">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
             Agency Global Platform Configuration
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-slate-400 mt-0.5 font-sans">
             Set global take-rate percentages, escrow thresholds, and AI model endpoints.
           </p>
         </div>
 
-        <Button variant="accent" size="md" onClick={handleSave} leftIcon={<Save className="w-4 h-4" />}>
+        <Button variant="primary" size="md" onClick={handleSave} leftIcon={<Save className="w-4 h-4" />} className="rounded-full font-display font-bold">
           Save Configuration
         </Button>
       </div>
 
-      <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-card space-y-6">
-        <div className="flex items-center gap-2 text-brand-accent font-bold text-sm">
+      <div className="p-8 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-6">
+        <div className="flex items-center gap-2 text-[hsl(327,100%,55%)] font-bold text-sm font-display">
           <Sliders className="w-4 h-4" />
           <span>Financial Parameters</span>
         </div>

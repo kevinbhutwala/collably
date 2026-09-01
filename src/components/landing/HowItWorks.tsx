@@ -82,18 +82,18 @@ export function HowItWorks() {
   const steps = activeTrack === "brand" ? brandSteps : creatorSteps;
 
   return (
-    <section className="py-24 border-t border-slate-200 bg-slate-50/50 relative">
+    <section className="py-24 border-t border-white/10 bg-[#0a070a] relative text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold">
-            <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
+          <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-[hsl(327,100%,55%)] text-xs font-semibold font-mono">
+            <ShieldCheck className="w-3.5 h-3.5 text-gold" />
             <span>Structured Collaboration Pipeline</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-display">
             How Collably powers seamless collaborations
           </h2>
-          <p className="text-base text-slate-600">
+          <p className="text-base text-slate-300 font-sans">
             Engineered to remove friction, protect payments, and eliminate back-and-forth email chaos.
           </p>
 
@@ -118,29 +118,29 @@ export function HowItWorks() {
             return (
               <div
                 key={index}
-                className="relative p-6 rounded-3xl bg-white border border-slate-200 shadow-card hover:border-slate-300 hover:shadow-elevated transition-all duration-300 flex flex-col justify-between"
+                className="relative p-6 rounded-3xl bg-[#120c16] border border-white/10 shadow-card hover:border-pink-500/40 hover:shadow-elevated transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <div className="p-3 rounded-2xl bg-orange-50 border border-orange-100 text-brand-accent shadow-sm">
+                    <div className="p-3 rounded-2xl bg-white/[0.05] border border-white/10 text-[hsl(327,100%,55%)] shadow-sm">
                       <Icon className="w-5 h-5" />
                     </div>
-                    <span className="font-mono text-xl font-extrabold text-slate-300">
+                    <span className="font-mono text-xl font-extrabold text-white/20">
                       {item.step}
                     </span>
                   </div>
 
-                  <h3 className="text-base font-bold text-slate-900 mb-2.5">
+                  <h3 className="text-base font-bold text-white mb-2.5 font-display">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">
+                  <p className="text-xs text-slate-300 leading-relaxed font-sans">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center gap-1.5 text-[11px] text-emerald-700 font-semibold">
-                  <CheckCircle2 className="w-3.5 h-3.5 shrink-0 text-emerald-600" />
-                  <span>Fully automated & audited</span>
+                <div className="pt-6 mt-6 border-t border-white/10 flex items-center gap-1.5 text-[11px] text-emerald-400 font-semibold font-mono">
+                  <CheckCircle2 className="w-3.5 h-3.5 shrink-0 text-emerald-400" />
+                  <span>Fully automated &amp; audited</span>
                 </div>
               </div>
             );

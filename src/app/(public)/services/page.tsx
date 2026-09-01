@@ -1,11 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
-import { Badge } from "@/components/ui/Badge";
 import { CTASection } from "@/components/landing/CTASection";
 import {
   Sparkles,
-  ShieldCheck,
   Video,
   BarChart3,
   Users,
@@ -43,16 +41,16 @@ export default function ServicesPage() {
   ];
 
   return (
-    <div className="bg-white min-h-screen">
-      <div className="pt-16 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-50 border border-orange-200 text-brand-accent text-xs font-semibold">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>Agency Services & Managed Solutions</span>
+    <div className="bg-[#0a070a] text-white min-h-screen">
+      <div className="pt-24 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+        <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-[hsl(327,100%,55%)] text-xs font-semibold font-mono">
+          <Sparkles className="w-3.5 h-3.5 text-gold" />
+          <span>Agency Services &amp; Managed Solutions</span>
         </div>
-        <h1 className="text-4xl sm:text-6xl font-extrabold text-slate-900 tracking-tight">
+        <h1 className="text-4xl sm:text-6xl font-extrabold text-white tracking-tight font-display">
           Modern Agency Services Built for Scale
         </h1>
-        <p className="text-base text-slate-600 max-w-2xl mx-auto">
+        <p className="text-base text-slate-300 max-w-2xl mx-auto font-sans leading-relaxed">
           Whether self-serve via our SaaS platform or fully managed by our talent strategy team, we power world-class creator marketing.
         </p>
       </div>
@@ -64,28 +62,28 @@ export default function ServicesPage() {
             return (
               <div
                 key={i}
-                className="p-8 sm:p-10 rounded-3xl bg-white border border-slate-200 shadow-card hover:shadow-elevated transition-all space-y-6 flex flex-col justify-between"
+                className="p-8 sm:p-10 rounded-3xl bg-[#120c16] border border-white/10 hover:border-pink-500/40 shadow-card hover:shadow-elevated transition-all space-y-6 flex flex-col justify-between"
               >
                 <div className="space-y-4">
-                  <div className="w-12 h-12 rounded-2xl bg-orange-50 border border-orange-100 flex items-center justify-center text-brand-accent shadow-sm">
+                  <div className="w-12 h-12 rounded-2xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-[hsl(327,100%,55%)] shadow-sm">
                     <Icon className="w-6 h-6" />
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900">{s.title}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">{s.description}</p>
+                  <h3 className="text-2xl font-bold text-white font-display">{s.title}</h3>
+                  <p className="text-sm text-slate-300 leading-relaxed font-sans">{s.description}</p>
 
-                  <ul className="space-y-2.5 pt-2 font-mono text-xs text-slate-700">
+                  <ul className="space-y-2.5 pt-2 font-mono text-xs text-slate-300">
                     {s.features.map((f, j) => (
                       <li key={j} className="flex items-center gap-2 font-sans font-medium">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                         <span>{f}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="pt-6 border-t border-slate-100">
+                <div className="pt-6 border-t border-white/10">
                   <Link href="/contact">
-                    <Button variant="outline" size="md" className="w-full" rightIcon={<ArrowUpRight className="w-4 h-4" />}>
+                    <Button variant="outline" size="md" className="w-full rounded-full font-display" rightIcon={<ArrowUpRight className="w-4 h-4" />}>
                       Inquire for Custom Scope
                     </Button>
                   </Link>

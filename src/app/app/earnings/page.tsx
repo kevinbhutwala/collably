@@ -70,22 +70,22 @@ export default function EarningsAndEscrowPage() {
   };
 
   return (
-    <div className="space-y-10">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
+    <div className="space-y-10 text-white">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono font-bold uppercase text-brand-accent">
+            <span className="text-xs font-mono font-bold uppercase text-[hsl(327,100%,55%)]">
               Financial Ledger
             </span>
-            <span className="text-slate-300">•</span>
+            <span className="text-white/20">•</span>
             <Badge variant="glow" size="sm">
               Stripe / Escrow Secured
             </Badge>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight font-display">
+          <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight font-display">
             {role === "creator" ? "Earnings & Milestone Payouts" : "Brand Escrow & Invoices"}
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5 font-sans">
+          <p className="text-xs sm:text-sm text-slate-400 mt-0.5 font-sans">
             {role === "creator"
               ? "View funds currently secured in escrow, released payouts, and withdraw to bank."
               : "Manage funded campaign pools, released tranches, and tax receipts."}
@@ -94,11 +94,11 @@ export default function EarningsAndEscrowPage() {
 
         {role === "creator" && (
           <Button
-            variant="accent"
+            variant="primary"
             size="md"
             onClick={handleWithdraw}
             rightIcon={<ArrowUpRight className="w-4 h-4" />}
-            className="font-display"
+            className="font-display rounded-full font-bold"
           >
             Withdraw Available Balance
           </Button>
@@ -111,31 +111,31 @@ export default function EarningsAndEscrowPage() {
           title="Available for Payout"
           value={formatCurrency(availableForPayout)}
           subtitle={availableForPayout > 0 ? "Ready for instant Stripe withdrawal" : "No pending tranches"}
-          icon={<Wallet className="w-5 h-5 text-emerald-600" />}
+          icon={<Wallet className="w-5 h-5 text-emerald-400" />}
         />
         <StatsCard
           title="Secured in Escrow"
           value={formatCurrency(securedInEscrow)}
           subtitle={securedInEscrow > 0 ? "Locked pending deliverable approval" : "No active funds locked"}
-          icon={<ShieldCheck className="w-5 h-5 text-amber-500" />}
+          icon={<ShieldCheck className="w-5 h-5 text-amber-400" />}
         />
         <StatsCard
           title="Lifetime Processed"
           value={formatCurrency(lifetimeProcessed)}
           subtitle={`Across ${payouts.length} milestone releases`}
-          icon={<CheckCircle2 className="w-5 h-5 text-purple-600" />}
+          icon={<CheckCircle2 className="w-5 h-5 text-purple-400" />}
         />
       </div>
 
       {/* Transaction History Table or Animated Empty State */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200/90 shadow-card space-y-6">
+      <div className="p-6 sm:p-8 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-6 text-white">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-black text-slate-900 font-display">Tranche Payout History</h3>
-            <p className="text-xs text-slate-500 font-sans">All milestone settlements and escrow releases.</p>
+            <h3 className="text-lg font-black text-white font-display">Tranche Payout History</h3>
+            <p className="text-xs text-slate-400 font-sans">All milestone settlements and escrow releases.</p>
           </div>
           {payouts.length > 0 && (
-            <Button variant="ghost" size="sm" leftIcon={<Download className="w-3.5 h-3.5" />}>
+            <Button variant="ghost" size="sm" leftIcon={<Download className="w-3.5 h-3.5" />} className="rounded-full">
               Export CSV
             </Button>
           )}
@@ -153,17 +153,17 @@ export default function EarningsAndEscrowPage() {
             secondaryHref="/app/dashboard"
           />
         ) : (
-          <div className="divide-y divide-slate-100 font-mono text-xs">
+          <div className="divide-y divide-white/10 font-mono text-xs">
             {payouts.map((p) => (
               <div key={p.id} className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-slate-900 font-display text-sm">{p.campaignTitle}</span>
+                    <span className="font-bold text-white font-display text-sm">{p.campaignTitle}</span>
                     <Badge variant="glow" size="sm">
                       {p.brandName}
                     </Badge>
                   </div>
-                  <p className="text-slate-500 font-sans">
+                  <p className="text-slate-400 font-sans">
                     Method: {p.paymentMethod} • ID: {p.id}
                   </p>
                 </div>
@@ -171,7 +171,7 @@ export default function EarningsAndEscrowPage() {
                 <div className="flex items-center gap-6">
                   <div>
                     <span className="text-slate-400 block text-[10px]">Net Payout</span>
-                    <span className="text-emerald-600 font-extrabold text-sm">
+                    <span className="text-emerald-400 font-extrabold text-sm">
                       {formatCurrency(p.netAmount)}
                     </span>
                   </div>

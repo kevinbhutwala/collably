@@ -9,20 +9,15 @@ import { campaignService } from "@/services/campaign.service";
 import { Button } from "@/components/ui/Button";
 import { Input, Textarea } from "@/components/ui/Input";
 import { Badge } from "@/components/ui/Badge";
-import { CATEGORIES, PLATFORMS } from "@/core/constants";
+import { CATEGORIES } from "@/core/constants";
 import { CreatorCategory, DeliverableType } from "@/core/types";
 import {
   Sparkles,
   ArrowRight,
   ArrowLeft,
   CheckCircle2,
-  HelpCircle,
   Wand2,
   ShieldCheck,
-  Plus,
-  Trash2,
-  DollarSign,
-  Users,
 } from "lucide-react";
 import { formatCurrency } from "@/core/utils/formatters";
 
@@ -62,36 +57,42 @@ export function CampaignWizard() {
   const [aiPrompt, setAiPrompt] = useState("");
 
   const handleAiGenerate = async () => {
-    if (!aiPrompt) return;
+    if (!aiPrompt.trim()) {
+      addToast({
+        type: "error",
+        title: "Prompt Required",
+        message: "Please describe your product or campaign goal to generate a brief.",
+      });
+      return;
+    }
+
     setIsAiGenerating(true);
     try {
-      const generated = await aiService.generateCampaignBrief(aiPrompt, formData.category);
+      const generated = await aiService.generateCampaignBrief({
+        productName: aiPrompt,
+        industry: formData.category,
+        budget: formData.totalBudget,
+        targetAudience: "Tech Enthusiasts & Developers",
+        goals: ["Brand Awareness", "Conversions"],
+      });
+
       setFormData((prev) => ({
         ...prev,
-        title: generated.title,
-        tagline: generated.tagline,
-        description: generated.description,
-        totalBudget: generated.suggestedBudget.total,
-        perCreatorBudget: generated.suggestedBudget.perCreator,
-        deliverables: generated.recommendedDeliverables.map((d, i) => ({
-          id: `del-${i + 1}`,
-          type: d.type,
-          count: d.count,
-          guidelines: d.guidelines,
-          specifications: ["4K 60fps", "Pinned Link in Comments"],
-          maxRevisions: 2,
-        })),
+        title: generated.title || prev.title,
+        tagline: generated.tagline || prev.tagline,
+        description: generated.description || prev.description,
       }));
+
       addToast({
         type: "success",
         title: "AI Brief Generated",
-        message: "Your campaign brief and deliverables have been structured by AI.",
+        message: "Brief title, tagline, and creative guidelines have been pre-filled.",
       });
-    } catch (e) {
+    } catch {
       addToast({
         type: "error",
         title: "Generation Failed",
-        message: "Please enter more details in your AI prompt.",
+        message: "Could not generate brief with AI. Please fill in manually.",
       });
     } finally {
       setIsAiGenerating(false);
@@ -101,21 +102,56 @@ export function CampaignWizard() {
   const handlePublish = async () => {
     setIsPublishing(true);
     try {
-      await campaignService.createCampaign({
-        ...formData,
+      const created = await campaignService.createCampaign({
         brandId: currentBrand?.id || "brand-1",
+        brandName: currentBrand?.companyName || "Linear Dynamics",
+        brandLogo: currentBrand?.logoUrl || "",
+        title: formData.title || "Untitled Campaign",
+        tagline: formData.tagline || "Creator Collaboration Brief",
+        description: formData.description || "Detailed brief guidelines.",
+        category: formData.category,
+        coverImage: formData.coverImage,
+        targetAudience: {
+          locations: formData.targetCountries,
+          ageRanges: formData.targetAgeRanges,
+          gender: "All",
+          interests: ["Tech", "Productivity"],
+        },
+        creatorRequirements: {
+          minFollowers: formData.minFollowers,
+          minEngagementRate: formData.minEngagementRate,
+          platforms: formData.platforms as any,
+          languages: ["English"],
+          preferredTiers: ["Mid-Tier", "Macro"],
+        },
+        deliverables: formData.deliverables,
+        budget: {
+          totalBudget: formData.totalBudget,
+          perCreatorBudget: formData.perCreatorBudget,
+          currency: "USD",
+          paymentTerms: "100_escrow_on_approval",
+        },
+        timeline: {
+          applicationDeadline: formData.applicationDeadline,
+          startDate: "2026-09-15",
+          contentSubmissionDeadline: formData.contentSubmissionDeadline,
+          campaignEndDate: formData.campaignLiveDate,
+        },
+        maxCreators: formData.maxCreators,
       });
+
       addToast({
         type: "success",
-        title: "Campaign Launched with Escrow",
-        message: "Your campaign brief is now live and accepting applications!",
+        title: "Campaign Brief Published",
+        message: "Escrow deposit pre-authorized. Creators can now apply.",
       });
-      router.push("/app/brand/campaigns");
-    } catch (e) {
+
+      router.push(`/campaigns/${created.id}`);
+    } catch (err: any) {
       addToast({
         type: "error",
-        title: "Failed to publish",
-        message: "Please verify all required fields.",
+        title: "Publish Failed",
+        message: err.message || "Failed to publish campaign brief.",
       });
     } finally {
       setIsPublishing(false);
@@ -133,9 +169,9 @@ export function CampaignWizard() {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8">
+    <div className="max-w-4xl mx-auto space-y-8 text-white">
       {/* Wizard Step Indicator */}
-      <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-card">
+      <div className="p-6 rounded-3xl bg-[#120c16] border border-white/10 shadow-card">
         <div className="flex items-center justify-between overflow-x-auto no-scrollbar gap-2 pb-2">
           {stepsMeta.map((s) => {
             const isCompleted = step > s.num;
@@ -147,20 +183,20 @@ export function CampaignWizard() {
                     isCompleted
                       ? "bg-emerald-500 text-white"
                       : isCurrent
-                      ? "bg-brand-accent text-white shadow-md shadow-brand-accent/20"
-                      : "bg-slate-100 text-slate-400"
+                      ? "bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white shadow-md shadow-pink-500/25"
+                      : "bg-white/10 text-slate-400"
                   }`}
                 >
                   {isCompleted ? <CheckCircle2 className="w-4 h-4" /> : s.num}
                 </div>
                 <span
-                  className={`text-xs font-semibold ${
-                    isCurrent ? "text-slate-900 font-bold" : "text-slate-500"
+                  className={`text-xs font-semibold font-display ${
+                    isCurrent ? "text-white font-bold" : "text-slate-400"
                   }`}
                 >
                   {s.title}
                 </span>
-                {s.num < 7 && <span className="text-slate-200 ml-2">/</span>}
+                {s.num < 7 && <span className="text-white/20 ml-2">/</span>}
               </div>
             );
           })}
@@ -168,24 +204,24 @@ export function CampaignWizard() {
       </div>
 
       {/* Main Wizard Form Container */}
-      <div className="p-8 sm:p-10 rounded-3xl bg-white border border-slate-200 shadow-card space-y-8">
+      <div className="p-8 sm:p-10 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-8 text-white">
         {/* STEP 1: BASICS */}
         {step === 1 && (
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-extrabold text-slate-900">Campaign Overview & Basics</h2>
-              <p className="text-xs text-slate-500 mt-1">
+              <h2 className="text-2xl font-extrabold text-white font-display">Campaign Overview &amp; Basics</h2>
+              <p className="text-xs text-slate-400 mt-1 font-sans">
                 Enter your campaign title and category, or use the AI Assistant to generate a complete brief.
               </p>
             </div>
 
             {/* AI Assistant Quick Tool */}
-            <div className="p-5 rounded-2xl bg-orange-50/60 border border-orange-200/80 space-y-3">
-              <div className="flex items-center gap-2 text-brand-accent font-bold text-xs">
+            <div className="p-5 rounded-2xl bg-pink-500/10 border border-pink-500/25 space-y-3">
+              <div className="flex items-center gap-2 text-[hsl(327,100%,55%)] font-bold text-xs font-mono">
                 <Wand2 className="w-4 h-4" />
                 <span>AI Brief Generator</span>
               </div>
-              <p className="text-xs text-slate-600">
+              <p className="text-xs text-slate-300 font-sans">
                 Describe what product or feature you are launching in plain English:
               </p>
               <div className="flex gap-2">
@@ -194,14 +230,15 @@ export function CampaignWizard() {
                   value={aiPrompt}
                   onChange={(e) => setAiPrompt(e.target.value)}
                   placeholder="e.g. Launching our new high-speed developer terminal for engineering teams..."
-                  className="flex-1 bg-white border border-slate-200 rounded-xl px-3.5 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-slate-400 shadow-sm"
+                  className="flex-1 bg-white/[0.05] border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-[hsl(327,100%,50%)]/50 shadow-xs"
                 />
                 <Button
-                  variant="accent"
+                  variant="primary"
                   size="sm"
                   onClick={handleAiGenerate}
                   isLoading={isAiGenerating}
                   leftIcon={<Sparkles className="w-3.5 h-3.5" />}
+                  className="rounded-full font-display font-bold"
                 >
                   Generate Brief
                 </Button>
@@ -225,15 +262,15 @@ export function CampaignWizard() {
                 required
               />
 
-              <div className="space-y-1.5">
-                <label className="text-xs font-semibold text-slate-700">Category & Niche</label>
+              <div className="space-y-1.5 text-left">
+                <label className="text-xs font-semibold text-slate-200">Category &amp; Niche</label>
                 <select
                   value={formData.category}
                   onChange={(e) => setFormData({ ...formData, category: e.target.value as CreatorCategory })}
-                  className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-slate-400 shadow-sm"
+                  className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[hsl(327,100%,50%)]/50 shadow-xs"
                 >
                   {CATEGORIES.map((c) => (
-                    <option key={c} value={c}>{c}</option>
+                    <option key={c} value={c} className="bg-[#120c16] text-white">{c}</option>
                   ))}
                 </select>
               </div>
@@ -253,8 +290,8 @@ export function CampaignWizard() {
         {step === 2 && (
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-extrabold text-slate-900">Target Audience Demographics</h2>
-              <p className="text-xs text-slate-500 mt-1">
+              <h2 className="text-2xl font-extrabold text-white font-display">Target Audience Demographics</h2>
+              <p className="text-xs text-slate-400 mt-1 font-sans">
                 Specify who your campaign is designed to reach.
               </p>
             </div>
@@ -289,8 +326,8 @@ export function CampaignWizard() {
         {step === 3 && (
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-extrabold text-slate-900">Creator Eligibility Criteria</h2>
-              <p className="text-xs text-slate-500 mt-1">
+              <h2 className="text-2xl font-extrabold text-white font-display">Creator Eligibility Criteria</h2>
+              <p className="text-xs text-slate-400 mt-1 font-sans">
                 Set minimum reach and engagement benchmarks.
               </p>
             </div>
@@ -317,20 +354,18 @@ export function CampaignWizard() {
         {/* STEP 4: DELIVERABLES */}
         {step === 4 && (
           <div className="space-y-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <h2 className="text-2xl font-extrabold text-slate-900">Required Deliverable Formats</h2>
-                <p className="text-xs text-slate-500 mt-1">
-                  Specify video assets, formats, and revision allowances.
-                </p>
-              </div>
+            <div>
+              <h2 className="text-2xl font-extrabold text-white font-display">Required Deliverable Formats</h2>
+              <p className="text-xs text-slate-400 mt-1 font-sans">
+                Specify video assets, formats, and revision allowances.
+              </p>
             </div>
 
             <div className="space-y-4">
               {formData.deliverables.map((del, i) => (
-                <div key={del.id} className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                <div key={del.id} className="p-5 rounded-2xl bg-white/[0.04] border border-white/10 space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-mono font-bold text-brand-accent uppercase">
+                    <span className="text-xs font-mono font-bold text-[hsl(327,100%,55%)] uppercase">
                       Deliverable #{i + 1}
                     </span>
                     <Badge variant="glow" size="sm">{del.type.replace(/_/g, ' ')}</Badge>
@@ -355,8 +390,8 @@ export function CampaignWizard() {
         {step === 5 && (
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-extrabold text-slate-900">Budget & Escrow Terms</h2>
-              <p className="text-xs text-slate-500 mt-1">
+              <h2 className="text-2xl font-extrabold text-white font-display">Budget &amp; Escrow Terms</h2>
+              <p className="text-xs text-slate-400 mt-1 font-sans">
                 Configure your total pool and per-creator payout caps.
               </p>
             </div>
@@ -377,11 +412,11 @@ export function CampaignWizard() {
               />
             </div>
 
-            <div className="p-5 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center gap-3">
-              <ShieldCheck className="w-6 h-6 text-emerald-600 shrink-0" />
+            <div className="p-5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center gap-3">
+              <ShieldCheck className="w-6 h-6 text-emerald-400 shrink-0" />
               <div>
-                <h4 className="text-xs font-bold text-emerald-900">100% Escrow Protection</h4>
-                <p className="text-xs text-emerald-700">
+                <h4 className="text-xs font-bold text-emerald-300 font-display">100% Escrow Protection</h4>
+                <p className="text-xs text-slate-300 font-sans">
                   Your funds are held securely by Collably and only released when deliverables meet your satisfaction.
                 </p>
               </div>
@@ -393,8 +428,8 @@ export function CampaignWizard() {
         {step === 6 && (
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-extrabold text-slate-900">Milestone Deadlines & Cohort Size</h2>
-              <p className="text-xs text-slate-500 mt-1">
+              <h2 className="text-2xl font-extrabold text-white font-display">Milestone Deadlines &amp; Cohort Size</h2>
+              <p className="text-xs text-slate-400 mt-1 font-sans">
                 Set key dates for creator applications, draft submission, and live publication.
               </p>
             </div>
@@ -435,64 +470,66 @@ export function CampaignWizard() {
         {step === 7 && (
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-extrabold text-slate-900">Final Review & Launch Brief</h2>
-              <p className="text-xs text-slate-500 mt-1">
+              <h2 className="text-2xl font-extrabold text-white font-display">Final Review &amp; Launch Brief</h2>
+              <p className="text-xs text-slate-400 mt-1 font-sans">
                 Verify your brief summary before broadcasting to verified creators.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
+            <div className="p-6 rounded-2xl bg-white/[0.04] border border-white/10 space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-slate-500 font-mono">TITLE</span>
-                <span className="text-sm font-bold text-slate-900">{formData.title}</span>
+                <span className="text-xs font-bold text-slate-400 font-mono">TITLE</span>
+                <span className="text-sm font-bold text-white font-display">{formData.title}</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-slate-500 font-mono">TOTAL ESCROW POOL</span>
-                <span className="text-sm font-bold font-mono text-emerald-600">{formatCurrency(formData.totalBudget)}</span>
+                <span className="text-xs font-bold text-slate-400 font-mono">TOTAL ESCROW POOL</span>
+                <span className="text-sm font-bold font-mono text-emerald-400">{formatCurrency(formData.totalBudget)}</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-slate-500 font-mono">TARGET COHORT</span>
-                <span className="text-sm font-bold text-slate-900">{formData.maxCreators} Creators</span>
+                <span className="text-xs font-bold text-slate-400 font-mono">TARGET COHORT</span>
+                <span className="text-sm font-bold text-white font-sans">{formData.maxCreators} Creators</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-slate-500 font-mono">CONTENT DUE</span>
-                <span className="text-sm font-bold text-slate-900">{formData.contentSubmissionDeadline}</span>
+                <span className="text-xs font-bold text-slate-400 font-mono">CONTENT DUE</span>
+                <span className="text-sm font-bold text-white font-sans">{formData.contentSubmissionDeadline}</span>
               </div>
             </div>
           </div>
         )}
 
         {/* Wizard Navigation Footer */}
-        <div className="pt-6 border-t border-slate-100 flex items-center justify-between">
+        <div className="pt-6 border-t border-white/10 flex items-center justify-between">
           <Button
             variant="outline"
             size="md"
             onClick={() => setStep((s) => Math.max(1, s - 1))}
             disabled={step === 1}
             leftIcon={<ArrowLeft className="w-4 h-4" />}
+            className="rounded-full font-display"
           >
             Previous
           </Button>
 
           {step < 7 ? (
             <Button
-              variant="accent"
+              variant="primary"
               size="md"
               onClick={() => setStep((s) => Math.min(7, s + 1))}
               rightIcon={<ArrowRight className="w-4 h-4" />}
+              className="rounded-full font-display font-bold"
             >
               Continue to Step {step + 1}
             </Button>
           ) : (
             <Button
-              variant="accent"
+              variant="primary"
               size="lg"
               onClick={handlePublish}
               isLoading={isPublishing}
               rightIcon={<CheckCircle2 className="w-5 h-5" />}
-              className="shadow-xl shadow-brand-accent/25"
+              className="shadow-xl shadow-pink-500/25 rounded-full font-display font-bold"
             >
-              Launch Brief & Pre-Authorize Escrow
+              Launch Brief &amp; Pre-Authorize Escrow
             </Button>
           )}
         </div>

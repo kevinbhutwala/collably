@@ -1,20 +1,17 @@
 "use client";
 
 import React, { useState } from "react";
-import { TimecodedComment, UserRole } from "@/core/types";
+import { TimecodedComment } from "@/core/types";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
 import { Badge } from "@/components/ui/Badge";
 import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
 import {
   Play,
   Pause,
-  Clock,
   MessageSquare,
   CheckCircle2,
   Send,
-  Sparkles,
 } from "lucide-react";
 
 export function TimecodedReviewPlayer({
@@ -102,23 +99,23 @@ export function TimecodedReviewPlayer({
   };
 
   return (
-    <div className="rounded-3xl bg-white border border-slate-200 shadow-card overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+    <div className="rounded-3xl bg-[#120c16] border border-white/10 shadow-card overflow-hidden grid grid-cols-1 lg:grid-cols-12 text-white">
       {/* Left Player Area */}
-      <div className="lg:col-span-7 bg-slate-950 p-6 flex flex-col justify-between text-white relative">
+      <div className="lg:col-span-7 bg-[#0a070a] p-6 flex flex-col justify-between text-white relative border-b lg:border-b-0 lg:border-r border-white/10">
         <div className="flex items-center justify-between pb-4">
           <div className="space-y-0.5">
             <Badge variant="glow" size="sm">4K Raw Deliverable v2</Badge>
-            <h4 className="text-sm font-bold text-slate-100">{videoTitle}</h4>
+            <h4 className="text-sm font-bold text-white font-display">{videoTitle}</h4>
           </div>
           <span className="text-xs font-mono text-slate-400">Duration: 01:00</span>
         </div>
 
         {/* Video Canvas Mock */}
-        <div className="relative aspect-video rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center overflow-hidden my-4">
+        <div className="relative aspect-video rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center overflow-hidden my-4">
           <div className="text-center space-y-3">
             <button
               onClick={() => setIsPlaying(!isPlaying)}
-              className="w-14 h-14 rounded-full bg-brand-accent text-white flex items-center justify-center mx-auto shadow-xl hover:scale-105 transition-transform"
+              className="w-14 h-14 rounded-full bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white flex items-center justify-center mx-auto shadow-xl shadow-pink-500/25 hover:scale-105 transition-transform"
             >
               {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6 ml-1" />}
             </button>
@@ -141,9 +138,9 @@ export function TimecodedReviewPlayer({
             max="60"
             value={currentTime}
             onChange={(e) => setCurrentTime(parseInt(e.target.value))}
-            className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-accent"
+            className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[hsl(327,100%,50%)]"
           />
-          <div className="flex justify-between text-[10px] font-mono text-slate-500">
+          <div className="flex justify-between text-[10px] font-mono text-slate-400">
             <span>00:00</span>
             <span>00:30</span>
             <span>01:00</span>
@@ -152,14 +149,14 @@ export function TimecodedReviewPlayer({
       </div>
 
       {/* Right Comments & Approval Rail */}
-      <div className="lg:col-span-5 p-6 flex flex-col justify-between h-full bg-white space-y-6">
+      <div className="lg:col-span-5 p-6 flex flex-col justify-between h-full bg-[#120c16] space-y-6">
         <div className="space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-            <h4 className="text-sm font-bold text-slate-900 flex items-center gap-1.5">
-              <MessageSquare className="w-4 h-4 text-brand-accent" />
+          <div className="flex items-center justify-between border-b border-white/10 pb-3">
+            <h4 className="text-sm font-bold text-white flex items-center gap-1.5 font-display">
+              <MessageSquare className="w-4 h-4 text-[hsl(327,100%,55%)]" />
               <span>Timecoded Feedback ({comments.length})</span>
             </h4>
-            <span className="text-[11px] font-mono text-slate-500">Figma-Style Video Notes</span>
+            <span className="text-[11px] font-mono text-slate-400">Figma-Style Video Notes</span>
           </div>
 
           <div className="space-y-3 max-h-72 overflow-y-auto pr-1">
@@ -168,37 +165,37 @@ export function TimecodedReviewPlayer({
                 key={c.id}
                 className={`p-3.5 rounded-2xl border transition-all text-xs ${
                   c.resolved
-                    ? "bg-slate-50 border-slate-200 text-slate-500 opacity-80"
-                    : "bg-orange-50/40 border-orange-200/80 text-slate-900 shadow-sm"
+                    ? "bg-white/[0.02] border-white/10 text-slate-400 opacity-80"
+                    : "bg-pink-500/10 border-pink-500/25 text-white shadow-xs"
                 }`}
               >
                 <div className="flex items-center justify-between mb-1.5 font-mono">
                   <div className="flex items-center gap-2">
-                    <span className="px-2 py-0.5 rounded-md bg-white border border-slate-200 text-[10px] font-bold text-brand-accent">
+                    <span className="px-2 py-0.5 rounded-md bg-white/10 border border-white/20 text-[10px] font-bold text-[hsl(327,100%,55%)]">
                       {c.timestampLabel}
                     </span>
-                    <strong className="text-slate-800 font-sans">{c.authorName}</strong>
+                    <strong className="text-white font-sans">{c.authorName}</strong>
                   </div>
                   <button
                     onClick={() => toggleResolve(c.id)}
                     className={`text-[10px] font-sans font-bold flex items-center gap-1 ${
-                      c.resolved ? "text-emerald-600" : "text-slate-400 hover:text-emerald-600"
+                      c.resolved ? "text-emerald-400" : "text-slate-400 hover:text-emerald-400"
                     }`}
                   >
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     {c.resolved ? "Resolved" : "Mark Resolved"}
                   </button>
                 </div>
-                <p className="leading-relaxed">{c.comment}</p>
+                <p className="leading-relaxed font-sans text-slate-200">{c.comment}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Comment Input */}
-        <form onSubmit={handleAddComment} className="space-y-3 pt-2 border-t border-slate-100">
+        <form onSubmit={handleAddComment} className="space-y-3 pt-2 border-t border-white/10">
           <div className="flex items-center gap-2">
-            <span className="px-2.5 py-1 rounded-lg bg-slate-100 border border-slate-200 font-mono text-xs text-slate-700 font-bold shrink-0">
+            <span className="px-2.5 py-1 rounded-full bg-white/10 border border-white/20 font-mono text-xs text-slate-200 font-bold shrink-0">
               Pin at {formatSeconds(currentTime)}
             </span>
             <input
@@ -206,9 +203,9 @@ export function TimecodedReviewPlayer({
               value={newComment}
               onChange={(e) => setNewComment(e.target.value)}
               placeholder="Leave note at current timestamp..."
-              className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-slate-400 shadow-sm"
+              className="flex-1 bg-white/[0.05] border border-white/10 rounded-full px-3.5 py-2 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-[hsl(327,100%,50%)]/50 shadow-xs"
             />
-            <Button variant="accent" size="sm" type="submit">
+            <Button variant="primary" size="sm" type="submit" className="rounded-full">
               <Send className="w-3.5 h-3.5" />
             </Button>
           </div>
@@ -219,18 +216,18 @@ export function TimecodedReviewPlayer({
               <Button
                 variant="outline"
                 size="sm"
-                className="flex-1"
+                className="flex-1 rounded-full font-display"
                 onClick={() => onRequestRevision && onRequestRevision("Please address timecoded comments.")}
               >
                 Request Revisions
               </Button>
               <Button
-                variant="accent"
+                variant="primary"
                 size="sm"
-                className="flex-1 shadow-md shadow-brand-accent/20"
+                className="flex-1 shadow-md shadow-pink-500/25 rounded-full font-display font-bold"
                 onClick={() => onApprove && onApprove()}
               >
-                Approve & Release Tranche
+                Approve &amp; Release Tranche
               </Button>
             </div>
           )}

@@ -33,6 +33,14 @@ export interface AIGeneratedPitch {
   keyHooks: string[];
 }
 
+export interface GenerateBriefInput {
+  productName: string;
+  industry?: CreatorCategory;
+  budget?: number;
+  targetAudience?: string;
+  goals?: string[];
+}
+
 class AIService {
   async computeMatchScore(creator: CreatorProfile, campaign: Campaign): Promise<MatchBreakdown> {
     try {
@@ -52,11 +60,24 @@ class AIService {
     return calculateCreatorCampaignMatch(creator, campaign);
   }
 
-  async generateCampaignBrief(prompt: string, categoryPreference?: CreatorCategory): Promise<AIGeneratedBrief> {
+  async generateCampaignBrief(
+    promptOrInput: string | GenerateBriefInput,
+    categoryPreference?: CreatorCategory
+  ): Promise<AIGeneratedBrief> {
+    let prompt = "";
+    let category = categoryPreference;
+
+    if (typeof promptOrInput === "string") {
+      prompt = promptOrInput;
+    } else {
+      prompt = `Product: ${promptOrInput.productName}. Target Audience: ${promptOrInput.targetAudience || "General"}. Goals: ${(promptOrInput.goals || []).join(", ")}. Budget: $${promptOrInput.budget || 5000}`;
+      category = promptOrInput.industry || category;
+    }
+
     const res = await fetch("/api/ai/brief", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt, category: categoryPreference }),
+      body: JSON.stringify({ prompt, category }),
     });
     if (!res.ok) {
       const data = await res.json().catch(() => ({}));

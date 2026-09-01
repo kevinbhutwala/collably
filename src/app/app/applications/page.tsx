@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { formatCurrency } from "@/core/utils/formatters";
-import { CheckCircle2, Clock, XCircle, ArrowUpRight, MessageSquare } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 export default function ApplicationsManagementPage() {
   const { role } = useAuthStore();
@@ -47,13 +47,13 @@ export default function ApplicationsManagementPage() {
       : applications.filter((a) => a.status === filter);
 
   return (
-    <div className="space-y-10">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
+    <div className="space-y-10 text-white">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
             {role === "brand" ? "Campaign Applications & Proposals" : "My Pitched Proposals"}
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-slate-400 mt-0.5 font-sans">
             {role === "brand"
               ? "Review creator proposals, evaluate AI match scores, and accept deals into escrow."
               : "Track your active campaign applications and accepted deliverables."}
@@ -61,15 +61,15 @@ export default function ApplicationsManagementPage() {
         </div>
 
         {/* Filter Pills */}
-        <div className="flex items-center gap-1.5 p-1 bg-slate-100/80 rounded-xl border border-slate-200 text-xs font-medium">
+        <div className="flex items-center gap-1.5 p-1 bg-white/[0.04] rounded-full border border-white/10 text-xs font-medium">
           {(["all", "pending", "accepted", "rejected"] as const).map((tab) => (
             <button
               key={tab}
               onClick={() => setFilter(tab)}
-              className={`px-3 py-1.5 rounded-lg capitalize transition-all ${
+              className={`px-3.5 py-1.5 rounded-full capitalize transition-all ${
                 filter === tab
-                  ? "bg-white text-slate-900 font-bold shadow-sm"
-                  : "text-slate-500 hover:text-slate-900"
+                  ? "bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white font-bold shadow-md shadow-pink-500/25"
+                  : "text-slate-400 hover:text-white"
               }`}
             >
               {tab}
@@ -82,11 +82,11 @@ export default function ApplicationsManagementPage() {
         {filtered.map((app) => (
           <div
             key={app.id}
-            className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-card flex flex-col lg:flex-row lg:items-center justify-between gap-6"
+            className="p-6 sm:p-8 rounded-3xl bg-[#120c16] border border-white/10 shadow-card flex flex-col lg:flex-row lg:items-center justify-between gap-6 text-white"
           >
             <div className="space-y-3 flex-1">
               <div className="flex items-center gap-3">
-                <div className="relative w-10 h-10 rounded-xl overflow-hidden bg-slate-100 border border-slate-200 shrink-0 shadow-sm">
+                <div className="relative w-10 h-10 rounded-xl overflow-hidden bg-white/[0.05] border border-white/10 shrink-0 shadow-sm">
                   <SafeImage
                     src={app.brandLogo}
                     alt={app.brandName}
@@ -97,8 +97,8 @@ export default function ApplicationsManagementPage() {
                   />
                 </div>
                 <div>
-                  <h3 className="font-bold text-base text-slate-900">{app.campaignTitle}</h3>
-                  <p className="text-xs text-slate-500 font-mono">
+                  <h3 className="font-bold text-base text-white font-display">{app.campaignTitle}</h3>
+                  <p className="text-xs text-slate-400 font-mono">
                     Brand: {app.brandName} • Applied on {app.createdAt}
                   </p>
                 </div>
@@ -116,8 +116,8 @@ export default function ApplicationsManagementPage() {
                 </Badge>
               </div>
 
-              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 text-xs text-slate-700 leading-relaxed font-sans">
-                <strong className="text-slate-900 block mb-1">Proposal Pitch:</strong>
+              <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 text-xs text-slate-300 leading-relaxed font-sans">
+                <strong className="text-white block mb-1 font-display">Proposal Pitch:</strong>
                 {app.pitch}
               </div>
             </div>
@@ -125,7 +125,7 @@ export default function ApplicationsManagementPage() {
             <div className="flex lg:flex-col items-center lg:items-end justify-between gap-4 font-mono text-xs shrink-0">
               <div>
                 <span className="text-[10px] text-slate-400 uppercase block">Proposed Fee</span>
-                <span className="text-lg font-bold text-emerald-600">
+                <span className="text-lg font-bold text-emerald-400">
                   {formatCurrency(app.proposedFee)}
                 </span>
               </div>
@@ -136,22 +136,24 @@ export default function ApplicationsManagementPage() {
                     variant="outline"
                     size="sm"
                     onClick={() => handleStatusUpdate(app.id, "rejected")}
+                    className="rounded-full font-display"
                   >
                     Decline
                   </Button>
                   <Button
-                    variant="accent"
+                    variant="primary"
                     size="sm"
                     onClick={() => handleStatusUpdate(app.id, "accepted")}
+                    className="rounded-full font-display font-bold"
                   >
-                    Accept & Lock Escrow
+                    Accept &amp; Lock Escrow
                   </Button>
                 </div>
               )}
 
               {app.status === "accepted" && (
                 <Link href="/app/collaborations">
-                  <Button variant="secondary" size="sm" rightIcon={<ArrowUpRight className="w-3.5 h-3.5" />}>
+                  <Button variant="secondary" size="sm" rightIcon={<ArrowUpRight className="w-3.5 h-3.5" />} className="rounded-full font-display">
                     Open Deliverable Workspace
                   </Button>
                 </Link>

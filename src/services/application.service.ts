@@ -1,6 +1,7 @@
 import { CampaignApplication, ApplicationStatus } from "../core/types";
 import { MOCK_APPLICATIONS } from "../mock/applications.mock";
 import { MOCK_CREATORS } from "../mock/creators.mock";
+import { MOCK_CAMPAIGNS } from "../mock/campaigns.mock";
 
 class ApplicationService {
   private applications: CampaignApplication[] = [...MOCK_APPLICATIONS];
@@ -49,6 +50,30 @@ class ApplicationService {
 
     this.applications.unshift(newApp);
     return newApp;
+  }
+
+  async applyToCampaign(data: {
+    campaignId: string;
+    creatorId: string;
+    proposedFee: number;
+    pitch: string;
+    portfolioSamples?: string[];
+  }): Promise<CampaignApplication> {
+    const campaign = MOCK_CAMPAIGNS.find((c) => c.id === data.campaignId);
+    const creator = MOCK_CREATORS.find((c) => c.id === data.creatorId) || MOCK_CREATORS[0];
+
+    return this.submitApplication({
+      campaignId: data.campaignId,
+      campaignTitle: campaign?.title || "Campaign Collaboration",
+      brandId: campaign?.brandId || "brand-1",
+      brandName: campaign?.brand?.companyName || "Brand Partner",
+      brandLogo: campaign?.brand?.logoUrl || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe",
+      creatorId: data.creatorId,
+      pitch: data.pitch,
+      proposedFee: data.proposedFee,
+      estimatedReach: creator.totalFollowers,
+      sampleLinks: data.portfolioSamples || [],
+    });
   }
 
   async updateApplicationStatus(id: string, status: ApplicationStatus): Promise<CampaignApplication> {

@@ -1,21 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import { NegotiationOffer, UserRole } from "@/core/types";
+import { NegotiationOffer } from "@/core/types";
 import { Button } from "@/components/ui/Button";
 import { Input, Textarea } from "@/components/ui/Input";
 import { Badge } from "@/components/ui/Badge";
 import { formatCurrency } from "@/core/utils/formatters";
 import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
-import {
-  DollarSign,
-  ArrowRight,
-  CheckCircle2,
-  XCircle,
-  Plus,
-  Clock,
-} from "lucide-react";
+import { CheckCircle2, Plus } from "lucide-react";
 
 export function NegotiationTimeline({
   initialOffers = [],
@@ -106,11 +99,11 @@ export function NegotiationTimeline({
   };
 
   return (
-    <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-card space-y-6">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+    <div className="p-6 sm:p-8 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-6 text-white">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
         <div>
-          <h3 className="text-lg font-bold text-slate-900">Structured Terms & Negotiation History</h3>
-          <p className="text-xs text-slate-500">
+          <h3 className="text-lg font-bold text-white font-display">Structured Terms &amp; Negotiation History</h3>
+          <p className="text-xs text-slate-400 font-sans">
             Immutable audit record of proposals, counter-offers, and agreed deliverable scope.
           </p>
         </div>
@@ -120,6 +113,7 @@ export function NegotiationTimeline({
           size="sm"
           onClick={() => setShowCounterForm(!showCounterForm)}
           leftIcon={<Plus className="w-3.5 h-3.5" />}
+          className="rounded-full font-display"
         >
           {showCounterForm ? "Cancel Counter" : "Submit Counter Offer"}
         </Button>
@@ -127,15 +121,15 @@ export function NegotiationTimeline({
 
       {/* Offer History Cards */}
       <div className="space-y-4">
-        {offers.map((off, index) => {
+        {offers.map((off) => {
           const isAccepted = off.status === "accepted";
           return (
             <div
               key={off.id}
               className={`p-5 rounded-2xl border transition-all ${
                 isAccepted
-                  ? "bg-emerald-50/60 border-emerald-300 shadow-sm"
-                  : "bg-slate-50/80 border-slate-200"
+                  ? "bg-emerald-500/10 border-emerald-500/30 shadow-xs"
+                  : "bg-white/[0.04] border-white/10"
               }`}
             >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2 font-mono text-xs">
@@ -143,12 +137,12 @@ export function NegotiationTimeline({
                   <Badge variant={off.senderRole === "brand" ? "glow" : "outline"} size="sm">
                     {off.senderRole.toUpperCase()}
                   </Badge>
-                  <strong className="font-sans text-sm text-slate-900">{off.senderName}</strong>
+                  <strong className="font-sans text-sm text-white">{off.senderName}</strong>
                   <span className="text-slate-400">• {off.createdAt}</span>
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <span className="text-base font-extrabold text-emerald-600 font-mono">
+                  <span className="text-base font-extrabold text-emerald-400 font-mono">
                     {formatCurrency(off.amount)}
                   </span>
                   <Badge
@@ -161,20 +155,21 @@ export function NegotiationTimeline({
                 </div>
               </div>
 
-              <p className="text-xs text-slate-800 font-semibold mb-1 font-sans">
+              <p className="text-xs text-slate-200 font-semibold mb-1 font-sans">
                 Scope: {off.deliverableTerms}
               </p>
-              <p className="text-xs text-slate-600 font-sans leading-relaxed">
+              <p className="text-xs text-slate-400 font-sans leading-relaxed">
                 Note: {off.notes}
               </p>
 
               {off.status === "offered" && off.senderRole !== role && (
-                <div className="pt-3 border-t border-slate-200 mt-3 flex justify-end gap-2">
+                <div className="pt-3 border-t border-white/10 mt-3 flex justify-end gap-2">
                   <Button
-                    variant="accent"
+                    variant="primary"
                     size="sm"
                     onClick={() => handleAccept(off.id, off.amount)}
                     leftIcon={<CheckCircle2 className="w-3.5 h-3.5" />}
+                    className="rounded-full font-display font-bold"
                   >
                     Accept Offer
                   </Button>
@@ -187,8 +182,8 @@ export function NegotiationTimeline({
 
       {/* Counter Form Drawer */}
       {showCounterForm && (
-        <form onSubmit={handleSendCounter} className="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
-          <h4 className="text-sm font-bold text-slate-900">Draft Structured Counter Offer</h4>
+        <form onSubmit={handleSendCounter} className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 space-y-4">
+          <h4 className="text-sm font-bold text-white font-display">Draft Structured Counter Offer</h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input
               label="Proposed Fee ($ USD)"
@@ -214,7 +209,7 @@ export function NegotiationTimeline({
             rows={3}
           />
 
-          <Button variant="accent" size="md" type="submit">
+          <Button variant="primary" size="md" type="submit" className="rounded-full font-display font-bold">
             Send Official Counter Offer
           </Button>
         </form>

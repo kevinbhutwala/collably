@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/Input";
 import { Modal } from "@/components/ui/Modal";
 import { formatCurrency } from "@/core/utils/formatters";
 import { useUIStore } from "@/stores/ui.store";
-import { ShieldAlert, CheckCircle2, FileCheck2, Scale } from "lucide-react";
+import { Scale } from "lucide-react";
 
 export default function AdminDisputesArbitrationPage() {
   const { addToast } = useUIStore();
@@ -49,36 +49,36 @@ export default function AdminDisputesArbitrationPage() {
   };
 
   return (
-    <div className="space-y-8">
-      <div className="pb-6 border-b border-slate-200">
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-          Escrow Dispute Arbitration & Mediation
+    <div className="space-y-8 text-white">
+      <div className="pb-6 border-b border-white/10">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
+          Escrow Dispute Arbitration &amp; Mediation
         </h1>
-        <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+        <p className="text-xs sm:text-sm text-slate-400 mt-0.5 font-sans">
           Review evidence from brands and creators, issue legal arbitration findings, and unfreeze escrow funds.
         </p>
       </div>
 
-      <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-card space-y-6">
-        <div className="divide-y divide-slate-100 font-mono text-xs">
+      <div className="p-8 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-6">
+        <div className="divide-y divide-white/10 font-mono text-xs">
           {disputes.map((d) => (
             <div key={d.id} className="py-5 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
               <div className="space-y-2 flex-1 font-sans">
                 <div className="flex items-center gap-2">
-                  <h4 className="font-bold text-sm text-slate-900">{d.campaignTitle}</h4>
+                  <h4 className="font-bold text-sm text-white font-display">{d.campaignTitle}</h4>
                   <Badge variant={d.status === "Resolved" ? "success" : "warning"} size="sm">
                     {d.status.replace(/_/g, " ")}
                   </Badge>
                 </div>
-                <p className="text-xs text-slate-600">
-                  Brand: <strong>{d.brandName}</strong> • Creator: <strong>{d.creatorName}</strong>
+                <p className="text-xs text-slate-400">
+                  Brand: <strong className="text-white">{d.brandName}</strong> • Creator: <strong className="text-white">{d.creatorName}</strong>
                 </p>
-                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700">
-                  <strong className="block mb-0.5">Dispute Reason ({d.reason.replace(/_/g, " ")}):</strong>
+                <div className="p-3 rounded-xl bg-white/[0.03] border border-white/10 text-xs text-slate-300">
+                  <strong className="block mb-0.5 text-white font-display">Dispute Reason ({d.reason.replace(/_/g, " ")}):</strong>
                   {d.description}
                 </div>
                 {d.adminArbitrationNotes && (
-                  <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs">
+                  <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs">
                     <strong>Official Ruling:</strong> {d.adminArbitrationNotes}
                   </div>
                 )}
@@ -87,20 +87,21 @@ export default function AdminDisputesArbitrationPage() {
               <div className="flex lg:flex-col items-center lg:items-end justify-between gap-4 shrink-0 font-mono">
                 <div>
                   <span className="text-slate-400 block text-[10px]">Frozen Escrow</span>
-                  <span className="text-base font-bold text-slate-900">
+                  <span className="text-base font-bold text-white">
                     {formatCurrency(d.amountInDispute)}
                   </span>
                 </div>
 
                 {d.status !== "Resolved" && (
                   <Button
-                    variant="accent"
+                    variant="primary"
                     size="sm"
                     onClick={() => {
                       setSelectedDispute(d);
                       setIsResolveModalOpen(true);
                     }}
                     leftIcon={<Scale className="w-3.5 h-3.5" />}
+                    className="rounded-full font-display font-bold"
                   >
                     Issue Arbitration Ruling
                   </Button>
@@ -118,7 +119,7 @@ export default function AdminDisputesArbitrationPage() {
         description="This decision unfreezes escrow balances and updates platform trust scores."
         maxWidth="md"
       >
-        <form onSubmit={handleResolve} className="space-y-4">
+        <form onSubmit={handleResolve} className="space-y-4 text-white">
           <Textarea
             label="Arbitration Finding & Resolution Terms"
             value={resolutionNotes}
@@ -127,8 +128,8 @@ export default function AdminDisputesArbitrationPage() {
             rows={4}
             required
           />
-          <Button variant="accent" size="md" type="submit" className="w-full">
-            Log Ruling & Release Escrow
+          <Button variant="primary" size="md" type="submit" className="w-full rounded-full font-display font-bold">
+            Log Ruling &amp; Release Escrow
           </Button>
         </form>
       </Modal>

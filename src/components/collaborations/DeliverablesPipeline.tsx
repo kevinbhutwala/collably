@@ -13,16 +13,10 @@ import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
 import {
   CheckCircle2,
-  Clock,
-  FileCheck2,
-  MessageSquare,
   Upload,
-  AlertCircle,
   Play,
-  ArrowUpRight,
   ExternalLink,
   ShieldCheck,
-  Scale,
   Video,
   DollarSign,
 } from "lucide-react";
@@ -70,205 +64,202 @@ export function DeliverablesPipeline({ collaboration }: { collaboration: Collabo
       )
     );
 
-    addToast({
-      type: "success",
-      title: "Deliverable Draft Submitted",
-      message: "Notification dispatched to brand marketing director.",
-    });
     setIsSubmitModalOpen(false);
-  };
-
-  const handleApproveDeliverable = (delId: string) => {
-    setDeliverables((prev) =>
-      prev.map((d) => (d.id === delId ? { ...d, status: "approved" } : d))
-    );
     addToast({
       type: "success",
-      title: "Deliverable Approved!",
-      message: "Escrow milestone tranche released directly to creator balance.",
+      title: "Content Draft Submitted",
+      message: "The brand has been notified to review your draft in the 4K review player.",
     });
-    setIsReviewModalOpen(false);
   };
 
-  const handleRequestRevision = (delId: string) => {
-    if (!revisionFeedback) return;
+  const handleApproveDeliverable = (deliverableId: string) => {
     setDeliverables((prev) =>
-      prev.map((d) => (d.id === delId ? { ...d, status: "revision_requested" } : d))
+      prev.map((d) => (d.id === deliverableId ? { ...d, status: "approved" } : d))
     );
-    addToast({
-      type: "warning",
-      title: "Revision Requested",
-      message: "Feedback sent to the creator.",
-    });
     setIsReviewModalOpen(false);
+    addToast({
+      type: "success",
+      title: "Milestone Approved & Disbursed",
+      message: "Escrow funds released directly to creator payout account.",
+    });
+  };
+
+  const handleRequestRevision = (deliverableId: string) => {
+    setDeliverables((prev) =>
+      prev.map((d) => (d.id === deliverableId ? { ...d, status: "revision_requested" } : d))
+    );
+    setIsReviewModalOpen(false);
+    addToast({
+      type: "info",
+      title: "Revision Requested",
+      message: "Creator notified with your timecoded feedback.",
+    });
   };
 
   return (
-    <div className="space-y-6">
-      {/* Top Collaboration Info Card */}
-      <div className="rounded-3xl bg-white border border-slate-200 shadow-card p-6 sm:p-8 space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
-          <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold uppercase text-brand-accent">
-                Active Milestone Escrow
-              </span>
-              <span className="text-slate-300">•</span>
-              <Badge variant="glow" size="sm">
-                {collaboration.brand.companyName}
-              </Badge>
-            </div>
-            <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
-              {collaboration.campaignTitle}
-            </h2>
-            <p className="text-xs text-slate-500 font-mono">
-              Partner: <strong className="text-slate-800 font-sans">{collaboration.creator.fullName}</strong> (@{collaboration.creator.handle})
-            </p>
+    <div className="p-6 sm:p-8 rounded-3xl bg-[#120c16] border border-white/10 shadow-card space-y-6 text-white">
+      {/* Top Header Card */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
+        <div className="space-y-1">
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-mono font-bold uppercase text-[hsl(327,100%,55%)] flex items-center gap-1">
+              <ShieldCheck className="w-3.5 h-3.5" /> Escrow Milestone Pipeline
+            </span>
+            <span className="text-white/20">•</span>
+            <span className="text-xs font-mono text-slate-400">ID: {collaboration.id}</span>
           </div>
-
-          <div className="flex items-center gap-4 font-mono">
-            <div className="text-right">
-              <span className="text-xs text-slate-400 block">Total Escrow</span>
-              <span className="text-lg font-extrabold text-emerald-600">
-                {formatCurrency(collaboration.totalAgreedBudget)}
-              </span>
-            </div>
-            <Badge variant="success" size="md" dot>
-              {collaboration.status.toUpperCase()}
-            </Badge>
-          </div>
+          <h2 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight font-display">
+            {collaboration.campaignTitle}
+          </h2>
+          <p className="text-xs text-slate-400 font-mono">
+            Partner: <strong className="text-white font-sans">{collaboration.creator.fullName}</strong> (@{collaboration.creator.handle})
+          </p>
         </div>
 
-        {/* Sub-Workspace Tab Switcher */}
-        <div className="flex items-center gap-2 border-b border-slate-100 pb-3 text-xs font-mono">
-          <button
-            onClick={() => setActiveTab("deliverables")}
-            className={`px-4 py-2 rounded-xl font-sans font-bold transition-all ${
-              activeTab === "deliverables"
-                ? "bg-slate-900 text-white shadow-sm"
-                : "bg-slate-50 text-slate-600 hover:text-slate-900 border border-slate-200"
-            }`}
-          >
-            Deliverables & Milestones ({deliverables.length})
-          </button>
-          <button
-            onClick={() => setActiveTab("video_review")}
-            className={`px-4 py-2 rounded-xl font-sans font-bold transition-all flex items-center gap-1.5 ${
-              activeTab === "video_review"
-                ? "bg-slate-900 text-white shadow-sm"
-                : "bg-slate-50 text-slate-600 hover:text-slate-900 border border-slate-200"
-            }`}
-          >
-            <Video className="w-3.5 h-3.5 text-brand-accent" />
-            <span>Timecoded Video Review</span>
-          </button>
-          <button
-            onClick={() => setActiveTab("negotiation")}
-            className={`px-4 py-2 rounded-xl font-sans font-bold transition-all flex items-center gap-1.5 ${
-              activeTab === "negotiation"
-                ? "bg-slate-900 text-white shadow-sm"
-                : "bg-slate-50 text-slate-600 hover:text-slate-900 border border-slate-200"
-            }`}
-          >
-            <DollarSign className="w-3.5 h-3.5 text-emerald-600" />
-            <span>Terms & Negotiation</span>
-          </button>
+        <div className="flex items-center gap-4 font-mono">
+          <div className="text-right">
+            <span className="text-xs text-slate-400 block">Total Escrow</span>
+            <span className="text-lg font-extrabold text-emerald-400">
+              {formatCurrency(collaboration.totalAgreedBudget)}
+            </span>
+          </div>
+          <Badge variant="success" size="md" dot>
+            {collaboration.status.toUpperCase()}
+          </Badge>
         </div>
+      </div>
 
-        {/* Tab 1: Deliverables Pipeline List */}
-        {activeTab === "deliverables" && (
-          <div className="space-y-4 pt-2">
-            <div className="divide-y divide-slate-100">
-              {deliverables.map((del) => {
-                const isApproved = del.status === "approved";
-                const isSubmitted = del.status === "submitted";
-                const isRevision = del.status === "revision_requested";
+      {/* Sub-Workspace Tab Switcher */}
+      <div className="flex items-center gap-2 border-b border-white/10 pb-3 text-xs font-mono">
+        <button
+          onClick={() => setActiveTab("deliverables")}
+          className={`px-4 py-2 rounded-full font-sans font-bold transition-all ${
+            activeTab === "deliverables"
+              ? "bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white shadow-md shadow-pink-500/25"
+              : "bg-white/[0.04] text-slate-300 hover:text-white border border-white/10"
+          }`}
+        >
+          Deliverables &amp; Milestones ({deliverables.length})
+        </button>
+        <button
+          onClick={() => setActiveTab("video_review")}
+          className={`px-4 py-2 rounded-full font-sans font-bold transition-all flex items-center gap-1.5 ${
+            activeTab === "video_review"
+              ? "bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white shadow-md shadow-pink-500/25"
+              : "bg-white/[0.04] text-slate-300 hover:text-white border border-white/10"
+          }`}
+        >
+          <Video className="w-3.5 h-3.5 text-pink-300" />
+          <span>Timecoded Video Review</span>
+        </button>
+        <button
+          onClick={() => setActiveTab("negotiation")}
+          className={`px-4 py-2 rounded-full font-sans font-bold transition-all flex items-center gap-1.5 ${
+            activeTab === "negotiation"
+              ? "bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white shadow-md shadow-pink-500/25"
+              : "bg-white/[0.04] text-slate-300 hover:text-white border border-white/10"
+          }`}
+        >
+          <DollarSign className="w-3.5 h-3.5 text-emerald-400" />
+          <span>Terms &amp; Negotiation</span>
+        </button>
+      </div>
 
-                return (
-                  <div
-                    key={del.id}
-                    className="py-5 flex flex-col lg:flex-row lg:items-center justify-between gap-6"
-                  >
-                    <div className="space-y-2 flex-1">
-                      <div className="flex items-center gap-2">
-                        <h4 className="font-bold text-sm text-slate-900">{del.title}</h4>
-                        <Badge variant={isApproved ? "success" : isRevision ? "warning" : "default"} size="sm">
-                          {del.status.replace(/_/g, " ").toUpperCase()}
-                        </Badge>
-                      </div>
-                      <p className="text-xs text-slate-600 font-mono">Format: {del.type} • Max {del.maxRevisions} Revisions</p>
-                      <div className="flex items-center gap-4 text-xs text-slate-500 font-mono pt-1">
-                        <span>Due: <strong className="text-slate-700">{del.dueDate}</strong></span>
-                        <span>•</span>
-                        <span>Milestone Escrow: <strong className="text-emerald-600">{formatCurrency(del.payoutAmount)}</strong></span>
-                      </div>
+      {/* Tab 1: Deliverables Pipeline List */}
+      {activeTab === "deliverables" && (
+        <div className="space-y-4 pt-2">
+          <div className="divide-y divide-white/10">
+            {deliverables.map((del) => {
+              const isApproved = del.status === "approved";
+              const isSubmitted = del.status === "submitted";
+              const isRevision = del.status === "revision_requested";
+
+              return (
+                <div
+                  key={del.id}
+                  className="py-5 flex flex-col lg:flex-row lg:items-center justify-between gap-6"
+                >
+                  <div className="space-y-2 flex-1">
+                    <div className="flex items-center gap-2">
+                      <h4 className="font-bold text-sm text-white font-display">{del.title}</h4>
+                      <Badge variant={isApproved ? "success" : isRevision ? "warning" : "default"} size="sm">
+                        {del.status.replace(/_/g, " ").toUpperCase()}
+                      </Badge>
                     </div>
-
-                    {/* Action Controls per role */}
-                    <div className="flex items-center gap-3 shrink-0">
-                      {role === "creator" && !isApproved && (
-                        <Button
-                          variant="accent"
-                          size="sm"
-                          onClick={() => {
-                            setSelectedDel(del);
-                            setIsSubmitModalOpen(true);
-                          }}
-                          leftIcon={<Upload className="w-3.5 h-3.5" />}
-                        >
-                          {isSubmitted ? "Re-upload Draft" : "Submit Draft Video"}
-                        </Button>
-                      )}
-
-                      {role === "brand" && isSubmitted && (
-                        <Button
-                          variant="accent"
-                          size="sm"
-                          onClick={() => {
-                            setSelectedDel(del);
-                            setIsReviewModalOpen(true);
-                          }}
-                          leftIcon={<Play className="w-3.5 h-3.5" />}
-                        >
-                          Inspect & Approve
-                        </Button>
-                      )}
-
-                      {isApproved && (
-                        <div className="flex items-center gap-1.5 text-xs text-emerald-600 font-mono font-bold bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-xl">
-                          <CheckCircle2 className="w-4 h-4" />
-                          <span>Tranche Released</span>
-                        </div>
-                      )}
+                    <p className="text-xs text-slate-400 font-mono">Format: {del.type} • Max {del.maxRevisions} Revisions</p>
+                    <div className="flex items-center gap-4 text-xs text-slate-400 font-mono pt-1">
+                      <span>Due: <strong className="text-white">{del.dueDate}</strong></span>
+                      <span>•</span>
+                      <span>Milestone Escrow: <strong className="text-emerald-400">{formatCurrency(del.payoutAmount)}</strong></span>
                     </div>
                   </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
 
-        {/* Tab 2: Video Review Player */}
-        {activeTab === "video_review" && (
-          <div className="pt-2">
-            <TimecodedReviewPlayer
-              videoTitle={`${collaboration.campaignTitle} - Rough Cut v2`}
-              onApprove={() => handleApproveDeliverable(deliverables[0]?.id || "del-1")}
-              onRequestRevision={(fb) => {
-                setRevisionFeedback(fb);
-                handleRequestRevision(deliverables[0]?.id || "del-1");
-              }}
-            />
-          </div>
-        )}
+                  {/* Action Controls per role */}
+                  <div className="flex items-center gap-3 shrink-0">
+                    {role === "creator" && !isApproved && (
+                      <Button
+                        variant="primary"
+                        size="sm"
+                        onClick={() => {
+                          setSelectedDel(del);
+                          setIsSubmitModalOpen(true);
+                        }}
+                        leftIcon={<Upload className="w-3.5 h-3.5" />}
+                        className="rounded-full"
+                      >
+                        {isSubmitted ? "Re-upload Draft" : "Submit Draft Video"}
+                      </Button>
+                    )}
 
-        {/* Tab 3: Structured Negotiation */}
-        {activeTab === "negotiation" && (
-          <div className="pt-2">
-            <NegotiationTimeline currentFee={collaboration.totalAgreedBudget} />
+                    {role === "brand" && isSubmitted && (
+                      <Button
+                        variant="primary"
+                        size="sm"
+                        onClick={() => {
+                          setSelectedDel(del);
+                          setIsReviewModalOpen(true);
+                        }}
+                        leftIcon={<Play className="w-3.5 h-3.5" />}
+                        className="rounded-full"
+                      >
+                        Inspect &amp; Approve
+                      </Button>
+                    )}
+
+                    {isApproved && (
+                      <div className="flex items-center gap-1.5 text-xs text-emerald-400 font-mono font-bold bg-emerald-500/15 border border-emerald-500/30 px-3.5 py-1.5 rounded-full">
+                        <CheckCircle2 className="w-4 h-4" />
+                        <span>Tranche Released</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
           </div>
-        )}
-      </div>
+        </div>
+      )}
+
+      {/* Tab 2: Video Review Player */}
+      {activeTab === "video_review" && (
+        <div className="pt-2">
+          <TimecodedReviewPlayer
+            videoTitle={`${collaboration.campaignTitle} - Rough Cut v2`}
+            onApprove={() => handleApproveDeliverable(deliverables[0]?.id || "del-1")}
+            onRequestRevision={(fb) => {
+              setRevisionFeedback(fb);
+              handleRequestRevision(deliverables[0]?.id || "del-1");
+            }}
+          />
+        </div>
+      )}
+
+      {/* Tab 3: Structured Negotiation */}
+      {activeTab === "negotiation" && (
+        <div className="pt-2">
+          <NegotiationTimeline currentFee={collaboration.totalAgreedBudget} />
+        </div>
+      )}
 
       {/* Submit Draft Modal */}
       <Modal
@@ -298,7 +289,7 @@ export function DeliverablesPipeline({ collaboration }: { collaboration: Collabo
             rows={2}
           />
           <div className="pt-2">
-            <Button variant="accent" size="lg" type="submit" className="w-full">
+            <Button variant="primary" size="lg" type="submit" className="w-full rounded-full font-display font-bold">
               Submit Draft for Approval
             </Button>
           </div>
@@ -313,22 +304,22 @@ export function DeliverablesPipeline({ collaboration }: { collaboration: Collabo
         description="Inspect video preview and release escrow tranche upon approval."
       >
         <div className="space-y-6">
-          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-            <span className="text-[10px] text-slate-500 uppercase font-mono font-bold">
+          <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 space-y-2">
+            <span className="text-[10px] text-slate-400 uppercase font-mono font-bold">
               Submitted Draft Link
             </span>
             <a
               href={submissionUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-brand-accent hover:underline flex items-center gap-1 font-mono font-bold"
+              className="text-xs text-[hsl(327,100%,55%)] hover:underline flex items-center gap-1 font-mono font-bold"
             >
               {submissionUrl} <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>
 
-          <div className="space-y-2">
-            <label className="text-xs font-bold text-slate-700">
+          <div className="space-y-2 text-left">
+            <label className="text-xs font-bold text-slate-200">
               Request Specific Timestamped Revision
             </label>
             <Textarea
@@ -343,19 +334,19 @@ export function DeliverablesPipeline({ collaboration }: { collaboration: Collabo
             <Button
               variant="outline"
               size="md"
-              className="flex-1"
+              className="flex-1 rounded-full font-display"
               onClick={() => selectedDel && handleRequestRevision(selectedDel.id)}
             >
               Request Revision
             </Button>
             <Button
-              variant="accent"
+              variant="primary"
               size="md"
-              className="flex-1"
+              className="flex-1 rounded-full font-display font-bold"
               onClick={() => selectedDel && handleApproveDeliverable(selectedDel.id)}
               leftIcon={<CheckCircle2 className="w-4 h-4" />}
             >
-              Approve & Release Funds
+              Approve &amp; Release Funds
             </Button>
           </div>
         </div>

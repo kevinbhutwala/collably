@@ -43,17 +43,17 @@ function LoginForm() {
   };
 
   return (
-    <div className="w-full max-w-md rounded-3xl bg-white border border-slate-200/90 p-8 space-y-6 shadow-elevated relative z-10">
+    <div className="w-full max-w-md rounded-3xl bg-[#120c16] border border-white/10 p-8 space-y-6 shadow-elevated relative z-10 text-white">
       {/* Top Header with Back to Home button */}
-      <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+      <div className="flex items-center justify-between pb-3 border-b border-white/10">
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-slate-500 hover:text-slate-900 transition-colors group"
+          className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-slate-400 hover:text-white transition-colors group"
         >
           <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
           <span>Back to Home</span>
         </Link>
-        <span className="text-[10px] font-mono text-brand-accent font-bold uppercase">
+        <span className="text-[10px] font-mono text-[hsl(327,100%,55%)] font-bold uppercase">
           Portal Login
         </span>
       </div>
@@ -62,17 +62,17 @@ function LoginForm() {
         <div className="flex justify-center mb-2">
           <CollablyLogo href="/" size="sm" subtext="Creator × Brand Ecosystem" />
         </div>
-        <h1 className="text-2xl font-black text-slate-900 tracking-tight font-display">
+        <h1 className="text-2xl font-black text-white tracking-tight font-display">
           Welcome Back
         </h1>
-        <p className="text-xs text-slate-500 font-sans">
+        <p className="text-xs text-slate-400 font-sans">
           Sign in to access your campaigns, creator roster, and escrow payouts.
         </p>
       </div>
 
       {errorMessage && (
-        <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-center gap-2">
-          <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
+        <div className="p-3.5 rounded-xl bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs flex items-center gap-2">
+          <AlertCircle className="w-4 h-4 shrink-0 text-rose-400" />
           <span>{errorMessage}</span>
         </div>
       )}
@@ -97,15 +97,15 @@ function LoginForm() {
           leftIcon={<Lock className="w-4 h-4 text-slate-400" />}
         />
 
-        <Button variant="accent" size="lg" type="submit" isLoading={isLoading} className="w-full font-display">
+        <Button variant="primary" size="lg" type="submit" isLoading={isLoading} className="w-full font-display rounded-full">
           Sign In to Collably
         </Button>
       </form>
 
-      <div className="pt-4 border-t border-slate-100 text-center space-y-2">
-        <p className="text-xs text-slate-500 font-sans">
+      <div className="pt-4 border-t border-white/10 text-center space-y-2">
+        <p className="text-xs text-slate-400 font-sans">
           Don&apos;t have an account?{" "}
-          <Link href="/register" className="text-brand-accent font-bold hover:underline">
+          <Link href="/register" className="text-[hsl(327,100%,55%)] font-bold hover:underline">
             Create an account
           </Link>
         </p>
@@ -119,9 +119,9 @@ export default function LoginPage() {
     <div className="w-full flex items-center justify-center p-2 py-6">
       <Suspense
         fallback={
-          <div className="w-full max-w-md rounded-3xl bg-white border border-slate-200 p-12 text-center shadow-elevated">
-            <Loader2 className="w-8 h-8 text-brand-accent animate-spin mx-auto mb-2" />
-            <p className="text-xs text-slate-500 font-mono">Loading workspace...</p>
+          <div className="w-full max-w-md rounded-3xl bg-[#120c16] border border-white/10 p-12 text-center shadow-elevated text-white">
+            <Loader2 className="w-8 h-8 text-[hsl(327,100%,55%)] animate-spin mx-auto mb-2" />
+            <p className="text-xs text-slate-400 font-mono">Loading workspace...</p>
           </div>
         }
       >
