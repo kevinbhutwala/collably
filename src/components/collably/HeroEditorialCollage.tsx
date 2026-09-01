@@ -31,9 +31,9 @@ export function HeroEditorialCollage() {
   return (
     <section className="relative min-h-[92vh] lg:min-h-[105vh] bg-[#FAFAF8] border-b border-[#E7E7E4] overflow-hidden pt-6 pb-20 sm:pb-32 select-none text-[#111111]">
       {/* ════════════════════════════════════════════════════════════════════
-          OVERSIZED WATERMARK TYPOGRAPHY (Layered Behind Artwork)
+          OVERSIZED WATERMARK TYPOGRAPHY (Neue Montreal Display)
           ════════════════════════════════════════════════════════════════════ */}
-      <div className="absolute top-12 sm:top-6 inset-x-0 flex justify-center pointer-events-none z-0 opacity-[0.03] select-none overflow-hidden">
+      <div className="absolute top-12 sm:top-6 inset-x-0 flex justify-center pointer-events-none z-0 opacity-[0.03] select-none overflow-hidden font-display">
         <span className="text-[20vw] font-black tracking-tighter leading-none text-[#111111]">
           COLLABLY
         </span>
@@ -43,49 +43,51 @@ export function HeroEditorialCollage() {
         {/* ════════════════════════════════════════════════════════════════════
             TOP EDITORIAL HEADER & MINIMAL COPY
             ════════════════════════════════════════════════════════════════════ */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 pt-2 sm:pt-6">
-          {/* Eyebrow with Micro Accent Dot #B7FF3C */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-xs font-mono font-bold text-[#111111] shadow-xs">
+        <div className="text-center max-w-4xl mx-auto space-y-5 pt-2 sm:pt-6">
+          {/* Micro Label Eyebrow: Geist 10–12px / 600 / uppercase */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-[11px] font-sans font-semibold uppercase tracking-wider text-[#111111] shadow-xs">
             <span className="w-2 h-2 rounded-full bg-[#B7FF3C] animate-pulse" />
-            <span>COLLABLY / CREATOR COMMERCE</span>
+            <span>CREATOR × BRAND COLLABORATION PLATFORM</span>
           </div>
 
-          {/* Simple Clean Modern Headline */}
-          <div className="space-y-2">
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-[#111111] tracking-tight leading-[1.04]">
-              Create great content. <br />
-              <span className="font-bold text-[#6B6B6B]">
-                Never chase an invoice.
-              </span>
+          {/* 3-Tier Typography Hero Headline: Neue Montreal 96-120px + Instrument Serif Italic */}
+          <div className="space-y-3">
+            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[6.5rem] font-display font-extrabold text-[#111111] tracking-tight leading-[0.98] uppercase">
+              CREATE <br />
+              <span className="font-serif italic font-normal normal-case tracking-normal text-[#111111] lowercase text-6xl sm:text-8xl md:text-9xl lg:text-[7.5rem]">
+                great content.
+              </span> <br />
+              <span className="text-[#6B6B6B]">WITHOUT THE CHAOS.</span>
             </h1>
 
             {/* Dynamic Kinetic Word Loop */}
-            <div className="h-10 sm:h-12 flex items-center justify-center overflow-hidden">
+            <div className="h-10 sm:h-12 flex items-center justify-center overflow-hidden pt-1">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeWordIndex}
-                  initial={{ y: 24, opacity: 0 }}
+                  initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -24, opacity: 0 }}
+                  exit={{ y: -20, opacity: 0 }}
                   transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                   className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-[#111111] flex items-center gap-2 bg-[#B7FF3C] px-3.5 py-1 rounded-lg shadow-xs"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-[#111111]" />
-                  <span>FLOW: {kineticWords[activeWordIndex]}</span>
+                  <span>OPERATING STAGE: {kineticWords[activeWordIndex]}</span>
                 </motion.div>
               </AnimatePresence>
             </div>
 
-            <p className="text-sm sm:text-base md:text-lg text-[#6B6B6B] font-medium max-w-xl mx-auto leading-relaxed">
-              One workspace for creators, campaigns, content and protected milestone payments.
+            {/* Body Text: Geist 16-18px / 400 */}
+            <p className="text-base sm:text-lg text-[#6B6B6B] font-sans font-normal max-w-xl mx-auto leading-relaxed">
+              One workspace for creators, campaigns, content QA, and protected milestone payments.
             </p>
           </div>
 
-          {/* Solid Action Buttons (#111111 Primary + #FFFFFF Secondary) */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+          {/* Buttons: Geist 14–15px / 600 */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2 font-sans font-semibold text-sm">
             <Link
               href="/for-brands"
-              className="w-full sm:w-auto px-8 py-3.5 rounded-[9px] bg-[#111111] hover:bg-[#262626] active:bg-[#000000] text-[#FAFAF8] font-bold text-sm shadow-xs transition-all flex items-center justify-center gap-2 group"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-[9px] bg-[#111111] hover:bg-[#262626] active:bg-[#000000] text-[#FAFAF8] shadow-xs transition-all flex items-center justify-center gap-2 group"
             >
               <span>Start a Campaign</span>
               <span className="w-2 h-2 rounded-full bg-[#B7FF3C] group-hover:scale-125 transition-transform" />
@@ -93,7 +95,7 @@ export function HeroEditorialCollage() {
 
             <Link
               href="/creator/register"
-              className="w-full sm:w-auto px-7 py-3.5 rounded-[9px] bg-[#FFFFFF] hover:bg-[#F4F4F0] border border-[#E7E7E4] text-[#111111] font-bold text-sm shadow-xs transition-all flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-7 py-3.5 rounded-[9px] bg-[#FFFFFF] hover:bg-[#F4F4F0] border border-[#E7E7E4] text-[#111111] shadow-xs transition-all flex items-center justify-center gap-2"
             >
               <span>Join as a Creator</span>
               <ArrowRight className="w-4 h-4 text-[#111111]" />
@@ -109,7 +111,7 @@ export function HeroEditorialCollage() {
           <div className="absolute inset-x-8 top-12 bottom-12 rounded-3xl bg-[#FFFFFF] border border-[#E7E7E4] pointer-events-none -z-10 shadow-xs" />
 
           {/* ── 01. OVERSIZED EDITORIAL ARTWORK WORD "CREA" ── */}
-          <div className="absolute top-2 sm:top-6 left-0 sm:left-4 z-0 pointer-events-none">
+          <div className="absolute top-2 sm:top-6 left-0 sm:left-4 z-0 pointer-events-none font-display">
             <span className="text-6xl sm:text-8xl lg:text-9xl font-black text-[#111111]/[0.05] tracking-tighter leading-none">
               CREA
             </span>
@@ -133,8 +135,8 @@ export function HeroEditorialCollage() {
               {/* Caption Ribbon */}
               <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs font-mono">
                 <div>
-                  <h3 className="font-bold text-sm text-[#FAFAF8]">{maleHero.name}</h3>
-                  <p className="text-[11px] text-white/70">@{maleHero.handle} • {maleHero.niche}</p>
+                  <h3 className="font-display font-bold text-sm text-[#FAFAF8]">{maleHero.name}</h3>
+                  <p className="text-[11px] text-white/70 font-sans">@{maleHero.handle} • {maleHero.niche}</p>
                 </div>
                 <span className="px-2 py-0.5 rounded-md bg-[#B7FF3C] text-[#111111] text-[10px] font-bold">
                   TECH LEAD
@@ -160,7 +162,7 @@ export function HeroEditorialCollage() {
 
               <div className="absolute bottom-4 left-4 right-4 text-[#FAFAF8] text-xs font-mono">
                 <span className="text-[10px] text-[#B7FF3C] uppercase font-bold block">PARTNER</span>
-                <h4 className="font-bold text-sm">{femaleHero.name}</h4>
+                <h4 className="font-display font-bold text-sm">{femaleHero.name}</h4>
               </div>
             </div>
           </motion.div>
@@ -183,13 +185,13 @@ export function HeroEditorialCollage() {
               </div>
             </div>
             <div className="p-2.5 bg-white border-t border-[#E7E7E4] text-[11px] font-mono flex items-center justify-between">
-              <span className="font-bold text-[#111111]">{supportingFemale.name}</span>
+              <span className="font-display font-bold text-[#111111]">{supportingFemale.name}</span>
               <span className="text-[#111111] font-bold">{supportingFemale.verifiedRate}</span>
             </div>
           </motion.div>
 
           {/* ── 05. OVERSIZED WORD "GET PAID." ── */}
-          <div className="absolute bottom-4 sm:bottom-8 right-2 sm:right-8 z-30 pointer-events-none">
+          <div className="absolute bottom-4 sm:bottom-8 right-2 sm:right-8 z-30 pointer-events-none font-display">
             <span className="text-5xl sm:text-7xl lg:text-9xl font-black text-[#111111]/[0.05] tracking-tighter leading-none">
               GET PAID.
             </span>
@@ -203,7 +205,7 @@ export function HeroEditorialCollage() {
             className="absolute top-4 sm:top-8 right-8 sm:right-28 lg:right-44 z-30 p-3 sm:p-4 rounded-xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-editorial max-w-[200px] sm:max-w-[230px]"
           >
             <div className="flex items-center justify-between gap-2 pb-1.5 border-b border-[#E7E7E4] text-xs font-mono">
-              <span className="font-bold text-[#111111] truncate">Elena Rostova</span>
+              <span className="font-display font-bold text-[#111111] truncate">Elena Rostova</span>
               <span className="px-1.5 py-0.5 rounded bg-[#B7FF3C] text-[#111111] font-bold text-[10px]">
                 98% MATCH
               </span>
@@ -233,7 +235,7 @@ export function HeroEditorialCollage() {
                 ✓ APPROVED
               </span>
             </div>
-            <div className="flex items-baseline justify-between">
+            <div className="flex items-baseline justify-between font-display">
               <span className="text-xl sm:text-2xl font-black font-mono text-[#111111]">
                 ₹18,500
               </span>
@@ -241,7 +243,7 @@ export function HeroEditorialCollage() {
                 Direct to Bank
               </span>
             </div>
-            <p className="text-[10px] text-[#6B6B6B] mt-1 font-medium">
+            <p className="text-[10px] text-[#6B6B6B] mt-1 font-sans font-medium">
               Milestone Sign-Off via Stripe Connect
             </p>
           </motion.div>
@@ -258,10 +260,10 @@ export function HeroEditorialCollage() {
             </div>
             <div className="font-mono text-xs">
               <div className="flex items-center gap-1.5">
-                <span className="font-bold text-[#111111]">TECH LAUNCH</span>
+                <span className="font-display font-bold text-[#111111]">TECH LAUNCH</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C] animate-ping" />
               </div>
-              <p className="text-[10px] text-[#6B6B6B]">12 Creators • ₹2,50,000 LIVE</p>
+              <p className="text-[10px] text-[#6B6B6B] font-sans">12 Creators • ₹2,50,000 LIVE</p>
             </div>
           </motion.div>
 
@@ -289,20 +291,20 @@ export function HeroEditorialCollage() {
         </div>
 
         {/* ════════════════════════════════════════════════════════════════════
-            TRUST RAIL
+            TRUST RAIL: Geist 12px / JetBrains Mono
             ════════════════════════════════════════════════════════════════════ */}
-        <div className="pt-4 sm:pt-6 border-t border-[#E7E7E4] flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#6B6B6B]">
+        <div className="pt-4 sm:pt-6 border-t border-[#E7E7E4] flex flex-wrap items-center justify-between gap-4 text-xs font-sans text-[#6B6B6B]">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
-            <span className="text-[#111111] font-bold">100% Milestone Protection</span>
+            <span className="text-[#111111] font-semibold">100% Milestone Protection</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#111111]" />
-            <span className="text-[#111111] font-bold">&lt; 24h Automated Creator Payouts</span>
+            <span className="text-[#111111] font-semibold">&lt; 24h Automated Creator Payouts</span>
           </div>
           <div className="flex items-center gap-2">
             <Lock className="w-4 h-4 text-[#111111]" />
-            <span className="text-[#111111] font-bold">10% Flat Take-Rate (90% Creator Net)</span>
+            <span className="text-[#111111] font-semibold">10% Flat Take-Rate (90% Creator Net)</span>
           </div>
         </div>
       </div>

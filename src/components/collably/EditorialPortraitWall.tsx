@@ -16,13 +16,15 @@ export function EditorialPortraitWall() {
               <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
               <span>02 / CREATOR ROSTER</span>
             </div>
-            <h2 className="text-4xl sm:text-6xl font-extrabold text-[#111111] tracking-tight">
+            <h2 className="text-4xl sm:text-6xl font-display font-extrabold text-[#111111] tracking-tight leading-tight">
               Vetted talent. <br />
-              <span className="font-bold text-[#6B6B6B]">Curated for culture.</span>
+              <span className="font-serif italic font-normal text-[#6B6B6B] text-5xl sm:text-7xl">
+                Curated for culture.
+              </span>
             </h2>
           </div>
 
-          <p className="text-xs sm:text-sm text-[#6B6B6B] max-w-sm font-medium">
+          <p className="text-sm sm:text-base text-[#6B6B6B] max-w-sm font-sans font-normal leading-relaxed">
             Audited creator media kits with verified audience geography, real engagement rates, and standardized commercial rate cards.
           </p>
         </div>
@@ -69,28 +71,28 @@ export function EditorialPortraitWall() {
                 <div className="p-5 space-y-3 bg-[#FFFFFF]">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h4 className="text-base font-bold text-[#111111] flex items-center gap-1">
+                      <h4 className="text-base font-display font-bold text-[#111111] flex items-center gap-1">
                         {portrait.name}
                         <CheckCircle2 className="w-3.5 h-3.5 text-[#111111]" />
                       </h4>
-                      <p className="text-xs text-[#6B6B6B] font-mono">@{portrait.handle}</p>
+                      <p className="text-xs text-[#6B6B6B] font-sans">@{portrait.handle}</p>
                     </div>
 
                     <div className="text-right font-mono">
                       <span className="text-[9px] text-[#6B6B6B] block">STARTING AT</span>
-                      <span className="text-sm font-extrabold text-[#111111]">{portrait.verifiedRate}</span>
+                      <span className="text-sm font-extrabold text-[#111111] font-display">{portrait.verifiedRate}</span>
                     </div>
                   </div>
 
-                  <div className="pt-2.5 border-t border-[#E7E7E4] flex items-center justify-between text-xs font-mono">
-                    <span className="text-[#111111] font-bold flex items-center gap-1.5">
+                  <div className="pt-2.5 border-t border-[#E7E7E4] flex items-center justify-between text-xs font-sans">
+                    <span className="text-[#111111] font-semibold flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
                       {portrait.matchScore}% Match Score
                     </span>
 
                     <Link
                       href="/creators"
-                      className="text-[#111111] hover:text-black font-bold flex items-center gap-1 transition-colors"
+                      className="text-[#111111] hover:text-black font-semibold flex items-center gap-1 transition-colors"
                     >
                       <span>Media Kit</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -104,14 +106,14 @@ export function EditorialPortraitWall() {
 
         {/* Section Footer Banner */}
         <div className="p-6 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4 max-w-5xl mx-auto">
-          <div className="font-mono text-xs text-[#6B6B6B]">
+          <div className="font-sans text-xs text-[#6B6B6B]">
             <span>ROSTER DATABASE: </span>
-            <strong className="text-[#111111]">500+ AUDITED CREATORS ACROSS 12 NICHES</strong>
+            <strong className="text-[#111111] font-display font-bold">500+ AUDITED CREATORS ACROSS 12 NICHES</strong>
           </div>
 
           <Link
             href="/creators"
-            className="px-5 py-2.5 rounded-[9px] bg-[#111111] hover:bg-[#262626] text-[#FAFAF8] text-xs font-bold shadow-xs transition-all flex items-center gap-2 group"
+            className="px-5 py-2.5 rounded-[9px] bg-[#111111] hover:bg-[#262626] text-[#FAFAF8] text-xs font-sans font-semibold shadow-xs transition-all flex items-center gap-2 group"
           >
             <span>Explore Full Creator Roster</span>
             <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C] group-hover:scale-125 transition-transform" />

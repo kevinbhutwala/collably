@@ -59,9 +59,9 @@ export function BrandCreatorNetwork() {
           </div>
 
           <h2 className="text-4xl sm:text-6xl font-extrabold text-[#111111] tracking-tight font-display">
-            Direct brand × creator ties.
+            Direct brand <span className="font-serif italic font-normal text-[#6B6B6B]">× creator ties.</span>
           </h2>
-          <p className="text-sm sm:text-base text-[#6B6B6B] font-sans">
+          <p className="text-base text-[#6B6B6B] font-sans font-normal">
             How ambitious brands connect with top-tier creators under 100% pre-funded milestone security.
           </p>
         </div>
@@ -78,7 +78,7 @@ export function BrandCreatorNetwork() {
                 <div className="flex items-center justify-between pb-3 border-b border-[#E7E7E4]">
                   <div className="flex items-center gap-2">
                     <Building2 className="w-4 h-4 text-[#111111]" />
-                    <span className="font-mono text-xs font-extrabold tracking-wider text-[#111111]">
+                    <span className="font-display text-xs font-extrabold tracking-wider text-[#111111]">
                       {deal.brand}
                     </span>
                   </div>
@@ -105,12 +105,12 @@ export function BrandCreatorNetwork() {
                     alt={deal.creator.name}
                     className="w-11 h-11 rounded-lg object-cover border border-[#E7E7E4] shrink-0"
                   />
-                  <div className="overflow-hidden font-mono text-xs">
+                  <div className="overflow-hidden font-sans text-xs">
                     <div className="flex items-center gap-1">
-                      <span className="font-bold text-[#111111] font-sans truncate">{deal.creator.name}</span>
+                      <span className="font-display font-bold text-[#111111] truncate">{deal.creator.name}</span>
                       <CheckCircle2 className="w-3 h-3 text-[#111111] shrink-0" />
                     </div>
-                    <span className="text-[10px] text-[#6B6B6B] block truncate">
+                    <span className="text-[10px] text-[#6B6B6B] block truncate font-mono">
                       {deal.creator.followersFormatted} • {deal.creator.niche}
                     </span>
                   </div>
@@ -121,15 +121,15 @@ export function BrandCreatorNetwork() {
               <div className="pt-3 border-t border-[#E7E7E4] space-y-2 font-mono text-xs">
                 <div className="flex items-center justify-between">
                   <span className="text-[#6B6B6B] text-[10px]">DELIVERABLE:</span>
-                  <span className="font-bold text-[#111111] text-[11px] truncate max-w-[170px]">{deal.deliverable}</span>
+                  <span className="font-bold text-[#111111] text-[11px] truncate max-w-[170px] font-sans">{deal.deliverable}</span>
                 </div>
 
                 <div className="flex items-center justify-between">
                   <span className="text-[#6B6B6B] text-[10px]">ESCROW BUDGET:</span>
-                  <span className="font-extrabold text-[#111111] text-sm">{deal.budget}</span>
+                  <span className="font-extrabold text-[#111111] text-sm font-mono">{deal.budget}</span>
                 </div>
 
-                <div className="flex items-center gap-1.5 text-[10px] text-[#111111] font-bold pt-1">
+                <div className="flex items-center gap-1.5 text-[10px] text-[#111111] font-bold pt-1 font-sans">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
                   <span>{deal.status}</span>
                 </div>

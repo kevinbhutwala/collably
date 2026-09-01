@@ -36,9 +36,10 @@ const config: Config = {
           "linear-gradient(180deg, #FFFFFF 0%, #F4F4F0 100%)",
       },
       fontFamily: {
-        sans: ["'Satoshi'", "var(--font-sans)", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
-        display: ["'Satoshi'", "var(--font-sans)", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
-        mono: ["var(--font-mono)", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
+        display: ["'Neue Montreal'", "'Satoshi'", "var(--font-display)", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+        serif: ["'Instrument Serif'", "Georgia", "serif"],
+        sans: ["'Geist'", "var(--font-sans)", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
+        mono: ["'JetBrains Mono'", "var(--font-mono)", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
       },
       borderRadius: {
         lg: "var(--radius)",

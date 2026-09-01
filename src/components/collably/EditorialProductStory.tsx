@@ -110,9 +110,9 @@ export function EditorialProductStory() {
           </div>
 
           <h2 className="text-4xl sm:text-6xl font-extrabold text-[#111111] tracking-tight font-display">
-            Video QA meets instant settlement.
+            Video QA meets <span className="font-serif italic font-normal text-[#6B6B6B]">instant settlement.</span>
           </h2>
-          <p className="text-sm sm:text-base text-[#6B6B6B] font-sans">
+          <p className="text-base text-[#6B6B6B] font-sans font-normal">
             Drop timecoded feedback pins directly onto 4K video drafts. 1-click approve to disburse milestone payouts.
           </p>
         </div>
@@ -132,8 +132,8 @@ export function EditorialProductStory() {
 
                 {/* Overlapping 98% Match Card with #B7FF3C */}
                 <div className="absolute top-4 left-4 p-3 rounded-xl bg-white/95 backdrop-blur-md border border-[#E7E7E4] shadow-editorial font-mono text-xs">
-                  <span className="text-[10px] text-[#6B6B6B] block font-bold">MATCH ENGINE</span>
-                  <span className="text-sm font-extrabold text-[#111111] flex items-center gap-1.5">
+                  <span className="text-[10px] text-[#6B6B6B] block font-bold font-sans">MATCH ENGINE</span>
+                  <span className="text-sm font-extrabold text-[#111111] flex items-center gap-1.5 font-display">
                     <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
                     98% COMPATIBILITY
                   </span>
@@ -142,8 +142,8 @@ export function EditorialProductStory() {
                 {/* Overlapping Approval Card */}
                 <div className="absolute bottom-4 left-4 right-4 p-3.5 rounded-xl bg-white/95 backdrop-blur-md border border-[#E7E7E4] shadow-editorial font-mono text-xs flex items-center justify-between">
                   <div>
-                    <span className="text-[10px] text-[#6B6B6B] block">CREATOR RATE</span>
-                    <span className="font-extrabold text-sm text-[#111111]">{creator.verifiedRate}</span>
+                    <span className="text-[10px] text-[#6B6B6B] block font-sans">CREATOR RATE</span>
+                    <span className="font-extrabold text-sm text-[#111111] font-display">{creator.verifiedRate}</span>
                   </div>
                   <span className="px-2 py-0.5 rounded bg-[#111111] text-[#B7FF3C] font-bold text-[10px]">
                     ✓ READY FOR SIGN-OFF
@@ -159,7 +159,7 @@ export function EditorialProductStory() {
             <div className="flex items-center justify-between pb-3 border-b border-[#E7E7E4] text-xs font-mono">
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#B7FF3C] animate-pulse" />
-                <span className="text-[#111111] font-bold font-sans">Elena Rostova • AI Smartwatch Reel</span>
+                <span className="text-[#111111] font-display font-bold text-sm">Elena Rostova • AI Smartwatch Reel</span>
                 <span className="text-[#6B6B6B] hidden sm:inline">• Cut v2 (4K 60FPS)</span>
               </div>
               <span className="px-2.5 py-0.5 rounded-full bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] font-bold flex items-center gap-1.5">
@@ -243,7 +243,7 @@ export function EditorialProductStory() {
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1 text-[10px] font-mono">
-                      <span className="font-bold text-[#111111] truncate">{c.author}</span>
+                      <span className="font-bold text-[#111111] truncate font-sans">{c.author}</span>
                       <span className="px-1 py-0.5 rounded bg-[#FAFAF8] text-[#111111] font-bold">@{c.timecode}</span>
                     </div>
                     <p className="text-[11px] text-[#6B6B6B] font-sans line-clamp-1">&ldquo;{c.text}&rdquo;</p>

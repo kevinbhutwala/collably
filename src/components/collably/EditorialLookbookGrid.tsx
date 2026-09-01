@@ -43,35 +43,35 @@ export function EditorialLookbookGrid() {
   return (
     <section className="py-24 sm:py-36 bg-[#FAFAF8] border-b border-[#E7E7E4] relative overflow-hidden select-none text-[#111111]">
       {/* Background Watermark */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-[0.02] text-[18vw] font-black select-none">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-[0.02] text-[18vw] font-display font-black select-none">
         LOOKBOOK
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14 relative z-10">
-        {/* ── 01. SECTION HEADER ── */}
+        {/* ── 01. SECTION HEADER: Neue Montreal + Instrument Serif Italic ── */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#E7E7E4] pb-6">
           <div className="space-y-3 max-w-xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-xs font-mono font-bold text-[#111111] shadow-xs">
               <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
               <span>05 / TALENT &amp; BRAND ROSTER</span>
             </div>
-            <h2 className="text-4xl sm:text-6xl font-extrabold text-[#111111] tracking-tight">
+            <h2 className="text-4xl sm:text-6xl font-display font-extrabold text-[#111111] tracking-tight leading-tight">
               Scale in portraits. <br />
-              <span className="font-bold text-[#6B6B6B]">
+              <span className="font-serif italic font-normal text-[#6B6B6B] text-5xl sm:text-7xl">
                 Big, medium &amp; micro.
               </span>
             </h2>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            {/* Filter Pills */}
-            <div className="flex items-center gap-1.5 p-1 rounded-xl bg-[#FFFFFF] border border-[#E7E7E4] text-xs font-mono shadow-xs">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 font-sans">
+            {/* Filter Pills: Geist */}
+            <div className="flex items-center gap-1.5 p-1 rounded-xl bg-[#FFFFFF] border border-[#E7E7E4] text-xs font-semibold shadow-xs">
               {(["ALL", "BIG", "MEDIUM", "SMALL"] as const).map((filter) => (
                 <button
                   key={filter}
                   type="button"
                   onClick={() => setActiveFilter(filter)}
-                  className={`px-3 py-1.5 rounded-lg font-bold transition-all ${
+                  className={`px-3 py-1.5 rounded-lg font-semibold transition-all ${
                     activeFilter === filter
                       ? "bg-[#111111] text-[#FAFAF8] shadow-xs"
                       : "text-[#6B6B6B] hover:text-[#111111]"
@@ -92,7 +92,7 @@ export function EditorialLookbookGrid() {
         {(activeFilter === "ALL" || activeFilter === "BIG") && (
           <div className="space-y-6">
             <div className="flex items-center justify-between font-mono text-xs text-[#6B6B6B] pb-2 border-b border-[#E7E7E4]/60">
-              <span className="font-bold text-[#111111] tracking-wider uppercase flex items-center gap-1.5">
+              <span className="font-bold text-[#111111] tracking-wider uppercase flex items-center gap-1.5 font-sans">
                 <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
                 [SECTION A] LARGE EDITORIAL ANCHORS &amp; FLAGSHIP BRANDS
               </span>
@@ -115,13 +115,13 @@ export function EditorialLookbookGrid() {
                     BIG ANCHOR • {bigPortraits[0].category}
                   </div>
 
-                  <div className="absolute bottom-4 left-4 right-4 text-white space-y-1.5 font-mono">
-                    <div className="flex items-center justify-between text-xs">
+                  <div className="absolute bottom-4 left-4 right-4 text-white space-y-1.5 font-sans">
+                    <div className="flex items-center justify-between text-xs font-mono">
                       <span className="text-white/80">FEATURED PARTNER:</span>
                       <span className="text-[#B7FF3C] font-bold">{bigPortraits[0].featuredBrand}</span>
                     </div>
-                    <h3 className="text-xl font-bold text-[#FAFAF8]">{bigPortraits[0].name}</h3>
-                    <div className="flex items-center justify-between text-xs text-white/90 pt-1 border-t border-white/20">
+                    <h3 className="text-xl font-display font-bold text-[#FAFAF8]">{bigPortraits[0].name}</h3>
+                    <div className="flex items-center justify-between text-xs text-white/90 pt-1 border-t border-white/20 font-mono">
                       <span>{bigPortraits[0].followersFormatted} Reach</span>
                       <span className="font-bold text-[#B7FF3C]">{bigPortraits[0].verifiedRate}</span>
                     </div>
@@ -143,13 +143,13 @@ export function EditorialLookbookGrid() {
                     FEATURED • {bigPortraits[1].category}
                   </div>
 
-                  <div className="absolute bottom-4 left-4 right-4 text-white space-y-1.5 font-mono">
-                    <div className="flex items-center justify-between text-xs">
+                  <div className="absolute bottom-4 left-4 right-4 text-white space-y-1.5 font-sans">
+                    <div className="flex items-center justify-between text-xs font-mono">
                       <span className="text-white/80">COLLABORATING WITH:</span>
                       <span className="text-[#B7FF3C] font-bold">{bigPortraits[1].featuredBrand}</span>
                     </div>
-                    <h3 className="text-xl font-bold text-[#FAFAF8]">{bigPortraits[1].name}</h3>
-                    <div className="flex items-center justify-between text-xs text-white/90 pt-1 border-t border-white/20">
+                    <h3 className="text-xl font-display font-bold text-[#FAFAF8]">{bigPortraits[1].name}</h3>
+                    <div className="flex items-center justify-between text-xs text-white/90 pt-1 border-t border-white/20 font-mono">
                       <span>{bigPortraits[1].engagementFormatted} ER</span>
                       <span className="font-bold text-[#B7FF3C]">{bigPortraits[1].verifiedRate}</span>
                     </div>
@@ -170,9 +170,9 @@ export function EditorialLookbookGrid() {
                           <span className="w-8 h-8 rounded-lg bg-[#111111] text-[#B7FF3C] flex items-center justify-center font-mono font-bold text-xs">
                             {brand.logoEmblem}
                           </span>
-                          <h4 className="font-extrabold text-lg text-[#111111]">{brand.name}</h4>
+                          <h4 className="font-display font-extrabold text-lg text-[#111111]">{brand.name}</h4>
                         </div>
-                        <p className="text-xs text-[#6B6B6B]">{brand.tagline}</p>
+                        <p className="text-xs text-[#6B6B6B] font-sans">{brand.tagline}</p>
                       </div>
 
                       <span className="px-2 py-0.5 rounded bg-[#111111] text-[#B7FF3C] font-mono text-[10px] font-bold">
@@ -183,11 +183,11 @@ export function EditorialLookbookGrid() {
                     <div className="p-3 rounded-xl bg-[#FAFAF8] border border-[#E7E7E4] grid grid-cols-2 gap-2 text-xs font-mono">
                       <div>
                         <span className="text-[10px] text-[#6B6B6B] block">ESCROW VOLUME</span>
-                        <span className="font-bold text-[#111111]">{brand.totalVolume}</span>
+                        <span className="font-bold text-[#111111] font-display">{brand.totalVolume}</span>
                       </div>
                       <div>
                         <span className="text-[10px] text-[#6B6B6B] block">ROSTER TALENT</span>
-                        <span className="font-bold text-[#111111] flex items-center gap-1">
+                        <span className="font-bold text-[#111111] flex items-center gap-1 font-sans">
                           <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
                           {brand.featuredCreator}
                         </span>
@@ -204,7 +204,7 @@ export function EditorialLookbookGrid() {
         {(activeFilter === "ALL" || activeFilter === "MEDIUM") && (
           <div className="space-y-6 pt-4">
             <div className="flex items-center justify-between font-mono text-xs text-[#6B6B6B] pb-2 border-b border-[#E7E7E4]/60">
-              <span className="font-bold text-[#111111] tracking-wider uppercase flex items-center gap-1.5">
+              <span className="font-bold text-[#111111] tracking-wider uppercase flex items-center gap-1.5 font-sans">
                 <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
                 [SECTION B] MEDIUM POLAROID LOOKBOOK &amp; NICHE PARTNERS
               </span>
@@ -235,18 +235,18 @@ export function EditorialLookbookGrid() {
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between font-mono">
+                  <div className="space-y-2 font-sans">
+                    <div className="flex items-center justify-between">
                       <div>
-                        <h4 className="font-bold text-sm text-[#111111]">{portrait.name}</h4>
-                        <span className="text-[11px] text-[#6B6B6B]">@{portrait.handle}</span>
+                        <h4 className="font-display font-bold text-sm text-[#111111]">{portrait.name}</h4>
+                        <span className="text-[11px] text-[#6B6B6B] font-mono">@{portrait.handle}</span>
                       </div>
-                      <span className="text-xs font-bold text-[#111111]">{portrait.verifiedRate}</span>
+                      <span className="text-xs font-bold text-[#111111] font-mono">{portrait.verifiedRate}</span>
                     </div>
 
-                    <div className="pt-2 border-t border-[#E7E7E4] flex items-center justify-between text-[11px] font-mono text-[#6B6B6B]">
+                    <div className="pt-2 border-t border-[#E7E7E4] flex items-center justify-between text-[11px] text-[#6B6B6B]">
                       <span>Brand: <strong className="text-[#111111]">{portrait.featuredBrand}</strong></span>
-                      <span className="text-[#111111] font-bold flex items-center gap-1">
+                      <span className="text-[#111111] font-semibold flex items-center gap-1 font-mono">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
                         {portrait.matchScore}% FIT
                       </span>
@@ -261,18 +261,18 @@ export function EditorialLookbookGrid() {
               {mediumBrands.map((brand) => (
                 <div
                   key={brand.id}
-                  className="p-4 rounded-xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs flex items-center justify-between gap-3 font-mono text-xs"
+                  className="p-4 rounded-xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs flex items-center justify-between gap-3 font-sans text-xs"
                 >
                   <div className="flex items-center gap-2.5 overflow-hidden">
-                    <div className="w-8 h-8 rounded-lg bg-[#111111] text-[#B7FF3C] flex items-center justify-center font-bold text-[11px] shrink-0">
+                    <div className="w-8 h-8 rounded-lg bg-[#111111] text-[#B7FF3C] flex items-center justify-center font-bold text-[11px] shrink-0 font-mono">
                       {brand.logoEmblem}
                     </div>
                     <div className="overflow-hidden">
-                      <span className="font-bold text-[#111111] block truncate">{brand.name}</span>
+                      <span className="font-display font-bold text-[#111111] block truncate">{brand.name}</span>
                       <span className="text-[10px] text-[#6B6B6B] block truncate">{brand.industry}</span>
                     </div>
                   </div>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] shrink-0">
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[#FAFAF8] border border-[#E7E7E4] text-[#111111] shrink-0 font-mono">
                     {brand.totalVolume}
                   </span>
                 </div>
@@ -285,7 +285,7 @@ export function EditorialLookbookGrid() {
         {(activeFilter === "ALL" || activeFilter === "SMALL") && (
           <div className="space-y-6 pt-4">
             <div className="flex items-center justify-between font-mono text-xs text-[#6B6B6B] pb-2 border-b border-[#E7E7E4]/60">
-              <span className="font-bold text-[#111111] tracking-wider uppercase flex items-center gap-1.5">
+              <span className="font-bold text-[#111111] tracking-wider uppercase flex items-center gap-1.5 font-sans">
                 <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
                 [SECTION C] MICRO-CREATOR BADGES &amp; MONOGRAM CAPSULES
               </span>
@@ -298,7 +298,7 @@ export function EditorialLookbookGrid() {
                   key={portrait.id}
                   className="p-3.5 rounded-xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs flex items-center justify-between gap-3 hover:border-[#111111] transition-colors"
                 >
-                  <div className="flex items-center gap-3 overflow-hidden">
+                  <div className="flex items-center gap-3 overflow-hidden font-sans">
                     {/* Camera Lens Circular Avatar */}
                     <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#111111] shrink-0 shadow-xs">
                       <img
@@ -309,9 +309,9 @@ export function EditorialLookbookGrid() {
                       <div className="absolute inset-0 ring-1 ring-inset ring-black/20 rounded-full" />
                     </div>
 
-                    <div className="overflow-hidden font-mono text-xs">
-                      <h5 className="font-bold text-[#111111] truncate">{portrait.name}</h5>
-                      <span className="text-[10px] text-[#6B6B6B] block truncate">
+                    <div className="overflow-hidden text-xs">
+                      <h5 className="font-display font-bold text-[#111111] truncate">{portrait.name}</h5>
+                      <span className="text-[10px] text-[#6B6B6B] block truncate font-mono">
                         {portrait.category} • {portrait.followersFormatted}
                       </span>
                     </div>
@@ -326,16 +326,16 @@ export function EditorialLookbookGrid() {
             </div>
 
             {/* Small Brand Monogram Ticker Strip */}
-            <div className="p-4 rounded-xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs flex flex-wrap items-center justify-around gap-4 text-xs font-mono text-[#6B6B6B]">
+            <div className="p-4 rounded-xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs flex flex-wrap items-center justify-around gap-4 text-xs font-sans text-[#6B6B6B]">
               <span className="text-[10px] text-[#111111] font-bold uppercase tracking-wider flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
                 ACTIVE DEAL RAILS:
               </span>
               {smallBrands.map((b) => (
                 <div key={b.id} className="flex items-center gap-2 bg-[#FAFAF8] px-3 py-1.5 rounded-lg border border-[#E7E7E4]">
-                  <span className="font-bold text-[#111111]">{b.logoEmblem}</span>
+                  <span className="font-bold text-[#111111] font-mono">{b.logoEmblem}</span>
                   <span className="text-[#111111] font-semibold">{b.name}</span>
-                  <span className="text-[10px] text-[#6B6B6B]">/ {b.activeDealsCount} DEALS</span>
+                  <span className="text-[10px] text-[#6B6B6B] font-mono">/ {b.activeDealsCount} DEALS</span>
                 </div>
               ))}
             </div>

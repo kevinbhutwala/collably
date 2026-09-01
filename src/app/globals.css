@@ -1,4 +1,5 @@
-@import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700,800,900&display=swap');
+@import url('https://fonts.cdnfonts.com/css/neue-montreal');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Instrument+Serif:ital,wght@0,400;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,7 +8,7 @@
 @layer base {
   :root {
     /* ══════════════════════════════════════════════════════════════════════════
-       COLLABLY — SATOSHI × CHROME × ELECTRIC ACID LIME DESIGN SYSTEM
+       COLLABLY — NEUE MONTREAL × INSTRUMENT SERIF × GEIST DESIGN SYSTEM
        ══════════════════════════════════════════════════════════════════════════ */
     --background: #FAFAF8;
     --background-alt: #F4F4F0;
@@ -52,12 +53,13 @@
   }
   html, body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Satoshi', var(--font-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Geist', var(--font-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1, "cv02" 1, "cv03" 1, "cv04" 1, "cv11" 1;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Satoshi', var(--font-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    letter-spacing: -0.025em;
+    font-family: 'Neue Montreal', 'Satoshi', var(--font-display), -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.03em;
+    font-weight: 700;
   }
 }
 
@@ -81,6 +83,7 @@
 }
 
 .btn-carbon-primary {
+  font-family: 'Geist', sans-serif;
   background: #111111;
   color: #FAFAF8;
   border-radius: 9px;
@@ -95,6 +98,7 @@
 }
 
 .btn-carbon-secondary {
+  font-family: 'Geist', sans-serif;
   background: #FFFFFF;
   color: #111111;
   border: 1px solid #E7E7E4;
@@ -108,6 +112,7 @@
 }
 
 .badge-micro-accent {
+  font-family: 'JetBrains Mono', monospace;
   background: #B7FF3C;
   color: #111111;
   border: 1px solid #9EE61C;
@@ -115,6 +120,7 @@
 }
 
 .badge-carbon {
+  font-family: 'JetBrains Mono', monospace;
   background: #111111;
   color: #FAFAF8;
 }
