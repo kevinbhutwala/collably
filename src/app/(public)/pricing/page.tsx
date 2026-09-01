@@ -2,8 +2,8 @@ import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
-import { FAQSection } from "@/components/landing/FAQSection";
-import { CTASection } from "@/components/landing/CTASection";
+import { FAQSection } from "@/components/collably/FAQSection";
+import { EditorialCTA } from "@/components/collably/EditorialCTA";
 import { CheckCircle2, ShieldCheck, ArrowUpRight } from "lucide-react";
 
 export default function PricingPage() {
@@ -61,16 +61,16 @@ export default function PricingPage() {
   ];
 
   return (
-    <div className="bg-[#0a070a] text-white min-h-screen">
+    <div className="bg-[#FAFAF8] text-[#111111] min-h-screen">
       <div className="pt-24 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-        <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-semibold font-mono">
-          <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+        <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-[#111111] text-xs font-semibold font-mono shadow-xs">
+          <span className="w-2 h-2 rounded-full bg-[#B7FF3C]" />
           <span>Transparent &amp; Escrow Secured</span>
         </div>
-        <h1 className="text-4xl sm:text-6xl font-extrabold text-white tracking-tight font-display">
+        <h1 className="text-4xl sm:text-6xl font-extrabold text-[#111111] tracking-tight font-display">
           Simple, Transparent Pricing
         </h1>
-        <p className="text-base text-slate-300 max-w-2xl mx-auto font-sans leading-relaxed">
+        <p className="text-base text-[#6B6B6B] max-w-2xl mx-auto font-sans leading-relaxed">
           No hidden subscription traps. Pay transparent platform fees only on successful milestones or partner with our dedicated agency team.
         </p>
       </div>
@@ -80,38 +80,40 @@ export default function PricingPage() {
           {plans.map((p, i) => (
             <div
               key={i}
-              className={`p-8 rounded-3xl border transition-all flex flex-col justify-between space-y-8 ${
+              className={`p-8 rounded-2xl border transition-all flex flex-col justify-between space-y-8 ${
                 p.highlight
-                  ? "bg-gradient-to-b from-[#1c1122] to-[#120c16] text-white shadow-elevated border-[hsl(327,100%,50%)]/50 relative"
-                  : "bg-[#120c16] text-white border-white/10 shadow-card hover:border-white/20"
+                  ? "bg-[#FFFFFF] text-[#111111] shadow-editorial-lg border-[#111111] relative"
+                  : "bg-[#FFFFFF] text-[#111111] border-[#E7E7E4] shadow-xs hover:border-[#111111]"
               }`}
             >
               {p.highlight && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <Badge variant="glow" size="sm">Most Popular for Growth Teams</Badge>
+                  <span className="px-3 py-1 rounded-full bg-[#B7FF3C] text-[#111111] text-xs font-mono font-bold border border-[#9EE61C] shadow-xs">
+                    Most Popular for Growth Teams
+                  </span>
                 </div>
               )}
 
               <div className="space-y-4">
                 <div>
-                  <h3 className="text-xl font-bold text-white font-display">{p.name}</h3>
-                  <p className="text-xs mt-1 leading-relaxed text-slate-300 font-sans">
+                  <h3 className="text-xl font-bold text-[#111111] font-display">{p.name}</h3>
+                  <p className="text-xs mt-1 leading-relaxed text-[#6B6B6B] font-sans">
                     {p.description}
                   </p>
                 </div>
 
                 <div className="pt-2 font-mono">
-                  <span className="text-4xl sm:text-5xl font-extrabold text-white">
+                  <span className="text-4xl sm:text-5xl font-extrabold text-[#111111]">
                     {p.price}
                   </span>
-                  <span className="text-xs block mt-1 text-slate-400 font-sans">{p.subtext}</span>
+                  <span className="text-xs block mt-1 text-[#6B6B6B] font-sans">{p.subtext}</span>
                 </div>
 
-                <ul className="space-y-3 pt-4 border-t border-white/10 text-xs font-sans">
+                <ul className="space-y-3 pt-4 border-t border-[#E7E7E4] text-xs font-sans">
                   {p.features.map((f, j) => (
                     <li key={j} className="flex items-start gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                      <span className="text-slate-200">{f}</span>
+                      <CheckCircle2 className="w-4 h-4 text-[#111111] shrink-0 mt-0.5" />
+                      <span className="text-[#111111] font-medium">{f}</span>
                     </li>
                   ))}
                 </ul>
@@ -121,7 +123,7 @@ export default function PricingPage() {
                 <Button
                   variant="primary"
                   size="lg"
-                  className="w-full shadow-md rounded-full font-display font-bold"
+                  className="w-full shadow-xs rounded-[9px] font-sans font-bold"
                   rightIcon={<ArrowUpRight className="w-4 h-4" />}
                 >
                   {p.cta}
@@ -133,7 +135,7 @@ export default function PricingPage() {
       </div>
 
       <FAQSection />
-      <CTASection />
+      <EditorialCTA />
     </div>
   );
 }

@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "outline" | "ghost" | "glass" | "accent" | "danger";
+  variant?: "primary" | "secondary" | "outline" | "ghost" | "glass" | "accent" | "danger" | "carbon" | "micro";
   size?: "sm" | "md" | "lg" | "icon";
   isLoading?: boolean;
   leftIcon?: React.ReactNode;
@@ -26,30 +26,34 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles =
-      "inline-flex items-center justify-center font-medium transition-all duration-200 select-none disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98]";
+      "inline-flex items-center justify-center font-semibold transition-all duration-150 select-none disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98] font-sans";
 
     const sizeStyles = {
-      sm: "text-xs px-3.5 py-1.5 rounded-lg gap-1.5 font-medium",
-      md: "text-sm px-4 py-2.5 rounded-xl gap-2 font-medium",
-      lg: "text-base px-6 py-3.5 rounded-xl gap-2.5 font-semibold",
-      icon: "p-2.5 rounded-xl",
+      sm: "text-xs px-3.5 py-1.5 rounded-[9px] gap-1.5",
+      md: "text-xs px-4 py-2.5 rounded-[9px] gap-2",
+      lg: "text-sm px-6 py-3.5 rounded-[9px] gap-2.5",
+      icon: "p-2.5 rounded-[9px]",
     };
 
     const variantStyles = {
       primary:
-        "bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white shadow-lg shadow-[hsl(327,100%,50%)]/25 hover:shadow-xl hover:shadow-[hsl(327,100%,50%)]/35 hover:brightness-110",
+        "bg-[#111111] hover:bg-[#262626] active:bg-[#000000] text-[#FAFAF8] shadow-xs",
       secondary:
-        "bg-white/10 text-white hover:bg-white/15 border border-white/10 shadow-xs",
+        "bg-[#FFFFFF] hover:bg-[#F4F4F0] text-[#111111] border border-[#E7E7E4] shadow-xs",
       outline:
-        "bg-transparent text-slate-200 border border-white/20 hover:border-[hsl(327,100%,50%)]/40 hover:text-white hover:bg-white/[0.04] shadow-xs",
+        "bg-transparent text-[#111111] border border-[#E7E7E4] hover:bg-[#F4F4F0]",
       ghost:
-        "bg-transparent text-slate-300 hover:text-white hover:bg-white/[0.06]",
+        "bg-transparent text-[#6B6B6B] hover:text-[#111111] hover:bg-[#F4F4F0]",
       glass:
-        "bg-white/[0.06] backdrop-blur-md text-white border border-white/10 hover:bg-white/[0.12] hover:border-pink-500/30 shadow-xs",
+        "bg-white/80 backdrop-blur-md text-[#111111] border border-[#E7E7E4] hover:bg-white shadow-xs",
       accent:
-        "bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white hover:brightness-110 shadow-lg shadow-pink-500/25",
+        "bg-[#B7FF3C] text-[#111111] hover:bg-[#9EE61C] border border-[#9EE61C] shadow-xs font-bold",
+      carbon:
+        "bg-[#111111] text-[#FAFAF8] hover:bg-[#262626]",
+      micro:
+        "bg-[#B7FF3C] text-[#111111] hover:bg-[#9EE61C] font-bold shadow-xs",
       danger:
-        "bg-rose-500/20 text-rose-300 border border-rose-500/30 hover:bg-rose-500/30",
+        "bg-[#FEE2E2] text-[#991B1B] border border-[#FECACA] hover:bg-[#FCA5A5]",
     };
 
     return (

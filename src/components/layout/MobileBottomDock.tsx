@@ -48,7 +48,7 @@ export function MobileBottomDock() {
 
   return (
     <div className="lg:hidden fixed bottom-3 inset-x-0 z-40 px-4 pointer-events-none">
-      <nav className="max-w-md mx-auto rounded-full bg-[#FFFFFF]/95 backdrop-blur-xl border border-[#E2E6E1] p-1.5 shadow-fintech flex items-center justify-around pointer-events-auto">
+      <nav className="max-w-md mx-auto rounded-full bg-[#FFFFFF]/95 backdrop-blur-xl border border-[#E7E7E4] p-1.5 shadow-editorial flex items-center justify-around pointer-events-auto">
         {tabs.map((tab) => {
           const isActive = pathname === tab.href;
           const Icon = tab.icon;
@@ -60,14 +60,14 @@ export function MobileBottomDock() {
               className={cn(
                 "relative flex flex-col items-center justify-center py-1.5 px-3 rounded-full text-[10px] font-mono transition-all duration-150 select-none",
                 isActive
-                  ? "text-[#087F5B] font-bold bg-[#EAF8F2] border border-[#C3EBDA] shadow-xs"
-                  : "text-[#626862] hover:text-[#101310]"
+                  ? "text-[#FAFAF8] font-bold bg-[#111111] shadow-xs"
+                  : "text-[#6B6B6B] hover:text-[#111111]"
               )}
             >
-              <Icon className={cn("w-4 h-4 mb-0.5", isActive ? "text-[#087F5B]" : "text-[#8A908B]")} />
+              <Icon className={cn("w-4 h-4 mb-0.5", isActive ? "text-[#B7FF3C]" : "text-[#6B6B6B]")} />
               <span className="truncate max-w-[54px] font-sans">{tab.label}</span>
               {isActive && (
-                <span className="absolute -top-1 w-1.5 h-1.5 rounded-full bg-[#087F5B] animate-pulse" />
+                <span className="absolute -top-1 w-1.5 h-1.5 rounded-full bg-[#B7FF3C] animate-pulse" />
               )}
             </Link>
           );

@@ -2,7 +2,7 @@ import React from "react";
 import { cn } from "@/lib/utils";
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: "default" | "outline" | "success" | "warning" | "danger" | "purple" | "glow";
+  variant?: "default" | "outline" | "success" | "warning" | "danger" | "purple" | "glow" | "carbon" | "micro";
   size?: "sm" | "md";
   dot?: boolean;
 }
@@ -16,34 +16,38 @@ export function Badge({
   ...props
 }: BadgeProps) {
   const sizeStyles = {
-    sm: "text-[11px] px-2 py-0.5 rounded-full gap-1 font-medium",
-    md: "text-xs px-2.5 py-1 rounded-full gap-1.5 font-medium",
+    sm: "text-[10px] px-2 py-0.5 rounded-md gap-1 font-mono font-bold",
+    md: "text-xs px-2.5 py-1 rounded-md gap-1.5 font-mono font-bold",
   };
 
   const variantStyles = {
-    default: "bg-white/10 text-slate-200 border border-white/10",
-    outline: "bg-white/[0.04] text-slate-300 border border-white/20",
-    success: "bg-emerald-500/15 text-emerald-300 border border-emerald-500/30",
-    warning: "bg-amber-500/15 text-amber-300 border border-amber-500/30",
-    danger: "bg-rose-500/15 text-rose-300 border border-rose-500/30",
-    purple: "bg-purple-500/15 text-purple-300 border border-purple-500/30",
-    glow: "bg-pink-500/15 text-pink-300 border border-pink-500/30 font-semibold shadow-xs",
+    default: "bg-[#FFFFFF] text-[#111111] border border-[#E7E7E4] shadow-xs",
+    outline: "bg-[#FAFAF8] text-[#6B6B6B] border border-[#E7E7E4]",
+    success: "bg-[#B7FF3C] text-[#111111] border border-[#9EE61C]",
+    glow: "bg-[#B7FF3C] text-[#111111] border border-[#9EE61C] shadow-xs",
+    micro: "bg-[#B7FF3C] text-[#111111] border border-[#9EE61C]",
+    carbon: "bg-[#111111] text-[#FAFAF8] border border-[#111111]",
+    warning: "bg-[#FEF9C3] text-[#713F12] border border-[#FEF08A]",
+    danger: "bg-[#FEE2E2] text-[#991B1B] border border-[#FECACA]",
+    purple: "bg-[#111111] text-[#B7FF3C] border border-[#111111]",
   };
 
   const dotStyles = {
-    default: "bg-slate-400",
-    outline: "bg-slate-400",
-    success: "bg-emerald-400",
-    warning: "bg-amber-400",
-    danger: "bg-rose-400",
-    purple: "bg-purple-400",
-    glow: "bg-pink-400",
+    default: "bg-[#111111]",
+    outline: "bg-[#6B6B6B]",
+    success: "bg-[#111111]",
+    glow: "bg-[#111111]",
+    micro: "bg-[#111111]",
+    carbon: "bg-[#B7FF3C]",
+    warning: "bg-[#854D0E]",
+    danger: "bg-[#B91C1C]",
+    purple: "bg-[#B7FF3C]",
   };
 
   return (
     <div
       className={cn(
-        "inline-flex items-center select-none shadow-xs",
+        "inline-flex items-center select-none",
         sizeStyles[size],
         variantStyles[variant],
         className

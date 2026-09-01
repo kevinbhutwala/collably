@@ -110,38 +110,38 @@ export function AppNavbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-30 w-full h-16 border-b border-[#E2E6E1] bg-[#FCFCFA]/95 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between gap-4 text-[#101310]">
+      <header className="sticky top-0 z-30 w-full h-16 border-b border-[#E7E7E4] bg-[#FAFAF8]/95 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between gap-4 text-[#111111]">
         {/* Left Area: Mobile Drawer Trigger & Search */}
         <div className="flex items-center gap-3 flex-1 max-w-md">
           {/* Mobile Sidebar Hamburger Trigger */}
           <button
             type="button"
             onClick={() => setShowMobileSidebar(!showMobileSidebar)}
-            className="lg:hidden p-2 rounded-lg bg-[#F1F2EE] border border-[#E2E6E1] text-[#101310] hover:bg-[#E2E6E1] transition-colors"
+            className="lg:hidden p-2 rounded-lg bg-[#FFFFFF] border border-[#E7E7E4] text-[#111111] hover:bg-[#F4F4F0] transition-colors"
             aria-label="Open Workspace Menu"
           >
-            <Menu className="w-4 h-4 text-[#087F5B]" />
+            <Menu className="w-4 h-4 text-[#111111]" />
           </button>
 
           <Link href="/app/dashboard" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-[#087F5B] flex items-center justify-center font-bold text-white text-xs shadow-xs">
-              CB
+            <div className="w-8 h-8 rounded-lg bg-[#111111] flex items-center justify-center font-bold text-[#FAFAF8] text-xs shadow-xs">
+              <span className="text-[#B7FF3C]">CB</span>
             </div>
-            <span className="font-bold text-[#101310] text-sm font-display hidden xs:inline">Collably</span>
+            <span className="font-bold text-[#111111] text-sm font-display hidden xs:inline">Collably</span>
           </Link>
 
           <div className="relative w-full hidden sm:block">
-            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-[#8A908B]" />
+            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-[#6B6B6B]" />
             <button
               type="button"
               onClick={() => {
                 const event = new KeyboardEvent("keydown", { key: "k", metaKey: true, bubbles: true });
                 window.dispatchEvent(event);
               }}
-              className="w-full text-left bg-[#FFFFFF] border border-[#E2E6E1] rounded-lg pl-9 pr-12 py-2 text-xs text-[#626862] hover:border-[#087F5B] hover:bg-[#FCFCFA] transition-all shadow-xs flex items-center justify-between"
+              className="w-full text-left bg-[#FFFFFF] border border-[#E7E7E4] rounded-lg pl-9 pr-12 py-2 text-xs text-[#6B6B6B] hover:border-[#111111] hover:bg-[#FAFAF8] transition-all shadow-xs flex items-center justify-between"
             >
               <span className="truncate">Search campaigns, creators, analytics...</span>
-              <kbd className="px-1.5 py-0.5 rounded bg-[#F1F2EE] border border-[#E2E6E1] text-[10px] font-mono text-[#626862]">
+              <kbd className="px-1.5 py-0.5 rounded bg-[#FAFAF8] border border-[#E7E7E4] text-[10px] font-mono text-[#6B6B6B]">
                 ⌘K
               </kbd>
             </button>
@@ -153,8 +153,8 @@ export function AppNavbar() {
           {/* Quick Action Button for Brand */}
           {role === "brand" && (
             <Link href="/app/brand/campaigns/create">
-              <button className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-[9px] bg-[#087F5B] hover:bg-[#075E45] text-white font-semibold text-xs shadow-xs transition-all font-sans">
-                <Plus className="w-3.5 h-3.5" />
+              <button className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-[9px] bg-[#111111] hover:bg-[#262626] text-[#FAFAF8] font-semibold text-xs shadow-xs transition-all font-sans group">
+                <Plus className="w-3.5 h-3.5 text-[#B7FF3C]" />
                 <span>Create Brief</span>
               </button>
             </Link>
@@ -163,8 +163,8 @@ export function AppNavbar() {
           {/* Quick Action Button for Creator */}
           {role === "creator" && (
             <Link href="/campaigns">
-              <button className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-[9px] bg-[#087F5B] hover:bg-[#075E45] text-white font-semibold text-xs shadow-xs transition-all font-sans">
-                <Sparkles className="w-3.5 h-3.5" />
+              <button className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-[9px] bg-[#111111] hover:bg-[#262626] text-[#FAFAF8] font-semibold text-xs shadow-xs transition-all font-sans group">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#B7FF3C]" />
                 <span>Explore Briefs</span>
               </button>
             </Link>
@@ -174,22 +174,22 @@ export function AppNavbar() {
           <div className="relative">
             <button
               onClick={() => setShowNotifs(!showNotifs)}
-              className="relative p-2 rounded-lg text-[#626862] hover:text-[#101310] hover:bg-[#F1F2EE] transition-colors"
+              className="relative p-2 rounded-lg text-[#6B6B6B] hover:text-[#111111] hover:bg-[#FFFFFF] border border-transparent hover:border-[#E7E7E4] transition-colors"
               aria-label="Notifications"
             >
               <Bell className="w-4 h-4" />
               {unreadCount > 0 && (
-                <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#087F5B]" />
+                <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#B7FF3C]" />
               )}
             </button>
 
             {showNotifs && (
-              <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-2xl bg-[#FFFFFF] border border-[#E2E6E1] shadow-xl p-4 z-50 animate-in fade-in zoom-in-95 duration-100">
-                <div className="flex items-center justify-between pb-3 border-b border-[#E2E6E1]">
+              <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xl p-4 z-50 animate-in fade-in zoom-in-95 duration-100">
+                <div className="flex items-center justify-between pb-3 border-b border-[#E7E7E4]">
                   <div className="flex items-center gap-2">
-                    <h4 className="text-xs font-bold text-[#101310]">Notifications</h4>
+                    <h4 className="text-xs font-bold text-[#111111]">Notifications</h4>
                     {unreadCount > 0 && (
-                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-[#EAF8F2] text-[#087F5B] border border-[#C3EBDA]">
+                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-[#B7FF3C] text-[#111111]">
                         {unreadCount} new
                       </span>
                     )}
@@ -197,16 +197,16 @@ export function AppNavbar() {
                   {unreadCount > 0 && (
                     <button
                       onClick={markAllRead}
-                      className="text-[11px] font-bold text-[#626862] hover:text-[#087F5B]"
+                      className="text-[11px] font-bold text-[#6B6B6B] hover:text-[#111111]"
                     >
                       Mark all read
                     </button>
                   )}
                 </div>
 
-                <div className="divide-y divide-[#E2E6E1] max-h-80 overflow-y-auto mt-2">
+                <div className="divide-y divide-[#E7E7E4] max-h-80 overflow-y-auto mt-2">
                   {notifications.length === 0 ? (
-                    <div className="py-8 text-center text-xs text-[#8A908B]">
+                    <div className="py-8 text-center text-xs text-[#6B6B6B]">
                       No notifications yet.
                     </div>
                   ) : (
@@ -215,13 +215,13 @@ export function AppNavbar() {
                         key={notif.id}
                         className={cn(
                           "py-2.5 px-2 rounded-lg text-xs transition-colors flex items-start gap-3",
-                          notif.read ? "opacity-60" : "bg-[#F6F7F3] font-medium"
+                          notif.read ? "opacity-60" : "bg-[#FAFAF8] font-medium"
                         )}
                       >
-                        <div className="w-2 h-2 rounded-full bg-[#087F5B] shrink-0 mt-1.5" />
+                        <div className="w-2 h-2 rounded-full bg-[#B7FF3C] shrink-0 mt-1.5" />
                         <div className="flex-1 space-y-0.5">
-                          <p className="text-[#101310] font-bold">{notif.title}</p>
-                          <p className="text-[#626862] text-[11px] leading-relaxed">
+                          <p className="text-[#111111] font-bold">{notif.title}</p>
+                          <p className="text-[#6B6B6B] text-[11px] leading-relaxed">
                             {notif.message}
                           </p>
                         </div>
@@ -237,67 +237,67 @@ export function AppNavbar() {
           <div className="relative">
             <button
               onClick={() => setShowProfileMenu(!showProfileMenu)}
-              className="flex items-center gap-2 p-1 rounded-lg hover:bg-[#F1F2EE] transition-colors"
+              className="flex items-center gap-2 p-1 rounded-lg hover:bg-[#FFFFFF] border border-transparent hover:border-[#E7E7E4] transition-colors"
             >
               <Avatar
                 src={user?.avatarUrl}
                 name={user?.name || "User"}
                 size="sm"
-                className="border border-[#E2E6E1]"
+                className="border border-[#E7E7E4]"
               />
               <div className="hidden md:block text-left text-xs pr-1">
-                <span className="font-bold text-[#101310] block leading-tight">{user?.name}</span>
-                <span className="text-[10px] text-[#626862] capitalize">{role}</span>
+                <span className="font-bold text-[#111111] block leading-tight">{user?.name}</span>
+                <span className="text-[10px] text-[#6B6B6B] capitalize">{role}</span>
               </div>
-              <ChevronDown className="w-3.5 h-3.5 text-[#8A908B] hidden sm:block" />
+              <ChevronDown className="w-3.5 h-3.5 text-[#6B6B6B] hidden sm:block" />
             </button>
 
             {showProfileMenu && (
-              <div className="absolute right-0 mt-2 w-56 rounded-2xl bg-[#FFFFFF] border border-[#E2E6E1] shadow-xl p-2 z-50 animate-in fade-in zoom-in-95 duration-100">
-                <div className="px-3 py-2 border-b border-[#E2E6E1] mb-1">
-                  <p className="text-xs font-bold text-[#101310] truncate">{user?.name}</p>
-                  <p className="text-[11px] text-[#626862] truncate">{user?.email}</p>
-                  <Badge variant="outline" className="mt-1.5 text-[9px] uppercase tracking-wider border-[#C3EBDA] text-[#087F5B] bg-[#EAF8F2]">
+              <div className="absolute right-0 mt-2 w-56 rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xl p-2 z-50 animate-in fade-in zoom-in-95 duration-100">
+                <div className="px-3 py-2 border-b border-[#E7E7E4] mb-1">
+                  <p className="text-xs font-bold text-[#111111] truncate">{user?.name}</p>
+                  <p className="text-[11px] text-[#6B6B6B] truncate">{user?.email}</p>
+                  <Badge variant="outline" className="mt-1.5 text-[9px] uppercase tracking-wider bg-[#FAFAF8] text-[#111111] border-[#E7E7E4]">
                     {role}
                   </Badge>
                 </div>
 
-                <div className="space-y-0.5 text-xs font-medium text-[#626862]">
+                <div className="space-y-0.5 text-xs font-medium text-[#6B6B6B]">
                   <Link
                     href={role === "creator" ? "/app/profile" : "/app/settings"}
                     onClick={() => setShowProfileMenu(false)}
-                    className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-[#F1F2EE] hover:text-[#101310] transition-colors"
+                    className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-[#FAFAF8] hover:text-[#111111] transition-colors"
                   >
-                    <Sparkles className="w-3.5 h-3.5 text-[#087F5B]" />
+                    <Sparkles className="w-3.5 h-3.5 text-[#111111]" />
                     <span>Profile &amp; Media Kit</span>
                   </Link>
 
                   <Link
                     href="/app/settings"
                     onClick={() => setShowProfileMenu(false)}
-                    className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-[#F1F2EE] hover:text-[#101310] transition-colors"
+                    className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-[#FAFAF8] hover:text-[#111111] transition-colors"
                   >
-                    <Shield className="w-3.5 h-3.5 text-[#626862]" />
+                    <Shield className="w-3.5 h-3.5 text-[#6B6B6B]" />
                     <span>Security &amp; Account</span>
                   </Link>
 
                   <Link
                     href="/"
                     onClick={() => setShowProfileMenu(false)}
-                    className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-[#F1F2EE] hover:text-[#101310] transition-colors"
+                    className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-[#FAFAF8] hover:text-[#111111] transition-colors"
                   >
-                    <ExternalLink className="w-3.5 h-3.5 text-[#626862]" />
+                    <ExternalLink className="w-3.5 h-3.5 text-[#6B6B6B]" />
                     <span>Public Website</span>
                   </Link>
                 </div>
 
-                <div className="pt-1 mt-1 border-t border-[#E2E6E1]">
+                <div className="pt-1 mt-1 border-t border-[#E7E7E4]">
                   <button
                     onClick={() => {
                       setShowProfileMenu(false);
                       logout();
                     }}
-                    className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-bold text-[#C53030] hover:bg-[#FDF2F2] transition-colors text-left"
+                    className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-bold text-[#991B1B] hover:bg-[#FEE2E2] transition-colors text-left"
                   >
                     <LogOut className="w-3.5 h-3.5" />
                     <span>Sign Out</span>
@@ -319,7 +319,7 @@ export function AppNavbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setShowMobileSidebar(false)}
-              className="fixed inset-0 z-50 bg-[#101310]/40 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-50 bg-[#111111]/30 backdrop-blur-xs lg:hidden"
             />
 
             {/* Sliding Drawer */}
@@ -328,14 +328,14 @@ export function AppNavbar() {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed inset-y-0 left-0 z-50 w-72 bg-[#FCFCFA] border-r border-[#E2E6E1] shadow-2xl p-5 flex flex-col justify-between lg:hidden text-[#101310] overflow-y-auto"
+              className="fixed inset-y-0 left-0 z-50 w-72 bg-[#FAFAF8] border-r border-[#E7E7E4] shadow-2xl p-5 flex flex-col justify-between lg:hidden text-[#111111] overflow-y-auto"
             >
               <div className="space-y-6">
-                <div className="flex items-center justify-between pb-4 border-b border-[#E2E6E1]">
+                <div className="flex items-center justify-between pb-4 border-b border-[#E7E7E4]">
                   <CollablyLogo href="/app/dashboard" size="sm" subtext={`${role.toUpperCase()} Workspace`} />
                   <button
                     onClick={() => setShowMobileSidebar(false)}
-                    className="p-1.5 rounded-lg bg-[#F1F2EE] text-[#626862] hover:text-[#101310]"
+                    className="p-1.5 rounded-lg bg-[#FFFFFF] text-[#6B6B6B] hover:text-[#111111] border border-[#E7E7E4]"
                   >
                     <X className="w-5 h-5" />
                   </button>
@@ -355,16 +355,19 @@ export function AppNavbar() {
                         className={cn(
                           "flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all select-none",
                           isActive
-                            ? "bg-[#EAF8F2] text-[#087F5B] font-bold border border-[#C3EBDA]"
-                            : "text-[#626862] hover:text-[#101310] hover:bg-[#F1F2EE]"
+                            ? "bg-[#111111] text-[#FAFAF8] font-bold shadow-xs"
+                            : "text-[#6B6B6B] hover:text-[#111111] hover:bg-[#FFFFFF]"
                         )}
                       >
                         <div className="flex items-center gap-3">
-                          <Icon className={cn("w-4 h-4", isActive ? "text-[#087F5B]" : "text-[#8A908B]")} />
+                          <Icon className={cn("w-4 h-4", isActive ? "text-[#B7FF3C]" : "text-[#6B6B6B]")} />
                           <span>{item.label}</span>
                         </div>
                         {item.badge && (
-                          <span className="text-[10px] px-2 py-0.5 rounded-full font-mono font-bold bg-[#EAF8F2] text-[#087F5B]">
+                          <span className={cn(
+                            "text-[10px] px-2 py-0.5 rounded-full font-mono font-bold",
+                            isActive ? "bg-[#B7FF3C] text-[#111111]" : "bg-[#FFFFFF] text-[#6B6B6B] border border-[#E7E7E4]"
+                          )}>
                             {item.badge}
                           </span>
                         )}
@@ -374,13 +377,13 @@ export function AppNavbar() {
                 </nav>
               </div>
 
-              <div className="pt-4 border-t border-[#E2E6E1]">
+              <div className="pt-4 border-t border-[#E7E7E4]">
                 <button
                   onClick={() => {
                     setShowMobileSidebar(false);
                     logout();
                   }}
-                  className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold text-[#C53030] hover:bg-[#FDF2F2] transition-colors"
+                  className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold text-[#991B1B] hover:bg-[#FEE2E2] transition-colors"
                 >
                   <LogOut className="w-4 h-4" />
                   <span>Sign Out</span>
