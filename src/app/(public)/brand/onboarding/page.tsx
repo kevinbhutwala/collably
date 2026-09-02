@@ -185,7 +185,9 @@ export default function BrandOnboardingWizardPage() {
             <div className="space-y-6">
               <h3 className="text-xl font-bold text-[#0A0A0E] font-display">Step 5: Team Access &amp; Escrow Protection</h3>
               <Input
-                label="Invite Teammate Emails (Comma Separated)"
+                label="Invite Teammate Emails"
+                placeholder="colleague@brand.com, manager@agency.com"
+                hint="Add team members who need approval and chat permissions on campaigns."
                 value={formData.teamMembers}
                 onChange={(e) => setFormData({ ...formData, teamMembers: e.target.value })}
               />

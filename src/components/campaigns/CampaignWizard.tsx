@@ -8,6 +8,7 @@ import { aiService } from "@/services/ai.service";
 import { campaignService } from "@/services/campaign.service";
 import { Button } from "@/components/ui/Button";
 import { Input, Textarea } from "@/components/ui/Input";
+import { MultiSelectDropdown } from "@/components/ui/MultiSelectDropdown";
 import { CATEGORIES } from "@/core/constants";
 import { CreatorCategory, DeliverableType } from "@/core/types";
 import {
@@ -17,8 +18,47 @@ import {
   CheckCircle2,
   Wand2,
   ShieldCheck,
+  Globe,
+  Users,
 } from "lucide-react";
 import { formatCurrency } from "@/core/utils/formatters";
+
+const GEOGRAPHY_OPTIONS = [
+  "United States",
+  "United Kingdom",
+  "India",
+  "Canada",
+  "Australia",
+  "Germany",
+  "France",
+  "Japan",
+  "Singapore",
+  "United Arab Emirates",
+  "Brazil",
+  "Spain",
+  "Italy",
+  "Netherlands",
+  "Global / Worldwide",
+];
+
+const AGE_BRACKET_OPTIONS = [
+  "13-17 (Gen Z Early)",
+  "18-24 (Gen Z Core)",
+  "25-34 (Millennials Prime)",
+  "35-44 (Mid-Career)",
+  "45-54 (Gen X)",
+  "55+ (Seniors & Boomers)",
+  "All Age Demographics",
+];
+
+const PLATFORM_OPTIONS = [
+  { label: "YouTube (Dedicated & Integrations)", value: "youtube" },
+  { label: "Instagram (Reels & Stories)", value: "instagram" },
+  { label: "TikTok (Short-Form Viral)", value: "tiktok" },
+  { label: "X / Twitter (Threads & Product Demos)", value: "twitter" },
+  { label: "LinkedIn (B2B Thought Leadership)", value: "linkedin" },
+  { label: "Twitch (Live Streams & Overlays)", value: "twitch" },
+];
 
 export function CampaignWizard() {
   const router = useRouter();
@@ -37,7 +77,7 @@ export function CampaignWizard() {
     category: "Technology & AI" as CreatorCategory,
     coverImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
     targetCountries: ["United States", "United Kingdom"],
-    targetAgeRanges: ["18-24", "25-34"],
+    targetAgeRanges: ["18-24 (Gen Z Core)", "25-34 (Millennials Prime)"],
     minFollowers: 25000,
     minEngagementRate: 3.5,
     platforms: ["youtube", "instagram"],
@@ -291,31 +331,29 @@ export function CampaignWizard() {
             <div>
               <h2 className="text-2xl font-extrabold text-[#0A0A0E] font-display">Target Audience Demographics</h2>
               <p className="text-xs text-[#5A5A68] mt-1 font-sans font-medium">
-                Specify who your campaign is designed to reach.
+                Select target geographies and demographic brackets from the dropdown options below.
               </p>
             </div>
 
-            <div className="space-y-4">
-              <Input
-                label="Target Geographies (Comma-separated)"
-                value={formData.targetCountries.join(", ")}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    targetCountries: e.target.value.split(",").map((s) => s.trim()),
-                  })
-                }
+            <div className="space-y-5">
+              <MultiSelectDropdown
+                label="Target Geographies"
+                placeholder="Select target countries or search..."
+                options={GEOGRAPHY_OPTIONS}
+                selectedValues={formData.targetCountries}
+                onChange={(vals) => setFormData({ ...formData, targetCountries: vals })}
+                icon={<Globe className="w-4 h-4" />}
+                hint="Choose one or multiple countries where you want the creator's audience concentrated."
               />
 
-              <Input
-                label="Target Age Brackets (Comma-separated)"
-                value={formData.targetAgeRanges.join(", ")}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    targetAgeRanges: e.target.value.split(",").map((s) => s.trim()),
-                  })
-                }
+              <MultiSelectDropdown
+                label="Target Age Brackets"
+                placeholder="Select target audience age brackets..."
+                options={AGE_BRACKET_OPTIONS}
+                selectedValues={formData.targetAgeRanges}
+                onChange={(vals) => setFormData({ ...formData, targetAgeRanges: vals })}
+                icon={<Users className="w-4 h-4" />}
+                hint="Choose which audience age demographics are most valuable for this campaign."
               />
             </div>
           </div>
@@ -327,25 +365,36 @@ export function CampaignWizard() {
             <div>
               <h2 className="text-2xl font-extrabold text-[#0A0A0E] font-display">Creator Eligibility Criteria</h2>
               <p className="text-xs text-[#5A5A68] mt-1 font-sans font-medium">
-                Set minimum reach and engagement benchmarks.
+                Set minimum reach, platform channels, and engagement benchmarks.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <Input
-                label="Minimum Total Follower Reach"
-                type="number"
-                value={formData.minFollowers}
-                onChange={(e) => setFormData({ ...formData, minFollowers: parseInt(e.target.value) || 0 })}
+            <div className="space-y-5">
+              <MultiSelectDropdown
+                label="Target Social Platforms"
+                placeholder="Select allowed platforms..."
+                options={PLATFORM_OPTIONS}
+                selectedValues={formData.platforms}
+                onChange={(vals) => setFormData({ ...formData, platforms: vals })}
+                hint="Only creators with verified audience telemetry on these channels can apply."
               />
 
-              <Input
-                label="Minimum Engagement Rate (%)"
-                type="number"
-                step="0.1"
-                value={formData.minEngagementRate}
-                onChange={(e) => setFormData({ ...formData, minEngagementRate: parseFloat(e.target.value) || 0 })}
-              />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <Input
+                  label="Minimum Total Follower Reach"
+                  type="number"
+                  value={formData.minFollowers}
+                  onChange={(e) => setFormData({ ...formData, minFollowers: parseInt(e.target.value) || 0 })}
+                />
+
+                <Input
+                  label="Minimum Engagement Rate (%)"
+                  type="number"
+                  step="0.1"
+                  value={formData.minEngagementRate}
+                  onChange={(e) => setFormData({ ...formData, minEngagementRate: parseFloat(e.target.value) || 0 })}
+                />
+              </div>
             </div>
           </div>
         )}

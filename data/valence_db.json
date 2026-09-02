@@ -164,6 +164,17 @@
       "verified": true,
       "createdAt": "2024-01-01T00:00:00Z",
       "updatedAt": "2026-08-28T00:00:00Z"
+    },
+    {
+      "id": "user-1788359026957",
+      "name": "Alex",
+      "email": "alex@gmail.com",
+      "passwordHash": "c9470966c9ac6ac3153603df430f1d55:cdabcc829e0a57a8c5c867a22c8ff7e73f202fdac2fbd273f9749472d445e45fed5f5efd45ac0fc671ad65a39b9c2ce24e37daba55f2dfa784606dad448e5ed6:210000",
+      "role": "brand",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "verified": false,
+      "createdAt": "2026-09-02T14:23:46.957Z",
+      "updatedAt": "2026-09-02T14:23:46.957Z"
     }
   ],
   "creators": [
@@ -1392,6 +1403,24 @@
     }
   ],
   "brands": [
+    {
+      "id": "brand-1788359026958",
+      "userId": "user-1788359026957",
+      "companyName": "Nike",
+      "industry": "Fashion & Luxury",
+      "headline": "Nike Official Brand Workspace",
+      "description": "Verified enterprise brand on Collably sponsoring creator partnerships.",
+      "logoUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+      "websiteUrl": "https://collably.io",
+      "location": "San Francisco, CA",
+      "companySize": "10-50",
+      "verified": true,
+      "activeCampaignsCount": 0,
+      "totalSpent": 0,
+      "socialHandles": {},
+      "createdAt": "2026-09-02T14:23:46.958Z"
+    },
     {
       "id": "brand-1",
       "userId": "user-b1",
@@ -4170,6 +4199,48 @@
       },
       "createdAt": "2026-09-02T12:03:40.496Z",
       "updatedAt": "2026-09-02T12:03:40.496Z"
+    },
+    {
+      "id": "sub-1788359029945-vzc68",
+      "userId": "user-1788359026957",
+      "role": "brand",
+      "planId": "brand_starter",
+      "status": "active",
+      "interval": "monthly",
+      "currentPeriodStart": "2026-09-02T14:23:49.945Z",
+      "currentPeriodEnd": "2026-10-02T14:23:49.945Z",
+      "cancelAtPeriodEnd": false,
+      "price": 49,
+      "currency": "USD",
+      "features": {
+        "mediaKit": false,
+        "maxApplicationsPerMonth": 0,
+        "instantPayouts": false,
+        "advancedAnalytics": false,
+        "aiPitchGenerator": false,
+        "verifiedBadge": false,
+        "priorityDiscovery": false,
+        "multiCreatorManagement": false,
+        "customDomain": false,
+        "maxActiveCampaigns": 2,
+        "crmPipeline": false,
+        "aiCreatorMatching": false,
+        "creatorShortlists": true,
+        "maxTeamSeats": 1,
+        "advancedRoiTelemetry": false,
+        "contractCompliance": false,
+        "dedicatedAccountManager": false,
+        "apiAccess": false
+      },
+      "usage": {
+        "activeCampaignsCount": 0,
+        "applicationsThisMonth": 0,
+        "crmContactsCount": 0,
+        "aiTokensUsed": 0,
+        "lastResetDate": "2026-09-02T14:23:49.945Z"
+      },
+      "createdAt": "2026-09-02T14:23:49.945Z",
+      "updatedAt": "2026-09-02T14:23:49.945Z"
     }
   ]
 }
