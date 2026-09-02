@@ -51,12 +51,14 @@ export function ChatWorkspace() {
   const [isRecordingAudio, setIsRecordingAudio] = useState(false);
   const [audioTimer, setAudioTimer] = useState(0);
 
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Auto-scroll to bottom of message list
+  // Auto-scroll strictly within the messages container (never scrolls the whole page)
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
+    }
   };
 
   useEffect(() => {
@@ -288,7 +290,7 @@ export function ChatWorkspace() {
 
   if (isLoading) {
     return (
-      <div className="h-[640px] flex flex-col items-center justify-center rounded-3xl bg-white border border-black/8 text-[#0A0A0E] shadow-xs space-y-3 font-sans">
+      <div className="h-full flex flex-col items-center justify-center rounded-3xl bg-white border border-black/8 text-[#0A0A0E] shadow-xs space-y-3 font-sans">
         <div className="w-8 h-8 rounded-full border-3 border-[#FFD21F] border-t-transparent animate-spin" />
         <p className="text-xs font-semibold text-[#5A5A68]">Loading channels &amp; message vaults...</p>
       </div>
@@ -296,7 +298,7 @@ export function ChatWorkspace() {
   }
 
   return (
-    <div className="relative rounded-3xl bg-white border border-black/8 shadow-xs overflow-hidden h-[calc(100vh-10rem)] min-h-[580px] lg:h-[740px] text-[#0A0A0E] select-none flex flex-col font-sans">
+    <div className="relative rounded-3xl bg-white border border-black/8 shadow-xs overflow-hidden h-full w-full text-[#0A0A0E] select-none flex flex-col font-sans">
       {/* ── VIDEO / AUDIO CALL MODAL SIMULATOR ── */}
       {callModal && (
         <div className="absolute inset-0 z-50 bg-[#0A0A0E]/95 backdrop-blur-md flex flex-col items-center justify-between p-8 text-white animate-fade-in">
@@ -326,15 +328,15 @@ export function ChatWorkspace() {
       )}
 
       {/* ── MAIN 2-PANE CHAT GRID ── */}
-      <div className="grid grid-cols-1 md:grid-cols-12 flex-1 overflow-hidden">
+      <div className="grid grid-cols-1 md:grid-cols-12 flex-1 overflow-hidden h-full">
         {/* ── LEFT CHANNELS SIDEBAR (Cols 1-4) ── */}
         <div
-          className={`md:col-span-4 border-r border-black/8 flex flex-col h-full bg-[#FAFAFC] ${
+          className={`md:col-span-4 border-r border-black/8 flex flex-col h-full bg-[#FAFAFC] overflow-hidden ${
             mobileView === "chat" ? "hidden md:flex" : "flex"
           }`}
         >
-          {/* Top Search & Redesigned Segmented Filter Tabs */}
-          <div className="p-4 border-b border-black/8 space-y-3 bg-white">
+          {/* Top Search & Redesigned Segmented Filter Tabs (Always Visible & Pinned) */}
+          <div className="p-4 border-b border-black/8 space-y-3 bg-white shrink-0">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <div className="w-6 h-6 rounded-lg bg-[#FFD21F]/20 flex items-center justify-center">
@@ -512,14 +514,14 @@ export function ChatWorkspace() {
 
         {/* ── RIGHT CHAT MESSAGE PANE (Cols 5-12) ── */}
         <div
-          className={`md:col-span-8 flex flex-col h-full bg-white relative ${
+          className={`md:col-span-8 flex flex-col h-full bg-white relative overflow-hidden ${
             mobileView === "list" ? "hidden md:flex" : "flex"
           }`}
         >
           {activeConversation ? (
             <>
               {/* ── THREAD TOP HEADER ── */}
-              <div className="p-3.5 sm:p-4 border-b border-black/8 flex items-center justify-between bg-[#FAFAFC]">
+              <div className="p-3.5 sm:p-4 border-b border-black/8 flex items-center justify-between bg-[#FAFAFC] shrink-0">
                 <div className="flex items-center gap-3 min-w-0">
                   {/* Mobile Back Button */}
                   <button
@@ -588,8 +590,8 @@ export function ChatWorkspace() {
                 </div>
               </div>
 
-              {/* ── MESSAGES SCROLL CONTAINER ── */}
-              <div className="flex-1 p-4 sm:p-6 overflow-y-auto space-y-5 bg-[#FFFFFF]">
+              {/* ── MESSAGES SCROLL CONTAINER (Internal Scroll Only) ── */}
+              <div ref={messagesContainerRef} className="flex-1 p-4 sm:p-6 overflow-y-auto space-y-5 bg-[#FFFFFF]">
                 {/* Channel Security Banner */}
                 <div className="p-3.5 rounded-2xl bg-[#FAFAFC] border border-black/6 flex items-center justify-between text-xs text-[#5A5A68]">
                   <div className="flex items-center gap-2">
@@ -735,11 +737,10 @@ export function ChatWorkspace() {
                   </div>
                 )}
 
-                <div ref={messagesEndRef} />
               </div>
 
               {/* ── QUICK ACTION PROMPTS BAR ── */}
-              <div className="px-4 py-2 bg-[#FAFAFC] border-t border-black/6 flex items-center gap-2 overflow-x-auto text-xs no-scrollbar">
+              <div className="px-4 py-2 bg-[#FAFAFC] border-t border-black/6 flex items-center gap-2 overflow-x-auto text-xs no-scrollbar shrink-0">
                 <span className="text-[#8A8A9A] shrink-0 font-bold text-[11px]">Quick:</span>
                 {quickChips.map((chip, idx) => (
                   <button
@@ -754,7 +755,7 @@ export function ChatWorkspace() {
 
               {/* ── AUDIO RECORDING BAR SIMULATOR ── */}
               {isRecordingAudio && (
-                <div className="p-3 bg-red-50 border-t border-red-200 flex items-center justify-between text-xs text-red-700 animate-fade-in">
+                <div className="p-3 bg-red-50 border-t border-red-200 flex items-center justify-between text-xs text-red-700 animate-fade-in shrink-0">
                   <div className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-ping" />
                     <span className="font-semibold">Recording Voice Memo: {audioTimer}s (High-Fidelity Audio)</span>
@@ -785,7 +786,7 @@ export function ChatWorkspace() {
                   e.preventDefault();
                   handleSendMessage();
                 }}
-                className="p-3 sm:p-4 border-t border-black/8 bg-white flex items-center gap-2 sm:gap-3"
+                className="p-3 sm:p-4 border-t border-black/8 bg-white flex items-center gap-2 sm:gap-3 shrink-0"
               >
                 {/* File Attachment Hidden Input */}
                 <input
