@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { userRepo } from "@/server/repositories/user.repo";
 import { creatorRepo } from "@/server/repositories/creator.repo";
 import { brandRepo } from "@/server/repositories/brand.repo";
+import { subscriptionService } from "@/server/services/subscription.service";
 import { verifySessionToken } from "@/server/auth/crypto";
 
 export async function GET(req: NextRequest) {
@@ -27,6 +28,7 @@ export async function GET(req: NextRequest) {
 
     const creatorProfile = user.role === "creator" ? creatorRepo.getByUserId(user.id) : null;
     const brandProfile = user.role === "brand" ? brandRepo.getByUserId(user.id) : null;
+    const subscription = await subscriptionService.getUserSubscription(user.id, user.role);
 
     return NextResponse.json({
       authenticated: true,
@@ -40,8 +42,10 @@ export async function GET(req: NextRequest) {
       },
       creatorProfile,
       brandProfile,
+      subscription,
     });
   } catch (err: any) {
     return NextResponse.json({ authenticated: false, error: err.message }, { status: 500 });
   }
 }
+

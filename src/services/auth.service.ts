@@ -1,4 +1,4 @@
-import { User, CreatorProfile, BrandProfile, SocialAccount } from "@/core/types";
+import { User, CreatorProfile, BrandProfile, SocialAccount, SubscriptionEntity } from "@/core/types";
 
 export interface AuthResponse {
   success?: boolean;
@@ -6,9 +6,13 @@ export interface AuthResponse {
   user?: User;
   creatorProfile?: CreatorProfile | null;
   brandProfile?: BrandProfile | null;
+  subscription?: SubscriptionEntity | null;
   token?: string;
   error?: string;
+  isNewUser?: boolean;
+  redirectUrl?: string;
 }
+
 
 export interface RegisterParams {
   name: string;
@@ -57,6 +61,16 @@ export interface CreatorRegisterParams {
   linkedinFollowers?: number;
 }
 
+export interface SocialAuthClientParams {
+  provider: "google" | "apple" | "github";
+  email: string;
+  name: string;
+  avatarUrl?: string;
+  role?: "creator" | "brand";
+  handle?: string;
+  companyName?: string;
+}
+
 class AuthService {
   async login(email: string, password: string): Promise<AuthResponse> {
     const res = await fetch("/api/auth/login", {
@@ -103,6 +117,17 @@ class AuthService {
       linkedinHandle: params.linkedinHandle,
       linkedinFollowers: params.linkedinFollowers,
     });
+  }
+
+  async socialAuth(params: SocialAuthClientParams): Promise<AuthResponse> {
+    const res = await fetch("/api/auth/social", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(params),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || "Social authentication failed");
+    return data;
   }
 
   async getSession(): Promise<AuthResponse> {

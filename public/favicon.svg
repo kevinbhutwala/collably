@@ -1,28 +1,47 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
   <defs>
-    <linearGradient id="valenceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FF4D00" />
-      <stop offset="50%" stop-color="#FF7A00" />
-      <stop offset="100%" stop-color="#FFA800" />
+    <!-- Solar Yellow Gradient -->
+    <linearGradient id="solarGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE566" />
+      <stop offset="50%" stop-color="#FFD21F" />
+      <stop offset="100%" stop-color="#E5B500" />
     </linearGradient>
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="2" result="blur" />
+
+    <!-- Dark Tile Obsidian Gradient -->
+    <linearGradient id="obsidianBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#181820" />
+      <stop offset="100%" stop-color="#08080C" />
+    </linearGradient>
+
+    <!-- Glow Effect for Solar Core -->
+    <filter id="goldGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2.5" result="blur" />
       <feComposite in="SourceGraphic" in2="blur" operator="over" />
     </filter>
   </defs>
 
-  <!-- Base Dark Tile -->
-  <rect width="64" height="64" rx="16" fill="#0A0E1A" stroke="url(#valenceGrad)" stroke-width="2.5" />
+  <!-- Base Rounded Card with Micro Solar Rim -->
+  <rect width="64" height="64" rx="18" fill="url(#obsidianBg)" stroke="rgba(255, 210, 31, 0.45)" stroke-width="2" />
 
-  <!-- Outer Diamond Orbital Frame -->
-  <path d="M32 6L56 32L32 58L8 32L32 6Z" stroke="rgba(255, 255, 255, 0.25)" stroke-width="2" stroke-linejoin="round" />
+  <!-- Dynamic Interlocking Collaboration Flow 'C' -->
+  <!-- Outer Brand Arc -->
+  <path
+    d="M45 19.5 C39 12.5 28 12 21 17.5 C13 23.5 13 36.5 21 42.5 C27.5 47.5 38 48 45 40.5"
+    stroke="#FFFFFF"
+    stroke-width="5.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
 
-  <!-- Inner Angular Orbitals -->
-  <circle cx="32" cy="32" r="16" stroke="rgba(255, 77, 0, 0.3)" stroke-width="1.5" stroke-dasharray="3 3" />
+  <!-- Inner Intersecting Dynamic Swoosh -->
+  <path
+    d="M26 24 C29 20 37 19.5 42 24.5 C47 29.5 46 37 40 40"
+    stroke="url(#solarGold)"
+    stroke-width="4.5"
+    stroke-linecap="round"
+  />
 
-  <!-- Sharp Geometric V Mark -->
-  <path d="M18 20L32 46L46 20" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
-
-  <!-- Core Atomic Energy Focal Dot -->
-  <circle cx="32" cy="22" r="4.5" fill="url(#valenceGrad)" filter="url(#glow)" />
+  <!-- Brilliant Solar Yellow Focal Spark / Collaboration Node -->
+  <circle cx="43.5" cy="32" r="5" fill="url(#solarGold)" filter="url(#goldGlow)" />
+  <circle cx="43.5" cy="32" r="2.2" fill="#FFFFFF" />
 </svg>

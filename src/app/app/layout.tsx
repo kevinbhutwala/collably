@@ -3,6 +3,7 @@ import { AppNavbar } from "@/components/layout/AppNavbar";
 import { AppSidebar } from "@/components/layout/AppSidebar";
 import { MobileBottomDock } from "@/components/layout/MobileBottomDock";
 import { AuthGuard } from "@/components/auth/AuthGuard";
+import { PlanUpgradeModal } from "@/components/subscriptions/PlanUpgradeModal";
 
 export default function AuthenticatedAppLayout({
   children,
@@ -20,7 +21,9 @@ export default function AuthenticatedAppLayout({
           </main>
         </div>
         <MobileBottomDock />
+        <PlanUpgradeModal />
       </div>
     </AuthGuard>
   );
 }
+

@@ -4,6 +4,8 @@ import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAuthStore } from "@/stores/auth.store";
+import { useSubscriptionStore } from "@/stores/subscription.store";
+import { SubscriptionBadge } from "@/components/subscriptions/SubscriptionBadge";
 import {
   LayoutDashboard,
   Users,
@@ -24,7 +26,9 @@ import {
   HelpCircle,
   Database,
   Scale,
+  Lock,
   LucideIcon,
+  Zap,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -34,11 +38,16 @@ interface NavItem {
   icon: LucideIcon;
   badge?: string;
   highlight?: boolean;
+  featureGate?: "crmPipeline" | "advancedAnalytics";
 }
 
 export function AppSidebar() {
   const pathname = usePathname();
   const { role } = useAuthStore();
+  const { subscription, hasFeature, openUpgradeModal } = useSubscriptionStore();
+
+  const isProCreator = hasFeature("advancedAnalytics");
+  const isGrowthBrand = hasFeature("crmPipeline");
 
   const creatorNavItems: NavItem[] = [
     { href: "/app/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -47,10 +56,16 @@ export function AppSidebar() {
     { href: "/app/collaborations", label: "Collaborations", icon: FileCheck2, badge: "3 active" },
     { href: "/app/messages", label: "Messages", icon: MessageSquare, badge: "1" },
     { href: "/app/earnings", label: "Earnings & Payouts", icon: Wallet },
-    { href: "/app/analytics", label: "Audience Analytics", icon: BarChart3 },
+    {
+      href: "/app/analytics",
+      label: "Audience Analytics",
+      icon: BarChart3,
+      badge: isProCreator ? undefined : "PRO",
+      featureGate: "advancedAnalytics",
+    },
     { href: "/app/profile", label: "Creator Media Kit", icon: Sparkles },
     { href: "/app/support", label: "Support & Disputes", icon: HelpCircle },
-    { href: "/app/settings", label: "Settings", icon: Settings },
+    { href: "/app/settings", label: "Plan & Settings", icon: Settings },
   ];
 
   const brandNavItems: NavItem[] = [
@@ -58,13 +73,19 @@ export function AppSidebar() {
     { href: "/app/brand/campaigns/create", label: "Create Campaign", icon: PlusCircle, highlight: true },
     { href: "/app/brand/campaigns", label: "Active Campaigns", icon: Briefcase, badge: "3" },
     { href: "/app/brand/creators", label: "Discover Creators", icon: Users },
-    { href: "/app/brand/crm", label: "Creator CRM", icon: FolderGit2 },
+    {
+      href: "/app/brand/crm",
+      label: "Creator CRM",
+      icon: FolderGit2,
+      badge: isGrowthBrand ? undefined : "GROWTH",
+      featureGate: "crmPipeline",
+    },
     { href: "/app/brand/shortlists", label: "Shortlists", icon: Layers },
     { href: "/app/collaborations", label: "Active Deals & Escrow", icon: FileCheck2, badge: "3" },
     { href: "/app/messages", label: "Messages", icon: MessageSquare },
     { href: "/app/brand/analytics", label: "ROI Telemetry", icon: BarChart3 },
     { href: "/app/support", label: "Support & Disputes", icon: HelpCircle },
-    { href: "/app/settings", label: "Settings", icon: Settings },
+    { href: "/app/settings", label: "Plan & Settings", icon: Settings },
   ];
 
   const adminNavItems: NavItem[] = [
@@ -84,71 +105,101 @@ export function AppSidebar() {
     role === "creator" ? creatorNavItems : role === "brand" ? brandNavItems : adminNavItems;
 
   return (
-    <aside className="hidden lg:flex flex-col w-64 border-r border-black/8 bg-white p-4 shrink-0 min-h-[calc(100vh-4rem)] text-[#0A0A0E] shadow-xs">
-      {/* Brand logo & workspace badge */}
-      <div className="px-3 py-2 mb-4 flex items-center justify-between border-b border-black/5 pb-4">
-        <Link href="/app/dashboard" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FFD21F] to-[#FFAE00] border border-black/10 flex items-center justify-center text-[#0A0A0E] group-hover:scale-105 transition-transform shadow-[0_2px_10px_rgba(255,210,31,0.3)]">
-            <Sparkles className="w-4 h-4 fill-[#0A0A0E] text-[#0A0A0E]" />
-          </div>
-          <span className="font-display font-extrabold text-base tracking-tight text-[#0A0A0E]">
-            Collably
-          </span>
-        </Link>
-        <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] uppercase font-bold">
-          {role === "agency_admin" ? "Admin" : role}
-        </span>
+    <aside className="hidden lg:flex flex-col w-64 border-r border-black/8 bg-white p-4 shrink-0 min-h-[calc(100vh-4rem)] text-[#0A0A0E] shadow-xs justify-between">
+      <div>
+        {/* Brand logo & workspace badge */}
+        <div className="px-3 py-2 mb-4 flex items-center justify-between border-b border-black/5 pb-4">
+          <Link href="/app/dashboard" className="flex items-center gap-2.5 group">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FFD21F] to-[#FFAE00] border border-black/10 flex items-center justify-center text-[#0A0A0E] group-hover:scale-105 transition-transform shadow-[0_2px_10px_rgba(255,210,31,0.3)]">
+              <Sparkles className="w-4 h-4 fill-[#0A0A0E] text-[#0A0A0E]" />
+            </div>
+            <span className="font-display font-extrabold text-base tracking-tight text-[#0A0A0E]">
+              Collably
+            </span>
+          </Link>
+          <SubscriptionBadge planId={subscription?.planId} role={role} size="sm" />
+        </div>
+
+        {/* Nav List */}
+        <nav className="space-y-1.5 flex-1 overflow-y-auto">
+          {navItems.map((item) => {
+            const isActive = pathname === item.href;
+            const Icon = item.icon;
+            const isGated = item.featureGate && !hasFeature(item.featureGate) && role !== "agency_admin" && role !== "super_admin";
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-medium transition-all select-none",
+                  isActive
+                    ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] font-bold shadow-[0_2px_10px_rgba(255,210,31,0.35)] border border-black/10"
+                    : item.highlight
+                    ? "bg-black/[0.04] text-[#0A0A0E] hover:bg-black/[0.08] border border-black/5 font-bold"
+                    : "text-[#5A5A68] hover:text-[#0A0A0E] hover:bg-black/[0.04]"
+                )}
+              >
+                <div className="flex items-center gap-3">
+                  <Icon
+                    className={cn(
+                      "w-4 h-4 transition-colors",
+                      isActive
+                        ? "text-[#0A0A0E]"
+                        : item.highlight
+                        ? "text-[#A37F00]"
+                        : "text-[#7A7A8A] group-hover:text-[#0A0A0E]"
+                    )}
+                  />
+                  <span>{item.label}</span>
+                </div>
+
+                {item.badge && (
+                  <span
+                    className={cn(
+                      "text-[9px] px-2 py-0.5 rounded-full font-mono font-bold flex items-center gap-1",
+                      isGated
+                        ? "bg-[#FFD21F]/30 text-[#0A0A0E] border border-[#FFD21F]/50"
+                        : isActive
+                        ? "bg-[#0A0A0E] text-white"
+                        : "bg-[#FFD21F]/20 text-[#0A0A0E] border border-[#FFD21F]/30"
+                    )}
+                  >
+                    {isGated && <Lock className="w-2.5 h-2.5" />}
+                    <span>{item.badge}</span>
+                  </span>
+                )}
+              </Link>
+            );
+          })}
+        </nav>
       </div>
 
-      {/* Nav List */}
-      <nav className="space-y-1.5 flex-1 overflow-y-auto">
-        {navItems.map((item) => {
-          const isActive = pathname === item.href;
-          const Icon = item.icon;
-
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={cn(
-                "flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-medium transition-all select-none",
-                isActive
-                  ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] font-bold shadow-[0_2px_10px_rgba(255,210,31,0.35)] border border-black/10"
-                  : item.highlight
-                  ? "bg-black/[0.04] text-[#0A0A0E] hover:bg-black/[0.08] border border-black/5 font-bold"
-                  : "text-[#5A5A68] hover:text-[#0A0A0E] hover:bg-black/[0.04]"
-              )}
-            >
-              <div className="flex items-center gap-3">
-                <Icon
-                  className={cn(
-                    "w-4 h-4 transition-colors",
-                    isActive
-                      ? "text-[#0A0A0E]"
-                      : item.highlight
-                      ? "text-[#A37F00]"
-                      : "text-[#7A7A8A] group-hover:text-[#0A0A0E]"
-                  )}
-                />
-                <span>{item.label}</span>
-              </div>
-
-              {item.badge && (
-                <span
-                  className={cn(
-                    "text-[10px] px-2 py-0.5 rounded-full font-mono font-bold",
-                    isActive
-                      ? "bg-[#0A0A0E] text-white"
-                      : "bg-[#FFD21F]/20 text-[#0A0A0E] border border-[#FFD21F]/30"
-                  )}
-                >
-                  {item.badge}
-                </span>
-              )}
-            </Link>
-          );
-        })}
-      </nav>
+      {/* Sidebar Bottom Upgrade CTA Card */}
+      {role !== "agency_admin" && role !== "super_admin" && (
+        <div className="mt-4 p-3.5 rounded-2xl bg-gradient-to-br from-[#FFFDF5] to-[#FAF8F0] border border-[#FFD21F]/40 space-y-2 shadow-xs select-none">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-1.5 text-xs font-bold text-[#0A0A0E]">
+              <Zap className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
+              <span>{role === "creator" ? "Creator Pro" : "Brand Growth"}</span>
+            </div>
+            <span className="text-[9px] font-mono px-1.5 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] font-bold">
+              UPGRADE
+            </span>
+          </div>
+          <p className="text-[11px] text-[#6A6A78] leading-tight font-sans">
+            {role === "creator"
+              ? "Get instant 2-hour payouts & deep audience retention intel."
+              : "Unlock 10 active briefs, Creator CRM & AI suitability scoring."}
+          </p>
+          <button
+            onClick={() => openUpgradeModal()}
+            className="w-full py-1.5 rounded-xl bg-[#0A0A0E] hover:bg-[#20202B] text-white text-xs font-bold transition-all shadow-xs"
+          >
+            Upgrade Plan
+          </button>
+        </div>
+      )}
     </aside>
   );
 }

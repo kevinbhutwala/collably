@@ -10,38 +10,49 @@ export const size = {
 };
 export const contentType = "image/png";
 
-// Image generation for browser tab icon / favicon
+// Dynamic browser tab icon generation
 export default function Icon() {
   return new ImageResponse(
     (
       <div
         style={{
-          background: "#0B0F19",
+          background: "linear-gradient(135deg, #181820 0%, #08080C 100%)",
           width: "100%",
           height: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          borderRadius: 8,
-          border: "1.5px solid #FF4D00",
-          boxShadow: "0 0 10px rgba(255, 77, 0, 0.4)",
+          borderRadius: 9,
+          border: "1.5px solid rgba(255, 210, 31, 0.6)",
           position: "relative",
+          overflow: "hidden",
         }}
       >
         <svg
           width="22"
           height="22"
-          viewBox="0 0 32 32"
+          viewBox="0 0 64 64"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
+          {/* Outer Arc */}
           <path
-            d="M24 10C22.2 7.5 19.3 6 16 6C10.48 6 6 10.48 6 16C6 21.52 10.48 26 16 26C19.3 26 22.2 24.5 24 22"
-            stroke="#FF4D00"
-            strokeWidth="3.6"
+            d="M45 19.5 C39 12.5 28 12 21 17.5 C13 23.5 13 36.5 21 42.5 C27.5 47.5 38 48 45 40.5"
+            stroke="#FFFFFF"
+            strokeWidth="6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          {/* Inner Arc */}
+          <path
+            d="M26 24 C29 20 37 19.5 42 24.5 C47 29.5 46 37 40 40"
+            stroke="#FFD21F"
+            strokeWidth="5"
             strokeLinecap="round"
           />
-          <circle cx="16" cy="16" r="3.5" fill="#FFFFFF" />
+          {/* Solar Center Spark */}
+          <circle cx="43.5" cy="32" r="5.5" fill="#FFD21F" />
+          <circle cx="43.5" cy="32" r="2.5" fill="#FFFFFF" />
         </svg>
       </div>
     ),

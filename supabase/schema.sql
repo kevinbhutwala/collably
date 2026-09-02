@@ -122,6 +122,10 @@ DO $$ BEGIN
     CREATE TYPE support_ticket_priority AS ENUM ('Low', 'Medium', 'High', 'Urgent');
 EXCEPTION WHEN duplicate_object THEN null; END $$;
 
+DO $$ BEGIN
+    CREATE TYPE subscription_status AS ENUM ('active', 'trialing', 'past_due', 'cancelled', 'expired', 'paused');
+EXCEPTION WHEN duplicate_object THEN null; END $$;
+
 -- ==============================================================================
 -- 2. ORGANIZATIONS & MULTI-TENANCY
 -- ==============================================================================
@@ -136,6 +140,32 @@ CREATE TABLE IF NOT EXISTS organizations (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
 );
+
+-- ==============================================================================
+-- 2.1 SUBSCRIPTIONS & PBAC TIERS
+-- ==============================================================================
+CREATE TABLE IF NOT EXISTS subscriptions (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    user_id UUID NOT NULL,
+    organization_id UUID REFERENCES organizations(id) ON DELETE SET NULL,
+    role user_role NOT NULL DEFAULT 'creator',
+    plan_id TEXT NOT NULL,
+    status subscription_status NOT NULL DEFAULT 'active',
+    interval TEXT NOT NULL DEFAULT 'monthly' CHECK (interval IN ('monthly', 'annual')),
+    current_period_start TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
+    current_period_end TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now() + interval '30 days') NOT NULL,
+    cancel_at_period_end BOOLEAN DEFAULT FALSE,
+    price NUMERIC(10, 2) DEFAULT 0.00,
+    currency TEXT DEFAULT 'USD',
+    features JSONB DEFAULT '{}'::JSONB,
+    usage JSONB DEFAULT '{"activeCampaignsCount":0,"applicationsThisMonth":0,"crmContactsCount":0,"aiTokensUsed":0}'::JSONB,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_subscriptions_user_id ON subscriptions(user_id);
+CREATE INDEX IF NOT EXISTS idx_subscriptions_status ON subscriptions(status);
+
 
 -- ==============================================================================
 -- 3. USERS & PROFILES

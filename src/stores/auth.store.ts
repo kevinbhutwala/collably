@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { User, UserRole, CreatorProfile, BrandProfile } from "../core/types";
-import { authService, RegisterParams } from "@/services/auth.service";
+import { authService, RegisterParams, SocialAuthClientParams, AuthResponse } from "@/services/auth.service";
+import { useSubscriptionStore } from "./subscription.store";
 
 interface AuthState {
   user: User | null;
@@ -12,6 +13,7 @@ interface AuthState {
   checkSession: () => Promise<boolean>;
   login: (email: string, password: string) => Promise<void>;
   register: (params: RegisterParams) => Promise<void>;
+  socialLogin: (params: SocialAuthClientParams) => Promise<AuthResponse>;
   updateCreatorProfile: (updates: Partial<CreatorProfile>) => Promise<CreatorProfile | null>;
   logout: () => Promise<void>;
   setUser: (user: User | null) => void;
@@ -39,6 +41,11 @@ export const useAuthStore = create<AuthState>((set, get) => ({
           isAuthenticated: true,
           isLoading: false,
         });
+        if (data.subscription) {
+          useSubscriptionStore.getState().setSubscription(data.subscription);
+        } else {
+          useSubscriptionStore.getState().fetchSubscription();
+        }
         return true;
       }
     } catch {
@@ -51,6 +58,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       isAuthenticated: false,
       isLoading: false,
     });
+    useSubscriptionStore.getState().setSubscription(null);
     return false;
   },
 
@@ -67,12 +75,14 @@ export const useAuthStore = create<AuthState>((set, get) => ({
           isAuthenticated: true,
           isLoading: false,
         });
+        await useSubscriptionStore.getState().fetchSubscription();
       }
     } catch (error) {
       set({ isLoading: false });
       throw error;
     }
   },
+
 
   register: async (params: RegisterParams) => {
     set({ isLoading: true });
@@ -88,6 +98,27 @@ export const useAuthStore = create<AuthState>((set, get) => ({
           isLoading: false,
         });
       }
+    } catch (error) {
+      set({ isLoading: false });
+      throw error;
+    }
+  },
+
+  socialLogin: async (params: SocialAuthClientParams): Promise<AuthResponse> => {
+    set({ isLoading: true });
+    try {
+      const data = await authService.socialAuth(params);
+      if (data.user) {
+        set({
+          user: data.user,
+          role: data.user.role,
+          currentCreator: data.creatorProfile || null,
+          currentBrand: data.brandProfile || null,
+          isAuthenticated: true,
+          isLoading: false,
+        });
+      }
+      return data;
     } catch (error) {
       set({ isLoading: false });
       throw error;

@@ -4,6 +4,7 @@ import React from "react";
 import { useAuthStore } from "@/stores/auth.store";
 import { StatsCard } from "@/components/ui/StatsCard";
 import { formatNumber } from "@/core/utils/formatters";
+import { FeatureGate } from "@/components/subscriptions/FeatureGate";
 import { TrendingUp, Users, Sparkles, Activity } from "lucide-react";
 
 export default function CreatorAnalyticsPage() {
@@ -61,33 +62,41 @@ export default function CreatorAnalyticsPage() {
         />
       </div>
 
-      {/* Performance Graph */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6 text-[#0A0A0E]">
-        <div className="flex items-center justify-between pb-3 border-b border-black/8">
-          <h3 className="text-base sm:text-lg font-bold text-[#0A0A0E] font-display">
-            30-Day Impression &amp; Retention Curves
-          </h3>
-          <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] border border-[#FFD21F]/40 text-[10px] font-mono font-bold">
-            REALTIME
-          </span>
-        </div>
+      {/* Advanced Performance Graph (Pro Tier Feature) */}
+      <FeatureGate
+        feature="advancedAnalytics"
+        requiredPlanId="creator_pro"
+        title="30-Day Impression & Retention Telemetry"
+        description="Deep audience demographic splits, multi-channel view retention, and verified sponsor reach curves are exclusive to Creator Pro."
+      >
+        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6 text-[#0A0A0E]">
+          <div className="flex items-center justify-between pb-3 border-b border-black/8">
+            <h3 className="text-base sm:text-lg font-bold text-[#0A0A0E] font-display">
+              30-Day Impression &amp; Retention Curves
+            </h3>
+            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] border border-[#FFD21F]/40 text-[10px] font-mono font-bold">
+              REALTIME
+            </span>
+          </div>
 
-        <div className="space-y-4">
-          <div className="h-64 rounded-2xl bg-[#F8F8FC] border border-black/5 p-6 flex flex-col justify-end space-y-3">
-            <div className="flex items-end justify-between gap-2 h-44">
-              {[35, 48, 62, 55, 78, 65, 88, 92, 84, 96, 90, 100].map((val, i) => (
-                <div key={i} className="flex-1 flex flex-col items-center gap-1.5 h-full justify-end group">
-                  <div
-                    className="w-full rounded-t-md bg-black/15 group-hover:bg-[#FFD21F] transition-all"
-                    style={{ height: `${val}%` }}
-                  />
-                  <span className="text-[9px] font-mono text-[#7A7A8A]">W{i + 1}</span>
-                </div>
-              ))}
+          <div className="space-y-4">
+            <div className="h-64 rounded-2xl bg-[#F8F8FC] border border-black/5 p-6 flex flex-col justify-end space-y-3">
+              <div className="flex items-end justify-between gap-2 h-44">
+                {[35, 48, 62, 55, 78, 65, 88, 92, 84, 96, 90, 100].map((val, i) => (
+                  <div key={i} className="flex-1 flex flex-col items-center gap-1.5 h-full justify-end group">
+                    <div
+                      className="w-full rounded-t-md bg-black/15 group-hover:bg-[#FFD21F] transition-all"
+                      style={{ height: `${val}%` }}
+                    />
+                    <span className="text-[9px] font-mono text-[#7A7A8A]">W{i + 1}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </FeatureGate>
     </div>
   );
 }
+

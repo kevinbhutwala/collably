@@ -12,7 +12,9 @@ import { StatsCard } from "@/components/ui/StatsCard";
 import { BrandIcon } from "@/components/ui/BrandLogos";
 import { AnimatedEmptyState } from "@/components/ui/AnimatedEmptyState";
 import { ProfileCompletenessCard } from "@/components/creators/ProfileCompletenessCard";
+import { SubscriptionUsageCard } from "@/components/subscriptions/SubscriptionUsageCard";
 import { formatCurrency } from "@/core/utils/formatters";
+
 import {
   Wallet,
   TrendingUp,
@@ -214,8 +216,12 @@ export default function DashboardPage() {
         )}
       </div>
 
+      {/* ── Subscription Status & Usage Limits Widget ── */}
+      <SubscriptionUsageCard />
+
       {/* ── Main Two-Column Interactive Stage ── */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
         {/* Left Column: Active Pipelines & Opportunities */}
         <div className="lg:col-span-8 space-y-8">
           {/* Active Collaborations Pipeline */}

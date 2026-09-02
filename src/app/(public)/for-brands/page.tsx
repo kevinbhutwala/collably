@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import {
@@ -6,13 +8,18 @@ import {
   Sparkles,
   ArrowRight,
   Search,
+  CheckCircle2,
+  TrendingUp,
+  Zap,
 } from "lucide-react";
+import { AnimatedBrandSlider } from "@/components/visual/AnimatedBrandSlider";
+import { InteractiveTiltCard } from "@/components/ui/InteractiveTiltCard";
 
 export default function ForBrandsPage() {
   return (
-    <div className="bg-[#FAFAFC] text-[#0A0A0E] min-h-screen select-none">
+    <div className="bg-[#FAFAFC] text-[#0A0A0E] min-h-screen select-none space-y-12 pb-16">
       {/* Brand Hero */}
-      <section className="relative pt-24 pb-20 lg:pt-32 lg:pb-32 overflow-hidden border-b border-black/8 bg-white">
+      <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden border-b border-black/8 bg-white">
         <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#FFD21F]/15 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -22,9 +29,9 @@ export default function ForBrandsPage() {
             </div>
 
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.02] text-[#0A0A0E] font-display">
-              Hire vetted creators with{" "}
-              <span className="font-serif italic font-normal text-[#5A5A68] lowercase block sm:inline">
-                100% milestone escrow.
+              Hire Vetted Creators with{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700]">
+                100% Milestone Escrow.
               </span>
             </h1>
 
@@ -34,15 +41,15 @@ export default function ForBrandsPage() {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-4 font-sans text-sm">
               <Link href="/app/brand/campaigns/create">
-                <button className="px-6 py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs sm:text-sm transition-all shadow-[0_4px_14px_rgba(255,210,31,0.4)] border border-black/10 flex items-center gap-2">
+                <button className="px-7 py-4 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(255,210,31,0.5)] border border-black/10 flex items-center gap-2">
                   <span>Create a Campaign Brief</span>
                   <ArrowRight className="w-4 h-4 text-[#0A0A0E]" />
                 </button>
               </Link>
 
               <Link href="/creators">
-                <button className="px-6 py-3.5 rounded-full bg-white hover:bg-[#F8F8FC] border border-black/10 text-[#0A0A0E] font-bold text-xs sm:text-sm transition-all flex items-center gap-2 shadow-xs">
-                  <Search className="w-4 h-4 text-[#FFD21F]" />
+                <button className="px-6 py-4 rounded-full bg-white hover:bg-[#F8F8FC] border border-black/10 text-[#0A0A0E] font-bold text-xs sm:text-sm transition-all flex items-center gap-2 shadow-xs">
+                  <Search className="w-4 h-4 text-[#8A7000]" />
                   <span>Browse Creator Roster</span>
                 </button>
               </Link>
@@ -51,8 +58,11 @@ export default function ForBrandsPage() {
         </div>
       </section>
 
-      {/* 3 Pillars Bento */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      {/* Sliding Animated Brand Marquee */}
+      <AnimatedBrandSlider speed={26} direction="left" />
+
+      {/* 3 Pillars Bento with 3D Tilt */}
+      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="text-center space-y-2">
           <h2 className="text-3xl sm:text-4xl font-extrabold font-display text-[#0A0A0E]">
             Engineered for High-ROAS Creator Campaigns
@@ -63,35 +73,65 @@ export default function ForBrandsPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-[#FFD21F]/20 border border-[#FFD21F]/40 flex items-center justify-center text-[#0A0A0E]">
-              <ShieldCheck className="w-6 h-6" />
+          <InteractiveTiltCard
+            maxTilt={7}
+            glowColor="rgba(255, 210, 31, 0.25)"
+            className="p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-4 flex flex-col justify-between"
+          >
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-2xl bg-[#FFD21F]/20 border border-[#FFD21F]/40 flex items-center justify-center text-[#0A0A0E]">
+                <ShieldCheck className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold text-[#0A0A0E] font-display">FDIC-Insured Escrow Custody</h3>
+              <p className="text-xs text-[#5A5A68] font-sans leading-relaxed">
+                Your budget remains safely in escrow custody until you review the deliverable. If a creator fails to meet requirements, your escrow is fully refundable.
+              </p>
             </div>
-            <h3 className="text-xl font-bold text-[#0A0A0E] font-display">FDIC-Insured Escrow Custody</h3>
-            <p className="text-xs text-[#5A5A68] font-sans leading-relaxed">
-              Your budget remains safely in escrow custody until you review the deliverable. If a creator fails to meet requirements, your escrow is fully refundable.
-            </p>
-          </div>
+            <div className="pt-4 border-t border-black/6 text-xs font-mono font-bold text-[#087F5B] flex items-center gap-1.5">
+              <CheckCircle2 className="w-3.5 h-3.5" />
+              <span>100% Pre-funded</span>
+            </div>
+          </InteractiveTiltCard>
 
-          <div className="p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-black/5 border border-black/10 flex items-center justify-center text-[#0A0A0E]">
-              <Video className="w-6 h-6" />
+          <InteractiveTiltCard
+            maxTilt={7}
+            glowColor="rgba(255, 210, 31, 0.25)"
+            className="p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-4 flex flex-col justify-between"
+          >
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-2xl bg-[#0A0A0E] text-white flex items-center justify-center shadow-xs">
+                <Video className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold text-[#0A0A0E] font-display">4K Timecoded Video Player</h3>
+              <p className="text-xs text-[#5A5A68] font-sans leading-relaxed">
+                Leave frame-by-frame annotations directly on video cuts. Eliminate messy email chains and align your creative vision with exact precision.
+              </p>
             </div>
-            <h3 className="text-xl font-bold text-[#0A0A0E] font-display">4K Timecoded Video Player</h3>
-            <p className="text-xs text-[#5A5A68] font-sans leading-relaxed">
-              Leave frame-by-frame annotations directly on video cuts. Eliminate messy email chains and align your creative vision with exact precision.
-            </p>
-          </div>
+            <div className="pt-4 border-t border-black/6 text-xs font-mono font-bold text-[#0A0A0E] flex items-center gap-1.5">
+              <CheckCircle2 className="w-3.5 h-3.5 text-[#FFD21F]" />
+              <span>SMPTE Accurate</span>
+            </div>
+          </InteractiveTiltCard>
 
-          <div className="p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-black/5 border border-black/10 flex items-center justify-center text-[#0A0A0E]">
-              <Sparkles className="w-6 h-6" />
+          <InteractiveTiltCard
+            maxTilt={7}
+            glowColor="rgba(255, 210, 31, 0.25)"
+            className="p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-4 flex flex-col justify-between"
+          >
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-2xl bg-[#FAF9F5] border border-black/10 flex items-center justify-center text-[#0A0A0E]">
+                <Sparkles className="w-6 h-6 text-[#8A7000]" />
+              </div>
+              <h3 className="text-xl font-bold text-[#0A0A0E] font-display">AI Audience Telemetry Matching</h3>
+              <p className="text-xs text-[#5A5A68] font-sans leading-relaxed">
+                Filter by verified follower demographics, average engagement rate, and past brand ROAS to eliminate ghost followers and maximize campaign ROI.
+              </p>
             </div>
-            <h3 className="text-xl font-bold text-[#0A0A0E] font-display">AI Audience Telemetry Matching</h3>
-            <p className="text-xs text-[#5A5A68] font-sans leading-relaxed">
-              Filter by verified follower demographics, average engagement rate, and past brand ROAS to eliminate ghost followers and maximize campaign ROI.
-            </p>
-          </div>
+            <div className="pt-4 border-t border-black/6 text-xs font-mono font-bold text-[#087F5B] flex items-center gap-1.5">
+              <CheckCircle2 className="w-3.5 h-3.5" />
+              <span>99.4% Match Precision</span>
+            </div>
+          </InteractiveTiltCard>
         </div>
       </section>
     </div>

@@ -14,6 +14,7 @@ import {
   NotificationItem,
   ChatMessage,
   Conversation,
+  SubscriptionEntity,
 } from "@/core/types";
 
 export interface UserEntity {
@@ -95,6 +96,7 @@ export interface DatabaseState {
   collaborations: Collaboration[];
   payouts: PayoutRecord[];
   payments: PaymentEntity[];
+  subscriptions: SubscriptionEntity[];
   mediaAssets: MediaAssetEntity[];
   conversations: Conversation[];
   messages: ChatMessage[];
@@ -107,3 +109,4 @@ export interface DatabaseState {
   tickets: SupportTicket[];
   auditLogs: AuditEvent[];
 }
+

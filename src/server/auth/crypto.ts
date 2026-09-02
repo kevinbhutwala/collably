@@ -1,6 +1,7 @@
 import crypto from "crypto";
 
-const JWT_SECRET = process.env.AUTH_SECRET || "valence_super_secret_jwt_encryption_key_2026";
+const JWT_SECRET = process.env.AUTH_SECRET || "collably_super_secret_jwt_encryption_key_2026";
+
 const PBKDF2_ITERATIONS = 210000; // OWASP recommended rounds for SHA-512
 
 /**

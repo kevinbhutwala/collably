@@ -39,6 +39,9 @@ import { notificationService } from "@/services/notification.service";
 import { Badge } from "@/components/ui/Badge";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { SubscriptionBadge } from "@/components/subscriptions/SubscriptionBadge";
+import { useSubscriptionStore } from "@/stores/subscription.store";
+
 
 export function AppNavbar() {
   const pathname = usePathname();
@@ -236,7 +239,7 @@ export function AppNavbar() {
           <div className="relative">
             <button
               onClick={() => setShowProfileMenu(!showProfileMenu)}
-              className="flex items-center gap-2 p-1 rounded-xl hover:bg-black/5 border border-transparent hover:border-black/5 transition-colors"
+              className="flex items-center gap-2 p-1.5 rounded-xl hover:bg-black/5 border border-transparent hover:border-black/5 transition-colors"
             >
               <Avatar
                 src={user?.avatarUrl}
@@ -252,16 +255,32 @@ export function AppNavbar() {
             </button>
 
             {showProfileMenu && (
-              <div className="absolute right-0 mt-2 w-56 rounded-2xl bg-white border border-black/10 shadow-2xl p-2 z-50 animate-in fade-in zoom-in-95 duration-100">
+              <div className="absolute right-0 mt-2 w-60 rounded-2xl bg-white border border-black/10 shadow-2xl p-2 z-50 animate-in fade-in zoom-in-95 duration-100">
                 <div className="px-3 py-2 border-b border-black/8 mb-1">
                   <p className="text-xs font-bold text-[#0A0A0E] truncate">{user?.name}</p>
                   <p className="text-[11px] text-[#6A6A78] truncate">{user?.email}</p>
-                  <Badge variant="outline" className="mt-1.5 text-[9px] uppercase tracking-wider bg-black/5 text-[#0A0A0E] border-black/10">
-                    {role}
-                  </Badge>
+                  <div className="mt-2 flex items-center justify-between gap-1">
+                    <SubscriptionBadge planId={useSubscriptionStore.getState().subscription?.planId} role={role} size="sm" />
+                  </div>
                 </div>
 
                 <div className="space-y-0.5 text-xs font-medium text-[#5A5A68]">
+                  <button
+                    onClick={() => {
+                      setShowProfileMenu(false);
+                      useSubscriptionStore.getState().openUpgradeModal();
+                    }}
+                    className="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-[#FFD21F]/15 hover:bg-[#FFD21F]/30 text-[#0A0A0E] font-bold transition-colors text-left"
+                  >
+                    <div className="flex items-center gap-2">
+                      <Sparkles className="w-3.5 h-3.5 text-[#0A0A0E]" />
+                      <span>Upgrade Plan</span>
+                    </div>
+                    <span className="text-[9px] font-mono font-extrabold uppercase px-1.5 py-0.5 rounded-full bg-[#0A0A0E] text-white">
+                      PRO
+                    </span>
+                  </button>
+
                   <Link
                     href={role === "creator" ? "/app/profile" : "/app/settings"}
                     onClick={() => setShowProfileMenu(false)}
@@ -277,7 +296,7 @@ export function AppNavbar() {
                     className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-black/5 hover:text-[#0A0A0E] transition-colors"
                   >
                     <Shield className="w-3.5 h-3.5 text-[#7A7A8A]" />
-                    <span>Security &amp; Account</span>
+                    <span>Plan &amp; Account Settings</span>
                   </Link>
 
                   <Link
@@ -289,6 +308,7 @@ export function AppNavbar() {
                     <span>Public Website</span>
                   </Link>
                 </div>
+
 
                 <div className="pt-1 mt-1 border-t border-black/8">
                   <button

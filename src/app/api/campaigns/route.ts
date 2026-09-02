@@ -52,21 +52,47 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Forbidden: Only brands or admins can create campaigns" }, { status: 403 });
     }
 
+    // 3. Enforce subscription plan campaign quota
+    const { subscriptionService } = await import("@/server/services/subscription.service");
+    const brand = brandRepo.getByUserId(session.userId);
+    const existingCampaigns = brand ? campaignRepo.getByBrandId(brand.id) : [];
+    const activeCampaignsCount = existingCampaigns.filter((c: any) => c.status === "active" || c.status === "applications_open").length;
+
+
+    const quota = await subscriptionService.checkCampaignQuota(session.userId, activeCampaignsCount);
+    if (!quota.allowed) {
+      return NextResponse.json(
+        {
+          error: `Campaign limit reached for ${quota.planName} (${quota.current}/${quota.limit} active campaigns). Please upgrade your plan to launch more campaigns.`,
+          code: "PLAN_QUOTA_EXCEEDED",
+          limit: quota.limit,
+          current: quota.current,
+          planName: quota.planName,
+          planId: quota.planId,
+          requiredPlan: quota.limit === 2 ? "brand_growth" : "brand_enterprise",
+        },
+        { status: 403 }
+      );
+    }
+
     const body = await req.json();
     const parsed = createCampaignSchema.parse(body);
 
-    const brand = brandRepo.getByUserId(session.userId) || brandRepo.getById(parsed.brandId || "");
+    const targetBrand = brand || brandRepo.getById(parsed.brandId || "");
 
     const newCampaign = campaignRepo.createCampaign({
       ...body,
-      brandId: brand?.id || "brand-1",
-      brand: brand || { companyName: session.email.split("@")[0] },
+      brandId: targetBrand?.id || "brand-1",
+      brand: targetBrand || { companyName: session.email.split("@")[0] },
     });
+
+    // Record usage
+    await subscriptionService.recordUsage(session.userId, "activeCampaignsCount", 1);
 
     // Record audit event
     auditRepo.logEvent({
       actorId: session.userId,
-      actorName: brand?.companyName || session.email,
+      actorName: targetBrand?.companyName || session.email,
       actorRole: session.role,
       action: "CAMPAIGN_CREATED",
       entityType: "Campaign",
@@ -80,3 +106,4 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: err.message || "Failed to create campaign" }, { status: 400 });
   }
 }
+

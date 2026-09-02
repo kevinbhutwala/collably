@@ -41,6 +41,11 @@ export class CampaignRepository {
     return this.getById(id) || null;
   }
 
+  getByBrandId(brandId: string): Campaign[] {
+    return (db.getState().campaigns || []).filter((c) => c.brandId === brandId);
+  }
+
+
   createCampaign(data: any): Campaign {
     const brand = (db.getState().brands || []).find((b) => b.id === data.brandId) || (db.getState().brands || [])[0];
 

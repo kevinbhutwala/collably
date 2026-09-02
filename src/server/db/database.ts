@@ -22,6 +22,28 @@ class DatabaseClient {
       if (fs.existsSync(DB_FILE)) {
         const raw = fs.readFileSync(DB_FILE, "utf-8");
         this.state = JSON.parse(raw);
+
+        // Ensure subscriptions collection is initialized and merged
+        const seed = getInitialSeedDatabase();
+        if (!this.state!.subscriptions || this.state!.subscriptions.length === 0) {
+          this.state!.subscriptions = seed.subscriptions || [];
+        } else {
+          // Merge any missing seed subscriptions
+          for (const sSub of seed.subscriptions || []) {
+            if (!this.state!.subscriptions.some((s) => s.userId === sSub.userId)) {
+              this.state!.subscriptions.push(sSub);
+            }
+          }
+        }
+
+        // Merge any missing seed users
+        for (const sUser of seed.users || []) {
+          if (!this.state!.users.some((u) => u.email.toLowerCase() === sUser.email.toLowerCase())) {
+            this.state!.users.push(sUser);
+          }
+        }
+
+        this.persist();
       } else {
         this.state = getInitialSeedDatabase();
         this.persist();

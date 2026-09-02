@@ -538,3 +538,111 @@ export interface PlatformAnalyticsOverview {
   monthlyRevenueSeries: { month: string; revenue: number; gmv: number }[];
   categoryDistribution: { category: string; percentage: number }[];
 }
+
+// =============================================================================
+// SUBSCRIPTION & PLAN-BASED ACCESS CONTROL (PBAC) TYPES
+// =============================================================================
+
+export type CreatorPlanId = 'creator_starter' | 'creator_pro' | 'creator_enterprise';
+export type BrandPlanId = 'brand_starter' | 'brand_growth' | 'brand_enterprise';
+export type SubscriptionPlanId = CreatorPlanId | BrandPlanId;
+
+export type SubscriptionStatus =
+  | 'active'
+  | 'trialing'
+  | 'past_due'
+  | 'cancelled'
+  | 'expired'
+  | 'paused';
+
+export type SubscriptionInterval = 'monthly' | 'annual';
+
+export type PlanFeatureKey =
+  | 'mediaKit'
+  | 'campaignApplications'
+  | 'instantPayouts'
+  | 'advancedAnalytics'
+  | 'aiPitchGenerator'
+  | 'verifiedBadge'
+  | 'priorityDiscovery'
+  | 'multiCreatorManagement'
+  | 'customDomain'
+  | 'activeCampaigns'
+  | 'crmPipeline'
+  | 'aiCreatorMatching'
+  | 'creatorShortlists'
+  | 'teamSeats'
+  | 'advancedRoiTelemetry'
+  | 'contractCompliance'
+  | 'dedicatedAccountManager'
+  | 'apiAccess'
+  | 'adminOverride';
+
+export interface PlanFeatureSet {
+  // Creator Capabilities
+  mediaKit: boolean;
+  maxApplicationsPerMonth: number; // -1 for unlimited
+  instantPayouts: boolean;
+  advancedAnalytics: boolean;
+  aiPitchGenerator: boolean;
+  verifiedBadge: boolean;
+  priorityDiscovery: boolean;
+  multiCreatorManagement: boolean;
+  customDomain: boolean;
+
+  // Brand Capabilities
+  maxActiveCampaigns: number; // -1 for unlimited
+  crmPipeline: boolean;
+  aiCreatorMatching: boolean;
+  creatorShortlists: boolean;
+  maxTeamSeats: number; // -1 for unlimited
+  advancedRoiTelemetry: boolean;
+  contractCompliance: boolean;
+  dedicatedAccountManager: boolean;
+  apiAccess: boolean;
+
+  // System Overrides
+  adminOverride?: boolean;
+}
+
+export interface PlanUsageStats {
+  activeCampaignsCount: number;
+  applicationsThisMonth: number;
+  crmContactsCount: number;
+  aiTokensUsed: number;
+  lastResetDate: string;
+}
+
+export interface SubscriptionPlan {
+  id: SubscriptionPlanId;
+  name: string;
+  badge: string;
+  role: 'creator' | 'brand';
+  monthlyPrice: number;
+  annualPrice: number; // per month when billed annually
+  description: string;
+  highlight?: boolean;
+  features: PlanFeatureSet;
+  featureBullets: string[];
+  limitations?: string[];
+}
+
+export interface SubscriptionEntity {
+  id: string;
+  userId: string;
+  organizationId?: string;
+  role: UserRole;
+  planId: SubscriptionPlanId;
+  status: SubscriptionStatus;
+  interval: SubscriptionInterval;
+  currentPeriodStart: string;
+  currentPeriodEnd: string;
+  cancelAtPeriodEnd: boolean;
+  price: number;
+  currency: string;
+  features: PlanFeatureSet;
+  usage: PlanUsageStats;
+  createdAt: string;
+  updatedAt: string;
+}
+
