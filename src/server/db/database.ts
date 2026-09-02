@@ -23,23 +23,37 @@ class DatabaseClient {
         const raw = fs.readFileSync(DB_FILE, "utf-8");
         this.state = JSON.parse(raw);
 
-        // Ensure subscriptions collection is initialized and merged
         const seed = getInitialSeedDatabase();
-        if (!this.state!.subscriptions || this.state!.subscriptions.length === 0) {
-          this.state!.subscriptions = seed.subscriptions || [];
-        } else {
-          // Merge any missing seed subscriptions
-          for (const sSub of seed.subscriptions || []) {
-            if (!this.state!.subscriptions.some((s) => s.userId === sSub.userId)) {
-              this.state!.subscriptions.push(sSub);
-            }
+
+        // Ensure all required collections exist (in case of schema additions)
+        if (!this.state!.subscriptions) this.state!.subscriptions = [];
+        if (!this.state!.creators) this.state!.creators = [];
+        if (!this.state!.brands) this.state!.brands = [];
+        if (!this.state!.campaigns) this.state!.campaigns = [];
+        if (!this.state!.applications) this.state!.applications = [];
+        if (!this.state!.collaborations) this.state!.collaborations = [];
+        if (!this.state!.payouts) this.state!.payouts = [];
+        if (!this.state!.crmContacts) this.state!.crmContacts = [];
+        if (!this.state!.shortlists) this.state!.shortlists = [];
+        if (!this.state!.disputes) this.state!.disputes = [];
+        if (!this.state!.tickets) this.state!.tickets = [];
+        if (!this.state!.conversations) this.state!.conversations = [];
+        if (!this.state!.messages) this.state!.messages = [];
+        if (!this.state!.notifications) this.state!.notifications = [];
+        if (!this.state!.auditLogs) this.state!.auditLogs = [];
+        if (!this.state!.aiUsage) this.state!.aiUsage = [];
+
+        // Merge only the 3 seed users — do not re-add removed users
+        for (const seedUser of seed.users) {
+          if (!this.state!.users.some((u) => u.id === seedUser.id)) {
+            this.state!.users.push(seedUser);
           }
         }
 
-        // Merge any missing seed users
-        for (const sUser of seed.users || []) {
-          if (!this.state!.users.some((u) => u.email.toLowerCase() === sUser.email.toLowerCase())) {
-            this.state!.users.push(sUser);
+        // Merge only the 3 seed subscriptions
+        for (const seedSub of seed.subscriptions) {
+          if (!this.state!.subscriptions.some((s) => s.userId === seedSub.userId)) {
+            this.state!.subscriptions.push(seedSub);
           }
         }
 
