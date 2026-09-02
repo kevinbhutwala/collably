@@ -158,10 +158,11 @@ export default function SettingsPage() {
       </div>
 
       {/* Navigation Tabs */}
-      <div className="flex items-center gap-2 border-b border-black/8 pb-px">
+      <div className="flex items-center gap-2 border-b border-black/8 pb-px overflow-x-auto scrollbar-none">
         <button
           onClick={() => setActiveTab("billing")}
-          className={`px-4 py-2.5 rounded-t-2xl font-bold text-xs transition-all flex items-center gap-2 border-b-2 ${
+          className={`px-4 py-2.5 rounded-t-2xl font-bold text-xs transition-all flex items-center gap-2 border-b-2 shrink-0 ${
+
             activeTab === "billing"
               ? "border-[#0A0A0E] text-[#0A0A0E] bg-white"
               : "border-transparent text-[#6A6A78] hover:text-[#0A0A0E]"
@@ -173,7 +174,7 @@ export default function SettingsPage() {
 
         <button
           onClick={() => setActiveTab("payout")}
-          className={`px-4 py-2.5 rounded-t-2xl font-bold text-xs transition-all flex items-center gap-2 border-b-2 ${
+          className={`px-4 py-2.5 rounded-t-2xl font-bold text-xs transition-all flex items-center gap-2 border-b-2 shrink-0 ${
             activeTab === "payout"
               ? "border-[#0A0A0E] text-[#0A0A0E] bg-white"
               : "border-transparent text-[#6A6A78] hover:text-[#0A0A0E]"
@@ -185,7 +186,7 @@ export default function SettingsPage() {
 
         <button
           onClick={() => setActiveTab("security")}
-          className={`px-4 py-2.5 rounded-t-2xl font-bold text-xs transition-all flex items-center gap-2 border-b-2 ${
+          className={`px-4 py-2.5 rounded-t-2xl font-bold text-xs transition-all flex items-center gap-2 border-b-2 shrink-0 ${
             activeTab === "security"
               ? "border-[#0A0A0E] text-[#0A0A0E] bg-white"
               : "border-transparent text-[#6A6A78] hover:text-[#0A0A0E]"
@@ -195,6 +196,7 @@ export default function SettingsPage() {
           <span>API &amp; Security</span>
         </button>
       </div>
+
 
       {/* ── TAB 1: PLAN & BILLING ── */}
       {activeTab === "billing" && (

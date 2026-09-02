@@ -186,8 +186,9 @@ export function AppNavbar() {
             </button>
 
             {showNotifs && (
-              <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-2xl bg-white border border-black/10 shadow-2xl p-4 z-50 animate-in fade-in zoom-in-95 duration-100">
+              <div className="absolute right-0 mt-2 w-[calc(100vw-2rem)] max-w-sm sm:w-96 rounded-2xl bg-white border border-black/10 shadow-2xl p-4 z-50 animate-in fade-in zoom-in-95 duration-100">
                 <div className="flex items-center justify-between pb-3 border-b border-black/8">
+
                   <div className="flex items-center gap-2">
                     <h4 className="text-xs font-bold text-[#0A0A0E]">Notifications</h4>
                     {unreadCount > 0 && (
