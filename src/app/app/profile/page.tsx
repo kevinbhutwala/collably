@@ -144,16 +144,16 @@ export default function CreatorProfileEditPage() {
   return (
     <div className="space-y-6 text-[#0A0A0E] select-none">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-black/8">
-        <div>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 sm:pb-5 border-b border-black/8">
+        <div className="hidden lg:block">
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              Creator Media Kit
+              Creator Portfolio
             </span>
             <span className="text-[#8A8A9A]">•</span>
             <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
-              Public Card
+              Audited Kit
             </span>
           </div>
           <h1 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] tracking-tight font-display">

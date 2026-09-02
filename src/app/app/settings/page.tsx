@@ -128,14 +128,14 @@ export default function SettingsPage() {
     : "Next month";
 
   return (
-    <div className="space-y-6 max-w-5xl text-[#0A0A0E] select-none font-sans">
-      {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-black/8">
-        <div>
+    <div className="space-y-6 text-[#0A0A0E] select-none">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 sm:pb-5 border-b border-black/8">
+        <div className="hidden lg:block">
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-pulse" />
-              Settings
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              Workspace Controls
             </span>
             <span className="text-[#8A8A9A]">•</span>
             <SubscriptionBadge planId={subscription?.planId} role={role} size="sm" />

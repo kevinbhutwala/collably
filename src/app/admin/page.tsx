@@ -35,7 +35,7 @@ export default function AgencyAdminCommandCenter() {
   return (
     <div className="space-y-8 text-[#0A0A0E] select-none">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-black/8">
+      <div className="hidden lg:flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-black/8">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-xs font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
