@@ -107,12 +107,6 @@ export function AppSidebar() {
 
   return (
     <aside className="hidden lg:flex flex-col w-64 border-r border-black/8 bg-white shrink-0 h-[calc(100vh-4rem)] sticky top-16 text-[#0A0A0E] shadow-2xs select-none">
-      {/* Workspace badge header */}
-      <div className="px-4 py-3 flex items-center justify-between border-b border-black/8 shrink-0">
-        <CollablyLogo href="/app/dashboard" size="sm" />
-        <SubscriptionBadge planId={subscription?.planId} role={role} size="sm" />
-      </div>
-
       {/* Scrollable Nav List */}
       <nav className="flex-1 overflow-y-auto overflow-x-hidden px-3 py-3 space-y-0.5">
         {navItems.map((item) => {
