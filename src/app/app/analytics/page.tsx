@@ -13,52 +13,52 @@ export default function CreatorAnalyticsPage() {
   const er = currentCreator?.avgEngagementRate || 0;
 
   return (
-    <div className="space-y-8 text-[#0A0A0E] select-none">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-black/8">
+    <div className="space-y-6 text-[#0A0A0E] select-none">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-black/8">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               Audience Intel
             </span>
             <span className="text-[#8A8A9A]">•</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
-              Live Social Sync
+            <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
+              Synced
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
-            Creator Performance &amp; Analytics
+          <h1 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
+            Analytics
           </h1>
-          <p className="text-xs sm:text-sm text-[#5A5A68] mt-0.5 font-sans">
-            Verified audience retention curves, engagement benchmarks, and brand campaign impressions.
+          <p className="text-xs sm:text-sm text-[#5A5A68]">
+            Audience reach, engagement benchmarks, and campaign performance.
           </p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 font-mono">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 font-mono">
         <StatsCard
           title="Engagement Rate"
-          value={er > 0 ? `${er}%` : "6.8% ER"}
-          subtitle="Audited from connected channels"
-          icon={<TrendingUp className="w-5 h-5 text-[#FFD21F]" />}
+          value={er > 0 ? `${er}%` : "6.8%"}
+          subtitle="Audited rate"
+          icon={<TrendingUp className="w-4 h-4 text-[#FFD21F]" />}
         />
         <StatsCard
-          title="Total Follower Reach"
+          title="Total Reach"
           value={totalFollowers > 0 ? formatNumber(totalFollowers) : "125K"}
-          subtitle="Cross-platform audience"
-          icon={<Users className="w-5 h-5 text-[#0A0A0E]" />}
+          subtitle="Followers"
+          icon={<Users className="w-4 h-4 text-[#0A0A0E]" />}
         />
         <StatsCard
-          title="Campaigns Completed"
+          title="Deals Completed"
           value={String(currentCreator?.completedCampaignsCount || 8)}
-          subtitle="Milestones successfully released"
-          icon={<Sparkles className="w-5 h-5 text-[#FFD21F]" />}
+          subtitle="Released milestones"
+          icon={<Sparkles className="w-4 h-4 text-[#FFD21F]" />}
         />
         <StatsCard
           title="Creator Tier"
-          value={currentCreator?.tier ? currentCreator.tier.toUpperCase() : "PRO RISING"}
-          subtitle="Quality rating verified"
-          icon={<Activity className="w-5 h-5 text-[#0A0A0E]" />}
+          value={currentCreator?.tier ? currentCreator.tier.toUpperCase() : "PRO"}
+          subtitle="Verified tier"
+          icon={<Activity className="w-4 h-4 text-[#0A0A0E]" />}
         />
       </div>
 
@@ -66,24 +66,24 @@ export default function CreatorAnalyticsPage() {
       <FeatureGate
         feature="advancedAnalytics"
         requiredPlanId="creator_pro"
-        title="30-Day Impression & Retention Telemetry"
-        description="Deep audience demographic splits, multi-channel view retention, and verified sponsor reach curves are exclusive to Creator Pro."
+        title="30-Day Impression Telemetry"
+        description="Detailed demographic breakdown and weekly retention curves for Creator Pro members."
       >
-        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6 text-[#0A0A0E]">
+        <div className="p-5 sm:p-7 rounded-3xl bg-white border border-black/8 shadow-xs space-y-4 text-[#0A0A0E]">
           <div className="flex items-center justify-between pb-3 border-b border-black/8">
-            <h3 className="text-base sm:text-lg font-bold text-[#0A0A0E] font-display">
-              30-Day Impression &amp; Retention Curves
+            <h3 className="text-base font-bold text-[#0A0A0E] font-display">
+              30-Day Impression Activity
             </h3>
-            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] border border-[#FFD21F]/40 text-[10px] font-mono font-bold">
-              REALTIME
+            <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] border border-[#FFD21F]/40 text-[10px] font-mono font-bold">
+              LIVE
             </span>
           </div>
 
-          <div className="space-y-4">
-            <div className="h-64 rounded-2xl bg-[#F8F8FC] border border-black/5 p-6 flex flex-col justify-end space-y-3">
-              <div className="flex items-end justify-between gap-2 h-44">
+          <div className="space-y-3">
+            <div className="h-56 rounded-2xl bg-[#F8F8FC] border border-black/5 p-4 sm:p-6 flex flex-col justify-end space-y-2">
+              <div className="flex items-end justify-between gap-1.5 sm:gap-2 h-40">
                 {[35, 48, 62, 55, 78, 65, 88, 92, 84, 96, 90, 100].map((val, i) => (
-                  <div key={i} className="flex-1 flex flex-col items-center gap-1.5 h-full justify-end group">
+                  <div key={i} className="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
                     <div
                       className="w-full rounded-t-md bg-black/15 group-hover:bg-[#FFD21F] transition-all"
                       style={{ height: `${val}%` }}

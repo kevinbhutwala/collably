@@ -142,44 +142,44 @@ export default function CreatorProfileEditPage() {
   };
 
   return (
-    <div className="space-y-8 text-[#0A0A0E] select-none">
+    <div className="space-y-6 text-[#0A0A0E] select-none">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-black/8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-black/8">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               Creator Media Kit
             </span>
             <span className="text-[#8A8A9A]">•</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
-              Public Pitch Card
+            <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
+              Public Card
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
-            Creator Profile &amp; Rate Card
+          <h1 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
+            Creator Profile
           </h1>
-          <p className="text-xs sm:text-sm text-[#5A5A68] mt-0.5 font-sans">
-            Customize your bio, connect social audience channels, and set starting collaboration rates.
+          <p className="text-xs sm:text-sm text-[#5A5A68]">
+            Customize your bio, connected channels, and starting rates.
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
           {currentCreator?.id && (
             <Link
               href={`/creators/${currentCreator.id}`}
               target="_blank"
-              className="px-4 py-2 rounded-full bg-black/5 hover:bg-black/10 text-[#0A0A0E] text-xs font-semibold transition-all flex items-center gap-1.5 border border-black/10 shadow-xs"
+              className="px-3.5 py-2 rounded-full bg-black/5 hover:bg-black/10 text-[#0A0A0E] text-xs font-semibold transition-all flex items-center gap-1.5 border border-black/10 shadow-xs"
             >
               <span>View Public Page</span>
-              <ExternalLink className="w-3.5 h-3.5" />
+              <ExternalLink className="w-3 h-3" />
             </Link>
           )}
 
           <button
             onClick={handleSaveProfile}
             disabled={isSaving}
-            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5 disabled:opacity-50"
+            className="px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5 disabled:opacity-50"
           >
             <Save className="w-3.5 h-3.5 text-[#0A0A0E]" />
             <span>{isSaving ? "Saving..." : "Save Changes"}</span>

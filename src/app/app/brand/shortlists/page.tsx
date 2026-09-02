@@ -54,55 +54,55 @@ export default function BrandShortlistsPage() {
   };
 
   return (
-    <div className="space-y-8 text-[#0A0A0E] select-none">
+    <div className="space-y-6 text-[#0A0A0E] select-none">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-black/8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-black/8">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               Talent Curation
             </span>
             <span className="text-[#8A8A9A]">•</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
-              Team Shortlists
+            <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
+              Shortlists
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0A0A0E] font-display tracking-tight">
-            Creator Shortlists &amp; Side-by-Side Comparison
+          <h1 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] font-display tracking-tight">
+            Creator Shortlists
           </h1>
-          <p className="text-xs sm:text-sm text-[#5A5A68] mt-0.5 font-sans">
-            Curate collections for upcoming launches and benchmark creator metrics side-by-side.
+          <p className="text-xs sm:text-sm text-[#5A5A68]">
+            Curate talent rosters and compare metrics side-by-side.
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
           <button
             onClick={() => setIsCreateModalOpen(true)}
-            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5"
+            className="px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5 self-start sm:self-center"
           >
-            <Plus className="w-4 h-4 text-[#0A0A0E]" />
-            <span>Create Shortlist</span>
+            <Plus className="w-3.5 h-3.5 text-[#0A0A0E]" />
+            <span>New Shortlist</span>
           </button>
         </div>
       </div>
 
       {/* Tabs for Shortlists */}
-      <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-2">
+      <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1.5">
         {shortlists.map((s) => {
           const isActive = s.id === activeShortlistId;
           return (
             <button
               key={s.id}
               onClick={() => setActiveShortlistId(s.id)}
-              className={`px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap flex items-center gap-2 ${
+              className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap flex items-center gap-1.5 shrink-0 ${
                 isActive
                   ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs font-bold border border-black/10"
                   : "bg-white text-[#6A6A78] hover:text-[#0A0A0E] border border-black/8"
               }`}
             >
               <span>{s.name}</span>
-              <span className={`px-2 py-0.5 rounded-full text-[10px] ${
+              <span className={`px-1.5 py-0.5 rounded-full text-[10px] ${
                 isActive ? "bg-[#0A0A0E] text-white font-bold" : "bg-black/5 text-[#5A5A68]"
               }`}>
                 {s.creators.length}
@@ -114,20 +114,20 @@ export default function BrandShortlistsPage() {
 
       {/* Active Shortlist Details & Grid */}
       {activeShortlist ? (
-        <div className="space-y-6">
-          <div className="p-6 rounded-3xl bg-white border border-black/8 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="space-y-5">
+          <div className="p-4 sm:p-5 rounded-3xl bg-white border border-black/8 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
-              <h2 className="text-xl font-bold text-[#0A0A0E] font-display">{activeShortlist.name}</h2>
-              <p className="text-xs text-[#5A5A68] font-sans mt-0.5">{activeShortlist.description}</p>
+              <h2 className="text-base sm:text-lg font-bold text-[#0A0A0E] font-display">{activeShortlist.name}</h2>
+              <p className="text-xs text-[#5A5A68] mt-0.5">{activeShortlist.description}</p>
             </div>
 
             {activeShortlist.creators.length > 1 && (
               <button
                 onClick={() => setIsCompareOpen(true)}
-                className="px-4 py-2 rounded-full bg-black/5 hover:bg-black/10 text-[#0A0A0E] text-xs font-semibold transition-all flex items-center gap-1.5 border border-black/10"
+                className="px-3.5 py-1.5 rounded-full bg-black/5 hover:bg-black/10 text-[#0A0A0E] text-xs font-semibold transition-all flex items-center gap-1.5 border border-black/10 shrink-0 self-start sm:self-center"
               >
-                <Scale className="w-4 h-4 text-[#0A0A0E]" />
-                <span>Side-by-Side Compare</span>
+                <Scale className="w-3.5 h-3.5 text-[#0A0A0E]" />
+                <span>Compare Metrics</span>
               </button>
             )}
           </div>
