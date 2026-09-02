@@ -16,6 +16,7 @@ export const metadata: Metadata = {
 export default function PricingPage() {
   return (
     <div className="bg-[#FAFAFC] text-[#0A0A0E] min-h-screen space-y-12">
+      <h1 className="sr-only">Pricing — Collably</h1>
       <StreamlinedPricing />
       <AnimatedBrandSlider speed={28} direction="left" />
       <CompactFAQ />

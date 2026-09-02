@@ -190,7 +190,7 @@ export function CompactHeroStory() {
                 className="absolute top-4 left-4 z-20 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-white/40 shadow-lg flex items-center gap-1.5 text-xs font-mono font-bold text-[#0A0A0E]"
               >
                 <Sparkles className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
-                <span>{activeCreator.matchScore} AI Match</span>
+                <span>{activeCreator.matchScore}</span>
               </motion.div>
 
               {/* Floating Top Right Live Reel Badge */}

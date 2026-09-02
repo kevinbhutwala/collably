@@ -87,7 +87,7 @@ export function HeroEditorialShowcase() {
   const activeTalent = HERO_TALENT[activeIdx];
 
   return (
-    <section className="relative min-h-[90vh] sm:min-h-[92vh] bg-white text-[#0A0A0E] flex flex-col justify-between pt-20 sm:pt-28 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden select-none font-sans">
+    <section className="relative min-h-[80vh] sm:min-h-[85vh] bg-white text-[#0A0A0E] flex flex-col justify-between pt-6 sm:pt-10 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden select-none font-sans">
       {/* Background Solar Flare with Gentle Breathing Cycle */}
       <motion.div
         animate={{
@@ -238,7 +238,7 @@ export function HeroEditorialShowcase() {
                 className="absolute top-3 sm:top-4 left-3 sm:left-4 z-20 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-white/40 shadow-lg flex items-center gap-1.5 text-[11px] sm:text-xs font-mono font-bold text-[#0A0A0E]"
               >
                 <Sparkles className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
-                <span>{activeTalent.matchScore} AI Match</span>
+                <span>{activeTalent.matchScore}</span>
               </motion.div>
 
               {/* Top Right Live Reach Badge */}

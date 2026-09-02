@@ -160,6 +160,9 @@ export function EditorialCreatorGrid() {
             <p className="text-xs sm:text-sm text-[#5A5A68] leading-relaxed">
               Explore audited media kits, rate cards, and 4K production reels ready for instant milestone booking.
             </p>
+            <p className="text-[11px] text-[#9A9AA8] font-mono mt-1">
+              ✦ Sample profiles shown for illustration — real creator roster populates as creators join.
+            </p>
           </div>
 
           {/* Category Tabs */}
