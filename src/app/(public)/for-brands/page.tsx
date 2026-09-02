@@ -139,8 +139,9 @@ export default function ForBrandsPage() {
             </div>
             <div className="pt-4 border-t border-black/6 text-xs font-mono font-bold text-[#087F5B] flex items-center gap-1.5">
               <CheckCircle2 className="w-3.5 h-3.5" />
-              <span>99.4% Match Precision</span>
+              <span>Verified Audience Data</span>
             </div>
+
           </InteractiveTiltCard>
         </div>
       </section>

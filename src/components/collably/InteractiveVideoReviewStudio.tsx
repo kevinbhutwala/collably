@@ -35,8 +35,8 @@ interface ReviewComment {
 const REVIEW_COMMENTS: ReviewComment[] = [
   {
     id: "c-1",
-    author: "Sarah Jenkins",
-    role: "Head of Marketing, Linear",
+    author: "Alex Rivera",
+    role: "Head of Marketing",
     avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100",
     timecode: "00:14",
     timeSec: 14,
@@ -55,8 +55,8 @@ const REVIEW_COMMENTS: ReviewComment[] = [
   },
   {
     id: "c-3",
-    author: "Sarah Jenkins",
-    role: "Head of Marketing, Linear",
+    author: "Alex Rivera",
+    role: "Head of Marketing",
     avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100",
     timecode: "00:55",
     timeSec: 55,
@@ -64,6 +64,7 @@ const REVIEW_COMMENTS: ReviewComment[] = [
     status: "Approved",
   },
 ];
+
 
 export function InteractiveVideoReviewStudio() {
   const [isPlaying, setIsPlaying] = useState(false);

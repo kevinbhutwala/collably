@@ -58,10 +58,11 @@ export default function AboutPage() {
             </div>
             <h3 className="text-lg font-bold text-[#111111] font-display">Vetted Audience Quality</h3>
             <p className="text-xs text-[#6B6B6B] leading-relaxed font-sans font-medium">
-              Strict 5% creator admission rate with audited engagement authenticity.
+              Strict creator vetting with audited engagement authenticity and verified audience demographics.
             </p>
           </div>
         </div>
+
       </div>
 
       <EditorialCTA />

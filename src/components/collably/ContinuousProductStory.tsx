@@ -43,7 +43,7 @@ const WORKFLOW_STEPS: WorkflowStep[] = [
     stepNum: "01",
     title: "Discover Audited Talent",
     category: "DISCOVERY ENGINE",
-    tagline: "Filter 50,000+ creators by verified Tier-1 reach and 4K production rigs.",
+    tagline: "Filter creators by verified reach, engagement rate, and 4K production capabilities.",
     description:
       "Skip unvetted influencer DM spam. Search our live creator catalog with real-time engagement telemetry, audience geography breakdown, and fixed rate cards.",
     keyBenefits: [
@@ -58,13 +58,13 @@ const WORKFLOW_STEPS: WorkflowStep[] = [
     stepNum: "02",
     title: "AI Audience Matchmaking",
     category: "AFFINITY SCORING",
-    tagline: "Calculate 98%+ algorithmic affinity between brand brief and creator viewership.",
+    tagline: "Calculate algorithmic affinity between brand brief and creator viewership.",
     description:
-      "Our neural matching engine analyzes past brand sponsors, audience comment sentiment, and category relevance to rank high-converting creator fits instantly.",
+      "Our matching engine analyzes past brand sponsors, audience comment sentiment, and category relevance to rank high-converting creator fits instantly.",
     keyBenefits: [
       "Deep semantic analysis of creator content portfolio",
       "Audience demographic overlap calculation",
-      "Historical ROAS performance benchmark per niche",
+      "Category relevance and brand fit scoring",
     ],
     mockupType: "match",
   },
@@ -120,9 +120,9 @@ const WORKFLOW_STEPS: WorkflowStep[] = [
     category: "FINANCIAL LEDGER",
     tagline: "Milestone funds release immediately into creator Stripe Connect bank accounts.",
     description:
-      "Upon sign-off, escrow funds disburse automatically. Creators receive their 90% net earnings within 2 hours with transparent fee transparency.",
+      "Upon sign-off, escrow funds disburse automatically. Creators receive their 90% net earnings with transparent fee breakdown and automated tax receipts.",
     keyBenefits: [
-      "Sub-2-hour direct bank deposit via Stripe Connect Express",
+      "Direct bank deposit via Stripe Connect Express upon approval",
       "Transparent 10% platform fee with zero hidden deductions",
       "Automated 1099/tax receipt generation",
     ],
@@ -131,19 +131,20 @@ const WORKFLOW_STEPS: WorkflowStep[] = [
   {
     id: "step-grow",
     stepNum: "07",
-    title: "Audited ROAS & Scaling",
+    title: "Attribution & Scaling",
     category: "GROWTH TELEMETRY",
     tagline: "Track conversion attribution and re-book top performers with 1 click.",
     description:
       "Monitor verified click-through rates, CPMs, and team conversions across your creator drops. Build private talent shortlists and scale recurring creator retainers.",
     keyBenefits: [
       "Real-time tracking pixel and discount link attribution",
-      "Audited blended ROAS dashboard (avg 3.8x – 5.2x lift)",
+      "Campaign performance dashboard with creator comparison",
       "1-Click creator re-booking and automated monthly retainers",
     ],
     mockupType: "grow",
   },
 ];
+
 
 export function ContinuousProductStory() {
   const [activeStepIdx, setActiveStepIdx] = useState(0);
@@ -257,13 +258,14 @@ export function ContinuousProductStory() {
                   <div className="w-3 h-3 rounded-full bg-amber-400" />
                   <div className="w-3 h-3 rounded-full bg-emerald-400" />
                   <span className="ml-2 text-[10px] sm:text-[11px] font-mono text-[#7A7A8A] truncate max-w-[140px] sm:max-w-none">
-                    collably.io/app/{activeStep.mockupType}
+                    Collably Workspace
                   </span>
                 </div>
                 <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] font-mono text-[9px] sm:text-[10px] font-bold">
-                  LIVE WORKSPACE
+                  PRODUCT PREVIEW
                 </span>
               </div>
+
 
               {/* Dynamic Product UI Rendering based on Active Step */}
               <div className="py-5 flex-1 flex flex-col justify-center">
@@ -285,7 +287,7 @@ export function ContinuousProductStory() {
                           </span>
                         </div>
                         <span className="text-[10px] font-mono font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200 shrink-0 self-start xs:self-center">
-                          128 Matches Found
+                          Matched Creators
                         </span>
                       </div>
 
@@ -294,10 +296,10 @@ export function ContinuousProductStory() {
                           <div className="flex items-center justify-between">
                             <span className="text-xs font-bold font-display">Elena Rostova</span>
                             <span className="text-[10px] font-mono font-extrabold text-[#0A0A0E] bg-[#FFD21F] px-1.5 py-0.5 rounded">
-                              99.4%
+                              Elite
                             </span>
                           </div>
-                          <p className="text-[11px] text-[#5A5A68]">485K Reach • 6.8% ER • $3,500/cut</p>
+                          <p className="text-[11px] text-[#5A5A68]">485K Followers • AI & Tech</p>
                           <div className="w-full h-1.5 rounded-full bg-emerald-500" />
                         </div>
 
@@ -305,10 +307,10 @@ export function ContinuousProductStory() {
                           <div className="flex items-center justify-between">
                             <span className="text-xs font-bold font-display">Marcus Vance</span>
                             <span className="text-[10px] font-mono font-extrabold text-[#0A0A0E] bg-black/10 px-1.5 py-0.5 rounded">
-                              98.7%
+                              Verified
                             </span>
                           </div>
-                          <p className="text-[11px] text-[#5A5A68]">620K Reach • 5.4% ER • $4,200/cut</p>
+                          <p className="text-[11px] text-[#5A5A68]">310K Followers • Design</p>
                           <div className="w-full h-1.5 rounded-full bg-emerald-400" />
                         </div>
                       </div>
@@ -331,29 +333,30 @@ export function ContinuousProductStory() {
                             AI
                           </div>
                           <div>
-                            <h4 className="text-xs font-bold text-[#0A0A0E]">Neural Match Matrix</h4>
-                            <p className="text-[10px] text-[#7A7A8A]">Linear B2B Campaign × Elena Rostova</p>
+                            <h4 className="text-xs font-bold text-[#0A0A0E]">AI Match Analysis</h4>
+                            <p className="text-[10px] text-[#7A7A8A]">Your Campaign × Elena Rostova</p>
                           </div>
                         </div>
-                        <span className="text-xl font-black font-display text-[#0A0A0E]">99.4% Affinity</span>
+                        <span className="text-sm font-black font-display text-[#0A0A0E]">Strong Match</span>
                       </div>
 
                       <div className="space-y-2 font-mono text-[11px]">
                         <div className="flex justify-between text-[#5A5A68]">
-                          <span>Developer Audience Overlap:</span>
-                          <strong className="text-[#0A0A0E]">94.2% Tier-1 Software Devs</strong>
+                          <span>Audience Category Overlap:</span>
+                          <strong className="text-[#0A0A0E]">Developer & Tech Focused</strong>
                         </div>
                         <div className="flex justify-between text-[#5A5A68]">
-                          <span>Predicted Conversion Rate:</span>
-                          <strong className="text-emerald-600">3.8x Category Average</strong>
+                          <span>Engagement Quality:</span>
+                          <strong className="text-emerald-600">Above Category Average</strong>
                         </div>
                         <div className="flex justify-between text-[#5A5A68]">
                           <span>Commercial Rights:</span>
-                          <strong className="text-[#0A0A0E]">Full 100% Perpetual Included</strong>
+                          <strong className="text-[#0A0A0E]">Full Perpetual Included</strong>
                         </div>
                       </div>
                     </motion.div>
                   )}
+
 
                   {/* Step 3: Collaborate & Escrow Mockup */}
                   {activeStep.mockupType === "collaborate" && (
@@ -436,7 +439,7 @@ export function ContinuousProductStory() {
                         <p className="text-xs text-emerald-800">Commercial IP License Transferred to Brand</p>
                       </div>
                       <span className="inline-block px-3 py-1 rounded-full bg-white border border-emerald-300 text-[10px] font-mono text-emerald-900 font-bold">
-                        Certificate #COL-8891-VERIFIED
+                        Approval Certificate Issued
                       </span>
                     </motion.div>
                   )}
@@ -467,7 +470,7 @@ export function ContinuousProductStory() {
 
                       <div className="flex items-center gap-2 p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 font-medium">
                         <Zap className="w-4 h-4 text-emerald-600 shrink-0" />
-                        <span>Disbursed directly to Stripe Connect bank account (&lt; 2h SLA).</span>
+                        <span>Disbursed directly to Stripe Connect bank account upon sign-off.</span>
                       </div>
                     </motion.div>
                   )}
@@ -483,27 +486,28 @@ export function ContinuousProductStory() {
                     >
                       <div className="grid grid-cols-3 gap-2 text-center font-mono">
                         <div className="p-3 rounded-xl bg-[#F8F8FC] border border-black/6">
-                          <span className="text-[9px] uppercase text-[#7A7A8A] block">Views</span>
-                          <span className="text-sm font-black text-[#0A0A0E]">1.2M</span>
+                          <span className="text-[9px] uppercase text-[#7A7A8A] block">Reach</span>
+                          <span className="text-sm font-black text-[#0A0A0E]">Growing</span>
                         </div>
                         <div className="p-3 rounded-xl bg-[#F8F8FC] border border-black/6">
-                          <span className="text-[9px] uppercase text-[#7A7A8A] block">Signups</span>
-                          <span className="text-sm font-black text-emerald-600">+4,820</span>
+                          <span className="text-[9px] uppercase text-[#7A7A8A] block">Conversions</span>
+                          <span className="text-sm font-black text-emerald-600">Tracked</span>
                         </div>
                         <div className="p-3 rounded-xl bg-[#FFFDF5] border border-[#FFD21F]/40">
-                          <span className="text-[9px] uppercase text-[#7A7A8A] block">Blended ROAS</span>
-                          <span className="text-sm font-black text-[#0A0A0E]">4.8x</span>
+                          <span className="text-[9px] uppercase text-[#7A7A8A] block">Campaign ROI</span>
+                          <span className="text-sm font-black text-[#0A0A0E]">Measured</span>
                         </div>
                       </div>
 
                       <div className="p-3 rounded-xl bg-white border border-black/8 flex items-center justify-between text-xs">
-                        <span className="font-bold text-[#0A0A0E]">Re-book for Q4 Retainer</span>
+                        <span className="font-bold text-[#0A0A0E]">Re-book for Next Quarter</span>
                         <button className="px-3 py-1 rounded-full bg-[#FFD21F] text-[#0A0A0E] font-bold text-[11px]">
                           1-Click Rehire
                         </button>
                       </div>
                     </motion.div>
                   )}
+
                 </AnimatePresence>
               </div>
 

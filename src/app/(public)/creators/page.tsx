@@ -80,25 +80,26 @@ export default function CreatorsDirectoryPage() {
     heroImage: c.coverImageUrl || c.avatarUrl,
     niche: c.headline || c.primaryCategory || "Technology & AI",
     category: c.primaryCategory || "tech",
-    reach: c.totalFollowers ? `${(c.totalFollowers / 1000).toFixed(0)}K` : "250K",
-    engagementRate: c.avgEngagementRate || 5.8,
-    startingPrice: c.startingPrice || c.rateCards?.[0]?.basePrice || 2500,
-    matchScore: c.qualityScore || 98.4,
+    reach: c.totalFollowers ? `${(c.totalFollowers / 1000).toFixed(0)}K` : undefined,
+    engagementRate: c.avgEngagementRate,
+    startingPrice: c.startingPrice || c.rateCards?.[0]?.basePrice,
+    matchScore: c.qualityScore,
     bio: c.bio,
-    tags: ["4K Master", "RED V-Raptor", "ProRes HQ"],
+    tags: c.primaryCategory ? [c.primaryCategory] : [],
     sampleDeliverables: [
       {
         title: "4K Master Product Reel",
-        specs: "RED 8K • 60fps",
+        specs: "4K Production",
         imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80",
       },
       {
-        title: "60s Dedicated Mid-roll Integration",
-        specs: "Sony FX3 • S-Log3 ProRes",
+        title: "60s Dedicated Integration",
+        specs: "Short-form Content",
         imageUrl: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&auto=format&fit=crop&q=80",
       },
     ],
   });
+
 
   return (
     <div className="py-12 sm:py-16 bg-[#FAFAFC] text-[#0A0A0E] min-h-screen select-none space-y-12 font-sans">
@@ -113,8 +114,9 @@ export default function CreatorsDirectoryPage() {
             Discover Verified Creators
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68] font-sans max-w-xl leading-relaxed">
-            Direct access to 50,000+ audited video creators, complete with verified audience demographics, 4K production reels, and 1-click booking.
+            Direct access to audited video creators, complete with verified audience demographics, 4K production reels, and 1-click booking.
           </p>
+
         </div>
 
         {/* Filter Pills & Search */}

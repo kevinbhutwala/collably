@@ -273,45 +273,47 @@ export default function CaseStudiesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFFDF5] border border-[#FFD21F]/50 text-[#0A0A0E] text-xs font-mono font-bold shadow-xs">
             <Sparkles className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
-            <span>VERIFIED BRAND CAMPAIGN ATTRIBUTION STUDIO</span>
+            <span>HOW COLLABLY CAMPAIGNS WORK</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-[#0A0A0E] tracking-tight font-display max-w-4xl mx-auto">
-            Category-defining brands. <br />
+            The full campaign<br />
             <span className="text-[#0A0A0E] bg-gradient-to-r from-[#FFD21F] via-[#FFAE00] to-[#FFD21F] bg-clip-text text-transparent underline decoration-[#FFD21F]/40 underline-offset-8">
-              Audited creator ROI.
+              workflow, end-to-end.
             </span>
           </h1>
 
           <p className="text-base sm:text-lg text-[#5A5A68] max-w-2xl mx-auto font-sans leading-relaxed">
-            Discover how leading engineering, design, and productivity brands scale high-converting creator campaigns with 100% pre-funded milestone escrow custody.
+            See how brands brief creators, manage deliverables in our 4K review studio, and release milestone payments through 100% pre-funded escrow.
           </p>
 
-          {/* Live Telemetry Strip */}
+
+          {/* Feature Highlights Strip */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-6 text-left font-mono">
             <div className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/6">
-              <span className="text-[10px] text-[#7A7A8A] uppercase font-bold block">Escrow Disbursed</span>
-              <span className="text-2xl font-black text-[#0A0A0E] font-display">$14.8M+</span>
-              <span className="text-[10px] text-emerald-600 font-bold block mt-0.5">100% Payout Certainty</span>
+              <span className="text-[10px] text-[#7A7A8A] uppercase font-bold block">Escrow Protection</span>
+              <span className="text-2xl font-black text-[#0A0A0E] font-display">100%</span>
+              <span className="text-[10px] text-emerald-600 font-bold block mt-0.5">Pre-funded Guarantee</span>
             </div>
             <div className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/6">
-              <span className="text-[10px] text-[#7A7A8A] uppercase font-bold block">Verified Briefs</span>
-              <span className="text-2xl font-black text-[#0A0A0E] font-display">450+</span>
-              <span className="text-[10px] text-[#5A5A68] block mt-0.5">Across 18 Niches</span>
+              <span className="text-[10px] text-[#7A7A8A] uppercase font-bold block">Platform Fee</span>
+              <span className="text-2xl font-black text-[#0A0A0E] font-display">10%</span>
+              <span className="text-[10px] text-[#5A5A68] block mt-0.5">Flat & Transparent</span>
             </div>
             <div className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/6">
-              <span className="text-[10px] text-[#7A7A8A] uppercase font-bold block">On-Time QA Rate</span>
-              <span className="text-2xl font-black text-[#0A0A0E] font-display">99.4%</span>
-              <span className="text-[10px] text-emerald-600 font-bold block mt-0.5">Frame Sign-offs</span>
+              <span className="text-[10px] text-[#7A7A8A] uppercase font-bold block">Payout Speed</span>
+              <span className="text-2xl font-black text-[#0A0A0E] font-display">Instant</span>
+              <span className="text-[10px] text-emerald-600 font-bold block mt-0.5">On QA Sign-off</span>
             </div>
             <div className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/6">
-              <span className="text-[10px] text-[#7A7A8A] uppercase font-bold block">Average ROAS</span>
-              <span className="text-2xl font-black text-[#0A0A0E] font-display">3.8x</span>
-              <span className="text-[10px] text-[#A37F00] font-bold block mt-0.5">Audited Blended</span>
+              <span className="text-[10px] text-[#7A7A8A] uppercase font-bold block">Support SLA</span>
+              <span className="text-2xl font-black text-[#0A0A0E] font-display">&lt; 4 Hrs</span>
+              <span className="text-[10px] text-[#A37F00] font-bold block mt-0.5">Human Arbitration</span>
             </div>
           </div>
         </div>
       </section>
+
 
       {/* ── Filter Tabs & Case Studies Studio Grid ── */}
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
@@ -319,12 +321,13 @@ export default function CaseStudiesPage() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-black/8 pb-6">
           <div>
             <h2 className="text-2xl font-extrabold text-[#0A0A0E] font-display">
-              Featured Campaign Breakdowns
+              Workflow Examples
             </h2>
             <p className="text-xs text-[#5A5A68]">
-              Inspect live performance telemetry, contract structures, and creator deliverables.
+              Illustrative campaigns showing how the Collably platform handles brief-to-payout.
             </p>
           </div>
+
 
           <div className="flex items-center gap-1.5 overflow-x-auto pb-2 sm:pb-0 scrollbar-none">
             {categories.map((cat) => (

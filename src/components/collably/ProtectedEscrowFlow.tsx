@@ -67,13 +67,14 @@ const ESCROW_STAGES: EscrowStage[] = [
   {
     id: 4,
     phase: "PHASE 05",
-    title: "Instant Sub-2-Hour Bank Payout",
+    title: "Instant Bank Payout on Sign-off",
     badge: "DISBURSED & PAID",
-    description: "Stripe Connect disburses $3,150 (90% net earnings) directly to creator bank account within 2 hours.",
+    description: "Stripe Connect disburses $3,150 (90% net earnings) directly to creator bank account upon milestone sign-off.",
     brandAssurance: "Complete financial receipt and tax documentation delivered automatically to accounting.",
-    creatorAssurance: "Fastest payout SLA in the industry. Keep 90% of verified partnership earnings.",
+    creatorAssurance: "Fastest payout in the industry. Keep 90% of verified partnership earnings.",
   },
 ];
+
 
 export function ProtectedEscrowFlow() {
   const [activeStageIdx, setActiveStageIdx] = useState(0);

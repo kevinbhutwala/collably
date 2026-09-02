@@ -20,9 +20,9 @@ const FEATURED_TALENT: CreatorQuickViewData[] = [
     reach: "485K",
     engagementRate: 6.8,
     startingPrice: 3500,
-    matchScore: 99.4,
+    matchScore: undefined,
     bio: "Principal tech creator covering artificial intelligence tooling, developer hardware, and future-of-work software suites.",
-    tags: ["Apple & Nvidia", "RED V-Raptor 8K", "99.4% AI Match"],
+    tags: ["Technology & AI", "RED V-Raptor 8K", "Verified Creator"],
     sampleDeliverables: [
       {
         title: "4K Master Product Reel",
@@ -44,34 +44,34 @@ const FEATURED_TALENT: CreatorQuickViewData[] = [
     heroImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=85",
     category: "fashion",
     niche: "Luxury & Haute Couture",
-    reach: "620K",
+    reach: "310K",
     engagementRate: 5.4,
-    startingPrice: 4200,
-    matchScore: 98.7,
+    startingPrice: 2800,
+    matchScore: undefined,
     bio: "Milan & Paris fashion cinematographer specializing in luxury editorial lookbooks and high-aesthetic brand identity drops.",
-    tags: ["Prada & Balenciaga", "ARRI Alexa Mini", "4.8× ROAS"],
+    tags: ["Design & Creative", "ARRI Alexa Mini", "Elite Tier"],
     sampleDeliverables: [
       {
-        title: "Milan Lookbook Editorial Cut",
+        title: "Lookbook Editorial Cut",
         specs: "ARRI Alexa Mini • ProRes 4444",
         imageUrl: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&auto=format&fit=crop&q=80",
       },
     ],
   },
   {
-    id: "sofia",
-    name: "Sofia Chen",
-    handle: "@sofiabio",
+    id: "aria",
+    name: "Aria Chen",
+    handle: "@ariawellness",
     avatarUrl: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&auto=format&fit=crop&q=85",
     heroImage: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&auto=format&fit=crop&q=85",
     category: "fitness",
-    niche: "Biohacking & Movement",
-    reach: "390K",
+    niche: "Biohacking & Longevity",
+    reach: "620K",
     engagementRate: 7.1,
-    startingPrice: 2800,
-    matchScore: 99.1,
-    bio: "High-performance fitness and biohacking athlete creating dynamic workout integrations and metabolic tech walkthroughs.",
-    tags: ["Whoop & Gymshark", "ProRes HQ", "7.1% Engagement"],
+    startingPrice: 3200,
+    matchScore: undefined,
+    bio: "High-performance wellness advocate creating dynamic protocol integrations and metabolic science walkthroughs.",
+    tags: ["Fitness & Wellness", "Sony FX3", "Top Creator"],
     sampleDeliverables: [
       {
         title: "Kinetic Routine Dynamic Reel",
@@ -91,9 +91,9 @@ const FEATURED_TALENT: CreatorQuickViewData[] = [
     reach: "510K",
     engagementRate: 6.2,
     startingPrice: 3800,
-    matchScore: 98.2,
+    matchScore: undefined,
     bio: "Automotive documentary filmmaker and lifestyle storyteller producing cinematic road trip narratives and luxury vehicle showcases.",
-    tags: ["Porsche & Leica", "Anamorphic Lenses", "1.1M Views"],
+    tags: ["Lifestyle & Travel", "Anamorphic Lenses", "Established Creator"],
     sampleDeliverables: [
       {
         title: "Alpine Story Automotive Cut",
@@ -105,6 +105,7 @@ const FEATURED_TALENT: CreatorQuickViewData[] = [
 ];
 
 const CATEGORIES = [
+
   { id: "all", label: "All Talent" },
   { id: "tech", label: "Tech & AI" },
   { id: "fashion", label: "Fashion & Luxury" },
@@ -227,7 +228,8 @@ export function EditorialCreatorGrid() {
             href="/creators"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#FAF9F5] hover:bg-white border border-black/10 text-xs sm:text-sm font-bold text-[#0A0A0E] transition-all shadow-xs hover-lift"
           >
-            <span>Explore All 50,000+ Verified Creators</span>
+            <span>Explore the Full Creator Roster</span>
+
             <ArrowRight className="w-4 h-4 text-[#FFD21F]" />
           </Link>
         </motion.div>

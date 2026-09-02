@@ -11,14 +11,14 @@ interface AnimatedBrandSliderProps {
 }
 
 const BRANDS = [
-  { name: "NIKE", badge: "AIR MAX CAMPAIGN" },
-  { name: "SONY", badge: "FX3 CINEMA LINE" },
-  { name: "RED BULL", badge: "KINETIC DOCS" },
-  { name: "SPOTIFY", badge: "DISCOVERY REELS" },
-  { name: "GYMSHARK", badge: "BIOHACKING DROP" },
-  { name: "PRADA", badge: "MILAN LOOKBOOK" },
-  { name: "NOTION", badge: "CREATOR WORKSPACE" },
-  { name: "BALENCIAGA", badge: "PARIS EDITORIAL" },
+  { name: "TECH & AI", badge: "DEVELOPER TOOLS" },
+  { name: "FASHION", badge: "EDITORIAL CONTENT" },
+  { name: "FITNESS", badge: "WELLNESS CAMPAIGNS" },
+  { name: "CONSUMER APPS", badge: "GROWTH MARKETING" },
+  { name: "B2B SAAS", badge: "CREATOR PROGRAMS" },
+  { name: "LUXURY GOODS", badge: "BRAND STORYTELLING" },
+  { name: "PRODUCTIVITY", badge: "WORKFLOW CONTENT" },
+  { name: "BEAUTY", badge: "SKINCARE CAMPAIGNS" },
 ];
 
 export function AnimatedBrandSlider({

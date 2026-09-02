@@ -29,11 +29,11 @@ export interface CreatorQuickViewData {
   heroImage?: string;
   niche: string;
   category: string;
-  reach: string;
+  reach?: string;
   followersCount?: number;
-  engagementRate: string | number;
-  startingPrice: string | number;
-  matchScore: string | number;
+  engagementRate?: string | number;
+  startingPrice?: string | number;
+  matchScore?: string | number;
   rating?: number;
   bio?: string;
   location?: string;

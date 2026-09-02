@@ -45,7 +45,8 @@ export class NotificationService {
         console.error("Resend transactional email dispatch failed:", err);
       }
     } else {
-      console.log(`[EMAIL DISPATCH SIMULATION] To: ${params.to} | Subject: "${params.subject}" | Template: ${params.template}`);
+      // Email provider not configured — skip silently in production
+      return true;
     }
     return true;
   }

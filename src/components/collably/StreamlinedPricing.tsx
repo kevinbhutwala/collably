@@ -33,10 +33,11 @@ export function StreamlinedPricing() {
       desc: "For full-time creators scaling brand partnerships.",
       features: [
         "Priority pitch recommendation",
-        "Instant 2-hour payout release",
+        "Instant payout on milestone approval",
         "Deep audience analytics & demographic data",
         "Verified Pro Creator checkmark",
       ],
+
       ctaText: "Upgrade to Pro",
       ctaHref: "/creator/register",
       popular: true,

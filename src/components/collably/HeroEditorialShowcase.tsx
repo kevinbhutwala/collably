@@ -41,44 +41,45 @@ const HERO_TALENT: HeroTalent[] = [
     name: "Elena Rostova",
     handle: "@elenarostova",
     niche: "AI & Consumer Tech",
-    reach: "485K Reach",
+    reach: "485K Followers",
     startingPrice: "$3,500",
-    matchScore: "99.4%",
+    matchScore: "AI Matched",
     portrait: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=900&auto=format&fit=crop&q=85",
     bRollPreview: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=80",
     specs: "RED V-Raptor 8K • 60fps",
     badgeText: "4K Master Reel",
-    verifiedSponsor: "Nvidia & Linear",
+    verifiedSponsor: "Technology & AI",
   },
   {
     id: "marcus",
     name: "Marcus Vance",
     handle: "@marcusvisuals",
     niche: "Luxury & Haute Couture",
-    reach: "620K Reach",
-    startingPrice: "$4,200",
-    matchScore: "98.7%",
+    reach: "310K Followers",
+    startingPrice: "$2,800",
+    matchScore: "Elite Tier",
     portrait: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&auto=format&fit=crop&q=85",
     bRollPreview: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&auto=format&fit=crop&q=80",
     specs: "ARRI Alexa Mini • ProRes 4444",
-    badgeText: "Milan Lookbook",
-    verifiedSponsor: "Prada & Balenciaga",
+    badgeText: "Lookbook Reel",
+    verifiedSponsor: "Design & Creative",
   },
   {
     id: "sofia",
-    name: "Sofia Chen",
-    handle: "@sofiabio",
-    niche: "Biohacking & Movement",
-    reach: "390K Reach",
-    startingPrice: "$2,800",
-    matchScore: "99.1%",
+    name: "Aria Chen",
+    handle: "@ariawellness",
+    niche: "Biohacking & Longevity",
+    reach: "620K Followers",
+    startingPrice: "$3,200",
+    matchScore: "Top Creator",
     portrait: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=900&auto=format&fit=crop&q=85",
     bRollPreview: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&auto=format&fit=crop&q=80",
     specs: "Sony FX3 • S-Log3 ProRes",
-    badgeText: "Kinetic Reel",
-    verifiedSponsor: "Whoop & Gymshark",
+    badgeText: "Wellness Reel",
+    verifiedSponsor: "Fitness & Wellness",
   },
 ];
+
 
 export function HeroEditorialShowcase() {
   const [activeIdx, setActiveIdx] = useState(0);
@@ -131,8 +132,9 @@ export function HeroEditorialShowcase() {
 
             {/* Short, clear value statement */}
             <p className="text-sm sm:text-base text-[#5A5A68] max-w-lg leading-relaxed font-sans font-normal">
-              Direct access to 50,000+ audited creator media kits, frame-accurate 4K timestamped review, and 100% pre-funded milestone escrow custody. Zero unpaid invoices. Zero ghosting.
+              Direct access to vetted creator media kits, frame-accurate 4K timestamped review, and 100% pre-funded milestone escrow custody. Zero unpaid invoices. Zero ghosting.
             </p>
+
 
             {/* Action Buttons (Dominant Primary CTA + Clean Secondary) */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
@@ -156,17 +158,17 @@ export function HeroEditorialShowcase() {
             <div className="flex flex-wrap items-center gap-4 pt-3 border-t border-black/6 text-xs font-mono text-[#5A5A68]">
               <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E]">
                 <ShieldCheck className="w-4 h-4 text-[#087F5B]" />
-                <span>$14.8M Escrow Vaults</span>
+                <span>100% Pre-funded Escrow</span>
               </div>
               <span>•</span>
               <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E]">
                 <Zap className="w-4 h-4 text-[#FFD21F]" />
-                <span>&lt; 2h Instant Payout SLA</span>
+                <span>Instant Payout on Approval</span>
               </div>
               <span>•</span>
               <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E]">
-                <Star className="w-4 h-4 text-[#FFD21F] fill-[#FFD21F]" />
-                <span>99.4% On-Time QA Rate</span>
+                <Lock className="w-4 h-4 text-[#0A0A0E]" />
+                <span>Zero Unpaid Invoices</span>
               </div>
             </div>
           </motion.div>
