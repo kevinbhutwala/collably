@@ -1,28 +1,52 @@
 "use client";
 
 import React from "react";
-import { VisualHeroSection } from "@/components/visual/VisualHeroSection";
+import { HeroEditorialShowcase } from "@/components/collably/HeroEditorialShowcase";
 import { AnimatedBrandSlider } from "@/components/visual/AnimatedBrandSlider";
-import { OverlappingCardsDeck } from "@/components/visual/OverlappingCardsDeck";
-import { VisualShowcaseSlider } from "@/components/visual/VisualShowcaseSlider";
+import { EditorialCreatorGrid } from "@/components/creators/EditorialCreatorGrid";
+import { ContinuousProductStory } from "@/components/collably/ContinuousProductStory";
+import { InteractiveVideoReviewStudio } from "@/components/collably/InteractiveVideoReviewStudio";
+import { ProtectedEscrowFlow } from "@/components/collably/ProtectedEscrowFlow";
+import { CaseStudiesSection } from "@/components/landing/CaseStudiesSection";
+import { StatsSection } from "@/components/landing/StatsSection";
+import { StreamlinedPricing } from "@/components/collably/StreamlinedPricing";
+import { CompactFAQ } from "@/components/collably/CompactFAQ";
 import { StreamlinedVisualCTA } from "@/components/visual/StreamlinedVisualCTA";
 
 export default function CollablyLandingPage() {
   return (
     <div className="relative min-h-screen bg-white text-[#0A0A0E] font-sans selection:bg-[#FFD21F] selection:text-[#0A0A0E] overflow-x-hidden">
-      {/* 01 — Visual-First Hero with Minimal Text & Overlapping 4K Media Portrait Stage */}
-      <VisualHeroSection />
+      {/* 01 — High-Impact Value-Focused Editorial Hero */}
+      <HeroEditorialShowcase />
 
-      {/* 02 — Sliding & Animated Infinite List of Brands */}
-      <AnimatedBrandSlider speed={25} direction="left" />
+      {/* 02 — Infinite Sliding Brand Marquee */}
+      <AnimatedBrandSlider speed={26} direction="left" />
 
-      {/* 03 — Featured Cards Deck with High-Fashion Portraits, Overlapping Floating Images & 3D Tilt Effect */}
-      <OverlappingCardsDeck />
+      {/* 03 — Curated Talent Directory with Quick View & Mobile Swipeable Reel */}
+      <EditorialCreatorGrid />
 
-      {/* 04 — Selected Campaign Deliverables with Overlapping Frame Thumbnails */}
-      <VisualShowcaseSlider />
+      {/* 04 — 7-Step Continuous Product Story OS (Discover → Match → Collab → Review → Approve → Pay → Grow) */}
+      <ContinuousProductStory />
 
-      {/* 05 — Minimal High-Impact Closing CTA */}
+      {/* 05 — Standout Interactive 4K Timestamped Video QA Review Studio */}
+      <InteractiveVideoReviewStudio />
+
+      {/* 06 — Protected Milestone Escrow & Financial Trust Journey */}
+      <ProtectedEscrowFlow />
+
+      {/* 07 — Audited Enterprise Brand Results & Escrow Guarantee */}
+      <CaseStudiesSection />
+
+      {/* 08 — Platform Performance Metrics */}
+      <StatsSection />
+
+      {/* 09 — Transparent Workspace Pricing with Monthly/Annual Toggle */}
+      <StreamlinedPricing />
+
+      {/* 10 — Compact FAQ & Objection Handlers */}
+      <CompactFAQ />
+
+      {/* 11 — High-Impact Closing CTA */}
       <StreamlinedVisualCTA />
     </div>
   );
