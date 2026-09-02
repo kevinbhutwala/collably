@@ -106,7 +106,7 @@ export function AppSidebar() {
     role === "creator" ? creatorNavItems : role === "brand" ? brandNavItems : adminNavItems;
 
   return (
-    <aside className="hidden lg:flex flex-col w-64 border-r border-black/8 bg-white shrink-0 h-[calc(100vh-4rem)] sticky top-16 text-[#0A0A0E] shadow-2xs select-none">
+    <aside className="hidden lg:flex flex-col w-64 border-r border-black/8 bg-white shrink-0 h-full text-[#0A0A0E] shadow-2xs select-none justify-between">
       {/* Scrollable Nav List */}
       <nav className="flex-1 px-3 py-3 space-y-0.5 overflow-hidden">
         {navItems.map((item) => {
