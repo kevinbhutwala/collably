@@ -18,6 +18,7 @@ export default function BrandCreatorDiscoveryPage() {
     creatorCategory,
     creatorPlatform,
     creatorMinFollowers,
+    creatorMinEngagement,
     creatorSearchQuery,
     creatorVerifiedOnly,
     setCreatorCategory,
@@ -63,6 +64,11 @@ export default function BrandCreatorDiscoveryPage() {
         if (c.totalFollowers < creatorMinFollowers) return false;
       }
 
+      // Min Engagement Rate
+      if (creatorMinEngagement > 0) {
+        if (c.avgEngagementRate < creatorMinEngagement) return false;
+      }
+
       // Verified Only
       if (creatorVerifiedOnly && !c.verified) {
         return false;
@@ -70,7 +76,7 @@ export default function BrandCreatorDiscoveryPage() {
 
       return true;
     });
-  }, [creators, creatorSearchQuery, creatorCategory, creatorPlatform, creatorMinFollowers, creatorVerifiedOnly]);
+  }, [creators, creatorSearchQuery, creatorCategory, creatorPlatform, creatorMinFollowers, creatorMinEngagement, creatorVerifiedOnly]);
 
   return (
     <div className="space-y-6 text-[#0A0A0E] select-none font-sans">
