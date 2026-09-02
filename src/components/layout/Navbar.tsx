@@ -72,14 +72,9 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 text-[#0A0A0E]">
           {/* Brand Logo / Mobile Screen Title */}
           <div className="flex items-center gap-2.5 min-w-0">
-            <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FFD21F] to-[#FFAE00] border border-black/10 flex items-center justify-center text-[#0A0A0E] group-hover:scale-105 transition-transform shadow-[0_2px_10px_rgba(255,210,31,0.3)]">
-                <Sparkles className="w-4 h-4 fill-[#0A0A0E] text-[#0A0A0E]" />
-              </div>
-              <span className="font-display font-extrabold text-lg sm:text-xl tracking-tight text-[#0A0A0E] hidden lg:inline">
-                Collably
-              </span>
-            </Link>
+            <div className="shrink-0">
+              <CollablyLogo href="/" size="sm" />
+            </div>
 
             {/* Mobile Header Screen Title */}
             <div className="flex lg:hidden items-center gap-1.5 min-w-0">

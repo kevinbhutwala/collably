@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useAuthStore } from "@/stores/auth.store";
 import { useSubscriptionStore } from "@/stores/subscription.store";
 import { SubscriptionBadge } from "@/components/subscriptions/SubscriptionBadge";
+import { CollablyLogo } from "@/components/ui/CollablyLogo";
 import {
   LayoutDashboard,
   Users,
@@ -109,14 +110,7 @@ export function AppSidebar() {
       <div>
         {/* Workspace badge header */}
         <div className="px-3 py-2 mb-4 flex items-center justify-between border-b border-black/8 pb-4">
-          <Link href="/app/dashboard" className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FFD21F] to-[#FFAE00] border border-black/10 flex items-center justify-center text-[#0A0A0E] group-hover:scale-105 transition-transform shadow-[0_2px_10px_rgba(255,210,31,0.3)]">
-              <Sparkles className="w-4 h-4 fill-[#0A0A0E] text-[#0A0A0E]" />
-            </div>
-            <span className="font-display font-extrabold text-base tracking-tight text-[#0A0A0E]">
-              Collably
-            </span>
-          </Link>
+          <CollablyLogo href="/app/dashboard" size="sm" />
           <SubscriptionBadge planId={subscription?.planId} role={role} size="sm" />
         </div>
 

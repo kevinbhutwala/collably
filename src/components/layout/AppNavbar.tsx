@@ -40,6 +40,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { SubscriptionBadge } from "@/components/subscriptions/SubscriptionBadge";
 import { useSubscriptionStore } from "@/stores/subscription.store";
+import { CollablyLogo } from "@/components/ui/CollablyLogo";
 
 export function AppNavbar() {
   const pathname = usePathname();
@@ -168,12 +169,9 @@ export function AppNavbar() {
           </div>
 
           {/* Desktop Brand Logo */}
-          <Link href="/app/dashboard" className="hidden lg:flex items-center gap-2.5 group shrink-0">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FFD21F] to-[#FFAE00] border border-black/10 flex items-center justify-center text-[#0A0A0E] group-hover:scale-105 transition-transform shadow-[0_2px_10px_rgba(255,210,31,0.3)]">
-              <Sparkles className="w-4 h-4 fill-[#0A0A0E] text-[#0A0A0E]" />
-            </div>
-            <span className="font-bold text-[#0A0A0E] text-sm font-display">Collably</span>
-          </Link>
+          <div className="hidden lg:flex items-center shrink-0">
+            <CollablyLogo href="/app/dashboard" size="sm" />
+          </div>
 
           {/* Desktop Search Bar */}
           <div className="relative w-full hidden sm:block">
@@ -392,12 +390,7 @@ export function AppNavbar() {
             >
               <div className="space-y-6">
                 <div className="flex items-center justify-between pb-4 border-b border-black/8">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FFD21F] to-[#FFAE00] border border-black/10 flex items-center justify-center text-[#0A0A0E] shadow-[0_2px_10px_rgba(255,210,31,0.3)]">
-                      <Sparkles className="w-4 h-4 fill-[#0A0A0E] text-[#0A0A0E]" />
-                    </div>
-                    <span className="font-bold text-[#0A0A0E] text-sm font-display">Collably</span>
-                  </div>
+                  <CollablyLogo href="/app/dashboard" size="sm" />
                   <button
                     onClick={() => setShowMobileSidebar(false)}
                     className="p-1.5 rounded-xl bg-[#F4F4F8] text-[#5A5A68] hover:text-[#0A0A0E] border border-black/8"

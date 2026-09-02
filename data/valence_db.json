@@ -3345,12 +3345,12 @@
         }
       ],
       "lastMessage": {
-        "content": "The rough cut draft looks incredible! We just left 1 tiny note on the final discount overlay.",
-        "senderName": "Linear Marketing",
-        "createdAt": "2026-08-28T16:45:00Z"
+        "content": "📹 Video draft V2 uploaded for QA review",
+        "senderName": "Anna",
+        "createdAt": "2026-09-02T13:45:45.453Z"
       },
       "unreadCount": 1,
-      "updatedAt": "2026-08-28T16:45:00Z"
+      "updatedAt": "2026-09-02T13:45:45.453Z"
     },
     {
       "id": "conv-2",
@@ -3648,6 +3648,20 @@
       "content": "You've been matched with 3 Tier-1 enterprise SaaS brand briefs this week with guaranteed escrow funding.",
       "readBy": [],
       "createdAt": "2026-08-31T09:00:00Z"
+    },
+    {
+      "conversationId": "conv-1",
+      "senderId": "user-1788190134428",
+      "senderRole": "creator",
+      "senderName": "Anna",
+      "senderAvatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "content": "📹 Video draft V2 uploaded for QA review",
+      "attachments": [],
+      "id": "msg-1788356745453-tyj88",
+      "readBy": [
+        "user-1788190134428"
+      ],
+      "createdAt": "2026-09-02T13:45:45.453Z"
     }
   ],
   "subscriptions": [

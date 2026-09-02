@@ -11,7 +11,7 @@ interface CollablyLogoProps {
   href?: string;
   subtext?: string;
   showTag?: boolean;
-  theme?: "dark" | "light"; // "dark" means dark text on light background; "light" means white text on dark background
+  theme?: "dark" | "light"; // "dark" = dark text on light background; "light" = white text on dark background
 }
 
 export function CollablyLogo({
@@ -42,36 +42,50 @@ export function CollablyLogo({
   const logoIcon = (
     <div
       className={cn(
-        "relative flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:scale-105 shadow-[0_2px_12px_rgba(255,210,31,0.25)]",
-        "bg-gradient-to-br from-[#181820] to-[#08080C] border border-[#FFD21F]/50 text-white overflow-hidden",
+        "relative flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105 shadow-[0_2px_12px_rgba(255,210,31,0.3)]",
+        "bg-gradient-to-br from-[#0E0E14] via-[#161620] to-[#0A0A0E] border border-[#FFD21F]/40 text-white overflow-hidden",
         iconSizes[size]
       )}
     >
-      {/* Collably Geometric Interlocking Flow Emblem with #FFD21F Core */}
+      {/* Specular Ambient Glow */}
+      <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-[#FFD21F]/20 blur-md pointer-events-none" />
+
+      {/* Collably Geometric Partnership Synergy Emblem */}
       <svg
-        viewBox="0 0 64 64"
+        viewBox="0 0 48 48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-[68%] h-[68%]"
+        className="w-[72%] h-[72%] relative z-10"
       >
-        {/* Outer Collaboration Arc */}
+        <defs>
+          <linearGradient id="collablyGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#FFF280" />
+            <stop offset="40%" stopColor="#FFD21F" />
+            <stop offset="100%" stopColor="#FFAE00" />
+          </linearGradient>
+        </defs>
+
+        {/* Creator Partnership Arc */}
         <path
-          d="M45 19.5 C39 12.5 28 12 21 17.5 C13 23.5 13 36.5 21 42.5 C27.5 47.5 38 48 45 40.5"
-          stroke="#FFFFFF"
-          strokeWidth="6"
+          d="M34 14C30 9 22.5 8.5 16.5 13C9.5 18.5 9.5 31.5 16.5 37C22.5 41.5 30 41 34 36"
+          stroke="url(#collablyGoldGrad)"
+          strokeWidth="4.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-        {/* Inner Intersecting Dynamic Swoosh */}
+
+        {/* Brand Synergy Arc */}
         <path
-          d="M26 24 C29 20 37 19.5 42 24.5 C47 29.5 46 37 40 40"
-          stroke="#FFD21F"
-          strokeWidth="5"
+          d="M20 20C22.5 16.5 28.5 16 33.5 20.5C38.5 25 38.5 33 33.5 37.5C28.5 42 22.5 41.5 20 38"
+          stroke="#FFFFFF"
+          strokeWidth="4"
           strokeLinecap="round"
+          strokeLinejoin="round"
         />
-        {/* Solar Yellow Collaboration Node */}
-        <circle cx="43.5" cy="32" r="5" fill="#FFD21F" />
-        <circle cx="43.5" cy="32" r="2.2" fill="#FFFFFF" />
+
+        {/* Escrow Hub Pulse Core */}
+        <circle cx="34" cy="27" r="3.5" fill="url(#collablyGoldGrad)" />
+        <circle cx="34" cy="27" r="1.5" fill="#0A0A0E" />
       </svg>
     </div>
   );
@@ -94,7 +108,7 @@ export function CollablyLogo({
         <div className="flex items-center gap-1.5">
           <span
             className={cn(
-              "font-extrabold font-display flex items-center tracking-tight leading-none",
+              "font-black font-display flex items-center tracking-tight leading-none",
               isLight ? "text-white" : "text-[#0A0A0E]",
               textSizes[size]
             )}
@@ -110,7 +124,7 @@ export function CollablyLogo({
         {subtext && variant !== "minimal" && (
           <span
             className={cn(
-              "text-[11px] font-medium tracking-tight mt-0.5 leading-none hidden sm:inline font-sans",
+              "text-[11px] font-semibold tracking-tight mt-0.5 leading-none hidden sm:inline font-sans",
               isLight ? "text-white/60" : "text-[#6A6A78]"
             )}
           >

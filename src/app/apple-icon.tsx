@@ -13,7 +13,7 @@ export default function AppleIcon() {
     (
       <div
         style={{
-          background: "linear-gradient(135deg, #181820 0%, #08080C 100%)",
+          background: "linear-gradient(135deg, #0E0E14 0%, #0A0A0E 100%)",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -22,33 +22,37 @@ export default function AppleIcon() {
           borderRadius: 40,
           border: "4px solid rgba(255, 210, 31, 0.7)",
           position: "relative",
+          overflow: "hidden",
         }}
       >
         <svg
-          width="110"
-          height="110"
-          viewBox="0 0 64 64"
+          width="116"
+          height="116"
+          viewBox="0 0 48 48"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* Outer Arc */}
+          {/* Creator Partnership Arc */}
           <path
-            d="M45 19.5 C39 12.5 28 12 21 17.5 C13 23.5 13 36.5 21 42.5 C27.5 47.5 38 48 45 40.5"
-            stroke="#FFFFFF"
-            strokeWidth="5.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          {/* Inner Arc */}
-          <path
-            d="M26 24 C29 20 37 19.5 42 24.5 C47 29.5 46 37 40 40"
+            d="M34 14C30 9 22.5 8.5 16.5 13C9.5 18.5 9.5 31.5 16.5 37C22.5 41.5 30 41 34 36"
             stroke="#FFD21F"
             strokeWidth="4.5"
             strokeLinecap="round"
+            strokeLinejoin="round"
           />
-          {/* Solar Center Spark */}
-          <circle cx="43.5" cy="32" r="5" fill="#FFD21F" />
-          <circle cx="43.5" cy="32" r="2.2" fill="#FFFFFF" />
+
+          {/* Brand Synergy Arc */}
+          <path
+            d="M20 20C22.5 16.5 28.5 16 33.5 20.5C38.5 25 38.5 33 33.5 37.5C28.5 42 22.5 41.5 20 38"
+            stroke="#FFFFFF"
+            strokeWidth="4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+
+          {/* Escrow Hub Pulse Core */}
+          <circle cx="34" cy="27" r="3.5" fill="#FFD21F" />
+          <circle cx="34" cy="27" r="1.5" fill="#0A0A0E" />
         </svg>
       </div>
     ),
