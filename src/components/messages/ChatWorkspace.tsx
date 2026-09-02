@@ -108,7 +108,7 @@ export function ChatWorkspace() {
   const partnerAvatar =
     typeof activePartner === "object" && activePartner?.avatarUrl
       ? activePartner.avatarUrl
-      : "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80";
+      : "";
 
   const currentMessages = messagesMap[activeConvId] || [];
 
@@ -127,24 +127,20 @@ export function ChatWorkspace() {
     if (!activeConvId) return;
 
     const senderRole = role || "creator";
-    const senderName = user?.name || (role === "creator" ? "Elena Rostova" : "Linear Dynamics");
-    const senderAvatar =
-      user?.avatarUrl ||
-      (role === "creator"
-        ? "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80"
-        : "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80");
+    const senderName = user?.name || "Me";
+    const senderAvatar = user?.avatarUrl || "";
 
     const newMsg: ChatMessage = {
       id: `msg-${Date.now()}`,
       conversationId: activeConvId,
-      senderId: user?.id || "user-c1",
+      senderId: user?.id || "unknown",
       senderName,
       senderAvatar,
       senderRole,
       content: messageContent,
       attachments: attachments || [],
       createdAt: new Date().toISOString(),
-      readBy: [user?.id || "user-c1"],
+      readBy: [user?.id || "unknown"],
     };
 
     setMessagesMap((prev) => ({
@@ -416,7 +412,7 @@ export function ChatWorkspace() {
               >
                 <span>Escrow</span>
                 <span className={cn("text-[10px] font-mono px-1.5 py-0.2 rounded-full", activeTab === "escrow" ? "bg-[#0A0A0E] text-white" : "bg-black/5 text-[#6A6A78]")}>
-                  {escrowCountTotal || 2}
+                  {escrowCountTotal}
                 </span>
               </button>
             </div>
@@ -424,7 +420,17 @@ export function ChatWorkspace() {
 
           {/* Conversation Channel List */}
           <div className="flex-1 overflow-y-auto divide-y divide-black/5">
-            {filteredConversations.length === 0 ? (
+            {conversations.length === 0 ? (
+              <div className="p-8 text-center space-y-3 text-[#7A7A8A]">
+                <Inbox className="w-8 h-8 mx-auto text-[#8A8A9A]" />
+                <div>
+                  <p className="text-xs font-bold text-[#0A0A0E]">No conversations yet</p>
+                  <p className="text-[11px] mt-1 leading-relaxed">
+                    Conversations are created automatically when a brand and creator start collaborating on a campaign.
+                  </p>
+                </div>
+              </div>
+            ) : filteredConversations.length === 0 ? (
               <div className="p-8 text-center space-y-2 text-[#7A7A8A]">
                 <Inbox className="w-8 h-8 mx-auto text-[#8A8A9A]" />
                 <p className="text-xs font-semibold">No channels match filter</p>
@@ -447,7 +453,7 @@ export function ChatWorkspace() {
                 const pAvatar =
                   typeof partner === "object" && partner?.avatarUrl
                     ? partner.avatarUrl
-                    : "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80";
+                    : "";
                 const pRole = typeof partner === "object" ? partner?.role : "brand";
                 const isActive = conv.id === activeConvId;
 
@@ -875,11 +881,11 @@ export function ChatWorkspace() {
                   <div className="p-4 rounded-2xl bg-[#FFD21F]/15 border border-[#FFD21F]/30 space-y-2">
                     <div className="flex items-center justify-between text-xs">
                       <span className="text-[#5A5A68] font-medium">Escrow Vault:</span>
-                      <span className="font-black text-[#0A0A0E] text-sm font-mono">{formatCurrency(4500)}</span>
+                      <span className="font-black text-[#0A0A0E] text-sm font-mono">—</span>
                     </div>
                     <div className="flex items-center justify-between text-xs">
                       <span className="text-[#5A5A68] font-medium">Status:</span>
-                      <span className="font-bold text-emerald-700">100% PRE-FUNDED</span>
+                      <span className="font-bold text-[#5A5A68]">No escrow linked</span>
                     </div>
                   </div>
                 </div>
