@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { CollablyLogo } from "@/components/ui/CollablyLogo";
-import { Menu, X, ArrowRight, Sparkles, LogIn } from "lucide-react";
+import { Menu, X, ArrowRight, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuthStore } from "@/stores/auth.store";
 import { Modal } from "@/components/ui/Modal";
@@ -31,6 +31,27 @@ export function Navbar() {
     setMobileMenuOpen(false);
   }, [pathname]);
 
+  const getPublicScreenTitle = (path: string): string => {
+    if (path === "/") return "Collably";
+    if (path === "/campaigns") return "Explore Briefs";
+    if (path === "/creators") return "Creator Roster";
+    if (path === "/for-brands") return "For Brands";
+    if (path === "/pricing") return "Pricing";
+    if (path === "/case-studies") return "Case Studies";
+    if (path === "/services") return "Agency Services";
+    if (path === "/about") return "About Collably";
+    if (path === "/contact") return "Contact Sales";
+    if (path === "/login") return "Sign In";
+    if (path === "/register") return "Get Started";
+    if (path === "/creator/register") return "Creator Sign Up";
+    if (path === "/brand/register") return "Brand Sign Up";
+    if (path.startsWith("/campaigns/")) return "Campaign Brief";
+    if (path.startsWith("/creators/")) return "Creator Profile";
+    return "Collably";
+  };
+
+  const currentTitle = getPublicScreenTitle(pathname);
+
   const navLinks = [
     { href: "/campaigns", label: "Explore Briefs" },
     { href: "/for-brands", label: "For Brands" },
@@ -49,8 +70,25 @@ export function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 text-[#0A0A0E]">
-          {/* Brand Logo */}
-          <CollablyLogo href="/" size="md" subtext="Creator Commerce" />
+          {/* Brand Logo / Mobile Screen Title */}
+          <div className="flex items-center gap-2.5 min-w-0">
+            <Link href="/" className="flex items-center gap-2.5 group shrink-0">
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FFD21F] to-[#FFAE00] border border-black/10 flex items-center justify-center text-[#0A0A0E] group-hover:scale-105 transition-transform shadow-[0_2px_10px_rgba(255,210,31,0.3)]">
+                <Sparkles className="w-4 h-4 fill-[#0A0A0E] text-[#0A0A0E]" />
+              </div>
+              <span className="font-display font-extrabold text-lg sm:text-xl tracking-tight text-[#0A0A0E] hidden lg:inline">
+                Collably
+              </span>
+            </Link>
+
+            {/* Mobile Header Screen Title */}
+            <div className="flex lg:hidden items-center gap-1.5 min-w-0">
+              <span className="text-xs text-[#8A8A98] font-mono">•</span>
+              <h1 className="text-sm font-extrabold text-[#0A0A0E] font-display tracking-tight truncate">
+                {currentTitle}
+              </h1>
+            </div>
+          </div>
 
           {/* Desktop Navigation Links (Visible on Large Screens >= 1024px) */}
           <nav className="hidden lg:flex items-center gap-1 bg-[#F5F5F9] border border-black/5 px-2 py-1 rounded-full shadow-xs backdrop-blur-md">
@@ -104,7 +142,7 @@ export function Navbar() {
           </div>
 
           {/* Mobile & Tablet Hamburger + Quick Start (< 1024px) */}
-          <div className="flex lg:hidden items-center gap-2">
+          <div className="flex lg:hidden items-center gap-2 shrink-0">
             <button
               onClick={() => setRoleModalOpen(true)}
               className="px-3.5 py-1.5 rounded-full text-xs font-extrabold text-[#0A0A0E] bg-gradient-to-r from-[#FFD21F] to-[#FFE052] shadow-xs font-sans border border-black/8 active:scale-95"

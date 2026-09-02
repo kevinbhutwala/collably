@@ -66,6 +66,43 @@ export function AppNavbar() {
     setNotifications((prev) => prev.map((n) => ({ ...n, read: true })));
   };
 
+  const getScreenTitle = (path: string): string => {
+    if (path === "/app/dashboard") return "Dashboard";
+    if (path === "/app/campaigns") return "Discover Campaigns";
+    if (path === "/app/applications") return "My Applications";
+    if (path === "/app/collaborations") return "Active Collaborations";
+    if (path === "/app/messages") return "Messages";
+    if (path === "/app/earnings") return "Earnings & Payouts";
+    if (path === "/app/analytics") return "Audience Analytics";
+    if (path === "/app/profile") return "Creator Media Kit";
+    if (path === "/app/support") return "Support & Disputes";
+    if (path === "/app/settings") return "Plan & Settings";
+    if (path === "/app/brand/campaigns/create") return "Create Campaign";
+    if (path === "/app/brand/campaigns") return "Active Campaigns";
+    if (path === "/app/brand/creators") return "Discover Creators";
+    if (path === "/app/brand/crm") return "Creator CRM";
+    if (path === "/app/brand/shortlists") return "Shortlists";
+    if (path === "/app/brand/analytics") return "ROI Telemetry";
+    if (path === "/admin") return "Operations Overview";
+    if (path === "/admin/creators") return "Creator Verification";
+    if (path === "/admin/brands") return "Brand Accounts";
+    if (path === "/admin/campaigns") return "Campaign Approvals";
+    if (path === "/admin/collaborations") return "Active Escrows";
+    if (path === "/admin/disputes") return "Dispute Arbitration";
+    if (path === "/admin/payments") return "Escrow Vault Control";
+    if (path === "/admin/reports") return "Financial Reports";
+    if (path === "/admin/audit") return "System Audit Logs";
+    if (path === "/admin/settings") return "Platform Configuration";
+    if (path.startsWith("/campaigns/")) return "Campaign Brief";
+    if (path.startsWith("/creators/")) return "Creator Profile";
+    if (path.startsWith("/app/brand/")) return "Brand Workspace";
+    if (path.startsWith("/app/")) return "Workspace";
+    if (path.startsWith("/admin/")) return "Admin Portal";
+    return "Collably";
+  };
+
+  const currentTitle = getScreenTitle(pathname);
+
   const creatorNavItems = [
     { href: "/app/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { href: "/app/campaigns", label: "Discover Campaigns", icon: Compass, badge: "8 live" },
@@ -110,26 +147,35 @@ export function AppNavbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-30 w-full h-16 border-b border-black/8 bg-white/90 backdrop-blur-xl px-4 sm:px-6 flex items-center justify-between gap-4 text-[#0A0A0E]">
-        {/* Left Area: Mobile Drawer Trigger & Search */}
-        <div className="flex items-center gap-3 flex-1 max-w-md">
+      <header className="sticky top-0 z-30 w-full h-16 border-b border-black/8 bg-white/90 backdrop-blur-xl px-4 sm:px-6 flex items-center justify-between gap-3 sm:gap-4 text-[#0A0A0E]">
+        {/* Left Area: Mobile Drawer Trigger + Mobile Screen Title vs Desktop Search */}
+        <div className="flex items-center gap-2.5 sm:gap-3 flex-1 min-w-0 max-w-md">
           {/* Mobile Sidebar Hamburger Trigger */}
           <button
             type="button"
             onClick={() => setShowMobileSidebar(!showMobileSidebar)}
-            className="lg:hidden p-2 rounded-xl bg-[#F4F4F8] border border-black/8 text-[#0A0A0E] hover:bg-[#EAEAEF] transition-colors"
+            className="lg:hidden p-2 rounded-xl bg-[#F4F4F8] border border-black/8 text-[#0A0A0E] hover:bg-[#EAEAEF] transition-colors shrink-0"
             aria-label="Open Workspace Menu"
           >
             <Menu className="w-4 h-4 text-[#0A0A0E]" />
           </button>
 
-          <Link href="/app/dashboard" className="flex items-center gap-2.5 group">
+          {/* Mobile Header Dynamic Screen Title */}
+          <div className="flex lg:hidden items-center gap-2 min-w-0 flex-1">
+            <h1 className="text-sm sm:text-base font-black text-[#0A0A0E] tracking-tight font-display truncate">
+              {currentTitle}
+            </h1>
+          </div>
+
+          {/* Desktop Brand Logo */}
+          <Link href="/app/dashboard" className="hidden lg:flex items-center gap-2.5 group shrink-0">
             <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FFD21F] to-[#FFAE00] border border-black/10 flex items-center justify-center text-[#0A0A0E] group-hover:scale-105 transition-transform shadow-[0_2px_10px_rgba(255,210,31,0.3)]">
               <Sparkles className="w-4 h-4 fill-[#0A0A0E] text-[#0A0A0E]" />
             </div>
-            <span className="font-bold text-[#0A0A0E] text-sm font-display hidden xs:inline">Collably</span>
+            <span className="font-bold text-[#0A0A0E] text-sm font-display">Collably</span>
           </Link>
 
+          {/* Desktop Search Bar */}
           <div className="relative w-full hidden sm:block">
             <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-[#7A7A8A]" />
             <button
@@ -149,7 +195,7 @@ export function AppNavbar() {
         </div>
 
         {/* Right Area: Actions, Notifications & Profile */}
-        <div className="flex items-center gap-2.5 sm:gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           {/* Quick Action Button for Brand */}
           {role === "brand" && (
             <Link href="/app/brand/campaigns/create">
