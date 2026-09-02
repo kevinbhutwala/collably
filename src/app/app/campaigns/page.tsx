@@ -6,9 +6,8 @@ import { Campaign, CreatorCategory } from "@/core/types";
 import { CATEGORIES } from "@/core/constants";
 import { CampaignCard } from "@/components/campaigns/CampaignCard";
 import { CreativeLoader } from "@/components/ui/CreativeLoader";
-import { Search, Compass } from "lucide-react";
+import { Search, Compass, Sparkles, Filter } from "lucide-react";
 import { cn } from "@/lib/utils";
-
 
 export default function AppCampaignsPage() {
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
@@ -30,21 +29,21 @@ export default function AppCampaignsPage() {
   }, [selectedCategory, searchQuery]);
 
   return (
-    <div className="space-y-6 text-[#0A0A0E] select-none">
-      {/* Header */}
+    <div className="space-y-6 text-[#0A0A0E] select-none font-sans">
+      {/* Desktop Header */}
       <div className="hidden lg:flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-black/8">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              Marketplace
+              Campaign Marketplace
             </span>
             <span className="text-[#8A8A9A]">•</span>
             <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
               Escrow Secured
             </span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] font-display tracking-tight">
+          <h1 className="text-xl sm:text-2xl font-black text-[#0A0A0E] font-display tracking-tight">
             Discover Campaigns
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68]">
@@ -53,46 +52,51 @@ export default function AppCampaignsPage() {
         </div>
       </div>
 
-      {/* Filter and Search Bar */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
-        {/* Categories Bar */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1.5 sm:pb-0 no-scrollbar">
+      {/* Redesigned Clean Segmented Category Tabs & Search */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
+        {/* Category Segmented Scrollable Strip */}
+        <div className="flex items-center gap-1 p-1 bg-[#F4F4F8] rounded-2xl border border-black/8 overflow-x-auto no-scrollbar shadow-xs">
           <button
             onClick={() => setSelectedCategory("all")}
             className={cn(
-              "px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap shrink-0",
+              "px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap shrink-0 flex items-center gap-1.5",
               selectedCategory === "all"
-                ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs font-bold border border-black/10"
-                : "bg-white text-[#6A6A78] hover:text-[#0A0A0E] border border-black/8"
+                ? "bg-white text-[#0A0A0E] shadow-[0_2px_8px_rgba(0,0,0,0.06)] border border-black/8"
+                : "text-[#5A5A68] hover:text-[#0A0A0E] hover:bg-black/5"
             )}
           >
-            All Categories
+            <Sparkles className={cn("w-3.5 h-3.5", selectedCategory === "all" ? "text-[#8A7000]" : "text-[#7A7A8A]")} />
+            <span>All Briefs</span>
           </button>
-          {CATEGORIES.slice(0, 6).map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className={cn(
-                "px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap shrink-0",
-                selectedCategory === cat
-                  ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs font-bold border border-black/10"
-                  : "bg-white text-[#6A6A78] hover:text-[#0A0A0E] border border-black/8"
-              )}
-            >
-              {cat}
-            </button>
-          ))}
+
+          {CATEGORIES.slice(0, 6).map((cat) => {
+            const isSelected = selectedCategory === cat;
+            return (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={cn(
+                  "px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all whitespace-nowrap shrink-0 flex items-center gap-1.5",
+                  isSelected
+                    ? "bg-[#0A0A0E] text-white font-bold shadow-xs"
+                    : "text-[#5A5A68] hover:text-[#0A0A0E] hover:bg-black/5"
+                )}
+              >
+                <span>{cat}</span>
+              </button>
+            );
+          })}
         </div>
 
-        {/* Search */}
-        <div className="relative w-full sm:w-64 shrink-0">
-          <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-[#7A7A8A]" />
+        {/* Search Input */}
+        <div className="relative w-full md:w-72 shrink-0">
+          <Search className="w-3.5 h-3.5 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#7A7A8A]" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search campaigns..."
-            className="w-full bg-white border border-black/8 rounded-full pl-8 pr-3 py-1.5 text-xs text-[#0A0A0E] placeholder:text-[#8A8A9A] focus:outline-none focus:border-[#FFD21F] shadow-xs transition-all"
+            placeholder="Search briefs, brands, or niches..."
+            className="w-full bg-white border border-black/8 rounded-2xl pl-9 pr-3 py-2 text-xs font-medium text-[#0A0A0E] placeholder:text-[#8A8A9A] focus:outline-none focus:border-[#FFD21F] focus:ring-2 focus:ring-[#FFD21F]/20 shadow-xs transition-all"
           />
         </div>
       </div>
