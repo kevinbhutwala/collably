@@ -40,7 +40,7 @@ export function ProfileCompletenessCard({ creator }: { creator?: CreatorProfile 
     },
   };
   const breakdown = calculateProfileCompleteness(defaultCreator);
-  const score = breakdown.totalScore || 78;
+  const score = breakdown.totalScore ?? 0;
 
   // SVG circle calculations for radial gauge
   const radius = 38;

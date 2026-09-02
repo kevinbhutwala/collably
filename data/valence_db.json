@@ -1,0 +1,354 @@
+{
+  "users": [
+    {
+      "id": "user-creator",
+      "name": "Demo Creator",
+      "email": "creator@collably.io",
+      "passwordHash": "c6e7e51e37bc0b1cc6c4bfdef0ea7c59:b022dd24f63f410ef1ea914b134fe9de3a9769695682963a68122b495e2c41c2c3f91b4e679edbea7de8565c6ae0c9b14288ee2dfda6acc8984715b8337f8292:210000",
+      "role": "creator",
+      "avatarUrl": "",
+      "verified": true,
+      "createdAt": "2026-09-02T15:10:02.242Z",
+      "updatedAt": "2026-09-02T15:10:02.242Z"
+    },
+    {
+      "id": "user-brand",
+      "name": "Demo Brand",
+      "email": "brand@collably.io",
+      "passwordHash": "c6e7e51e37bc0b1cc6c4bfdef0ea7c59:b022dd24f63f410ef1ea914b134fe9de3a9769695682963a68122b495e2c41c2c3f91b4e679edbea7de8565c6ae0c9b14288ee2dfda6acc8984715b8337f8292:210000",
+      "role": "brand",
+      "avatarUrl": "",
+      "verified": true,
+      "createdAt": "2026-09-02T15:10:02.242Z",
+      "updatedAt": "2026-09-02T15:10:02.242Z"
+    },
+    {
+      "id": "user-owner",
+      "name": "Kevin Bhutwala",
+      "email": "kevinbhutwala417@gmail.com",
+      "passwordHash": "1de317457da74d4bb0e9623d524e729f:03bf9eca7f4093fd870bf4cb9f043b42e1192a8a3151f373c553b78d795c7031233121ef39508bd9f6e8195a70a37351047219700018396e8febd9b6d27623e4:210000",
+      "role": "agency_admin",
+      "avatarUrl": "",
+      "verified": true,
+      "createdAt": "2026-09-02T15:10:02.242Z",
+      "updatedAt": "2026-09-02T15:10:02.242Z"
+    },
+    {
+      "id": "user-1788361902695",
+      "name": "kushi",
+      "email": "kushi@gmail.com",
+      "passwordHash": "76b9b401fbcc97666fcc235aec224708:68ba4070becf59f9a00859256ae04416136aa179f595484585ec8b6873d566109683cd7f1726db0e2873829897123f240db54f0f7541283dff668aa1bb7f6379:210000",
+      "role": "creator",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "verified": false,
+      "createdAt": "2026-09-02T15:11:42.695Z",
+      "updatedAt": "2026-09-02T15:11:42.695Z"
+    }
+  ],
+  "creators": [
+    {
+      "id": "creator-1788361902697",
+      "userId": "user-1788361902695",
+      "fullName": "kushi",
+      "handle": "kushihanam",
+      "headline": "Beauty & Skincare Creator & Digital Storyteller",
+      "bio": "Content creator specializing in Beauty & Skincare. Available for brand integrations and dedicated productions.",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+      "location": "United States",
+      "languages": [
+        "English"
+      ],
+      "primaryCategory": "Beauty & Skincare",
+      "secondaryCategories": [
+        "Design & Creative"
+      ],
+      "verified": false,
+      "featured": false,
+      "tier": "Micro",
+      "rating": 5,
+      "completedCampaignsCount": 0,
+      "totalFollowers": 25000,
+      "avgEngagementRate": 4.2,
+      "startingPrice": 500,
+      "availableForHire": true,
+      "profileCompleteness": 80,
+      "qualityScore": 85,
+      "socialAccounts": [
+        {
+          "id": "sa-1788361902696-ig",
+          "platform": "instagram",
+          "handle": "kushi",
+          "url": "https://instagram.com/kushi",
+          "followers": 15000,
+          "engagementRate": 4.6,
+          "avgViews": 3750,
+          "verifiedBadge": false
+        },
+        {
+          "id": "sa-1788361902696-x",
+          "platform": "x",
+          "handle": "kushihanam",
+          "url": "https://x.com/kushihanam",
+          "followers": 10000,
+          "engagementRate": 3.8,
+          "avgViews": 5000,
+          "verifiedBadge": false
+        }
+      ],
+      "audience": {
+        "topCountries": [
+          {
+            "country": "United States",
+            "percentage": 65
+          },
+          {
+            "country": "United Kingdom",
+            "percentage": 20
+          },
+          {
+            "country": "Canada",
+            "percentage": 15
+          }
+        ],
+        "ageDistribution": [
+          {
+            "range": "18-24",
+            "percentage": 30
+          },
+          {
+            "range": "25-34",
+            "percentage": 55
+          },
+          {
+            "range": "35-44",
+            "percentage": 15
+          }
+        ],
+        "genderSplit": [
+          {
+            "gender": "Male",
+            "percentage": 55
+          },
+          {
+            "gender": "Female",
+            "percentage": 45
+          }
+        ],
+        "interests": [
+          "Beauty & Skincare",
+          "Digital Products",
+          "Lifestyle"
+        ]
+      },
+      "rateCards": [
+        {
+          "id": "rc-1788361902696-0",
+          "deliverableType": "Instagram Reel",
+          "title": "Dedicated Reel & Story Link Set",
+          "description": "High-aesthetic 9:16 vertical Reel plus 3-frame story sequence with direct swipe link.",
+          "basePrice": 500,
+          "turnaroundDays": 5,
+          "revisionsIncluded": 2
+        },
+        {
+          "id": "rc-1788361902696-1",
+          "deliverableType": "X (Twitter) Thread",
+          "title": "Deep-Dive Sponsored X Thread",
+          "description": "Analytical 5-post thread with trackable link and brand quote reposts.",
+          "basePrice": 300,
+          "turnaroundDays": 3,
+          "revisionsIncluded": 1
+        }
+      ]
+    }
+  ],
+  "brands": [],
+  "campaigns": [],
+  "applications": [],
+  "collaborations": [],
+  "payouts": [],
+  "subscriptions": [
+    {
+      "id": "sub-creator",
+      "userId": "user-creator",
+      "role": "creator",
+      "planId": "creator_pro",
+      "status": "active",
+      "interval": "monthly",
+      "currentPeriodStart": "2026-09-02T15:10:02.242Z",
+      "currentPeriodEnd": "2027-09-02T15:10:02.242Z",
+      "cancelAtPeriodEnd": false,
+      "price": 29,
+      "currency": "USD",
+      "features": {
+        "mediaKit": true,
+        "maxApplicationsPerMonth": -1,
+        "instantPayouts": true,
+        "advancedAnalytics": true,
+        "aiPitchGenerator": true,
+        "verifiedBadge": true,
+        "priorityDiscovery": true,
+        "multiCreatorManagement": false,
+        "customDomain": false,
+        "maxActiveCampaigns": 0,
+        "crmPipeline": false,
+        "aiCreatorMatching": false,
+        "creatorShortlists": false,
+        "maxTeamSeats": 0,
+        "advancedRoiTelemetry": false,
+        "contractCompliance": false,
+        "dedicatedAccountManager": false,
+        "apiAccess": false
+      },
+      "usage": {
+        "activeCampaignsCount": 0,
+        "applicationsThisMonth": 0,
+        "crmContactsCount": 0,
+        "aiTokensUsed": 0,
+        "lastResetDate": "2026-09-02T15:10:02.242Z"
+      },
+      "createdAt": "2026-09-02T15:10:02.242Z",
+      "updatedAt": "2026-09-02T15:10:02.242Z"
+    },
+    {
+      "id": "sub-brand",
+      "userId": "user-brand",
+      "role": "brand",
+      "planId": "brand_growth",
+      "status": "active",
+      "interval": "monthly",
+      "currentPeriodStart": "2026-09-02T15:10:02.242Z",
+      "currentPeriodEnd": "2027-09-02T15:10:02.242Z",
+      "cancelAtPeriodEnd": false,
+      "price": 199,
+      "currency": "USD",
+      "features": {
+        "mediaKit": false,
+        "maxApplicationsPerMonth": 0,
+        "instantPayouts": false,
+        "advancedAnalytics": false,
+        "aiPitchGenerator": false,
+        "verifiedBadge": false,
+        "priorityDiscovery": false,
+        "multiCreatorManagement": false,
+        "customDomain": false,
+        "maxActiveCampaigns": 10,
+        "crmPipeline": true,
+        "aiCreatorMatching": true,
+        "creatorShortlists": true,
+        "maxTeamSeats": 5,
+        "advancedRoiTelemetry": true,
+        "contractCompliance": true,
+        "dedicatedAccountManager": false,
+        "apiAccess": false
+      },
+      "usage": {
+        "activeCampaignsCount": 0,
+        "applicationsThisMonth": 0,
+        "crmContactsCount": 0,
+        "aiTokensUsed": 0,
+        "lastResetDate": "2026-09-02T15:10:02.242Z"
+      },
+      "createdAt": "2026-09-02T15:10:02.242Z",
+      "updatedAt": "2026-09-02T15:10:02.242Z"
+    },
+    {
+      "id": "sub-owner",
+      "userId": "user-owner",
+      "role": "agency_admin",
+      "planId": "brand_enterprise",
+      "status": "active",
+      "interval": "annual",
+      "currentPeriodStart": "2026-09-02T15:10:02.242Z",
+      "currentPeriodEnd": "2027-09-02T15:10:02.242Z",
+      "cancelAtPeriodEnd": false,
+      "price": 0,
+      "currency": "USD",
+      "features": {
+        "mediaKit": false,
+        "maxApplicationsPerMonth": -1,
+        "instantPayouts": true,
+        "advancedAnalytics": true,
+        "aiPitchGenerator": true,
+        "verifiedBadge": true,
+        "priorityDiscovery": false,
+        "multiCreatorManagement": false,
+        "customDomain": false,
+        "maxActiveCampaigns": -1,
+        "crmPipeline": true,
+        "aiCreatorMatching": true,
+        "creatorShortlists": true,
+        "maxTeamSeats": -1,
+        "advancedRoiTelemetry": true,
+        "contractCompliance": true,
+        "dedicatedAccountManager": true,
+        "apiAccess": true,
+        "adminOverride": true
+      },
+      "usage": {
+        "activeCampaignsCount": 0,
+        "applicationsThisMonth": 0,
+        "crmContactsCount": 0,
+        "aiTokensUsed": 0,
+        "lastResetDate": "2026-09-02T15:10:02.242Z"
+      },
+      "createdAt": "2026-09-02T15:10:02.242Z",
+      "updatedAt": "2026-09-02T15:10:02.242Z"
+    },
+    {
+      "id": "sub-1788361902923-10q03",
+      "userId": "user-1788361902695",
+      "role": "creator",
+      "planId": "creator_starter",
+      "status": "active",
+      "interval": "monthly",
+      "currentPeriodStart": "2026-09-02T15:11:42.923Z",
+      "currentPeriodEnd": "2026-10-02T15:11:42.923Z",
+      "cancelAtPeriodEnd": false,
+      "price": 0,
+      "currency": "USD",
+      "features": {
+        "mediaKit": true,
+        "maxApplicationsPerMonth": 5,
+        "instantPayouts": false,
+        "advancedAnalytics": false,
+        "aiPitchGenerator": false,
+        "verifiedBadge": false,
+        "priorityDiscovery": false,
+        "multiCreatorManagement": false,
+        "customDomain": false,
+        "maxActiveCampaigns": 0,
+        "crmPipeline": false,
+        "aiCreatorMatching": false,
+        "creatorShortlists": false,
+        "maxTeamSeats": 0,
+        "advancedRoiTelemetry": false,
+        "contractCompliance": false,
+        "dedicatedAccountManager": false,
+        "apiAccess": false
+      },
+      "usage": {
+        "activeCampaignsCount": 0,
+        "applicationsThisMonth": 0,
+        "crmContactsCount": 0,
+        "aiTokensUsed": 0,
+        "lastResetDate": "2026-09-02T15:11:42.923Z"
+      },
+      "createdAt": "2026-09-02T15:11:42.923Z",
+      "updatedAt": "2026-09-02T15:11:42.923Z"
+    }
+  ],
+  "crmContacts": [],
+  "shortlists": [],
+  "disputes": [],
+  "tickets": [],
+  "payments": [],
+  "mediaAssets": [],
+  "conversations": [],
+  "messages": [],
+  "notifications": [],
+  "webhookEvents": [],
+  "aiUsage": [],
+  "auditLogs": []
+}

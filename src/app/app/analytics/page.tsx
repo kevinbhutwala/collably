@@ -38,26 +38,26 @@ export default function CreatorAnalyticsPage() {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 font-mono">
         <StatsCard
           title="Engagement Rate"
-          value={er > 0 ? `${er}%` : "6.8%"}
-          subtitle="Audited rate"
+          value={er > 0 ? `${er}%` : "—"}
+          subtitle={er > 0 ? "Audited rate" : "No data yet"}
           icon={<TrendingUp className="w-4 h-4 text-[#FFD21F]" />}
         />
         <StatsCard
           title="Total Reach"
-          value={totalFollowers > 0 ? formatNumber(totalFollowers) : "125K"}
-          subtitle="Followers"
+          value={totalFollowers > 0 ? formatNumber(totalFollowers) : "—"}
+          subtitle={totalFollowers > 0 ? "Followers" : "No data yet"}
           icon={<Users className="w-4 h-4 text-[#0A0A0E]" />}
         />
         <StatsCard
           title="Deals Completed"
-          value={String(currentCreator?.completedCampaignsCount || 8)}
+          value={String(currentCreator?.completedCampaignsCount ?? 0)}
           subtitle="Released milestones"
           icon={<Sparkles className="w-4 h-4 text-[#FFD21F]" />}
         />
         <StatsCard
           title="Creator Tier"
-          value={currentCreator?.tier ? currentCreator.tier.toUpperCase() : "PRO"}
-          subtitle="Verified tier"
+          value={currentCreator?.tier ? currentCreator.tier.toUpperCase() : "—"}
+          subtitle={currentCreator?.tier ? "Verified tier" : "Complete your profile"}
           icon={<Activity className="w-4 h-4 text-[#0A0A0E]" />}
         />
       </div>

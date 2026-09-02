@@ -106,20 +106,20 @@ export default function EarningsAndEscrowPage() {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 font-mono">
         <StatsCard
           title="Available Balance"
-          value={formatCurrency(availableForPayout || 18500)}
-          subtitle="Ready for withdrawal"
+          value={formatCurrency(availableForPayout)}
+          subtitle={availableForPayout > 0 ? "Ready for withdrawal" : "No pending payouts"}
           icon={<Wallet className="w-4 h-4 text-[#FFD21F]" />}
         />
         <StatsCard
           title="In Escrow"
-          value={formatCurrency(securedInEscrow || 35000)}
-          subtitle="Pending deliverable review"
+          value={formatCurrency(securedInEscrow)}
+          subtitle={securedInEscrow > 0 ? "Pending deliverable review" : "No active escrow"}
           icon={<ShieldCheck className="w-4 h-4 text-[#0A0A0E]" />}
         />
         <StatsCard
           title="Total Paid"
-          value={formatCurrency(lifetimeProcessed || 94500)}
-          subtitle="All completed milestones"
+          value={formatCurrency(lifetimeProcessed)}
+          subtitle={lifetimeProcessed > 0 ? "All completed milestones" : "No completed payouts yet"}
           icon={<CheckCircle2 className="w-4 h-4 text-[#0A0A0E]" />}
         />
       </div>

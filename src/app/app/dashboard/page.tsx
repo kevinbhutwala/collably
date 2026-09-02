@@ -146,32 +146,32 @@ export default function DashboardPage() {
           <>
             <StatsCard
               title="In Escrow"
-              value={formatCurrency(totalEscrowInTransit || 28000)}
-              change="+24%"
+              value={formatCurrency(totalEscrowInTransit)}
+              change={totalEscrowInTransit > 0 ? "Secured" : "—"}
               trend="up"
               subtitle="Secured by Stripe"
               icon={<ShieldCheck className="w-4 h-4 text-[#8A7000]" />}
             />
             <StatsCard
               title="Deliverables"
-              value={String(activeCollabsCount || 2)}
-              change="Active"
+              value={String(activeCollabsCount)}
+              change={activeCollabsCount > 0 ? "Active" : "—"}
               trend="up"
               subtitle="Milestones in progress"
               icon={<Clock className="w-4 h-4 text-[#0A0A0E]" />}
             />
             <StatsCard
               title="Avg Engagement"
-              value={currentCreator?.avgEngagementRate ? `${currentCreator.avgEngagementRate}%` : "6.8%"}
-              change="Top 5%"
+              value={currentCreator?.avgEngagementRate ? `${currentCreator.avgEngagementRate}%` : "—"}
+              change={currentCreator?.avgEngagementRate ? "Audited" : "No data"}
               trend="up"
               subtitle="Audience rate"
               icon={<TrendingUp className="w-4 h-4 text-[#8A7000]" />}
             />
             <StatsCard
               title="Total Earned"
-              value={formatCurrency(lifetimeEarned || 94500)}
-              change="+18%"
+              value={formatCurrency(lifetimeEarned)}
+              change={lifetimeEarned > 0 ? "Paid out" : "—"}
               trend="up"
               subtitle="Paid to date"
               icon={<Wallet className="w-4 h-4 text-[#0A0A0E]" />}
@@ -181,34 +181,34 @@ export default function DashboardPage() {
           <>
             <StatsCard
               title="Total Escrow"
-              value={formatCurrency(brandTotalBudget || 45000)}
-              change="Funded"
+              value={formatCurrency(brandTotalBudget)}
+              change={brandTotalBudget > 0 ? "Funded" : "—"}
               trend="up"
               subtitle="Secured in milestones"
               icon={<ShieldCheck className="w-4 h-4 text-[#8A7000]" />}
             />
             <StatsCard
               title="Creators"
-              value={String(featuredCreators.length || 5)}
-              change="+3 new"
+              value={String(featuredCreators.length)}
+              change={featuredCreators.length > 0 ? "Active" : "—"}
               trend="up"
               subtitle="In active roster"
               icon={<Users className="w-4 h-4 text-[#0A0A0E]" />}
             />
             <StatsCard
               title="Live Campaigns"
-              value={String(activeCampaigns.length || 3)}
-              change="Active"
+              value={String(activeCampaigns.length)}
+              change={activeCampaigns.length > 0 ? "Active" : "—"}
               trend="up"
               subtitle="Running briefs"
               icon={<Building2 className="w-4 h-4 text-[#8A7000]" />}
             />
             <StatsCard
-              title="Estimated ROI"
-              value="5.2x"
-              change="+18%"
+              title="Active Collaborations"
+              value={String(activeCollabsCount)}
+              change={activeCollabsCount > 0 ? "In progress" : "—"}
               trend="up"
-              subtitle="Average return"
+              subtitle="Milestone workspaces"
               icon={<TrendingUp className="w-4 h-4 text-[#0A0A0E]" />}
             />
           </>
