@@ -6,7 +6,9 @@ import { useParams } from "next/navigation";
 import { creatorService } from "@/services/creator.service";
 import { CreatorProfile } from "@/core/types";
 import { SafeImage } from "@/components/ui/SafeImage";
+import { CreativeLoader } from "@/components/ui/CreativeLoader";
 import { SocialIcon } from "@/components/ui/SocialIcons";
+
 import { formatNumber, formatCurrency } from "@/core/utils/formatters";
 import {
   CheckCircle2,
@@ -37,11 +39,12 @@ export default function CreatorDetailPage() {
 
   if (loading) {
     return (
-      <div className="py-32 text-center bg-[#FAFAFC] text-[#0A0A0E] min-h-screen">
-        <div className="w-8 h-8 rounded-full border-2 border-[#FFD21F] border-t-transparent animate-spin mx-auto" />
+      <div className="py-32 text-center bg-[#FAFAFC] text-[#0A0A0E] min-h-screen flex items-center justify-center">
+        <CreativeLoader size="lg" label="Loading Creator Media Kit" subtext="Fetching verified metrics, rate cards, and 4K showcase reels..." />
       </div>
     );
   }
+
 
   if (!creator) {
     return (

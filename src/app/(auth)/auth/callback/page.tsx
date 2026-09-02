@@ -7,6 +7,8 @@ import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
 import { Loader2, AlertCircle } from "lucide-react";
 import Link from "next/link";
+import { CreativeLoader } from "@/components/ui/CreativeLoader";
+
 
 function CallbackHandler() {
   const router = useRouter();
@@ -93,14 +95,12 @@ function CallbackHandler() {
   }
 
   return (
-    <div className="w-full max-w-md mx-auto p-8 rounded-3xl bg-white border border-black/8 text-center space-y-4 shadow-xl">
-      <div className="w-12 h-12 rounded-2xl bg-[#FFD21F]/20 flex items-center justify-center mx-auto">
-        <Loader2 className="w-6 h-6 animate-spin text-[#0A0A0E]" />
-      </div>
-      <h2 className="text-xl font-bold text-[#0A0A0E]">Authenticating with Social Provider...</h2>
-      <p className="text-xs text-[#6A6A78]">
-        Verifying your credentials and preparing your workspace.
-      </p>
+    <div className="w-full max-w-md mx-auto p-8 rounded-3xl bg-white border border-black/8 text-center shadow-xl">
+      <CreativeLoader
+        size="md"
+        label="Social Authentication"
+        subtext="Verifying credentials and preparing your workspace..."
+      />
     </div>
   );
 }
@@ -110,8 +110,7 @@ export default function AuthCallbackPage() {
     <Suspense
       fallback={
         <div className="w-full max-w-md mx-auto p-8 rounded-3xl bg-white border border-black/8 text-center">
-          <Loader2 className="w-6 h-6 animate-spin text-[#0A0A0E] mx-auto mb-2" />
-          <p className="text-xs text-[#7A7A8A]">Loading...</p>
+          <CreativeLoader size="sm" label="Connecting..." />
         </div>
       }
     >
@@ -119,3 +118,4 @@ export default function AuthCallbackPage() {
     </Suspense>
   );
 }
+

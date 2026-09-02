@@ -19,8 +19,10 @@ import {
 } from "lucide-react";
 import { Input } from "@/components/ui/Input";
 import { SocialAuthButtons } from "@/components/auth/SocialAuthButtons";
+import { CreativeLoader } from "@/components/ui/CreativeLoader";
 
 function LoginForm() {
+
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirect = searchParams.get("redirect") || "/app/dashboard";
@@ -224,9 +226,8 @@ export default function LoginPage() {
   return (
     <Suspense
       fallback={
-        <div className="w-full max-w-md p-8 rounded-3xl bg-white border border-black/8 text-center text-[#0A0A0E]">
-          <div className="w-8 h-8 rounded-full border-2 border-[#FFD21F] border-t-transparent animate-spin mx-auto mb-3" />
-          <p className="text-xs font-mono text-[#7A7A8A]">Loading sign in...</p>
+        <div className="w-full max-w-md p-8 rounded-3xl bg-white border border-black/8 text-center text-[#0A0A0E] shadow-sm">
+          <CreativeLoader size="sm" label="Loading Sign In..." />
         </div>
       }
     >
@@ -234,3 +235,4 @@ export default function LoginPage() {
     </Suspense>
   );
 }
+

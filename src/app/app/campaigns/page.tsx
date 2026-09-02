@@ -5,8 +5,10 @@ import { campaignService } from "@/services/campaign.service";
 import { Campaign, CreatorCategory } from "@/core/types";
 import { CATEGORIES } from "@/core/constants";
 import { CampaignCard } from "@/components/campaigns/CampaignCard";
+import { CreativeLoader } from "@/components/ui/CreativeLoader";
 import { Search, Compass } from "lucide-react";
 import { cn } from "@/lib/utils";
+
 
 export default function AppCampaignsPage() {
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
@@ -95,9 +97,11 @@ export default function AppCampaignsPage() {
 
       {/* Grid */}
       {loading ? (
-        <div className="py-24 text-center">
-          <div className="w-8 h-8 rounded-full border-2 border-[#FFD21F] border-t-transparent animate-spin mx-auto" />
-        </div>
+        <CreativeLoader
+          size="md"
+          label="Syncing Campaign Roster"
+          subtext="Fetching live verified briefs and pre-funded vaults..."
+        />
       ) : campaigns.length === 0 ? (
         <div className="py-24 text-center rounded-3xl bg-white border border-black/8 p-8 space-y-3 shadow-xs">
           <Compass className="w-8 h-8 text-[#7A7A8A] mx-auto" />

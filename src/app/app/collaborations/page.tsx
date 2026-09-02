@@ -6,7 +6,9 @@ import { Collaboration } from "@/core/types";
 import { useAuthStore } from "@/stores/auth.store";
 import { DeliverablesPipeline } from "@/components/collaborations/DeliverablesPipeline";
 import { AnimatedEmptyState } from "@/components/ui/AnimatedEmptyState";
+import { CreativeLoader } from "@/components/ui/CreativeLoader";
 import { FolderGit2 } from "lucide-react";
+
 
 export default function CollaborationsWorkspacePage() {
   const { role, currentCreator, currentBrand } = useAuthStore();
@@ -55,11 +57,15 @@ export default function CollaborationsWorkspacePage() {
       </div>
 
       {loading ? (
-        <div className="py-24 text-center rounded-3xl bg-white border border-black/8 p-8 text-[#0A0A0E] shadow-xs">
-          <div className="w-8 h-8 rounded-full border-2 border-[#FFD21F] border-t-transparent animate-spin mx-auto mb-3" />
-          <p className="text-xs font-mono text-[#7A7A8A]">Loading collaboration pipelines...</p>
+        <div className="py-16 text-center rounded-3xl bg-white border border-black/8 p-8 text-[#0A0A0E] shadow-xs">
+          <CreativeLoader
+            size="md"
+            label="Syncing Active Pipelines"
+            subtext="Fetching live milestone deliverables, revision threads & escrow state..."
+          />
         </div>
       ) : collaborations.length === 0 ? (
+
         <AnimatedEmptyState
           icon={<FolderGit2 className="w-8 h-8 text-[#0A0A0E]" />}
           badgeText="Active Pipeline"

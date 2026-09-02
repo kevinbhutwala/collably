@@ -2,7 +2,9 @@
 
 import React, { useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
+
 import { useAuthStore } from "@/stores/auth.store";
+import { CreativeLoader } from "@/components/ui/CreativeLoader";
 
 export interface AuthGuardProps {
   children: React.ReactNode;
@@ -30,17 +32,9 @@ export function AuthGuard({ children, requiredRole }: AuthGuardProps) {
   }, [isLoading, isAuthenticated, role, requiredRole, router, pathname]);
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#07070B] text-white p-4">
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-10 h-10 rounded-full border-2 border-[#2A5CFF] border-t-transparent animate-spin" />
-          <p className="text-xs font-mono text-white/50 tracking-wider uppercase">
-            Verifying secure session...
-          </p>
-        </div>
-      </div>
-    );
+    return <CreativeLoader size="fullscreen" label="Verifying Secure Session" />;
   }
+
 
   if (!isAuthenticated) {
     return null;

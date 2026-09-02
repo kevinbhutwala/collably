@@ -13,7 +13,9 @@ import { Input, Textarea } from "@/components/ui/Input";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { MatchScoreBadge } from "@/components/ai/MatchScoreBadge";
 import { AICreatorPitchModal } from "@/components/ai/AICreatorPitchModal";
+import { CreativeLoader } from "@/components/ui/CreativeLoader";
 import { formatCurrency, formatNumber } from "@/core/utils/formatters";
+
 import {
   ShieldCheck,
   Calendar,
@@ -84,11 +86,12 @@ export default function CampaignDetailPage() {
 
   if (loading) {
     return (
-      <div className="py-32 text-center bg-[#FAFAFC] text-[#0A0A0E] min-h-screen">
-        <div className="w-8 h-8 rounded-full border-2 border-[#FFD21F] border-t-transparent animate-spin mx-auto" />
+      <div className="py-32 text-center bg-[#FAFAFC] text-[#0A0A0E] min-h-screen flex items-center justify-center">
+        <CreativeLoader size="lg" label="Loading Campaign Brief" subtext="Decrypting deliverables and escrow allocations..." />
       </div>
     );
   }
+
 
   if (!campaign) {
     return (
