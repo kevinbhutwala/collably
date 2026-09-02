@@ -79,9 +79,9 @@ export function Navbar() {
             {/* Mobile Header Screen Title */}
             <div className="flex lg:hidden items-center gap-1.5 min-w-0">
               <span className="text-xs text-[#8A8A98] font-mono">•</span>
-              <h1 className="text-sm font-extrabold text-[#0A0A0E] font-display tracking-tight truncate">
+              <p className="text-sm font-extrabold text-[#0A0A0E] font-display tracking-tight truncate">
                 {currentTitle}
-              </h1>
+              </p>
             </div>
           </div>
 

@@ -42,11 +42,11 @@ const config: Config = {
           "linear-gradient(180deg, #FFFFFF 0%, #F4F4F0 100%)",
       },
       fontFamily: {
-        display: ["var(--font-sans)", "'Plus Jakarta Sans'", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
-        sans: ["var(--font-sans)", "'Plus Jakarta Sans'", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
-        ui: ["var(--font-sans)", "'Plus Jakarta Sans'", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
-        editorial: ["var(--font-serif)", "'Instrument Serif'", "Georgia", "serif"],
-        serif: ["var(--font-serif)", "'Instrument Serif'", "Georgia", "serif"],
+        display: ["var(--font-jakarta)", "'Plus Jakarta Sans'", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+        sans: ["var(--font-jakarta)", "'Plus Jakarta Sans'", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+        ui: ["var(--font-jakarta)", "'Plus Jakarta Sans'", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+        editorial: ["var(--font-instrument)", "'Instrument Serif'", "Georgia", "serif"],
+        serif: ["var(--font-instrument)", "'Instrument Serif'", "Georgia", "serif"],
         mono: ["var(--font-mono)", "'JetBrains Mono'", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
       },
       borderRadius: {

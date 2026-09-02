@@ -346,7 +346,22 @@
   "payments": [],
   "mediaAssets": [],
   "conversations": [],
-  "messages": [],
+  "messages": [
+    {
+      "conversationId": "conv-5",
+      "senderId": "user-1788361902695",
+      "senderRole": "creator",
+      "senderName": "kushi",
+      "senderAvatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "content": "hy",
+      "attachments": [],
+      "id": "msg-1788363736670-fbllz",
+      "readBy": [
+        "user-1788361902695"
+      ],
+      "createdAt": "2026-09-02T15:42:16.670Z"
+    }
+  ],
   "notifications": [],
   "webhookEvents": [],
   "aiUsage": [],

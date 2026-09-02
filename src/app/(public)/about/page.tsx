@@ -1,6 +1,14 @@
+import type { Metadata } from 'next';
 import React from "react";
 import { EditorialCTA } from "@/components/collably/EditorialCTA";
 import { Sparkles, ShieldCheck, Zap, Globe } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: 'About Us',
+  description: 'Collably is building the operating system for the creator economy — milestone payments, campaign management, and creator discovery in one platform.',
+  alternates: { canonical: 'https://collably-ashen.vercel.app/about' },
+};
+
 
 export default function AboutPage() {
   return (

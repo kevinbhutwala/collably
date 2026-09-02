@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital,wght@0,400;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+
 
 @tailwind base;
 @tailwind components;
@@ -11,10 +12,10 @@
        ══════════════════════════════════════════════════════════════════════════ */
     
     /* Typography Tokens */
-    --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-editorial: 'Instrument Serif', Georgia, serif;
-    --font-ui: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-mono: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    --font-display: var(--font-jakarta, 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+    --font-editorial: var(--font-instrument, 'Instrument Serif', Georgia, serif);
+    --font-ui: var(--font-jakarta, 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+    --font-mono: var(--font-mono, 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace);
 
     /* Typographic & Palette Colors */
     --color-text-primary: #0A0A0E;

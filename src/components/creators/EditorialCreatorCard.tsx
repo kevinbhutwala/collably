@@ -70,7 +70,11 @@ export function EditorialCreatorCard({
           <div className="absolute top-3 inset-x-3 flex items-center justify-between z-10">
             <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold text-white flex items-center gap-1 border border-white/15">
               <Sparkles className="w-3 h-3 text-[#FFD21F] fill-[#FFD21F]" />
-              <span>{creator.matchScore}% AI Match</span>
+              {creator.matchScore != null ? (
+                <span>{creator.matchScore}% AI Match</span>
+              ) : (
+                <span>AI Verified</span>
+              )}
             </span>
 
             <div className="flex items-center gap-1.5">
