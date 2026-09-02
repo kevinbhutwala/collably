@@ -172,7 +172,7 @@ export function ContinuousProductStory() {
         </div>
 
         {/* 7-Step Navigation Strip */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 scrollbar-none justify-start lg:justify-center">
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 scrollbar-none justify-start lg:justify-center -mx-4 px-4 sm:mx-0 sm:px-0">
           {WORKFLOW_STEPS.map((step, idx) => (
             <button
               key={step.id}
@@ -227,7 +227,7 @@ export function ContinuousProductStory() {
             </div>
 
             {/* Step Controller Action */}
-            <div className="pt-4 flex items-center gap-3">
+            <div className="pt-4 flex flex-wrap items-center gap-3">
               <button
                 onClick={() => setActiveStepIdx((prev) => (prev + 1) % WORKFLOW_STEPS.length)}
                 className="px-6 py-3 rounded-full bg-[#0A0A0E] hover:bg-[#20202B] text-white text-xs font-bold transition-all flex items-center gap-2 shadow-xs hover-lift"
@@ -249,24 +249,24 @@ export function ContinuousProductStory() {
 
           {/* Right Stage: Interactive Realistic Working Product Mockup */}
           <div className="lg:col-span-7">
-            <div className="rounded-3xl bg-white border-2 border-black/8 shadow-[0_20px_60px_rgba(0,0,0,0.06)] p-6 sm:p-8 relative overflow-hidden min-h-[420px] flex flex-col justify-between">
+            <div className="rounded-3xl bg-white border-2 border-black/8 shadow-[0_20px_60px_rgba(0,0,0,0.06)] p-4 sm:p-8 relative overflow-hidden min-h-[400px] flex flex-col justify-between">
               {/* Top Window Chrome */}
               <div className="flex items-center justify-between pb-4 border-b border-black/6">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-rose-400" />
                   <div className="w-3 h-3 rounded-full bg-amber-400" />
                   <div className="w-3 h-3 rounded-full bg-emerald-400" />
-                  <span className="ml-2 text-[11px] font-mono text-[#7A7A8A]">
+                  <span className="ml-2 text-[10px] sm:text-[11px] font-mono text-[#7A7A8A] truncate max-w-[140px] sm:max-w-none">
                     collably.io/app/{activeStep.mockupType}
                   </span>
                 </div>
-                <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] font-mono text-[10px] font-bold">
+                <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] font-mono text-[9px] sm:text-[10px] font-bold">
                   LIVE WORKSPACE
                 </span>
               </div>
 
               {/* Dynamic Product UI Rendering based on Active Step */}
-              <div className="py-6 flex-1 flex flex-col justify-center">
+              <div className="py-5 flex-1 flex flex-col justify-center">
                 <AnimatePresence mode="wait">
                   {/* Step 1: Discover Mockup */}
                   {activeStep.mockupType === "discover" && (
@@ -277,19 +277,19 @@ export function ContinuousProductStory() {
                       exit={{ opacity: 0, y: -10 }}
                       className="space-y-4"
                     >
-                      <div className="flex items-center justify-between p-3 rounded-2xl bg-[#F8F8FC] border border-black/6">
+                      <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-2 p-3 rounded-2xl bg-[#F8F8FC] border border-black/6">
                         <div className="flex items-center gap-2">
-                          <Search className="w-4 h-4 text-[#7A7A8A]" />
-                          <span className="text-xs font-medium text-[#0A0A0E]">
-                            &ldquo;AI tools, RED 8K camera, Tier-1 US&rdquo;
+                          <Search className="w-4 h-4 text-[#7A7A8A] shrink-0" />
+                          <span className="text-xs font-medium text-[#0A0A0E] truncate">
+                            &ldquo;AI tools, RED 8K, Tier-1 US&rdquo;
                           </span>
                         </div>
-                        <span className="text-[10px] font-mono font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                        <span className="text-[10px] font-mono font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200 shrink-0 self-start xs:self-center">
                           128 Matches Found
                         </span>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div className="p-3.5 rounded-2xl bg-[#FFFDF5] border border-[#FFD21F]/40 space-y-2">
                           <div className="flex items-center justify-between">
                             <span className="text-xs font-bold font-display">Elena Rostova</span>
@@ -317,6 +317,7 @@ export function ContinuousProductStory() {
 
                   {/* Step 2: Match Mockup */}
                   {activeStep.mockupType === "match" && (
+
                     <motion.div
                       key="match-mock"
                       initial={{ opacity: 0, y: 10 }}

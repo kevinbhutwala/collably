@@ -162,20 +162,21 @@ export function InteractiveVideoReviewStudio() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30" />
 
                 {/* Floating Active Timecode Box */}
-                <div className="absolute top-4 left-4 px-3 py-1 rounded-xl bg-black/70 backdrop-blur-md border border-white/20 font-mono text-xs font-bold text-white flex items-center gap-2">
+                <div className="absolute top-3 sm:top-4 left-3 sm:left-4 px-2.5 sm:px-3 py-1 rounded-xl bg-black/70 backdrop-blur-md border border-white/20 font-mono text-[10px] sm:text-xs font-bold text-white flex items-center gap-1.5 sm:gap-2">
                   <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />
                   <span>{formatTime(currentTimeSec)} / {formatTime(totalDurationSec)}</span>
                 </div>
 
                 {/* Interactive Timecode Annotation Pin inside Frame */}
                 <motion.div
-                  animate={{ scale: [1, 1.15, 1] }}
+                  animate={{ scale: [1, 1.1, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
-                  className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-2xl bg-[#FFD21F] text-[#0A0A0E] shadow-[0_0_20px_rgba(255,210,31,0.8)] border border-black/20 flex items-center gap-2 font-mono text-xs font-extrabold"
+                  className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-2xl bg-[#FFD21F] text-[#0A0A0E] shadow-[0_0_20px_rgba(255,210,31,0.8)] border border-black/20 flex items-center gap-1.5 sm:gap-2 font-mono text-[10px] sm:text-xs font-extrabold max-w-[90%] truncate"
                 >
-                  <MessageSquare className="w-4 h-4 fill-current" />
-                  <span>Annotation @ {activeComment.timecode}</span>
+                  <MessageSquare className="w-3.5 sm:w-4 h-3.5 sm:h-4 fill-current shrink-0" />
+                  <span className="truncate">Annotation @ {activeComment.timecode}</span>
                 </motion.div>
+
 
                 {/* Center Play/Pause Overlay Button */}
                 <button

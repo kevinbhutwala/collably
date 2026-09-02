@@ -123,12 +123,13 @@ export function ProtectedEscrowFlow() {
           </div>
 
           {/* 5-Phase Horizontal Step Rail */}
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none sm:grid sm:grid-cols-5 sm:gap-2.5 -mx-2 px-2 sm:mx-0 sm:px-0">
             {ESCROW_STAGES.map((st, idx) => (
               <button
                 key={st.id}
                 onClick={() => setActiveStageIdx(idx)}
-                className={`p-3.5 rounded-2xl border text-left transition-all font-mono space-y-1 ${
+                className={`p-3.5 rounded-2xl border text-left transition-all font-mono space-y-1 shrink-0 min-w-[140px] sm:min-w-0 ${
+
                   activeStageIdx === idx
                     ? "bg-[#0A0A0E] text-white border-[#0A0A0E] shadow-sm"
                     : "bg-[#F8F8FC] border-black/6 text-[#5A5A68] hover:bg-white hover:text-[#0A0A0E]"

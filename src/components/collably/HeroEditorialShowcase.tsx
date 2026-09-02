@@ -206,7 +206,7 @@ export function HeroEditorialShowcase() {
             <InteractiveTiltCard
               maxTilt={9}
               glowColor="rgba(255, 210, 31, 0.32)"
-              className="relative w-full max-w-[360px] sm:max-w-[430px] aspect-[4/5] rounded-3xl overflow-hidden border-2 border-white shadow-[0_20px_60px_rgba(0,0,0,0.14)] bg-[#0A0A0E] group"
+              className="relative w-full max-w-[320px] xs:max-w-[360px] sm:max-w-[430px] aspect-[4/5] rounded-3xl overflow-hidden border-2 border-white shadow-[0_20px_60px_rgba(0,0,0,0.14)] bg-[#0A0A0E] group"
             >
               {/* Primary Background Portrait */}
               <AnimatePresence mode="wait">
@@ -233,14 +233,14 @@ export function HeroEditorialShowcase() {
               <motion.div
                 initial={{ y: -10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="absolute top-4 left-4 z-20 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-white/40 shadow-lg flex items-center gap-1.5 text-xs font-mono font-bold text-[#0A0A0E]"
+                className="absolute top-3 sm:top-4 left-3 sm:left-4 z-20 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-white/40 shadow-lg flex items-center gap-1.5 text-[11px] sm:text-xs font-mono font-bold text-[#0A0A0E]"
               >
-                <Sparkles className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
+                <Sparkles className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
                 <span>{activeTalent.matchScore} AI Match</span>
               </motion.div>
 
               {/* Top Right Live Reach Badge */}
-              <div className="absolute top-4 right-4 z-20 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-[10px] font-mono font-semibold text-white flex items-center gap-1">
+              <div className="absolute top-3 sm:top-4 right-3 sm:right-4 z-20 px-2 sm:px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-[9px] sm:text-[10px] font-mono font-semibold text-white flex items-center gap-1">
                 <Flame className="w-3 h-3 text-[#FFD21F]" />
                 <span>{activeTalent.reach}</span>
               </div>
@@ -248,7 +248,7 @@ export function HeroEditorialShowcase() {
               {/* 🌟 OVERLAPPING FLOATING 4K VIDEO ASSET CARD */}
               <motion.div
                 whileHover={{ scale: 1.08, rotate: 2 }}
-                className="absolute bottom-20 right-4 z-20 w-24 sm:w-28 aspect-video rounded-2xl overflow-hidden border-2 border-white shadow-[0_12px_30px_rgba(0,0,0,0.45)] bg-black"
+                className="absolute bottom-20 sm:bottom-22 right-3 sm:right-4 z-20 w-20 sm:w-28 aspect-video rounded-2xl overflow-hidden border-2 border-white shadow-[0_12px_30px_rgba(0,0,0,0.45)] bg-black"
               >
                 <SafeImage
                   src={activeTalent.bRollPreview}
@@ -258,34 +258,34 @@ export function HeroEditorialShowcase() {
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-black/35 flex items-center justify-center">
-                  <Play className="w-4 h-4 text-white fill-white opacity-90" />
+                  <Play className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-white fill-white opacity-90" />
                 </div>
-                <span className="absolute bottom-1 inset-x-1 text-[8px] font-mono font-bold text-white text-center truncate bg-black/70 rounded px-0.5">
+                <span className="absolute bottom-1 inset-x-1 text-[7px] sm:text-[8px] font-mono font-bold text-white text-center truncate bg-black/70 rounded px-0.5">
                   {activeTalent.badgeText}
                 </span>
               </motion.div>
 
               {/* Bottom Glass Identity Bar */}
-              <div className="absolute bottom-4 inset-x-4 z-20 p-4 rounded-2xl bg-white/95 backdrop-blur-xl border border-black/8 shadow-xl space-y-2 text-[#0A0A0E]">
+              <div className="absolute bottom-3 sm:bottom-4 inset-x-3 sm:inset-x-4 z-20 p-3 sm:p-4 rounded-2xl bg-white/95 backdrop-blur-xl border border-black/8 shadow-xl space-y-1.5 sm:space-y-2 text-[#0A0A0E]">
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="flex items-center gap-1.5">
-                      <h3 className="text-sm font-bold font-display">{activeTalent.name}</h3>
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#087F5B]" />
+                      <h3 className="text-xs sm:text-sm font-bold font-display">{activeTalent.name}</h3>
+                      <CheckCircle2 className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#087F5B]" />
                     </div>
-                    <p className="text-[11px] text-[#6A6A78] font-sans">{activeTalent.niche}</p>
+                    <p className="text-[10px] sm:text-[11px] text-[#6A6A78] font-sans">{activeTalent.niche}</p>
                   </div>
                   <div className="text-right font-mono">
-                    <span className="text-[10px] text-[#888898] block uppercase">Starts at</span>
-                    <span className="text-xs font-extrabold text-[#0A0A0E]">{activeTalent.startingPrice}</span>
+                    <span className="text-[9px] sm:text-[10px] text-[#888898] block uppercase">Starts at</span>
+                    <span className="text-xs sm:text-sm font-extrabold text-[#0A0A0E]">{activeTalent.startingPrice}</span>
                   </div>
                 </div>
 
-                <div className="pt-2 border-t border-black/6 flex items-center justify-between text-[11px] font-mono">
-                  <span className="text-[#5A5A68] truncate max-w-[180px]">{activeTalent.specs}</span>
+                <div className="pt-1.5 sm:pt-2 border-t border-black/6 flex items-center justify-between text-[10px] sm:text-[11px] font-mono">
+                  <span className="text-[#5A5A68] truncate max-w-[140px] sm:max-w-[180px]">{activeTalent.specs}</span>
                   <Link
                     href="/creators"
-                    className="text-xs font-bold text-[#0A0A0E] hover:text-[#8A7000] flex items-center gap-0.5 shrink-0 transition-colors"
+                    className="text-[11px] sm:text-xs font-bold text-[#0A0A0E] hover:text-[#8A7000] flex items-center gap-0.5 shrink-0 transition-colors"
                   >
                     <span>View Deck</span>
                     <ArrowRight className="w-3 h-3" />
@@ -293,6 +293,7 @@ export function HeroEditorialShowcase() {
                 </div>
               </div>
             </InteractiveTiltCard>
+
           </motion.div>
         </div>
       </div>
