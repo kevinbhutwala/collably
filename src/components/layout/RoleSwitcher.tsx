@@ -14,8 +14,8 @@ export function RoleSwitcher({ className }: { className?: string }) {
   const handleRoleChange = (newRole: UserRole) => {
     setRole(newRole);
     const roleLabels: Record<string, string> = {
-      creator: "Creator Persona (Elena Rostova)",
-      brand: "Brand Marketer (Linear Dynamics)",
+      creator: "Creator Workspace",
+      brand: "Brand Workspace",
       brand_owner: "Brand Owner",
       brand_manager: "Brand Manager",
       brand_member: "Brand Member",

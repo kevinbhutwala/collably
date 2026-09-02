@@ -11,9 +11,6 @@ import {
   Mail,
   Loader2,
   ArrowLeft,
-  ShieldCheck,
-  UserCheck,
-  Building2,
   Eye,
   EyeOff,
 } from "lucide-react";
@@ -50,27 +47,6 @@ function LoginForm() {
       router.push(redirect);
     } catch (err: any) {
       setErrorMessage(err.message || "Invalid email or password");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleDemoLogin = async (demoEmail: string) => {
-    setEmail(demoEmail);
-    setPassword("password123");
-    setIsLoading(true);
-    setErrorMessage("");
-
-    try {
-      await login(demoEmail, "password123");
-      addToast({
-        type: "success",
-        title: "Signed in with Demo Persona",
-        message: `Welcome to Collably as ${demoEmail}!`,
-      });
-      router.push(redirect);
-    } catch (err: any) {
-      setErrorMessage(err.message || "Demo login failed");
     } finally {
       setIsLoading(false);
     }
@@ -168,47 +144,6 @@ function LoginForm() {
           )}
         </button>
       </form>
-
-      {/* 1-Click Demo Personas */}
-      <div className="space-y-2 pt-2 border-t border-black/8">
-        <span className="text-[10px] font-mono text-[#6A6A78] uppercase font-bold block text-center tracking-wider">
-          ⚡ 1-Click Instant Demo Access
-        </span>
-        <div className="grid grid-cols-3 gap-2 text-xs font-sans">
-          <button
-            type="button"
-            onClick={() => handleDemoLogin("elena@example.com")}
-            className="p-2.5 rounded-2xl bg-[#F8F8FC] hover:bg-[#FFFDF5] border border-black/8 hover:border-[#FFD21F] text-[#0A0A0E] transition-all flex flex-col items-center gap-1 shadow-2xs active:scale-95 group"
-          >
-            <div className="w-6 h-6 rounded-full bg-[#FFD21F]/20 flex items-center justify-center text-[#0A0A0E] group-hover:scale-110 transition-transform">
-              <UserCheck className="w-3 h-3" />
-            </div>
-            <span className="font-bold text-[10px]">Creator</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => handleDemoLogin("alex@hypeagency.com")}
-            className="p-2.5 rounded-2xl bg-[#F8F8FC] hover:bg-[#FFFDF5] border border-black/8 hover:border-[#FFD21F] text-[#0A0A0E] transition-all flex flex-col items-center gap-1 shadow-2xs active:scale-95 group"
-          >
-            <div className="w-6 h-6 rounded-full bg-black/5 flex items-center justify-center text-[#0A0A0E] group-hover:scale-110 transition-transform">
-              <Building2 className="w-3 h-3" />
-            </div>
-            <span className="font-bold text-[10px]">Brand</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => handleDemoLogin("admin@collably.com")}
-            className="p-2.5 rounded-2xl bg-[#F8F8FC] hover:bg-[#FFFDF5] border border-black/8 hover:border-[#FFD21F] text-[#0A0A0E] transition-all flex flex-col items-center gap-1 shadow-2xs active:scale-95 group"
-          >
-            <div className="w-6 h-6 rounded-full bg-[#087F5B]/10 text-[#087F5B] flex items-center justify-center group-hover:scale-110 transition-transform">
-              <ShieldCheck className="w-3 h-3" />
-            </div>
-            <span className="font-bold text-[10px]">Admin</span>
-          </button>
-        </div>
-      </div>
 
       <div className="text-center pt-2">
         <p className="text-xs text-[#6A6A78]">

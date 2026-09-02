@@ -80,8 +80,8 @@ export default function DashboardPage() {
   return (
     <div className="space-y-8 text-[#0A0A0E] font-sans select-none">
       {/* ── Welcome Banner ── */}
-      <div className="rounded-3xl bg-white border border-black/8 p-5 sm:p-7 shadow-[0_10px_30px_rgba(0,0,0,0.04)] relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-5">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-[#FFD21F]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="rounded-3xl bg-gradient-to-br from-[#FFFDF5] via-white to-[#FFF9E6] border border-[#FFD21F]/30 p-5 sm:p-7 shadow-[0_10px_30px_rgba(0,0,0,0.04)] relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-5">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-[#FFD21F]/15 rounded-full blur-3xl pointer-events-none" />
 
         <div className="space-y-1.5 relative z-10 max-w-xl">
           <div className="flex flex-wrap items-center gap-2">
@@ -116,7 +116,7 @@ export default function DashboardPage() {
               </Link>
               <Link href="/app/profile">
                 <button className="px-4 py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] border border-black/10 text-[#0A0A0E] font-bold text-xs transition-all flex items-center gap-1.5 shadow-xs">
-                  <Sparkles className="w-3.5 h-3.5 text-[#FFD21F]" />
+                  <Sparkles className="w-3.5 h-3.5 text-[#8A7000]" />
                   <span>Media Kit</span>
                 </button>
               </Link>
@@ -131,7 +131,7 @@ export default function DashboardPage() {
               </Link>
               <Link href="/app/brand/creators">
                 <button className="px-4 py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] border border-black/10 text-[#0A0A0E] font-bold text-xs transition-all flex items-center gap-1.5 shadow-xs">
-                  <Users className="w-3.5 h-3.5 text-[#FFD21F]" />
+                  <Users className="w-3.5 h-3.5 text-[#8A7000]" />
                   <span>Find Talent</span>
                 </button>
               </Link>
@@ -150,7 +150,7 @@ export default function DashboardPage() {
               change="+24%"
               trend="up"
               subtitle="Secured by Stripe"
-              icon={<ShieldCheck className="w-4 h-4 text-[#FFD21F]" />}
+              icon={<ShieldCheck className="w-4 h-4 text-[#8A7000]" />}
             />
             <StatsCard
               title="Deliverables"
@@ -166,7 +166,7 @@ export default function DashboardPage() {
               change="Top 5%"
               trend="up"
               subtitle="Audience rate"
-              icon={<TrendingUp className="w-4 h-4 text-[#FFD21F]" />}
+              icon={<TrendingUp className="w-4 h-4 text-[#8A7000]" />}
             />
             <StatsCard
               title="Total Earned"
@@ -185,7 +185,7 @@ export default function DashboardPage() {
               change="Funded"
               trend="up"
               subtitle="Secured in milestones"
-              icon={<ShieldCheck className="w-4 h-4 text-[#FFD21F]" />}
+              icon={<ShieldCheck className="w-4 h-4 text-[#8A7000]" />}
             />
             <StatsCard
               title="Creators"
@@ -201,7 +201,7 @@ export default function DashboardPage() {
               change="Active"
               trend="up"
               subtitle="Running briefs"
-              icon={<Building2 className="w-4 h-4 text-[#FFD21F]" />}
+              icon={<Building2 className="w-4 h-4 text-[#8A7000]" />}
             />
             <StatsCard
               title="Estimated ROI"
@@ -224,7 +224,7 @@ export default function DashboardPage() {
         {/* Left Column: Active Pipelines & Opportunities */}
         <div className="lg:col-span-8 space-y-6">
           {/* Active Collaborations Pipeline */}
-          <div className="rounded-3xl bg-white border border-black/8 p-5 sm:p-7 shadow-xs space-y-5">
+          <div className="rounded-3xl bg-white border border-black/8 p-5 sm:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-5">
             <div className="flex items-center justify-between pb-3 border-b border-black/8">
               <div>
                 <h2 className="text-base font-bold text-[#0A0A0E] font-display">
@@ -239,7 +239,7 @@ export default function DashboardPage() {
 
               <Link
                 href="/app/collaborations"
-                className="text-xs font-mono font-bold text-[#0A0A0E] hover:text-[#A37F00] transition-colors flex items-center gap-1 shrink-0"
+                className="text-xs font-mono font-bold text-[#0A0A0E] hover:text-[#8A7000] transition-colors flex items-center gap-1 shrink-0"
               >
                 <span>View all ({collaborations.length})</span>
                 <ArrowRight className="w-3 h-3" />
@@ -268,11 +268,11 @@ export default function DashboardPage() {
                 {collaborations.map((collab) => (
                   <div
                     key={collab.id}
-                    className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/6 hover:border-[#FFD21F] transition-all space-y-2.5"
+                    className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/6 hover:border-[#FFD21F] hover:bg-white transition-all space-y-2.5"
                   >
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl bg-white border border-black/8 flex items-center justify-center shrink-0 shadow-xs">
+                        <div className="w-9 h-9 rounded-xl bg-white border border-black/8 flex items-center justify-center shrink-0 shadow-2xs">
                           <BrandIcon
                             name={collab.brand?.companyName || "Linear"}
                             className="w-4 h-4 text-[#0A0A0E]"
@@ -299,7 +299,7 @@ export default function DashboardPage() {
                       </span>
                       <Link
                         href="/app/collaborations"
-                        className="text-[#0A0A0E] hover:text-[#A37F00] font-bold flex items-center gap-1 transition-colors text-[11px]"
+                        className="text-[#0A0A0E] hover:text-[#8A7000] font-bold flex items-center gap-1 transition-colors text-[11px]"
                       >
                         <span>Workspace</span>
                         <ArrowUpRight className="w-3 h-3" />
@@ -312,7 +312,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Open Brand Briefs Discovery Bar */}
-          <div className="rounded-3xl bg-white border border-black/8 p-5 sm:p-7 shadow-xs space-y-5">
+          <div className="rounded-3xl bg-white border border-black/8 p-5 sm:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-5">
             <div className="flex items-center justify-between pb-3 border-b border-black/8">
               <div>
                 <h2 className="text-base font-bold text-[#0A0A0E] font-display">
@@ -325,7 +325,7 @@ export default function DashboardPage() {
 
               <Link
                 href="/app/campaigns"
-                className="text-xs font-mono font-bold text-[#0A0A0E] hover:text-[#A37F00] transition-colors flex items-center gap-1 shrink-0"
+                className="text-xs font-mono font-bold text-[#0A0A0E] hover:text-[#8A7000] transition-colors flex items-center gap-1 shrink-0"
               >
                 <span>View all ({activeCampaigns.length})</span>
                 <ArrowRight className="w-3 h-3" />
@@ -337,7 +337,7 @@ export default function DashboardPage() {
                 <Link
                   key={c.id}
                   href={`/campaigns/${c.id}`}
-                  className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/6 hover:border-[#FFD21F] transition-all group flex flex-col justify-between space-y-2.5"
+                  className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/6 hover:border-[#FFD21F] hover:bg-white transition-all group flex flex-col justify-between space-y-2.5"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-1.5">
@@ -348,7 +348,7 @@ export default function DashboardPage() {
                         {formatCurrency(c.budget.totalBudget)}
                       </span>
                     </div>
-                    <h3 className="font-bold text-xs sm:text-sm text-[#0A0A0E] group-hover:text-[#A37F00] transition-colors line-clamp-1">
+                    <h3 className="font-bold text-xs sm:text-sm text-[#0A0A0E] group-hover:text-[#8A7000] transition-colors line-clamp-1">
                       {c.title}
                     </h3>
                     <p className="text-[11px] text-[#5A5A68] line-clamp-1 mt-0.5">
@@ -373,12 +373,12 @@ export default function DashboardPage() {
           <ProfileCompletenessCard />
 
           {/* Quick Payout Ledger */}
-          <div className="rounded-3xl bg-white border border-black/8 p-5 sm:p-6 shadow-xs space-y-3.5">
+          <div className="rounded-3xl bg-white border border-black/8 p-5 sm:p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-3.5">
             <div className="flex items-center justify-between pb-2.5 border-b border-black/8">
               <h3 className="text-sm font-bold text-[#0A0A0E] font-display">Recent Payouts</h3>
               <Link
                 href="/app/earnings"
-                className="text-[11px] font-mono text-[#0A0A0E] hover:text-[#A37F00] font-bold"
+                className="text-[11px] font-mono text-[#0A0A0E] hover:text-[#8A7000] font-bold"
               >
                 View all
               </Link>

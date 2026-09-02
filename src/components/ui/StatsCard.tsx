@@ -24,16 +24,19 @@ export function StatsCard({
   return (
     <div
       className={cn(
-        "p-5 sm:p-6 rounded-3xl bg-white border border-black/8 hover:border-black/15 shadow-xs transition-all duration-300 relative group overflow-hidden text-[#0A0A0E]",
+        "p-5 sm:p-6 rounded-3xl bg-white border border-black/8 hover:border-[#FFD21F] shadow-[0_4px_20px_rgba(0,0,0,0.03)] transition-all duration-300 relative group overflow-hidden text-[#0A0A0E]",
         className
       )}
     >
+      {/* Subtle inner warm glow on hover */}
+      <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#FFD21F]/0 to-[#FFD21F]/0 group-hover:from-[#FFD21F]/5 group-hover:to-transparent transition-all duration-500 pointer-events-none" />
+
       <div className="flex items-center justify-between relative z-10">
         <p className="text-[11px] font-bold uppercase tracking-wider text-[#6A6A78] font-mono">
           {title}
         </p>
         {icon && (
-          <div className="p-2 rounded-xl bg-black/5 border border-black/5 text-[#0A0A0E] shadow-xs group-hover:scale-105 transition-transform">
+          <div className="p-2 rounded-xl bg-[#F4F4F8] border border-black/6 shadow-2xs group-hover:scale-105 transition-transform">
             {icon}
           </div>
         )}
@@ -47,10 +50,10 @@ export function StatsCard({
         {change && (
           <div
             className={cn(
-              "inline-flex items-center text-[10px] font-bold px-2 py-0.5 rounded-full font-mono shadow-xs",
+              "inline-flex items-center text-[10px] font-bold px-2 py-0.5 rounded-full font-mono shadow-2xs",
               trend === "up" && "bg-emerald-50 text-emerald-700 border border-emerald-200",
               trend === "down" && "bg-red-50 text-red-700 border border-red-200",
-              trend === "neutral" && "bg-black/5 text-[#5A5A68] border border-black/10"
+              trend === "neutral" && "bg-[#F4F4F8] text-[#6A6A78] border border-black/8"
             )}
           >
             {trend === "up" && <ArrowUpRight className="w-3 h-3 mr-0.5" />}
@@ -61,9 +64,7 @@ export function StatsCard({
       </div>
 
       {subtitle && (
-        <p className="mt-2 text-xs text-[#6A6A78] font-normal font-sans relative z-10">
-          {subtitle}
-        </p>
+        <p className="text-[11px] text-[#7A7A8A] mt-2 font-sans relative z-10">{subtitle}</p>
       )}
     </div>
   );

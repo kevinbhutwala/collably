@@ -4114,6 +4114,48 @@
       },
       "createdAt": "2026-09-02T04:36:05.678Z",
       "updatedAt": "2026-09-02T04:36:05.678Z"
+    },
+    {
+      "id": "sub-1788350620496-bea8g",
+      "userId": "user-1788190134428",
+      "role": "creator",
+      "planId": "creator_starter",
+      "status": "active",
+      "interval": "monthly",
+      "currentPeriodStart": "2026-09-02T12:03:40.496Z",
+      "currentPeriodEnd": "2026-10-02T12:03:40.496Z",
+      "cancelAtPeriodEnd": false,
+      "price": 0,
+      "currency": "USD",
+      "features": {
+        "mediaKit": true,
+        "maxApplicationsPerMonth": 5,
+        "instantPayouts": false,
+        "advancedAnalytics": false,
+        "aiPitchGenerator": false,
+        "verifiedBadge": false,
+        "priorityDiscovery": false,
+        "multiCreatorManagement": false,
+        "customDomain": false,
+        "maxActiveCampaigns": 0,
+        "crmPipeline": false,
+        "aiCreatorMatching": false,
+        "creatorShortlists": false,
+        "maxTeamSeats": 0,
+        "advancedRoiTelemetry": false,
+        "contractCompliance": false,
+        "dedicatedAccountManager": false,
+        "apiAccess": false
+      },
+      "usage": {
+        "activeCampaignsCount": 0,
+        "applicationsThisMonth": 0,
+        "crmContactsCount": 0,
+        "aiTokensUsed": 0,
+        "lastResetDate": "2026-09-02T12:03:40.496Z"
+      },
+      "createdAt": "2026-09-02T12:03:40.496Z",
+      "updatedAt": "2026-09-02T12:03:40.496Z"
     }
   ]
 }

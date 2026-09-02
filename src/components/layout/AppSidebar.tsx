@@ -105,10 +105,10 @@ export function AppSidebar() {
     role === "creator" ? creatorNavItems : role === "brand" ? brandNavItems : adminNavItems;
 
   return (
-    <aside className="hidden lg:flex flex-col w-64 border-r border-black/8 bg-white p-4 shrink-0 min-h-[calc(100vh-4rem)] text-[#0A0A0E] shadow-xs justify-between">
+    <aside className="hidden lg:flex flex-col w-64 border-r border-black/8 bg-white p-4 shrink-0 min-h-[calc(100vh-4rem)] text-[#0A0A0E] shadow-2xs justify-between select-none">
       <div>
-        {/* Brand logo & workspace badge */}
-        <div className="px-3 py-2 mb-4 flex items-center justify-between border-b border-black/5 pb-4">
+        {/* Workspace badge header */}
+        <div className="px-3 py-2 mb-4 flex items-center justify-between border-b border-black/8 pb-4">
           <Link href="/app/dashboard" className="flex items-center gap-2.5 group">
             <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FFD21F] to-[#FFAE00] border border-black/10 flex items-center justify-center text-[#0A0A0E] group-hover:scale-105 transition-transform shadow-[0_2px_10px_rgba(255,210,31,0.3)]">
               <Sparkles className="w-4 h-4 fill-[#0A0A0E] text-[#0A0A0E]" />
@@ -121,7 +121,7 @@ export function AppSidebar() {
         </div>
 
         {/* Nav List */}
-        <nav className="space-y-1.5 flex-1 overflow-y-auto">
+        <nav className="space-y-1 flex-1 overflow-y-auto">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
             const Icon = item.icon;
@@ -136,8 +136,8 @@ export function AppSidebar() {
                   isActive
                     ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] font-bold shadow-[0_2px_10px_rgba(255,210,31,0.35)] border border-black/10"
                     : item.highlight
-                    ? "bg-black/[0.04] text-[#0A0A0E] hover:bg-black/[0.08] border border-black/5 font-bold"
-                    : "text-[#5A5A68] hover:text-[#0A0A0E] hover:bg-black/[0.04]"
+                    ? "bg-[#FFD21F]/15 text-[#0A0A0E] hover:bg-[#FFD21F]/25 border border-[#FFD21F]/30 font-bold"
+                    : "text-[#5A5A68] hover:text-[#0A0A0E] hover:bg-[#F4F4F8]"
                 )}
               >
                 <div className="flex items-center gap-3">
@@ -147,8 +147,8 @@ export function AppSidebar() {
                       isActive
                         ? "text-[#0A0A0E]"
                         : item.highlight
-                        ? "text-[#A37F00]"
-                        : "text-[#7A7A8A] group-hover:text-[#0A0A0E]"
+                        ? "text-[#8A7000]"
+                        : "text-[#7A7A8A]"
                     )}
                   />
                   <span>{item.label}</span>
@@ -159,10 +159,10 @@ export function AppSidebar() {
                     className={cn(
                       "text-[9px] px-2 py-0.5 rounded-full font-mono font-bold flex items-center gap-1",
                       isGated
-                        ? "bg-[#FFD21F]/30 text-[#0A0A0E] border border-[#FFD21F]/50"
+                        ? "bg-[#FFD21F]/20 text-[#0A0A0E] border border-[#FFD21F]/40"
                         : isActive
                         ? "bg-[#0A0A0E] text-white"
-                        : "bg-[#FFD21F]/20 text-[#0A0A0E] border border-[#FFD21F]/30"
+                        : "bg-black/5 text-[#5A5A68] border border-black/8"
                     )}
                   >
                     {isGated && <Lock className="w-2.5 h-2.5" />}
@@ -177,24 +177,24 @@ export function AppSidebar() {
 
       {/* Sidebar Bottom Upgrade CTA Card */}
       {role !== "agency_admin" && role !== "super_admin" && (
-        <div className="mt-4 p-3.5 rounded-2xl bg-gradient-to-br from-[#FFFDF5] to-[#FAF8F0] border border-[#FFD21F]/40 space-y-2 shadow-xs select-none">
+        <div className="mt-4 p-3.5 rounded-2xl bg-gradient-to-br from-[#FFFDF5] via-[#FFF9E6] to-[#FFF3D0] border border-[#FFD21F]/40 space-y-2 shadow-xs select-none text-[#0A0A0E]">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-1.5 text-xs font-bold text-[#0A0A0E]">
-              <Zap className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
+              <Zap className="w-3.5 h-3.5 text-[#0A0A0E] fill-[#FFD21F]" />
               <span>{role === "creator" ? "Creator Pro" : "Brand Growth"}</span>
             </div>
-            <span className="text-[9px] font-mono px-1.5 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] font-bold">
+            <span className="text-[9px] font-mono px-1.5 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] font-bold border border-black/10">
               UPGRADE
             </span>
           </div>
           <p className="text-[11px] text-[#6A6A78] leading-tight font-sans">
             {role === "creator"
-              ? "Get instant 2-hour payouts & deep audience retention intel."
-              : "Unlock 10 active briefs, Creator CRM & AI suitability scoring."}
+              ? "Get instant payouts & deep audience retention intel."
+              : "Unlock active briefs, Creator CRM & AI scoring."}
           </p>
           <button
             onClick={() => openUpgradeModal()}
-            className="w-full py-1.5 rounded-xl bg-[#0A0A0E] hover:bg-[#20202B] text-white text-xs font-bold transition-all shadow-xs"
+            className="w-full py-1.5 rounded-xl bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10"
           >
             Upgrade Plan
           </button>

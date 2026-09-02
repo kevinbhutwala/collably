@@ -58,7 +58,7 @@ export function PricingComparisonModule() {
         "Dedicated creative strategist",
         "Custom SLA & phone support",
       ],
-      ctaText: "Book Growth Demo",
+      ctaText: "Start Growth Plan",
       ctaHref: "/brand/register",
       popular: false,
     },

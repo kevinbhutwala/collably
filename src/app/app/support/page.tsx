@@ -195,7 +195,7 @@ export default function SupportAndDisputePage() {
                 </div>
                 <p className="text-xs text-[#5A5A68] font-sans leading-relaxed">{d.description}</p>
                 {d.adminArbitrationNotes && (
-                  <div className="p-3 rounded-xl bg-white border border-black/8 text-[#0A0A0E] text-[11px] font-sans shadow-xs">
+                  <div className="p-3 rounded-xl bg-amber-50/50 border border-amber-200/60 text-[#0A0A0E] text-[11px] font-sans shadow-2xs">
                     <strong className="text-[#0A0A0E]">Admin Arbitration Note:</strong> {d.adminArbitrationNotes}
                   </div>
                 )}

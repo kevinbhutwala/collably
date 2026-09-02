@@ -36,12 +36,10 @@ import {
 } from "lucide-react";
 import { NotificationItem } from "@/core/types";
 import { notificationService } from "@/services/notification.service";
-import { Badge } from "@/components/ui/Badge";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { SubscriptionBadge } from "@/components/subscriptions/SubscriptionBadge";
 import { useSubscriptionStore } from "@/stores/subscription.store";
-
 
 export function AppNavbar() {
   const pathname = usePathname();
@@ -112,14 +110,14 @@ export function AppNavbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-30 w-full h-16 border-b border-black/8 bg-white/95 backdrop-blur-xl px-4 sm:px-6 flex items-center justify-between gap-4 text-[#0A0A0E]">
+      <header className="sticky top-0 z-30 w-full h-16 border-b border-black/8 bg-white/90 backdrop-blur-xl px-4 sm:px-6 flex items-center justify-between gap-4 text-[#0A0A0E]">
         {/* Left Area: Mobile Drawer Trigger & Search */}
         <div className="flex items-center gap-3 flex-1 max-w-md">
           {/* Mobile Sidebar Hamburger Trigger */}
           <button
             type="button"
             onClick={() => setShowMobileSidebar(!showMobileSidebar)}
-            className="lg:hidden p-2 rounded-xl bg-black/5 border border-black/10 text-[#0A0A0E] hover:bg-black/10 transition-colors"
+            className="lg:hidden p-2 rounded-xl bg-[#F4F4F8] border border-black/8 text-[#0A0A0E] hover:bg-[#EAEAEF] transition-colors"
             aria-label="Open Workspace Menu"
           >
             <Menu className="w-4 h-4 text-[#0A0A0E]" />
@@ -140,10 +138,10 @@ export function AppNavbar() {
                 const event = new KeyboardEvent("keydown", { key: "k", metaKey: true, bubbles: true });
                 window.dispatchEvent(event);
               }}
-              className="w-full text-left bg-[#F5F5F9] border border-black/8 rounded-full pl-9 pr-12 py-2 text-xs text-[#6A6A78] hover:border-[#FFD21F] hover:bg-white transition-all flex items-center justify-between"
+              className="w-full text-left bg-[#F4F4F8] border border-black/8 rounded-full pl-9 pr-12 py-2 text-xs text-[#5A5A68] hover:border-[#FFD21F] hover:bg-[#EAEAEF] transition-all flex items-center justify-between"
             >
               <span className="truncate">Search campaigns, creators, analytics...</span>
-              <kbd className="px-1.5 py-0.5 rounded-full bg-white border border-black/10 text-[10px] font-mono text-[#5A5A68]">
+              <kbd className="px-1.5 py-0.5 rounded-full bg-white border border-black/10 text-[10px] font-mono text-[#7A7A8A]">
                 ⌘K
               </kbd>
             </button>
@@ -155,7 +153,7 @@ export function AppNavbar() {
           {/* Quick Action Button for Brand */}
           {role === "brand" && (
             <Link href="/app/brand/campaigns/create">
-              <button className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs shadow-[0_2px_10px_rgba(255,210,31,0.3)] transition-all font-sans">
+              <button className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs shadow-[0_2px_10px_rgba(255,210,31,0.3)] transition-all font-sans border border-black/10">
                 <Plus className="w-3.5 h-3.5 text-[#0A0A0E]" />
                 <span>Create Brief</span>
               </button>
@@ -165,7 +163,7 @@ export function AppNavbar() {
           {/* Quick Action Button for Creator */}
           {role === "creator" && (
             <Link href="/campaigns">
-              <button className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs shadow-[0_2px_10px_rgba(255,210,31,0.3)] transition-all font-sans">
+              <button className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs shadow-[0_2px_10px_rgba(255,210,31,0.3)] transition-all font-sans border border-black/10">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#0A0A0E]" />
                 <span>Explore Briefs</span>
               </button>
@@ -176,7 +174,7 @@ export function AppNavbar() {
           <div className="relative">
             <button
               onClick={() => setShowNotifs(!showNotifs)}
-              className="relative p-2 rounded-xl text-[#6A6A78] hover:text-[#0A0A0E] hover:bg-black/5 border border-transparent hover:border-black/5 transition-colors"
+              className="relative p-2 rounded-xl text-[#5A5A68] hover:text-[#0A0A0E] hover:bg-black/5 border border-transparent hover:border-black/5 transition-colors"
               aria-label="Notifications"
             >
               <Bell className="w-4 h-4" />
@@ -186,9 +184,8 @@ export function AppNavbar() {
             </button>
 
             {showNotifs && (
-              <div className="absolute right-0 mt-2 w-[calc(100vw-2rem)] max-w-sm sm:w-96 rounded-2xl bg-white border border-black/10 shadow-2xl p-4 z-50 animate-in fade-in zoom-in-95 duration-100">
+              <div className="absolute right-0 mt-2 w-[calc(100vw-2rem)] max-w-sm sm:w-96 rounded-2xl bg-white border border-black/10 shadow-2xl p-4 z-50 animate-in fade-in zoom-in-95 duration-100 text-[#0A0A0E]">
                 <div className="flex items-center justify-between pb-3 border-b border-black/8">
-
                   <div className="flex items-center gap-2">
                     <h4 className="text-xs font-bold text-[#0A0A0E]">Notifications</h4>
                     {unreadCount > 0 && (
@@ -200,7 +197,7 @@ export function AppNavbar() {
                   {unreadCount > 0 && (
                     <button
                       onClick={markAllRead}
-                      className="text-[11px] font-bold text-[#6A6A78] hover:text-[#0A0A0E]"
+                      className="text-[11px] font-bold text-[#7A7A8A] hover:text-[#0A0A0E]"
                     >
                       Mark all read
                     </button>
@@ -240,7 +237,7 @@ export function AppNavbar() {
           <div className="relative">
             <button
               onClick={() => setShowProfileMenu(!showProfileMenu)}
-              className="flex items-center gap-2 p-1.5 rounded-xl hover:bg-black/5 border border-transparent hover:border-black/5 transition-colors"
+              className="flex items-center gap-2 p-1.5 rounded-xl hover:bg-black/5 border border-transparent hover:border-black/5 transition-colors text-[#0A0A0E]"
             >
               <Avatar
                 src={user?.avatarUrl}
@@ -256,10 +253,10 @@ export function AppNavbar() {
             </button>
 
             {showProfileMenu && (
-              <div className="absolute right-0 mt-2 w-60 rounded-2xl bg-white border border-black/10 shadow-2xl p-2 z-50 animate-in fade-in zoom-in-95 duration-100">
+              <div className="absolute right-0 mt-2 w-60 rounded-2xl bg-white border border-black/10 shadow-2xl p-2 z-50 animate-in fade-in zoom-in-95 duration-100 text-[#0A0A0E]">
                 <div className="px-3 py-2 border-b border-black/8 mb-1">
                   <p className="text-xs font-bold text-[#0A0A0E] truncate">{user?.name}</p>
-                  <p className="text-[11px] text-[#6A6A78] truncate">{user?.email}</p>
+                  <p className="text-[11px] text-[#7A7A8A] truncate">{user?.email}</p>
                   <div className="mt-2 flex items-center justify-between gap-1">
                     <SubscriptionBadge planId={useSubscriptionStore.getState().subscription?.planId} role={role} size="sm" />
                   </div>
@@ -271,13 +268,13 @@ export function AppNavbar() {
                       setShowProfileMenu(false);
                       useSubscriptionStore.getState().openUpgradeModal();
                     }}
-                    className="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-[#FFD21F]/15 hover:bg-[#FFD21F]/30 text-[#0A0A0E] font-bold transition-colors text-left"
+                    className="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-[#FFD21F]/20 hover:bg-[#FFD21F]/30 text-[#0A0A0E] font-bold transition-colors text-left"
                   >
                     <div className="flex items-center gap-2">
                       <Sparkles className="w-3.5 h-3.5 text-[#0A0A0E]" />
                       <span>Upgrade Plan</span>
                     </div>
-                    <span className="text-[9px] font-mono font-extrabold uppercase px-1.5 py-0.5 rounded-full bg-[#0A0A0E] text-white">
+                    <span className="text-[9px] font-mono font-extrabold uppercase px-1.5 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E]">
                       PRO
                     </span>
                   </button>
@@ -287,7 +284,7 @@ export function AppNavbar() {
                     onClick={() => setShowProfileMenu(false)}
                     className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-black/5 hover:text-[#0A0A0E] transition-colors"
                   >
-                    <Sparkles className="w-3.5 h-3.5 text-[#FFD21F]" />
+                    <Sparkles className="w-3.5 h-3.5 text-[#8A7000]" />
                     <span>Profile &amp; Media Kit</span>
                   </Link>
 
@@ -309,7 +306,6 @@ export function AppNavbar() {
                     <span>Public Website</span>
                   </Link>
                 </div>
-
 
                 <div className="pt-1 mt-1 border-t border-black/8">
                   <button
@@ -338,7 +334,7 @@ export function AppNavbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setShowMobileSidebar(false)}
-              className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-50 bg-black/30 backdrop-blur-xs lg:hidden"
             />
 
             <motion.div
@@ -358,7 +354,7 @@ export function AppNavbar() {
                   </div>
                   <button
                     onClick={() => setShowMobileSidebar(false)}
-                    className="p-1.5 rounded-xl bg-black/5 text-[#5A5A68] hover:text-[#0A0A0E] border border-black/5"
+                    className="p-1.5 rounded-xl bg-[#F4F4F8] text-[#5A5A68] hover:text-[#0A0A0E] border border-black/8"
                   >
                     <X className="w-5 h-5" />
                   </button>
@@ -379,7 +375,7 @@ export function AppNavbar() {
                           "flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all select-none",
                           isActive
                             ? "bg-[#FFD21F] text-[#0A0A0E] font-bold shadow-xs border border-black/10"
-                            : "text-[#5A5A68] hover:text-[#0A0A0E] hover:bg-black/5"
+                            : "text-[#5A5A68] hover:text-[#0A0A0E] hover:bg-[#F4F4F8]"
                         )}
                       >
                         <div className="flex items-center gap-3">
@@ -389,7 +385,7 @@ export function AppNavbar() {
                         {item.badge && (
                           <span className={cn(
                             "text-[10px] px-2 py-0.5 rounded-full font-mono font-bold",
-                            isActive ? "bg-[#0A0A0E] text-white" : "bg-black/5 text-[#5A5A68] border border-black/10"
+                            isActive ? "bg-[#0A0A0E] text-white" : "bg-black/5 text-[#5A5A68] border border-black/8"
                           )}>
                             {item.badge}
                           </span>

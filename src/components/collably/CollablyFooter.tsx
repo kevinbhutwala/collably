@@ -52,7 +52,7 @@ export function CollablyFooter() {
             <li><Link href="/services" className="hover:text-[#101010] transition-colors">Talent Roster Curation</Link></li>
             <li><Link href="/services" className="hover:text-[#101010] transition-colors">Contract &amp; Rights QA</Link></li>
             <li><Link href="/about" className="hover:text-[#101010] transition-colors">About Collably</Link></li>
-            <li><Link href="/contact" className="hover:text-[#101010] transition-colors">Book a Demo</Link></li>
+            <li><Link href="/contact" className="hover:text-[#101010] transition-colors">Contact Sales</Link></li>
           </ul>
         </div>
 

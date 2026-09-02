@@ -131,9 +131,9 @@ export function VisualEscrowMotion() {
         {/* Live Action Trigger */}
         <div className="max-w-xl mx-auto p-4 sm:p-5 rounded-2xl bg-[#FFFFFF] border border-[#E2E6E1] shadow-fintech flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div>
-            <span className="text-xs font-mono text-[#8A908B] block font-semibold">CAMPAIGN MILESTONE DEMO</span>
+            <span className="text-xs font-mono text-[#8A908B] block font-semibold uppercase">Automated Escrow Settlement</span>
             <span className="text-sm font-bold text-[#101310] font-sans">
-              {released ? "✓ ₹22,050 Disbursed to Creator (Stripe Connect)" : "Test instant milestone payment release:"}
+              {released ? "✓ ₹22,050 Disbursed to Creator (Stripe Connect)" : "Instant milestone payment release:"}
             </span>
           </div>
 
@@ -145,12 +145,12 @@ export function VisualEscrowMotion() {
             {released ? (
               <>
                 <Check className="w-3.5 h-3.5" />
-                <span>Released</span>
+                <span>Disbursed</span>
               </>
             ) : (
               <>
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>Simulate 1-Click Release</span>
+                <span>Release Milestone</span>
               </>
             )}
           </button>

@@ -100,7 +100,7 @@ export function InteractiveCampaignStudio() {
               INTERACTIVE CAMPAIGN STUDIO
             </span>
             <h2 className="text-2xl sm:text-4xl font-black font-display tracking-tight text-[#0A0A0E]">
-              Simulate Your Creator Campaign in Real-Time.
+              Forecast Your Creator Campaign in Real-Time.
             </h2>
           </div>
           <p className="text-xs sm:text-sm text-[#5A5A68] max-w-md font-sans">
