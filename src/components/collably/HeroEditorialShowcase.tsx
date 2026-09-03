@@ -87,7 +87,7 @@ export function HeroEditorialShowcase() {
   const activeTalent = HERO_TALENT[activeIdx];
 
   return (
-    <section className="relative min-h-[calc(100svh-4rem)] lg:min-h-[85vh] bg-white text-[#0A0A0E] flex flex-col justify-between pt-10 sm:pt-14 pb-14 sm:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden font-sans">
+    <section className="relative min-h-[calc(100svh-4rem)] lg:min-h-[85vh] bg-white dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] flex flex-col justify-between pt-10 sm:pt-14 pb-14 sm:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden font-sans">
       {/* Background Solar Flare with Gentle Breathing Cycle */}
       <motion.div
         animate={{
@@ -114,15 +114,15 @@ export function HeroEditorialShowcase() {
             className="lg:col-span-6 space-y-7 text-left"
           >
             {/* Live Trust Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF9F5] border border-black/8 shadow-2xs">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF9F5] dark:bg-[#14141E] border border-black/8 dark:border-white/10 shadow-2xs">
               <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
-              <span className="text-[11px] font-mono font-bold tracking-tight text-[#0A0A0E]">
+              <span className="text-[11px] font-mono font-bold tracking-tight text-[#0A0A0E] dark:text-white">
                 COLLABLY • THE CREATOR × BRAND COMMERCE PLATFORM
               </span>
             </div>
 
             {/* Confident Large Headline */}
-            <h1 className="max-w-[11ch] text-[clamp(2.75rem,6.1vw,5.75rem)] font-black font-display tracking-[-0.055em] text-[#0A0A0E] leading-[0.98]">
+            <h1 className="max-w-[11ch] text-[clamp(2.75rem,6.1vw,5.75rem)] font-black font-display tracking-[-0.055em] text-[#0A0A0E] dark:text-white leading-[0.98]">
               Where visionary brands meet{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD21F] via-[#D9A900] to-[#8A6500]">
                 cinematic creators.
@@ -130,7 +130,7 @@ export function HeroEditorialShowcase() {
             </h1>
 
             {/* Short, clear value statement */}
-            <p className="text-base sm:text-lg text-[#5A5A68] max-w-xl leading-relaxed font-sans font-normal">
+            <p className="text-base sm:text-lg text-[#5A5A68] dark:text-[#9A9AA8] max-w-xl leading-relaxed font-sans font-normal">
               Discover the right talent, align on the work, review every frame and release payment with complete confidence.
             </p>
 
@@ -145,26 +145,26 @@ export function HeroEditorialShowcase() {
                 <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-1 transition-transform" />
               </button>
 
-              <Link href="/creators" className="w-full sm:w-auto min-h-12 px-7 py-3.5 rounded-full bg-white hover:bg-[#F8F8FC] border border-black/10 text-[#0A0A0E] font-bold text-sm transition-all shadow-xs active:scale-[0.98] flex items-center justify-center gap-2 hover-lift">
-                  <Users className="w-4 h-4 text-[#8A7000]" />
+              <Link href="/creators" className="w-full sm:w-auto min-h-12 px-7 py-3.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#14141E] dark:hover:bg-[#1E1E2C] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-sm transition-all shadow-xs active:scale-[0.98] flex items-center justify-center gap-2 hover-lift">
+                  <Users className="w-4 h-4 text-[#8A7000] dark:text-[#FFD21F]" />
                   <span>Explore Creator Roster</span>
               </Link>
             </div>
 
             {/* Proof Micro Bar */}
-            <div className="flex flex-wrap items-center gap-4 pt-3 border-t border-black/6 text-xs font-mono text-[#5A5A68]">
-              <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E]">
+            <div className="flex flex-wrap items-center gap-4 pt-3 border-t border-black/6 dark:border-white/10 text-xs font-mono text-[#5A5A68] dark:text-[#8E8EA4]">
+              <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E] dark:text-white">
                 <ShieldCheck className="w-4 h-4 text-[#087F5B]" />
                 <span>100% Pre-funded Escrow</span>
               </div>
               <span>•</span>
-              <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E]">
+              <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E] dark:text-white">
                 <Zap className="w-4 h-4 text-[#FFD21F]" />
                 <span>Instant Payout on Approval</span>
               </div>
               <span>•</span>
-              <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E]">
-                <Lock className="w-4 h-4 text-[#0A0A0E]" />
+              <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E] dark:text-white">
+                <Lock className="w-4 h-4 text-[#0A0A0E] dark:text-white" />
                 <span>Zero Unpaid Invoices</span>
               </div>
             </div>
@@ -180,7 +180,7 @@ export function HeroEditorialShowcase() {
             className="lg:col-span-6 relative flex flex-col items-center"
           >
             {/* Top Selector Chips */}
-            <div className="flex items-center gap-2 mb-4 bg-[#F4F4F8] p-1.5 rounded-full border border-black/6 shadow-xs z-20">
+            <div className="flex items-center gap-2 mb-4 bg-[#F4F4F8] dark:bg-[#14141E] p-1.5 rounded-full border border-black/6 dark:border-white/10 shadow-xs z-20">
               {HERO_TALENT.map((t, i) => (
                 <button
                   key={t.id}
@@ -189,13 +189,13 @@ export function HeroEditorialShowcase() {
                   aria-label={`Show ${t.name}'s creator profile`}
                   className={`px-3.5 py-1.5 rounded-full text-xs font-sans font-bold transition-all flex items-center gap-1.5 ${
                     activeIdx === i
-                      ? "bg-white text-[#0A0A0E] shadow-sm border border-black/8"
-                      : "text-[#6A6A78] hover:text-[#0A0A0E]"
+                      ? "bg-white dark:bg-[#1E1E2C] text-[#0A0A0E] dark:text-[#FFD21F] shadow-sm border border-black/8 dark:border-[#FFD21F]/40"
+                      : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
                   }`}
                 >
                   <span
                     className={`w-2 h-2 rounded-full ${
-                      activeIdx === i ? "bg-[#FFD21F]" : "bg-black/20"
+                      activeIdx === i ? "bg-[#FFD21F]" : "bg-black/20 dark:bg-white/20"
                     }`}
                   />
                   <span>{t.name.split(" ")[0]}</span>
@@ -267,26 +267,27 @@ export function HeroEditorialShowcase() {
               </motion.div>
 
               {/* Bottom Glass Identity Bar */}
-              <div className="absolute bottom-3 sm:bottom-4 inset-x-3 sm:inset-x-4 z-20 p-3 sm:p-4 rounded-2xl bg-white/95 backdrop-blur-xl border border-black/8 shadow-xl space-y-1.5 sm:space-y-2 text-[#0A0A0E]">
+              {/* Bottom Glass Identity Bar */}
+              <div className="absolute bottom-3 sm:bottom-4 inset-x-3 sm:inset-x-4 z-20 p-3 sm:p-4 rounded-2xl bg-white/95 dark:bg-[#0E0E16]/95 backdrop-blur-xl border border-black/8 dark:border-white/10 shadow-xl space-y-1.5 sm:space-y-2 text-[#0A0A0E] dark:text-[#F4F4F8]">
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="flex items-center gap-1.5">
-                      <h3 className="text-xs sm:text-sm font-bold font-display">{activeTalent.name}</h3>
+                      <h3 className="text-xs sm:text-sm font-bold font-display text-[#0A0A0E] dark:text-white">{activeTalent.name}</h3>
                       <CheckCircle2 className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#087F5B]" />
                     </div>
-                    <p className="text-[10px] sm:text-[11px] text-[#6A6A78] font-sans">{activeTalent.niche}</p>
+                    <p className="text-[10px] sm:text-[11px] text-[#6A6A78] dark:text-[#A0A0B4] font-sans">{activeTalent.niche}</p>
                   </div>
                   <div className="text-right font-mono">
-                    <span className="text-[9px] sm:text-[10px] text-[#888898] block uppercase">Starts at</span>
-                    <span className="text-xs sm:text-sm font-extrabold text-[#0A0A0E]">{activeTalent.startingPrice}</span>
+                    <span className="text-[9px] sm:text-[10px] text-[#888898] dark:text-[#8E8EA4] block uppercase">Starts at</span>
+                    <span className="text-xs sm:text-sm font-extrabold text-[#0A0A0E] dark:text-white">{activeTalent.startingPrice}</span>
                   </div>
                 </div>
 
-                <div className="pt-1.5 sm:pt-2 border-t border-black/6 flex items-center justify-between text-[10px] sm:text-[11px] font-mono">
-                  <span className="text-[#5A5A68] truncate max-w-[140px] sm:max-w-[180px]">{activeTalent.specs}</span>
+                <div className="pt-1.5 sm:pt-2 border-t border-black/6 dark:border-white/10 flex items-center justify-between text-[10px] sm:text-[11px] font-mono">
+                  <span className="text-[#5A5A68] dark:text-[#8E8EA4] truncate max-w-[140px] sm:max-w-[180px]">{activeTalent.specs}</span>
                   <Link
                     href="/creators"
-                    className="text-[11px] sm:text-xs font-bold text-[#0A0A0E] hover:text-[#8A7000] flex items-center gap-0.5 shrink-0 transition-colors"
+                    className="text-[11px] sm:text-xs font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-white flex items-center gap-0.5 shrink-0 transition-colors"
                   >
                     <span>View Deck</span>
                     <ArrowRight className="w-3 h-3" />
@@ -307,29 +308,29 @@ export function HeroEditorialShowcase() {
         description="Select your pathway to start hiring creators or showcase your verified portfolio."
         maxWidth="md"
       >
-        <div className="space-y-3 pt-2 text-[#0A0A0E] select-none font-sans">
+        <div className="space-y-3 pt-2 text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans">
           <Link
             href="/brand/register"
             onClick={() => setRoleModalOpen(false)}
-            className="w-full text-left p-4 rounded-2xl bg-[#FFFDF5] border-2 border-[#FFD21F] hover:shadow-md transition-all group flex items-center justify-between block hover-lift"
+            className="w-full text-left p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#1A1A28] border-2 border-[#FFD21F] hover:shadow-md transition-all group flex items-center justify-between block hover-lift"
           >
             <div>
-              <h4 className="text-sm font-bold font-display">I am a Brand / Business</h4>
-              <p className="text-xs text-[#6A6A78]">Post briefs, hire creators &amp; escrow funds safely</p>
+              <h4 className="text-sm font-bold font-display text-[#0A0A0E] dark:text-white">I am a Brand / Business</h4>
+              <p className="text-xs text-[#6A6A78] dark:text-[#A0A0B4]">Post briefs, hire creators &amp; escrow funds safely</p>
             </div>
-            <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F] group-hover:translate-x-1 transition-transform" />
           </Link>
 
           <Link
             href="/creator/register"
             onClick={() => setRoleModalOpen(false)}
-            className="w-full text-left p-4 rounded-2xl bg-[#FAFAFC] border border-black/10 hover:border-black/20 hover:bg-white hover:shadow-md transition-all group flex items-center justify-between block hover-lift"
+            className="w-full text-left p-4 rounded-2xl bg-[#FAFAFC] dark:bg-[#14141E] border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 hover:bg-white dark:hover:bg-[#1C1C28] hover:shadow-md transition-all group flex items-center justify-between block hover-lift"
           >
             <div>
-              <h4 className="text-sm font-bold font-display">I am a Content Creator</h4>
-              <p className="text-xs text-[#6A6A78]">Publish media kit, receive inbound deals &amp; get paid</p>
+              <h4 className="text-sm font-bold font-display text-[#0A0A0E] dark:text-white">I am a Content Creator</h4>
+              <p className="text-xs text-[#6A6A78] dark:text-[#A0A0B4]">Publish media kit, receive inbound deals &amp; get paid</p>
             </div>
-            <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F] group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </Modal>

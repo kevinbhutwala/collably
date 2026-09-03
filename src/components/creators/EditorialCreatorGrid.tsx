@@ -139,7 +139,7 @@ export function EditorialCreatorGrid() {
       : FEATURED_TALENT.filter((c) => c.category === activeTab);
 
   return (
-    <section className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white text-[#0A0A0E] select-none overflow-hidden border-t border-black/6 font-sans">
+    <section className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] select-none overflow-hidden border-t border-black/6 dark:border-white/10 font-sans">
       <div className="max-w-7xl mx-auto w-full space-y-12">
         {/* Section Header with smooth in-view entrance */}
         <motion.div
@@ -147,34 +147,34 @@ export function EditorialCreatorGrid() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/6"
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/6 dark:border-white/10"
         >
           <div className="space-y-2 max-w-xl">
-            <span className="text-xs font-mono font-bold tracking-tight text-[#8A7000] uppercase flex items-center gap-1.5">
+            <span className="text-xs font-mono font-bold tracking-tight text-[#8A7000] dark:text-[#FFD21F] uppercase flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
               CURATED TALENT DIRECTORY
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-display tracking-tight text-[#0A0A0E]">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-display tracking-tight text-[#0A0A0E] dark:text-white">
               Vetted Cinematic Creators.
             </h2>
-            <p className="text-xs sm:text-sm text-[#5A5A68] leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#8E8EA4] leading-relaxed">
               Explore audited media kits, rate cards, and 4K production reels ready for instant milestone booking.
             </p>
-            <p className="text-[11px] text-[#9A9AA8] font-mono mt-1">
+            <p className="text-[11px] text-[#9A9AA8] dark:text-[#7E7E94] font-mono mt-1">
               ✦ Sample profiles shown for illustration — real creator roster populates as creators join.
             </p>
           </div>
 
           {/* Category Tabs */}
-          <div className="flex flex-wrap items-center gap-1.5 bg-[#FAF9F5] p-1.5 rounded-full border border-black/8 shadow-2xs overflow-x-auto scrollbar-none">
+          <div className="flex flex-wrap items-center gap-1.5 bg-[#FAF9F5] dark:bg-[#14141E] p-1.5 rounded-full border border-black/8 dark:border-white/10 shadow-2xs overflow-x-auto scrollbar-none">
             {CATEGORIES.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setActiveTab(cat.id)}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-sans font-bold transition-all shrink-0 ${
                   activeTab === cat.id
-                    ? "bg-[#0A0A0E] text-white shadow-xs"
-                    : "text-[#5A5A68] hover:text-[#0A0A0E]"
+                    ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] shadow-xs"
+                    : "text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
                 }`}
               >
                 {cat.label}
@@ -229,7 +229,7 @@ export function EditorialCreatorGrid() {
         >
           <Link
             href="/creators"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#FAF9F5] hover:bg-white border border-black/10 text-xs sm:text-sm font-bold text-[#0A0A0E] transition-all shadow-xs hover-lift"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#FAF9F5] hover:bg-white dark:bg-[#14141E] dark:hover:bg-[#1E1E2C] border border-black/10 dark:border-white/10 text-xs sm:text-sm font-bold text-[#0A0A0E] dark:text-white transition-all shadow-xs hover-lift"
           >
             <span>Explore the Full Creator Roster</span>
 

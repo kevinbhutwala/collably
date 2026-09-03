@@ -34,7 +34,7 @@ export function StatsSection() {
   ];
 
   return (
-    <section className="py-20 border-y border-black/8 bg-white text-[#0A0A0E] select-none font-sans">
+    <section className="py-20 border-y border-black/8 dark:border-white/10 bg-white dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((s, i) => {
@@ -48,27 +48,27 @@ export function StatsSection() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className={`p-6 sm:p-7 rounded-3xl transition-all flex flex-col justify-between text-center space-y-4 border hover-lift ${
                   s.highlight
-                    ? "bg-gradient-to-b from-[#FFFDF5] to-white border-2 border-[#FFD21F] shadow-[0_8px_24px_rgba(255,210,31,0.18)]"
-                    : "bg-white border-black/8 hover:border-black/20 shadow-xs"
+                    ? "bg-gradient-to-b from-[#FFFDF5] to-white dark:from-[#1A1A28] dark:to-[#12121C] border-2 border-[#FFD21F] shadow-[0_8px_24px_rgba(255,210,31,0.18)]"
+                    : "bg-white dark:bg-[#12121A] border-black/8 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 shadow-xs"
                 }`}
               >
                 <div
                   className={`w-12 h-12 rounded-2xl flex items-center justify-center mx-auto shadow-xs ${
                     s.highlight
                       ? "bg-gradient-to-br from-[#FFD21F] to-[#FFAE00] text-[#0A0A0E]"
-                      : "bg-[#F8F8FC] border border-black/6 text-[#0A0A0E]"
+                      : "bg-[#F8F8FC] dark:bg-[#181824] border border-black/6 dark:border-white/10 text-[#0A0A0E] dark:text-[#FFD21F]"
                   }`}
                 >
                   <Icon className="w-6 h-6" />
                 </div>
                 <div className="space-y-1">
-                  <p className="text-3xl sm:text-4xl font-black text-[#0A0A0E] font-display tracking-tight">
+                  <p className="text-3xl sm:text-4xl font-black text-[#0A0A0E] dark:text-white font-display tracking-tight">
                     {s.value}
                   </p>
-                  <p className="text-xs font-bold text-[#0A0A0E] uppercase tracking-wider font-mono">
+                  <p className="text-xs font-bold text-[#0A0A0E] dark:text-[#E0E0EC] uppercase tracking-wider font-mono">
                     {s.label}
                   </p>
-                  <p className="text-xs text-[#6A6A78] mt-1 leading-relaxed font-sans">
+                  <p className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] mt-1 leading-relaxed font-sans">
                     {s.subtext}
                   </p>
                 </div>

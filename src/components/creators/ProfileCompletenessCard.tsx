@@ -48,23 +48,23 @@ export function ProfileCompletenessCard({ creator }: { creator?: CreatorProfile 
   const strokeDashoffset = circumference - (score / 100) * circumference;
 
   return (
-    <div className="p-5 sm:p-6 rounded-3xl bg-white border border-black/8 shadow-xs space-y-4 text-[#0A0A0E] select-none relative overflow-hidden">
+    <div className="p-5 sm:p-6 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8] select-none relative overflow-hidden">
       {/* Background Ambient Aura */}
       <div className="absolute top-0 right-0 w-36 h-36 bg-[#FFD21F]/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Header with Radial Gauge */}
-      <div className="flex items-center justify-between gap-3 pb-3 border-b border-black/8 relative z-10">
+      <div className="flex items-center justify-between gap-3 pb-3 border-b border-black/8 dark:border-white/10 relative z-10">
         <div className="space-y-0.5 min-w-0">
           <div className="flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-pulse" />
-            <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E]">
+            <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] dark:text-white">
               Profile Strength
             </span>
           </div>
-          <h3 className="text-sm sm:text-base font-extrabold text-[#0A0A0E] font-display tracking-tight">
+          <h3 className="text-sm sm:text-base font-extrabold text-[#0A0A0E] dark:text-white font-display tracking-tight">
             Discovery Score
           </h3>
-          <p className="text-[11px] text-[#5A5A68]">
+          <p className="text-[11px] text-[#5A5A68] dark:text-[#8E8EA4]">
             Higher score improves ranking in search.
           </p>
         </div>
@@ -76,7 +76,7 @@ export function ProfileCompletenessCard({ creator }: { creator?: CreatorProfile 
               cx="48"
               cy="48"
               r={radius}
-              stroke="#F0F0F5"
+              className="stroke-[#F0F0F5] dark:stroke-[#1E1E2C]"
               strokeWidth="7"
               fill="transparent"
             />
@@ -103,10 +103,10 @@ export function ProfileCompletenessCard({ creator }: { creator?: CreatorProfile 
 
           {/* Centered Score */}
           <div className="absolute flex flex-col items-center justify-center text-center">
-            <span className="text-base font-black text-[#0A0A0E] font-mono tracking-tight numeric-tabular">
+            <span className="text-base font-black text-[#0A0A0E] dark:text-white font-mono tracking-tight numeric-tabular">
               {score}%
             </span>
-            <span className="text-[8px] font-mono font-bold text-[#0A0A0E] uppercase tracking-widest -mt-0.5">
+            <span className="text-[8px] font-mono font-bold text-[#0A0A0E] dark:text-[#8E8EA4] uppercase tracking-widest -mt-0.5">
               Rank
             </span>
           </div>
@@ -115,37 +115,37 @@ export function ProfileCompletenessCard({ creator }: { creator?: CreatorProfile 
 
       {/* Verification Checklist */}
       <div className="space-y-1.5 relative z-10">
-        <div className="p-3 rounded-2xl bg-[#F8F8FC] border border-black/5 flex items-center justify-between">
+        <div className="p-3 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/5 dark:border-white/10 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <CheckCircle2 className="w-3.5 h-3.5 text-[#FFD21F] shrink-0" />
             <div>
-              <p className="text-xs font-bold text-[#0A0A0E]">Social Channels</p>
-              <p className="text-[10px] text-[#6A6A78] font-mono">Connected &amp; verified</p>
+              <p className="text-xs font-bold text-[#0A0A0E] dark:text-white">Social Channels</p>
+              <p className="text-[10px] text-[#6A6A78] dark:text-[#8E8EA4] font-mono">Connected &amp; verified</p>
             </div>
           </div>
-          <span className="text-[10px] font-mono font-bold text-[#0A0A0E]">+35 pts</span>
+          <span className="text-[10px] font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F]">+35 pts</span>
         </div>
 
-        <div className="p-3 rounded-2xl bg-[#F8F8FC] border border-black/5 flex items-center justify-between">
+        <div className="p-3 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/5 dark:border-white/10 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <CheckCircle2 className="w-3.5 h-3.5 text-[#FFD21F] shrink-0" />
             <div>
-              <p className="text-xs font-bold text-[#0A0A0E]">Rate Card</p>
-              <p className="text-[10px] text-[#6A6A78] font-mono">Starting rate set</p>
+              <p className="text-xs font-bold text-[#0A0A0E] dark:text-white">Rate Card</p>
+              <p className="text-[10px] text-[#6A6A78] dark:text-[#8E8EA4] font-mono">Starting rate set</p>
             </div>
           </div>
-          <span className="text-[10px] font-mono font-bold text-[#0A0A0E]">+25 pts</span>
+          <span className="text-[10px] font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F]">+25 pts</span>
         </div>
 
-        <div className="p-3 rounded-2xl bg-[#F8F8FC] border border-black/5 flex items-center justify-between">
+        <div className="p-3 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/5 dark:border-white/10 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <AlertCircle className="w-3.5 h-3.5 text-[#7A7A8A] shrink-0" />
+            <AlertCircle className="w-3.5 h-3.5 text-[#7A7A8A] dark:text-[#8E8EA4] shrink-0" />
             <div>
-              <p className="text-xs font-bold text-[#0A0A0E]">Portfolio Samples</p>
-              <p className="text-[10px] text-[#6A6A78] font-mono">Add 2 past deliverables</p>
+              <p className="text-xs font-bold text-[#0A0A0E] dark:text-white">Portfolio Samples</p>
+              <p className="text-[10px] text-[#6A6A78] dark:text-[#8E8EA4] font-mono">Add 2 past deliverables</p>
             </div>
           </div>
-          <span className="text-[10px] font-mono font-bold text-[#5A5A68]">+20 pts</span>
+          <span className="text-[10px] font-mono font-bold text-[#5A5A68] dark:text-[#8E8EA4]">+20 pts</span>
         </div>
       </div>
 

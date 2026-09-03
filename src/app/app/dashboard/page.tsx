@@ -78,7 +78,7 @@ export default function DashboardPage() {
     .reduce((acc, c) => acc + (c.budget?.totalBudget || 0), 0);
 
   return (
-    <div className="space-y-8 text-[#0A0A0E] font-sans select-none">
+    <div className="space-y-8 text-[#0A0A0E] dark:text-[#F4F4F8] font-sans select-none">
       {/* ── Welcome Banner ── */}
       <div className="rounded-3xl bg-gradient-to-br from-[#FFFDF5] via-white to-[#FFF9E6] dark:from-[#181826] dark:via-[#14141E] dark:to-[#1A1A28] border border-[#FFD21F]/30 dark:border-[#FFD21F]/40 p-5 sm:p-7 shadow-[0_10px_30px_rgba(0,0,0,0.04)] relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-5">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#FFD21F]/15 rounded-full blur-3xl pointer-events-none" />
@@ -115,8 +115,8 @@ export default function DashboardPage() {
                 </button>
               </Link>
               <Link href="/app/profile">
-                <button className="px-4 py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] border border-black/10 text-[#0A0A0E] font-bold text-xs transition-all flex items-center gap-1.5 shadow-xs">
-                  <Sparkles className="w-3.5 h-3.5 text-[#8A7000]" />
+                <button className="px-4 py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#1C1C28] dark:hover:bg-[#252535] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-xs">
+                  <Sparkles className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F]" />
                   <span>Media Kit</span>
                 </button>
               </Link>
@@ -130,8 +130,8 @@ export default function DashboardPage() {
                 </button>
               </Link>
               <Link href="/app/brand/creators">
-                <button className="px-4 py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] border border-black/10 text-[#0A0A0E] font-bold text-xs transition-all flex items-center gap-1.5 shadow-xs">
-                  <Users className="w-3.5 h-3.5 text-[#8A7000]" />
+                <button className="px-4 py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#1C1C28] dark:hover:bg-[#252535] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-xs">
+                  <Users className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F]" />
                   <span>Find Talent</span>
                 </button>
               </Link>
@@ -224,13 +224,13 @@ export default function DashboardPage() {
         {/* Left Column: Active Pipelines & Opportunities */}
         <div className="lg:col-span-8 space-y-6">
           {/* Active Collaborations Pipeline */}
-          <div className="rounded-3xl bg-white border border-black/8 p-5 sm:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-5">
-            <div className="flex items-center justify-between pb-3 border-b border-black/8">
+          <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-5">
+            <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
               <div>
-                <h2 className="text-base font-bold text-[#0A0A0E] font-display">
+                <h2 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">
                   {role === "creator" ? "Active Deliverables" : "Deliverable Reviews"}
                 </h2>
-                <p className="text-xs text-[#5A5A68]">
+                <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
                   {role === "creator"
                     ? "Track drafts and milestone approvals."
                     : "Review submissions and approve payouts."}
@@ -239,7 +239,7 @@ export default function DashboardPage() {
 
               <Link
                 href="/app/collaborations"
-                className="text-xs font-mono font-bold text-[#0A0A0E] hover:text-[#8A7000] transition-colors flex items-center gap-1 shrink-0"
+                className="text-xs font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-[#FFE052] transition-colors flex items-center gap-1 shrink-0"
               >
                 <span>View all ({collaborations.length})</span>
                 <ArrowRight className="w-3 h-3" />
@@ -247,12 +247,12 @@ export default function DashboardPage() {
             </div>
 
             {isLoading ? (
-              <div className="py-8 text-center text-xs font-mono text-[#7A7A8A]">
+              <div className="py-8 text-center text-xs font-mono text-[#7A7A8A] dark:text-[#8E8EA4]">
                 Loading deliverables...
               </div>
             ) : collaborations.length === 0 ? (
               <AnimatedEmptyState
-                icon={<FolderPlus className="w-7 h-7 text-[#0A0A0E]" />}
+                icon={<FolderPlus className="w-7 h-7 text-[#0A0A0E] dark:text-white" />}
                 badgeText="Escrow"
                 title="No Active Projects"
                 description={
@@ -268,38 +268,38 @@ export default function DashboardPage() {
                 {collaborations.map((collab) => (
                   <div
                     key={collab.id}
-                    className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/6 hover:border-[#FFD21F] hover:bg-white transition-all space-y-2.5"
+                    className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all space-y-2.5"
                   >
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl bg-white border border-black/8 flex items-center justify-center shrink-0 shadow-2xs">
+                        <div className="w-9 h-9 rounded-xl bg-white dark:bg-[#222234] border border-black/8 dark:border-white/10 flex items-center justify-center shrink-0 shadow-2xs">
                           <BrandIcon
                             name={collab.brand?.companyName || "Linear"}
-                            className="w-4 h-4 text-[#0A0A0E]"
+                            className="w-4 h-4 text-[#0A0A0E] dark:text-white"
                           />
                         </div>
                         <div>
-                          <h3 className="font-bold text-xs sm:text-sm text-[#0A0A0E] line-clamp-1">
+                          <h3 className="font-bold text-xs sm:text-sm text-[#0A0A0E] dark:text-white line-clamp-1">
                             {collab.campaignTitle}
                           </h3>
-                          <p className="text-[11px] font-mono text-[#6A6A78]">
+                          <p className="text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4]">
                             {collab.brand?.companyName} • {formatCurrency(collab.totalAgreedBudget)}
                           </p>
                         </div>
                       </div>
 
-                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase self-start sm:self-auto bg-[#FFD21F]/20 text-[#0A0A0E] border border-[#FFD21F]/40">
+                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase self-start sm:self-auto bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] border border-[#FFD21F]/40">
                         {collab.status.replace(/_/g, " ")}
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between pt-2 border-t border-black/6 text-xs font-mono">
-                      <span className="text-[#5A5A68] text-[11px]">
-                        Draft: <strong className="text-[#0A0A0E]">{collab.deliverables?.[0]?.title || "Draft #1"}</strong>
+                    <div className="flex items-center justify-between pt-2 border-t border-black/6 dark:border-white/10 text-xs font-mono">
+                      <span className="text-[#5A5A68] dark:text-[#8E8EA4] text-[11px]">
+                        Draft: <strong className="text-[#0A0A0E] dark:text-white">{collab.deliverables?.[0]?.title || "Draft #1"}</strong>
                       </span>
                       <Link
                         href="/app/collaborations"
-                        className="text-[#0A0A0E] hover:text-[#8A7000] font-bold flex items-center gap-1 transition-colors text-[11px]"
+                        className="text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-[#FFE052] font-bold flex items-center gap-1 transition-colors text-[11px]"
                       >
                         <span>Workspace</span>
                         <ArrowUpRight className="w-3 h-3" />
@@ -312,20 +312,20 @@ export default function DashboardPage() {
           </div>
 
           {/* Open Brand Briefs Discovery Bar */}
-          <div className="rounded-3xl bg-white border border-black/8 p-5 sm:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-5">
-            <div className="flex items-center justify-between pb-3 border-b border-black/8">
+          <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-5">
+            <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
               <div>
-                <h2 className="text-base font-bold text-[#0A0A0E] font-display">
+                <h2 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">
                   Featured Briefs
                 </h2>
-                <p className="text-xs text-[#5A5A68]">
+                <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
                   Open sponsor campaigns with escrow budgets.
                 </p>
               </div>
 
               <Link
                 href="/app/campaigns"
-                className="text-xs font-mono font-bold text-[#0A0A0E] hover:text-[#8A7000] transition-colors flex items-center gap-1 shrink-0"
+                className="text-xs font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-[#FFE052] transition-colors flex items-center gap-1 shrink-0"
               >
                 <span>View all ({activeCampaigns.length})</span>
                 <ArrowRight className="w-3 h-3" />
@@ -337,28 +337,28 @@ export default function DashboardPage() {
                 <Link
                   key={c.id}
                   href={`/campaigns/${c.id}`}
-                  className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/6 hover:border-[#FFD21F] hover:bg-white transition-all group flex flex-col justify-between space-y-2.5"
+                  className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all group flex flex-col justify-between space-y-2.5"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] text-[10px] font-mono font-bold uppercase border border-[#FFD21F]/30">
+                      <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] text-[10px] font-mono font-bold uppercase border border-[#FFD21F]/30">
                         {c.category}
                       </span>
-                      <span className="text-[11px] font-mono text-[#0A0A0E] font-bold">
+                      <span className="text-[11px] font-mono text-[#0A0A0E] dark:text-white font-bold">
                         {formatCurrency(c.budget?.totalBudget ?? 0)}
                       </span>
                     </div>
-                    <h3 className="font-bold text-xs sm:text-sm text-[#0A0A0E] group-hover:text-[#8A7000] transition-colors line-clamp-1">
+                    <h3 className="font-bold text-xs sm:text-sm text-[#0A0A0E] dark:text-white group-hover:text-[#8A7000] dark:group-hover:text-[#FFD21F] transition-colors line-clamp-1">
                       {c.title}
                     </h3>
-                    <p className="text-[11px] text-[#5A5A68] line-clamp-1 mt-0.5">
+                    <p className="text-[11px] text-[#5A5A68] dark:text-[#8E8EA4] line-clamp-1 mt-0.5">
                       {c.tagline}
                     </p>
                   </div>
 
-                  <div className="flex items-center justify-between pt-2 border-t border-black/6 text-[11px] font-mono text-[#6A6A78]">
+                  <div className="flex items-center justify-between pt-2 border-t border-black/6 dark:border-white/10 text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4]">
                     <span>{c.acceptedCount}/{c.maxCreators} filled</span>
-                    <span className="text-[#0A0A0E] font-bold group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5">
+                    <span className="text-[#0A0A0E] dark:text-[#FFD21F] font-bold group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5">
                       Apply <ArrowRight className="w-2.5 h-2.5" />
                     </span>
                   </div>
@@ -373,36 +373,36 @@ export default function DashboardPage() {
           <ProfileCompletenessCard />
 
           {/* Quick Payout Ledger */}
-          <div className="rounded-3xl bg-white border border-black/8 p-5 sm:p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-3.5">
-            <div className="flex items-center justify-between pb-2.5 border-b border-black/8">
-              <h3 className="text-sm font-bold text-[#0A0A0E] font-display">Recent Payouts</h3>
+          <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-3.5">
+            <div className="flex items-center justify-between pb-2.5 border-b border-black/8 dark:border-white/10">
+              <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display">Recent Payouts</h3>
               <Link
                 href="/app/earnings"
-                className="text-[11px] font-mono text-[#0A0A0E] hover:text-[#8A7000] font-bold"
+                className="text-[11px] font-mono text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-[#FFE052] font-bold"
               >
                 View all
               </Link>
             </div>
 
             {recentPayouts.length === 0 ? (
-              <p className="text-xs text-[#7A7A8A] font-mono py-3 text-center">
+              <p className="text-xs text-[#7A7A8A] dark:text-[#8E8EA4] font-mono py-3 text-center">
                 No recent transactions.
               </p>
             ) : (
-              <div className="divide-y divide-black/5 font-mono text-xs">
+              <div className="divide-y divide-black/5 dark:divide-white/5 font-mono text-xs">
                 {recentPayouts.slice(0, 3).map((p) => (
                   <div key={p.id} className="py-2.5 flex items-center justify-between">
                     <div>
-                      <span className="font-bold text-[#0A0A0E] block truncate max-w-[130px] font-sans text-xs">
+                      <span className="font-bold text-[#0A0A0E] dark:text-white block truncate max-w-[130px] font-sans text-xs">
                         {p.campaignTitle}
                       </span>
-                      <span className="text-[10px] text-[#6A6A78]">{p.brandName}</span>
+                      <span className="text-[10px] text-[#6A6A78] dark:text-[#8E8EA4]">{p.brandName}</span>
                     </div>
                     <div className="text-right">
-                      <span className="font-bold text-[#0A0A0E] block text-xs">
+                      <span className="font-bold text-[#0A0A0E] dark:text-white block text-xs">
                         +{formatCurrency(p.netAmount)}
                       </span>
-                      <span className="text-[9px] text-[#7A7A8A] uppercase font-bold">{p.status}</span>
+                      <span className="text-[9px] text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-bold">{p.status}</span>
                     </div>
                   </div>
                 ))}

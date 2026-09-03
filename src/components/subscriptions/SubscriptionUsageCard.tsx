@@ -22,15 +22,15 @@ export function SubscriptionUsageCard() {
     : "Next month";
 
   return (
-    <div className="rounded-3xl bg-white border border-black/8 p-5 sm:p-7 shadow-xs space-y-5 text-[#0A0A0E] select-none relative overflow-hidden">
+    <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-7 shadow-xs space-y-5 text-[#0A0A0E] dark:text-[#F4F4F8] select-none relative overflow-hidden">
       {/* Background flare */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFD21F]/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-black/6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-black/6 dark:border-white/10">
         <div className="space-y-0.5">
           <div className="flex items-center gap-2">
-            <h3 className="text-base font-bold font-display text-[#0A0A0E]">
+            <h3 className="text-base font-bold font-display text-[#0A0A0E] dark:text-white">
               Plan &amp; Quota
             </h3>
             <SubscriptionBadge
@@ -39,7 +39,7 @@ export function SubscriptionUsageCard() {
               size="sm"
             />
           </div>
-          <p className="text-xs text-[#6A6A78]">
+          <p className="text-xs text-[#6A6A78] dark:text-[#8E8EA4]">
             {currentPlan?.description || "Usage quota and active features."}
           </p>
         </div>
@@ -56,23 +56,23 @@ export function SubscriptionUsageCard() {
       {/* Quota Progress Meter */}
       <div className="space-y-1.5">
         <div className="flex items-center justify-between text-xs font-mono">
-          <span className="font-bold text-[#0A0A0E] flex items-center gap-1.5 text-xs">
+          <span className="font-bold text-[#0A0A0E] dark:text-white flex items-center gap-1.5 text-xs">
             <Zap className="w-3.5 h-3.5 text-[#FFD21F]" />
             <span>{quotaLabel}</span>
           </span>
-          <span className="text-[#5A5A68] text-xs">
+          <span className="text-[#5A5A68] dark:text-[#8E8EA4] text-xs">
             {quota.limit === -1 ? (
-              <span className="font-bold text-emerald-600">UNLIMITED</span>
+              <span className="font-bold text-emerald-600 dark:text-emerald-400">UNLIMITED</span>
             ) : (
               <span>
-                <strong className="text-[#0A0A0E]">{quota.current}</strong> / {quota.limit} {quotaUnit} ({quota.percent}%)
+                <strong className="text-[#0A0A0E] dark:text-white">{quota.current}</strong> / {quota.limit} {quotaUnit} ({quota.percent}%)
               </span>
             )}
           </span>
         </div>
 
         {quota.limit !== -1 && (
-          <div className="w-full h-2 rounded-full bg-[#F0F0F4] overflow-hidden">
+          <div className="w-full h-2 rounded-full bg-[#F0F0F4] dark:bg-[#1C1C28] overflow-hidden">
             <div
               className={`h-full rounded-full transition-all duration-500 ${
                 quota.percent >= 90
@@ -87,7 +87,7 @@ export function SubscriptionUsageCard() {
         )}
 
         {quota.limit !== -1 && quota.percent >= 80 && (
-          <div className="flex items-center gap-1.5 text-[11px] text-amber-700 bg-amber-50 rounded-xl px-3 py-1 border border-amber-200/60 mt-1">
+          <div className="flex items-center gap-1.5 text-[11px] text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/40 rounded-xl px-3 py-1 border border-amber-200/60 dark:border-amber-800 mt-1">
             <AlertCircle className="w-3 h-3 shrink-0" />
             <span>
               Approaching {quotaLabel.toLowerCase()} limit.
@@ -98,29 +98,29 @@ export function SubscriptionUsageCard() {
 
       {/* Subscription Details */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-        <div className="p-3.5 rounded-2xl bg-[#F8F8FC] border border-black/5 space-y-0.5">
-          <span className="text-[10px] font-mono text-[#7A7A8A] uppercase font-bold block">
+        <div className="p-3.5 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/5 dark:border-white/10 space-y-0.5">
+          <span className="text-[10px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-bold block">
             Billing
           </span>
-          <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E]">
+          <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white">
             <Calendar className="w-3.5 h-3.5 text-[#FFD21F]" />
             <span className="capitalize">{subscription?.interval || "Monthly"}</span>
             <span className="text-[#8A8A9A]">•</span>
-            <span className="font-normal text-[#5A5A68]">Renews {periodEndFormatted}</span>
+            <span className="font-normal text-[#5A5A68] dark:text-[#8E8EA4]">Renews {periodEndFormatted}</span>
           </div>
         </div>
 
-        <div className="p-3.5 rounded-2xl bg-[#F8F8FC] border border-black/5 space-y-0.5">
-          <span className="text-[10px] font-mono text-[#7A7A8A] uppercase font-bold block">
+        <div className="p-3.5 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/5 dark:border-white/10 space-y-0.5">
+          <span className="text-[10px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-bold block">
             Status
           </span>
-          <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E]">
+          <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="uppercase font-mono text-[11px] text-emerald-600">
+            <span className="uppercase font-mono text-[11px] text-emerald-600 dark:text-emerald-400">
               {subscription?.status || "Active"}
             </span>
             {subscription?.cancelAtPeriodEnd && (
-              <span className="text-[10px] font-mono text-amber-600 font-normal">
+              <span className="text-[10px] font-mono text-amber-600 dark:text-amber-400 font-normal">
                 (Cancelling soon)
               </span>
             )}

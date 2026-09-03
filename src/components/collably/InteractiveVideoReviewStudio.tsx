@@ -99,23 +99,23 @@ export function InteractiveVideoReviewStudio() {
   const activeComment = REVIEW_COMMENTS[activeCommentIdx];
 
   return (
-    <section className="py-20 sm:py-28 bg-white text-[#0A0A0E] select-none border-t border-black/8 relative overflow-hidden font-sans">
+    <section className="py-20 sm:py-28 bg-white dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] select-none border-t border-black/8 dark:border-white/10 relative overflow-hidden font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFFDF5] border border-[#FFD21F]/50 text-xs font-mono font-bold text-[#0A0A0E] shadow-2xs">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFFDF5] dark:bg-[#14141E] border border-[#FFD21F]/50 text-xs font-mono font-bold text-[#0A0A0E] dark:text-white shadow-2xs">
             <Sparkles className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
             <span>FRAME-ACCURATE 4K QA STUDIO</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#0A0A0E] tracking-tight font-display">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#0A0A0E] dark:text-white tracking-tight font-display">
             Precision Video Feedback. <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD21F] via-[#FFAE00] to-[#FFD21F]">
               Zero Revision Chaos.
             </span>
           </h2>
 
-          <p className="text-xs sm:text-base text-[#5A5A68] leading-relaxed">
+          <p className="text-xs sm:text-base text-[#5A5A68] dark:text-[#8E8EA4] leading-relaxed">
             Eliminate messy email threads and time-wasting miscommunications. Leave timecoded annotations on 4K cuts, request frame-specific tweaks, and disburse escrow funds with 1 click.
           </p>
         </div>
@@ -336,23 +336,23 @@ export function InteractiveVideoReviewStudio() {
         description="Verify milestone QA sign-off and trigger automatic escrow payout to the creator."
         maxWidth="md"
       >
-        <div className="space-y-4 pt-2 text-[#0A0A0E] font-sans select-none">
-          <div className="p-4 rounded-2xl bg-[#FFFDF5] border border-[#FFD21F]/40 space-y-2 font-mono text-xs">
-            <div className="flex justify-between text-[#5A5A68]">
+        <div className="space-y-4 pt-2 text-[#0A0A0E] dark:text-[#F4F4F8] font-sans select-none">
+          <div className="p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#1A1A28] border border-[#FFD21F]/40 space-y-2 font-mono text-xs">
+            <div className="flex justify-between text-[#5A5A68] dark:text-[#8E8EA4]">
               <span>Milestone Release:</span>
-              <strong className="text-[#0A0A0E]">$3,500.00 Gross</strong>
+              <strong className="text-[#0A0A0E] dark:text-white">$3,500.00 Gross</strong>
             </div>
-            <div className="flex justify-between text-[#5A5A68]">
+            <div className="flex justify-between text-[#5A5A68] dark:text-[#8E8EA4]">
               <span>Creator Payout (90%):</span>
-              <strong className="text-emerald-600">$3,150.00 Net</strong>
+              <strong className="text-emerald-600 dark:text-emerald-400">$3,150.00 Net</strong>
             </div>
-            <div className="flex justify-between text-[#5A5A68]">
+            <div className="flex justify-between text-[#5A5A68] dark:text-[#8E8EA4]">
               <span>Platform QA Fee (10%):</span>
-              <strong className="text-[#0A0A0E]">$350.00</strong>
+              <strong className="text-[#0A0A0E] dark:text-white">$350.00</strong>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 text-xs text-[#5A5A68]">
+          <div className="flex items-center gap-2 text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
             <Check className="w-4 h-4 text-[#087F5B] shrink-0" />
             <span>Perpetual commercial IP rights &amp; master 4K ProRes files downloaded.</span>
           </div>
@@ -360,7 +360,7 @@ export function InteractiveVideoReviewStudio() {
           <div className="flex items-center gap-3 pt-2">
             <button
               onClick={() => setApproveModalOpen(false)}
-              className="w-1/2 py-3 rounded-full bg-[#F4F4F8] hover:bg-[#EAEAEF] text-xs font-bold text-[#0A0A0E]"
+              className="w-1/2 py-3 rounded-full bg-[#F4F4F8] hover:bg-[#EAEAEF] dark:bg-[#1C1C28] dark:hover:bg-[#252535] text-xs font-bold text-[#0A0A0E] dark:text-white"
             >
               Back to Review
             </button>

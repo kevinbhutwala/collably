@@ -51,7 +51,7 @@ export function EditorialCreatorCard({
     <InteractiveTiltCard
       maxTilt={8}
       glowColor="rgba(255, 210, 31, 0.28)"
-      className="rounded-3xl bg-white border border-black/8 hover:border-[#FFD21F] shadow-[0_10px_35px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] transition-all p-4 flex flex-col justify-between group select-none font-sans cursor-pointer hover-lift"
+      className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 hover:border-[#FFD21F] dark:hover:border-[#FFD21F] shadow-[0_10px_35px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] transition-all p-4 flex flex-col justify-between group select-none font-sans cursor-pointer hover-lift"
     >
       <div className="space-y-4">
         {/* Layered Visual Portrait Container */}
@@ -134,19 +134,19 @@ export function EditorialCreatorCard({
 
         {/* Tags & Telemetry */}
         <div className="space-y-2">
-          <div className="flex items-center justify-between text-xs font-mono text-[#5A5A68]">
-            <span className="font-bold text-[#0A0A0E]">{creator.reach} Reach</span>
-            <span className="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60 text-[10px]">
+          <div className="flex items-center justify-between text-xs font-mono text-[#5A5A68] dark:text-[#8E8EA4]">
+            <span className="font-bold text-[#0A0A0E] dark:text-white">{creator.reach} Reach</span>
+            <span className="text-emerald-700 dark:text-emerald-400 font-bold bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded-full border border-emerald-200/60 dark:border-emerald-800 text-[10px]">
               {typeof creator.engagementRate === "number" ? `${creator.engagementRate}% ER` : creator.engagementRate}
             </span>
           </div>
 
           {creator.tags && creator.tags.length > 0 && (
-            <div className="flex flex-wrap gap-1 font-mono text-[10px] text-[#4A4A58]">
+            <div className="flex flex-wrap gap-1 font-mono text-[10px] text-[#4A4A58] dark:text-[#A0A0B4]">
               {creator.tags.slice(0, 2).map((tag) => (
                 <span
                   key={tag}
-                  className="px-2 py-0.5 rounded-md bg-[#F4F4F8] border border-black/5"
+                  className="px-2 py-0.5 rounded-md bg-[#F4F4F8] dark:bg-[#181824] border border-black/5 dark:border-white/10 text-[10px] text-[#4A4A58] dark:text-[#C0C0D4]"
                 >
                   {tag}
                 </span>
@@ -157,10 +157,10 @@ export function EditorialCreatorCard({
       </div>
 
       {/* Footer Action Strip */}
-      <div className="pt-3 border-t border-black/6 flex items-center justify-between text-xs gap-2">
+      <div className="pt-3 border-t border-black/6 dark:border-white/10 flex items-center justify-between text-xs gap-2">
         <button
           onClick={() => onQuickView(creator)}
-          className="px-3 py-1.5 rounded-full bg-[#F4F4F8] hover:bg-[#EAEAEF] text-[#0A0A0E] text-[11px] font-bold transition-colors flex items-center gap-1"
+          className="px-3 py-1.5 rounded-full bg-[#F4F4F8] hover:bg-[#EAEAEF] dark:bg-[#1C1C28] dark:hover:bg-[#252535] text-[#0A0A0E] dark:text-[#E0E0EC] text-[11px] font-bold transition-colors flex items-center gap-1"
         >
           <Eye className="w-3 h-3 text-[#7A7A8A]" />
           <span>Quick View</span>
@@ -168,7 +168,7 @@ export function EditorialCreatorCard({
 
         <Link
           href={`/creators/${creator.id}`}
-          className="px-3.5 py-1.5 rounded-full bg-[#FAF9F5] hover:bg-[#FFD21F] text-[#0A0A0E] font-sans font-bold text-xs transition-colors flex items-center gap-1 border border-black/8 hover-lift"
+          className="px-3.5 py-1.5 rounded-full bg-[#FAF9F5] dark:bg-[#FFD21F] hover:bg-[#FFD21F] dark:hover:bg-[#FFE052] text-[#0A0A0E] font-sans font-bold text-xs transition-colors flex items-center gap-1 border border-black/8 dark:border-transparent hover-lift"
         >
           <span>Book</span>
           <ArrowRight className="w-3 h-3" />
