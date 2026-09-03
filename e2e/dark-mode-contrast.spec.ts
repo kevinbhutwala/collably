@@ -81,6 +81,7 @@ test.describe('Collably Dark Mode & Text Contrast Verification Suite', () => {
       document.documentElement.classList.add('dark');
       localStorage.setItem('collably_theme', 'dark');
     });
+    await page.waitForTimeout(300);
 
     // Check heading specifically
     const heading = page.locator('h1:has-text("Welcome back")').first();
