@@ -1,6 +1,11 @@
 import crypto from "crypto";
 
-const JWT_SECRET = process.env.AUTH_SECRET || "collably_super_secret_jwt_encryption_key_2026";
+/** Production must never use a repository-known signing secret. */
+function getJwtSecret(): string {
+  if (process.env.AUTH_SECRET) return process.env.AUTH_SECRET;
+  if (process.env.NODE_ENV !== "production") return "collably_local_development_secret_only";
+  throw new Error("AUTH_SECRET must be configured in production");
+}
 
 const PBKDF2_ITERATIONS = 210000; // OWASP recommended rounds for SHA-512
 
@@ -39,6 +44,7 @@ export function verifyPassword(password: string, storedHash: string): boolean {
  * Create HMAC-SHA256 signed session token
  */
 export function createSessionToken(payload: { userId: string; email: string; role: string }): string {
+  const jwtSecret = getJwtSecret();
   const header = Buffer.from(JSON.stringify({ alg: "HS256", typ: "JWT" })).toString("base64url");
   const data = Buffer.from(
     JSON.stringify({
@@ -49,7 +55,7 @@ export function createSessionToken(payload: { userId: string; email: string; rol
   ).toString("base64url");
 
   const signature = crypto
-    .createHmac("sha256", JWT_SECRET)
+    .createHmac("sha256", jwtSecret)
     .update(`${header}.${data}`)
     .digest("base64url");
 
@@ -61,12 +67,13 @@ export function createSessionToken(payload: { userId: string; email: string; rol
  */
 export function verifySessionToken(token: string): { userId: string; email: string; role: string } | null {
   try {
+    const jwtSecret = getJwtSecret();
     const parts = token.split(".");
     if (parts.length !== 3) return null;
 
     const [header, data, signature] = parts;
     const expectedSignature = crypto
-      .createHmac("sha256", JWT_SECRET)
+      .createHmac("sha256", jwtSecret)
       .update(`${header}.${data}`)
       .digest("base64url");
 

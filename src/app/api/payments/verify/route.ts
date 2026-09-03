@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { paymentService } from "@/server/services/payment.service";
 import { SecurityService } from "@/server/services/security.service";
+import { brandRepo } from "@/server/repositories/brand.repo";
+import { paymentRepo } from "@/server/repositories/payment.repo";
 import crypto from "crypto";
 import { z } from "zod";
 
@@ -16,9 +18,21 @@ export async function POST(req: NextRequest) {
     if (!session) {
       return NextResponse.json({ error: "Authentication required to verify payment" }, { status: 401 });
     }
+    if (!SecurityService.hasPermission(session.role, "payment.create")) {
+      return NextResponse.json({ error: "Only brand accounts can verify payments" }, { status: 403 });
+    }
 
     const body = await req.json();
     const parsed = verifyPaymentSchema.parse(body);
+    const paymentRecord = await paymentRepo.getPaymentByOrderId(parsed.orderId);
+    if (!paymentRecord) {
+      return NextResponse.json({ error: "Payment order not found" }, { status: 404 });
+    }
+    const isAdmin = ["super_admin", "agency_admin", "agency_owner"].includes(session.role);
+    const ownedBrand = brandRepo.getByUserId(session.userId);
+    if (!isAdmin && ownedBrand?.id !== paymentRecord.brandId) {
+      return NextResponse.json({ error: "Cannot verify a payment for another brand" }, { status: 403 });
+    }
 
     // Cryptographically verify Razorpay / Gateway signature if secret is present
     const keySecret = process.env.RAZORPAY_KEY_SECRET;

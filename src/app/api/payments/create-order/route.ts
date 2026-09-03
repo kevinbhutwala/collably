@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { paymentService } from "@/server/services/payment.service";
 import { SecurityService } from "@/server/services/security.service";
+import { brandRepo } from "@/server/repositories/brand.repo";
 import { z } from "zod";
 
 const createOrderSchema = z.object({
@@ -14,6 +15,12 @@ const createOrderSchema = z.object({
 export async function POST(req: NextRequest) {
   try {
     const session = SecurityService.getSession(req);
+    if (!session) {
+      return NextResponse.json({ error: "Authentication required to create a payment order" }, { status: 401 });
+    }
+    if (!SecurityService.hasPermission(session.role, "payment.create")) {
+      return NextResponse.json({ error: "Only brand accounts can create payment orders" }, { status: 403 });
+    }
     // Rate limit payment creation (10 requests per minute)
     const ip = req.headers.get("x-forwarded-for") || "127.0.0.1";
     const { allowed } = SecurityService.checkRateLimit(`pay_order:${ip}`, 10, 60);
@@ -23,6 +30,11 @@ export async function POST(req: NextRequest) {
 
     const body = await req.json();
     const parsed = createOrderSchema.parse(body);
+    const isAdmin = ["super_admin", "agency_admin", "agency_owner"].includes(session.role);
+    const ownedBrand = brandRepo.getByUserId(session.userId);
+    if (!isAdmin && ownedBrand?.id !== parsed.brandId) {
+      return NextResponse.json({ error: "Cannot create payment orders for another brand" }, { status: 403 });
+    }
 
     const payment = await paymentService.createCampaignOrder({
       brandId: parsed.brandId,

@@ -31,6 +31,14 @@ export function Navbar() {
     setMobileMenuOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileMenuOpen(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, []);
+
   const getPublicScreenTitle = (path: string): string => {
     if (path === "/") return "Collably";
     if (path === "/campaigns") return "Explore Briefs";
@@ -65,11 +73,11 @@ export function Navbar() {
       <header
         className={`sticky top-0 z-40 w-full transition-all duration-300 select-none ${
           scrolled
-            ? "border-b border-black/8 bg-white/95 backdrop-blur-xl py-3 shadow-[0_4px_20px_rgba(0,0,0,0.04)]"
-            : "border-b border-black/5 bg-white/80 backdrop-blur-md py-4"
+            ? "border-b border-black/8 bg-white/95 backdrop-blur-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)]"
+            : "border-b border-black/5 bg-white/80 backdrop-blur-md"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 text-[#0A0A0E]">
+        <div className="h-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 text-[#0A0A0E]">
           {/* Brand Logo / Mobile Screen Title */}
           <div className="flex items-center gap-2.5 min-w-0">
             <div className="shrink-0">
@@ -148,6 +156,8 @@ export function Navbar() {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2.5 rounded-xl bg-[#F4F4F8] border border-black/8 text-[#0A0A0E] hover:bg-[#EAEAEF] transition-colors active:scale-95 touch-manipulation"
               aria-label="Toggle Menu"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="public-navigation"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -166,7 +176,7 @@ export function Navbar() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 top-[60px] z-30 bg-black/30 backdrop-blur-xs lg:hidden"
+              className="fixed inset-0 top-16 z-30 bg-black/30 backdrop-blur-[2px] lg:hidden"
             />
 
             {/* Menu Body */}
@@ -175,7 +185,8 @@ export function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed inset-x-0 top-[60px] z-40 p-5 sm:p-6 bg-white border-b border-black/10 shadow-2xl flex flex-col gap-4 lg:hidden text-[#0A0A0E] max-h-[calc(100vh-4rem)] overflow-y-auto"
+              id="public-navigation"
+              className="fixed inset-x-0 top-16 z-40 p-5 sm:p-6 bg-white border-b border-black/10 shadow-2xl flex flex-col gap-4 lg:hidden text-[#0A0A0E] max-h-[calc(100vh-4rem)] overflow-y-auto"
             >
               <div className="space-y-1">
                 {navLinks.map((link) => {

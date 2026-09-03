@@ -78,12 +78,30 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const parsed = createCampaignSchema.parse(body);
 
-    const targetBrand = brand || brandRepo.getById(parsed.brandId || "");
+    let targetBrand = brand || brandRepo.getById(parsed.brandId || "");
+    if (!targetBrand) {
+      targetBrand = brandRepo.createBrand({
+        userId: session.userId,
+        companyName: session.email.split("@")[0],
+        industry: "Technology",
+        headline: `${session.email.split("@")[0]} Brand Workspace`,
+        description: "Brand partner creating sponsorship briefs.",
+        websiteUrl: "https://collably.io",
+        logoUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
+        coverImageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+        location: "Global",
+        companySize: "1-10",
+        verified: false,
+        activeCampaignsCount: 0,
+        totalSpent: 0,
+        socialHandles: {},
+      });
+    }
 
     const newCampaign = campaignRepo.createCampaign({
       ...body,
-      brandId: targetBrand?.id || "brand-1",
-      brand: targetBrand || { companyName: session.email.split("@")[0] },
+      brandId: targetBrand.id,
+      brand: targetBrand,
     });
 
     // Record usage

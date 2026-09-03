@@ -14,11 +14,11 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const inputId = id || (label ? label.toLowerCase().replace(/\s+/g, "-") : undefined);
 
     return (
-      <div className="w-full space-y-1.5 font-sans text-left">
+      <div className="w-full space-y-2 font-sans text-left">
         {label && (
           <label
             htmlFor={inputId}
-            className="block text-xs font-bold text-[#0A0A0E] tracking-tight"
+            className="block text-xs font-bold text-[#27272F] tracking-tight"
           >
             {label}
           </label>
@@ -36,8 +36,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             type={type}
             ref={ref}
             className={cn(
-              "w-full rounded-2xl bg-[#F8F8FC] border border-black/10 px-3.5 py-3 text-sm text-[#0A0A0E] placeholder:text-[#8A8A98] transition-all",
-              "focus:outline-none focus:border-[#FFD21F] focus:ring-2 focus:ring-[#FFD21F]/30 focus:bg-white shadow-2xs",
+              "w-full rounded-xl bg-[#FAFAFC] border border-black/10 px-3.5 py-3 text-sm text-[#0A0A0E] placeholder:text-[#9292A0] transition-[background-color,border-color,box-shadow] duration-200",
+              "focus:outline-none focus:border-[#D7A900] focus:ring-4 focus:ring-[#FFD21F]/20 focus:bg-white shadow-[0_1px_2px_rgba(10,10,14,0.03)]",
               "disabled:opacity-50 disabled:cursor-not-allowed",
               icon ? "pl-10" : "",
               rightElement ? "pr-10" : "",
@@ -73,11 +73,11 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     const textareaId = id || (label ? label.toLowerCase().replace(/\s+/g, "-") : undefined);
 
     return (
-      <div className="w-full space-y-1.5 font-sans text-left">
+      <div className="w-full space-y-2 font-sans text-left">
         {label && (
           <label
             htmlFor={textareaId}
-            className="block text-xs font-bold text-[#0A0A0E] tracking-tight"
+            className="block text-xs font-bold text-[#27272F] tracking-tight"
           >
             {label}
           </label>
@@ -87,8 +87,8 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           id={textareaId}
           ref={ref}
           className={cn(
-            "w-full rounded-2xl bg-[#F8F8FC] border border-black/10 px-3.5 py-3 text-sm text-[#0A0A0E] placeholder:text-[#8A8A98] transition-all",
-            "focus:outline-none focus:border-[#FFD21F] focus:ring-2 focus:ring-[#FFD21F]/30 focus:bg-white shadow-2xs",
+            "w-full rounded-xl bg-[#FAFAFC] border border-black/10 px-3.5 py-3 text-sm text-[#0A0A0E] placeholder:text-[#9292A0] transition-[background-color,border-color,box-shadow] duration-200",
+            "focus:outline-none focus:border-[#D7A900] focus:ring-4 focus:ring-[#FFD21F]/20 focus:bg-white shadow-[0_1px_2px_rgba(10,10,14,0.03)]",
             "disabled:opacity-50 disabled:cursor-not-allowed resize-y",
             error ? "border-red-500 focus:border-red-500 focus:ring-red-500/20 bg-red-50/30" : "",
             className

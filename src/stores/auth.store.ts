@@ -15,6 +15,7 @@ interface AuthState {
   register: (params: RegisterParams) => Promise<void>;
   socialLogin: (params: SocialAuthClientParams) => Promise<AuthResponse>;
   updateCreatorProfile: (updates: Partial<CreatorProfile>) => Promise<CreatorProfile | null>;
+  updateBrandProfile: (updates: Partial<BrandProfile>) => Promise<BrandProfile | null>;
   logout: () => Promise<void>;
   setUser: (user: User | null) => void;
   setRole: (role: UserRole) => void;
@@ -144,6 +145,28 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       // Optimistic fallback
       const updated = { ...currentCreator, ...updates };
       set({ currentCreator: updated });
+      return updated;
+    }
+  },
+
+  updateBrandProfile: async (updates: Partial<BrandProfile>) => {
+    const { currentBrand } = get();
+    if (!currentBrand) return null;
+
+    try {
+      const res = await fetch(`/api/brands/${currentBrand.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updates),
+      });
+      if (!res.ok) throw new Error("Failed to update brand profile");
+      const updated = await res.json();
+      set({ currentBrand: updated });
+      return updated;
+    } catch (err) {
+      console.error("updateBrandProfile error:", err);
+      const updated = { ...currentBrand, ...updates };
+      set({ currentBrand: updated });
       return updated;
     }
   },

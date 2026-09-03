@@ -26,7 +26,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles =
-      "inline-flex items-center justify-center font-semibold transition-all duration-150 select-none disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98] font-sans";
+      "inline-flex items-center justify-center whitespace-nowrap font-semibold transition-[transform,box-shadow,background-color,border-color,color] duration-200 ease-out select-none disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD21F] focus-visible:ring-offset-2 font-sans";
 
     const sizeStyles = {
       sm: "text-xs px-3.5 py-1.5 rounded-full gap-1.5",
@@ -37,13 +37,13 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variantStyles = {
       primary:
-        "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold shadow-[0_0_20px_rgba(255,210,31,0.4)] border border-white/50",
+        "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:-translate-y-0.5 hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold shadow-[0_5px_16px_rgba(255,210,31,0.32)] hover:shadow-[0_9px_24px_rgba(255,210,31,0.42)] border border-black/10",
       secondary:
         "bg-gradient-to-r from-[#1E1E28] to-[#12121A] hover:from-[#282836] hover:to-[#1A1A24] text-white border border-[#FFD21F]/30 shadow-md",
       outline:
-        "bg-transparent text-white border border-[#FFD21F]/40 hover:bg-[#FFD21F]/10",
+        "bg-white text-[#0A0A0E] border border-black/10 hover:border-[#D7A900] hover:bg-[#FFFDF4]",
       ghost:
-        "bg-transparent text-white/70 hover:text-white hover:bg-white/[0.06]",
+        "bg-transparent text-[#5A5A68] hover:text-[#0A0A0E] hover:bg-black/[0.045]",
       glass:
         "bg-white/10 backdrop-blur-md text-white border border-white/20 hover:bg-white/15 shadow-md",
       accent:
@@ -53,7 +53,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       micro:
         "bg-[#FFD21F] text-[#0A0A0E] hover:bg-[#FFE052] font-bold shadow-xs",
       danger:
-        "bg-red-500/20 text-red-400 border border-red-500/30 hover:bg-red-500/30",
+        "bg-red-50 text-red-700 border border-red-200 hover:bg-red-100",
     };
 
     return (

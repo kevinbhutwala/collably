@@ -57,6 +57,19 @@ class DatabaseClient {
           }
         }
 
+        // Backfill functional demo profiles for databases created before the
+        // demo profile seed existed. Never overwrite user-created profiles.
+        for (const seedCreator of seed.creators) {
+          if (!this.state!.creators.some((creator) => creator.userId === seedCreator.userId)) {
+            this.state!.creators.push(seedCreator);
+          }
+        }
+        for (const seedBrand of seed.brands) {
+          if (!this.state!.brands.some((brand) => brand.userId === seedBrand.userId)) {
+            this.state!.brands.push(seedBrand);
+          }
+        }
+
         this.persist();
       } else {
         this.state = getInitialSeedDatabase();

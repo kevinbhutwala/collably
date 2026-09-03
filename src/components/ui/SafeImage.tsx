@@ -37,7 +37,7 @@ export function SafeImage({
       return (
         <div
           className={cn(
-            "w-full h-full flex flex-col items-center justify-center bg-gradient-to-tr from-amber-100 via-orange-50 to-slate-100 text-slate-800 border border-slate-200 select-none",
+            "w-full h-full flex flex-col items-center justify-center bg-[radial-gradient(circle_at_28%_20%,rgba(255,255,255,.88),transparent_28%),linear-gradient(145deg,#F7E4A5_0%,#E9C96C_43%,#735916_100%)] text-[#352A09] border border-black/10 select-none",
             fallbackClassName || className
           )}
         >
@@ -46,7 +46,7 @@ export function SafeImage({
               {initials}
             </span>
           ) : (
-            <User className="w-6 h-6 text-slate-400" />
+            <User className="w-6 h-6 text-[#675214]/70" />
           )}
         </div>
       );
@@ -56,7 +56,7 @@ export function SafeImage({
       return (
         <div
           className={cn(
-            "w-full h-full flex flex-col items-center justify-center bg-gradient-to-tr from-slate-900 via-slate-800 to-slate-950 text-white select-none border border-slate-700",
+            "w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#24242E] via-[#101016] to-[#050507] text-white select-none border border-white/10",
             fallbackClassName || className
           )}
         >
@@ -65,7 +65,7 @@ export function SafeImage({
               {initials}
             </span>
           ) : (
-            <Building2 className="w-5 h-5 text-sky-400" />
+            <Building2 className="w-5 h-5 text-[#FFD21F]" />
           )}
         </div>
       );
@@ -75,13 +75,13 @@ export function SafeImage({
       return (
         <div
           className={cn(
-            "w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-100 via-orange-50 to-slate-200 text-slate-700 select-none p-4 text-center border border-slate-200",
+            "w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#FFF9E5] via-[#F8E4A4] to-[#D6AD35] text-[#4A3908] select-none p-4 text-center border border-black/10",
             fallbackClassName || className
           )}
         >
-          <Sparkles className="w-8 h-8 text-brand-accent mb-2" />
+          <Sparkles className="w-8 h-8 text-[#8A6500] mb-2" />
           {fallbackName && (
-            <span className="font-bold text-xs text-slate-800 line-clamp-1">{fallbackName}</span>
+            <span className="font-bold text-xs text-[#4A3908] line-clamp-1">{fallbackName}</span>
           )}
           <span className="text-[10px] text-slate-500 font-mono">Collably Campaign Asset</span>
         </div>
@@ -91,7 +91,7 @@ export function SafeImage({
     return (
       <div
         className={cn(
-          "w-full h-full flex items-center justify-center bg-slate-100 text-slate-400 border border-slate-200",
+          "w-full h-full flex items-center justify-center bg-[#F4F4F8] text-[#8A8A98] border border-black/8",
           fallbackClassName || className
         )}
       >

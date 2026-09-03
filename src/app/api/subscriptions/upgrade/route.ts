@@ -55,6 +55,22 @@ export async function POST(req: NextRequest) {
       }
     }
 
+    // A plan change for a paid tier must be confirmed by a payment-provider
+    // webhook or verified payment. In non-production development or for admins,
+    // allow direct plan switches so all tiers and features can be tested.
+    const isDev = process.env.NODE_ENV !== "production";
+    const selectedPrice = interval === "annual" ? targetPlan.annualPrice : targetPlan.monthlyPrice;
+    if (!isAdmin && !isDev && selectedPrice > 0) {
+      return NextResponse.json(
+        {
+          error: "Checkout is not configured for paid plans.",
+          code: "PAYMENT_REQUIRED",
+          planId,
+        },
+        { status: 402 }
+      );
+    }
+
     const updatedSubscription = await subscriptionService.upgradeOrChangePlan(
       user.id,
       planId,

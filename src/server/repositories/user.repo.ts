@@ -26,7 +26,10 @@ export class UserRepository {
       throw new Error("User with this email already exists");
     }
 
-    const passwordHash = data.passwordHash || (data.password ? hashPassword(data.password) : hashPassword("password123"));
+    if (!data.passwordHash && !data.password) {
+      throw new Error("A password or password hash is required to create a user");
+    }
+    const passwordHash = data.passwordHash || hashPassword(data.password!);
 
     const newUser: UserEntity = {
       id: `user-${Date.now()}`,
@@ -54,6 +57,36 @@ export class UserRepository {
     const isValid = verifyPassword(password, user.passwordHash);
     if (!isValid) return null;
     return user;
+  }
+
+  updatePassword(id: string, newPassword: string): boolean {
+    let success = false;
+    const newHash = hashPassword(newPassword);
+    db.updateState((state) => {
+      const u = (state.users || []).find((user) => user.id === id);
+      if (u) {
+        u.passwordHash = newHash;
+        u.updatedAt = new Date().toISOString();
+        success = true;
+      }
+    });
+    return success;
+  }
+
+  updateUser(id: string, updates: Partial<UserEntity>): UserEntity | null {
+    let updated: UserEntity | null = null;
+    db.updateState((state) => {
+      const idx = (state.users || []).findIndex((user) => user.id === id);
+      if (idx !== -1) {
+        state.users[idx] = {
+          ...state.users[idx],
+          ...updates,
+          updatedAt: new Date().toISOString(),
+        };
+        updated = state.users[idx];
+      }
+    });
+    return updated;
   }
 }
 

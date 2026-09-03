@@ -1,6 +1,42 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(req: NextRequest) {
+const devSecret = "collably_local_development_secret_only";
+
+function decodeBase64Url(value: string): Uint8Array {
+  const base64 = value.replace(/-/g, "+").replace(/_/g, "/").padEnd(Math.ceil(value.length / 4) * 4, "=");
+  return Uint8Array.from(atob(base64), (character) => character.charCodeAt(0));
+}
+
+async function verifyEdgeSession(token: string): Promise<{ role: string; exp?: number } | null> {
+  try {
+    const [header, payload, signature] = token.split(".");
+    if (!header || !payload || !signature) return null;
+    const secret = process.env.AUTH_SECRET || (process.env.NODE_ENV !== "production" ? devSecret : "");
+    if (!secret) return null;
+
+    const key = await crypto.subtle.importKey(
+      "raw",
+      new TextEncoder().encode(secret),
+      { name: "HMAC", hash: "SHA-256" },
+      false,
+      ["verify"]
+    );
+    const valid = await crypto.subtle.verify(
+      "HMAC",
+      key,
+      decodeBase64Url(signature) as unknown as BufferSource,
+      new TextEncoder().encode(`${header}.${payload}`)
+    );
+    if (!valid) return null;
+    const decoded = JSON.parse(new TextDecoder().decode(decodeBase64Url(payload)));
+    if (!decoded.role || (decoded.exp && decoded.exp < Math.floor(Date.now() / 1000))) return null;
+    return decoded;
+  } catch {
+    return null;
+  }
+}
+
+export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   // Define route classifications
@@ -24,37 +60,21 @@ export function middleware(req: NextRequest) {
     return NextResponse.redirect(loginUrl);
   }
 
-  // Token decoding helper for basic role inspection at the edge
-  try {
-    const parts = token.split(".");
-    if (parts.length === 3) {
-      const payload = JSON.parse(
-        Buffer.from(parts[1], "base64url").toString("utf-8")
-      );
-
-      // Check token expiration
-      if (payload.exp && payload.exp < Math.floor(Date.now() / 1000)) {
-        const loginUrl = new URL("/login", req.url);
-        loginUrl.searchParams.set("redirect", pathname);
-        loginUrl.searchParams.set("error", "session_expired");
-        const response = NextResponse.redirect(loginUrl);
-        response.cookies.delete("collably_session");
-        return response;
-      }
-
-      // Restrict /admin routes to administrator roles only
-      if (isAdminRoute) {
-        const adminRoles = ["super_admin", "agency_admin", "agency_owner"];
-        if (!adminRoles.includes(payload.role)) {
-          return NextResponse.redirect(new URL("/app/dashboard", req.url));
-        }
-      }
-    }
-  } catch (err) {
-    // If token is malformed, redirect to login
+  const session = await verifyEdgeSession(token);
+  if (!session) {
     const loginUrl = new URL("/login", req.url);
     loginUrl.searchParams.set("redirect", pathname);
-    return NextResponse.redirect(loginUrl);
+    loginUrl.searchParams.set("error", "session_expired");
+    const response = NextResponse.redirect(loginUrl);
+    response.cookies.delete("collably_session");
+    return response;
+  }
+
+  if (isAdminRoute) {
+    const adminRoles = ["super_admin", "agency_admin", "agency_owner"];
+    if (!adminRoles.includes(session.role)) {
+      return NextResponse.redirect(new URL("/app/dashboard", req.url));
+    }
   }
 
   return NextResponse.next();

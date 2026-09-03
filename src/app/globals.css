@@ -23,7 +23,9 @@
     --color-text-muted: #7A7A8C;
     --color-theme: #FFD21F;
     --color-theme-hover: #FFE052;
+    --color-theme-ink: #8A6500;
     --color-infrared: #FF3B30;
+    --color-success: #087F5B;
 
     /* Core Canvas & Surfaces */
     --background: #FFFFFF;
@@ -75,9 +77,9 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: #FFFFFF;
-    background-image: 
-      radial-gradient(ellipse 90% 45% at 50% -5%, rgba(255, 210, 31, 0.12) 0%, rgba(245, 245, 250, 0.4) 40%, transparent 80%),
-      linear-gradient(180deg, #FFFFFF 0%, #FAFBFD 50%, #F5F6F9 100%);
+    background-image:
+      radial-gradient(ellipse 90% 45% at 50% -5%, rgba(255, 210, 31, 0.10) 0%, rgba(255, 252, 241, 0.48) 40%, transparent 80%),
+      linear-gradient(180deg, #FFFFFF 0%, #FCFCFD 52%, #F7F7FA 100%);
     background-attachment: fixed;
   }
   h1, h2, h3, h4, h5, h6 {
@@ -86,6 +88,12 @@
     font-weight: 700;
     color: #0A0A0E;
   }
+  ::selection { background: #FFD21F; color: #0A0A0E; }
+  :focus-visible {
+    outline: 2px solid #FFD21F;
+    outline-offset: 3px;
+  }
+  button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
@@ -343,6 +351,13 @@ html.lenis, html.lenis body {
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
 /* ══════════════════════════════════════════════════════════════════════════
    MOBILE ATMOSPHERE — Dark ambient glow utilities
    ══════════════════════════════════════════════════════════════════════════ */
@@ -410,6 +425,21 @@ html.lenis, html.lenis body {
   border-color: rgba(255, 210, 31, 0.5);
 }
 
+/* Keeps richer interactions polished without making motion uncomfortable. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (hover: none) {
+  .hover-lift:hover { transform: none; }
+  .glass-shine:hover::after { transform: rotate(25deg) translateY(-100%); }
+}
+
 /* Glass Shine Effect */
 .glass-shine {
   position: relative;
@@ -437,5 +467,3 @@ html.lenis, html.lenis body {
 .glass-shine:hover::after {
   transform: rotate(25deg) translateY(100%);
 }
-
-

@@ -13,13 +13,15 @@ const mediaUploadInitSchema = z.object({
 export async function POST(req: NextRequest) {
   try {
     const session = SecurityService.getSession(req);
-    const ownerId = session?.userId || "user_anonymous";
+    if (!session) {
+      return NextResponse.json({ error: "Authentication required to upload media" }, { status: 401 });
+    }
 
     const body = await req.json();
     const parsed = mediaUploadInitSchema.parse(body);
 
     const signature = await mediaService.generateUploadSignature({
-      ownerId,
+      ownerId: session.userId,
       fileName: parsed.fileName,
       mimeType: parsed.mimeType,
       fileSize: parsed.fileSize,

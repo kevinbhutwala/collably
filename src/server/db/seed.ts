@@ -1,7 +1,7 @@
 import { DatabaseState, UserEntity } from "./schema";
 import { hashPassword } from "../auth/crypto";
 import { ALL_PLANS } from "@/core/constants";
-import { SubscriptionEntity } from "@/core/types";
+import { SubscriptionEntity, CreatorProfile, BrandProfile } from "@/core/types";
 
 export function getInitialSeedDatabase(): DatabaseState {
   const defaultPasswordHash = hashPassword("password123");
@@ -133,10 +133,69 @@ export function getInitialSeedDatabase(): DatabaseState {
     },
   ];
 
+  // Functional demo profiles keep the published login credentials usable for
+  // real API flows rather than only for mock-driven screens.
+  const initialCreators: CreatorProfile[] = [
+    {
+      id: "creator-demo",
+      userId: "user-creator",
+      fullName: "Demo Creator",
+      handle: "democreator",
+      headline: "Technology & AI creator",
+      bio: "A verified creator profile used to explore the Collably workspace.",
+      avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      coverImageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+      location: "Worldwide",
+      languages: ["English"],
+      primaryCategory: "Technology & AI",
+      secondaryCategories: ["Design & Creative"],
+      verified: true,
+      featured: true,
+      tier: "Mid-Tier",
+      rating: 4.9,
+      completedCampaignsCount: 12,
+      totalFollowers: 125000,
+      avgEngagementRate: 5.2,
+      startingPrice: 1500,
+      availableForHire: true,
+      profileCompleteness: 90,
+      qualityScore: 92,
+      socialAccounts: [],
+      audience: {
+        topCountries: [{ country: "United States", percentage: 55 }, { country: "India", percentage: 20 }],
+        ageDistribution: [{ range: "25-34", percentage: 52 }, { range: "18-24", percentage: 31 }],
+        genderSplit: [{ gender: "Female", percentage: 52 }, { gender: "Male", percentage: 48 }],
+        interests: ["Technology", "Creator Economy", "Design"],
+      },
+      rateCards: [],
+    },
+  ];
+
+  const initialBrands: BrandProfile[] = [
+    {
+      id: "brand-demo",
+      userId: "user-brand",
+      companyName: "Demo Brand",
+      industry: "Technology & AI",
+      headline: "A modern brand workspace",
+      description: "A verified demo brand profile for testing campaign, payment, and creator workflows.",
+      logoUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
+      coverImageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+      websiteUrl: "https://example.com",
+      location: "San Francisco, CA",
+      companySize: "11-50",
+      verified: true,
+      activeCampaignsCount: 0,
+      totalSpent: 0,
+      socialHandles: {},
+      createdAt: now,
+    },
+  ];
+
   return {
     users: initialUsers,
-    creators: [],
-    brands: [],
+    creators: initialCreators,
+    brands: initialBrands,
     campaigns: [],
     applications: [],
     collaborations: [],

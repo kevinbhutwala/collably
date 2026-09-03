@@ -5,6 +5,14 @@ import { brandRepo } from "@/server/repositories/brand.repo";
 import { createSessionToken } from "@/server/auth/crypto";
 import { CreatorProfile, BrandProfile, RateCardItem, SocialAccount } from "@/core/types";
 import { buildSocialAccountsFromInput, calculateTotalFollowers, calculateAvgEngagementRate, getCreatorTier } from "@/core/utils/social";
+import { z } from "zod";
+
+const registrationSchema = z.object({
+  name: z.string().trim().min(2).max(120),
+  email: z.string().trim().email().max(254),
+  password: z.string().min(8).max(128),
+  role: z.enum(["creator", "brand"]),
+});
 
 export async function POST(req: NextRequest) {
   try {
@@ -34,18 +42,13 @@ export async function POST(req: NextRequest) {
       linkedinFollowers,
     } = body;
 
-    if (!name || !email || !password || !role) {
-      return NextResponse.json(
-        { error: "Name, email, password, and role are required" },
-        { status: 400 }
-      );
-    }
+    const credentials = registrationSchema.parse({ name, email, password, role });
 
     const newUser = userRepo.createUser({
-      name,
-      email,
-      password,
-      role,
+      name: credentials.name,
+      email: credentials.email,
+      password: credentials.password,
+      role: credentials.role,
     });
 
     let creatorProfile: CreatorProfile | null = null;

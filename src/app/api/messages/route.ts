@@ -27,9 +27,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Missing required message parameters (conversationId, content)" }, { status: 400 });
     }
 
-    const senderId = session?.userId || body.senderId || "user-c1";
+    if (!session && !body.senderId) {
+      return NextResponse.json({ error: "Authentication required to send messages" }, { status: 401 });
+    }
+
+    const senderId = session?.userId || body.senderId;
     const senderRole = session?.role || body.senderRole || "creator";
-    const senderName = body.senderName || (session?.email ? session.email.split("@")[0] : "Elena Rostova");
+    const senderName = body.senderName || (session?.email ? session.email.split("@")[0] : "Collaborator");
     const senderAvatar = body.senderAvatar || (senderRole === "creator" ? "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80" : "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80");
 
     const message = await messageRepo.createMessage({

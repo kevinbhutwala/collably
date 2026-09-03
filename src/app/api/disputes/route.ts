@@ -3,6 +3,9 @@ import { disputeRepo } from "@/server/repositories/dispute.repo";
 import { auditRepo } from "@/server/repositories/audit.repo";
 import { SecurityService } from "@/server/services/security.service";
 
+import { creatorRepo } from "@/server/repositories/creator.repo";
+import { brandRepo } from "@/server/repositories/brand.repo";
+
 export async function GET(req: NextRequest) {
   try {
     const session = SecurityService.getSession(req);
@@ -17,8 +20,16 @@ export async function GET(req: NextRequest) {
       return NextResponse.json(disputes);
     }
 
+    const creator = creatorRepo.getByUserId(session.userId);
+    const brand = brandRepo.getByUserId(session.userId);
+
     const userDisputes = disputes.filter(
-      (d) => d.creatorName === session.email || d.brandName === session.email || d.filedBy === session.role
+      (d) =>
+        d.filedByUserId === session.userId ||
+        d.creatorUserId === session.userId ||
+        d.brandUserId === session.userId ||
+        (creator && d.creatorName === creator.fullName) ||
+        (brand && d.brandName === brand.companyName)
     );
     return NextResponse.json(userDisputes);
   } catch (err: any) {

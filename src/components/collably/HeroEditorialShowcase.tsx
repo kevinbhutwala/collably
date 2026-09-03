@@ -87,7 +87,7 @@ export function HeroEditorialShowcase() {
   const activeTalent = HERO_TALENT[activeIdx];
 
   return (
-    <section className="relative min-h-[80vh] sm:min-h-[85vh] bg-white text-[#0A0A0E] flex flex-col justify-between pt-6 sm:pt-10 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden select-none font-sans">
+    <section className="relative min-h-[calc(100svh-4rem)] lg:min-h-[85vh] bg-white text-[#0A0A0E] flex flex-col justify-between pt-10 sm:pt-14 pb-14 sm:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden font-sans">
       {/* Background Solar Flare with Gentle Breathing Cycle */}
       <motion.div
         animate={{
@@ -111,7 +111,7 @@ export function HeroEditorialShowcase() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 space-y-6 text-left"
+            className="lg:col-span-6 space-y-7 text-left"
           >
             {/* Live Trust Pill */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF9F5] border border-black/8 shadow-2xs">
@@ -122,17 +122,16 @@ export function HeroEditorialShowcase() {
             </div>
 
             {/* Confident Large Headline */}
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black font-display tracking-tight text-[#0A0A0E] leading-[1.02]">
-              WHERE VISIONARY BRANDS MEET{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700]">
-                CINEMATIC
-              </span>{" "}
-              CREATORS.
+            <h1 className="max-w-[11ch] text-[clamp(2.75rem,6.1vw,5.75rem)] font-black font-display tracking-[-0.055em] text-[#0A0A0E] leading-[0.98]">
+              Where brands meet{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD21F] via-[#D9A900] to-[#8A6500]">
+                creators with taste.
+              </span>
             </h1>
 
             {/* Short, clear value statement */}
-            <p className="text-sm sm:text-base text-[#5A5A68] max-w-lg leading-relaxed font-sans font-normal">
-              Direct access to vetted creator media kits, frame-accurate 4K timestamped review, and 100% pre-funded milestone escrow custody. Zero unpaid invoices. Zero ghosting.
+            <p className="text-base sm:text-lg text-[#5A5A68] max-w-xl leading-relaxed font-sans font-normal">
+              Discover the right talent, align on the work, review every frame and release payment with complete confidence.
             </p>
 
 
@@ -140,17 +139,15 @@ export function HeroEditorialShowcase() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
               <button
                 onClick={() => setRoleModalOpen(true)}
-                className="px-8 py-4 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(255,210,31,0.5)] flex items-center justify-center gap-2 group active:scale-[0.98] border border-black/10 font-sans hover-lift"
+                className="min-h-12 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-sm transition-all shadow-[0_4px_20px_rgba(255,210,31,0.5)] flex items-center justify-center gap-2 group active:scale-[0.98] border border-black/10 font-sans hover-lift"
               >
                 <span>Launch Campaign Brief</span>
                 <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-1 transition-transform" />
               </button>
 
-              <Link href="/creators" className="w-full sm:w-auto">
-                <button className="w-full sm:w-auto px-7 py-4 rounded-full bg-white hover:bg-[#F8F8FC] border border-black/10 text-[#0A0A0E] font-bold text-xs sm:text-sm transition-all shadow-xs active:scale-[0.98] flex items-center justify-center gap-2 hover-lift">
+              <Link href="/creators" className="w-full sm:w-auto min-h-12 px-7 py-3.5 rounded-full bg-white hover:bg-[#F8F8FC] border border-black/10 text-[#0A0A0E] font-bold text-sm transition-all shadow-xs active:scale-[0.98] flex items-center justify-center gap-2 hover-lift">
                   <Users className="w-4 h-4 text-[#8A7000]" />
                   <span>Explore Creator Roster</span>
-                </button>
               </Link>
             </div>
 
@@ -188,6 +185,8 @@ export function HeroEditorialShowcase() {
                 <button
                   key={t.id}
                   onClick={() => setActiveIdx(i)}
+                  aria-pressed={activeIdx === i}
+                  aria-label={`Show ${t.name}'s creator profile`}
                   className={`px-3.5 py-1.5 rounded-full text-xs font-sans font-bold transition-all flex items-center gap-1.5 ${
                     activeIdx === i
                       ? "bg-white text-[#0A0A0E] shadow-sm border border-black/8"
@@ -208,7 +207,7 @@ export function HeroEditorialShowcase() {
             <InteractiveTiltCard
               maxTilt={9}
               glowColor="rgba(255, 210, 31, 0.32)"
-              className="relative w-full max-w-[320px] xs:max-w-[360px] sm:max-w-[430px] aspect-[4/5] rounded-3xl overflow-hidden border-2 border-white shadow-[0_20px_60px_rgba(0,0,0,0.14)] bg-[#0A0A0E] group"
+              className="relative w-full max-w-[320px] xs:max-w-[360px] sm:max-w-[430px] aspect-[4/5] rounded-3xl overflow-hidden border-2 border-white shadow-[0_24px_70px_rgba(10,10,14,0.16)] bg-[#0A0A0E] group"
             >
               {/* Primary Background Portrait */}
               <AnimatePresence mode="wait">

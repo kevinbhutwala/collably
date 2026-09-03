@@ -44,7 +44,14 @@ export default function SettingsPage() {
   const [isAnnual, setIsAnnual] = useState(subscription?.interval === "annual");
   const [processingPlanId, setProcessingPlanId] = useState<string | null>(null);
   const [isCancelling, setIsCancelling] = useState(false);
-  const [stripeAccount, setStripeAccount] = useState("acct_1NZxxxxxxxxx (Verified)");
+  const [payoutAccount, setPayoutAccount] = useState("bank_account_verified_default");
+  const [taxId, setTaxId] = useState("Tax ID on file");
+
+  // Password change state
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [isChangingPassword, setIsChangingPassword] = useState(false);
 
   const isBrand = role === "brand" || role === "brand_owner" || role === "brand_manager";
   const plans = isBrand ? Object.values(BRAND_PLANS) : Object.values(CREATOR_PLANS);
@@ -58,6 +65,38 @@ export default function SettingsPage() {
       title: "Settings Saved",
       message: "Account and payout preferences updated successfully.",
     });
+  };
+
+  const handleChangePassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (newPassword.length < 8) {
+      addToast({ type: "error", title: "Password Too Short", message: "New password must be at least 8 characters." });
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      addToast({ type: "error", title: "Mismatch", message: "New passwords do not match." });
+      return;
+    }
+
+    setIsChangingPassword(true);
+    try {
+      const res = await fetch("/api/auth/change-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ currentPassword, newPassword }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed to change password");
+
+      addToast({ type: "success", title: "Password Changed", message: "Your account password has been updated." });
+      setCurrentPassword("");
+      setNewPassword("");
+      setConfirmPassword("");
+    } catch (err: any) {
+      addToast({ type: "error", title: "Error", message: err.message });
+    } finally {
+      setIsChangingPassword(false);
+    }
   };
 
   const handlePlanChange = async (targetPlan: SubscriptionPlan) => {
@@ -446,21 +485,31 @@ export default function SettingsPage() {
             </div>
             <p className="text-xs text-[#5A5A68] leading-relaxed">
               {role === "creator"
-                ? "Manage your connected Stripe Connect Express bank accounts for milestone disbursements."
-                : "Manage funding accounts and corporate payment cards for 100% pre-funded campaign escrow deposits."}
+                ? "Configure your bank account, IBAN, or UPI ID for automated escrow release upon deliverable approval."
+                : "Manage funding accounts and corporate payment credentials for 100% pre-funded campaign escrow deposits."}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               <Input
-                label="Connected Stripe / Bank Account"
-                value={stripeAccount}
-                onChange={(e) => setStripeAccount(e.target.value)}
+                label="Bank Account / UPI / Payout ID"
+                placeholder="e.g. yourname@okaxis or IBAN/Account #"
+                value={payoutAccount}
+                onChange={(e) => setPayoutAccount(e.target.value)}
               />
               <Input
-                label="Tax ID / W-9 / GST Compliance"
-                value="Verified • Ending in 9921"
-                disabled
+                label="Tax Identification / PAN / W-9 / GST"
+                placeholder="e.g. ABCDE1234F or Tax ID"
+                value={taxId}
+                onChange={(e) => setTaxId(e.target.value)}
               />
+            </div>
+            <div className="pt-2">
+              <button
+                onClick={handleSavePreferences}
+                className="px-4 py-2 rounded-full bg-[#0A0A0E] hover:bg-[#20202B] text-white text-xs font-bold transition-all"
+              >
+                Save Payout Details
+              </button>
             </div>
           </div>
         </div>
@@ -469,10 +518,62 @@ export default function SettingsPage() {
       {/* ── TAB 3: API & SECURITY ── */}
       {activeTab === "security" && (
         <div className="space-y-6">
+          {/* Password Change Form */}
+          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-4">
+            <div className="flex items-center gap-2 text-[#0A0A0E] font-bold text-sm font-display">
+              <ShieldCheck className="w-4 h-4 text-[#FFD21F]" />
+              <span>Change Password</span>
+            </div>
+            <p className="text-xs text-[#5A5A68] leading-relaxed">
+              Update your account password. Password must be at least 8 characters long.
+            </p>
+
+            <form onSubmit={handleChangePassword} className="space-y-4 max-w-md pt-2">
+              <Input
+                label="Current Password"
+                type="password"
+                required
+                placeholder="••••••••"
+                value={currentPassword}
+                onChange={(e) => setCurrentPassword(e.target.value)}
+              />
+              <Input
+                label="New Password"
+                type="password"
+                required
+                placeholder="At least 8 characters"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+              />
+              <Input
+                label="Confirm New Password"
+                type="password"
+                required
+                placeholder="Re-enter new password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+              <button
+                type="submit"
+                disabled={isChangingPassword}
+                className="px-5 py-2.5 rounded-full bg-[#0A0A0E] hover:bg-[#20202B] text-white text-xs font-bold transition-all disabled:opacity-50 flex items-center gap-2"
+              >
+                {isChangingPassword ? (
+                  <>
+                    <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                    <span>Updating Password...</span>
+                  </>
+                ) : (
+                  <span>Update Password</span>
+                )}
+              </button>
+            </form>
+          </div>
+
           <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-4">
             <div className="flex items-center gap-2 text-[#0A0A0E] font-bold text-sm font-display">
               <Smartphone className="w-4 h-4 text-[#FFD21F]" />
-              <span>Cross-Platform API &amp; React Native Mobile Sync</span>
+              <span>Cross-Platform API &amp; Security Status</span>
             </div>
             <p className="text-xs text-[#5A5A68] leading-relaxed font-sans">
               Your credentials, active subscriptions, and campaigns are synchronized in realtime across the Collably Web &amp; Mobile Workspace.

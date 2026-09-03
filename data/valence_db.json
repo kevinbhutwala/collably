@@ -161,9 +161,96 @@
           "revisionsIncluded": 1
         }
       ]
+    },
+    {
+      "id": "creator-demo",
+      "userId": "user-creator",
+      "fullName": "Demo Creator",
+      "handle": "democreator",
+      "headline": "Technology & AI creator",
+      "bio": "A verified creator profile used to explore the Collably workspace.",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+      "location": "Worldwide",
+      "languages": [
+        "English"
+      ],
+      "primaryCategory": "Technology & AI",
+      "secondaryCategories": [
+        "Design & Creative"
+      ],
+      "verified": true,
+      "featured": true,
+      "tier": "Mid-tier",
+      "rating": 4.9,
+      "completedCampaignsCount": 12,
+      "totalFollowers": 125000,
+      "avgEngagementRate": 5.2,
+      "startingPrice": 1500,
+      "availableForHire": true,
+      "profileCompleteness": 90,
+      "qualityScore": 92,
+      "socialAccounts": [],
+      "audience": {
+        "topCountries": [
+          {
+            "country": "United States",
+            "percentage": 55
+          },
+          {
+            "country": "India",
+            "percentage": 20
+          }
+        ],
+        "ageDistribution": [
+          {
+            "range": "25-34",
+            "percentage": 52
+          },
+          {
+            "range": "18-24",
+            "percentage": 31
+          }
+        ],
+        "genderSplit": [
+          {
+            "gender": "Female",
+            "percentage": 52
+          },
+          {
+            "gender": "Male",
+            "percentage": 48
+          }
+        ],
+        "interests": [
+          "Technology",
+          "Creator Economy",
+          "Design"
+        ]
+      },
+      "rateCards": []
     }
   ],
-  "brands": [],
+  "brands": [
+    {
+      "id": "brand-demo",
+      "userId": "user-brand",
+      "companyName": "Demo Brand",
+      "industry": "Technology & AI",
+      "headline": "A modern brand workspace",
+      "description": "A verified demo brand profile for testing campaign, payment, and creator workflows.",
+      "logoUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
+      "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+      "websiteUrl": "https://example.com",
+      "location": "San Francisco, CA",
+      "companySize": "11-50",
+      "verified": true,
+      "activeCampaignsCount": 0,
+      "totalSpent": 0,
+      "socialHandles": {},
+      "createdAt": "2026-09-03T16:01:57.062Z"
+    }
+  ],
   "campaigns": [],
   "applications": [],
   "collaborations": [],
@@ -173,22 +260,22 @@
       "id": "sub-creator",
       "userId": "user-creator",
       "role": "creator",
-      "planId": "creator_pro",
+      "planId": "creator_starter",
       "status": "active",
       "interval": "monthly",
-      "currentPeriodStart": "2026-09-02T15:10:02.242Z",
-      "currentPeriodEnd": "2027-09-02T15:10:02.242Z",
+      "currentPeriodStart": "2026-09-03T15:54:59.034Z",
+      "currentPeriodEnd": "2026-10-03T15:54:59.034Z",
       "cancelAtPeriodEnd": false,
-      "price": 29,
+      "price": 0,
       "currency": "USD",
       "features": {
         "mediaKit": true,
-        "maxApplicationsPerMonth": -1,
-        "instantPayouts": true,
-        "advancedAnalytics": true,
-        "aiPitchGenerator": true,
-        "verifiedBadge": true,
-        "priorityDiscovery": true,
+        "maxApplicationsPerMonth": 5,
+        "instantPayouts": false,
+        "advancedAnalytics": false,
+        "aiPitchGenerator": false,
+        "verifiedBadge": false,
+        "priorityDiscovery": false,
         "multiCreatorManagement": false,
         "customDomain": false,
         "maxActiveCampaigns": 0,
@@ -209,7 +296,7 @@
         "lastResetDate": "2026-09-02T15:10:02.242Z"
       },
       "createdAt": "2026-09-02T15:10:02.242Z",
-      "updatedAt": "2026-09-02T15:10:02.242Z"
+      "updatedAt": "2026-09-03T15:54:59.034Z"
     },
     {
       "id": "sub-brand",

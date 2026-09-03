@@ -345,7 +345,7 @@ export default function DashboardPage() {
                         {c.category}
                       </span>
                       <span className="text-[11px] font-mono text-[#0A0A0E] font-bold">
-                        {formatCurrency(c.budget.totalBudget)}
+                        {formatCurrency(c.budget?.totalBudget ?? 0)}
                       </span>
                     </div>
                     <h3 className="font-bold text-xs sm:text-sm text-[#0A0A0E] group-hover:text-[#8A7000] transition-colors line-clamp-1">

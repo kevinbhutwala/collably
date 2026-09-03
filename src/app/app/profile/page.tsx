@@ -18,19 +18,36 @@ import {
   Linkedin,
   Video,
   Globe,
+  Building2,
+  MapPin,
+  Users,
+  CheckCircle2,
 } from "lucide-react";
 
-export default function CreatorProfileEditPage() {
-  const { currentCreator, updateCreatorProfile } = useAuthStore();
+export default function ProfileEditPage() {
+  const { role, currentCreator, currentBrand, updateCreatorProfile, updateBrandProfile } = useAuthStore();
   const { addToast } = useUIStore();
 
+  const isBrand = role === "brand" || role === "brand_owner" || role === "brand_manager";
+
+  // Creator state
   const [headline, setHeadline] = useState(currentCreator?.headline || "");
   const [bio, setBio] = useState(currentCreator?.bio || "");
   const [startingPrice, setStartingPrice] = useState(currentCreator?.startingPrice || 500);
   const [socialAccounts, setSocialAccounts] = useState<SocialAccount[]>(currentCreator?.socialAccounts || []);
+
+  // Brand state
+  const [companyName, setCompanyName] = useState(currentBrand?.companyName || "");
+  const [industry, setIndustry] = useState(currentBrand?.industry || "");
+  const [brandHeadline, setBrandHeadline] = useState(currentBrand?.headline || "");
+  const [brandDescription, setBrandDescription] = useState(currentBrand?.description || "");
+  const [websiteUrl, setWebsiteUrl] = useState(currentBrand?.websiteUrl || "");
+  const [location, setLocation] = useState(currentBrand?.location || "");
+  const [companySize, setCompanySize] = useState(currentBrand?.companySize || "11-50");
+
   const [isSaving, setIsSaving] = useState(false);
 
-  // New social account form state
+  // New social account modal state (for creators)
   const [showAddModal, setShowAddModal] = useState(false);
   const [newPlatform, setNewPlatform] = useState<PlatformType>("youtube");
   const [newHandle, setNewHandle] = useState("");
@@ -45,6 +62,18 @@ export default function CreatorProfileEditPage() {
       setSocialAccounts(currentCreator.socialAccounts || []);
     }
   }, [currentCreator]);
+
+  useEffect(() => {
+    if (currentBrand) {
+      setCompanyName(currentBrand.companyName || "");
+      setIndustry(currentBrand.industry || "");
+      setBrandHeadline(currentBrand.headline || "");
+      setBrandDescription(currentBrand.description || "");
+      setWebsiteUrl(currentBrand.websiteUrl || "");
+      setLocation(currentBrand.location || "");
+      setCompanySize(currentBrand.companySize || "11-50");
+    }
+  }, [currentBrand]);
 
   const totalFollowers = calculateTotalFollowers(socialAccounts);
   const avgEngagement = calculateAvgEngagementRate(socialAccounts);
@@ -96,178 +125,284 @@ export default function CreatorProfileEditPage() {
     setIsSaving(true);
 
     try {
-      if (currentCreator) {
-        await updateCreatorProfile({
-          headline,
-          bio,
-          startingPrice: Number(startingPrice) || 500,
-          socialAccounts,
-          totalFollowers,
-          avgEngagementRate: avgEngagement,
-          tier,
+      if (isBrand) {
+        if (!companyName.trim()) {
+          throw new Error("Company name is required");
+        }
+        await updateBrandProfile({
+          companyName,
+          industry,
+          headline: brandHeadline,
+          description: brandDescription,
+          websiteUrl,
+          location,
+          companySize,
+        });
+        addToast({
+          type: "success",
+          title: "Brand Profile Saved",
+          message: "Your brand workspace profile has been updated.",
+        });
+      } else {
+        if (currentCreator) {
+          await updateCreatorProfile({
+            headline,
+            bio,
+            startingPrice: Number(startingPrice) || 500,
+            socialAccounts,
+            totalFollowers,
+            avgEngagementRate: avgEngagement,
+            tier,
+          });
+        }
+        addToast({
+          type: "success",
+          title: "Media Kit Updated",
+          message: "Your profile, social metrics, and rates have been saved.",
         });
       }
-
-      addToast({
-        type: "success",
-        title: "Media Kit Updated",
-        message: "Your changes are live and synced with brand discovery radar.",
-      });
-    } catch {
+    } catch (err: any) {
       addToast({
         type: "error",
         title: "Save Failed",
-        message: "Failed to update profile. Please try again.",
+        message: err.message || "Could not save profile changes.",
       });
     } finally {
       setIsSaving(false);
     }
   };
 
-  const getPlatformIcon = (platform: PlatformType) => {
-    switch (platform) {
-      case "youtube":
-        return <Youtube className="w-4 h-4 text-red-500" />;
-      case "instagram":
-        return <Instagram className="w-4 h-4 text-pink-500" />;
-      case "tiktok":
-        return <Video className="w-4 h-4 text-black" />;
-      case "x":
-        return <Twitter className="w-4 h-4 text-black" />;
-      case "linkedin":
-        return <Linkedin className="w-4 h-4 text-sky-600" />;
-      default:
-        return <Globe className="w-4 h-4 text-black" />;
-    }
-  };
+  if (isBrand) {
+    return (
+      <div className="space-y-6 text-[#0A0A0E] select-none font-sans">
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-black/8">
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                Brand Workspace
+              </span>
+              <span className="text-[#8A8A9A]">•</span>
+              <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
+                Verified Sponsor
+              </span>
+            </div>
+            <h1 className="text-xl sm:text-2xl font-black text-[#0A0A0E] font-display tracking-tight">
+              Brand Profile Settings
+            </h1>
+            <p className="text-xs sm:text-sm text-[#5A5A68]">
+              Manage your company information, brand bio, and public presence for creators.
+            </p>
+          </div>
 
+          <button
+            onClick={handleSaveProfile}
+            disabled={isSaving}
+            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs transition-all shadow-[0_4px_16px_rgba(255,210,31,0.4)] border border-black/10 flex items-center gap-1.5 self-start sm:self-center active:scale-98 disabled:opacity-50"
+          >
+            <Save className="w-3.5 h-3.5" />
+            <span>{isSaving ? "Saving Changes..." : "Save Brand Profile"}</span>
+          </button>
+        </div>
+
+        {/* Brand Edit Form */}
+        <form onSubmit={handleSaveProfile} className="space-y-6">
+          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6">
+            <div className="flex items-center gap-2 text-sm font-bold text-[#0A0A0E] font-display">
+              <Building2 className="w-4 h-4 text-[#FFD21F]" />
+              <span>Company Information</span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <Input
+                label="Company Name"
+                value={companyName}
+                onChange={(e) => setCompanyName(e.target.value)}
+                required
+                placeholder="Acme Corp"
+              />
+              <Input
+                label="Industry"
+                value={industry}
+                onChange={(e) => setIndustry(e.target.value)}
+                placeholder="e.g. Technology & AI, Consumer Tech"
+              />
+            </div>
+
+            <Input
+              label="Brand Headline"
+              value={brandHeadline}
+              onChange={(e) => setBrandHeadline(e.target.value)}
+              placeholder="e.g. Next-Generation Developer Productivity Tools"
+            />
+
+            <Textarea
+              label="Company Overview & Mission"
+              value={brandDescription}
+              onChange={(e) => setBrandDescription(e.target.value)}
+              rows={4}
+              placeholder="Tell creators about your brand, product philosophy, and sponsorship expectations..."
+            />
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+              <Input
+                label="Website URL"
+                value={websiteUrl}
+                onChange={(e) => setWebsiteUrl(e.target.value)}
+                placeholder="https://acme.com"
+                icon={<Globe className="w-3.5 h-3.5 text-[#8A8A9A]" />}
+              />
+              <Input
+                label="HQ Location"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+                placeholder="San Francisco, CA"
+                icon={<MapPin className="w-3.5 h-3.5 text-[#8A8A9A]" />}
+              />
+              <Input
+                label="Company Size"
+                value={companySize}
+                onChange={(e) => setCompanySize(e.target.value)}
+                placeholder="10-50 employees"
+                icon={<Users className="w-3.5 h-3.5 text-[#8A8A9A]" />}
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+    );
+  }
+
+  // Creator profile rendering
   return (
-    <div className="space-y-6 text-[#0A0A0E] select-none">
+    <div className="space-y-6 text-[#0A0A0E] select-none font-sans">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 sm:pb-5 border-b border-black/8">
-        <div className="hidden lg:block">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-black/8">
+        <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              Creator Portfolio
+              Audited Media Kit
             </span>
             <span className="text-[#8A8A9A]">•</span>
-            <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
-              Audited Kit
+            <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold uppercase">
+              {tier} Tier
             </span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
-            Creator Profile
+          <h1 className="text-xl sm:text-2xl font-black text-[#0A0A0E] font-display tracking-tight">
+            Creator Profile &amp; Media Kit
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68]">
-            Customize your bio, connected channels, and starting rates.
+            Configure your public rates, headline, and connected social channels.
           </p>
         </div>
 
-        <div className="flex items-center gap-2.5">
-          {currentCreator?.id && (
+        <div className="flex items-center gap-2.5 self-start sm:self-center">
+          {currentCreator && (
             <Link
               href={`/creators/${currentCreator.id}`}
               target="_blank"
-              className="px-3.5 py-2 rounded-full bg-black/5 hover:bg-black/10 text-[#0A0A0E] text-xs font-semibold transition-all flex items-center gap-1.5 border border-black/10 shadow-xs"
+              className="px-4 py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] border border-black/10 text-[#0A0A0E] font-bold text-xs transition-all flex items-center gap-1.5 shadow-xs"
             >
-              <span>View Public Page</span>
-              <ExternalLink className="w-3 h-3" />
+              <ExternalLink className="w-3.5 h-3.5" />
+              <span>Public Kit</span>
             </Link>
           )}
 
           <button
             onClick={handleSaveProfile}
             disabled={isSaving}
-            className="px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5 disabled:opacity-50"
+            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs transition-all shadow-[0_4px_16px_rgba(255,210,31,0.4)] border border-black/10 flex items-center gap-1.5 active:scale-98 disabled:opacity-50"
           >
-            <Save className="w-3.5 h-3.5 text-[#0A0A0E]" />
-            <span>{isSaving ? "Saving..." : "Save Changes"}</span>
+            <Save className="w-3.5 h-3.5" />
+            <span>{isSaving ? "Saving..." : "Save Profile"}</span>
           </button>
         </div>
       </div>
 
-      <form onSubmit={handleSaveProfile} className="space-y-8">
-        {/* Basic Positioning Card */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6">
-          <h3 className="text-base font-bold text-[#0A0A0E] font-display">
-            1. Positioning &amp; Starting Rates
-          </h3>
+      <form onSubmit={handleSaveProfile} className="space-y-6">
+        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-5">
+          <h2 className="text-base font-bold text-[#0A0A0E] font-display">Bio &amp; Positioning</h2>
 
-          <div className="space-y-4">
+          <Input
+            label="Professional Headline"
+            value={headline}
+            onChange={(e) => setHeadline(e.target.value)}
+            placeholder="e.g. AI & Tech Storyteller • Full-Stack Developer"
+            required
+          />
+
+          <Textarea
+            label="Biography"
+            value={bio}
+            onChange={(e) => setBio(e.target.value)}
+            rows={4}
+            placeholder="Tell brands about your audience demographics, past brand work, and content focus..."
+            required
+          />
+
+          <div className="max-w-xs">
             <Input
-              label="Professional Tagline"
-              value={headline}
-              onChange={(e) => setHeadline(e.target.value)}
-              placeholder="e.g. AI & SaaS Tech Reviewer • 4K Cinematic Workflow Integrations"
+              label="Starting Sponsorship Rate ($ USD)"
+              type="number"
+              min={100}
+              step={50}
+              value={startingPrice}
+              onChange={(e) => setStartingPrice(Number(e.target.value))}
+              required
             />
-
-            <Textarea
-              label="Creator Bio & Editorial Voice"
-              value={bio}
-              onChange={(e) => setBio(e.target.value)}
-              placeholder="Describe your creative focus, audience demographic profile, and content format styles..."
-              rows={4}
-            />
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <Input
-                label="Starting Sponsorship Rate ($ USD)"
-                type="number"
-                value={startingPrice}
-                onChange={(e) => setStartingPrice(Number(e.target.value))}
-                placeholder="500"
-              />
-            </div>
           </div>
         </div>
 
-        {/* Connected Social Accounts */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6">
-          <div className="flex items-center justify-between">
+        {/* Connected Channels & Social Accounts */}
+        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-5">
+          <div className="flex items-center justify-between pb-3 border-b border-black/8">
             <div>
-              <h3 className="text-base font-bold text-[#0A0A0E] font-display">
-                2. Connected Social Channels
-              </h3>
+              <h2 className="text-base font-bold text-[#0A0A0E] font-display">Connected Social Channels</h2>
               <p className="text-xs text-[#5A5A68]">
-                Audience reach: {totalFollowers.toLocaleString()} total followers ({tier} Tier)
+                Channels are audited for combined follower reach and tier status.
               </p>
             </div>
-
             <button
               type="button"
               onClick={() => setShowAddModal(true)}
-              className="px-4 py-2 rounded-full bg-black/5 hover:bg-black/10 text-[#0A0A0E] text-xs font-bold transition-all flex items-center gap-1.5 border border-black/10 shadow-xs"
+              className="px-3 py-1.5 rounded-full bg-[#0A0A0E] hover:bg-[#20202B] text-white text-xs font-bold transition-all flex items-center gap-1.5"
             >
               <Plus className="w-3.5 h-3.5" />
-              <span>Connect Channel</span>
+              <span>Add Channel</span>
             </button>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {socialAccounts.map((sa) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {socialAccounts.map((acc) => (
               <div
-                key={sa.id}
-                className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/5 flex items-center justify-between"
+                key={acc.id}
+                className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/6 flex items-center justify-between"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-white border border-black/8 flex items-center justify-center shadow-xs">
-                    {getPlatformIcon(sa.platform)}
+                  <div className="w-9 h-9 rounded-xl bg-white border border-black/8 flex items-center justify-center text-[#0A0A0E] shadow-2xs">
+                    {acc.platform === "youtube" && <Youtube className="w-4 h-4 text-red-600" />}
+                    {acc.platform === "instagram" && <Instagram className="w-4 h-4 text-pink-600" />}
+                    {acc.platform === "x" && <Twitter className="w-4 h-4 text-[#0A0A0E]" />}
+                    {acc.platform === "linkedin" && <Linkedin className="w-4 h-4 text-blue-600" />}
+                    {acc.platform === "tiktok" && <Video className="w-4 h-4 text-[#0A0A0E]" />}
                   </div>
                   <div>
-                    <h4 className="font-bold text-xs text-[#0A0A0E]">@{sa.handle}</h4>
-                    <p className="text-[11px] font-mono text-[#6A6A78]">
-                      {sa.followers.toLocaleString()} followers • {sa.engagementRate}% ER
-                    </p>
+                    <span className="font-bold text-xs text-[#0A0A0E] block">@{acc.handle}</span>
+                    <span className="text-[11px] font-mono text-[#6A6A78]">
+                      {(acc.followers || 0).toLocaleString()} followers • {acc.engagementRate}% eng
+                    </span>
                   </div>
                 </div>
 
                 <button
                   type="button"
-                  onClick={() => handleRemoveSocial(sa.id)}
-                  className="text-[#7A7A8A] hover:text-red-600 p-1.5 rounded-lg transition-colors"
+                  onClick={() => handleRemoveSocial(acc.id)}
+                  className="text-[#8A8A9A] hover:text-red-600 p-1.5 transition-colors"
+                  title="Remove channel"
                 >
-                  <Trash2 className="w-4 h-4" />
+                  <Trash2 className="w-3.5 h-3.5" />
                 </button>
               </div>
             ))}
@@ -275,36 +410,37 @@ export default function CreatorProfileEditPage() {
         </div>
       </form>
 
-      {/* Add Modal */}
+      {/* Add Social Channel Modal */}
       {showAddModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-md">
-          <div className="w-full max-w-md rounded-3xl bg-white border border-black/10 p-6 space-y-4 shadow-2xl text-[#0A0A0E]">
-            <h3 className="text-base font-bold text-[#0A0A0E] font-display">Connect Social Channel</h3>
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full border border-black/10 shadow-2xl space-y-4">
+            <h3 className="text-lg font-bold text-[#0A0A0E] font-display">Add Social Channel</h3>
+
             <div className="space-y-3">
               <div>
                 <label className="text-xs font-bold text-[#0A0A0E] block mb-1">Platform</label>
                 <select
                   value={newPlatform}
                   onChange={(e) => setNewPlatform(e.target.value as PlatformType)}
-                  className="w-full bg-[#F8F8FC] border border-black/10 rounded-xl px-3 py-2 text-xs text-[#0A0A0E] focus:outline-none"
+                  className="w-full px-3 py-2.5 rounded-xl border border-black/10 text-xs font-sans bg-[#F8F8FC] text-[#0A0A0E]"
                 >
                   <option value="youtube">YouTube</option>
                   <option value="instagram">Instagram</option>
                   <option value="tiktok">TikTok</option>
-                  <option value="x">X / Twitter</option>
+                  <option value="x">X (Twitter)</option>
                   <option value="linkedin">LinkedIn</option>
                 </select>
               </div>
 
               <Input
-                label="Channel Handle (@)"
+                label="Channel Handle / Username"
+                placeholder="e.g. techcreator"
                 value={newHandle}
                 onChange={(e) => setNewHandle(e.target.value)}
-                placeholder="e.g. elenatech"
               />
 
               <Input
-                label="Follower / Subscriber Count"
+                label="Followers / Subscribers"
                 type="number"
                 value={newFollowers}
                 onChange={(e) => setNewFollowers(Number(e.target.value))}
@@ -313,23 +449,24 @@ export default function CreatorProfileEditPage() {
               <Input
                 label="Average Engagement Rate (%)"
                 type="number"
+                step="0.1"
                 value={newEngagement}
                 onChange={(e) => setNewEngagement(Number(e.target.value))}
               />
             </div>
 
-            <div className="flex items-center justify-end gap-2 pt-2 border-t border-black/8">
+            <div className="flex justify-end gap-2 pt-3 border-t border-black/8">
               <button
                 type="button"
                 onClick={() => setShowAddModal(false)}
-                className="px-4 py-2 rounded-full bg-black/5 hover:bg-black/10 text-[#0A0A0E] text-xs font-semibold"
+                className="px-4 py-2 rounded-full border border-black/10 text-xs font-bold text-[#5A5A68] hover:text-[#0A0A0E]"
               >
                 Cancel
               </button>
               <button
                 type="button"
                 onClick={handleAddSocialAccount}
-                className="px-5 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] text-xs font-bold shadow-xs border border-black/10"
+                className="px-5 py-2 rounded-full bg-[#0A0A0E] hover:bg-[#20202B] text-white text-xs font-bold transition-all"
               >
                 Add Channel
               </button>

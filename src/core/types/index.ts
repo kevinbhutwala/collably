@@ -469,6 +469,9 @@ export interface DisputeRecord {
   campaignTitle: string;
   brandName: string;
   creatorName: string;
+  creatorUserId?: string;
+  brandUserId?: string;
+  filedByUserId?: string;
   reason: DisputeReason;
   description: string;
   amountInDispute: number;

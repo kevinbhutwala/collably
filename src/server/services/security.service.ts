@@ -76,6 +76,7 @@ export class SecurityService {
       return creatorRoles.includes(role) || brandRoles.includes(role);
     }
 
-    return true;
+    // Default deny. New permission names must be explicitly defined above.
+    return false;
   }
 }
