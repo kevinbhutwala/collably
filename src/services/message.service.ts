@@ -5,10 +5,10 @@ class MessageService {
   async getConversations(userId?: string): Promise<Conversation[]> {
     try {
       const url = userId ? `/api/conversations?userId=${encodeURIComponent(userId)}` : `/api/conversations`;
-      const res = await fetch(url);
+      const res = await fetch(url, { cache: "no-store" });
       if (res.ok) {
         const data = await res.json();
-        if (data.conversations && data.conversations.length > 0) {
+        if (Array.isArray(data.conversations)) {
           return data.conversations;
         }
       }
@@ -20,10 +20,10 @@ class MessageService {
 
   async getMessages(conversationId: string): Promise<ChatMessage[]> {
     try {
-      const res = await fetch(`/api/messages?conversationId=${encodeURIComponent(conversationId)}`);
+      const res = await fetch(`/api/messages?conversationId=${encodeURIComponent(conversationId)}`, { cache: "no-store" });
       if (res.ok) {
         const data = await res.json();
-        if (data.messages && data.messages.length > 0) {
+        if (Array.isArray(data.messages)) {
           return data.messages;
         }
       }
@@ -75,9 +75,80 @@ class MessageService {
       content,
       attachments,
       readBy: [senderId],
+      reactions: [],
       createdAt: new Date().toISOString(),
     };
     return fallbackMsg;
+  }
+
+  async createConversation(params: {
+    campaignId?: string;
+    campaignTitle?: string;
+    recipientId?: string;
+    recipientName?: string;
+    recipientRole?: UserRole;
+    recipientAvatar?: string;
+    initialMessage?: string;
+    senderId?: string;
+    senderRole?: UserRole;
+  }): Promise<Conversation | null> {
+    try {
+      const res = await fetch("/api/conversations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(params),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        return data.conversation;
+      }
+    } catch (err) {
+      console.error("Failed to create conversation via API:", err);
+    }
+    return null;
+  }
+
+  async markAsRead(conversationId: string, userId: string): Promise<boolean> {
+    try {
+      const res = await fetch(`/api/conversations/${conversationId}/read`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId }),
+      });
+      return res.ok;
+    } catch (err) {
+      console.warn("Failed to mark conversation read:", err);
+      return false;
+    }
+  }
+
+  async toggleReaction(messageId: string, emoji: string, userId: string): Promise<ChatMessage | null> {
+    try {
+      const res = await fetch("/api/messages/react", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messageId, emoji, userId }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        return data.message;
+      }
+    } catch (err) {
+      console.warn("Failed to toggle reaction via API:", err);
+    }
+    return null;
+  }
+
+  async deleteConversation(conversationId: string): Promise<boolean> {
+    try {
+      const res = await fetch(`/api/conversations/${conversationId}`, {
+        method: "DELETE",
+      });
+      return res.ok;
+    } catch (err) {
+      console.error("Failed to delete conversation via API:", err);
+      return false;
+    }
   }
 }
 

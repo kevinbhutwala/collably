@@ -73,6 +73,12 @@ class DatabaseClient {
         if (!this.state!.campaigns || this.state!.campaigns.length === 0) {
           this.state!.campaigns = [...seed.campaigns];
         }
+        if (!this.state!.conversations || this.state!.conversations.length === 0) {
+          this.state!.conversations = [...seed.conversations];
+        }
+        if (!this.state!.messages || this.state!.messages.length <= 1) {
+          this.state!.messages = [...seed.messages];
+        }
 
         this.persist();
       } else {

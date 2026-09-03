@@ -4,164 +4,37 @@
       "id": "user-creator",
       "name": "Demo Creator",
       "email": "creator@collably.io",
-      "passwordHash": "c6e7e51e37bc0b1cc6c4bfdef0ea7c59:b022dd24f63f410ef1ea914b134fe9de3a9769695682963a68122b495e2c41c2c3f91b4e679edbea7de8565c6ae0c9b14288ee2dfda6acc8984715b8337f8292:210000",
+      "passwordHash": "18636996b9fd708f6f540069f05a344c:b408a083185452068ed05bb0669f47d5a74f22f9e29a310c913d859b7198e8ed481bcc3cf5fe433dc41e0c9c6c97945d08fe7ee961b8df32d97369bf5049e555:210000",
       "role": "creator",
       "avatarUrl": "",
       "verified": true,
-      "createdAt": "2026-09-02T15:10:02.242Z",
-      "updatedAt": "2026-09-02T15:10:02.242Z"
+      "createdAt": "2026-09-03T18:46:21.709Z",
+      "updatedAt": "2026-09-03T18:46:21.709Z"
     },
     {
       "id": "user-brand",
       "name": "Demo Brand",
       "email": "brand@collably.io",
-      "passwordHash": "c6e7e51e37bc0b1cc6c4bfdef0ea7c59:b022dd24f63f410ef1ea914b134fe9de3a9769695682963a68122b495e2c41c2c3f91b4e679edbea7de8565c6ae0c9b14288ee2dfda6acc8984715b8337f8292:210000",
+      "passwordHash": "18636996b9fd708f6f540069f05a344c:b408a083185452068ed05bb0669f47d5a74f22f9e29a310c913d859b7198e8ed481bcc3cf5fe433dc41e0c9c6c97945d08fe7ee961b8df32d97369bf5049e555:210000",
       "role": "brand",
       "avatarUrl": "",
       "verified": true,
-      "createdAt": "2026-09-02T15:10:02.242Z",
-      "updatedAt": "2026-09-02T15:10:02.242Z"
+      "createdAt": "2026-09-03T18:46:21.709Z",
+      "updatedAt": "2026-09-03T18:46:21.709Z"
     },
     {
       "id": "user-owner",
       "name": "Kevin Bhutwala",
       "email": "kevinbhutwala417@gmail.com",
-      "passwordHash": "1de317457da74d4bb0e9623d524e729f:03bf9eca7f4093fd870bf4cb9f043b42e1192a8a3151f373c553b78d795c7031233121ef39508bd9f6e8195a70a37351047219700018396e8febd9b6d27623e4:210000",
+      "passwordHash": "c556e2fee4cdcaff66c9ec336dc98edf:00178ae19a31348da25d995d404d7e7a69a5bcbdbf0c351e68e32577fd4ca625f620951771e18e4aeb980c1d9a15579d9d1998dabdc892a6e0b159a6b44c98fe:210000",
       "role": "agency_admin",
       "avatarUrl": "",
       "verified": true,
-      "createdAt": "2026-09-02T15:10:02.242Z",
-      "updatedAt": "2026-09-02T15:10:02.242Z"
-    },
-    {
-      "id": "user-1788361902695",
-      "name": "kushi",
-      "email": "kushi@gmail.com",
-      "passwordHash": "76b9b401fbcc97666fcc235aec224708:68ba4070becf59f9a00859256ae04416136aa179f595484585ec8b6873d566109683cd7f1726db0e2873829897123f240db54f0f7541283dff668aa1bb7f6379:210000",
-      "role": "creator",
-      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
-      "verified": false,
-      "createdAt": "2026-09-02T15:11:42.695Z",
-      "updatedAt": "2026-09-02T15:11:42.695Z"
+      "createdAt": "2026-09-03T18:46:21.709Z",
+      "updatedAt": "2026-09-03T18:46:21.709Z"
     }
   ],
   "creators": [
-    {
-      "id": "creator-1788361902697",
-      "userId": "user-1788361902695",
-      "fullName": "kushi",
-      "handle": "kushihanam",
-      "headline": "Beauty & Skincare Creator & Digital Storyteller",
-      "bio": "Content creator specializing in Beauty & Skincare. Available for brand integrations and dedicated productions.",
-      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
-      "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
-      "location": "United States",
-      "languages": [
-        "English"
-      ],
-      "primaryCategory": "Beauty & Skincare",
-      "secondaryCategories": [
-        "Design & Creative"
-      ],
-      "verified": false,
-      "featured": false,
-      "tier": "Micro",
-      "rating": 5,
-      "completedCampaignsCount": 0,
-      "totalFollowers": 25000,
-      "avgEngagementRate": 4.2,
-      "startingPrice": 500,
-      "availableForHire": true,
-      "profileCompleteness": 80,
-      "qualityScore": 85,
-      "socialAccounts": [
-        {
-          "id": "sa-1788361902696-ig",
-          "platform": "instagram",
-          "handle": "kushi",
-          "url": "https://instagram.com/kushi",
-          "followers": 15000,
-          "engagementRate": 4.6,
-          "avgViews": 3750,
-          "verifiedBadge": false
-        },
-        {
-          "id": "sa-1788361902696-x",
-          "platform": "x",
-          "handle": "kushihanam",
-          "url": "https://x.com/kushihanam",
-          "followers": 10000,
-          "engagementRate": 3.8,
-          "avgViews": 5000,
-          "verifiedBadge": false
-        }
-      ],
-      "audience": {
-        "topCountries": [
-          {
-            "country": "United States",
-            "percentage": 65
-          },
-          {
-            "country": "United Kingdom",
-            "percentage": 20
-          },
-          {
-            "country": "Canada",
-            "percentage": 15
-          }
-        ],
-        "ageDistribution": [
-          {
-            "range": "18-24",
-            "percentage": 30
-          },
-          {
-            "range": "25-34",
-            "percentage": 55
-          },
-          {
-            "range": "35-44",
-            "percentage": 15
-          }
-        ],
-        "genderSplit": [
-          {
-            "gender": "Male",
-            "percentage": 55
-          },
-          {
-            "gender": "Female",
-            "percentage": 45
-          }
-        ],
-        "interests": [
-          "Beauty & Skincare",
-          "Digital Products",
-          "Lifestyle"
-        ]
-      },
-      "rateCards": [
-        {
-          "id": "rc-1788361902696-0",
-          "deliverableType": "Instagram Reel",
-          "title": "Dedicated Reel & Story Link Set",
-          "description": "High-aesthetic 9:16 vertical Reel plus 3-frame story sequence with direct swipe link.",
-          "basePrice": 500,
-          "turnaroundDays": 5,
-          "revisionsIncluded": 2
-        },
-        {
-          "id": "rc-1788361902696-1",
-          "deliverableType": "X (Twitter) Thread",
-          "title": "Deep-Dive Sponsored X Thread",
-          "description": "Analytical 5-post thread with trackable link and brand quote reposts.",
-          "basePrice": 300,
-          "turnaroundDays": 3,
-          "revisionsIncluded": 1
-        }
-      ]
-    },
     {
       "id": "creator-demo",
       "userId": "user-creator",
@@ -181,7 +54,7 @@
       ],
       "verified": true,
       "featured": true,
-      "tier": "Mid-tier",
+      "tier": "Mid-Tier",
       "rating": 4.9,
       "completedCampaignsCount": 12,
       "totalFollowers": 125000,
@@ -248,10 +121,448 @@
       "activeCampaignsCount": 0,
       "totalSpent": 0,
       "socialHandles": {},
-      "createdAt": "2026-09-03T16:01:57.062Z"
+      "createdAt": "2026-09-03T18:46:21.709Z"
     }
   ],
-  "campaigns": [],
+  "campaigns": [
+    {
+      "id": "camp-1",
+      "brandId": "brand-1",
+      "brand": {
+        "id": "brand-1",
+        "userId": "user-b1",
+        "companyName": "Linear Dynamics",
+        "industry": "Developer Tools & AI",
+        "headline": "The issue tracker built for high-performance software teams.",
+        "description": "Linear helps streamline software projects, sprints, tasks, and bug tracking. Loved by thousands of innovative startups and tech companies.",
+        "logoUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+        "websiteUrl": "https://linear.app",
+        "location": "San Francisco, CA",
+        "companySize": "51-200",
+        "verified": true,
+        "activeCampaignsCount": 3,
+        "totalSpent": 145000,
+        "socialHandles": {
+          "x": "linear",
+          "youtube": "lineardynamics",
+          "linkedin": "linear-app"
+        },
+        "createdAt": "2024-06-10"
+      },
+      "title": "AI-Powered Sprint Workflows Launch",
+      "slug": "linear-ai-sprints-launch",
+      "tagline": "Showcase how next-gen engineers build 3x faster with AI backlog triage and predictive roadmaps.",
+      "description": "We are unveiling Linear AI 2.0. We are seeking top engineering, productivity, and developer-advocate creators to create deep-dive walkthroughs showing their authentic daily workflow and how Linear accelerates issue resolution.",
+      "category": "Technology & AI",
+      "targetAudience": {
+        "locations": [
+          "United States",
+          "United Kingdom",
+          "Germany",
+          "Canada",
+          "India"
+        ],
+        "ageRanges": [
+          "25-34",
+          "35-44"
+        ],
+        "gender": "All",
+        "interests": [
+          "Software Engineering",
+          "AI Workflows",
+          "SaaS Startups",
+          "DevOps"
+        ]
+      },
+      "creatorRequirements": {
+        "minFollowers": 25000,
+        "minEngagementRate": 4,
+        "platforms": [
+          "youtube",
+          "x",
+          "linkedin"
+        ],
+        "languages": [
+          "English"
+        ],
+        "preferredTiers": [
+          "Micro",
+          "Mid-Tier",
+          "Macro"
+        ]
+      },
+      "deliverables": [
+        {
+          "id": "del-req-1",
+          "type": "YouTube 60s Integration",
+          "count": 1,
+          "guidelines": "Demonstrate live screen capture using Linear's new AI triage tool within an authentic project walkthrough.",
+          "specifications": [
+            "Minimum 1080p 60fps",
+            "Custom branded affiliate link in description",
+            "Include pinned top comment"
+          ],
+          "maxRevisions": 2
+        },
+        {
+          "id": "del-req-2",
+          "type": "X (Twitter) Thread",
+          "count": 1,
+          "guidelines": "Write a high-value breakdown thread with 4+ GIFs/screenshots of the new keyboard shortcut interface.",
+          "specifications": [
+            "Tag @linear",
+            "Include clear call to action"
+          ],
+          "maxRevisions": 1
+        }
+      ],
+      "budget": {
+        "totalBudget": 45000,
+        "perCreatorBudget": 3500,
+        "currency": "USD",
+        "paymentTerms": "50_50_escrow",
+        "performanceBonus": "$500 bonus for every 50k qualified views"
+      },
+      "timeline": {
+        "applicationDeadline": "2026-09-20",
+        "startDate": "2026-09-25",
+        "contentSubmissionDeadline": "2026-10-10",
+        "campaignEndDate": "2026-10-31"
+      },
+      "status": "active",
+      "applicantsCount": 18,
+      "acceptedCount": 4,
+      "maxCreators": 8,
+      "coverImage": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+      "featured": true,
+      "createdAt": "2026-08-10",
+      "updatedAt": "2026-08-25"
+    },
+    {
+      "id": "camp-2",
+      "brandId": "brand-2",
+      "brand": {
+        "id": "brand-2",
+        "userId": "user-b2",
+        "companyName": "Aethel Watches",
+        "industry": "Luxury Horology & Design",
+        "headline": "Swiss automatic movements housed in architectural titanium cases.",
+        "description": "Modern luxury mechanical watches engineered for the design-obsessed. Hand-assembled in Geneva.",
+        "logoUrl": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=200&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=1200&auto=format&fit=crop&q=80",
+        "websiteUrl": "https://aethelwatches.com",
+        "location": "Geneva, Switzerland",
+        "companySize": "11-50",
+        "verified": true,
+        "activeCampaignsCount": 2,
+        "totalSpent": 89000,
+        "socialHandles": {
+          "instagram": "aethelwatches",
+          "x": "aetheltime"
+        },
+        "createdAt": "2024-09-01"
+      },
+      "title": "The Architecture of Time: Autumn Collection",
+      "slug": "aethel-watches-autumn-campaign",
+      "tagline": "Editorial storytelling on modern precision, minimalist luxury, and Swiss craftsmanship.",
+      "description": "Aethel Watches is partnering with leading luxury fashion directors, horology enthusiasts, and minimal lifestyle creators to celebrate our new Titanium Monolith series.",
+      "category": "Fashion & Style",
+      "targetAudience": {
+        "locations": [
+          "United States",
+          "United Kingdom",
+          "Italy",
+          "France",
+          "Japan"
+        ],
+        "ageRanges": [
+          "25-34",
+          "35-44"
+        ],
+        "gender": "Male",
+        "interests": [
+          "Luxury Watches",
+          "Minimalist Fashion",
+          "Architecture",
+          "Fine Art"
+        ]
+      },
+      "creatorRequirements": {
+        "minFollowers": 50000,
+        "minEngagementRate": 4.5,
+        "platforms": [
+          "instagram",
+          "tiktok"
+        ],
+        "languages": [
+          "English",
+          "French",
+          "Italian"
+        ],
+        "preferredTiers": [
+          "Mid-Tier",
+          "Macro"
+        ]
+      },
+      "deliverables": [
+        {
+          "id": "del-req-3",
+          "type": "Instagram Reel",
+          "count": 1,
+          "guidelines": "Cinematic macro wrist shots paired with tailored minimalist styling in an urban architectural setting.",
+          "specifications": [
+            "4K 24fps filmic color grade",
+            "Original or licensed moody ambient audio",
+            "Tagged collaboration post"
+          ],
+          "maxRevisions": 2
+        },
+        {
+          "id": "del-req-4",
+          "type": "Instagram Story Set (3x)",
+          "count": 1,
+          "guidelines": "Unboxing experience highlighting custom brushed titanium packaging and wrist roll.",
+          "specifications": [
+            "Swipe-up / sticker link to collection",
+            "24-hr highlight inclusion"
+          ],
+          "maxRevisions": 1
+        }
+      ],
+      "budget": {
+        "totalBudget": 32000,
+        "perCreatorBudget": 2800,
+        "currency": "USD",
+        "paymentTerms": "100_escrow_on_approval"
+      },
+      "timeline": {
+        "applicationDeadline": "2026-09-15",
+        "startDate": "2026-09-20",
+        "contentSubmissionDeadline": "2026-10-05",
+        "campaignEndDate": "2026-10-25"
+      },
+      "status": "active",
+      "applicantsCount": 26,
+      "acceptedCount": 5,
+      "maxCreators": 6,
+      "coverImage": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=1200&auto=format&fit=crop&q=80",
+      "featured": true,
+      "createdAt": "2026-08-01",
+      "updatedAt": "2026-08-20"
+    },
+    {
+      "id": "camp-3",
+      "brandId": "brand-3",
+      "brand": {
+        "id": "brand-3",
+        "userId": "user-b3",
+        "companyName": "Kuro Recovery Lab",
+        "industry": "Health, Biohacking & Longevity",
+        "headline": "Cold therapy and infrared saunas for peak human output.",
+        "description": "Next-generation thermal contrast therapy systems designed for high-performance home wellness suites.",
+        "logoUrl": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=200&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=1200&auto=format&fit=crop&q=80",
+        "websiteUrl": "https://kurorecovery.com",
+        "location": "Austin, TX",
+        "companySize": "51-200",
+        "verified": true,
+        "activeCampaignsCount": 4,
+        "totalSpent": 210000,
+        "socialHandles": {
+          "instagram": "kurorecovery",
+          "youtube": "kurobiohacking"
+        },
+        "createdAt": "2024-03-15"
+      },
+      "title": "Thermal Contrast & Sleep Recovery Protocol",
+      "slug": "kuro-recovery-protocol",
+      "tagline": "Test our smart cold plunge & sauna pods with measurable HRV and deep sleep biometrics.",
+      "description": "Calling biohackers, endurance athletes, and functional wellness practitioners. Document your 14-day protocol using Kuro's dual thermal recovery system with real wearable metrics.",
+      "category": "Fitness & Wellness",
+      "targetAudience": {
+        "locations": [
+          "United States",
+          "Canada",
+          "Australia"
+        ],
+        "ageRanges": [
+          "25-34",
+          "35-44",
+          "45+"
+        ],
+        "gender": "All",
+        "interests": [
+          "Biohacking",
+          "Cold Plunge",
+          "Sleep Optimization",
+          "Oura Ring",
+          "Whoop"
+        ]
+      },
+      "creatorRequirements": {
+        "minFollowers": 30000,
+        "minEngagementRate": 5,
+        "platforms": [
+          "youtube",
+          "instagram"
+        ],
+        "languages": [
+          "English"
+        ],
+        "preferredTiers": [
+          "Micro",
+          "Mid-Tier",
+          "Macro"
+        ]
+      },
+      "deliverables": [
+        {
+          "id": "del-req-5",
+          "type": "YouTube Dedicated Video",
+          "count": 1,
+          "guidelines": "10-15 minute longitudinal experiment showing before-and-after deep sleep data and recovery score improvement.",
+          "specifications": [
+            "Include discount code in title & description",
+            "Pinned comment with protocol breakdown"
+          ],
+          "maxRevisions": 2
+        },
+        {
+          "id": "del-req-6",
+          "type": "Instagram Reel",
+          "count": 2,
+          "guidelines": "High-energy 30s cold plunge technique & breathwork routines.",
+          "specifications": [
+            "Tag @kurorecovery",
+            "9:16 vertical"
+          ],
+          "maxRevisions": 1
+        }
+      ],
+      "budget": {
+        "totalBudget": 60000,
+        "perCreatorBudget": 5000,
+        "currency": "USD",
+        "paymentTerms": "50_50_escrow",
+        "performanceBonus": "15% affiliate revenue share on direct machine sales"
+      },
+      "timeline": {
+        "applicationDeadline": "2026-09-30",
+        "startDate": "2026-10-05",
+        "contentSubmissionDeadline": "2026-10-28",
+        "campaignEndDate": "2026-11-20"
+      },
+      "status": "active",
+      "applicantsCount": 34,
+      "acceptedCount": 6,
+      "maxCreators": 10,
+      "coverImage": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=1200&auto=format&fit=crop&q=80",
+      "featured": true,
+      "createdAt": "2026-08-15",
+      "updatedAt": "2026-08-28"
+    },
+    {
+      "id": "camp-4",
+      "brandId": "brand-4",
+      "brand": {
+        "id": "brand-4",
+        "userId": "user-b4",
+        "companyName": "Luminary Optics",
+        "industry": "Camera & Cinematic Gear",
+        "headline": "Anamorphic and cinema prime lenses for creative auteurs.",
+        "description": "Crafting legendary glass for Hollywood filmmakers, independent creators, and visionary travel documentarians.",
+        "logoUrl": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=200&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1200&auto=format&fit=crop&q=80",
+        "websiteUrl": "https://luminaryoptics.com",
+        "location": "Tokyo, Japan",
+        "companySize": "201-1000",
+        "verified": true,
+        "activeCampaignsCount": 2,
+        "totalSpent": 320000,
+        "socialHandles": {
+          "instagram": "luminaryoptics",
+          "youtube": "luminarycinema"
+        },
+        "createdAt": "2023-11-20"
+      },
+      "title": "Cinematic Horizons: 35mm Anamorphic Masterclass",
+      "slug": "luminary-optics-masterclass",
+      "tagline": "Push the boundaries of cinematic storytelling with Luminary's T1.5 Full-Frame Cine Lenses.",
+      "description": "We are providing cinema lens sets to visionary travel filmmakers and directors. Create a breathtaking 3-minute visual short film shot entirely on Luminary glass.",
+      "category": "Lifestyle & Travel",
+      "targetAudience": {
+        "locations": [
+          "United States",
+          "Japan",
+          "United Kingdom",
+          "Germany"
+        ],
+        "ageRanges": [
+          "18-24",
+          "25-34",
+          "35-44"
+        ],
+        "gender": "All",
+        "interests": [
+          "Cinematography",
+          "Filmmaking",
+          "Color Grading",
+          "DaVinci Resolve"
+        ]
+      },
+      "creatorRequirements": {
+        "minFollowers": 40000,
+        "minEngagementRate": 6,
+        "platforms": [
+          "youtube",
+          "instagram"
+        ],
+        "languages": [
+          "English",
+          "Japanese"
+        ],
+        "preferredTiers": [
+          "Mid-Tier",
+          "Macro",
+          "Elite"
+        ]
+      },
+      "deliverables": [
+        {
+          "id": "del-req-7",
+          "type": "YouTube Dedicated Video",
+          "count": 1,
+          "guidelines": "Cinematic short film + behind-the-scenes breakdown analyzing lens flare, bokeh, and distortion characteristics.",
+          "specifications": [
+            "Mastered in 4K ProRes",
+            "Lens gear loaned with paid shipping"
+          ],
+          "maxRevisions": 2
+        }
+      ],
+      "budget": {
+        "totalBudget": 40000,
+        "perCreatorBudget": 6500,
+        "currency": "USD",
+        "paymentTerms": "50_50_escrow"
+      },
+      "timeline": {
+        "applicationDeadline": "2026-09-18",
+        "startDate": "2026-09-22",
+        "contentSubmissionDeadline": "2026-10-25",
+        "campaignEndDate": "2026-11-10"
+      },
+      "status": "active",
+      "applicantsCount": 15,
+      "acceptedCount": 3,
+      "maxCreators": 4,
+      "coverImage": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1200&auto=format&fit=crop&q=80",
+      "featured": false,
+      "createdAt": "2026-08-05",
+      "updatedAt": "2026-08-22"
+    }
+  ],
   "applications": [],
   "collaborations": [],
   "payouts": [],
@@ -260,22 +571,22 @@
       "id": "sub-creator",
       "userId": "user-creator",
       "role": "creator",
-      "planId": "creator_starter",
+      "planId": "creator_pro",
       "status": "active",
       "interval": "monthly",
-      "currentPeriodStart": "2026-09-03T15:54:59.034Z",
-      "currentPeriodEnd": "2026-10-03T15:54:59.034Z",
+      "currentPeriodStart": "2026-09-03T18:46:21.709Z",
+      "currentPeriodEnd": "2027-09-03T18:46:21.709Z",
       "cancelAtPeriodEnd": false,
-      "price": 0,
+      "price": 29,
       "currency": "USD",
       "features": {
         "mediaKit": true,
-        "maxApplicationsPerMonth": 5,
-        "instantPayouts": false,
-        "advancedAnalytics": false,
-        "aiPitchGenerator": false,
-        "verifiedBadge": false,
-        "priorityDiscovery": false,
+        "maxApplicationsPerMonth": -1,
+        "instantPayouts": true,
+        "advancedAnalytics": true,
+        "aiPitchGenerator": true,
+        "verifiedBadge": true,
+        "priorityDiscovery": true,
         "multiCreatorManagement": false,
         "customDomain": false,
         "maxActiveCampaigns": 0,
@@ -293,10 +604,10 @@
         "applicationsThisMonth": 0,
         "crmContactsCount": 0,
         "aiTokensUsed": 0,
-        "lastResetDate": "2026-09-02T15:10:02.242Z"
+        "lastResetDate": "2026-09-03T18:46:21.709Z"
       },
-      "createdAt": "2026-09-02T15:10:02.242Z",
-      "updatedAt": "2026-09-03T15:54:59.034Z"
+      "createdAt": "2026-09-03T18:46:21.709Z",
+      "updatedAt": "2026-09-03T18:46:21.709Z"
     },
     {
       "id": "sub-brand",
@@ -305,8 +616,8 @@
       "planId": "brand_growth",
       "status": "active",
       "interval": "monthly",
-      "currentPeriodStart": "2026-09-02T15:10:02.242Z",
-      "currentPeriodEnd": "2027-09-02T15:10:02.242Z",
+      "currentPeriodStart": "2026-09-03T18:46:21.709Z",
+      "currentPeriodEnd": "2027-09-03T18:46:21.709Z",
       "cancelAtPeriodEnd": false,
       "price": 199,
       "currency": "USD",
@@ -335,10 +646,10 @@
         "applicationsThisMonth": 0,
         "crmContactsCount": 0,
         "aiTokensUsed": 0,
-        "lastResetDate": "2026-09-02T15:10:02.242Z"
+        "lastResetDate": "2026-09-03T18:46:21.709Z"
       },
-      "createdAt": "2026-09-02T15:10:02.242Z",
-      "updatedAt": "2026-09-02T15:10:02.242Z"
+      "createdAt": "2026-09-03T18:46:21.709Z",
+      "updatedAt": "2026-09-03T18:46:21.709Z"
     },
     {
       "id": "sub-owner",
@@ -347,8 +658,8 @@
       "planId": "brand_enterprise",
       "status": "active",
       "interval": "annual",
-      "currentPeriodStart": "2026-09-02T15:10:02.242Z",
-      "currentPeriodEnd": "2027-09-02T15:10:02.242Z",
+      "currentPeriodStart": "2026-09-03T18:46:21.709Z",
+      "currentPeriodEnd": "2027-09-03T18:46:21.709Z",
       "cancelAtPeriodEnd": false,
       "price": 0,
       "currency": "USD",
@@ -378,52 +689,10 @@
         "applicationsThisMonth": 0,
         "crmContactsCount": 0,
         "aiTokensUsed": 0,
-        "lastResetDate": "2026-09-02T15:10:02.242Z"
+        "lastResetDate": "2026-09-03T18:46:21.709Z"
       },
-      "createdAt": "2026-09-02T15:10:02.242Z",
-      "updatedAt": "2026-09-02T15:10:02.242Z"
-    },
-    {
-      "id": "sub-1788361902923-10q03",
-      "userId": "user-1788361902695",
-      "role": "creator",
-      "planId": "creator_starter",
-      "status": "active",
-      "interval": "monthly",
-      "currentPeriodStart": "2026-09-02T15:11:42.923Z",
-      "currentPeriodEnd": "2026-10-02T15:11:42.923Z",
-      "cancelAtPeriodEnd": false,
-      "price": 0,
-      "currency": "USD",
-      "features": {
-        "mediaKit": true,
-        "maxApplicationsPerMonth": 5,
-        "instantPayouts": false,
-        "advancedAnalytics": false,
-        "aiPitchGenerator": false,
-        "verifiedBadge": false,
-        "priorityDiscovery": false,
-        "multiCreatorManagement": false,
-        "customDomain": false,
-        "maxActiveCampaigns": 0,
-        "crmPipeline": false,
-        "aiCreatorMatching": false,
-        "creatorShortlists": false,
-        "maxTeamSeats": 0,
-        "advancedRoiTelemetry": false,
-        "contractCompliance": false,
-        "dedicatedAccountManager": false,
-        "apiAccess": false
-      },
-      "usage": {
-        "activeCampaignsCount": 0,
-        "applicationsThisMonth": 0,
-        "crmContactsCount": 0,
-        "aiTokensUsed": 0,
-        "lastResetDate": "2026-09-02T15:11:42.923Z"
-      },
-      "createdAt": "2026-09-02T15:11:42.923Z",
-      "updatedAt": "2026-09-02T15:11:42.923Z"
+      "createdAt": "2026-09-03T18:46:21.709Z",
+      "updatedAt": "2026-09-03T18:46:21.709Z"
     }
   ],
   "crmContacts": [],
@@ -432,21 +701,335 @@
   "tickets": [],
   "payments": [],
   "mediaAssets": [],
-  "conversations": [],
+  "conversations": [
+    {
+      "id": "conv-1",
+      "campaignId": "camp-1",
+      "campaignTitle": "AI-Powered Sprint Workflows Launch",
+      "participants": [
+        {
+          "userId": "user-b1",
+          "name": "Linear Marketing",
+          "role": "brand",
+          "avatarUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80"
+        },
+        {
+          "userId": "user-c1",
+          "name": "Elena Rostova",
+          "role": "creator",
+          "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80"
+        },
+        {
+          "userId": "user-admin",
+          "name": "Agency Manager (Sid)",
+          "role": "agency_admin",
+          "avatarUrl": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop&q=80"
+        }
+      ],
+      "lastMessage": {
+        "content": "The rough cut draft looks incredible! We just left 1 tiny note on the final discount overlay.",
+        "senderName": "Linear Marketing",
+        "createdAt": "2026-08-28T16:45:00Z"
+      },
+      "unreadCount": 1,
+      "updatedAt": "2026-08-28T16:45:00Z"
+    },
+    {
+      "id": "conv-2",
+      "campaignId": "camp-2",
+      "campaignTitle": "The Architecture of Time: Autumn Collection",
+      "participants": [
+        {
+          "userId": "user-b2",
+          "name": "Aethel Watches",
+          "role": "brand",
+          "avatarUrl": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=200&auto=format&fit=crop&q=80"
+        },
+        {
+          "userId": "user-c2",
+          "name": "Marcus Vance",
+          "role": "creator",
+          "avatarUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80"
+        }
+      ],
+      "lastMessage": {
+        "content": "The first reel is officially approved and payout tranche 1 has been released to your escrow balance.",
+        "senderName": "Aethel Watches",
+        "createdAt": "2026-08-26T12:10:00Z"
+      },
+      "unreadCount": 0,
+      "updatedAt": "2026-08-26T12:10:00Z"
+    },
+    {
+      "id": "conv-3",
+      "campaignId": "camp-3",
+      "campaignTitle": "Raycast Pro Developer Extensions Launch",
+      "participants": [
+        {
+          "userId": "user-b3",
+          "name": "Raycast DevRel",
+          "role": "brand",
+          "avatarUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80"
+        },
+        {
+          "userId": "user-c3",
+          "name": "Devon Thorne",
+          "role": "creator",
+          "avatarUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=80"
+        }
+      ],
+      "lastMessage": {
+        "content": "Can we include the custom Raycast API extension script in your pinned GitHub repo link?",
+        "senderName": "Raycast DevRel",
+        "createdAt": "2026-08-29T10:15:00Z"
+      },
+      "unreadCount": 2,
+      "updatedAt": "2026-08-29T10:15:00Z"
+    },
+    {
+      "id": "conv-4",
+      "campaignId": "camp-4",
+      "campaignTitle": "Clean Botanical Morning Routine",
+      "participants": [
+        {
+          "userId": "user-b4",
+          "name": "Studio 09 Botanical",
+          "role": "brand",
+          "avatarUrl": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=200&auto=format&fit=crop&q=80"
+        },
+        {
+          "userId": "user-c4",
+          "name": "Aanya Patel",
+          "role": "creator",
+          "avatarUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&auto=format&fit=crop&q=80"
+        }
+      ],
+      "lastMessage": {
+        "content": "Color grading on the outdoor sunrise sequence is stunning! Payout escrow tranche cleared.",
+        "senderName": "Studio 09 Botanical",
+        "createdAt": "2026-08-30T14:20:00Z"
+      },
+      "unreadCount": 0,
+      "updatedAt": "2026-08-30T14:20:00Z"
+    },
+    {
+      "id": "conv-5",
+      "campaignId": "camp-vip",
+      "campaignTitle": "Collably VIP Creator Escrow & Priority Match Desk",
+      "participants": [
+        {
+          "userId": "user-admin",
+          "name": "Collably Talent Concierge",
+          "role": "agency_admin",
+          "avatarUrl": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop&q=80"
+        },
+        {
+          "userId": "user-c1",
+          "name": "Elena Rostova",
+          "role": "creator",
+          "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80"
+        }
+      ],
+      "lastMessage": {
+        "content": "You've been matched with 3 Tier-1 enterprise SaaS brand briefs this week with guaranteed escrow funding.",
+        "senderName": "Collably Talent Concierge",
+        "createdAt": "2026-08-31T09:00:00Z"
+      },
+      "unreadCount": 1,
+      "updatedAt": "2026-08-31T09:00:00Z"
+    }
+  ],
   "messages": [
     {
-      "conversationId": "conv-5",
-      "senderId": "user-1788361902695",
-      "senderRole": "creator",
-      "senderName": "kushi",
-      "senderAvatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
-      "content": "hy",
-      "attachments": [],
-      "id": "msg-1788363736670-fbllz",
+      "id": "msg-1",
+      "conversationId": "conv-1",
+      "senderId": "user-b1",
+      "senderRole": "brand",
+      "senderName": "Linear Marketing",
+      "senderAvatar": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
+      "content": "Hi Elena! Thrilled to welcome you to the Linear AI launch campaign. Escrow funds of $3,500 have been secured in the platform vault.",
       "readBy": [
-        "user-1788361902695"
+        "user-c1",
+        "user-admin"
       ],
-      "createdAt": "2026-09-02T15:42:16.670Z"
+      "createdAt": "2026-08-20T10:00:00Z"
+    },
+    {
+      "id": "msg-2",
+      "conversationId": "conv-1",
+      "senderId": "user-c1",
+      "senderRole": "creator",
+      "senderName": "Elena Rostova",
+      "senderAvatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "content": "Excited to get started! I have outlined the script for the AI triage integration. I'll showcase our real open-source triage workflow on Next.js 15.",
+      "readBy": [
+        "user-b1",
+        "user-admin"
+      ],
+      "createdAt": "2026-08-20T14:15:00Z"
+    },
+    {
+      "id": "msg-3",
+      "conversationId": "conv-1",
+      "senderId": "user-c1",
+      "senderRole": "creator",
+      "senderName": "Elena Rostova",
+      "senderAvatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "content": "Just submitted the rough cut video deliverable for review under Deliverables tab! 4K ProRes cut with timecoded chapter markers.",
+      "readBy": [
+        "user-b1"
+      ],
+      "createdAt": "2026-08-28T14:32:00Z"
+    },
+    {
+      "id": "msg-4",
+      "conversationId": "conv-1",
+      "senderId": "user-b1",
+      "senderRole": "brand",
+      "senderName": "Linear Marketing",
+      "senderAvatar": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
+      "content": "The rough cut draft looks incredible! We just left 1 tiny note on the final discount overlay.",
+      "readBy": [],
+      "createdAt": "2026-08-28T16:45:00Z"
+    },
+    {
+      "id": "msg-201",
+      "conversationId": "conv-2",
+      "senderId": "user-b2",
+      "senderRole": "brand",
+      "senderName": "Aethel Watches",
+      "senderAvatar": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=200&auto=format&fit=crop&q=80",
+      "content": "Welcome Marcus! The titanium watch prototype has been dispatched via DHL Express with tracking #AE-99201.",
+      "readBy": [
+        "user-c2"
+      ],
+      "createdAt": "2026-08-15T09:00:00Z"
+    },
+    {
+      "id": "msg-202",
+      "conversationId": "conv-2",
+      "senderId": "user-c2",
+      "senderRole": "creator",
+      "senderName": "Marcus Vance",
+      "senderAvatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80",
+      "content": "Received in pristine condition! The bezel finishing is extraordinary. Shooting the architectural reel tomorrow in Barbican Centre.",
+      "readBy": [
+        "user-b2"
+      ],
+      "createdAt": "2026-08-18T16:00:00Z"
+    },
+    {
+      "id": "msg-203",
+      "conversationId": "conv-2",
+      "senderId": "user-b2",
+      "senderRole": "brand",
+      "senderName": "Aethel Watches",
+      "senderAvatar": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=200&auto=format&fit=crop&q=80",
+      "content": "The first reel is officially approved and payout tranche 1 has been released to your escrow balance.",
+      "readBy": [
+        "user-c2"
+      ],
+      "createdAt": "2026-08-26T12:10:00Z"
+    },
+    {
+      "id": "msg-301",
+      "conversationId": "conv-3",
+      "senderId": "user-b3",
+      "senderRole": "brand",
+      "senderName": "Raycast DevRel",
+      "senderAvatar": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
+      "content": "Hey Devon, we are loving your speed-coding workflows on YouTube. We'd like to sponsor a 90s deep dive on our new Extension Store API.",
+      "readBy": [
+        "user-c3"
+      ],
+      "createdAt": "2026-08-28T09:30:00Z"
+    },
+    {
+      "id": "msg-302",
+      "conversationId": "conv-3",
+      "senderId": "user-c3",
+      "senderRole": "creator",
+      "senderName": "Devon Thorne",
+      "senderAvatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=80",
+      "content": "Raycast is already a core part of my daily dotfiles setup! I'll build a live custom GitHub pull-request reviewer extension on video.",
+      "readBy": [
+        "user-b3"
+      ],
+      "createdAt": "2026-08-28T11:45:00Z"
+    },
+    {
+      "id": "msg-303",
+      "conversationId": "conv-3",
+      "senderId": "user-b3",
+      "senderRole": "brand",
+      "senderName": "Raycast DevRel",
+      "senderAvatar": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
+      "content": "Can we include the custom Raycast API extension script in your pinned GitHub repo link?",
+      "readBy": [],
+      "createdAt": "2026-08-29T10:15:00Z"
+    },
+    {
+      "id": "msg-401",
+      "conversationId": "conv-4",
+      "senderId": "user-b4",
+      "senderRole": "brand",
+      "senderName": "Studio 09 Botanical",
+      "senderAvatar": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=200&auto=format&fit=crop&q=80",
+      "content": "Hello Aanya, your clean aesthetic is a perfect match for our botanical serum launch. $2,200 escrow pre-authorized.",
+      "readBy": [
+        "user-c4"
+      ],
+      "createdAt": "2026-08-29T11:00:00Z"
+    },
+    {
+      "id": "msg-402",
+      "conversationId": "conv-4",
+      "senderId": "user-c4",
+      "senderRole": "creator",
+      "senderName": "Aanya Patel",
+      "senderAvatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&auto=format&fit=crop&q=80",
+      "content": "Draft reel uploaded! Natural lighting with high-contrast macro texture shots.",
+      "readBy": [
+        "user-b4"
+      ],
+      "createdAt": "2026-08-30T09:15:00Z"
+    },
+    {
+      "id": "msg-403",
+      "conversationId": "conv-4",
+      "senderId": "user-b4",
+      "senderRole": "brand",
+      "senderName": "Studio 09 Botanical",
+      "senderAvatar": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=200&auto=format&fit=crop&q=80",
+      "content": "Color grading on the outdoor sunrise sequence is stunning! Payout escrow tranche cleared.",
+      "readBy": [
+        "user-c4"
+      ],
+      "createdAt": "2026-08-30T14:20:00Z"
+    },
+    {
+      "id": "msg-501",
+      "conversationId": "conv-5",
+      "senderId": "user-admin",
+      "senderRole": "agency_admin",
+      "senderName": "Collably Talent Concierge",
+      "senderAvatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop&q=80",
+      "content": "Welcome to the Collably VIP Creator Cohort, Elena! Your rate card and audience authenticity score (98.4%) have been verified.",
+      "readBy": [
+        "user-c1"
+      ],
+      "createdAt": "2026-08-30T08:00:00Z"
+    },
+    {
+      "id": "msg-502",
+      "conversationId": "conv-5",
+      "senderId": "user-admin",
+      "senderRole": "agency_admin",
+      "senderName": "Collably Talent Concierge",
+      "senderAvatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop&q=80",
+      "content": "You've been matched with 3 Tier-1 enterprise SaaS brand briefs this week with guaranteed escrow funding.",
+      "readBy": [],
+      "createdAt": "2026-08-31T09:00:00Z"
     }
   ],
   "notifications": [],

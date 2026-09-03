@@ -374,6 +374,11 @@ export interface ChatMessage {
     size?: string;
   }[];
   readBy: string[];
+  reactions?: {
+    emoji: string;
+    count: number;
+    users: string[];
+  }[];
   createdAt: string;
 }
 

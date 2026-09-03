@@ -3,6 +3,7 @@ import { hashPassword } from "../auth/crypto";
 import { ALL_PLANS } from "@/core/constants";
 import { SubscriptionEntity, CreatorProfile, BrandProfile } from "@/core/types";
 import { MOCK_CAMPAIGNS } from "@/mock/campaigns.mock";
+import { MOCK_CONVERSATIONS, MOCK_MESSAGES } from "@/mock/messages.mock";
 
 export function getInitialSeedDatabase(): DatabaseState {
   const defaultPasswordHash = hashPassword("password123");
@@ -208,8 +209,8 @@ export function getInitialSeedDatabase(): DatabaseState {
     tickets: [],
     payments: [],
     mediaAssets: [],
-    conversations: [],
-    messages: [],
+    conversations: [...MOCK_CONVERSATIONS],
+    messages: Object.values(MOCK_MESSAGES).flat(),
     notifications: [],
     webhookEvents: [],
     aiUsage: [],
