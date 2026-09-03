@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAuthStore } from "@/stores/auth.store";
 import { Avatar } from "@/components/ui/Avatar";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import {
   Bell,
   Search,
@@ -217,6 +218,9 @@ export function AppNavbar() {
               </button>
             </Link>
           )}
+
+          {/* Theme Mode Switcher */}
+          <ThemeToggle />
 
           {/* Notifications Popover Toggle */}
           <div className="relative">

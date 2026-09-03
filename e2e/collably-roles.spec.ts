@@ -22,11 +22,11 @@ const USERS = {
 
 // Reusable login helper
 async function loginAs(page: Page, email: string, pass: string) {
-  await page.goto(`${BASE_URL}/login`, { waitUntil: 'domcontentloaded' });
+  await page.goto(`${BASE_URL}/login`, { waitUntil: 'networkidle' });
 
   const emailInput = page.locator('input[type="email"], input[name="email"], input[placeholder*="email" i]');
   const passwordInput = page.locator('input[type="password"], input[name="password"]');
-  const submitBtn = page.locator('button[type="submit"], button:has-text("Sign In"), button:has-text("Log In")');
+  const submitBtn = page.locator('button[type="submit"]').first();
 
   await expect(emailInput).toBeVisible({ timeout: 10_000 });
   await emailInput.fill(email);

@@ -98,15 +98,34 @@ const organizationJsonLd = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" style={{ colorScheme: 'light' }} className={`${jakarta.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${jakarta.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var saved = localStorage.getItem('collably_theme');
+                  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  if (saved === 'dark' || (!saved && prefersDark)) {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.style.colorScheme = 'dark';
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.style.colorScheme = 'light';
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
         <Script
           id="org-jsonld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
       </head>
-      <body className="min-h-screen bg-white text-[#0A0A0E] antialiased font-sans selection:bg-[#FFD21F] selection:text-[#0A0A0E]">
+      <body className="min-h-screen bg-white dark:bg-[#0A0A0E] text-[#0A0A0E] dark:text-[#F4F4F8] antialiased font-sans selection:bg-[#FFD21F] selection:text-[#0A0A0E]">
         {children}
         <CommandPalette />
         <ToastContainer />

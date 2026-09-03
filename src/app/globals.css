@@ -63,6 +63,54 @@
     
     --radius: 16px;
   }
+
+  .dark {
+    /* ══════════════════════════════════════════════════════════════════════════
+       COLLABLY — DARK THEME SYSTEM & CARBON EDITORIAL PALETTE
+       ══════════════════════════════════════════════════════════════════════════ */
+    --color-text-primary: #F4F4F8;
+    --color-text-secondary: #B0B0C4;
+    --color-text-muted: #7A7A8E;
+    --color-theme: #FFD21F;
+    --color-theme-hover: #FFE052;
+    --color-theme-ink: #0A0A0E;
+    --color-infrared: #FF453A;
+    --color-success: #30D158;
+
+    /* Core Canvas & Surfaces */
+    --background: #09090D;
+    --background-alt: #111118;
+    --foreground: #F4F4F8;
+    --foreground-muted: #9A9AA8;
+    
+    /* Surfaces */
+    --card: #13131C;
+    --card-foreground: #F4F4F8;
+    --surface-secondary: #181824;
+    --surface-chrome: #20202E;
+    
+    /* Borders & Hairlines */
+    --border: #222230;
+    --border-light: #1A1A26;
+    --input: #222230;
+    --ring: #FFD21F;
+    
+    /* Accent & Micro Accent */
+    --accent: #FFD21F;
+    --accent-foreground: #0A0A0E;
+    --micro-accent: #FFD21F;
+    --micro-accent-text: #0A0A0E;
+    
+    /* Semantic Compatibility */
+    --primary: #FFD21F;
+    --primary-foreground: #0A0A0E;
+    --secondary: #181824;
+    --secondary-foreground: #F4F4F8;
+    --muted: #13131C;
+    --muted-foreground: #9A9AA8;
+    --destructive: #FF453A;
+    --destructive-foreground: #FFFFFF;
+  }
 }
 
 @layer base {
@@ -76,17 +124,24 @@
     letter-spacing: -0.011em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #FFFFFF;
+    background-color: var(--background);
     background-image:
       radial-gradient(ellipse 90% 45% at 50% -5%, rgba(255, 210, 31, 0.10) 0%, rgba(255, 252, 241, 0.48) 40%, transparent 80%),
       linear-gradient(180deg, #FFFFFF 0%, #FCFCFD 52%, #F7F7FA 100%);
     background-attachment: fixed;
   }
+  .dark html, .dark body, html.dark, html.dark body {
+    background-color: #09090D !important;
+    background-image:
+      radial-gradient(ellipse 90% 45% at 50% -5%, rgba(255, 210, 31, 0.08) 0%, rgba(20, 18, 10, 0.4) 40%, transparent 80%),
+      linear-gradient(180deg, #09090D 0%, #0D0D14 52%, #08080C 100%) !important;
+    color: #F4F4F8 !important;
+  }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display), 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     letter-spacing: -0.035em;
     font-weight: 700;
-    color: #0A0A0E;
+    color: var(--color-text-primary);
   }
   ::selection { background: #FFD21F; color: #0A0A0E; }
   :focus-visible {
@@ -466,4 +521,174 @@ html.lenis, html.lenis body {
 
 .glass-shine:hover::after {
   transform: rotate(25deg) translateY(100%);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   COLLABLY COMPREHENSIVE DARK THEME CONTRAST & LEGIBILITY ENGINE
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.dark {
+  color-scheme: dark;
+}
+
+/* ── 1. PRIMARY HEADINGS, TITLES & HIGH-CONTRAST LABELS ── */
+.dark [class*="text-[#0A0A0E]"],
+.dark [class*="text-[#0a0a0e]"],
+.dark [class*="text-[#101010]"],
+.dark [class*="text-[#111111]"],
+.dark [class*="text-[#07070B]"],
+.dark [class*="text-[#1A1A1E]"],
+.dark [class*="text-[#1c1c24]"],
+.dark [class*="text-[#202028]"],
+.dark [class*="text-[#22222a]"],
+.dark .text-black,
+.dark .text-zinc-900,
+.dark .text-neutral-900,
+.dark .text-gray-900 {
+  color: #F4F4F8 !important;
+}
+
+/* ── 2. SOLAR ACCENT BUTTON CONTRAST PRESERVATION ──
+   When elements are inside bright solar yellow buttons/badges, text MUST
+   remain crisp carbon black (#0A0A0E) for perfect contrast! */
+.dark button[class*="bg-[#FFD21F]"],
+.dark button[class*="bg-[#FFD21F]"] *,
+.dark a[class*="bg-[#FFD21F]"],
+.dark a[class*="bg-[#FFD21F]"] *,
+.dark button[class*="from-[#FFD21F]"],
+.dark button[class*="from-[#FFD21F]"] *,
+.dark a[class*="from-[#FFD21F]"],
+.dark a[class*="from-[#FFD21F]"] *,
+.dark button[class*="bg-theme"],
+.dark button[class*="bg-theme"] *,
+.dark .badge-solar,
+.dark .badge-solar *,
+.dark .badge-yellow,
+.dark .badge-yellow * {
+  color: #0A0A0E !important;
+}
+
+/* ── 3. SECONDARY TEXTS, DESCRIPTIONS & PILLS ── */
+.dark [class*="text-[#4A4A58]"],
+.dark [class*="text-[#5A5A68]"],
+.dark [class*="text-[#4A4A56]"],
+.dark [class*="text-[#3A3A48]"],
+.dark [class*="text-[#2A2A38]"],
+.dark .text-zinc-800,
+.dark .text-zinc-700,
+.dark .text-gray-800,
+.dark .text-gray-700 {
+  color: #B8B8CC !important;
+}
+
+/* ── 4. MUTED LABELS, TIMESTAMPS & SUBTITLES ── */
+.dark [class*="text-[#6A6A78]"],
+.dark [class*="text-[#7A7A8A]"],
+.dark [class*="text-[#8A8A9A]"],
+.dark [class*="text-[#9A9AA8]"],
+.dark [class*="text-[#626262]"],
+.dark [class*="text-[#767688]"],
+.dark [class*="text-[#888898]"],
+.dark [class*="text-[#A0A0B0]"],
+.dark .text-zinc-600,
+.dark .text-zinc-500,
+.dark .text-gray-600,
+.dark .text-gray-500 {
+  color: #8E8EA4 !important;
+}
+
+/* ── 5. CARDS, WORKSPACES & PANELS ── */
+.dark .bg-white,
+.dark [class*="bg-white"] {
+  background-color: #12121A !important;
+}
+
+.dark [class*="bg-[#FAFAFC]"],
+.dark [class*="bg-[#F8F8FB]"],
+.dark [class*="bg-[#F8F8FC]"],
+.dark [class*="bg-[#FAFAF8]"],
+.dark [class*="bg-[#FAF9F5]"],
+.dark .bg-zinc-50,
+.dark .bg-gray-50 {
+  background-color: #0A0A0F !important;
+}
+
+.dark [class*="bg-[#F4F4F8]"],
+.dark [class*="bg-[#F5F5F9]"],
+.dark [class*="bg-[#F0F0F4]"],
+.dark [class*="bg-[#EAEAEF]"],
+.dark .bg-zinc-100,
+.dark .bg-gray-100 {
+  background-color: #181824 !important;
+}
+
+/* ── 6. FORM CONTROLS & INPUTS ── */
+.dark input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]),
+.dark textarea,
+.dark select {
+  background-color: #14141E !important;
+  color: #F4F4F8 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #6E6E84 !important;
+}
+
+.dark select option {
+  background-color: #14141E;
+  color: #F4F4F8;
+}
+
+/* ── 7. BORDERS & DIVIDERS ── */
+.dark .border-black\/5,
+.dark .border-black\/6,
+.dark .border-black\/8,
+.dark .border-black\/10,
+.dark .border-black\/15,
+.dark .divide-black\/5,
+.dark .divide-black\/8,
+.dark .divide-black\/10 {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ── 8. HOVER & INTERACTIVE STATES ── */
+.dark .hover\:bg-black\/5:hover,
+.dark .hover\:bg-black\/10:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.dark .hover\:text-\[\#0A0A0E\]:hover {
+  color: #FFFFFF;
+}
+
+.dark .hover\:bg-\[\#F4F4F8\]:hover,
+.dark .hover\:bg-\[\#F8F8FC\]:hover,
+.dark .hover\:bg-white\/70:hover {
+  background-color: #1E1E2C;
+}
+
+/* ── 9. TABLES & DATA MATRICES ── */
+.dark [role="table"],
+.dark table {
+  color: #F4F4F8;
+}
+
+.dark [role="table"] tr,
+.dark table tr {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark [role="table"] th,
+.dark table th {
+  color: #8E8EA4;
+}
+
+/* ── 10. MODALS & DIALOGS ── */
+.dark .modal-content,
+.dark [role="dialog"] {
+  background-color: #12121A;
+  color: #F4F4F8;
+  border-color: rgba(255, 255, 255, 0.1);
 }

@@ -731,7 +731,7 @@
         "senderName": "Linear Marketing",
         "createdAt": "2026-08-28T16:45:00Z"
       },
-      "unreadCount": 1,
+      "unreadCount": 0,
       "updatedAt": "2026-08-28T16:45:00Z"
     },
     {
@@ -850,7 +850,8 @@
       "content": "Hi Elena! Thrilled to welcome you to the Linear AI launch campaign. Escrow funds of $3,500 have been secured in the platform vault.",
       "readBy": [
         "user-c1",
-        "user-admin"
+        "user-admin",
+        "user-creator"
       ],
       "createdAt": "2026-08-20T10:00:00Z"
     },
@@ -864,7 +865,8 @@
       "content": "Excited to get started! I have outlined the script for the AI triage integration. I'll showcase our real open-source triage workflow on Next.js 15.",
       "readBy": [
         "user-b1",
-        "user-admin"
+        "user-admin",
+        "user-creator"
       ],
       "createdAt": "2026-08-20T14:15:00Z"
     },
@@ -877,7 +879,8 @@
       "senderAvatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
       "content": "Just submitted the rough cut video deliverable for review under Deliverables tab! 4K ProRes cut with timecoded chapter markers.",
       "readBy": [
-        "user-b1"
+        "user-b1",
+        "user-creator"
       ],
       "createdAt": "2026-08-28T14:32:00Z"
     },
@@ -889,7 +892,9 @@
       "senderName": "Linear Marketing",
       "senderAvatar": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
       "content": "The rough cut draft looks incredible! We just left 1 tiny note on the final discount overlay.",
-      "readBy": [],
+      "readBy": [
+        "user-creator"
+      ],
       "createdAt": "2026-08-28T16:45:00Z"
     },
     {

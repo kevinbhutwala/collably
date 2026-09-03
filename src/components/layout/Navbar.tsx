@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import { useAuthStore } from "@/stores/auth.store";
 import { Modal } from "@/components/ui/Modal";
 import { motion, AnimatePresence } from "framer-motion";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -142,10 +143,14 @@ export function Navbar() {
                 </button>
               </>
             )}
+
+            {/* Theme Mode Toggle (Desktop) */}
+            <ThemeToggle />
           </div>
 
           {/* Mobile & Tablet Hamburger + Quick Start (< 1024px) */}
           <div className="flex lg:hidden items-center gap-2 shrink-0">
+            <ThemeToggle />
             <button
               onClick={() => setRoleModalOpen(true)}
               className="px-3.5 py-1.5 rounded-full text-xs font-extrabold text-[#0A0A0E] bg-gradient-to-r from-[#FFD21F] to-[#FFE052] shadow-xs font-sans border border-black/8 active:scale-95"
