@@ -12,10 +12,19 @@ const createCampaignSchema = z.object({
   category: z.string().min(1),
   brandId: z.string().optional(),
   budget: z.object({
-    totalBudget: z.number().positive(),
-    perCreatorBudget: z.number().positive(),
+    totalBudget: z.number().positive("Total budget must be positive"),
+    perCreatorBudget: z.number().positive("Milestone budget must be positive"),
     currency: z.literal("USD").or(z.literal("INR")).default("USD"),
     paymentTerms: z.string().default("100_escrow_on_approval"),
+  }).optional(),
+  deliverables: z.array(z.any()).min(1, "Campaign must contain at least one deliverable milestone").optional(),
+  timeline: z.object({
+    applicationDeadline: z.string().optional(),
+    contentSubmissionDeadline: z.string().refine(
+      (d) => !d || new Date(d).getTime() > Date.now() - 24 * 60 * 60 * 1000,
+      { message: "Submission deadline cannot be in the past" }
+    ).optional(),
+    campaignEndDate: z.string().optional(),
   }).optional(),
   maxCreators: z.number().int().positive().default(5),
 });

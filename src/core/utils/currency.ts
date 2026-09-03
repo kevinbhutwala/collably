@@ -85,3 +85,24 @@ export function formatCompactCount(num: number): string {
   }
   return num.toLocaleString();
 }
+
+/**
+ * Exact Integer-Cents Arithmetic & Rounding (Phase 6 Core: Prevent off-by-one errors)
+ */
+export function dollarsToCents(dollars: number): number {
+  return Math.round(Number(dollars) * 100);
+}
+
+export function centsToDollars(cents: number): number {
+  return Number((Number(cents) / 100).toFixed(2));
+}
+
+export function calculateFeeCents(
+  grossCents: number,
+  feeRatePercent: number
+): { grossCents: number; feeCents: number; netCents: number } {
+  const feeCents = Math.round((grossCents * feeRatePercent) / 100);
+  const netCents = grossCents - feeCents;
+  return { grossCents, feeCents, netCents };
+}
+

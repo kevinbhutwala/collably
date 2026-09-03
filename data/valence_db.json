@@ -452,5 +452,6 @@
   "notifications": [],
   "webhookEvents": [],
   "aiUsage": [],
-  "auditLogs": []
+  "auditLogs": [],
+  "ledgerEntries": []
 }

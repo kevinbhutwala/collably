@@ -213,5 +213,6 @@ export function getInitialSeedDatabase(): DatabaseState {
     webhookEvents: [],
     aiUsage: [],
     auditLogs: [],
+    ledgerEntries: [],
   };
 }

@@ -157,6 +157,20 @@ export class CollaborationRepository {
     });
     return success;
   }
+
+  findDeliverableById(deliverableId: string): {
+    collaboration: Collaboration;
+    deliverable: CollaborationDeliverableItem;
+  } | null {
+    const list = db.getState().collaborations || [];
+    for (const collab of list) {
+      const del = (collab.deliverables || []).find((d) => d.id === deliverableId);
+      if (del) {
+        return { collaboration: collab, deliverable: del };
+      }
+    }
+    return null;
+  }
 }
 
 export const collaborationRepo = new CollaborationRepository();

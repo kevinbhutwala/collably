@@ -108,5 +108,6 @@ export interface DatabaseState {
   disputes: DisputeRecord[];
   tickets: SupportTicket[];
   auditLogs: AuditEvent[];
+  ledgerEntries: any[];
 }
 

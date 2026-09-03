@@ -42,6 +42,7 @@ class DatabaseClient {
         if (!this.state!.notifications) this.state!.notifications = [];
         if (!this.state!.auditLogs) this.state!.auditLogs = [];
         if (!this.state!.aiUsage) this.state!.aiUsage = [];
+        if (!this.state!.ledgerEntries) this.state!.ledgerEntries = [];
 
         // Merge only the 3 seed users — do not re-add removed users
         for (const seedUser of seed.users) {

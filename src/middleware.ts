@@ -73,11 +73,33 @@ export async function middleware(req: NextRequest) {
   if (isAdminRoute) {
     const adminRoles = ["super_admin", "agency_admin", "agency_owner"];
     if (!adminRoles.includes(session.role)) {
-      return NextResponse.redirect(new URL("/app/dashboard", req.url));
+      return NextResponse.redirect(new URL("/app/dashboard?error=admin_required", req.url));
     }
   }
 
-  return NextResponse.next();
+  // Enforce Tenant Isolation: Creators cannot access Brand workspace routes
+  const isBrandRoute = pathname.startsWith("/app/brand");
+  if (isBrandRoute) {
+    const brandRoles = [
+      "brand",
+      "brand_owner",
+      "brand_manager",
+      "brand_member",
+      "super_admin",
+      "agency_admin",
+      "agency_owner",
+    ];
+    if (!brandRoles.includes(session.role)) {
+      return NextResponse.redirect(new URL("/app/dashboard?error=brand_access_denied", req.url));
+    }
+  }
+
+  const response = NextResponse.next();
+  // Zero cached brand/admin data leaked in network payloads
+  response.headers.set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+  response.headers.set("Pragma", "no-cache");
+  response.headers.set("Expires", "0");
+  return response;
 }
 
 export const config = {
