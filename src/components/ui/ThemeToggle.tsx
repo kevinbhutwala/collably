@@ -36,11 +36,6 @@ export function ThemeToggle({ className }: { className?: string }) {
     }
   };
 
-  if (!mounted) {
-    return (
-      <div className={cn("w-9 h-9 rounded-xl bg-transparent", className)} />
-    );
-  }
 
   return (
     <button
