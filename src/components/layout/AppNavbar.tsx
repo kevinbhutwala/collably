@@ -168,9 +168,13 @@ export function AppNavbar() {
             </h1>
           </div>
 
-          {/* Desktop Brand Logo */}
-          <div className="hidden lg:flex items-center shrink-0">
+          {/* Desktop Brand Logo & Screen Title */}
+          <div className="hidden lg:flex items-center gap-3 shrink-0">
             <CollablyLogo href="/app/dashboard" size="sm" />
+            <span className="text-[#888898] text-sm">/</span>
+            <h1 className="text-sm font-bold text-[#0A0A0E] tracking-tight font-display">
+              {currentTitle}
+            </h1>
           </div>
 
           {/* Desktop Search Bar */}

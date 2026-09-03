@@ -70,6 +70,9 @@ class DatabaseClient {
             this.state!.brands.push(seedBrand);
           }
         }
+        if (!this.state!.campaigns || this.state!.campaigns.length === 0) {
+          this.state!.campaigns = [...seed.campaigns];
+        }
 
         this.persist();
       } else {

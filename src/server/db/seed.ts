@@ -2,6 +2,7 @@ import { DatabaseState, UserEntity } from "./schema";
 import { hashPassword } from "../auth/crypto";
 import { ALL_PLANS } from "@/core/constants";
 import { SubscriptionEntity, CreatorProfile, BrandProfile } from "@/core/types";
+import { MOCK_CAMPAIGNS } from "@/mock/campaigns.mock";
 
 export function getInitialSeedDatabase(): DatabaseState {
   const defaultPasswordHash = hashPassword("password123");
@@ -196,7 +197,7 @@ export function getInitialSeedDatabase(): DatabaseState {
     users: initialUsers,
     creators: initialCreators,
     brands: initialBrands,
-    campaigns: [],
+    campaigns: MOCK_CAMPAIGNS,
     applications: [],
     collaborations: [],
     payouts: [],
