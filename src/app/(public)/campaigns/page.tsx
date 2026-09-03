@@ -121,7 +121,7 @@ export default function CampaignsDirectoryPage() {
                   key={camp.id}
                   maxTilt={7}
                   glowColor="rgba(255, 210, 31, 0.25)"
-                  className="rounded-3xl bg-white border border-black/8 hover:border-black/20 shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] transition-all p-6 flex flex-col justify-between group relative hover-lift select-none"
+                  className="campaign-card rounded-3xl bg-white border border-black/8 hover:border-black/20 shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] transition-all p-6 flex flex-col justify-between group relative hover-lift select-none"
                 >
                   <div className="space-y-4">
                     {/* Top Bar with Brand and Budget */}

@@ -70,10 +70,15 @@ export async function middleware(req: NextRequest) {
     return response;
   }
 
-  if (isAdminRoute) {
+  const isAppAdmin = pathname.startsWith("/app/admin");
+  if (isAdminRoute || isAppAdmin) {
     const adminRoles = ["super_admin", "agency_admin", "agency_owner"];
     if (!adminRoles.includes(session.role)) {
       return NextResponse.redirect(new URL("/app/dashboard?error=admin_required", req.url));
+    }
+    if (isAppAdmin) {
+      const canonicalAdminUrl = new URL(pathname.replace(/^\/app\/admin/, "/admin"), req.url);
+      return NextResponse.redirect(canonicalAdminUrl);
     }
   }
 

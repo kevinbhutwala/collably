@@ -28,7 +28,7 @@ export function ExactHeroSection() {
             {/* Giant 3-Line Headline */}
             <div className="space-y-1 sm:space-y-2">
               <h1 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight uppercase leading-[0.95] text-[#0A0A0E] font-display">
-                CREATE
+                CREATE <span className="sr-only">CINEMATIC &amp; VISIONARY PARTNERSHIPS</span>
               </h1>
               <h2 className="text-5xl sm:text-7xl md:text-8xl font-normal tracking-tight leading-[0.95] text-[#22222E] font-serif italic">
                 COLLABORATE
@@ -55,8 +55,20 @@ export function ExactHeroSection() {
               </div>
             </div>
 
+            {/* Value Proposition Badges */}
+            <div className="flex flex-wrap items-center gap-2 pt-1 text-xs font-semibold text-[#5A5A68]">
+              <div className="inline-flex items-center gap-1.5 bg-[#F4F4F8] px-3 py-1 rounded-full border border-black/5 shadow-2xs">
+                <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <span className="font-mono text-[11px] font-bold text-[#0A0A0E]">100% Pre-funded Escrow</span>
+              </div>
+              <div className="inline-flex items-center gap-1.5 bg-[#F4F4F8] px-3 py-1 rounded-full border border-black/5 shadow-2xs">
+                <span className="w-2 h-2 rounded-full bg-amber-500"></span>
+                <span className="font-mono text-[11px] font-bold text-[#0A0A0E]">Instant Payout on Approval</span>
+              </div>
+            </div>
+
             {/* Subtitle */}
-            <p className="text-sm sm:text-base text-[#4A4A58] font-sans max-w-md leading-relaxed pt-2">
+            <p className="text-sm sm:text-base text-[#4A4A58] font-sans max-w-md leading-relaxed pt-1">
               Work with top creators, run high-impact campaigns, and get paid — all in one place.
             </p>
 

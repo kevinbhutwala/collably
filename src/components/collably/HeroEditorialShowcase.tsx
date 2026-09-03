@@ -123,9 +123,9 @@ export function HeroEditorialShowcase() {
 
             {/* Confident Large Headline */}
             <h1 className="max-w-[11ch] text-[clamp(2.75rem,6.1vw,5.75rem)] font-black font-display tracking-[-0.055em] text-[#0A0A0E] leading-[0.98]">
-              Where brands meet{" "}
+              Where visionary brands meet{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD21F] via-[#D9A900] to-[#8A6500]">
-                creators with taste.
+                cinematic creators.
               </span>
             </h1>
 
