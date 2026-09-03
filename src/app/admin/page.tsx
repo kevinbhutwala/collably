@@ -175,7 +175,7 @@ export default function AgencyAdminCommandCenter() {
               description="Creator profiles will appear here once users register."
             />
           ) : (
-            <div className="divide-y divide-black/5 space-y-3">
+            <div role="table" aria-label="Creator Verification List" className="admin-list divide-y divide-black/5 space-y-3">
               {creators.map((creator) => (
                 <div
                   key={creator.id}
