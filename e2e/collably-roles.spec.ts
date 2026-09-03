@@ -163,11 +163,11 @@ test.describe('Collably End-to-End Suite', () => {
   test('07: Admin Dispute Resolution Controls', async ({ page }) => {
     await loginAs(page, USERS.admin.email, USERS.admin.password);
 
-    await page.goto(`${BASE_URL}/app/admin`, { waitUntil: 'domcontentloaded' });
+    await page.goto(`${BASE_URL}/admin/disputes`, { waitUntil: 'domcontentloaded' });
 
-    // Check that standard administrative actions are visible
-    const tableOrList = page.locator('table, div[role="table"], div[class*="dispute"], div[class*="list"]').first();
-    await expect(tableOrList).toBeVisible({ timeout: 10_000 });
+    // Check that dispute arbitration controls and records are visible
+    const disputeArbitrationHeading = page.locator('text=/Dispute|Arbitration|Escrow/i').first();
+    await expect(disputeArbitrationHeading).toBeVisible({ timeout: 10_000 });
   });
 
   // ==========================================
