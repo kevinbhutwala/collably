@@ -87,14 +87,14 @@ export function PricingComparisonModule() {
 
           {/* Billing Cycle Toggle */}
           <div className="pt-4 flex items-center justify-center gap-3">
-            <div className="inline-flex items-center p-1 rounded-full bg-black/[0.05] border border-black/10 text-xs font-sans">
+            <div className="inline-flex items-center p-1 rounded-full bg-black/[0.05] dark:bg-[#14141E] border border-black/10 dark:border-white/10 text-xs font-sans">
               <button
                 onClick={() => setBillingCycle("monthly")}
                 className={cn(
                   "px-4 py-1.5 rounded-full transition-all font-semibold",
                   billingCycle === "monthly"
-                    ? "bg-[#0A0A0E] text-white shadow-xs"
-                    : "text-[#5A5A66] hover:text-[#0A0A0E]"
+                    ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] shadow-xs font-bold"
+                    : "text-[#5A5A66] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
                 )}
               >
                 Monthly Billing
@@ -105,7 +105,7 @@ export function PricingComparisonModule() {
                   "px-4 py-1.5 rounded-full transition-all font-semibold flex items-center gap-1.5",
                   billingCycle === "annual"
                     ? "bg-[#FFD21F] text-[#0A0A0E] font-bold shadow-xs border border-black/15"
-                    : "text-[#5A5A66] hover:text-[#0A0A0E]"
+                    : "text-[#5A5A66] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
                 )}
               >
                 <span>Annual</span>
@@ -128,8 +128,8 @@ export function PricingComparisonModule() {
                 className={cn(
                   "rounded-3xl p-8 flex flex-col justify-between space-y-8 relative backdrop-blur-2xl transition-all duration-300",
                   plan.popular
-                    ? "bg-[#FFFFFF] border-2 border-[#FFD21F] shadow-[0_20px_50px_rgba(255,210,31,0.25),0_10px_30px_rgba(0,0,0,0.08)] lg:-translate-y-2"
-                    : "bg-[#FFFFFF] border border-black/10 hover:border-black/20 shadow-[0_10px_30px_rgba(0,0,0,0.05)]"
+                    ? "bg-[#FFFFFF] dark:bg-[#1A1A28] border-2 border-[#FFD21F] shadow-[0_20px_50px_rgba(255,210,31,0.25),0_10px_30px_rgba(0,0,0,0.08)] lg:-translate-y-2"
+                    : "bg-[#FFFFFF] dark:bg-[#14141E] border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 shadow-[0_10px_30px_rgba(0,0,0,0.05)]"
                 )}
               >
                 {plan.popular && (
@@ -140,30 +140,30 @@ export function PricingComparisonModule() {
 
                 <div className="space-y-6">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-xl font-bold text-[#0A0A0E] font-display">{plan.name}</h3>
-                    <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-black/[0.05] text-[#0A0A0E] border border-black/10 font-bold uppercase">
+                    <h3 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">{plan.name}</h3>
+                    <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-black/[0.05] dark:bg-white/10 text-[#0A0A0E] dark:text-[#F4F4F8] border border-black/10 dark:border-white/10 font-bold uppercase">
                       {plan.badge}
                     </span>
                   </div>
 
                   <div className="flex items-baseline gap-1 font-display">
-                    <span className="text-4xl sm:text-5xl font-black text-[#0A0A0E] numeric-tabular">
+                    <span className="text-4xl sm:text-5xl font-black text-[#0A0A0E] dark:text-white numeric-tabular">
                       ${price}
                     </span>
-                    <span className="text-xs text-[#5A5A66] font-sans">
+                    <span className="text-xs text-[#5A5A66] dark:text-[#8E8EA4] font-sans">
                       {price === 0 ? "forever" : "/ month billed annually"}
                     </span>
                   </div>
 
-                  <p className="text-xs text-[#5A5A66] font-sans leading-relaxed">
+                  <p className="text-xs text-[#5A5A66] dark:text-[#9A9AA8] font-sans leading-relaxed">
                     {plan.description}
                   </p>
 
-                  <div className="pt-4 border-t border-black/10 space-y-3">
-                    <span className="text-[11px] font-mono uppercase text-[#0A0A0E]/60 font-bold block">
+                  <div className="pt-4 border-t border-black/10 dark:border-white/10 space-y-3">
+                    <span className="text-[11px] font-mono uppercase text-[#0A0A0E]/60 dark:text-white/60 font-bold block">
                       INCLUDED CAPABILITIES:
                     </span>
-                    <ul className="space-y-2.5 text-xs text-[#0A0A0E] font-sans font-medium">
+                    <ul className="space-y-2.5 text-xs text-[#0A0A0E] dark:text-[#F4F4F8] font-sans font-medium">
                       {plan.features.map((feat, fIdx) => (
                         <li key={fIdx} className="flex items-start gap-2.5">
                           <Check className="w-4 h-4 text-[#FFD21F] shrink-0 mt-0.5" />
@@ -181,7 +181,7 @@ export function PricingComparisonModule() {
                         "w-full py-3.5 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 shadow-md",
                         plan.popular
                           ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] shadow-[0_0_20px_rgba(255,210,31,0.4)] border border-black/10"
-                          : "bg-[#0A0A0E] hover:bg-[#1A1A22] text-white"
+                          : "bg-[#0A0A0E] dark:bg-[#FFD21F] hover:bg-[#1A1A22] dark:hover:bg-[#FFE052] text-white dark:text-[#0A0A0E] font-bold shadow-xs"
                       )}
                     >
                       <span>{plan.ctaText}</span>

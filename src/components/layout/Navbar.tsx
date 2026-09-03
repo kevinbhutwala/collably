@@ -74,11 +74,11 @@ export function Navbar() {
       <header
         className={`sticky top-0 z-40 w-full transition-all duration-300 select-none ${
           scrolled
-            ? "border-b border-black/8 bg-white/95 backdrop-blur-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)]"
-            : "border-b border-black/5 bg-white/80 backdrop-blur-md"
+            ? "border-b border-black/8 dark:border-white/10 bg-white/95 dark:bg-[#0A0A0F]/95 backdrop-blur-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)]"
+            : "border-b border-black/5 dark:border-white/10 bg-white/80 dark:bg-[#0A0A0F]/80 backdrop-blur-md"
         }`}
       >
-        <div className="h-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 text-[#0A0A0E]">
+        <div className="h-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 text-[#0A0A0E] dark:text-[#F4F4F8]">
           {/* Brand Logo / Mobile Screen Title */}
           <div className="flex items-center gap-2.5 min-w-0">
             <div className="shrink-0">
@@ -88,14 +88,14 @@ export function Navbar() {
             {/* Mobile Header Screen Title */}
             <div className="flex lg:hidden items-center gap-1.5 min-w-0">
               <span className="text-xs text-[#8A8A98] font-mono">•</span>
-              <p className="text-sm font-extrabold text-[#0A0A0E] font-display tracking-tight truncate">
+              <p className="text-sm font-extrabold text-[#0A0A0E] dark:text-white font-display tracking-tight truncate">
                 {currentTitle}
               </p>
             </div>
           </div>
 
           {/* Desktop Navigation Links (Visible on Large Screens >= 1024px) */}
-          <nav className="hidden lg:flex items-center gap-1 bg-[#F5F5F9] border border-black/5 px-2 py-1 rounded-full shadow-xs backdrop-blur-md">
+          <nav className="hidden lg:flex items-center gap-1 bg-[#F5F5F9] dark:bg-[#14141E] border border-black/5 dark:border-white/10 px-2 py-1 rounded-full shadow-xs backdrop-blur-md">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -106,7 +106,7 @@ export function Navbar() {
                     "px-4 py-1.5 text-xs font-semibold rounded-full transition-all select-none font-sans tracking-tight",
                     isActive
                       ? "bg-[#FFD21F] text-[#0A0A0E] shadow-[0_2px_10px_rgba(255,210,31,0.4)] font-bold border border-black/10"
-                      : "text-[#5A5A68] hover:text-[#0A0A0E] hover:bg-black/[0.04]"
+                      : "text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/10"
                   )}
                 >
                   {link.label}
@@ -120,7 +120,7 @@ export function Navbar() {
             {isAuthenticated ? (
               <Link
                 href={user?.role === "brand" ? "/app/brand/campaigns" : "/app/dashboard"}
-                className="px-4 py-2 rounded-full bg-[#F5F5F9] hover:bg-[#EAEAEF] text-[#0A0A0E] text-xs font-bold transition-all flex items-center gap-2 border border-black/5"
+                className="px-4 py-2 rounded-full bg-[#F5F5F9] dark:bg-[#181824] hover:bg-[#EAEAEF] dark:hover:bg-[#222232] text-[#0A0A0E] dark:text-white text-xs font-bold transition-all flex items-center gap-2 border border-black/5 dark:border-white/10"
               >
                 <span>Workspace</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -129,7 +129,7 @@ export function Navbar() {
               <>
                 <Link
                   href="/login"
-                  className="text-xs font-bold text-[#5A5A68] hover:text-[#0A0A0E] px-3 py-2 transition-colors font-sans"
+                  className="text-xs font-bold text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white px-3 py-2 transition-colors font-sans"
                 >
                   Sign In
                 </Link>
@@ -191,7 +191,7 @@ export function Navbar() {
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
               id="public-navigation"
-              className="fixed inset-x-0 top-16 z-40 p-5 sm:p-6 bg-white border-b border-black/10 shadow-2xl flex flex-col gap-4 lg:hidden text-[#0A0A0E] max-h-[calc(100vh-4rem)] overflow-y-auto"
+              className="fixed inset-x-0 top-16 z-40 p-5 sm:p-6 bg-white dark:bg-[#0E0E16] border-b border-black/10 dark:border-white/10 shadow-2xl flex flex-col gap-4 lg:hidden text-[#0A0A0E] dark:text-[#F4F4F8] max-h-[calc(100vh-4rem)] overflow-y-auto"
             >
               <div className="space-y-1">
                 {navLinks.map((link) => {
@@ -205,7 +205,7 @@ export function Navbar() {
                         "block px-4 py-3 rounded-2xl text-sm font-bold transition-colors font-sans",
                         isActive
                           ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs"
-                          : "text-[#5A5A68] hover:text-[#0A0A0E] hover:bg-[#F4F4F8]"
+                          : "text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white hover:bg-[#F4F4F8] dark:hover:bg-white/10"
                       )}
                     >
                       {link.label}
@@ -214,12 +214,12 @@ export function Navbar() {
                 })}
               </div>
 
-              <div className="pt-3 border-t border-black/8 flex flex-col sm:flex-row gap-2.5">
+              <div className="pt-3 border-t border-black/8 dark:border-white/10 flex flex-col sm:flex-row gap-2.5">
                 {isAuthenticated ? (
                   <Link
                     href={user?.role === "brand" ? "/app/brand/campaigns" : "/app/dashboard"}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="w-full py-3 text-center rounded-2xl bg-[#0A0A0E] text-white text-xs font-bold"
+                    className="w-full py-3 text-center rounded-2xl bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] text-xs font-bold"
                   >
                     Go to Workspace
                   </Link>
@@ -228,7 +228,7 @@ export function Navbar() {
                     <Link
                       href="/login"
                       onClick={() => setMobileMenuOpen(false)}
-                      className="w-full py-3 text-center rounded-2xl bg-[#F4F4F8] text-xs font-bold text-[#0A0A0E] border border-black/5"
+                      className="w-full py-3 text-center rounded-2xl bg-[#F4F4F8] dark:bg-[#181824] text-xs font-bold text-[#0A0A0E] dark:text-white border border-black/5 dark:border-white/10"
                     >
                       Sign In
                     </Link>

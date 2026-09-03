@@ -725,3 +725,26 @@ html.lenis, html.lenis body {
   color: #F4F4F8;
   border-color: rgba(255, 255, 255, 0.1);
 }
+
+/* ── 11. HEADERS, FOOTERS & PLAN BUTTONS ── */
+.dark footer {
+  background-color: #07070B !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: #8E8EA4 !important;
+}
+
+.dark footer h4 {
+  color: #FFFFFF !important;
+}
+
+.dark footer a:not([class*="bg-[#FFD21F]"]) {
+  color: #8E8EA4 !important;
+}
+
+.dark footer a:not([class*="bg-[#FFD21F]"]):hover {
+  color: #FFFFFF !important;
+}
+
+.dark header {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
