@@ -640,8 +640,8 @@ export function ChatWorkspace() {
                   className={cn(
                     "px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold transition-all shrink-0 select-none",
                     activeTab === tab.id
-                      ? "bg-[#0A0A0E] text-white shadow-2xs"
-                      : "bg-[#F0F0F4] hover:bg-[#EAEAEF] text-[#6A6A78]"
+                      ? "bg-[#0A0A0E] dark:bg-[#222234] text-white dark:text-[#FFD21F] border border-transparent dark:border-[#FFD21F]/40 shadow-2xs font-bold"
+                      : "bg-[#F0F0F4] dark:bg-[#14141E] hover:bg-[#EAEAEF] dark:hover:bg-[#1E1E2C] text-[#6A6A78] dark:text-[#8E8EA4]"
                   )}
                 >
                   {tab.label}
@@ -651,19 +651,19 @@ export function ChatWorkspace() {
           </div>
 
           {/* Conversation List Scroll Area */}
-          <div className="flex-1 overflow-y-auto divide-y divide-black/5">
+          <div className="flex-1 overflow-y-auto divide-y divide-black/5 dark:divide-white/5">
             {conversations.length === 0 ? (
               <div className="p-8 text-center space-y-3 text-[#7A7A8A]">
                 <Inbox className="w-8 h-8 mx-auto text-[#C0C0CC]" />
                 <div>
-                  <p className="text-xs font-bold text-[#0A0A0E]">No conversations yet</p>
+                  <p className="text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8]">No conversations yet</p>
                   <p className="text-[11px] mt-1 leading-relaxed text-[#7A7A8A]">
                     Click &ldquo;New Chat&rdquo; to start messaging any creator, brand, or platform support.
                   </p>
                 </div>
                 <button
                   onClick={() => setIsNewChatModalOpen(true)}
-                  className="px-4 py-2 rounded-full bg-[#0A0A0E] text-white text-xs font-bold shadow-2xs"
+                  className="px-4 py-2 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] text-xs font-bold shadow-2xs"
                 >
                   Start Conversation
                 </button>
@@ -676,7 +676,7 @@ export function ChatWorkspace() {
                     setSearchQuery("");
                     setActiveTab("all");
                   }}
-                  className="text-xs text-[#0A0A0E] underline font-bold"
+                  className="text-xs text-[#0A0A0E] dark:text-[#FFD21F] underline font-bold"
                 >
                   Reset filters
                 </button>
@@ -700,8 +700,8 @@ export function ChatWorkspace() {
                     className={cn(
                       "w-full p-4 text-left flex items-start gap-3 transition-all cursor-pointer group relative",
                       isActive
-                        ? "bg-white border-l-3 border-[#FFD21F] shadow-xs"
-                        : "hover:bg-white/70"
+                        ? "bg-white dark:bg-[#1C1C2C] border-l-3 border-[#FFD21F] shadow-xs"
+                        : "hover:bg-white/70 dark:hover:bg-white/5"
                     )}
                   >
                     {/* Avatar with Online Presence Dot */}
@@ -719,7 +719,7 @@ export function ChatWorkspace() {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-1 mb-0.5">
                         <div className="flex items-center gap-1.5 min-w-0">
-                          <span className="font-bold text-xs text-[#0A0A0E] truncate font-display">{pName}</span>
+                          <span className="font-bold text-xs text-[#0A0A0E] dark:text-[#F4F4F8] truncate font-display">{pName}</span>
                           <span
                             className={cn(
                               "text-[8px] font-mono font-bold px-1.5 py-0.5 rounded-full uppercase shrink-0",

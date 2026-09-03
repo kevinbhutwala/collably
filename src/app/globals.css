@@ -598,8 +598,7 @@ html.lenis, html.lenis body {
 }
 
 /* ── 5. CARDS, WORKSPACES & PANELS ── */
-.dark .bg-white,
-.dark [class*="bg-white"] {
+.dark .bg-white {
   background-color: #12121A !important;
 }
 
@@ -620,6 +619,40 @@ html.lenis, html.lenis body {
 .dark .bg-zinc-100,
 .dark .bg-gray-100 {
   background-color: #181824 !important;
+}
+
+/* ── 5B. SELECTED, ACTIVE & HIGHLIGHTED CARDS / ITEMS ──
+   Selected, active, or highlighted cards / tabs / items MUST REMAIN DARK in dark mode!
+   Never flash white backgrounds or light yellow washes in dark mode.
+   Keep backgrounds sleek carbon dark with solar gold accents & crisp light text. */
+.dark [class*="bg-[#FFFDF5]"],
+.dark [class*="bg-[#FFFDE7]"],
+.dark [class*="from-[#FFFDF5]"],
+.dark [class*="to-[#FFFDF5]"],
+.dark [class*="via-[#FFFDF5]"],
+.dark [class*="from-[#FFF9E6]"],
+.dark [class*="to-[#FFF9E6]"],
+.dark [class*="via-[#FFF9E6]"],
+.dark [class*="from-[#FFF3D0]"],
+.dark [class*="to-[#FFF3D0]"],
+.dark [class*="via-[#FFF3D0]"],
+.dark [class*="bg-amber-50"],
+.dark [class*="bg-yellow-50"],
+.dark [aria-selected="true"],
+.dark [data-state="active"],
+.dark [data-selected="true"] {
+  background-color: #161624 !important;
+  background-image: none !important;
+  border-color: rgba(255, 210, 31, 0.45) !important;
+  color: #F4F4F8 !important;
+}
+
+/* Ensure child text and labels inside highlighted / selected elements are crisp off-white */
+.dark [class*="bg-[#FFFDF5]"] *:not(button):not(button *):not(a[class*="from-[#FFD21F]"] *):not(a[class*="bg-[#FFD21F]"] *),
+.dark [class*="from-[#FFFDF5]"] *:not(button):not(button *):not(a[class*="from-[#FFD21F]"] *):not(a[class*="bg-[#FFD21F]"] *),
+.dark [aria-selected="true"] *:not(button):not(button *),
+.dark [data-state="active"] *:not(button):not(button *) {
+  color: #F4F4F8 !important;
 }
 
 /* ── 6. FORM CONTROLS & INPUTS ── */

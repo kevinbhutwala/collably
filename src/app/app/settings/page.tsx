@@ -228,8 +228,8 @@ export default function SettingsPage() {
           className={`px-4 py-2.5 rounded-t-2xl font-bold text-xs transition-all flex items-center gap-2 border-b-2 shrink-0 ${
 
             activeTab === "billing"
-              ? "border-[#0A0A0E] text-[#0A0A0E] bg-white"
-              : "border-transparent text-[#6A6A78] hover:text-[#0A0A0E]"
+              ? "border-[#0A0A0E] dark:border-[#FFD21F] text-[#0A0A0E] dark:text-[#FFD21F] bg-white dark:bg-[#1A1A28] shadow-xs"
+              : "border-transparent text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
           }`}
         >
           <CreditCard className="w-4 h-4 text-[#FFD21F]" />
@@ -240,8 +240,8 @@ export default function SettingsPage() {
           onClick={() => setActiveTab("payout")}
           className={`px-4 py-2.5 rounded-t-2xl font-bold text-xs transition-all flex items-center gap-2 border-b-2 shrink-0 ${
             activeTab === "payout"
-              ? "border-[#0A0A0E] text-[#0A0A0E] bg-white"
-              : "border-transparent text-[#6A6A78] hover:text-[#0A0A0E]"
+              ? "border-[#0A0A0E] dark:border-[#FFD21F] text-[#0A0A0E] dark:text-[#FFD21F] bg-white dark:bg-[#1A1A28] shadow-xs"
+              : "border-transparent text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
           }`}
         >
           <Wallet className="w-4 h-4 text-[#FFD21F]" />
@@ -252,8 +252,8 @@ export default function SettingsPage() {
           onClick={() => setActiveTab("security")}
           className={`px-4 py-2.5 rounded-t-2xl font-bold text-xs transition-all flex items-center gap-2 border-b-2 shrink-0 ${
             activeTab === "security"
-              ? "border-[#0A0A0E] text-[#0A0A0E] bg-white"
-              : "border-transparent text-[#6A6A78] hover:text-[#0A0A0E]"
+              ? "border-[#0A0A0E] dark:border-[#FFD21F] text-[#0A0A0E] dark:text-[#FFD21F] bg-white dark:bg-[#1A1A28] shadow-xs"
+              : "border-transparent text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
           }`}
         >
           <Smartphone className="w-4 h-4 text-[#FFD21F]" />
@@ -264,8 +264,8 @@ export default function SettingsPage() {
           onClick={() => setActiveTab("appearance")}
           className={`px-4 py-2.5 rounded-t-2xl font-bold text-xs transition-all flex items-center gap-2 border-b-2 shrink-0 ${
             activeTab === "appearance"
-              ? "border-[#0A0A0E] text-[#0A0A0E] bg-white"
-              : "border-transparent text-[#6A6A78] hover:text-[#0A0A0E]"
+              ? "border-[#0A0A0E] dark:border-[#FFD21F] text-[#0A0A0E] dark:text-[#FFD21F] bg-white dark:bg-[#1A1A28] shadow-xs"
+              : "border-transparent text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
           }`}
         >
           <Sun className="w-4 h-4 text-[#FFD21F]" />
@@ -429,10 +429,10 @@ export default function SettingsPage() {
                     key={p.id}
                     className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between transition-all relative border ${
                       p.highlight
-                        ? "bg-gradient-to-b from-[#FFFDF5] to-white border-2 border-[#FFD21F] shadow-[0_8px_30px_rgba(255,210,31,0.2)]"
+                        ? "bg-gradient-to-b from-[#FFFDF5] to-white dark:from-[#1A1A28] dark:to-[#12121C] border-2 border-[#FFD21F] shadow-[0_8px_30px_rgba(255,210,31,0.15)]"
                         : isCurrent
-                        ? "bg-white border-2 border-black/20 shadow-xs"
-                        : "bg-white border-black/10 hover:border-black/20 shadow-xs"
+                        ? "bg-white dark:bg-[#181824] border-2 border-black/20 dark:border-[#FFD21F]/50 shadow-xs"
+                        : "bg-white dark:bg-[#14141E] border-black/10 dark:border-white/10 hover:border-black/20 shadow-xs"
                     }`}
                   >
                     {p.highlight && (
@@ -443,33 +443,33 @@ export default function SettingsPage() {
                     )}
 
                     {isCurrent && !p.highlight && (
-                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-black/10 border border-black/20 text-[#0A0A0E] font-mono font-extrabold text-[10px] tracking-wider uppercase shadow-xs z-20">
+                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-black/10 dark:bg-[#FFD21F]/20 border border-black/20 dark:border-[#FFD21F]/40 text-[#0A0A0E] dark:text-[#FFD21F] font-mono font-extrabold text-[10px] tracking-wider uppercase shadow-xs z-20">
                         ACTIVE PLAN
                       </div>
                     )}
 
                     <div className="space-y-4">
                       <div>
-                        <h4 className="text-lg font-bold font-display text-[#0A0A0E]">{p.name}</h4>
-                        <p className="text-xs text-[#6A6A78] mt-1 font-sans leading-relaxed">
+                        <h4 className="text-lg font-bold font-display text-[#0A0A0E] dark:text-white">{p.name}</h4>
+                        <p className="text-xs text-[#6A6A78] dark:text-[#9A9AA8] mt-1 font-sans leading-relaxed">
                           {p.description}
                         </p>
                       </div>
 
                       <div className="flex items-baseline gap-1 font-mono pt-2">
-                        <span className="text-3xl font-black text-[#0A0A0E] font-display">
+                        <span className="text-3xl font-black text-[#0A0A0E] dark:text-white font-display">
                           ${price}
                         </span>
-                        <span className="text-xs text-[#6A6A78] font-sans">
+                        <span className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-sans">
                           {price === 0 ? "forever" : isAnnual ? "/mo (billed annually)" : "/month"}
                         </span>
                       </div>
 
-                      <div className="pt-3 border-t border-black/6 space-y-2.5">
+                      <div className="pt-3 border-t border-black/6 dark:border-white/10 space-y-2.5">
                         {p.featureBullets.map((bullet, idx) => (
-                          <div key={idx} className="flex items-start gap-2 text-xs text-[#3A3A48]">
-                            <div className="w-4 h-4 rounded-full bg-[#FFD21F]/25 text-[#0A0A0E] flex items-center justify-center shrink-0 mt-0.5">
-                              <Check className="w-3 h-3 text-[#0A0A0E]" />
+                          <div key={idx} className="flex items-start gap-2 text-xs text-[#3A3A48] dark:text-[#C8C8DC]">
+                            <div className="w-4 h-4 rounded-full bg-[#FFD21F]/25 dark:bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] flex items-center justify-center shrink-0 mt-0.5">
+                              <Check className="w-3 h-3 text-[#0A0A0E] dark:text-[#FFD21F]" />
                             </div>
                             <span className="leading-tight">{bullet}</span>
                           </div>
@@ -483,10 +483,10 @@ export default function SettingsPage() {
                         disabled={isCurrent || (isLoading && isProcessing)}
                         className={`w-full py-3 rounded-full text-xs font-bold transition-all flex items-center justify-center gap-2 active:scale-98 ${
                           isCurrent
-                            ? "bg-black/5 text-[#8A8A9A] cursor-not-allowed border border-black/10"
+                            ? "bg-black/5 dark:bg-white/10 text-[#8A8A9A] dark:text-[#7A7A8E] cursor-not-allowed border border-black/10 dark:border-white/10"
                             : p.highlight
                             ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] shadow-[0_4px_16px_rgba(255,210,31,0.4)] font-extrabold"
-                            : "bg-[#0A0A0E] hover:bg-[#1A1A24] text-white"
+                            : "bg-[#0A0A0E] dark:bg-white dark:text-[#0A0A0E] hover:bg-[#1A1A24] text-white"
                         }`}
                       >
                         {isProcessing ? (
@@ -643,14 +643,14 @@ export default function SettingsPage() {
                 onClick={() => handleSetTheme("light")}
                 className={`p-5 rounded-2xl border-2 transition-all cursor-pointer space-y-3 relative hover-lift ${
                   currentTheme === "light"
-                    ? "border-[#FFD21F] bg-[#FFFDF5] shadow-xs"
-                    : "border-black/8 bg-[#FAFAFC] hover:border-black/20"
+                    ? "border-[#FFD21F] bg-[#FFFDF5] dark:bg-[#1A1A28] shadow-xs"
+                    : "border-black/8 dark:border-white/10 bg-[#FAFAFC] dark:bg-[#12121A] hover:border-black/20"
                 }`}
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Sun className="w-5 h-5 text-amber-500" />
-                    <span className="text-sm font-extrabold text-[#0A0A0E] font-display">Pure White &amp; Solar</span>
+                    <span className="text-sm font-extrabold text-[#0A0A0E] dark:text-white font-display">Pure White &amp; Solar</span>
                   </div>
                   {currentTheme === "light" && (
                     <span className="px-2 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-[10px] font-mono font-bold flex items-center gap-1">
@@ -660,22 +660,22 @@ export default function SettingsPage() {
                   )}
                 </div>
 
-                <div className="p-3 rounded-xl bg-white border border-black/8 space-y-2">
+                <div className="p-3 rounded-xl bg-white dark:bg-[#161622] border border-black/8 dark:border-white/10 space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-[#0A0A0E]">Milestone Brief</span>
+                    <span className="text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8]">Milestone Brief</span>
                     <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E]">
                       $3,500
                     </span>
                   </div>
-                  <p className="text-[11px] text-[#7A7A8A]">Clean paper white background with crisp typography and sunlight yellow accents.</p>
+                  <p className="text-[11px] text-[#7A7A8A] dark:text-[#A0A0B4]">Clean paper white background with crisp typography and sunlight yellow accents.</p>
                 </div>
 
                 <button
                   type="button"
                   className={`w-full py-2 rounded-xl text-xs font-bold transition-all ${
                     currentTheme === "light"
-                      ? "bg-[#0A0A0E] text-white"
-                      : "bg-white border border-black/10 text-[#0A0A0E] hover:bg-black/5"
+                      ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E]"
+                      : "bg-white dark:bg-white/10 border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white hover:bg-black/5"
                   }`}
                 >
                   {currentTheme === "light" ? "Current Mode" : "Select Light Theme"}
@@ -687,8 +687,8 @@ export default function SettingsPage() {
                 onClick={() => handleSetTheme("dark")}
                 className={`p-5 rounded-2xl border-2 transition-all cursor-pointer space-y-3 relative hover-lift ${
                   currentTheme === "dark"
-                    ? "border-[#FFD21F] bg-[#14141E] shadow-xs text-white"
-                    : "border-black/8 bg-[#181824] text-white hover:border-white/30"
+                    ? "border-[#FFD21F] bg-[#14141E] shadow-[0_0_20px_rgba(255,210,31,0.12)] text-white"
+                    : "border-black/8 dark:border-white/10 bg-[#181824] text-white hover:border-white/30"
                 }`}
               >
                 <div className="flex items-center justify-between">

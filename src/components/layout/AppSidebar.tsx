@@ -163,18 +163,18 @@ export function AppSidebar() {
 
       {/* ── Upgrade CTA — pinned permanently at bottom ── */}
       {role !== "agency_admin" && role !== "super_admin" && (
-        <div className="shrink-0 p-3 border-t border-black/8">
-          <div className="p-3.5 rounded-2xl bg-gradient-to-br from-[#FFFDF5] via-[#FFF9E6] to-[#FFF3D0] border border-[#FFD21F]/40 space-y-2 shadow-xs text-[#0A0A0E]">
+        <div className="shrink-0 p-3 border-t border-black/8 dark:border-white/10">
+          <div className="p-3.5 rounded-2xl bg-gradient-to-br from-[#FFFDF5] via-[#FFF9E6] to-[#FFF3D0] dark:from-[#181826] dark:via-[#161622] dark:to-[#1C1C2A] border border-[#FFD21F]/40 space-y-2 shadow-xs text-[#0A0A0E] dark:text-white">
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1.5 text-xs font-bold text-[#0A0A0E]">
-                <Zap className="w-3.5 h-3.5 text-[#0A0A0E] fill-[#FFD21F]" />
+              <div className="flex items-center gap-1.5 text-xs font-bold text-[#0A0A0E] dark:text-white">
+                <Zap className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F] fill-[#FFD21F]" />
                 <span>{role === "creator" ? "Creator Pro" : "Brand Growth"}</span>
               </div>
               <span className="text-[9px] font-mono px-1.5 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] font-bold border border-black/10">
                 UPGRADE
               </span>
             </div>
-            <p className="text-[11px] text-[#6A6A78] leading-tight font-sans">
+            <p className="text-[11px] text-[#6A6A78] dark:text-[#A0A0B4] leading-tight font-sans">
               {role === "creator"
                 ? "Get instant payouts & deep audience retention intel."
                 : "Unlock active briefs, Creator CRM & AI scoring."}

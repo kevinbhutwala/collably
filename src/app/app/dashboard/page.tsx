@@ -80,24 +80,24 @@ export default function DashboardPage() {
   return (
     <div className="space-y-8 text-[#0A0A0E] font-sans select-none">
       {/* ── Welcome Banner ── */}
-      <div className="rounded-3xl bg-gradient-to-br from-[#FFFDF5] via-white to-[#FFF9E6] border border-[#FFD21F]/30 p-5 sm:p-7 shadow-[0_10px_30px_rgba(0,0,0,0.04)] relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-5">
+      <div className="rounded-3xl bg-gradient-to-br from-[#FFFDF5] via-white to-[#FFF9E6] dark:from-[#181826] dark:via-[#14141E] dark:to-[#1A1A28] border border-[#FFD21F]/30 dark:border-[#FFD21F]/40 p-5 sm:p-7 shadow-[0_10px_30px_rgba(0,0,0,0.04)] relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-5">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#FFD21F]/15 rounded-full blur-3xl pointer-events-none" />
 
         <div className="space-y-1.5 relative z-10 max-w-xl">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[10px] font-mono font-bold text-[#0A0A0E]">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[10px] font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-pulse" />
               Live
             </span>
-            <span className="px-2 py-0.5 rounded-full bg-black/5 border border-black/8 text-[#0A0A0E] text-[10px] font-mono font-bold uppercase">
+            <span className="px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10 border border-black/8 dark:border-white/10 text-[#0A0A0E] dark:text-[#F4F4F8] text-[10px] font-mono font-bold uppercase">
               {role.replace(/_/g, " ")}
             </span>
           </div>
 
-          <h1 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
+          <h1 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
             Welcome back, <span className="font-black">{user?.name || "Collaborator"}</span>
           </h1>
-          <p className="text-xs sm:text-sm text-[#5A5A68]">
+          <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4]">
             {role === "creator"
               ? "Here is a summary of your active deliverables, earnings, and briefs."
               : "Here is a summary of your campaigns, creators, and escrow milestones."}
