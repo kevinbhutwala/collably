@@ -116,7 +116,8 @@ test.describe('Collably Dark Mode & Text Contrast Verification Suite', () => {
     await loginAs(page, 'creator@collably.io', 'password123');
 
     // Navigate to messages
-    await page.goto(`${BASE_URL}/app/messages`, { waitUntil: 'networkidle' });
+    await page.goto(`${BASE_URL}/app/messages`, { waitUntil: 'domcontentloaded' });
+    await page.waitForTimeout(1000);
 
     // Explicitly activate dark mode
     await page.evaluate(() => {
