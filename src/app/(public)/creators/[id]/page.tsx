@@ -59,11 +59,36 @@ export default function CreatorDetailPage() {
     );
   }
 
+  const socialLinks = creator.socialAccounts?.map((s) => s.url) || [];
+
+  const creatorJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    mainEntity: {
+      "@type": "Person",
+      name: creator.fullName,
+      jobTitle: creator.headline || "Cinematic Creator",
+      description: creator.bio,
+      image: creator.avatarUrl,
+      sameAs: socialLinks,
+      interactionStatistic: {
+        "@type": "InteractionCounter",
+        interactionType: "https://schema.org/FollowAction",
+        userInteractionCount: creator.totalFollowers || 0,
+      },
+    },
+  };
+
   return (
-    <div className="py-12 sm:py-16 bg-[#FAFAFC] text-[#0A0A0E] min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        {/* Profile Master Card */}
-        <div className="rounded-3xl bg-white border border-black/8 p-8 sm:p-12 shadow-xs space-y-8">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(creatorJsonLd) }}
+      />
+      <div className="py-12 sm:py-16 bg-[#FAFAFC] text-[#0A0A0E] min-h-screen">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          {/* Profile Master Card */}
+          <div className="rounded-3xl bg-white border border-black/8 p-8 sm:p-12 shadow-xs space-y-8">
           <div className="flex flex-col md:flex-row md:items-start justify-between gap-8">
             <div className="flex flex-col sm:flex-row items-start gap-6">
               <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border border-black/8 bg-[#F5F5F9] shrink-0 shadow-xs">
@@ -229,5 +254,6 @@ export default function CreatorDetailPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

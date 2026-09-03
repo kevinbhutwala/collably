@@ -106,11 +106,41 @@ export default function CampaignDetailPage() {
     );
   }
 
+  const briefJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    title: campaign.title,
+    description: campaign.description || campaign.tagline,
+    datePosted: campaign.timeline?.startDate || new Date().toISOString(),
+    validThrough: campaign.timeline?.applicationDeadline || campaign.timeline?.campaignEndDate,
+    employmentType: "CONTRACTOR",
+    hiringOrganization: {
+      "@type": "Organization",
+      name: campaign.brand?.companyName || "Collably Brand Partner",
+      sameAs: "https://collably-ashen.vercel.app",
+      logo: campaign.brand?.logoUrl,
+    },
+    baseSalary: {
+      "@type": "MonetaryAmount",
+      currency: campaign.budget?.currency || "USD",
+      value: {
+        "@type": "QuantitativeValue",
+        value: campaign.budget?.perCreatorBudget || campaign.budget?.totalBudget || 0,
+        unitText: "PROJECT",
+      },
+    },
+  };
+
   return (
-    <div className="py-12 sm:py-16 bg-[#FAFAFC] text-[#0A0A0E] min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        {/* Campaign Master Card */}
-        <div className="rounded-3xl bg-white border border-black/8 overflow-hidden shadow-xs">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(briefJsonLd) }}
+      />
+      <div className="py-12 sm:py-16 bg-[#FAFAFC] text-[#0A0A0E] min-h-screen">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          {/* Campaign Master Card */}
+          <div className="rounded-3xl bg-white border border-black/8 overflow-hidden shadow-xs">
           {/* Banner Hero */}
           <div className="relative h-64 sm:h-80 w-full bg-[#F5F5F9]">
             <SafeImage
@@ -328,5 +358,6 @@ export default function CampaignDetailPage() {
         onApplyPitch={(pitchText) => setPitch(pitchText)}
       />
     </div>
+    </>
   );
 }

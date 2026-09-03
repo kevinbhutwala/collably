@@ -1,6 +1,16 @@
 import fs from "fs";
 import path from "path";
-import { getSupabaseAdmin, isSupabaseConfigured } from "../src/server/db/supabase";
+import crypto from "crypto";
+import { getSupabaseAdmin, isSupabaseConfigured } from "../src/server/db/supabase.ts";
+
+function toUuid(id: string): string {
+  if (!id) return "00000000-0000-4000-a000-000000000000";
+  if (/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)) {
+    return id;
+  }
+  const hash = crypto.createHash("sha256").update(id).digest("hex");
+  return `${hash.slice(0, 8)}-${hash.slice(8, 12)}-4${hash.slice(13, 16)}-a${hash.slice(17, 20)}-${hash.slice(20, 32)}`;
+}
 
 async function main() {
   console.log("=================================================");
@@ -49,11 +59,11 @@ async function main() {
   if (data.users && data.users.length > 0) {
     for (const u of data.users) {
       const { error } = await supabase.from("profiles").upsert({
-        id: u.id,
-        user_id: u.id,
+        id: toUuid(u.id),
+        user_id: toUuid(u.id),
         email: u.email,
         name: u.name,
-        role: u.role,
+        role: u.role === "brand" ? "brand_owner" : u.role === "admin" ? "super_admin" : u.role,
         avatar_url: u.avatarUrl,
         verified: u.verified || false,
         created_at: u.createdAt || new Date().toISOString(),
@@ -72,8 +82,8 @@ async function main() {
   if (data.creators && data.creators.length > 0) {
     for (const c of data.creators) {
       const { error } = await supabase.from("creator_profiles").upsert({
-        id: c.id,
-        profile_id: c.userId || c.id,
+        id: toUuid(c.id),
+        profile_id: toUuid(c.userId || c.id),
         handle: c.handle,
         headline: c.headline,
         bio: c.bio,
@@ -107,8 +117,8 @@ async function main() {
   if (data.brands && data.brands.length > 0) {
     for (const b of data.brands) {
       const { error } = await supabase.from("brand_profiles").upsert({
-        id: b.id,
-        profile_id: b.userId || b.id,
+        id: toUuid(b.id),
+        profile_id: toUuid(b.userId || b.id),
         company_name: b.companyName,
         industry: b.industry,
         headline: b.headline,

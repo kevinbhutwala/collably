@@ -38,7 +38,12 @@ export class MediaService {
 
     let uploadUrl = `/api/media/upload?path=${encodeURIComponent(storagePath)}&bucket=${bucket}`;
 
-    if (isSupabaseConfigured) {
+    const r2AccountId = process.env.R2_ACCOUNT_ID;
+    const r2BucketName = process.env.R2_BUCKET_NAME || bucket;
+
+    if (r2AccountId && process.env.R2_ACCESS_KEY_ID && process.env.R2_SECRET_ACCESS_KEY) {
+      uploadUrl = `https://${r2AccountId}.r2.cloudflarestorage.com/${r2BucketName}/${storagePath}`;
+    } else if (isSupabaseConfigured) {
       const supabase = getSupabaseAdmin()!;
       try {
         const { data, error } = await supabase.storage.from(bucket).createSignedUploadUrl(storagePath);
@@ -68,6 +73,12 @@ export class MediaService {
   }
 
   async getSignedDownloadUrl(storagePath: string, bucket: string = "content-submissions"): Promise<string> {
+    const r2AccountId = process.env.R2_ACCOUNT_ID;
+    const r2BucketName = process.env.R2_BUCKET_NAME || bucket;
+    if (r2AccountId) {
+      return `https://${r2AccountId}.r2.cloudflarestorage.com/${r2BucketName}/${storagePath}`;
+    }
+
     if (isSupabaseConfigured) {
       const supabase = getSupabaseAdmin()!;
       try {
