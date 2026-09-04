@@ -292,10 +292,13 @@ export interface DeliverableSubmission {
   id: string;
   deliverableId: string;
   version: number;
-  mediaUrls: string[];
-  captionText: string;
+  assetUrl: string;
+  notes?: string;
+  mediaUrls?: string[];
+  captionText?: string;
   trackingLink?: string;
   submittedAt: string;
+  slaDeadline?: string;
   creatorNotes?: string;
   feedback?: string;
   status: DeliverableStatus;
@@ -319,6 +322,10 @@ export interface CollaborationDeliverableItem {
   payoutAmount: number;
   revisionCount: number;
   maxRevisions: number;
+  assetUrl?: string;
+  notes?: string;
+  submittedAt?: string;
+  slaDeadline?: string;
   submissions: DeliverableSubmission[];
 }
 

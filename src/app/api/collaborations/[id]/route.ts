@@ -29,7 +29,7 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
     }
 
     const body = await req.json();
-    const { action, deliverableId, mediaUrls, captionText, creatorNotes } = body;
+    const { action, deliverableId, assetUrl, notes, mediaUrls, captionText, creatorNotes } = body;
 
     if (action === "submit") {
       // Must be creator or admin
@@ -37,10 +37,17 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
         return NextResponse.json({ error: "Forbidden: Only creators can submit deliverable drafts" }, { status: 403 });
       }
 
+      const resolvedUrl = assetUrl || (mediaUrls && mediaUrls[0]) || "";
+      if (resolvedUrl && !resolvedUrl.startsWith("https://")) {
+        return NextResponse.json({ error: "Deliverable link must start with https://" }, { status: 400 });
+      }
+
       const updatedDel = collaborationRepo.submitDeliverableDraft(params.id, deliverableId, {
-        mediaUrls,
+        assetUrl: resolvedUrl,
+        notes: notes !== undefined ? notes : creatorNotes,
+        mediaUrls: resolvedUrl ? [resolvedUrl] : mediaUrls,
         captionText,
-        creatorNotes,
+        creatorNotes: notes !== undefined ? notes : creatorNotes,
       });
 
       auditRepo.logEvent({

@@ -123,10 +123,27 @@ export const ApplicationSubmissionSchema = z.object({
   sampleLinks: z.array(z.string().url('Must be valid URL')).min(1, 'Provide at least 1 previous work link'),
 });
 
+export const DeliverableExternalSubmissionSchema = z.object({
+  assetUrl: z
+    .string()
+    .url("Must be a valid URL")
+    .refine((url) => url.startsWith("https://"), {
+      message: "Asset link must start with https://",
+    }),
+  notes: z.string().optional(),
+});
+
 export const ContentSubmissionSchema = z.object({
   deliverableId: z.string().min(1),
-  mediaUrls: z.array(z.string().url()).min(1, 'Upload or link at least one asset'),
-  captionText: z.string().min(10, 'Caption & tags copy is required'),
+  assetUrl: z
+    .string()
+    .url("Must be a valid URL")
+    .refine((url) => url.startsWith("https://"), {
+      message: "Asset link must start with https://",
+    }),
+  notes: z.string().optional(),
+  mediaUrls: z.array(z.string().url()).optional(),
+  captionText: z.string().optional(),
   trackingLink: z.string().url().optional().or(z.literal('')),
   creatorNotes: z.string().optional(),
 });

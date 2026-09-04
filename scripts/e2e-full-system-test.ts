@@ -194,9 +194,9 @@ assert("Messaging", "5.3 Brand partner generated context-aware review response",
 assert("Channel State", "5.4 Channel persisted with 2 verified messages", channel.messages.length === 2);
 
 // -----------------------------------------------------------------------------
-// MODULE 6: 4K FRAME QA PLAYER, DELIVERABLES & ESCROW RELEASE
+// MODULE 6: EXTERNAL LINK DELIVERABLE REVIEW & ESCROW RELEASE
 // -----------------------------------------------------------------------------
-console.log("\n🎥 --- 6. 4K FRAME QA REVIEW & ESCROW RELEASE ---");
+console.log("\n🔗 --- 6. EXTERNAL LINK DELIVERABLE REVIEW & ESCROW RELEASE ---");
 const collab = {
   id: `collab-${Date.now()}`,
   campaignId: campaignBrief.id,
@@ -206,18 +206,31 @@ const collab = {
     {
       id: `del-1`,
       type: "YouTube 60s Integration",
-      status: "under_review",
-      timecodedNotes: [{ timestampSec: 42, note: "Product callout clean and high contrast" }],
+      status: "submitted",
+      assetUrl: "https://drive.google.com/file/d/apex-v2-walkthrough/view?usp=sharing",
+      notes: "4K uncompressed cut. Audio mixed to -14 LUFS. Product b-roll starts at 04:12.",
+      submittedAt: new Date().toISOString(),
+      slaDeadline: new Date(Date.now() + 120 * 60 * 60 * 1000).toISOString(),
     },
   ],
 };
 
-assert("QA Player", "6.1 Timecoded frame annotation logged at 00:42", collab.deliverables[0].timecodedNotes[0].timestampSec === 42);
+assert(
+  "Deliverable Review",
+  "6.1 External Google Drive deliverable link and 120h SLA verified",
+  collab.deliverables[0].assetUrl.startsWith("https://drive.google.com") &&
+    collab.deliverables[0].status === "submitted" &&
+    collab.deliverables[0].notes.includes("4K uncompressed cut")
+);
 
-// Brand approves deliverable
+// Brand approves deliverable via review card
 collab.deliverables[0].status = "approved";
 collab.escrowStatus = "released";
-assert("Escrow Release", "6.2 Deliverable approved and escrow tranche marked released", collab.deliverables[0].status === "approved" && collab.escrowStatus === "released");
+assert(
+  "Escrow Release",
+  "6.2 Deliverable approved and escrow tranche marked released",
+  collab.deliverables[0].status === "approved" && collab.escrowStatus === "released"
+);
 
 // -----------------------------------------------------------------------------
 // MODULE 7: FINANCIAL LEDGER & 10% TRANSPARENT FEE CALCULATIONS

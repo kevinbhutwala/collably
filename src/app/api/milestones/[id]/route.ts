@@ -103,7 +103,7 @@ export async function PATCH(
     const body = await req.json();
 
     // Enforce Phase 2 State Transition Rule: Cannot submit deliverables if milestone is still in DRAFT
-    if (body.action === "submit" || body.mediaUrls) {
+    if (body.action === "submit" || body.mediaUrls || body.assetUrl) {
       if (collaboration.status === "cancelled") {
         return NextResponse.json(
           { error: "Cannot submit deliverables to a cancelled collaboration" },
@@ -124,16 +124,32 @@ export async function PATCH(
         );
       }
 
+      const assetUrl = body.assetUrl || (body.mediaUrls && body.mediaUrls[0]) || "";
+      if (assetUrl && !assetUrl.startsWith("https://")) {
+        return NextResponse.json(
+          { error: "Deliverable link must start with https://" },
+          { status: 400 }
+        );
+      }
+
       const updated = collaborationRepo.submitDeliverableDraft(
         collaboration.id,
         deliverable.id,
         {
-          mediaUrls: body.mediaUrls || [],
+          assetUrl,
+          notes: body.notes !== undefined ? body.notes : body.creatorNotes,
+          mediaUrls: assetUrl ? [assetUrl] : body.mediaUrls || [],
           captionText: body.captionText || "",
-          creatorNotes: body.creatorNotes || "",
+          creatorNotes: body.notes !== undefined ? body.notes : body.creatorNotes,
         }
       );
-      return NextResponse.json({ success: true, milestone: updated });
+      return NextResponse.json({
+        success: true,
+        milestone: updated,
+        status: "SUBMITTED",
+        submittedAt: updated?.submittedAt,
+        slaDeadline: updated?.slaDeadline,
+      });
     }
 
     // Role-based status transitions

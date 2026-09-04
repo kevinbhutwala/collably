@@ -278,18 +278,24 @@ const collab = collaborationRepo.createCollaboration({
 });
 assert("Collaboration", "5.1 Active collaboration unlocked with $3,000 milestone", collab.totalAgreedBudget === 3000);
 
-// Creator submits deliverable draft
+// Creator submits external deliverable link (Google Drive)
 const delId = collab.deliverables[0].id;
 const updatedCollab = collaborationRepo.submitDeliverableDraft(collab.id, delId, {
-  mediaUrls: ["https://collably.io/storage/submissions/draft1.mp4"],
-  captionText: "Check out Apex 2.0 for automated coding. Link in comments.",
-  creatorNotes: "Segment starts at timestamp @04:20 in full video.",
+  assetUrl: "https://drive.google.com/file/d/apex-v2-draft/view?usp=sharing",
+  notes: "Segment starts at timestamp @04:20 in full video. Link sharing set to Anyone with link.",
 });
-assert("Deliverables", "5.2 Creator submitted video deliverable draft", updatedCollab?.submissions?.length === 1);
+assert(
+  "Deliverables",
+  "5.2 Creator submitted external Google Drive deliverable link (SUBMITTED)",
+  updatedCollab?.submissions?.length === 1 &&
+    updatedCollab?.status === "submitted" &&
+    updatedCollab?.assetUrl === "https://drive.google.com/file/d/apex-v2-draft/view?usp=sharing" &&
+    Boolean(updatedCollab?.slaDeadline)
+);
 
-// Brand approves deliverable
+// Brand reviews and approves deliverable
 const approveResult = collaborationRepo.approveDeliverable(collab.id, delId);
-assert("Deliverables", "5.3 Brand approved deliverable for payout release", approveResult === true);
+assert("Deliverables", "5.3 Brand approved external deliverable for escrow payout release", approveResult === true);
 
 // -----------------------------------------------------------------------------
 // MODULE 6: FINANCIAL LEDGER & STRIPE / RAZORPAY SETTLEMENT

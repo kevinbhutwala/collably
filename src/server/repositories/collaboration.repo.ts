@@ -107,8 +107,10 @@ export class CollaborationRepository {
     collaborationId: string,
     deliverableId: string,
     data: {
-      mediaUrls: string[];
-      captionText: string;
+      assetUrl?: string;
+      notes?: string;
+      mediaUrls?: string[];
+      captionText?: string;
       creatorNotes?: string;
     }
   ): CollaborationDeliverableItem | null {
@@ -122,20 +124,32 @@ export class CollaborationRepository {
       const del = collab.deliverables.find((d) => d.id === deliverableId);
       if (!del) return;
 
+      const resolvedAssetUrl = data.assetUrl || (data.mediaUrls && data.mediaUrls[0]) || "";
+      const resolvedNotes = data.notes !== undefined ? data.notes : (data.creatorNotes || "");
+      const submittedAt = new Date().toISOString();
+      const slaDeadline = new Date(Date.now() + 120 * 60 * 60 * 1000).toISOString();
+
       const newSubmission: DeliverableSubmission = {
         id: `sub-${Date.now()}`,
         deliverableId,
         version: (del.submissions?.length || 0) + 1,
-        submittedAt: new Date().toISOString(),
-        mediaUrls: data.mediaUrls,
-        captionText: data.captionText,
-        creatorNotes: data.creatorNotes,
+        assetUrl: resolvedAssetUrl,
+        notes: resolvedNotes,
+        submittedAt,
+        slaDeadline,
+        mediaUrls: data.mediaUrls || (resolvedAssetUrl ? [resolvedAssetUrl] : []),
+        captionText: data.captionText || "",
+        creatorNotes: resolvedNotes,
         status: "submitted",
       };
 
       del.submissions = del.submissions || [];
       del.submissions.push(newSubmission);
       del.status = "submitted";
+      del.assetUrl = resolvedAssetUrl;
+      del.notes = resolvedNotes;
+      del.submittedAt = submittedAt;
+      del.slaDeadline = slaDeadline;
       updatedItem = del;
     });
 

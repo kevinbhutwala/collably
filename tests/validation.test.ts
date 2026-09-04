@@ -46,5 +46,39 @@ export function runValidationTests(): { total: number; passed: number; failed: n
   assert("5. REJECT executable script upload (application/x-sh)", !isAllowedMime("application/x-sh"));
   assert("6. REJECT dangerous HTML upload (text/html)", !isAllowedMime("text/html"));
 
+  // 3. Deliverable External Link Validation (Google Drive, Dropbox, Frame.io)
+  const deliverableSubmissionSchema = z.object({
+    assetUrl: z
+      .string({ required_error: "assetUrl is required" })
+      .url("Invalid URL format")
+      .refine((url) => url.startsWith("https://"), {
+        message: "assetUrl must start with https://",
+      }),
+    notes: z.string().optional(),
+  });
+
+  const validDriveSubmission = deliverableSubmissionSchema.safeParse({
+    assetUrl: "https://drive.google.com/file/d/123456789/view?usp=sharing",
+    notes: "Audio mastered at -14 LUFS, color graded.",
+  });
+  const validFrameIoSubmission = deliverableSubmissionSchema.safeParse({
+    assetUrl: "https://app.frame.io/reviews/aethel-v1",
+  });
+  const invalidHttpSubmission = deliverableSubmissionSchema.safeParse({
+    assetUrl: "http://insecure-storage.com/video.mp4",
+  });
+  const invalidNonUrlSubmission = deliverableSubmissionSchema.safeParse({
+    assetUrl: "not-a-valid-url",
+  });
+  const missingAssetUrlSubmission = deliverableSubmissionSchema.safeParse({
+    notes: "Only notes without link",
+  });
+
+  assert("7. Allow valid HTTPS Google Drive deliverable link", validDriveSubmission.success);
+  assert("8. Allow valid HTTPS Frame.io deliverable link without notes", validFrameIoSubmission.success);
+  assert("9. REJECT insecure non-HTTPS (http://) deliverable link", !invalidHttpSubmission.success);
+  assert("10. REJECT malformed non-URL string", !invalidNonUrlSubmission.success);
+  assert("11. REJECT submission missing required assetUrl", !missingAssetUrlSubmission.success);
+
   return { total, passed, failed: total - passed };
 }

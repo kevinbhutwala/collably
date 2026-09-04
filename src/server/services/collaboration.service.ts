@@ -22,7 +22,9 @@ export class CollaborationService {
   async submitDeliverable(params: {
     collaborationId: string;
     deliverableId: string;
-    mediaUrls: string[];
+    assetUrl?: string;
+    notes?: string;
+    mediaUrls?: string[];
     captionText?: string;
     creatorNotes?: string;
   }): Promise<Collaboration> {
@@ -32,16 +34,24 @@ export class CollaborationService {
     const deliverable = collab.deliverables.find((d) => d.id === params.deliverableId);
     if (!deliverable) throw new Error("Deliverable not found");
 
+    const resolvedAssetUrl = params.assetUrl || (params.mediaUrls && params.mediaUrls[0]) || "";
+    const resolvedNotes = params.notes !== undefined ? params.notes : params.creatorNotes;
+    const submittedAt = new Date().toISOString();
+    const slaDeadline = new Date(Date.now() + 120 * 60 * 60 * 1000).toISOString();
+
     const version = (deliverable.submissions?.length || 0) + 1;
     const submission: DeliverableSubmission = {
       id: `sub-${Date.now()}`,
       deliverableId: params.deliverableId,
       version,
-      mediaUrls: params.mediaUrls,
+      assetUrl: resolvedAssetUrl,
+      notes: resolvedNotes,
+      mediaUrls: params.mediaUrls || (resolvedAssetUrl ? [resolvedAssetUrl] : []),
       captionText: params.captionText || "",
-      creatorNotes: params.creatorNotes,
+      creatorNotes: resolvedNotes,
       status: "under_review",
-      submittedAt: new Date().toISOString(),
+      submittedAt,
+      slaDeadline,
       timecodedComments: [],
     };
 

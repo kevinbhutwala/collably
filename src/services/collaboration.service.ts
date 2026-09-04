@@ -30,23 +30,42 @@ class CollaborationService {
     collaborationId: string,
     deliverableId: string,
     data: {
-      mediaUrls: string[];
-      captionText: string;
+      assetUrl?: string;
+      notes?: string;
+      mediaUrls?: string[];
+      captionText?: string;
       creatorNotes?: string;
     }
   ): Promise<CollaborationDeliverableItem | null> {
-    const res = await fetch(`/api/collaborations/${collaborationId}`, {
+    const assetUrl = data.assetUrl || data.mediaUrls?.[0] || "";
+    const notes = data.notes !== undefined ? data.notes : data.creatorNotes;
+
+    const res = await fetch(`/api/milestones/${deliverableId}/deliverables`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        action: "submit",
-        deliverableId,
-        ...data,
+        assetUrl,
+        notes,
       }),
     });
-    if (!res.ok) throw new Error("Failed to submit deliverable");
+    if (!res.ok) {
+      const fallbackRes = await fetch(`/api/collaborations/${collaborationId}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "submit",
+          deliverableId,
+          assetUrl,
+          notes,
+          ...data,
+        }),
+      });
+      if (!fallbackRes.ok) throw new Error("Failed to submit deliverable");
+      const fallbackJson = await fallbackRes.json();
+      return fallbackJson.deliverable;
+    }
     const json = await res.json();
-    return json.deliverable;
+    return json.milestone;
   }
 
   async approveDeliverable(collaborationId: string, deliverableId: string): Promise<boolean> {

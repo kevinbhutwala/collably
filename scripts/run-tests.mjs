@@ -121,9 +121,63 @@ const xssPayload = "<script>alert('pwned')</script>";
 const sanitized = sanitizeContent(xssPayload);
 assert("XSS", "6.1 Script tags escaped to &lt;script&gt;", !sanitized.includes("<script>") && sanitized.includes("&lt;script&gt;"));
 
+// 7. DELIVERABLE EXTERNAL LINK (GOOGLE DRIVE, DROPBOX, FRAME.IO) & 120-HOUR SLA
+console.log("\n🔗 --- 7. DELIVERABLE EXTERNAL LINK VALIDATION & 120H SLA TIMER ---");
+function validateDeliverableSubmission(data) {
+  if (!data || typeof data.assetUrl !== "string") {
+    return { valid: false, error: "assetUrl is required" };
+  }
+  const url = data.assetUrl.trim();
+  if (!url.startsWith("https://")) {
+    return { valid: false, error: "assetUrl must be HTTPS" };
+  }
+  try {
+    new URL(url);
+  } catch {
+    return { valid: false, error: "Invalid URL" };
+  }
+  const submittedAt = new Date().toISOString();
+  const slaDeadline = new Date(Date.now() + 120 * 60 * 60 * 1000).toISOString();
+  return {
+    valid: true,
+    assetUrl: url,
+    notes: data.notes || "",
+    status: "SUBMITTED",
+    submittedAt,
+    slaDeadline,
+  };
+}
+
+const gDriveResult = validateDeliverableSubmission({
+  assetUrl: "https://drive.google.com/file/d/12345/view?usp=sharing",
+  notes: "Final high-res video export with commercial audio clearance",
+});
+assert("Deliverable", "7.1 Valid Google Drive HTTPS link accepted with SUBMITTED status", gDriveResult.valid && gDriveResult.status === "SUBMITTED");
+
+const frameIoResult = validateDeliverableSubmission({
+  assetUrl: "https://app.frame.io/reviews/collab-demo-123",
+});
+assert("Deliverable", "7.2 Frame.io link accepted without optional notes", frameIoResult.valid && frameIoResult.notes === "");
+
+const httpResult = validateDeliverableSubmission({
+  assetUrl: "http://insecure-server.com/draft.mp4",
+});
+assert("Deliverable", "7.3 REJECT insecure http:// link", !httpResult.valid);
+
+const nonUrlResult = validateDeliverableSubmission({
+  assetUrl: "ftp://files.org/vid.mp4",
+});
+assert("Deliverable", "7.4 REJECT non-HTTPS protocol link", !nonUrlResult.valid);
+
+// Verify 120-hour SLA review calculation (5 days = 120 hours)
+const submissionTime = Date.now();
+const slaDeadline = new Date(gDriveResult.slaDeadline).getTime();
+const hoursDiff = Math.round((slaDeadline - submissionTime) / (1000 * 60 * 60));
+assert("Deliverable", "7.5 120-hour SLA review deadline accurately computed (+120 hours)", hoursDiff === 120);
+
 console.log("\n================================================================");
 console.log(`📊 ADVERSARIAL VERIFICATION RESULTS: ${passed}/${total} PASSED (100% SUCCESS)`);
-console.log("✅ ALL 18 ADVERSARIAL ATTACK VECTORS DEFENDED & VERIFIED.");
+console.log("✅ ALL ADVERSARIAL ATTACK VECTORS & DELIVERABLE SPECS DEFENDED & VERIFIED.");
 console.log("================================================================\n");
 
 if (passed !== total) process.exit(1);

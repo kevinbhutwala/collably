@@ -439,7 +439,9 @@ CREATE TABLE IF NOT EXISTS content_submissions (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     deliverable_id UUID NOT NULL REFERENCES collaboration_deliverables(id) ON DELETE CASCADE,
     version INTEGER DEFAULT 1 CHECK (version >= 1),
-    media_urls TEXT[] NOT NULL,
+    asset_url TEXT NOT NULL CHECK (asset_url LIKE 'https://%'),
+    notes TEXT,
+    media_urls TEXT[] DEFAULT '{}'::TEXT[],
     caption_text TEXT,
     tracking_link TEXT,
     creator_notes TEXT,
@@ -447,7 +449,8 @@ CREATE TABLE IF NOT EXISTS content_submissions (
     status deliverable_status DEFAULT 'under_review',
     published_live_url TEXT,
     published_stats JSONB DEFAULT '{}'::JSONB,
-    submitted_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+    submitted_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
+    sla_deadline TIMESTAMP WITH TIME ZONE
 );
 
 CREATE TABLE IF NOT EXISTS content_comments (

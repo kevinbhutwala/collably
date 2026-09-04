@@ -180,4 +180,44 @@ test.describe('Collably End-to-End Suite', () => {
     // Server must reject with 401 Unauthorized, 403 Forbidden, or 404 Not Found
     expect([401, 403, 404]).toContain(unauthResponse.status());
   });
+
+  // ==========================================
+  // 6. DELIVERABLE EXTERNAL LINK WORKFLOW
+  // ==========================================
+  test('09: External Link Deliverable Submission and Review Flow', async ({ page }) => {
+    await loginAs(page, USERS.creator.email, USERS.creator.password);
+
+    // Navigate to active collaborations
+    await page.goto(`${BASE_URL}/app/collaborations`, { waitUntil: 'domcontentloaded' });
+    
+    // Check for submission trigger button or review elements
+    const submitBtn = page.locator('button:has-text("Submit Deliverable"), button:has-text("Update Deliverable")').first();
+    if (await submitBtn.isVisible({ timeout: 5_000 })) {
+      await submitBtn.click();
+
+      // Verify external link input
+      const linkInput = page.locator('input[placeholder*="http" i], input[type="text"]').first();
+      await expect(linkInput).toBeVisible();
+
+      // Verify helper note: "Anyone with the link can view"
+      const helperNote = page.locator('text=/Anyone with the link can view/i').first();
+      await expect(helperNote).toBeVisible();
+
+      // Fill external asset URL
+      await linkInput.fill('https://drive.google.com/file/d/test-e2e-submission/view?usp=sharing');
+
+      // Fill optional notes
+      const notesInput = page.locator('textarea').first();
+      if (await notesInput.isVisible()) {
+        await notesInput.fill('Color graded ProRes cut with cleared music rights.');
+      }
+
+      // Submit
+      const confirmSubmitBtn = page.locator('button[type="submit"]:has-text("Submit")').first();
+      await confirmSubmitBtn.click();
+
+      // Confirm SLA or SUBMITTED status appears
+      await expect(page.locator('text=/SUBMITTED|120h SLA/i').first()).toBeVisible({ timeout: 10_000 });
+    }
+  });
 });
