@@ -4,7 +4,7 @@ import './globals.css';
 import { ToastContainer } from '@/components/ui/ToastContainer';
 import { CommandPalette } from '@/components/navigation/CommandPalette';
 import Script from 'next/script';
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const jakarta = Plus_Jakarta_Sans({
