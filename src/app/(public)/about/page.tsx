@@ -5,8 +5,8 @@ import { Sparkles, ShieldCheck, Zap, Globe } from "lucide-react";
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Collably is building the operating system for the creator economy — milestone payments, campaign management, and creator discovery in one platform.',
-  alternates: { canonical: 'https://collably-ashen.vercel.app/about' },
+  description: 'AbeyCollab is building the operating system for the creator economy — milestone payments, campaign management, and creator discovery in one platform.',
+  alternates: { canonical: 'https://abeycollab.vercel.app/about' },
 };
 
 
@@ -35,7 +35,7 @@ export default function AboutPage() {
             For years, influencer marketing has been plagued by bloated middleman markups, vanity follower metrics, lost email attachments, and delayed payments that force creators to chase invoices for 90 days.
           </p>
           <p className="text-sm sm:text-base text-[#6B6B6B] leading-relaxed font-sans font-medium">
-            Collably replaces chaotic agency spreadsheets with a clean, high-performance platform: automated campaign briefs, multi-dimensional AI matching, real-time deliverable pipelines, and guaranteed milestone escrow protection.
+            AbeyCollab replaces chaotic agency spreadsheets with a clean, high-performance platform: automated campaign briefs, multi-dimensional AI matching, real-time deliverable pipelines, and guaranteed milestone escrow protection.
           </p>
         </div>
 

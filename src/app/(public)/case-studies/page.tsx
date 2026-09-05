@@ -73,7 +73,7 @@ const CASE_STUDIES: CaseStudy[] = [
       "Full Commercial Perpetual Rights & Raw ProRes Master Files",
     ],
     clientQuote: {
-      quote: "Collably's milestone escrow removed 100% of our contract friction. We reviewed all 8 cuts inside the timecoded player and disbursed funds with total confidence.",
+      quote: "AbeyCollab's milestone escrow removed 100% of our contract friction. We reviewed all 8 cuts inside the timecoded player and disbursed funds with total confidence.",
       author: "Sarah Jenkins",
       role: "Head of Developer Marketing, Linear",
     },
@@ -137,7 +137,7 @@ const CASE_STUDIES: CaseStudy[] = [
       "10x Sponsored Newsletter Inclusions",
     ],
     clientQuote: {
-      quote: "The creators felt like genuine product consultants rather than paid endorsers. Collably made contract negotiation and milestone releases effortless.",
+      quote: "The creators felt like genuine product consultants rather than paid endorsers. AbeyCollab made contract negotiation and milestone releases effortless.",
       author: "Elena Rostova",
       role: "Growth Operations Director, Notion",
     },
@@ -169,7 +169,7 @@ const CASE_STUDIES: CaseStudy[] = [
       "Exclusive Custom Arc Space Links with Trackable UTMs",
     ],
     clientQuote: {
-      quote: "We achieved the lowest cost-per-install in our company history through Collably's vetted creator tier.",
+      quote: "We achieved the lowest cost-per-install in our company history through AbeyCollab's vetted creator tier.",
       author: "Devon Croft",
       role: "Head of Growth, Arc Browser",
     },
@@ -201,7 +201,7 @@ const CASE_STUDIES: CaseStudy[] = [
       "Exclusive Launch Week Community Showcase Streams",
     ],
     clientQuote: {
-      quote: "Collably delivers the developer credibility you cannot buy with traditional display ads.",
+      quote: "AbeyCollab delivers the developer credibility you cannot buy with traditional display ads.",
       author: "Paul Copplestone",
       role: "CEO & Co-founder, Supabase",
     },
@@ -233,7 +233,7 @@ const CASE_STUDIES: CaseStudy[] = [
       "Custom Async Code Review Cheat Sheet Downloads",
     ],
     clientQuote: {
-      quote: "Collably is our primary engine for sourcing Tier-1 technical creator partnerships at predictable unit economics.",
+      quote: "AbeyCollab is our primary engine for sourcing Tier-1 technical creator partnerships at predictable unit economics.",
       author: "Nicole Zhang",
       role: "Senior Growth Lead, Loom",
     },
@@ -273,7 +273,7 @@ export default function CaseStudiesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFFDF5] border border-[#FFD21F]/50 text-[#0A0A0E] text-xs font-mono font-bold shadow-xs">
             <Sparkles className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
-            <span>HOW COLLABLY CAMPAIGNS WORK</span>
+            <span>HOW ABEYCOLLAB CAMPAIGNS WORK</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-[#0A0A0E] tracking-tight font-display max-w-4xl mx-auto">
@@ -324,7 +324,7 @@ export default function CaseStudiesPage() {
               Workflow Examples
             </h2>
             <p className="text-xs text-[#5A5A68]">
-              Illustrative campaigns showing how the Collably platform handles brief-to-payout.
+              Illustrative campaigns showing how the AbeyCollab platform handles brief-to-payout.
             </p>
           </div>
 

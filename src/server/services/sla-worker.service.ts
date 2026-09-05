@@ -74,7 +74,7 @@ export class SlaAutoReleaseWorker {
             // 3. Immutable Audit Log
             auditRepo.logEvent({
               actorId: "system_sla_worker",
-              actorName: "Collably 120h Auto-Release Engine",
+              actorName: "AbeyCollab 120h Auto-Release Engine",
               actorRole: "super_admin",
               action: "SLA_AUTO_RELEASE_EXECUTED",
               entityType: "Deliverable",

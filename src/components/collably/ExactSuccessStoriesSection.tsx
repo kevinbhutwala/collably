@@ -30,7 +30,7 @@ export function ExactSuccessStoriesSection() {
             </h2>
 
             <p className="text-xs sm:text-sm text-[#5A5A68] font-sans max-w-lg leading-relaxed">
-              From global brands to independent creators, see how Collably turns ideas into impact.
+              From global brands to independent creators, see how AbeyCollab turns ideas into impact.
             </p>
           </div>
 

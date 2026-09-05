@@ -45,7 +45,7 @@ export class PaymentGuardianService {
 
           auditRepo.logEvent({
             actorId: "payment_guardian",
-            actorName: "Collably Payment Guardian",
+            actorName: "AbeyCollab Payment Guardian",
             actorRole: "super_admin",
             action: "COLLABORATION_EXPIRED_UNFUNDED",
             entityType: "Collaboration",
@@ -103,7 +103,7 @@ export class PaymentGuardianService {
 
             auditRepo.logEvent({
               actorId: "payment_guardian",
-              actorName: "Collably Payment Guardian",
+              actorName: "AbeyCollab Payment Guardian",
               actorRole: "super_admin",
               action: "COLLABORATION_MARKED_OVERDUE",
               entityType: "Collaboration",

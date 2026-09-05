@@ -248,7 +248,7 @@ export function FeatureBentoGrid() {
                 24h Human Arbitration Guarantee
               </h4>
               <p className="text-xs text-[#626262] font-sans leading-relaxed">
-                If deliverables fail agreed creative briefs or brand delays sign-off, Collably mediators arbitrate funds within 24 hours.
+                If deliverables fail agreed creative briefs or brand delays sign-off, AbeyCollab mediators arbitrate funds within 24 hours.
               </p>
             </div>
           </div>

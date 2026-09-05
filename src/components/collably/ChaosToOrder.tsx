@@ -46,19 +46,19 @@ export function ChaosToOrder() {
             gradientWords={["fragmented", "tools", "unified", "infrastructure"]}
             className="text-sm sm:text-lg text-slate-300 font-sans max-w-2xl mx-auto leading-relaxed"
           >
-            See how Collably replaces broken legacy habits with intelligent, milestone-protected infrastructure.
+            See how AbeyCollab replaces broken legacy habits with intelligent, milestone-protected infrastructure.
           </ScrollRevealText>
         </div>
 
         {/* Side-by-Side Comparison */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {/* Left Card: WITHOUT COLLABLY */}
+          {/* Left Card: WITHOUT ABEYCOLLAB */}
           <div className="p-8 sm:p-10 rounded-3xl bg-[#120c16] border border-rose-500/30 shadow-card space-y-6 relative overflow-hidden group text-white">
             <div className="flex items-center justify-between pb-4 border-b border-white/10">
               <div className="flex items-center gap-2">
                 <AlertTriangle className="w-5 h-5 text-rose-400" />
                 <h3 className="font-mono font-bold text-xs uppercase tracking-wider text-rose-400 font-display">
-                  WITHOUT COLLABLY
+                  WITHOUT ABEYCOLLAB
                 </h3>
               </div>
               <span className="px-2.5 py-0.5 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-300 font-mono text-[10px] font-bold">
@@ -76,13 +76,13 @@ export function ChaosToOrder() {
             </ul>
           </div>
 
-          {/* Right Card: WITH COLLABLY */}
+          {/* Right Card: WITH ABEYCOLLAB */}
           <div className="p-8 sm:p-10 rounded-3xl bg-[#120c16] border border-pink-500/40 shadow-elevated space-y-6 relative overflow-hidden group text-white">
             <div className="flex items-center justify-between pb-4 border-b border-white/10">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-emerald-400" />
                 <h3 className="font-mono font-bold text-xs uppercase tracking-wider text-emerald-400 font-display">
-                  WITH COLLABLY
+                  WITH ABEYCOLLAB
                 </h3>
               </div>
               <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-mono text-[10px] font-bold">

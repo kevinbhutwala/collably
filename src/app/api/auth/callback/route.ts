@@ -72,13 +72,15 @@ export async function GET(req: NextRequest) {
       const response = NextResponse.redirect(new URL(destination, req.url));
 
       // Set session cookie
-      response.cookies.set("collably_session", result.token, {
+      const cookieOptions = {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
+        sameSite: "lax" as const,
         maxAge: 7 * 24 * 60 * 60,
         path: "/",
-      });
+      };
+      response.cookies.set("abeycollab_session", result.token, cookieOptions);
+      response.cookies.set("collably_session", result.token, cookieOptions);
 
       return response;
     } catch (err: any) {
@@ -109,13 +111,15 @@ export async function GET(req: NextRequest) {
       );
 
       const response = NextResponse.redirect(destinationUrl);
-      response.cookies.set("collably_session", result.token, {
+      const cookieOptions = {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
+        sameSite: "lax" as const,
         maxAge: 7 * 24 * 60 * 60,
         path: "/",
-      });
+      };
+      response.cookies.set("abeycollab_session", result.token, cookieOptions);
+      response.cookies.set("collably_session", result.token, cookieOptions);
 
       return response;
     } catch (err) {

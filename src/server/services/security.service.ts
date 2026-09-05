@@ -32,7 +32,9 @@ export class SecurityService {
   static getSession(req: NextRequest): { userId: string; email: string; role: UserRole } | null {
     // 1. Check HTTP-only cookie
     const cookieToken =
-      req.cookies.get("collably_session")?.value || req.cookies.get("valence_session")?.value;
+      req.cookies.get("abeycollab_session")?.value ||
+      req.cookies.get("collably_session")?.value ||
+      req.cookies.get("valence_session")?.value;
     if (cookieToken) {
       const decoded = verifySessionToken(cookieToken);
       if (decoded) return decoded as { userId: string; email: string; role: UserRole };

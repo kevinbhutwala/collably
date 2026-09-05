@@ -9,7 +9,7 @@ export function EditorialTestimonials() {
   const testimonials = [
     {
       quote:
-        "Collably solved our biggest bottleneck: chasing creators over DMs and dealing with invoice delays. We launched 25 sponsored Reels in 14 days with 100% milestone protection.",
+        "AbeyCollab solved our biggest bottleneck: chasing creators over DMs and dealing with invoice delays. We launched 25 sponsored Reels in 14 days with 100% milestone protection.",
       author: "Vikram Malhotra",
       role: "Head of Growth",
       company: "HyperScale AI",

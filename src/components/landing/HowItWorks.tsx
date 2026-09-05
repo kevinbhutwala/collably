@@ -30,7 +30,7 @@ export function HowItWorks() {
       icon: ShieldCheck,
       title: "Lock Budget in Secure Escrow",
       description:
-        "Protect your marketing budget. Funds are held safely in Collably escrow and only released milestone by milestone once you review and approve the submitted content.",
+        "Protect your marketing budget. Funds are held safely in AbeyCollab escrow and only released milestone by milestone once you review and approve the submitted content.",
     },
     {
       step: "03",
@@ -91,7 +91,7 @@ export function HowItWorks() {
             <span>Structured Collaboration Pipeline</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-display">
-            How Collably powers seamless collaborations
+            How AbeyCollab powers seamless collaborations
           </h2>
           <p className="text-base text-slate-300 font-sans">
             Engineered to remove friction, protect payments, and eliminate back-and-forth email chaos.

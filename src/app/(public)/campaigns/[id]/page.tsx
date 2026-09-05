@@ -116,8 +116,8 @@ export default function CampaignDetailPage() {
     employmentType: "CONTRACTOR",
     hiringOrganization: {
       "@type": "Organization",
-      name: campaign.brand?.companyName || "Collably Brand Partner",
-      sameAs: "https://collably-ashen.vercel.app",
+      name: campaign.brand?.companyName || "AbeyCollab Brand Partner",
+      sameAs: "https://abeycollab.vercel.app",
       logo: campaign.brand?.logoUrl,
     },
     baseSalary: {

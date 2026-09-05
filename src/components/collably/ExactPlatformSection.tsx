@@ -62,7 +62,7 @@ export function ExactPlatformSection() {
 
               {/* Description */}
               <p className="text-xs sm:text-sm text-[#626262] font-sans leading-relaxed max-w-sm">
-                Collably brings together creators and brands with a seamless, transparent, and secure platform — from discovery to payment.
+                AbeyCollab brings together creators and brands with a seamless, transparent, and secure platform — from discovery to payment.
               </p>
 
               {/* CTA Link */}

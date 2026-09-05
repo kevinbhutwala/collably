@@ -144,7 +144,7 @@ export function getInitialSeedDatabase(): DatabaseState {
       fullName: "Demo Creator",
       handle: "democreator",
       headline: "Technology & AI creator",
-      bio: "A verified creator profile used to explore the Collably workspace.",
+      bio: "A verified creator profile used to explore the AbeyCollab workspace.",
       avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
       coverImageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
       location: "Worldwide",

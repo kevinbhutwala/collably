@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
-import { CollablyLogo } from "@/components/ui/CollablyLogo";
+import { AbeyCollabLogo } from "@/components/ui/AbeyCollabLogo";
 
 export default function AuthLayout({
   children,
@@ -32,7 +32,7 @@ export default function AuthLayout({
         </Link>
 
         {/* Center: Brand Logo */}
-        <CollablyLogo href="/" size="sm" variant="full" />
+        <AbeyCollabLogo href="/" size="sm" variant="full" />
 
         {/* Right: Quick Action Switcher */}
         <div className="flex items-center gap-1.5 text-xs font-sans">
@@ -61,7 +61,7 @@ export default function AuthLayout({
 
       {/* Footer copyright */}
       <footer className="py-4 text-center text-[11px] sm:text-xs font-sans text-[#7A7A8A] border-t border-black/8 bg-white/70 relative z-10 px-4">
-        © {new Date().getFullYear()} Collably Inc. • Protected by Escrow Payment Infrastructure
+        © {new Date().getFullYear()} AbeyCollab Inc. • Protected by Escrow Payment Infrastructure
       </footer>
     </div>
   );

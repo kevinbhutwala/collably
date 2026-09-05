@@ -42,7 +42,7 @@ function LoginForm() {
       addToast({
         type: "success",
         title: "Signed in successfully",
-        message: "Welcome to your Collably workspace!",
+        message: "Welcome to your AbeyCollab workspace!",
       });
       router.push(redirect);
     } catch (err: any) {
@@ -70,7 +70,7 @@ function LoginForm() {
       </div>
 
       <div className="text-center space-y-1.5">
-        <h1 className="text-2xl sm:text-3xl font-black text-[#0A0A0E] tracking-tight font-display">
+        <h1 className="text-2xl sm:text-3xl font-black text-[#0A0A0E] dark:text-white tracking-tight font-display">
           Welcome back
         </h1>
         <p className="text-xs text-[#6A6A78] font-sans">
@@ -155,7 +155,7 @@ function LoginForm() {
 
       <div className="text-center pt-2">
         <p className="text-xs text-[#6A6A78]">
-          New to Collably?{" "}
+          New to AbeyCollab?{" "}
           <Link href="/register" className="text-[#0A0A0E] hover:underline font-bold">
             Create an Account
           </Link>

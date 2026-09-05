@@ -53,7 +53,7 @@ export function TrustGuarantee() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-xs font-mono text-[hsl(327,100%,55%)] font-bold shadow-xs">
-            <span>The Collably Trust Standard</span>
+            <span>The AbeyCollab Trust Standard</span>
           </div>
 
           <ScrollRevealText

@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 
-const BASE = 'https://collably-ashen.vercel.app';
+const BASE = 'https://abeycollab.vercel.app';
 const now = new Date();
 
 export default function sitemap(): MetadataRoute.Sitemap {

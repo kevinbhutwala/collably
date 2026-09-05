@@ -55,12 +55,12 @@ export async function POST(req: NextRequest) {
       };
       participants = [senderParticipant, recipientParticipant];
     } else {
-      // Default to connecting with Collably Concierge
+      // Default to connecting with AbeyCollab Concierge
       participants = [
         senderParticipant,
         {
           userId: "user-admin",
-          name: "Collably Concierge Desk",
+          name: "AbeyCollab Concierge Desk",
           role: "agency_admin",
           avatarUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop&q=80",
         },

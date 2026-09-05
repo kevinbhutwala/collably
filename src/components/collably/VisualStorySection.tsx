@@ -49,7 +49,7 @@ export function VisualStorySection() {
         {/* Section Header */}
         <div className="text-center space-y-2 max-w-2xl mx-auto">
           <span className="text-[11px] font-mono font-bold tracking-[0.16em] text-[#6A6A78] uppercase block">
-            HOW COLLABLY WORKS
+            HOW ABEYCOLLAB WORKS
           </span>
           <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#0A0A0E] font-display">
             Frictionless collaboration <br className="sm:hidden" />

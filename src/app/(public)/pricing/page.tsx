@@ -8,15 +8,15 @@ import { StreamlinedVisualCTA } from "@/components/visual/StreamlinedVisualCTA";
 export const metadata: Metadata = {
   title: 'Pricing',
   description: 'Simple, transparent pricing for creators and brands. Start free, upgrade when you grow.',
-  alternates: { canonical: 'https://collably-ashen.vercel.app/pricing' },
-  openGraph: { title: 'Pricing | Collably', description: 'Simple, transparent pricing for creators and brands.' },
+  alternates: { canonical: 'https://abeycollab.vercel.app/pricing' },
+  openGraph: { title: 'Pricing | AbeyCollab', description: 'Simple, transparent pricing for creators and brands.' },
 };
 
 
 export default function PricingPage() {
   return (
     <div className="bg-[#FAFAFC] text-[#0A0A0E] min-h-screen space-y-12">
-      <h1 className="sr-only">Pricing — Collably</h1>
+      <h1 className="sr-only">Pricing — AbeyCollab</h1>
       <StreamlinedPricing />
       <AnimatedBrandSlider speed={28} direction="left" />
       <CompactFAQ />

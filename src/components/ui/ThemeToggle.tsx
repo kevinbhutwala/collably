@@ -10,7 +10,7 @@ export function ThemeToggle({ className }: { className?: string }) {
 
   useEffect(() => {
     setMounted(true);
-    const saved = localStorage.getItem("collably_theme") as "light" | "dark" | null;
+    const saved = (localStorage.getItem("abeycollab_theme") || localStorage.getItem("collably_theme")) as "light" | "dark" | null;
     if (saved === "dark" || (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
       setTheme("dark");
       document.documentElement.classList.add("dark");
@@ -25,6 +25,7 @@ export function ThemeToggle({ className }: { className?: string }) {
   const toggleTheme = () => {
     const nextTheme = theme === "dark" ? "light" : "dark";
     setTheme(nextTheme);
+    localStorage.setItem("abeycollab_theme", nextTheme);
     localStorage.setItem("collably_theme", nextTheme);
 
     if (nextTheme === "dark") {

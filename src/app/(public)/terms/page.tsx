@@ -21,7 +21,7 @@ export default function TermsOfServicePage() {
             Terms of Service
           </h1>
           <p className="text-sm text-[#7A7A8A] font-mono">
-            Last Updated: August 31, 2026 • Collably Inc.
+            Last Updated: August 31, 2026 • AbeyCollab Inc.
           </p>
         </div>
 
@@ -29,17 +29,17 @@ export default function TermsOfServicePage() {
           <section className="space-y-3">
             <h2 className="text-xl font-bold text-[#111111] font-display">1. Acceptance of Terms</h2>
             <p>
-              By creating an account, publishing a campaign brief, connecting social channels, or submitting content on Collably (&quot;Platform&quot;), you agree to be bound by these Terms of Service. If you are entering into this agreement on behalf of a company, you represent that you have the authority to bind such entity.
+              By creating an account, publishing a campaign brief, connecting social channels, or submitting content on AbeyCollab (&quot;Platform&quot;), you agree to be bound by these Terms of Service. If you are entering into this agreement on behalf of a company, you represent that you have the authority to bind such entity.
             </p>
           </section>
 
           <section className="space-y-3">
             <h2 className="text-xl font-bold text-[#111111] font-display">2. Milestone Escrow &amp; Payments</h2>
             <ul className="list-disc pl-5 space-y-2 text-[#6B6B6B]">
-              <li><strong className="text-[#111111]">Brand Deposit:</strong> When a brand accepts a creator application or launches a direct booking, the agreed campaign budget is pre-funded into Collably Escrow.</li>
+              <li><strong className="text-[#111111]">Brand Deposit:</strong> When a brand accepts a creator application or launches a direct booking, the agreed campaign budget is pre-funded into AbeyCollab Escrow.</li>
               <li><strong className="text-[#111111]">Deliverable Review Period:</strong> Brands have 7 calendar days to review submitted content, request revisions within the agreed scope, or approve the deliverable.</li>
               <li><strong className="text-[#111111]">Milestone Release:</strong> Upon brand approval (or expiration of the review window without active dispute), escrow funds are automatically disbursed to the creator.</li>
-              <li><strong className="text-[#111111]">Platform Fee:</strong> Collably charges a 10% platform fee deducted upon milestone release. Creators receive 90% of the agreed contract price.</li>
+              <li><strong className="text-[#111111]">Platform Fee:</strong> AbeyCollab charges a 10% platform fee deducted upon milestone release. Creators receive 90% of the agreed contract price.</li>
             </ul>
           </section>
 
@@ -60,14 +60,14 @@ export default function TermsOfServicePage() {
           <section className="space-y-3">
             <h2 className="text-xl font-bold text-[#111111] font-display">5. Dispute Arbitration &amp; Refunds</h2>
             <p>
-              If a deliverable is rejected or a creator fails to meet production milestones, either party may trigger Collably Dispute Arbitration. Collably staff will review video uploads, brief specifications, and revision history within 4 hours. In the event of an uncured default by a creator, escrow funds are refunded to the brand.
+              If a deliverable is rejected or a creator fails to meet production milestones, either party may trigger AbeyCollab Dispute Arbitration. AbeyCollab staff will review video uploads, brief specifications, and revision history within 4 hours. In the event of an uncured default by a creator, escrow funds are refunded to the brand.
             </p>
           </section>
 
           <section className="space-y-3">
             <h2 className="text-xl font-bold text-[#111111] font-display">6. Contact &amp; Legal Inquiries</h2>
             <p>
-              For legal notices or questions regarding these terms, contact <span className="font-mono text-[#111111] font-bold">legal@collably.io</span>.
+              For legal notices or questions regarding these terms, contact <span className="font-mono text-[#111111] font-bold">legal@abeycollab.com</span>.
             </p>
           </section>
         </div>

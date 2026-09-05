@@ -62,7 +62,7 @@ export function BrandCreatorSplit() {
               href="/for-brands"
               className="w-full py-3.5 rounded-[9px] bg-[#087F5B] hover:bg-[#075E45] text-white font-semibold text-sm text-center shadow-xs transition-all flex items-center justify-center gap-2 font-sans"
             >
-              <span>Explore Collably for Brands</span>
+              <span>Explore AbeyCollab for Brands</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

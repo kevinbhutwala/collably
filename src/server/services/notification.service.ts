@@ -34,7 +34,7 @@ export class NotificationService {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            from: "Collably Platform <notifications@collably.io>",
+            from: "AbeyCollab Platform <notifications@abeycollab.com>",
             to: [params.to],
             subject: params.subject,
             html: htmlBody,
@@ -55,16 +55,16 @@ export class NotificationService {
     const brandColor = "#FFD21F";
     const darkBg = "#0A0A0E";
 
-    let title = "Collably Platform Update";
+    let title = "AbeyCollab Platform Update";
     let bodyContent = `<p style="font-size: 15px; color: #475569;">${vars.message || "You have a new update regarding your campaign collaboration."}</p>`;
 
     switch (template) {
       case "welcome":
-        title = "Welcome to Collably!";
+        title = "Welcome to AbeyCollab!";
         bodyContent = `
           <p style="font-size: 16px; color: #1E293B;">Welcome aboard, <strong>${vars.name || "Collaborator"}</strong>!</p>
           <p style="font-size: 15px; color: #475569; line-height: 1.6;">
-            Your Collably workspace is active. Connect your social channels, browse high-converting brand briefs, and access 100% escrow-backed deals.
+            Your AbeyCollab workspace is active. Connect your social channels, browse high-converting brand briefs, and access 100% escrow-backed deals.
           </p>
           <div style="background-color: #F8F8FC; border-radius: 8px; padding: 16px; margin: 16px 0; border: 1px solid #E2E8F0;">
             <p style="margin: 0; font-size: 14px; font-weight: 600; color: #0A0A0E;">Next Recommended Steps:</p>
@@ -136,20 +136,20 @@ export class NotificationService {
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: auto; padding: 32px; border: 1px solid #E2E8F0; border-radius: 16px; background-color: #ffffff;">
         <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #F1F5F9;">
           <span style="background-color: ${brandColor}; width: 14px; height: 14px; border-radius: 50%; display: inline-block;"></span>
-          <span style="font-size: 18px; font-weight: 800; color: ${darkBg}; letter-spacing: -0.5px;">COLLABLY</span>
+          <span style="font-size: 18px; font-weight: 800; color: ${darkBg}; letter-spacing: -0.5px;">ABEYCOLLAB</span>
         </div>
         <h2 style="color: ${darkBg}; font-size: 20px; font-weight: 800; margin-top: 0; margin-bottom: 16px;">${title}</h2>
         ${bodyContent}
         ${vars.actionUrl ? `
           <div style="margin-top: 24px;">
             <a href="${vars.actionUrl}" style="display: inline-block; background-color: ${darkBg}; color: ${brandColor}; padding: 12px 28px; border-radius: 9999px; text-decoration: none; font-size: 14px; font-weight: 700;">
-              ${vars.actionLabel || "View on Collably"} →
+              ${vars.actionLabel || "View on AbeyCollab"} →
             </a>
           </div>
         ` : ""}
         <hr style="margin-top: 36px; margin-bottom: 16px; border: 0; border-top: 1px solid #F1F5F9;" />
         <p style="font-size: 11px; color: #94A3B8; margin: 0;">
-          © ${new Date().getFullYear()} Collably Technologies Inc. All rights reserved. Protected by 100% Escrow Rails.
+          © ${new Date().getFullYear()} AbeyCollab Technologies Inc. All rights reserved. Protected by 100% Escrow Rails.
         </p>
       </div>
     `;

@@ -45,12 +45,12 @@ export function SignatureConnection() {
         <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-xs font-mono font-bold text-[hsl(327,100%,55%)] shadow-xs">
             <Sparkles className="w-3.5 h-3.5 text-gold animate-pulse" />
-            <span>The Signature Collably Connection</span>
+            <span>The Signature AbeyCollab Connection</span>
           </div>
 
           <ScrollRevealText
             as="h2"
-            gradientWords={["two", "sides", "one", "workspace", "collably"]}
+            gradientWords={["two", "sides", "one", "workspace", "abeycollab"]}
             className="text-3xl sm:text-5xl font-black text-white tracking-tight font-display leading-tight"
           >
             Two sides. One seamless workspace.
@@ -125,7 +125,7 @@ export function SignatureConnection() {
               </div>
             </div>
             <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-white font-display">
-              Collably
+              AbeyCollab
             </span>
             <span className="text-[9px] font-mono font-bold text-emerald-400">
               TRUST ENGINE

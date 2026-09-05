@@ -36,7 +36,7 @@ function CallbackHandler() {
             sbUser.user_metadata?.full_name ||
             sbUser.user_metadata?.name ||
             sbUser.user_metadata?.user_name ||
-            (email ? email.split("@")[0] : "Collably User");
+            (email ? email.split("@")[0] : "AbeyCollab User");
           const avatarUrl =
             sbUser.user_metadata?.avatar_url ||
             sbUser.user_metadata?.picture ||
@@ -57,7 +57,7 @@ function CallbackHandler() {
           addToast({
             type: "success",
             title: "Signed In Successfully",
-            message: `Welcome to Collably, ${res.user?.name || "Partner"}!`,
+            message: `Welcome to AbeyCollab, ${res.user?.name || "Partner"}!`,
           });
 
           const destination =

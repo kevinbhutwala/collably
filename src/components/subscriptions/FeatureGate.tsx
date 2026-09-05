@@ -99,7 +99,7 @@ export function FeatureGate({
     dedicatedAccountManager:
       "Get a dedicated talent director and direct Slack / priority escrow support.",
     apiAccess:
-      "Integrate Collably data pipelines directly with your internal CRM, ERP, and analytics tools.",
+      "Integrate AbeyCollab data pipelines directly with your internal CRM, ERP, and analytics tools.",
     mediaKit: "Create and publish your audited digital media kit.",
     campaignApplications: "Submit pitches and proposals to live brand campaign briefs.",
     adminOverride: "Full administrative capabilities.",

@@ -85,7 +85,7 @@ export function SocialFallbackModal({
       isOpen={isOpen}
       onClose={onClose}
       title={`Continue with ${providerName}`}
-      description={`Authenticate your ${providerName} account to access your Collably workspace.`}
+      description={`Authenticate your ${providerName} account to access your AbeyCollab workspace.`}
       maxWidth="md"
     >
       <div className="space-y-4 pt-1 text-[#0A0A0E] select-none font-sans">

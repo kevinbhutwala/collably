@@ -41,7 +41,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { SubscriptionBadge } from "@/components/subscriptions/SubscriptionBadge";
 import { useSubscriptionStore } from "@/stores/subscription.store";
-import { CollablyLogo } from "@/components/ui/CollablyLogo";
+import { AbeyCollabLogo } from "@/components/ui/AbeyCollabLogo";
 
 export function AppNavbar() {
   const pathname = usePathname();
@@ -100,7 +100,7 @@ export function AppNavbar() {
     if (path.startsWith("/app/brand/")) return "Brand Workspace";
     if (path.startsWith("/app/")) return "Workspace";
     if (path.startsWith("/admin/")) return "Admin Portal";
-    return "Collably";
+    return "AbeyCollab";
   };
 
   const currentTitle = getScreenTitle(pathname);
@@ -171,7 +171,7 @@ export function AppNavbar() {
 
           {/* Desktop Brand Logo & Screen Title */}
           <div className="hidden lg:flex items-center gap-3 shrink-0">
-            <CollablyLogo href="/app/dashboard" size="sm" />
+            <AbeyCollabLogo href="/app/dashboard" size="sm" />
             <span className="text-[#888898] text-sm">/</span>
             <h1 className="text-sm font-bold text-[#0A0A0E] dark:text-white tracking-tight font-display">
               {currentTitle}
@@ -398,7 +398,7 @@ export function AppNavbar() {
             >
               <div className="space-y-6">
                 <div className="flex items-center justify-between pb-4 border-b border-black/8 dark:border-white/10">
-                  <CollablyLogo href="/app/dashboard" size="sm" />
+                  <AbeyCollabLogo href="/app/dashboard" size="sm" />
                   <button
                     onClick={() => setShowMobileSidebar(false)}
                     className="p-1.5 rounded-xl bg-[#F4F4F8] dark:bg-[#181824] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/8 dark:border-white/10"

@@ -304,7 +304,7 @@ export function HeroEditorialShowcase() {
       <Modal
         isOpen={roleModalOpen}
         onClose={() => setRoleModalOpen(false)}
-        title="Join Collably Commerce"
+        title="Join AbeyCollab Commerce"
         description="Select your pathway to start hiring creators or showcase your verified portfolio."
         maxWidth="md"
       >

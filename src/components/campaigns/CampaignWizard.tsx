@@ -467,7 +467,7 @@ export function CampaignWizard() {
               <div>
                 <h4 className="text-xs font-bold text-[#0A0A0E] font-display">100% Escrow Protection</h4>
                 <p className="text-xs text-[#5A5A68] font-sans font-medium">
-                  Your funds are held securely by Collably and only released when deliverables meet your satisfaction.
+                  Your funds are held securely by AbeyCollab and only released when deliverables meet your satisfaction.
                 </p>
               </div>
             </div>

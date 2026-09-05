@@ -65,7 +65,7 @@ export function SignatureTransformScroll() {
           className="max-w-2xl mx-auto space-y-2 sm:space-y-3 pt-2 sm:pt-4 px-2"
         >
           <h3 className="text-xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight font-display">
-            Collably protects both sides.
+            AbeyCollab protects both sides.
           </h3>
           <p className="text-xs sm:text-base text-slate-300 leading-relaxed font-sans">
             Brands never release funds until the deliverable matches the brief. Creators never start filming until funds are safely held in milestone protection.

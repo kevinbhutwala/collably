@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
     // Send reset instructions via email
     await notificationService.sendTransactionalEmail({
       to: user.email,
-      subject: "Reset your Collably password",
+      subject: "Reset your AbeyCollab password",
       template: "welcome",
       variables: {
         name: user.name,

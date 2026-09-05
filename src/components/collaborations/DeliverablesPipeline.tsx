@@ -296,7 +296,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
       addToast({
         type: "warning",
         title: "Dispute Escalated",
-        message: "Milestone escrow locked and submitted to Collably arbitration desk.",
+        message: "Milestone escrow locked and submitted to AbeyCollab arbitration desk.",
       });
     } catch (err: any) {
       addToast({
@@ -508,7 +508,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
               <span className="px-2 py-0.5 rounded-md bg-blue-500/20 text-blue-900 text-[10px] font-mono font-bold">Under Administrative Review</span>
             </h4>
             <p className="text-xs text-blue-900/80 leading-relaxed">
-              Automated timers are halted. A Collably arbitration officer is reviewing submitted evidence to issue a binding financial settlement.
+              Automated timers are halted. An AbeyCollab arbitration officer is reviewing submitted evidence to issue a binding financial settlement.
             </p>
           </div>
         </div>

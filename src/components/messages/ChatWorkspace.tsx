@@ -191,7 +191,7 @@ export function ChatWorkspace() {
         const recipients: RecipientOption[] = [
           {
             userId: "user-admin",
-            name: "Collably Concierge & Escrow Desk",
+            name: "AbeyCollab Concierge & Escrow Desk",
             role: "agency_admin",
             avatarUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop&q=80",
             subtitle: "Official Platform Support & Dispute Assistance",
@@ -579,14 +579,14 @@ export function ChatWorkspace() {
           }`}
         >
           {/* Header Strip */}
-          <div className="p-4 border-b border-black/8 space-y-3 bg-white shrink-0">
+          <div className="p-4 border-b border-black/8 dark:border-white/10 space-y-3 bg-white dark:bg-[#12121A] shrink-0">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <div className="w-7 h-7 rounded-xl bg-[#FFD21F] flex items-center justify-center shadow-2xs">
                   <MessageSquare className="w-4 h-4 text-[#0A0A0E]" />
                 </div>
                 <div>
-                  <h2 className="font-extrabold text-sm text-[#0A0A0E] font-display tracking-tight leading-none">
+                  <h2 className="font-extrabold text-sm text-[#0A0A0E] dark:text-white font-display tracking-tight leading-none">
                     Messages
                   </h2>
                   <span className="text-[10px] font-mono text-[#7A7A8A]">
@@ -810,7 +810,7 @@ export function ChatWorkspace() {
 
                   <div className="min-w-0">
                     <div className="flex items-center gap-2">
-                      <h3 className="font-extrabold text-sm text-[#0A0A0E] truncate font-display">{partnerName}</h3>
+                      <h3 className="font-extrabold text-sm text-[#0A0A0E] dark:text-white truncate font-display">{partnerName}</h3>
                       <span
                         className={cn(
                           "text-[9px] font-mono font-bold px-1.5 py-0.5 rounded-full uppercase shrink-0",
@@ -1086,7 +1086,7 @@ export function ChatWorkspace() {
                 <MessageSquare className="w-7 h-7 text-[#FFD21F]" />
               </div>
               <div className="space-y-1">
-                <h3 className="font-extrabold text-base text-[#0A0A0E] font-display">
+                <h3 className="font-extrabold text-base text-[#0A0A0E] dark:text-white font-display">
                   {conversations.length === 0 ? "No Active Channels" : "Select a Channel"}
                 </h3>
                 <p className="text-xs max-w-sm leading-relaxed text-[#6A6A78]">

@@ -58,7 +58,7 @@ export function ScrollTextZoom() {
               to pre-funded milestone lock,{" "}
             </motion.span>
             <motion.span style={{ opacity: opacityP3 }} className="transition-opacity duration-150">
-              Collably powers partnerships that ship on time.
+              AbeyCollab powers partnerships that ship on time.
             </motion.span>
           </h2>
 

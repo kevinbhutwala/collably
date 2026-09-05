@@ -1,5 +1,5 @@
 /**
- * Centralized Currency & Financial Formatters for Collably
+ * Centralized Currency & Financial Formatters for AbeyCollab
  */
 
 export type SupportedCurrency = "USD" | "INR" | "EUR" | "GBP";

@@ -105,7 +105,7 @@ export default function CreatorRegisterPage() {
         addToast({
           type: "success",
           title: "Creator Account Activated",
-          message: "Welcome to Collably! Your media kit and social accounts are live.",
+          message: "Welcome to AbeyCollab! Your media kit and social accounts are live.",
         });
         router.push("/app/dashboard");
       }

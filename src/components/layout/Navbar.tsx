@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CollablyLogo } from "@/components/ui/CollablyLogo";
+import { AbeyCollabLogo } from "@/components/ui/AbeyCollabLogo";
 import { Menu, X, ArrowRight, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuthStore } from "@/stores/auth.store";
@@ -41,14 +41,14 @@ export function Navbar() {
   }, []);
 
   const getPublicScreenTitle = (path: string): string => {
-    if (path === "/") return "Collably";
+    if (path === "/") return "AbeyCollab";
     if (path === "/campaigns") return "Explore Briefs";
     if (path === "/creators") return "Creator Roster";
     if (path === "/for-brands") return "For Brands";
     if (path === "/pricing") return "Pricing";
     if (path === "/case-studies") return "Case Studies";
     if (path === "/services") return "Agency Services";
-    if (path === "/about") return "About Collably";
+    if (path === "/about") return "About AbeyCollab";
     if (path === "/contact") return "Contact Sales";
     if (path === "/login") return "Sign In";
     if (path === "/register") return "Get Started";
@@ -56,7 +56,7 @@ export function Navbar() {
     if (path === "/brand/register") return "Brand Sign Up";
     if (path.startsWith("/campaigns/")) return "Campaign Brief";
     if (path.startsWith("/creators/")) return "Creator Profile";
-    return "Collably";
+    return "AbeyCollab";
   };
 
   const currentTitle = getPublicScreenTitle(pathname);
@@ -82,7 +82,7 @@ export function Navbar() {
           {/* Brand Logo / Mobile Screen Title */}
           <div className="flex items-center gap-2.5 min-w-0">
             <div className="shrink-0">
-              <CollablyLogo href="/" size="sm" />
+              <AbeyCollabLogo href="/" size="sm" />
             </div>
 
             {/* Mobile Header Screen Title */}
@@ -254,7 +254,7 @@ export function Navbar() {
       <Modal
         isOpen={roleModalOpen}
         onClose={() => setRoleModalOpen(false)}
-        title="Join Collably"
+        title="Join AbeyCollab"
         description="Select your pathway to access tailored briefings and verified creator kits."
         maxWidth="md"
       >

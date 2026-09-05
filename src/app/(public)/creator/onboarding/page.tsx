@@ -68,7 +68,7 @@ export default function CreatorOnboardingWizardPage() {
       addToast({
         type: "success",
         title: "Creator Profile Published!",
-        message: "Welcome to the Collably creator talent roster.",
+        message: "Welcome to the AbeyCollab creator talent roster.",
       });
       router.push("/app/dashboard");
     }

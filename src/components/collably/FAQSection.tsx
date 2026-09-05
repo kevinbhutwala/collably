@@ -14,7 +14,7 @@ export function FAQSection() {
     },
     {
       q: "What are the platform fees and creator take-rates?",
-      a: "Collably charges a flat 10% platform fee on completed collaborations. There are zero monthly subscription fees or listing paywalls. Creators keep 90% of their gross earnings.",
+      a: "AbeyCollab charges a flat 10% platform fee on completed collaborations. There are zero monthly subscription fees or listing paywalls. Creators keep 90% of their gross earnings.",
     },
     {
       q: "How fast are creator payouts disbursed upon approval?",

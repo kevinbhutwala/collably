@@ -8,7 +8,7 @@
 @layer base {
   :root {
     /* ══════════════════════════════════════════════════════════════════════════
-       COLLABLY — PURE WHITE & SOLAR YELLOW (#FFD21F) MAIN THEME SYSTEM
+       ABEYCOLLAB — PURE WHITE & SOLAR YELLOW (#FFD21F) MAIN THEME SYSTEM
        ══════════════════════════════════════════════════════════════════════════ */
     
     /* Typography Tokens */
@@ -66,7 +66,7 @@
 
   .dark {
     /* ══════════════════════════════════════════════════════════════════════════
-       COLLABLY — DARK THEME SYSTEM & CARBON EDITORIAL PALETTE
+       ABEYCOLLAB — DARK THEME SYSTEM & CARBON EDITORIAL PALETTE
        ══════════════════════════════════════════════════════════════════════════ */
     --color-text-primary: #F4F4F8;
     --color-text-secondary: #B0B0C4;
@@ -524,7 +524,7 @@ html.lenis, html.lenis body {
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
-   COLLABLY COMPREHENSIVE DARK THEME CONTRAST & LEGIBILITY ENGINE
+   ABEYCOLLAB COMPREHENSIVE DARK THEME CONTRAST & LEGIBILITY ENGINE
    ══════════════════════════════════════════════════════════════════════════ */
 
 .dark {

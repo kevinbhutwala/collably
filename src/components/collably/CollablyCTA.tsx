@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { ArrowRight, ShieldCheck, Zap, Lock, Building2 } from "lucide-react";
 
-export function CollablyCTA() {
+export function AbeyCollabCTA() {
   return (
     <section className="py-20 sm:py-32 bg-[#FCFCFA] border-t border-[#E2E6E1] relative overflow-hidden text-center select-none text-[#101310]">
       {/* Soft Ambient Mint Aura */}
@@ -70,3 +70,5 @@ export function CollablyCTA() {
     </section>
   );
 }
+
+export const CollablyCTA = AbeyCollabCTA;

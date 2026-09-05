@@ -29,7 +29,7 @@ export default function DPAPage() {
           <section className="space-y-3">
             <h2 className="text-xl font-bold text-[#111111] font-display">1. Scope and Applicability</h2>
             <p>
-              This Data Processing Agreement (&quot;DPA&quot;) supplements the Collably Terms of Service and applies to the processing of Personal Data by Collably Inc. on behalf of customer brands and creator talent partners subject to the European Union General Data Protection Regulation (GDPR), the UK Data Protection Act 2018, the California Consumer Privacy Act (CCPA/CPRA), and the Digital Personal Data Protection Act 2023 (India).
+              This Data Processing Agreement (&quot;DPA&quot;) supplements the AbeyCollab Terms of Service and applies to the processing of Personal Data by AbeyCollab Inc. on behalf of customer brands and creator talent partners subject to the European Union General Data Protection Regulation (GDPR), the UK Data Protection Act 2018, the California Consumer Privacy Act (CCPA/CPRA), and the Digital Personal Data Protection Act 2023 (India).
             </p>
           </section>
 
@@ -37,13 +37,13 @@ export default function DPAPage() {
             <h2 className="text-xl font-bold text-[#111111] font-display">2. Roles of the Parties</h2>
             <ul className="list-disc pl-5 space-y-1.5 text-[#6B6B6B]">
               <li><strong className="text-[#111111]">Brand Customers (Data Controllers):</strong> Determine the purposes and scope of creator marketing briefs, deliverable specifications, and campaign parameters.</li>
-              <li><strong className="text-[#111111]">Collably Inc. (Data Processor):</strong> Processes creator channel analytics, review comments, timecoded video timestamps, and payout transaction records strictly under the instruction of the controller.</li>
+              <li><strong className="text-[#111111]">AbeyCollab Inc. (Data Processor):</strong> Processes creator channel analytics, review comments, timecoded video timestamps, and payout transaction records strictly under the instruction of the controller.</li>
             </ul>
           </section>
 
           <section className="space-y-3">
             <h2 className="text-xl font-bold text-[#111111] font-display">3. Technical &amp; Organizational Security Measures</h2>
-            <p>Collably implements rigorous technical controls to safeguard all campaign assets and personal information:</p>
+            <p>AbeyCollab implements rigorous technical controls to safeguard all campaign assets and personal information:</p>
             <ul className="list-disc pl-5 space-y-1.5 text-[#6B6B6B]">
               <li><strong className="text-[#111111]">Cryptographic Protection:</strong> User passwords hashed with PBKDF2 (100,000 rounds) + unique salt; session cookies signed with HMAC-SHA256 and configured with <code>HttpOnly; Secure; SameSite=Lax</code>.</li>
               <li><strong className="text-[#111111]">Transport &amp; Storage Encryption:</strong> TLS 1.3 in transit across all endpoints; AES-256 at rest for media storage and database logs.</li>
@@ -54,14 +54,14 @@ export default function DPAPage() {
           <section className="space-y-3">
             <h2 className="text-xl font-bold text-[#111111] font-display">4. Sub-processors</h2>
             <p>
-              Collably engages verified sub-processors for essential infrastructure services: Vercel (Edge Hosting), Stripe Inc. (Payment Processing &amp; Payouts), and Resend (Transactional Email). Customers will be notified of any material sub-processor modifications.
+              AbeyCollab engages verified sub-processors for essential infrastructure services: Vercel (Edge Hosting), Stripe Inc. (Payment Processing &amp; Payouts), and Resend (Transactional Email). Customers will be notified of any material sub-processor modifications.
             </p>
           </section>
 
           <section className="space-y-3">
             <h2 className="text-xl font-bold text-[#111111] font-display">5. Data Deletion &amp; Audit Inquiries</h2>
             <p>
-              Upon termination of services, Collably will delete or return all Personal Data upon controller request within 30 days. For custom enterprise DPA counter-signatures, contact <span className="font-mono font-bold text-[#111111]">dpa@collably.io</span>.
+              Upon termination of services, AbeyCollab will delete or return all Personal Data upon controller request within 30 days. For custom enterprise DPA counter-signatures, contact <span className="font-mono font-bold text-[#111111]">dpa@abeycollab.com</span>.
             </p>
           </section>
         </div>

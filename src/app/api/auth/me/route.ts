@@ -8,6 +8,7 @@ import { verifySessionToken } from "@/server/auth/crypto";
 export async function GET(req: NextRequest) {
   try {
     const token =
+      req.cookies.get("abeycollab_session")?.value ||
       req.cookies.get("collably_session")?.value ||
       req.cookies.get("valence_session")?.value ||
       req.headers.get("authorization")?.replace("Bearer ", "");

@@ -49,6 +49,7 @@ export async function middleware(req: NextRequest) {
 
   // Extract session token from cookie or Authorization header
   const token =
+    req.cookies.get("abeycollab_session")?.value ||
     req.cookies.get("collably_session")?.value ||
     req.cookies.get("valence_session")?.value ||
     req.headers.get("authorization")?.replace("Bearer ", "");
@@ -66,6 +67,7 @@ export async function middleware(req: NextRequest) {
     loginUrl.searchParams.set("redirect", pathname);
     loginUrl.searchParams.set("error", "session_expired");
     const response = NextResponse.redirect(loginUrl);
+    response.cookies.delete("abeycollab_session");
     response.cookies.delete("collably_session");
     return response;
   }

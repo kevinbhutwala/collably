@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useAuthStore } from "@/stores/auth.store";
 import { useSubscriptionStore } from "@/stores/subscription.store";
 import { SubscriptionBadge } from "@/components/subscriptions/SubscriptionBadge";
-import { CollablyLogo } from "@/components/ui/CollablyLogo";
+import { AbeyCollabLogo } from "@/components/ui/AbeyCollabLogo";
 import {
   LayoutDashboard,
   Users,

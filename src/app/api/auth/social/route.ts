@@ -41,13 +41,15 @@ export async function POST(req: NextRequest) {
     });
 
     // Set secure HTTP-only cookie
-    response.cookies.set("collably_session", result.token, {
+    const cookieOptions = {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
+      sameSite: "lax" as const,
       maxAge: 7 * 24 * 60 * 60, // 7 days
       path: "/",
-    });
+    };
+    response.cookies.set("abeycollab_session", result.token, cookieOptions);
+    response.cookies.set("collably_session", result.token, cookieOptions);
 
     return response;
   } catch (err: any) {

@@ -108,12 +108,12 @@ export function CampaignLifecycleOS() {
         <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-xs font-mono font-bold text-[hsl(327,100%,55%)] shadow-xs">
             <Sparkles className="w-3.5 h-3.5 text-gold" />
-            <span>08 • The Collably Operating System</span>
+            <span>08 • The AbeyCollab Operating System</span>
           </div>
 
           <ScrollRevealText
             as="h2"
-            gradientWords={["automated", "campaign", "lifecycle", "collably"]}
+            gradientWords={["automated", "campaign", "lifecycle", "abeycollab"]}
             className="text-3xl sm:text-5xl font-black text-white tracking-tight font-display leading-tight"
           >
             The automated campaign lifecycle.

@@ -38,10 +38,10 @@ async function loginAs(page: Page, email: string, pass: string) {
   await page.waitForLoadState('domcontentloaded');
 }
 
-test.describe('Collably End-to-End Suite', () => {
+test.describe('AbeyCollab End-to-End Suite', () => {
 
   test.beforeEach(async ({ context }) => {
-    // Clear cookies/storage before each test for total state isolation
+    // Clear cookies to avoid session cross-contamination
     await context.clearCookies();
   });
 
@@ -50,7 +50,7 @@ test.describe('Collably End-to-End Suite', () => {
   // ==========================================
   test('01: Public Landing Page and Navigation Integrity', async ({ page }) => {
     await page.goto(BASE_URL, { waitUntil: 'domcontentloaded' });
-    await expect(page).toHaveTitle(/Collably/i);
+    await expect(page).toHaveTitle(/(AbeyCollab|Collably)/i);
 
     // Verify primary hero typography & copy
     const heroHeading = page.locator('h1');

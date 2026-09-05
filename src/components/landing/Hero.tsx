@@ -28,7 +28,7 @@ export function Hero() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-xs text-white shadow-sm font-mono">
               <span className="flex h-2 w-2 rounded-full bg-[hsl(327,100%,50%)] animate-ping" />
-              <span className="font-bold text-white font-display">Collably</span>
+              <span className="font-bold text-white font-display">AbeyCollab</span>
               <span className="text-white/20">•</span>
               <span className="text-slate-300">Founding Creator Cohort Open</span>
             </div>

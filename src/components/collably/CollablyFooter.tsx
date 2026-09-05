@@ -12,16 +12,16 @@ export function CollablyFooter() {
         <div className="col-span-2 space-y-4">
           <CollablyLogo href="/" size="sm" subtext="Creator Commerce" />
           <p className="text-xs text-[#626262] dark:text-[#9A9AA8] max-w-sm font-sans leading-relaxed">
-            Collably is the modern creator collaboration workspace and milestone payment platform connecting vetted video creators with high-growth brands.
+            AbeyCollab is the modern creator collaboration workspace and milestone payment platform connecting vetted video creators with high-growth brands.
           </p>
           <div className="space-y-1.5 text-xs text-[#626262] dark:text-[#8E8EA4] font-mono">
             <p className="flex items-center gap-1.5">
               <Mail className="w-3.5 h-3.5 text-[#626262] dark:text-[#8E8EA4]" />
-              <span>support@collably.io / kevinbhutwala417@gmail.com</span>
+              <span>support@abeycollab.com / kevinbhutwala417@gmail.com</span>
             </p>
             <p className="flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5 text-[#626262] dark:text-[#8E8EA4]" />
-              <span>Collably Inc. • Delaware, United States &amp; Mumbai, India</span>
+              <span>AbeyCollab Inc. • Delaware, United States &amp; Mumbai, India</span>
             </p>
           </div>
           <div className="flex items-center gap-2 text-xs text-[#101010] dark:text-white font-sans pt-1 font-semibold">
@@ -51,7 +51,7 @@ export function CollablyFooter() {
             <li><Link href="/services" className="hover:text-[#101010] dark:hover:text-white transition-colors">Managed Campaigns</Link></li>
             <li><Link href="/services" className="hover:text-[#101010] dark:hover:text-white transition-colors">Talent Roster Curation</Link></li>
             <li><Link href="/services" className="hover:text-[#101010] dark:hover:text-white transition-colors">Contract &amp; Rights QA</Link></li>
-            <li><Link href="/about" className="hover:text-[#101010] dark:hover:text-white transition-colors">About Collably</Link></li>
+            <li><Link href="/about" className="hover:text-[#101010] dark:hover:text-white transition-colors">About AbeyCollab</Link></li>
             <li><Link href="/contact" className="hover:text-[#101010] dark:hover:text-white transition-colors">Contact Sales</Link></li>
           </ul>
         </div>
@@ -71,7 +71,7 @@ export function CollablyFooter() {
       </div>
 
       <div className="border-t border-[#E7E7E4] dark:border-white/10 py-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#626262] dark:text-[#8E8EA4]">
-        <p>© {new Date().getFullYear()} Collably Inc. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} AbeyCollab Inc. All rights reserved.</p>
         <p className="font-mono text-[11px] text-[#626262] dark:text-[#8E8EA4] flex items-center gap-1.5">
           <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F]" />
           <span>Creator Commerce &amp; Milestone Payment Workspace</span>

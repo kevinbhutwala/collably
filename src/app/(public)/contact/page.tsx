@@ -53,7 +53,7 @@ export default function ContactPage() {
                 <div className="w-8 h-8 rounded-xl bg-white border border-black/8 flex items-center justify-center text-[#0A0A0E] shadow-xs">
                   <Mail className="w-4 h-4" />
                 </div>
-                <span className="text-[#0A0A0E] font-bold">partnerships@collably.io</span>
+                <span className="text-[#0A0A0E] font-bold">partnerships@abeycollab.com</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-xl bg-white border border-black/8 flex items-center justify-center text-[#0A0A0E] shadow-xs">

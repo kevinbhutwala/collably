@@ -13,7 +13,7 @@ import { StreamlinedPricing } from "@/components/collably/StreamlinedPricing";
 import { CompactFAQ } from "@/components/collably/CompactFAQ";
 import { StreamlinedVisualCTA } from "@/components/visual/StreamlinedVisualCTA";
 
-export default function CollablyLandingPage() {
+export default function AbeyCollabLandingPage() {
   return (
     <div className="relative min-h-screen bg-white dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] font-sans selection:bg-[#FFD21F] selection:text-[#0A0A0E] overflow-x-hidden">
       {/* 01 — High-Impact Value-Focused Editorial Hero */}

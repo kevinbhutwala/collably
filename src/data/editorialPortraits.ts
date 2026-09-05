@@ -1,5 +1,5 @@
 /**
- * Curated Editorial Portrait & Brand Registry for Collably Ultramarine × Infrared Redesign
+ * Curated Editorial Portrait & Brand Registry for AbeyCollab Ultramarine × Infrared Redesign
  * High-fashion, modern creator campaign photography with varied crops, angles, and color treatments (Big, Medium, Small).
  */
 

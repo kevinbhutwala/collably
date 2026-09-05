@@ -21,7 +21,7 @@ export default function PrivacyPolicyPage() {
             Privacy Policy
           </h1>
           <p className="text-sm text-[#7A7A8A] font-mono">
-            Last Updated: August 31, 2026 • Collably Inc.
+            Last Updated: August 31, 2026 • AbeyCollab Inc.
           </p>
         </div>
 
@@ -29,7 +29,7 @@ export default function PrivacyPolicyPage() {
           <section className="space-y-3">
             <h2 className="text-xl font-bold text-[#111111] font-display">1. Overview &amp; Commitment</h2>
             <p>
-              Collably Inc. (&quot;Collably&quot;, &quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) operates the Collably creator and brand collaboration platform. We are committed to safeguarding your personal data, audience metrics, media assets, and transaction records with enterprise-grade cryptographic security.
+              AbeyCollab Inc. (&quot;AbeyCollab&quot;, &quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) operates the AbeyCollab creator and brand collaboration platform. We are committed to safeguarding your personal data, audience metrics, media assets, and transaction records with enterprise-grade cryptographic security.
             </p>
           </section>
 
@@ -47,7 +47,7 @@ export default function PrivacyPolicyPage() {
           <section className="space-y-3">
             <h2 className="text-xl font-bold text-[#111111] font-display">3. How We Use Your Information</h2>
             <ul className="list-disc pl-5 space-y-1.5 text-[#6B6B6B]">
-              <li>To provide, operate, and maintain the Collably collaboration workspace and milestone escrow vault.</li>
+              <li>To provide, operate, and maintain the AbeyCollab collaboration workspace and milestone escrow vault.</li>
               <li>To match brand campaign requirements with creator audience niches using algorithmic scoring.</li>
               <li>To process milestone payouts, collect platform commission (10%), and maintain auditable financial records.</li>
               <li>To prevent fraud, verify authentic social channel ownership, and enforce rate limits.</li>
@@ -69,7 +69,7 @@ export default function PrivacyPolicyPage() {
           <section className="space-y-3">
             <h2 className="text-xl font-bold text-[#111111] font-display">5. Your Data Rights &amp; Deletion</h2>
             <p>
-              You have the right to access, export, update, or permanently delete your account and all associated media kits at any time from your account settings or by contacting our Data Protection Officer at <span className="font-mono text-[#111111] font-bold">privacy@collably.io</span>.
+              You have the right to access, export, update, or permanently delete your account and all associated media kits at any time from your account settings or by contacting our Data Protection Officer at <span className="font-mono text-[#111111] font-bold">privacy@abeycollab.com</span>.
             </p>
           </section>
         </div>

@@ -617,7 +617,7 @@ export default function SettingsPage() {
               <span>Cross-Platform API &amp; Security Status</span>
             </div>
             <p className="text-xs text-[#5A5A68] leading-relaxed font-sans">
-              Your credentials, active subscriptions, and campaigns are synchronized in realtime across the Collably Web &amp; Mobile Workspace.
+              Your credentials, active subscriptions, and campaigns are synchronized in realtime across the AbeyCollab Web &amp; Mobile Workspace.
             </p>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/5 border border-black/10 text-[#0A0A0E] font-mono text-[10px] font-bold">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-pulse" />

@@ -22,7 +22,7 @@ export default function RegisterPage() {
 
       <div className="text-center space-y-2">
         <h1 className="text-2xl sm:text-3xl font-black text-[#0A0A0E] tracking-tight font-display">
-          Join the Collably Network
+          Join the AbeyCollab Network
         </h1>
         <p className="text-xs sm:text-sm text-[#5A5A68] font-sans max-w-md mx-auto">
           Select your account type to begin tailored onboarding with instant access.

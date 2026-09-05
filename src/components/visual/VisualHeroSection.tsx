@@ -96,7 +96,7 @@ export function VisualHeroSection() {
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF9F5] border border-black/8 shadow-2xs">
               <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
               <span className="text-xs font-mono font-bold tracking-tight text-[#0A0A0E]">
-                COLLABLY • CREATOR COMMERCE PLATFORM
+                ABEYCOLLAB • CREATOR COMMERCE PLATFORM
               </span>
             </div>
 
@@ -276,7 +276,7 @@ export function VisualHeroSection() {
       <Modal
         isOpen={roleModalOpen}
         onClose={() => setRoleModalOpen(false)}
-        title="Join Collably Commerce"
+        title="Join AbeyCollab Commerce"
         description="Select your portal to start hiring creators or showcase your verified portfolio."
         maxWidth="md"
       >

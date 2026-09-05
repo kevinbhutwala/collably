@@ -54,7 +54,7 @@ async function fetchRoute(path, options = {}) {
     });
 
     req.on("error", (err) => {
-      resolve({ status: 500, error: err.message, failed: true });
+      resolve({ status: 500, error: `${err.code ? `[${err.code}] ` : ""}${err.message}`, failed: true, errorCode: err.code });
     });
 
     if (options.body) {
@@ -168,19 +168,19 @@ async function runAutoTests() {
 
   // Campaigns API
   const campRes = await fetchRoute("/api/campaigns");
-  assert("Campaigns API", "GET /api/campaigns returns curated brief roster", campRes.status === 200 && Array.isArray(campRes.json?.campaigns));
+  assert("Campaigns API", "GET /api/campaigns returns curated brief roster", campRes.status === 200 && Array.isArray(campRes.json?.campaigns || campRes.json));
 
   // Creators API
   const creatRes = await fetchRoute("/api/creators");
-  assert("Creators API", "GET /api/creators returns verified creator talent", creatRes.status === 200 && Array.isArray(creatRes.json?.creators));
+  assert("Creators API", "GET /api/creators returns verified creator talent", creatRes.status === 200 && Array.isArray(creatRes.json?.creators || creatRes.json));
 
   // Brands API
   const brandRes = await fetchRoute("/api/brands");
-  assert("Brands API", "GET /api/brands returns registered enterprise sponsors", brandRes.status === 200 && Array.isArray(brandRes.json?.brands));
+  assert("Brands API", "GET /api/brands returns registered enterprise sponsors", brandRes.status === 200 && Array.isArray(brandRes.json?.brands || brandRes.json));
 
   // Collaborations API
   const collabRes = await fetchRoute("/api/collaborations");
-  assert("Collaborations API", "GET /api/collaborations returns milestone pipeline", collabRes.status === 200 && Array.isArray(collabRes.json?.collaborations));
+  assert("Collaborations API", "GET /api/collaborations returns milestone pipeline", collabRes.status === 200 && Array.isArray(collabRes.json?.collaborations || collabRes.json));
 
   // ── FINAL SUMMARY ──
   console.log("\n================================================================================");

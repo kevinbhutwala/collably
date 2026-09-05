@@ -32,6 +32,17 @@
       "verified": true,
       "createdAt": "2026-09-03T18:46:21.709Z",
       "updatedAt": "2026-09-03T18:46:21.709Z"
+    },
+    {
+      "id": "user-1788643257898",
+      "name": "Olive",
+      "email": "olive@gmail.com",
+      "passwordHash": "3a052311dcef8161a65530cfe52179d9:bb8b4a6a70c850ea935439690e14061842628cc0d218cbb4ffe474a63377d662761dfc5348be7682787272ee3a3aeec23b17776780b5eaf4df56d823c55a151d:210000",
+      "role": "brand",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "verified": false,
+      "createdAt": "2026-09-05T21:20:57.898Z",
+      "updatedAt": "2026-09-05T21:20:57.898Z"
     }
   ],
   "creators": [
@@ -105,6 +116,24 @@
     }
   ],
   "brands": [
+    {
+      "id": "brand-1788643257899",
+      "userId": "user-1788643257898",
+      "companyName": "Adidas",
+      "industry": "Fashion & Luxury",
+      "headline": "Adidas Official Brand Workspace",
+      "description": "Verified enterprise brand on Collably sponsoring creator partnerships.",
+      "logoUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+      "websiteUrl": "https://collably.io",
+      "location": "San Francisco, CA",
+      "companySize": "10-50",
+      "verified": true,
+      "activeCampaignsCount": 0,
+      "totalSpent": 0,
+      "socialHandles": {},
+      "createdAt": "2026-09-05T21:20:57.899Z"
+    },
     {
       "id": "brand-demo",
       "userId": "user-brand",
@@ -1491,6 +1520,48 @@
       },
       "createdAt": "2026-09-03T18:46:21.709Z",
       "updatedAt": "2026-09-03T18:46:21.709Z"
+    },
+    {
+      "id": "sub-1788643270627-7m8tm",
+      "userId": "user-1788643257898",
+      "role": "brand",
+      "planId": "brand_starter",
+      "status": "active",
+      "interval": "monthly",
+      "currentPeriodStart": "2026-09-05T21:21:10.627Z",
+      "currentPeriodEnd": "2026-10-05T21:21:10.627Z",
+      "cancelAtPeriodEnd": false,
+      "price": 49,
+      "currency": "USD",
+      "features": {
+        "mediaKit": false,
+        "maxApplicationsPerMonth": 0,
+        "instantPayouts": false,
+        "advancedAnalytics": false,
+        "aiPitchGenerator": false,
+        "verifiedBadge": false,
+        "priorityDiscovery": false,
+        "multiCreatorManagement": false,
+        "customDomain": false,
+        "maxActiveCampaigns": 2,
+        "crmPipeline": false,
+        "aiCreatorMatching": false,
+        "creatorShortlists": true,
+        "maxTeamSeats": 1,
+        "advancedRoiTelemetry": false,
+        "contractCompliance": false,
+        "dedicatedAccountManager": false,
+        "apiAccess": false
+      },
+      "usage": {
+        "activeCampaignsCount": 0,
+        "applicationsThisMonth": 0,
+        "crmContactsCount": 0,
+        "aiTokensUsed": 0,
+        "lastResetDate": "2026-09-05T21:21:10.627Z"
+      },
+      "createdAt": "2026-09-05T21:21:10.627Z",
+      "updatedAt": "2026-09-05T21:21:10.627Z"
     }
   ],
   "crmContacts": [],
@@ -1838,7 +1909,105 @@
   "notifications": [],
   "webhookEvents": [],
   "aiUsage": [],
-  "auditLogs": [],
+  "auditLogs": [
+    {
+      "id": "aud-1788648317840",
+      "actorId": "user-owner",
+      "actorName": "Kevin Bhutwala",
+      "actorRole": "agency_admin",
+      "action": "DISPUTE_ARBITRATION_RESOLVED",
+      "entityType": "Dispute",
+      "entityId": "disp-101",
+      "entityName": "Hyperion ANC Headphone Commercial",
+      "metadata": {
+        "split": "50/50",
+        "brandRefund": 1750,
+        "creatorPayout": 1750
+      },
+      "createdAt": "2026-09-05T22:45:17.840Z"
+    },
+    {
+      "id": "aud-1788646791974",
+      "actorId": "user-owner",
+      "actorName": "Kevin Bhutwala",
+      "actorRole": "agency_admin",
+      "action": "DISPUTE_ARBITRATION_RESOLVED",
+      "entityType": "Dispute",
+      "entityId": "disp-101",
+      "entityName": "Hyperion ANC Headphone Commercial",
+      "metadata": {
+        "split": "50/50",
+        "brandRefund": 1750,
+        "creatorPayout": 1750
+      },
+      "createdAt": "2026-09-05T22:19:51.974Z"
+    },
+    {
+      "id": "aud-1788646588253",
+      "actorId": "user-owner",
+      "actorName": "Kevin Bhutwala",
+      "actorRole": "agency_admin",
+      "action": "DISPUTE_ARBITRATION_RESOLVED",
+      "entityType": "Dispute",
+      "entityId": "disp-101",
+      "entityName": "Hyperion ANC Headphone Commercial",
+      "metadata": {
+        "split": "50/50",
+        "brandRefund": 1750,
+        "creatorPayout": 1750
+      },
+      "createdAt": "2026-09-05T22:16:28.253Z"
+    },
+    {
+      "id": "aud-1788642870035",
+      "actorId": "user-owner",
+      "actorName": "Kevin Bhutwala",
+      "actorRole": "agency_admin",
+      "action": "DISPUTE_ARBITRATION_RESOLVED",
+      "entityType": "Dispute",
+      "entityId": "disp-101",
+      "entityName": "Hyperion ANC Headphone Commercial",
+      "metadata": {
+        "split": "50/50",
+        "brandRefund": 1750,
+        "creatorPayout": 1750
+      },
+      "createdAt": "2026-09-05T21:14:30.035Z"
+    },
+    {
+      "id": "aud-1788642552331",
+      "actorId": "user-owner",
+      "actorName": "Kevin Bhutwala",
+      "actorRole": "agency_admin",
+      "action": "DISPUTE_ARBITRATION_RESOLVED",
+      "entityType": "Dispute",
+      "entityId": "disp-101",
+      "entityName": "Hyperion ANC Headphone Commercial",
+      "metadata": {
+        "split": "50/50",
+        "brandRefund": 1750,
+        "creatorPayout": 1750
+      },
+      "createdAt": "2026-09-05T21:09:12.331Z"
+    },
+    {
+      "id": "aud-1788642519180",
+      "actorId": "user-owner",
+      "actorName": "Kevin Bhutwala",
+      "actorRole": "agency_admin",
+      "action": "DISPUTE_ARBITRATION_RESOLVED",
+      "entityType": "Dispute",
+      "entityId": "disp-101",
+      "entityName": "Hyperion ANC Headphone Commercial",
+      "metadata": {
+        "split": "50/50",
+        "brandRefund": 1750,
+        "creatorPayout": 1750
+      },
+      "createdAt": "2026-09-05T21:08:39.180Z"
+    }
+  ],
   "ledgerEntries": [],
-  "reliabilityScores": []
+  "reliabilityScores": [],
+  "_lastVerifiedAt": "2026-09-05T22:45:17.841Z"
 }

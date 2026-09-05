@@ -128,7 +128,7 @@ export function StoryPipeline() {
             <span className="text-emerald-400 font-bold">+$2,880.00</span>
           </div>
           <div className="text-[10px] text-slate-400 flex items-center justify-between">
-            <span>Collably Fee (10%): $320</span>
+            <span>AbeyCollab Fee (10%): $320</span>
             <span className="text-emerald-400 font-bold">Status: PAID</span>
           </div>
         </div>
@@ -150,7 +150,7 @@ export function StoryPipeline() {
               From discovery to instant payout.
             </h2>
             <p className="text-sm sm:text-base text-slate-300 font-sans">
-              How Collably delivers structure, transparency, and speed to every creator partnership.
+              How AbeyCollab delivers structure, transparency, and speed to every creator partnership.
             </p>
           </div>
 
@@ -231,7 +231,7 @@ export function StoryPipeline() {
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between text-xs font-mono text-slate-400">
-                    <span className="text-white font-bold uppercase font-display">Collably Pipeline Telemetry</span>
+                    <span className="text-white font-bold uppercase font-display">AbeyCollab Pipeline Telemetry</span>
                     <span className="text-emerald-400 font-bold">● VERIFIED</span>
                   </div>
                   {panels[activePanel].uiPreview}

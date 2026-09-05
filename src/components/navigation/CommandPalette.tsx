@@ -246,7 +246,7 @@ export function CommandPalette() {
             <span>to close</span>
           </div>
           <div className="flex items-center gap-2">
-            <span>Collably Command Palette</span>
+            <span>AbeyCollab Command Palette</span>
             <kbd className="px-1.5 py-0.5 rounded bg-[#FFFFFF] border border-[#E7E7E4] text-[#111111] text-[10px]">⌘K</kbd>
           </div>
         </div>

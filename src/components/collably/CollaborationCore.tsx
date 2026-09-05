@@ -73,15 +73,15 @@ export function CollaborationCore() {
         <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-xs font-mono font-bold text-[hsl(327,100%,55%)] shadow-xs">
             <Layers className="w-3.5 h-3.5 text-gold" />
-            <span>The Collably Collaboration Hub</span>
+            <span>The AbeyCollab Collaboration Hub</span>
           </div>
 
           <ScrollRevealText
             as="h2"
-            gradientWords={["creator", "partnerships", "collably"]}
+            gradientWords={["creator", "partnerships", "abeycollab"]}
             className="text-3xl sm:text-5xl font-black text-white tracking-tight font-display leading-tight"
           >
-            How creator partnerships happen on Collably.
+            How creator partnerships happen on AbeyCollab.
           </ScrollRevealText>
 
           <ScrollRevealText
@@ -105,7 +105,7 @@ export function CollaborationCore() {
             }}
           />
 
-          {/* Central Pulsing Collably Engine */}
+          {/* Central Pulsing AbeyCollab Engine */}
           <div className="relative z-20 flex flex-col items-center justify-center">
             <motion.div
               animate={{ rotate: 360 }}
@@ -125,8 +125,8 @@ export function CollaborationCore() {
                   <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-gold animate-pulse" />
                 </div>
               </div>
-              <span className="text-[11px] sm:text-xs font-black uppercase tracking-wider text-white font-display">
-                Collably
+              <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-white font-display">
+                AbeyCollab
               </span>
               <span className="text-[8px] sm:text-[9px] font-mono text-emerald-400 font-bold">PIPELINE ACTIVE</span>
             </div>

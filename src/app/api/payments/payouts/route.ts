@@ -60,7 +60,7 @@ export async function POST(req: NextRequest) {
         creatorId: creator.id,
         collaborationId: "withdrawal",
         campaignTitle: "Creator Wallet Withdrawal",
-        brandName: "Collably Escrow Rails",
+        brandName: "AbeyCollab Escrow Rails",
         creatorName: creator.fullName,
         deliverableTitle: "Direct Express Bank Transfer",
         grossAmount: withdrawAmount,

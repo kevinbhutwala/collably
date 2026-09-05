@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { AbeyCollabSymbol } from "@/components/ui/AbeyCollabLogo";
 import { Sparkles, Menu, X, ArrowRight, User, LogOut } from "lucide-react";
 import { useAuthStore } from "@/stores/auth.store";
 import { cn } from "@/lib/utils";
@@ -40,13 +41,13 @@ export function CinematicNavbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 text-white">
-        {/* Exact Collably Logo with Sparkle */}
+        {/* Exact AbeyCollab Logo */}
         <Link href="/" className="flex items-center gap-2.5 group">
           <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FFD21F] to-[#FFAE00] border border-white/40 flex items-center justify-center text-[#0A0A0E] group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(255,210,31,0.45)]">
-            <Sparkles className="w-4 h-4 fill-[#0A0A0E] text-[#0A0A0E]" />
+            <AbeyCollabSymbol size={20} />
           </div>
           <span className="font-display font-extrabold text-lg sm:text-xl tracking-tight text-white">
-            Collably
+            AbeyCollab
           </span>
         </Link>
 

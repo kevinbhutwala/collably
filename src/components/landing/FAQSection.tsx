@@ -10,15 +10,15 @@ export function FAQSection() {
   const faqs = [
     {
       q: "How does the milestone escrow mechanism work legally?",
-      a: "Collably utilizes a compliant marketplace funds flow powered by Stripe Connect and verified payment rails. When a brand approves a collaboration or posts a campaign brief, funds are pre-authorized and locked in segregated escrow. Funds are legally and programmatically released to the creator's payout account only upon explicit deliverable approval or upon expiry of the 7-day review window.",
+      a: "AbeyCollab utilizes a compliant marketplace funds flow powered by Stripe Connect and verified payment rails. When a brand approves a collaboration or posts a campaign brief, funds are pre-authorized and locked in segregated escrow. Funds are legally and programmatically released to the creator's payout account only upon explicit deliverable approval or upon expiry of the 7-day review window.",
     },
     {
-      q: "How does Collably handle tax compliance (W-9, W-8BEN, 1099-K, and TDS 194R)?",
-      a: "For US creators earning over applicable thresholds, Collably collects digital W-9 forms and issues standard 1099-K reporting via Stripe Express. Non-US creators provide W-8BEN certifications. For Indian creator transactions via Razorpay Route, Section 194R TDS withholding statements and GST invoices are automatically generated.",
+      q: "How does AbeyCollab handle tax compliance (W-9, W-8BEN, 1099-K, and TDS 194R)?",
+      a: "For US creators earning over applicable thresholds, AbeyCollab collects digital W-9 forms and issues standard 1099-K reporting via Stripe Express. Non-US creators provide W-8BEN certifications. For Indian creator transactions via Razorpay Route, Section 194R TDS withholding statements and GST invoices are automatically generated.",
     },
     {
-      q: "What is the exact fee structure on Collably?",
-      a: "Collably charges a transparent 10% platform commission on funded deals. Creators keep 90% of their gross earnings with zero hidden withdrawal markups. There are no monthly subscription paywalls required to browse creators or post a brief.",
+      q: "What is the exact fee structure on AbeyCollab?",
+      a: "AbeyCollab charges a transparent 10% platform commission on funded deals. Creators keep 90% of their gross earnings with zero hidden withdrawal markups. There are no monthly subscription paywalls required to browse creators or post a brief.",
     },
     {
       q: "When and how fast do creators receive payouts?",
@@ -34,7 +34,7 @@ export function FAQSection() {
     },
     {
       q: "Who owns intellectual property and paid advertising usage rights?",
-      a: "Standard Collably contracts grant the brand worldwide organic digital distribution rights and paid whitelisting permissions for the agreed campaign window. Creators retain non-commercial portfolio and case study display rights. Custom licensing terms can be added directly to any brief.",
+      a: "Standard AbeyCollab contracts grant the brand worldwide organic digital distribution rights and paid whitelisting permissions for the agreed campaign window. Creators retain non-commercial portfolio and case study display rights. Custom licensing terms can be added directly to any brief.",
     },
     {
       q: "Can brands collaborate directly or request full-service managed agency support?",

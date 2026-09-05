@@ -114,11 +114,11 @@ export const MOCK_CONVERSATIONS: Conversation[] = [
   {
     id: "conv-5",
     campaignId: "camp-vip",
-    campaignTitle: "Collably VIP Creator Escrow & Priority Match Desk",
+    campaignTitle: "AbeyCollab VIP Creator Escrow & Priority Match Desk",
     participants: [
       {
         userId: "user-admin",
-        name: "Collably Talent Concierge",
+        name: "AbeyCollab Talent Concierge",
         role: "agency_admin",
         avatarUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop&q=80",
       },
@@ -131,7 +131,7 @@ export const MOCK_CONVERSATIONS: Conversation[] = [
     ],
     lastMessage: {
       content: "You've been matched with 3 Tier-1 enterprise SaaS brand briefs this week with guaranteed escrow funding.",
-      senderName: "Collably Talent Concierge",
+      senderName: "AbeyCollab Talent Concierge",
       createdAt: "2026-08-31T09:00:00Z",
     },
     unreadCount: 1,
@@ -297,9 +297,9 @@ export const MOCK_MESSAGES: Record<string, ChatMessage[]> = {
       conversationId: "conv-5",
       senderId: "user-admin",
       senderRole: "agency_admin",
-      senderName: "Collably Talent Concierge",
+      senderName: "AbeyCollab Talent Concierge",
       senderAvatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop&q=80",
-      content: "Welcome to the Collably VIP Creator Cohort, Elena! Your rate card and audience authenticity score (98.4%) have been verified.",
+      content: "Welcome to the AbeyCollab VIP Creator Cohort, Elena! Your rate card and audience authenticity score (98.4%) have been verified.",
       readBy: ["user-c1"],
       createdAt: "2026-08-30T08:00:00Z",
     },
@@ -308,7 +308,7 @@ export const MOCK_MESSAGES: Record<string, ChatMessage[]> = {
       conversationId: "conv-5",
       senderId: "user-admin",
       senderRole: "agency_admin",
-      senderName: "Collably Talent Concierge",
+      senderName: "AbeyCollab Talent Concierge",
       senderAvatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop&q=80",
       content: "You've been matched with 3 Tier-1 enterprise SaaS brand briefs this week with guaranteed escrow funding.",
       readBy: [],

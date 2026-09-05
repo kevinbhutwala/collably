@@ -179,7 +179,7 @@ export class AuthService {
           `creator_${Date.now()}`;
         await creatorRepo.createCreator({
           userId: existingUser.id,
-          fullName: params.name || "Collably Creator",
+          fullName: params.name || "AbeyCollab Creator",
           handle: handle.startsWith("@") ? handle : `@${handle}`,
           headline: `Verified Creator via ${params.provider}`,
           bio: `Content creator verified via ${params.provider}. Ready for brand collaborations.`,

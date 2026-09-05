@@ -31,27 +31,27 @@ export default function AppleIcon() {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* Creator Partnership Arc */}
+          {/* 1. Abey Creator Arch (Letter "A" dynamic left ramp and crown apex) */}
           <path
-            d="M34 14C30 9 22.5 8.5 16.5 13C9.5 18.5 9.5 31.5 16.5 37C22.5 41.5 30 41 34 36"
+            d="M12 39L23.1 9.8C23.5 8.7 24.5 8 25.7 8C26.9 8 27.9 8.7 28.3 9.8L38 35"
             stroke="#FFD21F"
-            strokeWidth="4.5"
+            strokeWidth="5"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
 
-          {/* Brand Synergy Arc */}
+          {/* 2. Brand Partnership Synergy Loop & Deal Crossbar */}
           <path
-            d="M20 20C22.5 16.5 28.5 16 33.5 20.5C38.5 25 38.5 33 33.5 37.5C28.5 42 22.5 41.5 20 38"
+            d="M16 28.5C16 23 20 18.5 25.5 18.5C31.5 18.5 35.5 23 35.5 28.5C35.5 34 31 38 25.5 38C19.5 38 15 33.5 22 28.5H38"
             stroke="#FFFFFF"
-            strokeWidth="4"
+            strokeWidth="4.2"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
 
-          {/* Escrow Hub Pulse Core */}
-          <circle cx="34" cy="27" r="3.5" fill="#FFD21F" />
-          <circle cx="34" cy="27" r="1.5" fill="#0A0A0E" />
+          {/* 3. Escrow Settlement Node (Deal Core at nexus of creator and brand) */}
+          <circle cx="24.5" cy="27.5" r="3.2" fill="#FFD21F" />
+          <circle cx="24.5" cy="27.5" r="1.3" fill="#0A0A0E" />
         </svg>
       </div>
     ),

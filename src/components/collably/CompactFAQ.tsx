@@ -13,8 +13,8 @@ export function CompactFAQ() {
       a: "Milestone funds are deposited upfront into segregated custody via Stripe Connect, and released to the creator within 24 hours only after the brand approves the final video deliverable.",
     },
     {
-      q: "What is Collably's platform fee?",
-      a: "Collably charges a flat 10% platform fee on completed milestones. There are zero listing fees or hidden subscription requirements to pitch.",
+      q: "What is AbeyCollab's platform fee?",
+      a: "AbeyCollab charges a flat 10% platform fee on completed milestones. There are zero listing fees or hidden subscription requirements to pitch.",
     },
     {
       q: "How are video revisions handled?",

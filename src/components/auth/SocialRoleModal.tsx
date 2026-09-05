@@ -22,7 +22,7 @@ export function SocialRoleModal({
       isOpen={isOpen}
       onClose={onClose}
       title="Complete Your Setup"
-      description={`Welcome ${userName}! Select your role on Collably to personalize your workspace.`}
+      description={`Welcome ${userName}! Select your role on AbeyCollab to personalize your workspace.`}
       maxWidth="md"
     >
       <div className="space-y-3 pt-2 text-[#0A0A0E] select-none">

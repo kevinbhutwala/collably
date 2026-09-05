@@ -126,7 +126,7 @@ export function CollablyNavbar() {
       <Modal
         isOpen={roleModalOpen}
         onClose={() => setRoleModalOpen(false)}
-        title="Join the Collably Network"
+        title="Join the AbeyCollab Network"
         description="Choose your pathway to explore briefings or share your creator kit."
         maxWidth="md"
       >

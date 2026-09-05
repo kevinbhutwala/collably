@@ -210,10 +210,10 @@ export async function POST(req: NextRequest) {
         companyName: cName,
         industry: industry || "Technology & AI",
         headline: `${cName} Official Brand Workspace`,
-        description: `Verified enterprise brand on Collably sponsoring creator partnerships.`,
+        description: `Verified enterprise brand on AbeyCollab sponsoring creator partnerships.`,
         logoUrl: newUser.avatarUrl || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
         coverImageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
-        websiteUrl: "https://collably.io",
+        websiteUrl: "https://abeycollab.com",
         location: "San Francisco, CA",
         companySize: "10-50",
         verified: true,
@@ -246,13 +246,15 @@ export async function POST(req: NextRequest) {
       token,
     });
 
-    response.cookies.set("collably_session", token, {
+    const cookieOptions = {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
+      sameSite: "lax" as const,
       maxAge: 7 * 24 * 60 * 60,
       path: "/",
-    });
+    };
+    response.cookies.set("abeycollab_session", token, cookieOptions);
+    response.cookies.set("collably_session", token, cookieOptions);
 
     return response;
   } catch (err: any) {

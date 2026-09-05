@@ -310,7 +310,7 @@ export function DeliverableReviewCard({
         isOpen={isDisputeModalOpen}
         onClose={() => setIsDisputeModalOpen(false)}
         title="Raise Milestone Dispute"
-        description="Freeze escrow tranche and submit case to Collably arbitration desk."
+        description="Freeze escrow tranche and submit case to AbeyCollab arbitration desk."
       >
         <form onSubmit={handleConfirmDispute} className="space-y-4 text-[#0A0A0E]">
           <Textarea

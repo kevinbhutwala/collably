@@ -36,7 +36,7 @@ export function CreatorShowcase() {
               Sample media kits &amp; rate cards
             </h2>
             <p className="text-sm sm:text-base text-slate-300 font-sans">
-              Illustrative creator profiles demonstrating verified multi-platform audience metrics and automated deliverables on Collably.
+              Illustrative creator profiles demonstrating verified multi-platform audience metrics and automated deliverables on AbeyCollab.
             </p>
           </div>
 

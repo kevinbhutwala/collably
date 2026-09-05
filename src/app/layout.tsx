@@ -29,16 +29,16 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
-const BASE_URL = 'https://collably-ashen.vercel.app';
+const BASE_URL = 'https://abeycollab.vercel.app';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'Collably — Creator & Brand Collaboration Platform',
-    template: '%s | Collably',
+    default: 'AbeyCollab — Creator & Brand Collaboration Platform',
+    template: '%s | AbeyCollab',
   },
   description:
-    'Collably connects brands with creators through milestone-protected escrow campaigns. Discover talent, launch briefs, approve deliverables, and release payments — all in one place.',
+    'AbeyCollab connects brands with creators through milestone-protected escrow campaigns. Discover talent, launch briefs, approve deliverables, and release payments — all in one place.',
   keywords: [
     'influencer marketing platform',
     'creator marketplace',
@@ -46,14 +46,14 @@ export const metadata: Metadata = {
     'milestone escrow payments',
     'campaign management',
   ],
-  authors: [{ name: 'Collably', url: BASE_URL }],
-  creator: 'Collably',
+  authors: [{ name: 'AbeyCollab', url: BASE_URL }],
+  creator: 'AbeyCollab',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: BASE_URL,
-    siteName: 'Collably',
-    title: 'Collably — Creator & Brand Collaboration Platform',
+    siteName: 'AbeyCollab',
+    title: 'AbeyCollab — Creator & Brand Collaboration Platform',
     description:
       'Milestone-protected campaigns, real creator discovery, and instant payouts. Built for the new creator economy.',
     images: [
@@ -61,17 +61,17 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Collably — Creator Commerce Platform',
+        alt: 'AbeyCollab — Creator Commerce Platform',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Collably — Creator & Brand Collaboration Platform',
+    title: 'AbeyCollab — Creator & Brand Collaboration Platform',
     description:
       'Milestone-protected campaigns, real creator discovery, and instant payouts.',
     images: ['/og-image.png'],
-    creator: '@collably',
+    creator: '@abeycollab',
   },
   alternates: {
     canonical: BASE_URL,
@@ -91,11 +91,11 @@ export const metadata: Metadata = {
 const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'Collably',
+  name: 'AbeyCollab',
   url: BASE_URL,
   logo: `${BASE_URL}/icon.svg`,
   sameAs: [],
-  contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', email: 'support@collably.io' },
+  contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', email: 'support@abeycollab.com' },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -107,7 +107,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             __html: `
               (function() {
                 try {
-                  var saved = localStorage.getItem('collably_theme');
+                  var saved = localStorage.getItem('abeycollab_theme') || localStorage.getItem('collably_theme');
                   var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
                   if (saved === 'dark' || (!saved && prefersDark)) {
                     document.documentElement.classList.add('dark');

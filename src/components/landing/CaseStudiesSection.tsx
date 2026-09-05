@@ -19,10 +19,10 @@ export function CaseStudiesSection() {
         >
           <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] dark:text-[#FFD21F] text-xs font-semibold font-mono shadow-xs">
             <ShieldCheck className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F]" />
-            <span>The Collably Trust &amp; Escrow Guarantee</span>
+            <span>The AbeyCollab Trust &amp; Escrow Guarantee</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
-            How Collably Protects Both Sides
+            How AbeyCollab Protects Both Sides
           </h2>
           <p className="text-base text-[#5A5A68] dark:text-[#8E8EA4] font-sans">
             No more lost emails, late deliverables, or unpaid invoices. Milestone escrow guarantees fairness and transparency for brands and creators.

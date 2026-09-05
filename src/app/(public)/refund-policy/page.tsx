@@ -27,7 +27,7 @@ export default function RefundPolicyPage() {
 
         <div className="space-y-8 text-sm text-[#6B6B6B] leading-relaxed border-t border-[#E7E7E4] pt-8 font-sans font-medium">
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-[#111111] font-display">1. How Collably Escrow Protects Payments</h2>
+            <h2 className="text-xl font-bold text-[#111111] font-display">1. How AbeyCollab Escrow Protects Payments</h2>
             <p>
               When a brand funds a collaboration or accepts a creator brief, funds are placed into segregated platform escrow. Funds are never released to the creator upfront without verified deliverable submission and brand approval.
             </p>
@@ -57,7 +57,7 @@ export default function RefundPolicyPage() {
           <section className="space-y-3">
             <h2 className="text-xl font-bold text-[#111111] font-display">4. Dispute Arbitration Workflow (&lt; 4 Hour Response)</h2>
             <p>
-              Either party may open a dispute ticket directly inside the Collaboration Workspace. Collably talent directors review the chat log, timecoded video timeline, and original brief within 4 hours to issue a binding determination (release, revision mandate, or full escrow refund).
+              Either party may open a dispute ticket directly inside the Collaboration Workspace. AbeyCollab talent directors review the chat log, timecoded video timeline, and original brief within 4 hours to issue a binding determination (release, revision mandate, or full escrow refund).
             </p>
           </section>
 

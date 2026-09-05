@@ -35,6 +35,7 @@ test.describe('Collably Dark Mode & Text Contrast Verification Suite', () => {
 
     // Click to toggle theme
     await themeToggle.click();
+    await page.waitForTimeout(400);
 
     // Verify theme state toggled
     const newIsDark = await page.evaluate(() => document.documentElement.classList.contains('dark'));
@@ -79,6 +80,7 @@ test.describe('Collably Dark Mode & Text Contrast Verification Suite', () => {
     // Force dark mode
     await page.evaluate(() => {
       document.documentElement.classList.add('dark');
+      localStorage.setItem('abeycollab_theme', 'dark');
       localStorage.setItem('collably_theme', 'dark');
     });
     await page.waitForTimeout(300);
@@ -122,7 +124,10 @@ test.describe('Collably Dark Mode & Text Contrast Verification Suite', () => {
     // Explicitly activate dark mode
     await page.evaluate(() => {
       document.documentElement.classList.add('dark');
+      localStorage.setItem('abeycollab_theme', 'dark');
+      localStorage.setItem('collably_theme', 'dark');
     });
+    await page.waitForTimeout(300);
 
     // Verify dark class
     const isDark = await page.evaluate(() => document.documentElement.classList.contains('dark'));

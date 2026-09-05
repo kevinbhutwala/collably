@@ -39,7 +39,7 @@ export default function BrandOnboardingWizardPage() {
       addToast({
         type: "success",
         title: "Brand Organization Verified",
-        message: "Welcome to Collably! Start discovering top-tier creators or post a campaign brief.",
+        message: "Welcome to AbeyCollab! Start discovering top-tier creators or post a campaign brief.",
       });
       router.push("/app/dashboard");
     }
@@ -196,7 +196,7 @@ export default function BrandOnboardingWizardPage() {
                 <div className="space-y-1">
                   <h4 className="text-xs font-bold text-[#0A0A0E] font-display">100% Escrow Milestone Protection</h4>
                   <p className="text-xs text-[#5A5A68] leading-relaxed font-sans font-medium">
-                    Your campaign funds remain secured in the Collably escrow vault until your marketing team reviews and signs off on deliverables.
+                    Your campaign funds remain secured in the AbeyCollab escrow vault until your marketing team reviews and signs off on deliverables.
                   </p>
                 </div>
               </div>

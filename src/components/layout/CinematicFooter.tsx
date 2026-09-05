@@ -2,7 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { Sparkles, ArrowRight, ShieldCheck, Mail, MapPin } from "lucide-react";
+import { AbeyCollabSymbol } from "@/components/ui/AbeyCollabLogo";
+import { ArrowRight, ShieldCheck, Mail, MapPin } from "lucide-react";
 
 export function CinematicFooter() {
   return (
@@ -12,17 +13,17 @@ export function CinematicFooter() {
 
           <Link href="/" className="flex items-center gap-2.5 group">
             <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FFD21F] to-[#FFAE00] border border-black/10 flex items-center justify-center text-[#0A0A0E] group-hover:scale-105 transition-transform shadow-[0_2px_10px_rgba(255,210,31,0.3)]">
-              <Sparkles className="w-4 h-4 fill-[#0A0A0E] text-[#0A0A0E]" />
+              <AbeyCollabSymbol size={20} />
             </div>
             <span className="font-display font-extrabold text-lg sm:text-xl tracking-tight text-[#0A0A0E] dark:text-white">
-              Collably
+              AbeyCollab
             </span>
           </Link>
           <p className="text-xs text-[#6A6A78] dark:text-[#9A9AA8] max-w-sm font-sans leading-relaxed">
             The creator × brand collaboration platform. Run high-impact campaigns, discover vetted talent, and receive secure milestone payments.
           </p>
           <div className="space-y-1 text-xs text-[#7A7A8A] dark:text-[#8E8EA4] font-mono">
-            <p>support@collably.io / kevinbhutwala417@gmail.com</p>
+            <p>support@abeycollab.com / kevinbhutwala417@gmail.com</p>
             <p>Delaware, United States &amp; Mumbai, India</p>
           </div>
           <div className="flex items-center gap-2 text-xs text-[#0A0A0E] dark:text-white font-sans pt-1 font-semibold">
@@ -69,7 +70,7 @@ export function CinematicFooter() {
       </div>
 
       <div className="border-t border-black/8 dark:border-white/10 py-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#7A7A8A] dark:text-[#8E8EA4]">
-        <p>© {new Date().getFullYear()} Collably Inc. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} AbeyCollab Inc. All rights reserved.</p>
         <p className="font-mono text-[11px] text-[#5A5A68] dark:text-[#8E8EA4] flex items-center gap-1.5">
           <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F]" />
           <span>The Creator × Brand Collaboration Platform</span>

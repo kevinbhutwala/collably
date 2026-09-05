@@ -71,7 +71,7 @@ export default function BrandRegisterPage() {
         addToast({
           type: "success",
           title: "Brand Workspace Ready",
-          message: "Welcome to Collably! Your brand account is ready.",
+          message: "Welcome to AbeyCollab! Your brand account is ready.",
         });
         router.push("/app/brand/campaigns/create");
       }

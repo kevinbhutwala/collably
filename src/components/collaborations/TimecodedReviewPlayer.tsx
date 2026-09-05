@@ -52,7 +52,7 @@ export function TimecodedReviewPlayer({
             authorName: "Linear Marketing",
             authorRole: "brand",
             authorAvatar: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
-            comment: "Please make sure the discount code 'COLLABLY20' text stays on screen for at least 4 seconds.",
+            comment: "Please make sure the discount code 'ABEYCOLLAB20' text stays on screen for at least 4 seconds.",
             resolved: false,
             createdAt: "2026-08-28 14:45",
           },

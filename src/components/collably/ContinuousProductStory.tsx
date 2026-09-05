@@ -157,7 +157,7 @@ export function ContinuousProductStory() {
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFFDF5] dark:bg-[#14141E] border border-[#FFD21F]/50 text-xs font-mono font-bold text-[#0A0A0E] dark:text-white shadow-2xs">
             <Sparkles className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
-            <span>THE COLLABLY END-TO-END OPERATING SYSTEM</span>
+            <span>THE ABEYCOLLAB END-TO-END OPERATING SYSTEM</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#0A0A0E] dark:text-white tracking-tight font-display">
@@ -258,7 +258,7 @@ export function ContinuousProductStory() {
                   <div className="w-3 h-3 rounded-full bg-amber-400" />
                   <div className="w-3 h-3 rounded-full bg-emerald-400" />
                   <span className="ml-2 text-[10px] sm:text-[11px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4] truncate max-w-[140px] sm:max-w-none">
-                    Collably Workspace
+                    AbeyCollab Workspace
                   </span>
                 </div>
                 <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] font-mono text-[9px] sm:text-[10px] font-bold">

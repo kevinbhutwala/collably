@@ -170,7 +170,7 @@ export function CreativeLoader({
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-black/8 shadow-2xs">
           <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-ping" />
           <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#0A0A0E]">
-            {label || "Collably Engine Active"}
+            {label || "AbeyCollab Engine Active"}
           </span>
         </div>
 
