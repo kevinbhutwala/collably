@@ -58,6 +58,13 @@ export async function POST(
       );
     }
 
+    if (!collaboration.isFunded || collaboration.paymentStatus === "payment_pending") {
+      return NextResponse.json(
+        { error: "COLLABORATION_UNFUNDED: Cannot submit deliverables before escrow is funded by brand." },
+        { status: 400 }
+      );
+    }
+
     if (deliverable.status === "draft") {
       return NextResponse.json(
         { error: "Cannot submit deliverables while milestone is in DRAFT status. Must be pre-funded first." },

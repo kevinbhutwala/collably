@@ -329,7 +329,44 @@ export interface CollaborationDeliverableItem {
   submissions: DeliverableSubmission[];
 }
 
-export type CollaborationStatus = 'active' | 'in_review' | 'completed' | 'cancelled' | 'disputed';
+export type CollaborationPaymentStatus =
+  | 'payment_pending'
+  | 'payment_funded'
+  | 'payment_secured'
+  | 'work_in_progress'
+  | 'submitted_for_review'
+  | 'revision_requested'
+  | 'approved'
+  | 'posted'
+  | 'payout_processing'
+  | 'paid'
+  | 'disputed'
+  | 'refund_pending'
+  | 'refunded'
+  | 'cancelled'
+  | 'expired'
+  | 'overdue';
+
+export type CollaborationStatus =
+  | 'payment_pending'
+  | 'payment_funded'
+  | 'payment_secured'
+  | 'work_in_progress'
+  | 'submitted_for_review'
+  | 'revision_requested'
+  | 'approved'
+  | 'posted'
+  | 'payout_processing'
+  | 'paid'
+  | 'disputed'
+  | 'refund_pending'
+  | 'refunded'
+  | 'cancelled'
+  | 'expired'
+  | 'overdue'
+  | 'active'
+  | 'in_review'
+  | 'completed';
 
 export interface NegotiationOffer {
   id: string;
@@ -342,6 +379,36 @@ export interface NegotiationOffer {
   createdAt: string;
 }
 
+export interface PostingVerificationProof {
+  postUrl: string;
+  platform?: PlatformType;
+  screenshotUrl?: string;
+  publishedAt: string;
+  verifiedAt?: string;
+  verifiedBy?: string;
+  status: 'pending' | 'verified' | 'rejected';
+  notes?: string;
+  metrics?: {
+    views?: number;
+    likes?: number;
+    comments?: number;
+    shares?: number;
+  };
+}
+
+export interface CollaborationCancellationDetails {
+  cancelledBy: string;
+  cancelledByRole: UserRole;
+  cancelledAt: string;
+  stage: 'before_acceptance' | 'before_work' | 'work_in_progress' | 'submitted' | 'posted' | 'overdue';
+  reason: string;
+  refundPercentToBrand: number;
+  killFeePercentToCreator: number;
+  refundAmountDollars: number;
+  killFeeAmountDollars: number;
+  transactionId?: string;
+}
+
 export interface Collaboration {
   id: string;
   campaignId: string;
@@ -351,8 +418,26 @@ export interface Collaboration {
   creatorId: string;
   creator: CreatorProfile;
   totalAgreedBudget: number;
-  escrowStatus: 'held_in_escrow' | 'partially_released' | 'fully_released' | 'refunded';
+  escrowStatus: 'pending_deposit' | 'held_in_escrow' | 'partially_released' | 'fully_released' | 'refunded';
   status: CollaborationStatus;
+  paymentStatus?: CollaborationPaymentStatus;
+  isFunded?: boolean;
+  fundedAt?: string;
+  paymentExpiresAt?: string;
+  postingDeadline?: string;
+  gracePeriodHours?: number;
+  isOverdue?: boolean;
+  reviewWindowHours?: number;
+  reviewDeadline?: string;
+  postingRequirements?: {
+    platforms: PlatformType[];
+    requiredHashtags: string[];
+    requiredMentions: string[];
+    trackingLink?: string;
+    guidelines?: string;
+  };
+  verificationProof?: PostingVerificationProof;
+  cancellationDetails?: CollaborationCancellationDetails;
   startDate: string;
   finalDeadline: string;
   deliverables: CollaborationDeliverableItem[];
@@ -472,8 +557,54 @@ export interface CreatorShortlist {
 }
 
 // Support & Disputes
-export type DisputeReason = 'Scope_Mismatch' | 'Quality_Standards' | 'Missed_Deadline' | 'Payment_Dispute' | 'Usage_Rights_Violation';
-export type DisputeStatus = 'Open' | 'Under_Investigation' | 'Evidence_Submitted' | 'Resolved' | 'Closed';
+export type DisputeReason =
+  | 'Scope_Mismatch'
+  | 'Quality_Standards'
+  | 'Missed_Deadline'
+  | 'Payment_Dispute'
+  | 'Usage_Rights_Violation'
+  | 'Unresponsive_Party'
+  | 'Late_Submission'
+  | 'Unauthorized_Content';
+
+export type DisputeStatus =
+  | 'Open'
+  | 'Under_Review'
+  | 'Evidence_Requested'
+  | 'Decision'
+  | 'Resolved'
+  | 'Under_Investigation'
+  | 'Evidence_Submitted'
+  | 'Closed';
+
+export type DisputeResolutionOutcome =
+  | 'FULL_CREATOR_PAYOUT'
+  | 'PARTIAL_CREATOR_PAYOUT'
+  | 'FULL_BRAND_REFUND'
+  | 'SPLIT_SETTLEMENT'
+  | 'ADDITIONAL_REVISION'
+  | 'CANCELLATION_WITHOUT_PAYOUT';
+
+export interface DisputeEvidenceAttachment {
+  id: string;
+  url: string;
+  title: string;
+  submittedBy: string;
+  submittedAt: string;
+  role?: UserRole;
+  notes?: string;
+}
+
+export interface DisputeResolutionDetails {
+  outcome: DisputeResolutionOutcome;
+  brandRefundDollars: number;
+  creatorPayoutDollars: number;
+  platformFeeDollars: number;
+  notes: string;
+  resolvedBy: string;
+  resolvedAt: string;
+  transactionId?: string;
+}
 
 export interface DisputeRecord {
   id: string;
@@ -489,10 +620,35 @@ export interface DisputeRecord {
   amountInDispute: number;
   filedBy: UserRole;
   status: DisputeStatus;
+  stage?: 'Open' | 'Under_Review' | 'Evidence_Requested' | 'Decision' | 'Resolved';
   evidenceLinks: string[];
+  evidenceAttachments?: DisputeEvidenceAttachment[];
+  resolutionOutcome?: DisputeResolutionOutcome;
+  resolutionDetails?: DisputeResolutionDetails;
   adminArbitrationNotes?: string;
   resolvedAt?: string;
   createdAt: string;
+  updatedAt?: string;
+}
+
+// Trust & Safety / Reliability Score
+export type ReliabilityTier = 'Elite' | 'Trusted' | 'Good' | 'At_Risk' | 'Suspended';
+
+export interface UserReliabilityScore {
+  userId: string;
+  role: 'creator' | 'brand';
+  score: number; // 0 to 100
+  tier: ReliabilityTier;
+  metrics: {
+    totalCollaborations: number;
+    onTimeCompletions: number;
+    missedDeadlines: number;
+    disputesInitiated: number;
+    disputesLost: number;
+    cancellations: number;
+    avgReviewResponseHours?: number;
+  };
+  lastCalculatedAt: string;
 }
 
 export interface SupportTicket {

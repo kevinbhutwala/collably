@@ -17,7 +17,14 @@ export interface LedgerEntry {
   amountCents: number; // positive integer cents
   netCentsSigned: number; // signed cents (negative for debit, positive for credit)
   currency: string;
-  referenceType: "MILESTONE_FUNDING" | "ESCROW_RELEASE" | "DISPUTE_SPLIT" | "PAYOUT_WITHDRAWAL";
+  referenceType:
+    | "MILESTONE_FUNDING"
+    | "ESCROW_RELEASE"
+    | "DISPUTE_SPLIT"
+    | "PAYOUT_WITHDRAWAL"
+    | "ESCROW_FUNDING"
+    | "COLLABORATION_CANCELLATION"
+    | "ADMIN_OVERRIDE";
   referenceId: string;
   description: string;
   createdAt: string;

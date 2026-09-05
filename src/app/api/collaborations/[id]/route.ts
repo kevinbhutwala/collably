@@ -37,6 +37,13 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
         return NextResponse.json({ error: "Forbidden: Only creators can submit deliverable drafts" }, { status: 403 });
       }
 
+      if (!collab.isFunded || collab.paymentStatus === "payment_pending") {
+        return NextResponse.json(
+          { error: "COLLABORATION_UNFUNDED: Creator cannot submit deliverables before escrow is funded by brand." },
+          { status: 400 }
+        );
+      }
+
       const resolvedUrl = assetUrl || (mediaUrls && mediaUrls[0]) || "";
       if (resolvedUrl && !resolvedUrl.startsWith("https://")) {
         return NextResponse.json({ error: "Deliverable link must start with https://" }, { status: 400 });
@@ -150,6 +157,24 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
           ],
         },
       });
+    }
+
+    if (action === "revision") {
+      const isBrandRole = ["brand", "brand_owner", "brand_manager", "super_admin", "agency_admin"].includes(session.role);
+      if (!isBrandRole) {
+        return NextResponse.json({ error: "Forbidden: Only sponsoring brand can request revisions" }, { status: 403 });
+      }
+
+      const { collaborationProtectionService } = await import("@/server/services/collaboration-protection.service");
+      const result = collaborationProtectionService.requestRevision({
+        collaborationId: params.id,
+        deliverableId,
+        brandUserId: session.userId,
+        feedback: body.feedback || "Revisions requested to align with agreed brief",
+        actorRole: session.role,
+      });
+
+      return NextResponse.json({ success: true, deliverable: result.deliverable, collaboration: result.collaboration });
     }
 
     return NextResponse.json({ error: "Unknown action" }, { status: 400 });

@@ -79,6 +79,77 @@ class CollaborationService {
     });
     return res.ok;
   }
+
+  async fundCollaboration(collaborationId: string): Promise<{ success: boolean; transactionId?: string; error?: string }> {
+    const res = await fetch(`/api/collaborations/${collaborationId}/fund`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    });
+    const json = await res.json();
+    if (!res.ok) {
+      throw new Error(json.error || "Failed to fund escrow");
+    }
+    return json;
+  }
+
+  async submitPostProof(
+    collaborationId: string,
+    data: {
+      postUrl: string;
+      platform?: any;
+      screenshotUrl?: string;
+      notes?: string;
+      metrics?: { views?: number; likes?: number; comments?: number; shares?: number };
+    }
+  ): Promise<{ success: boolean; proof: any; error?: string }> {
+    const res = await fetch(`/api/collaborations/${collaborationId}/verify-post`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    const json = await res.json();
+    if (!res.ok) {
+      throw new Error(json.error || "Failed to submit post verification");
+    }
+    return json;
+  }
+
+  async cancelCollaboration(
+    collaborationId: string,
+    reason: string
+  ): Promise<{ success: boolean; stage: string; refundAmountDollars: number; killFeeAmountDollars: number }> {
+    const res = await fetch(`/api/collaborations/${collaborationId}/cancel`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ reason }),
+    });
+    const json = await res.json();
+    if (!res.ok) {
+      throw new Error(json.error || "Failed to cancel collaboration");
+    }
+    return json;
+  }
+
+  async requestRevision(
+    collaborationId: string,
+    deliverableId: string,
+    feedback: string
+  ): Promise<boolean> {
+    const res = await fetch(`/api/collaborations/${collaborationId}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        action: "revision",
+        deliverableId,
+        feedback,
+      }),
+    });
+    const json = await res.json();
+    if (!res.ok) {
+      throw new Error(json.error || "Failed to request revision");
+    }
+    return true;
+  }
 }
 
 export const collaborationService = new CollaborationService();

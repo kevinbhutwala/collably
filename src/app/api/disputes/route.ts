@@ -46,9 +46,56 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { action, id, adminNotes, ...disputeData } = body;
+    const { action, id, adminNotes, outcome, ...disputeData } = body;
 
-    if (action === "resolve" || action === "split") {
+    // ── 1. Advance Stage (Admin Only) ──
+    if (action === "advance_stage") {
+      const adminRoles = ["super_admin", "agency_admin", "agency_owner", "moderator"];
+      if (!adminRoles.includes(session.role)) {
+        return NextResponse.json({ error: "Forbidden: Only administrators can update dispute stage" }, { status: 403 });
+      }
+
+      const updated = disputeRepo.updateStage(id, body.stage, adminNotes);
+      if (!updated) {
+        return NextResponse.json({ error: "Dispute not found" }, { status: 404 });
+      }
+
+      auditRepo.logEvent({
+        actorId: session.userId,
+        actorName: session.email,
+        actorRole: session.role,
+        action: "DISPUTE_STAGE_UPDATED",
+        entityType: "Dispute",
+        entityId: id,
+        entityName: `Dispute ${id} advanced to ${body.stage}`,
+        metadata: { stage: body.stage, adminNotes },
+      });
+
+      return NextResponse.json({ success: true, dispute: updated });
+    }
+
+    // ── 2. Add Evidence Attachment ──
+    if (action === "add_evidence") {
+      const attachment = {
+        id: `att-${Date.now()}`,
+        url: body.url || "",
+        title: body.title || "Evidence Attachment",
+        submittedBy: session.email,
+        submittedAt: new Date().toISOString(),
+        role: session.role as any,
+        notes: body.notes,
+      };
+
+      const updated = disputeRepo.addEvidenceAttachment(id, attachment);
+      if (!updated) {
+        return NextResponse.json({ error: "Dispute not found" }, { status: 404 });
+      }
+
+      return NextResponse.json({ success: true, attachment, dispute: updated });
+    }
+
+    // ── 3. Resolve Dispute with 6 Structured Outcomes ──
+    if (action === "resolve" || action === "split" || action === "arbitrate") {
       // Must be authorized admin
       const adminRoles = ["super_admin", "agency_admin", "agency_owner", "moderator"];
       if (!adminRoles.includes(session.role)) {
@@ -56,30 +103,109 @@ export async function POST(req: NextRequest) {
       }
 
       const { ledgerService } = await import("@/server/services/ledger.service");
+      const { reliabilityService } = await import("@/server/services/reliability.service");
       const dispute = disputeRepo.getDisputes().find((d) => d.id === id);
       if (!dispute) {
         return NextResponse.json({ error: "Dispute not found" }, { status: 404 });
       }
 
       const totalAmountDollars = Number(dispute.amountInDispute) || 3500;
-      // Default to 50/50 split if not specified
-      const brandRefundDollars = body.brandRefundDollars !== undefined ? Number(body.brandRefundDollars) : totalAmountDollars / 2;
-      const creatorPayoutDollars = body.creatorPayoutDollars !== undefined ? Number(body.creatorPayoutDollars) : totalAmountDollars / 2;
+      const selectedOutcome = outcome || (action === "split" ? "SPLIT_SETTLEMENT" : "FULL_CREATOR_PAYOUT");
 
-      // Execute double-entry arbitrary split
-      const splitResult = await ledgerService.executeArbitrarySplit({
-        milestoneId: dispute.id,
-        collaborationId: dispute.collaborationId,
-        brandId: dispute.brandName,
-        creatorId: dispute.creatorName,
-        totalAmountDollars,
+      let brandRefundDollars = 0;
+      let creatorPayoutDollars = 0;
+      let newCollabStatus = "completed";
+
+      switch (selectedOutcome) {
+        case "FULL_CREATOR_PAYOUT":
+          brandRefundDollars = 0;
+          creatorPayoutDollars = totalAmountDollars;
+          newCollabStatus = "completed";
+          break;
+
+        case "FULL_BRAND_REFUND":
+          brandRefundDollars = totalAmountDollars;
+          creatorPayoutDollars = 0;
+          newCollabStatus = "cancelled";
+          break;
+
+        case "PARTIAL_CREATOR_PAYOUT":
+          creatorPayoutDollars = body.creatorPayoutDollars !== undefined ? Number(body.creatorPayoutDollars) : totalAmountDollars * 0.7;
+          brandRefundDollars = totalAmountDollars - creatorPayoutDollars;
+          newCollabStatus = "completed";
+          break;
+
+        case "SPLIT_SETTLEMENT":
+          brandRefundDollars = body.brandRefundDollars !== undefined ? Number(body.brandRefundDollars) : totalAmountDollars / 2;
+          creatorPayoutDollars = body.creatorPayoutDollars !== undefined ? Number(body.creatorPayoutDollars) : totalAmountDollars - brandRefundDollars;
+          newCollabStatus = "completed";
+          break;
+
+        case "ADDITIONAL_REVISION":
+          brandRefundDollars = 0;
+          creatorPayoutDollars = 0;
+          newCollabStatus = "revision_requested";
+          break;
+
+        case "CANCELLATION_WITHOUT_PAYOUT":
+          brandRefundDollars = totalAmountDollars;
+          creatorPayoutDollars = 0;
+          newCollabStatus = "cancelled";
+          break;
+
+        default:
+          brandRefundDollars = totalAmountDollars / 2;
+          creatorPayoutDollars = totalAmountDollars / 2;
+      }
+
+      let txId: string | undefined = undefined;
+
+      // If money is being disbursed/refunded, execute balanced double-entry ledger split
+      if (selectedOutcome !== "ADDITIONAL_REVISION" && totalAmountDollars > 0) {
+        const splitResult = await ledgerService.executeArbitrarySplit({
+          milestoneId: dispute.id,
+          collaborationId: dispute.collaborationId,
+          brandId: dispute.brandName,
+          creatorId: dispute.creatorName,
+          totalAmountDollars,
+          brandRefundDollars,
+          creatorPayoutDollars,
+          feeRatePercent: 10,
+        });
+        txId = splitResult.transactionId;
+      }
+
+      // Update dispute record with resolution details
+      const resolutionDetails = {
+        outcome: selectedOutcome,
         brandRefundDollars,
         creatorPayoutDollars,
-        feeRatePercent: 10,
-      });
+        platformFeeDollars: (creatorPayoutDollars * 10) / 100,
+        notes: adminNotes || `Arbitrated with outcome: ${selectedOutcome}`,
+        resolvedBy: session.email,
+        resolvedAt: new Date().toISOString(),
+        transactionId: txId,
+      };
 
-      disputeRepo.resolveDispute(id, adminNotes || "Resolved via arbitrated escrow split");
-      collaborationRepo.updateStatus(dispute.collaborationId, "completed");
+      disputeRepo.updateStatus(id, "Resolved", adminNotes || `Resolved via ${selectedOutcome}`);
+      const resolvedDispute = disputeRepo.findById(id);
+      if (resolvedDispute) {
+        resolvedDispute.resolutionOutcome = selectedOutcome;
+        resolvedDispute.resolutionDetails = resolutionDetails;
+      }
+
+      if (dispute.collaborationId) {
+        collaborationRepo.updateStatus(dispute.collaborationId, newCollabStatus as any);
+      }
+
+      // Adjust reliability scores based on arbitration outcome
+      if (selectedOutcome === "FULL_CREATOR_PAYOUT") {
+        if (dispute.creatorUserId) reliabilityService.recordEvent(dispute.creatorUserId, "creator", "DISPUTE_WON");
+        if (dispute.brandUserId) reliabilityService.recordEvent(dispute.brandUserId, "brand", "DISPUTE_LOST");
+      } else if (selectedOutcome === "FULL_BRAND_REFUND" || selectedOutcome === "CANCELLATION_WITHOUT_PAYOUT") {
+        if (dispute.brandUserId) reliabilityService.recordEvent(dispute.brandUserId, "brand", "DISPUTE_WON");
+        if (dispute.creatorUserId) reliabilityService.recordEvent(dispute.creatorUserId, "creator", "DISPUTE_LOST");
+      }
 
       // Extract client IP address for immutable audit logging
       const ipAddress = req.headers.get("x-forwarded-for") || req.headers.get("x-real-ip") || "127.0.0.1";
@@ -88,17 +214,18 @@ export async function POST(req: NextRequest) {
         actorId: session.userId,
         actorName: session.email,
         actorRole: session.role,
-        action: "FUNDS_SPLIT",
+        action: "DISPUTE_ARBITRATED",
         entityType: "Dispute",
         entityId: id,
-        entityName: `Dispute ${id} arbitrated split`,
+        entityName: `Dispute ${id} resolution (${selectedOutcome})`,
         metadata: {
           adminUserId: session.userId,
           ipAddress,
+          outcome: selectedOutcome,
           brandRefundDollars,
           creatorPayoutDollars,
           totalEscrowDebited: totalAmountDollars,
-          transactionId: splitResult.transactionId,
+          transactionId: txId,
           timestamp: new Date().toISOString(),
         },
       });
@@ -106,16 +233,17 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({
         success: true,
         status: "RESOLVED",
-        resolution: "FUNDS_SPLIT",
+        resolution: selectedOutcome,
+        outcome: selectedOutcome,
         split: {
           brandRefundDollars,
           creatorPayoutDollars,
         },
-        transactionId: splitResult.transactionId,
+        transactionId: txId,
       });
     }
 
-    // 1. File Dispute & Lock Milestone
+    // ── 4. File Dispute & Lock Milestone ──
     const newDispute = disputeRepo.fileDispute({
       ...disputeData,
       filedBy: session.role === "creator" ? "creator" : "brand",

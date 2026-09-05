@@ -15,6 +15,7 @@ import {
   ChatMessage,
   Conversation,
   SubscriptionEntity,
+  UserReliabilityScore,
 } from "@/core/types";
 
 export interface UserEntity {
@@ -109,5 +110,6 @@ export interface DatabaseState {
   tickets: SupportTicket[];
   auditLogs: AuditEvent[];
   ledgerEntries: any[];
+  reliabilityScores?: UserReliabilityScore[];
 }
 

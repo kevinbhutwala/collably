@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { DatabaseState } from "./schema";
 import { getInitialSeedDatabase } from "./seed";
+import { MOCK_COLLABORATIONS } from "@/mock/collaborations.mock";
 
 const DATA_DIR = path.join(process.cwd(), "data");
 const DB_FILE = path.join(DATA_DIR, "valence_db.json");
@@ -43,6 +44,7 @@ class DatabaseClient {
         if (!this.state!.auditLogs) this.state!.auditLogs = [];
         if (!this.state!.aiUsage) this.state!.aiUsage = [];
         if (!this.state!.ledgerEntries) this.state!.ledgerEntries = [];
+        if (!this.state!.reliabilityScores) this.state!.reliabilityScores = [];
 
         // Merge only the 3 seed users — do not re-add removed users
         for (const seedUser of seed.users) {
@@ -78,6 +80,9 @@ class DatabaseClient {
         }
         if (!this.state!.messages || this.state!.messages.length <= 1) {
           this.state!.messages = [...seed.messages];
+        }
+        if (!this.state!.collaborations || this.state!.collaborations.length === 0) {
+          this.state!.collaborations = [...MOCK_COLLABORATIONS];
         }
 
         this.persist();

@@ -564,7 +564,805 @@
     }
   ],
   "applications": [],
-  "collaborations": [],
+  "collaborations": [
+    {
+      "id": "collab-1",
+      "campaignId": "camp-1",
+      "campaignTitle": "AI-Powered Sprint Workflows Launch",
+      "brandId": "brand-demo",
+      "brand": {
+        "id": "brand-demo",
+        "userId": "user-brand",
+        "companyName": "Linear Dynamics",
+        "industry": "Developer Tools & AI",
+        "headline": "The issue tracker built for high-performance software teams.",
+        "description": "Linear helps streamline software projects, sprints, tasks, and bug tracking. Loved by thousands of innovative startups and tech companies.",
+        "logoUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+        "websiteUrl": "https://linear.app",
+        "location": "San Francisco, CA",
+        "companySize": "51-200",
+        "verified": true,
+        "activeCampaignsCount": 3,
+        "totalSpent": 145000,
+        "socialHandles": {
+          "x": "linear",
+          "youtube": "lineardynamics",
+          "linkedin": "linear-app"
+        },
+        "createdAt": "2024-06-10"
+      },
+      "creatorId": "creator-demo",
+      "creator": {
+        "id": "creator-demo",
+        "userId": "user-creator",
+        "fullName": "Elena Rostova",
+        "handle": "elenatech",
+        "headline": "AI Engineer & Next-Gen Hardware Reviewer",
+        "bio": "Demystifying artificial intelligence, spatial computing, and developer ergonomics for 480k+ tech professionals and founders globally.",
+        "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+        "location": "San Francisco, CA",
+        "languages": [
+          "English",
+          "French"
+        ],
+        "primaryCategory": "Technology & AI",
+        "secondaryCategories": [
+          "Design & Creative",
+          "Finance & Business"
+        ],
+        "verified": true,
+        "featured": true,
+        "tier": "Elite",
+        "rating": 4.98,
+        "completedCampaignsCount": 42,
+        "totalFollowers": 485000,
+        "avgEngagementRate": 6.4,
+        "startingPrice": 2200,
+        "availableForHire": true,
+        "profileCompleteness": 96,
+        "qualityScore": 98,
+        "socialAccounts": [
+          {
+            "id": "sa-1-yt",
+            "platform": "youtube",
+            "handle": "ElenaRostovaTech",
+            "url": "https://youtube.com",
+            "followers": 290000,
+            "engagementRate": 7.2,
+            "avgViews": 88000,
+            "verifiedBadge": true
+          },
+          {
+            "id": "sa-1-x",
+            "platform": "x",
+            "handle": "elenatech",
+            "url": "https://x.com",
+            "followers": 125000,
+            "engagementRate": 5.1,
+            "avgViews": 45000,
+            "verifiedBadge": true
+          },
+          {
+            "id": "sa-1-ig",
+            "platform": "instagram",
+            "handle": "elena_creates",
+            "url": "https://instagram.com",
+            "followers": 70000,
+            "engagementRate": 6.8,
+            "avgViews": 32000,
+            "verifiedBadge": true
+          }
+        ],
+        "audience": {
+          "topCountries": [
+            {
+              "country": "United States",
+              "percentage": 52
+            },
+            {
+              "country": "United Kingdom",
+              "percentage": 18
+            },
+            {
+              "country": "Germany",
+              "percentage": 12
+            },
+            {
+              "country": "Canada",
+              "percentage": 8
+            }
+          ],
+          "ageDistribution": [
+            {
+              "range": "18-24",
+              "percentage": 22
+            },
+            {
+              "range": "25-34",
+              "percentage": 54
+            },
+            {
+              "range": "35-44",
+              "percentage": 18
+            },
+            {
+              "range": "45+",
+              "percentage": 6
+            }
+          ],
+          "genderSplit": [
+            {
+              "gender": "Male",
+              "percentage": 68
+            },
+            {
+              "gender": "Female",
+              "percentage": 30
+            },
+            {
+              "gender": "Other",
+              "percentage": 2
+            }
+          ],
+          "interests": [
+            "Machine Learning",
+            "Developer Tooling",
+            "Ergonomic Setups",
+            "SaaS"
+          ]
+        },
+        "rateCards": [
+          {
+            "id": "rc-1",
+            "deliverableType": "YouTube 60s Integration",
+            "title": "Dedicated 60s In-Video Sponsor Segment",
+            "description": "Seamless workflow integration in a dedicated deep-dive video with trackable link in top comment.",
+            "basePrice": 3500,
+            "turnaroundDays": 7,
+            "revisionsIncluded": 2
+          },
+          {
+            "id": "rc-2",
+            "deliverableType": "X (Twitter) Thread",
+            "title": "Technical Breakdown Thread (6-8 Posts)",
+            "description": "Architecture breakdown with high-res screenshots and product highlights.",
+            "basePrice": 1500,
+            "turnaroundDays": 3,
+            "revisionsIncluded": 1
+          }
+        ]
+      },
+      "totalAgreedBudget": 3500,
+      "escrowStatus": "held_in_escrow",
+      "status": "active",
+      "paymentStatus": "submitted_for_review",
+      "isFunded": true,
+      "fundedAt": "2026-08-20T10:00:00Z",
+      "reviewWindowHours": 120,
+      "reviewDeadline": "2026-09-12T14:30:00Z",
+      "startDate": "2026-08-20",
+      "finalDeadline": "2026-10-10",
+      "deliverables": [
+        {
+          "id": "collab-del-1",
+          "type": "YouTube 60s Integration",
+          "title": "Dedicated AI Triage 60s Segment in Main Video",
+          "status": "under_review",
+          "dueDate": "2026-09-10",
+          "payoutAmount": 2500,
+          "revisionCount": 1,
+          "maxRevisions": 2,
+          "submissions": [
+            {
+              "id": "sub-1-1",
+              "deliverableId": "collab-del-1",
+              "version": 1,
+              "assetUrl": "https://drive.google.com/file/d/1a2b3c4d5e6f7g8h9/view?usp=sharing",
+              "notes": "Draft rough cut uploaded for preview. The custom keyboard shortcut B-roll begins at 04:12.",
+              "mediaUrls": [
+                "https://drive.google.com/file/d/1a2b3c4d5e6f7g8h9/view?usp=sharing"
+              ],
+              "captionText": "Special thanks to Linear for sponsoring this video. Check out how their new AI triage cuts backlog debt in half: https://linear.app/elena #ad #linear",
+              "trackingLink": "https://linear.app/ref/elena-ai",
+              "submittedAt": "2026-08-28T14:30:00Z",
+              "slaDeadline": "2026-09-02T14:30:00Z",
+              "creatorNotes": "Draft rough cut uploaded for preview. The custom keyboard shortcut B-roll begins at 04:12.",
+              "status": "under_review"
+            }
+          ]
+        },
+        {
+          "id": "collab-del-2",
+          "type": "X (Twitter) Thread",
+          "title": "Interactive AI Workflow Breakdown Thread",
+          "status": "assigned",
+          "dueDate": "2026-09-15",
+          "payoutAmount": 1000,
+          "revisionCount": 0,
+          "maxRevisions": 1,
+          "submissions": []
+        }
+      ],
+      "agencyManager": {
+        "name": "Siddharth Mehta",
+        "email": "sid@agencyplatform.io",
+        "avatarUrl": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop&q=80"
+      },
+      "createdAt": "2026-08-20",
+      "updatedAt": "2026-08-28"
+    },
+    {
+      "id": "collab-unfunded",
+      "campaignId": "camp-4",
+      "campaignTitle": "Cybersecurity Hardware Key Launch",
+      "brandId": "brand-demo",
+      "brand": {
+        "id": "brand-demo",
+        "userId": "user-brand",
+        "companyName": "SecureVault Inc",
+        "industry": "Developer Tools & AI",
+        "headline": "The issue tracker built for high-performance software teams.",
+        "description": "Linear helps streamline software projects, sprints, tasks, and bug tracking. Loved by thousands of innovative startups and tech companies.",
+        "logoUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+        "websiteUrl": "https://linear.app",
+        "location": "San Francisco, CA",
+        "companySize": "51-200",
+        "verified": true,
+        "activeCampaignsCount": 3,
+        "totalSpent": 145000,
+        "socialHandles": {
+          "x": "linear",
+          "youtube": "lineardynamics",
+          "linkedin": "linear-app"
+        },
+        "createdAt": "2024-06-10"
+      },
+      "creatorId": "creator-demo",
+      "creator": {
+        "id": "creator-demo",
+        "userId": "user-creator",
+        "fullName": "Elena Rostova",
+        "handle": "elenatech",
+        "headline": "AI Engineer & Next-Gen Hardware Reviewer",
+        "bio": "Demystifying artificial intelligence, spatial computing, and developer ergonomics for 480k+ tech professionals and founders globally.",
+        "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+        "location": "San Francisco, CA",
+        "languages": [
+          "English",
+          "French"
+        ],
+        "primaryCategory": "Technology & AI",
+        "secondaryCategories": [
+          "Design & Creative",
+          "Finance & Business"
+        ],
+        "verified": true,
+        "featured": true,
+        "tier": "Elite",
+        "rating": 4.98,
+        "completedCampaignsCount": 42,
+        "totalFollowers": 485000,
+        "avgEngagementRate": 6.4,
+        "startingPrice": 2200,
+        "availableForHire": true,
+        "profileCompleteness": 96,
+        "qualityScore": 98,
+        "socialAccounts": [
+          {
+            "id": "sa-1-yt",
+            "platform": "youtube",
+            "handle": "ElenaRostovaTech",
+            "url": "https://youtube.com",
+            "followers": 290000,
+            "engagementRate": 7.2,
+            "avgViews": 88000,
+            "verifiedBadge": true
+          },
+          {
+            "id": "sa-1-x",
+            "platform": "x",
+            "handle": "elenatech",
+            "url": "https://x.com",
+            "followers": 125000,
+            "engagementRate": 5.1,
+            "avgViews": 45000,
+            "verifiedBadge": true
+          },
+          {
+            "id": "sa-1-ig",
+            "platform": "instagram",
+            "handle": "elena_creates",
+            "url": "https://instagram.com",
+            "followers": 70000,
+            "engagementRate": 6.8,
+            "avgViews": 32000,
+            "verifiedBadge": true
+          }
+        ],
+        "audience": {
+          "topCountries": [
+            {
+              "country": "United States",
+              "percentage": 52
+            },
+            {
+              "country": "United Kingdom",
+              "percentage": 18
+            },
+            {
+              "country": "Germany",
+              "percentage": 12
+            },
+            {
+              "country": "Canada",
+              "percentage": 8
+            }
+          ],
+          "ageDistribution": [
+            {
+              "range": "18-24",
+              "percentage": 22
+            },
+            {
+              "range": "25-34",
+              "percentage": 54
+            },
+            {
+              "range": "35-44",
+              "percentage": 18
+            },
+            {
+              "range": "45+",
+              "percentage": 6
+            }
+          ],
+          "genderSplit": [
+            {
+              "gender": "Male",
+              "percentage": 68
+            },
+            {
+              "gender": "Female",
+              "percentage": 30
+            },
+            {
+              "gender": "Other",
+              "percentage": 2
+            }
+          ],
+          "interests": [
+            "Machine Learning",
+            "Developer Tooling",
+            "Ergonomic Setups",
+            "SaaS"
+          ]
+        },
+        "rateCards": [
+          {
+            "id": "rc-1",
+            "deliverableType": "YouTube 60s Integration",
+            "title": "Dedicated 60s In-Video Sponsor Segment",
+            "description": "Seamless workflow integration in a dedicated deep-dive video with trackable link in top comment.",
+            "basePrice": 3500,
+            "turnaroundDays": 7,
+            "revisionsIncluded": 2
+          },
+          {
+            "id": "rc-2",
+            "deliverableType": "X (Twitter) Thread",
+            "title": "Technical Breakdown Thread (6-8 Posts)",
+            "description": "Architecture breakdown with high-res screenshots and product highlights.",
+            "basePrice": 1500,
+            "turnaroundDays": 3,
+            "revisionsIncluded": 1
+          }
+        ]
+      },
+      "totalAgreedBudget": 2200,
+      "escrowStatus": "pending_deposit",
+      "status": "payment_pending",
+      "paymentStatus": "payment_pending",
+      "isFunded": false,
+      "startDate": "2026-09-01",
+      "finalDeadline": "2026-10-15",
+      "deliverables": [
+        {
+          "id": "del-unfunded-1",
+          "type": "YouTube 60s Integration",
+          "title": "Zero-Trust Physical Security Breakdown",
+          "status": "draft",
+          "dueDate": "2026-09-25",
+          "payoutAmount": 2200,
+          "revisionCount": 0,
+          "maxRevisions": 2,
+          "submissions": []
+        }
+      ],
+      "createdAt": "2026-09-05T11:02:58.708Z",
+      "updatedAt": "2026-09-05T11:02:58.719Z"
+    },
+    {
+      "id": "collab-2",
+      "campaignId": "camp-2",
+      "campaignTitle": "The Architecture of Time: Autumn Collection",
+      "brandId": "brand-2",
+      "brand": {
+        "id": "brand-2",
+        "userId": "user-b2",
+        "companyName": "Aethel Watches",
+        "industry": "Luxury Horology & Design",
+        "headline": "Swiss automatic movements housed in architectural titanium cases.",
+        "description": "Modern luxury mechanical watches engineered for the design-obsessed. Hand-assembled in Geneva.",
+        "logoUrl": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=200&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=1200&auto=format&fit=crop&q=80",
+        "websiteUrl": "https://aethelwatches.com",
+        "location": "Geneva, Switzerland",
+        "companySize": "11-50",
+        "verified": true,
+        "activeCampaignsCount": 2,
+        "totalSpent": 89000,
+        "socialHandles": {
+          "instagram": "aethelwatches",
+          "x": "aetheltime"
+        },
+        "createdAt": "2024-09-01"
+      },
+      "creatorId": "creator-2",
+      "creator": {
+        "id": "creator-2",
+        "userId": "user-c2",
+        "fullName": "Marcus Vance",
+        "handle": "marcusvance",
+        "headline": "Architectural Cinematographer & Luxury Design Critic",
+        "bio": "Exploring brutalist architecture, Scandinavian interior design, and haute horology through cinematic 4K short films.",
+        "avatarUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=1200&auto=format&fit=crop&q=80",
+        "location": "London, UK",
+        "languages": [
+          "English"
+        ],
+        "primaryCategory": "Design & Creative",
+        "secondaryCategories": [
+          "Fashion & Style"
+        ],
+        "verified": true,
+        "featured": true,
+        "tier": "Elite",
+        "rating": 4.95,
+        "completedCampaignsCount": 28,
+        "totalFollowers": 310000,
+        "avgEngagementRate": 5.8,
+        "startingPrice": 2800,
+        "availableForHire": true,
+        "profileCompleteness": 94,
+        "qualityScore": 96,
+        "socialAccounts": [
+          {
+            "id": "sa-2-ig",
+            "platform": "instagram",
+            "handle": "marcusvance",
+            "url": "https://instagram.com",
+            "followers": 210000,
+            "engagementRate": 6.4,
+            "avgViews": 95000,
+            "verifiedBadge": true
+          },
+          {
+            "id": "sa-2-yt",
+            "platform": "youtube",
+            "handle": "MarcusVanceFilms",
+            "url": "https://youtube.com",
+            "followers": 100000,
+            "engagementRate": 4.9,
+            "avgViews": 65000,
+            "verifiedBadge": true
+          }
+        ],
+        "audience": {
+          "topCountries": [
+            {
+              "country": "United Kingdom",
+              "percentage": 44
+            },
+            {
+              "country": "United States",
+              "percentage": 32
+            },
+            {
+              "country": "France",
+              "percentage": 14
+            }
+          ],
+          "ageDistribution": [
+            {
+              "range": "25-34",
+              "percentage": 58
+            },
+            {
+              "range": "35-44",
+              "percentage": 30
+            }
+          ],
+          "genderSplit": [
+            {
+              "gender": "Male",
+              "percentage": 54
+            },
+            {
+              "gender": "Female",
+              "percentage": 45
+            },
+            {
+              "gender": "Other",
+              "percentage": 1
+            }
+          ],
+          "interests": [
+            "Minimalist Architecture",
+            "Luxury Watches",
+            "Industrial Design"
+          ]
+        },
+        "rateCards": [
+          {
+            "id": "rc-3",
+            "deliverableType": "Instagram Reel",
+            "title": "Cinematic Product Short Film",
+            "description": "Color-graded RED camera footage with bespoke sound design.",
+            "basePrice": 2800,
+            "turnaroundDays": 10,
+            "revisionsIncluded": 2
+          }
+        ]
+      },
+      "totalAgreedBudget": 2800,
+      "escrowStatus": "partially_released",
+      "status": "active",
+      "paymentStatus": "approved",
+      "isFunded": true,
+      "fundedAt": "2026-08-15T10:00:00Z",
+      "startDate": "2026-08-15",
+      "finalDeadline": "2026-10-05",
+      "deliverables": [
+        {
+          "id": "collab-del-3",
+          "type": "Instagram Reel",
+          "title": "Titanium Monolith Architectural Reel",
+          "status": "approved",
+          "dueDate": "2026-08-25",
+          "payoutAmount": 2000,
+          "revisionCount": 1,
+          "maxRevisions": 2,
+          "submissions": [
+            {
+              "id": "sub-2-1",
+              "deliverableId": "collab-del-3",
+              "version": 1,
+              "assetUrl": "https://app.frame.io/reviews/aethel-monolith-titanium-cut",
+              "notes": "Color graded with Kodak Vision3 emulation.",
+              "mediaUrls": [
+                "https://app.frame.io/reviews/aethel-monolith-titanium-cut"
+              ],
+              "captionText": "Form follows precision. Exploring London with the new @aethelwatches Monolith in raw titanium. #AethelPartner",
+              "submittedAt": "2026-08-24T10:00:00Z",
+              "creatorNotes": "Color graded with Kodak Vision3 emulation.",
+              "status": "approved",
+              "publishedLiveUrl": "https://instagram.com/p/reel-marcus-aethel",
+              "publishedStats": {
+                "views": 185000,
+                "likes": 19400,
+                "comments": 480,
+                "shares": 1200,
+                "clicks": 3400
+              }
+            }
+          ]
+        },
+        {
+          "id": "collab-del-4",
+          "type": "Instagram Story Set (3x)",
+          "title": "3x Interactive Unboxing Stories with Poll",
+          "status": "submitted",
+          "dueDate": "2026-09-02",
+          "payoutAmount": 800,
+          "revisionCount": 0,
+          "maxRevisions": 1,
+          "submissions": [
+            {
+              "id": "sub-2-2",
+              "deliverableId": "collab-del-4",
+              "version": 1,
+              "assetUrl": "https://www.dropbox.com/scl/fo/stories-unboxing-v1",
+              "notes": "High-resolution vertical 9:16 export ready for preview.",
+              "mediaUrls": [
+                "https://www.dropbox.com/scl/fo/stories-unboxing-v1"
+              ],
+              "captionText": "Swipe up to discover the engineering secrets behind the Monolith case @aethelwatches",
+              "submittedAt": "2026-08-29T16:20:00Z",
+              "slaDeadline": "2026-09-03T16:20:00Z",
+              "status": "submitted"
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-08-15",
+      "updatedAt": "2026-08-29"
+    },
+    {
+      "id": "collab-3",
+      "campaignId": "camp-3",
+      "campaignTitle": "Thermal Contrast & Sleep Recovery Protocol",
+      "brandId": "brand-3",
+      "brand": {
+        "id": "brand-3",
+        "userId": "user-b3",
+        "companyName": "Kuro Recovery Lab",
+        "industry": "Health, Biohacking & Longevity",
+        "headline": "Cold therapy and infrared saunas for peak human output.",
+        "description": "Next-generation thermal contrast therapy systems designed for high-performance home wellness suites.",
+        "logoUrl": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=200&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=1200&auto=format&fit=crop&q=80",
+        "websiteUrl": "https://kurorecovery.com",
+        "location": "Austin, TX",
+        "companySize": "51-200",
+        "verified": true,
+        "activeCampaignsCount": 4,
+        "totalSpent": 210000,
+        "socialHandles": {
+          "instagram": "kurorecovery",
+          "youtube": "kurobiohacking"
+        },
+        "createdAt": "2024-03-15"
+      },
+      "creatorId": "creator-3",
+      "creator": {
+        "id": "creator-3",
+        "userId": "user-c3",
+        "fullName": "Aria Chen",
+        "handle": "ariachenwellness",
+        "headline": "Biohacker, Clinical Nutritionist & Longevity Advocate",
+        "bio": "Translating peer-reviewed metabolic science into daily wellness protocols, cold thermogenesis, and cellular recovery.",
+        "avatarUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=1200&auto=format&fit=crop&q=80",
+        "location": "Austin, TX",
+        "languages": [
+          "English",
+          "Mandarin"
+        ],
+        "primaryCategory": "Fitness & Wellness",
+        "secondaryCategories": [
+          "Education & Science"
+        ],
+        "verified": true,
+        "featured": true,
+        "tier": "Elite",
+        "rating": 4.99,
+        "completedCampaignsCount": 36,
+        "totalFollowers": 620000,
+        "avgEngagementRate": 7.1,
+        "startingPrice": 3200,
+        "availableForHire": true,
+        "profileCompleteness": 98,
+        "qualityScore": 99,
+        "socialAccounts": [
+          {
+            "id": "sa-3-ig",
+            "platform": "instagram",
+            "handle": "ariachenwellness",
+            "url": "https://instagram.com",
+            "followers": 420000,
+            "engagementRate": 7.8,
+            "avgViews": 140000,
+            "verifiedBadge": true
+          },
+          {
+            "id": "sa-3-tt",
+            "platform": "tiktok",
+            "handle": "ariachenlongevity",
+            "url": "https://tiktok.com",
+            "followers": 200000,
+            "engagementRate": 6.2,
+            "avgViews": 85000,
+            "verifiedBadge": true
+          }
+        ],
+        "audience": {
+          "topCountries": [
+            {
+              "country": "United States",
+              "percentage": 65
+            },
+            {
+              "country": "Canada",
+              "percentage": 15
+            },
+            {
+              "country": "Australia",
+              "percentage": 10
+            }
+          ],
+          "ageDistribution": [
+            {
+              "range": "25-34",
+              "percentage": 48
+            },
+            {
+              "range": "35-44",
+              "percentage": 38
+            }
+          ],
+          "genderSplit": [
+            {
+              "gender": "Female",
+              "percentage": 60
+            },
+            {
+              "gender": "Male",
+              "percentage": 40
+            }
+          ],
+          "interests": [
+            "Thermal Recovery",
+            "Metabolic Health",
+            "Longevity Supplements"
+          ]
+        },
+        "rateCards": [
+          {
+            "id": "rc-4",
+            "deliverableType": "Instagram Reel",
+            "title": "Protocol Demonstration & Science Hook",
+            "description": "Biometric before/after with verified wearable data overlay.",
+            "basePrice": 3200,
+            "turnaroundDays": 5,
+            "revisionsIncluded": 2
+          }
+        ]
+      },
+      "totalAgreedBudget": 5000,
+      "escrowStatus": "held_in_escrow",
+      "status": "active",
+      "paymentStatus": "revision_requested",
+      "isFunded": true,
+      "fundedAt": "2026-08-22T10:00:00Z",
+      "startDate": "2026-08-22",
+      "finalDeadline": "2026-10-28",
+      "deliverables": [
+        {
+          "id": "collab-del-5",
+          "type": "YouTube Dedicated Video",
+          "title": "14-Day Oura Biometric Sleep Study with Kuro Cold Plunge",
+          "status": "revision_requested",
+          "dueDate": "2026-09-12",
+          "payoutAmount": 3800,
+          "revisionCount": 1,
+          "maxRevisions": 2,
+          "submissions": [
+            {
+              "id": "sub-3-1",
+              "deliverableId": "collab-del-5",
+              "version": 1,
+              "assetUrl": "https://drive.google.com/drive/folders/kuro-sleep-study-aria",
+              "notes": "First rough cut with raw b-roll and Oura app sync.",
+              "mediaUrls": [
+                "https://drive.google.com/drive/folders/kuro-sleep-study-aria"
+              ],
+              "captionText": "Can cold thermogenesis truly double REM sleep? Here is my raw biometric breakdown with @kurorecovery. Code ARIA20 for $200 off.",
+              "submittedAt": "2026-08-27T11:00:00Z",
+              "feedback": "Loved the laboratory visuals! Could you please emphasize the 3-year warranty and free threshold delivery in the video overlay at 06:40?",
+              "status": "revision_requested"
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-08-22",
+      "updatedAt": "2026-08-28"
+    }
+  ],
   "payouts": [],
   "subscriptions": [
     {
@@ -1041,5 +1839,6 @@
   "webhookEvents": [],
   "aiUsage": [],
   "auditLogs": [],
-  "ledgerEntries": []
+  "ledgerEntries": [],
+  "reliabilityScores": []
 }

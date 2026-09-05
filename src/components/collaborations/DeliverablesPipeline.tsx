@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Collaboration, CollaborationDeliverableItem } from "@/core/types";
+import { Collaboration, CollaborationDeliverableItem, PlatformType } from "@/core/types";
 import { Modal } from "@/components/ui/Modal";
 import { Input, Textarea } from "@/components/ui/Input";
 import { DeliverableReviewCard } from "@/components/collably/DeliverableReviewCard";
@@ -20,18 +20,27 @@ import {
   AlertCircle,
   FileCheck2,
   Info,
+  ShieldAlert,
+  Lock,
+  XCircle,
+  AlertTriangle,
+  UploadCloud,
+  ArrowRight,
 } from "lucide-react";
 
-export function DeliverablesPipeline({ collaboration }: { collaboration: Collaboration }) {
+export function DeliverablesPipeline({ collaboration: initialCollab }: { collaboration: Collaboration }) {
   const { role } = useAuthStore();
   const { addToast } = useUIStore();
-  const [activeTab, setActiveTab] = useState<"deliverables" | "review_card" | "negotiation">("deliverables");
+  const [collab, setCollab] = useState<Collaboration>(initialCollab);
+  const [activeTab, setActiveTab] = useState<"deliverables" | "review_card" | "post_proof" | "negotiation">("deliverables");
 
-  const [deliverables, setDeliverables] = useState(collaboration.deliverables);
+  const [deliverables, setDeliverables] = useState(initialCollab.deliverables || []);
   const [selectedDel, setSelectedDel] = useState<CollaborationDeliverableItem | null>(null);
   const [isSubmitModalOpen, setIsSubmitModalOpen] = useState(false);
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
   const [isDisputeModalOpen, setIsDisputeModalOpen] = useState(false);
+  const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
+  const [isPostProofModalOpen, setIsPostProofModalOpen] = useState(false);
 
   // Form states for Deliverable Link submission
   const [assetUrl, setAssetUrl] = useState("https://drive.google.com/file/d/1a2b3c4d5e6f7g8h9/view?usp=sharing");
@@ -39,9 +48,28 @@ export function DeliverablesPipeline({ collaboration }: { collaboration: Collabo
   const [urlError, setUrlError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Post Proof States
+  const [postUrl, setPostUrl] = useState(collab.verificationProof?.postUrl || "");
+  const [postPlatform, setPostPlatform] = useState<PlatformType>("youtube");
+  const [postScreenshotUrl, setPostScreenshotUrl] = useState(collab.verificationProof?.screenshotUrl || "");
+  const [postNotes, setPostNotes] = useState("");
+  const [isVerifyingPost, setIsVerifyingPost] = useState(false);
+
+  // Cancellation States
+  const [cancelReason, setCancelReason] = useState("");
+  const [isCancelling, setIsCancelling] = useState(false);
+
+  // Funding States
+  const [isFunding, setIsFunding] = useState(false);
+
   // Review states
   const [revisionFeedback, setRevisionFeedback] = useState("");
-  const [disputeReason, setDisputeReason] = useState("");
+
+  const isFunded = Boolean(collab.isFunded && collab.paymentStatus !== "payment_pending");
+  const isOverdue = Boolean(collab.isOverdue || collab.paymentStatus === "overdue");
+  const isDisputed = Boolean(collab.status === "disputed" || collab.paymentStatus === "disputed");
+  const isCancelled = Boolean(collab.status === "cancelled" || collab.paymentStatus === "cancelled");
+  const isCompleted = Boolean(collab.status === "completed" || collab.paymentStatus === "paid");
 
   const validateUrl = (url: string) => {
     if (!url.trim()) {
@@ -62,9 +90,49 @@ export function DeliverablesPipeline({ collaboration }: { collaboration: Collabo
     }
   };
 
+  // Upfront Escrow Funding
+  const handleFundEscrow = async () => {
+    setIsFunding(true);
+    try {
+      const res = await collaborationService.fundCollaboration(collab.id);
+      setCollab((prev) => ({
+        ...prev,
+        isFunded: true,
+        paymentStatus: "payment_secured",
+        status: "payment_secured",
+        escrowStatus: "held_in_escrow",
+      }));
+      setDeliverables((prev) =>
+        prev.map((d) => (d.status === "draft" ? { ...d, status: "assigned" } : d))
+      );
+      addToast({
+        type: "success",
+        title: "Escrow Secured & Locked!",
+        message: `Vault funded for ${formatCurrency(collab.totalAgreedBudget)}. Creator has been unblocked to begin work.`,
+      });
+    } catch (err: any) {
+      addToast({
+        type: "error",
+        title: "Funding Failed",
+        message: err.message || "Failed to fund escrow vault.",
+      });
+    } finally {
+      setIsFunding(false);
+    }
+  };
+
   const handleSubmitContent = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedDel) return;
+
+    if (!isFunded) {
+      addToast({
+        type: "error",
+        title: "Action Blocked: Unfunded Escrow",
+        message: "You cannot submit deliverables until the brand has secured the escrow deposit.",
+      });
+      return;
+    }
 
     if (!validateUrl(assetUrl)) {
       return;
@@ -75,7 +143,7 @@ export function DeliverablesPipeline({ collaboration }: { collaboration: Collabo
     const slaDeadline = new Date(Date.now() + 120 * 60 * 60 * 1000).toISOString();
 
     try {
-      await collaborationService.submitDeliverableDraft(collaboration.id, selectedDel.id, {
+      await collaborationService.submitDeliverableDraft(collab.id, selectedDel.id, {
         assetUrl: assetUrl.trim(),
         notes: notes.trim(),
         mediaUrls: [assetUrl.trim()],
@@ -112,6 +180,12 @@ export function DeliverablesPipeline({ collaboration }: { collaboration: Collabo
         )
       );
 
+      setCollab((prev) => ({
+        ...prev,
+        paymentStatus: "submitted_for_review",
+        status: "submitted_for_review",
+      }));
+
       setIsSubmitModalOpen(false);
       addToast({
         type: "success",
@@ -131,52 +205,189 @@ export function DeliverablesPipeline({ collaboration }: { collaboration: Collabo
 
   const handleApproveDeliverable = async (deliverableId: string) => {
     try {
-      await collaborationService.approveDeliverable(collaboration.id, deliverableId);
+      await collaborationService.approveDeliverable(collab.id, deliverableId);
       setDeliverables((prev) =>
         prev.map((d) => (d.id === deliverableId ? { ...d, status: "approved" } : d))
       );
+      setCollab((prev) => ({
+        ...prev,
+        paymentStatus: "approved",
+      }));
       setIsReviewModalOpen(false);
       addToast({
         type: "success",
         title: "Milestone Approved & Disbursed",
         message: "Escrow funds released directly to creator payout account.",
       });
-    } catch {
-      setDeliverables((prev) =>
-        prev.map((d) => (d.id === deliverableId ? { ...d, status: "approved" } : d))
-      );
-      setIsReviewModalOpen(false);
+    } catch (err: any) {
       addToast({
-        type: "success",
-        title: "Milestone Approved & Disbursed",
-        message: "Escrow funds released directly to creator payout account.",
+        type: "error",
+        title: "Approval Failed",
+        message: err.message || "Could not complete disbursement.",
       });
     }
   };
 
-  const handleRequestRevision = (deliverableId: string) => {
-    setDeliverables((prev) =>
-      prev.map((d) => (d.id === deliverableId ? { ...d, status: "revision_requested" } : d))
-    );
-    setIsReviewModalOpen(false);
-    addToast({
-      type: "info",
-      title: "Revision Requested",
-      message: "Creator notified with your revision notes.",
-    });
+  const handleRequestRevision = async (deliverableId: string) => {
+    const del = deliverables.find((d) => d.id === deliverableId);
+    if (del && del.revisionCount >= del.maxRevisions) {
+      addToast({
+        type: "error",
+        title: "Revision Limit Reached",
+        message: `Maximum revisions (${del.maxRevisions}) reached. Please approve or open an arbitration dispute.`,
+      });
+      return;
+    }
+
+    try {
+      await collaborationService.requestRevision(collab.id, deliverableId, revisionFeedback);
+      setDeliverables((prev) =>
+        prev.map((d) =>
+          d.id === deliverableId ? { ...d, status: "revision_requested", revisionCount: d.revisionCount + 1 } : d
+        )
+      );
+      setCollab((prev) => ({
+        ...prev,
+        paymentStatus: "revision_requested",
+        status: "revision_requested",
+      }));
+      setIsDisputeModalOpen(false);
+      setIsReviewModalOpen(false);
+      addToast({
+        type: "info",
+        title: "Revision Requested",
+        message: "Creator notified with your revision notes.",
+      });
+    } catch (err: any) {
+      addToast({
+        type: "error",
+        title: "Revision Request Failed",
+        message: err.message || "Could not send revision request.",
+      });
+    }
   };
 
-  const handleRaiseDispute = (deliverableId: string) => {
-    setDeliverables((prev) =>
-      prev.map((d) => (d.id === deliverableId ? { ...d, status: "revision_requested" } : d))
-    );
-    setIsDisputeModalOpen(false);
-    setIsReviewModalOpen(false);
-    addToast({
-      type: "warning",
-      title: "Dispute Escalated",
-      message: "Milestone escrow locked and submitted to Collably arbitration desk.",
-    });
+  const handleRaiseDispute = async (deliverableId: string) => {
+    try {
+      const res = await fetch("/api/disputes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          collaborationId: collab.id,
+          campaignTitle: collab.campaignTitle,
+          brandName: collab.brand?.companyName || "Brand",
+          creatorName: collab.creator?.fullName || "Creator",
+          creatorUserId: collab.creator?.userId || collab.creatorId,
+          brandUserId: collab.brand?.userId || collab.brandId,
+          reason: "Scope_Mismatch",
+          description: revisionFeedback || "Deliverable failed to meet agreed project requirements",
+          amountInDispute: collab.totalAgreedBudget,
+        }),
+      });
+      if (!res.ok) throw new Error("Failed to file dispute");
+
+      setCollab((prev) => ({
+        ...prev,
+        status: "disputed",
+        paymentStatus: "disputed",
+      }));
+      setIsDisputeModalOpen(false);
+      setIsReviewModalOpen(false);
+      addToast({
+        type: "warning",
+        title: "Dispute Escalated",
+        message: "Milestone escrow locked and submitted to Collably arbitration desk.",
+      });
+    } catch (err: any) {
+      addToast({
+        type: "error",
+        title: "Dispute Error",
+        message: err.message || "Failed to file dispute.",
+      });
+    }
+  };
+
+  // Submit Post Proof
+  const handleSubmitPostProof = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!postUrl.trim().startsWith("https://")) {
+      addToast({ type: "error", title: "Invalid URL", message: "Post URL must start with https://" });
+      return;
+    }
+
+    setIsVerifyingPost(true);
+    try {
+      const res = await collaborationService.submitPostProof(collab.id, {
+        postUrl: postUrl.trim(),
+        platform: postPlatform,
+        screenshotUrl: postScreenshotUrl.trim() || undefined,
+        notes: postNotes.trim() || undefined,
+      });
+
+      setCollab((prev) => ({
+        ...prev,
+        verificationProof: res.proof,
+        paymentStatus: "posted",
+        status: "posted",
+      }));
+      setIsPostProofModalOpen(false);
+      addToast({
+        type: "success",
+        title: "Post Proof Verified!",
+        message: "Public posting verified. Payout release triggered.",
+      });
+    } catch (err: any) {
+      addToast({
+        type: "error",
+        title: "Verification Failed",
+        message: err.message || "Could not verify live post.",
+      });
+    } finally {
+      setIsVerifyingPost(false);
+    }
+  };
+
+  // Stage-Aware Cancellation
+  const handleCancelCollaboration = async () => {
+    setIsCancelling(true);
+    try {
+      const res = await collaborationService.cancelCollaboration(
+        collab.id,
+        cancelReason || "Cancelled by participant"
+      );
+
+      setCollab((prev) => ({
+        ...prev,
+        status: "cancelled",
+        paymentStatus: "cancelled",
+        escrowStatus: "refunded",
+        cancellationDetails: {
+          cancelledBy: role,
+          cancelledByRole: role as any,
+          cancelledAt: new Date().toISOString(),
+          stage: res.stage as any,
+          reason: cancelReason,
+          refundPercentToBrand: (res.refundAmountDollars / (collab.totalAgreedBudget || 1)) * 100,
+          killFeePercentToCreator: (res.killFeeAmountDollars / (collab.totalAgreedBudget || 1)) * 100,
+          refundAmountDollars: res.refundAmountDollars,
+          killFeeAmountDollars: res.killFeeAmountDollars,
+        },
+      }));
+      setIsCancelModalOpen(false);
+      addToast({
+        type: "info",
+        title: "Collaboration Cancelled",
+        message: `Settlement: $${res.refundAmountDollars.toFixed(2)} refunded to brand, $${res.killFeeAmountDollars.toFixed(2)} kill-fee paid to creator.`,
+      });
+    } catch (err: any) {
+      addToast({
+        type: "error",
+        title: "Cancellation Failed",
+        message: err.message || "Could not cancel collaboration.",
+      });
+    } finally {
+      setIsCancelling(false);
+    }
   };
 
   const getPlatformLabel = (url?: string) => {
@@ -189,54 +400,193 @@ export function DeliverablesPipeline({ collaboration }: { collaboration: Collabo
     return "External Link";
   };
 
+  // Calculate cancellation preview math
+  const getCancellationPreview = () => {
+    const total = collab.totalAgreedBudget || 3500;
+    if (!isFunded) {
+      return { refund: 0, killFee: 0, desc: "Unfunded: No funds have been deposited yet." };
+    }
+    if (collab.paymentStatus === "payment_secured") {
+      return { refund: total, killFee: 0, desc: "Before work started: 100% Brand Refund ($" + total.toLocaleString() + "), 0% Creator Kill-Fee ($0)." };
+    }
+    if (isOverdue) {
+      return { refund: total, killFee: 0, desc: "Deadline Missed: 100% Brand Refund ($" + total.toLocaleString() + "), 0% Creator Kill-Fee ($0)." };
+    }
+    if (collab.paymentStatus === "submitted_for_review" || collab.paymentStatus === "revision_requested") {
+      return { refund: total * 0.5, killFee: total * 0.5, desc: "Content Submitted: 50% Brand Refund ($" + (total * 0.5).toLocaleString() + "), 50% Creator Kill-Fee ($" + (total * 0.5).toLocaleString() + ")." };
+    }
+    // Default work_in_progress
+    return { refund: total * 0.7, killFee: total * 0.3, desc: "Work In Progress: 70% Brand Refund ($" + (total * 0.7).toLocaleString() + "), 30% Creator Kill-Fee ($" + (total * 0.3).toLocaleString() + ")." };
+  };
+
   return (
     <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6 text-[#0A0A0E]">
+      {/* ── 1. SECURITY & STATUS BANNERS ── */}
+
+      {/* Unfunded Warning Banner */}
+      {!isFunded && !isCancelled && (
+        <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border border-amber-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 rounded-xl bg-amber-500/20 flex items-center justify-center text-amber-900 shrink-0">
+              <ShieldAlert className="w-5 h-5" />
+            </div>
+            <div className="space-y-1">
+              <h4 className="font-bold text-sm text-amber-950 flex items-center gap-2">
+                <span>Escrow Vault Funding Pending</span>
+                <span className="px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-900 text-[10px] font-mono font-bold">48h SLA Active</span>
+              </h4>
+              <p className="text-xs text-amber-900/80 leading-relaxed max-w-2xl">
+                {role === "creator"
+                  ? "Brand has not yet deposited funds into the platform escrow vault. Creator production and submission controls are locked to protect you from unpaid work."
+                  : "Creators cannot begin production until the escrow vault is funded upfront. Funds are held safely by the platform and only released upon your deliverable approval."}
+              </p>
+            </div>
+          </div>
+
+          <div className="shrink-0 flex items-center gap-2">
+            {role === "brand" && (
+              <button
+                onClick={handleFundEscrow}
+                disabled={isFunding}
+                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs shadow-xs border border-black/10 transition-all flex items-center gap-2 disabled:opacity-50"
+              >
+                <Lock className="w-3.5 h-3.5" />
+                <span>{isFunding ? "Funding Vault..." : `Fund Escrow Vault (${formatCurrency(collab.totalAgreedBudget)})`}</span>
+              </button>
+            )}
+            {role === "creator" && (
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-500/20 text-amber-900 text-xs font-mono font-bold">
+                <Lock className="w-3.5 h-3.5" />
+                <span>Work Blocked Until Funded</span>
+              </span>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Overdue Alert Banner */}
+      {isOverdue && !isCancelled && !isCompleted && (
+        <div className="p-4 sm:p-5 rounded-2xl bg-red-500/10 border border-red-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 rounded-xl bg-red-500/20 flex items-center justify-center text-red-700 shrink-0">
+              <AlertTriangle className="w-5 h-5" />
+            </div>
+            <div className="space-y-1">
+              <h4 className="font-bold text-sm text-red-950 flex items-center gap-2">
+                <span>Deliverable Deadline Breached</span>
+                <span className="px-2 py-0.5 rounded-md bg-red-500/20 text-red-900 text-[10px] font-mono font-bold">Overdue Penalty Active</span>
+              </h4>
+              <p className="text-xs text-red-900/80 leading-relaxed max-w-2xl">
+                The agreed submission deadline and grace period have expired without content submission.
+                Brand is entitled to cancel with a 100% full refund or open formal arbitration.
+              </p>
+            </div>
+          </div>
+
+          <div className="shrink-0 flex items-center gap-2">
+            {role === "brand" && (
+              <button
+                onClick={() => setIsCancelModalOpen(true)}
+                className="px-4 py-2 rounded-full bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-xs transition-all"
+              >
+                Claim 100% Refund
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Disputed Freeze Banner */}
+      {isDisputed && (
+        <div className="p-4 sm:p-5 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-700 shrink-0">
+            <ShieldCheck className="w-5 h-5" />
+          </div>
+          <div className="space-y-1 flex-1">
+            <h4 className="font-bold text-sm text-blue-950 flex items-center gap-2">
+              <span>Arbitration Active — Escrow Vault Frozen</span>
+              <span className="px-2 py-0.5 rounded-md bg-blue-500/20 text-blue-900 text-[10px] font-mono font-bold">Under Administrative Review</span>
+            </h4>
+            <p className="text-xs text-blue-900/80 leading-relaxed">
+              Automated timers are halted. A Collably arbitration officer is reviewing submitted evidence to issue a binding financial settlement.
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Cancelled Banner */}
+      {isCancelled && (
+        <div className="p-4 sm:p-5 rounded-2xl bg-black/5 border border-black/10 flex items-center gap-3">
+          <XCircle className="w-5 h-5 text-[#8A8A9A] shrink-0" />
+          <div className="space-y-0.5 flex-1">
+            <h4 className="font-bold text-sm text-[#0A0A0E]">Collaboration Cancelled</h4>
+            <p className="text-xs text-[#6A6A78]">
+              {collab.cancellationDetails?.reason || "This collaboration was cancelled under platform terms."}
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* Top Header Card */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-black/8">
         <div className="space-y-1">
           <div className="flex items-center gap-2">
             <span className="text-xs font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#0A0A0E]" /> Escrow Milestone Pipeline
+              <ShieldCheck className="w-3.5 h-3.5 text-[#0A0A0E]" /> Protected Escrow Workspace
             </span>
             <span className="text-[#8A8A9A]">•</span>
-            <span className="text-xs font-mono text-[#6A6A78]">ID: {collaboration.id}</span>
+            <span className="text-xs font-mono text-[#6A6A78]">ID: {collab.id}</span>
           </div>
           <h2 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
-            {collaboration.campaignTitle}
+            {collab.campaignTitle}
           </h2>
           <p className="text-xs text-[#6A6A78] font-mono">
-            Partner: <strong className="text-[#0A0A0E] font-sans">{collaboration.creator.fullName}</strong> (@{collaboration.creator.handle})
+            Partner: <strong className="text-[#0A0A0E] font-sans">{collab.creator.fullName}</strong> (@{collab.creator.handle})
           </p>
         </div>
 
         <div className="flex items-center gap-4 font-mono">
           <div className="text-right">
-            <span className="text-xs text-[#6A6A78] block">Total Escrow</span>
+            <span className="text-xs text-[#6A6A78] block">Escrow Vault</span>
             <span className="text-lg font-extrabold text-[#0A0A0E]">
-              {formatCurrency(collaboration.totalAgreedBudget)}
+              {formatCurrency(collab.totalAgreedBudget)}
             </span>
           </div>
-          <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] text-xs font-mono font-bold">
-            {collaboration.status.toUpperCase()}
+          <span className={`px-2.5 py-1 rounded-full text-xs font-mono font-bold border ${
+            isFunded
+              ? "bg-emerald-50 text-emerald-800 border-emerald-300"
+              : "bg-amber-50 text-amber-900 border-amber-300"
+          }`}>
+            {(collab.paymentStatus || collab.status).replace(/_/g, " ").toUpperCase()}
           </span>
+
+          {!isCancelled && !isCompleted && (
+            <button
+              onClick={() => setIsCancelModalOpen(true)}
+              className="p-1.5 rounded-full hover:bg-black/5 text-[#8A8A9A] hover:text-red-600 transition-all text-xs"
+              title="Cancel Collaboration"
+            >
+              <XCircle className="w-4 h-4" />
+            </button>
+          )}
         </div>
       </div>
 
       {/* Sub-Workspace Tab Switcher */}
-      <div className="flex items-center gap-2 border-b border-black/8 pb-3 text-xs font-mono">
+      <div className="flex items-center gap-2 border-b border-black/8 pb-3 text-xs font-mono overflow-x-auto">
         <button
           onClick={() => setActiveTab("deliverables")}
-          className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all ${
+          className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all shrink-0 ${
             activeTab === "deliverables"
               ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs border border-black/10"
               : "bg-[#F8F8FC] text-[#6A6A78] hover:text-[#0A0A0E] border border-black/5"
           }`}
         >
-          Deliverables &amp; Milestones ({deliverables.length})
+          Deliverables ({deliverables.length})
         </button>
         <button
           onClick={() => setActiveTab("review_card")}
-          className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all flex items-center gap-1.5 ${
+          className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 ${
             activeTab === "review_card"
               ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs border border-black/10"
               : "bg-[#F8F8FC] text-[#6A6A78] hover:text-[#0A0A0E] border border-black/5"
@@ -246,8 +596,19 @@ export function DeliverablesPipeline({ collaboration }: { collaboration: Collabo
           <span>Deliverable Review Card</span>
         </button>
         <button
+          onClick={() => setActiveTab("post_proof")}
+          className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 ${
+            activeTab === "post_proof"
+              ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs border border-black/10"
+              : "bg-[#F8F8FC] text-[#6A6A78] hover:text-[#0A0A0E] border border-black/5"
+          }`}
+        >
+          <UploadCloud className="w-3.5 h-3.5" />
+          <span>Post Proof &amp; Verification</span>
+        </button>
+        <button
           onClick={() => setActiveTab("negotiation")}
-          className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all flex items-center gap-1.5 ${
+          className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 ${
             activeTab === "negotiation"
               ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs border border-black/10"
               : "bg-[#F8F8FC] text-[#6A6A78] hover:text-[#0A0A0E] border border-black/5"
@@ -297,7 +658,7 @@ export function DeliverablesPipeline({ collaboration }: { collaboration: Collabo
                       )}
                     </div>
                     <p className="text-xs text-[#6A6A78] font-mono">
-                      Format: {del.type} • Max {del.maxRevisions} Revisions
+                      Format: {del.type} • Revisions: {del.revisionCount}/{del.maxRevisions}
                     </p>
 
                     {currentAssetUrl && (
@@ -327,13 +688,26 @@ export function DeliverablesPipeline({ collaboration }: { collaboration: Collabo
                     {role === "creator" && !isApproved && (
                       <button
                         onClick={() => {
+                          if (!isFunded) {
+                            addToast({
+                              type: "error",
+                              title: "Escrow Unfunded",
+                              message: "Brand must fund escrow before deliverable submissions are allowed.",
+                            });
+                            return;
+                          }
                           setSelectedDel(del);
                           if (currentAssetUrl) setAssetUrl(currentAssetUrl);
                           setIsSubmitModalOpen(true);
                         }}
-                        className="px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] font-bold text-xs transition-all shadow-xs border border-black/10 flex items-center gap-1.5"
+                        disabled={!isFunded}
+                        className={`px-4 py-2 rounded-full font-bold text-xs transition-all shadow-xs border flex items-center gap-1.5 ${
+                          isFunded
+                            ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] border-black/10 hover:shadow-sm"
+                            : "bg-black/5 text-[#8A8A9A] border-black/5 cursor-not-allowed"
+                        }`}
                       >
-                        <Send className="w-3.5 h-3.5 text-[#0A0A0E]" />
+                        <Send className="w-3.5 h-3.5" />
                         <span>{isSubmitted ? "Update Deliverable Link" : "Submit Deliverable Link"}</span>
                       </button>
                     )}
@@ -369,11 +743,11 @@ export function DeliverablesPipeline({ collaboration }: { collaboration: Collabo
       {activeTab === "review_card" && (
         <div className="pt-2">
           <DeliverableReviewCard
-            title={deliverables[0]?.title || `${collaboration.campaignTitle} - Milestone 1`}
+            title={deliverables[0]?.title || `${collab.campaignTitle} - Milestone 1`}
             deliverableType={deliverables[0]?.type || "YouTube 60s Integration"}
             payoutAmount={deliverables[0]?.payoutAmount || 2500}
-            creatorName={collaboration.creator.fullName}
-            creatorHandle={collaboration.creator.handle}
+            creatorName={collab.creator.fullName}
+            creatorHandle={collab.creator.handle}
             assetUrl={
               deliverables[0]?.assetUrl ||
               deliverables[0]?.submissions?.[0]?.assetUrl ||
@@ -382,7 +756,7 @@ export function DeliverablesPipeline({ collaboration }: { collaboration: Collabo
             notes={
               deliverables[0]?.notes ||
               deliverables[0]?.submissions?.[0]?.notes ||
-              "Color graded to match Linear brand guidelines. Custom music track cleared for commercial use. Primary onboarding hook starts at 04:12."
+              "Color graded to match brand specs. Commercial soundtrack cleared. Key integration hook at 04:12."
             }
             submittedAt={deliverables[0]?.submittedAt || deliverables[0]?.submissions?.[0]?.submittedAt}
             onApprove={() => handleApproveDeliverable(deliverables[0]?.id || "del-1")}
@@ -391,21 +765,81 @@ export function DeliverablesPipeline({ collaboration }: { collaboration: Collabo
               handleRequestRevision(deliverables[0]?.id || "del-1");
             }}
             onRaiseDispute={(reason) => {
-              setDisputeReason(reason);
+              setRevisionFeedback(reason);
               handleRaiseDispute(deliverables[0]?.id || "del-1");
             }}
           />
         </div>
       )}
 
-      {/* Tab 3: Structured Negotiation */}
-      {activeTab === "negotiation" && (
-        <div className="pt-2">
-          <NegotiationTimeline currentFee={collaboration.totalAgreedBudget} />
+      {/* Tab 3: Post Proof Verification */}
+      {activeTab === "post_proof" && (
+        <div className="pt-2 space-y-4">
+          <div className="p-5 rounded-2xl bg-[#F8F8FC] border border-black/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="space-y-1">
+              <h3 className="font-bold text-sm text-[#0A0A0E] flex items-center gap-2">
+                <span>Public Post Verification</span>
+                {collab.verificationProof?.status === "verified" ? (
+                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[10px] font-mono font-bold border border-emerald-200">
+                    VERIFIED LIVE
+                  </span>
+                ) : (
+                  <span className="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-900 text-[10px] font-mono font-bold border border-amber-200">
+                    PENDING SUBMISSION
+                  </span>
+                )}
+              </h3>
+              <p className="text-xs text-[#6A6A78]">
+                Creator must submit the live post link and proof of publish to fulfill collaboration terms.
+              </p>
+            </div>
+
+            {role === "creator" && (
+              <button
+                onClick={() => setIsPostProofModalOpen(true)}
+                className="px-4 py-2 rounded-full bg-[#FFD21F] text-[#0A0A0E] font-bold text-xs shadow-xs border border-black/10 hover:bg-[#FFE052] transition-all flex items-center gap-1.5 shrink-0"
+              >
+                <UploadCloud className="w-3.5 h-3.5" />
+                <span>{collab.verificationProof ? "Update Post Proof" : "Submit Live Post Proof"}</span>
+              </button>
+            )}
+          </div>
+
+          {collab.verificationProof && (
+            <div className="p-5 rounded-2xl bg-white border border-black/10 space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono font-bold text-[#6A6A78]">Live Verified Link</span>
+                <span className="text-xs text-[#8A8A9A] font-mono">Published: {collab.verificationProof.publishedAt.split("T")[0]}</span>
+              </div>
+              <div className="flex items-center justify-between gap-4">
+                <span className="text-xs font-mono text-[#0A0A0E] font-bold truncate max-w-md">
+                  {collab.verificationProof.postUrl}
+                </span>
+                <a
+                  href={collab.verificationProof.postUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 rounded-full bg-[#F8F8FC] border border-black/10 text-xs font-bold hover:underline flex items-center gap-1"
+                >
+                  <span>View Live Post</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
-      {/* Creator Workflow: Submit Deliverable Link Modal */}
+      {/* Tab 4: Terms & Negotiation */}
+      {activeTab === "negotiation" && (
+        <div className="pt-2">
+          <NegotiationTimeline currentFee={collab.totalAgreedBudget} />
+        </div>
+      )}
+
+      {/* ── MODALS ── */}
+
+      {/* Creator: Submit Deliverable Modal */}
       <Modal
         isOpen={isSubmitModalOpen}
         onClose={() => setIsSubmitModalOpen(false)}
@@ -431,7 +865,6 @@ export function DeliverablesPipeline({ collaboration }: { collaboration: Collabo
               </p>
             )}
 
-            {/* Helper Note Required by Spec */}
             <div className="flex items-start gap-2 p-3 rounded-xl bg-[#FFFDF5] border border-[#FFD21F]/40 text-xs text-[#6A6A78]">
               <Info className="w-4 h-4 text-[#0A0A0E] shrink-0 mt-0.5" />
               <span>
@@ -471,7 +904,7 @@ export function DeliverablesPipeline({ collaboration }: { collaboration: Collabo
         </form>
       </Modal>
 
-      {/* Brand Workflow: Deliverable Review Modal */}
+      {/* Brand: Review Deliverable Modal */}
       <Modal
         isOpen={isReviewModalOpen}
         onClose={() => setIsReviewModalOpen(false)}
@@ -479,12 +912,9 @@ export function DeliverablesPipeline({ collaboration }: { collaboration: Collabo
         description="Inspect creator external link and release escrow or request changes."
       >
         <div className="space-y-6 text-[#0A0A0E]">
-          {/* Prominent External Link */}
           <div className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/5 space-y-2.5">
             <div className="flex items-center justify-between">
-              <span className="text-[10px] text-[#6A6A78] uppercase font-mono font-bold">
-                External Asset Link
-              </span>
+              <span className="text-[10px] text-[#6A6A78] uppercase font-mono font-bold">External Asset Link</span>
               <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] text-[10px] font-mono font-bold">
                 <Clock className="w-3 h-3" /> 120h SLA Active
               </span>
@@ -500,25 +930,21 @@ export function DeliverablesPipeline({ collaboration }: { collaboration: Collabo
                 rel="noopener noreferrer"
                 className="px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] to-[#FFE052] text-[#0A0A0E] text-xs font-bold shadow-xs hover:underline flex items-center gap-1.5 shrink-0"
               >
-                <span>Open in {getPlatformLabel(selectedDel?.assetUrl || assetUrl)} / New Tab</span>
+                <span>Open in {getPlatformLabel(selectedDel?.assetUrl || assetUrl)}</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             </div>
           </div>
 
-          {/* Creator Notes */}
           {(selectedDel?.notes || notes) && (
             <div className="space-y-1.5">
-              <span className="text-[10px] text-[#6A6A78] uppercase font-mono font-bold">
-                Creator Notes
-              </span>
+              <span className="text-[10px] text-[#6A6A78] uppercase font-mono font-bold">Creator Notes</span>
               <div className="p-3.5 rounded-xl bg-white border border-black/10 text-xs text-[#2A2A38] leading-relaxed font-sans">
                 {selectedDel?.notes || notes}
               </div>
             </div>
           )}
 
-          {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <button
               type="button"
@@ -543,14 +969,25 @@ export function DeliverablesPipeline({ collaboration }: { collaboration: Collabo
         </div>
       </Modal>
 
-      {/* Dispute & Revision Request Modal */}
+      {/* Revision & Dispute Modal */}
       <Modal
         isOpen={isDisputeModalOpen}
         onClose={() => setIsDisputeModalOpen(false)}
         title="Revision or Formal Dispute"
-        description="Choose whether to send revision notes to the creator or escalate to Collably dispute arbitration."
+        description="Enforces revision boundaries and dispute protection."
       >
         <div className="space-y-4 text-[#0A0A0E]">
+          {selectedDel && (
+            <div className="p-3 rounded-xl bg-[#F8F8FC] border border-black/5 text-xs font-mono flex items-center justify-between">
+              <span>Revisions Used: <strong>{selectedDel.revisionCount} / {selectedDel.maxRevisions}</strong></span>
+              {selectedDel.revisionCount >= selectedDel.maxRevisions ? (
+                <span className="text-red-700 font-bold">Max Revisions Reached</span>
+              ) : (
+                <span className="text-emerald-700 font-bold">{selectedDel.maxRevisions - selectedDel.revisionCount} Remaining</span>
+              )}
+            </div>
+          )}
+
           <Textarea
             label="Revision Notes or Dispute Statement"
             placeholder="Explain required changes or contractual dispute details..."
@@ -570,10 +1007,112 @@ export function DeliverablesPipeline({ collaboration }: { collaboration: Collabo
             </button>
             <button
               type="button"
+              disabled={Boolean(selectedDel && selectedDel.revisionCount >= selectedDel.maxRevisions)}
               onClick={() => selectedDel && handleRequestRevision(selectedDel.id)}
-              className="flex-1 py-2.5 rounded-full bg-black text-white hover:bg-black/90 font-bold text-xs transition-all"
+              className="flex-1 py-2.5 rounded-full bg-black text-white hover:bg-black/90 font-bold text-xs transition-all disabled:opacity-40 disabled:cursor-not-allowed"
             >
-              Send Revision Request
+              {selectedDel && selectedDel.revisionCount >= selectedDel.maxRevisions ? "Revision Limit Exceeded" : "Send Revision Request"}
+            </button>
+          </div>
+        </div>
+      </Modal>
+
+      {/* Creator: Submit Live Post Proof Modal */}
+      <Modal
+        isOpen={isPostProofModalOpen}
+        onClose={() => setIsPostProofModalOpen(false)}
+        title="Submit Live Post Proof"
+        description="Verify public content publication to complete collaboration."
+      >
+        <form onSubmit={handleSubmitPostProof} className="space-y-4 text-[#0A0A0E]">
+          <Input
+            label="Live Post URL"
+            placeholder="https://www.youtube.com/watch?v=... or https://instagram.com/p/..."
+            value={postUrl}
+            onChange={(e) => setPostUrl(e.target.value)}
+            required
+          />
+
+          <div className="space-y-1">
+            <label className="text-xs font-mono font-bold text-[#6A6A78]">Platform</label>
+            <select
+              value={postPlatform}
+              onChange={(e) => setPostPlatform(e.target.value as PlatformType)}
+              className="w-full px-3.5 py-2 rounded-xl bg-white border border-black/15 text-xs font-sans text-[#0A0A0E]"
+            >
+              <option value="youtube">YouTube</option>
+              <option value="instagram">Instagram</option>
+              <option value="tiktok">TikTok</option>
+              <option value="x">X / Twitter</option>
+              <option value="linkedin">LinkedIn</option>
+            </select>
+          </div>
+
+          <Input
+            label="Screenshot Proof URL (Optional)"
+            placeholder="https://drive.google.com/... (screenshot of published post/metrics)"
+            value={postScreenshotUrl}
+            onChange={(e) => setPostScreenshotUrl(e.target.value)}
+          />
+
+          <Textarea
+            label="Additional Notes (Optional)"
+            placeholder="e.g. pinned comment added, affiliate link active in bio"
+            value={postNotes}
+            onChange={(e) => setPostNotes(e.target.value)}
+            rows={2}
+          />
+
+          <button
+            type="submit"
+            disabled={isVerifyingPost}
+            className="w-full py-3 rounded-full bg-[#FFD21F] hover:bg-[#FFE052] text-[#0A0A0E] font-black text-xs transition-all border border-black/10 disabled:opacity-50 flex items-center justify-center gap-2"
+          >
+            <UploadCloud className="w-4 h-4 text-[#0A0A0E]" />
+            <span>{isVerifyingPost ? "Verifying Proof..." : "Submit & Verify Post Proof"}</span>
+          </button>
+        </form>
+      </Modal>
+
+      {/* Stage-Aware Cancellation Modal */}
+      <Modal
+        isOpen={isCancelModalOpen}
+        onClose={() => setIsCancelModalOpen(false)}
+        title="Stage-Aware Collaboration Cancellation"
+        description="Platform rules automatically calculate fair refunds and creator kill-fees based on progress."
+      >
+        <div className="space-y-4 text-[#0A0A0E]">
+          <div className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/10 space-y-2">
+            <span className="text-[10px] font-mono font-bold text-[#6A6A78] uppercase">Financial Settlement Preview</span>
+            <p className="text-xs text-[#0A0A0E] font-bold leading-relaxed">
+              {getCancellationPreview().desc}
+            </p>
+          </div>
+
+          <Textarea
+            label="Cancellation Reason"
+            placeholder="Please provide a clear reason for cancelling this collaboration..."
+            value={cancelReason}
+            onChange={(e) => setCancelReason(e.target.value)}
+            rows={3}
+            required
+          />
+
+          <div className="flex gap-2.5 pt-2">
+            <button
+              type="button"
+              onClick={() => setIsCancelModalOpen(false)}
+              className="px-4 py-2.5 rounded-full bg-black/5 text-[#0A0A0E] font-bold text-xs border border-black/10"
+            >
+              Back
+            </button>
+            <button
+              type="button"
+              disabled={isCancelling || !cancelReason.trim()}
+              onClick={handleCancelCollaboration}
+              className="flex-1 py-2.5 rounded-full bg-red-600 hover:bg-red-700 text-white font-bold text-xs transition-all disabled:opacity-50"
+            >
+              {isCancelling ? "Processing Cancellation..." : "Confirm & Execute Settlement"}
             </button>
           </div>
         </div>
