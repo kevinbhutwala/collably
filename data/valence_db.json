@@ -1911,6 +1911,22 @@
   "aiUsage": [],
   "auditLogs": [
     {
+      "id": "aud-1788650879138",
+      "actorId": "user-owner",
+      "actorName": "Kevin Bhutwala",
+      "actorRole": "agency_admin",
+      "action": "DISPUTE_ARBITRATION_RESOLVED",
+      "entityType": "Dispute",
+      "entityId": "disp-101",
+      "entityName": "Hyperion ANC Headphone Commercial",
+      "metadata": {
+        "split": "50/50",
+        "brandRefund": 1750,
+        "creatorPayout": 1750
+      },
+      "createdAt": "2026-09-05T23:27:59.138Z"
+    },
+    {
       "id": "aud-1788648317840",
       "actorId": "user-owner",
       "actorName": "Kevin Bhutwala",
@@ -2009,5 +2025,5 @@
   ],
   "ledgerEntries": [],
   "reliabilityScores": [],
-  "_lastVerifiedAt": "2026-09-05T22:45:17.841Z"
+  "_lastVerifiedAt": "2026-09-05T23:27:59.139Z"
 }
