@@ -3,8 +3,8 @@
  */
 import crypto from "crypto";
 
-const KEY_ID = process.env.RAZORPAY_KEY_ID || "rzp_test_TYeenqq8U62r7u";
-const KEY_SECRET = process.env.RAZORPAY_KEY_SECRET || "obcu715QMHv6IWB4lrgsNu3K";
+const KEY_ID = process.env.RAZORPAY_KEY_ID || "rzp_test_TYedygjYg4TH2l";
+const KEY_SECRET = process.env.RAZORPAY_KEY_SECRET || "B4Sl24nSfyknUIIfj3uWdS9i";
 
 console.log("\n================================================================================");
 console.log("💳 ABEYCOLLAB RAZORPAY STANDARD WEB CHECKOUT INTEGRATION TEST SUITE");
