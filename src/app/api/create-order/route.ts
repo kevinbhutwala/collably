@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
         amount: parsedAmount,
         currency: (currency || "INR").toUpperCase(),
         receipt: orderReceipt,
-        payment_capture: 1,
+        payment_capture: true,
         notes: notes || {},
       });
     } catch (createErr: any) {
@@ -61,7 +61,7 @@ export async function POST(req: NextRequest) {
           amount: parsedAmount,
           currency: (currency || "INR").toUpperCase(),
           receipt: orderReceipt,
-          payment_capture: 1,
+          payment_capture: true,
           notes: notes || {},
         });
       } else {
