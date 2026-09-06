@@ -99,7 +99,7 @@ export function PlanUpgradeModal() {
       const keyId =
         orderData.key_id ||
         process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID ||
-        "rzp_test_TYeenqq8U62r7u";
+        "rzp_test_TYfXLPQ4zSkONc";
 
       const options = {
         key: keyId,

@@ -3,7 +3,7 @@ import crypto from "crypto";
 
 export async function POST(req: NextRequest) {
   try {
-    const keySecret = process.env.RAZORPAY_KEY_SECRET || "obcu715QMHv6IWB4lrgsNu3K";
+    const keySecret = process.env.RAZORPAY_KEY_SECRET || "3OiwAOZ46GQqev1PMpZR13F4";
 
     const body = await req.json().catch(() => ({}));
     const orderId = body.order_id || body.orderId || body.razorpay_order_id;

@@ -167,7 +167,7 @@ export default function EarningsAndEscrowPage() {
             <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-[10px] font-mono font-extrabold uppercase">
               Razorpay Standard Checkout Active
             </span>
-            <span className="text-[10px] font-mono text-[#7A7A8A]">Key: rzp_test_TYeenqq8U62r7u</span>
+            <span className="text-[10px] font-mono text-[#7A7A8A]">Key: rzp_test_TYfXLPQ4zSkONc</span>
           </div>
           <h4 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display">
             Live Razorpay Escrow Deposit Gateway

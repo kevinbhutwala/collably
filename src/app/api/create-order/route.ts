@@ -3,8 +3,8 @@ import Razorpay from "razorpay";
 
 export async function POST(req: NextRequest) {
   try {
-    const keyId = process.env.RAZORPAY_KEY_ID || "rzp_test_TYeenqq8U62r7u";
-    const keySecret = process.env.RAZORPAY_KEY_SECRET || "obcu715QMHv6IWB4lrgsNu3K";
+    const keyId = process.env.RAZORPAY_KEY_ID || "rzp_test_TYfXLPQ4zSkONc";
+    const keySecret = process.env.RAZORPAY_KEY_SECRET || "3OiwAOZ46GQqev1PMpZR13F4";
 
     const body = await req.json().catch(() => ({}));
     const { amount, currency = "INR", receipt, notes } = body;
