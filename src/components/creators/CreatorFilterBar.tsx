@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { useFilterStore } from "@/stores/filter.store";
-import { CATEGORIES, PLATFORMS } from "@/core/constants";
+import { CATEGORIES, PLATFORMS, GLOBAL_HUBS } from "@/core/constants";
 import { CreatorCategory } from "@/core/types";
 import {
   Search,
@@ -15,6 +15,7 @@ import {
   Users,
   Sparkles,
   SlidersHorizontal,
+  MapPin,
 } from "lucide-react";
 import { SocialIcon } from "@/components/ui/SocialIcons";
 import { cn } from "@/lib/utils";
@@ -27,16 +28,18 @@ export function CreatorFilterBar() {
     creatorMinEngagement,
     creatorSearchQuery,
     creatorVerifiedOnly,
+    creatorLocation,
     setCreatorCategory,
     setCreatorPlatform,
     setCreatorMinFollowers,
     setCreatorMinEngagement,
     setCreatorSearchQuery,
     setCreatorVerifiedOnly,
+    setCreatorLocation,
     resetCreatorFilters,
   } = useFilterStore();
 
-  const [openDropdown, setOpenDropdown] = useState<"category" | "platform" | "reach" | "engagement" | null>(null);
+  const [openDropdown, setOpenDropdown] = useState<"category" | "platform" | "reach" | "engagement" | "location" | null>(null);
   const barContainerRef = useRef<HTMLDivElement>(null);
 
   // Close when clicking outside
@@ -70,6 +73,7 @@ export function CreatorFilterBar() {
   if (creatorPlatform !== "all") activeFilterCount++;
   if (creatorMinFollowers > 0) activeFilterCount++;
   if (creatorMinEngagement > 0) activeFilterCount++;
+  if (creatorLocation !== "all" && creatorLocation) activeFilterCount++;
   if (creatorVerifiedOnly) activeFilterCount++;
 
   return (
@@ -355,7 +359,77 @@ export function CreatorFilterBar() {
             )}
           </div>
 
-          {/* 5. Verified Talent Toggle Button */}
+          {/* 5. Worldwide Hub / Location Dropdown */}
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setOpenDropdown(openDropdown === "location" ? null : "location")}
+              className={cn(
+                "px-3.5 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center gap-2 border shadow-2xs",
+                creatorLocation !== "all" && creatorLocation && creatorLocation !== "Worldwide"
+                  ? "bg-[#0A0A0E] text-white border-black"
+                  : openDropdown === "location"
+                  ? "bg-white border-[#FFD21F] text-[#0A0A0E] ring-2 ring-[#FFD21F]/20"
+                  : "bg-[#F8F8FC] border-black/8 text-[#4A4A58] hover:bg-black/5 hover:text-[#0A0A0E]"
+              )}
+            >
+              <MapPin className={cn("w-3.5 h-3.5", creatorLocation !== "all" && creatorLocation && creatorLocation !== "Worldwide" ? "text-[#FFD21F]" : "text-[#7A7A8A]")} />
+              <span className="truncate max-w-[120px]">
+                {creatorLocation === "all" || !creatorLocation || creatorLocation === "Worldwide" ? "Worldwide Hub" : creatorLocation}
+              </span>
+              <ChevronDown
+                className={cn(
+                  "w-3 h-3 transition-transform duration-200 text-[#7A7A8A]",
+                  openDropdown === "location" ? "rotate-180 text-[#0A0A0E]" : ""
+                )}
+              />
+            </button>
+
+            {openDropdown === "location" && (
+              <div className="absolute top-full left-0 mt-2 w-64 rounded-2xl bg-white border border-black/10 shadow-2xl p-1.5 z-50 animate-in fade-in zoom-in-95 duration-100 max-h-72 overflow-y-auto">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setCreatorLocation("all");
+                    setOpenDropdown(null);
+                  }}
+                  className={cn(
+                    "w-full px-3 py-2.5 rounded-xl text-xs text-left transition-colors flex items-center justify-between font-semibold",
+                    creatorLocation === "all" || !creatorLocation
+                      ? "bg-[#FFFDF5] text-[#0A0A0E] font-bold border border-[#FFD21F]/40"
+                      : "hover:bg-black/5 text-[#5A5A68]"
+                  )}
+                >
+                  <span>Worldwide (All Locations)</span>
+                  {(creatorLocation === "all" || !creatorLocation) && <Check className="w-3.5 h-3.5 text-[#8A7000]" />}
+                </button>
+
+                <div className="my-1 border-t border-black/5" />
+
+                {GLOBAL_HUBS.filter(h => h !== "Worldwide").map((hub) => (
+                  <button
+                    key={hub}
+                    type="button"
+                    onClick={() => {
+                      setCreatorLocation(hub);
+                      setOpenDropdown(null);
+                    }}
+                    className={cn(
+                      "w-full px-3 py-2 rounded-xl text-xs text-left transition-colors flex items-center justify-between",
+                      creatorLocation === hub
+                        ? "bg-[#FFFDF5] text-[#0A0A0E] font-bold border border-[#FFD21F]/40"
+                        : "hover:bg-black/5 text-[#4A4A58]"
+                    )}
+                  >
+                    <span className="truncate">{hub}</span>
+                    {creatorLocation === hub && <Check className="w-3.5 h-3.5 text-[#8A7000]" />}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* 6. Verified Talent Toggle Button */}
           <button
             type="button"
             onClick={() => setCreatorVerifiedOnly(!creatorVerifiedOnly)}
@@ -425,6 +499,16 @@ export function CreatorFilterBar() {
               <Flame className="w-3 h-3 text-amber-500" />
               <span>&gt; {creatorMinEngagement}% ER</span>
               <button onClick={() => setCreatorMinEngagement(0)} className="hover:text-red-600">
+                <X className="w-3 h-3" />
+              </button>
+            </span>
+          )}
+
+          {creatorLocation !== "all" && creatorLocation && creatorLocation !== "Worldwide" && (
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white border border-black/10 text-xs font-bold text-[#0A0A0E] shadow-2xs">
+              <MapPin className="w-3 h-3 text-[#8A7000]" />
+              <span>{creatorLocation}</span>
+              <button onClick={() => setCreatorLocation("all")} className="hover:text-red-600">
                 <X className="w-3 h-3" />
               </button>
             </span>

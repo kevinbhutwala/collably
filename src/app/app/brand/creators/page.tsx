@@ -78,7 +78,7 @@ export default function BrandCreatorDiscoveryPage() {
       }
 
       // Location
-      if (creatorLocation !== "all" && creatorLocation) {
+      if (creatorLocation !== "all" && creatorLocation !== "Worldwide" && creatorLocation) {
         if (!c.location?.toLowerCase().includes(creatorLocation.toLowerCase())) return false;
       }
 

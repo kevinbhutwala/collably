@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { LeaderboardEntry, TimeframeWindow, PlatformType } from "@/core/types";
 import { ReputationBadgeBar } from "./ReputationBadgeBar";
+import { GLOBAL_HUBS } from "@/core/constants";
 
 export function MarketplaceLeaderboards() {
   const [category, setCategory] = useState("All");
@@ -54,15 +55,7 @@ export function MarketplaceLeaderboards() {
     "Gaming & Esports",
   ];
 
-  const LOCATIONS = [
-    "All",
-    "San Francisco",
-    "London",
-    "Mumbai",
-    "New York",
-    "Berlin",
-    "Worldwide",
-  ];
+  const LOCATIONS = ["All", ...GLOBAL_HUBS];
 
   const TIERS = ["All", "Nano", "Micro", "Mid-Tier", "Macro", "Elite"];
 

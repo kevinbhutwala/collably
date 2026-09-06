@@ -2,7 +2,58 @@
  * Centralized Currency & Financial Formatters for AbeyCollab
  */
 
-export type SupportedCurrency = "USD" | "INR" | "EUR" | "GBP";
+export type SupportedCurrency =
+  | "USD"
+  | "EUR"
+  | "GBP"
+  | "INR"
+  | "CAD"
+  | "AUD"
+  | "JPY"
+  | "SGD"
+  | "AED"
+  | "BRL";
+
+export interface CurrencyConfig {
+  code: SupportedCurrency;
+  symbol: string;
+  name: string;
+  flag: string;
+  exchangeRateToUSD: number; // 1 USD = X Currency
+  locale: string;
+}
+
+export const SUPPORTED_CURRENCIES: Record<SupportedCurrency, CurrencyConfig> = {
+  USD: { code: "USD", symbol: "$", name: "US Dollar", flag: "🇺🇸", exchangeRateToUSD: 1.0, locale: "en-US" },
+  EUR: { code: "EUR", symbol: "€", name: "Euro", flag: "🇪🇺", exchangeRateToUSD: 0.92, locale: "de-DE" },
+  GBP: { code: "GBP", symbol: "£", name: "British Pound", flag: "🇬🇧", exchangeRateToUSD: 0.78, locale: "en-GB" },
+  INR: { code: "INR", symbol: "₹", name: "Indian Rupee", flag: "🇮🇳", exchangeRateToUSD: 83.5, locale: "en-IN" },
+  CAD: { code: "CAD", symbol: "CA$", name: "Canadian Dollar", flag: "🇨🇦", exchangeRateToUSD: 1.36, locale: "en-CA" },
+  AUD: { code: "AUD", symbol: "AU$", name: "Australian Dollar", flag: "🇦🇺", exchangeRateToUSD: 1.52, locale: "en-AU" },
+  JPY: { code: "JPY", symbol: "¥", name: "Japanese Yen", flag: "🇯🇵", exchangeRateToUSD: 154.0, locale: "ja-JP" },
+  SGD: { code: "SGD", symbol: "SG$", name: "Singapore Dollar", flag: "🇸🇬", exchangeRateToUSD: 1.35, locale: "en-SG" },
+  AED: { code: "AED", symbol: "AED", name: "UAE Dirham", flag: "🇦🇪", exchangeRateToUSD: 3.67, locale: "ar-AE" },
+  BRL: { code: "BRL", symbol: "R$", name: "Brazilian Real", flag: "🇧🇷", exchangeRateToUSD: 5.25, locale: "pt-BR" },
+};
+
+export const SUPPORTED_CURRENCY_LIST: CurrencyConfig[] = Object.values(SUPPORTED_CURRENCIES);
+
+/**
+ * Convert an amount from one currency to another using dynamic exchange rates
+ */
+export function convertCurrency(
+  amount: number,
+  from: SupportedCurrency = "USD",
+  to: SupportedCurrency = "USD"
+): number {
+  if (from === to || !amount) return amount;
+  const fromRate = SUPPORTED_CURRENCIES[from]?.exchangeRateToUSD ?? 1.0;
+  const toRate = SUPPORTED_CURRENCIES[to]?.exchangeRateToUSD ?? 1.0;
+  // Convert from -> USD -> to
+  const inUSD = amount / fromRate;
+  const converted = inUSD * toRate;
+  return to === "JPY" ? Math.round(converted) : Math.round(converted * 100) / 100;
+}
 
 export interface FeeBreakdown {
   grossAmount: number;
@@ -23,12 +74,13 @@ export function formatCurrency(
     maximumFractionDigits?: number;
   }
 ): string {
-  const digits = options?.maximumFractionDigits !== undefined ? options.maximumFractionDigits : 0;
+  const config = SUPPORTED_CURRENCIES[currency] || SUPPORTED_CURRENCIES.USD;
+  const digits = options?.maximumFractionDigits !== undefined ? options.maximumFractionDigits : (currency === "JPY" ? 0 : 0);
 
   if (options?.compact && amount >= 1000) {
     if (amount >= 1_000_000) {
       return (
-        new Intl.NumberFormat("en-US", {
+        new Intl.NumberFormat(config.locale, {
           style: "currency",
           currency: currency,
           maximumFractionDigits: 1,
@@ -36,7 +88,7 @@ export function formatCurrency(
       );
     }
     return (
-      new Intl.NumberFormat("en-US", {
+      new Intl.NumberFormat(config.locale, {
         style: "currency",
         currency: currency,
         maximumFractionDigits: 1,
@@ -44,9 +96,7 @@ export function formatCurrency(
     );
   }
 
-  const locale = currency === "INR" ? "en-IN" : "en-US";
-
-  return new Intl.NumberFormat(locale, {
+  return new Intl.NumberFormat(config.locale, {
     style: "currency",
     currency: currency,
     maximumFractionDigits: digits,

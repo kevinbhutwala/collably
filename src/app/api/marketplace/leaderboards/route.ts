@@ -24,7 +24,7 @@ export async function GET(req: NextRequest) {
     }
 
     // Filter by Location
-    if (location && location !== "All") {
+    if (location && location !== "All" && location !== "Worldwide") {
       creators = creators.filter((c) =>
         c.location.toLowerCase().includes(location.toLowerCase())
       );

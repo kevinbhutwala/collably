@@ -10,12 +10,12 @@ export function formatNumber(num: number): string {
 
 export const formatCompactNumber = formatNumber;
 
+import { formatCurrency as formatGlobalCurrency, SupportedCurrency } from "./currency";
+
+export { formatGlobalCurrency };
+
 export function formatCurrency(amount: number, currency: string = 'USD'): string {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: currency,
-    maximumFractionDigits: 0,
-  }).format(amount);
+  return formatGlobalCurrency(amount, currency as SupportedCurrency);
 }
 
 export function formatPercentage(rate: number): string {

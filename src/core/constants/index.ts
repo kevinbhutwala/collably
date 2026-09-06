@@ -293,3 +293,40 @@ export const ALL_PLANS: Record<SubscriptionPlanId, SubscriptionPlan> = {
   ...BRAND_PLANS,
 } as Record<SubscriptionPlanId, SubscriptionPlan>;
 
+export const GLOBAL_REGIONS = [
+  { id: "all", name: "Worldwide (All Regions)" },
+  { id: "north_america", name: "North America (US, CA)" },
+  { id: "europe", name: "Europe (UK, EU, CH)" },
+  { id: "asia_pacific", name: "Asia-Pacific (IN, SG, JP, AU)" },
+  { id: "middle_east", name: "Middle East & Africa (UAE, SA, ZA)" },
+  { id: "latin_america", name: "Latin America (BR, MX, AR)" },
+] as const;
+
+export const GLOBAL_HUBS = [
+  "Worldwide",
+  "San Francisco",
+  "New York",
+  "Los Angeles",
+  "London",
+  "Berlin",
+  "Paris",
+  "Amsterdam",
+  "Mumbai",
+  "Bangalore",
+  "Singapore",
+  "Tokyo",
+  "Seoul",
+  "Sydney",
+  "Dubai",
+  "Toronto",
+  "São Paulo",
+] as const;
+
+export const GLOBAL_PAYMENT_METHODS = [
+  { id: "stripe_connect", name: "Stripe Connect (120+ Countries)", icon: "CreditCard" },
+  { id: "paypal_global", name: "PayPal Global", icon: "Wallet" },
+  { id: "wise_transfer", name: "Wise Cross-Border Transfer", icon: "ArrowRightLeft" },
+  { id: "swift_wire", name: "International SWIFT Wire", icon: "Landmark" },
+] as const;
+
+

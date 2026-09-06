@@ -9,11 +9,13 @@ import { useUIStore } from "@/stores/ui.store";
 import { StatsCard } from "@/components/ui/StatsCard";
 import { AnimatedEmptyState } from "@/components/ui/AnimatedEmptyState";
 import { formatCurrency } from "@/core/utils/formatters";
-import { Wallet, ShieldCheck, Download, ArrowRight, CheckCircle2, Receipt } from "lucide-react";
+import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
+import { Wallet, ShieldCheck, Download, ArrowRight, CheckCircle2, Receipt, Globe, Landmark, ArrowRightLeft, CreditCard } from "lucide-react";
 
 export default function EarningsAndEscrowPage() {
   const { role, currentCreator, currentBrand } = useAuthStore();
   const { addToast } = useUIStore();
+  const { format: formatGlobal, currency, config } = useGlobalCurrency();
   const [payouts, setPayouts] = useState<PayoutRecord[]>([]);
   const [collaborations, setCollaborations] = useState<Collaboration[]>([]);
   const [loading, setLoading] = useState(true);
@@ -63,7 +65,7 @@ export default function EarningsAndEscrowPage() {
     addToast({
       type: "success",
       title: "Withdrawal Initiated",
-      message: `Transfer of ${formatCurrency(availableForPayout)} scheduled via Stripe Direct.`,
+      message: `Transfer of ${formatGlobal(availableForPayout)} (${config.name}) scheduled via direct payout rail.`,
     });
   };
 
@@ -78,7 +80,7 @@ export default function EarningsAndEscrowPage() {
             </span>
             <span className="text-[#8A8A9A]">•</span>
             <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
-              Escrow Secured
+              Escrow Secured ({config.flag} {currency})
             </span>
           </div>
           <h1 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
@@ -86,8 +88,8 @@ export default function EarningsAndEscrowPage() {
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68]">
             {role === "creator"
-              ? "View funds in escrow, released payouts, and withdrawal status."
-              : "Track funded escrow tranches, released payouts, and tax receipts."}
+              ? `View funds in escrow, released payouts, and withdrawal status in ${config.name} (${currency}).`
+              : `Track funded escrow tranches, released payouts, and tax receipts in ${config.name} (${currency}).`}
           </p>
         </div>
 
@@ -105,23 +107,56 @@ export default function EarningsAndEscrowPage() {
       {/* 3 Real Computed Metric Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 font-mono">
         <StatsCard
-          title="Available Balance"
-          value={formatCurrency(availableForPayout)}
-          subtitle={availableForPayout > 0 ? "Ready for withdrawal" : "No pending payouts"}
+          title={`Available Balance (${currency})`}
+          value={formatGlobal(availableForPayout)}
+          subtitle={availableForPayout > 0 ? "Ready for worldwide withdrawal" : "No pending payouts"}
           icon={<Wallet className="w-4 h-4 text-[#FFD21F]" />}
         />
         <StatsCard
-          title="In Escrow"
-          value={formatCurrency(securedInEscrow)}
-          subtitle={securedInEscrow > 0 ? "Pending deliverable review" : "No active escrow"}
+          title={`In Escrow (${currency})`}
+          value={formatGlobal(securedInEscrow)}
+          subtitle={securedInEscrow > 0 ? "Protected by smart contract custody" : "No active escrow"}
           icon={<ShieldCheck className="w-4 h-4 text-[#0A0A0E]" />}
         />
         <StatsCard
-          title="Total Paid"
-          value={formatCurrency(lifetimeProcessed)}
+          title={`Total Paid (${currency})`}
+          value={formatGlobal(lifetimeProcessed)}
           subtitle={lifetimeProcessed > 0 ? "All completed milestones" : "No completed payouts yet"}
           icon={<CheckCircle2 className="w-4 h-4 text-[#0A0A0E]" />}
         />
+      </div>
+
+      {/* Worldwide Banking & Payout Infrastructure Dock */}
+      <div className="p-4 sm:p-5 rounded-2xl bg-[#FAFAFC] dark:bg-[#151520] border border-black/8 dark:border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-[#FFD21F]/20 flex items-center justify-center text-[#8A7000] dark:text-[#FFD21F] shrink-0">
+            <Globe className="w-5 h-5" />
+          </div>
+          <div>
+            <h4 className="text-xs font-bold text-[#0A0A0E] dark:text-white flex items-center gap-2">
+              <span>Worldwide Escrow & Banking Rails Active</span>
+              <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-[10px] font-mono font-extrabold">120+ COUNTRIES</span>
+            </h4>
+            <p className="text-[11px] text-[#6A6A78] dark:text-[#8E8EA4] mt-0.5">
+              Supports Stripe Connect Direct, PayPal Global, Wise Local Transfers, and International SWIFT Wire.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono font-bold text-[#4A4A58] dark:text-[#A0A0B0]">
+          <span className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white dark:bg-[#1E1E2C] border border-black/8 dark:border-white/10 shadow-2xs">
+            <CreditCard className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-white" />
+            <span>Stripe Connect</span>
+          </span>
+          <span className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white dark:bg-[#1E1E2C] border border-black/8 dark:border-white/10 shadow-2xs">
+            <ArrowRightLeft className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+            <span>Wise Cross-Border</span>
+          </span>
+          <span className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white dark:bg-[#1E1E2C] border border-black/8 dark:border-white/10 shadow-2xs">
+            <Landmark className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+            <span>SWIFT Wire</span>
+          </span>
+        </div>
       </div>
 
       {/* Transaction History */}
@@ -168,9 +203,9 @@ export default function EarningsAndEscrowPage() {
 
                 <div className="flex items-center justify-between sm:justify-end gap-4 pt-1 sm:pt-0 border-t sm:border-t-0 border-black/5">
                   <div>
-                    <span className="text-[#6A6A78] block text-[10px]">Net</span>
+                    <span className="text-[#6A6A78] block text-[10px]">Net ({currency})</span>
                     <span className="text-[#0A0A0E] font-extrabold text-sm numeric-tabular">
-                      {formatCurrency(p.netAmount)}
+                      {formatGlobal(p.netAmount)}
                     </span>
                   </div>
                   <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold font-mono uppercase ${
