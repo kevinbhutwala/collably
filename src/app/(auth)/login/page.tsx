@@ -78,6 +78,41 @@ function LoginForm() {
         </p>
       </div>
 
+      {/* 1-Click Demo Credentials Quick Fill */}
+      <div className="rounded-2xl border border-black/8 bg-[#F8F8FC] p-3 text-xs">
+        <div className="text-[10px] font-mono font-bold uppercase text-[#7A7A8A] mb-2 flex items-center justify-between">
+          <span>1-Click Test Credentials</span>
+          <span className="text-[#A37F00] font-bold">Auto-Fill</span>
+        </div>
+        <div className="grid grid-cols-3 gap-1.5">
+          <button
+            type="button"
+            onClick={() => { setEmail("creator@abeycollab.io"); setPassword("password123"); }}
+            className="rounded-xl border border-black/5 bg-white p-2 text-center hover:border-[#FFD21F] hover:bg-[#FFD21F]/10 transition-all cursor-pointer"
+          >
+            <div className="font-bold text-[#0A0A0E] text-[11px]">🎨 Creator</div>
+            <div className="text-[9px] text-neutral-500 font-mono truncate">creator@...</div>
+          </button>
+          <button
+            type="button"
+            onClick={() => { setEmail("brand@abeycollab.io"); setPassword("password123"); }}
+            className="rounded-xl border border-black/5 bg-white p-2 text-center hover:border-[#FFD21F] hover:bg-[#FFD21F]/10 transition-all cursor-pointer"
+          >
+            <div className="font-bold text-[#0A0A0E] text-[11px]">🏢 Brand</div>
+            <div className="text-[9px] text-neutral-500 font-mono truncate">brand@...</div>
+          </button>
+          <button
+            type="button"
+            onClick={() => { setEmail("kevinbhutwala417@gmail.com"); setPassword("admin123"); }}
+            className="rounded-xl border border-black/5 bg-white p-2 text-center hover:border-[#FFD21F] hover:bg-[#FFD21F]/10 transition-all cursor-pointer"
+          >
+            <div className="font-bold text-[#0A0A0E] text-[11px]">👑 Admin</div>
+            <div className="text-[9px] text-neutral-500 font-mono truncate">kevin...</div>
+          </button>
+        </div>
+      </div>
+
+
       {errorMessage && (
         <div className="p-3.5 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
           <AlertCircle className="w-4 h-4 shrink-0" />

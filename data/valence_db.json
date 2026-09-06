@@ -3005,7 +3005,7 @@
     }
   ],
   "algorithmConfig": {
-    "id": "algo-config-default",
+    "id": "algo-config-current",
     "creatorWeights": {
       "engagementRate": 0.2,
       "engagementGrowth": 0.15,
@@ -3038,7 +3038,7 @@
       "brandFavoriteMinRehireRate": 60,
       "newTalentMaxAccountAgeDays": 30
     },
-    "updatedAt": "2026-09-05T23:50:19.156Z"
+    "updatedAt": "2026-09-06T00:09:57.602Z"
   },
   "userBadges": [],
   "suspiciousActivities": []

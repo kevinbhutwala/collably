@@ -5,8 +5,32 @@ import { UserRole } from "@/core/types";
 
 export class UserRepository {
   findByEmail(email: string): UserEntity | undefined {
-    return (db.getState().users || []).find((u) => u.email.toLowerCase() === email.toLowerCase());
+    const normalized = email.toLowerCase().trim();
+    const users = db.getState().users || [];
+    const direct = users.find((u) => u.email.toLowerCase() === normalized);
+    if (direct) return direct;
+
+    // Cross-domain alias resolution
+    const aliasMap: Record<string, string> = {
+      "creator@abeycollab.io": "creator@collably.io",
+      "creator@abeycollab.com": "creator@collably.io",
+      "brand@abeycollab.io": "brand@collably.io",
+      "brand@abeycollab.com": "brand@collably.io",
+      "admin@abeycollab.io": "kevinbhutwala417@gmail.com",
+      "admin@abeycollab.com": "kevinbhutwala417@gmail.com",
+      "admin@collably.io": "kevinbhutwala417@gmail.com",
+      "creator@collably.io": "creator@collably.io",
+      "brand@collably.io": "brand@collably.io",
+    };
+
+    const targetEmail = aliasMap[normalized];
+    if (targetEmail) {
+      return users.find((u) => u.email.toLowerCase() === targetEmail.toLowerCase());
+    }
+
+    return undefined;
   }
+
 
   findById(id: string): UserEntity | undefined {
     return (db.getState().users || []).find((u) => u.id === id);
