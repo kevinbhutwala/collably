@@ -18,7 +18,7 @@ async function main() {
   await page.fill('input[type="password"]', "password123");
   await page.click('button[type="submit"]');
 
-  await page.waitForURL("**/app/dashboard", { timeout: 15000 });
+  await page.waitForURL((url) => !url.pathname.includes("/login"), { timeout: 25000 });
   console.log("✅ Logged in. Navigating to /app/earnings...");
 
   await page.goto(`${baseUrl}/app/earnings`, { waitUntil: "networkidle" });
