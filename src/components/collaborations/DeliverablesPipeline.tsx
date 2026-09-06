@@ -6,6 +6,7 @@ import { Modal } from "@/components/ui/Modal";
 import { Input, Textarea } from "@/components/ui/Input";
 import { DeliverableReviewCard } from "@/components/collably/DeliverableReviewCard";
 import { NegotiationTimeline } from "./NegotiationTimeline";
+import { TransactionLifecycleStepper } from "./TransactionLifecycleStepper";
 import { formatCurrency } from "@/core/utils/formatters";
 import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
@@ -421,6 +422,9 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
 
   return (
     <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6 text-[#0A0A0E]">
+      {/* ── Transaction 13-Stage Lifecycle Stepper ── */}
+      <TransactionLifecycleStepper collaboration={collab} role={role as any} />
+
       {/* ── 1. SECURITY & STATUS BANNERS ── */}
 
       {/* Unfunded Warning Banner */}

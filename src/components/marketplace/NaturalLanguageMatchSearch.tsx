@@ -206,8 +206,8 @@ export function NaturalLanguageMatchSearch() {
                         <div className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-400 shadow-md">
                           <span>🎯</span> {matchResult.overallScore}% Match
                         </div>
-                        <div className="text-[10px] text-neutral-400 mt-0.5">
-                          {matchResult.matchTier} Tier
+                        <div className="text-[10px] text-emerald-300 font-bold mt-0.5">
+                          {matchResult.overallScore >= 90 ? "Excellent fit for your campaign" : "Strong campaign match"}
                         </div>
                       </div>
 
@@ -220,18 +220,46 @@ export function NaturalLanguageMatchSearch() {
 
                       <Link
                         href={`/creators/${creator.id}`}
-                        className="rounded-lg bg-[#FFD21F] px-3.5 py-1.5 text-xs font-bold text-black hover:brightness-110 transition-all"
+                        className="rounded-lg bg-[#FFD21F] hover:bg-[#FFE052] px-3.5 py-1.5 text-xs font-bold text-black transition-all"
                       >
-                        Invite →
+                        Invite to Campaign →
                       </Link>
                     </div>
                   </div>
 
                   {/* Expandable Factor Breakdown */}
                   {isExpanded && (
-                    <div className="mt-4 pt-4 border-t border-white/10 space-y-3 animate-in fade-in">
-                      <div className="text-xs text-neutral-300 font-medium leading-relaxed">
-                        {matchResult.summary}
+                    <div className="mt-4 pt-4 border-t border-white/10 space-y-3.5 animate-in fade-in">
+                      {/* Actionable 6-Factor Checklist */}
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 p-3 rounded-xl bg-white/[0.02] border border-white/8 font-mono text-xs">
+                        <div className="flex items-center gap-1.5 text-emerald-400 font-bold">
+                          <span>✓</span> Niche — {matchResult.factors.categoryMatch.score}%
+                        </div>
+                        <div className="flex items-center gap-1.5 text-emerald-400 font-bold">
+                          <span>✓</span> Audience — {matchResult.factors.audienceMatch.score}%
+                        </div>
+                        <div className="flex items-center gap-1.5 text-emerald-400 font-bold">
+                          <span>✓</span> Budget — {matchResult.factors.budgetMatch.score}%
+                        </div>
+                        <div className="flex items-center gap-1.5 text-emerald-400 font-bold">
+                          <span>✓</span> Location — {matchResult.factors.locationMatch.score}%
+                        </div>
+                        <div className="flex items-center gap-1.5 text-emerald-400 font-bold">
+                          <span>✓</span> Engagement — {matchResult.factors.engagementMatch.score}%
+                        </div>
+                        <div className="flex items-center gap-1.5 text-emerald-400 font-bold">
+                          <span>✓</span> Reliability — {matchResult.factors.reliabilityMatch.score}%
+                        </div>
+                      </div>
+
+                      {/* Why this creator? Data-Derived Callout */}
+                      <div className="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs">
+                        <h5 className="font-extrabold text-[#FFD21F] flex items-center gap-1.5 font-display text-xs">
+                          <span>💡</span> Why this creator?
+                        </h5>
+                        <p className="text-neutral-200 mt-1 leading-relaxed">
+                          &ldquo;{matchResult.summary}&rdquo;
+                        </p>
                       </div>
 
                       <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">

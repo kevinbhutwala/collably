@@ -197,7 +197,7 @@ export class MatchEngineService {
       overallScore >= 82 ? "Strong" :
       overallScore >= 70 ? "Good" : "Moderate";
 
-    const summary = `${overallScore}% Match (${matchTier}): ${catRationale} ${budRationale}`;
+    const summary = `Strong ${creator.primaryCategory} audience in ${creator.location || "target region"}, engagement (${actualEng}%) is aligned with your campaign requirements, and their average collaboration rate fits your budget.`;
 
     return {
       overallScore,

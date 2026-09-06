@@ -8,6 +8,13 @@ interface FilterState {
   creatorMinEngagement: number;
   creatorSearchQuery: string;
   creatorVerifiedOnly: boolean;
+  creatorLocation: string;
+  creatorMaxBudget: number;
+  creatorTrendingOnly: boolean;
+  creatorRisingOnly: boolean;
+  creatorMinRating: number;
+  creatorMinCollabs: number;
+  creatorSortBy: 'best_match' | 'trending' | 'rising' | 'top_rated' | 'most_successful' | 'newest';
 
   campaignCategory: CreatorCategory | 'all';
   campaignPlatform: PlatformType | 'all';
@@ -20,6 +27,13 @@ interface FilterState {
   setCreatorMinEngagement: (min: number) => void;
   setCreatorSearchQuery: (query: string) => void;
   setCreatorVerifiedOnly: (verified: boolean) => void;
+  setCreatorLocation: (loc: string) => void;
+  setCreatorMaxBudget: (budget: number) => void;
+  setCreatorTrendingOnly: (trending: boolean) => void;
+  setCreatorRisingOnly: (rising: boolean) => void;
+  setCreatorMinRating: (rating: number) => void;
+  setCreatorMinCollabs: (collabs: number) => void;
+  setCreatorSortBy: (sort: 'best_match' | 'trending' | 'rising' | 'top_rated' | 'most_successful' | 'newest') => void;
   resetCreatorFilters: () => void;
 
   setCampaignCategory: (cat: CreatorCategory | 'all') => void;
@@ -36,6 +50,13 @@ export const useFilterStore = create<FilterState>((set) => ({
   creatorMinEngagement: 0,
   creatorSearchQuery: '',
   creatorVerifiedOnly: false,
+  creatorLocation: 'all',
+  creatorMaxBudget: 0,
+  creatorTrendingOnly: false,
+  creatorRisingOnly: false,
+  creatorMinRating: 0,
+  creatorMinCollabs: 0,
+  creatorSortBy: 'best_match',
 
   campaignCategory: 'all',
   campaignPlatform: 'all',
@@ -48,6 +69,13 @@ export const useFilterStore = create<FilterState>((set) => ({
   setCreatorMinEngagement: (creatorMinEngagement) => set({ creatorMinEngagement }),
   setCreatorSearchQuery: (creatorSearchQuery) => set({ creatorSearchQuery }),
   setCreatorVerifiedOnly: (creatorVerifiedOnly) => set({ creatorVerifiedOnly }),
+  setCreatorLocation: (creatorLocation) => set({ creatorLocation }),
+  setCreatorMaxBudget: (creatorMaxBudget) => set({ creatorMaxBudget }),
+  setCreatorTrendingOnly: (creatorTrendingOnly) => set({ creatorTrendingOnly }),
+  setCreatorRisingOnly: (creatorRisingOnly) => set({ creatorRisingOnly }),
+  setCreatorMinRating: (creatorMinRating) => set({ creatorMinRating }),
+  setCreatorMinCollabs: (creatorMinCollabs) => set({ creatorMinCollabs }),
+  setCreatorSortBy: (creatorSortBy) => set({ creatorSortBy }),
   resetCreatorFilters: () =>
     set({
       creatorCategory: 'all',
@@ -56,6 +84,13 @@ export const useFilterStore = create<FilterState>((set) => ({
       creatorMinEngagement: 0,
       creatorSearchQuery: '',
       creatorVerifiedOnly: false,
+      creatorLocation: 'all',
+      creatorMaxBudget: 0,
+      creatorTrendingOnly: false,
+      creatorRisingOnly: false,
+      creatorMinRating: 0,
+      creatorMinCollabs: 0,
+      creatorSortBy: 'best_match',
     }),
 
   setCampaignCategory: (campaignCategory) => set({ campaignCategory }),

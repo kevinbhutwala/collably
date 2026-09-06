@@ -44,26 +44,26 @@ export function CreatorMarketPulseWidget({ creatorId }: { creatorId?: string }) 
           <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-2.5 py-0.5 text-xs font-semibold text-amber-400">
             <span>⚡</span> Personalized Market Pulse
           </div>
-          <h3 className="mt-1.5 text-lg font-bold text-white">
-            {pulse.category} Opportunity & Market Demand
+          <h3 className="mt-1.5 text-xl font-bold text-white font-display">
+            Where are my opportunities?
           </h3>
           <p className="text-xs text-neutral-400">
-            Real-time industry pricing benchmarks and growth recommendations.
+            Real-time demand signals and actionable career recommendations for {pulse.category}.
           </p>
         </div>
 
         {/* Opportunity Score Gauge */}
         <div className="flex items-center gap-3 self-start sm:self-auto rounded-xl border border-white/10 bg-white/5 px-4 py-2.5">
           <div className="flex flex-col items-end">
-            <span className="text-[10px] uppercase tracking-wider text-neutral-400">
-              Opportunity Score
+            <span className="text-[11px] font-bold text-white">
+              Your Opportunity Score
             </span>
             <span className="text-xs font-semibold text-[#FFD21F]">
               {pulse.opportunityTier}
             </span>
           </div>
-          <div className="relative flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#FFD21F] bg-[#FFD21F]/10 font-black text-white text-base">
-            {pulse.opportunityScore}
+          <div className="relative flex h-14 px-3 items-center justify-center rounded-2xl border-2 border-[#FFD21F] bg-[#FFD21F]/10 font-black text-white text-lg font-mono">
+            {pulse.opportunityScore}<span className="text-xs text-neutral-400">/100</span>
           </div>
         </div>
       </div>
@@ -151,9 +151,9 @@ export function CreatorMarketPulseWidget({ creatorId }: { creatorId?: string }) 
             </div>
           </div>
 
-          <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[11px] text-neutral-500">
-            <span>Deterministic marketplace calculations</span>
-            <span className="italic">Estimated based on AbeyCollab data</span>
+          <div className="mt-4 pt-3 border-t border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px] text-neutral-400 font-mono">
+            <span>Deterministic platform calculation</span>
+            <span className="text-amber-400/90 font-bold">Potential opportunity • Estimated • Based on platform data</span>
           </div>
         </div>
       </div>

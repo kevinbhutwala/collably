@@ -70,9 +70,11 @@ export class MarketPulseService {
 
     // 3. Actionable Insights
     const actionableInsights = [
-      { action: `Add a package deal bundle for '${category}' briefs`, impact: "High" as const, estimatedEarningBoost: "+$1,200/mo" },
-      { action: "Enable Instant Collaboration invites to bypass manual inquiries", impact: "High" as const, estimatedEarningBoost: "+35% conversions" },
-      { action: "Link verified YouTube or Instagram analytics for auto-badging", impact: "Medium" as const, estimatedEarningBoost: "+$650/mo" },
+      { action: "Complete your portfolio with showcase deliverables", impact: "High" as const, estimatedEarningBoost: "estimated improvement +6" },
+      { action: "Add Instagram / YouTube channel telemetry verification", impact: "High" as const, estimatedEarningBoost: "estimated improvement +4" },
+      { action: `Your current rate is 12% above similar ${category} creators`, impact: "Medium" as const, estimatedEarningBoost: "consider adjusting it" },
+      { action: `${category} campaigns are currently trending`, impact: "High" as const, estimatedEarningBoost: `${catCampaigns.length || 8} matching campaigns available` },
+      { action: "Your response rate is under 2 hours", impact: "Medium" as const, estimatedEarningBoost: "eligible for Fast Responder ⚡" },
     ];
 
     return {

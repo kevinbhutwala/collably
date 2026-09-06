@@ -2785,10 +2785,127 @@
       "createdAt": "2026-08-31T09:00:00Z"
     }
   ],
-  "notifications": [],
+  "notifications": [
+    {
+      "userId": "user-owner",
+      "title": "⚡ Application Velocity",
+      "message": "Your campaign is receiving applications faster than average.",
+      "type": "system",
+      "linkUrl": "/app/brand/campaigns",
+      "id": "notif-1788654622452-g6h85",
+      "read": false,
+      "createdAt": "2026-09-06T00:30:22.452Z"
+    },
+    {
+      "userId": "user-owner",
+      "title": "📈 High-Growth Rising Creator",
+      "message": "A rising creator fits your campaign at 92% compatibility.",
+      "type": "application",
+      "linkUrl": "/app/brand/creators",
+      "id": "notif-1788654622449-z73dx",
+      "read": false,
+      "createdAt": "2026-09-06T00:30:22.449Z"
+    },
+    {
+      "userId": "user-owner",
+      "title": "🔥 Trending Talent Match",
+      "message": "12 creators matching your brief are trending right now.",
+      "type": "campaign",
+      "linkUrl": "/app/trending",
+      "id": "notif-1788654622447-4tdjc",
+      "read": false,
+      "createdAt": "2026-09-06T00:30:22.447Z"
+    },
+    {
+      "userId": "user-brand",
+      "title": "⚡ Application Velocity",
+      "message": "Your campaign is receiving applications faster than average.",
+      "type": "system",
+      "linkUrl": "/app/brand/campaigns",
+      "id": "notif-1788654610639-m6h16",
+      "read": false,
+      "createdAt": "2026-09-06T00:30:10.639Z"
+    },
+    {
+      "userId": "user-brand",
+      "title": "📈 High-Growth Rising Creator",
+      "message": "A rising creator fits your campaign at 92% compatibility.",
+      "type": "application",
+      "linkUrl": "/app/brand/creators",
+      "id": "notif-1788654610639-h9vae",
+      "read": false,
+      "createdAt": "2026-09-06T00:30:10.639Z"
+    },
+    {
+      "userId": "user-brand",
+      "title": "🔥 Trending Talent Match",
+      "message": "12 creators matching your brief are trending right now.",
+      "type": "campaign",
+      "linkUrl": "/app/trending",
+      "id": "notif-1788654610637-tyo84",
+      "read": false,
+      "createdAt": "2026-09-06T00:30:10.637Z"
+    },
+    {
+      "userId": "user-creator",
+      "title": "💰 High-Budget Match",
+      "message": "A ₹35,000 ($3,500) campaign matches your rate card.",
+      "type": "payment",
+      "linkUrl": "/app/campaigns",
+      "id": "notif-1788654607191-i6ztu",
+      "read": false,
+      "createdAt": "2026-09-06T00:30:07.191Z"
+    },
+    {
+      "userId": "user-creator",
+      "title": "📈 Momentum Surge",
+      "message": "Your profile is trending this week in discovery feeds.",
+      "type": "system",
+      "linkUrl": "/app/trending",
+      "id": "notif-1788654607190-5wts3",
+      "read": false,
+      "createdAt": "2026-09-06T00:30:07.190Z"
+    },
+    {
+      "userId": "user-creator",
+      "title": "🎯 Campaign Matches",
+      "message": "You match 4 new active campaigns.",
+      "type": "campaign",
+      "linkUrl": "/app/campaigns",
+      "id": "notif-1788654607189-p02tg",
+      "read": false,
+      "createdAt": "2026-09-06T00:30:07.189Z"
+    },
+    {
+      "userId": "user-creator",
+      "title": "🔥 High Category Demand",
+      "message": "3 brands are looking for creators in your category.",
+      "type": "campaign",
+      "linkUrl": "/app/campaigns",
+      "id": "notif-1788654607189-ljqs6",
+      "read": false,
+      "createdAt": "2026-09-06T00:30:07.189Z"
+    }
+  ],
   "webhookEvents": [],
   "aiUsage": [],
   "auditLogs": [
+    {
+      "id": "aud-1788654576975",
+      "actorId": "user-owner",
+      "actorName": "Kevin Bhutwala",
+      "actorRole": "agency_admin",
+      "action": "DISPUTE_ARBITRATION_RESOLVED",
+      "entityType": "Dispute",
+      "entityId": "disp-101",
+      "entityName": "Hyperion ANC Headphone Commercial",
+      "metadata": {
+        "split": "50/50",
+        "brandRefund": 1750,
+        "creatorPayout": 1750
+      },
+      "createdAt": "2026-09-06T00:29:36.975Z"
+    },
     {
       "id": "aud-1788652836321",
       "actorId": "user-owner",
@@ -2952,7 +3069,7 @@
   ],
   "ledgerEntries": [],
   "reliabilityScores": [],
-  "_lastVerifiedAt": "2026-09-06T00:00:36.323Z",
+  "_lastVerifiedAt": "2026-09-06T00:29:36.976Z",
   "platformMetrics": [
     {
       "id": "met-1",
@@ -3038,7 +3155,7 @@
       "brandFavoriteMinRehireRate": 60,
       "newTalentMaxAccountAgeDays": 30
     },
-    "updatedAt": "2026-09-06T00:09:57.602Z"
+    "updatedAt": "2026-09-06T00:33:04.429Z"
   },
   "userBadges": [],
   "suspiciousActivities": []

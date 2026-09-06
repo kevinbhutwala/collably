@@ -30,6 +30,8 @@ import {
   Lock,
   LucideIcon,
   Zap,
+  Flame,
+  TrendingUp,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -52,6 +54,8 @@ export function AppSidebar() {
 
   const creatorNavItems: NavItem[] = [
     { href: "/app/dashboard", label: "Dashboard", icon: LayoutDashboard },
+    { href: "/app/trending", label: "Trending Hub", icon: Flame, badge: "🔥" },
+    { href: "/app/growth", label: "Growth Center", icon: TrendingUp, badge: "Roadmap" },
     { href: "/app/campaigns", label: "Discover Campaigns", icon: Compass, badge: "8 live" },
     { href: "/app/applications", label: "My Applications", icon: Briefcase },
     { href: "/app/collaborations", label: "Collaborations", icon: FileCheck2, badge: "3 active" },
@@ -71,6 +75,7 @@ export function AppSidebar() {
 
   const brandNavItems: NavItem[] = [
     { href: "/app/dashboard", label: "Overview", icon: LayoutDashboard },
+    { href: "/app/trending", label: "Trending Hub", icon: Flame, badge: "🔥" },
     { href: "/app/brand/campaigns/create", label: "Create Campaign", icon: PlusCircle, highlight: true },
     { href: "/app/brand/campaigns", label: "Active Campaigns", icon: Briefcase, badge: "3" },
     { href: "/app/brand/creators", label: "Discover Creators", icon: Users },

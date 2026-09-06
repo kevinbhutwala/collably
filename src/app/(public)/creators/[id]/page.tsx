@@ -10,6 +10,7 @@ import { CreativeLoader } from "@/components/ui/CreativeLoader";
 import { SocialIcon } from "@/components/ui/SocialIcons";
 
 import { formatNumber, formatCurrency } from "@/core/utils/formatters";
+import { TrustIndicatorsBar } from "@/components/marketplace/TrustIndicatorsBar";
 import {
   CheckCircle2,
   Star,
@@ -127,6 +128,11 @@ export default function CreatorDetailPage() {
                 <p className="text-sm text-[#5A5A68] max-w-2xl leading-relaxed font-sans font-normal pt-1">
                   {creator.bio}
                 </p>
+
+                {/* Trust Indicators Bar */}
+                <div className="pt-2">
+                  <TrustIndicatorsBar type="creator" id={creator.id} />
+                </div>
 
                 {/* Social Channel Links */}
                 <div className="flex items-center gap-2 pt-2">

@@ -26,7 +26,19 @@ export default function BrandCreatorDiscoveryPage() {
     creatorMinEngagement,
     creatorSearchQuery,
     creatorVerifiedOnly,
+    creatorLocation,
+    creatorMaxBudget,
+    creatorTrendingOnly,
+    creatorRisingOnly,
+    creatorMinRating,
+    creatorMinCollabs,
+    creatorSortBy,
     setCreatorCategory,
+    setCreatorLocation,
+    setCreatorMaxBudget,
+    setCreatorTrendingOnly,
+    setCreatorRisingOnly,
+    setCreatorSortBy,
     resetCreatorFilters,
   } = useFilterStore();
 
@@ -41,7 +53,7 @@ export default function BrandCreatorDiscoveryPage() {
   }, []);
 
   const filteredCreators = useMemo(() => {
-    return creators.filter((c) => {
+    const list = creators.filter((c) => {
       // Search
       if (creatorSearchQuery) {
         const q = creatorSearchQuery.toLowerCase();
@@ -49,7 +61,8 @@ export default function BrandCreatorDiscoveryPage() {
           c.fullName.toLowerCase().includes(q) ||
           c.handle.toLowerCase().includes(q) ||
           c.headline.toLowerCase().includes(q) ||
-          c.primaryCategory.toLowerCase().includes(q);
+          c.primaryCategory.toLowerCase().includes(q) ||
+          (c.location && c.location.toLowerCase().includes(q));
         if (!match) return false;
       }
 
@@ -64,14 +77,44 @@ export default function BrandCreatorDiscoveryPage() {
         if (!hasPlatform) return false;
       }
 
-      // Min Followers
+      // Location
+      if (creatorLocation !== "all" && creatorLocation) {
+        if (!c.location?.toLowerCase().includes(creatorLocation.toLowerCase())) return false;
+      }
+
+      // Followers
       if (creatorMinFollowers > 0) {
         if (c.totalFollowers < creatorMinFollowers) return false;
       }
 
-      // Min Engagement Rate
+      // Engagement Rate
       if (creatorMinEngagement > 0) {
         if (c.avgEngagementRate < creatorMinEngagement) return false;
+      }
+
+      // Max Budget / Starting Rate
+      if (creatorMaxBudget > 0) {
+        if ((c.startingPrice || 1000) > creatorMaxBudget) return false;
+      }
+
+      // Min Rating
+      if (creatorMinRating > 0) {
+        if ((c.rating || 4.8) < creatorMinRating) return false;
+      }
+
+      // Min Successful Collabs
+      if (creatorMinCollabs > 0) {
+        if ((c.completedCampaignsCount || 0) < creatorMinCollabs) return false;
+      }
+
+      // Trending Only filter
+      if (creatorTrendingOnly) {
+        if (c.avgEngagementRate < 4.5 && (c.completedCampaignsCount || 0) < 5) return false;
+      }
+
+      // Rising Only filter
+      if (creatorRisingOnly) {
+        if (c.totalFollowers > 120000 || c.avgEngagementRate < 4.5) return false;
       }
 
       // Verified Only
@@ -81,7 +124,41 @@ export default function BrandCreatorDiscoveryPage() {
 
       return true;
     });
-  }, [creators, creatorSearchQuery, creatorCategory, creatorPlatform, creatorMinFollowers, creatorMinEngagement, creatorVerifiedOnly]);
+
+    // Apply Sorting
+    return list.sort((a, b) => {
+      switch (creatorSortBy) {
+        case "trending":
+          return (b.avgEngagementRate * 10 + (b.totalFollowers % 1000)) - (a.avgEngagementRate * 10 + (a.totalFollowers % 1000));
+        case "rising":
+          return (b.avgEngagementRate * 20 - b.totalFollowers / 10000) - (a.avgEngagementRate * 20 - a.totalFollowers / 10000);
+        case "top_rated":
+          return (b.rating || 4.8) - (a.rating || 4.8);
+        case "most_successful":
+          return (b.completedCampaignsCount || 0) - (a.completedCampaignsCount || 0);
+        case "newest":
+          return b.id.localeCompare(a.id);
+        case "best_match":
+        default:
+          return (b.qualityScore || 90) - (a.qualityScore || 90);
+      }
+    });
+  }, [
+    creators,
+    creatorSearchQuery,
+    creatorCategory,
+    creatorPlatform,
+    creatorLocation,
+    creatorMinFollowers,
+    creatorMinEngagement,
+    creatorMaxBudget,
+    creatorMinRating,
+    creatorMinCollabs,
+    creatorTrendingOnly,
+    creatorRisingOnly,
+    creatorVerifiedOnly,
+    creatorSortBy,
+  ]);
 
   return (
     <div className="space-y-6 text-[#0A0A0E] select-none font-sans">
@@ -158,6 +235,82 @@ export default function BrandCreatorDiscoveryPage() {
         <>
           {/* Modern Top Dropdown Filter Bar */}
           <CreatorFilterBar />
+
+          {/* Sort & Quick Filter Chips Bar */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-2xl bg-white border border-black/8 shadow-2xs">
+            {/* Quick Filter Pills */}
+            <div className="flex flex-wrap items-center gap-1.5">
+              <span className="text-[11px] font-mono text-[#7A7A8A] font-bold mr-1">Filter:</span>
+              <button
+                type="button"
+                onClick={() => setCreatorTrendingOnly(!creatorTrendingOnly)}
+                className={cn(
+                  "px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1",
+                  creatorTrendingOnly
+                    ? "bg-[#FFD21F] text-[#0A0A0E] border border-black/10 shadow-xs"
+                    : "bg-[#F5F5F9] text-[#5A5A68] hover:text-[#0A0A0E] border border-black/5"
+                )}
+              >
+                <span>🔥</span> Trending
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setCreatorRisingOnly(!creatorRisingOnly)}
+                className={cn(
+                  "px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1",
+                  creatorRisingOnly
+                    ? "bg-emerald-500 text-white shadow-xs"
+                    : "bg-[#F5F5F9] text-[#5A5A68] hover:text-[#0A0A0E] border border-black/5"
+                )}
+              >
+                <span>📈</span> Rising Talent
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setCreatorLocation(creatorLocation === "Worldwide" ? "all" : "Worldwide")}
+                className={cn(
+                  "px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1",
+                  creatorLocation === "Worldwide"
+                    ? "bg-black text-white shadow-xs"
+                    : "bg-[#F5F5F9] text-[#5A5A68] hover:text-[#0A0A0E] border border-black/5"
+                )}
+              >
+                <span>📍</span> Global Reach
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setCreatorMaxBudget(creatorMaxBudget === 3000 ? 0 : 3000)}
+                className={cn(
+                  "px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1",
+                  creatorMaxBudget === 3000
+                    ? "bg-purple-600 text-white shadow-xs"
+                    : "bg-[#F5F5F9] text-[#5A5A68] hover:text-[#0A0A0E] border border-black/5"
+                )}
+              >
+                <span>💰</span> Under $3,000
+              </button>
+            </div>
+
+            {/* Sort Dropdown */}
+            <div className="flex items-center gap-2 self-end sm:self-auto">
+              <span className="text-[11px] font-mono text-[#7A7A8A] font-bold">Sort:</span>
+              <select
+                value={creatorSortBy}
+                onChange={(e) => setCreatorSortBy(e.target.value as any)}
+                className="px-3 py-1.5 rounded-xl border border-black/10 bg-[#F5F5F9] text-xs font-bold text-[#0A0A0E] focus:outline-none focus:border-[#FFD21F] cursor-pointer"
+              >
+                <option value="best_match">Best Match</option>
+                <option value="trending">🔥 Trending Momentum</option>
+                <option value="rising">📈 Rising High Growth</option>
+                <option value="top_rated">⭐ Top Rated</option>
+                <option value="most_successful">🏆 Most Successful Deals</option>
+                <option value="newest">🌱 Newest</option>
+              </select>
+            </div>
+          </div>
 
           {/* Full-Width Creator Roster Grid */}
           {filteredCreators.length === 0 ? (

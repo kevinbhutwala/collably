@@ -253,10 +253,17 @@ export class TrendingService {
 
     switch (feed) {
       case "rising":
+        // Prioritize creators with smaller audience (<= 120k) with high engagement-to-follower ratio & growth velocity
         filtered = filtered
-          .filter((item) => item.badges.some((b) => b.id === "rising"))
-          .sort((a, b) => b.creator.avgEngagementRate - a.creator.avgEngagementRate);
-        // Fallback if empty: sort lowest followers with highest engagement
+          .filter((item) => item.creator.totalFollowers <= 120000)
+          .sort((a, b) => {
+            const evalA = risingService.evaluateCreator(a.creator);
+            const evalB = risingService.evaluateCreator(b.creator);
+            const scoreA = evalA.risingScore * 0.5 + evalA.engagementToFollowerRatio * 1.5 + (a.creator.avgEngagementRate * 5);
+            const scoreB = evalB.risingScore * 0.5 + evalB.engagementToFollowerRatio * 1.5 + (b.creator.avgEngagementRate * 5);
+            return scoreB - scoreA;
+          });
+        // Fallback if empty
         if (filtered.length === 0) {
           filtered = [...scoredCreators]
             .filter((c) => c.creator.totalFollowers <= 150000)
@@ -265,9 +272,20 @@ export class TrendingService {
         break;
 
       case "top_performing":
-        filtered = filtered.sort(
-          (a, b) => (b.creator.completedCampaignsCount || 0) - (a.creator.completedCampaignsCount || 0)
-        );
+        // Prioritize consistent historical track record: completed collaborations, completion rate, brand ratings & quality
+        filtered = filtered.sort((a, b) => {
+          const scoreA =
+            ((a.creator.completedCampaignsCount || 0) * 15) +
+            (a.breakdown.collabScore * 0.4) +
+            ((a.creator.rating || 4.5) * 10) +
+            ((a.creator.qualityScore || 85) * 0.2);
+          const scoreB =
+            ((b.creator.completedCampaignsCount || 0) * 15) +
+            (b.breakdown.collabScore * 0.4) +
+            ((b.creator.rating || 4.5) * 10) +
+            ((b.creator.qualityScore || 85) * 0.2);
+          return scoreB - scoreA;
+        });
         break;
 
       case "fast_responders":
@@ -286,7 +304,11 @@ export class TrendingService {
 
       case "trending_now":
       default:
-        filtered = filtered.sort((a, b) => b.overallScore - a.overallScore);
+        // Momentum right now: composite momentum score weighted by velocity multiplier
+        filtered = filtered.sort(
+          (a, b) => (b.overallScore * (b.breakdown.velocityMultiplier || 1.0)) -
+                    (a.overallScore * (a.breakdown.velocityMultiplier || 1.0))
+        );
         break;
     }
 
