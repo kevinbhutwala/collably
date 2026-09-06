@@ -2267,7 +2267,38 @@
       "updatedAt": "2026-08-28"
     }
   ],
-  "payouts": [],
+  "payouts": [
+    {
+      "id": "payout-rzp-card-1007",
+      "creatorId": "creator_escrow",
+      "collaborationId": "escrow_order_TYfhanUvTJdPAR",
+      "campaignTitle": "Live Razorpay Escrow Deposit (Card)",
+      "brandName": "Demon Brand",
+      "creatorName": "Creator Escrow Custody",
+      "deliverableTitle": "Secured Escrow Deposit - Card 1007",
+      "grossAmount": 500,
+      "netAmount": 500,
+      "agencyFee": 0,
+      "status": "paid",
+      "paymentMethod": "razorpay",
+      "createdAt": "2026-09-06T07:39:09.000Z"
+    },
+    {
+      "id": "payout-rzp-nb-barb",
+      "creatorId": "creator_escrow",
+      "collaborationId": "escrow_order_TYhG3RUmz05OkS",
+      "campaignTitle": "Live Razorpay Escrow Deposit (Netbanking)",
+      "brandName": "Demon Brand",
+      "creatorName": "Creator Escrow Custody",
+      "deliverableTitle": "Secured Escrow Deposit - Netbanking",
+      "grossAmount": 500,
+      "netAmount": 500,
+      "agencyFee": 0,
+      "status": "paid",
+      "paymentMethod": "razorpay",
+      "createdAt": "2026-09-06T09:18:43.000Z"
+    }
+  ],
   "subscriptions": [
     {
       "id": "sub-creator",
@@ -2443,7 +2474,45 @@
   "shortlists": [],
   "disputes": [],
   "tickets": [],
-  "payments": [],
+  "payments": [
+    {
+      "id": "pay-rzp-card-1007",
+      "brandId": "brand_active",
+      "amount": 500,
+      "currency": "INR",
+      "status": "captured",
+      "provider": "razorpay",
+      "providerOrderId": "order_TYfhanUvTJdPAR",
+      "providerPaymentId": "pay_TYfhopKcE8zm6J",
+      "metadata": {
+        "method": "card",
+        "cardLast4": "1007",
+        "cardNetwork": "Visa",
+        "captured": true,
+        "verifiedAt": "2026-09-06T07:39:09.000Z"
+      },
+      "createdAt": "2026-09-06T07:39:09.000Z",
+      "updatedAt": "2026-09-06T07:39:09.000Z"
+    },
+    {
+      "id": "pay-rzp-nb-barb",
+      "brandId": "brand_active",
+      "amount": 500,
+      "currency": "INR",
+      "status": "captured",
+      "provider": "razorpay",
+      "providerOrderId": "order_TYhG3RUmz05OkS",
+      "providerPaymentId": "pay_TYhOzyxdxEmRAj",
+      "metadata": {
+        "method": "netbanking",
+        "bank": "Bank of Baroda",
+        "captured": true,
+        "verifiedAt": "2026-09-06T09:18:43.000Z"
+      },
+      "createdAt": "2026-09-06T09:18:43.000Z",
+      "updatedAt": "2026-09-06T09:18:43.000Z"
+    }
+  ],
   "mediaAssets": [],
   "conversations": [
     {
@@ -2786,6 +2855,36 @@
     }
   ],
   "notifications": [
+    {
+      "userId": "user-1788643257898",
+      "title": "⚡ Application Velocity",
+      "message": "Your campaign is receiving applications faster than average.",
+      "type": "system",
+      "linkUrl": "/app/brand/campaigns",
+      "id": "notif-1788678888485-efkmf",
+      "read": false,
+      "createdAt": "2026-09-06T07:14:48.485Z"
+    },
+    {
+      "userId": "user-1788643257898",
+      "title": "📈 High-Growth Rising Creator",
+      "message": "A rising creator fits your campaign at 92% compatibility.",
+      "type": "application",
+      "linkUrl": "/app/brand/creators",
+      "id": "notif-1788678888483-37i9i",
+      "read": false,
+      "createdAt": "2026-09-06T07:14:48.483Z"
+    },
+    {
+      "userId": "user-1788643257898",
+      "title": "🔥 Trending Talent Match",
+      "message": "12 creators matching your brief are trending right now.",
+      "type": "campaign",
+      "linkUrl": "/app/trending",
+      "id": "notif-1788678888479-qk0ah",
+      "read": false,
+      "createdAt": "2026-09-06T07:14:48.479Z"
+    },
     {
       "userId": "user-owner",
       "title": "⚡ Application Velocity",

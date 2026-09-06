@@ -59,6 +59,44 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Record verified transaction in database ledger
+    try {
+      const { paymentRepo } = await import("@/server/repositories/payment.repo");
+      await paymentRepo.createPayment({
+        brandId: body.brandId || "brand_active",
+        amount: body.amount ? Number(body.amount) : 500,
+        currency: body.currency || "INR",
+        status: "captured",
+        commissionRate: 0.15,
+        agencyFee: 0,
+        provider: "razorpay",
+        providerOrderId: orderId,
+        providerPaymentId: paymentId,
+        metadata: {
+          verifiedAt: new Date().toISOString(),
+          paymentId,
+          orderId,
+          signature,
+        },
+      });
+
+      await paymentRepo.createPayout({
+        creatorId: body.creatorId || "creator_escrow",
+        collaborationId: body.collaborationId || `escrow_${orderId}`,
+        campaignTitle: "Live Razorpay Escrow Deposit",
+        brandName: "AbeyCollab Verified Brand",
+        creatorName: "Creator Escrow Custody",
+        deliverableTitle: "Secured Escrow Deposit",
+        grossAmount: body.amount ? Number(body.amount) : 500,
+        netAmount: body.amount ? Number(body.amount) : 500,
+        agencyFee: 0,
+        status: "paid",
+        paymentMethod: "razorpay",
+      });
+    } catch (dbErr) {
+      console.error("Failed to record verified payment in database:", dbErr);
+    }
+
     return NextResponse.json({
       success: true,
       message: "Payment verified successfully",
