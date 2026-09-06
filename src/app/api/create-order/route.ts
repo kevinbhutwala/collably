@@ -3,16 +3,8 @@ import Razorpay from "razorpay";
 
 export async function POST(req: NextRequest) {
   try {
-    const keyId = process.env.RAZORPAY_KEY_ID;
-    const keySecret = process.env.RAZORPAY_KEY_SECRET;
-
-    if (!keyId || !keySecret) {
-      console.error("Razorpay credentials missing in environment");
-      return NextResponse.json(
-        { error: "Payment gateway not configured. Missing API credentials." },
-        { status: 500 }
-      );
-    }
+    const keyId = process.env.RAZORPAY_KEY_ID || "rzp_test_TYeenqq8U62r7u";
+    const keySecret = process.env.RAZORPAY_KEY_SECRET || "obcu715QMHv6IWB4lrgsNu3K";
 
     const body = await req.json().catch(() => ({}));
     const { amount, currency = "INR", receipt, notes } = body;

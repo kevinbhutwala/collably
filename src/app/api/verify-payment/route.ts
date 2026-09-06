@@ -3,15 +3,7 @@ import crypto from "crypto";
 
 export async function POST(req: NextRequest) {
   try {
-    const keySecret = process.env.RAZORPAY_KEY_SECRET;
-
-    if (!keySecret) {
-      console.error("RAZORPAY_KEY_SECRET is not configured");
-      return NextResponse.json(
-        { error: "Payment gateway secret not configured on server." },
-        { status: 500 }
-      );
-    }
+    const keySecret = process.env.RAZORPAY_KEY_SECRET || "obcu715QMHv6IWB4lrgsNu3K";
 
     const body = await req.json().catch(() => ({}));
     const orderId = body.order_id || body.orderId || body.razorpay_order_id;
