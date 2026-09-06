@@ -60,6 +60,32 @@ class PaymentService {
     }
     return res.json();
   }
+
+  async createStandardOrder(amountInPaise: number, currency: string = "INR", receipt?: string) {
+    const res = await fetch("/api/create-order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ amount: amountInPaise, currency, receipt }),
+    });
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      throw new Error(data.error || "Failed to create Razorpay order");
+    }
+    return res.json();
+  }
+
+  async verifyStandardPayment(orderId: string, paymentId: string, signature: string) {
+    const res = await fetch("/api/verify-payment", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ order_id: orderId, payment_id: paymentId, signature }),
+    });
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      throw new Error(data.error || "Payment signature verification failed");
+    }
+    return res.json();
+  }
 }
 
 export const paymentService = new PaymentService();

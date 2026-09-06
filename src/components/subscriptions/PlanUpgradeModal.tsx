@@ -37,23 +37,146 @@ export function PlanUpgradeModal() {
       return;
     }
 
+    const price = isAnnual ? plan.annualPrice : plan.monthlyPrice;
+
+    // If free plan, upgrade directly
+    if (price === 0) {
+      setProcessingPlanId(plan.id);
+      try {
+        await upgradePlan(plan.id as SubscriptionPlanId, isAnnual ? "annual" : "monthly");
+        addToast({
+          type: "success",
+          title: "Subscription Updated!",
+          message: `Successfully updated your workspace plan to ${plan.name}. All features and limits are now active!`,
+        });
+        closeUpgradeModal();
+      } catch (err: any) {
+        addToast({
+          type: "error",
+          title: "Upgrade Failed",
+          message: err.message || "Failed to upgrade subscription. Please try again.",
+        });
+      } finally {
+        setProcessingPlanId(null);
+      }
+      return;
+    }
+
+    // Paid Plan: Launch Razorpay Standard Checkout
     setProcessingPlanId(plan.id);
     try {
-      await upgradePlan(plan.id as SubscriptionPlanId, isAnnual ? "annual" : "monthly");
-      addToast({
-        type: "success",
-        title: "Subscription Updated!",
-        message: `Successfully updated your workspace plan to ${plan.name}. All features and limits are now active!`,
+      const { loadRazorpayScript } = await import("@/components/payments/RazorpayCheckoutButton");
+      const isLoaded = await loadRazorpayScript();
+      if (!isLoaded) {
+        throw new Error("Unable to connect to Razorpay payment gateway.");
+      }
+
+      // Convert USD pricing to INR paise (min 100 paise)
+      const annualTotalUSD = plan.annualPrice * 12;
+      const billingTotalUSD = isAnnual ? annualTotalUSD : plan.monthlyPrice;
+      const amountInINR = Math.round(billingTotalUSD * 83.5);
+      const amountInPaise = Math.max(amountInINR * 100, 100);
+
+      const orderRes = await fetch("/api/create-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          amount: amountInPaise,
+          currency: "INR",
+          receipt: `sub_${plan.id}_${Date.now()}`,
+          notes: {
+            planId: plan.id,
+            interval: isAnnual ? "annual" : "monthly",
+          },
+        }),
       });
-      closeUpgradeModal();
+
+      const orderData = await orderRes.json();
+      if (!orderRes.ok || !orderData.order_id) {
+        throw new Error(orderData.error || "Failed to initialize subscription checkout order.");
+      }
+
+      const keyId =
+        process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "rzp_test_TYeenqq8U62r7u";
+
+      const options = {
+        key: keyId,
+        amount: orderData.amount,
+        currency: orderData.currency,
+        name: "AbeyCollab Subscriptions",
+        description: `${plan.name} (${isAnnual ? "Annual Billing" : "Monthly Billing"})`,
+        image: "/favicon.svg",
+        order_id: orderData.order_id,
+        prefill: {
+          name: "AbeyCollab Workspace",
+          email: "billing@abeycollab.io",
+          contact: "9999999999",
+        },
+        theme: {
+          color: "#FFD21F",
+        },
+        modal: {
+          ondismiss: function () {
+            setProcessingPlanId(null);
+            addToast({
+              type: "info",
+              title: "Upgrade Cancelled",
+              message: "Checkout window was closed without completing payment.",
+            });
+          },
+        },
+        handler: async function (response: {
+          razorpay_payment_id: string;
+          razorpay_order_id: string;
+          razorpay_signature: string;
+        }) {
+          try {
+            // Verify signature on backend
+            const verifyRes = await fetch("/api/verify-payment", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                order_id: response.razorpay_order_id,
+                payment_id: response.razorpay_payment_id,
+                signature: response.razorpay_signature,
+              }),
+            });
+
+            const verifyData = await verifyRes.json();
+            if (!verifyRes.ok || !verifyData.success) {
+              throw new Error(verifyData.error || "Payment verification failed.");
+            }
+
+            // Complete subscription state update
+            await upgradePlan(plan.id as SubscriptionPlanId, isAnnual ? "annual" : "monthly");
+            addToast({
+              type: "success",
+              title: "Payment Verified & Plan Activated!",
+              message: `Payment ${response.razorpay_payment_id} confirmed. You are now on ${plan.name}!`,
+            });
+            closeUpgradeModal();
+          } catch (verifyErr: any) {
+            console.error("Signature verification error:", verifyErr);
+            addToast({
+              type: "error",
+              title: "Verification Failed",
+              message: verifyErr.message || "Failed to verify payment signature.",
+            });
+          } finally {
+            setProcessingPlanId(null);
+          }
+        },
+      };
+
+      const rzpInstance = new (window as any).Razorpay(options);
+      rzpInstance.open();
     } catch (err: any) {
+      setProcessingPlanId(null);
       addToast({
         type: "error",
-        title: "Upgrade Failed",
-        message: err.message || "Failed to upgrade subscription. Please try again.",
+        title: "Checkout Error",
+        message: err.message || "Could not launch Razorpay checkout.",
       });
-    } finally {
-      setProcessingPlanId(null);
     }
   };
 

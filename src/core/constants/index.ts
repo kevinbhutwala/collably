@@ -323,7 +323,7 @@ export const GLOBAL_HUBS = [
 ] as const;
 
 export const GLOBAL_PAYMENT_METHODS = [
-  { id: "stripe_connect", name: "Stripe Connect (120+ Countries)", icon: "CreditCard" },
+  { id: "razorpay_checkout", name: "Razorpay Standard Checkout (UPI, Cards, NetBanking)", icon: "ShieldCheck" },
   { id: "paypal_global", name: "PayPal Global", icon: "Wallet" },
   { id: "wise_transfer", name: "Wise Cross-Border Transfer", icon: "ArrowRightLeft" },
   { id: "swift_wire", name: "International SWIFT Wire", icon: "Landmark" },

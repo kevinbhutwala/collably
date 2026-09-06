@@ -1,4 +1,5 @@
 import crypto from "crypto";
+import Razorpay from "razorpay";
 import { paymentRepo } from "../repositories/payment.repo";
 import { PaymentEntity } from "../db/schema";
 import { PayoutRecord } from "@/core/types";
@@ -18,38 +19,39 @@ export interface PaymentProvider {
 }
 
 /**
- * Razorpay Implementation
+ * Razorpay Implementation using Official SDK
  */
 class RazorpayProvider implements PaymentProvider {
-  async createOrder(amount: number, currency: string, receipt: string) {
+  private getClient(): Razorpay | null {
     const keyId = process.env.RAZORPAY_KEY_ID;
     const keySecret = process.env.RAZORPAY_KEY_SECRET;
-
     if (keyId && keySecret) {
+      return new Razorpay({ key_id: keyId, key_secret: keySecret });
+    }
+    return null;
+  }
+
+  async createOrder(amount: number, currency: string, receipt: string) {
+    const client = this.getClient();
+    const amountInPaise = Math.round(amount * 100);
+
+    if (client) {
       try {
-        const auth = Buffer.from(`${keyId}:${keySecret}`).toString("base64");
-        const res = await fetch("https://api.razorpay.com/v1/orders", {
-          method: "POST",
-          headers: {
-            Authorization: `Basic ${auth}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            amount: Math.round(amount * 100), // Amount in paise
-            currency: currency || "INR",
-            receipt,
-          }),
+        const order = await client.orders.create({
+          amount: Math.max(amountInPaise, 100), // Minimum 100 paise
+          currency: (currency || "INR").toUpperCase(),
+          receipt,
         });
-        const data = await res.json();
-        if (data.id) {
-          return { orderId: data.id, amount, currency: data.currency };
+
+        if (order && order.id) {
+          return { orderId: order.id, amount, currency: order.currency };
         }
       } catch (err) {
-        console.error("Razorpay API call failed, falling back to secure internal order generator:", err);
+        console.error("Razorpay SDK order creation error, falling back to deterministic order:", err);
       }
     }
 
-    // Secure fallback deterministic order id
+    // Secure fallback deterministic order id if offline or sandbox fallback
     const orderId = `order_rzp_${Date.now()}_${crypto.randomBytes(4).toString("hex")}`;
     return { orderId, amount, currency: currency || "INR" };
   }
@@ -57,7 +59,10 @@ class RazorpayProvider implements PaymentProvider {
   verifyWebhookSignature(body: string, signature: string, secret: string): boolean {
     if (!secret || !signature) return false;
     const expected = crypto.createHmac("sha256", secret).update(body).digest("hex");
-    return crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(expected));
+    const sigBuf = Buffer.from(signature, "utf-8");
+    const expBuf = Buffer.from(expected, "utf-8");
+    if (sigBuf.length !== expBuf.length) return false;
+    return crypto.timingSafeEqual(sigBuf, expBuf);
   }
 }
 

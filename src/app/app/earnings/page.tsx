@@ -10,6 +10,7 @@ import { StatsCard } from "@/components/ui/StatsCard";
 import { AnimatedEmptyState } from "@/components/ui/AnimatedEmptyState";
 import { formatCurrency } from "@/core/utils/formatters";
 import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
+import { RazorpayCheckoutButton } from "@/components/payments/RazorpayCheckoutButton";
 import { Wallet, ShieldCheck, Download, ArrowRight, CheckCircle2, Receipt, Globe, Landmark, ArrowRightLeft, CreditCard } from "lucide-react";
 
 export default function EarningsAndEscrowPage() {
@@ -138,15 +139,15 @@ export default function EarningsAndEscrowPage() {
               <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-[10px] font-mono font-extrabold">120+ COUNTRIES</span>
             </h4>
             <p className="text-[11px] text-[#6A6A78] dark:text-[#8E8EA4] mt-0.5">
-              Supports Stripe Connect Direct, PayPal Global, Wise Local Transfers, and International SWIFT Wire.
+              Supports Razorpay Standard Checkout (UPI, Cards, NetBanking), PayPal Global, Wise, and SWIFT Wire.
             </p>
           </div>
         </div>
 
         <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono font-bold text-[#4A4A58] dark:text-[#A0A0B0]">
           <span className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white dark:bg-[#1E1E2C] border border-black/8 dark:border-white/10 shadow-2xs">
-            <CreditCard className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-white" />
-            <span>Stripe Connect</span>
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+            <span>Razorpay Gateway</span>
           </span>
           <span className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white dark:bg-[#1E1E2C] border border-black/8 dark:border-white/10 shadow-2xs">
             <ArrowRightLeft className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
@@ -156,6 +157,42 @@ export default function EarningsAndEscrowPage() {
             <Landmark className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
             <span>SWIFT Wire</span>
           </span>
+        </div>
+      </div>
+
+      {/* Razorpay Standard Web Checkout Integration Card */}
+      <div className="p-5 sm:p-6 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="space-y-1">
+          <div className="flex items-center gap-2">
+            <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-[10px] font-mono font-extrabold uppercase">
+              Razorpay Standard Checkout Active
+            </span>
+            <span className="text-[10px] font-mono text-[#7A7A8A]">Key: rzp_test_TYeenqq8U62r7u</span>
+          </div>
+          <h4 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display">
+            Live Razorpay Escrow Deposit Gateway
+          </h4>
+          <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
+            Launches the official Razorpay Checkout modal (UPI, Cards, NetBanking) and cryptographically verifies the HMAC-SHA256 signature on the server.
+          </p>
+        </div>
+
+        <div className="shrink-0">
+          <RazorpayCheckoutButton
+            amount={500}
+            currency="INR"
+            name="AbeyCollab Escrow Deposit"
+            description="Milestone Escrow Payment Protection"
+            prefill={{
+              name: "AbeyCollab Client",
+              email: "brand@abeycollab.io",
+              contact: "9999999999",
+            }}
+            notes={{
+              platform: "AbeyCollab",
+              type: "escrow_deposit",
+            }}
+          />
         </div>
       </div>
 
