@@ -74,31 +74,31 @@ export function MarketplaceLeaderboards() {
   };
 
   return (
-    <div className="w-full rounded-2xl border border-white/10 bg-[#12121A] p-6 sm:p-8 shadow-2xl backdrop-blur-xl">
+    <div className="w-full rounded-2xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#12121A] p-6 sm:p-8 shadow-md dark:shadow-2xl backdrop-blur-xl transition-colors">
       {/* Header & Description */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between pb-6 border-b border-white/10">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between pb-6 border-b border-black/10 dark:border-white/10">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-full border border-yellow-500/30 bg-yellow-500/10 px-3 py-1 text-xs font-semibold text-[#FFD21F]">
+          <div className="inline-flex items-center gap-2 rounded-full border border-yellow-500/30 bg-yellow-500/10 px-3 py-1 text-xs font-semibold text-[#8A6500] dark:text-[#FFD21F]">
             <span>🏆</span> Performance & Growth Index
           </div>
-          <h2 className="mt-2 text-2xl font-bold text-white">
+          <h2 className="mt-2 text-2xl font-bold text-[#0A0A0E] dark:text-white">
             Creator Marketplace Leaderboards
           </h2>
-          <p className="text-xs sm:text-sm text-neutral-400 mt-1">
+          <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mt-1">
             Real-time rankings across verified engagement, escrow completion rates, and market velocity.
           </p>
         </div>
 
         {/* Timeframe selector */}
-        <div className="flex items-center gap-1 rounded-xl border border-white/10 bg-white/5 p-1 self-start sm:self-auto">
+        <div className="flex items-center gap-1 rounded-xl border border-black/10 dark:border-white/10 bg-neutral-100 dark:bg-white/5 p-1 self-start sm:self-auto">
           {(["7d", "30d", "90d"] as TimeframeWindow[]).map((tf) => (
             <button
               key={tf}
               onClick={() => setTimeframe(tf)}
               className={`rounded-lg px-3 py-1 text-xs font-medium transition-all ${
                 timeframe === tf
-                  ? "bg-[#FFD21F] text-black font-semibold"
-                  : "text-neutral-400 hover:text-white"
+                  ? "bg-[#FFD21F] text-[#0A0A0E] font-bold shadow-xs"
+                  : "text-neutral-600 dark:text-neutral-400 hover:text-[#0A0A0E] dark:hover:text-white"
               }`}
             >
               {tf === "7d" ? "7 Days" : tf === "30d" ? "30 Days" : "90 Days"}
@@ -108,19 +108,19 @@ export function MarketplaceLeaderboards() {
       </div>
 
       {/* Filter Matrix Bar */}
-      <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4 pb-6 border-b border-white/5">
+      <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4 pb-6 border-b border-black/5 dark:border-white/5">
         {/* Category */}
         <div>
-          <label className="text-[10px] uppercase font-bold text-neutral-400 tracking-wider">
+          <label className="text-[10px] uppercase font-bold text-neutral-500 dark:text-neutral-400 tracking-wider">
             Category
           </label>
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs text-white focus:border-[#FFD21F] focus:outline-none"
+            className="mt-1 w-full rounded-lg border border-black/10 dark:border-white/10 bg-neutral-50 dark:bg-white/5 px-2.5 py-1.5 text-xs text-[#0A0A0E] dark:text-white focus:border-[#FFD21F] focus:outline-none"
           >
             {CATEGORIES.map((c) => (
-              <option key={c} value={c} className="bg-[#12121A] text-white">
+              <option key={c} value={c} className="bg-white dark:bg-[#12121A] text-[#0A0A0E] dark:text-white">
                 {c}
               </option>
             ))}
@@ -129,16 +129,16 @@ export function MarketplaceLeaderboards() {
 
         {/* Location */}
         <div>
-          <label className="text-[10px] uppercase font-bold text-neutral-400 tracking-wider">
+          <label className="text-[10px] uppercase font-bold text-neutral-500 dark:text-neutral-400 tracking-wider">
             Location
           </label>
           <select
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs text-white focus:border-[#FFD21F] focus:outline-none"
+            className="mt-1 w-full rounded-lg border border-black/10 dark:border-white/10 bg-neutral-50 dark:bg-white/5 px-2.5 py-1.5 text-xs text-[#0A0A0E] dark:text-white focus:border-[#FFD21F] focus:outline-none"
           >
             {LOCATIONS.map((l) => (
-              <option key={l} value={l} className="bg-[#12121A] text-white">
+              <option key={l} value={l} className="bg-white dark:bg-[#12121A] text-[#0A0A0E] dark:text-white">
                 {l}
               </option>
             ))}
@@ -147,16 +147,16 @@ export function MarketplaceLeaderboards() {
 
         {/* Follower Tier */}
         <div>
-          <label className="text-[10px] uppercase font-bold text-neutral-400 tracking-wider">
+          <label className="text-[10px] uppercase font-bold text-neutral-500 dark:text-neutral-400 tracking-wider">
             Follower Tier
           </label>
           <select
             value={tier}
             onChange={(e) => setTier(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs text-white focus:border-[#FFD21F] focus:outline-none"
+            className="mt-1 w-full rounded-lg border border-black/10 dark:border-white/10 bg-neutral-50 dark:bg-white/5 px-2.5 py-1.5 text-xs text-[#0A0A0E] dark:text-white focus:border-[#FFD21F] focus:outline-none"
           >
             {TIERS.map((t) => (
-              <option key={t} value={t} className="bg-[#12121A] text-white">
+              <option key={t} value={t} className="bg-white dark:bg-[#12121A] text-[#0A0A0E] dark:text-white">
                 {t}
               </option>
             ))}
@@ -165,19 +165,19 @@ export function MarketplaceLeaderboards() {
 
         {/* Platform */}
         <div>
-          <label className="text-[10px] uppercase font-bold text-neutral-400 tracking-wider">
+          <label className="text-[10px] uppercase font-bold text-neutral-500 dark:text-neutral-400 tracking-wider">
             Platform
           </label>
           <select
             value={platform}
             onChange={(e) => setPlatform(e.target.value as PlatformType | "")}
-            className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs text-white focus:border-[#FFD21F] focus:outline-none"
+            className="mt-1 w-full rounded-lg border border-black/10 dark:border-white/10 bg-neutral-50 dark:bg-white/5 px-2.5 py-1.5 text-xs text-[#0A0A0E] dark:text-white focus:border-[#FFD21F] focus:outline-none"
           >
-            <option value="" className="bg-[#12121A] text-white">All Platforms</option>
-            <option value="youtube" className="bg-[#12121A] text-white">YouTube</option>
-            <option value="instagram" className="bg-[#12121A] text-white">Instagram</option>
-            <option value="x" className="bg-[#12121A] text-white">X (Twitter)</option>
-            <option value="linkedin" className="bg-[#12121A] text-white">LinkedIn</option>
+            <option value="" className="bg-white dark:bg-[#12121A] text-[#0A0A0E] dark:text-white">All Platforms</option>
+            <option value="youtube" className="bg-white dark:bg-[#12121A] text-[#0A0A0E] dark:text-white">YouTube</option>
+            <option value="instagram" className="bg-white dark:bg-[#12121A] text-[#0A0A0E] dark:text-white">Instagram</option>
+            <option value="x" className="bg-white dark:bg-[#12121A] text-[#0A0A0E] dark:text-white">X (Twitter)</option>
+            <option value="linkedin" className="bg-white dark:bg-[#12121A] text-[#0A0A0E] dark:text-white">LinkedIn</option>
           </select>
         </div>
       </div>
@@ -187,17 +187,17 @@ export function MarketplaceLeaderboards() {
         {loading ? (
           <div className="space-y-2">
             {[...Array(6)].map((_, i) => (
-              <div key={i} className="h-16 w-full animate-pulse rounded-xl bg-white/[0.02]" />
+              <div key={i} className="h-16 w-full animate-pulse rounded-xl bg-black/5 dark:bg-white/[0.02]" />
             ))}
           </div>
         ) : leaderboard.length === 0 ? (
-          <div className="py-12 text-center text-sm text-neutral-400">
+          <div className="py-12 text-center text-sm text-neutral-500 dark:text-neutral-400">
             No creators found matching this filter combination.
           </div>
         ) : (
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-white/10 text-[11px] font-semibold uppercase tracking-wider text-neutral-400">
+              <tr className="border-b border-black/10 dark:border-white/10 text-[11px] font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
                 <th className="pb-3 pl-3 w-14">Rank</th>
                 <th className="pb-3">Creator</th>
                 <th className="pb-3">Category</th>
@@ -208,20 +208,20 @@ export function MarketplaceLeaderboards() {
                 <th className="pb-3 text-right pr-3">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/5 text-xs">
+            <tbody className="divide-y divide-black/5 dark:divide-white/5 text-xs">
               {leaderboard.map((item) => {
                 const creator = item.creator;
                 const isPodium = item.rank <= 3;
                 return (
                   <tr
                     key={creator.id}
-                    className={`transition-colors hover:bg-white/[0.02] ${
-                      isPodium ? "bg-white/[0.01]" : ""
+                    className={`transition-colors hover:bg-black/[0.02] dark:hover:bg-white/[0.02] ${
+                      isPodium ? "bg-amber-500/[0.02] dark:bg-white/[0.01]" : ""
                     }`}
                   >
                     {/* Rank */}
                     <td className="py-3.5 pl-3">
-                      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-white/5">
+                      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-neutral-100 dark:bg-white/5">
                         {getRankBadge(item.rank)}
                       </div>
                     </td>
@@ -229,7 +229,7 @@ export function MarketplaceLeaderboards() {
                     {/* Creator Identity */}
                     <td className="py-3.5">
                       <div className="flex items-center gap-3">
-                        <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-white/20 bg-neutral-800">
+                        <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-black/10 dark:border-white/20 bg-neutral-200 dark:bg-neutral-800">
                           {creator.avatarUrl ? (
                             <Image
                               src={creator.avatarUrl}
@@ -238,22 +238,22 @@ export function MarketplaceLeaderboards() {
                               className="object-cover"
                             />
                           ) : (
-                            <div className="flex h-full w-full items-center justify-center font-bold text-white text-xs">
+                            <div className="flex h-full w-full items-center justify-center font-bold text-[#0A0A0E] dark:text-white text-xs">
                               {creator.fullName.charAt(0)}
                             </div>
                           )}
                         </div>
                         <div className="min-w-0">
                           <div className="flex items-center gap-1.5">
-                            <span className="font-semibold text-white truncate">
+                            <span className="font-semibold text-[#0A0A0E] dark:text-white truncate">
                               {creator.fullName}
                             </span>
                             {creator.verified && (
-                              <span className="text-blue-400 text-xs">✓</span>
+                              <span className="text-blue-500 dark:text-blue-400 text-xs">✓</span>
                             )}
                           </div>
                           <div className="flex items-center gap-2 mt-0.5">
-                            <span className="text-neutral-400 text-[11px]">
+                            <span className="text-neutral-500 dark:text-neutral-400 text-[11px]">
                               @{creator.handle} · {creator.location}
                             </span>
                             <ReputationBadgeBar badges={item.badges} maxVisible={2} size="sm" />
@@ -263,29 +263,29 @@ export function MarketplaceLeaderboards() {
                     </td>
 
                     {/* Category */}
-                    <td className="py-3.5 text-neutral-300">
+                    <td className="py-3.5 text-neutral-600 dark:text-neutral-300">
                       {creator.primaryCategory}
                     </td>
 
                     {/* Trending Score */}
                     <td className="py-3.5 text-center">
-                      <span className="inline-flex items-center gap-1 rounded-full border border-[#FFD21F]/30 bg-[#FFD21F]/10 px-2 py-0.5 font-bold text-[#FFD21F]">
+                      <span className="inline-flex items-center gap-1 rounded-full border border-[#FFD21F]/30 bg-[#FFD21F]/15 px-2 py-0.5 font-bold text-[#8A6500] dark:text-[#FFD21F]">
                         🔥 {item.trendingScore}
                       </span>
                     </td>
 
                     {/* Engagement */}
-                    <td className="py-3.5 text-center font-semibold text-emerald-400">
+                    <td className="py-3.5 text-center font-semibold text-emerald-600 dark:text-emerald-400">
                       {item.engagementRate}%
                     </td>
 
                     {/* Deals */}
-                    <td className="py-3.5 text-center font-semibold text-white">
+                    <td className="py-3.5 text-center font-semibold text-[#0A0A0E] dark:text-white">
                       {item.completedDeals}
                     </td>
 
                     {/* Rating */}
-                    <td className="py-3.5 text-center font-semibold text-purple-400">
+                    <td className="py-3.5 text-center font-semibold text-amber-500 dark:text-amber-400">
                       {item.rating} ★
                     </td>
 
@@ -293,7 +293,7 @@ export function MarketplaceLeaderboards() {
                     <td className="py-3.5 pr-3 text-right">
                       <Link
                         href={`/creators/${creator.id}`}
-                        className="rounded-lg bg-white/10 px-3 py-1 text-[11px] font-medium text-white hover:bg-[#FFD21F] hover:text-black transition-all"
+                        className="rounded-lg border border-black/10 dark:border-white/10 bg-neutral-100 dark:bg-white/10 px-3 py-1 text-[11px] font-medium text-[#0A0A0E] dark:text-white hover:bg-[#FFD21F] hover:text-[#0A0A0E] dark:hover:bg-[#FFD21F] dark:hover:text-[#0A0A0E] transition-all"
                       >
                         Profile →
                       </Link>

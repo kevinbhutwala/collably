@@ -233,7 +233,7 @@ export default function DedicatedTrendingPage() {
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 font-mono text-[10px] font-bold">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#0A0A0E] dark:text-[#FFD21F] font-mono text-[10px] font-bold">
                       🚀 Brief #{index + 1}
                     </span>
                     <span className="text-xs font-mono font-black text-[#0A0A0E] dark:text-white">
@@ -288,7 +288,7 @@ export default function DedicatedTrendingPage() {
               className="rounded-3xl bg-white dark:bg-[#14141E] border border-black/8 dark:border-white/10 p-6 shadow-xs space-y-4"
             >
               <div className="flex items-center justify-between">
-                <span className="px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-400 font-mono text-[10px] font-bold">
+                <span className="px-3 py-1 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#0A0A0E] dark:text-[#FFD21F] font-mono text-[10px] font-bold">
                   Rank #{index + 1}
                 </span>
                 <span className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400">

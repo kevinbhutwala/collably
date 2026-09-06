@@ -80,8 +80,8 @@ export default function CreatorGrowthCenterPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-black/8 dark:border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[10px] font-mono font-bold text-emerald-600 dark:text-emerald-400">
-              <Sparkles className="w-3 h-3" />
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[10px] font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F]">
+              <Sparkles className="w-3 h-3 text-[#0A0A0E] dark:text-[#FFD21F]" />
               Creator Career Operating System
             </span>
             <span className="text-[#8A8A9A]">•</span>
@@ -99,9 +99,9 @@ export default function CreatorGrowthCenterPage() {
         </div>
 
         <Link href="/app/profile">
-          <button className="px-5 py-2.5 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] hover:bg-[#20202B] dark:hover:bg-[#FFE052] text-white dark:text-[#0A0A0E] font-bold text-xs transition-all shadow-xs flex items-center gap-1.5 cursor-pointer">
+          <button className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs transition-all shadow-xs flex items-center gap-1.5 border border-black/10 cursor-pointer">
             <span>Edit Profile & Media Kit</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <ArrowRight className="w-3.5 h-3.5 text-[#0A0A0E]" />
           </button>
         </Link>
       </div>
@@ -110,20 +110,20 @@ export default function CreatorGrowthCenterPage() {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {/* Metric 1: Completeness */}
         <div className="p-6 rounded-3xl bg-white dark:bg-[#14141E] border border-black/8 dark:border-white/10 shadow-xs space-y-2">
-          <span className="text-xs font-mono font-bold text-[#7A7A8A] uppercase block">
+          <span className="text-xs font-mono font-bold text-[#7A7A8A] dark:text-[#8E8EA4] uppercase block">
             Profile Completeness
           </span>
           <div className="flex items-baseline gap-2">
             <span className="text-3xl font-black text-[#0A0A0E] dark:text-white font-display">
               {completenessPercent}%
             </span>
-            <span className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400">
+            <span className="text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400">
               {completenessPercent >= 80 ? "Optimal" : "Needs Action"}
             </span>
           </div>
           <div className="h-2 w-full rounded-full bg-black/5 dark:bg-white/10 overflow-hidden mt-2">
             <div
-              className="h-full bg-gradient-to-r from-emerald-500 to-[#FFD21F] rounded-full transition-all duration-500"
+              className="h-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] rounded-full transition-all duration-500"
               style={{ width: `${completenessPercent}%` }}
             />
           </div>
@@ -131,7 +131,7 @@ export default function CreatorGrowthCenterPage() {
 
         {/* Metric 2: Platform Rank */}
         <div className="p-6 rounded-3xl bg-white dark:bg-[#14141E] border border-black/8 dark:border-white/10 shadow-xs space-y-2">
-          <span className="text-xs font-mono font-bold text-[#7A7A8A] uppercase block">
+          <span className="text-xs font-mono font-bold text-[#7A7A8A] dark:text-[#8E8EA4] uppercase block">
             Platform Visibility Ranking
           </span>
           <div className="flex items-baseline gap-2">
@@ -142,25 +142,25 @@ export default function CreatorGrowthCenterPage() {
               in {creator?.primaryCategory || "Technology"}
             </span>
           </div>
-          <p className="text-[11px] font-mono text-emerald-600 dark:text-emerald-400">
+          <p className="text-[11px] font-mono text-emerald-700 dark:text-emerald-400 font-bold">
             Top 5% across verified talent roster (#{overallRank} overall)
           </p>
         </div>
 
         {/* Metric 3: Opportunity Score */}
         <div className="p-6 rounded-3xl bg-white dark:bg-[#14141E] border border-black/8 dark:border-white/10 shadow-xs space-y-2">
-          <span className="text-xs font-mono font-bold text-[#7A7A8A] uppercase block">
+          <span className="text-xs font-mono font-bold text-[#7A7A8A] dark:text-[#8E8EA4] uppercase block">
             Market Opportunity Score
           </span>
           <div className="flex items-baseline gap-2">
-            <span className="text-3xl font-black text-[#FFD21F] font-display">
+            <span className="text-3xl font-black text-[#8A6500] dark:text-[#FFD21F] font-display">
               84<span className="text-lg text-[#7A7A8A]">/100</span>
             </span>
-            <span className="text-xs font-mono font-bold text-amber-500">
+            <span className="text-xs font-mono font-bold text-[#8A6500] dark:text-[#FFD21F]">
               High Growth Potential
             </span>
           </div>
-          <p className="text-[11px] font-mono text-[#7A7A8A]">
+          <p className="text-[11px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4]">
             Estimated based on category momentum & deal velocity
           </p>
         </div>
@@ -191,27 +191,27 @@ export default function CreatorGrowthCenterPage() {
                 className={cn(
                   "p-3.5 rounded-2xl border transition-all flex items-center justify-between gap-3 text-xs",
                   item.done
-                    ? "bg-[#F8FDF9] dark:bg-[#122018] border-emerald-500/20 text-[#0A0A0E] dark:text-[#D0F0DC]"
-                    : "bg-[#FFFDF5] dark:bg-[#201D14] border-amber-500/20 text-[#0A0A0E] dark:text-[#F0E6D0]"
+                    ? "bg-[#F8FDF9] dark:bg-[#151C18] border-emerald-500/20 text-[#0A0A0E] dark:text-[#D0F0DC]"
+                    : "bg-[#FFFDF5] dark:bg-[#1A1A24] border-[#FFD21F]/30 text-[#0A0A0E] dark:text-[#F4F4F8]"
                 )}
               >
                 <div className="flex items-center gap-3">
                   {item.done ? (
-                    <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                   ) : (
-                    <AlertCircle className="w-5 h-5 text-amber-500 shrink-0" />
+                    <AlertCircle className="w-5 h-5 text-[#8A6500] dark:text-[#FFD21F] shrink-0" />
                   )}
                   <span className={cn("font-medium", item.done ? "" : "font-bold")}>
                     {item.label}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-[11px] font-bold text-[#7A7A8A]">
+                  <span className="font-mono text-[11px] font-bold text-[#7A7A8A] dark:text-[#8E8EA4]">
                     {item.boost}
                   </span>
                   {!item.done && (
                     <Link href="/app/profile">
-                      <span className="px-2 py-0.5 rounded-md bg-[#FFD21F] text-[#0A0A0E] text-[10px] font-bold">
+                      <span className="px-2.5 py-1 rounded-lg bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] text-[10px] font-extrabold shadow-2xs border border-black/10">
                         Fix →
                       </span>
                     </Link>
@@ -233,7 +233,7 @@ export default function CreatorGrowthCenterPage() {
                 Priority milestones to climb search rankings and unlock verified badges.
               </p>
             </div>
-            <span className="text-xs font-mono text-[#7A7A8A]">Roadmap</span>
+            <span className="text-xs font-mono text-[#7A7A8A] dark:text-[#8E8EA4]">Roadmap</span>
           </div>
 
           <div className="space-y-3.5">
@@ -278,7 +278,7 @@ export default function CreatorGrowthCenterPage() {
                 key={milestone.step}
                 className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#1A1A28] border border-black/6 dark:border-white/6 hover:border-[#FFD21F] transition-all flex items-start gap-3.5"
               >
-                <div className="w-8 h-8 rounded-xl bg-[#FFD21F] text-[#0A0A0E] font-black text-xs flex items-center justify-center shrink-0 shadow-2xs">
+                <div className="w-8 h-8 rounded-xl bg-gradient-to-r from-[#FFD21F] to-[#FFE052] text-[#0A0A0E] font-black text-xs flex items-center justify-center shrink-0 shadow-2xs border border-black/10">
                   {milestone.step}
                 </div>
                 <div className="flex-1 min-w-0">

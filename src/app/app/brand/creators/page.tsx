@@ -161,44 +161,44 @@ export default function BrandCreatorDiscoveryPage() {
   ]);
 
   return (
-    <div className="space-y-6 text-[#0A0A0E] select-none font-sans">
+    <div className="space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans">
       {/* Desktop Header */}
-      <div className="hidden lg:flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-black/8">
+      <div className="hidden lg:flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-black/8 dark:border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
+            <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] dark:text-[#F4F4F8] flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               Creator Directory
             </span>
             <span className="text-[#8A8A9A]">•</span>
-            <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
+            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#0A0A0E] dark:text-[#FFD21F] font-mono text-[10px] font-bold">
               Audited Talent
             </span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-black text-[#0A0A0E] font-display tracking-tight">
+          <h1 className="text-xl sm:text-2xl font-black text-[#0A0A0E] dark:text-white font-display tracking-tight">
             Discover Verified Creators
           </h1>
-          <p className="text-xs sm:text-sm text-[#5A5A68]">
+          <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#8E8EA4]">
             Browse top video creators by niche, verified audience telemetry, and engagement rates.
           </p>
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="px-3.5 py-1.5 rounded-full bg-white border border-black/8 text-xs font-bold text-[#0A0A0E] shadow-2xs">
+          <span className="px-3.5 py-1.5 rounded-full bg-white dark:bg-[#161622] border border-black/8 dark:border-white/10 text-xs font-bold text-[#0A0A0E] dark:text-white shadow-2xs font-mono">
             {filteredCreators.length} Creators Available
           </span>
         </div>
       </div>
 
       {/* Discovery Mode Switcher */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none border-b border-black/8">
+      <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none border-b border-black/8 dark:border-white/10">
         <button
           onClick={() => setTabMode("directory")}
           className={cn(
             "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shrink-0",
             tabMode === "directory"
-              ? "bg-[#0A0A0E] text-white shadow-sm"
-              : "bg-white text-neutral-600 hover:text-black border border-black/5"
+              ? "bg-[#0A0A0E] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E] shadow-sm"
+              : "bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/6 dark:border-white/8"
           )}
         >
           <span>👥</span> All Verified Creators
@@ -208,8 +208,8 @@ export default function BrandCreatorDiscoveryPage() {
           className={cn(
             "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shrink-0",
             tabMode === "match"
-              ? "bg-purple-600 text-white shadow-sm"
-              : "bg-white text-neutral-600 hover:text-black border border-black/5"
+              ? "bg-[#0A0A0E] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E] shadow-sm"
+              : "bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/6 dark:border-white/8"
           )}
         >
           <span>🎯</span> Natural Language Brief Match
@@ -219,8 +219,8 @@ export default function BrandCreatorDiscoveryPage() {
           className={cn(
             "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shrink-0",
             tabMode === "trending"
-              ? "bg-[#FFD21F] text-[#0A0A0E] shadow-sm border border-black/10"
-              : "bg-white text-neutral-600 hover:text-black border border-black/5"
+              ? "bg-[#0A0A0E] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E] shadow-sm"
+              : "bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/6 dark:border-white/8"
           )}
         >
           <span>🔥</span> Trending Talent Hub
@@ -237,18 +237,18 @@ export default function BrandCreatorDiscoveryPage() {
           <CreatorFilterBar />
 
           {/* Sort & Quick Filter Chips Bar */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-2xl bg-white border border-black/8 shadow-2xs">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-2xl bg-white dark:bg-[#14141E] border border-black/8 dark:border-white/10 shadow-2xs">
             {/* Quick Filter Pills */}
             <div className="flex flex-wrap items-center gap-1.5">
-              <span className="text-[11px] font-mono text-[#7A7A8A] font-bold mr-1">Filter:</span>
+              <span className="text-[11px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4] font-bold mr-1">Filter:</span>
               <button
                 type="button"
                 onClick={() => setCreatorTrendingOnly(!creatorTrendingOnly)}
                 className={cn(
-                  "px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1",
+                  "px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1",
                   creatorTrendingOnly
                     ? "bg-[#FFD21F] text-[#0A0A0E] border border-black/10 shadow-xs"
-                    : "bg-[#F5F5F9] text-[#5A5A68] hover:text-[#0A0A0E] border border-black/5"
+                    : "bg-[#F5F5F9] dark:bg-[#1C1C2A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/5 dark:border-white/5"
                 )}
               >
                 <span>🔥</span> Trending
@@ -258,10 +258,10 @@ export default function BrandCreatorDiscoveryPage() {
                 type="button"
                 onClick={() => setCreatorRisingOnly(!creatorRisingOnly)}
                 className={cn(
-                  "px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1",
+                  "px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1",
                   creatorRisingOnly
-                    ? "bg-emerald-500 text-white shadow-xs"
-                    : "bg-[#F5F5F9] text-[#5A5A68] hover:text-[#0A0A0E] border border-black/5"
+                    ? "bg-emerald-500/15 border border-emerald-500/30 text-emerald-700 dark:text-emerald-400 shadow-xs font-bold"
+                    : "bg-[#F5F5F9] dark:bg-[#1C1C2A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/5 dark:border-white/5"
                 )}
               >
                 <span>📈</span> Rising Talent
@@ -271,10 +271,10 @@ export default function BrandCreatorDiscoveryPage() {
                 type="button"
                 onClick={() => setCreatorLocation(creatorLocation === "Worldwide" ? "all" : "Worldwide")}
                 className={cn(
-                  "px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1",
+                  "px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1",
                   creatorLocation === "Worldwide"
-                    ? "bg-black text-white shadow-xs"
-                    : "bg-[#F5F5F9] text-[#5A5A68] hover:text-[#0A0A0E] border border-black/5"
+                    ? "bg-[#0A0A0E] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E] shadow-xs"
+                    : "bg-[#F5F5F9] dark:bg-[#1C1C2A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/5 dark:border-white/5"
                 )}
               >
                 <span>📍</span> Global Reach
@@ -284,10 +284,10 @@ export default function BrandCreatorDiscoveryPage() {
                 type="button"
                 onClick={() => setCreatorMaxBudget(creatorMaxBudget === 3000 ? 0 : 3000)}
                 className={cn(
-                  "px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1",
+                  "px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1",
                   creatorMaxBudget === 3000
-                    ? "bg-purple-600 text-white shadow-xs"
-                    : "bg-[#F5F5F9] text-[#5A5A68] hover:text-[#0A0A0E] border border-black/5"
+                    ? "bg-[#FFD21F] text-[#0A0A0E] border border-black/10 shadow-xs"
+                    : "bg-[#F5F5F9] dark:bg-[#1C1C2A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/5 dark:border-white/5"
                 )}
               >
                 <span>💰</span> Under $3,000
@@ -295,12 +295,12 @@ export default function BrandCreatorDiscoveryPage() {
             </div>
 
             {/* Sort Dropdown */}
-            <div className="flex items-center gap-2 self-end sm:self-auto">
-              <span className="text-[11px] font-mono text-[#7A7A8A] font-bold">Sort:</span>
+            <div className="flex items-center gap-2 self-end sm:self-auto font-mono">
+              <span className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] font-bold">Sort:</span>
               <select
                 value={creatorSortBy}
                 onChange={(e) => setCreatorSortBy(e.target.value as any)}
-                className="px-3 py-1.5 rounded-xl border border-black/10 bg-[#F5F5F9] text-xs font-bold text-[#0A0A0E] focus:outline-none focus:border-[#FFD21F] cursor-pointer"
+                className="px-3 py-1.5 rounded-xl border border-black/10 dark:border-white/10 bg-[#F5F5F9] dark:bg-[#181824] text-xs font-bold text-[#0A0A0E] dark:text-white focus:outline-none focus:border-[#FFD21F] cursor-pointer"
               >
                 <option value="best_match">Best Match</option>
                 <option value="trending">🔥 Trending Momentum</option>
@@ -314,13 +314,13 @@ export default function BrandCreatorDiscoveryPage() {
 
           {/* Full-Width Creator Roster Grid */}
           {filteredCreators.length === 0 ? (
-            <div className="py-16 text-center rounded-3xl bg-white border border-black/8 p-8 space-y-3 shadow-xs">
+            <div className="py-16 text-center rounded-3xl bg-white dark:bg-[#14141E] border border-black/8 dark:border-white/10 p-8 space-y-3 shadow-xs">
               <Users className="w-8 h-8 text-[#8A8A9A] mx-auto" />
-              <h3 className="text-sm font-bold text-[#0A0A0E]">No creators match your current filters</h3>
-              <p className="text-xs text-[#6A6A78]">Try adjusting follower benchmarks, categories, or clearing search terms.</p>
+              <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white">No creators match your current filters</h3>
+              <p className="text-xs text-[#6A6A78] dark:text-[#8E8EA4]">Try adjusting follower benchmarks, categories, or clearing search terms.</p>
               <button
                 onClick={resetCreatorFilters}
-                className="px-4 py-2 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-xs font-bold shadow-xs hover:bg-[#FFE052] transition-colors"
+                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold shadow-xs transition-all border border-black/10 cursor-pointer"
               >
                 Reset All Filters
               </button>
