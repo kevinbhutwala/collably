@@ -324,6 +324,7 @@ export const GLOBAL_HUBS = [
 
 export const GLOBAL_PAYMENT_METHODS = [
   { id: "razorpay_checkout", name: "Razorpay Standard Checkout (UPI, Cards, NetBanking)", icon: "ShieldCheck" },
+  { id: "razorpay_me", name: "Razorpay.me Direct Handle (https://razorpay.me/@abeycollab)", icon: "ExternalLink" },
   { id: "paypal_global", name: "PayPal Global", icon: "Wallet" },
   { id: "wise_transfer", name: "Wise Cross-Border Transfer", icon: "ArrowRightLeft" },
   { id: "swift_wire", name: "International SWIFT Wire", icon: "Landmark" },

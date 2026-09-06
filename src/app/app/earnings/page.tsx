@@ -11,7 +11,7 @@ import { AnimatedEmptyState } from "@/components/ui/AnimatedEmptyState";
 import { formatCurrency } from "@/core/utils/formatters";
 import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
 import { RazorpayCheckoutButton } from "@/components/payments/RazorpayCheckoutButton";
-import { Wallet, ShieldCheck, Download, ArrowRight, CheckCircle2, Receipt, Globe, Landmark, ArrowRightLeft, CreditCard } from "lucide-react";
+import { Wallet, ShieldCheck, Download, ArrowRight, CheckCircle2, Receipt, Globe, Landmark, ArrowRightLeft, CreditCard, ExternalLink } from "lucide-react";
 
 export default function EarningsAndEscrowPage() {
   const { role, currentCreator, currentBrand } = useAuthStore();
@@ -177,7 +177,7 @@ export default function EarningsAndEscrowPage() {
           </p>
         </div>
 
-        <div className="shrink-0">
+        <div className="shrink-0 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
           <RazorpayCheckoutButton
             amount={500}
             currency="INR"
@@ -193,6 +193,15 @@ export default function EarningsAndEscrowPage() {
               type: "escrow_deposit",
             }}
           />
+          <a
+            href="https://razorpay.me/@abeycollab"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2.5 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0A0A0E] dark:text-white font-bold text-xs border border-black/10 dark:border-white/15 transition-all flex items-center justify-center gap-1.5 active:scale-98"
+          >
+            <span>Direct Handle (@abeycollab)</span>
+            <ExternalLink className="w-3.5 h-3.5 text-[#7A7A8A]" />
+          </a>
         </div>
       </div>
 
