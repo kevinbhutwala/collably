@@ -57,7 +57,7 @@ export default function AdminReportsPage() {
             </span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
-            Agency Analytics &amp; GMV Platform Telemetry
+            Agency Analytics & GMV Platform Telemetry
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4] mt-0.5 font-sans">
             Real-time transaction volume, creator payouts, campaign conversion velocity, and platform retention.

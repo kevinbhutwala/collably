@@ -13,11 +13,16 @@ async function performLogin(page: any, email: string, pass: string) {
   await page.fill('input[type="email"]', email);
   await page.fill('input[type="password"]', pass);
   await page.click('button[type="submit"]');
-  await page.waitForTimeout(1000);
+  await page.waitForURL((url: any) => !url.pathname.includes("/login"), { timeout: 15_000 });
+  await page.waitForLoadState("domcontentloaded");
 }
 
 test.describe("AbeyCollab Marketplace Operating System Full Flow", () => {
   test.describe.configure({ mode: "serial" });
+
+  test.beforeEach(async ({ context }) => {
+    await context.clearCookies();
+  });
 
   test("1. Creator OS: Market Pulse, Dedicated Trending Hub, Growth Center & Transaction Lifecycle", async ({ page }) => {
     // 1. Login
