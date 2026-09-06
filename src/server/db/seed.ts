@@ -1,9 +1,48 @@
 import { DatabaseState, UserEntity } from "./schema";
 import { hashPassword } from "../auth/crypto";
 import { ALL_PLANS } from "@/core/constants";
-import { SubscriptionEntity, CreatorProfile, BrandProfile } from "@/core/types";
+import { SubscriptionEntity, CreatorProfile, BrandProfile, AlgorithmWeightsConfig, PlatformMetricEntity, UserBadgeEntity } from "@/core/types";
 import { MOCK_CAMPAIGNS } from "@/mock/campaigns.mock";
+import { MOCK_CREATORS } from "@/mock/creators.mock";
 import { MOCK_CONVERSATIONS, MOCK_MESSAGES } from "@/mock/messages.mock";
+
+export const DEFAULT_ALGORITHM_CONFIG: AlgorithmWeightsConfig = {
+  id: "algo-config-default",
+  creatorWeights: {
+    engagementRate: 0.20,
+    engagementGrowth: 0.15,
+    profileViews: 0.10,
+    profileSaves: 0.10,
+    campaignApplications: 0.05,
+    successfulCollabs: 0.15,
+    completionRate: 0.10,
+    responseRate: 0.05,
+    reviewsRating: 0.10,
+  },
+  campaignWeights: {
+    views: 0.20,
+    applications: 0.30,
+    velocity: 0.25,
+    categoryDemand: 0.15,
+    daysRemaining: 0.10,
+  },
+  risingCriteria: {
+    maxFollowers: 100000,
+    minEngagementRate: 4.5,
+    minRecentVelocity: 1.25,
+    minCompletedDeals: 1,
+  },
+  badgeThresholds: {
+    fastResponderMaxHours: 2,
+    topPerformerMinCompletionRate: 95,
+    topRatedMinRating: 4.8,
+    topRatedMinReviewsCount: 3,
+    brandFavoriteMinRehireRate: 60,
+    newTalentMaxAccountAgeDays: 30,
+  },
+  updatedAt: new Date().toISOString(),
+};
+
 
 export function getInitialSeedDatabase(): DatabaseState {
   const defaultPasswordHash = hashPassword("password123");
@@ -171,6 +210,7 @@ export function getInitialSeedDatabase(): DatabaseState {
       },
       rateCards: [],
     },
+    ...MOCK_CREATORS.filter((c) => c.userId !== "user-creator"),
   ];
 
   const initialBrands: BrandProfile[] = [
@@ -192,6 +232,17 @@ export function getInitialSeedDatabase(): DatabaseState {
       socialHandles: {},
       createdAt: now,
     },
+  ];
+
+  // Seed baseline platform metrics for trending calculation
+  const seedMetrics: PlatformMetricEntity[] = [
+    { id: "met-1", eventType: "profile_view", targetId: "creator-1", targetType: "creator", timestamp: new Date(Date.now() - 3600000).toISOString() },
+    { id: "met-2", eventType: "profile_view", targetId: "creator-1", targetType: "creator", timestamp: new Date(Date.now() - 7200000).toISOString() },
+    { id: "met-3", eventType: "profile_save", targetId: "creator-1", targetType: "creator", timestamp: new Date(Date.now() - 10800000).toISOString() },
+    { id: "met-4", eventType: "campaign_apply", targetId: "camp-1", targetType: "campaign", timestamp: new Date(Date.now() - 14400000).toISOString() },
+    { id: "met-5", eventType: "profile_view", targetId: "creator-2", targetType: "creator", timestamp: new Date(Date.now() - 18000000).toISOString() },
+    { id: "met-6", eventType: "profile_view", targetId: "creator-3", targetType: "creator", timestamp: new Date(Date.now() - 21600000).toISOString() },
+    { id: "met-7", eventType: "profile_save", targetId: "creator-3", targetType: "creator", timestamp: new Date(Date.now() - 25200000).toISOString() },
   ];
 
   return {
@@ -216,5 +267,10 @@ export function getInitialSeedDatabase(): DatabaseState {
     aiUsage: [],
     auditLogs: [],
     ledgerEntries: [],
+    platformMetrics: seedMetrics,
+    algorithmConfig: DEFAULT_ALGORITHM_CONFIG,
+    userBadges: [],
+    suspiciousActivities: [],
   };
 }
+

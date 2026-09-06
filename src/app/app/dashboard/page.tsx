@@ -13,7 +13,10 @@ import { BrandIcon } from "@/components/ui/BrandLogos";
 import { AnimatedEmptyState } from "@/components/ui/AnimatedEmptyState";
 import { ProfileCompletenessCard } from "@/components/creators/ProfileCompletenessCard";
 import { SubscriptionUsageCard } from "@/components/subscriptions/SubscriptionUsageCard";
+import { CreatorMarketPulseWidget } from "@/components/marketplace/CreatorMarketPulseWidget";
+import { BrandMarketIntelligenceWidget } from "@/components/marketplace/BrandMarketIntelligenceWidget";
 import { formatCurrency } from "@/core/utils/formatters";
+
 
 import {
   Wallet,
@@ -215,8 +218,16 @@ export default function DashboardPage() {
         )}
       </div>
 
+      {/* ── Role-Specific Market Pulse & Pricing Intelligence ── */}
+      {role === "creator" ? (
+        <CreatorMarketPulseWidget creatorId={currentCreator?.id} />
+      ) : (
+        <BrandMarketIntelligenceWidget initialCategory={currentBrand?.industry} />
+      )}
+
       {/* ── Subscription Status & Usage Limits Widget ── */}
       <SubscriptionUsageCard />
+
 
       {/* ── Main Two-Column Stage ── */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">

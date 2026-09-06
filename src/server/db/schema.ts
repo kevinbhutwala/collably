@@ -16,7 +16,12 @@ import {
   Conversation,
   SubscriptionEntity,
   UserReliabilityScore,
+  PlatformMetricEntity,
+  AlgorithmWeightsConfig,
+  UserBadgeEntity,
+  SuspiciousActivityRecord,
 } from "@/core/types";
+
 
 export interface UserEntity {
   id: string;
@@ -111,5 +116,10 @@ export interface DatabaseState {
   auditLogs: AuditEvent[];
   ledgerEntries: any[];
   reliabilityScores?: UserReliabilityScore[];
+  platformMetrics?: PlatformMetricEntity[];
+  algorithmConfig?: AlgorithmWeightsConfig;
+  userBadges?: UserBadgeEntity[];
+  suspiciousActivities?: SuspiciousActivityRecord[];
 }
+
 

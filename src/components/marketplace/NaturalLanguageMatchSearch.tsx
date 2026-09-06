@@ -1,0 +1,293 @@
+"use client";
+
+import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { CreatorProfile, ExplainableMatchResult, ParsedBriefQuery } from "@/core/types";
+import { ReputationBadgeBar } from "./ReputationBadgeBar";
+
+const EXAMPLE_PROMPTS = [
+  "Fitness creator from Mumbai with 50K-250K followers and ₹30K budget",
+  "Technology & AI YouTube creator with >5% engagement under $2500",
+  "Luxury Fashion & Style creator in London with high engagement",
+  "Design & Creative specialist in San Francisco with verified reliability",
+];
+
+export function NaturalLanguageMatchSearch() {
+  const [query, setQuery] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [parsedBrief, setParsedBrief] = useState<ParsedBriefQuery | null>(null);
+  const [results, setResults] = useState<{ creator: CreatorProfile; matchResult: ExplainableMatchResult }[]>([]);
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+
+  const handleSearch = async (textToSearch?: string) => {
+    const q = textToSearch !== undefined ? textToSearch : query;
+    if (!q.trim()) return;
+
+    setLoading(true);
+    try {
+      const res = await fetch("/api/marketplace/match", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ queryText: q, limit: 8 }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setParsedBrief(data.parsedBrief);
+        setResults(data.results || []);
+      }
+    } catch (err) {
+      console.error("Match search error:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const applyExample = (prompt: string) => {
+    setQuery(prompt);
+    handleSearch(prompt);
+  };
+
+  return (
+    <div className="w-full rounded-2xl border border-white/10 bg-[#12121A] p-6 sm:p-8 shadow-2xl backdrop-blur-xl">
+      {/* Header */}
+      <div className="flex flex-col gap-2">
+        <div className="inline-flex items-center gap-2 self-start rounded-full border border-purple-500/30 bg-purple-500/10 px-3 py-1 text-xs font-semibold text-purple-400">
+          <span>🎯</span> Explainable 6-Factor Compatibility Engine
+        </div>
+        <h2 className="text-xl sm:text-2xl font-bold text-white">
+          Natural Language Creator Search & Compatibility Match
+        </h2>
+        <p className="text-xs sm:text-sm text-neutral-400">
+          Type your campaign brief in plain English. Our engine automatically parses location, audience size, budget, and niche to find your ideal partners.
+        </p>
+      </div>
+
+      {/* Search Input Bar */}
+      <div className="mt-5 flex flex-col sm:flex-row gap-3">
+        <div className="relative flex-1">
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+            placeholder="e.g. Fitness creator from Mumbai with 50K-250K followers and ₹30K budget..."
+            className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3.5 text-sm text-white placeholder-neutral-500 focus:border-[#FFD21F] focus:outline-none focus:ring-1 focus:ring-[#FFD21F] transition-all"
+          />
+          {query && (
+            <button
+              onClick={() => { setQuery(""); setParsedBrief(null); setResults([]); }}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-white text-sm"
+            >
+              ✕
+            </button>
+          )}
+        </div>
+        <button
+          onClick={() => handleSearch()}
+          disabled={loading}
+          className="flex items-center justify-center gap-2 rounded-xl bg-[#FFD21F] px-6 py-3.5 text-sm font-bold text-black shadow-lg shadow-[#FFD21F]/20 hover:brightness-110 disabled:opacity-50 transition-all cursor-pointer"
+        >
+          {loading ? (
+            <span className="h-4 w-4 animate-spin rounded-full border-2 border-black border-t-transparent" />
+          ) : (
+            <span>Find Matches ⚡</span>
+          )}
+        </button>
+      </div>
+
+      {/* Suggested Quick Prompts */}
+      <div className="mt-4 flex flex-wrap items-center gap-2">
+        <span className="text-xs text-neutral-400 font-medium">Try asking:</span>
+        {EXAMPLE_PROMPTS.map((prompt, idx) => (
+          <button
+            key={idx}
+            onClick={() => applyExample(prompt)}
+            className="rounded-lg border border-white/10 bg-white/[0.03] px-2.5 py-1 text-[11px] text-neutral-300 hover:border-[#FFD21F]/40 hover:text-white transition-all text-left"
+          >
+            &ldquo;{prompt}&rdquo;
+          </button>
+
+        ))}
+      </div>
+
+      {/* Parsed Criteria Chips */}
+      {parsedBrief && (
+        <div className="mt-6 rounded-xl border border-white/10 bg-white/[0.02] p-4">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-semibold text-neutral-300">
+              Extracted Campaign Parameters:
+            </span>
+            <span className="text-[11px] text-[#FFD21F] font-mono">
+              Deterministic 6-Factor Parser
+            </span>
+          </div>
+          <div className="mt-2.5 flex flex-wrap gap-2">
+            {parsedBrief.category && (
+              <span className="inline-flex items-center gap-1 rounded-md border border-purple-500/30 bg-purple-500/10 px-2 py-1 text-xs font-medium text-purple-300">
+                <span>📁</span> {parsedBrief.category}
+              </span>
+            )}
+            {parsedBrief.location && (
+              <span className="inline-flex items-center gap-1 rounded-md border border-cyan-500/30 bg-cyan-500/10 px-2 py-1 text-xs font-medium text-cyan-300">
+                <span>📍</span> {parsedBrief.location}
+              </span>
+            )}
+            {parsedBrief.minFollowers !== undefined && (
+              <span className="inline-flex items-center gap-1 rounded-md border border-emerald-500/30 bg-emerald-500/10 px-2 py-1 text-xs font-medium text-emerald-300">
+                <span>👥</span> {parsedBrief.minFollowers / 1000}k–{(parsedBrief.maxFollowers || 250000) / 1000}k Followers
+              </span>
+            )}
+            {parsedBrief.maxBudget !== undefined && (
+              <span className="inline-flex items-center gap-1 rounded-md border border-amber-500/30 bg-amber-500/10 px-2 py-1 text-xs font-medium text-amber-300">
+                <span>💰</span> Max {parsedBrief.currency === "INR" ? "₹" : "$"}{parsedBrief.maxBudget.toLocaleString()}
+              </span>
+            )}
+            {parsedBrief.minEngagementRate !== undefined && (
+              <span className="inline-flex items-center gap-1 rounded-md border border-teal-500/30 bg-teal-500/10 px-2 py-1 text-xs font-medium text-teal-300">
+                <span>⚡</span> ≥ {parsedBrief.minEngagementRate}% Engagement
+              </span>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Results Grid */}
+      {results.length > 0 && (
+        <div className="mt-6 space-y-4">
+          <div className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">
+            Top Matched Creators ({results.length})
+          </div>
+
+          <div className="grid grid-cols-1 gap-4">
+            {results.map(({ creator, matchResult }) => {
+              const isExpanded = expandedId === creator.id;
+              return (
+                <div
+                  key={creator.id}
+                  className="rounded-xl border border-white/10 bg-[#16161F] p-4 transition-all hover:border-[#FFD21F]/30"
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    {/* Creator Identity */}
+                    <div className="flex items-center gap-3.5 min-w-0">
+                      <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-white/20 bg-neutral-800">
+                        {creator.avatarUrl ? (
+                          <Image
+                            src={creator.avatarUrl}
+                            alt={creator.fullName}
+                            fill
+                            className="object-cover"
+                          />
+                        ) : (
+                          <div className="flex h-full w-full items-center justify-center font-bold text-white text-sm">
+                            {creator.fullName.charAt(0)}
+                          </div>
+                        )}
+                      </div>
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-2">
+                          <h4 className="font-semibold text-white text-sm truncate">
+                            {creator.fullName}
+                          </h4>
+                          {creator.verified && <span className="text-blue-400 text-xs">✓</span>}
+                          <span className="rounded-md bg-white/5 px-2 py-0.5 text-[10px] text-neutral-400">
+                            {creator.primaryCategory}
+                          </span>
+                        </div>
+                        <p className="text-xs text-neutral-400 truncate">
+                          @{creator.handle} · {creator.location} · {creator.totalFollowers.toLocaleString()} followers · {creator.avgEngagementRate}% eng
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Match Score & Actions */}
+                    <div className="flex items-center gap-3 self-end sm:self-center">
+                      <div className="text-right">
+                        <div className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-400 shadow-md">
+                          <span>🎯</span> {matchResult.overallScore}% Match
+                        </div>
+                        <div className="text-[10px] text-neutral-400 mt-0.5">
+                          {matchResult.matchTier} Tier
+                        </div>
+                      </div>
+
+                      <button
+                        onClick={() => setExpandedId(isExpanded ? null : creator.id)}
+                        className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-neutral-300 hover:text-white transition-all cursor-pointer"
+                      >
+                        {isExpanded ? "Hide Breakdown ▲" : "Explain Why ▼"}
+                      </button>
+
+                      <Link
+                        href={`/creators/${creator.id}`}
+                        className="rounded-lg bg-[#FFD21F] px-3.5 py-1.5 text-xs font-bold text-black hover:brightness-110 transition-all"
+                      >
+                        Invite →
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* Expandable Factor Breakdown */}
+                  {isExpanded && (
+                    <div className="mt-4 pt-4 border-t border-white/10 space-y-3 animate-in fade-in">
+                      <div className="text-xs text-neutral-300 font-medium leading-relaxed">
+                        {matchResult.summary}
+                      </div>
+
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                        {Object.entries(matchResult.factors).map(([key, f]) => {
+                          const labels: Record<string, string> = {
+                            categoryMatch: "Niche & Category",
+                            audienceMatch: "Audience & Reach",
+                            budgetMatch: "Budget Alignment",
+                            locationMatch: "Location Fit",
+                            engagementMatch: "Engagement Health",
+                            reliabilityMatch: "Reliability History",
+                          };
+                          return (
+                            <div
+                              key={key}
+                              className="rounded-lg border border-white/5 bg-white/[0.02] p-2.5"
+                            >
+                              <div className="flex items-center justify-between text-[11px]">
+                                <span className="text-neutral-400">{labels[key]}</span>
+                                <span className="font-bold text-white">{f.score}%</span>
+                              </div>
+                              <div className="mt-1 h-1.5 w-full rounded-full bg-white/10 overflow-hidden">
+                                <div
+                                  className="h-full bg-gradient-to-r from-amber-400 to-[#FFD21F] rounded-full"
+                                  style={{ width: `${f.score}%` }}
+                                />
+                              </div>
+                              <p className="mt-1.5 text-[10px] text-neutral-400 line-clamp-2">
+                                {f.rationale}
+                              </p>
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      {matchResult.keyStrengths.length > 0 && (
+                        <div className="flex flex-wrap items-center gap-2 pt-1">
+                          <span className="text-[11px] font-semibold text-emerald-400">Strengths:</span>
+                          {matchResult.keyStrengths.map((s, idx) => (
+                            <span
+                              key={idx}
+                              className="rounded-md bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 text-[10px] text-emerald-300"
+                            >
+                              ✓ {s}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

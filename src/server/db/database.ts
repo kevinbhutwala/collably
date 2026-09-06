@@ -45,6 +45,11 @@ class DatabaseClient {
         if (!this.state!.aiUsage) this.state!.aiUsage = [];
         if (!this.state!.ledgerEntries) this.state!.ledgerEntries = [];
         if (!this.state!.reliabilityScores) this.state!.reliabilityScores = [];
+        if (!this.state!.platformMetrics) this.state!.platformMetrics = [...(seed.platformMetrics || [])];
+        if (!this.state!.algorithmConfig) this.state!.algorithmConfig = seed.algorithmConfig;
+        if (!this.state!.userBadges) this.state!.userBadges = [];
+        if (!this.state!.suspiciousActivities) this.state!.suspiciousActivities = [];
+
 
         // Merge only the 3 seed users — do not re-add removed users
         for (const seedUser of seed.users) {

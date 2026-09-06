@@ -817,3 +817,6 @@ export interface SubscriptionEntity {
   updatedAt: string;
 }
 
+export * from "./marketplace.types";
+
+

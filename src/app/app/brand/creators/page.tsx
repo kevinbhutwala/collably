@@ -9,10 +9,15 @@ import { useFilterStore } from "@/stores/filter.store";
 import { Users, Sparkles, SlidersHorizontal } from "lucide-react";
 import { CATEGORIES } from "@/core/constants";
 import { cn } from "@/lib/utils";
+import { NaturalLanguageMatchSearch } from "@/components/marketplace/NaturalLanguageMatchSearch";
+import { TrendingShowcase } from "@/components/marketplace/TrendingShowcase";
+
 
 export default function BrandCreatorDiscoveryPage() {
+  const [tabMode, setTabMode] = useState<"directory" | "match" | "trending">("directory");
   const [creators, setCreators] = useState<CreatorProfile[]>([]);
   const [loading, setLoading] = useState(true);
+
 
   const {
     creatorCategory,
@@ -108,29 +113,75 @@ export default function BrandCreatorDiscoveryPage() {
         </div>
       </div>
 
-      {/* Modern Top Dropdown Filter Bar */}
-      <CreatorFilterBar />
+      {/* Discovery Mode Switcher */}
+      <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none border-b border-black/8">
+        <button
+          onClick={() => setTabMode("directory")}
+          className={cn(
+            "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shrink-0",
+            tabMode === "directory"
+              ? "bg-[#0A0A0E] text-white shadow-sm"
+              : "bg-white text-neutral-600 hover:text-black border border-black/5"
+          )}
+        >
+          <span>👥</span> All Verified Creators
+        </button>
+        <button
+          onClick={() => setTabMode("match")}
+          className={cn(
+            "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shrink-0",
+            tabMode === "match"
+              ? "bg-purple-600 text-white shadow-sm"
+              : "bg-white text-neutral-600 hover:text-black border border-black/5"
+          )}
+        >
+          <span>🎯</span> Natural Language Brief Match
+        </button>
+        <button
+          onClick={() => setTabMode("trending")}
+          className={cn(
+            "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shrink-0",
+            tabMode === "trending"
+              ? "bg-[#FFD21F] text-[#0A0A0E] shadow-sm border border-black/10"
+              : "bg-white text-neutral-600 hover:text-black border border-black/5"
+          )}
+        >
+          <span>🔥</span> Trending Talent Hub
+        </button>
+      </div>
 
-      {/* Full-Width Creator Roster Grid */}
-      {filteredCreators.length === 0 ? (
-        <div className="py-16 text-center rounded-3xl bg-white border border-black/8 p-8 space-y-3 shadow-xs">
-          <Users className="w-8 h-8 text-[#8A8A9A] mx-auto" />
-          <h3 className="text-sm font-bold text-[#0A0A0E]">No creators match your current filters</h3>
-          <p className="text-xs text-[#6A6A78]">Try adjusting follower benchmarks, categories, or clearing search terms.</p>
-          <button
-            onClick={resetCreatorFilters}
-            className="px-4 py-2 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-xs font-bold shadow-xs hover:bg-[#FFE052] transition-colors"
-          >
-            Reset All Filters
-          </button>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {filteredCreators.map((c) => (
-            <CreatorCard key={c.id} creator={c} />
-          ))}
-        </div>
+      {/* Views */}
+      {tabMode === "match" && <NaturalLanguageMatchSearch />}
+      {tabMode === "trending" && <TrendingShowcase />}
+
+      {tabMode === "directory" && (
+        <>
+          {/* Modern Top Dropdown Filter Bar */}
+          <CreatorFilterBar />
+
+          {/* Full-Width Creator Roster Grid */}
+          {filteredCreators.length === 0 ? (
+            <div className="py-16 text-center rounded-3xl bg-white border border-black/8 p-8 space-y-3 shadow-xs">
+              <Users className="w-8 h-8 text-[#8A8A9A] mx-auto" />
+              <h3 className="text-sm font-bold text-[#0A0A0E]">No creators match your current filters</h3>
+              <p className="text-xs text-[#6A6A78]">Try adjusting follower benchmarks, categories, or clearing search terms.</p>
+              <button
+                onClick={resetCreatorFilters}
+                className="px-4 py-2 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-xs font-bold shadow-xs hover:bg-[#FFE052] transition-colors"
+              >
+                Reset All Filters
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {filteredCreators.map((c) => (
+                <CreatorCard key={c.id} creator={c} />
+              ))}
+            </div>
+          )}
+        </>
       )}
     </div>
   );
 }
+

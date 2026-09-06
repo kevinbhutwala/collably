@@ -9,6 +9,9 @@ import { formatNumber, formatCurrency } from "@/core/utils/formatters";
 import { CheckCircle2, ArrowRight, Bookmark, Sparkles, Star, Users } from "lucide-react";
 import { useUIStore } from "@/stores/ui.store";
 import { cn } from "@/lib/utils";
+import { ReputationBadgeBar } from "@/components/marketplace/ReputationBadgeBar";
+import { getClientCreatorBadges } from "@/core/utils/badge.utils";
+
 
 export function CreatorCard({ creator }: { creator: CreatorProfile }) {
   const { addToast } = useUIStore();
@@ -83,8 +86,14 @@ export function CreatorCard({ creator }: { creator: CreatorProfile }) {
           {creator.bio}
         </p>
 
+        {/* Reputation Badges Strip */}
+        <div className="mb-3">
+          <ReputationBadgeBar badges={getClientCreatorBadges(creator)} maxVisible={3} size="sm" />
+        </div>
+
         {/* Social Accounts Badge Strip */}
         {creator.socialAccounts && creator.socialAccounts.length > 0 && (
+
           <div className="flex items-center gap-1.5 mb-4 overflow-x-auto no-scrollbar">
             {creator.socialAccounts.map((sa) => (
               <span

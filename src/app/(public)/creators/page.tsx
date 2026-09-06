@@ -14,10 +14,16 @@ import { CreativeLoader } from "@/components/ui/CreativeLoader";
 import { useUIStore } from "@/stores/ui.store";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
+import { TrendingShowcase } from "@/components/marketplace/TrendingShowcase";
+import { NaturalLanguageMatchSearch } from "@/components/marketplace/NaturalLanguageMatchSearch";
+import { MarketplaceLeaderboards } from "@/components/marketplace/MarketplaceLeaderboards";
+
 
 export default function CreatorsDirectoryPage() {
+  const [viewMode, setViewMode] = useState<"directory" | "trending" | "match" | "leaderboards">("directory");
   const [creators, setCreators] = useState<CreatorProfile[]>([]);
   const [loading, setLoading] = useState(true);
+
   const [quickViewCreator, setQuickViewCreator] = useState<CreatorQuickViewData | null>(null);
   const [bookmarkedIds, setBookmarkedIds] = useState<Set<string>>(new Set());
   const { addToast } = useUIStore();
@@ -119,100 +125,157 @@ export default function CreatorsDirectoryPage() {
 
         </div>
 
-        {/* Filter Pills & Search */}
-        <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 pt-2">
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none">
-            <button
-              onClick={() => setCreatorCategory("all")}
-              className={cn(
-                "px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap shrink-0",
-                creatorCategory === "all"
-                  ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs font-bold border border-black/10"
-                  : "bg-white text-[#6A6A78] hover:text-[#0A0A0E] border border-black/8"
-              )}
-            >
-              All Talent
-            </button>
-            {CATEGORIES.map((cat) => (
+        {/* Mode Selector Tabs */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none border-b border-black/8 pt-2">
+          <button
+            onClick={() => setViewMode("directory")}
+            className={cn(
+              "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer",
+              viewMode === "directory"
+                ? "bg-[#0A0A0E] text-white shadow-sm"
+                : "bg-white text-neutral-600 hover:text-black border border-black/5"
+            )}
+          >
+            <span>👥</span> All Talent Directory
+          </button>
+          <button
+            onClick={() => setViewMode("trending")}
+            className={cn(
+              "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer",
+              viewMode === "trending"
+                ? "bg-[#FFD21F] text-[#0A0A0E] shadow-sm border border-black/10"
+                : "bg-white text-neutral-600 hover:text-black border border-black/5"
+            )}
+          >
+            <span>🔥</span> Trending Hub
+          </button>
+          <button
+            onClick={() => setViewMode("match")}
+            className={cn(
+              "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer",
+              viewMode === "match"
+                ? "bg-purple-600 text-white shadow-sm"
+                : "bg-white text-neutral-600 hover:text-black border border-black/5"
+            )}
+          >
+            <span>🎯</span> AI Brief Match
+          </button>
+          <button
+            onClick={() => setViewMode("leaderboards")}
+            className={cn(
+              "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer",
+              viewMode === "leaderboards"
+                ? "bg-[#0A0A0E] text-[#FFD21F] shadow-sm border border-[#FFD21F]/30"
+                : "bg-white text-neutral-600 hover:text-black border border-black/5"
+            )}
+          >
+            <span>🏆</span> Leaderboards
+          </button>
+        </div>
+
+        {/* Filter Pills & Search (Directory View Only) */}
+        {viewMode === "directory" && (
+          <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 pt-2">
+            <div className="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none">
               <button
-                key={cat}
-                onClick={() => setCreatorCategory(cat)}
+                onClick={() => setCreatorCategory("all")}
                 className={cn(
                   "px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap shrink-0",
-                  creatorCategory === cat
+                  creatorCategory === "all"
                     ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs font-bold border border-black/10"
                     : "bg-white text-[#6A6A78] hover:text-[#0A0A0E] border border-black/8"
                 )}
               >
-                {cat}
+                All Talent
               </button>
-            ))}
-          </div>
+              {CATEGORIES.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setCreatorCategory(cat)}
+                  className={cn(
+                    "px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap shrink-0",
+                    creatorCategory === cat
+                      ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs font-bold border border-black/10"
+                      : "bg-white text-[#6A6A78] hover:text-[#0A0A0E] border border-black/8"
+                  )}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
 
-          {/* Search Box */}
-          <div className="relative w-full md:w-72">
-            <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#7A7A8A]" />
-            <input
-              type="text"
-              value={creatorSearchQuery}
-              onChange={(e) => setCreatorSearchQuery(e.target.value)}
-              placeholder="Search creators by niche, name..."
-              className="w-full bg-white border border-black/8 rounded-full pl-9 pr-4 py-2 text-xs text-[#0A0A0E] placeholder:text-[#8A8A9A] focus:outline-none focus:border-[#FFD21F] shadow-xs transition-all font-sans"
-            />
+            {/* Search Box */}
+            <div className="relative w-full md:w-72">
+              <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#7A7A8A]" />
+              <input
+                type="text"
+                value={creatorSearchQuery}
+                onChange={(e) => setCreatorSearchQuery(e.target.value)}
+                placeholder="Search creators by niche, name..."
+                className="w-full bg-white border border-black/8 rounded-full pl-9 pr-4 py-2 text-xs text-[#0A0A0E] placeholder:text-[#8A8A9A] focus:outline-none focus:border-[#FFD21F] shadow-xs transition-all font-sans"
+              />
+            </div>
           </div>
-        </div>
-      </div>
-
-      {/* Creator Grid & Loading State */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {loading ? (
-          <CreativeLoader
-            size="lg"
-            label="Syncing Creator Roster"
-            subtext="Fetching audited media kits and verified production reels..."
-          />
-        ) : creators.length === 0 ? (
-          <div className="py-24 text-center rounded-3xl bg-white border border-black/8 p-8 space-y-3 shadow-xs">
-            <Users className="w-8 h-8 text-[#7A7A8A] mx-auto" />
-            <h3 className="text-base font-bold text-[#0A0A0E] font-display">No creators match your filters</h3>
-            <p className="text-xs text-[#6A6A78]">Try resetting your category or search query.</p>
-            <button
-              onClick={() => {
-                setCreatorCategory("all");
-                setCreatorSearchQuery("");
-              }}
-              className="px-4 py-2 rounded-full bg-[#0A0A0E] text-white text-xs font-bold"
-            >
-              Reset Filters
-            </button>
-          </div>
-        ) : (
-          <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <AnimatePresence>
-              {creators.map((c) => {
-                const item = transformToQuickView(c);
-                return (
-                  <motion.div
-                    layout
-                    key={c.id}
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 16 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <EditorialCreatorCard
-                      creator={item}
-                      onQuickView={(cd) => setQuickViewCreator(cd)}
-                      onBookmarkToggle={handleBookmarkToggle}
-                      isBookmarked={bookmarkedIds.has(c.id)}
-                    />
-                  </motion.div>
-                );
-              })}
-            </AnimatePresence>
-          </motion.div>
         )}
       </div>
+
+      {/* Main View Area */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {viewMode === "trending" && <TrendingShowcase />}
+        {viewMode === "match" && <NaturalLanguageMatchSearch />}
+        {viewMode === "leaderboards" && <MarketplaceLeaderboards />}
+
+        {viewMode === "directory" && (
+          loading ? (
+            <CreativeLoader
+              size="lg"
+              label="Syncing Creator Roster"
+              subtext="Fetching audited media kits and verified production reels..."
+            />
+          ) : creators.length === 0 ? (
+            <div className="py-24 text-center rounded-3xl bg-white border border-black/8 p-8 space-y-3 shadow-xs">
+              <Users className="w-8 h-8 text-[#7A7A8A] mx-auto" />
+              <h3 className="text-base font-bold text-[#0A0A0E] font-display">No creators match your filters</h3>
+              <p className="text-xs text-[#6A6A78]">Try resetting your category or search query.</p>
+              <button
+                onClick={() => {
+                  setCreatorCategory("all");
+                  setCreatorSearchQuery("");
+                }}
+                className="px-4 py-2 rounded-full bg-[#0A0A0E] text-white text-xs font-bold"
+              >
+                Reset Filters
+              </button>
+            </div>
+          ) : (
+            <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <AnimatePresence>
+                {creators.map((c) => {
+                  const item = transformToQuickView(c);
+                  return (
+                    <motion.div
+                      layout
+                      key={c.id}
+                      initial={{ opacity: 0, y: 16 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 16 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <EditorialCreatorCard
+                        creator={item}
+                        onQuickView={(cd) => setQuickViewCreator(cd)}
+                        onBookmarkToggle={handleBookmarkToggle}
+                        isBookmarked={bookmarkedIds.has(c.id)}
+                      />
+                    </motion.div>
+                  );
+                })}
+              </AnimatePresence>
+            </motion.div>
+          )
+        )}
+      </div>
+
 
       {/* Infinite Brand Marquee */}
       <AnimatedBrandSlider speed={28} direction="left" />
