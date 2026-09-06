@@ -88,18 +88,52 @@ export default function DedicatedTrendingPage() {
     setIsInviteModalOpen(true);
   };
 
-  const handleSendInvite = () => {
+  const handleSendInvite = async () => {
     if (!selectedCreator) return;
     setIsSendingInvite(true);
-    setTimeout(() => {
-      setIsSendingInvite(false);
+    try {
+      // 1. Persist collaboration directly in database
+      const collabRes = await fetch("/api/collaborations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          creatorId: selectedCreator.id,
+          campaignTitle: `Partnership: ${selectedCreator.fullName} Showcase`,
+          totalAgreedBudget: Number(inviteBudget) || 2000,
+          notes: inviteMessage,
+          deliverableType: "Short-Form Video (Reels / Shorts)",
+        }),
+      });
+      const collabData = await collabRes.json();
+
+      // 2. Track engagement signal in Anti-Gaming & Trending Engine
+      await fetch("/api/marketplace/track", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          eventType: "invitation_sent",
+          targetId: selectedCreator.id,
+          targetType: "creator",
+          metadata: { budget: Number(inviteBudget) },
+        }),
+      }).catch(() => null);
+
       setIsInviteModalOpen(false);
       addToast({
         type: "success",
-        title: "Invitation Sent",
-        message: `Direct sponsorship invitation and brief proposal dispatched to ${selectedCreator.fullName}.`,
+        title: "Collaboration Proposal Dispatched",
+        message: `Direct sponsorship invitation for $${Number(inviteBudget).toLocaleString()} created and sent to ${selectedCreator.fullName}.`,
       });
-    }, 600);
+    } catch (err: any) {
+      console.error("Failed to send invite:", err);
+      addToast({
+        type: "error",
+        title: "Invitation Failed",
+        message: err.message || "Failed to dispatch proposal. Please try again.",
+      });
+    } finally {
+      setIsSendingInvite(false);
+    }
   };
 
   return (

@@ -6,15 +6,24 @@ import Link from "next/link";
 import { BrandMarketIntelligenceData } from "@/core/types";
 
 export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCategory?: string }) {
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory || "Technology & AI");
   const [data, setData] = useState<BrandMarketIntelligenceData | null>(null);
   const [recommendedCreators, setRecommendedCreators] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const CATEGORY_OPTIONS = [
+    "Technology & AI",
+    "Fitness & Wellness",
+    "Finance & Business",
+    "Fashion & Style",
+    "Gaming & Esports",
+    "Design & Creative",
+  ];
+
   useEffect(() => {
     let isMounted = true;
-    const url = initialCategory
-      ? `/api/marketplace/intelligence?category=${encodeURIComponent(initialCategory)}`
-      : "/api/marketplace/intelligence";
+    setLoading(true);
+    const url = `/api/marketplace/intelligence?category=${encodeURIComponent(selectedCategory)}`;
 
     Promise.all([
       fetch(url).then((res) => res.json()),
@@ -24,7 +33,13 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
         if (!isMounted) return;
         if (intelRes.intelligence) setData(intelRes.intelligence);
         const list = Array.isArray(creatorsRes) ? creatorsRes : creatorsRes.creators || [];
-        setRecommendedCreators(list.slice(0, 3));
+        // Filter creators to selected category, fallback to top creators
+        const matching = list.filter(
+          (c: any) =>
+            c.primaryCategory === selectedCategory ||
+            c.secondaryCategories?.includes(selectedCategory)
+        );
+        setRecommendedCreators((matching.length > 0 ? matching : list).slice(0, 3));
         setLoading(false);
       })
       .catch((err) => {
@@ -35,9 +50,9 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
     return () => {
       isMounted = false;
     };
-  }, [initialCategory]);
+  }, [selectedCategory]);
 
-  if (loading) {
+  if (loading && !data) {
     return (
       <div className="h-64 w-full animate-pulse rounded-2xl border border-white/5 bg-white/[0.02] p-6" />
     );
@@ -51,18 +66,33 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-black/8 dark:border-white/10">
         <div>
           <div className="inline-flex items-center gap-2 rounded-full border border-[#FFD21F]/40 bg-[#FFD21F]/15 px-3 py-1 text-xs font-semibold text-[#0A0A0E] dark:text-[#FFD21F]">
-            <span>📊</span> Brand Market Intelligence &amp; Rate Benchmarks
+            <span>📊</span> Brand Market Intelligence & Rate Benchmarks
           </div>
           <h3 className="mt-2 text-lg font-bold text-[#0A0A0E] dark:text-white font-display">
-            Creator Rate Benchmarks &amp; Market Pulse
+            Creator Rate Benchmarks & Market Pulse
           </h3>
           <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
             Real-time category demand benchmarks and high-compatibility creator candidates for your briefs.
           </p>
         </div>
-        <span className="self-start sm:self-auto rounded-xl bg-[#F4F4F8] dark:bg-white/5 border border-black/6 dark:border-white/10 px-3 py-1 text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4]">
-          Live Platform Telemetry
-        </span>
+
+        {/* Dynamic Category Switcher */}
+        <div className="flex items-center gap-2 self-start sm:self-auto">
+          <label className="text-[10px] font-mono uppercase font-bold text-[#7A7A8A] dark:text-[#8E8EA4] shrink-0">
+            Niche:
+          </label>
+          <select
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+            className="rounded-xl border border-black/10 dark:border-white/10 bg-[#F4F4F8] dark:bg-white/5 px-3 py-1.5 text-xs font-semibold text-[#0A0A0E] dark:text-white focus:border-[#FFD21F] focus:outline-none cursor-pointer transition-all shadow-2xs"
+          >
+            {CATEGORY_OPTIONS.map((cat) => (
+              <option key={cat} value={cat} className="bg-white dark:bg-[#12121A] text-[#0A0A0E] dark:text-white">
+                {cat}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       {/* Market Pulse Quick Metrics Strip */}
@@ -231,7 +261,7 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
                     href={`/creators/${creator.id}`}
                     className="px-3 py-1 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] text-[10px] font-extrabold hover:brightness-105 transition-all shadow-2xs border border-black/10"
                   >
-                    View &amp; Invite
+                    View & Invite
                   </Link>
                 </div>
               </div>

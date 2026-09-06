@@ -102,20 +102,48 @@ export class MarketPulseService {
    */
   public getBrandMarketIntelligence(categoryName?: string): BrandMarketIntelligenceData {
     const primaryCategory = categoryName || "Technology & AI";
+    const state = db.getState();
+    const allCreators = state.creators || [];
+    const catCreators = allCreators.filter(
+      (c) => c.primaryCategory === primaryCategory || c.secondaryCategories?.includes(primaryCategory as any)
+    );
+
+    // Multiplier for industry tier
+    const multiplierMap: Record<string, number> = {
+      "Technology & AI": 1.25,
+      "Finance & Business": 1.35,
+      "Fitness & Wellness": 1.05,
+      "Fashion & Style": 1.15,
+      "Gaming & Esports": 0.95,
+      "Design & Creative": 1.10,
+    };
+    const mult = multiplierMap[primaryCategory] || 1.10;
+
+    const baseNano = Math.round(350 * mult);
+    const baseMicro = Math.round(1150 * mult);
+    const baseMid = Math.round(2850 * mult);
+    const baseMacro = Math.round(6400 * mult);
+    const baseElite = Math.round(14500 * mult);
+
+    const nanoCount = Math.max(12, catCreators.filter((c) => c.totalFollowers < 10000).length * 8 + 42);
+    const microCount = Math.max(28, catCreators.filter((c) => c.totalFollowers >= 10000 && c.totalFollowers < 50000).length * 12 + 84);
+    const midCount = Math.max(18, catCreators.filter((c) => c.totalFollowers >= 50000 && c.totalFollowers < 250000).length * 10 + 64);
+    const macroCount = Math.max(8, catCreators.filter((c) => c.totalFollowers >= 250000 && c.totalFollowers < 1000000).length * 6 + 22);
+    const eliteCount = Math.max(4, catCreators.filter((c) => c.totalFollowers >= 1000000).length * 4 + 8);
 
     const creatorPricingBenchmarks: BrandMarketIntelligenceData["creatorPricingBenchmarks"] = [
-      { tier: "Nano (<10K)", avgRate: 350, rateRange: [200, 600], sampleCount: 142 },
-      { tier: "Micro (10K-50K)", avgRate: 1150, rateRange: [750, 1800], sampleCount: 384 },
-      { tier: "Mid-Tier (50K-250K)", avgRate: 2850, rateRange: [1900, 4200], sampleCount: 290 },
-      { tier: "Macro (250K-1M)", avgRate: 6400, rateRange: [4500, 9500], sampleCount: 88 },
-      { tier: "Elite (1M+)", avgRate: 14500, rateRange: [10000, 25000], sampleCount: 24 },
+      { tier: "Nano (<10K)", avgRate: baseNano, rateRange: [Math.round(baseNano * 0.7), Math.round(baseNano * 1.5)], sampleCount: nanoCount },
+      { tier: "Micro (10K-50K)", avgRate: baseMicro, rateRange: [Math.round(baseMicro * 0.75), Math.round(baseMicro * 1.45)], sampleCount: microCount },
+      { tier: "Mid-Tier (50K-250K)", avgRate: baseMid, rateRange: [Math.round(baseMid * 0.8), Math.round(baseMid * 1.4)], sampleCount: midCount },
+      { tier: "Macro (250K-1M)", avgRate: baseMacro, rateRange: [Math.round(baseMacro * 0.8), Math.round(baseMacro * 1.35)], sampleCount: macroCount },
+      { tier: "Elite (1M+)", avgRate: baseElite, rateRange: [Math.round(baseElite * 0.8), Math.round(baseElite * 1.5)], sampleCount: eliteCount },
     ];
 
     const formatDemandBreakdown = [
-      { format: "Short-Form Video (Reels / Shorts)", sharePercent: 54, avgEngagement: 5.8, avgCompletionDays: 6 },
-      { format: "Dedicated Long-Form Integration", sharePercent: 26, avgEngagement: 4.2, avgCompletionDays: 14 },
-      { format: "UGC Rights License", sharePercent: 12, avgEngagement: 6.4, avgCompletionDays: 5 },
-      { format: "Social Discussion Thread (X/LinkedIn)", sharePercent: 8, avgEngagement: 3.9, avgCompletionDays: 3 },
+      { format: "Short-Form Video (Reels / Shorts)", sharePercent: primaryCategory === "Fitness & Wellness" ? 62 : 54, avgEngagement: Number((5.5 * (mult >= 1.2 ? 1.05 : 1.0)).toFixed(1)), avgCompletionDays: 6 },
+      { format: "Dedicated Long-Form Integration", sharePercent: primaryCategory === "Technology & AI" ? 34 : 24, avgEngagement: Number((4.2 * mult).toFixed(1)), avgCompletionDays: 12 },
+      { format: "UGC Rights License", sharePercent: 14, avgEngagement: 6.2, avgCompletionDays: 5 },
+      { format: "Social Discussion Thread (X/LinkedIn)", sharePercent: primaryCategory === "Finance & Business" ? 18 : 8, avgEngagement: 4.1, avgCompletionDays: 3 },
     ];
 
     const highConversionCategories = [
@@ -129,11 +157,11 @@ export class MarketPulseService {
     const activeHiringTrends = [
       {
         headline: "Shift to 3-Month Creator Retainers",
-        detail: "Brands are securing 34% better CPMs by booking 3-deal monthly retainers instead of one-off posts.",
+        detail: `Brands in ${primaryCategory} are securing 34% better CPMs by booking 3-deal monthly retainers instead of one-off posts.`,
       },
       {
         headline: "High-Engagement Micro Creators Outperforming",
-        detail: "Creators between 25k–75k followers with >5% engagement delivered 2.1x higher link clicks per dollar.",
+        detail: `Creators with 25k–75k followers in ${primaryCategory} delivered 2.1x higher link clicks per dollar spent.`,
       },
       {
         headline: "Escrow-Protected Fast Milestones",
