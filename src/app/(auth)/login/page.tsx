@@ -90,41 +90,7 @@ function LoginForm() {
         </p>
       </div>
 
-      {/* 1-Click Demo Credentials Quick Fill (Gated to Non-Production or Explicit Demo Mode) */}
-      {(process.env.NODE_ENV !== "production" || process.env.NEXT_PUBLIC_ENABLE_DEMO_CREDENTIALS === "true") && (
-        <div className="rounded-2xl border border-black/8 bg-[#F8F8FC] p-3 text-xs">
-          <div className="text-[10px] font-mono font-bold uppercase text-[#7A7A8A] mb-2 flex items-center justify-between">
-            <span>1-Click Test Credentials</span>
-            <span className="text-[#A37F00] font-bold">Auto-Fill</span>
-          </div>
-          <div className="grid grid-cols-3 gap-1.5">
-            <button
-              type="button"
-              onClick={() => { setEmail("creator@abeycollab.io"); setPassword(process.env.NEXT_PUBLIC_DEMO_CREATOR_PASSWORD || "password123"); }}
-              className="rounded-xl border border-black/5 bg-white p-2 text-center hover:border-[#FFD21F] hover:bg-[#FFD21F]/10 transition-all cursor-pointer"
-            >
-              <div className="font-bold text-[#0A0A0E] text-[11px]">🎨 Creator</div>
-              <div className="text-[9px] text-neutral-500 font-mono truncate">creator@...</div>
-            </button>
-            <button
-              type="button"
-              onClick={() => { setEmail("brand@abeycollab.io"); setPassword(process.env.NEXT_PUBLIC_DEMO_BRAND_PASSWORD || "password123"); }}
-              className="rounded-xl border border-black/5 bg-white p-2 text-center hover:border-[#FFD21F] hover:bg-[#FFD21F]/10 transition-all cursor-pointer"
-            >
-              <div className="font-bold text-[#0A0A0E] text-[11px]">🏢 Brand</div>
-              <div className="text-[9px] text-neutral-500 font-mono truncate">brand@...</div>
-            </button>
-            <button
-              type="button"
-              onClick={() => { setEmail("kevinbhutwala417@gmail.com"); setPassword(process.env.NEXT_PUBLIC_DEMO_ADMIN_PASSWORD || "admin123"); }}
-              className="rounded-xl border border-black/5 bg-white p-2 text-center hover:border-[#FFD21F] hover:bg-[#FFD21F]/10 transition-all cursor-pointer"
-            >
-              <div className="font-bold text-[#0A0A0E] text-[11px]">👑 Admin</div>
-              <div className="text-[9px] text-neutral-500 font-mono truncate">kevin...</div>
-            </button>
-          </div>
-        </div>
-      )}
+
 
 
       {errorMessage && (

@@ -19,7 +19,7 @@ export function CommandPalette() {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
   const router = useRouter();
-  const { role, setRole } = useAuthStore();
+  const { role } = useAuthStore();
   const { addToast } = useUIStore();
 
   // Keyboard shortcut listener: Cmd+K or Ctrl+K
@@ -134,56 +134,7 @@ export function CommandPalette() {
             </div>
           </div>
 
-          {/* Switch Persona Role */}
-          <div>
-            <div className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#6B6B6B] font-sans">
-              Switch Workspace Persona
-            </div>
-            <div className="grid grid-cols-3 gap-2 font-sans pt-1">
-              <button
-                onClick={() => {
-                  setRole("creator");
-                  addToast({ type: "info", title: "Role Changed", message: "Switched to Creator Workspace" });
-                  setIsOpen(false);
-                }}
-                className={`p-2.5 rounded-xl border text-center transition-all ${
-                  role === "creator"
-                    ? "bg-[#111111] text-[#FAFAF8] font-bold border-[#111111] shadow-xs"
-                    : "bg-[#FAFAF8] hover:bg-[#FFFFFF] text-[#6B6B6B] border-[#E7E7E4]"
-                }`}
-              >
-                Creator Role
-              </button>
-              <button
-                onClick={() => {
-                  setRole("brand");
-                  addToast({ type: "info", title: "Role Changed", message: "Switched to Brand Workspace" });
-                  setIsOpen(false);
-                }}
-                className={`p-2.5 rounded-xl border text-center transition-all ${
-                  role === "brand"
-                    ? "bg-[#111111] text-[#FAFAF8] font-bold border-[#111111] shadow-xs"
-                    : "bg-[#FAFAF8] hover:bg-[#FFFFFF] text-[#6B6B6B] border-[#E7E7E4]"
-                }`}
-              >
-                Brand Role
-              </button>
-              <button
-                onClick={() => {
-                  setRole("agency_admin");
-                  addToast({ type: "info", title: "Role Changed", message: "Switched to Agency Admin OS" });
-                  setIsOpen(false);
-                }}
-                className={`p-2.5 rounded-xl border text-center transition-all ${
-                  role === "agency_admin"
-                    ? "bg-[#111111] text-[#FAFAF8] font-bold border-[#111111] shadow-xs"
-                    : "bg-[#FAFAF8] hover:bg-[#FFFFFF] text-[#6B6B6B] border-[#E7E7E4]"
-                }`}
-              >
-                Agency Admin
-              </button>
-            </div>
-          </div>
+
 
           {/* Creators Matches */}
           {filteredCreators.length > 0 && (

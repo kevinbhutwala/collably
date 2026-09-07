@@ -196,6 +196,18 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   },
 
   setRole: (role: UserRole) => {
+    // If user is authenticated, their role is immutable and locked to their authenticated account
+    const currentUser = get().user;
+    if (currentUser) {
+      set({ role: currentUser.role });
+      return;
+    }
+    // For unauthenticated flows (e.g. registration choice), strictly forbid selecting admin roles
+    const adminRoles: UserRole[] = ["super_admin", "agency_admin", "agency_owner"];
+    if (adminRoles.includes(role)) {
+      console.warn("Security policy: Cannot switch to an administrative role directly.");
+      return;
+    }
     set({ role });
   },
 
