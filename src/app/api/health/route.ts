@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { isSupabaseConfigured, getSupabaseAdmin } from "@/server/db/supabase";
 import { db } from "@/server/db/database";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const startTime = Date.now();
   let dbStatus = "healthy (local typed fallback)";

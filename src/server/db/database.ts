@@ -3,6 +3,7 @@ import path from "path";
 import { DatabaseState } from "./schema";
 import { getInitialSeedDatabase } from "./seed";
 import { MOCK_COLLABORATIONS } from "@/mock/collaborations.mock";
+import bundledDbJson from "../../../data/valence_db.json";
 
 const isServerless = process.env.VERCEL === "1" || !!process.env.AWS_LAMBDA_FUNCTION_NAME;
 const DATA_DIR = isServerless ? path.join("/tmp", "data") : path.join(process.cwd(), "data");
@@ -26,17 +27,28 @@ class DatabaseClient {
         }
       }
 
-      let raw: string | null = null;
+      let rawState: DatabaseState | null = null;
       if (fs.existsSync(DB_FILE)) {
-        raw = fs.readFileSync(DB_FILE, "utf-8");
+        try {
+          rawState = JSON.parse(fs.readFileSync(DB_FILE, "utf-8"));
+        } catch {
+          rawState = null;
+        }
       } else if (fs.existsSync(BUNDLED_DB_FILE)) {
-        raw = fs.readFileSync(BUNDLED_DB_FILE, "utf-8");
+        try {
+          rawState = JSON.parse(fs.readFileSync(BUNDLED_DB_FILE, "utf-8"));
+        } catch {
+          rawState = null;
+        }
       }
 
-      if (raw) {
-        this.state = JSON.parse(raw);
+      if (!rawState) {
+        rawState = JSON.parse(JSON.stringify(bundledDbJson)) as DatabaseState;
+      }
 
-        const seed = getInitialSeedDatabase();
+      this.state = rawState || getInitialSeedDatabase();
+
+      const seed = getInitialSeedDatabase();
 
         // Ensure all required collections exist (in case of schema additions)
         if (!this.state!.subscriptions) this.state!.subscriptions = [];
@@ -109,10 +121,6 @@ class DatabaseClient {
         }
 
         this.persist();
-      } else {
-        this.state = getInitialSeedDatabase();
-        this.persist();
-      }
     } catch (err) {
       console.error("Failed to initialize database, falling back to in-memory seeds:", err);
       this.state = getInitialSeedDatabase();

@@ -11,6 +11,9 @@ const nextConfig = {
       },
     ],
   },
+  outputFileTracingIncludes: {
+    "/api/**/*": ["./data/**/*"],
+  },
   async headers() {
     return [
       {
