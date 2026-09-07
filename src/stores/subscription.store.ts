@@ -85,13 +85,13 @@ export const useSubscriptionStore = create<SubscriptionState>((set, get) => ({
     }
   },
 
-  upgradePlan: async (planId: SubscriptionPlanId, interval: SubscriptionInterval = "monthly") => {
+  upgradePlan: async (planId: SubscriptionPlanId, interval: SubscriptionInterval = "monthly", paymentId?: string) => {
     set({ isLoading: true });
     try {
       const res = await fetch("/api/subscriptions/upgrade", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ planId, interval }),
+        body: JSON.stringify({ planId, interval, paymentId }),
       });
 
       if (!res.ok) {

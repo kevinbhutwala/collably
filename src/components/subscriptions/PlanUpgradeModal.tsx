@@ -149,8 +149,12 @@ export function PlanUpgradeModal() {
               throw new Error(verifyData.error || "Payment verification failed.");
             }
 
-            // Complete subscription state update
-            await upgradePlan(plan.id as SubscriptionPlanId, isAnnual ? "annual" : "monthly");
+            // Complete subscription state update with verified payment ID
+            await upgradePlan(
+              plan.id as SubscriptionPlanId,
+              isAnnual ? "annual" : "monthly",
+              response.razorpay_payment_id
+            );
             addToast({
               type: "success",
               title: "Payment Verified & Plan Activated!",

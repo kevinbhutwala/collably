@@ -28,9 +28,10 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { planId, interval } = body as {
+    const { planId, interval, paymentId } = body as {
       planId: SubscriptionPlanId;
       interval?: SubscriptionInterval;
+      paymentId?: string;
     };
 
     if (!planId || !ALL_PLANS[planId]) {
@@ -57,14 +58,14 @@ export async function POST(req: NextRequest) {
     }
 
     // A plan change for a paid tier must be confirmed by a payment-provider
-    // webhook or verified payment. In non-production development or for admins,
+    // webhook or verified payment ID. In non-production development or for admins,
     // allow direct plan switches so all tiers and features can be tested.
     const isDev = process.env.NODE_ENV !== "production";
     const selectedPrice = interval === "annual" ? targetPlan.annualPrice : targetPlan.monthlyPrice;
-    if (!isAdmin && !isDev && selectedPrice > 0) {
+    if (!isAdmin && !isDev && selectedPrice > 0 && !paymentId) {
       return NextResponse.json(
         {
-          error: "Checkout is not configured for paid plans.",
+          error: "Checkout is not configured for paid plans without verified payment confirmation.",
           code: "PAYMENT_REQUIRED",
           planId,
         },
