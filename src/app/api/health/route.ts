@@ -10,7 +10,8 @@ export async function GET() {
     const supabase = getSupabaseAdmin();
     if (supabase) {
       const { error } = await supabase.from("profiles").select("count").limit(1);
-      dbStatus = error ? `degraded (${error.message})` : "healthy (Supabase PostgreSQL)";
+      if (error) console.error("Database health check error:", error.message);
+      dbStatus = error ? "degraded" : "healthy (Supabase PostgreSQL)";
     }
   } else {
     try {

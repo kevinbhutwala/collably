@@ -94,7 +94,7 @@ export class SlaAutoReleaseWorker {
             await notificationRepo.createNotification({
               userId: collab.creator?.userId || collab.creatorId,
               title: "SLA Auto-Release: Milestone Approved!",
-              message: `The 120-hour brand review window expired for "${deliverable.title}". Funds ($${ledgerResult.netCreatorPayout.toFixed(2)}) have been automatically released to your wallet.`,
+              message: `The 120-hour brand review window expired for "${deliverable.title}". Funds ($${ledgerResult.netCreatorPayout.toFixed(2)}) have been released to your wallet in the scheduled daily settlement cycle.`,
               type: "payment",
               entityType: "Deliverable",
               entityId: deliverable.id,
@@ -103,7 +103,7 @@ export class SlaAutoReleaseWorker {
             await notificationRepo.createNotification({
               userId: collab.brand?.userId || collab.brandId,
               title: "SLA Auto-Release Completed",
-              message: `The 120-hour review SLA for deliverable "${deliverable.title}" expired. Funds were released to the creator under platform terms.`,
+              message: `The 120-hour review SLA for deliverable "${deliverable.title}" expired. Funds were released to the creator in the scheduled daily settlement cycle under platform terms.`,
               type: "campaign",
               entityType: "Deliverable",
               entityId: deliverable.id,
