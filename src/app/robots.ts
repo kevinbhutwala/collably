@@ -44,8 +44,8 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
     ],
-    sitemap: 'https://abeycollab.vercel.app/sitemap.xml',
-    host: 'https://abeycollab.vercel.app',
+    sitemap: `${process.env.NEXT_PUBLIC_APP_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://abeycollab.vercel.app'}/sitemap.xml`,
+    host: process.env.NEXT_PUBLIC_APP_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://abeycollab.vercel.app',
   };
 }
 

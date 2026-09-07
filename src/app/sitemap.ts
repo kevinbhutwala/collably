@@ -2,7 +2,10 @@ import { MetadataRoute } from 'next';
 import { creatorRepo } from '@/server/repositories/creator.repo';
 import { campaignRepo } from '@/server/repositories/campaign.repo';
 
-const BASE = 'https://abeycollab.vercel.app';
+const BASE =
+  process.env.NEXT_PUBLIC_APP_URL ||
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  'https://abeycollab.vercel.app';
 const now = new Date();
 
 export default function sitemap(): MetadataRoute.Sitemap {
