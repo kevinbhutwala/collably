@@ -7,6 +7,7 @@ import { SafeImage } from "@/components/ui/SafeImage";
 import { BrandIcon } from "@/components/ui/BrandLogos";
 import { formatCurrency } from "@/core/utils/formatters";
 import { Users, Calendar, ArrowRight } from "lucide-react";
+import { CategoryBadge, TitleIcon } from "@/components/ui/TitleIconBadge";
 
 export function CampaignCard({ campaign }: { campaign: Campaign }) {
   const budgetAmount = campaign.budget?.perCreatorBudget || (campaign.budget as any) || 2500;
@@ -31,9 +32,7 @@ export function CampaignCard({ campaign }: { campaign: Campaign }) {
 
         {/* Top Floating Badges */}
         <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
-          <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/20 text-[10px] font-mono font-bold uppercase tracking-wider">
-            {campaign.category}
-          </span>
+          <CategoryBadge category={campaign.category} size="xs" showIcon={true} />
           <span className="px-2.5 py-1 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-[11px] font-mono font-extrabold flex items-center gap-1 shadow-sm">
             <span className="numeric-tabular">{formatCurrency(budgetAmount)}</span>
             <span className="text-[9px] text-[#0A0A0E]/80 font-bold">/creator</span>
@@ -62,9 +61,14 @@ export function CampaignCard({ campaign }: { campaign: Campaign }) {
       {/* Body Content */}
       <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
         <div className="space-y-2">
-          <h3 className="font-bold text-base text-[#0A0A0E] group-hover:text-[#A37F00] transition-colors line-clamp-1 font-display">
-            {campaign.title}
-          </h3>
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-lg bg-[#F5F5F9] border border-black/8 flex items-center justify-center shrink-0 text-[#0A0A0E] group-hover:bg-[#FFD21F] group-hover:border-[#FFD21F] transition-all shadow-2xs">
+              <TitleIcon title={campaign.title} category={campaign.category} className="w-3.5 h-3.5" />
+            </div>
+            <h3 className="font-bold text-base text-[#0A0A0E] group-hover:text-[#A37F00] transition-colors line-clamp-1 font-display">
+              {campaign.title}
+            </h3>
+          </div>
           <p className="text-xs text-[#5A5A68] line-clamp-2 leading-relaxed font-sans font-normal">
             {campaign.description}
           </p>

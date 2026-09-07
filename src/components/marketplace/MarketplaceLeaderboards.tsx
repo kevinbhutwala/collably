@@ -6,6 +6,7 @@ import Link from "next/link";
 import { LeaderboardEntry, TimeframeWindow, PlatformType } from "@/core/types";
 import { ReputationBadgeBar } from "./ReputationBadgeBar";
 import { GLOBAL_HUBS } from "@/core/constants";
+import { CategoryBadge } from "@/components/ui/TitleIconBadge";
 
 export function MarketplaceLeaderboards() {
   const [category, setCategory] = useState("All");
@@ -256,8 +257,8 @@ export function MarketplaceLeaderboards() {
                     </td>
 
                     {/* Category */}
-                    <td className="py-3.5 text-neutral-600 dark:text-neutral-300">
-                      {creator.primaryCategory}
+                    <td className="py-3.5">
+                      <CategoryBadge category={creator.primaryCategory} size="xs" showIcon={true} />
                     </td>
 
                     {/* Trending Score */}

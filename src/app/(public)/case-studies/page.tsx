@@ -23,6 +23,7 @@ import {
   Layers,
   Zap,
 } from "lucide-react";
+import { CategoryBadge, TitleIcon } from "@/components/ui/TitleIconBadge";
 
 
 interface CaseStudy {
@@ -374,9 +375,7 @@ export default function CaseStudiesPage() {
 
                     {/* Badges on image */}
                     <div className="absolute top-4 left-4 flex items-center gap-2 z-10">
-                      <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[#0A0A0E] text-[11px] font-mono font-bold shadow-xs">
-                        {cs.category}
-                      </span>
+                      <CategoryBadge category={cs.category} size="xs" showIcon={true} />
                     </div>
 
                     <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white z-10">
@@ -393,9 +392,14 @@ export default function CaseStudiesPage() {
 
                   {/* Content Section */}
                   <div className="p-6 sm:p-7 space-y-4">
-                    <h3 className="text-xl font-extrabold text-[#0A0A0E] font-display group-hover:text-[#A37F00] transition-colors leading-tight">
-                      {cs.title}
-                    </h3>
+                    <div className="flex items-start gap-2.5">
+                      <div className="w-7 h-7 rounded-xl bg-[#FFFDF5] border border-[#FFD21F]/40 text-[#0A0A0E] flex items-center justify-center shrink-0 mt-0.5 shadow-2xs group-hover:bg-[#FFD21F] transition-all">
+                        <TitleIcon title={cs.title} category={cs.category} className="w-4 h-4" />
+                      </div>
+                      <h3 className="text-xl font-extrabold text-[#0A0A0E] font-display group-hover:text-[#A37F00] transition-colors leading-tight">
+                        {cs.title}
+                      </h3>
+                    </div>
                     <p className="text-xs text-[#5A5A68] leading-relaxed line-clamp-2 font-sans">
                       {cs.subtitle}
                     </p>

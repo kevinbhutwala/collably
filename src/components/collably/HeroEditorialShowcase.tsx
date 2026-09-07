@@ -19,6 +19,7 @@ import {
 import { InteractiveTiltCard } from "@/components/ui/InteractiveTiltCard";
 import { Modal } from "@/components/ui/Modal";
 import { SafeImage } from "@/components/ui/SafeImage";
+import { TitleIcon } from "@/components/ui/TitleIconBadge";
 
 interface HeroTalent {
   id: string;
@@ -275,7 +276,12 @@ export function HeroEditorialShowcase() {
                       <h3 className="text-xs sm:text-sm font-bold font-display text-[#0A0A0E] dark:text-white">{activeTalent.name}</h3>
                       <CheckCircle2 className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#087F5B]" />
                     </div>
-                    <p className="text-[10px] sm:text-[11px] text-[#6A6A78] dark:text-[#A0A0B4] font-sans">{activeTalent.niche}</p>
+                    <div className="flex items-center gap-1.5 mt-0.5">
+                      <div className="w-4 h-4 rounded-md bg-[#FFD21F]/20 flex items-center justify-center text-[#A37F00] dark:text-[#FFD21F] shrink-0">
+                        <TitleIcon title={activeTalent.niche} category={activeTalent.verifiedSponsor} className="w-2.5 h-2.5" />
+                      </div>
+                      <p className="text-[10px] sm:text-[11px] text-[#6A6A78] dark:text-[#A0A0B4] font-sans">{activeTalent.niche}</p>
+                    </div>
                   </div>
                   <div className="text-right font-mono">
                     <span className="text-[9px] sm:text-[10px] text-[#888898] dark:text-[#8E8EA4] block uppercase">Starts at</span>

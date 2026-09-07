@@ -17,6 +17,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { TrendingShowcase } from "@/components/marketplace/TrendingShowcase";
 import { NaturalLanguageMatchSearch } from "@/components/marketplace/NaturalLanguageMatchSearch";
 import { MarketplaceLeaderboards } from "@/components/marketplace/MarketplaceLeaderboards";
+import { getCategoryVisual } from "@/core/utils/titleMedia";
 
 
 export default function CreatorsDirectoryPage() {
@@ -180,28 +181,34 @@ export default function CreatorsDirectoryPage() {
               <button
                 onClick={() => setCreatorCategory("all")}
                 className={cn(
-                  "px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap shrink-0",
+                  "px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap shrink-0 flex items-center gap-1.5",
                   creatorCategory === "all"
                     ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs font-bold border border-black/10"
                     : "bg-white text-[#6A6A78] hover:text-[#0A0A0E] border border-black/8"
                 )}
               >
-                All Talent
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>All Talent</span>
               </button>
-              {CATEGORIES.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setCreatorCategory(cat)}
-                  className={cn(
-                    "px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap shrink-0",
-                    creatorCategory === cat
-                      ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs font-bold border border-black/10"
-                      : "bg-white text-[#6A6A78] hover:text-[#0A0A0E] border border-black/8"
-                  )}
-                >
-                  {cat}
-                </button>
-              ))}
+              {CATEGORIES.map((cat) => {
+                const meta = getCategoryVisual(cat);
+                const CatIcon = meta.icon;
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => setCreatorCategory(cat)}
+                    className={cn(
+                      "px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap shrink-0 flex items-center gap-1.5",
+                      creatorCategory === cat
+                        ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs font-bold border border-black/10"
+                        : "bg-white text-[#6A6A78] hover:text-[#0A0A0E] border border-black/8"
+                    )}
+                  >
+                    <CatIcon className="w-3.5 h-3.5" />
+                    <span>{cat}</span>
+                  </button>
+                );
+              })}
             </div>
 
             {/* Search Box */}

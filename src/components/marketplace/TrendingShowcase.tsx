@@ -10,6 +10,7 @@ import {
   CampaignTrendingScore,
 } from "@/core/types";
 import { ReputationBadgeBar } from "./ReputationBadgeBar";
+import { CategoryBadge, TitleIcon } from "@/components/ui/TitleIconBadge";
 
 const FEED_TABS: { id: TrendingFeedType; label: string; icon: string }[] = [
   { id: "trending_now", label: "Trending Now", icon: "🔥" },
@@ -126,17 +127,20 @@ export function TrendingShowcase() {
             >
               <div>
                 <div className="flex items-start justify-between gap-3">
-                  <span className="rounded-full border border-black/6 dark:border-white/10 bg-[#F4F4F8] dark:bg-white/5 px-2.5 py-0.5 text-[11px] font-bold font-mono text-[#0A0A0E] dark:text-white">
-                    {item.campaign.category}
-                  </span>
+                  <CategoryBadge category={item.campaign.category} size="xs" showIcon={true} />
                   <div className="flex items-center gap-1 rounded-full border border-[#FFD21F]/40 bg-[#FFD21F]/15 px-2.5 py-0.5 text-xs font-bold text-[#0A0A0E] dark:text-[#FFD21F] font-mono">
                     <span>🔥</span> {item.overallScore} Score
                   </div>
                 </div>
 
-                <h3 className="mt-3 text-lg font-bold text-[#0A0A0E] dark:text-white font-display line-clamp-1 group-hover:text-[#8A6500] dark:group-hover:text-[#FFD21F] transition-colors">
-                  {item.campaign.title}
-                </h3>
+                <div className="mt-3 flex items-center gap-2">
+                  <div className="w-6 h-6 rounded-lg bg-[#F8F8FC] dark:bg-white/10 flex items-center justify-center shrink-0 border border-black/5 dark:border-white/10 group-hover:bg-[#FFD21F] transition-colors">
+                    <TitleIcon title={item.campaign.title} category={item.campaign.category} className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-[#0A0A0E] dark:text-white font-display line-clamp-1 group-hover:text-[#8A6500] dark:group-hover:text-[#FFD21F] transition-colors">
+                    {item.campaign.title}
+                  </h3>
+                </div>
                 <p className="mt-1 text-xs text-[#5A5A68] dark:text-[#8E8EA4] line-clamp-2 leading-relaxed">
                   {item.campaign.tagline || item.campaign.description}
                 </p>
@@ -192,9 +196,7 @@ export function TrendingShowcase() {
                 <div>
                   {/* Top Badge & Score */}
                   <div className="flex items-start justify-between gap-2">
-                    <span className="rounded-full border border-black/6 dark:border-white/10 bg-[#F4F4F8] dark:bg-white/5 px-2.5 py-0.5 text-[10px] font-mono font-bold text-[#0A0A0E] dark:text-white">
-                      {creator.primaryCategory}
-                    </span>
+                    <CategoryBadge category={creator.primaryCategory} size="xs" showIcon={true} />
                     <div className="flex items-center gap-1 rounded-full border border-[#FFD21F]/40 bg-[#FFD21F]/15 px-2.5 py-0.5 text-[11px] font-bold text-[#0A0A0E] dark:text-[#FFD21F] font-mono">
                       <span>🔥</span> {item.overallScore}
                     </div>

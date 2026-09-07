@@ -11,6 +11,7 @@ import { SocialIcon } from "@/components/ui/SocialIcons";
 
 import { formatNumber, formatCurrency } from "@/core/utils/formatters";
 import { TrustIndicatorsBar } from "@/components/marketplace/TrustIndicatorsBar";
+import { CategoryBadge, TitleIcon } from "@/components/ui/TitleIconBadge";
 import {
   CheckCircle2,
   Star,
@@ -111,9 +112,7 @@ export default function CreatorDetailPage() {
                   {creator.verified && (
                     <CheckCircle2 className="w-6 h-6 text-[#FFD21F] shrink-0 fill-[#0A0A0E]" />
                   )}
-                  <span className="px-2.5 py-0.5 rounded-full bg-black/5 border border-black/8 text-[#0A0A0E] font-mono text-xs font-bold uppercase tracking-wider">
-                    {creator.primaryCategory}
-                  </span>
+                  <CategoryBadge category={creator.primaryCategory} size="sm" showIcon={true} />
                 </div>
 
                 <p className="text-sm font-mono text-[#6A6A78]">
@@ -198,12 +197,17 @@ export default function CreatorDetailPage() {
                     key={rate.id}
                     className="p-5 rounded-2xl bg-[#F8F8FC] border border-black/5 flex items-center justify-between gap-4"
                   >
-                    <div>
-                      <h3 className="font-bold text-sm text-[#0A0A0E] font-sans">{rate.title || rate.deliverableType}</h3>
-                      <p className="text-xs text-[#5A5A68] mt-0.5">{rate.description}</p>
-                      <span className="text-[10px] font-mono text-[#7A7A8A] block mt-1">
-                        Turnaround: {rate.turnaroundDays} days • Max {rate.revisionsIncluded || 2} revisions
+                    <div className="flex items-start gap-3.5">
+                      <span className="w-10 h-10 rounded-xl bg-white border border-black/8 flex items-center justify-center text-[#A37F00] shrink-0 shadow-2xs">
+                        <TitleIcon title={rate.title || rate.deliverableType} category={creator.primaryCategory} className="w-5 h-5" />
                       </span>
+                      <div>
+                        <h3 className="font-bold text-sm text-[#0A0A0E] font-sans">{rate.title || rate.deliverableType}</h3>
+                        <p className="text-xs text-[#5A5A68] mt-0.5">{rate.description}</p>
+                        <span className="text-[10px] font-mono text-[#7A7A8A] block mt-1">
+                          Turnaround: {rate.turnaroundDays} days • Max {rate.revisionsIncluded || 2} revisions
+                        </span>
+                      </div>
                     </div>
 
                     <div className="text-right shrink-0">

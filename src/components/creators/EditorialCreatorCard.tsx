@@ -17,6 +17,7 @@ import {
   Video,
 } from "lucide-react";
 import { formatCurrency } from "@/core/utils/formatters";
+import { TitleIcon } from "@/components/ui/TitleIconBadge";
 
 interface EditorialCreatorCardProps {
   creator: CreatorQuickViewData;
@@ -128,7 +129,10 @@ export function EditorialCreatorCard({
               <h3 className="text-base font-bold font-display">{creator.name}</h3>
               <CheckCircle2 className="w-3.5 h-3.5 text-[#087F5B]" />
             </div>
-            <p className="text-[11px] text-white/80 font-sans truncate">{creator.niche}</p>
+            <div className="flex items-center gap-1.5">
+              <TitleIcon title={creator.niche} category={creator.category} className="w-3 h-3 text-[#FFD21F] shrink-0 drop-shadow-xs" />
+              <p className="text-[11px] text-white/90 font-sans truncate">{creator.niche}</p>
+            </div>
           </div>
         </div>
 
@@ -146,9 +150,10 @@ export function EditorialCreatorCard({
               {creator.tags.slice(0, 2).map((tag) => (
                 <span
                   key={tag}
-                  className="px-2 py-0.5 rounded-md bg-[#F4F4F8] dark:bg-[#181824] border border-black/5 dark:border-white/10 text-[10px] text-[#4A4A58] dark:text-[#C0C0D4]"
+                  className="px-2 py-0.5 rounded-md bg-[#F4F4F8] dark:bg-[#181824] border border-black/5 dark:border-white/10 text-[10px] text-[#4A4A58] dark:text-[#C0C0D4] flex items-center gap-1"
                 >
-                  {tag}
+                  <TitleIcon title={tag} category={creator.category} className="w-2.5 h-2.5 text-[#A37F00] dark:text-[#FFD21F]" />
+                  <span>{tag}</span>
                 </span>
               ))}
             </div>

@@ -24,6 +24,7 @@ import {
   BarChart3,
   Layers,
   ChevronRight,
+  LucideIcon,
 } from "lucide-react";
 
 interface WorkflowStep {
@@ -35,6 +36,7 @@ interface WorkflowStep {
   description: string;
   keyBenefits: string[];
   mockupType: "discover" | "match" | "collaborate" | "review" | "approve" | "pay" | "grow";
+  icon: LucideIcon;
 }
 
 const WORKFLOW_STEPS: WorkflowStep[] = [
@@ -52,6 +54,7 @@ const WORKFLOW_STEPS: WorkflowStep[] = [
       "Pre-negotiated rate cards with guaranteed turnaround SLA",
     ],
     mockupType: "discover",
+    icon: Search,
   },
   {
     id: "step-match",
@@ -67,6 +70,7 @@ const WORKFLOW_STEPS: WorkflowStep[] = [
       "Category relevance and brand fit scoring",
     ],
     mockupType: "match",
+    icon: Sparkles,
   },
   {
     id: "step-collaborate",
@@ -82,6 +86,7 @@ const WORKFLOW_STEPS: WorkflowStep[] = [
       "Zero invoice chasing or 90-day Net-terms delays",
     ],
     mockupType: "collaborate",
+    icon: ShieldCheck,
   },
   {
     id: "step-review",
@@ -97,6 +102,7 @@ const WORKFLOW_STEPS: WorkflowStep[] = [
       "Built-in revision caps to prevent scope creep",
     ],
     mockupType: "review",
+    icon: Video,
   },
   {
     id: "step-approve",
@@ -112,6 +118,7 @@ const WORKFLOW_STEPS: WorkflowStep[] = [
       "Cryptographically signed delivery certificate",
     ],
     mockupType: "approve",
+    icon: FileCheck2,
   },
   {
     id: "step-pay",
@@ -127,6 +134,7 @@ const WORKFLOW_STEPS: WorkflowStep[] = [
       "Automated 1099/tax receipt generation",
     ],
     mockupType: "pay",
+    icon: Zap,
   },
   {
     id: "step-grow",
@@ -142,6 +150,7 @@ const WORKFLOW_STEPS: WorkflowStep[] = [
       "1-Click creator re-booking and automated monthly retainers",
     ],
     mockupType: "grow",
+    icon: TrendingUp,
   },
 ];
 
@@ -189,7 +198,7 @@ export function ContinuousProductStory() {
                   activeStepIdx === idx ? "bg-[#FFD21F] text-[#0A0A0E]" : "bg-[#F4F4F8] dark:bg-[#1C1C28] text-[#6A6A78] dark:text-[#8E8EA4]"
                 }`}
               >
-                {step.stepNum}
+                <step.icon className="w-3 h-3" />
               </span>
               <span>{step.title.split(" ")[0]}</span>
             </button>
@@ -204,9 +213,14 @@ export function ContinuousProductStory() {
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] text-[11px] font-mono font-extrabold uppercase">
                 <span>{activeStep.stepNum} • {activeStep.category}</span>
               </div>
-              <h3 className="text-2xl sm:text-4xl font-extrabold text-[#0A0A0E] dark:text-white font-display tracking-tight">
-                {activeStep.title}
-              </h3>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-2xl bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center shrink-0 shadow-xs border border-black/10">
+                  <activeStep.icon className="w-5 h-5" />
+                </div>
+                <h3 className="text-2xl sm:text-4xl font-extrabold text-[#0A0A0E] dark:text-white font-display tracking-tight">
+                  {activeStep.title}
+                </h3>
+              </div>
               <p className="text-sm font-semibold text-[#8A7000] dark:text-[#FFD21F] font-sans">
                 {activeStep.tagline}
               </p>

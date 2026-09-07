@@ -15,6 +15,7 @@ import { MatchScoreBadge } from "@/components/ai/MatchScoreBadge";
 import { AICreatorPitchModal } from "@/components/ai/AICreatorPitchModal";
 import { CreativeLoader } from "@/components/ui/CreativeLoader";
 import { formatCurrency, formatNumber } from "@/core/utils/formatters";
+import { CategoryBadge, TitleIcon, DeliverableBadge } from "@/components/ui/TitleIconBadge";
 
 import {
   ShieldCheck,
@@ -154,9 +155,7 @@ export default function CampaignDetailPage() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
             <div className="absolute top-6 left-6 right-6 flex items-center justify-between">
-              <span className="px-3 py-1 rounded-full bg-white text-[#0A0A0E] border border-black/10 text-xs font-mono font-bold shadow-xs">
-                {campaign.category}
-              </span>
+              <CategoryBadge category={campaign.category} size="sm" showIcon={true} />
 
               <div className="flex items-center gap-2">
                 <MatchScoreBadge score={94} size="md" />
@@ -176,10 +175,15 @@ export default function CampaignDetailPage() {
                   />
                 </div>
                 <div>
-                  <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display drop-shadow-xs">
-                    {campaign.title}
-                  </h1>
-                  <p className="text-xs sm:text-sm text-white/80 font-mono drop-shadow-xs">
+                  <div className="flex items-center gap-2.5 flex-wrap">
+                    <span className="w-8 h-8 rounded-xl bg-white/20 backdrop-blur-md inline-flex items-center justify-center border border-white/25 text-white shrink-0">
+                      <TitleIcon title={campaign.title} category={campaign.category} className="w-4 h-4 text-white" />
+                    </span>
+                    <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display drop-shadow-xs">
+                      {campaign.title}
+                    </h1>
+                  </div>
+                  <p className="text-xs sm:text-sm text-white/80 font-mono drop-shadow-xs mt-1">
                     By {campaign.brand.companyName} • {campaign.brand.industry}
                   </p>
                 </div>
@@ -239,9 +243,12 @@ export default function CampaignDetailPage() {
                       className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/5 space-y-1.5"
                     >
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-mono font-bold text-[#0A0A0E] uppercase">
-                          {del.count}x {del.type}
-                        </span>
+                        <div className="flex items-center gap-2">
+                          <DeliverableBadge type={del.type} />
+                          <span className="text-xs font-mono font-bold text-[#0A0A0E] uppercase">
+                            × {del.count}
+                          </span>
+                        </div>
                         <span className="px-2 py-0.5 rounded-full bg-white border border-black/8 text-[#6A6A78] text-[10px] font-mono font-bold">
                           Max {del.maxRevisions} Revisions
                         </span>
