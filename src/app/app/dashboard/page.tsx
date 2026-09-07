@@ -1,8 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useAuthStore } from "@/stores/auth.store";
+import { useUIStore } from "@/stores/ui.store";
 import { campaignService } from "@/services/campaign.service";
 import { creatorService } from "@/services/creator.service";
 import { paymentService } from "@/services/payment.service";
@@ -15,6 +17,7 @@ import { ProfileCompletenessCard } from "@/components/creators/ProfileCompletene
 import { SubscriptionUsageCard } from "@/components/subscriptions/SubscriptionUsageCard";
 import { CreatorMarketPulseWidget } from "@/components/marketplace/CreatorMarketPulseWidget";
 import { BrandMarketIntelligenceWidget } from "@/components/marketplace/BrandMarketIntelligenceWidget";
+import { CreativeLoader } from "@/components/ui/CreativeLoader";
 import { formatCurrency } from "@/core/utils/formatters";
 
 
@@ -32,8 +35,28 @@ import {
   Compass,
 } from "lucide-react";
 
-export default function DashboardPage() {
+function DashboardContent() {
   const { user, role, currentCreator, currentBrand } = useAuthStore();
+  const searchParams = useSearchParams();
+  const { addToast } = useUIStore();
+
+  useEffect(() => {
+    const errorParam = searchParams.get("error");
+    if (errorParam === "admin_required") {
+      addToast({
+        type: "error",
+        title: "Access Restricted",
+        message: "You must be signed in as an Agency Administrator to view the Admin Command Center.",
+      });
+    } else if (errorParam === "brand_access_denied") {
+      addToast({
+        type: "warning",
+        title: "Workspace Restricted",
+        message: "The requested route is reserved exclusively for Brand partner accounts.",
+      });
+    }
+  }, [searchParams, addToast]);
+
   const [activeCampaigns, setActiveCampaigns] = useState<Campaign[]>([]);
   const [featuredCreators, setFeaturedCreators] = useState<CreatorProfile[]>([]);
   const [recentPayouts, setRecentPayouts] = useState<PayoutRecord[]>([]);
@@ -423,5 +446,13 @@ export default function DashboardPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function DashboardPage() {
+  return (
+    <Suspense fallback={<CreativeLoader size="lg" label="Loading Workspace" />}>
+      <DashboardContent />
+    </Suspense>
   );
 }
