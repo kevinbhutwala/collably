@@ -4,8 +4,10 @@ import { DatabaseState } from "./schema";
 import { getInitialSeedDatabase } from "./seed";
 import { MOCK_COLLABORATIONS } from "@/mock/collaborations.mock";
 
-const DATA_DIR = path.join(process.cwd(), "data");
+const isServerless = process.env.VERCEL === "1" || !!process.env.AWS_LAMBDA_FUNCTION_NAME;
+const DATA_DIR = isServerless ? path.join("/tmp", "data") : path.join(process.cwd(), "data");
 const DB_FILE = path.join(DATA_DIR, "valence_db.json");
+const BUNDLED_DB_FILE = path.join(process.cwd(), "data", "valence_db.json");
 
 class DatabaseClient {
   private state: DatabaseState | null = null;
@@ -17,11 +19,21 @@ class DatabaseClient {
   private ensureInitialized(): void {
     try {
       if (!fs.existsSync(DATA_DIR)) {
-        fs.mkdirSync(DATA_DIR, { recursive: true });
+        try {
+          fs.mkdirSync(DATA_DIR, { recursive: true });
+        } catch {
+          // Ignore directory creation failure in read-only runtimes
+        }
       }
 
+      let raw: string | null = null;
       if (fs.existsSync(DB_FILE)) {
-        const raw = fs.readFileSync(DB_FILE, "utf-8");
+        raw = fs.readFileSync(DB_FILE, "utf-8");
+      } else if (fs.existsSync(BUNDLED_DB_FILE)) {
+        raw = fs.readFileSync(BUNDLED_DB_FILE, "utf-8");
+      }
+
+      if (raw) {
         this.state = JSON.parse(raw);
 
         const seed = getInitialSeedDatabase();
@@ -53,11 +65,14 @@ class DatabaseClient {
 
         // Merge seed users and synchronize passwordHash for deterministic access
         for (const seedUser of seed.users) {
-          const existing = this.state!.users.find((u) => u.id === seedUser.id);
+          const existing = this.state!.users.find(
+            (u) => u.id === seedUser.id || u.email.toLowerCase() === seedUser.email.toLowerCase()
+          );
           if (!existing) {
             this.state!.users.push(seedUser);
           } else {
             existing.passwordHash = seedUser.passwordHash;
+            existing.email = seedUser.email;
           }
         }
 
@@ -99,7 +114,7 @@ class DatabaseClient {
         this.persist();
       }
     } catch (err) {
-      console.error("Failed to read database file, initializing from seeds:", err);
+      console.error("Failed to initialize database, falling back to in-memory seeds:", err);
       this.state = getInitialSeedDatabase();
       this.persist();
     }
@@ -109,11 +124,17 @@ class DatabaseClient {
     if (!this.state) return;
     try {
       if (!fs.existsSync(DATA_DIR)) {
-        fs.mkdirSync(DATA_DIR, { recursive: true });
+        try {
+          fs.mkdirSync(DATA_DIR, { recursive: true });
+        } catch {
+          // Ignore
+        }
       }
       fs.writeFileSync(DB_FILE, JSON.stringify(this.state, null, 2), "utf-8");
     } catch (err) {
-      console.error("Failed to persist database state to disk:", err);
+      // In serverless environments where local filesystem might be read-only or ephemeral,
+      // fail gracefully and keep in-memory state active.
+      console.warn("Notice: Database disk persistence not available in current environment; using in-memory state.");
     }
   }
 

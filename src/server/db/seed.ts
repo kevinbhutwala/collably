@@ -62,6 +62,17 @@ export function getInitialSeedDatabase(): DatabaseState {
     {
       id: "user-creator",
       name: "Demo Creator",
+      email: "creator@abeycollab.io",
+      passwordHash: creatorPasswordHash,
+      role: "creator",
+      avatarUrl: "",
+      verified: true,
+      createdAt: now,
+      updatedAt: now,
+    },
+    {
+      id: "user-creator-legacy",
+      name: "Demo Creator",
       email: "creator@collably.io",
       passwordHash: creatorPasswordHash,
       role: "creator",
@@ -73,6 +84,17 @@ export function getInitialSeedDatabase(): DatabaseState {
     // ── 2. Demo Brand ──
     {
       id: "user-brand",
+      name: "Demo Brand",
+      email: "brand@abeycollab.io",
+      passwordHash: brandPasswordHash,
+      role: "brand",
+      avatarUrl: "",
+      verified: true,
+      createdAt: now,
+      updatedAt: now,
+    },
+    {
+      id: "user-brand-legacy",
       name: "Demo Brand",
       email: "brand@collably.io",
       passwordHash: brandPasswordHash,

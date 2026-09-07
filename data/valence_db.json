@@ -3,8 +3,8 @@
     {
       "id": "user-creator",
       "name": "Demo Creator",
-      "email": "creator@collably.io",
-      "passwordHash": "e5ebbc4d4795660f4fdc0f2c1fa7419a:47cb09a300fa54c8e5c3c3765cf293752e92cb42b01caedf51851ecaf3c8c1f4eed72d0ebaab5e8b851cfac8a83cd070b2cd3c3d45f3f15bd1fb2dbcf3326858:210000",
+      "email": "creator@abeycollab.io",
+      "passwordHash": "b6d86008c3ade47d0d7b67ccc2927adb:b4d60cab1ae48138ecc9c30d406a117dcee0765769dc421bb21871b6486c41636caccbf09cbfc60cd1b8b876a64dd37159a0a9db4a491a6ce15bae0c3ab5e200:210000",
       "role": "creator",
       "avatarUrl": "",
       "verified": true,
@@ -14,8 +14,8 @@
     {
       "id": "user-brand",
       "name": "Demo Brand",
-      "email": "brand@collably.io",
-      "passwordHash": "ef0877e7320f578ba19dfeb5f33b6b7a:726af1c26239feaf2469d8b682f91ebb4a218f3a2a4c54c0d3cf01a87a5f8ad24935b0c186254c18de172ce33a7057cc2bdc6482af3ab7422444c15e24cb0d96:210000",
+      "email": "brand@abeycollab.io",
+      "passwordHash": "b8a112e0ecaf90afacd086a6bfc1e20d:efc3abb0923092110b0ffa7bf935b6e84060e97232cb8a88c88ca2ffcfca05abec8cd0481a011617a74c9a1a38d891834e5bbcdb9aa88de2461b58e0f2d246b9:210000",
       "role": "brand",
       "avatarUrl": "",
       "verified": true,
@@ -26,7 +26,7 @@
       "id": "user-owner",
       "name": "Kevin Bhutwala",
       "email": "kevinbhutwala417@gmail.com",
-      "passwordHash": "ded59697fbe3adfc1c7715a6514929ae:657817366de8ea6240221fb37b4fece6faf5a57e8b97f77f4f161ddf3311e31a4e57389f3b6f670c38f149fb8954983795e947cfc6d9d8f7ce27e6dc2388ad09:210000",
+      "passwordHash": "37cbc63145b2ceb9009a09bd3e7ba9ae:a85db9d181aa3393cc1db5f80e23b8d18a70abe22a74341f625844f72f29197239d23c6de404b5d12cd6d91d14fbf9eb1bd1da8cb69ace49ab8139d0b0d81232:210000",
       "role": "agency_admin",
       "avatarUrl": "",
       "verified": true,
@@ -43,6 +43,50 @@
       "verified": false,
       "createdAt": "2026-09-05T21:20:57.898Z",
       "updatedAt": "2026-09-05T21:20:57.898Z"
+    },
+    {
+      "id": "user-creator-1788819282512",
+      "name": "Demo Creator",
+      "email": "creator@abeycollab.io",
+      "passwordHash": "9fa3568abcd78c8ec21ab35f1da7d144:b430ad49d2fdd1a85605a1ec82cd78066a386b4a681338ac09145895e58e6e72f1fd5ba337cf2223929357cea1bfddcd5b73d387a57ce016e93dee74f5aa6f71:210000",
+      "role": "creator",
+      "avatarUrl": "",
+      "verified": true,
+      "createdAt": "2026-09-07T22:14:42.511Z",
+      "updatedAt": "2026-09-07T22:14:42.511Z"
+    },
+    {
+      "id": "user-brand-1788819282715",
+      "name": "Demo Brand",
+      "email": "brand@abeycollab.io",
+      "passwordHash": "79d445960f0e8c45015978ed8a52b5d3:1407da13482a1af81c9c38d8833cc4dfd7dd7177d6d6404594e567e2e2e68a1986efbc3fa5ea58a78b62134c61ff393d1415ad31bde0d6cd029a751617178be1:210000",
+      "role": "brand",
+      "avatarUrl": "",
+      "verified": true,
+      "createdAt": "2026-09-07T22:14:42.715Z",
+      "updatedAt": "2026-09-07T22:14:42.715Z"
+    },
+    {
+      "id": "user-creator-legacy",
+      "name": "Demo Creator",
+      "email": "creator@collably.io",
+      "passwordHash": "b6d86008c3ade47d0d7b67ccc2927adb:b4d60cab1ae48138ecc9c30d406a117dcee0765769dc421bb21871b6486c41636caccbf09cbfc60cd1b8b876a64dd37159a0a9db4a491a6ce15bae0c3ab5e200:210000",
+      "role": "creator",
+      "avatarUrl": "",
+      "verified": true,
+      "createdAt": "2026-09-07T22:15:17.692Z",
+      "updatedAt": "2026-09-07T22:15:17.692Z"
+    },
+    {
+      "id": "user-brand-legacy",
+      "name": "Demo Brand",
+      "email": "brand@collably.io",
+      "passwordHash": "b8a112e0ecaf90afacd086a6bfc1e20d:efc3abb0923092110b0ffa7bf935b6e84060e97232cb8a88c88ca2ffcfca05abec8cd0481a011617a74c9a1a38d891834e5bbcdb9aa88de2461b58e0f2d246b9:210000",
+      "role": "brand",
+      "avatarUrl": "",
+      "verified": true,
+      "createdAt": "2026-09-07T22:15:17.692Z",
+      "updatedAt": "2026-09-07T22:15:17.692Z"
     }
   ],
   "creators": [
