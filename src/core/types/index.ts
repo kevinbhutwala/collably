@@ -507,6 +507,8 @@ export interface PayoutRecord {
   netAmount: number;
   status: 'pending' | 'escrow_locked' | 'processing' | 'paid' | 'refunded';
   paymentMethod: string;
+  environment?: 'test' | 'live';
+  isTest?: boolean;
   createdAt: string;
   releasedAt?: string;
 }

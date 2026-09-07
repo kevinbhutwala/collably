@@ -2281,6 +2281,8 @@
       "agencyFee": 0,
       "status": "paid",
       "paymentMethod": "razorpay",
+      "environment": "test",
+      "isTest": true,
       "createdAt": "2026-09-06T07:39:09.000Z"
     },
     {
@@ -2296,6 +2298,8 @@
       "agencyFee": 0,
       "status": "paid",
       "paymentMethod": "razorpay",
+      "environment": "test",
+      "isTest": true,
       "createdAt": "2026-09-06T09:18:43.000Z"
     }
   ],
@@ -2484,6 +2488,8 @@
       "provider": "razorpay",
       "providerOrderId": "order_TYfhanUvTJdPAR",
       "providerPaymentId": "pay_TYfhopKcE8zm6J",
+      "environment": "test",
+      "isTest": true,
       "metadata": {
         "method": "card",
         "cardLast4": "1007",
@@ -2503,6 +2509,8 @@
       "provider": "razorpay",
       "providerOrderId": "order_TYhG3RUmz05OkS",
       "providerPaymentId": "pay_TYhOzyxdxEmRAj",
+      "environment": "test",
+      "isTest": true,
       "metadata": {
         "method": "netbanking",
         "bank": "Bank of Baroda",

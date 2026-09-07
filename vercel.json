@@ -1,0 +1,12 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/payment-guardian",
+      "schedule": "0 * * * *"
+    },
+    {
+      "path": "/api/cron/sla-release",
+      "schedule": "*/15 * * * *"
+    }
+  ]
+}

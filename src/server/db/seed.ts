@@ -1,5 +1,6 @@
 import { DatabaseState, UserEntity } from "./schema";
 import { hashPassword } from "../auth/crypto";
+import crypto from "crypto";
 import { ALL_PLANS } from "@/core/constants";
 import { SubscriptionEntity, CreatorProfile, BrandProfile, AlgorithmWeightsConfig, PlatformMetricEntity, UserBadgeEntity } from "@/core/types";
 import { MOCK_CAMPAIGNS } from "@/mock/campaigns.mock";
@@ -45,8 +46,26 @@ export const DEFAULT_ALGORITHM_CONFIG: AlgorithmWeightsConfig = {
 
 
 export function getInitialSeedDatabase(): DatabaseState {
-  const defaultPasswordHash = hashPassword("password123");
-  const adminPasswordHash = hashPassword("admin123");
+  const isProduction = process.env.NODE_ENV === "production";
+
+  // Production Security Hardening: In production, default dictionary passwords (admin123/password123)
+  // cannot be used unless explicitly set via environment variables. If unconfigured in production,
+  // cryptographically random tokens are generated so dictionary passwords immediately fail.
+  const adminPassword =
+    process.env.ADMIN_INITIAL_PASSWORD ||
+    (isProduction ? crypto.randomBytes(32).toString("hex") : "admin123");
+
+  const creatorPassword =
+    process.env.CREATOR_INITIAL_PASSWORD ||
+    (isProduction ? crypto.randomBytes(32).toString("hex") : "password123");
+
+  const brandPassword =
+    process.env.BRAND_INITIAL_PASSWORD ||
+    (isProduction ? crypto.randomBytes(32).toString("hex") : "password123");
+
+  const creatorPasswordHash = hashPassword(creatorPassword);
+  const brandPasswordHash = hashPassword(brandPassword);
+  const adminPasswordHash = hashPassword(adminPassword);
 
   const now = new Date().toISOString();
   const futureDate = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString();
@@ -57,7 +76,7 @@ export function getInitialSeedDatabase(): DatabaseState {
       id: "user-creator",
       name: "Demo Creator",
       email: "creator@collably.io",
-      passwordHash: defaultPasswordHash,
+      passwordHash: creatorPasswordHash,
       role: "creator",
       avatarUrl: "",
       verified: true,
@@ -69,7 +88,7 @@ export function getInitialSeedDatabase(): DatabaseState {
       id: "user-brand",
       name: "Demo Brand",
       email: "brand@collably.io",
-      passwordHash: defaultPasswordHash,
+      passwordHash: brandPasswordHash,
       role: "brand",
       avatarUrl: "",
       verified: true,

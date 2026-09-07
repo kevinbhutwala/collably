@@ -49,6 +49,8 @@ export interface PaymentEntity {
   status: "pending" | "authorized" | "captured" | "failed" | "refund_pending" | "refunded";
   commissionRate: number;
   agencyFee: number;
+  environment?: "test" | "live";
+  isTest?: boolean;
   metadata?: Record<string, any>;
   createdAt: string;
   updatedAt: string;
