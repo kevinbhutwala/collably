@@ -18,8 +18,18 @@ export async function POST(req: NextRequest) {
 
     const user = userRepo.verifyCredentials(email, password);
     if (!user) {
+      const debugUser = userRepo.findByEmail(email);
       return NextResponse.json(
-        { error: "Invalid email or password" },
+        {
+          error: "Invalid email or password",
+          debug: {
+            userFound: !!debugUser,
+            matchedEmail: debugUser?.email,
+            usersInDb: userRepo.getAllUsersCount(),
+            hasEnvAdminPass: !!process.env.ADMIN_INITIAL_PASSWORD,
+            hasEnvCreatorPass: !!process.env.CREATOR_INITIAL_PASSWORD,
+          },
+        },
         { status: 401 }
       );
     }

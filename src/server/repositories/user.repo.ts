@@ -36,6 +36,10 @@ export class UserRepository {
     return (db.getState().users || []).find((u) => u.id === id);
   }
 
+  getAllUsersCount(): number {
+    return (db.getState().users || []).length;
+  }
+
   createUser(data: {
     name: string;
     email: string;
