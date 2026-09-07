@@ -1,8 +1,16 @@
-"use client";
-
+import type { Metadata } from 'next';
 import React from "react";
 import Link from "next/link";
 import { ShieldCheck, ArrowLeft } from "lucide-react";
+
+const BASE_URL = 'https://abeycollab.vercel.app';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy & Data Protection',
+  description:
+    'Learn how AbeyCollab safeguards creator media assets, verified metrics, audience data, and financial escrow transactions.',
+  alternates: { canonical: `${BASE_URL}/privacy` },
+};
 
 export default function PrivacyPolicyPage() {
   return (

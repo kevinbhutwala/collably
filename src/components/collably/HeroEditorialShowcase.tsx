@@ -117,7 +117,7 @@ export function HeroEditorialShowcase() {
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF9F5] dark:bg-[#14141E] border border-black/8 dark:border-white/10 shadow-2xs">
               <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
               <span className="text-[11px] font-mono font-bold tracking-tight text-[#0A0A0E] dark:text-white">
-                COLLABLY • THE CREATOR × BRAND COMMERCE PLATFORM
+                ABEYCOLLAB • THE CREATOR × BRAND COMMERCE PLATFORM
               </span>
             </div>
 

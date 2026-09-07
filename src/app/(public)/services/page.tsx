@@ -1,5 +1,7 @@
+import type { Metadata } from "next";
 import React from "react";
 import Link from "next/link";
+import Script from "next/script";
 import { Button } from "@/components/ui/Button";
 import { EditorialCTA } from "@/components/collably/EditorialCTA";
 import {
@@ -11,7 +13,76 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
+const BASE_URL = "https://abeycollab.vercel.app";
+
+export const metadata: Metadata = {
+  title: "Agency Services — Creator Representation & Campaign Strategy",
+  description:
+    "Full-service creator talent management, viral UGC video production, end-to-end influencer strategy, and performance attribution by AbeyCollab.",
+  keywords: [
+    "creator talent agency",
+    "influencer campaign management services",
+    "ugc video production",
+    "creator brand deal sourcing",
+    "influencer roas attribution",
+  ],
+  alternates: { canonical: `${BASE_URL}/services` },
+  openGraph: {
+    type: "website",
+    url: `${BASE_URL}/services`,
+    title: "Agency Services | AbeyCollab Creator Commerce",
+    description: "End-to-end campaign management, UGC production, and elite talent representation.",
+    images: ["/og-image.png"],
+  },
+};
+
+const servicesJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "Creator Management & Influencer Campaign Execution",
+  provider: {
+    "@type": "Organization",
+    name: "AbeyCollab",
+    url: BASE_URL,
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "AbeyCollab Services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Creator Talent Representation",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "End-to-End Campaign Strategy",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "High-Converting UGC & Video Production",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Attribution & Audience Intelligence",
+        },
+      },
+    ],
+  },
+};
+
 export default function ServicesPage() {
+
   const services = [
     {
       icon: Users,
@@ -41,6 +112,11 @@ export default function ServicesPage() {
 
   return (
     <div className="bg-[#FAFAFC] text-[#0A0A0E] min-h-screen">
+      <Script
+        id="services-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }}
+      />
       <div className="pt-24 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-black/8 text-xs font-mono font-bold text-[#0A0A0E] shadow-xs">
           <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />

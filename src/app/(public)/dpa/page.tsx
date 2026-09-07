@@ -1,8 +1,16 @@
-"use client";
-
+import type { Metadata } from 'next';
 import React from "react";
 import Link from "next/link";
 import { Database, ArrowLeft } from "lucide-react";
+
+const BASE_URL = 'https://abeycollab.vercel.app';
+
+export const metadata: Metadata = {
+  title: 'Data Processing Agreement (DPA)',
+  description:
+    'AbeyCollab enterprise data processing agreement, standard contractual clauses, GDPR, UK GDPR, and India DPDP compliance.',
+  alternates: { canonical: `${BASE_URL}/dpa` },
+};
 
 export default function DPAPage() {
   return (

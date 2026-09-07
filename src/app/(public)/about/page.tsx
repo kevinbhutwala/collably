@@ -1,18 +1,55 @@
 import type { Metadata } from 'next';
 import React from "react";
+import Script from "next/script";
 import { EditorialCTA } from "@/components/collably/EditorialCTA";
 import { Sparkles, ShieldCheck, Zap, Globe } from "lucide-react";
 
+const BASE_URL = 'https://abeycollab.vercel.app';
+
 export const metadata: Metadata = {
-  title: 'About Us',
-  description: 'AbeyCollab is building the operating system for the creator economy — milestone payments, campaign management, and creator discovery in one platform.',
-  alternates: { canonical: 'https://abeycollab.vercel.app/about' },
+  title: 'About Us — Operating System for the Creator Economy',
+  description:
+    'AbeyCollab is building the commerce infrastructure for the global creator economy. Eliminating 90-day invoice chasing through milestone escrow protection, transparent creator rate cards, and AI-powered brand matching.',
+  keywords: [
+    'about AbeyCollab',
+    'creator economy infrastructure',
+    'creator marketplace mission',
+    'influencer escrow platform',
+    'fair creator pay',
+  ],
+  alternates: { canonical: `${BASE_URL}/about` },
+  openGraph: {
+    type: 'website',
+    url: `${BASE_URL}/about`,
+    title: 'About AbeyCollab — Infrastructure for the Creator Economy',
+    description: 'Empowering independent creators and high-growth brands through trust, transparency, and escrow protection.',
+    images: ['/og-image.png'],
+  },
+};
+
+const aboutJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'About AbeyCollab',
+  url: `${BASE_URL}/about`,
+  description: 'Operating system and milestone escrow infrastructure for the global creator economy.',
+  mainEntity: {
+    '@type': 'Organization',
+    name: 'AbeyCollab',
+    url: BASE_URL,
+    logo: `${BASE_URL}/icon.svg`,
+  },
 };
 
 
 export default function AboutPage() {
   return (
     <div className="bg-[#FAFAF8] text-[#111111] min-h-screen">
+      <Script
+        id="about-page-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutJsonLd) }}
+      />
       <div className="pt-24 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-xs font-mono font-bold text-[#111111] shadow-xs">
           <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />

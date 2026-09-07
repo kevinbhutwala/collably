@@ -1,8 +1,16 @@
-"use client";
-
+import type { Metadata } from 'next';
 import React from "react";
 import Link from "next/link";
 import { Scale, ArrowLeft } from "lucide-react";
+
+const BASE_URL = 'https://abeycollab.vercel.app';
+
+export const metadata: Metadata = {
+  title: 'Terms of Service',
+  description:
+    'AbeyCollab terms of service, platform usage guidelines, creator rate commitments, and brand collaboration rules.',
+  alternates: { canonical: `${BASE_URL}/terms` },
+};
 
 export default function TermsOfServicePage() {
   return (

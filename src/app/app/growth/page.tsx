@@ -78,7 +78,7 @@ export default function CreatorGrowthCenterPage() {
       }
     };
     fetchGrowthData();
-  }, [currentCreator?.id]);
+  }, [currentCreator]);
 
   // Profile Checklist items derived from actual data
   const hasAvatar = Boolean(creator?.avatarUrl);

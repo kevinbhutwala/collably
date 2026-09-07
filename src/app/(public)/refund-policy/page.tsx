@@ -1,8 +1,16 @@
-"use client";
-
+import type { Metadata } from 'next';
 import React from "react";
 import Link from "next/link";
 import { RotateCcw, ArrowLeft } from "lucide-react";
+
+const BASE_URL = 'https://abeycollab.vercel.app';
+
+export const metadata: Metadata = {
+  title: 'Escrow, Cancellation & Refund Policy',
+  description:
+    'Transparent protection policies: 100% pre-work refunds, stage-aware kill fees, 120-hour brand review SLAs, and judicial dispute arbitration.',
+  alternates: { canonical: `${BASE_URL}/refund-policy` },
+};
 
 export default function RefundPolicyPage() {
   return (
