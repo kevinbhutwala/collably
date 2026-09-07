@@ -9,7 +9,7 @@ const CREDS = {
 };
 
 async function performLogin(page: any, email: string, pass: string) {
-  await page.goto(`${BASE_URL}/login`, { waitUntil: "networkidle" });
+  await page.goto(`${BASE_URL}/login`, { waitUntil: "domcontentloaded" });
   await page.fill('input[type="email"]', email);
   await page.fill('input[type="password"]', pass);
   await page.click('button[type="submit"]');
@@ -35,7 +35,7 @@ test.describe("AbeyCollab Marketplace Operating System Full Flow", () => {
     await expect(page.locator("text=/Your Opportunity Score/i").first()).toBeVisible();
 
     // 3. Dedicated /app/trending Hub
-    await page.goto(`${BASE_URL}/app/trending`, { waitUntil: "networkidle" });
+    await page.goto(`${BASE_URL}/app/trending`, { waitUntil: "domcontentloaded" });
     await expect(page.getByRole("heading", { name: /Marketplace Trending Experience/i })).toBeVisible({ timeout: 10_000 });
 
     // Verify tabs
@@ -56,14 +56,14 @@ test.describe("AbeyCollab Marketplace Operating System Full Flow", () => {
     await expect(page.locator("text=/Top Performer #/i").first()).toBeVisible({ timeout: 10_000 });
 
     // 4. Creator Growth Center (/app/growth)
-    await page.goto(`${BASE_URL}/app/growth`, { waitUntil: "networkidle" });
+    await page.goto(`${BASE_URL}/app/growth`, { waitUntil: "domcontentloaded" });
     await expect(page.getByRole("heading", { name: /Creator Growth Center/i })).toBeVisible({ timeout: 10_000 });
     await expect(page.locator("text=/Profile Completeness/i").first()).toBeVisible();
     await expect(page.locator("text=/Platform Visibility Ranking/i").first()).toBeVisible();
     await expect(page.locator("text=/Improve Your Visibility/i").first()).toBeVisible();
 
     // 5. Transaction Lifecycle Stepper in Collaborations
-    await page.goto(`${BASE_URL}/app/collaborations`, { waitUntil: "networkidle" });
+    await page.goto(`${BASE_URL}/app/collaborations`, { waitUntil: "domcontentloaded" });
     const stepperTitle = page.locator("text=/Transaction Lifecycle/i").first();
     if (await stepperTitle.isVisible({ timeout: 5000 }).catch(() => false)) {
       await expect(page.locator("text=/When will I get paid/i").first()).toBeVisible();
@@ -82,7 +82,7 @@ test.describe("AbeyCollab Marketplace Operating System Full Flow", () => {
     await expect(page.locator("text=/Avg Campaign Budget/i").first()).toBeVisible();
 
     // 3. Brand Creator Discovery with Filters & Sorting
-    await page.goto(`${BASE_URL}/app/brand/creators`, { waitUntil: "networkidle" });
+    await page.goto(`${BASE_URL}/app/brand/creators`, { waitUntil: "domcontentloaded" });
     await expect(page.getByRole("heading", { name: /Discover Verified Creators/i })).toBeVisible({ timeout: 10_000 });
 
     // Verify sort dropdown exists
@@ -123,7 +123,7 @@ test.describe("AbeyCollab Marketplace Operating System Full Flow", () => {
     await performLogin(page, CREDS.admin.email, CREDS.admin.password);
 
     // 2. Admin Analytics & Reports (/admin/reports)
-    await page.goto(`${BASE_URL}/admin/reports`, { waitUntil: "networkidle" });
+    await page.goto(`${BASE_URL}/admin/reports`, { waitUntil: "domcontentloaded" });
     await expect(page.getByRole("heading", { name: /Agency Analytics & GMV Platform Telemetry/i })).toBeVisible({ timeout: 10_000 });
 
     // Verify real DB metric cards
@@ -135,7 +135,7 @@ test.describe("AbeyCollab Marketplace Operating System Full Flow", () => {
     await expect(page.locator("text=/Platform Retention/i").first()).toBeVisible();
 
     // 3. Admin Algorithm Controls (/admin/settings)
-    await page.goto(`${BASE_URL}/admin/settings`, { waitUntil: "networkidle" });
+    await page.goto(`${BASE_URL}/admin/settings`, { waitUntil: "domcontentloaded" });
     await expect(page.getByRole("heading", { name: /Marketplace Intelligence|Platform Settings/i })).toBeVisible({ timeout: 10_000 });
     await expect(page.locator("text=/Engagement Rate/i").first()).toBeVisible({ timeout: 10_000 });
     await expect(page.locator("text=/Anti-Gaming Security/i").first()).toBeVisible({ timeout: 10_000 });

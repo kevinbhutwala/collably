@@ -1,11 +1,11 @@
 import { test, expect } from "@playwright/test";
 
-const BASE_URL = process.env.BASE_URL || "https://abeycollab.vercel.app";
+const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
 
 test.describe("Verified Captured Razorpay Payments & Dashboard Status", () => {
   test("Brand & Creator Ledger reflects captured payments", async ({ page }) => {
     // 1. Log in as Brand
-    await page.goto(`${BASE_URL}/login`, { waitUntil: "networkidle" });
+    await page.goto(`${BASE_URL}/login`, { waitUntil: "domcontentloaded" });
     await page.fill('input[type="email"]', "brand@abeycollab.io");
     await page.fill('input[type="password"]', "password123");
     await page.click('button[type="submit"]');
@@ -14,7 +14,7 @@ test.describe("Verified Captured Razorpay Payments & Dashboard Status", () => {
     await expect(page).toHaveURL(/\/(app|dashboard)/i);
 
     // 2. Visit Earnings & Escrow ledger
-    await page.goto(`${BASE_URL}/app/earnings`, { waitUntil: "networkidle" });
+    await page.goto(`${BASE_URL}/app/earnings`, { waitUntil: "domcontentloaded" });
     await expect(page.locator("text=Live Razorpay Escrow Deposit Gateway")).toBeVisible({ timeout: 10000 });
 
     // 3. Check that Pay with Razorpay button is enabled and active

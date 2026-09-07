@@ -1,9 +1,9 @@
 import { test, expect, Page } from '@playwright/test';
 
-const BASE_URL = process.env.BASE_URL || 'https://collably-ashen.vercel.app';
+const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 
 async function loginAs(page: Page, email: string, pass: string) {
-  await page.goto(`${BASE_URL}/login`, { waitUntil: 'networkidle' });
+  await page.goto(`${BASE_URL}/login`, { waitUntil: 'domcontentloaded' });
 
   const emailInput = page.locator('input[type="email"], input[name="email"]').first();
   const passwordInput = page.locator('input[type="password"], input[name="password"]').first();
@@ -21,11 +21,12 @@ async function loginAs(page: Page, email: string, pass: string) {
 test.describe('Collably Dark Mode & Text Contrast Verification Suite', () => {
 
   test.beforeEach(async ({ context }) => {
+    // Clear cookies to avoid session cross-contamination
     await context.clearCookies();
   });
 
   test('01: Landing Page Dark Mode Toggle & Typography Visibility', async ({ page }) => {
-    await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+    await page.goto(BASE_URL, { waitUntil: 'domcontentloaded' });
 
     // Find theme toggle button (desktop or mobile)
     const themeToggle = page.locator('button[aria-label*="Toggle theme"], button[title*="Switch to"]').first();

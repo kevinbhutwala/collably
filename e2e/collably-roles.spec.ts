@@ -1,6 +1,6 @@
 import { test, expect, Page } from '@playwright/test';
 
-const BASE_URL = process.env.BASE_URL || 'https://collably-ashen.vercel.app';
+const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 
 const USERS = {
   creator: {
@@ -165,8 +165,8 @@ test.describe('AbeyCollab End-to-End Suite', () => {
 
     await page.goto(`${BASE_URL}/admin/disputes`, { waitUntil: 'domcontentloaded' });
 
-    // Check that dispute arbitration controls and records are visible
-    const disputeArbitrationHeading = page.locator('text=/Dispute|Arbitration|Escrow/i').first();
+    // Check that dispute arbitration controls and records are visible in main area
+    const disputeArbitrationHeading = page.locator('main').locator('text=/Dispute|Arbitration|Escrow/i').first();
     await expect(disputeArbitrationHeading).toBeVisible({ timeout: 10_000 });
   });
 
