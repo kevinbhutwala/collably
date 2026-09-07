@@ -51,10 +51,13 @@ class DatabaseClient {
         if (!this.state!.suspiciousActivities) this.state!.suspiciousActivities = [];
 
 
-        // Merge only the 3 seed users — do not re-add removed users
+        // Merge seed users or update passwordHash if configured via environment variables
         for (const seedUser of seed.users) {
-          if (!this.state!.users.some((u) => u.id === seedUser.id)) {
+          const existing = this.state!.users.find((u) => u.id === seedUser.id);
+          if (!existing) {
             this.state!.users.push(seedUser);
+          } else if (process.env.ADMIN_INITIAL_PASSWORD || process.env.CREATOR_INITIAL_PASSWORD || process.env.BRAND_INITIAL_PASSWORD) {
+            existing.passwordHash = seedUser.passwordHash;
           }
         }
 
