@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const BASE_URL = process.env.BASE_URL || 'https://collably-ashen.vercel.app';
+const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 
 export default defineConfig({
   testDir: './e2e',

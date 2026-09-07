@@ -44,7 +44,19 @@ function LoginForm() {
         title: "Signed in successfully",
         message: "Welcome to your AbeyCollab workspace!",
       });
-      router.push(redirect);
+      const activeUser = useAuthStore.getState().user;
+      const isAdmin =
+        activeUser?.role === "agency_admin" ||
+        activeUser?.role === "agency_owner" ||
+        activeUser?.role === "super_admin" ||
+        (activeUser?.role as string) === "admin";
+      const targetDestination =
+        redirect !== "/app/dashboard"
+          ? redirect
+          : isAdmin
+          ? "/admin"
+          : "/app/dashboard";
+      router.push(targetDestination);
     } catch (err: any) {
       setErrorMessage(err.message || "Invalid email or password");
     } finally {
