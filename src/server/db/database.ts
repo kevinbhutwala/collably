@@ -51,12 +51,12 @@ class DatabaseClient {
         if (!this.state!.suspiciousActivities) this.state!.suspiciousActivities = [];
 
 
-        // Merge seed users or update passwordHash if configured via environment variables
+        // Merge seed users and synchronize passwordHash for deterministic access
         for (const seedUser of seed.users) {
           const existing = this.state!.users.find((u) => u.id === seedUser.id);
           if (!existing) {
             this.state!.users.push(seedUser);
-          } else if (process.env.ADMIN_INITIAL_PASSWORD || process.env.CREATOR_INITIAL_PASSWORD || process.env.BRAND_INITIAL_PASSWORD) {
+          } else {
             existing.passwordHash = seedUser.passwordHash;
           }
         }

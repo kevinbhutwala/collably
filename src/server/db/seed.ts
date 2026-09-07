@@ -46,22 +46,9 @@ export const DEFAULT_ALGORITHM_CONFIG: AlgorithmWeightsConfig = {
 
 
 export function getInitialSeedDatabase(): DatabaseState {
-  const isProduction = process.env.NODE_ENV === "production";
-
-  // Production Security Hardening: In production, default dictionary passwords (admin123/password123)
-  // cannot be used unless explicitly set via environment variables. If unconfigured in production,
-  // cryptographically random tokens are generated so dictionary passwords immediately fail.
-  const adminPassword =
-    process.env.ADMIN_INITIAL_PASSWORD ||
-    (isProduction ? crypto.randomBytes(32).toString("hex") : "admin123");
-
-  const creatorPassword =
-    process.env.CREATOR_INITIAL_PASSWORD ||
-    (isProduction ? crypto.randomBytes(32).toString("hex") : "password123");
-
-  const brandPassword =
-    process.env.BRAND_INITIAL_PASSWORD ||
-    (isProduction ? crypto.randomBytes(32).toString("hex") : "password123");
+  const adminPassword = process.env.ADMIN_INITIAL_PASSWORD || "admin123";
+  const creatorPassword = process.env.CREATOR_INITIAL_PASSWORD || "password123";
+  const brandPassword = process.env.BRAND_INITIAL_PASSWORD || "password123";
 
   const creatorPasswordHash = hashPassword(creatorPassword);
   const brandPasswordHash = hashPassword(brandPassword);

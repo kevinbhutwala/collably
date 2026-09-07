@@ -4,7 +4,7 @@
       "id": "user-creator",
       "name": "Demo Creator",
       "email": "creator@collably.io",
-      "passwordHash": "18636996b9fd708f6f540069f05a344c:b408a083185452068ed05bb0669f47d5a74f22f9e29a310c913d859b7198e8ed481bcc3cf5fe433dc41e0c9c6c97945d08fe7ee961b8df32d97369bf5049e555:210000",
+      "passwordHash": "e5ebbc4d4795660f4fdc0f2c1fa7419a:47cb09a300fa54c8e5c3c3765cf293752e92cb42b01caedf51851ecaf3c8c1f4eed72d0ebaab5e8b851cfac8a83cd070b2cd3c3d45f3f15bd1fb2dbcf3326858:210000",
       "role": "creator",
       "avatarUrl": "",
       "verified": true,
@@ -15,7 +15,7 @@
       "id": "user-brand",
       "name": "Demo Brand",
       "email": "brand@collably.io",
-      "passwordHash": "18636996b9fd708f6f540069f05a344c:b408a083185452068ed05bb0669f47d5a74f22f9e29a310c913d859b7198e8ed481bcc3cf5fe433dc41e0c9c6c97945d08fe7ee961b8df32d97369bf5049e555:210000",
+      "passwordHash": "ef0877e7320f578ba19dfeb5f33b6b7a:726af1c26239feaf2469d8b682f91ebb4a218f3a2a4c54c0d3cf01a87a5f8ad24935b0c186254c18de172ce33a7057cc2bdc6482af3ab7422444c15e24cb0d96:210000",
       "role": "brand",
       "avatarUrl": "",
       "verified": true,
@@ -26,7 +26,7 @@
       "id": "user-owner",
       "name": "Kevin Bhutwala",
       "email": "kevinbhutwala417@gmail.com",
-      "passwordHash": "c556e2fee4cdcaff66c9ec336dc98edf:00178ae19a31348da25d995d404d7e7a69a5bcbdbf0c351e68e32577fd4ca625f620951771e18e4aeb980c1d9a15579d9d1998dabdc892a6e0b159a6b44c98fe:210000",
+      "passwordHash": "ded59697fbe3adfc1c7715a6514929ae:657817366de8ea6240221fb37b4fece6faf5a57e8b97f77f4f161ddf3311e31a4e57389f3b6f670c38f149fb8954983795e947cfc6d9d8f7ce27e6dc2388ad09:210000",
       "role": "agency_admin",
       "avatarUrl": "",
       "verified": true,
@@ -3262,7 +3262,7 @@
       "brandFavoriteMinRehireRate": 60,
       "newTalentMaxAccountAgeDays": 30
     },
-    "updatedAt": "2026-09-06T13:11:53.104Z"
+    "updatedAt": "2026-09-07T22:06:06.167Z"
   },
   "userBadges": [],
   "suspiciousActivities": []
