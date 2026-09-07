@@ -11,8 +11,10 @@ const nextConfig = {
       },
     ],
   },
-  outputFileTracingIncludes: {
-    "/api/**/*": ["./data/**/*"],
+  experimental: {
+    outputFileTracingIncludes: {
+      "/api/**/*": ["./data/**/*"],
+    },
   },
   async headers() {
     return [
