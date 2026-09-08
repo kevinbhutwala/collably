@@ -42,6 +42,10 @@ export interface SocialAccount {
   engagementRate: number;
   avgViews: number;
   verifiedBadge: boolean;
+  verificationStatus?: 'unverified' | 'pending' | 'verified';
+  verificationCode?: string;
+  verifiedAt?: string;
+  verificationMethod?: 'bio_token' | 'instant_auth';
 }
 
 export interface AudienceDemographics {

@@ -135,19 +135,33 @@ export default function CreatorDetailPage() {
                 </div>
 
                 {/* Social Channel Links */}
-                <div className="flex items-center gap-2 pt-2">
-                  {creator.socialAccounts.map((sa) => (
-                    <a
-                      key={sa.id}
-                      href={sa.url || "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 rounded-xl bg-[#F8F8FC] border border-black/5 text-[#5A5A68] hover:text-[#0A0A0E] transition-all hover:scale-105"
-                      title={`${sa.platform}: ${formatNumber(sa.followers)} followers`}
-                    >
-                      <SocialIcon platform={sa.platform} className="w-4 h-4" />
-                    </a>
-                  ))}
+                <div className="flex flex-wrap items-center gap-2 pt-2">
+                  {creator.socialAccounts.map((sa) => {
+                    const isVerified = sa.verifiedBadge || sa.verificationStatus === "verified";
+                    return (
+                      <a
+                        key={sa.id}
+                        href={sa.url || "#"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#F8F8FC] hover:bg-white border border-black/8 text-[#0A0A0E] transition-all hover:scale-102 hover:shadow-xs group text-xs font-mono"
+                        title={`${sa.platform.toUpperCase()}: @${sa.handle} (${formatNumber(sa.followers)} followers)${isVerified ? " • Verified Channel" : ""}`}
+                      >
+                        <SocialIcon platform={sa.platform} className="w-3.5 h-3.5 shrink-0 text-[#5A5A68] group-hover:text-[#0A0A0E]" />
+                        <span className="font-bold text-xs">@{sa.handle}</span>
+                        {isVerified && (
+                          <span
+                            className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold"
+                            title="Verified Channel Ownership"
+                          >
+                            <CheckCircle2 className="w-2.5 h-2.5 text-emerald-600 fill-emerald-100" />
+                            <span>Verified</span>
+                          </span>
+                        )}
+                        <ExternalLink className="w-2.5 h-2.5 text-[#8A8A9A] group-hover:text-[#0A0A0E] transition-colors shrink-0 opacity-70 group-hover:opacity-100" />
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
             </div>

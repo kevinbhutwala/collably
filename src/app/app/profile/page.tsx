@@ -6,7 +6,13 @@ import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
 import { Input, Textarea } from "@/components/ui/Input";
 import { SocialAccount, PlatformType } from "@/core/types";
-import { calculateTotalFollowers, calculateAvgEngagementRate, getCreatorTier } from "@/core/utils/social";
+import {
+  calculateTotalFollowers,
+  calculateAvgEngagementRate,
+  getCreatorTier,
+  validatePlatformHandle,
+  generateSocialVerificationCode,
+} from "@/core/utils/social";
 import {
   ExternalLink,
   Save,
@@ -22,6 +28,10 @@ import {
   MapPin,
   Users,
   CheckCircle2,
+  ShieldCheck,
+  Copy,
+  Check,
+  Loader2,
 } from "lucide-react";
 
 export default function ProfileEditPage() {
@@ -54,6 +64,12 @@ export default function ProfileEditPage() {
   const [newFollowers, setNewFollowers] = useState(10000);
   const [newEngagement, setNewEngagement] = useState(4.5);
 
+  // Social account ownership verification modal state
+  const [showVerifyModal, setShowVerifyModal] = useState(false);
+  const [selectedVerifyAccount, setSelectedVerifyAccount] = useState<SocialAccount | null>(null);
+  const [isVerifying, setIsVerifying] = useState(false);
+  const [hasCopiedCode, setHasCopiedCode] = useState(false);
+
   useEffect(() => {
     if (currentCreator) {
       setHeadline(currentCreator.headline || "");
@@ -80,35 +96,141 @@ export default function ProfileEditPage() {
   const tier = getCreatorTier(totalFollowers);
 
   const handleAddSocialAccount = () => {
-    if (!newHandle.trim()) {
+    const validation = validatePlatformHandle(newPlatform, newHandle);
+    if (!validation.valid) {
       addToast({
         type: "error",
-        title: "Handle Required",
-        message: "Please enter your channel handle or profile URL.",
+        title: "Invalid Social Link",
+        message: validation.error || "Please enter a valid handle or profile link.",
       });
       return;
     }
 
-    const cleanHandle = newHandle.replace(/^@/, "").trim();
+    const { cleanHandle, url } = validation;
+
+    // Check if duplicate in current profile
+    const alreadyAdded = socialAccounts.some(
+      (acc) => acc.platform === newPlatform && acc.handle.toLowerCase() === cleanHandle.toLowerCase()
+    );
+    if (alreadyAdded) {
+      addToast({
+        type: "error",
+        title: "Already Added",
+        message: `You already added @${cleanHandle} on ${newPlatform.toUpperCase()} to your media kit.`,
+      });
+      return;
+    }
+
+    const verificationCode = generateSocialVerificationCode(newPlatform, cleanHandle);
+
     const newAcc: SocialAccount = {
       id: `sa_${Date.now()}`,
       platform: newPlatform,
       handle: cleanHandle,
-      url: `https://${newPlatform}.com/${cleanHandle}`,
-      followers: Number(newFollowers) || 0,
-      engagementRate: Number(newEngagement) || 0,
+      url,
+      followers: Number(newFollowers) || 10000,
+      engagementRate: Number(newEngagement) || 4.5,
       avgViews: 0,
       verifiedBadge: false,
+      verificationStatus: "unverified",
+      verificationCode,
     };
 
     setSocialAccounts((prev) => [...prev, newAcc]);
     setShowAddModal(false);
     setNewHandle("");
+
+    // Open verification modal immediately for the new account
+    setSelectedVerifyAccount(newAcc);
+    setShowVerifyModal(true);
+
     addToast({
-      type: "success",
-      title: "Social Channel Added",
-      message: `@${cleanHandle} connected. Remember to save your profile changes.`,
+      type: "info",
+      title: "Channel Added",
+      message: `@${cleanHandle} connected. Please verify ownership to get the Verified badge.`,
     });
+  };
+
+  const handleCopyCode = (code: string) => {
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      navigator.clipboard.writeText(code);
+      setHasCopiedCode(true);
+      setTimeout(() => setHasCopiedCode(false), 2000);
+      addToast({
+        type: "info",
+        title: "Code Copied",
+        message: `Verification code "${code}" copied to clipboard.`,
+      });
+    }
+  };
+
+  const handleVerifyAccount = async (targetAccount?: SocialAccount) => {
+    const acc = targetAccount || selectedVerifyAccount;
+    if (!acc) return;
+
+    setIsVerifying(true);
+    try {
+      const res = await fetch("/api/creators/verify-social", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          creatorId: currentCreator?.id,
+          accountId: acc.id,
+          platform: acc.platform,
+          handle: acc.handle,
+          verificationCode: acc.verificationCode,
+          followers: acc.followers,
+          engagementRate: acc.engagementRate,
+          method: "instant_auth",
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Verification failed. Please try again.");
+      }
+
+      // Update social accounts in state
+      const updatedAccounts = socialAccounts.map((item) =>
+        item.id === acc.id ||
+        (item.platform === acc.platform && item.handle.toLowerCase() === acc.handle.toLowerCase())
+          ? {
+              ...item,
+              verifiedBadge: true,
+              verificationStatus: "verified" as const,
+              verifiedAt: new Date().toISOString(),
+            }
+          : item
+      );
+      setSocialAccounts(updatedAccounts);
+
+      // Persist to creator profile if available
+      if (currentCreator) {
+        await updateCreatorProfile({
+          socialAccounts: updatedAccounts,
+          totalFollowers: calculateTotalFollowers(updatedAccounts),
+          avgEngagementRate: calculateAvgEngagementRate(updatedAccounts),
+          tier: getCreatorTier(calculateTotalFollowers(updatedAccounts)),
+        });
+      }
+
+      setShowVerifyModal(false);
+      setSelectedVerifyAccount(null);
+
+      addToast({
+        type: "success",
+        title: "Account Verified!",
+        message: `@${acc.handle} on ${acc.platform.toUpperCase()} is verified and badged!`,
+      });
+    } catch (err: any) {
+      addToast({
+        type: "error",
+        title: "Verification Failed",
+        message: err.message || "Could not verify account ownership.",
+      });
+    } finally {
+      setIsVerifying(false);
+    }
   };
 
   const handleRemoveSocial = (id: string) => {
@@ -375,37 +497,79 @@ export default function ProfileEditPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {socialAccounts.map((acc) => (
-              <div
-                key={acc.id}
-                className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/6 flex items-center justify-between"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-white border border-black/8 flex items-center justify-center text-[#0A0A0E] shadow-2xs">
-                    {acc.platform === "youtube" && <Youtube className="w-4 h-4 text-red-600" />}
-                    {acc.platform === "instagram" && <Instagram className="w-4 h-4 text-pink-600" />}
-                    {acc.platform === "x" && <Twitter className="w-4 h-4 text-[#0A0A0E]" />}
-                    {acc.platform === "linkedin" && <Linkedin className="w-4 h-4 text-blue-600" />}
-                    {acc.platform === "tiktok" && <Video className="w-4 h-4 text-[#0A0A0E]" />}
+            {socialAccounts.map((acc) => {
+              const isAccountVerified = acc.verifiedBadge || acc.verificationStatus === "verified";
+              return (
+                <div
+                  key={acc.id}
+                  className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/6 flex items-center justify-between gap-3"
+                >
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="w-9 h-9 rounded-xl bg-white border border-black/8 flex items-center justify-center text-[#0A0A0E] shadow-2xs shrink-0">
+                      {acc.platform === "youtube" && <Youtube className="w-4 h-4 text-red-600" />}
+                      {acc.platform === "instagram" && <Instagram className="w-4 h-4 text-pink-600" />}
+                      {acc.platform === "x" && <Twitter className="w-4 h-4 text-[#0A0A0E]" />}
+                      {acc.platform === "linkedin" && <Linkedin className="w-4 h-4 text-blue-600" />}
+                      {acc.platform === "tiktok" && <Video className="w-4 h-4 text-[#0A0A0E]" />}
+                    </div>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <a
+                          href={acc.url || `https://${acc.platform}.com/${acc.handle}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-bold text-xs text-[#0A0A0E] hover:text-[#0055D6] hover:underline flex items-center gap-1 group truncate"
+                          title={`Open ${acc.platform} profile in new tab`}
+                        >
+                          <span className="truncate">@{acc.handle}</span>
+                          <ExternalLink className="w-3 h-3 text-[#7A7A8A] group-hover:text-[#0055D6] shrink-0" />
+                        </a>
+
+                        {isAccountVerified ? (
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold font-mono shrink-0">
+                            <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                            <span>Verified</span>
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200 text-[10px] font-bold font-mono shrink-0">
+                            <span>Unverified</span>
+                          </span>
+                        )}
+                      </div>
+                      <span className="text-[11px] font-mono text-[#6A6A78] block truncate">
+                        {(acc.followers || 0).toLocaleString()} followers • {acc.engagementRate}% eng
+                      </span>
+                    </div>
                   </div>
-                  <div>
-                    <span className="font-bold text-xs text-[#0A0A0E] block">@{acc.handle}</span>
-                    <span className="text-[11px] font-mono text-[#6A6A78]">
-                      {(acc.followers || 0).toLocaleString()} followers • {acc.engagementRate}% eng
-                    </span>
+
+                  <div className="flex items-center gap-1 shrink-0">
+                    {!isAccountVerified && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSelectedVerifyAccount(acc);
+                          setShowVerifyModal(true);
+                        }}
+                        className="px-2.5 py-1 rounded-full bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 text-[11px] font-bold font-mono transition-all flex items-center gap-1"
+                        title="Verify account ownership"
+                      >
+                        <ShieldCheck className="w-3 h-3 text-amber-600" />
+                        <span>Verify</span>
+                      </button>
+                    )}
+
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveSocial(acc.id)}
+                      className="text-[#8A8A9A] hover:text-red-600 p-1.5 transition-colors rounded-lg hover:bg-red-50"
+                      title="Remove channel"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                    </button>
                   </div>
                 </div>
-
-                <button
-                  type="button"
-                  onClick={() => handleRemoveSocial(acc.id)}
-                  className="text-[#8A8A9A] hover:text-red-600 p-1.5 transition-colors"
-                  title="Remove channel"
-                >
-                  <Trash2 className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </form>
@@ -414,7 +578,12 @@ export default function ProfileEditPage() {
       {showAddModal && (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full border border-black/10 shadow-2xl space-y-4">
-            <h3 className="text-lg font-bold text-[#0A0A0E] font-display">Add Social Channel</h3>
+            <div>
+              <h3 className="text-lg font-bold text-[#0A0A0E] font-display">Add Social Channel</h3>
+              <p className="text-xs text-[#5A5A68] mt-0.5">
+                Connect your social media account to showcase your real reach to brands.
+              </p>
+            </div>
 
             <div className="space-y-3">
               <div>
@@ -433,8 +602,8 @@ export default function ProfileEditPage() {
               </div>
 
               <Input
-                label="Channel Handle / Username"
-                placeholder="e.g. techcreator"
+                label="Channel Handle or Profile Link"
+                placeholder="e.g. techcreator or https://instagram.com/techcreator"
                 value={newHandle}
                 onChange={(e) => setNewHandle(e.target.value)}
               />
@@ -469,6 +638,133 @@ export default function ProfileEditPage() {
                 className="px-5 py-2 rounded-full bg-[#0A0A0E] hover:bg-[#20202B] text-white text-xs font-bold transition-all"
               >
                 Add Channel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Social Account Ownership Verification Modal */}
+      {showVerifyModal && selectedVerifyAccount && (
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full border border-black/10 shadow-2xl space-y-5 animate-in fade-in zoom-in-95 duration-200">
+            <div className="flex items-start justify-between gap-3 pb-3 border-b border-black/8">
+              <div className="flex items-center gap-2.5">
+                <div className="w-10 h-10 rounded-2xl bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center shrink-0">
+                  <ShieldCheck className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-[#0A0A0E] font-display">
+                    Verify Account Ownership
+                  </h3>
+                  <span className="text-xs text-[#5A5A68]">
+                    Confirm that you own this account
+                  </span>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  setShowVerifyModal(false);
+                  setSelectedVerifyAccount(null);
+                }}
+                className="text-[#8A8A9A] hover:text-[#0A0A0E] text-xs font-bold p-1"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/6 space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-xs text-[#7A7A8A] uppercase font-bold font-mono">Account</span>
+                <span className="px-2 py-0.5 rounded-full bg-white border border-black/8 text-[11px] font-mono font-bold capitalize text-[#0A0A0E]">
+                  {selectedVerifyAccount.platform}
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-bold text-[#0A0A0E]">
+                  @{selectedVerifyAccount.handle}
+                </span>
+                <a
+                  href={selectedVerifyAccount.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-bold text-[#0055D6] hover:underline flex items-center gap-1"
+                >
+                  <span>Open Profile</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <p className="text-xs text-[#5A5A68] leading-relaxed">
+                Verification proves you own this profile, unlocks your green <strong>Verified</strong> badge, and makes your link trusted by brands.
+              </p>
+
+              {selectedVerifyAccount.verificationCode && (
+                <div className="p-3.5 rounded-2xl bg-[#FFFDF0] border border-[#FFD21F]/40 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-bold text-[#0A0A0E]">
+                      Your Verification Code
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => handleCopyCode(selectedVerifyAccount.verificationCode || "")}
+                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white border border-black/10 hover:bg-[#F8F8FC] text-xs font-mono font-bold text-[#0A0A0E] transition-all shadow-2xs"
+                    >
+                      {hasCopiedCode ? (
+                        <>
+                          <Check className="w-3 h-3 text-emerald-600" />
+                          <span className="text-emerald-700">Copied!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-3 h-3 text-[#7A7A8A]" />
+                          <span>Copy Code</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+                  <div className="p-2 bg-white rounded-xl border border-black/6 font-mono text-center font-black text-sm tracking-wider text-[#0A0A0E]">
+                    {selectedVerifyAccount.verificationCode}
+                  </div>
+                  <p className="text-[10px] text-[#7A7A8A] leading-tight">
+                    Optional: Paste this code into your profile bio or about section so brands can instantly verify you.
+                  </p>
+                </div>
+              )}
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center justify-end gap-2 pt-3 border-t border-black/8">
+              <button
+                type="button"
+                onClick={() => {
+                  setShowVerifyModal(false);
+                  setSelectedVerifyAccount(null);
+                }}
+                disabled={isVerifying}
+                className="w-full sm:w-auto px-4 py-2.5 rounded-full border border-black/10 text-xs font-bold text-[#5A5A68] hover:text-[#0A0A0E] transition-colors"
+              >
+                Verify Later
+              </button>
+              <button
+                type="button"
+                onClick={() => handleVerifyAccount(selectedVerifyAccount)}
+                disabled={isVerifying}
+                className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-extrabold transition-all shadow-[0_4px_14px_rgba(5,150,105,0.3)] flex items-center justify-center gap-2 active:scale-98 disabled:opacity-50"
+              >
+                {isVerifying ? (
+                  <>
+                    <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                    <span>Verifying Ownership...</span>
+                  </>
+                ) : (
+                  <>
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                    <span>Verify Ownership Now</span>
+                  </>
+                )}
               </button>
             </div>
           </div>

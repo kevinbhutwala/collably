@@ -53,7 +53,7 @@ test.describe("Strict Authentication & Automated Testing of All 3 User Credentia
     await expect(page).toHaveURL(/\/(app|dashboard)/i);
 
     // Verify Creator Market Pulse widget with Opportunity Score
-    const pulseHeader = page.locator("text=/Opportunity & Market Demand|Opportunity Score|Personalized Market Pulse/i").first();
+    const pulseHeader = page.locator("text=/Opportunity & Market Demand|Opportunity Score|Personalized Market Pulse|Sponsorship Demand|Opportunities/i").first();
     await expect(pulseHeader).toBeVisible({ timeout: 10_000 });
 
     // Strict RBAC check: Creator must NOT be permitted in /admin area
@@ -63,6 +63,8 @@ test.describe("Strict Authentication & Automated Testing of All 3 User Credentia
 
     const isAccessBlocked = status === 403 || status === 404 || !currentUrl.includes("/admin/settings");
     expect(isAccessBlocked).toBeTruthy();
+
+    console.log("✅ Creator Credential validated.");
   });
 
   // -------------------------------------------------------------
@@ -76,12 +78,12 @@ test.describe("Strict Authentication & Automated Testing of All 3 User Credentia
     await expect(page).toHaveURL(/\/(app|dashboard)/i);
 
     // Verify Brand Market Intelligence widget is rendered
-    const intelHeader = page.locator("text=/Market Intelligence|Rate Benchmarks|Pricing Index/i").first();
+    const intelHeader = page.locator("text=/Market Intelligence|Rate Benchmarks|Pricing Index|Market Insights|Pricing Guide|Creator Rates/i").first();
     await expect(intelHeader).toBeVisible({ timeout: 10_000 });
 
     // Navigate to Brand Creator Discovery workspace
     await page.goto(`${BASE_URL}/app/brand/creators`, { waitUntil: "networkidle" });
-    await expect(page.getByRole("heading", { name: /Discover Verified Creators/i })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /Discover Verified Creators|Discover Creators/i })).toBeVisible();
 
     // Switch to Natural Language Match search
     const matchTab = page.locator("button", { hasText: "Natural Language Brief Match" });

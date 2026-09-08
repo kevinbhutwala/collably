@@ -31,8 +31,73 @@ export function cleanPlatformHandle(handle: string): string {
   return handle
     .trim()
     .replace(/^@/, "")
-    .replace(/^https?:\/\/(www\.)?(youtube\.com\/(@)?|instagram\.com\/|tiktok\.com\/(@)?|x\.com\/|twitter\.com\/|linkedin\.com\/in\/|threads\.net\/(@)?)/, "")
-    .replace(/\/$/, "");
+    .replace(/^https?:\/\/(www\.)?(youtube\.com\/(@)?|instagram\.com\/|tiktok\.com\/(@)?|x\.com\/|twitter\.com\/|linkedin\.com\/in\/|threads\.net\/(@)?)/i, "")
+    .replace(/\/$/, "")
+    .replace(/^@/, "");
+}
+
+export function validatePlatformHandle(
+  platform: PlatformType,
+  input: string
+): { valid: boolean; error?: string; cleanHandle: string; url: string } {
+  const trimmed = input.trim();
+  if (!trimmed) {
+    return { valid: false, error: "Please enter your channel handle or profile URL.", cleanHandle: "", url: "" };
+  }
+
+  // Cross-platform domain mismatch check
+  const lower = trimmed.toLowerCase();
+  const domains: Record<PlatformType, string[]> = {
+    youtube: ["youtube.com", "youtu.be"],
+    instagram: ["instagram.com"],
+    tiktok: ["tiktok.com"],
+    x: ["x.com", "twitter.com"],
+    linkedin: ["linkedin.com"],
+    threads: ["threads.net"],
+  };
+
+  for (const [p, doms] of Object.entries(domains)) {
+    if (p !== platform) {
+      for (const d of doms) {
+        if (lower.includes(d)) {
+          return {
+            valid: false,
+            error: `You entered a ${p.toUpperCase()} link, but selected ${platform.toUpperCase()}. Please match the platform.`,
+            cleanHandle: "",
+            url: "",
+          };
+        }
+      }
+    }
+  }
+
+  const cleanHandle = cleanPlatformHandle(trimmed);
+  if (!cleanHandle || cleanHandle.length < 2) {
+    return {
+      valid: false,
+      error: "Handle is too short. Please enter a valid username.",
+      cleanHandle: "",
+      url: "",
+    };
+  }
+
+  // Check for illegal characters in handles
+  if (/[^a-zA-Z0-9._-]/.test(cleanHandle)) {
+    return {
+      valid: false,
+      error: "Handle contains invalid characters. Only letters, numbers, dots, and underscores are allowed.",
+      cleanHandle: "",
+      url: "",
+    };
+  }
+
+  const url = formatPlatformUrl(platform, cleanHandle);
+  return { valid: true, cleanHandle, url };
+}
+
+export function generateSocialVerificationCode(platform: PlatformType, handle: string): string {
+  const randNum = Math.floor(1000 + Math.random() * 9000);
+  return `COLLAB-${randNum}`;
 }
 
 export function calculateTotalFollowers(socialAccounts: SocialAccount[]): number {
