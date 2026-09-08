@@ -30,15 +30,28 @@ test.describe("Brand Talent Shortlisting & Saved Creators End-to-End Test", () =
     const creatorName = await firstCreatorCard.locator("h3").textContent();
     expect(creatorName).toBeTruthy();
 
-    // 4. Click the bookmark / save button to ensure it is saved
+    // 4. Click the bookmark / save button to ensure it is in 'Saved' state
     const bookmarkBtn = firstCreatorCard.locator('button[title*="Shortlist"]').first();
     await expect(bookmarkBtn).toBeVisible();
-    const isAlreadySaved = await firstCreatorCard.locator('button[title="Saved in Shortlist"]').isVisible();
-    if (isAlreadySaved) {
-      await bookmarkBtn.click();
-      await page.waitForTimeout(500);
+
+    const currentTitle = await bookmarkBtn.getAttribute("title");
+    if (currentTitle === "Saved in Shortlist") {
+      // Toggle off then toggle back on to test fresh save
+      await Promise.all([
+        page.waitForResponse((res) => res.url().includes("/api/crm/shortlists") && res.request().method() === "POST"),
+        bookmarkBtn.click(),
+      ]);
+      await page.waitForTimeout(600);
+      await Promise.all([
+        page.waitForResponse((res) => res.url().includes("/api/crm/shortlists") && res.request().method() === "POST"),
+        bookmarkBtn.click(),
+      ]);
+    } else {
+      await Promise.all([
+        page.waitForResponse((res) => res.url().includes("/api/crm/shortlists") && res.request().method() === "POST"),
+        bookmarkBtn.click(),
+      ]);
     }
-    await bookmarkBtn.click();
 
     // 5. Verify Toast feedback
     const toast = page.locator("text=/Saved to Shortlist|Added to/i").first();
@@ -77,14 +90,23 @@ test.describe("Brand Talent Shortlisting & Saved Creators End-to-End Test", () =
     const profileSaveBtn = page.locator('button:has-text("Shortlist")').first();
     await expect(profileSaveBtn).toBeVisible({ timeout: 10_000 });
 
-    const isSavedAlready = await page.locator('button:has-text("Saved to Shortlist")').first().isVisible();
-    if (isSavedAlready) {
-      await profileSaveBtn.click();
-      await page.waitForTimeout(500);
+    const btnText = await profileSaveBtn.textContent();
+    if (btnText?.includes("Saved to Shortlist")) {
+      await Promise.all([
+        page.waitForResponse((res) => res.url().includes("/api/crm/shortlists") && res.request().method() === "POST"),
+        profileSaveBtn.click(),
+      ]);
+      await page.waitForTimeout(600);
+      await Promise.all([
+        page.waitForResponse((res) => res.url().includes("/api/crm/shortlists") && res.request().method() === "POST"),
+        profileSaveBtn.click(),
+      ]);
+    } else {
+      await Promise.all([
+        page.waitForResponse((res) => res.url().includes("/api/crm/shortlists") && res.request().method() === "POST"),
+        profileSaveBtn.click(),
+      ]);
     }
-
-    // 3. Click save to shortlist
-    await profileSaveBtn.click();
 
     // 4. Verify text changes to Saved
     await expect(page.locator('button:has-text("Saved to Shortlist")').first()).toBeVisible({ timeout: 5_000 });
