@@ -1,5 +1,10 @@
 import { MetadataRoute } from 'next';
 
+const BASE_URL =
+  process.env.NEXT_PUBLIC_APP_URL ||
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  'https://abeycollab.vercel.app';
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
@@ -26,15 +31,20 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
       {
-        userAgent: ['GPTBot', 'PerplexityBot', 'ClaudeBot'],
+        userAgent: ['GPTBot', 'PerplexityBot', 'ClaudeBot', 'Google-Extended'],
         allow: [
           '/',
           '/creators',
+          '/creators/*',
           '/campaigns',
+          '/campaigns/*',
           '/pricing',
           '/for-brands',
           '/case-studies',
           '/services',
+          '/brands',
+          '/about',
+          '/contact',
         ],
         disallow: [
           '/api/',
@@ -44,8 +54,7 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
     ],
-    sitemap: `${process.env.NEXT_PUBLIC_APP_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://abeycollab.vercel.app'}/sitemap.xml`,
-    host: process.env.NEXT_PUBLIC_APP_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://abeycollab.vercel.app',
+    sitemap: `${BASE_URL}/sitemap.xml`,
+    host: BASE_URL,
   };
 }
-

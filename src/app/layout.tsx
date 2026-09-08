@@ -3,7 +3,6 @@ import { Plus_Jakarta_Sans, Instrument_Serif, JetBrains_Mono } from 'next/font/g
 import './globals.css';
 import { ToastContainer } from '@/components/ui/ToastContainer';
 import { CommandPalette } from '@/components/navigation/CommandPalette';
-import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
@@ -198,7 +197,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             `,
           }}
         />
-        <Script
+        <script
           id="global-structured-data"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

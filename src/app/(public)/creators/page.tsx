@@ -1,298 +1,107 @@
-"use client";
+import type { Metadata } from 'next';
+import React from 'react';
+import { creatorRepo } from '@/server/repositories/creator.repo';
+import { CreatorsDirectoryClient } from '@/components/creators/CreatorsDirectoryClient';
 
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import { creatorService } from "@/services/creator.service";
-import { CreatorProfile } from "@/core/types";
-import { useFilterStore } from "@/stores/filter.store";
-import { CATEGORIES } from "@/core/constants";
-import { Sparkles, Users, Star, CheckCircle2, ArrowRight, Play, Search } from "lucide-react";
-import { EditorialCreatorCard } from "@/components/creators/EditorialCreatorCard";
-import { CreatorQuickViewModal, CreatorQuickViewData } from "@/components/creators/CreatorQuickViewModal";
-import { AnimatedBrandSlider } from "@/components/visual/AnimatedBrandSlider";
-import { CreativeLoader } from "@/components/ui/CreativeLoader";
-import { useUIStore } from "@/stores/ui.store";
-import { cn } from "@/lib/utils";
-import { motion, AnimatePresence } from "framer-motion";
-import { TrendingShowcase } from "@/components/marketplace/TrendingShowcase";
-import { NaturalLanguageMatchSearch } from "@/components/marketplace/NaturalLanguageMatchSearch";
-import { MarketplaceLeaderboards } from "@/components/marketplace/MarketplaceLeaderboards";
-import { getCategoryVisual } from "@/core/utils/titleMedia";
-import { useShortlistStore } from "@/stores/shortlist.store";
+const BASE_URL =
+  process.env.NEXT_PUBLIC_APP_URL ||
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  'https://abeycollab.vercel.app';
 
+export const metadata: Metadata = {
+  title: 'Verified Creator Talent Directory — Hire Elite Influencers & UGC Talent',
+  description:
+    'Browse audited video creators, tech influencers, UGC creators, and vloggers. Verified audience demographics, transparent rate cards, 4K production reels, and 100% escrow protection.',
+  keywords: [
+    'hire influencers',
+    'creator directory',
+    'verified content creators',
+    'ugc creators marketplace',
+    'find youtube influencers',
+    'instagram creator rates',
+    'tiktok sponsorship talent',
+    'creator media kit',
+  ],
+  alternates: { canonical: `${BASE_URL}/creators` },
+  openGraph: {
+    type: 'website',
+    url: `${BASE_URL}/creators`,
+    title: 'Verified Creator Talent Directory | AbeyCollab',
+    description:
+      'Browse audited video creators, transparent rate cards, and verified audience demographics. Book top creators with guaranteed escrow protection.',
+    images: ['/og-image.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Verified Creator Talent Directory | AbeyCollab',
+    description:
+      'Direct access to audited video creators, transparent rate cards, and instant booking.',
+    images: ['/og-image.png'],
+  },
+};
 
 export default function CreatorsDirectoryPage() {
-  const [viewMode, setViewMode] = useState<"directory" | "trending" | "match" | "leaderboards">("directory");
-  const [creators, setCreators] = useState<CreatorProfile[]>([]);
-  const [loading, setLoading] = useState(true);
+  let sampleCreators: { id: string; fullName: string; headline: string }[] = [];
+  try {
+    const all = creatorRepo.getAll();
+    sampleCreators = (all || []).slice(0, 10).map((c) => ({
+      id: c.id,
+      fullName: c.fullName,
+      headline: c.headline,
+    }));
+  } catch (e) {}
 
-  const [quickViewCreator, setQuickViewCreator] = useState<CreatorQuickViewData | null>(null);
-  const { isSaved, toggleSaveCreator } = useShortlistStore();
-  const { addToast } = useUIStore();
-
-  const {
-    creatorCategory,
-    creatorPlatform,
-    creatorMinFollowers,
-    creatorMinEngagement,
-    creatorSearchQuery,
-    creatorVerifiedOnly,
-    setCreatorCategory,
-    setCreatorSearchQuery,
-  } = useFilterStore();
-
-  useEffect(() => {
-    const fetchCreators = async () => {
-      setLoading(true);
-      const data = await creatorService.getCreators({
-        category: creatorCategory,
-        platform: creatorPlatform,
-        minFollowers: creatorMinFollowers || undefined,
-        minEngagement: creatorMinEngagement || undefined,
-        searchQuery: creatorSearchQuery || undefined,
-        verifiedOnly: creatorVerifiedOnly || undefined,
-      });
-      setCreators(data || []);
-      setLoading(false);
-    };
-
-    fetchCreators();
-  }, [
-    creatorCategory,
-    creatorPlatform,
-    creatorMinFollowers,
-    creatorMinEngagement,
-    creatorSearchQuery,
-    creatorVerifiedOnly,
-  ]);
-
-  const handleBookmarkToggle = async (creatorId: string) => {
-    const creator = creators.find((c) => c.id === creatorId);
-    if (!creator) return;
-    const nowSaved = await toggleSaveCreator(creator);
-    addToast({
-      type: "success",
-      title: nowSaved ? "Saved to Talent Roster" : "Removed from Saved",
-      message: `${creator.fullName} has been ${nowSaved ? "added to" : "removed from"} your active brand talent shortlist.`,
-    });
-  };
-
-  const transformToQuickView = (c: CreatorProfile): CreatorQuickViewData => ({
-    id: c.id,
-    name: c.fullName || "Verified Creator",
-    handle: c.handle || "@creator",
-    avatarUrl: c.avatarUrl || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800",
-    heroImage: c.coverImageUrl || c.avatarUrl,
-    niche: c.headline || c.primaryCategory || "Technology & AI",
-    category: c.primaryCategory || "tech",
-    reach: c.totalFollowers ? `${(c.totalFollowers / 1000).toFixed(0)}K` : undefined,
-    engagementRate: c.avgEngagementRate,
-    startingPrice: c.startingPrice || c.rateCards?.[0]?.basePrice,
-    matchScore: c.qualityScore,
-    bio: c.bio,
-    tags: c.primaryCategory ? [c.primaryCategory] : [],
-    sampleDeliverables: [
-      {
-        title: "4K Master Product Reel",
-        specs: "4K Production",
-        imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80",
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: 'Verified Creator Talent Directory',
+      description: 'Audited directory of verified video creators, influencers, and UGC artists.',
+      url: `${BASE_URL}/creators`,
+      provider: {
+        '@type': 'Organization',
+        name: 'AbeyCollab',
+        url: BASE_URL,
       },
-      {
-        title: "60s Dedicated Integration",
-        specs: "Short-form Content",
-        imageUrl: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&auto=format&fit=crop&q=80",
+      mainEntity: {
+        '@type': 'ItemList',
+        itemListElement: sampleCreators.map((c, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          url: `${BASE_URL}/creators/${c.id}`,
+          name: c.fullName,
+          description: c.headline,
+        })),
       },
-    ],
-  });
-
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: BASE_URL,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Creators',
+          item: `${BASE_URL}/creators`,
+        },
+      ],
+    },
+  ];
 
   return (
-    <div className="py-12 sm:py-16 bg-[#FAFAFC] text-[#0A0A0E] min-h-screen select-none space-y-12 font-sans">
-      {/* Top Header */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-        <div className="space-y-4 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-xs font-mono font-bold text-[#0A0A0E]">
-            <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
-            <span>AUDITED CREATOR TALENT DIRECTORY</span>
-          </div>
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#0A0A0E] tracking-tight font-display">
-            Discover Verified Creators
-          </h1>
-          <p className="text-xs sm:text-sm text-[#5A5A68] font-sans max-w-xl leading-relaxed">
-            Direct access to audited video creators, complete with verified audience demographics, 4K production reels, and 1-click booking.
-          </p>
-
-        </div>
-
-        {/* Mode Selector Tabs */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none border-b border-black/8 pt-2">
-          <button
-            onClick={() => setViewMode("directory")}
-            className={cn(
-              "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer",
-              viewMode === "directory"
-                ? "bg-[#0A0A0E] text-white shadow-sm"
-                : "bg-white text-neutral-600 hover:text-black border border-black/5"
-            )}
-          >
-            <span>👥</span> All Talent Directory
-          </button>
-          <button
-            onClick={() => setViewMode("trending")}
-            className={cn(
-              "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer",
-              viewMode === "trending"
-                ? "bg-[#FFD21F] text-[#0A0A0E] shadow-sm border border-black/10"
-                : "bg-white text-neutral-600 hover:text-black border border-black/5"
-            )}
-          >
-            <span>🔥</span> Trending Hub
-          </button>
-          <button
-            onClick={() => setViewMode("match")}
-            className={cn(
-              "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer",
-              viewMode === "match"
-                ? "bg-purple-600 text-white shadow-sm"
-                : "bg-white text-neutral-600 hover:text-black border border-black/5"
-            )}
-          >
-            <span>🎯</span> AI Brief Match
-          </button>
-          <button
-            onClick={() => setViewMode("leaderboards")}
-            className={cn(
-              "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer",
-              viewMode === "leaderboards"
-                ? "bg-[#0A0A0E] text-[#FFD21F] shadow-sm border border-[#FFD21F]/30"
-                : "bg-white text-neutral-600 hover:text-black border border-black/5"
-            )}
-          >
-            <span>🏆</span> Leaderboards
-          </button>
-        </div>
-
-        {/* Filter Pills & Search (Directory View Only) */}
-        {viewMode === "directory" && (
-          <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 pt-2">
-            <div className="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none">
-              <button
-                onClick={() => setCreatorCategory("all")}
-                className={cn(
-                  "px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap shrink-0 flex items-center gap-1.5",
-                  creatorCategory === "all"
-                    ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs font-bold border border-black/10"
-                    : "bg-white text-[#6A6A78] hover:text-[#0A0A0E] border border-black/8"
-                )}
-              >
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>All Talent</span>
-              </button>
-              {CATEGORIES.map((cat) => {
-                const meta = getCategoryVisual(cat);
-                const CatIcon = meta.icon;
-                return (
-                  <button
-                    key={cat}
-                    onClick={() => setCreatorCategory(cat)}
-                    className={cn(
-                      "px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap shrink-0 flex items-center gap-1.5",
-                      creatorCategory === cat
-                        ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs font-bold border border-black/10"
-                        : "bg-white text-[#6A6A78] hover:text-[#0A0A0E] border border-black/8"
-                    )}
-                  >
-                    <CatIcon className="w-3.5 h-3.5" />
-                    <span>{cat}</span>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Search Box */}
-            <div className="relative w-full md:w-72">
-              <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#7A7A8A]" />
-              <input
-                type="text"
-                value={creatorSearchQuery}
-                onChange={(e) => setCreatorSearchQuery(e.target.value)}
-                placeholder="Search creators by niche, name..."
-                className="w-full bg-white border border-black/8 rounded-full pl-9 pr-4 py-2 text-xs text-[#0A0A0E] placeholder:text-[#8A8A9A] focus:outline-none focus:border-[#FFD21F] shadow-xs transition-all font-sans"
-              />
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Main View Area */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {viewMode === "trending" && <TrendingShowcase />}
-        {viewMode === "match" && <NaturalLanguageMatchSearch />}
-        {viewMode === "leaderboards" && <MarketplaceLeaderboards />}
-
-        {viewMode === "directory" && (
-          loading ? (
-            <CreativeLoader
-              size="lg"
-              label="Syncing Creator Roster"
-              subtext="Fetching audited media kits and verified production reels..."
-            />
-          ) : creators.length === 0 ? (
-            <div className="py-24 text-center rounded-3xl bg-white border border-black/8 p-8 space-y-3 shadow-xs">
-              <Users className="w-8 h-8 text-[#7A7A8A] mx-auto" />
-              <h3 className="text-base font-bold text-[#0A0A0E] font-display">No creators match your filters</h3>
-              <p className="text-xs text-[#6A6A78]">Try resetting your category or search query.</p>
-              <button
-                onClick={() => {
-                  setCreatorCategory("all");
-                  setCreatorSearchQuery("");
-                }}
-                className="px-4 py-2 rounded-full bg-[#0A0A0E] text-white text-xs font-bold"
-              >
-                Reset Filters
-              </button>
-            </div>
-          ) : (
-            <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              <AnimatePresence>
-                {creators.map((c) => {
-                  const item = transformToQuickView(c);
-                  return (
-                    <motion.div
-                      layout
-                      key={c.id}
-                      initial={{ opacity: 0, y: 16 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 16 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <EditorialCreatorCard
-                        creator={item}
-                        onQuickView={(cd) => setQuickViewCreator(cd)}
-                        onBookmarkToggle={handleBookmarkToggle}
-                        isBookmarked={isSaved(c.id)}
-                      />
-                    </motion.div>
-                  );
-                })}
-              </AnimatePresence>
-            </motion.div>
-          )
-        )}
-      </div>
-
-
-      {/* Infinite Brand Marquee */}
-      <AnimatedBrandSlider speed={28} direction="left" />
-
-      {/* Quick View Modal */}
-      <CreatorQuickViewModal
-        creator={quickViewCreator}
-        isOpen={!!quickViewCreator}
-        onClose={() => setQuickViewCreator(null)}
-        onBookmarkToggle={handleBookmarkToggle}
-        isBookmarked={quickViewCreator ? isSaved(quickViewCreator.id) : false}
+    <>
+      <script
+        id="creators-directory-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-    </div>
+      <CreatorsDirectoryClient />
+    </>
   );
 }

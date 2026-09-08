@@ -4,7 +4,7 @@
       "id": "user-creator",
       "name": "Demo Creator",
       "email": "creator@abeycollab.io",
-      "passwordHash": "71b5eec9d21d9aee6b4b0e4b5d9531fb:4e3e7595da830cc8400a918dfe2678800f08599d75cc88ee2db3b4e8ecd171c1e461da63f11056db874b91d7c6c2f8835e141af2af9a24446f3198c2649b4b3d:210000",
+      "passwordHash": "6f336955f0a0b06f83ff3f1a54070e6f:93b3cbaef06b583212af71eeb6958b15539ac67370d7b0d77f1aa46ee3f03ff1b6d0f2cc015f7a09c65d8f51ae45281602cb94ddb9e1e22d41874e9eeeed6be5:210000",
       "role": "creator",
       "avatarUrl": "",
       "verified": true,
@@ -15,7 +15,7 @@
       "id": "user-brand",
       "name": "Demo Brand",
       "email": "brand@abeycollab.io",
-      "passwordHash": "400de0a47229b35d1d46cfeec5e92336:97ed112d91a0be06a96b12c23e5e9275cfc9a4527e1d6f396e6bab4ba071d662e6455a9b4d305d608aa9bcc9eb098eeb5d24bbd9037309c5f188ec6fa6ec5dd7:210000",
+      "passwordHash": "239c6618500344b4c02427d35392e561:9a45b2d0e8cd74ece13adc033dfc0b8c1eb1a0f2d0042b44f2ea37ab6c9429df89589c29a236c929d94978df3b48a7038ed1a8712f67ce09afd72ddd595b34af:210000",
       "role": "brand",
       "avatarUrl": "",
       "verified": true,
@@ -26,7 +26,7 @@
       "id": "user-owner",
       "name": "Kevin Bhutwala",
       "email": "kevinbhutwala417@gmail.com",
-      "passwordHash": "39ad7e9a0c9dd8570ee33ed40c9dfdb9:24cce769d0cfd1f42a1a8386a6f89eabc94aeb450f4dfe2315c8c48ad7cc31ae39cd2437547506e3e21851f81c4a6ec6754e75f9f29a6710eda3df0e9acc97ac:210000",
+      "passwordHash": "65e53bfb5063a0c240d06062cfc4106d:56edd067e41547ba777c907d0b3081e3e4181f16ee438ca0412d6f52ff6597f1ef454c02f2d180e7f5a8d6bdda07b65acd4dd786d3cc988fd1c8edd27213ad84:210000",
       "role": "agency_admin",
       "avatarUrl": "",
       "verified": true,
@@ -70,7 +70,7 @@
       "id": "user-creator-legacy",
       "name": "Demo Creator",
       "email": "creator@collably.io",
-      "passwordHash": "71b5eec9d21d9aee6b4b0e4b5d9531fb:4e3e7595da830cc8400a918dfe2678800f08599d75cc88ee2db3b4e8ecd171c1e461da63f11056db874b91d7c6c2f8835e141af2af9a24446f3198c2649b4b3d:210000",
+      "passwordHash": "6f336955f0a0b06f83ff3f1a54070e6f:93b3cbaef06b583212af71eeb6958b15539ac67370d7b0d77f1aa46ee3f03ff1b6d0f2cc015f7a09c65d8f51ae45281602cb94ddb9e1e22d41874e9eeeed6be5:210000",
       "role": "creator",
       "avatarUrl": "",
       "verified": true,
@@ -81,7 +81,7 @@
       "id": "user-brand-legacy",
       "name": "Demo Brand",
       "email": "brand@collably.io",
-      "passwordHash": "400de0a47229b35d1d46cfeec5e92336:97ed112d91a0be06a96b12c23e5e9275cfc9a4527e1d6f396e6bab4ba071d662e6455a9b4d305d608aa9bcc9eb098eeb5d24bbd9037309c5f188ec6fa6ec5dd7:210000",
+      "passwordHash": "239c6618500344b4c02427d35392e561:9a45b2d0e8cd74ece13adc033dfc0b8c1eb1a0f2d0042b44f2ea37ab6c9429df89589c29a236c929d94978df3b48a7038ed1a8712f67ce09afd72ddd595b34af:210000",
       "role": "brand",
       "avatarUrl": "",
       "verified": true,
@@ -109,14 +109,14 @@
       ],
       "verified": true,
       "featured": true,
-      "tier": "Micro",
+      "tier": "Rising",
       "rating": 4.9,
       "completedCampaignsCount": 12,
-      "totalFollowers": 40000,
+      "totalFollowers": 60000,
       "avgEngagementRate": 4.5,
       "startingPrice": 1500,
       "availableForHire": true,
-      "profileCompleteness": 90,
+      "profileCompleteness": 100,
       "qualityScore": 92,
       "socialAccounts": [
         {
@@ -170,6 +170,32 @@
           "verificationStatus": "verified",
           "verificationCode": "COLLAB-4128",
           "verifiedAt": "2026-09-08T13:50:04.144Z"
+        },
+        {
+          "id": "sa_1788877333390",
+          "platform": "x",
+          "handle": "verify_tester_3361",
+          "url": "https://x.com/verify_tester_3361",
+          "followers": 10000,
+          "engagementRate": 4.5,
+          "avgViews": 0,
+          "verifiedBadge": true,
+          "verificationStatus": "verified",
+          "verificationCode": "COLLAB-7281",
+          "verifiedAt": "2026-09-08T14:22:13.444Z"
+        },
+        {
+          "id": "sa_1788877340734",
+          "platform": "youtube",
+          "handle": "mob_0699",
+          "url": "https://youtube.com/@mob_0699",
+          "followers": 10000,
+          "engagementRate": 4.5,
+          "avgViews": 0,
+          "verifiedBadge": true,
+          "verificationStatus": "verified",
+          "verificationCode": "COLLAB-7119",
+          "verifiedAt": "2026-09-08T14:22:25.242Z"
         }
       ],
       "audience": {
@@ -210,7 +236,7 @@
         ]
       },
       "rateCards": [],
-      "updatedAt": "2026-09-08T13:50:04.146Z"
+      "updatedAt": "2026-09-08T14:22:25.246Z"
     },
     {
       "id": "creator-1",
@@ -6874,7 +6900,7 @@
       "brandFavoriteMinRehireRate": 60,
       "newTalentMaxAccountAgeDays": 30
     },
-    "updatedAt": "2026-09-08T13:49:40.067Z"
+    "updatedAt": "2026-09-08T14:22:02.276Z"
   },
   "userBadges": [],
   "suspiciousActivities": []

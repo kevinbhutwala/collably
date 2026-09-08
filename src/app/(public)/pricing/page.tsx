@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import React from 'react';
-import Script from 'next/script';
 import { StreamlinedPricing } from '@/components/collably/StreamlinedPricing';
 import { CompactFAQ } from '@/components/collably/CompactFAQ';
 import { AnimatedBrandSlider } from '@/components/visual/AnimatedBrandSlider';
@@ -95,7 +94,7 @@ const faqJsonLd = {
 export default function PricingPage() {
   return (
     <div className="bg-[#FAFAFC] text-[#0A0A0E] min-h-screen space-y-12">
-      <Script
+      <script
         id="pricing-faq-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
