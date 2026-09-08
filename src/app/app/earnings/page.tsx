@@ -73,11 +73,11 @@ export default function EarningsAndEscrowPage() {
   return (
     <div className="space-y-6 text-[#0A0A0E] select-none">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 sm:pb-5 border-b border-black/8">
-        <div className="hidden lg:block">
+        <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              Financial Ledger
+              Payments &amp; Earnings
             </span>
             <span className="text-[#8A8A9A]">•</span>
             <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
@@ -85,12 +85,12 @@ export default function EarningsAndEscrowPage() {
             </span>
           </div>
           <h1 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
-            {role === "creator" ? "Earnings & Payouts" : "Escrow & Invoices"}
+            {role === "creator" ? "Earnings & Payouts" : "Payments & Invoices"}
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68]">
             {role === "creator"
-              ? `View funds in escrow, released payouts, and withdrawal status in ${config.name} (${currency}).`
-              : `Track funded escrow tranches, released payouts, and tax receipts in ${config.name} (${currency}).`}
+              ? `View your secured payments, completed payouts, and withdraw funds in ${config.name} (${currency}).`
+              : `Track your secured campaign funds, completed creator payouts, and invoices in ${config.name} (${currency}).`}
           </p>
         </div>
 
@@ -116,7 +116,7 @@ export default function EarningsAndEscrowPage() {
         <StatsCard
           title={`In Escrow (${currency})`}
           value={formatGlobal(securedInEscrow)}
-          subtitle={securedInEscrow > 0 ? "Protected by smart contract custody" : "No active escrow"}
+          subtitle={securedInEscrow > 0 ? "Held safely until deliverables are approved" : "No active escrow"}
           icon={<ShieldCheck className="w-4 h-4 text-[#0A0A0E]" />}
         />
         <StatsCard
@@ -135,11 +135,11 @@ export default function EarningsAndEscrowPage() {
           </div>
           <div>
             <h4 className="text-xs font-bold text-[#0A0A0E] dark:text-white flex items-center gap-2">
-              <span>Worldwide Escrow & Banking Rails Active</span>
+              <span>Global Payment &amp; Payout Methods Supported</span>
               <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-[10px] font-mono font-extrabold">120+ COUNTRIES</span>
             </h4>
             <p className="text-[11px] text-[#6A6A78] dark:text-[#8E8EA4] mt-0.5">
-              Supports Razorpay Standard Checkout (UPI, Cards, NetBanking), PayPal Global, Wise, and SWIFT Wire.
+              Accepts Credit/Debit Cards, UPI, NetBanking, PayPal, Wise, and Direct Bank Transfers across 120+ countries.
             </p>
           </div>
         </div>
@@ -155,7 +155,7 @@ export default function EarningsAndEscrowPage() {
           </span>
           <span className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white dark:bg-[#1E1E2C] border border-black/8 dark:border-white/10 shadow-2xs">
             <Landmark className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-            <span>SWIFT Wire</span>
+            <span>Bank Transfer</span>
           </span>
         </div>
       </div>
@@ -172,10 +172,10 @@ export default function EarningsAndEscrowPage() {
             </span>
           </div>
           <h4 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display">
-            Live Razorpay Escrow Deposit Gateway
+            Secure Payment Gateway
           </h4>
           <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
-            Launches the official Razorpay Checkout modal (UPI, Cards, NetBanking) and cryptographically verifies the HMAC-SHA256 signature on the server.
+            Pay securely using your preferred payment method (Cards, UPI, NetBanking) with instant escrow protection.
           </p>
         </div>
 

@@ -94,22 +94,22 @@ export default function SupportAndDisputePage() {
     <div className="space-y-6 text-[#0A0A0E] select-none">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 sm:pb-5 border-b border-black/8">
-        <div className="hidden lg:block">
+        <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              Operations Desk
+              Help Desk
             </span>
             <span className="text-[#8A8A9A]">•</span>
             <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
-              Help &amp; Arbitration
+              Help &amp; Support
             </span>
           </div>
           <h1 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
-            Support &amp; Disputes
+            Help &amp; Support
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68]">
-            Get assistance from our team or resolve project milestones.
+            Get help with your account, payments, or project questions from our team.
           </p>
         </div>
 
@@ -119,7 +119,7 @@ export default function SupportAndDisputePage() {
             className="px-3.5 py-2 rounded-full bg-black/5 hover:bg-black/10 text-[#0A0A0E] text-xs font-bold transition-all flex items-center gap-1.5 border border-black/10 shadow-xs"
           >
             <ShieldAlert className="w-3.5 h-3.5 text-[#0A0A0E]" />
-            <span>Open Dispute</span>
+            <span>Report an Issue</span>
           </button>
 
           <button
@@ -127,7 +127,7 @@ export default function SupportAndDisputePage() {
             className="px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5"
           >
             <Plus className="w-3.5 h-3.5 text-[#0A0A0E]" />
-            <span>New Ticket</span>
+            <span>Contact Support</span>
           </button>
         </div>
       </div>

@@ -89,32 +89,32 @@ export function AppNavbar() {
 
   const getScreenTitle = (path: string): string => {
     if (path === "/app/dashboard") return "Dashboard";
-    if (path === "/app/campaigns") return "Discover Campaigns";
+    if (path === "/app/campaigns") return "Find Campaigns";
     if (path === "/app/applications") return "My Applications";
-    if (path === "/app/collaborations") return "Active Collaborations";
+    if (path === "/app/collaborations") return "My Deals & Projects";
     if (path === "/app/messages") return "Messages";
     if (path === "/app/earnings") return "Earnings & Payouts";
     if (path === "/app/analytics") return "Audience Analytics";
-    if (path === "/app/profile") return "Creator Media Kit";
-    if (path === "/app/support") return "Support & Disputes";
-    if (path === "/app/settings") return "Plan & Settings";
-    if (path === "/app/brand/campaigns/create") return "Create Campaign";
-    if (path === "/app/brand/campaigns") return "Active Campaigns";
-    if (path === "/app/brand/creators") return "Discover Creators";
-    if (path === "/app/brand/crm") return "Creator CRM";
-    if (path === "/app/brand/shortlists") return "Shortlists";
-    if (path === "/app/brand/analytics") return "ROI Telemetry";
-    if (path === "/admin") return "Operations Overview";
+    if (path === "/app/profile") return "Media Kit & Profile";
+    if (path === "/app/support") return "Help & Support";
+    if (path === "/app/settings") return "Account & Plan";
+    if (path === "/app/brand/campaigns/create") return "Post Campaign";
+    if (path === "/app/brand/campaigns") return "My Campaigns";
+    if (path === "/app/brand/creators") return "Find Creators";
+    if (path === "/app/brand/crm") return "Creator Contacts & CRM";
+    if (path === "/app/brand/shortlists") return "Shortlisted Talent";
+    if (path === "/app/brand/analytics") return "Campaign Results & ROI";
+    if (path === "/admin") return "Admin Overview";
     if (path === "/admin/creators") return "Creator Verification";
     if (path === "/admin/brands") return "Brand Accounts";
     if (path === "/admin/campaigns") return "Campaign Approvals";
     if (path === "/admin/collaborations") return "Active Escrows";
-    if (path === "/admin/disputes") return "Dispute Arbitration";
-    if (path === "/admin/payments") return "Escrow Vault Control";
+    if (path === "/admin/disputes") return "Disputes & Resolution";
+    if (path === "/admin/payments") return "Payment & Escrow Vault";
     if (path === "/admin/reports") return "Financial Reports";
     if (path === "/admin/audit") return "System Audit Logs";
-    if (path === "/admin/settings") return "Platform Configuration";
-    if (path.startsWith("/campaigns/")) return "Campaign Brief";
+    if (path === "/admin/settings") return "Platform Settings";
+    if (path.startsWith("/campaigns/")) return "Campaign Details";
     if (path.startsWith("/creators/")) return "Creator Profile";
     if (path.startsWith("/app/brand/")) return "Brand Workspace";
     if (path.startsWith("/app/")) return "Workspace";
@@ -126,42 +126,42 @@ export function AppNavbar() {
 
   const creatorNavItems = [
     { href: "/app/dashboard", label: "Dashboard", icon: LayoutDashboard },
-    { href: "/app/campaigns", label: "Discover Campaigns", icon: Compass, badge: "8 live" },
+    { href: "/app/campaigns", label: "Find Campaigns", icon: Compass, badge: "8 live" },
     { href: "/app/applications", label: "My Applications", icon: Briefcase },
-    { href: "/app/collaborations", label: "Collaborations", icon: FileCheck2, badge: "3 active" },
+    { href: "/app/collaborations", label: "My Deals & Projects", icon: FileCheck2, badge: "3 active" },
     { href: "/app/messages", label: "Messages", icon: MessageSquare, badge: "1" },
     { href: "/app/earnings", label: "Earnings & Payouts", icon: Wallet },
     { href: "/app/analytics", label: "Audience Analytics", icon: BarChart3 },
-    { href: "/app/profile", label: "Creator Media Kit", icon: Sparkles },
-    { href: "/app/support", label: "Support & Disputes", icon: HelpCircle },
-    { href: "/app/settings", label: "Settings", icon: Settings },
+    { href: "/app/profile", label: "Media Kit & Profile", icon: Sparkles },
+    { href: "/app/support", label: "Help & Support", icon: HelpCircle },
+    { href: "/app/settings", label: "Account & Plan", icon: Settings },
   ];
 
   const brandNavItems = [
-    { href: "/app/dashboard", label: "Overview", icon: LayoutDashboard },
-    { href: "/app/brand/campaigns/create", label: "Create Campaign", icon: Plus, highlight: true },
-    { href: "/app/brand/campaigns", label: "Active Campaigns", icon: Briefcase, badge: "3" },
-    { href: "/app/brand/creators", label: "Discover Creators", icon: Users },
-    { href: "/app/brand/crm", label: "Creator CRM", icon: FolderGit2 },
-    { href: "/app/brand/shortlists", label: "Shortlists", icon: Layers },
+    { href: "/app/dashboard", label: "Dashboard", icon: LayoutDashboard },
+    { href: "/app/brand/campaigns/create", label: "Post Campaign", icon: Plus, highlight: true },
+    { href: "/app/brand/campaigns", label: "My Campaigns", icon: Briefcase, badge: "3" },
+    { href: "/app/brand/creators", label: "Find Creators", icon: Users },
+    { href: "/app/brand/crm", label: "Creator Contacts & CRM", icon: FolderGit2 },
+    { href: "/app/brand/shortlists", label: "Shortlisted Talent", icon: Layers },
     { href: "/app/collaborations", label: "Active Deals & Escrow", icon: FileCheck2, badge: "3" },
     { href: "/app/messages", label: "Messages", icon: MessageSquare },
-    { href: "/app/brand/analytics", label: "ROI Telemetry", icon: BarChart3 },
-    { href: "/app/support", label: "Support & Disputes", icon: HelpCircle },
-    { href: "/app/settings", label: "Settings", icon: Settings },
+    { href: "/app/brand/analytics", label: "Campaign Results & ROI", icon: BarChart3 },
+    { href: "/app/support", label: "Help & Support", icon: HelpCircle },
+    { href: "/app/settings", label: "Account & Plan", icon: Settings },
   ];
 
   const adminNavItems = [
-    { href: "/admin", label: "Operations Overview", icon: LayoutDashboard },
+    { href: "/admin", label: "Admin Overview", icon: LayoutDashboard },
     { href: "/admin/creators", label: "Creator Verification", icon: Users, badge: "Pending" },
     { href: "/admin/brands", label: "Brand Accounts", icon: Briefcase },
     { href: "/admin/campaigns", label: "Campaign Approvals", icon: Compass },
     { href: "/admin/collaborations", label: "Active Escrows", icon: FileCheck2 },
-    { href: "/admin/disputes", label: "Dispute Arbitration", icon: Scale, badge: "Review" },
-    { href: "/admin/payments", label: "Escrow Vault Control", icon: BadgeDollarSign },
+    { href: "/admin/disputes", label: "Disputes & Resolution", icon: Scale, badge: "Review" },
+    { href: "/admin/payments", label: "Payment & Escrow Vault", icon: BadgeDollarSign },
     { href: "/admin/reports", label: "Financial Reports", icon: FileText },
     { href: "/admin/audit", label: "System Audit Logs", icon: Database },
-    { href: "/admin/settings", label: "Platform Configuration", icon: ShieldAlert },
+    { href: "/admin/settings", label: "Platform Settings", icon: ShieldAlert },
   ];
 
   const navItems = role === "creator" ? creatorNavItems : role === "brand" ? brandNavItems : adminNavItems;

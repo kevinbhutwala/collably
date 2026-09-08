@@ -63,13 +63,13 @@ export default function BrandCampaignsManagementPage() {
 
   return (
     <div className="space-y-6 text-[#0A0A0E] select-none font-sans">
-      {/* Desktop Header */}
-      <div className="hidden lg:flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-black/8">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-black/8">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              Brand Workspace
+              Campaigns
             </span>
             <span className="text-[#8A8A9A]">•</span>
             <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
@@ -77,25 +77,25 @@ export default function BrandCampaignsManagementPage() {
             </span>
           </div>
           <h1 className="text-xl sm:text-2xl font-black text-[#0A0A0E] font-display tracking-tight">
-            Active Campaigns &amp; Briefs
+            My Campaigns
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68]">
-            Manage open sponsorship briefs, approve proposals, and track video deliverables.
+            Manage your campaigns, review creator applications, and track deliverables.
           </p>
         </div>
 
         <Link href="/app/brand/campaigns/create">
           <button className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-[0_2px_12px_rgba(255,210,31,0.35)] border border-black/10 flex items-center gap-2">
             <PlusCircle className="w-4 h-4 text-[#0A0A0E]" />
-            <span>Create Campaign Brief</span>
+            <span>Post New Campaign</span>
           </button>
         </Link>
       </div>
 
-      {/* Top Performance Telemetry Cards */}
+      {/* Campaign Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5">
         <div className="p-4 rounded-3xl bg-white border border-black/8 shadow-xs space-y-1">
-          <span className="text-[10px] font-bold text-[#7A7A8A] uppercase font-mono">Active Briefs</span>
+          <span className="text-[10px] font-bold text-[#7A7A8A] uppercase font-mono">Active Campaigns</span>
           <p className="text-xl sm:text-2xl font-black text-[#0A0A0E] font-display">{campaigns.length}</p>
           <span className="text-[11px] text-emerald-600 font-semibold flex items-center gap-1">
             <CheckCircle2 className="w-3 h-3" /> Live in marketplace
@@ -103,21 +103,21 @@ export default function BrandCampaignsManagementPage() {
         </div>
 
         <div className="p-4 rounded-3xl bg-white border border-black/8 shadow-xs space-y-1">
-          <span className="text-[10px] font-bold text-[#7A7A8A] uppercase font-mono">Total Escrow Vault</span>
+          <span className="text-[10px] font-bold text-[#7A7A8A] uppercase font-mono">Secured Budget</span>
           <p className="text-xl sm:text-2xl font-black text-[#0A0A0E] font-mono">{formatCurrency(totalEscrowPool || 45000)}</p>
           <span className="text-[11px] text-[#5A5A68] font-medium flex items-center gap-1">
-            <ShieldCheck className="w-3 h-3 text-[#FFD21F]" /> 100% Pre-funded
+            <ShieldCheck className="w-3 h-3 text-[#FFD21F]" /> 100% Protected in Escrow
           </span>
         </div>
 
         <div className="p-4 rounded-3xl bg-white border border-black/8 shadow-xs space-y-1">
-          <span className="text-[10px] font-bold text-[#7A7A8A] uppercase font-mono">Creator Pitches</span>
+          <span className="text-[10px] font-bold text-[#7A7A8A] uppercase font-mono">Creator Applications</span>
           <p className="text-xl sm:text-2xl font-black text-[#0A0A0E] font-display">{totalApplicants}</p>
           <span className="text-[11px] text-[#5A5A68] font-medium">Ready for review</span>
         </div>
 
         <div className="p-4 rounded-3xl bg-white border border-black/8 shadow-xs space-y-1">
-          <span className="text-[10px] font-bold text-[#7A7A8A] uppercase font-mono">Milestone Rate</span>
+          <span className="text-[10px] font-bold text-[#7A7A8A] uppercase font-mono">On-Time Rate</span>
           <p className="text-xl sm:text-2xl font-black text-[#0A0A0E] font-mono">98.4%</p>
           <span className="text-[11px] text-emerald-600 font-semibold">On-time delivery</span>
         </div>

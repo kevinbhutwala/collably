@@ -35,14 +35,19 @@ test.describe("Brand Talent Shortlisting & Saved Creators End-to-End Test", () =
     await expect(bookmarkBtn).toBeVisible();
 
     const currentTitle = await bookmarkBtn.getAttribute("title");
-    if (!currentTitle?.includes("Saved")) {
+    if (currentTitle?.includes("Saved in")) {
       await Promise.all([
         page.waitForResponse((res) => res.url().includes("/api/crm/shortlists") && res.request().method() === "POST"),
         bookmarkBtn.click(),
       ]);
-      const toast = page.locator("text=/Saved to Shortlist|Added to/i").first();
-      await expect(toast).toBeVisible({ timeout: 6_000 });
+      await page.waitForTimeout(500);
     }
+    await Promise.all([
+      page.waitForResponse((res) => res.url().includes("/api/crm/shortlists") && res.request().method() === "POST"),
+      bookmarkBtn.click(),
+    ]);
+    const toast = page.locator("text=/Saved to Shortlist|Added to/i").first();
+    await expect(toast).toBeVisible({ timeout: 6_000 });
 
     // 6. Verify button state is present
     await expect(firstCreatorCard.locator('button[title*="Shortlist"]')).toBeVisible();

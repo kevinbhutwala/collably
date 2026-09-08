@@ -94,15 +94,15 @@ export default function BrandShortlistsPage() {
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             <span className="text-[10px] font-mono font-bold uppercase text-[#5A5A68] tracking-widest">
-              Talent Curation
+              Saved Creators
             </span>
             <span className="text-[#C5C5D0]">·</span>
             <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
-              Shortlists
+              Shortlisted Talent
             </span>
           </div>
-          <h1 className="text-2xl font-extrabold text-[#0A0A0E] tracking-tight">Creator Shortlists</h1>
-          <p className="text-xs text-[#5A5A68]">Curate talent rosters and compare metrics side‑by‑side.</p>
+          <h1 className="text-2xl font-extrabold text-[#0A0A0E] tracking-tight font-display">Creator Shortlists &amp; Saved Talent</h1>
+          <p className="text-xs text-[#5A5A68]">Save your favorite creators into custom lists and compare their metrics side-by-side.</p>
         </div>
         <button
           onClick={() => setIsCreateModalOpen(true)}
@@ -120,9 +120,9 @@ export default function BrandShortlistsPage() {
             <Bookmark className="w-6 h-6 text-[#7A7A8A]" />
           </div>
           <div className="space-y-1.5">
-            <h3 className="text-base font-bold text-[#0A0A0E]">No shortlists yet</h3>
+            <h3 className="text-base font-bold text-[#0A0A0E]">No saved creators yet</h3>
             <p className="text-xs text-[#7A7A8A] max-w-xs mx-auto leading-relaxed">
-              Create your first shortlist to start curating and comparing creator talent for your campaigns.
+              Create a list to save creators you like and compare their stats side-by-side.
             </p>
           </div>
           <button

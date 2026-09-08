@@ -144,19 +144,19 @@ export default function DedicatedTrendingPage() {
           <div className="flex items-center gap-2 mb-1">
             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-gradient-to-r from-amber-500/20 to-[#FFD21F]/20 border border-[#FFD21F]/40 text-[10px] font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-pulse" />
-              Live Marketplace Momentum
+              Market Trends
             </span>
             <span className="text-[#8A8A9A]">•</span>
             <span className="text-[10px] font-mono text-[#6A6A78] dark:text-[#8E8EA4]">
-              Independent Multi-Factor Scoring
+              Updated Hourly
             </span>
           </div>
           <h1 className="text-2xl sm:text-4xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display flex items-center gap-2.5">
-            <span>Marketplace Trending Experience</span>
+            <span>Trending Creators &amp; Campaigns</span>
             <span className="text-xl">🔥</span>
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4] mt-1 max-w-2xl font-sans">
-            Separate real-time audience momentum from historical consistency. Discover creators gaining traction right now, high-growth emerging talent, and vetted top performers.
+            See which creators and campaigns are getting the most attention right now, plus emerging talent growing fast in your category.
           </p>
         </div>
 

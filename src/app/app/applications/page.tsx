@@ -75,34 +75,34 @@ export default function ApplicationsManagementPage() {
   const rejectedCount = applications.filter((a) => a.status === "rejected").length;
 
   const tabs = [
-    { key: "all" as const, label: "All Proposals", count: applications.length, icon: Layers },
+    { key: "all" as const, label: "All Applications", count: applications.length, icon: Layers },
     { key: "pending" as const, label: "Under Review", count: pendingCount, icon: Clock },
-    { key: "accepted" as const, label: "Approved & Escrowed", count: acceptedCount, icon: CheckCircle2 },
-    { key: "rejected" as const, label: "Archived", count: rejectedCount, icon: XCircle },
+    { key: "accepted" as const, label: "Accepted & Active", count: acceptedCount, icon: CheckCircle2 },
+    { key: "rejected" as const, label: "Declined", count: rejectedCount, icon: XCircle },
   ];
 
   return (
     <div className="space-y-6 text-[#0A0A0E] select-none font-sans">
-      {/* Desktop Header */}
-      <div className="hidden lg:flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-black/8">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-black/8">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              Contract Pipeline
+              Applications
             </span>
             <span className="text-[#8A8A9A]">•</span>
             <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
-              Escrow Protection
+              Secured Payments
             </span>
           </div>
           <h1 className="text-xl sm:text-2xl font-black text-[#0A0A0E] font-display tracking-tight">
-            {role === "brand" ? "Creator Applications" : "My Pitches & Applications"}
+            {role === "brand" ? "Creator Applications" : "My Applications"}
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68]">
             {role === "brand"
-              ? "Review creator proposals and approve deals into escrow."
-              : "Track the status of your submitted campaign pitches and deal terms."}
+              ? "Review pitches from creators and accept them into funded collaborations."
+              : "Track your pitches, responses from brands, and accepted brand deals."}
           </p>
         </div>
       </div>

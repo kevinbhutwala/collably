@@ -283,7 +283,7 @@ export default function ProfileEditPage() {
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              Audited Media Kit
+              Creator Profile
             </span>
             <span className="text-[#8A8A9A]">•</span>
             <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold uppercase">
@@ -291,10 +291,10 @@ export default function ProfileEditPage() {
             </span>
           </div>
           <h1 className="text-xl sm:text-2xl font-black text-[#0A0A0E] font-display tracking-tight">
-            Creator Profile &amp; Media Kit
+            Media Kit &amp; Profile
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68]">
-            Configure your public rates, headline, and connected social channels.
+            Set your starting rates, bio, and connected social accounts for brands to view.
           </p>
         </div>
 
@@ -306,7 +306,7 @@ export default function ProfileEditPage() {
               className="px-4 py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] border border-black/10 text-[#0A0A0E] font-bold text-xs transition-all flex items-center gap-1.5 shadow-xs"
             >
               <ExternalLink className="w-3.5 h-3.5" />
-              <span>Public Kit</span>
+              <span>View Public Profile</span>
             </Link>
           )}
 
@@ -323,28 +323,28 @@ export default function ProfileEditPage() {
 
       <form onSubmit={handleSaveProfile} className="space-y-6">
         <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-5">
-          <h2 className="text-base font-bold text-[#0A0A0E] font-display">Bio &amp; Positioning</h2>
+          <h2 className="text-base font-bold text-[#0A0A0E] font-display">About You &amp; Your Rates</h2>
 
           <Input
-            label="Professional Headline"
+            label="Profile Headline"
             value={headline}
             onChange={(e) => setHeadline(e.target.value)}
-            placeholder="e.g. AI & Tech Storyteller • Full-Stack Developer"
+            placeholder="e.g. AI & Tech Storyteller • Content Creator"
             required
           />
 
           <Textarea
-            label="Biography"
+            label="About You"
             value={bio}
             onChange={(e) => setBio(e.target.value)}
             rows={4}
-            placeholder="Tell brands about your audience demographics, past brand work, and content focus..."
+            placeholder="Tell brands about what kind of content you create, your audience, and your creative style..."
             required
           />
 
           <div className="max-w-xs">
             <Input
-              label="Starting Sponsorship Rate ($ USD)"
+              label="Starting Rate ($ USD)"
               type="number"
               min={100}
               step={50}

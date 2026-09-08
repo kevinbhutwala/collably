@@ -162,24 +162,24 @@ export default function BrandCreatorDiscoveryPage() {
 
   return (
     <div className="space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans">
-      {/* Desktop Header */}
-      <div className="hidden lg:flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-black/8 dark:border-white/10">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-black/8 dark:border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] dark:text-[#F4F4F8] flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              Creator Directory
+              Talent Discovery
             </span>
             <span className="text-[#8A8A9A]">•</span>
             <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#0A0A0E] dark:text-[#FFD21F] font-mono text-[10px] font-bold">
-              Audited Talent
+              Verified Creators
             </span>
           </div>
           <h1 className="text-xl sm:text-2xl font-black text-[#0A0A0E] dark:text-white font-display tracking-tight">
-            Discover Verified Creators
+            Discover Creators
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#8E8EA4]">
-            Browse top video creators by niche, verified audience telemetry, and engagement rates.
+            Explore creators by category, audience size, and engagement rate to find the best fit for your brand.
           </p>
         </div>
 

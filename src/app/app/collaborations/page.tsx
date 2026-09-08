@@ -35,23 +35,23 @@ export default function CollaborationsWorkspacePage() {
 
   return (
     <div className="space-y-6 text-[#0A0A0E] select-none">
-      <div className="hidden lg:flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-black/8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-black/8">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              Workspace
+              Active Projects
             </span>
             <span className="text-[#8A8A9A]">•</span>
             <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
-              Milestone Escrow
+              Secured Escrow
             </span>
           </div>
           <h1 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
-            Active Collaborations
+            Active Collaborations &amp; Deals
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68]">
-            Submit video drafts, review feedback, and approve milestone payouts.
+            Submit content drafts, review feedback, and approve secured payments.
           </p>
         </div>
       </div>
@@ -60,21 +60,21 @@ export default function CollaborationsWorkspacePage() {
         <div className="py-16 text-center rounded-3xl bg-white border border-black/8 p-6 text-[#0A0A0E] shadow-xs">
           <CreativeLoader
             size="md"
-            label="Loading Collaborations"
-            subtext="Fetching milestone deliverables and review status..."
+            label="Loading Projects"
+            subtext="Fetching project deliverables and review status..."
           />
         </div>
       ) : collaborations.length === 0 ? (
         <AnimatedEmptyState
           icon={<FolderGit2 className="w-7 h-7 text-[#0A0A0E]" />}
-          badgeText="Pipeline"
-          title="No Active Collaborations"
+          badgeText="Projects"
+          title="No Active Deals Yet"
           description={
             role === "creator"
-              ? "Accepted proposals and milestone workspaces will appear here."
-              : "Hired creators and active deliverables will appear here."
+              ? "Your accepted pitches and ongoing brand projects will appear here once approved."
+              : "Creators you hire and active content deliverables will appear here."
           }
-          actionText={role === "creator" ? "Browse Campaigns" : "Create Brief"}
+          actionText={role === "creator" ? "Find Campaigns" : "Post Campaign"}
           actionHref={role === "creator" ? "/app/campaigns" : "/app/brand/campaigns/create"}
           secondaryText="Go to Dashboard"
           secondaryHref="/app/dashboard"
