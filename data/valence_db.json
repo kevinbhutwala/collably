@@ -4,7 +4,7 @@
       "id": "user-creator",
       "name": "Demo Creator",
       "email": "creator@abeycollab.io",
-      "passwordHash": "678964f49636a3aa06e56ce648871067:fee53e50c40a88712048ea720dad9c0bb0bfedd572577a40a133bc5629f43eb00c76018d92e773596581def7159d906a62047e16be95ed0f345a2e6a7167da70:210000",
+      "passwordHash": "71b5eec9d21d9aee6b4b0e4b5d9531fb:4e3e7595da830cc8400a918dfe2678800f08599d75cc88ee2db3b4e8ecd171c1e461da63f11056db874b91d7c6c2f8835e141af2af9a24446f3198c2649b4b3d:210000",
       "role": "creator",
       "avatarUrl": "",
       "verified": true,
@@ -15,7 +15,7 @@
       "id": "user-brand",
       "name": "Demo Brand",
       "email": "brand@abeycollab.io",
-      "passwordHash": "b6db806f63498de728f6d60276315bfa:13c046c455c711c3a7b1a578a30e98c80e571535617794236c4bf4825e73006c4ea492104344e26ccb3eb3f1290d163798062d7b5f1e8d852ed4728a2563351a:210000",
+      "passwordHash": "400de0a47229b35d1d46cfeec5e92336:97ed112d91a0be06a96b12c23e5e9275cfc9a4527e1d6f396e6bab4ba071d662e6455a9b4d305d608aa9bcc9eb098eeb5d24bbd9037309c5f188ec6fa6ec5dd7:210000",
       "role": "brand",
       "avatarUrl": "",
       "verified": true,
@@ -26,7 +26,7 @@
       "id": "user-owner",
       "name": "Kevin Bhutwala",
       "email": "kevinbhutwala417@gmail.com",
-      "passwordHash": "87aec40bac87eb7ad23b0f75169e2dc5:6bce6d5e091161e79f45f9518fabd9fe0cbaee6e29edf65ece8d2a6e05a6062f7b5bf2f302d30430bd75d1b9832d7c69e40a6ae102c9db095c5a53d5d2e170a0:210000",
+      "passwordHash": "39ad7e9a0c9dd8570ee33ed40c9dfdb9:24cce769d0cfd1f42a1a8386a6f89eabc94aeb450f4dfe2315c8c48ad7cc31ae39cd2437547506e3e21851f81c4a6ec6754e75f9f29a6710eda3df0e9acc97ac:210000",
       "role": "agency_admin",
       "avatarUrl": "",
       "verified": true,
@@ -70,7 +70,7 @@
       "id": "user-creator-legacy",
       "name": "Demo Creator",
       "email": "creator@collably.io",
-      "passwordHash": "678964f49636a3aa06e56ce648871067:fee53e50c40a88712048ea720dad9c0bb0bfedd572577a40a133bc5629f43eb00c76018d92e773596581def7159d906a62047e16be95ed0f345a2e6a7167da70:210000",
+      "passwordHash": "71b5eec9d21d9aee6b4b0e4b5d9531fb:4e3e7595da830cc8400a918dfe2678800f08599d75cc88ee2db3b4e8ecd171c1e461da63f11056db874b91d7c6c2f8835e141af2af9a24446f3198c2649b4b3d:210000",
       "role": "creator",
       "avatarUrl": "",
       "verified": true,
@@ -81,7 +81,7 @@
       "id": "user-brand-legacy",
       "name": "Demo Brand",
       "email": "brand@collably.io",
-      "passwordHash": "b6db806f63498de728f6d60276315bfa:13c046c455c711c3a7b1a578a30e98c80e571535617794236c4bf4825e73006c4ea492104344e26ccb3eb3f1290d163798062d7b5f1e8d852ed4728a2563351a:210000",
+      "passwordHash": "400de0a47229b35d1d46cfeec5e92336:97ed112d91a0be06a96b12c23e5e9275cfc9a4527e1d6f396e6bab4ba071d662e6455a9b4d305d608aa9bcc9eb098eeb5d24bbd9037309c5f188ec6fa6ec5dd7:210000",
       "role": "brand",
       "avatarUrl": "",
       "verified": true,
@@ -109,16 +109,69 @@
       ],
       "verified": true,
       "featured": true,
-      "tier": "Mid-Tier",
+      "tier": "Micro",
       "rating": 4.9,
       "completedCampaignsCount": 12,
-      "totalFollowers": 125000,
-      "avgEngagementRate": 5.2,
+      "totalFollowers": 40000,
+      "avgEngagementRate": 4.5,
       "startingPrice": 1500,
       "availableForHire": true,
       "profileCompleteness": 90,
       "qualityScore": 92,
-      "socialAccounts": [],
+      "socialAccounts": [
+        {
+          "id": "sa_1788875184085",
+          "platform": "x",
+          "handle": "verify_tester_4064",
+          "url": "https://x.com/verify_tester_4064",
+          "followers": 10000,
+          "engagementRate": 4.5,
+          "avgViews": 0,
+          "verifiedBadge": true,
+          "verificationStatus": "verified",
+          "verificationCode": "COLLAB-8386",
+          "verifiedAt": "2026-09-08T13:46:24.145Z"
+        },
+        {
+          "id": "sa_1788875191289",
+          "platform": "youtube",
+          "handle": "mob_1260",
+          "url": "https://youtube.com/@mob_1260",
+          "followers": 10000,
+          "engagementRate": 4.5,
+          "avgViews": 0,
+          "verifiedBadge": true,
+          "verificationStatus": "verified",
+          "verificationCode": "COLLAB-3517",
+          "verifiedAt": "2026-09-08T13:46:35.797Z"
+        },
+        {
+          "id": "sa_1788875392378",
+          "platform": "x",
+          "handle": "verify_tester_2349",
+          "url": "https://x.com/verify_tester_2349",
+          "followers": 10000,
+          "engagementRate": 4.5,
+          "avgViews": 0,
+          "verifiedBadge": true,
+          "verificationStatus": "verified",
+          "verificationCode": "COLLAB-7203",
+          "verifiedAt": "2026-09-08T13:49:52.444Z"
+        },
+        {
+          "id": "sa_1788875399636",
+          "platform": "youtube",
+          "handle": "mob_9607",
+          "url": "https://youtube.com/@mob_9607",
+          "followers": 10000,
+          "engagementRate": 4.5,
+          "avgViews": 0,
+          "verifiedBadge": true,
+          "verificationStatus": "verified",
+          "verificationCode": "COLLAB-4128",
+          "verifiedAt": "2026-09-08T13:50:04.144Z"
+        }
+      ],
       "audience": {
         "topCountries": [
           {
@@ -156,7 +209,8 @@
           "Design"
         ]
       },
-      "rateCards": []
+      "rateCards": [],
+      "updatedAt": "2026-09-08T13:50:04.146Z"
     },
     {
       "id": "creator-1",
@@ -2598,7 +2652,7 @@
           "id": "deliv-1788857484094-0",
           "type": "YouTube 60s Integration",
           "title": "1x YouTube 60s Integration",
-          "status": "submitted",
+          "status": "approved",
           "dueDate": "2026-09-30",
           "payoutAmount": 3000,
           "revisionCount": 0,
@@ -3468,12 +3522,32 @@
           "id": "del-unfunded-1",
           "type": "YouTube 60s Integration",
           "title": "Zero-Trust Physical Security Breakdown",
-          "status": "assigned",
+          "status": "approved",
           "dueDate": "2026-09-25",
           "payoutAmount": 2200,
           "revisionCount": 0,
           "maxRevisions": 2,
-          "submissions": []
+          "submissions": [
+            {
+              "id": "sub-1788875160027",
+              "deliverableId": "del-unfunded-1",
+              "version": 1,
+              "assetUrl": "https://drive.google.com/file/d/test-deliverable-cut/view",
+              "notes": "Final cut color graded to brand specs. Music cleared for global commercial rights. Segment at 04:12.",
+              "submittedAt": "2026-09-08T13:46:00.027Z",
+              "slaDeadline": "2026-09-13T13:46:00.027Z",
+              "mediaUrls": [
+                "https://drive.google.com/file/d/test-deliverable-cut/view"
+              ],
+              "captionText": "",
+              "creatorNotes": "Final cut color graded to brand specs. Music cleared for global commercial rights. Segment at 04:12.",
+              "status": "submitted"
+            }
+          ],
+          "assetUrl": "https://drive.google.com/file/d/test-deliverable-cut/view",
+          "notes": "Final cut color graded to brand specs. Music cleared for global commercial rights. Segment at 04:12.",
+          "submittedAt": "2026-09-08T13:46:00.027Z",
+          "slaDeadline": "2026-09-13T13:46:00.027Z"
         }
       ],
       "createdAt": "2026-09-05T11:02:58.708Z",
@@ -3859,6 +3933,42 @@
     }
   ],
   "payouts": [
+    {
+      "creatorId": "creator-demo",
+      "collaborationId": "collab-unfunded",
+      "campaignId": "camp-4",
+      "campaignTitle": "Cybersecurity Hardware Key Launch",
+      "brandName": "SecureVault Inc",
+      "creatorName": "Elena Rostova",
+      "deliverableTitle": "Zero-Trust Physical Security Breakdown",
+      "grossAmount": 2200,
+      "netAmount": 1980,
+      "agencyFee": 220,
+      "status": "pending",
+      "paymentMethod": "stripe_connect",
+      "environment": "test",
+      "isTest": true,
+      "id": "payout-1788875386659-mrr5n",
+      "createdAt": "2026-09-08T13:49:46.659Z"
+    },
+    {
+      "creatorId": "creator-demo",
+      "collaborationId": "collab-1788857484094",
+      "campaignId": "camp-1788857479971",
+      "campaignTitle": "AI Studio Hardware Series 1788857475990",
+      "brandName": "Demo Brand",
+      "creatorName": "Demo Creator",
+      "deliverableTitle": "1x YouTube 60s Integration",
+      "grossAmount": 3000,
+      "netAmount": 2700,
+      "agencyFee": 300,
+      "status": "pending",
+      "paymentMethod": "stripe_connect",
+      "environment": "test",
+      "isTest": true,
+      "id": "payout-1788875158223-spa7i",
+      "createdAt": "2026-09-08T13:45:58.223Z"
+    },
     {
       "creatorId": "creator-demo",
       "collaborationId": "collab-1788857360261",
@@ -5289,6 +5399,28 @@
     {
       "userId": "user-creator",
       "title": "Milestone Approved & Disbursed!",
+      "message": "Your deliverable for \"Cybersecurity Hardware Key Launch\" was approved. $1980.00 has been credited to your Creator Wallet.",
+      "type": "payment",
+      "entityType": "Payout",
+      "entityId": "del-unfunded-1",
+      "id": "notif-1788875386659-w43k6",
+      "read": false,
+      "createdAt": "2026-09-08T13:49:46.659Z"
+    },
+    {
+      "userId": "user-creator",
+      "title": "Milestone Approved & Disbursed!",
+      "message": "Your deliverable for \"AI Studio Hardware Series 1788857475990\" was approved. $2700.00 has been credited to your Creator Wallet.",
+      "type": "payment",
+      "entityType": "Payout",
+      "entityId": "deliv-1788857484094-0",
+      "id": "notif-1788875158224-65cxd",
+      "read": false,
+      "createdAt": "2026-09-08T13:45:58.224Z"
+    },
+    {
+      "userId": "user-creator",
+      "title": "Milestone Approved & Disbursed!",
       "message": "Your deliverable for \"AI Studio Hardware Series 1788857351353\" was approved. $2700.00 has been credited to your Creator Wallet.",
       "type": "payment",
       "entityType": "Payout",
@@ -5578,6 +5710,51 @@
   "webhookEvents": [],
   "aiUsage": [],
   "auditLogs": [
+    {
+      "actorId": "user-brand",
+      "actorName": "brand@abeycollab.io",
+      "actorRole": "brand",
+      "action": "DELIVERABLE_APPROVED_TRANCHE_RELEASED",
+      "entityType": "Deliverable",
+      "entityId": "del-unfunded-1",
+      "entityName": "Deliverable approved for collab collab-unfunded",
+      "metadata": {
+        "grossEscrowDebited": 2200,
+        "creatorWalletCredited": 1980,
+        "platformRevenueCredited": 220,
+        "transactionId": "tx_disburse_1788875386657_3qudw"
+      },
+      "id": "aud-1788875386660",
+      "createdAt": "2026-09-08 13:49:46"
+    },
+    {
+      "actorId": "user-creator",
+      "actorName": "creator@abeycollab.io",
+      "actorRole": "creator",
+      "action": "DELIVERABLE_SUBMITTED",
+      "entityType": "Deliverable",
+      "entityId": "del-unfunded-1",
+      "entityName": "Deliverable external submission for collab collab-unfunded",
+      "id": "aud-1788875160027",
+      "createdAt": "2026-09-08 13:46:00"
+    },
+    {
+      "actorId": "user-brand",
+      "actorName": "brand@abeycollab.io",
+      "actorRole": "brand",
+      "action": "DELIVERABLE_APPROVED_TRANCHE_RELEASED",
+      "entityType": "Deliverable",
+      "entityId": "deliv-1788857484094-0",
+      "entityName": "Deliverable approved for collab collab-1788857484094",
+      "metadata": {
+        "grossEscrowDebited": 3000,
+        "creatorWalletCredited": 2700,
+        "platformRevenueCredited": 300,
+        "transactionId": "tx_disburse_1788875158221_vqpj1"
+      },
+      "id": "aud-1788875158224",
+      "createdAt": "2026-09-08 13:45:58"
+    },
     {
       "actorId": "user-creator",
       "actorName": "creator@abeycollab.io",
@@ -6524,6 +6701,90 @@
       "referenceId": "deliv-1788857360261-0",
       "description": "10% platform agency fee on milestone deliv-1788857360261-0",
       "createdAt": "2026-09-08T08:51:30.045Z"
+    },
+    {
+      "id": "led_1788875158221_1",
+      "transactionId": "tx_disburse_1788875158221_vqpj1",
+      "account": "ESCROW_HOLDING",
+      "entityId": "collab-1788857484094",
+      "type": "DEBIT",
+      "amountCents": 300000,
+      "netCentsSigned": -300000,
+      "currency": "USD",
+      "referenceType": "ESCROW_RELEASE",
+      "referenceId": "deliv-1788857484094-0",
+      "description": "Release escrow holding for approved milestone deliv-1788857484094-0",
+      "createdAt": "2026-09-08T13:45:58.221Z"
+    },
+    {
+      "id": "led_1788875158221_2",
+      "transactionId": "tx_disburse_1788875158221_vqpj1",
+      "account": "CREATOR_WALLET",
+      "entityId": "creator-demo",
+      "type": "CREDIT",
+      "amountCents": 270000,
+      "netCentsSigned": 270000,
+      "currency": "USD",
+      "referenceType": "ESCROW_RELEASE",
+      "referenceId": "deliv-1788857484094-0",
+      "description": "Net earnings credit for milestone deliv-1788857484094-0",
+      "createdAt": "2026-09-08T13:45:58.221Z"
+    },
+    {
+      "id": "led_1788875158221_3",
+      "transactionId": "tx_disburse_1788875158221_vqpj1",
+      "account": "PLATFORM_REVENUE",
+      "entityId": "platform",
+      "type": "CREDIT",
+      "amountCents": 30000,
+      "netCentsSigned": 30000,
+      "currency": "USD",
+      "referenceType": "ESCROW_RELEASE",
+      "referenceId": "deliv-1788857484094-0",
+      "description": "10% platform agency fee on milestone deliv-1788857484094-0",
+      "createdAt": "2026-09-08T13:45:58.221Z"
+    },
+    {
+      "id": "led_1788875386657_1",
+      "transactionId": "tx_disburse_1788875386657_3qudw",
+      "account": "ESCROW_HOLDING",
+      "entityId": "collab-unfunded",
+      "type": "DEBIT",
+      "amountCents": 220000,
+      "netCentsSigned": -220000,
+      "currency": "USD",
+      "referenceType": "ESCROW_RELEASE",
+      "referenceId": "del-unfunded-1",
+      "description": "Release escrow holding for approved milestone del-unfunded-1",
+      "createdAt": "2026-09-08T13:49:46.657Z"
+    },
+    {
+      "id": "led_1788875386657_2",
+      "transactionId": "tx_disburse_1788875386657_3qudw",
+      "account": "CREATOR_WALLET",
+      "entityId": "creator-demo",
+      "type": "CREDIT",
+      "amountCents": 198000,
+      "netCentsSigned": 198000,
+      "currency": "USD",
+      "referenceType": "ESCROW_RELEASE",
+      "referenceId": "del-unfunded-1",
+      "description": "Net earnings credit for milestone del-unfunded-1",
+      "createdAt": "2026-09-08T13:49:46.657Z"
+    },
+    {
+      "id": "led_1788875386657_3",
+      "transactionId": "tx_disburse_1788875386657_3qudw",
+      "account": "PLATFORM_REVENUE",
+      "entityId": "platform",
+      "type": "CREDIT",
+      "amountCents": 22000,
+      "netCentsSigned": 22000,
+      "currency": "USD",
+      "referenceType": "ESCROW_RELEASE",
+      "referenceId": "del-unfunded-1",
+      "description": "10% platform agency fee on milestone del-unfunded-1",
+      "createdAt": "2026-09-08T13:49:46.657Z"
     }
   ],
   "reliabilityScores": [],
@@ -6613,7 +6874,7 @@
       "brandFavoriteMinRehireRate": 60,
       "newTalentMaxAccountAgeDays": 30
     },
-    "updatedAt": "2026-09-07T22:06:06.167Z"
+    "updatedAt": "2026-09-08T13:49:40.067Z"
   },
   "userBadges": [],
   "suspiciousActivities": []

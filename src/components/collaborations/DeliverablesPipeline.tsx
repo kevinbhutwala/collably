@@ -31,13 +31,17 @@ import {
   Building2,
   Users,
   MessageSquare,
+  ChevronDown,
+  Calendar,
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function DeliverablesPipeline({ collaboration: initialCollab }: { collaboration: Collaboration }) {
   const { role } = useAuthStore();
   const { addToast } = useUIStore();
   const [collab, setCollab] = useState<Collaboration>(initialCollab);
   const [activeTab, setActiveTab] = useState<"deliverables" | "review_card" | "post_proof" | "negotiation">("deliverables");
+  const [isExpanded, setIsExpanded] = useState(true);
 
   const [deliverables, setDeliverables] = useState(initialCollab.deliverables || []);
   const [selectedDel, setSelectedDel] = useState<CollaborationDeliverableItem | null>(null);
@@ -425,129 +429,35 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
     return { refund: total * 0.7, killFee: total * 0.3, desc: "Work In Progress: 70% Brand Refund ($" + (total * 0.7).toLocaleString() + "), 30% Creator Kill-Fee ($" + (total * 0.3).toLocaleString() + ")." };
   };
 
+  const approvedCount = deliverables.filter((d) => d.status === "approved").length;
+
   return (
-    <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6 text-[#0A0A0E]">
-      {/* ── Transaction 13-Stage Lifecycle Stepper ── */}
-      <TransactionLifecycleStepper collaboration={collab} role={role as any} />
-
-      {/* ── 1. SECURITY & STATUS BANNERS ── */}
-
-      {/* Unfunded Warning Banner */}
-      {!isFunded && !isCancelled && (
-        <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border border-amber-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="flex items-start gap-3">
-            <div className="w-10 h-10 rounded-xl bg-amber-500/20 flex items-center justify-center text-amber-900 shrink-0">
-              <ShieldAlert className="w-5 h-5" />
-            </div>
-            <div className="space-y-1">
-              <h4 className="font-bold text-sm text-amber-950 flex items-center gap-2">
-                <span>Deposit Required to Start</span>
-                <span className="px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-900 text-[10px] font-mono font-bold">Safe Escrow</span>
-              </h4>
-              <p className="text-xs text-amber-900/80 leading-relaxed max-w-2xl">
-                {role === "creator"
-                  ? "The brand needs to deposit project funds into the secure vault before you begin work, guaranteeing you will be paid."
-                  : "Please deposit the project budget into the secure vault so the creator can begin work. Funds are held safely and only released when you approve the content."}
-              </p>
-            </div>
-          </div>
-
-          <div className="shrink-0 flex items-center gap-2">
-            {role === "brand" && (
-              <button
-                onClick={handleFundEscrow}
-                disabled={isFunding}
-                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs shadow-xs border border-black/10 transition-all flex items-center gap-2 disabled:opacity-50"
-              >
-                <Lock className="w-3.5 h-3.5" />
-                <span>{isFunding ? "Funding Vault..." : `Fund Escrow Vault (${formatCurrency(collab.totalAgreedBudget)})`}</span>
-              </button>
-            )}
-            {role === "creator" && (
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-500/20 text-amber-900 text-xs font-mono font-bold">
-                <Lock className="w-3.5 h-3.5" />
-                <span>Work Blocked Until Funded</span>
-              </span>
-            )}
-          </div>
-        </div>
-      )}
-
-      {/* Overdue Alert Banner */}
-      {isOverdue && !isCancelled && !isCompleted && (
-        <div className="p-4 sm:p-5 rounded-2xl bg-red-500/10 border border-red-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="flex items-start gap-3">
-            <div className="w-10 h-10 rounded-xl bg-red-500/20 flex items-center justify-center text-red-700 shrink-0">
-              <AlertTriangle className="w-5 h-5" />
-            </div>
-            <div className="space-y-1">
-              <h4 className="font-bold text-sm text-red-950 flex items-center gap-2">
-                <span>Past Due Date</span>
-                <span className="px-2 py-0.5 rounded-md bg-red-500/20 text-red-900 text-[10px] font-mono font-bold">Action Needed</span>
-              </h4>
-              <p className="text-xs text-red-900/80 leading-relaxed max-w-2xl">
-                The agreed submission deadline has passed. Please contact your partner in chat or submit your draft deliverable as soon as possible.
-              </p>
-            </div>
-          </div>
-
-          <div className="shrink-0 flex items-center gap-2">
-            {role === "brand" && (
-              <button
-                onClick={() => setIsCancelModalOpen(true)}
-                className="px-4 py-2 rounded-full bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-xs transition-all"
-              >
-                Claim 100% Refund
-              </button>
-            )}
-          </div>
-        </div>
-      )}
-
-      {/* Disputed Freeze Banner */}
-      {isDisputed && (
-        <div className="p-4 sm:p-5 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-700 shrink-0">
-            <ShieldCheck className="w-5 h-5" />
-          </div>
-          <div className="space-y-1 flex-1">
-            <h4 className="font-bold text-sm text-blue-950 flex items-center gap-2">
-              <span>Support Review in Progress</span>
-              <span className="px-2 py-0.5 rounded-md bg-blue-500/20 text-blue-900 text-[10px] font-mono font-bold">Protected</span>
-            </h4>
-            <p className="text-xs text-blue-900/80 leading-relaxed">
-              Our support arbitration team is reviewing project communications and files to ensure a fair resolution for both parties.
-            </p>
-          </div>
-        </div>
-      )}
-
-      {/* Cancelled Banner */}
-      {isCancelled && (
-        <div className="p-4 sm:p-5 rounded-2xl bg-black/5 border border-black/10 flex items-center gap-3">
-          <XCircle className="w-5 h-5 text-[#8A8A9A] shrink-0" />
-          <div className="space-y-0.5 flex-1">
-            <h4 className="font-bold text-sm text-[#0A0A0E]">Project Cancelled</h4>
-            <p className="text-xs text-[#6A6A78]">
-              {collab.cancellationDetails?.reason || "This project was cancelled under platform terms."}
-            </p>
-          </div>
-        </div>
-      )}
-
-      {/* Top Header Card */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-black/8">
-        <div className="space-y-1.5">
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" /> Protected Project Workspace
+    <div className="p-5 sm:p-7 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6 text-[#0A0A0E] transition-all">
+      {/* ── Top Executive Deal Header ── */}
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-black/8">
+        <div className="space-y-2 min-w-0">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#F4F4F8] border border-black/5">
+              <ShieldCheck className="w-3 h-3 text-emerald-600" />
+              <span>Escrow Workspace</span>
             </span>
             <span className="text-[#8A8A9A]">•</span>
-            <span className="text-xs font-mono text-[#6A6A78]">ID: {collab.id}</span>
+            <span className="text-[10px] font-mono text-[#6A6A78]">ID: {collab.id}</span>
+            {collab.finalDeadline && (
+              <>
+                <span className="text-[#8A8A9A]">•</span>
+                <span className="inline-flex items-center gap-1 text-[10px] font-mono text-[#6A6A78]">
+                  <Calendar className="w-3 h-3 text-[#8A8A9A]" />
+                  <span>Due {collab.finalDeadline}</span>
+                </span>
+              </>
+            )}
           </div>
-          <h2 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
+
+          <h2 className="text-xl sm:text-2xl font-black text-[#0A0A0E] tracking-tight font-display">
             {collab.campaignTitle}
           </h2>
+
           <div className="flex flex-wrap items-center gap-2 pt-0.5">
             <span className="text-xs text-[#6A6A78] font-mono">Partner:</span>
             {role === "creator" ? (
@@ -575,82 +485,214 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
               <MessageSquare className="w-3 h-3 text-[#7A7A8A]" />
               <span>Message</span>
             </Link>
+
+            <span className="text-[#8A8A9A] hidden sm:inline">•</span>
+            <span className="text-[11px] font-mono text-[#6A6A78] px-2 py-0.5 rounded-full bg-[#F8F8FC] border border-black/5">
+              {approvedCount} of {deliverables.length} Deliverables Approved
+            </span>
           </div>
         </div>
 
-        <div className="flex items-center gap-4 font-mono">
-          <div className="text-right">
-            <span className="text-xs text-[#6A6A78] block">Escrow Vault</span>
-            <span className="text-lg font-extrabold text-[#0A0A0E]">
+        <div className="flex flex-wrap items-center gap-3 self-start lg:self-center">
+          <div className="text-left lg:text-right font-mono">
+            <span className="text-[10px] text-[#7A7A8A] uppercase font-bold block">Escrow Vault</span>
+            <span className="text-base sm:text-lg font-black text-[#0A0A0E]">
               {formatCurrency(collab.totalAgreedBudget)}
             </span>
           </div>
-          <span className={`px-2.5 py-1 rounded-full text-xs font-mono font-bold border ${
-            isFunded
-              ? "bg-emerald-50 text-emerald-800 border-emerald-300"
-              : "bg-amber-50 text-amber-900 border-amber-300"
-          }`}>
-            {(collab.paymentStatus || collab.status).replace(/_/g, " ").toUpperCase()}
+
+          <span
+            className={`px-3 py-1 rounded-full text-xs font-mono font-bold border ${
+              isFunded
+                ? "bg-emerald-50 text-emerald-800 border-emerald-300"
+                : "bg-amber-50 text-amber-900 border-amber-300"
+            }`}
+          >
+            {isFunded ? "PAYMENT SECURED" : "DEPOSIT PENDING"}
           </span>
 
-          {!isCancelled && !isCompleted && (
+          {/* Quick Header Action Button */}
+          {role === "brand" && !isFunded && !isCancelled && (
             <button
-              onClick={() => setIsCancelModalOpen(true)}
-              className="p-1.5 rounded-full hover:bg-black/5 text-[#8A8A9A] hover:text-red-600 transition-all text-xs"
-              title="Cancel Collaboration"
+              type="button"
+              onClick={handleFundEscrow}
+              disabled={isFunding}
+              className="px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs shadow-xs border border-black/10 transition-all flex items-center gap-1.5 disabled:opacity-50"
             >
-              <XCircle className="w-4 h-4" />
+              <Lock className="w-3 h-3" />
+              <span>{isFunding ? "Funding..." : "Fund Escrow Vault"}</span>
             </button>
           )}
+
+          {/* Expand / Collapse Button */}
+          <button
+            type="button"
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="px-3.5 py-2 rounded-full bg-[#F8F8FC] hover:bg-[#EEEEF5] border border-black/10 text-xs font-bold text-[#0A0A0E] transition-all flex items-center gap-1.5 shadow-2xs"
+          >
+            <span>{isExpanded ? "Collapse" : "Open Workspace"}</span>
+            <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-200", isExpanded ? "rotate-180" : "")} />
+          </button>
         </div>
       </div>
 
-      {/* Sub-Workspace Tab Switcher */}
-      <div className="flex items-center gap-2 border-b border-black/8 pb-3 text-xs font-mono overflow-x-auto">
-        <button
-          onClick={() => setActiveTab("deliverables")}
-          className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all shrink-0 ${
-            activeTab === "deliverables"
-              ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs border border-black/10"
-              : "bg-[#F8F8FC] text-[#6A6A78] hover:text-[#0A0A0E] border border-black/5"
-          }`}
-        >
-          Deliverables ({deliverables.length})
-        </button>
-        <button
-          onClick={() => setActiveTab("review_card")}
-          className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 ${
-            activeTab === "review_card"
-              ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs border border-black/10"
-              : "bg-[#F8F8FC] text-[#6A6A78] hover:text-[#0A0A0E] border border-black/5"
-          }`}
-        >
-          <FileCheck2 className="w-3.5 h-3.5" />
-          <span>Review &amp; Feedback</span>
-        </button>
-        <button
-          onClick={() => setActiveTab("post_proof")}
-          className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 ${
-            activeTab === "post_proof"
-              ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs border border-black/10"
-              : "bg-[#F8F8FC] text-[#6A6A78] hover:text-[#0A0A0E] border border-black/5"
-          }`}
-        >
-          <UploadCloud className="w-3.5 h-3.5" />
-          <span>Proof of Post &amp; Links</span>
-        </button>
-        <button
-          onClick={() => setActiveTab("negotiation")}
-          className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 ${
-            activeTab === "negotiation"
-              ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs border border-black/10"
-              : "bg-[#F8F8FC] text-[#6A6A78] hover:text-[#0A0A0E] border border-black/5"
-          }`}
-        >
-          <DollarSign className="w-3.5 h-3.5" />
-          <span>Agreed Terms &amp; Rates</span>
-        </button>
-      </div>
+      {/* ── Collapsible Detailed Workspace ── */}
+      {isExpanded && (
+        <div className="space-y-6 pt-1">
+          {/* ── Transaction 5-Phase Lifecycle Stepper ── */}
+          <TransactionLifecycleStepper collaboration={collab} role={role as any} />
+
+          {/* ── 1. SECURITY & STATUS BANNERS ── */}
+
+          {/* Unfunded Warning Banner */}
+          {!isFunded && !isCancelled && (
+            <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border border-amber-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-xl bg-amber-500/20 flex items-center justify-center text-amber-900 shrink-0">
+                  <ShieldAlert className="w-5 h-5" />
+                </div>
+                <div className="space-y-1">
+                  <h4 className="font-bold text-sm text-amber-950 flex items-center gap-2">
+                    <span>Deposit Required to Start</span>
+                    <span className="px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-900 text-[10px] font-mono font-bold">Safe Escrow</span>
+                  </h4>
+                  <p className="text-xs text-amber-900/80 leading-relaxed max-w-2xl">
+                    {role === "creator"
+                      ? "The brand needs to deposit project funds into the secure vault before you begin work, guaranteeing you will be paid."
+                      : "Please deposit the project budget into the secure vault so the creator can begin work. Funds are held safely and only released when you approve the content."}
+                  </p>
+                </div>
+              </div>
+
+              <div className="shrink-0 flex items-center gap-2">
+                {role === "brand" && (
+                  <button
+                    onClick={handleFundEscrow}
+                    disabled={isFunding}
+                    className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs shadow-xs border border-black/10 transition-all flex items-center gap-2 disabled:opacity-50"
+                  >
+                    <Lock className="w-3.5 h-3.5" />
+                    <span>{isFunding ? "Funding Vault..." : `Fund Escrow Vault (${formatCurrency(collab.totalAgreedBudget)})`}</span>
+                  </button>
+                )}
+                {role === "creator" && (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-500/20 text-amber-900 text-xs font-mono font-bold">
+                    <Lock className="w-3.5 h-3.5" />
+                    <span>Work Blocked Until Funded</span>
+                  </span>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Overdue Alert Banner */}
+          {isOverdue && !isCancelled && !isCompleted && (
+            <div className="p-4 sm:p-5 rounded-2xl bg-red-500/10 border border-red-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-xl bg-red-500/20 flex items-center justify-center text-red-700 shrink-0">
+                  <AlertTriangle className="w-5 h-5" />
+                </div>
+                <div className="space-y-1">
+                  <h4 className="font-bold text-sm text-red-950 flex items-center gap-2">
+                    <span>Past Due Date</span>
+                    <span className="px-2 py-0.5 rounded-md bg-red-500/20 text-red-900 text-[10px] font-mono font-bold">Action Needed</span>
+                  </h4>
+                  <p className="text-xs text-red-900/80 leading-relaxed max-w-2xl">
+                    The agreed submission deadline has passed. Please contact your partner in chat or submit your draft deliverable as soon as possible.
+                  </p>
+                </div>
+              </div>
+
+              <div className="shrink-0 flex items-center gap-2">
+                {role === "brand" && (
+                  <button
+                    onClick={() => setIsCancelModalOpen(true)}
+                    className="px-4 py-2 rounded-full bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-xs transition-all"
+                  >
+                    Claim 100% Refund
+                  </button>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Disputed Freeze Banner */}
+          {isDisputed && (
+            <div className="p-4 sm:p-5 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-700 shrink-0">
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <div className="space-y-1 flex-1">
+                <h4 className="font-bold text-sm text-blue-950 flex items-center gap-2">
+                  <span>Support Review in Progress</span>
+                  <span className="px-2 py-0.5 rounded-md bg-blue-500/20 text-blue-900 text-[10px] font-mono font-bold">Protected</span>
+                </h4>
+                <p className="text-xs text-blue-900/80 leading-relaxed">
+                  Our support arbitration team is reviewing project communications and files to ensure a fair resolution for both parties.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Cancelled Banner */}
+          {isCancelled && (
+            <div className="p-4 sm:p-5 rounded-2xl bg-black/5 border border-black/10 flex items-center gap-3">
+              <XCircle className="w-5 h-5 text-[#8A8A9A] shrink-0" />
+              <div className="space-y-0.5 flex-1">
+                <h4 className="font-bold text-sm text-[#0A0A0E]">Project Cancelled</h4>
+                <p className="text-xs text-[#6A6A78]">
+                  {collab.cancellationDetails?.reason || "This project was cancelled under platform terms."}
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Sub-Workspace Tab Switcher */}
+          <div className="flex items-center gap-2 border-b border-black/8 pb-3 text-xs font-mono overflow-x-auto">
+            <button
+              onClick={() => setActiveTab("deliverables")}
+              className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all shrink-0 ${
+                activeTab === "deliverables"
+                  ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs border border-black/10"
+                  : "bg-[#F8F8FC] text-[#6A6A78] hover:text-[#0A0A0E] border border-black/5"
+              }`}
+            >
+              Deliverables ({deliverables.length})
+            </button>
+            <button
+              onClick={() => setActiveTab("review_card")}
+              className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 ${
+                activeTab === "review_card"
+                  ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs border border-black/10"
+                  : "bg-[#F8F8FC] text-[#6A6A78] hover:text-[#0A0A0E] border border-black/5"
+              }`}
+            >
+              <FileCheck2 className="w-3.5 h-3.5" />
+              <span>Review &amp; Feedback</span>
+            </button>
+            <button
+              onClick={() => setActiveTab("post_proof")}
+              className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 ${
+                activeTab === "post_proof"
+                  ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs border border-black/10"
+                  : "bg-[#F8F8FC] text-[#6A6A78] hover:text-[#0A0A0E] border border-black/5"
+              }`}
+            >
+              <UploadCloud className="w-3.5 h-3.5" />
+              <span>Proof of Post &amp; Links</span>
+            </button>
+            <button
+              onClick={() => setActiveTab("negotiation")}
+              className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 ${
+                activeTab === "negotiation"
+                  ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs border border-black/10"
+                  : "bg-[#F8F8FC] text-[#6A6A78] hover:text-[#0A0A0E] border border-black/5"
+              }`}
+            >
+              <DollarSign className="w-3.5 h-3.5" />
+              <span>Agreed Terms &amp; Rates</span>
+            </button>
+          </div>
 
       {/* Tab 1: Deliverables Pipeline List */}
       {activeTab === "deliverables" && (
@@ -867,6 +909,8 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
       {activeTab === "negotiation" && (
         <div className="pt-2">
           <NegotiationTimeline currentFee={collab.totalAgreedBudget} />
+        </div>
+      )}
         </div>
       )}
 
