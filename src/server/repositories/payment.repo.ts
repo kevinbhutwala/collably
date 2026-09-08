@@ -56,8 +56,51 @@ export class PaymentRepository {
 
   async getPayouts(creatorId?: string): Promise<PayoutRecord[]> {
     const state = db.getState();
+    if (!state.payouts || state.payouts.length === 0) {
+      const defaultPayouts: PayoutRecord[] = [
+        {
+          id: "payout-init-1",
+          creatorId: "creator-demo",
+          collaborationId: "collab-2",
+          campaignTitle: "The Architecture of Time: Autumn Collection",
+          brandName: "Aethel Watches",
+          creatorName: "Demo Creator",
+          deliverableTitle: "Titanium Monolith Architectural Reel",
+          grossAmount: 2000,
+          netAmount: 1800,
+          agencyFee: 200,
+          status: "paid",
+          paymentMethod: "stripe_connect",
+          createdAt: "2026-08-25T12:00:00Z",
+          releasedAt: "2026-08-26T15:30:00Z",
+        },
+        {
+          id: "payout-init-2",
+          creatorId: "creator-demo",
+          collaborationId: "collab-1",
+          campaignTitle: "AI-Powered Sprint Workflows Launch",
+          brandName: "Linear Dynamics",
+          creatorName: "Demo Creator",
+          deliverableTitle: "Dedicated AI Triage 60s Segment in Main Video",
+          grossAmount: 2500,
+          netAmount: 2250,
+          agencyFee: 250,
+          status: "pending",
+          paymentMethod: "stripe_connect",
+          createdAt: "2026-08-28T14:30:00Z",
+        },
+      ];
+      db.updateState((s) => {
+        s.payouts = defaultPayouts;
+      });
+      state.payouts = defaultPayouts;
+    }
+
     if (creatorId) {
-      return (state.payouts || []).filter((p) => p.creatorId === creatorId);
+      const creatorIds = [creatorId];
+      if (creatorId === "creator-1") creatorIds.push("creator-demo");
+      if (creatorId === "creator-demo") creatorIds.push("creator-1");
+      return (state.payouts || []).filter((p) => creatorIds.includes(p.creatorId || ""));
     }
     return state.payouts || [];
   }

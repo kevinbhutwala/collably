@@ -6,6 +6,7 @@ import { SubscriptionEntity, CreatorProfile, BrandProfile, AlgorithmWeightsConfi
 import { MOCK_CAMPAIGNS } from "@/mock/campaigns.mock";
 import { MOCK_CREATORS } from "@/mock/creators.mock";
 import { MOCK_CONVERSATIONS, MOCK_MESSAGES } from "@/mock/messages.mock";
+import { MOCK_COLLABORATIONS } from "@/mock/collaborations.mock";
 
 export const DEFAULT_ALGORITHM_CONFIG: AlgorithmWeightsConfig = {
   id: "algo-config-default",
@@ -279,7 +280,7 @@ export function getInitialSeedDatabase(): DatabaseState {
     brands: initialBrands,
     campaigns: MOCK_CAMPAIGNS,
     applications: [],
-    collaborations: [],
+    collaborations: [...MOCK_COLLABORATIONS],
     payouts: [],
     subscriptions: initialSubscriptions,
     crmContacts: [],

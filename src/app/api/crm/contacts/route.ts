@@ -51,7 +51,33 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { contactId, action, stage, authorName, content, tag } = body;
+    const { contactId, action, stage, authorName, content, tag, creatorId, brandId: bodyBrandId } = body;
+
+    let targetBrandId = bodyBrandId;
+    if (!targetBrandId) {
+      const { brandRepo } = await import("@/server/repositories/brand.repo");
+      const brand = brandRepo.getByUserId(session.userId);
+      targetBrandId = brand ? brand.id : "brand-demo";
+    }
+
+    if (action === "addContact") {
+      if (!creatorId) {
+        return NextResponse.json({ error: "creatorId is required" }, { status: 400 });
+      }
+      const newContact = crmRepo.addContact(targetBrandId, creatorId, stage || "Prospect", content);
+      if (!newContact) {
+        return NextResponse.json({ error: "Creator not found" }, { status: 404 });
+      }
+      return NextResponse.json({ success: true, contact: newContact }, { status: 201 });
+    }
+
+    if (action === "removeContact") {
+      if (!contactId) {
+        return NextResponse.json({ error: "contactId is required" }, { status: 400 });
+      }
+      const ok = crmRepo.removeContact(contactId);
+      return NextResponse.json({ success: ok });
+    }
 
     if (action === "updateStage") {
       const updated = crmRepo.updateStage(contactId, stage);
@@ -69,6 +95,24 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json({ error: "Invalid action" }, { status: 400 });
+  } catch (err: any) {
+    return NextResponse.json({ error: err.message }, { status: 500 });
+  }
+}
+
+export async function DELETE(req: NextRequest) {
+  try {
+    const session = SecurityService.getSession(req);
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+    const { searchParams } = new URL(req.url);
+    const contactId = searchParams.get("contactId");
+    if (!contactId) {
+      return NextResponse.json({ error: "contactId is required" }, { status: 400 });
+    }
+    const ok = crmRepo.removeContact(contactId);
+    return NextResponse.json({ success: ok });
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });
   }

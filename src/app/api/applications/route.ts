@@ -22,11 +22,15 @@ export async function GET(req: NextRequest) {
       if (session.role === "creator") {
         const creator = creatorRepo.getByUserId(session.userId);
         if (!creator) return NextResponse.json([]);
-        applications = applications.filter((a) => a.creatorId === creator.id);
+        applications = applications.filter(
+          (a) => a.creatorId === creator.id || (creator.id === "creator-demo" && (a.creatorId === "creator-demo" || a.creatorId === "creator-1"))
+        );
       } else if (session.role === "brand" || session.role === "brand_owner" || session.role === "brand_manager") {
         const brand = brandRepo.getByUserId(session.userId);
         if (!brand) return NextResponse.json([]);
-        applications = applications.filter((a) => a.brandId === brand.id);
+        applications = applications.filter(
+          (a) => a.brandId === brand.id || (brand.id === "brand-demo" && (a.brandId === "brand-demo" || a.brandId === "brand-1"))
+        );
       }
     }
 

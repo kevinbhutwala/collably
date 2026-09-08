@@ -68,6 +68,8 @@ export function Modal({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.98, y: 8 }}
             transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+            role="dialog"
+            aria-modal="true"
             className={cn(
               "relative w-full z-10 bg-[#FFFFFF] border border-[#E7E7E4] rounded-2xl shadow-editorial-lg overflow-hidden my-auto text-[#111111] will-change-[transform,opacity]",
               maxWidthMap[maxWidth],

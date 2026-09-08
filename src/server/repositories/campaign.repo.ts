@@ -142,10 +142,25 @@ export class CampaignRepository {
     return (db.getState().applications || []).find((a) => a.id === id) || null;
   }
 
-  createApplication(app: Omit<CampaignApplication, "id" | "createdAt" | "updatedAt"> & { id?: string }): CampaignApplication {
+  createApplication(app: Partial<CampaignApplication> & { campaignId: string; creatorId: string; proposedFee: number; pitch: string }): CampaignApplication {
+    const campaign = (db.getState().campaigns || []).find((c) => c.id === app.campaignId);
+    const creator = app.creator || (db.getState().creators || []).find((c) => c.id === app.creatorId);
+
     const newApp: CampaignApplication = {
-      ...app,
       id: app.id || `app-${Date.now()}`,
+      campaignId: app.campaignId,
+      campaignTitle: app.campaignTitle || campaign?.title || "Sponsorship Campaign",
+      brandId: app.brandId || campaign?.brandId || "brand-demo",
+      brandName: app.brandName || campaign?.brand?.companyName || (campaign as any)?.brandName || "Brand Partner",
+      brandLogo: app.brandLogo || campaign?.brand?.logoUrl || (campaign as any)?.brandLogo || "",
+      creatorId: app.creatorId,
+      creator: (creator || { id: app.creatorId, fullName: "Creator Talent" }) as any,
+      pitch: app.pitch,
+      proposedFee: app.proposedFee,
+      estimatedReach: app.estimatedReach || creator?.totalFollowers || 100000,
+      status: app.status || "pending",
+      sampleLinks: app.sampleLinks || (app as any).portfolioSamples || [],
+      matchScore: app.matchScore || 95,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     };

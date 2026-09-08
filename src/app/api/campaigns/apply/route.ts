@@ -7,9 +7,11 @@ import { z } from "zod";
 
 const applySchema = z.object({
   campaignId: z.string().min(1),
-  pitch: z.string().min(10),
+  pitch: z.string().min(5),
   proposedFee: z.number().positive(),
   sampleLinks: z.array(z.string()).optional(),
+  portfolioSamples: z.array(z.string()).optional(),
+  creatorId: z.string().optional(),
 });
 
 export async function POST(req: NextRequest) {
@@ -46,12 +48,13 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const parsed = applySchema.parse(body);
 
-    const creator = creatorRepo.getByUserId(session.userId) || creatorRepo.getById(body.creatorId || "");
+    const creator = creatorRepo.getByUserId(session.userId) || creatorRepo.getById(parsed.creatorId || "");
 
     const app = campaignRepo.createApplication({
-      ...body,
+      ...parsed,
+      sampleLinks: parsed.sampleLinks || parsed.portfolioSamples || [],
       creatorId: creator?.id || "creator-1",
-      creator: creator || { fullName: session.email.split("@")[0] },
+      creator: creator || ({ fullName: session.email.split("@")[0] } as any),
     });
 
     // Record usage

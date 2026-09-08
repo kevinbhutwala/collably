@@ -35,6 +35,34 @@ class CRMService {
     });
   }
 
+  async addContact(creatorId: string, stage: CRMStage = "Prospect", content?: string, brandId?: string): Promise<CRMContact | null> {
+    try {
+      const res = await fetch("/api/crm/contacts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "addContact", creatorId, stage, content, brandId }),
+      });
+      if (!res.ok) return null;
+      const data = await res.json();
+      return data.contact;
+    } catch {
+      return null;
+    }
+  }
+
+  async removeContact(contactId: string): Promise<boolean> {
+    try {
+      const res = await fetch("/api/crm/contacts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "removeContact", contactId }),
+      });
+      return res.ok;
+    } catch {
+      return false;
+    }
+  }
+
   async getShortlists(brandId: string): Promise<CreatorShortlist[]> {
     try {
       const res = await fetch(`/api/crm/shortlists?brandId=${brandId}`, { cache: "no-store" });

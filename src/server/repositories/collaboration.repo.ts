@@ -6,10 +6,26 @@ export class CollaborationRepository {
     const list = [...(db.getState().collaborations || [])];
     if (!entityId) return list;
     if (role === "creator") {
-      return list.filter((c) => c.creatorId === entityId || c.creator?.userId === entityId);
+      const creatorIds = [entityId];
+      if (entityId === "creator-1") creatorIds.push("creator-demo");
+      if (entityId === "creator-demo") creatorIds.push("creator-1");
+      return list.filter(
+        (c) =>
+          creatorIds.includes(c.creatorId) ||
+          creatorIds.includes(c.creator?.id || "") ||
+          creatorIds.includes(c.creator?.userId || "")
+      );
     }
     if (role === "brand") {
-      return list.filter((c) => c.brandId === entityId || c.brand?.userId === entityId);
+      const brandIds = [entityId];
+      if (entityId === "brand-1") brandIds.push("brand-demo");
+      if (entityId === "brand-demo") brandIds.push("brand-1");
+      return list.filter(
+        (c) =>
+          brandIds.includes(c.brandId) ||
+          brandIds.includes(c.brand?.id || "") ||
+          brandIds.includes(c.brand?.userId || "")
+      );
     }
     return list;
   }
