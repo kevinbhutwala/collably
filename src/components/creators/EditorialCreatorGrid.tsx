@@ -113,23 +113,36 @@ const CATEGORIES = [
   { id: "lifestyle", label: "Cinema & Life" },
 ];
 
+import { useShortlistStore } from "@/stores/shortlist.store";
+
 export function EditorialCreatorGrid() {
   const [activeTab, setActiveTab] = useState("all");
   const [quickViewCreator, setQuickViewCreator] = useState<CreatorQuickViewData | null>(null);
-  const [bookmarkedIds, setBookmarkedIds] = useState<Set<string>>(new Set());
+  const { isSaved, toggleSaveCreator } = useShortlistStore();
   const { addToast } = useUIStore();
 
-  const handleBookmarkToggle = (creatorId: string) => {
-    setBookmarkedIds((prev) => {
-      const next = new Set(prev);
-      if (next.has(creatorId)) {
-        next.delete(creatorId);
-        addToast({ type: "info", title: "Removed from Saved", message: "Creator removed from your saved talent list." });
-      } else {
-        next.add(creatorId);
-        addToast({ type: "success", title: "Saved to Talent Roster", message: "Creator bookmarked for upcoming campaign briefs." });
-      }
-      return next;
+  const handleBookmarkToggle = async (creatorId: string) => {
+    const creator = FEATURED_TALENT.find((c) => c.id === creatorId);
+    if (!creator) return;
+    const profile: any = {
+      id: creator.id,
+      fullName: creator.name,
+      handle: creator.handle.replace("@", ""),
+      avatarUrl: creator.avatarUrl,
+      headline: creator.niche,
+      bio: creator.bio || creator.niche,
+      primaryCategory: creator.category,
+      totalFollowers: creator.followersCount || 100000,
+      avgEngagementRate: typeof creator.engagementRate === "number" ? creator.engagementRate : parseFloat(String(creator.engagementRate || 4.5)) || 4.5,
+      startingPrice: typeof creator.startingPrice === "number" ? creator.startingPrice : 1500,
+      verified: true,
+      rating: creator.rating || 4.9,
+    };
+    const nowSaved = await toggleSaveCreator(profile);
+    addToast({
+      type: "success",
+      title: nowSaved ? "Saved to Talent Roster" : "Removed from Saved",
+      message: `${creator.name} has been ${nowSaved ? "added to" : "removed from"} your active brand talent shortlist.`,
     });
   };
 
@@ -199,7 +212,7 @@ export function EditorialCreatorGrid() {
                   creator={creator}
                   onQuickView={(c) => setQuickViewCreator(c)}
                   onBookmarkToggle={handleBookmarkToggle}
-                  isBookmarked={bookmarkedIds.has(creator.id)}
+                  isBookmarked={isSaved(creator.id)}
                 />
               </motion.div>
             ))}
@@ -214,7 +227,7 @@ export function EditorialCreatorGrid() {
                 creator={creator}
                 onQuickView={(c) => setQuickViewCreator(c)}
                 onBookmarkToggle={handleBookmarkToggle}
-                isBookmarked={bookmarkedIds.has(creator.id)}
+                isBookmarked={isSaved(creator.id)}
               />
             </div>
           ))}
@@ -244,7 +257,7 @@ export function EditorialCreatorGrid() {
         isOpen={!!quickViewCreator}
         onClose={() => setQuickViewCreator(null)}
         onBookmarkToggle={handleBookmarkToggle}
-        isBookmarked={quickViewCreator ? bookmarkedIds.has(quickViewCreator.id) : false}
+        isBookmarked={quickViewCreator ? isSaved(quickViewCreator.id) : false}
       />
     </section>
   );

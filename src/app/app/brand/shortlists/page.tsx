@@ -9,6 +9,8 @@ import { Input, Textarea } from "@/components/ui/Input";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { CreatorComparisonModal } from "@/components/creators/CreatorComparisonModal";
 import { formatNumber, formatCurrency } from "@/core/utils/formatters";
+import { useShortlistStore } from "@/stores/shortlist.store";
+import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
 import {
   Plus,
@@ -23,38 +25,54 @@ import {
   ListChecks,
   TrendingUp,
   BadgeCheck,
+  Trash2,
 } from "lucide-react";
 
 export default function BrandShortlistsPage() {
   const { addToast } = useUIStore();
-  const [shortlists, setShortlists] = useState<CreatorShortlist[]>([]);
-  const [activeShortlistId, setActiveShortlistId] = useState<string>("");
+  const { currentBrand } = useAuthStore();
+  const {
+    shortlists,
+    activeShortlistId,
+    setActiveShortlistId,
+    fetchShortlists,
+    createShortlist,
+    removeCreatorFromShortlist,
+  } = useShortlistStore();
+
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isCompareOpen, setIsCompareOpen] = useState(false);
   const [newTitle, setNewTitle] = useState("");
   const [newDesc, setNewDesc] = useState("");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await crmService.getShortlists("brand-1");
-      setShortlists(data || []);
-      if (data && data.length > 0) setActiveShortlistId(data[0].id);
-    };
-    fetchData();
-  }, []);
+  const brandId = currentBrand?.id || "brand-demo";
 
-  const activeShortlist = shortlists.find((s) => s.id === activeShortlistId);
+  useEffect(() => {
+    fetchShortlists(brandId);
+  }, [brandId, fetchShortlists]);
+
+  const activeShortlist = shortlists.find((s) => s.id === activeShortlistId) || shortlists[0];
 
   const handleCreate = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newTitle.trim()) return;
-    const newSl = await crmService.createShortlist("brand-1", newTitle, newDesc);
-    setShortlists((prev) => [newSl, ...prev]);
-    setActiveShortlistId(newSl.id);
-    setNewTitle("");
-    setNewDesc("");
-    setIsCreateModalOpen(false);
-    addToast({ type: "success", title: "Shortlist Created", message: `"${newTitle}" is ready to fill with talent.` });
+    const newSl = await createShortlist(newTitle, newDesc, brandId);
+    if (newSl) {
+      setActiveShortlistId(newSl.id);
+      setNewTitle("");
+      setNewDesc("");
+      setIsCreateModalOpen(false);
+      addToast({ type: "success", title: "Shortlist Created", message: `"${newTitle}" is ready to fill with talent.` });
+    }
+  };
+
+  const handleRemoveCreator = async (shortlistId: string, creatorId: string, creatorName: string) => {
+    await removeCreatorFromShortlist(shortlistId, creatorId);
+    addToast({
+      type: "info",
+      title: "Removed from Shortlist",
+      message: `${creatorName} was removed from this shortlist.`,
+    });
   };
 
   const totalReach = activeShortlist?.creators.reduce((s, c) => s + c.totalFollowers, 0) ?? 0;
@@ -319,6 +337,14 @@ export default function BrandShortlistsPage() {
                               Invite
                             </button>
                           </Link>
+                          <button
+                            type="button"
+                            onClick={() => handleRemoveCreator(activeShortlist.id, c.id, c.fullName)}
+                            title="Remove from shortlist"
+                            className="p-1.5 rounded-xl text-[#7A7A8A] hover:text-rose-600 hover:bg-rose-50 border border-transparent hover:border-rose-200 transition-colors"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
                         </div>
                       </div>
                     ))}

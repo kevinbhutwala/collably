@@ -22,7 +22,8 @@ interface SubscriptionState {
   fetchPlans: () => Promise<void>;
   upgradePlan: (
     planId: SubscriptionPlanId,
-    interval?: SubscriptionInterval
+    interval?: SubscriptionInterval,
+    paymentId?: string
   ) => Promise<SubscriptionEntity>;
   cancelPlan: (immediate?: boolean) => Promise<SubscriptionEntity>;
   resumePlan: () => Promise<SubscriptionEntity>;

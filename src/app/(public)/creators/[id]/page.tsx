@@ -12,6 +12,7 @@ import { SocialIcon } from "@/components/ui/SocialIcons";
 import { formatNumber, formatCurrency } from "@/core/utils/formatters";
 import { TrustIndicatorsBar } from "@/components/marketplace/TrustIndicatorsBar";
 import { CategoryBadge, TitleIcon } from "@/components/ui/TitleIconBadge";
+import { SaveToShortlistButton } from "@/components/creators/SaveToShortlistButton";
 import {
   CheckCircle2,
   Star,
@@ -181,6 +182,8 @@ export default function CreatorDetailPage() {
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </Link>
+
+              <SaveToShortlistButton creator={creator} />
             </div>
           </div>
         </div>

@@ -13,18 +13,21 @@ import { ReputationBadgeBar } from "@/components/marketplace/ReputationBadgeBar"
 import { getClientCreatorBadges } from "@/core/utils/badge.utils";
 
 
+import { useShortlistStore } from "@/stores/shortlist.store";
+
 export function CreatorCard({ creator }: { creator: CreatorProfile }) {
   const { addToast } = useUIStore();
-  const [isSaved, setIsSaved] = useState(false);
+  const { isSaved, toggleSaveCreator } = useShortlistStore();
+  const saved = isSaved(creator.id);
 
-  const handleSave = (e: React.MouseEvent) => {
+  const handleSave = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setIsSaved(!isSaved);
+    const nowSaved = await toggleSaveCreator(creator);
     addToast({
       type: "success",
-      title: isSaved ? "Removed from Shortlist" : "Saved to Shortlist",
-      message: `${creator.fullName} has been ${isSaved ? "removed from" : "added to"} your active brand talent shortlist.`,
+      title: nowSaved ? "Saved to Shortlist" : "Removed from Shortlist",
+      message: `${creator.fullName} has been ${nowSaved ? "added to" : "removed from"} your active brand talent shortlist.`,
     });
   };
 
@@ -65,15 +68,15 @@ export function CreatorCard({ creator }: { creator: CreatorProfile }) {
             <button
               type="button"
               onClick={handleSave}
-              title={isSaved ? "Saved in Shortlist" : "Save to Shortlist"}
+              title={saved ? "Saved in Shortlist" : "Save to Shortlist"}
               className={cn(
                 "p-1.5 rounded-xl border transition-colors",
-                isSaved
+                saved
                   ? "bg-[#FFD21F] text-[#0A0A0E] border-black/10"
                   : "bg-white text-[#7A7A8A] hover:text-[#0A0A0E] border-black/8 hover:bg-black/5"
               )}
             >
-              <Bookmark className={cn("w-3.5 h-3.5", isSaved ? "fill-[#0A0A0E]" : "")} />
+              <Bookmark className={cn("w-3.5 h-3.5", saved ? "fill-[#0A0A0E]" : "")} />
             </button>
           </div>
         </div>
