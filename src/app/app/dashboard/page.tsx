@@ -33,6 +33,15 @@ import {
   Users,
   FolderPlus,
   Compass,
+  CheckCircle2,
+  HelpCircle,
+  X,
+  Star,
+  Layers,
+  FolderGit2,
+  BarChart3,
+  ChevronRight,
+  Send,
 } from "lucide-react";
 
 function DashboardContent() {
@@ -62,6 +71,7 @@ function DashboardContent() {
   const [recentPayouts, setRecentPayouts] = useState<PayoutRecord[]>([]);
   const [collaborations, setCollaborations] = useState<Collaboration[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [showQuickStart, setShowQuickStart] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -165,6 +175,118 @@ function DashboardContent() {
           )}
         </div>
       </div>
+
+      {/* ── Quick Start: How AbeyCollab Works ── */}
+      {showQuickStart && (
+        <div className="rounded-3xl bg-white dark:bg-[#12121A] border-2 border-[#FFD21F]/50 p-5 sm:p-6 shadow-[0_6px_24px_rgba(255,210,31,0.08)] relative overflow-hidden transition-all">
+          <div className="flex items-center justify-between gap-3 pb-3.5 border-b border-black/8 dark:border-white/10">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
+              <h2 className="text-sm sm:text-base font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-1.5">
+                <span>Quick Start Guide</span>
+                <span className="text-xs font-mono font-normal text-[#6A6A78] dark:text-[#8E8EA4]">
+                  • 3 Steps to Success as a {role === "creator" ? "Creator" : "Brand"}
+                </span>
+              </h2>
+            </div>
+
+            <button
+              onClick={() => setShowQuickStart(false)}
+              className="p-1 rounded-full hover:bg-black/5 dark:hover:bg-white/10 text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white transition-colors text-xs flex items-center gap-1"
+              title="Dismiss guide"
+            >
+              <span className="text-[11px] font-mono hidden sm:inline">Got it, dismiss</span>
+              <X className="w-3.5 h-3.5" />
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4">
+            {role === "creator" ? (
+              <>
+                <div className="p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-2">
+                  <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                    <span className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-black shrink-0">1</span>
+                    <span>Complete Your Media Kit</span>
+                  </div>
+                  <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
+                    Set up your verified socials, engagement stats, and standard deliverable rate cards so sponsors can book you.
+                  </p>
+                  <Link href="/app/profile" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8A7000] dark:text-[#FFD21F] hover:underline pt-1">
+                    Edit Media Kit <ChevronRight className="w-3 h-3" />
+                  </Link>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-2">
+                  <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                    <span className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-black shrink-0">2</span>
+                    <span>Pitch to Open Briefs</span>
+                  </div>
+                  <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
+                    Browse verified brand briefs with pre-funded escrow budgets. Submit your creative concept and custom quote.
+                  </p>
+                  <Link href="/app/campaigns" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8A7000] dark:text-[#FFD21F] hover:underline pt-1">
+                    Explore Briefs <ChevronRight className="w-3 h-3" />
+                  </Link>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-2">
+                  <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                    <span className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-black shrink-0">3</span>
+                    <span>Submit & Get Paid</span>
+                  </div>
+                  <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
+                    Upload draft links to the workspace. Brand signs off, and funds auto-release with 120-hour SLA watchdog protection.
+                  </p>
+                  <Link href="/app/collaborations" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8A7000] dark:text-[#FFD21F] hover:underline pt-1">
+                    Active Deals <ChevronRight className="w-3 h-3" />
+                  </Link>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-2">
+                  <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                    <span className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-black shrink-0">1</span>
+                    <span>Post a Campaign Brief</span>
+                  </div>
+                  <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
+                    Publish your creative requirements, target deliverables (Reels, Videos, Stories), and define your escrow budget.
+                  </p>
+                  <Link href="/app/brand/campaigns/create" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8A7000] dark:text-[#FFD21F] hover:underline pt-1">
+                    Launch Brief Wizard <ChevronRight className="w-3 h-3" />
+                  </Link>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-2">
+                  <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                    <span className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-black shrink-0">2</span>
+                    <span>Discover & Shortlist Talent</span>
+                  </div>
+                  <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
+                    Use AI semantic search to find vetted creators by engagement rate, niche, and audience. Save them to your CRM pipeline.
+                  </p>
+                  <Link href="/app/brand/creators" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8A7000] dark:text-[#FFD21F] hover:underline pt-1">
+                    Discover Creators <ChevronRight className="w-3 h-3" />
+                  </Link>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-2">
+                  <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                    <span className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-black shrink-0">3</span>
+                    <span>Approve Work & Release Escrow</span>
+                  </div>
+                  <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
+                    Deposit funds into escrow. Creators submit review links. Only release payment once you are 100% satisfied with the content.
+                  </p>
+                  <Link href="/app/collaborations" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8A7000] dark:text-[#FFD21F] hover:underline pt-1">
+                    Review Deliverables <ChevronRight className="w-3 h-3" />
+                  </Link>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* ── Stats Grid ── */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
@@ -345,73 +467,193 @@ function DashboardContent() {
             )}
           </div>
 
-          {/* Open Brand Briefs Discovery Bar */}
-          <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-5">
-            <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
-              <div>
-                <h2 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">
-                  Featured Briefs
-                </h2>
-                <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
-                  Open sponsor campaigns with escrow budgets.
-                </p>
+          {/* Discovery Section (Adaptive: Briefs for Creators, Talent for Brands) */}
+          {role === "creator" ? (
+            <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-5">
+              <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
+                <div>
+                  <h2 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">
+                    Featured Briefs
+                  </h2>
+                  <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
+                    Open sponsor campaigns with escrow budgets.
+                  </p>
+                </div>
+
+                <Link
+                  href="/app/campaigns"
+                  className="text-xs font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-[#FFE052] transition-colors flex items-center gap-1 shrink-0"
+                >
+                  <span>View all ({activeCampaigns.length})</span>
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
               </div>
 
-              <Link
-                href="/app/campaigns"
-                className="text-xs font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-[#FFE052] transition-colors flex items-center gap-1 shrink-0"
-              >
-                <span>View all ({activeCampaigns.length})</span>
-                <ArrowRight className="w-3 h-3" />
-              </Link>
-            </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                {activeCampaigns.slice(0, 4).map((c) => (
+                  <Link
+                    key={c.id}
+                    href={`/campaigns/${c.id}`}
+                    className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all group flex flex-col justify-between space-y-2.5"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-1.5">
+                        <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] text-[10px] font-mono font-bold uppercase border border-[#FFD21F]/30">
+                          {c.category}
+                        </span>
+                        <span className="text-[11px] font-mono text-[#0A0A0E] dark:text-white font-bold">
+                          {formatCurrency(c.budget?.totalBudget ?? 0)}
+                        </span>
+                      </div>
+                      <h3 className="font-bold text-xs sm:text-sm text-[#0A0A0E] dark:text-white group-hover:text-[#8A7000] dark:group-hover:text-[#FFD21F] transition-colors line-clamp-1">
+                        {c.title}
+                      </h3>
+                      <p className="text-[11px] text-[#5A5A68] dark:text-[#8E8EA4] line-clamp-1 mt-0.5">
+                        {c.tagline}
+                      </p>
+                    </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-              {activeCampaigns.slice(0, 4).map((c) => (
-                <Link
-                  key={c.id}
-                  href={`/campaigns/${c.id}`}
-                  className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all group flex flex-col justify-between space-y-2.5"
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-1.5">
-                      <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] text-[10px] font-mono font-bold uppercase border border-[#FFD21F]/30">
-                        {c.category}
-                      </span>
-                      <span className="text-[11px] font-mono text-[#0A0A0E] dark:text-white font-bold">
-                        {formatCurrency(c.budget?.totalBudget ?? 0)}
+                    <div className="flex items-center justify-between pt-2 border-t border-black/6 dark:border-white/10 text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4]">
+                      <span>{c.acceptedCount}/{c.maxCreators} filled</span>
+                      <span className="text-[#0A0A0E] dark:text-[#FFD21F] font-bold group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5">
+                        Apply <ArrowRight className="w-2.5 h-2.5" />
                       </span>
                     </div>
-                    <h3 className="font-bold text-xs sm:text-sm text-[#0A0A0E] dark:text-white group-hover:text-[#8A7000] dark:group-hover:text-[#FFD21F] transition-colors line-clamp-1">
-                      {c.title}
-                    </h3>
-                    <p className="text-[11px] text-[#5A5A68] dark:text-[#8E8EA4] line-clamp-1 mt-0.5">
-                      {c.tagline}
-                    </p>
-                  </div>
-
-                  <div className="flex items-center justify-between pt-2 border-t border-black/6 dark:border-white/10 text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4]">
-                    <span>{c.acceptedCount}/{c.maxCreators} filled</span>
-                    <span className="text-[#0A0A0E] dark:text-[#FFD21F] font-bold group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5">
-                      Apply <ArrowRight className="w-2.5 h-2.5" />
-                    </span>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-5">
+              <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
+                <div>
+                  <h2 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">
+                    Recommended Talent Roster
+                  </h2>
+                  <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
+                    Vetted creators matched to your industry and brand niche.
+                  </p>
+                </div>
+
+                <Link
+                  href="/app/brand/creators"
+                  className="text-xs font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-[#FFE052] transition-colors flex items-center gap-1 shrink-0"
+                >
+                  <span>Explore all ({featuredCreators.length})</span>
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                {featuredCreators.slice(0, 4).map((creator) => (
+                  <Link
+                    key={creator.id}
+                    href={`/creators/${creator.id}`}
+                    className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all group flex flex-col justify-between space-y-2.5"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] text-[10px] font-mono font-bold uppercase border border-[#FFD21F]/30">
+                          {creator.primaryCategory}
+                        </span>
+                        <span className="text-[11px] font-mono text-[#0A0A0E] dark:text-white font-bold">
+                          From {formatCurrency(creator.startingPrice || 500)}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-9 h-9 rounded-full bg-white dark:bg-[#222234] border border-black/8 dark:border-white/10 overflow-hidden shrink-0 flex items-center justify-center font-bold text-xs text-[#0A0A0E] dark:text-white shadow-2xs">
+                          {creator.avatarUrl ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img src={creator.avatarUrl} alt={creator.fullName} className="w-full h-full object-cover" />
+                          ) : (
+                            creator.fullName.charAt(0)
+                          )}
+                        </div>
+                        <div className="min-w-0">
+                          <h3 className="font-bold text-xs sm:text-sm text-[#0A0A0E] dark:text-white group-hover:text-[#8A7000] dark:group-hover:text-[#FFD21F] transition-colors truncate">
+                            {creator.fullName}
+                          </h3>
+                          <p className="text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4] truncate">
+                            {creator.handle} • {((creator.totalFollowers || 0) / 1000).toFixed(0)}k reach
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-2 border-t border-black/6 dark:border-white/10 text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4]">
+                      <span>{creator.avgEngagementRate}% avg engagement</span>
+                      <span className="text-[#0A0A0E] dark:text-[#FFD21F] font-bold group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5">
+                        Profile <ArrowRight className="w-2.5 h-2.5" />
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Right Column: Profile & Financial Ledger */}
         <div className="lg:col-span-4 space-y-6">
-          <ProfileCompletenessCard />
+          {role === "creator" ? (
+            <ProfileCompletenessCard />
+          ) : (
+            <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-4">
+              <div className="flex items-center justify-between pb-2.5 border-b border-black/8 dark:border-white/10">
+                <div>
+                  <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display">
+                    Brand Launchpad
+                  </h3>
+                  <p className="text-[11px] text-[#5A5A68] dark:text-[#8E8EA4]">
+                    Quick workflow tools & shortcuts
+                  </p>
+                </div>
+                <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] text-[10px] font-mono font-bold">
+                  {currentBrand?.companyName || "Brand"}
+                </span>
+              </div>
 
-          {/* Quick Payout Ledger */}
+              <div className="grid grid-cols-2 gap-2 text-xs font-medium">
+                <Link
+                  href="/app/brand/campaigns/create"
+                  className="p-3 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all flex flex-col items-center text-center gap-1.5"
+                >
+                  <FolderPlus className="w-5 h-5 text-[#8A7000] dark:text-[#FFD21F]" />
+                  <span className="font-bold text-[#0A0A0E] dark:text-white text-[11px]">New Brief</span>
+                </Link>
+                <Link
+                  href="/app/brand/creators"
+                  className="p-3 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all flex flex-col items-center text-center gap-1.5"
+                >
+                  <Users className="w-5 h-5 text-[#0A0A0E] dark:text-white" />
+                  <span className="font-bold text-[#0A0A0E] dark:text-white text-[11px]">Find Talent</span>
+                </Link>
+                <Link
+                  href="/app/brand/crm"
+                  className="p-3 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all flex flex-col items-center text-center gap-1.5"
+                >
+                  <FolderGit2 className="w-5 h-5 text-[#0A0A0E] dark:text-white" />
+                  <span className="font-bold text-[#0A0A0E] dark:text-white text-[11px]">Creator CRM</span>
+                </Link>
+                <Link
+                  href="/app/brand/shortlists"
+                  className="p-3 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all flex flex-col items-center text-center gap-1.5"
+                >
+                  <Layers className="w-5 h-5 text-[#8A7000] dark:text-[#FFD21F]" />
+                  <span className="font-bold text-[#0A0A0E] dark:text-white text-[11px]">Shortlists</span>
+                </Link>
+              </div>
+            </div>
+          )}
+
+          {/* Quick Payout / Escrow Activity Ledger */}
           <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-3.5">
             <div className="flex items-center justify-between pb-2.5 border-b border-black/8 dark:border-white/10">
-              <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display">Recent Payouts</h3>
+              <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display">
+                {role === "creator" ? "Recent Payouts" : "Escrow Activity"}
+              </h3>
               <Link
-                href="/app/earnings"
+                href={role === "creator" ? "/app/earnings" : "/app/collaborations"}
                 className="text-[11px] font-mono text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-[#FFE052] font-bold"
               >
                 View all
@@ -434,7 +676,7 @@ function DashboardContent() {
                     </div>
                     <div className="text-right">
                       <span className="font-bold text-[#0A0A0E] dark:text-white block text-xs">
-                        +{formatCurrency(p.netAmount)}
+                        {role === "creator" ? `+${formatCurrency(p.netAmount)}` : formatCurrency(p.netAmount)}
                       </span>
                       <span className="text-[9px] text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-bold">{p.status}</span>
                     </div>
