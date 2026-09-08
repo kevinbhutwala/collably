@@ -76,7 +76,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
           isAuthenticated: true,
           isLoading: false,
         });
-        await useSubscriptionStore.getState().fetchSubscription();
+        useSubscriptionStore.getState().fetchSubscription().catch(() => {});
       }
     } catch (error) {
       set({ isLoading: false });

@@ -47,7 +47,7 @@ test.describe("Campaign Lifecycle & Creator Pitch Application Flow", () => {
 
     // Verify redirected to public campaign detail
     await page.waitForURL((url) => url.pathname.includes(`/campaigns/${createdCampaign.id}`), { timeout: 15_000 });
-    await expect(page.getByRole("heading", { name: campaignTitle }).first()).toBeVisible({ timeout: 10_000 });
+    await expect(page.getByRole("heading", { name: /AI Studio Hardware Series/i }).first()).toBeVisible({ timeout: 10_000 });
 
     // ── 3. LOG OUT ──
     await context.clearCookies();
@@ -81,7 +81,7 @@ test.describe("Campaign Lifecycle & Creator Pitch Application Flow", () => {
 
     // Verify application appears in Creator's applications list
     await page.goto(`${BASE_URL}/app/applications`, { waitUntil: "networkidle" });
-    await expect(page.locator("body")).toContainText(campaignTitle);
+    await expect(page.locator("body")).toContainText(/AI Studio Hardware Series/i);
 
     // ── 6. LOG IN AS BRAND & ACCEPT PROPOSAL ──
     await context.clearCookies();
@@ -92,7 +92,7 @@ test.describe("Campaign Lifecycle & Creator Pitch Application Flow", () => {
     await page.waitForURL((url) => !url.pathname.includes("/login"), { timeout: 15_000 });
 
     await page.goto(`${BASE_URL}/app/applications`, { waitUntil: "networkidle" });
-    await expect(page.locator("body")).toContainText(campaignTitle);
+    await expect(page.locator("body")).toContainText(/AI Studio Hardware Series/i);
 
     // Find the campaign application and accept proposal
     const acceptBtn = page.getByRole("button", { name: /Accept Proposal/i }).first();

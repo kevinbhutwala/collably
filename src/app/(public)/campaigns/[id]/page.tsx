@@ -47,13 +47,13 @@ export default function CampaignDetailPage() {
     const fetch = async () => {
       setLoading(true);
       let data = await campaignService.getCampaignById(campaignId);
-      if (!data && typeof window !== "undefined") {
+      if (typeof window !== "undefined") {
         try {
-          const cached = localStorage.getItem(`campaign_${campaignId}`) || localStorage.getItem("last_created_campaign");
+          const cached = localStorage.getItem(`campaign_${campaignId}`);
           if (cached) {
             const parsed = JSON.parse(cached);
-            if (parsed.id === campaignId || !data) {
-              data = parsed;
+            if (parsed.id === campaignId) {
+              data = { ...(data || {}), ...parsed };
             }
           }
         } catch {}
