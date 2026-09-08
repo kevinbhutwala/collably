@@ -135,8 +135,8 @@ function DashboardContent() {
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4]">
             {role === "creator"
-              ? "Here is a summary of your active deliverables, earnings, and briefs."
-              : "Here is a summary of your campaigns, creators, and escrow milestones."}
+              ? "Here is your hub for active projects, earnings, and open campaigns."
+              : "Here is your hub for campaigns, creator discovery, and escrow payments."}
           </p>
         </div>
 
@@ -147,13 +147,13 @@ function DashboardContent() {
               <Link href="/app/campaigns">
                 <button className="px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all flex items-center gap-1.5 shadow-xs border border-black/10">
                   <Compass className="w-3.5 h-3.5 text-[#0A0A0E]" />
-                  <span>Browse Briefs</span>
+                  <span>Find Campaigns</span>
                 </button>
               </Link>
               <Link href="/app/profile">
                 <button className="px-4 py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#1C1C28] dark:hover:bg-[#252535] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-xs">
                   <Sparkles className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F]" />
-                  <span>Media Kit</span>
+                  <span>My Media Kit</span>
                 </button>
               </Link>
             </>
@@ -162,13 +162,13 @@ function DashboardContent() {
               <Link href="/app/brand/campaigns/create">
                 <button className="px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all flex items-center gap-1.5 shadow-xs border border-black/10">
                   <FolderPlus className="w-3.5 h-3.5 text-[#0A0A0E]" />
-                  <span>New Campaign</span>
+                  <span>Post Campaign</span>
                 </button>
               </Link>
               <Link href="/app/brand/creators">
                 <button className="px-4 py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#1C1C28] dark:hover:bg-[#252535] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-xs">
                   <Users className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F]" />
-                  <span>Find Talent</span>
+                  <span>Find Creators</span>
                 </button>
               </Link>
             </>
@@ -185,7 +185,7 @@ function DashboardContent() {
               <h2 className="text-sm sm:text-base font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-1.5">
                 <span>Quick Start Guide</span>
                 <span className="text-xs font-mono font-normal text-[#6A6A78] dark:text-[#8E8EA4]">
-                  • 3 Steps to Success as a {role === "creator" ? "Creator" : "Brand"}
+                  • 3 Simple Steps as a {role === "creator" ? "Creator" : "Brand"}
                 </span>
               </h2>
             </div>
@@ -206,10 +206,10 @@ function DashboardContent() {
                 <div className="p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-2">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
                     <span className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-black shrink-0">1</span>
-                    <span>Complete Your Media Kit</span>
+                    <span>Set Up Your Media Kit</span>
                   </div>
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
-                    Set up your verified socials, engagement stats, and standard deliverable rate cards so sponsors can book you.
+                    Add your social links, past content examples, and standard pricing so brands can hire you directly.
                   </p>
                   <Link href="/app/profile" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8A7000] dark:text-[#FFD21F] hover:underline pt-1">
                     Edit Media Kit <ChevronRight className="w-3 h-3" />
@@ -219,26 +219,26 @@ function DashboardContent() {
                 <div className="p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-2">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
                     <span className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-black shrink-0">2</span>
-                    <span>Pitch to Open Briefs</span>
+                    <span>Pitch to Paid Campaigns</span>
                   </div>
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
-                    Browse verified brand briefs with pre-funded escrow budgets. Submit your creative concept and custom quote.
+                    Browse open brand briefs with guaranteed payments. Send your creative idea and custom quote.
                   </p>
                   <Link href="/app/campaigns" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8A7000] dark:text-[#FFD21F] hover:underline pt-1">
-                    Explore Briefs <ChevronRight className="w-3 h-3" />
+                    Explore Campaigns <ChevronRight className="w-3 h-3" />
                   </Link>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-2">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
                     <span className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-black shrink-0">3</span>
-                    <span>Submit & Get Paid</span>
+                    <span>Submit Work &amp; Get Paid</span>
                   </div>
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
-                    Upload draft links to the workspace. Brand signs off, and funds auto-release with 120-hour SLA watchdog protection.
+                    Upload your drafts to the project workspace. Once approved, payment is sent with 120-hour automatic protection.
                   </p>
                   <Link href="/app/collaborations" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8A7000] dark:text-[#FFD21F] hover:underline pt-1">
-                    Active Deals <ChevronRight className="w-3 h-3" />
+                    My Deals <ChevronRight className="w-3 h-3" />
                   </Link>
                 </div>
               </>
@@ -247,39 +247,39 @@ function DashboardContent() {
                 <div className="p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-2">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
                     <span className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-black shrink-0">1</span>
-                    <span>Post a Campaign Brief</span>
+                    <span>Post a Campaign</span>
                   </div>
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
-                    Publish your creative requirements, target deliverables (Reels, Videos, Stories), and define your escrow budget.
+                    Describe what you need (e.g. YouTube video, Instagram Reel) and set your budget and deadlines.
                   </p>
                   <Link href="/app/brand/campaigns/create" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8A7000] dark:text-[#FFD21F] hover:underline pt-1">
-                    Launch Brief Wizard <ChevronRight className="w-3 h-3" />
+                    Create Campaign <ChevronRight className="w-3 h-3" />
                   </Link>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-2">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
                     <span className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-black shrink-0">2</span>
-                    <span>Discover & Shortlist Talent</span>
+                    <span>Find &amp; Save Creators</span>
                   </div>
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
-                    Use AI semantic search to find vetted creators by engagement rate, niche, and audience. Save them to your CRM pipeline.
+                    Search vetted creators by topic, follower count, and engagement. Save favorites to your contact list.
                   </p>
                   <Link href="/app/brand/creators" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8A7000] dark:text-[#FFD21F] hover:underline pt-1">
-                    Discover Creators <ChevronRight className="w-3 h-3" />
+                    Find Creators <ChevronRight className="w-3 h-3" />
                   </Link>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-2">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
                     <span className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-black shrink-0">3</span>
-                    <span>Approve Work & Release Escrow</span>
+                    <span>Approve Content &amp; Pay</span>
                   </div>
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
-                    Deposit funds into escrow. Creators submit review links. Only release payment once you are 100% satisfied with the content.
+                    Your budget stays locked and safe in escrow while the creator works. You only release money when satisfied.
                   </p>
                   <Link href="/app/collaborations" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8A7000] dark:text-[#FFD21F] hover:underline pt-1">
-                    Review Deliverables <ChevronRight className="w-3 h-3" />
+                    Review Content <ChevronRight className="w-3 h-3" />
                   </Link>
                 </div>
               </>
@@ -293,27 +293,27 @@ function DashboardContent() {
         {role === "creator" ? (
           <>
             <StatsCard
-              title="In Escrow"
+              title="Secured Payments"
               value={formatCurrency(totalEscrowInTransit)}
               change={totalEscrowInTransit > 0 ? "Secured" : "—"}
               trend="up"
-              subtitle="Secured by Stripe"
+              subtitle="Held safely in escrow"
               icon={<ShieldCheck className="w-4 h-4 text-[#8A7000]" />}
             />
             <StatsCard
-              title="Deliverables"
+              title="Active Projects"
               value={String(activeCollabsCount)}
               change={activeCollabsCount > 0 ? "Active" : "—"}
               trend="up"
-              subtitle="Milestones in progress"
+              subtitle="Content in progress"
               icon={<Clock className="w-4 h-4 text-[#0A0A0E]" />}
             />
             <StatsCard
-              title="Avg Engagement"
+              title="Engagement Rate"
               value={currentCreator?.avgEngagementRate ? `${currentCreator.avgEngagementRate}%` : "—"}
               change={currentCreator?.avgEngagementRate ? "Audited" : "No data"}
               trend="up"
-              subtitle="Audience rate"
+              subtitle="Audience score"
               icon={<TrendingUp className="w-4 h-4 text-[#8A7000]" />}
             />
             <StatsCard
@@ -321,42 +321,42 @@ function DashboardContent() {
               value={formatCurrency(lifetimeEarned)}
               change={lifetimeEarned > 0 ? "Paid out" : "—"}
               trend="up"
-              subtitle="Paid to date"
+              subtitle="Paid out to date"
               icon={<Wallet className="w-4 h-4 text-[#0A0A0E]" />}
             />
           </>
         ) : (
           <>
             <StatsCard
-              title="Total Escrow"
+              title="Protected Budget"
               value={formatCurrency(brandTotalBudget)}
               change={brandTotalBudget > 0 ? "Funded" : "—"}
               trend="up"
-              subtitle="Secured in milestones"
+              subtitle="Locked safely in escrow"
               icon={<ShieldCheck className="w-4 h-4 text-[#8A7000]" />}
             />
             <StatsCard
-              title="Creators"
+              title="Creators in Roster"
               value={String(featuredCreators.length)}
               change={featuredCreators.length > 0 ? "Active" : "—"}
               trend="up"
-              subtitle="In active roster"
+              subtitle="Audited creators available"
               icon={<Users className="w-4 h-4 text-[#0A0A0E]" />}
             />
             <StatsCard
-              title="Live Campaigns"
+              title="Active Campaigns"
               value={String(activeCampaigns.length)}
               change={activeCampaigns.length > 0 ? "Active" : "—"}
               trend="up"
-              subtitle="Running briefs"
+              subtitle="Sponsorship briefs running"
               icon={<Building2 className="w-4 h-4 text-[#8A7000]" />}
             />
             <StatsCard
-              title="Active Collaborations"
+              title="Active Deals"
               value={String(activeCollabsCount)}
               change={activeCollabsCount > 0 ? "In progress" : "—"}
               trend="up"
-              subtitle="Milestone workspaces"
+              subtitle="Projects being created now"
               icon={<TrendingUp className="w-4 h-4 text-[#0A0A0E]" />}
             />
           </>
@@ -384,12 +384,12 @@ function DashboardContent() {
             <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
               <div>
                 <h2 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">
-                  {role === "creator" ? "Active Deliverables" : "Deliverable Reviews"}
+                  {role === "creator" ? "Active Projects & Content" : "Content Review & Approvals"}
                 </h2>
                 <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
                   {role === "creator"
-                    ? "Track drafts and milestone approvals."
-                    : "Review submissions and approve payouts."}
+                    ? "Track drafts, revisions, and approval progress."
+                    : "Review creator submissions and approve payments."}
                 </p>
               </div>
 
@@ -404,19 +404,19 @@ function DashboardContent() {
 
             {isLoading ? (
               <div className="py-8 text-center text-xs font-mono text-[#7A7A8A] dark:text-[#8E8EA4]">
-                Loading deliverables...
+                Loading projects...
               </div>
             ) : collaborations.length === 0 ? (
               <AnimatedEmptyState
                 icon={<FolderPlus className="w-7 h-7 text-[#0A0A0E] dark:text-white" />}
                 badgeText="Escrow"
-                title="No Active Projects"
+                title={role === "creator" ? "No Active Projects Yet" : "No Active Deals Yet"}
                 description={
                   role === "creator"
-                    ? "Apply to briefs to unlock milestone workspaces."
-                    : "Create a brief to begin working with creators."
+                    ? "Apply to open campaigns to start working with brands."
+                    : "Post a campaign or find creators to start collaborating."
                 }
-                actionText={role === "creator" ? "Browse Briefs" : "Create Brief"}
+                actionText={role === "creator" ? "Find Campaigns" : "Post Campaign"}
                 actionHref={role === "creator" ? "/app/campaigns" : "/app/brand/campaigns/create"}
               />
             ) : (
@@ -473,10 +473,10 @@ function DashboardContent() {
               <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
                 <div>
                   <h2 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">
-                    Featured Briefs
+                    Open Paid Campaigns
                   </h2>
                   <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
-                    Open sponsor campaigns with escrow budgets.
+                    Sponsorship briefs with guaranteed payments held in escrow.
                   </p>
                 </div>
 
@@ -528,7 +528,7 @@ function DashboardContent() {
               <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
                 <div>
                   <h2 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">
-                    Recommended Talent Roster
+                    Recommended Creators for You
                   </h2>
                   <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
                     Vetted creators matched to your industry and brand niche.
@@ -602,10 +602,10 @@ function DashboardContent() {
               <div className="flex items-center justify-between pb-2.5 border-b border-black/8 dark:border-white/10">
                 <div>
                   <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display">
-                    Brand Launchpad
+                    Brand Quick Actions
                   </h3>
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#8E8EA4]">
-                    Quick workflow tools & shortcuts
+                    Fast shortcuts to manage your campaigns
                   </p>
                 </div>
                 <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] text-[10px] font-mono font-bold">
@@ -619,28 +619,28 @@ function DashboardContent() {
                   className="p-3 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all flex flex-col items-center text-center gap-1.5"
                 >
                   <FolderPlus className="w-5 h-5 text-[#8A7000] dark:text-[#FFD21F]" />
-                  <span className="font-bold text-[#0A0A0E] dark:text-white text-[11px]">New Brief</span>
+                  <span className="font-bold text-[#0A0A0E] dark:text-white text-[11px]">Post Campaign</span>
                 </Link>
                 <Link
                   href="/app/brand/creators"
                   className="p-3 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all flex flex-col items-center text-center gap-1.5"
                 >
                   <Users className="w-5 h-5 text-[#0A0A0E] dark:text-white" />
-                  <span className="font-bold text-[#0A0A0E] dark:text-white text-[11px]">Find Talent</span>
+                  <span className="font-bold text-[#0A0A0E] dark:text-white text-[11px]">Find Creators</span>
                 </Link>
                 <Link
                   href="/app/brand/crm"
                   className="p-3 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all flex flex-col items-center text-center gap-1.5"
                 >
                   <FolderGit2 className="w-5 h-5 text-[#0A0A0E] dark:text-white" />
-                  <span className="font-bold text-[#0A0A0E] dark:text-white text-[11px]">Creator CRM</span>
+                  <span className="font-bold text-[#0A0A0E] dark:text-white text-[11px]">Saved Contacts</span>
                 </Link>
                 <Link
                   href="/app/brand/shortlists"
                   className="p-3 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all flex flex-col items-center text-center gap-1.5"
                 >
                   <Layers className="w-5 h-5 text-[#8A7000] dark:text-[#FFD21F]" />
-                  <span className="font-bold text-[#0A0A0E] dark:text-white text-[11px]">Shortlists</span>
+                  <span className="font-bold text-[#0A0A0E] dark:text-white text-[11px]">Shortlisted Talent</span>
                 </Link>
               </div>
             </div>
@@ -650,7 +650,7 @@ function DashboardContent() {
           <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-3.5">
             <div className="flex items-center justify-between pb-2.5 border-b border-black/8 dark:border-white/10">
               <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display">
-                {role === "creator" ? "Recent Payouts" : "Escrow Activity"}
+                {role === "creator" ? "Recent Payouts" : "Recent Escrow Payments"}
               </h3>
               <Link
                 href={role === "creator" ? "/app/earnings" : "/app/collaborations"}

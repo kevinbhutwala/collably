@@ -66,20 +66,20 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-black/8 dark:border-white/10">
         <div>
           <div className="inline-flex items-center gap-2 rounded-full border border-[#FFD21F]/40 bg-[#FFD21F]/15 px-3 py-1 text-xs font-semibold text-[#0A0A0E] dark:text-[#FFD21F]">
-            <span>📊</span> Brand Market Intelligence & Rate Benchmarks
+            <span>📊</span> Market Insights &amp; Pricing Guide
           </div>
           <h3 className="mt-2 text-lg font-bold text-[#0A0A0E] dark:text-white font-display">
-            Creator Rate Benchmarks & Market Pulse
+            Creator Rates &amp; Industry Trends
           </h3>
           <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
-            Real-time category demand benchmarks and high-compatibility creator candidates for your briefs.
+            Typical creator rates in your category and the best-performing video formats.
           </p>
         </div>
 
         {/* Dynamic Category Switcher */}
         <div className="flex items-center gap-2 self-start sm:self-auto">
           <label className="text-[10px] font-mono uppercase font-bold text-[#7A7A8A] dark:text-[#8E8EA4] shrink-0">
-            Niche:
+            Category:
           </label>
           <select
             value={selectedCategory}
@@ -98,23 +98,23 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
       {/* Market Pulse Quick Metrics Strip */}
       <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#1A1A28] border border-black/6 dark:border-white/6 font-mono">
         <div>
-          <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] block uppercase font-bold">Niche Demand</span>
+          <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] block uppercase font-bold">Category Demand</span>
           <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400">Demand ↑ 18%</span>
         </div>
         <div>
-          <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] block uppercase font-bold">Avg Campaign Budget</span>
+          <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] block uppercase font-bold">Average Budget</span>
           <span className="text-sm font-bold text-[#0A0A0E] dark:text-white">₹32,500 ($2,850)</span>
         </div>
         <div>
-          <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] block uppercase font-bold">Most Requested Format</span>
+          <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] block uppercase font-bold">Most Popular Format</span>
           <span className="text-sm font-bold text-[#0A0A0E] dark:text-white">Short-form video</span>
         </div>
         <div>
-          <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] block uppercase font-bold">Avg Engagement</span>
+          <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] block uppercase font-bold">Average Engagement</span>
           <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400">6.8%</span>
         </div>
         <div className="col-span-2 sm:col-span-1">
-          <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] block uppercase font-bold">Avg Turnaround</span>
+          <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] block uppercase font-bold">Average Delivery Time</span>
           <span className="text-sm font-bold text-amber-600 dark:text-amber-300">4.2 days</span>
         </div>
       </div>
@@ -124,7 +124,7 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
         {/* 1. Pricing Benchmarks by Tier */}
         <div className="rounded-2xl border border-black/6 dark:border-white/8 bg-[#FAFAFC] dark:bg-[#161622] p-4">
           <h4 className="text-xs font-semibold uppercase tracking-wider text-[#6A6A78] dark:text-[#8E8EA4] mb-3">
-            Creator Rate Card Benchmarks
+            Typical Creator Pricing by Tier
           </h4>
           <div className="space-y-2">
             {data.creatorPricingBenchmarks.map((tier, idx) => (
@@ -150,7 +150,7 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
         {/* 2. Format Popularity & Engagement */}
         <div className="rounded-2xl border border-black/6 dark:border-white/8 bg-[#FAFAFC] dark:bg-[#161622] p-4">
           <h4 className="text-xs font-semibold uppercase tracking-wider text-[#6A6A78] dark:text-[#8E8EA4] mb-3">
-            Deliverable Format Demand
+            Most Popular Video Formats
           </h4>
           <div className="space-y-3">
             {data.formatDemandBreakdown.map((fmt, idx) => (
@@ -166,7 +166,7 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
                   />
                 </div>
                 <div className="flex items-center justify-between text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] font-mono">
-                  <span>Avg Eng: {fmt.avgEngagement}%</span>
+                  <span>Avg Engagement: {fmt.avgEngagement}%</span>
                   <span>Turnaround: {fmt.avgCompletionDays} days</span>
                 </div>
               </div>
@@ -178,7 +178,7 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
         <div className="rounded-2xl border border-black/6 dark:border-white/8 bg-[#FAFAFC] dark:bg-[#161622] p-4 flex flex-col justify-between">
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-wider text-[#6A6A78] dark:text-[#8E8EA4] mb-3">
-              High-Conversion Categories
+              Fastest Growing Categories
             </h4>
             <div className="space-y-2">
               {data.highConversionCategories.map((cat, idx) => (
@@ -201,7 +201,7 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
           </div>
 
           <div className="mt-4 pt-3 border-t border-black/6 dark:border-white/5 text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] italic font-sans">
-            Estimated based on AbeyCollab market transactions
+            Estimated based on AbeyCollab verified campaigns
           </div>
         </div>
       </div>
@@ -212,17 +212,17 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
           <div className="flex items-center justify-between">
             <div>
               <h4 className="text-xs font-bold uppercase tracking-wider text-[#0A0A0E] dark:text-white font-display">
-                Recommended Creators for Your Active Briefs
+                Recommended Creators for Your Campaigns
               </h4>
               <p className="text-[11px] text-[#5A5A68] dark:text-[#8E8EA4]">
-                Matched to your niche, verified audience engagement, and budget benchmarks.
+                Creators in your category with strong engagement and verified track records.
               </p>
             </div>
             <Link
               href="/app/brand/creators"
               className="text-xs font-mono text-[#0A0A0E] dark:text-[#FFD21F] hover:underline font-bold"
             >
-              Browse all talent →
+              View all creators →
             </Link>
           </div>
 

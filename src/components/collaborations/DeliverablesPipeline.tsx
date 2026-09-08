@@ -598,7 +598,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
           }`}
         >
           <FileCheck2 className="w-3.5 h-3.5" />
-          <span>Deliverable Review Card</span>
+          <span>Review &amp; Feedback</span>
         </button>
         <button
           onClick={() => setActiveTab("post_proof")}
@@ -609,7 +609,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
           }`}
         >
           <UploadCloud className="w-3.5 h-3.5" />
-          <span>Post Proof &amp; Verification</span>
+          <span>Proof of Post &amp; Links</span>
         </button>
         <button
           onClick={() => setActiveTab("negotiation")}
@@ -620,7 +620,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
           }`}
         >
           <DollarSign className="w-3.5 h-3.5" />
-          <span>Terms &amp; Negotiation</span>
+          <span>Agreed Terms &amp; Rates</span>
         </button>
       </div>
 
