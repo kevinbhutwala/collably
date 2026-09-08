@@ -4,7 +4,7 @@
       "id": "user-creator",
       "name": "Demo Creator",
       "email": "creator@abeycollab.io",
-      "passwordHash": "b6d86008c3ade47d0d7b67ccc2927adb:b4d60cab1ae48138ecc9c30d406a117dcee0765769dc421bb21871b6486c41636caccbf09cbfc60cd1b8b876a64dd37159a0a9db4a491a6ce15bae0c3ab5e200:210000",
+      "passwordHash": "ffdad441e02c104c5ca7929c2e5c4075:730cd1d0a9d4f54b8aeb13dae6ba03aeb0a3500acb1a6baa3469545b0d74d72eb2d0cb48f0c0a26f2bc9b18df2eedc3e12d1e312351009d0290467b541d17df2:210000",
       "role": "creator",
       "avatarUrl": "",
       "verified": true,
@@ -15,7 +15,7 @@
       "id": "user-brand",
       "name": "Demo Brand",
       "email": "brand@abeycollab.io",
-      "passwordHash": "b8a112e0ecaf90afacd086a6bfc1e20d:efc3abb0923092110b0ffa7bf935b6e84060e97232cb8a88c88ca2ffcfca05abec8cd0481a011617a74c9a1a38d891834e5bbcdb9aa88de2461b58e0f2d246b9:210000",
+      "passwordHash": "2abf372cb87e9289c038be8f6ea2012e:760eb01bf33cb189c1837a97e29a2a0f677ff517d5aeedcef944f1feaa503d61bb1787d813d4a1d28cf16d5e74cafd1ff702c7a2fa89626c79e898521ac6b09a:210000",
       "role": "brand",
       "avatarUrl": "",
       "verified": true,
@@ -26,7 +26,7 @@
       "id": "user-owner",
       "name": "Kevin Bhutwala",
       "email": "kevinbhutwala417@gmail.com",
-      "passwordHash": "37cbc63145b2ceb9009a09bd3e7ba9ae:a85db9d181aa3393cc1db5f80e23b8d18a70abe22a74341f625844f72f29197239d23c6de404b5d12cd6d91d14fbf9eb1bd1da8cb69ace49ab8139d0b0d81232:210000",
+      "passwordHash": "695abd2c8e5addf7184201445a161385:eaf43102a7f6503cf61140ebb23ccbacc9c2d790993ca682e88051862a0a3891cf9871b43590a5aeef480863133ea8e90bae00da5091c9fa2272ee44d6854c97:210000",
       "role": "agency_admin",
       "avatarUrl": "",
       "verified": true,
@@ -70,7 +70,7 @@
       "id": "user-creator-legacy",
       "name": "Demo Creator",
       "email": "creator@collably.io",
-      "passwordHash": "b6d86008c3ade47d0d7b67ccc2927adb:b4d60cab1ae48138ecc9c30d406a117dcee0765769dc421bb21871b6486c41636caccbf09cbfc60cd1b8b876a64dd37159a0a9db4a491a6ce15bae0c3ab5e200:210000",
+      "passwordHash": "ffdad441e02c104c5ca7929c2e5c4075:730cd1d0a9d4f54b8aeb13dae6ba03aeb0a3500acb1a6baa3469545b0d74d72eb2d0cb48f0c0a26f2bc9b18df2eedc3e12d1e312351009d0290467b541d17df2:210000",
       "role": "creator",
       "avatarUrl": "",
       "verified": true,
@@ -81,7 +81,7 @@
       "id": "user-brand-legacy",
       "name": "Demo Brand",
       "email": "brand@collably.io",
-      "passwordHash": "b8a112e0ecaf90afacd086a6bfc1e20d:efc3abb0923092110b0ffa7bf935b6e84060e97232cb8a88c88ca2ffcfca05abec8cd0481a011617a74c9a1a38d891834e5bbcdb9aa88de2461b58e0f2d246b9:210000",
+      "passwordHash": "2abf372cb87e9289c038be8f6ea2012e:760eb01bf33cb189c1837a97e29a2a0f677ff517d5aeedcef944f1feaa503d61bb1787d813d4a1d28cf16d5e74cafd1ff702c7a2fa89626c79e898521ac6b09a:210000",
       "role": "brand",
       "avatarUrl": "",
       "verified": true,
@@ -1074,6 +1074,370 @@
   ],
   "campaigns": [
     {
+      "id": "camp-1788855587165",
+      "brandId": "brand-demo",
+      "brand": {
+        "id": "brand-demo",
+        "userId": "user-brand",
+        "companyName": "Demo Brand",
+        "industry": "Technology & AI",
+        "headline": "A modern brand workspace",
+        "description": "A verified demo brand profile for testing campaign, payment, and creator workflows.",
+        "logoUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+        "websiteUrl": "https://example.com",
+        "location": "San Francisco, CA",
+        "companySize": "11-50",
+        "verified": true,
+        "activeCampaignsCount": 0,
+        "totalSpent": 0,
+        "socialHandles": {},
+        "createdAt": "2026-09-03T18:46:21.709Z"
+      },
+      "title": "AI Studio Hardware Series 1788855582887",
+      "slug": "ai-studio-hardware-series-1788855582887",
+      "tagline": "Cinematic 4K creator teardown",
+      "description": "Comprehensive workflow walkthrough for pro audio and AI developers.",
+      "category": "Technology & AI",
+      "targetAudience": {
+        "locations": [
+          "United States",
+          "United Kingdom"
+        ],
+        "ageRanges": [
+          "18-24 (Gen Z Core)",
+          "25-34 (Millennials Prime)"
+        ],
+        "gender": "All",
+        "interests": [
+          "Tech",
+          "Productivity"
+        ]
+      },
+      "creatorRequirements": {
+        "minFollowers": 25000,
+        "minEngagementRate": 3.5,
+        "platforms": [
+          "youtube",
+          "instagram"
+        ],
+        "languages": [
+          "English"
+        ],
+        "preferredTiers": [
+          "Mid-Tier",
+          "Macro"
+        ]
+      },
+      "deliverables": [
+        {
+          "id": "del-1",
+          "type": "YouTube 60s Integration",
+          "count": 1,
+          "guidelines": "60-second integrated sponsorship segment highlighting workflow speeds",
+          "specifications": [
+            "4K 60fps",
+            "Clear Audio",
+            "Pinned Link in Comments"
+          ],
+          "maxRevisions": 2
+        }
+      ],
+      "budget": {
+        "totalBudget": 15000,
+        "perCreatorBudget": 3000,
+        "currency": "USD",
+        "paymentTerms": "100_escrow_on_approval"
+      },
+      "timeline": {
+        "applicationDeadline": "2026-09-15",
+        "startDate": "2026-09-15",
+        "contentSubmissionDeadline": "2026-09-30",
+        "campaignEndDate": "2026-10-05"
+      },
+      "status": "active",
+      "featured": true,
+      "applicantsCount": 1,
+      "acceptedCount": 1,
+      "maxCreators": 5,
+      "coverImage": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+      "createdAt": "2026-09-08T08:19:47.165Z",
+      "updatedAt": "2026-09-08T08:19:50.657Z"
+    },
+    {
+      "id": "camp-1788852267234",
+      "brandId": "brand-demo",
+      "brand": {
+        "id": "brand-demo",
+        "userId": "user-brand",
+        "companyName": "Demo Brand",
+        "industry": "Technology & AI",
+        "headline": "A modern brand workspace",
+        "description": "A verified demo brand profile for testing campaign, payment, and creator workflows.",
+        "logoUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+        "websiteUrl": "https://example.com",
+        "location": "San Francisco, CA",
+        "companySize": "11-50",
+        "verified": true,
+        "activeCampaignsCount": 0,
+        "totalSpent": 0,
+        "socialHandles": {},
+        "createdAt": "2026-09-03T18:46:21.709Z"
+      },
+      "title": "AI Studio Hardware Series 1788852263045",
+      "slug": "ai-studio-hardware-series-1788852263045",
+      "tagline": "Cinematic 4K creator teardown",
+      "description": "Comprehensive workflow walkthrough for pro audio and AI developers.",
+      "category": "Technology & AI",
+      "targetAudience": {
+        "locations": [
+          "United States",
+          "United Kingdom"
+        ],
+        "ageRanges": [
+          "18-24 (Gen Z Core)",
+          "25-34 (Millennials Prime)"
+        ],
+        "gender": "All",
+        "interests": [
+          "Tech",
+          "Productivity"
+        ]
+      },
+      "creatorRequirements": {
+        "minFollowers": 25000,
+        "minEngagementRate": 3.5,
+        "platforms": [
+          "youtube",
+          "instagram"
+        ],
+        "languages": [
+          "English"
+        ],
+        "preferredTiers": [
+          "Mid-Tier",
+          "Macro"
+        ]
+      },
+      "deliverables": [
+        {
+          "id": "del-1",
+          "type": "YouTube 60s Integration",
+          "count": 1,
+          "guidelines": "60-second integrated sponsorship segment highlighting workflow speeds",
+          "specifications": [
+            "4K 60fps",
+            "Clear Audio",
+            "Pinned Link in Comments"
+          ],
+          "maxRevisions": 2
+        }
+      ],
+      "budget": {
+        "totalBudget": 15000,
+        "perCreatorBudget": 3000,
+        "currency": "USD",
+        "paymentTerms": "100_escrow_on_approval"
+      },
+      "timeline": {
+        "applicationDeadline": "2026-09-15",
+        "startDate": "2026-09-15",
+        "contentSubmissionDeadline": "2026-09-30",
+        "campaignEndDate": "2026-10-05"
+      },
+      "status": "active",
+      "featured": true,
+      "applicantsCount": 1,
+      "acceptedCount": 1,
+      "maxCreators": 5,
+      "coverImage": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+      "createdAt": "2026-09-08T07:24:27.234Z",
+      "updatedAt": "2026-09-08T07:24:30.846Z"
+    },
+    {
+      "id": "camp-1788852138678",
+      "brandId": "brand-demo",
+      "brand": {
+        "id": "brand-demo",
+        "userId": "user-brand",
+        "companyName": "Demo Brand",
+        "industry": "Technology & AI",
+        "headline": "A modern brand workspace",
+        "description": "A verified demo brand profile for testing campaign, payment, and creator workflows.",
+        "logoUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+        "websiteUrl": "https://example.com",
+        "location": "San Francisco, CA",
+        "companySize": "11-50",
+        "verified": true,
+        "activeCampaignsCount": 0,
+        "totalSpent": 0,
+        "socialHandles": {},
+        "createdAt": "2026-09-03T18:46:21.709Z"
+      },
+      "title": "AI Studio Hardware Series 1788852134468",
+      "slug": "ai-studio-hardware-series-1788852134468",
+      "tagline": "Cinematic 4K creator teardown",
+      "description": "Comprehensive workflow walkthrough for pro audio and AI developers.",
+      "category": "Technology & AI",
+      "targetAudience": {
+        "locations": [
+          "United States",
+          "United Kingdom"
+        ],
+        "ageRanges": [
+          "18-24 (Gen Z Core)",
+          "25-34 (Millennials Prime)"
+        ],
+        "gender": "All",
+        "interests": [
+          "Tech",
+          "Productivity"
+        ]
+      },
+      "creatorRequirements": {
+        "minFollowers": 25000,
+        "minEngagementRate": 3.5,
+        "platforms": [
+          "youtube",
+          "instagram"
+        ],
+        "languages": [
+          "English"
+        ],
+        "preferredTiers": [
+          "Mid-Tier",
+          "Macro"
+        ]
+      },
+      "deliverables": [
+        {
+          "id": "del-1",
+          "type": "YouTube 60s Integration",
+          "count": 1,
+          "guidelines": "60-second integrated sponsorship segment highlighting workflow speeds",
+          "specifications": [
+            "4K 60fps",
+            "Clear Audio",
+            "Pinned Link in Comments"
+          ],
+          "maxRevisions": 2
+        }
+      ],
+      "budget": {
+        "totalBudget": 15000,
+        "perCreatorBudget": 3000,
+        "currency": "USD",
+        "paymentTerms": "100_escrow_on_approval"
+      },
+      "timeline": {
+        "applicationDeadline": "2026-09-15",
+        "startDate": "2026-09-15",
+        "contentSubmissionDeadline": "2026-09-30",
+        "campaignEndDate": "2026-10-05"
+      },
+      "status": "active",
+      "featured": true,
+      "applicantsCount": 1,
+      "acceptedCount": 0,
+      "maxCreators": 5,
+      "coverImage": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+      "createdAt": "2026-09-08T07:22:18.678Z",
+      "updatedAt": "2026-09-08T07:22:18.678Z"
+    },
+    {
+      "id": "camp-1788851550161",
+      "brandId": "brand-demo",
+      "brand": {
+        "id": "brand-demo",
+        "userId": "user-brand",
+        "companyName": "Demo Brand",
+        "industry": "Technology & AI",
+        "headline": "A modern brand workspace",
+        "description": "A verified demo brand profile for testing campaign, payment, and creator workflows.",
+        "logoUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+        "websiteUrl": "https://example.com",
+        "location": "San Francisco, CA",
+        "companySize": "11-50",
+        "verified": true,
+        "activeCampaignsCount": 0,
+        "totalSpent": 0,
+        "socialHandles": {},
+        "createdAt": "2026-09-03T18:46:21.709Z"
+      },
+      "title": "AI Studio Hardware Series 1788851545438",
+      "slug": "ai-studio-hardware-series-1788851545438",
+      "tagline": "Cinematic 4K creator teardown",
+      "description": "Comprehensive workflow walkthrough for pro audio and AI developers.",
+      "category": "Technology & AI",
+      "targetAudience": {
+        "locations": [
+          "United States",
+          "United Kingdom"
+        ],
+        "ageRanges": [
+          "18-24 (Gen Z Core)",
+          "25-34 (Millennials Prime)"
+        ],
+        "gender": "All",
+        "interests": [
+          "Tech",
+          "Productivity"
+        ]
+      },
+      "creatorRequirements": {
+        "minFollowers": 25000,
+        "minEngagementRate": 3.5,
+        "platforms": [
+          "youtube",
+          "instagram"
+        ],
+        "languages": [
+          "English"
+        ],
+        "preferredTiers": [
+          "Mid-Tier",
+          "Macro"
+        ]
+      },
+      "deliverables": [
+        {
+          "id": "del-1",
+          "type": "YouTube 60s Integration",
+          "count": 1,
+          "guidelines": "60-second integrated sponsorship segment highlighting workflow speeds",
+          "specifications": [
+            "4K 60fps",
+            "Clear Audio",
+            "Pinned Link in Comments"
+          ],
+          "maxRevisions": 2
+        }
+      ],
+      "budget": {
+        "totalBudget": 15000,
+        "perCreatorBudget": 3000,
+        "currency": "USD",
+        "paymentTerms": "100_escrow_on_approval"
+      },
+      "timeline": {
+        "applicationDeadline": "2026-09-15",
+        "startDate": "2026-09-15",
+        "contentSubmissionDeadline": "2026-09-30",
+        "campaignEndDate": "2026-10-05"
+      },
+      "status": "active",
+      "featured": true,
+      "applicantsCount": 0,
+      "acceptedCount": 0,
+      "maxCreators": 5,
+      "coverImage": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+      "createdAt": "2026-09-08T07:12:30.162Z",
+      "updatedAt": "2026-09-08T07:12:30.162Z"
+    },
+    {
       "id": "camp-1",
       "brandId": "brand-1",
       "brand": {
@@ -1511,8 +1875,542 @@
       "updatedAt": "2026-08-22"
     }
   ],
-  "applications": [],
+  "applications": [
+    {
+      "id": "app-1788855588772",
+      "campaignId": "camp-1788855587165",
+      "campaignTitle": "AI Studio Hardware Series 1788855582887",
+      "brandId": "brand-demo",
+      "brandName": "Demo Brand",
+      "brandLogo": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
+      "creatorId": "creator-demo",
+      "creator": {
+        "id": "creator-demo",
+        "userId": "user-creator",
+        "fullName": "Demo Creator",
+        "handle": "democreator",
+        "headline": "Technology & AI creator",
+        "bio": "A verified creator profile used to explore the Collably workspace.",
+        "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+        "location": "Worldwide",
+        "languages": [
+          "English"
+        ],
+        "primaryCategory": "Technology & AI",
+        "secondaryCategories": [
+          "Design & Creative"
+        ],
+        "verified": true,
+        "featured": true,
+        "tier": "Mid-Tier",
+        "rating": 4.9,
+        "completedCampaignsCount": 12,
+        "totalFollowers": 125000,
+        "avgEngagementRate": 5.2,
+        "startingPrice": 1500,
+        "availableForHire": true,
+        "profileCompleteness": 90,
+        "qualityScore": 92,
+        "socialAccounts": [],
+        "audience": {
+          "topCountries": [
+            {
+              "country": "United States",
+              "percentage": 55
+            },
+            {
+              "country": "India",
+              "percentage": 20
+            }
+          ],
+          "ageDistribution": [
+            {
+              "range": "25-34",
+              "percentage": 52
+            },
+            {
+              "range": "18-24",
+              "percentage": 31
+            }
+          ],
+          "genderSplit": [
+            {
+              "gender": "Female",
+              "percentage": 52
+            },
+            {
+              "gender": "Male",
+              "percentage": 48
+            }
+          ],
+          "interests": [
+            "Technology",
+            "Creator Economy",
+            "Design"
+          ]
+        },
+        "rateCards": []
+      },
+      "pitch": "I will produce a full 60-second in-depth integration showing actual workstation render benchmarks.",
+      "proposedFee": 3000,
+      "estimatedReach": 125000,
+      "status": "accepted",
+      "sampleLinks": [
+        "https://youtube.com/@elenatech/videos"
+      ],
+      "matchScore": 95,
+      "createdAt": "2026-09-08T08:19:48.772Z",
+      "updatedAt": "2026-09-08T08:19:50.655Z"
+    },
+    {
+      "id": "app-1788852268884",
+      "campaignId": "camp-1788852267234",
+      "campaignTitle": "AI Studio Hardware Series 1788852263045",
+      "brandId": "brand-demo",
+      "brandName": "Demo Brand",
+      "brandLogo": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
+      "creatorId": "creator-demo",
+      "creator": {
+        "id": "creator-demo",
+        "userId": "user-creator",
+        "fullName": "Demo Creator",
+        "handle": "democreator",
+        "headline": "Technology & AI creator",
+        "bio": "A verified creator profile used to explore the Collably workspace.",
+        "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+        "location": "Worldwide",
+        "languages": [
+          "English"
+        ],
+        "primaryCategory": "Technology & AI",
+        "secondaryCategories": [
+          "Design & Creative"
+        ],
+        "verified": true,
+        "featured": true,
+        "tier": "Mid-Tier",
+        "rating": 4.9,
+        "completedCampaignsCount": 12,
+        "totalFollowers": 125000,
+        "avgEngagementRate": 5.2,
+        "startingPrice": 1500,
+        "availableForHire": true,
+        "profileCompleteness": 90,
+        "qualityScore": 92,
+        "socialAccounts": [],
+        "audience": {
+          "topCountries": [
+            {
+              "country": "United States",
+              "percentage": 55
+            },
+            {
+              "country": "India",
+              "percentage": 20
+            }
+          ],
+          "ageDistribution": [
+            {
+              "range": "25-34",
+              "percentage": 52
+            },
+            {
+              "range": "18-24",
+              "percentage": 31
+            }
+          ],
+          "genderSplit": [
+            {
+              "gender": "Female",
+              "percentage": 52
+            },
+            {
+              "gender": "Male",
+              "percentage": 48
+            }
+          ],
+          "interests": [
+            "Technology",
+            "Creator Economy",
+            "Design"
+          ]
+        },
+        "rateCards": []
+      },
+      "pitch": "I will produce a full 60-second in-depth integration showing actual workstation render benchmarks.",
+      "proposedFee": 3000,
+      "estimatedReach": 125000,
+      "status": "accepted",
+      "sampleLinks": [
+        "https://youtube.com/@elenatech/videos"
+      ],
+      "matchScore": 95,
+      "createdAt": "2026-09-08T07:24:28.884Z",
+      "updatedAt": "2026-09-08T07:24:30.843Z"
+    },
+    {
+      "id": "app-1788852140393",
+      "campaignId": "camp-1788852138678",
+      "campaignTitle": "AI Studio Hardware Series 1788852134468",
+      "brandId": "brand-demo",
+      "brandName": "Demo Brand",
+      "brandLogo": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
+      "creatorId": "creator-demo",
+      "creator": {
+        "id": "creator-demo",
+        "userId": "user-creator",
+        "fullName": "Demo Creator",
+        "handle": "democreator",
+        "headline": "Technology & AI creator",
+        "bio": "A verified creator profile used to explore the Collably workspace.",
+        "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+        "location": "Worldwide",
+        "languages": [
+          "English"
+        ],
+        "primaryCategory": "Technology & AI",
+        "secondaryCategories": [
+          "Design & Creative"
+        ],
+        "verified": true,
+        "featured": true,
+        "tier": "Mid-Tier",
+        "rating": 4.9,
+        "completedCampaignsCount": 12,
+        "totalFollowers": 125000,
+        "avgEngagementRate": 5.2,
+        "startingPrice": 1500,
+        "availableForHire": true,
+        "profileCompleteness": 90,
+        "qualityScore": 92,
+        "socialAccounts": [],
+        "audience": {
+          "topCountries": [
+            {
+              "country": "United States",
+              "percentage": 55
+            },
+            {
+              "country": "India",
+              "percentage": 20
+            }
+          ],
+          "ageDistribution": [
+            {
+              "range": "25-34",
+              "percentage": 52
+            },
+            {
+              "range": "18-24",
+              "percentage": 31
+            }
+          ],
+          "genderSplit": [
+            {
+              "gender": "Female",
+              "percentage": 52
+            },
+            {
+              "gender": "Male",
+              "percentage": 48
+            }
+          ],
+          "interests": [
+            "Technology",
+            "Creator Economy",
+            "Design"
+          ]
+        },
+        "rateCards": []
+      },
+      "pitch": "I will produce a full 60-second in-depth integration showing actual workstation render benchmarks.",
+      "proposedFee": 3000,
+      "estimatedReach": 125000,
+      "status": "pending",
+      "sampleLinks": [
+        "https://youtube.com/@elenatech/videos"
+      ],
+      "matchScore": 95,
+      "createdAt": "2026-09-08T07:22:20.393Z",
+      "updatedAt": "2026-09-08T07:22:20.393Z"
+    }
+  ],
   "collaborations": [
+    {
+      "campaignId": "camp-1788855587165",
+      "campaignTitle": "AI Studio Hardware Series 1788855582887",
+      "brandId": "brand-demo",
+      "brand": {
+        "id": "brand-demo",
+        "userId": "user-brand",
+        "companyName": "Demo Brand",
+        "industry": "Technology & AI",
+        "headline": "A modern brand workspace",
+        "description": "A verified demo brand profile for testing campaign, payment, and creator workflows.",
+        "logoUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+        "websiteUrl": "https://example.com",
+        "location": "San Francisco, CA",
+        "companySize": "11-50",
+        "verified": true,
+        "activeCampaignsCount": 0,
+        "totalSpent": 0,
+        "socialHandles": {},
+        "createdAt": "2026-09-03T18:46:21.709Z"
+      },
+      "creatorId": "creator-demo",
+      "creator": {
+        "id": "creator-demo",
+        "userId": "user-creator",
+        "fullName": "Demo Creator",
+        "handle": "democreator",
+        "headline": "Technology & AI creator",
+        "bio": "A verified creator profile used to explore the Collably workspace.",
+        "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+        "location": "Worldwide",
+        "languages": [
+          "English"
+        ],
+        "primaryCategory": "Technology & AI",
+        "secondaryCategories": [
+          "Design & Creative"
+        ],
+        "verified": true,
+        "featured": true,
+        "tier": "Mid-Tier",
+        "rating": 4.9,
+        "completedCampaignsCount": 12,
+        "totalFollowers": 125000,
+        "avgEngagementRate": 5.2,
+        "startingPrice": 1500,
+        "availableForHire": true,
+        "profileCompleteness": 90,
+        "qualityScore": 92,
+        "socialAccounts": [],
+        "audience": {
+          "topCountries": [
+            {
+              "country": "United States",
+              "percentage": 55
+            },
+            {
+              "country": "India",
+              "percentage": 20
+            }
+          ],
+          "ageDistribution": [
+            {
+              "range": "25-34",
+              "percentage": 52
+            },
+            {
+              "range": "18-24",
+              "percentage": 31
+            }
+          ],
+          "genderSplit": [
+            {
+              "gender": "Female",
+              "percentage": 52
+            },
+            {
+              "gender": "Male",
+              "percentage": 48
+            }
+          ],
+          "interests": [
+            "Technology",
+            "Creator Economy",
+            "Design"
+          ]
+        },
+        "rateCards": []
+      },
+      "totalAgreedBudget": 3000,
+      "isFunded": true,
+      "paymentStatus": "payment_secured",
+      "escrowStatus": "held_in_escrow",
+      "status": "payment_secured",
+      "startDate": "2026-09-08T08:19:50.656Z",
+      "finalDeadline": "2026-10-05",
+      "deliverables": [
+        {
+          "id": "deliv-1788855590656-0",
+          "type": "YouTube 60s Integration",
+          "title": "1x YouTube 60s Integration",
+          "status": "submitted",
+          "dueDate": "2026-09-30",
+          "payoutAmount": 3000,
+          "revisionCount": 0,
+          "maxRevisions": 2,
+          "submissions": [
+            {
+              "id": "sub-1788855597498",
+              "deliverableId": "deliv-1788855590656-0",
+              "version": 1,
+              "assetUrl": "https://drive.google.com/file/d/test-deliverable-cut/view",
+              "notes": "Final cut color graded to brand specs. Music cleared for global commercial rights. Segment at 04:12.",
+              "submittedAt": "2026-09-08T08:19:57.498Z",
+              "slaDeadline": "2026-09-13T08:19:57.498Z",
+              "mediaUrls": [
+                "https://drive.google.com/file/d/test-deliverable-cut/view"
+              ],
+              "captionText": "",
+              "creatorNotes": "Final cut color graded to brand specs. Music cleared for global commercial rights. Segment at 04:12.",
+              "status": "submitted"
+            }
+          ],
+          "assetUrl": "https://drive.google.com/file/d/test-deliverable-cut/view",
+          "notes": "Final cut color graded to brand specs. Music cleared for global commercial rights. Segment at 04:12.",
+          "submittedAt": "2026-09-08T08:19:57.498Z",
+          "slaDeadline": "2026-09-13T08:19:57.498Z"
+        }
+      ],
+      "id": "collab-1788855590656",
+      "createdAt": "2026-09-08T08:19:50.656Z",
+      "updatedAt": "2026-09-08T08:19:54.971Z",
+      "fundedAt": "2026-09-08T08:19:54.971Z"
+    },
+    {
+      "campaignId": "camp-1788852267234",
+      "campaignTitle": "AI Studio Hardware Series 1788852263045",
+      "brandId": "brand-demo",
+      "brand": {
+        "id": "brand-demo",
+        "userId": "user-brand",
+        "companyName": "Demo Brand",
+        "industry": "Technology & AI",
+        "headline": "A modern brand workspace",
+        "description": "A verified demo brand profile for testing campaign, payment, and creator workflows.",
+        "logoUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+        "websiteUrl": "https://example.com",
+        "location": "San Francisco, CA",
+        "companySize": "11-50",
+        "verified": true,
+        "activeCampaignsCount": 0,
+        "totalSpent": 0,
+        "socialHandles": {},
+        "createdAt": "2026-09-03T18:46:21.709Z"
+      },
+      "creatorId": "creator-demo",
+      "creator": {
+        "id": "creator-demo",
+        "userId": "user-creator",
+        "fullName": "Demo Creator",
+        "handle": "democreator",
+        "headline": "Technology & AI creator",
+        "bio": "A verified creator profile used to explore the Collably workspace.",
+        "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+        "location": "Worldwide",
+        "languages": [
+          "English"
+        ],
+        "primaryCategory": "Technology & AI",
+        "secondaryCategories": [
+          "Design & Creative"
+        ],
+        "verified": true,
+        "featured": true,
+        "tier": "Mid-Tier",
+        "rating": 4.9,
+        "completedCampaignsCount": 12,
+        "totalFollowers": 125000,
+        "avgEngagementRate": 5.2,
+        "startingPrice": 1500,
+        "availableForHire": true,
+        "profileCompleteness": 90,
+        "qualityScore": 92,
+        "socialAccounts": [],
+        "audience": {
+          "topCountries": [
+            {
+              "country": "United States",
+              "percentage": 55
+            },
+            {
+              "country": "India",
+              "percentage": 20
+            }
+          ],
+          "ageDistribution": [
+            {
+              "range": "25-34",
+              "percentage": 52
+            },
+            {
+              "range": "18-24",
+              "percentage": 31
+            }
+          ],
+          "genderSplit": [
+            {
+              "gender": "Female",
+              "percentage": 52
+            },
+            {
+              "gender": "Male",
+              "percentage": 48
+            }
+          ],
+          "interests": [
+            "Technology",
+            "Creator Economy",
+            "Design"
+          ]
+        },
+        "rateCards": []
+      },
+      "totalAgreedBudget": 3000,
+      "isFunded": true,
+      "paymentStatus": "payment_secured",
+      "escrowStatus": "held_in_escrow",
+      "status": "payment_secured",
+      "startDate": "2026-09-08T07:24:30.845Z",
+      "finalDeadline": "2026-10-05",
+      "deliverables": [
+        {
+          "id": "deliv-1788852270845-0",
+          "type": "YouTube 60s Integration",
+          "title": "1x YouTube 60s Integration",
+          "status": "approved",
+          "dueDate": "2026-09-30",
+          "payoutAmount": 3000,
+          "revisionCount": 0,
+          "maxRevisions": 2,
+          "submissions": [
+            {
+              "id": "sub-1788852672981",
+              "deliverableId": "deliv-1788852270845-0",
+              "version": 1,
+              "assetUrl": "https://drive.google.com/file/d/test-deliverable-cut/view",
+              "notes": "Final cut color graded to brand specs. Music cleared for global commercial rights. Segment at 04:12.",
+              "submittedAt": "2026-09-08T07:31:12.981Z",
+              "slaDeadline": "2026-09-13T07:31:12.981Z",
+              "mediaUrls": [
+                "https://drive.google.com/file/d/test-deliverable-cut/view"
+              ],
+              "captionText": "",
+              "creatorNotes": "Final cut color graded to brand specs. Music cleared for global commercial rights. Segment at 04:12.",
+              "status": "submitted"
+            }
+          ],
+          "assetUrl": "https://drive.google.com/file/d/test-deliverable-cut/view",
+          "notes": "Final cut color graded to brand specs. Music cleared for global commercial rights. Segment at 04:12.",
+          "submittedAt": "2026-09-08T07:31:12.981Z",
+          "slaDeadline": "2026-09-13T07:31:12.981Z"
+        }
+      ],
+      "id": "collab-1788852270845",
+      "createdAt": "2026-09-08T07:24:30.845Z",
+      "updatedAt": "2026-09-08T07:31:10.269Z",
+      "fundedAt": "2026-09-08T07:31:10.269Z"
+    },
     {
       "id": "collab-1",
       "campaignId": "camp-1",
@@ -1697,7 +2595,7 @@
           "id": "collab-del-1",
           "type": "YouTube 60s Integration",
           "title": "Dedicated AI Triage 60s Segment in Main Video",
-          "status": "under_review",
+          "status": "approved",
           "dueDate": "2026-09-10",
           "payoutAmount": 2500,
           "revisionCount": 1,
@@ -1725,12 +2623,32 @@
           "id": "collab-del-2",
           "type": "X (Twitter) Thread",
           "title": "Interactive AI Workflow Breakdown Thread",
-          "status": "assigned",
+          "status": "approved",
           "dueDate": "2026-09-15",
           "payoutAmount": 1000,
           "revisionCount": 0,
           "maxRevisions": 1,
-          "submissions": []
+          "submissions": [
+            {
+              "id": "sub-1788855188709",
+              "deliverableId": "collab-del-2",
+              "version": 1,
+              "assetUrl": "https://drive.google.com/file/d/test-deliverable-cut/view",
+              "notes": "Final cut color graded to brand specs. Music cleared for global commercial rights. Segment at 04:12.",
+              "submittedAt": "2026-09-08T08:13:08.709Z",
+              "slaDeadline": "2026-09-13T08:13:08.709Z",
+              "mediaUrls": [
+                "https://drive.google.com/file/d/test-deliverable-cut/view"
+              ],
+              "captionText": "",
+              "creatorNotes": "Final cut color graded to brand specs. Music cleared for global commercial rights. Segment at 04:12.",
+              "status": "submitted"
+            }
+          ],
+          "assetUrl": "https://drive.google.com/file/d/test-deliverable-cut/view",
+          "notes": "Final cut color graded to brand specs. Music cleared for global commercial rights. Segment at 04:12.",
+          "submittedAt": "2026-09-08T08:13:08.709Z",
+          "slaDeadline": "2026-09-13T08:13:08.709Z"
         }
       ],
       "agencyManager": {
@@ -1911,10 +2829,10 @@
         ]
       },
       "totalAgreedBudget": 2200,
-      "escrowStatus": "pending_deposit",
-      "status": "payment_pending",
-      "paymentStatus": "payment_pending",
-      "isFunded": false,
+      "escrowStatus": "held_in_escrow",
+      "status": "payment_secured",
+      "paymentStatus": "payment_secured",
+      "isFunded": true,
       "startDate": "2026-09-01",
       "finalDeadline": "2026-10-15",
       "deliverables": [
@@ -1922,7 +2840,7 @@
           "id": "del-unfunded-1",
           "type": "YouTube 60s Integration",
           "title": "Zero-Trust Physical Security Breakdown",
-          "status": "draft",
+          "status": "assigned",
           "dueDate": "2026-09-25",
           "payoutAmount": 2200,
           "revisionCount": 0,
@@ -1931,7 +2849,8 @@
         }
       ],
       "createdAt": "2026-09-05T11:02:58.708Z",
-      "updatedAt": "2026-09-05T11:02:58.719Z"
+      "updatedAt": "2026-09-08T08:13:05.348Z",
+      "fundedAt": "2026-09-08T08:13:05.348Z"
     },
     {
       "id": "collab-2",
@@ -2313,6 +3232,60 @@
   ],
   "payouts": [
     {
+      "creatorId": "creator-demo",
+      "collaborationId": "collab-1",
+      "campaignId": "camp-1",
+      "campaignTitle": "AI-Powered Sprint Workflows Launch",
+      "brandName": "Linear Dynamics",
+      "creatorName": "Elena Rostova",
+      "deliverableTitle": "Interactive AI Workflow Breakdown Thread",
+      "grossAmount": 1000,
+      "netAmount": 900,
+      "agencyFee": 100,
+      "status": "pending",
+      "paymentMethod": "stripe_connect",
+      "environment": "test",
+      "isTest": true,
+      "id": "payout-1788855595714-mebis",
+      "createdAt": "2026-09-08T08:19:55.714Z"
+    },
+    {
+      "creatorId": "creator-demo",
+      "collaborationId": "collab-1788852270845",
+      "campaignId": "camp-1788852267234",
+      "campaignTitle": "AI Studio Hardware Series 1788852263045",
+      "brandName": "Demo Brand",
+      "creatorName": "Demo Creator",
+      "deliverableTitle": "1x YouTube 60s Integration",
+      "grossAmount": 3000,
+      "netAmount": 2700,
+      "agencyFee": 300,
+      "status": "pending",
+      "paymentMethod": "stripe_connect",
+      "environment": "test",
+      "isTest": true,
+      "id": "payout-1788855186143-zv0n4",
+      "createdAt": "2026-09-08T08:13:06.143Z"
+    },
+    {
+      "creatorId": "creator-demo",
+      "collaborationId": "collab-1",
+      "campaignId": "camp-1",
+      "campaignTitle": "AI-Powered Sprint Workflows Launch",
+      "brandName": "Linear Dynamics",
+      "creatorName": "Elena Rostova",
+      "deliverableTitle": "Dedicated AI Triage 60s Segment in Main Video",
+      "grossAmount": 2500,
+      "netAmount": 2250,
+      "agencyFee": 250,
+      "status": "pending",
+      "paymentMethod": "stripe_connect",
+      "environment": "test",
+      "isTest": true,
+      "id": "payout-1788852671021-fw7rq",
+      "createdAt": "2026-09-08T07:31:11.021Z"
+    },
+    {
       "id": "payout-rzp-card-1007",
       "creatorId": "creator_escrow",
       "collaborationId": "escrow_order_TYfhanUvTJdPAR",
@@ -2382,13 +3355,13 @@
       },
       "usage": {
         "activeCampaignsCount": 0,
-        "applicationsThisMonth": 0,
+        "applicationsThisMonth": 3,
         "crmContactsCount": 0,
         "aiTokensUsed": 0,
         "lastResetDate": "2026-09-03T18:46:21.709Z"
       },
       "createdAt": "2026-09-03T18:46:21.709Z",
-      "updatedAt": "2026-09-03T18:46:21.709Z"
+      "updatedAt": "2026-09-08T08:19:48.773Z"
     },
     {
       "id": "sub-brand",
@@ -2423,14 +3396,14 @@
         "apiAccess": false
       },
       "usage": {
-        "activeCampaignsCount": 0,
+        "activeCampaignsCount": 4,
         "applicationsThisMonth": 0,
         "crmContactsCount": 0,
         "aiTokensUsed": 0,
         "lastResetDate": "2026-09-03T18:46:21.709Z"
       },
       "createdAt": "2026-09-03T18:46:21.709Z",
-      "updatedAt": "2026-09-03T18:46:21.709Z"
+      "updatedAt": "2026-09-08T08:19:47.166Z"
     },
     {
       "id": "sub-owner",
@@ -2518,8 +3491,592 @@
       "updatedAt": "2026-09-05T21:21:10.627Z"
     }
   ],
-  "crmContacts": [],
-  "shortlists": [],
+  "crmContacts": [
+    {
+      "id": "crm-brand-demo-1",
+      "creatorId": "creator-1",
+      "creator": {
+        "id": "creator-1",
+        "userId": "user-c1",
+        "fullName": "Elena Rostova",
+        "handle": "elenatech",
+        "headline": "AI Engineer & Next-Gen Hardware Reviewer",
+        "bio": "Demystifying artificial intelligence, spatial computing, and developer ergonomics for 480k+ tech professionals and founders globally.",
+        "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+        "location": "San Francisco, CA",
+        "languages": [
+          "English",
+          "French"
+        ],
+        "primaryCategory": "Technology & AI",
+        "secondaryCategories": [
+          "Design & Creative",
+          "Finance & Business"
+        ],
+        "verified": true,
+        "featured": true,
+        "tier": "Elite",
+        "rating": 4.98,
+        "completedCampaignsCount": 42,
+        "totalFollowers": 485000,
+        "avgEngagementRate": 6.4,
+        "startingPrice": 2200,
+        "availableForHire": true,
+        "profileCompleteness": 96,
+        "qualityScore": 98,
+        "socialAccounts": [
+          {
+            "id": "sa-1-yt",
+            "platform": "youtube",
+            "handle": "ElenaRostovaTech",
+            "url": "https://youtube.com",
+            "followers": 290000,
+            "engagementRate": 7.2,
+            "avgViews": 88000,
+            "verifiedBadge": true
+          },
+          {
+            "id": "sa-1-x",
+            "platform": "x",
+            "handle": "elenatech",
+            "url": "https://x.com",
+            "followers": 125000,
+            "engagementRate": 5.1,
+            "avgViews": 45000,
+            "verifiedBadge": true
+          },
+          {
+            "id": "sa-1-ig",
+            "platform": "instagram",
+            "handle": "elena_creates",
+            "url": "https://instagram.com",
+            "followers": 70000,
+            "engagementRate": 6.8,
+            "avgViews": 32000,
+            "verifiedBadge": true
+          }
+        ],
+        "audience": {
+          "topCountries": [
+            {
+              "country": "United States",
+              "percentage": 52
+            },
+            {
+              "country": "United Kingdom",
+              "percentage": 18
+            },
+            {
+              "country": "Germany",
+              "percentage": 12
+            },
+            {
+              "country": "Canada",
+              "percentage": 8
+            }
+          ],
+          "ageDistribution": [
+            {
+              "range": "18-24",
+              "percentage": 22
+            },
+            {
+              "range": "25-34",
+              "percentage": 54
+            },
+            {
+              "range": "35-44",
+              "percentage": 18
+            },
+            {
+              "range": "45+",
+              "percentage": 6
+            }
+          ],
+          "genderSplit": [
+            {
+              "gender": "Male",
+              "percentage": 68
+            },
+            {
+              "gender": "Female",
+              "percentage": 30
+            },
+            {
+              "gender": "Other",
+              "percentage": 2
+            }
+          ],
+          "interests": [
+            "Machine Learning",
+            "Developer Tooling",
+            "Ergonomic Setups",
+            "SaaS"
+          ]
+        },
+        "rateCards": [
+          {
+            "id": "rc-1",
+            "deliverableType": "YouTube 60s Integration",
+            "title": "Dedicated 60s In-Video Sponsor Segment",
+            "description": "Seamless workflow integration in a dedicated deep-dive video with trackable link in top comment.",
+            "basePrice": 3500,
+            "turnaroundDays": 7,
+            "revisionsIncluded": 2
+          },
+          {
+            "id": "rc-2",
+            "deliverableType": "X (Twitter) Thread",
+            "title": "Technical Breakdown Thread (6-8 Posts)",
+            "description": "Architecture breakdown with high-res screenshots and product highlights.",
+            "basePrice": 1500,
+            "turnaroundDays": 3,
+            "revisionsIncluded": 1
+          }
+        ]
+      },
+      "brandId": "brand-demo",
+      "stage": "Outreach",
+      "tags": [
+        "AI",
+        "Tech Reviewer",
+        "Q4 Campaign"
+      ],
+      "privateNotes": [
+        {
+          "id": "note-1788850642158-1",
+          "authorName": "Sarah (Growth Lead)",
+          "content": "Initial brief sent for dedicated 60s integration. Follow-up scheduled.",
+          "createdAt": "2026-09-08"
+        }
+      ],
+      "pastCampaignsCount": 2,
+      "totalPaid": 4400,
+      "lastContactedAt": "2026-09-08"
+    },
+    {
+      "id": "crm-brand-demo-2",
+      "creatorId": "creator-2",
+      "creator": {
+        "id": "creator-2",
+        "userId": "user-c2",
+        "fullName": "Marcus Vance",
+        "handle": "marcusvance",
+        "headline": "Architectural Cinematographer & Luxury Design Critic",
+        "bio": "Exploring brutalist architecture, Scandinavian interior design, and haute horology through cinematic 4K short films.",
+        "avatarUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=1200&auto=format&fit=crop&q=80",
+        "location": "London, UK",
+        "languages": [
+          "English"
+        ],
+        "primaryCategory": "Design & Creative",
+        "secondaryCategories": [
+          "Fashion & Style"
+        ],
+        "verified": true,
+        "featured": true,
+        "tier": "Elite",
+        "rating": 4.95,
+        "completedCampaignsCount": 28,
+        "totalFollowers": 310000,
+        "avgEngagementRate": 5.8,
+        "startingPrice": 2800,
+        "availableForHire": true,
+        "profileCompleteness": 94,
+        "qualityScore": 96,
+        "socialAccounts": [
+          {
+            "id": "sa-2-ig",
+            "platform": "instagram",
+            "handle": "marcusvance",
+            "url": "https://instagram.com",
+            "followers": 210000,
+            "engagementRate": 6.4,
+            "avgViews": 95000,
+            "verifiedBadge": true
+          },
+          {
+            "id": "sa-2-yt",
+            "platform": "youtube",
+            "handle": "MarcusVanceFilms",
+            "url": "https://youtube.com",
+            "followers": 100000,
+            "engagementRate": 4.9,
+            "avgViews": 65000,
+            "verifiedBadge": true
+          }
+        ],
+        "audience": {
+          "topCountries": [
+            {
+              "country": "United Kingdom",
+              "percentage": 44
+            },
+            {
+              "country": "United States",
+              "percentage": 32
+            },
+            {
+              "country": "France",
+              "percentage": 14
+            }
+          ],
+          "ageDistribution": [
+            {
+              "range": "25-34",
+              "percentage": 58
+            },
+            {
+              "range": "35-44",
+              "percentage": 30
+            }
+          ],
+          "genderSplit": [
+            {
+              "gender": "Male",
+              "percentage": 54
+            },
+            {
+              "gender": "Female",
+              "percentage": 45
+            },
+            {
+              "gender": "Other",
+              "percentage": 1
+            }
+          ],
+          "interests": [
+            "Minimalist Architecture",
+            "Luxury Watches",
+            "Industrial Design"
+          ]
+        },
+        "rateCards": [
+          {
+            "id": "rc-3",
+            "deliverableType": "Instagram Reel",
+            "title": "Cinematic Product Short Film",
+            "description": "Color-graded RED camera footage with bespoke sound design.",
+            "basePrice": 2800,
+            "turnaroundDays": 10,
+            "revisionsIncluded": 2
+          }
+        ]
+      },
+      "brandId": "brand-demo",
+      "stage": "Active_Partner",
+      "tags": [
+        "Design",
+        "Cinematic",
+        "High ER"
+      ],
+      "privateNotes": [
+        {
+          "id": "note-1788850642158-2",
+          "authorName": "Alex (Creative Director)",
+          "content": "Escrow funded for spatial design series. Storyboard approved.",
+          "createdAt": "2026-09-08"
+        }
+      ],
+      "pastCampaignsCount": 1,
+      "totalPaid": 2800,
+      "lastContactedAt": "2026-09-08"
+    },
+    {
+      "id": "crm-brand-demo-3",
+      "creatorId": "creator-3",
+      "creator": {
+        "id": "creator-3",
+        "userId": "user-c3",
+        "fullName": "Aria Chen",
+        "handle": "ariachenwellness",
+        "headline": "Biohacker, Clinical Nutritionist & Longevity Advocate",
+        "bio": "Translating peer-reviewed metabolic science into daily wellness protocols, cold thermogenesis, and cellular recovery.",
+        "avatarUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=1200&auto=format&fit=crop&q=80",
+        "location": "Austin, TX",
+        "languages": [
+          "English",
+          "Mandarin"
+        ],
+        "primaryCategory": "Fitness & Wellness",
+        "secondaryCategories": [
+          "Education & Science"
+        ],
+        "verified": true,
+        "featured": true,
+        "tier": "Elite",
+        "rating": 4.99,
+        "completedCampaignsCount": 36,
+        "totalFollowers": 620000,
+        "avgEngagementRate": 7.1,
+        "startingPrice": 3200,
+        "availableForHire": true,
+        "profileCompleteness": 98,
+        "qualityScore": 99,
+        "socialAccounts": [
+          {
+            "id": "sa-3-ig",
+            "platform": "instagram",
+            "handle": "ariachenwellness",
+            "url": "https://instagram.com",
+            "followers": 420000,
+            "engagementRate": 7.8,
+            "avgViews": 140000,
+            "verifiedBadge": true
+          },
+          {
+            "id": "sa-3-tt",
+            "platform": "tiktok",
+            "handle": "ariachenlongevity",
+            "url": "https://tiktok.com",
+            "followers": 200000,
+            "engagementRate": 6.2,
+            "avgViews": 85000,
+            "verifiedBadge": true
+          }
+        ],
+        "audience": {
+          "topCountries": [
+            {
+              "country": "United States",
+              "percentage": 65
+            },
+            {
+              "country": "Canada",
+              "percentage": 15
+            },
+            {
+              "country": "Australia",
+              "percentage": 10
+            }
+          ],
+          "ageDistribution": [
+            {
+              "range": "25-34",
+              "percentage": 48
+            },
+            {
+              "range": "35-44",
+              "percentage": 38
+            }
+          ],
+          "genderSplit": [
+            {
+              "gender": "Female",
+              "percentage": 60
+            },
+            {
+              "gender": "Male",
+              "percentage": 40
+            }
+          ],
+          "interests": [
+            "Thermal Recovery",
+            "Metabolic Health",
+            "Longevity Supplements"
+          ]
+        },
+        "rateCards": [
+          {
+            "id": "rc-4",
+            "deliverableType": "Instagram Reel",
+            "title": "Protocol Demonstration & Science Hook",
+            "description": "Biometric before/after with verified wearable data overlay.",
+            "basePrice": 3200,
+            "turnaroundDays": 5,
+            "revisionsIncluded": 2
+          }
+        ]
+      },
+      "brandId": "brand-demo",
+      "stage": "Preferred",
+      "tags": [
+        "Wellness",
+        "Longevity",
+        "Top Tier"
+      ],
+      "privateNotes": [
+        {
+          "id": "note-1788850642158-3",
+          "authorName": "Sarah (Growth Lead)",
+          "content": "Outstanding 7.1% engagement rate on previous campaign. Recommended for retainers.",
+          "createdAt": "2026-09-08"
+        }
+      ],
+      "pastCampaignsCount": 3,
+      "totalPaid": 9600,
+      "lastContactedAt": "2026-09-08"
+    }
+  ],
+  "shortlists": [
+    {
+      "id": "sl-default-brand-demo",
+      "brandId": "brand-demo",
+      "name": "Saved Talent Roster",
+      "description": "Curated creator profiles saved for upcoming campaign briefs.",
+      "creatorIds": [
+        "creator-1"
+      ],
+      "creators": [
+        {
+          "id": "creator-1",
+          "userId": "user-c1",
+          "fullName": "Elena Rostova",
+          "handle": "elenatech",
+          "headline": "AI Engineer & Next-Gen Hardware Reviewer",
+          "bio": "Demystifying artificial intelligence, spatial computing, and developer ergonomics for 480k+ tech professionals and founders globally.",
+          "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+          "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+          "location": "San Francisco, CA",
+          "languages": [
+            "English",
+            "French"
+          ],
+          "primaryCategory": "Technology & AI",
+          "secondaryCategories": [
+            "Design & Creative",
+            "Finance & Business"
+          ],
+          "verified": true,
+          "featured": true,
+          "tier": "Elite",
+          "rating": 4.98,
+          "completedCampaignsCount": 42,
+          "totalFollowers": 485000,
+          "avgEngagementRate": 6.4,
+          "startingPrice": 2200,
+          "availableForHire": true,
+          "profileCompleteness": 96,
+          "qualityScore": 98,
+          "socialAccounts": [
+            {
+              "id": "sa-1-yt",
+              "platform": "youtube",
+              "handle": "ElenaRostovaTech",
+              "url": "https://youtube.com",
+              "followers": 290000,
+              "engagementRate": 7.2,
+              "avgViews": 88000,
+              "verifiedBadge": true
+            },
+            {
+              "id": "sa-1-x",
+              "platform": "x",
+              "handle": "elenatech",
+              "url": "https://x.com",
+              "followers": 125000,
+              "engagementRate": 5.1,
+              "avgViews": 45000,
+              "verifiedBadge": true
+            },
+            {
+              "id": "sa-1-ig",
+              "platform": "instagram",
+              "handle": "elena_creates",
+              "url": "https://instagram.com",
+              "followers": 70000,
+              "engagementRate": 6.8,
+              "avgViews": 32000,
+              "verifiedBadge": true
+            }
+          ],
+          "audience": {
+            "topCountries": [
+              {
+                "country": "United States",
+                "percentage": 52
+              },
+              {
+                "country": "United Kingdom",
+                "percentage": 18
+              },
+              {
+                "country": "Germany",
+                "percentage": 12
+              },
+              {
+                "country": "Canada",
+                "percentage": 8
+              }
+            ],
+            "ageDistribution": [
+              {
+                "range": "18-24",
+                "percentage": 22
+              },
+              {
+                "range": "25-34",
+                "percentage": 54
+              },
+              {
+                "range": "35-44",
+                "percentage": 18
+              },
+              {
+                "range": "45+",
+                "percentage": 6
+              }
+            ],
+            "genderSplit": [
+              {
+                "gender": "Male",
+                "percentage": 68
+              },
+              {
+                "gender": "Female",
+                "percentage": 30
+              },
+              {
+                "gender": "Other",
+                "percentage": 2
+              }
+            ],
+            "interests": [
+              "Machine Learning",
+              "Developer Tooling",
+              "Ergonomic Setups",
+              "SaaS"
+            ]
+          },
+          "rateCards": [
+            {
+              "id": "rc-1",
+              "deliverableType": "YouTube 60s Integration",
+              "title": "Dedicated 60s In-Video Sponsor Segment",
+              "description": "Seamless workflow integration in a dedicated deep-dive video with trackable link in top comment.",
+              "basePrice": 3500,
+              "turnaroundDays": 7,
+              "revisionsIncluded": 2
+            },
+            {
+              "id": "rc-2",
+              "deliverableType": "X (Twitter) Thread",
+              "title": "Technical Breakdown Thread (6-8 Posts)",
+              "description": "Architecture breakdown with high-res screenshots and product highlights.",
+              "basePrice": 1500,
+              "turnaroundDays": 3,
+              "revisionsIncluded": 1
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-09-08",
+      "updatedAt": "2026-09-08"
+    },
+    {
+      "id": "sl-default-brand-1788643257899",
+      "brandId": "brand-1788643257899",
+      "name": "Saved Talent Roster",
+      "description": "Curated creator profiles saved for upcoming campaign briefs.",
+      "creatorIds": [],
+      "creators": [],
+      "createdAt": "2026-09-08",
+      "updatedAt": "2026-09-08"
+    }
+  ],
   "disputes": [],
   "tickets": [],
   "payments": [
@@ -2592,12 +4149,12 @@
         }
       ],
       "lastMessage": {
-        "content": "The rough cut draft looks incredible! We just left 1 tiny note on the final discount overlay.",
-        "senderName": "Linear Marketing",
-        "createdAt": "2026-08-28T16:45:00Z"
+        "content": "Review completed for 4K B-roll footage 1788855602047",
+        "senderName": "Demo Creator",
+        "createdAt": "2026-09-08T08:20:02.080Z"
       },
       "unreadCount": 0,
-      "updatedAt": "2026-08-28T16:45:00Z"
+      "updatedAt": "2026-09-08T08:20:02.080Z"
     },
     {
       "id": "conv-2",
@@ -2717,7 +4274,8 @@
         "user-c1",
         "user-admin",
         "user-creator",
-        "user-1788643257898"
+        "user-1788643257898",
+        "user-brand"
       ],
       "createdAt": "2026-08-20T10:00:00Z"
     },
@@ -2733,7 +4291,8 @@
         "user-b1",
         "user-admin",
         "user-creator",
-        "user-1788643257898"
+        "user-1788643257898",
+        "user-brand"
       ],
       "createdAt": "2026-08-20T14:15:00Z"
     },
@@ -2748,7 +4307,8 @@
       "readBy": [
         "user-b1",
         "user-creator",
-        "user-1788643257898"
+        "user-1788643257898",
+        "user-brand"
       ],
       "createdAt": "2026-08-28T14:32:00Z"
     },
@@ -2762,7 +4322,8 @@
       "content": "The rough cut draft looks incredible! We just left 1 tiny note on the final discount overlay.",
       "readBy": [
         "user-creator",
-        "user-1788643257898"
+        "user-1788643257898",
+        "user-brand"
       ],
       "createdAt": "2026-08-28T16:45:00Z"
     },
@@ -2904,9 +4465,132 @@
       "content": "You've been matched with 3 Tier-1 enterprise SaaS brand briefs this week with guaranteed escrow funding.",
       "readBy": [],
       "createdAt": "2026-08-31T09:00:00Z"
+    },
+    {
+      "conversationId": "conv-1",
+      "senderId": "user-creator",
+      "senderRole": "creator",
+      "senderName": "Demo Creator",
+      "senderAvatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "content": "Review completed for 4K B-roll footage 1788855261744",
+      "attachments": [],
+      "id": "msg-1788855261783-q97xz",
+      "readBy": [
+        "user-creator",
+        "user-brand",
+        "user-1788643257898"
+      ],
+      "reactions": [],
+      "createdAt": "2026-09-08T08:14:21.783Z"
+    },
+    {
+      "conversationId": "conv-1",
+      "senderId": "user-creator",
+      "senderRole": "creator",
+      "senderName": "Demo Creator",
+      "senderAvatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "content": "Review completed for 4K B-roll footage 1788855602047",
+      "attachments": [],
+      "id": "msg-1788855602080-7l9zy",
+      "readBy": [
+        "user-creator",
+        "user-brand"
+      ],
+      "reactions": [],
+      "createdAt": "2026-09-08T08:20:02.080Z"
     }
   ],
   "notifications": [
+    {
+      "userId": "user-creator",
+      "title": "Milestone Approved & Disbursed!",
+      "message": "Your deliverable for \"AI-Powered Sprint Workflows Launch\" was approved. $900.00 has been credited to your Creator Wallet.",
+      "type": "payment",
+      "entityType": "Payout",
+      "entityId": "collab-del-2",
+      "id": "notif-1788855595715-i7j2z",
+      "read": false,
+      "createdAt": "2026-09-08T08:19:55.715Z"
+    },
+    {
+      "userId": "user-creator",
+      "title": "Escrow Secured: You may now start work!",
+      "message": "The escrow vault for \"AI Studio Hardware Series 1788855582887\" ($3,000) has been fully secured. You are safe to start production.",
+      "type": "payment",
+      "entityType": "Collaboration",
+      "entityId": "collab-1788855590656",
+      "id": "notif-1788855594974-q7s9b",
+      "read": false,
+      "createdAt": "2026-09-08T08:19:54.974Z"
+    },
+    {
+      "userId": "user-creator",
+      "title": "Application Accepted!",
+      "message": "Congratulations! Demo Brand accepted your application for \"AI Studio Hardware Series 1788855582887\".",
+      "type": "application",
+      "entityType": "Collaboration",
+      "entityId": "collab-1788855590656",
+      "linkUrl": "/app/creator/collaborations/collab-1788855590656",
+      "id": "notif-1788855590658-wqffk",
+      "read": false,
+      "createdAt": "2026-09-08T08:19:50.658Z"
+    },
+    {
+      "userId": "user-creator",
+      "title": "Milestone Approved & Disbursed!",
+      "message": "Your deliverable for \"AI Studio Hardware Series 1788852263045\" was approved. $2700.00 has been credited to your Creator Wallet.",
+      "type": "payment",
+      "entityType": "Payout",
+      "entityId": "deliv-1788852270845-0",
+      "id": "notif-1788855186144-jlnsw",
+      "read": false,
+      "createdAt": "2026-09-08T08:13:06.144Z"
+    },
+    {
+      "userId": "user-creator",
+      "title": "Escrow Secured: You may now start work!",
+      "message": "The escrow vault for \"Cybersecurity Hardware Key Launch\" ($2,200) has been fully secured. You are safe to start production.",
+      "type": "payment",
+      "entityType": "Collaboration",
+      "entityId": "collab-unfunded",
+      "id": "notif-1788855185355-o0jb4",
+      "read": false,
+      "createdAt": "2026-09-08T08:13:05.355Z"
+    },
+    {
+      "userId": "user-creator",
+      "title": "Milestone Approved & Disbursed!",
+      "message": "Your deliverable for \"AI-Powered Sprint Workflows Launch\" was approved. $2250.00 has been credited to your Creator Wallet.",
+      "type": "payment",
+      "entityType": "Payout",
+      "entityId": "collab-del-1",
+      "id": "notif-1788852671021-sm3yb",
+      "read": false,
+      "createdAt": "2026-09-08T07:31:11.021Z"
+    },
+    {
+      "userId": "user-creator",
+      "title": "Escrow Secured: You may now start work!",
+      "message": "The escrow vault for \"AI Studio Hardware Series 1788852263045\" ($3,000) has been fully secured. You are safe to start production.",
+      "type": "payment",
+      "entityType": "Collaboration",
+      "entityId": "collab-1788852270845",
+      "id": "notif-1788852670276-ex4lr",
+      "read": false,
+      "createdAt": "2026-09-08T07:31:10.276Z"
+    },
+    {
+      "userId": "user-creator",
+      "title": "Application Accepted!",
+      "message": "Congratulations! Demo Brand accepted your application for \"AI Studio Hardware Series 1788852263045\".",
+      "type": "application",
+      "entityType": "Collaboration",
+      "entityId": "collab-1788852270845",
+      "linkUrl": "/app/creator/collaborations/collab-1788852270845",
+      "id": "notif-1788852270847-flwdt",
+      "read": false,
+      "createdAt": "2026-09-08T07:24:30.847Z"
+    },
     {
       "userId": "user-1788643257898",
       "title": "⚡ Application Velocity",
@@ -3041,6 +4725,257 @@
   "webhookEvents": [],
   "aiUsage": [],
   "auditLogs": [
+    {
+      "actorId": "user-creator",
+      "actorName": "creator@abeycollab.io",
+      "actorRole": "creator",
+      "action": "DELIVERABLE_SUBMITTED",
+      "entityType": "Deliverable",
+      "entityId": "deliv-1788855590656-0",
+      "entityName": "Deliverable external submission for collab collab-1788855590656",
+      "id": "aud-1788855597499",
+      "createdAt": "2026-09-08 08:19:57"
+    },
+    {
+      "actorId": "user-brand",
+      "actorName": "brand@abeycollab.io",
+      "actorRole": "brand",
+      "action": "DELIVERABLE_APPROVED_TRANCHE_RELEASED",
+      "entityType": "Deliverable",
+      "entityId": "collab-del-2",
+      "entityName": "Deliverable approved for collab collab-1",
+      "metadata": {
+        "grossEscrowDebited": 1000,
+        "creatorWalletCredited": 900,
+        "platformRevenueCredited": 100,
+        "transactionId": "tx_disburse_1788855595713_zhnpo"
+      },
+      "id": "aud-1788855595716",
+      "createdAt": "2026-09-08 08:19:55"
+    },
+    {
+      "actorId": "user-brand",
+      "actorName": "Demo Brand",
+      "actorRole": "brand",
+      "action": "COLLABORATION_ESCROW_FUNDED",
+      "entityType": "Collaboration",
+      "entityId": "collab-1788855590656",
+      "entityName": "AI Studio Hardware Series 1788855582887",
+      "metadata": {
+        "totalAgreedBudget": 3000,
+        "transactionId": "tx_fund_1788855594971_8hiy5",
+        "paymentStatus": "payment_secured"
+      },
+      "id": "aud-1788855594973",
+      "createdAt": "2026-09-08 08:19:54"
+    },
+    {
+      "actorId": "user-brand",
+      "actorName": "Demo Brand",
+      "actorRole": "brand",
+      "action": "APPLICATION_ACCEPTED",
+      "entityType": "Collaboration",
+      "entityId": "collab-1788855590656",
+      "entityName": "AI Studio Hardware Series 1788855582887",
+      "metadata": {
+        "applicationId": "app-1788855588772",
+        "agreedBudget": 3000
+      },
+      "id": "aud-1788855590658",
+      "createdAt": "2026-09-08 08:19:50"
+    },
+    {
+      "actorId": "user-creator",
+      "actorName": "Demo Creator",
+      "actorRole": "creator",
+      "action": "CAMPAIGN_APPLICATION_SUBMITTED",
+      "entityType": "Campaign",
+      "entityId": "camp-1788855587165",
+      "entityName": "I will produce a full 60-second in-depth integrati",
+      "id": "aud-1788855588773",
+      "createdAt": "2026-09-08 08:19:48"
+    },
+    {
+      "actorId": "user-brand",
+      "actorName": "Demo Brand",
+      "actorRole": "brand",
+      "action": "CAMPAIGN_CREATED",
+      "entityType": "Campaign",
+      "entityId": "camp-1788855587165",
+      "entityName": "AI Studio Hardware Series 1788855582887",
+      "metadata": {
+        "budget": 15000
+      },
+      "id": "aud-1788855587167",
+      "createdAt": "2026-09-08 08:19:47"
+    },
+    {
+      "actorId": "user-creator",
+      "actorName": "creator@abeycollab.io",
+      "actorRole": "creator",
+      "action": "DELIVERABLE_SUBMITTED",
+      "entityType": "Deliverable",
+      "entityId": "collab-del-2",
+      "entityName": "Deliverable external submission for collab collab-1",
+      "id": "aud-1788855188712",
+      "createdAt": "2026-09-08 08:13:08"
+    },
+    {
+      "actorId": "user-brand",
+      "actorName": "brand@abeycollab.io",
+      "actorRole": "brand",
+      "action": "DELIVERABLE_APPROVED_TRANCHE_RELEASED",
+      "entityType": "Deliverable",
+      "entityId": "deliv-1788852270845-0",
+      "entityName": "Deliverable approved for collab collab-1788852270845",
+      "metadata": {
+        "grossEscrowDebited": 3000,
+        "creatorWalletCredited": 2700,
+        "platformRevenueCredited": 300,
+        "transactionId": "tx_disburse_1788855186140_bi19t"
+      },
+      "id": "aud-1788855186147",
+      "createdAt": "2026-09-08 08:13:06"
+    },
+    {
+      "actorId": "user-brand",
+      "actorName": "SecureVault Inc",
+      "actorRole": "brand",
+      "action": "COLLABORATION_ESCROW_FUNDED",
+      "entityType": "Collaboration",
+      "entityId": "collab-unfunded",
+      "entityName": "Cybersecurity Hardware Key Launch",
+      "metadata": {
+        "totalAgreedBudget": 2200,
+        "transactionId": "tx_fund_1788855185348_y9c40",
+        "paymentStatus": "payment_secured"
+      },
+      "id": "aud-1788855185353",
+      "createdAt": "2026-09-08 08:13:05"
+    },
+    {
+      "actorId": "user-creator",
+      "actorName": "creator@abeycollab.io",
+      "actorRole": "creator",
+      "action": "DELIVERABLE_SUBMITTED",
+      "entityType": "Deliverable",
+      "entityId": "deliv-1788852270845-0",
+      "entityName": "Deliverable external submission for collab collab-1788852270845",
+      "id": "aud-1788852672982",
+      "createdAt": "2026-09-08 07:31:12"
+    },
+    {
+      "actorId": "user-brand",
+      "actorName": "brand@abeycollab.io",
+      "actorRole": "brand",
+      "action": "DELIVERABLE_APPROVED_TRANCHE_RELEASED",
+      "entityType": "Deliverable",
+      "entityId": "collab-del-1",
+      "entityName": "Deliverable approved for collab collab-1",
+      "metadata": {
+        "grossEscrowDebited": 2500,
+        "creatorWalletCredited": 2250,
+        "platformRevenueCredited": 250,
+        "transactionId": "tx_disburse_1788852671019_e7vxe"
+      },
+      "id": "aud-1788852671022",
+      "createdAt": "2026-09-08 07:31:11"
+    },
+    {
+      "actorId": "user-brand",
+      "actorName": "Demo Brand",
+      "actorRole": "brand",
+      "action": "COLLABORATION_ESCROW_FUNDED",
+      "entityType": "Collaboration",
+      "entityId": "collab-1788852270845",
+      "entityName": "AI Studio Hardware Series 1788852263045",
+      "metadata": {
+        "totalAgreedBudget": 3000,
+        "transactionId": "tx_fund_1788852670269_rwysf",
+        "paymentStatus": "payment_secured"
+      },
+      "id": "aud-1788852670270",
+      "createdAt": "2026-09-08 07:31:10"
+    },
+    {
+      "actorId": "user-brand",
+      "actorName": "Demo Brand",
+      "actorRole": "brand",
+      "action": "APPLICATION_ACCEPTED",
+      "entityType": "Collaboration",
+      "entityId": "collab-1788852270845",
+      "entityName": "AI Studio Hardware Series 1788852263045",
+      "metadata": {
+        "applicationId": "app-1788852268884",
+        "agreedBudget": 3000
+      },
+      "id": "aud-1788852270848",
+      "createdAt": "2026-09-08 07:24:30"
+    },
+    {
+      "actorId": "user-creator",
+      "actorName": "Demo Creator",
+      "actorRole": "creator",
+      "action": "CAMPAIGN_APPLICATION_SUBMITTED",
+      "entityType": "Campaign",
+      "entityId": "camp-1788852267234",
+      "entityName": "I will produce a full 60-second in-depth integrati",
+      "id": "aud-1788852268885",
+      "createdAt": "2026-09-08 07:24:28"
+    },
+    {
+      "actorId": "user-brand",
+      "actorName": "Demo Brand",
+      "actorRole": "brand",
+      "action": "CAMPAIGN_CREATED",
+      "entityType": "Campaign",
+      "entityId": "camp-1788852267234",
+      "entityName": "AI Studio Hardware Series 1788852263045",
+      "metadata": {
+        "budget": 15000
+      },
+      "id": "aud-1788852267236",
+      "createdAt": "2026-09-08 07:24:27"
+    },
+    {
+      "actorId": "user-creator",
+      "actorName": "Demo Creator",
+      "actorRole": "creator",
+      "action": "CAMPAIGN_APPLICATION_SUBMITTED",
+      "entityType": "Campaign",
+      "entityId": "camp-1788852138678",
+      "entityName": "I will produce a full 60-second in-depth integrati",
+      "id": "aud-1788852140395",
+      "createdAt": "2026-09-08 07:22:20"
+    },
+    {
+      "actorId": "user-brand",
+      "actorName": "Demo Brand",
+      "actorRole": "brand",
+      "action": "CAMPAIGN_CREATED",
+      "entityType": "Campaign",
+      "entityId": "camp-1788852138678",
+      "entityName": "AI Studio Hardware Series 1788852134468",
+      "metadata": {
+        "budget": 15000
+      },
+      "id": "aud-1788852138680",
+      "createdAt": "2026-09-08 07:22:18"
+    },
+    {
+      "actorId": "user-brand",
+      "actorName": "Demo Brand",
+      "actorRole": "brand",
+      "action": "CAMPAIGN_CREATED",
+      "entityType": "Campaign",
+      "entityId": "camp-1788851550161",
+      "entityName": "AI Studio Hardware Series 1788851545438",
+      "metadata": {
+        "budget": 15000
+      },
+      "id": "aud-1788851550163",
+      "createdAt": "2026-09-08 07:12:30"
+    },
     {
       "id": "aud-1788654576975",
       "actorId": "user-owner",
@@ -3218,7 +5153,218 @@
       "createdAt": "2026-09-05T21:08:39.180Z"
     }
   ],
-  "ledgerEntries": [],
+  "ledgerEntries": [
+    {
+      "id": "led_1788852670269_1",
+      "transactionId": "tx_fund_1788852670269_rwysf",
+      "account": "BRAND_CASH",
+      "entityId": "brand-demo",
+      "type": "DEBIT",
+      "amountCents": 300000,
+      "netCentsSigned": -300000,
+      "currency": "USD",
+      "referenceType": "MILESTONE_FUNDING",
+      "referenceId": "collab_escrow_collab-1788852270845",
+      "description": "Milestone pre-funding deposit for deliverable collab_escrow_collab-1788852270845",
+      "createdAt": "2026-09-08T07:31:10.269Z"
+    },
+    {
+      "id": "led_1788852670269_2",
+      "transactionId": "tx_fund_1788852670269_rwysf",
+      "account": "ESCROW_HOLDING",
+      "entityId": "collab-1788852270845",
+      "type": "CREDIT",
+      "amountCents": 300000,
+      "netCentsSigned": 300000,
+      "currency": "USD",
+      "referenceType": "MILESTONE_FUNDING",
+      "referenceId": "collab_escrow_collab-1788852270845",
+      "description": "Escrow pre-funded holding for deliverable collab_escrow_collab-1788852270845",
+      "createdAt": "2026-09-08T07:31:10.269Z"
+    },
+    {
+      "id": "led_1788852671019_1",
+      "transactionId": "tx_disburse_1788852671019_e7vxe",
+      "account": "ESCROW_HOLDING",
+      "entityId": "collab-1",
+      "type": "DEBIT",
+      "amountCents": 250000,
+      "netCentsSigned": -250000,
+      "currency": "USD",
+      "referenceType": "ESCROW_RELEASE",
+      "referenceId": "collab-del-1",
+      "description": "Release escrow holding for approved milestone collab-del-1",
+      "createdAt": "2026-09-08T07:31:11.019Z"
+    },
+    {
+      "id": "led_1788852671019_2",
+      "transactionId": "tx_disburse_1788852671019_e7vxe",
+      "account": "CREATOR_WALLET",
+      "entityId": "creator-demo",
+      "type": "CREDIT",
+      "amountCents": 225000,
+      "netCentsSigned": 225000,
+      "currency": "USD",
+      "referenceType": "ESCROW_RELEASE",
+      "referenceId": "collab-del-1",
+      "description": "Net earnings credit for milestone collab-del-1",
+      "createdAt": "2026-09-08T07:31:11.019Z"
+    },
+    {
+      "id": "led_1788852671019_3",
+      "transactionId": "tx_disburse_1788852671019_e7vxe",
+      "account": "PLATFORM_REVENUE",
+      "entityId": "platform",
+      "type": "CREDIT",
+      "amountCents": 25000,
+      "netCentsSigned": 25000,
+      "currency": "USD",
+      "referenceType": "ESCROW_RELEASE",
+      "referenceId": "collab-del-1",
+      "description": "10% platform agency fee on milestone collab-del-1",
+      "createdAt": "2026-09-08T07:31:11.019Z"
+    },
+    {
+      "id": "led_1788855185348_1",
+      "transactionId": "tx_fund_1788855185348_y9c40",
+      "account": "BRAND_CASH",
+      "entityId": "brand-demo",
+      "type": "DEBIT",
+      "amountCents": 220000,
+      "netCentsSigned": -220000,
+      "currency": "USD",
+      "referenceType": "MILESTONE_FUNDING",
+      "referenceId": "collab_escrow_collab-unfunded",
+      "description": "Milestone pre-funding deposit for deliverable collab_escrow_collab-unfunded",
+      "createdAt": "2026-09-08T08:13:05.348Z"
+    },
+    {
+      "id": "led_1788855185348_2",
+      "transactionId": "tx_fund_1788855185348_y9c40",
+      "account": "ESCROW_HOLDING",
+      "entityId": "collab-unfunded",
+      "type": "CREDIT",
+      "amountCents": 220000,
+      "netCentsSigned": 220000,
+      "currency": "USD",
+      "referenceType": "MILESTONE_FUNDING",
+      "referenceId": "collab_escrow_collab-unfunded",
+      "description": "Escrow pre-funded holding for deliverable collab_escrow_collab-unfunded",
+      "createdAt": "2026-09-08T08:13:05.348Z"
+    },
+    {
+      "id": "led_1788855186140_1",
+      "transactionId": "tx_disburse_1788855186140_bi19t",
+      "account": "ESCROW_HOLDING",
+      "entityId": "collab-1788852270845",
+      "type": "DEBIT",
+      "amountCents": 300000,
+      "netCentsSigned": -300000,
+      "currency": "USD",
+      "referenceType": "ESCROW_RELEASE",
+      "referenceId": "deliv-1788852270845-0",
+      "description": "Release escrow holding for approved milestone deliv-1788852270845-0",
+      "createdAt": "2026-09-08T08:13:06.140Z"
+    },
+    {
+      "id": "led_1788855186140_2",
+      "transactionId": "tx_disburse_1788855186140_bi19t",
+      "account": "CREATOR_WALLET",
+      "entityId": "creator-demo",
+      "type": "CREDIT",
+      "amountCents": 270000,
+      "netCentsSigned": 270000,
+      "currency": "USD",
+      "referenceType": "ESCROW_RELEASE",
+      "referenceId": "deliv-1788852270845-0",
+      "description": "Net earnings credit for milestone deliv-1788852270845-0",
+      "createdAt": "2026-09-08T08:13:06.140Z"
+    },
+    {
+      "id": "led_1788855186140_3",
+      "transactionId": "tx_disburse_1788855186140_bi19t",
+      "account": "PLATFORM_REVENUE",
+      "entityId": "platform",
+      "type": "CREDIT",
+      "amountCents": 30000,
+      "netCentsSigned": 30000,
+      "currency": "USD",
+      "referenceType": "ESCROW_RELEASE",
+      "referenceId": "deliv-1788852270845-0",
+      "description": "10% platform agency fee on milestone deliv-1788852270845-0",
+      "createdAt": "2026-09-08T08:13:06.140Z"
+    },
+    {
+      "id": "led_1788855594971_1",
+      "transactionId": "tx_fund_1788855594971_8hiy5",
+      "account": "BRAND_CASH",
+      "entityId": "brand-demo",
+      "type": "DEBIT",
+      "amountCents": 300000,
+      "netCentsSigned": -300000,
+      "currency": "USD",
+      "referenceType": "MILESTONE_FUNDING",
+      "referenceId": "collab_escrow_collab-1788855590656",
+      "description": "Milestone pre-funding deposit for deliverable collab_escrow_collab-1788855590656",
+      "createdAt": "2026-09-08T08:19:54.971Z"
+    },
+    {
+      "id": "led_1788855594971_2",
+      "transactionId": "tx_fund_1788855594971_8hiy5",
+      "account": "ESCROW_HOLDING",
+      "entityId": "collab-1788855590656",
+      "type": "CREDIT",
+      "amountCents": 300000,
+      "netCentsSigned": 300000,
+      "currency": "USD",
+      "referenceType": "MILESTONE_FUNDING",
+      "referenceId": "collab_escrow_collab-1788855590656",
+      "description": "Escrow pre-funded holding for deliverable collab_escrow_collab-1788855590656",
+      "createdAt": "2026-09-08T08:19:54.971Z"
+    },
+    {
+      "id": "led_1788855595713_1",
+      "transactionId": "tx_disburse_1788855595713_zhnpo",
+      "account": "ESCROW_HOLDING",
+      "entityId": "collab-1",
+      "type": "DEBIT",
+      "amountCents": 100000,
+      "netCentsSigned": -100000,
+      "currency": "USD",
+      "referenceType": "ESCROW_RELEASE",
+      "referenceId": "collab-del-2",
+      "description": "Release escrow holding for approved milestone collab-del-2",
+      "createdAt": "2026-09-08T08:19:55.713Z"
+    },
+    {
+      "id": "led_1788855595713_2",
+      "transactionId": "tx_disburse_1788855595713_zhnpo",
+      "account": "CREATOR_WALLET",
+      "entityId": "creator-demo",
+      "type": "CREDIT",
+      "amountCents": 90000,
+      "netCentsSigned": 90000,
+      "currency": "USD",
+      "referenceType": "ESCROW_RELEASE",
+      "referenceId": "collab-del-2",
+      "description": "Net earnings credit for milestone collab-del-2",
+      "createdAt": "2026-09-08T08:19:55.713Z"
+    },
+    {
+      "id": "led_1788855595713_3",
+      "transactionId": "tx_disburse_1788855595713_zhnpo",
+      "account": "PLATFORM_REVENUE",
+      "entityId": "platform",
+      "type": "CREDIT",
+      "amountCents": 10000,
+      "netCentsSigned": 10000,
+      "currency": "USD",
+      "referenceType": "ESCROW_RELEASE",
+      "referenceId": "collab-del-2",
+      "description": "10% platform agency fee on milestone collab-del-2",
+      "createdAt": "2026-09-08T08:19:55.713Z"
+    }
+  ],
   "reliabilityScores": [],
   "_lastVerifiedAt": "2026-09-06T00:29:36.976Z",
   "platformMetrics": [

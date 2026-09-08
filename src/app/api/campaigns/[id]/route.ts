@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { campaignRepo } from "@/server/repositories/campaign.repo";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
   try {
     const campaign = campaignRepo.getById(params.id);

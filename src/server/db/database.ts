@@ -12,6 +12,7 @@ const BUNDLED_DB_FILE = path.join(process.cwd(), "data", "valence_db.json");
 
 class DatabaseClient {
   private state: DatabaseState | null = null;
+  private lastLoadedMtime = 0;
 
   constructor() {
     this.ensureInitialized();
@@ -31,6 +32,7 @@ class DatabaseClient {
       if (fs.existsSync(DB_FILE)) {
         try {
           rawState = JSON.parse(fs.readFileSync(DB_FILE, "utf-8"));
+          this.lastLoadedMtime = fs.statSync(DB_FILE).mtimeMs;
         } catch {
           rawState = null;
         }
@@ -139,6 +141,11 @@ class DatabaseClient {
         }
       }
       fs.writeFileSync(DB_FILE, JSON.stringify(this.state, null, 2), "utf-8");
+      try {
+        this.lastLoadedMtime = fs.statSync(DB_FILE).mtimeMs;
+      } catch {
+        // Ignore
+      }
     } catch (err) {
       // In serverless environments where local filesystem might be read-only or ephemeral,
       // fail gracefully and keep in-memory state active.
@@ -149,6 +156,20 @@ class DatabaseClient {
   public getState(): DatabaseState {
     if (!this.state) {
       this.ensureInitialized();
+    } else if (fs.existsSync(DB_FILE)) {
+      try {
+        const stats = fs.statSync(DB_FILE);
+        if (stats.mtimeMs > this.lastLoadedMtime) {
+          const raw = fs.readFileSync(DB_FILE, "utf-8");
+          const parsed = JSON.parse(raw);
+          if (parsed && typeof parsed === "object") {
+            this.state = parsed;
+            this.lastLoadedMtime = stats.mtimeMs;
+          }
+        }
+      } catch {
+        // Keep in-memory
+      }
     }
     return this.state!;
   }
@@ -161,5 +182,7 @@ class DatabaseClient {
   }
 }
 
-// Global singleton instance
-export const db = new DatabaseClient();
+// Global singleton instance across module reloads and serverless lambdas
+const globalForDb = globalThis as unknown as { __valence_db_instance?: DatabaseClient };
+export const db = globalForDb.__valence_db_instance ?? new DatabaseClient();
+globalForDb.__valence_db_instance = db;
