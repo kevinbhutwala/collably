@@ -58,7 +58,9 @@ test.describe("Admin Command Center, Settings & Subscriptions", () => {
   test("Super Admin navigates Admin Command Center tabs", async ({ page }) => {
     // ── 1. LOG IN AS SUPER ADMIN ──
     await page.goto(`${BASE_URL}/login`, { waitUntil: "networkidle" });
-    await page.locator('input[type="email"], input[name="email"]').fill("kevinbhutwala417@gmail.com");
+    const emailInput = page.locator('input[type="email"], input[name="email"]');
+    await expect(emailInput).toBeVisible({ timeout: 20_000 });
+    await emailInput.fill("kevinbhutwala417@gmail.com");
     await page.locator('input[type="password"], input[name="password"]').fill("admin123");
     await page.locator('button[type="submit"]').first().click();
     await page.waitForURL((url) => !url.pathname.includes("/login"), { timeout: 15_000 });
