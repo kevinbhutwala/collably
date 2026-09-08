@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { Collaboration, CollaborationDeliverableItem, PlatformType } from "@/core/types";
 import { Modal } from "@/components/ui/Modal";
 import { Input, Textarea } from "@/components/ui/Input";
@@ -27,6 +28,9 @@ import {
   AlertTriangle,
   UploadCloud,
   ArrowRight,
+  Building2,
+  Users,
+  MessageSquare,
 } from "lucide-react";
 
 export function DeliverablesPipeline({ collaboration: initialCollab }: { collaboration: Collaboration }) {
@@ -437,13 +441,13 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
             </div>
             <div className="space-y-1">
               <h4 className="font-bold text-sm text-amber-950 flex items-center gap-2">
-                <span>Escrow Vault Funding Pending</span>
-                <span className="px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-900 text-[10px] font-mono font-bold">48h SLA Active</span>
+                <span>Deposit Required to Start</span>
+                <span className="px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-900 text-[10px] font-mono font-bold">Safe Escrow</span>
               </h4>
               <p className="text-xs text-amber-900/80 leading-relaxed max-w-2xl">
                 {role === "creator"
-                  ? "Brand has not yet deposited funds into the platform escrow vault. Creator production and submission controls are locked to protect you from unpaid work."
-                  : "Creators cannot begin production until the escrow vault is funded upfront. Funds are held safely by the platform and only released upon your deliverable approval."}
+                  ? "The brand needs to deposit project funds into the secure vault before you begin work, guaranteeing you will be paid."
+                  : "Please deposit the project budget into the secure vault so the creator can begin work. Funds are held safely and only released when you approve the content."}
               </p>
             </div>
           </div>
@@ -478,12 +482,11 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
             </div>
             <div className="space-y-1">
               <h4 className="font-bold text-sm text-red-950 flex items-center gap-2">
-                <span>Deliverable Deadline Breached</span>
-                <span className="px-2 py-0.5 rounded-md bg-red-500/20 text-red-900 text-[10px] font-mono font-bold">Overdue Penalty Active</span>
+                <span>Past Due Date</span>
+                <span className="px-2 py-0.5 rounded-md bg-red-500/20 text-red-900 text-[10px] font-mono font-bold">Action Needed</span>
               </h4>
               <p className="text-xs text-red-900/80 leading-relaxed max-w-2xl">
-                The agreed submission deadline and grace period have expired without content submission.
-                Brand is entitled to cancel with a 100% full refund or open formal arbitration.
+                The agreed submission deadline has passed. Please contact your partner in chat or submit your draft deliverable as soon as possible.
               </p>
             </div>
           </div>
@@ -509,11 +512,11 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
           </div>
           <div className="space-y-1 flex-1">
             <h4 className="font-bold text-sm text-blue-950 flex items-center gap-2">
-              <span>Arbitration Active — Escrow Vault Frozen</span>
-              <span className="px-2 py-0.5 rounded-md bg-blue-500/20 text-blue-900 text-[10px] font-mono font-bold">Under Administrative Review</span>
+              <span>Support Review in Progress</span>
+              <span className="px-2 py-0.5 rounded-md bg-blue-500/20 text-blue-900 text-[10px] font-mono font-bold">Protected</span>
             </h4>
             <p className="text-xs text-blue-900/80 leading-relaxed">
-              Automated timers are halted. An AbeyCollab arbitration officer is reviewing submitted evidence to issue a binding financial settlement.
+              Our support arbitration team is reviewing project communications and files to ensure a fair resolution for both parties.
             </p>
           </div>
         </div>
@@ -524,9 +527,9 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
         <div className="p-4 sm:p-5 rounded-2xl bg-black/5 border border-black/10 flex items-center gap-3">
           <XCircle className="w-5 h-5 text-[#8A8A9A] shrink-0" />
           <div className="space-y-0.5 flex-1">
-            <h4 className="font-bold text-sm text-[#0A0A0E]">Collaboration Cancelled</h4>
+            <h4 className="font-bold text-sm text-[#0A0A0E]">Project Cancelled</h4>
             <p className="text-xs text-[#6A6A78]">
-              {collab.cancellationDetails?.reason || "This collaboration was cancelled under platform terms."}
+              {collab.cancellationDetails?.reason || "This project was cancelled under platform terms."}
             </p>
           </div>
         </div>
@@ -534,10 +537,10 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
 
       {/* Top Header Card */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-black/8">
-        <div className="space-y-1">
+        <div className="space-y-1.5">
           <div className="flex items-center gap-2">
             <span className="text-xs font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#0A0A0E]" /> Protected Escrow Workspace
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" /> Protected Project Workspace
             </span>
             <span className="text-[#8A8A9A]">•</span>
             <span className="text-xs font-mono text-[#6A6A78]">ID: {collab.id}</span>
@@ -545,9 +548,34 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
           <h2 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
             {collab.campaignTitle}
           </h2>
-          <p className="text-xs text-[#6A6A78] font-mono">
-            Partner: <strong className="text-[#0A0A0E] font-sans">{collab.creator.fullName}</strong> (@{collab.creator.handle})
-          </p>
+          <div className="flex flex-wrap items-center gap-2 pt-0.5">
+            <span className="text-xs text-[#6A6A78] font-mono">Partner:</span>
+            {role === "creator" ? (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#F4F4F8] border border-black/5 text-xs text-[#0A0A0E] font-bold">
+                <Building2 className="w-3.5 h-3.5 text-[#8A8A9A]" />
+                <span>{collab.brand?.companyName || "Brand Partner"}</span>
+                {collab.brand?.industry && (
+                  <span className="text-[10px] font-mono text-[#7A7A8A] font-normal">• {collab.brand.industry}</span>
+                )}
+              </span>
+            ) : (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#F4F4F8] border border-black/5 text-xs text-[#0A0A0E] font-bold">
+                <Users className="w-3.5 h-3.5 text-[#8A8A9A]" />
+                <span>{collab.creator?.fullName || "Creator Partner"}</span>
+                {collab.creator?.handle && (
+                  <span className="text-[10px] font-mono text-[#7A7A8A] font-normal">(@{collab.creator.handle})</span>
+                )}
+              </span>
+            )}
+
+            <Link
+              href="/app/messages"
+              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white hover:bg-[#F8F8FC] border border-black/8 text-[11px] font-bold text-[#0A0A0E] transition-colors shadow-2xs"
+            >
+              <MessageSquare className="w-3 h-3 text-[#7A7A8A]" />
+              <span>Message</span>
+            </Link>
+          </div>
         </div>
 
         <div className="flex items-center gap-4 font-mono">
@@ -733,7 +761,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
                     {isApproved && (
                       <div className="flex items-center gap-1.5 text-xs text-[#0A0A0E] font-mono font-bold bg-emerald-50 border border-emerald-200 px-3.5 py-1.5 rounded-full">
                         <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                        <span>Tranche Released</span>
+                        <span>Payment Released • Tranche Released</span>
                       </div>
                     )}
                   </div>
