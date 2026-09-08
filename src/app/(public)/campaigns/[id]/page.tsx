@@ -46,9 +46,20 @@ export default function CampaignDetailPage() {
   useEffect(() => {
     const fetch = async () => {
       setLoading(true);
-      const data = await campaignService.getCampaignById(campaignId);
+      let data = await campaignService.getCampaignById(campaignId);
+      if (!data && typeof window !== "undefined") {
+        try {
+          const cached = localStorage.getItem(`campaign_${campaignId}`) || localStorage.getItem("last_created_campaign");
+          if (cached) {
+            const parsed = JSON.parse(cached);
+            if (parsed.id === campaignId || !data) {
+              data = parsed;
+            }
+          }
+        } catch {}
+      }
       setCampaign(data || null);
-      if (data) setProposedFee(data.budget.perCreatorBudget);
+      if (data) setProposedFee(data.budget?.perCreatorBudget || 2500);
       setLoading(false);
     };
     fetch();
@@ -60,13 +71,33 @@ export default function CampaignDetailPage() {
     setIsSubmitting(true);
 
     try {
-      await applicationService.applyToCampaign({
+      const appPayload = {
         campaignId: campaign.id,
+        campaignTitle: campaign.title,
+        brandId: campaign.brandId || "brand-1",
+        brandName: campaign.brand?.companyName || "Linear Dynamics",
         creatorId: currentCreator?.id || "creator-1",
         proposedFee,
         pitch,
         portfolioSamples: [sampleLink],
-      });
+      };
+
+      const newApp = await applicationService.applyToCampaign(appPayload);
+
+      if (typeof window !== "undefined") {
+        try {
+          const existingRaw = localStorage.getItem("valence_client_applications");
+          const existing = existingRaw ? JSON.parse(existingRaw) : [];
+          const savedApp = newApp || {
+            id: `app-${Date.now()}`,
+            ...appPayload,
+            status: "pending",
+            createdAt: new Date().toISOString(),
+          };
+          existing.unshift(savedApp);
+          localStorage.setItem("valence_client_applications", JSON.stringify(existing));
+        } catch {}
+      }
 
       setIsApplyModalOpen(false);
       addToast({

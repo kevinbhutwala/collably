@@ -149,6 +149,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
         notes: notes.trim(),
         mediaUrls: [assetUrl.trim()],
         creatorNotes: notes.trim(),
+        allowResubmit: true,
       });
 
       setDeliverables((prev) =>

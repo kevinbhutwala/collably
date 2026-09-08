@@ -7,6 +7,9 @@ import { z } from "zod";
 
 const applySchema = z.object({
   campaignId: z.string().min(1),
+  campaignTitle: z.string().optional(),
+  brandId: z.string().optional(),
+  brandName: z.string().optional(),
   pitch: z.string().min(5),
   proposedFee: z.number().positive(),
   sampleLinks: z.array(z.string()).optional(),

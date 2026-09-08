@@ -185,6 +185,13 @@ export function CampaignWizard() {
         message: "Escrow deposit pre-authorized. Creators can now apply.",
       });
 
+      if (typeof window !== "undefined" && created) {
+        try {
+          localStorage.setItem(`campaign_${created.id}`, JSON.stringify(created));
+          localStorage.setItem("last_created_campaign", JSON.stringify(created));
+        } catch {}
+      }
+
       router.push(`/campaigns/${created.id}`);
     } catch (err: any) {
       addToast({

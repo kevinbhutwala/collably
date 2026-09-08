@@ -35,6 +35,7 @@ class CollaborationService {
       mediaUrls?: string[];
       captionText?: string;
       creatorNotes?: string;
+      allowResubmit?: boolean;
     }
   ): Promise<CollaborationDeliverableItem | null> {
     const assetUrl = data.assetUrl || data.mediaUrls?.[0] || "";
@@ -46,6 +47,7 @@ class CollaborationService {
       body: JSON.stringify({
         assetUrl,
         notes,
+        allowResubmit: data.allowResubmit ?? true,
       }),
     });
     if (!res.ok) {

@@ -13,6 +13,7 @@ const deliverableSubmissionSchema = z.object({
       message: "assetUrl must start with https://",
     }),
   notes: z.string().optional(),
+  allowResubmit: z.boolean().optional(),
 });
 
 export async function POST(

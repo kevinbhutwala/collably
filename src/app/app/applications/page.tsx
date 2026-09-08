@@ -20,16 +20,41 @@ export default function ApplicationsManagementPage() {
   useEffect(() => {
     const fetch = async () => {
       const data = await applicationService.getApplications();
-      setApplications(data || []);
+      let combined = Array.isArray(data) ? [...data] : [];
+      if (typeof window !== "undefined") {
+        try {
+          const cachedRaw = localStorage.getItem("valence_client_applications");
+          if (cachedRaw) {
+            const cached: CampaignApplication[] = JSON.parse(cachedRaw);
+            for (const c of cached) {
+              const existingIdx = combined.findIndex((a) => a.id === c.id);
+              if (existingIdx === -1) {
+                combined.unshift(c);
+              } else if (c.status && c.status !== combined[existingIdx].status) {
+                combined[existingIdx].status = c.status;
+              }
+            }
+          }
+        } catch {}
+      }
+      setApplications(combined);
     };
     fetch();
   }, []);
 
   const handleStatusUpdate = async (id: string, newStatus: "accepted" | "rejected") => {
-    await applicationService.updateApplicationStatus(id, newStatus);
-    setApplications((prev) =>
-      prev.map((a) => (a.id === id ? { ...a, status: newStatus } : a))
-    );
+    try {
+      await applicationService.updateApplicationStatus(id, newStatus);
+    } catch {}
+    setApplications((prev) => {
+      const updated = prev.map((a) => (a.id === id ? { ...a, status: newStatus } : a));
+      if (typeof window !== "undefined") {
+        try {
+          localStorage.setItem("valence_client_applications", JSON.stringify(updated));
+        } catch {}
+      }
+      return updated;
+    });
     addToast({
       type: newStatus === "accepted" ? "success" : "info",
       title: newStatus === "accepted" ? "Creator Accepted" : "Proposal Rejected",

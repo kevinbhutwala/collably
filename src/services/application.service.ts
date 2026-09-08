@@ -16,6 +16,9 @@ class ApplicationService {
 
   async applyToCampaign(data: {
     campaignId: string;
+    campaignTitle?: string;
+    brandId?: string;
+    brandName?: string;
     creatorId: string;
     proposedFee: number;
     pitch: string;
@@ -26,6 +29,9 @@ class ApplicationService {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         campaignId: data.campaignId,
+        campaignTitle: data.campaignTitle,
+        brandId: data.brandId,
+        brandName: data.brandName,
         creatorId: data.creatorId,
         proposedFee: data.proposedFee,
         pitch: data.pitch,
