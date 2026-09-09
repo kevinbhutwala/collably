@@ -18,7 +18,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="block text-xs font-bold text-[#27272F] tracking-tight"
+            className="block text-xs font-bold text-[#27272F] dark:text-[#EAEAEF] tracking-tight"
           >
             {label}
           </label>
@@ -26,7 +26,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
         <div className="relative rounded-2xl">
           {icon && (
-            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#7A7A8A]">
+            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#7A7A8A] dark:text-[#8E8EA0]">
               {icon}
             </div>
           )}
@@ -36,12 +36,12 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             type={type}
             ref={ref}
             className={cn(
-              "w-full rounded-xl bg-[#FAFAFC] border border-black/10 px-3.5 py-3 text-sm text-[#0A0A0E] placeholder:text-[#9292A0] transition-[background-color,border-color,box-shadow] duration-200",
-              "focus:outline-none focus:border-[#D7A900] focus:ring-4 focus:ring-[#FFD21F]/20 focus:bg-white shadow-[0_1px_2px_rgba(10,10,14,0.03)]",
+              "w-full rounded-xl bg-[#FAFAFC] dark:bg-[#161622] border border-black/10 dark:border-white/12 px-3.5 py-3 text-sm text-[#0A0A0E] dark:text-white placeholder:text-[#9292A0] dark:placeholder:text-[#6A6A7A] transition-[background-color,border-color,box-shadow] duration-200",
+              "focus:outline-none focus:border-[#D7A900] focus:ring-4 focus:ring-[#FFD21F]/20 focus:bg-white dark:focus:bg-[#1A1A28] shadow-[0_1px_2px_rgba(10,10,14,0.03)]",
               "disabled:opacity-50 disabled:cursor-not-allowed",
               icon ? "pl-10" : "",
               rightElement ? "pr-10" : "",
-              error ? "border-red-500 focus:border-red-500 focus:ring-red-500/20 bg-red-50/30" : "",
+              error ? "border-red-500 focus:border-red-500 focus:ring-red-500/20 bg-red-50/30 dark:bg-red-900/20" : "",
               className
             )}
             {...props}
@@ -54,8 +54,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           )}
         </div>
 
-        {error && <p className="text-[11px] font-semibold text-red-600">{error}</p>}
-        {hint && !error && <p className="text-[11px] text-[#6A6A78]">{hint}</p>}
+        {error && <p className="text-[11px] font-semibold text-red-600 dark:text-red-400">{error}</p>}
+        {hint && !error && <p className="text-[11px] text-[#6A6A78] dark:text-[#9A9AA8]">{hint}</p>}
       </div>
     );
   }
@@ -77,7 +77,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         {label && (
           <label
             htmlFor={textareaId}
-            className="block text-xs font-bold text-[#27272F] tracking-tight"
+            className="block text-xs font-bold text-[#27272F] dark:text-[#EAEAEF] tracking-tight"
           >
             {label}
           </label>
@@ -87,17 +87,17 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           id={textareaId}
           ref={ref}
           className={cn(
-            "w-full rounded-xl bg-[#FAFAFC] border border-black/10 px-3.5 py-3 text-sm text-[#0A0A0E] placeholder:text-[#9292A0] transition-[background-color,border-color,box-shadow] duration-200",
-            "focus:outline-none focus:border-[#D7A900] focus:ring-4 focus:ring-[#FFD21F]/20 focus:bg-white shadow-[0_1px_2px_rgba(10,10,14,0.03)]",
+            "w-full rounded-xl bg-[#FAFAFC] dark:bg-[#161622] border border-black/10 dark:border-white/12 px-3.5 py-3 text-sm text-[#0A0A0E] dark:text-white placeholder:text-[#9292A0] dark:placeholder:text-[#6A6A7A] transition-[background-color,border-color,box-shadow] duration-200",
+            "focus:outline-none focus:border-[#D7A900] focus:ring-4 focus:ring-[#FFD21F]/20 focus:bg-white dark:focus:bg-[#1A1A28] shadow-[0_1px_2px_rgba(10,10,14,0.03)]",
             "disabled:opacity-50 disabled:cursor-not-allowed resize-y",
-            error ? "border-red-500 focus:border-red-500 focus:ring-red-500/20 bg-red-50/30" : "",
+            error ? "border-red-500 focus:border-red-500 focus:ring-red-500/20 bg-red-50/30 dark:bg-red-900/20" : "",
             className
           )}
           {...props}
         />
 
-        {error && <p className="text-[11px] font-semibold text-red-600">{error}</p>}
-        {hint && !error && <p className="text-[11px] text-[#6A6A78]">{hint}</p>}
+        {error && <p className="text-[11px] font-semibold text-red-600 dark:text-red-400">{error}</p>}
+        {hint && !error && <p className="text-[11px] text-[#6A6A78] dark:text-[#9A9AA8]">{hint}</p>}
       </div>
     );
   }

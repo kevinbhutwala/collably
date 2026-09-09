@@ -3,7 +3,7 @@ import { FeatureFlagConfig } from "../core/types";
 class FeatureFlagService {
   private flags: FeatureFlagConfig = {
     ai_matching: true,
-    ai_assistant: true,
+    ai_assistant: false, // Disabled for Phase 1, reserved for Phase 2
     payments_escrow: true,
     creator_verification: true,
     timecoded_video_review: true,

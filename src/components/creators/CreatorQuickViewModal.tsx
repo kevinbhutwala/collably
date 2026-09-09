@@ -135,25 +135,25 @@ export function CreatorQuickViewModal({
         </div>
 
         {/* Right: Telemetry, Rate Cards & Direct Booking Action */}
-        <div className="md:w-7/12 p-6 sm:p-8 space-y-6 bg-white flex flex-col justify-between">
+        <div className="md:w-7/12 p-6 sm:p-8 space-y-6 bg-white dark:bg-[#101018] flex flex-col justify-between">
           <div className="space-y-6">
             {/* Telemetry Strip */}
-            <div className="grid grid-cols-3 gap-3 p-3.5 rounded-2xl bg-[#F8F8FC] border border-black/6 text-left font-mono">
+            <div className="grid grid-cols-3 gap-3 p-3.5 rounded-2xl bg-[#F8F8FC] dark:bg-white/5 border border-black/6 dark:border-white/10 text-left font-mono">
               <div>
-                <span className="text-[10px] text-[#7A7A8A] uppercase font-bold block">Verified Reach</span>
-                <span className="text-base sm:text-lg font-black text-[#0A0A0E] font-display">
+                <span className="text-[10px] text-[#7A7A8A] dark:text-[#A0A0B4] uppercase font-bold block">Verified Reach</span>
+                <span className="text-base sm:text-lg font-black text-[#0A0A0E] dark:text-white font-display">
                   {creator.reach}
                 </span>
               </div>
               <div>
-                <span className="text-[10px] text-[#7A7A8A] uppercase font-bold block">Engagement</span>
-                <span className="text-base sm:text-lg font-black text-emerald-600 font-display">
+                <span className="text-[10px] text-[#7A7A8A] dark:text-[#A0A0B4] uppercase font-bold block">Engagement</span>
+                <span className="text-base sm:text-lg font-black text-emerald-600 dark:text-emerald-400 font-display">
                   {typeof creator.engagementRate === "number" ? `${creator.engagementRate}%` : creator.engagementRate}
                 </span>
               </div>
               <div>
-                <span className="text-[10px] text-[#7A7A8A] uppercase font-bold block">Starting Rate</span>
-                <span className="text-base sm:text-lg font-black text-[#0A0A0E] font-display">
+                <span className="text-[10px] text-[#7A7A8A] dark:text-[#A0A0B4] uppercase font-bold block">Starting Rate</span>
+                <span className="text-base sm:text-lg font-black text-[#0A0A0E] dark:text-white font-display">
                   {typeof creator.startingPrice === "number" ? format(creator.startingPrice, creator.currency || "USD") : creator.startingPrice}
                 </span>
               </div>
@@ -161,10 +161,10 @@ export function CreatorQuickViewModal({
 
             {/* Bio / Summary */}
             <div className="space-y-1.5">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-[#7A7A8A] font-mono">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#7A7A8A] dark:text-[#A0A0B4] font-mono">
                 Creator Overview &amp; Niche
               </h4>
-              <p className="text-xs sm:text-sm text-[#4A4A58] leading-relaxed font-sans">
+              <p className="text-xs sm:text-sm text-[#4A4A58] dark:text-[#C0C0D0] leading-relaxed font-sans">
                 {creator.bio ||
                   `Specialized in ${creator.niche}. Delivering studio-grade 4K cinematic integrations, authentic product storytelling, and high-converting commercial rights.`}
               </p>
@@ -172,15 +172,15 @@ export function CreatorQuickViewModal({
 
             {/* Production Deliverables Reel */}
             <div className="space-y-2">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-[#7A7A8A] font-mono flex items-center justify-between">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#7A7A8A] dark:text-[#A0A0B4] font-mono flex items-center justify-between">
                 <span>Verified Deliverable Cuts</span>
-                <span className="text-[10px] text-[#087F5B] font-bold">100% Escrow Protected</span>
+                <span className="text-[10px] text-[#087F5B] dark:text-emerald-400 font-bold">100% Escrow Protected</span>
               </h4>
               <div className="grid grid-cols-2 gap-2.5">
                 {deliverables.map((item, idx) => (
                   <div
                     key={idx}
-                    className="p-2.5 rounded-xl bg-[#FAF9F5] border border-black/8 hover:border-[#FFD21F] transition-all space-y-1 group cursor-pointer"
+                    className="p-2.5 rounded-xl bg-[#FAF9F5] dark:bg-white/5 border border-black/8 dark:border-white/10 hover:border-[#FFD21F] transition-all space-y-1 group cursor-pointer"
                   >
                     <div className="relative aspect-video rounded-lg overflow-hidden bg-black">
                       <SafeImage
@@ -194,8 +194,8 @@ export function CreatorQuickViewModal({
                         <Play className="w-4 h-4 text-white fill-white opacity-80" />
                       </div>
                     </div>
-                    <p className="text-[11px] font-bold text-[#0A0A0E] truncate font-display">{item.title}</p>
-                    <p className="text-[9px] text-[#6A6A78] font-mono truncate">{item.specs}</p>
+                    <p className="text-[11px] font-bold text-[#0A0A0E] dark:text-white truncate font-display">{item.title}</p>
+                    <p className="text-[9px] text-[#6A6A78] dark:text-[#A0A0B0] font-mono truncate">{item.specs}</p>
                   </div>
                 ))}
               </div>
@@ -207,7 +207,7 @@ export function CreatorQuickViewModal({
                 {creator.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-2.5 py-1 rounded-full bg-[#F4F4F8] border border-black/6 text-[10px] font-mono font-medium text-[#4A4A58]"
+                    className="px-2.5 py-1 rounded-full bg-[#F4F4F8] dark:bg-white/10 border border-black/6 dark:border-white/10 text-[10px] font-mono font-medium text-[#4A4A58] dark:text-[#D0D0E0]"
                   >
                     {tag}
                   </span>
@@ -217,14 +217,14 @@ export function CreatorQuickViewModal({
           </div>
 
           {/* Action CTAs */}
-          <div className="pt-4 border-t border-black/8 flex flex-col sm:flex-row items-center gap-3">
+          <div className="pt-4 border-t border-black/8 dark:border-white/10 flex flex-col sm:flex-row items-center gap-3">
             <Link
               href={`/creators/${creator.id}`}
               onClick={onClose}
-              className="w-full sm:w-1/2 py-3 rounded-full bg-white hover:bg-[#F8F8FC] border border-black/10 text-[#0A0A0E] font-bold text-xs transition-all text-center flex items-center justify-center gap-1.5 shadow-xs hover-lift"
+              className="w-full sm:w-1/2 py-3 rounded-full bg-white dark:bg-white/5 hover:bg-[#F8F8FC] dark:hover:bg-white/10 border border-black/10 dark:border-white/15 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all text-center flex items-center justify-center gap-1.5 shadow-xs hover-lift"
             >
               <span>Full Media Kit</span>
-              <ExternalLink className="w-3.5 h-3.5 text-[#7A7A8A]" />
+              <ExternalLink className="w-3.5 h-3.5 text-[#7A7A8A] dark:text-[#A0A0B0]" />
             </Link>
 
             <Link

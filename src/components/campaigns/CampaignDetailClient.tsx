@@ -328,19 +328,7 @@ export function CampaignDetailClient({
         description={`Pitch your angle to ${campaign.brand.companyName}`}
         maxWidth="xl"
       >
-        <form onSubmit={handleApply} className="space-y-4 text-[#0A0A0E]">
-          <div className="flex justify-between items-center p-3 rounded-2xl bg-[#F8F8FC] border border-black/5 text-xs">
-            <span className="text-[#6A6A78] font-sans">Need inspiration for your pitch?</span>
-            <button
-              type="button"
-              onClick={() => setIsAiPitchOpen(true)}
-              className="px-3 py-1.5 rounded-full bg-white border border-black/10 text-xs font-bold text-[#0A0A0E] hover:bg-black/5 flex items-center gap-1.5 shadow-xs"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
-              <span>AI Pitch Assistant</span>
-            </button>
-          </div>
-
+        <form onSubmit={handleApply} className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
           <div>
             <Input
               label={`Proposed Fee (${getCurrencySymbol(campaign.budget?.currency || "USD")} ${campaign.budget?.currency || "USD"})`}
@@ -350,7 +338,7 @@ export function CampaignDetailClient({
               required
             />
             {campaign.budget?.currency && campaign.budget.currency.toUpperCase() !== displayCurrency.toUpperCase() && proposedFee > 0 && (
-              <p className="text-[11px] text-[#7A7A8A] font-mono mt-1">
+              <p className="text-[11px] text-[#7A7A8A] dark:text-[#A0A0B4] font-mono mt-1">
                 Display equivalent: {convertAndFormat(proposedFee, campaign.budget.currency)}
               </p>
             )}
@@ -376,22 +364,13 @@ export function CampaignDetailClient({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all shadow-[0_4px_14px_rgba(255,210,31,0.4)] border border-black/10"
+              className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all shadow-[0_4px_14px_rgba(255,210,31,0.4)] border border-black/10 active:scale-98"
             >
               {isSubmitting ? "Submitting..." : "Submit Application"}
             </button>
           </div>
         </form>
       </Modal>
-
-      {/* AI Pitch Assistant Modal */}
-      <AICreatorPitchModal
-        isOpen={isAiPitchOpen}
-        onClose={() => setIsAiPitchOpen(false)}
-        campaignTitle={campaign.title}
-        brandName={campaign.brand.companyName}
-        onApplyPitch={(pitchText) => setPitch(pitchText)}
-      />
     </div>
   );
 }

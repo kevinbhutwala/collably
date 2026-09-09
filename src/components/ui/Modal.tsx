@@ -59,7 +59,7 @@ export function Modal({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
             onClick={onClose}
-            className="fixed inset-0 bg-[#111111]/40 backdrop-blur-xs will-change-[opacity]"
+            className="fixed inset-0 bg-[#0A0A0E]/60 dark:bg-black/80 backdrop-blur-xs will-change-[opacity]"
           />
 
           {/* Modal Card */}
@@ -71,27 +71,27 @@ export function Modal({
             role="dialog"
             aria-modal="true"
             className={cn(
-              "relative w-full z-10 bg-[#FFFFFF] border border-[#E7E7E4] rounded-2xl shadow-editorial-lg overflow-hidden my-auto text-[#111111] will-change-[transform,opacity]",
+              "relative w-full z-10 bg-[#FFFFFF] dark:bg-[#101018] border border-[#E7E7E4] dark:border-white/10 rounded-2xl shadow-editorial-lg dark:shadow-[0_24px_50px_rgba(0,0,0,0.7)] overflow-hidden my-auto text-[#111111] dark:text-[#F4F4F8] will-change-[transform,opacity]",
               maxWidthMap[maxWidth],
               className
             )}
           >
             {/* Header */}
             {(title || description) && (
-              <div className="p-5 sm:p-6 pb-3 sm:pb-4 border-b border-[#E7E7E4] flex items-start justify-between">
+              <div className="p-5 sm:p-6 pb-3 sm:pb-4 border-b border-[#E7E7E4] dark:border-white/10 flex items-start justify-between">
                 <div>
                   {title && (
-                    <h2 className="text-lg sm:text-xl font-bold text-[#111111] tracking-tight font-display">{title}</h2>
+                    <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-white tracking-tight font-display">{title}</h2>
                   )}
                   {description && (
-                    <p className="text-xs sm:text-sm text-[#6B6B6B] mt-0.5 sm:mt-1 font-sans">{description}</p>
+                    <p className="text-xs sm:text-sm text-[#6B6B6B] dark:text-[#A0A0B4] mt-0.5 sm:mt-1 font-sans">{description}</p>
                   )}
                 </div>
                 <button
                   onClick={onClose}
                   type="button"
                   aria-label="Close dialog"
-                  className="text-[#6B6B6B] hover:text-[#111111] p-1.5 rounded-lg hover:bg-[#FAFAF8] transition-colors"
+                  className="text-[#6B6B6B] dark:text-[#A0A0B4] hover:text-[#111111] dark:hover:text-white p-1.5 rounded-lg hover:bg-[#FAFAF8] dark:hover:bg-white/10 transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>

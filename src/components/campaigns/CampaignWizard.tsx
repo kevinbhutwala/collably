@@ -261,40 +261,10 @@ export function CampaignWizard() {
         {step === 1 && (
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-extrabold text-[#0A0A0E] font-display">Campaign Overview &amp; Basics</h2>
-              <p className="text-xs text-[#5A5A68] mt-1 font-sans font-medium">
-                Enter your campaign title and category, or use the AI Assistant to generate a complete brief.
+              <h2 className="text-2xl font-extrabold text-[#0A0A0E] dark:text-white font-display">Campaign Overview &amp; Basics</h2>
+              <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] mt-1 font-sans font-medium">
+                Enter your campaign title, category, and core brief guidelines below.
               </p>
-            </div>
-
-            {/* AI Assistant Quick Tool */}
-            <div className="p-5 rounded-2xl bg-[#F8F8FC] border border-black/5 space-y-3">
-              <div className="flex items-center gap-2 text-[#0A0A0E] font-bold text-xs font-mono">
-                <Wand2 className="w-4 h-4 text-[#0A0A0E]" />
-                <span>AI Brief Generator</span>
-              </div>
-              <p className="text-xs text-[#5A5A68] font-sans">
-                Describe what product or feature you are launching in plain English:
-              </p>
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  value={aiPrompt}
-                  onChange={(e) => setAiPrompt(e.target.value)}
-                  placeholder="e.g. Launching our new high-speed developer terminal for engineering teams..."
-                  className="flex-1 bg-white border border-black/10 rounded-full px-4 py-2 text-xs text-[#0A0A0E] placeholder:text-[#8A8A9A] focus:outline-none focus:border-[#FFD21F] shadow-xs"
-                />
-                <Button
-                  variant="primary"
-                  size="sm"
-                  onClick={handleAiGenerate}
-                  isLoading={isAiGenerating}
-                  leftIcon={<Sparkles className="w-3.5 h-3.5 text-[#0A0A0E]" />}
-                  className="rounded-full"
-                >
-                  Generate Brief
-                </Button>
-              </div>
             </div>
 
             <div className="space-y-4">
@@ -302,7 +272,7 @@ export function CampaignWizard() {
                 label="Campaign Title"
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                placeholder="e.g. AI-Powered Sprint Workflows Launch"
+                placeholder="e.g. Creator Performance Showcase Launch"
                 required
               />
 
@@ -315,14 +285,14 @@ export function CampaignWizard() {
               />
 
               <div className="space-y-1.5 text-left font-sans">
-                <label className="text-xs font-semibold text-[#0A0A0E]">Category &amp; Niche</label>
+                <label className="text-xs font-semibold text-[#0A0A0E] dark:text-[#EAEAEF]">Category &amp; Niche</label>
                 <select
                   value={formData.category}
                   onChange={(e) => setFormData({ ...formData, category: e.target.value as CreatorCategory })}
-                  className="w-full bg-[#F8F8FC] border border-black/10 rounded-xl px-3.5 py-2.5 text-xs text-[#0A0A0E] focus:outline-none focus:border-[#FFD21F] shadow-xs"
+                  className="w-full bg-[#F8F8FC] dark:bg-[#161622] border border-black/10 dark:border-white/12 rounded-xl px-3.5 py-2.5 text-xs text-[#0A0A0E] dark:text-white focus:outline-none focus:border-[#FFD21F] shadow-xs"
                 >
                   {CATEGORIES.map((c) => (
-                    <option key={c} value={c}>{c}</option>
+                    <option key={c} value={c} className="dark:bg-[#161622] dark:text-white">{c}</option>
                   ))}
                 </select>
               </div>

@@ -41,9 +41,9 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       secondary:
         "bg-gradient-to-r from-[#1E1E28] to-[#12121A] hover:from-[#282836] hover:to-[#1A1A24] text-white border border-[#FFD21F]/30 shadow-md",
       outline:
-        "bg-white text-[#0A0A0E] border border-black/10 hover:border-[#D7A900] hover:bg-[#FFFDF4]",
+        "bg-white dark:bg-[#181824] text-[#0A0A0E] dark:text-[#F4F4F8] border border-black/10 dark:border-white/12 hover:border-[#D7A900] dark:hover:border-[#FFD21F]/60 hover:bg-[#FFFDF4] dark:hover:bg-[#202030]",
       ghost:
-        "bg-transparent text-[#5A5A68] hover:text-[#0A0A0E] hover:bg-black/[0.045]",
+        "bg-transparent text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-white hover:bg-black/[0.045] dark:hover:bg-white/5",
       glass:
         "bg-white/10 backdrop-blur-md text-white border border-white/20 hover:bg-white/15 shadow-md",
       accent:
@@ -53,7 +53,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       micro:
         "bg-[#FFD21F] text-[#0A0A0E] hover:bg-[#FFE052] font-bold shadow-xs",
       danger:
-        "bg-red-50 text-red-700 border border-red-200 hover:bg-red-100",
+        "bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-900/40 hover:bg-red-100 dark:hover:bg-red-900/60",
     };
 
     return (
