@@ -14,8 +14,23 @@ import { formatCurrency as formatGlobalCurrency, SupportedCurrency } from "./cur
 
 export { formatGlobalCurrency };
 
-export function formatCurrency(amount: number, currency: string = 'USD'): string {
-  return formatGlobalCurrency(amount, currency as SupportedCurrency);
+export function formatCurrency(
+  amount: number | string | null | undefined,
+  currency?: string,
+  options?: { compact?: boolean; maximumFractionDigits?: number; minimumFractionDigits?: number }
+): string {
+  let targetCurrency = currency;
+  if (!targetCurrency && typeof window !== "undefined") {
+    try {
+      const stored = localStorage.getItem("abeycollab_currency");
+      if (stored) {
+        targetCurrency = stored;
+      }
+    } catch {
+      // ignore
+    }
+  }
+  return formatGlobalCurrency(amount, (targetCurrency || "USD") as SupportedCurrency, options);
 }
 
 export function formatPercentage(rate: number): string {

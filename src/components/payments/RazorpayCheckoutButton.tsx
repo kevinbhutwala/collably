@@ -153,6 +153,8 @@ export function RazorpayCheckoutButton({
                 order_id: response.razorpay_order_id,
                 payment_id: response.razorpay_payment_id,
                 signature: response.razorpay_signature,
+                amount: amount,
+                currency: currency.toUpperCase(),
               }),
             });
 

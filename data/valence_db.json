@@ -4,34 +4,40 @@
       "id": "user-creator",
       "name": "Demo Creator",
       "email": "creator@abeycollab.io",
-      "passwordHash": "6f336955f0a0b06f83ff3f1a54070e6f:93b3cbaef06b583212af71eeb6958b15539ac67370d7b0d77f1aa46ee3f03ff1b6d0f2cc015f7a09c65d8f51ae45281602cb94ddb9e1e22d41874e9eeeed6be5:210000",
+      "passwordHash": "80940b011b09c5063709066a8ddf2cac:367c184e2d00c676d5867654144024d8922216b82c07e630cf001d1321c2dbb5b294452b1c8e81785cfc800113ebb2689b8f7e1e62dcb4b974166425729cca1f:210000",
       "role": "creator",
       "avatarUrl": "",
       "verified": true,
       "createdAt": "2026-09-03T18:46:21.709Z",
-      "updatedAt": "2026-09-03T18:46:21.709Z"
+      "updatedAt": "2026-09-09T15:27:43.356Z",
+      "preferredCurrency": "AED",
+      "preferred_currency": "AED"
     },
     {
       "id": "user-brand",
       "name": "Demo Brand",
       "email": "brand@abeycollab.io",
-      "passwordHash": "239c6618500344b4c02427d35392e561:9a45b2d0e8cd74ece13adc033dfc0b8c1eb1a0f2d0042b44f2ea37ab6c9429df89589c29a236c929d94978df3b48a7038ed1a8712f67ce09afd72ddd595b34af:210000",
+      "passwordHash": "a2be950d8209b712acbb1563de2b487f:b48e2b9ca5b2cfec0eefb7585fde17b5c44c5cd4e9eb6e02485b535f312d943b94f74a3ead02d6dd4d3ad2bf6e31c287f490269c1d854240ebb7db201b19f24c:210000",
       "role": "brand",
       "avatarUrl": "",
       "verified": true,
       "createdAt": "2026-09-03T18:46:21.709Z",
-      "updatedAt": "2026-09-03T18:46:21.709Z"
+      "updatedAt": "2026-09-03T18:46:21.709Z",
+      "preferredCurrency": "USD",
+      "preferred_currency": "USD"
     },
     {
       "id": "user-owner",
       "name": "Kevin Bhutwala",
       "email": "kevinbhutwala417@gmail.com",
-      "passwordHash": "65e53bfb5063a0c240d06062cfc4106d:56edd067e41547ba777c907d0b3081e3e4181f16ee438ca0412d6f52ff6597f1ef454c02f2d180e7f5a8d6bdda07b65acd4dd786d3cc988fd1c8edd27213ad84:210000",
+      "passwordHash": "dec5c564bb217c3849a2e268cfb5851b:8a05750e0fa2f9e1a26a7033e09fbfa966f70705daf7ef49daec83b1e96cdb90626fabd77a04f128a67de7685c9aedb5df7d379ec0efc9df471f26a75de0b339:210000",
       "role": "agency_admin",
       "avatarUrl": "",
       "verified": true,
       "createdAt": "2026-09-03T18:46:21.709Z",
-      "updatedAt": "2026-09-03T18:46:21.709Z"
+      "updatedAt": "2026-09-03T18:46:21.709Z",
+      "preferredCurrency": "USD",
+      "preferred_currency": "USD"
     },
     {
       "id": "user-1788643257898",
@@ -42,7 +48,9 @@
       "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
       "verified": false,
       "createdAt": "2026-09-05T21:20:57.898Z",
-      "updatedAt": "2026-09-05T21:20:57.898Z"
+      "updatedAt": "2026-09-09T15:24:36.472Z",
+      "preferredCurrency": "AED",
+      "preferred_currency": "AED"
     },
     {
       "id": "user-creator-1788819282512",
@@ -53,7 +61,9 @@
       "avatarUrl": "",
       "verified": true,
       "createdAt": "2026-09-07T22:14:42.511Z",
-      "updatedAt": "2026-09-07T22:14:42.511Z"
+      "updatedAt": "2026-09-07T22:14:42.511Z",
+      "preferredCurrency": "USD",
+      "preferred_currency": "USD"
     },
     {
       "id": "user-brand-1788819282715",
@@ -64,29 +74,35 @@
       "avatarUrl": "",
       "verified": true,
       "createdAt": "2026-09-07T22:14:42.715Z",
-      "updatedAt": "2026-09-07T22:14:42.715Z"
+      "updatedAt": "2026-09-07T22:14:42.715Z",
+      "preferredCurrency": "USD",
+      "preferred_currency": "USD"
     },
     {
       "id": "user-creator-legacy",
       "name": "Demo Creator",
       "email": "creator@collably.io",
-      "passwordHash": "6f336955f0a0b06f83ff3f1a54070e6f:93b3cbaef06b583212af71eeb6958b15539ac67370d7b0d77f1aa46ee3f03ff1b6d0f2cc015f7a09c65d8f51ae45281602cb94ddb9e1e22d41874e9eeeed6be5:210000",
+      "passwordHash": "80940b011b09c5063709066a8ddf2cac:367c184e2d00c676d5867654144024d8922216b82c07e630cf001d1321c2dbb5b294452b1c8e81785cfc800113ebb2689b8f7e1e62dcb4b974166425729cca1f:210000",
       "role": "creator",
       "avatarUrl": "",
       "verified": true,
       "createdAt": "2026-09-07T22:15:17.692Z",
-      "updatedAt": "2026-09-07T22:15:17.692Z"
+      "updatedAt": "2026-09-07T22:15:17.692Z",
+      "preferredCurrency": "USD",
+      "preferred_currency": "USD"
     },
     {
       "id": "user-brand-legacy",
       "name": "Demo Brand",
       "email": "brand@collably.io",
-      "passwordHash": "239c6618500344b4c02427d35392e561:9a45b2d0e8cd74ece13adc033dfc0b8c1eb1a0f2d0042b44f2ea37ab6c9429df89589c29a236c929d94978df3b48a7038ed1a8712f67ce09afd72ddd595b34af:210000",
+      "passwordHash": "a2be950d8209b712acbb1563de2b487f:b48e2b9ca5b2cfec0eefb7585fde17b5c44c5cd4e9eb6e02485b535f312d943b94f74a3ead02d6dd4d3ad2bf6e31c287f490269c1d854240ebb7db201b19f24c:210000",
       "role": "brand",
       "avatarUrl": "",
       "verified": true,
       "createdAt": "2026-09-07T22:15:17.692Z",
-      "updatedAt": "2026-09-07T22:15:17.692Z"
+      "updatedAt": "2026-09-07T22:15:17.692Z",
+      "preferredCurrency": "USD",
+      "preferred_currency": "USD"
     }
   ],
   "creators": [
@@ -236,7 +252,8 @@
         ]
       },
       "rateCards": [],
-      "updatedAt": "2026-09-08T14:22:25.246Z"
+      "updatedAt": "2026-09-08T14:22:25.246Z",
+      "currency": "USD"
     },
     {
       "id": "creator-1",
@@ -366,7 +383,8 @@
           "description": "Seamless workflow integration in a dedicated deep-dive video with trackable link in top comment.",
           "basePrice": 3500,
           "turnaroundDays": 7,
-          "revisionsIncluded": 2
+          "revisionsIncluded": 2,
+          "currency": "USD"
         },
         {
           "id": "rc-2",
@@ -375,9 +393,11 @@
           "description": "Architecture breakdown with high-res screenshots and product highlights.",
           "basePrice": 1500,
           "turnaroundDays": 3,
-          "revisionsIncluded": 1
+          "revisionsIncluded": 1,
+          "currency": "USD"
         }
-      ]
+      ],
+      "currency": "USD"
     },
     {
       "id": "creator-2",
@@ -482,9 +502,11 @@
           "description": "Color-graded RED camera footage with bespoke sound design.",
           "basePrice": 2800,
           "turnaroundDays": 10,
-          "revisionsIncluded": 2
+          "revisionsIncluded": 2,
+          "currency": "USD"
         }
-      ]
+      ],
+      "currency": "USD"
     },
     {
       "id": "creator-3",
@@ -586,9 +608,11 @@
           "description": "Biometric before/after with verified wearable data overlay.",
           "basePrice": 3200,
           "turnaroundDays": 5,
-          "revisionsIncluded": 2
+          "revisionsIncluded": 2,
+          "currency": "USD"
         }
-      ]
+      ],
+      "currency": "USD"
     },
     {
       "id": "creator-4",
@@ -693,9 +717,11 @@
           "description": "Live code walkthrough showcasing tool API directly in editor.",
           "basePrice": 2400,
           "turnaroundDays": 6,
-          "revisionsIncluded": 2
+          "revisionsIncluded": 2,
+          "currency": "USD"
         }
-      ]
+      ],
+      "currency": "USD"
     },
     {
       "id": "creator-5",
@@ -797,9 +823,11 @@
           "description": "Macro texture demonstration with 4K B-roll and clear ingredient CTA.",
           "basePrice": 3000,
           "turnaroundDays": 8,
-          "revisionsIncluded": 2
+          "revisionsIncluded": 2,
+          "currency": "USD"
         }
-      ]
+      ],
+      "currency": "USD"
     },
     {
       "id": "creator-6",
@@ -901,9 +929,11 @@
           "description": "High-credibility product breakdown explaining real financial utility.",
           "basePrice": 2200,
           "turnaroundDays": 7,
-          "revisionsIncluded": 2
+          "revisionsIncluded": 2,
+          "currency": "USD"
         }
-      ]
+      ],
+      "currency": "USD"
     },
     {
       "id": "creator-7",
@@ -1005,9 +1035,11 @@
           "description": "12-minute technical review with latency testing charts and unboxing.",
           "basePrice": 4200,
           "turnaroundDays": 10,
-          "revisionsIncluded": 2
+          "revisionsIncluded": 2,
+          "currency": "USD"
         }
-      ]
+      ],
+      "currency": "USD"
     },
     {
       "id": "creator-8",
@@ -1109,9 +1141,11 @@
           "description": "Bespoke recipe highlighting appliance performance with high-speed macro shots.",
           "basePrice": 2400,
           "turnaroundDays": 7,
-          "revisionsIncluded": 2
+          "revisionsIncluded": 2,
+          "currency": "USD"
         }
-      ]
+      ],
+      "currency": "USD"
     }
   ],
   "brands": [
@@ -2703,13 +2737,15 @@
           "assetUrl": "https://drive.google.com/file/d/test-deliverable-cut/view",
           "notes": "Final cut color graded to brand specs. Music cleared for global commercial rights. Segment at 04:12.",
           "submittedAt": "2026-09-08T08:51:32.706Z",
-          "slaDeadline": "2026-09-13T08:51:32.706Z"
+          "slaDeadline": "2026-09-13T08:51:32.706Z",
+          "currency": "USD"
         }
       ],
       "id": "collab-1788857484094",
       "createdAt": "2026-09-08T08:51:24.094Z",
       "updatedAt": "2026-09-08T08:51:29.235Z",
-      "fundedAt": "2026-09-08T08:51:29.235Z"
+      "fundedAt": "2026-09-08T08:51:29.235Z",
+      "currency": "USD"
     },
     {
       "campaignId": "camp-1788857356710",
@@ -2839,13 +2875,15 @@
           "assetUrl": "https://drive.google.com/file/d/test-deliverable-cut/view",
           "notes": "Final cut color graded to brand specs. Music cleared for global commercial rights. Segment at 04:12.",
           "submittedAt": "2026-09-08T08:49:25.542Z",
-          "slaDeadline": "2026-09-13T08:49:25.542Z"
+          "slaDeadline": "2026-09-13T08:49:25.542Z",
+          "currency": "USD"
         }
       ],
       "id": "collab-1788857360261",
       "createdAt": "2026-09-08T08:49:20.261Z",
       "updatedAt": "2026-09-08T08:49:22.200Z",
-      "fundedAt": "2026-09-08T08:49:22.200Z"
+      "fundedAt": "2026-09-08T08:49:22.200Z",
+      "currency": "USD"
     },
     {
       "campaignId": "camp-1788855587165",
@@ -2975,13 +3013,15 @@
           "assetUrl": "https://drive.google.com/file/d/test-deliverable-cut/view",
           "notes": "Final cut color graded to brand specs. Music cleared for global commercial rights. Segment at 04:12.",
           "submittedAt": "2026-09-08T08:19:57.498Z",
-          "slaDeadline": "2026-09-13T08:19:57.498Z"
+          "slaDeadline": "2026-09-13T08:19:57.498Z",
+          "currency": "USD"
         }
       ],
       "id": "collab-1788855590656",
       "createdAt": "2026-09-08T08:19:50.656Z",
       "updatedAt": "2026-09-08T08:19:54.971Z",
-      "fundedAt": "2026-09-08T08:19:54.971Z"
+      "fundedAt": "2026-09-08T08:19:54.971Z",
+      "currency": "USD"
     },
     {
       "campaignId": "camp-1788852267234",
@@ -3111,13 +3151,15 @@
           "assetUrl": "https://drive.google.com/file/d/test-deliverable-cut/view",
           "notes": "Final cut color graded to brand specs. Music cleared for global commercial rights. Segment at 04:12.",
           "submittedAt": "2026-09-08T07:31:12.981Z",
-          "slaDeadline": "2026-09-13T07:31:12.981Z"
+          "slaDeadline": "2026-09-13T07:31:12.981Z",
+          "currency": "USD"
         }
       ],
       "id": "collab-1788852270845",
       "createdAt": "2026-09-08T07:24:30.845Z",
       "updatedAt": "2026-09-08T07:31:10.269Z",
-      "fundedAt": "2026-09-08T07:31:10.269Z"
+      "fundedAt": "2026-09-08T07:31:10.269Z",
+      "currency": "USD"
     },
     {
       "id": "collab-1",
@@ -3325,7 +3367,8 @@
               "creatorNotes": "Draft rough cut uploaded for preview. The custom keyboard shortcut B-roll begins at 04:12.",
               "status": "under_review"
             }
-          ]
+          ],
+          "currency": "USD"
         },
         {
           "id": "collab-del-2",
@@ -3356,7 +3399,8 @@
           "assetUrl": "https://drive.google.com/file/d/test-deliverable-cut/view",
           "notes": "Final cut color graded to brand specs. Music cleared for global commercial rights. Segment at 04:12.",
           "submittedAt": "2026-09-08T08:13:08.709Z",
-          "slaDeadline": "2026-09-13T08:13:08.709Z"
+          "slaDeadline": "2026-09-13T08:13:08.709Z",
+          "currency": "USD"
         }
       ],
       "agencyManager": {
@@ -3365,7 +3409,8 @@
         "avatarUrl": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop&q=80"
       },
       "createdAt": "2026-08-20",
-      "updatedAt": "2026-08-28"
+      "updatedAt": "2026-08-28",
+      "currency": "USD"
     },
     {
       "id": "collab-unfunded",
@@ -3573,12 +3618,14 @@
           "assetUrl": "https://drive.google.com/file/d/test-deliverable-cut/view",
           "notes": "Final cut color graded to brand specs. Music cleared for global commercial rights. Segment at 04:12.",
           "submittedAt": "2026-09-08T13:46:00.027Z",
-          "slaDeadline": "2026-09-13T13:46:00.027Z"
+          "slaDeadline": "2026-09-13T13:46:00.027Z",
+          "currency": "USD"
         }
       ],
       "createdAt": "2026-09-05T11:02:58.708Z",
       "updatedAt": "2026-09-08T08:13:05.348Z",
-      "fundedAt": "2026-09-08T08:13:05.348Z"
+      "fundedAt": "2026-09-08T08:13:05.348Z",
+      "currency": "USD"
     },
     {
       "id": "collab-2",
@@ -3755,7 +3802,8 @@
                 "clicks": 3400
               }
             }
-          ]
+          ],
+          "currency": "USD"
         },
         {
           "id": "collab-del-4",
@@ -3781,11 +3829,13 @@
               "slaDeadline": "2026-09-03T16:20:00Z",
               "status": "submitted"
             }
-          ]
+          ],
+          "currency": "USD"
         }
       ],
       "createdAt": "2026-08-15",
-      "updatedAt": "2026-08-29"
+      "updatedAt": "2026-08-29",
+      "currency": "USD"
     },
     {
       "id": "collab-3",
@@ -3951,11 +4001,13 @@
               "feedback": "Loved the laboratory visuals! Could you please emphasize the 3-year warranty and free threshold delivery in the video overlay at 06:40?",
               "status": "revision_requested"
             }
-          ]
+          ],
+          "currency": "USD"
         }
       ],
       "createdAt": "2026-08-22",
-      "updatedAt": "2026-08-28"
+      "updatedAt": "2026-08-28",
+      "currency": "USD"
     }
   ],
   "payouts": [
@@ -3975,7 +4027,8 @@
       "environment": "test",
       "isTest": true,
       "id": "payout-1788875386659-mrr5n",
-      "createdAt": "2026-09-08T13:49:46.659Z"
+      "createdAt": "2026-09-08T13:49:46.659Z",
+      "currency": "USD"
     },
     {
       "creatorId": "creator-demo",
@@ -3993,7 +4046,8 @@
       "environment": "test",
       "isTest": true,
       "id": "payout-1788875158223-spa7i",
-      "createdAt": "2026-09-08T13:45:58.223Z"
+      "createdAt": "2026-09-08T13:45:58.223Z",
+      "currency": "USD"
     },
     {
       "creatorId": "creator-demo",
@@ -4011,7 +4065,8 @@
       "environment": "test",
       "isTest": true,
       "id": "payout-1788857490049-gn0rx",
-      "createdAt": "2026-09-08T08:51:30.049Z"
+      "createdAt": "2026-09-08T08:51:30.049Z",
+      "currency": "USD"
     },
     {
       "creatorId": "creator-demo",
@@ -4029,7 +4084,8 @@
       "environment": "test",
       "isTest": true,
       "id": "payout-1788857363063-y69ru",
-      "createdAt": "2026-09-08T08:49:23.063Z"
+      "createdAt": "2026-09-08T08:49:23.063Z",
+      "currency": "USD"
     },
     {
       "creatorId": "creator-demo",
@@ -4047,7 +4103,8 @@
       "environment": "test",
       "isTest": true,
       "id": "payout-1788855595714-mebis",
-      "createdAt": "2026-09-08T08:19:55.714Z"
+      "createdAt": "2026-09-08T08:19:55.714Z",
+      "currency": "USD"
     },
     {
       "creatorId": "creator-demo",
@@ -4065,7 +4122,8 @@
       "environment": "test",
       "isTest": true,
       "id": "payout-1788855186143-zv0n4",
-      "createdAt": "2026-09-08T08:13:06.143Z"
+      "createdAt": "2026-09-08T08:13:06.143Z",
+      "currency": "USD"
     },
     {
       "creatorId": "creator-demo",
@@ -4083,7 +4141,8 @@
       "environment": "test",
       "isTest": true,
       "id": "payout-1788852671021-fw7rq",
-      "createdAt": "2026-09-08T07:31:11.021Z"
+      "createdAt": "2026-09-08T07:31:11.021Z",
+      "currency": "USD"
     },
     {
       "id": "payout-rzp-card-1007",
@@ -4100,7 +4159,8 @@
       "paymentMethod": "razorpay",
       "environment": "test",
       "isTest": true,
-      "createdAt": "2026-09-06T07:39:09.000Z"
+      "createdAt": "2026-09-06T07:39:09.000Z",
+      "currency": "USD"
     },
     {
       "id": "payout-rzp-nb-barb",
@@ -4117,7 +4177,8 @@
       "paymentMethod": "razorpay",
       "environment": "test",
       "isTest": true,
-      "createdAt": "2026-09-06T09:18:43.000Z"
+      "createdAt": "2026-09-06T09:18:43.000Z",
+      "currency": "USD"
     }
   ],
   "subscriptions": [

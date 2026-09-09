@@ -8,6 +8,9 @@ export type UserRole =
   | 'agency_owner'
   | 'super_admin';
 
+export type CurrencyCode = 'INR' | 'USD';
+export type ExtensibleCurrencyCode = CurrencyCode | 'GBP' | 'AED' | string;
+
 export interface User {
   id: string;
   name: string;
@@ -15,6 +18,9 @@ export interface User {
   role: UserRole;
   avatarUrl?: string;
   verified?: boolean;
+  preferredCurrency?: CurrencyCode;
+  preferred_currency?: CurrencyCode;
+  country?: string;
   createdAt?: string;
   updatedAt?: string;
 }
@@ -61,6 +67,7 @@ export interface RateCardItem {
   title: string;
   description: string;
   basePrice: number;
+  currency?: CurrencyCode | string;
   turnaroundDays: number;
   revisionsIncluded: number;
 }
@@ -109,6 +116,7 @@ export interface CreatorProfile {
   totalFollowers: number;
   avgEngagementRate: number;
   startingPrice: number;
+  currency?: CurrencyCode | string;
   availableForHire: boolean;
   socialAccounts: SocialAccount[];
   audience: AudienceDemographics;
@@ -256,12 +264,14 @@ export interface CampaignApplication {
   creator: CreatorProfile;
   pitch: string;
   proposedFee: number;
+  currency?: CurrencyCode | string;
   estimatedReach: number;
   status: ApplicationStatus;
   sampleLinks: string[];
   matchScore: number;
   counterOffer?: {
     proposedFee: number;
+    currency?: CurrencyCode | string;
     notes: string;
     proposedBy: 'brand' | 'creator';
   };
@@ -324,6 +334,7 @@ export interface CollaborationDeliverableItem {
   status: DeliverableStatus;
   dueDate: string;
   payoutAmount: number;
+  currency?: CurrencyCode | string;
   revisionCount: number;
   maxRevisions: number;
   assetUrl?: string;
@@ -377,6 +388,7 @@ export interface NegotiationOffer {
   senderRole: UserRole;
   senderName: string;
   amount: number;
+  currency?: CurrencyCode | string;
   deliverableTerms: string;
   notes: string;
   status: 'offered' | 'countered' | 'accepted' | 'declined';
@@ -410,6 +422,7 @@ export interface CollaborationCancellationDetails {
   killFeePercentToCreator: number;
   refundAmountDollars: number;
   killFeeAmountDollars: number;
+  currency?: CurrencyCode | string;
   transactionId?: string;
 }
 
@@ -422,6 +435,7 @@ export interface Collaboration {
   creatorId: string;
   creator: CreatorProfile;
   totalAgreedBudget: number;
+  currency?: CurrencyCode | string;
   escrowStatus: 'pending_deposit' | 'held_in_escrow' | 'partially_released' | 'fully_released' | 'refunded';
   status: CollaborationStatus;
   paymentStatus?: CollaborationPaymentStatus;
@@ -509,6 +523,7 @@ export interface PayoutRecord {
   grossAmount: number;
   agencyFee: number;
   netAmount: number;
+  currency?: CurrencyCode | string;
   status: 'pending' | 'escrow_locked' | 'processing' | 'paid' | 'refunded';
   paymentMethod: string;
   environment?: 'test' | 'live';

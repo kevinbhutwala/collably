@@ -68,7 +68,7 @@ const PLATFORM_OPTIONS = [
 export function CampaignWizard() {
   const router = useRouter();
   const { currentBrand } = useAuthStore();
-  const { addToast } = useUIStore();
+  const { addToast, selectedCurrency } = useUIStore();
 
   const [step, setStep] = useState(1);
   const [isAiGenerating, setIsAiGenerating] = useState(false);
@@ -89,9 +89,9 @@ export function CampaignWizard() {
     deliverables: [
       { id: "del-1", type: "YouTube 60s Integration" as DeliverableType, count: 1, guidelines: "60-second integrated sponsorship segment highlighting workflow speeds", specifications: ["4K 60fps", "Clear Audio", "Pinned Link in Comments"], maxRevisions: 2 },
     ],
-    currency: "USD" as SupportedCurrency,
-    totalBudget: 15000,
-    perCreatorBudget: 3000,
+    currency: (selectedCurrency === "INR" ? "INR" : "USD") as SupportedCurrency,
+    totalBudget: selectedCurrency === "INR" ? 100000 : 15000,
+    perCreatorBudget: selectedCurrency === "INR" ? 20000 : 3000,
     escrowDepositPercentage: 100,
     applicationDeadline: "2026-09-15",
     contentSubmissionDeadline: "2026-09-30",

@@ -654,7 +654,7 @@ export default function SettingsPage() {
                 <span>Global Currency &amp; Regional Localization</span>
               </h2>
               <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#8E8EA4] mt-1 font-sans">
-                Choose your default display and transaction currency. Select among USD, INR, GBP, or AED. Budgets, rates, and analytics convert smoothly using transparent exchange rates.
+                Choose your default display and settlement currency. AbeyCollab natively supports INR (₹) and USD ($), with extensible rails for GBP and AED.
               </p>
             </div>
 

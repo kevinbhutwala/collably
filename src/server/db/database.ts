@@ -122,6 +122,54 @@ class DatabaseClient {
           this.state!.collaborations = [...MOCK_COLLABORATIONS];
         }
 
+        // Idempotent multi-currency migration backfill
+        for (const u of this.state!.users) {
+          if (!u.preferredCurrency && !u.preferred_currency) {
+            const isIndia = u.country === "IN" || (u.email && u.email.endsWith(".in"));
+            const defCurrency = isIndia ? "INR" : "USD";
+            u.preferredCurrency = defCurrency;
+            u.preferred_currency = defCurrency;
+          } else {
+            if (!u.preferredCurrency) u.preferredCurrency = u.preferred_currency;
+            if (!u.preferred_currency) u.preferred_currency = u.preferredCurrency;
+          }
+        }
+
+        for (const c of this.state!.campaigns || []) {
+          if (c.budget && !c.budget.currency) {
+            c.budget.currency = "USD";
+          }
+        }
+
+        for (const col of this.state!.collaborations || []) {
+          if (!col.currency) {
+            col.currency = "USD";
+          }
+          for (const del of col.deliverables || []) {
+            if (!del.currency) {
+              del.currency = col.currency;
+            }
+          }
+        }
+
+        for (const p of this.state!.payouts || []) {
+          if (!p.currency) {
+            p.currency = "USD";
+          }
+        }
+
+        for (const cr of this.state!.creators || []) {
+          if (!cr.currency) {
+            const isIndia = cr.location && cr.location.toLowerCase().includes("india");
+            cr.currency = isIndia ? "INR" : "USD";
+          }
+          for (const rc of cr.rateCards || []) {
+            if (!rc.currency) {
+              rc.currency = cr.currency;
+            }
+          }
+        }
+
         this.persist();
     } catch (err) {
       console.error("Failed to initialize database, falling back to in-memory seeds:", err);

@@ -9,6 +9,7 @@ import {
   CollaborationStatus,
   UserRole,
 } from "@/core/types";
+import { formatCurrency } from "@/core/utils/currency";
 
 export class CollaborationService {
   async getCollaborations(filters: { brandId?: string; creatorId?: string; status?: CollaborationStatus }): Promise<Collaboration[]> {
@@ -137,6 +138,7 @@ export class CollaborationService {
     if (!updatedCollab) throw new Error("Failed to approve deliverable");
 
     // Create / release Payout record for the creator
+    const currency = collab.currency || deliverable.currency || "USD";
     const grossAmount = deliverable.payoutAmount;
     const agencyFee = Math.round(grossAmount * 0.1); // 10% standard agency fee
     const netAmount = grossAmount - agencyFee;
@@ -152,6 +154,7 @@ export class CollaborationService {
       grossAmount,
       agencyFee,
       netAmount,
+      currency,
       status: "paid",
       paymentMethod: "Direct Bank Deposit",
       releasedAt: new Date().toISOString(),
@@ -161,7 +164,7 @@ export class CollaborationService {
     await notificationRepo.createNotification({
       userId: collab.creator.userId,
       title: "Deliverable Approved & Payout Released!",
-      message: `Your deliverable "${deliverable.title}" was approved by ${collab.brand.companyName}. Payout of $${netAmount} released.`,
+      message: `Your deliverable "${deliverable.title}" was approved by ${collab.brand.companyName}. Payout of ${formatCurrency(netAmount, currency)} released.`,
       type: "payment",
       entityType: "Collaboration",
       entityId: collab.id,

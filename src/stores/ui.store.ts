@@ -23,7 +23,21 @@ interface UIState {
 const getInitialCurrency = (): SupportedCurrency => {
   if (typeof window !== "undefined") {
     const saved = localStorage.getItem("abeycollab_currency") as SupportedCurrency;
-    if (saved) return saved;
+    if (saved && ["INR", "USD", "GBP", "AED"].includes(saved)) return saved;
+
+    // Detect if user is in India
+    try {
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      if (tz === "Asia/Kolkata" || tz === "Asia/Calcutta") {
+        return "INR";
+      }
+      const lang = navigator.language || "";
+      if (lang.toLowerCase().includes("in") || lang.toLowerCase().startsWith("hi")) {
+        return "INR";
+      }
+    } catch {
+      // Fallback
+    }
   }
   return "USD";
 };
@@ -57,6 +71,12 @@ export const useUIStore = create<UIState>((set) => ({
   setSelectedCurrency: (currency: SupportedCurrency) => {
     if (typeof window !== "undefined") {
       localStorage.setItem("abeycollab_currency", currency);
+      // Persist to user profile in background if logged in
+      fetch("/api/auth/me", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ preferredCurrency: currency }),
+      }).catch(() => {});
     }
     set({ selectedCurrency: currency });
   },

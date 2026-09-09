@@ -13,7 +13,7 @@ import {
   PostingVerificationProof,
   UserRole,
 } from "@/core/types";
-import { dollarsToCents, centsToDollars, calculateFeeCents } from "@/core/utils/currency";
+import { dollarsToCents, centsToDollars, calculateFeeCents, formatCurrency } from "@/core/utils/currency";
 
 export class CollaborationProtectionService {
   /**
@@ -43,7 +43,7 @@ export class CollaborationProtectionService {
       collaborationId: collab.id,
       brandId: collab.brandId || collab.brand?.companyName || "brand",
       amountDollars: totalBudget,
-      currency: "USD",
+      currency: collab.currency || "USD",
     });
 
     // 2. Advance state machine to PAYMENT_SECURED
@@ -100,7 +100,7 @@ export class CollaborationProtectionService {
     await notificationRepo.createNotification({
       userId: collab.creator?.userId || collab.creatorId,
       title: "Escrow Secured: You may now start work!",
-      message: `The escrow vault for "${collab.campaignTitle}" ($${totalBudget.toLocaleString()}) has been fully secured. You are safe to start production.`,
+      message: `The escrow vault for "${collab.campaignTitle}" (${formatCurrency(totalBudget, collab.currency || "USD")}) has been fully secured. You are safe to start production.`,
       type: "payment",
       entityType: "Collaboration",
       entityId: collab.id,
@@ -389,7 +389,7 @@ export class CollaborationProtectionService {
     // 2. Execute Balanced Double-Entry Ledger Transaction if funds were in escrow
     let txId: string | undefined = undefined;
     if (collab.isFunded && totalBudget > 0) {
-      const currency = "USD";
+      const currency = collab.currency || "USD";
       const totalCents = dollarsToCents(totalBudget);
       const refundBrandCents = dollarsToCents(refundAmountDollars);
       const creatorGrossCents = dollarsToCents(killFeeAmountDollars);
@@ -439,7 +439,7 @@ export class CollaborationProtectionService {
         currency,
         referenceType: "COLLABORATION_CANCELLATION" as const,
         referenceId: collab.id,
-        description: `${killFeePercentToCreator}% kill fee compensation to creator`,
+        description: `Creator compensation on stage-aware cancellation (${stage})`,
         createdAt: now,
       };
 
@@ -490,6 +490,7 @@ export class CollaborationProtectionService {
         killFeePercentToCreator,
         refundAmountDollars,
         killFeeAmountDollars,
+        currency: collab.currency || "USD",
         transactionId: txId,
       };
       c.updatedAt = now;

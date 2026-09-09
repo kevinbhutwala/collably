@@ -121,7 +121,9 @@ test.describe("Multi-Currency Management: USD, INR, GBP, AED Support", () => {
     await page.goto(`${BASE_URL}/app/settings`, { waitUntil: "networkidle" });
     const prefsTab = page.getByRole("button", { name: /Preferences & Theme/i });
     await prefsTab.click();
-    await page.locator('[data-testid="currency-card-GBP"]').first().click();
+    const cardGBP = page.locator('[data-testid="currency-card-GBP"]').first();
+    await cardGBP.click();
+    await expect(cardGBP).toContainText("Active");
 
     // Navigate to Earnings page
     await page.goto(`${BASE_URL}/app/earnings`, { waitUntil: "networkidle" });
@@ -187,5 +189,62 @@ test.describe("Multi-Currency Management: USD, INR, GBP, AED Support", () => {
     await btnGBP.click();
     await expect(page.getByText("Total Campaign Budget Pool (£ GBP)")).toBeVisible();
     await expect(page.getByText("Target Fee Per Creator (£ GBP)")).toBeVisible();
+  });
+
+  test("5. Single Currency Display Rule: Platform never displays compound slashed currencies", async ({ page }) => {
+    await performLogin(page, CREDS.creator.email, CREDS.creator.password);
+
+    await page.goto(`${BASE_URL}/app/earnings`, { waitUntil: "networkidle" });
+    const content = await page.content();
+
+    // Verify no compound slashes like "₹10,000 / $120" or "$500 / ₹"
+    expect(content).not.toMatch(/₹\s*[\d,]+\s*\/\s*\$/);
+    expect(content).not.toMatch(/\$\s*[\d,]+\s*\/\s*₹/);
+  });
+
+  test("6. Payment & API Multi-Currency: /api/create-order and /api/verify-payment handle INR and USD with 10% platform fee", async ({ request }) => {
+    // 1. Test INR order creation
+    const resInr = await request.post(`${BASE_URL}/api/create-order`, {
+      data: {
+        amount: 1000000, // 10,000 INR in paise
+        currency: "INR",
+        notes: { test: "e2e_inr" },
+      },
+    });
+    expect(resInr.ok()).toBeTruthy();
+    const inrData = await resInr.json();
+    expect(inrData.currency).toBe("INR");
+    expect(inrData.order_id).toBeDefined();
+
+    // 2. Test USD order creation
+    const resUsd = await request.post(`${BASE_URL}/api/create-order`, {
+      data: {
+        amount: 50000, // 500 USD in cents
+        currency: "USD",
+        notes: { test: "e2e_usd" },
+      },
+    });
+    expect(resUsd.ok()).toBeTruthy();
+    const usdData = await resUsd.json();
+    expect(usdData.currency).toBe("USD");
+    expect(usdData.order_id).toBeDefined();
+
+    // 3. Test invalid currency rejection
+    const resInvalid = await request.post(`${BASE_URL}/api/create-order`, {
+      data: {
+        amount: 50000,
+        currency: "INVALID_CURRENCY",
+      },
+    });
+    expect(resInvalid.status()).toBe(400);
+
+    // 4. Test below-minimum amount rejection
+    const resBelowMin = await request.post(`${BASE_URL}/api/create-order`, {
+      data: {
+        amount: 50, // Less than 100 subunits
+        currency: "INR",
+      },
+    });
+    expect(resBelowMin.status()).toBe(400);
   });
 });

@@ -1,5 +1,6 @@
 import {
   UserRole,
+  CurrencyCode,
   CreatorProfile,
   BrandProfile,
   Campaign,
@@ -31,6 +32,9 @@ export interface UserEntity {
   role: UserRole;
   avatarUrl?: string;
   verified?: boolean;
+  preferredCurrency?: CurrencyCode;
+  preferred_currency?: CurrencyCode;
+  country?: string;
   createdAt: string;
   updatedAt: string;
 }

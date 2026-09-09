@@ -62,13 +62,19 @@ export async function POST(req: NextRequest) {
     // Record verified transaction in database ledger
     try {
       const { paymentRepo } = await import("@/server/repositories/payment.repo");
+      const grossAmount = body.amount ? Number(body.amount) : 500;
+      const currency = (body.currency || "INR").toUpperCase();
+      const commissionRate = 0.10;
+      const agencyFee = Math.round(grossAmount * commissionRate);
+      const netAmount = grossAmount - agencyFee;
+
       await paymentRepo.createPayment({
         brandId: body.brandId || "brand_active",
-        amount: body.amount ? Number(body.amount) : 500,
-        currency: body.currency || "INR",
+        amount: grossAmount,
+        currency,
         status: "captured",
-        commissionRate: 0.15,
-        agencyFee: 0,
+        commissionRate,
+        agencyFee,
         provider: "razorpay",
         providerOrderId: orderId,
         providerPaymentId: paymentId,
@@ -77,19 +83,21 @@ export async function POST(req: NextRequest) {
           paymentId,
           orderId,
           signature,
+          netAmount,
         },
       });
 
       await paymentRepo.createPayout({
         creatorId: body.creatorId || "creator_escrow",
         collaborationId: body.collaborationId || `escrow_${orderId}`,
-        campaignTitle: "Live Razorpay Escrow Deposit",
-        brandName: "AbeyCollab Verified Brand",
-        creatorName: "Creator Escrow Custody",
-        deliverableTitle: "Secured Escrow Deposit",
-        grossAmount: body.amount ? Number(body.amount) : 500,
-        netAmount: body.amount ? Number(body.amount) : 500,
-        agencyFee: 0,
+        campaignTitle: body.campaignTitle || "Live Razorpay Escrow Deposit",
+        brandName: body.brandName || "AbeyCollab Verified Brand",
+        creatorName: body.creatorName || "Creator Escrow Custody",
+        deliverableTitle: body.deliverableTitle || "Secured Escrow Deposit",
+        grossAmount,
+        netAmount,
+        agencyFee,
+        currency,
         status: "paid",
         paymentMethod: "razorpay",
       });
