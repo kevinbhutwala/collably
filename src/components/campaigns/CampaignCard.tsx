@@ -34,7 +34,7 @@ export function CampaignCard({ campaign }: { campaign: Campaign }) {
         <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
           <CategoryBadge category={campaign.category} size="xs" showIcon={true} />
           <span className="px-2.5 py-1 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-[11px] font-mono font-extrabold flex items-center gap-1 shadow-sm">
-            <span className="numeric-tabular">{formatCurrency(budgetAmount)}</span>
+            <span className="numeric-tabular">{formatCurrency(budgetAmount, campaign.budget?.currency)}</span>
             <span className="text-[9px] text-[#0A0A0E]/80 font-bold">/creator</span>
           </span>
         </div>

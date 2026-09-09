@@ -4,14 +4,15 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShieldCheck, Lock, CheckCircle2 } from "lucide-react";
 import { ScrollRevealText } from "@/components/collably/ScrollRevealText";
+import { formatCurrency } from "@/core/utils/formatters";
 
 export function EscrowTrustFlow() {
   const [escrowStage, setEscrowStage] = useState(0);
 
   const stages = [
     {
-      title: "Budget Secured in Stripe Escrow",
-      desc: "Brand deposits $3,200 (₹2,50,000) into Stripe Connect milestone custody. Funds are locked before production.",
+      title: "Budget Secured in Escrow Vault",
+      desc: `Brand deposits ${formatCurrency(3200)} into milestone custody. Funds are locked before production.`,
       status: "100% SECURED",
     },
     {
@@ -25,8 +26,8 @@ export function EscrowTrustFlow() {
       status: "APPROVED",
     },
     {
-      title: "$2,880 Automated Disbursement (<24h)",
-      desc: "Stripe Connect disburses 90% net earnings directly to creator bank. Zero invoice chasing or 90-day delays.",
+      title: `${formatCurrency(2880)} Automated Disbursement (<24h)`,
+      desc: "Escrow system disburses 90% net earnings directly to creator account. Zero invoice chasing or 90-day delays.",
       status: "DISBURSED & PAID",
     },
   ];
@@ -75,8 +76,7 @@ export function EscrowTrustFlow() {
             <div className="space-y-1 font-mono">
               <span className="text-[10px] uppercase text-slate-400 font-bold block">CAMPAIGN ESCROW ALLOCATION</span>
               <div className="flex items-baseline gap-2">
-                <span className="text-3xl sm:text-4xl font-black text-white font-display">$3,200.00</span>
-                <span className="text-xs text-slate-400 font-mono">(₹2,50,000 INR)</span>
+                <span className="text-3xl sm:text-4xl font-black text-white font-display">{formatCurrency(3200)}</span>
               </div>
             </div>
 

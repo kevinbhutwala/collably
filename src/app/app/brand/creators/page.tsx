@@ -11,6 +11,7 @@ import { CATEGORIES } from "@/core/constants";
 import { cn } from "@/lib/utils";
 import { NaturalLanguageMatchSearch } from "@/components/marketplace/NaturalLanguageMatchSearch";
 import { TrendingShowcase } from "@/components/marketplace/TrendingShowcase";
+import { formatCurrency } from "@/core/utils/formatters";
 
 
 export default function BrandCreatorDiscoveryPage() {
@@ -290,7 +291,7 @@ export default function BrandCreatorDiscoveryPage() {
                     : "bg-[#F5F5F9] dark:bg-[#1C1C2A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/5 dark:border-white/5"
                 )}
               >
-                <span>💰</span> Under $3,000
+                <span>💰</span> Under {formatCurrency(3000)}
               </button>
             </div>
 

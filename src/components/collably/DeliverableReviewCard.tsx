@@ -17,11 +17,13 @@ import {
 import confetti from "canvas-confetti";
 import { Modal } from "@/components/ui/Modal";
 import { Textarea } from "@/components/ui/Input";
+import { formatCurrency } from "@/core/utils/formatters";
 
 export interface DeliverableReviewCardProps {
   title?: string;
   deliverableType?: string;
   payoutAmount?: number;
+  currency?: string;
   creatorName?: string;
   creatorHandle?: string;
   creatorAvatar?: string;
@@ -40,6 +42,7 @@ export function DeliverableReviewCard({
   title = "Dedicated 4K Technical Integration Segment",
   deliverableType = "YouTube 60s Integration",
   payoutAmount = 2500,
+  currency = "USD",
   creatorName = "Elena Rostova",
   creatorHandle = "elenatech",
   creatorAvatar = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100",
@@ -125,7 +128,7 @@ export function DeliverableReviewCard({
           </span>
           <span className="text-[#8A8A9A]">•</span>
           <span className="text-xs font-mono text-[#6A6A78] dark:text-[#A0A0B4]">
-            Payout: <strong className="text-[#0A0A0E] dark:text-white font-sans">${payoutAmount.toLocaleString()}</strong>
+            Payout: <strong className="text-[#0A0A0E] dark:text-white font-sans">{formatCurrency(payoutAmount, currency)}</strong>
           </span>
         </div>
 
@@ -234,7 +237,7 @@ export function DeliverableReviewCard({
         <div className="pt-3 border-t border-black/8 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-xs text-[#6A6A78] dark:text-[#9A9AB0] flex items-center gap-2">
             <FolderLock className="w-4 h-4 text-emerald-600" />
-            <span>Escrow vault holds <strong className="text-[#0A0A0E] dark:text-white font-sans">${payoutAmount.toLocaleString()}</strong> in FDIC-insured trust</span>
+            <span>Escrow vault holds <strong className="text-[#0A0A0E] dark:text-white font-sans">{formatCurrency(payoutAmount, currency)}</strong> in FDIC-insured trust</span>
           </div>
 
           <div className="flex items-center gap-3 w-full sm:w-auto">

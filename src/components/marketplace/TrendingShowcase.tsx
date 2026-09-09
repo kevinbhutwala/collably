@@ -11,6 +11,7 @@ import {
 } from "@/core/types";
 import { ReputationBadgeBar } from "./ReputationBadgeBar";
 import { CategoryBadge, TitleIcon } from "@/components/ui/TitleIconBadge";
+import { formatCurrency } from "@/core/utils/formatters";
 
 const FEED_TABS: { id: TrendingFeedType; label: string; icon: string }[] = [
   { id: "trending_now", label: "Trending Now", icon: "🔥" },
@@ -149,7 +150,7 @@ export function TrendingShowcase() {
                   <div>
                     <div className="text-[10px] text-[#7A7A8A] uppercase font-bold">Budget</div>
                     <div className="mt-0.5 text-xs font-extrabold text-[#0A0A0E] dark:text-white">
-                      ${item.campaign.budget?.perCreatorBudget?.toLocaleString() || "1,500"}
+                      {formatCurrency(item.campaign.budget?.perCreatorBudget || 1500, item.campaign.budget?.currency)}
                     </div>
                   </div>
                   <div>
@@ -268,7 +269,7 @@ export function TrendingShowcase() {
                 {/* Footer / CTA */}
                 <div className="mt-4 flex items-center justify-between pt-3 border-t border-black/6 dark:border-white/5">
                   <div className="text-xs text-[#5A5A68] dark:text-neutral-300 font-mono">
-                    From <span className="font-extrabold text-[#0A0A0E] dark:text-white">${creator.startingPrice}</span>
+                    From <span className="font-extrabold text-[#0A0A0E] dark:text-white">{formatCurrency(creator.startingPrice, (creator as any).currency)}</span>
                   </div>
                   <Link
                     href={`/creators/${creator.id}`}

@@ -9,6 +9,7 @@ import { useUIStore } from "@/stores/ui.store";
 import { StatsCard } from "@/components/ui/StatsCard";
 import { AnimatedEmptyState } from "@/components/ui/AnimatedEmptyState";
 import { formatCurrency } from "@/core/utils/formatters";
+import { convertCurrency } from "@/core/utils/currency";
 import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
 import { RazorpayCheckoutButton } from "@/components/payments/RazorpayCheckoutButton";
 import { Wallet, ShieldCheck, Download, ArrowRight, CheckCircle2, Receipt, Globe, Landmark, ArrowRightLeft, CreditCard, ExternalLink } from "lucide-react";
@@ -44,15 +45,18 @@ export default function EarningsAndEscrowPage() {
     fetch();
   }, [role, currentCreator?.id, currentBrand?.id]);
 
-  // Compute real dynamic financial metrics
-  const lifetimeProcessed = payouts.reduce((acc, p) => acc + (p.netAmount || 0), 0);
+  // Compute real dynamic financial metrics normalized to active viewer currency
+  const lifetimeProcessed = payouts.reduce(
+    (acc, p) => acc + convertCurrency(p.netAmount || 0, (p as any).currency || "USD", currency as any),
+    0
+  );
   const securedInEscrow = collaborations.reduce(
-    (acc, c) => acc + (c.totalAgreedBudget || 0),
+    (acc, c) => acc + convertCurrency(c.totalAgreedBudget || 0, (c as any).currency || "USD", currency as any),
     0
   );
   const availableForPayout = payouts
     .filter((p) => p.status === "pending")
-    .reduce((acc, p) => acc + (p.netAmount || 0), 0);
+    .reduce((acc, p) => acc + convertCurrency(p.netAmount || 0, (p as any).currency || "USD", currency as any), 0);
 
   const handleWithdraw = () => {
     if (availableForPayout === 0) {
@@ -109,19 +113,19 @@ export default function EarningsAndEscrowPage() {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 font-mono">
         <StatsCard
           title={`Available Balance (${currency})`}
-          value={formatGlobal(availableForPayout)}
+          value={formatCurrency(availableForPayout, currency)}
           subtitle={availableForPayout > 0 ? "Ready for worldwide withdrawal" : "No pending payouts"}
           icon={<Wallet className="w-4 h-4 text-[#FFD21F]" />}
         />
         <StatsCard
           title={`In Escrow (${currency})`}
-          value={formatGlobal(securedInEscrow)}
+          value={formatCurrency(securedInEscrow, currency)}
           subtitle={securedInEscrow > 0 ? "Held safely until deliverables are approved" : "No active escrow"}
           icon={<ShieldCheck className="w-4 h-4 text-[#0A0A0E]" />}
         />
         <StatsCard
           title={`Total Paid (${currency})`}
-          value={formatGlobal(lifetimeProcessed)}
+          value={formatCurrency(lifetimeProcessed, currency)}
           subtitle={lifetimeProcessed > 0 ? "All completed milestones" : "No completed payouts yet"}
           icon={<CheckCircle2 className="w-4 h-4 text-[#0A0A0E]" />}
         />
@@ -253,7 +257,7 @@ export default function EarningsAndEscrowPage() {
                   <div>
                     <span className="text-[#6A6A78] block text-[10px]">Net ({currency})</span>
                     <span className="text-[#0A0A0E] font-extrabold text-sm numeric-tabular">
-                      {formatGlobal(p.netAmount)}
+                      {formatGlobal(p.netAmount, (p as any).currency || "USD")}
                     </span>
                   </div>
                   <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold font-mono uppercase ${

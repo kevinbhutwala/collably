@@ -134,7 +134,7 @@ export function CreatorCard({ creator }: { creator: CreatorProfile }) {
         <div>
           <span className="text-[10px] text-[#7A7A8A] uppercase font-bold block">Starting Rate</span>
           <span className="text-sm font-black text-[#0A0A0E] font-mono numeric-tabular">
-            {formatCurrency(creator.startingPrice)}
+            {formatCurrency(creator.startingPrice, (creator as any).currency)}
           </span>
         </div>
 

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { Input, Textarea } from "@/components/ui/Input";
 import { CATEGORIES } from "@/core/constants";
+import { formatCurrency } from "@/core/utils/formatters";
 import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
 import {
@@ -278,7 +279,7 @@ export default function CreatorOnboardingWizardPage() {
             <div className="space-y-4 font-mono text-xs">
               <h3 className="text-xl font-bold text-[#0A0A0E] font-display">Step 7: Minimum Starting Fee</h3>
               <Input
-                label="Minimum Starting Fee ($ USD)"
+                label="Minimum Starting Fee"
                 type="number"
                 value={formData.startingFee}
                 onChange={(e) => setFormData({ ...formData, startingFee: parseInt(e.target.value) || 0 })}
@@ -337,7 +338,7 @@ export default function CreatorOnboardingWizardPage() {
                 <div className="flex gap-4 font-mono text-xs pt-2 border-t border-black/5">
                   <span>Reach: <strong className="text-[#0A0A0E]">{formData.totalReach.toLocaleString()}</strong></span>
                   <span>Engagement: <strong className="text-[#0A0A0E] flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />{formData.avgEngagement}%</strong></span>
-                  <span>Starting: <strong className="text-[#0A0A0E]">${formData.startingFee}</strong></span>
+                  <span>Starting: <strong className="text-[#0A0A0E]">{formatCurrency(formData.startingFee)}</strong></span>
                 </div>
               </div>
             </div>

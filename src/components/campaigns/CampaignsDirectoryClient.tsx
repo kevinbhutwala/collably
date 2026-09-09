@@ -148,7 +148,7 @@ export function CampaignsDirectoryClient() {
                       </div>
 
                       <span className="px-3 py-1 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-xs font-mono font-extrabold shadow-2xs">
-                        {formatCurrency(budgetVal)}
+                        {formatCurrency(budgetVal, camp.budget?.currency)}
                       </span>
                     </div>
 

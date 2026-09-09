@@ -51,7 +51,7 @@ export const CreatorRegisterSchema = z.object({
   instagramHandle: z.string().optional(),
   youtubeHandle: z.string().optional(),
   tiktokHandle: z.string().optional(),
-  startingPrice: z.number().min(50, 'Minimum starting price is $50'),
+  startingPrice: z.number().min(1, 'Minimum starting price must be greater than 0'),
   bio: z.string().min(20, 'Bio must be at least 20 characters'),
 });
 
@@ -100,8 +100,8 @@ export const CampaignCreationSchema = z.object({
   ).min(1, 'Add at least one deliverable requirement'),
 
   // Step 5: Budget & Escrow
-  totalBudget: z.number().min(200, 'Total budget must be at least $200'),
-  perCreatorBudget: z.number().min(100, 'Per-creator budget must be at least $100'),
+  totalBudget: z.number().min(1, 'Total budget must be at least 1'),
+  perCreatorBudget: z.number().min(1, 'Per-creator budget must be at least 1'),
   paymentTerms: z.enum(['50_50_escrow', '100_escrow_on_approval', 'milestone']),
   performanceBonus: z.string().optional(),
 
@@ -118,7 +118,7 @@ export const CampaignCreationSchema = z.object({
 export const ApplicationSubmissionSchema = z.object({
   campaignId: z.string().uuid().or(z.string().min(1)),
   pitch: z.string().min(30, 'Pitch must be at least 30 characters detailing your creative angle'),
-  proposedFee: z.number().min(50, 'Fee proposal must be at least $50'),
+  proposedFee: z.number().min(1, 'Fee proposal must be greater than 0'),
   estimatedReach: z.number().min(100),
   sampleLinks: z.array(z.string().url('Must be valid URL')).min(1, 'Provide at least 1 previous work link'),
 });

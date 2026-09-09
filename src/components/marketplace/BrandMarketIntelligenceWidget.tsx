@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { BrandMarketIntelligenceData } from "@/core/types";
+import { formatCurrency } from "@/core/utils/formatters";
 
 export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCategory?: string }) {
   const [selectedCategory, setSelectedCategory] = useState(initialCategory || "Technology & AI");
@@ -103,7 +104,7 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
         </div>
         <div>
           <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] block uppercase font-bold">Average Budget</span>
-          <span className="text-sm font-bold text-[#0A0A0E] dark:text-white">₹32,500 ($2,850)</span>
+          <span className="text-sm font-bold text-[#0A0A0E] dark:text-white">{formatCurrency(2850)}</span>
         </div>
         <div>
           <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] block uppercase font-bold">Most Popular Format</span>
@@ -135,11 +136,11 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
                 <div>
                   <div className="font-bold text-[#0A0A0E] dark:text-white">{tier.tier}</div>
                   <div className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4]">
-                    Range: ${tier.rateRange[0]} - ${tier.rateRange[1]}
+                    Range: {formatCurrency(tier.rateRange[0])} - {formatCurrency(tier.rateRange[1])}
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="font-extrabold text-[#0A0A0E] dark:text-[#FFD21F] font-mono">${tier.avgRate}</div>
+                  <div className="font-extrabold text-[#0A0A0E] dark:text-[#FFD21F] font-mono">{formatCurrency(tier.avgRate)}</div>
                   <div className="text-[10px] text-[#8A8A9A]">Median</div>
                 </div>
               </div>

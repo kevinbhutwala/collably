@@ -7,6 +7,7 @@ import { Input, Textarea } from "@/components/ui/Input";
 import { Modal } from "@/components/ui/Modal";
 import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
+import { formatCurrency } from "@/core/utils/formatters";
 import {
   HelpCircle,
   ShieldAlert,
@@ -200,7 +201,7 @@ export default function SupportAndDisputePage() {
                   </div>
                 )}
                 <div className="flex justify-between text-[#6A6A78] pt-2 border-t border-black/5">
-                  <span>Disputed Amount: <strong className="text-[#0A0A0E]">${d.amountInDispute}</strong></span>
+                  <span>Disputed Amount: <strong className="text-[#0A0A0E]">{formatCurrency(d.amountInDispute, (d as any).currency)}</strong></span>
                   <span>Reason: {d.reason.replace(/_/g, " ")}</span>
                 </div>
               </div>
@@ -297,7 +298,7 @@ export default function SupportAndDisputePage() {
               </select>
             </div>
             <Input
-              label="Disputed Escrow Amount ($ USD)"
+              label="Disputed Escrow Amount"
               type="number"
               value={disputeAmount}
               onChange={(e) => setDisputeAmount(parseInt(e.target.value) || 0)}

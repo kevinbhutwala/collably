@@ -45,7 +45,7 @@ export function EditorialCreatorCard({
 
   const startingPriceDisplay =
     typeof creator.startingPrice === "number"
-      ? formatCurrency(creator.startingPrice)
+      ? formatCurrency(creator.startingPrice, (creator as any).currency)
       : creator.startingPrice;
 
   return (

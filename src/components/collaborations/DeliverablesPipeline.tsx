@@ -117,7 +117,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
       addToast({
         type: "success",
         title: "Escrow Secured & Locked!",
-        message: `Vault funded for ${formatCurrency(collab.totalAgreedBudget)}. Creator has been unblocked to begin work.`,
+        message: `Vault funded for ${formatCurrency(collab.totalAgreedBudget, collab.currency)}. Creator has been unblocked to begin work.`,
       });
     } catch (err: any) {
       addToast({
@@ -413,20 +413,21 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
   // Calculate cancellation preview math
   const getCancellationPreview = () => {
     const total = collab.totalAgreedBudget || 3500;
+    const currency = collab.currency || "USD";
     if (!isFunded) {
       return { refund: 0, killFee: 0, desc: "Unfunded: No funds have been deposited yet." };
     }
     if (collab.paymentStatus === "payment_secured") {
-      return { refund: total, killFee: 0, desc: "Before work started: 100% Brand Refund ($" + total.toLocaleString() + "), 0% Creator Kill-Fee ($0)." };
+      return { refund: total, killFee: 0, desc: `Before work started: 100% Brand Refund (${formatCurrency(total, currency)}), 0% Creator Kill-Fee (${formatCurrency(0, currency)}).` };
     }
     if (isOverdue) {
-      return { refund: total, killFee: 0, desc: "Deadline Missed: 100% Brand Refund ($" + total.toLocaleString() + "), 0% Creator Kill-Fee ($0)." };
+      return { refund: total, killFee: 0, desc: `Deadline Missed: 100% Brand Refund (${formatCurrency(total, currency)}), 0% Creator Kill-Fee (${formatCurrency(0, currency)}).` };
     }
     if (collab.paymentStatus === "submitted_for_review" || collab.paymentStatus === "revision_requested") {
-      return { refund: total * 0.5, killFee: total * 0.5, desc: "Content Submitted: 50% Brand Refund ($" + (total * 0.5).toLocaleString() + "), 50% Creator Kill-Fee ($" + (total * 0.5).toLocaleString() + ")." };
+      return { refund: total * 0.5, killFee: total * 0.5, desc: `Content Submitted: 50% Brand Refund (${formatCurrency(total * 0.5, currency)}), 50% Creator Kill-Fee (${formatCurrency(total * 0.5, currency)}).` };
     }
     // Default work_in_progress
-    return { refund: total * 0.7, killFee: total * 0.3, desc: "Work In Progress: 70% Brand Refund ($" + (total * 0.7).toLocaleString() + "), 30% Creator Kill-Fee ($" + (total * 0.3).toLocaleString() + ")." };
+    return { refund: total * 0.7, killFee: total * 0.3, desc: `Work In Progress: 70% Brand Refund (${formatCurrency(total * 0.7, currency)}), 30% Creator Kill-Fee (${formatCurrency(total * 0.3, currency)}).` };
   };
 
   const approvedCount = deliverables.filter((d) => d.status === "approved").length;
@@ -497,7 +498,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
           <div className="text-left lg:text-right font-mono">
             <span className="text-[10px] text-[#7A7A8A] uppercase font-bold block">Escrow Vault</span>
             <span className="text-base sm:text-lg font-black text-[#0A0A0E]">
-              {formatCurrency(collab.totalAgreedBudget)}
+              {formatCurrency(collab.totalAgreedBudget, collab.currency)}
             </span>
           </div>
 
@@ -572,7 +573,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
                     className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs shadow-xs border border-black/10 transition-all flex items-center gap-2 disabled:opacity-50"
                   >
                     <Lock className="w-3.5 h-3.5" />
-                    <span>{isFunding ? "Funding Vault..." : `Fund Escrow Vault (${formatCurrency(collab.totalAgreedBudget)})`}</span>
+                    <span>{isFunding ? "Funding Vault..." : `Fund Escrow Vault (${formatCurrency(collab.totalAgreedBudget, collab.currency)})`}</span>
                   </button>
                 )}
                 {role === "creator" && (
@@ -754,7 +755,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
                     <div className="flex items-center gap-4 text-xs text-[#6A6A78] font-mono pt-1">
                       <span>Due: <strong className="text-[#0A0A0E]">{del.dueDate}</strong></span>
                       <span>•</span>
-                      <span>Milestone Escrow: <strong className="text-[#0A0A0E] font-extrabold">{formatCurrency(del.payoutAmount)}</strong></span>
+                      <span>Milestone Escrow: <strong className="text-[#0A0A0E] font-extrabold">{formatCurrency(del.payoutAmount, collab.currency)}</strong></span>
                     </div>
                   </div>
 

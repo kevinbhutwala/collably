@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { CreatorMarketPulseData } from "@/core/types";
+import { formatCurrency } from "@/core/utils/formatters";
 
 export function CreatorMarketPulseWidget({ creatorId }: { creatorId?: string }) {
   const [pulse, setPulse] = useState<CreatorMarketPulseData | null>(null);
@@ -84,7 +85,7 @@ export function CreatorMarketPulseWidget({ creatorId }: { creatorId?: string }) 
             <div className="rounded-xl bg-white dark:bg-[#1C1C2A] border border-black/4 dark:border-white/5 p-3 shadow-2xs">
               <div className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-bold">Average Deal Size</div>
               <div className="mt-0.5 text-sm font-extrabold text-[#0A0A0E] dark:text-white">
-                ${pulse.categoryTrends.avgBudget.toLocaleString()}
+                {formatCurrency(pulse.categoryTrends.avgBudget)}
               </div>
             </div>
             <div className="rounded-xl bg-white dark:bg-[#1C1C2A] border border-black/4 dark:border-white/5 p-3 shadow-2xs">
@@ -110,7 +111,7 @@ export function CreatorMarketPulseWidget({ creatorId }: { creatorId?: string }) 
                 <div className="flex items-center justify-between text-xs">
                   <span className="text-[#4A4A58] dark:text-neutral-300 font-medium">{d.deliverableType}</span>
                   <div className="flex items-center gap-2 font-mono">
-                    <span className="font-bold text-[#0A0A0E] dark:text-white">${d.suggestedRate}</span>
+                    <span className="font-bold text-[#0A0A0E] dark:text-white">{formatCurrency(d.suggestedRate)}</span>
                     <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold">({d.momentum})</span>
                   </div>
                 </div>
