@@ -207,7 +207,7 @@ export function PlanUpgradeModal() {
                 onClick={() => setIsAnnual(false)}
                 className={`px-4 py-1.5 rounded-full transition-all font-bold ${
                   !isAnnual
-                    ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] shadow-xs"
+                    ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs"
                     : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
                 }`}
               >
@@ -217,12 +217,12 @@ export function PlanUpgradeModal() {
                 onClick={() => setIsAnnual(true)}
                 className={`px-4 py-1.5 rounded-full transition-all font-bold flex items-center gap-1.5 ${
                   isAnnual
-                    ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] shadow-xs"
+                    ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs"
                     : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
                 }`}
               >
                 <span>Annual</span>
-                <span className="px-1.5 py-0.5 rounded-full bg-[#FFD21F] dark:bg-[#0A0A0E] text-[#0A0A0E] dark:text-[#FFD21F] text-[10px] font-mono font-extrabold">
+                <span className="px-1.5 py-0.5 rounded-full bg-[#0A0A0E] text-white text-[10px] font-mono font-extrabold">
                   Save 20%
                 </span>
               </button>
@@ -296,10 +296,10 @@ export function PlanUpgradeModal() {
                     disabled={isCurrent || (isLoading && isProcessing)}
                     className={`w-full py-3 rounded-full text-xs font-bold transition-all flex items-center justify-center gap-2 active:scale-98 ${
                       isCurrent
-                        ? "bg-black/5 dark:bg-white/10 text-[#8A8A9A] dark:text-[#8E8EA4] cursor-not-allowed border border-black/10 dark:border-white/10"
+                        ? "bg-black/5 dark:bg-white/10 text-[#8A8A9A] dark:text-white/80 cursor-not-allowed border border-black/10 dark:border-white/20 font-bold"
                         : p.highlight
                         ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] shadow-[0_4px_16px_rgba(255,210,31,0.4)] font-extrabold"
-                        : "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] hover:bg-[#1A1A24] dark:hover:bg-[#FFE052] font-bold shadow-xs"
+                        : "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] hover:bg-[#1A1A24] dark:hover:bg-[#FFE052] font-bold shadow-md"
                     }`}
                   >
                     {isProcessing ? (

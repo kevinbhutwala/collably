@@ -111,7 +111,7 @@ export function AppSidebar() {
     role === "creator" ? creatorNavItems : role === "brand" ? brandNavItems : adminNavItems;
 
   return (
-    <aside className="hidden lg:flex flex-col w-64 border-r border-black/8 bg-white shrink-0 h-full text-[#0A0A0E] shadow-2xs select-none justify-between">
+    <aside className="hidden lg:flex flex-col w-64 border-r border-black/8 dark:border-white/10 bg-white dark:bg-[#0E0E14] shrink-0 h-full text-[#0A0A0E] dark:text-[#F4F4F8] shadow-2xs select-none justify-between">
       {/* Scrollable Nav List */}
       <nav className="flex-1 px-3 py-3 space-y-0.5 overflow-hidden">
         {navItems.map((item) => {
@@ -128,8 +128,8 @@ export function AppSidebar() {
                 isActive
                   ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] font-bold shadow-[0_2px_10px_rgba(255,210,31,0.35)] border border-black/10"
                   : item.highlight
-                  ? "bg-[#FFD21F]/15 text-[#0A0A0E] hover:bg-[#FFD21F]/25 border border-[#FFD21F]/30 font-bold"
-                  : "text-[#5A5A68] hover:text-[#0A0A0E] hover:bg-[#F4F4F8]"
+                  ? "bg-[#FFD21F]/15 dark:bg-[#FFD21F]/10 text-[#0A0A0E] dark:text-[#FFD21F] hover:bg-[#FFD21F]/25 dark:hover:bg-[#FFD21F]/20 border border-[#FFD21F]/30 font-bold"
+                  : "text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-white hover:bg-[#F4F4F8] dark:hover:bg-white/5"
               )}
             >
               <div className="flex items-center gap-3">
@@ -139,8 +139,8 @@ export function AppSidebar() {
                     isActive
                       ? "text-[#0A0A0E]"
                       : item.highlight
-                      ? "text-[#8A7000]"
-                      : "text-[#7A7A8A]"
+                      ? "text-[#8A7000] dark:text-[#FFD21F]"
+                      : "text-[#7A7A8A] dark:text-[#8E8EA4]"
                   )}
                 />
                 <span>{item.label}</span>
@@ -151,10 +151,10 @@ export function AppSidebar() {
                   className={cn(
                     "text-[9px] px-2 py-0.5 rounded-full font-mono font-bold flex items-center gap-1",
                     isGated
-                      ? "bg-[#FFD21F]/20 text-[#0A0A0E] border border-[#FFD21F]/40"
+                      ? "bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] border border-[#FFD21F]/40"
                       : isActive
                       ? "bg-[#0A0A0E] text-white"
-                      : "bg-black/5 text-[#5A5A68] border border-black/8"
+                      : "bg-black/5 dark:bg-white/10 text-[#5A5A68] dark:text-[#A0A0B4] border border-black/8 dark:border-white/10"
                   )}
                 >
                   {isGated && <Lock className="w-2.5 h-2.5" />}
@@ -186,7 +186,7 @@ export function AppSidebar() {
             </p>
             <button
               onClick={() => openUpgradeModal()}
-              className="w-full py-1.5 rounded-xl bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10"
+              className="w-full py-2 rounded-xl bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-[0_2px_12px_rgba(255,210,31,0.35)] border border-black/10 active:scale-98"
             >
               Upgrade Plan
             </button>

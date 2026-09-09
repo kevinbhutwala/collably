@@ -195,22 +195,22 @@ export default function SettingsPage() {
     : "Next month";
 
   return (
-    <div className="space-y-6 text-[#0A0A0E] select-none">
+    <div className="space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] select-none">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 sm:pb-5 border-b border-black/8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 sm:pb-5 border-b border-black/8 dark:border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
+            <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] dark:text-[#FFD21F] flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               Workspace Controls
             </span>
-            <span className="text-[#8A8A9A]">•</span>
+            <span className="text-[#8A8A9A] dark:text-[#8E8EA4]">•</span>
             <SubscriptionBadge planId={subscription?.planId} role={role} size="sm" />
           </div>
-          <h1 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
+          <h1 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
             Settings &amp; Billing
           </h1>
-          <p className="text-xs sm:text-sm text-[#5A5A68]">
+          <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#8E8EA4]">
             Manage your subscription plan, payout preferences, and security.
           </p>
         </div>
@@ -225,13 +225,12 @@ export default function SettingsPage() {
       </div>
 
       {/* Navigation Tabs */}
-      <div className="flex items-center gap-2 border-b border-black/8 pb-px overflow-x-auto scrollbar-none">
+      <div className="flex items-center gap-2 border-b border-black/8 dark:border-white/10 pb-px overflow-x-auto scrollbar-none">
         <button
           onClick={() => setActiveTab("billing")}
           className={`px-4 py-2.5 rounded-t-2xl font-bold text-xs transition-all flex items-center gap-2 border-b-2 shrink-0 ${
-
             activeTab === "billing"
-              ? "border-[#0A0A0E] dark:border-[#FFD21F] text-[#0A0A0E] dark:text-[#FFD21F] bg-white dark:bg-[#1A1A28] shadow-xs"
+              ? "border-[#0A0A0E] dark:border-[#FFD21F] text-[#0A0A0E] dark:text-[#FFD21F] bg-white dark:bg-[#161622] shadow-xs"
               : "border-transparent text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
           }`}
         >
@@ -243,7 +242,7 @@ export default function SettingsPage() {
           onClick={() => setActiveTab("payout")}
           className={`px-4 py-2.5 rounded-t-2xl font-bold text-xs transition-all flex items-center gap-2 border-b-2 shrink-0 ${
             activeTab === "payout"
-              ? "border-[#0A0A0E] dark:border-[#FFD21F] text-[#0A0A0E] dark:text-[#FFD21F] bg-white dark:bg-[#1A1A28] shadow-xs"
+              ? "border-[#0A0A0E] dark:border-[#FFD21F] text-[#0A0A0E] dark:text-[#FFD21F] bg-white dark:bg-[#161622] shadow-xs"
               : "border-transparent text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
           }`}
         >
@@ -255,7 +254,7 @@ export default function SettingsPage() {
           onClick={() => setActiveTab("security")}
           className={`px-4 py-2.5 rounded-t-2xl font-bold text-xs transition-all flex items-center gap-2 border-b-2 shrink-0 ${
             activeTab === "security"
-              ? "border-[#0A0A0E] dark:border-[#FFD21F] text-[#0A0A0E] dark:text-[#FFD21F] bg-white dark:bg-[#1A1A28] shadow-xs"
+              ? "border-[#0A0A0E] dark:border-[#FFD21F] text-[#0A0A0E] dark:text-[#FFD21F] bg-white dark:bg-[#161622] shadow-xs"
               : "border-transparent text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
           }`}
         >
@@ -267,7 +266,7 @@ export default function SettingsPage() {
           onClick={() => setActiveTab("appearance")}
           className={`px-4 py-2.5 rounded-t-2xl font-bold text-xs transition-all flex items-center gap-2 border-b-2 shrink-0 ${
             activeTab === "appearance"
-              ? "border-[#0A0A0E] dark:border-[#FFD21F] text-[#0A0A0E] dark:text-[#FFD21F] bg-white dark:bg-[#1A1A28] shadow-xs"
+              ? "border-[#0A0A0E] dark:border-[#FFD21F] text-[#0A0A0E] dark:text-[#FFD21F] bg-white dark:bg-[#161622] shadow-xs"
               : "border-transparent text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
           }`}
         >
@@ -276,38 +275,37 @@ export default function SettingsPage() {
         </button>
       </div>
 
-
       {/* ── TAB 1: PLAN & BILLING ── */}
       {activeTab === "billing" && (
         <div className="space-y-8">
           {/* Active Plan Hero Card */}
-          <div className="rounded-3xl bg-white border border-black/8 p-6 sm:p-8 shadow-xs space-y-6 relative overflow-hidden">
+          <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-6 sm:p-8 shadow-xs space-y-6 relative overflow-hidden text-[#0A0A0E] dark:text-[#F4F4F8]">
             <div className="absolute top-0 right-0 w-80 h-80 bg-[#FFD21F]/10 rounded-full blur-3xl pointer-events-none" />
 
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-black/6 relative z-10">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-black/6 dark:border-white/10 relative z-10">
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-mono font-bold uppercase text-[#6A6A78]">
+                  <span className="text-xs font-mono font-bold uppercase text-[#6A6A78] dark:text-[#8E8EA4]">
                     Active Workspace Tier
                   </span>
                   <SubscriptionBadge planId={subscription?.planId} role={role} size="md" />
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-black font-display text-[#0A0A0E]">
+                <h2 className="text-2xl sm:text-3xl font-black font-display text-[#0A0A0E] dark:text-white">
                   {currentPlan?.name || "Active Subscription"}
                 </h2>
-                <p className="text-xs sm:text-sm text-[#5A5A68]">
+                <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4]">
                   {currentPlan?.description}
                 </p>
               </div>
 
               <div className="flex flex-col items-start md:items-end gap-2 shrink-0">
-                <div className="text-2xl sm:text-3xl font-black font-display text-[#0A0A0E]">
+                <div className="text-2xl sm:text-3xl font-black font-display text-[#0A0A0E] dark:text-white">
                   ${subscription?.price !== undefined ? subscription.price : currentPlan?.monthlyPrice}
-                  <span className="text-xs text-[#6A6A78] font-normal font-sans ml-1">
+                  <span className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-normal font-sans ml-1">
                     {subscription?.interval === "annual" ? "/year" : "/month"}
                   </span>
                 </div>
-                <div className="flex items-center gap-1.5 text-xs text-[#5A5A68]">
+                <div className="flex items-center gap-1.5 text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
                   <Calendar className="w-3.5 h-3.5 text-[#FFD21F]" />
                   <span>
                     {subscription?.cancelAtPeriodEnd
@@ -321,23 +319,23 @@ export default function SettingsPage() {
             {/* Quota Progress Meter */}
             <div className="space-y-2 pt-2 relative z-10">
               <div className="flex items-center justify-between text-xs font-mono">
-                <span className="font-bold text-[#0A0A0E] flex items-center gap-1.5">
+                <span className="font-bold text-[#0A0A0E] dark:text-white flex items-center gap-1.5">
                   <Zap className="w-3.5 h-3.5 text-[#FFD21F]" />
                   <span>{quotaLabel} Quota</span>
                 </span>
-                <span className="text-[#5A5A68]">
+                <span className="text-[#5A5A68] dark:text-[#8E8EA4]">
                   {quota.limit === -1 ? (
-                    <span className="font-bold text-emerald-600">UNLIMITED</span>
+                    <span className="font-bold text-emerald-600 dark:text-emerald-400">UNLIMITED</span>
                   ) : (
                     <span>
-                      <strong className="text-[#0A0A0E]">{quota.current}</strong> / {quota.limit} used ({quota.percent}%)
+                      <strong className="text-[#0A0A0E] dark:text-white">{quota.current}</strong> / {quota.limit} used ({quota.percent}%)
                     </span>
                   )}
                 </span>
               </div>
 
               {quota.limit !== -1 && (
-                <div className="w-full h-3 rounded-full bg-[#F0F0F4] overflow-hidden">
+                <div className="w-full h-3 rounded-full bg-[#F0F0F4] dark:bg-[#1C1C28] overflow-hidden">
                   <div
                     className={`h-full rounded-full transition-all duration-500 ${
                       quota.percent >= 90
@@ -354,15 +352,15 @@ export default function SettingsPage() {
 
             {/* Subscription State Actions */}
             {role !== "agency_admin" && role !== "super_admin" && (
-              <div className="pt-4 border-t border-black/6 flex flex-wrap items-center justify-between gap-4 text-xs">
+              <div className="pt-4 border-t border-black/6 dark:border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs">
                 {subscription?.cancelAtPeriodEnd ? (
                   <div className="flex items-center gap-3">
-                    <span className="text-amber-700 bg-amber-50 px-3 py-1.5 rounded-xl border border-amber-200">
+                    <span className="text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/40 px-3 py-1.5 rounded-xl border border-amber-200 dark:border-amber-800">
                       Subscription scheduled for cancellation at period end.
                     </span>
                     <button
                       onClick={handleResumeSubscription}
-                      className="px-4 py-1.5 rounded-full bg-[#0A0A0E] hover:bg-[#20202B] text-white font-bold transition-all"
+                      className="px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold transition-all shadow-xs border border-black/10"
                     >
                       Resume Subscription
                     </button>
@@ -371,12 +369,12 @@ export default function SettingsPage() {
                   <button
                     onClick={handleCancelSubscription}
                     disabled={isCancelling}
-                    className="text-[#8A8A9A] hover:text-red-600 font-medium transition-colors underline underline-offset-4"
+                    className="text-[#8A8A9A] dark:text-[#8E8EA4] hover:text-red-500 font-medium transition-colors underline underline-offset-4"
                   >
                     {isCancelling ? "Processing cancellation..." : "Cancel subscription at period end"}
                   </button>
                 ) : (
-                  <span className="text-[#8A8A9A]">
+                  <span className="text-[#8A8A9A] dark:text-[#8E8EA4]">
                     Free Starter tier has no recurring charges or billing commitments.
                   </span>
                 )}
@@ -388,10 +386,10 @@ export default function SettingsPage() {
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <h3 className="text-xl font-extrabold text-[#0A0A0E] font-display">
+                <h3 className="text-xl font-extrabold text-[#0A0A0E] dark:text-white font-display">
                   Available {isBrand ? "Brand" : "Creator"} Plans
                 </h3>
-                <p className="text-xs text-[#5A5A68]">
+                <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4]">
                   Switch between plans instantly with real-time benefit updates.
                 </p>
               </div>
@@ -402,7 +400,7 @@ export default function SettingsPage() {
                   onClick={() => setIsAnnual(false)}
                   className={`px-3.5 py-1.5 rounded-full transition-all font-bold ${
                     !isAnnual
-                      ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] shadow-xs"
+                      ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs"
                       : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
                   }`}
                 >
@@ -412,12 +410,12 @@ export default function SettingsPage() {
                   onClick={() => setIsAnnual(true)}
                   className={`px-3.5 py-1.5 rounded-full transition-all font-bold flex items-center gap-1.5 ${
                     isAnnual
-                      ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] shadow-xs"
+                      ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs"
                       : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
                   }`}
                 >
                   <span>Annual</span>
-                  <span className="px-1.5 py-0.5 rounded-full bg-[#FFD21F] dark:bg-[#0A0A0E] text-[#0A0A0E] dark:text-[#FFD21F] text-[10px] font-mono font-extrabold">
+                  <span className="px-1.5 py-0.5 rounded-full bg-[#0A0A0E] text-white text-[10px] font-mono font-extrabold">
                     Save 20%
                   </span>
                 </button>
@@ -438,8 +436,8 @@ export default function SettingsPage() {
                       p.highlight
                         ? "bg-gradient-to-b from-[#FFFDF5] to-white dark:from-[#1A1A28] dark:to-[#12121C] border-2 border-[#FFD21F] shadow-[0_8px_30px_rgba(255,210,31,0.15)]"
                         : isCurrent
-                        ? "bg-white dark:bg-[#181824] border-2 border-black/20 dark:border-[#FFD21F]/50 shadow-xs"
-                        : "bg-white dark:bg-[#14141E] border-black/10 dark:border-white/10 hover:border-black/20 shadow-xs"
+                        ? "bg-white dark:bg-[#181824] border-2 border-black/20 dark:border-[#FFD21F]/60 shadow-xs"
+                        : "bg-white dark:bg-[#12121A] border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 shadow-xs"
                     }`}
                   >
                     {p.highlight && (
@@ -488,12 +486,12 @@ export default function SettingsPage() {
                       <button
                         onClick={() => handlePlanChange(p)}
                         disabled={isCurrent || (isLoading && isProcessing)}
-                        className={`w-full py-3 rounded-full text-xs font-bold transition-all flex items-center justify-center gap-2 active:scale-98 ${
+                        className={`w-full py-3.5 rounded-full text-xs font-bold transition-all flex items-center justify-center gap-2 active:scale-98 shadow-sm ${
                           isCurrent
-                            ? "bg-black/5 dark:bg-white/10 text-[#8A8A9A] dark:text-[#8E8EA4] cursor-not-allowed border border-black/10 dark:border-white/10"
+                            ? "bg-black/5 dark:bg-white/10 text-[#8A8A9A] dark:text-white/80 cursor-not-allowed border border-black/10 dark:border-white/20 font-bold"
                             : p.highlight
                             ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] shadow-[0_4px_16px_rgba(255,210,31,0.4)] font-extrabold"
-                            : "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] hover:bg-[#1A1A24] dark:hover:bg-[#FFE052] font-bold shadow-xs"
+                            : "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] hover:bg-[#1A1A24] dark:hover:bg-[#FFE052] font-bold shadow-md"
                         }`}
                       >
                         {isProcessing ? (
@@ -522,12 +520,12 @@ export default function SettingsPage() {
       {/* ── TAB 2: PAYOUT & BANKING ── */}
       {activeTab === "payout" && (
         <div className="space-y-6">
-          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-4">
-            <div className="flex items-center gap-2 text-[#0A0A0E] font-bold text-sm font-display">
+          <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
+            <div className="flex items-center gap-2 text-[#0A0A0E] dark:text-white font-bold text-sm font-display">
               <Wallet className="w-4 h-4 text-[#FFD21F]" />
               <span>Escrow &amp; Payout Rails</span>
             </div>
-            <p className="text-xs text-[#5A5A68] leading-relaxed">
+            <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] leading-relaxed">
               {role === "creator"
                 ? "Configure your bank account, IBAN, or UPI ID for automated escrow release upon deliverable approval."
                 : "Manage funding accounts and corporate payment credentials for 100% pre-funded campaign escrow deposits."}
@@ -563,7 +561,7 @@ export default function SettingsPage() {
             <div className="pt-2">
               <button
                 onClick={handleSavePreferences}
-                className="px-4 py-2 rounded-full bg-[#0A0A0E] hover:bg-[#20202B] text-white text-xs font-bold transition-all"
+                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10"
               >
                 Save Payout Details
               </button>
@@ -576,12 +574,12 @@ export default function SettingsPage() {
       {activeTab === "security" && (
         <div className="space-y-6">
           {/* Password Change Form */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-4">
-            <div className="flex items-center gap-2 text-[#0A0A0E] font-bold text-sm font-display">
+          <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
+            <div className="flex items-center gap-2 text-[#0A0A0E] dark:text-white font-bold text-sm font-display">
               <ShieldCheck className="w-4 h-4 text-[#FFD21F]" />
               <span>Change Password</span>
             </div>
-            <p className="text-xs text-[#5A5A68] leading-relaxed">
+            <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] leading-relaxed">
               Update your account password. Password must be at least 8 characters long.
             </p>
 
@@ -613,7 +611,7 @@ export default function SettingsPage() {
               <button
                 type="submit"
                 disabled={isChangingPassword}
-                className="px-5 py-2.5 rounded-full bg-[#0A0A0E] hover:bg-[#20202B] text-white text-xs font-bold transition-all disabled:opacity-50 flex items-center gap-2"
+                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all disabled:opacity-50 flex items-center gap-2 shadow-xs border border-black/10"
               >
                 {isChangingPassword ? (
                   <>
@@ -627,15 +625,15 @@ export default function SettingsPage() {
             </form>
           </div>
 
-          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-4">
-            <div className="flex items-center gap-2 text-[#0A0A0E] font-bold text-sm font-display">
+          <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
+            <div className="flex items-center gap-2 text-[#0A0A0E] dark:text-white font-bold text-sm font-display">
               <Smartphone className="w-4 h-4 text-[#FFD21F]" />
               <span>Cross-Platform API &amp; Security Status</span>
             </div>
-            <p className="text-xs text-[#5A5A68] leading-relaxed font-sans">
+            <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] leading-relaxed font-sans">
               Your credentials, active subscriptions, and campaigns are synchronized in realtime across the AbeyCollab Web &amp; Mobile Workspace.
             </p>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/5 border border-black/10 text-[#0A0A0E] font-mono text-[10px] font-bold">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-mono text-[10px] font-bold">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-pulse" />
               Core API &amp; Webhook Rails: Connected &amp; Ready
             </span>
@@ -691,13 +689,13 @@ export default function SettingsPage() {
             </div>
           </div>
 
-          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6">
+          <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8]">
             <div>
-              <h2 className="text-base sm:text-lg font-black text-[#0A0A0E] tracking-tight font-display flex items-center gap-2">
+              <h2 className="text-base sm:text-lg font-black text-[#0A0A0E] dark:text-white tracking-tight font-display flex items-center gap-2">
                 <Sun className="w-5 h-5 text-[#FFD21F]" />
                 <span>Interface Theme &amp; Contrast</span>
               </h2>
-              <p className="text-xs sm:text-sm text-[#5A5A68] mt-1 font-sans">
+              <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#8E8EA4] mt-1 font-sans">
                 Choose your preferred visual theme. Dark mode features high-contrast carbon surfaces engineered for low-light editing and 4K QA workflows.
               </p>
             </div>

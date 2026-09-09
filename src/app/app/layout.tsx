@@ -12,7 +12,7 @@ export default function AuthenticatedAppLayout({
 }) {
   return (
     <AuthGuard>
-      <div className="h-screen flex flex-col bg-[#F8F8FB] text-[#0A0A0E] selection:bg-[#FFD21F] selection:text-[#0A0A0E] relative overflow-hidden">
+      <div className="h-screen flex flex-col bg-[#F8F8FB] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] selection:bg-[#FFD21F] selection:text-[#0A0A0E] relative overflow-hidden">
         {/* Soft Warm Ambient Glow */}
         <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[900px] h-96 bg-[#FFD21F]/10 blur-[140px] rounded-full pointer-events-none z-0" />
 

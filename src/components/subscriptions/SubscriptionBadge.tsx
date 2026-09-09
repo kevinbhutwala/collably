@@ -41,9 +41,9 @@ export function SubscriptionBadge({
   > = {
     creator_starter: {
       label: "Starter",
-      bg: "bg-[#F4F4F8]",
-      text: "text-[#5A5A68]",
-      border: "border-black/10",
+      bg: "bg-[#F4F4F8] dark:bg-white/10",
+      text: "text-[#5A5A68] dark:text-[#E0E0F0]",
+      border: "border-black/10 dark:border-white/20",
       icon: null,
     },
     creator_pro: {
@@ -64,9 +64,9 @@ export function SubscriptionBadge({
     },
     brand_starter: {
       label: "Brand Starter",
-      bg: "bg-[#F4F4F8]",
-      text: "text-[#5A5A68]",
-      border: "border-black/10",
+      bg: "bg-[#F4F4F8] dark:bg-white/10",
+      text: "text-[#5A5A68] dark:text-[#E0E0F0]",
+      border: "border-black/10 dark:border-white/20",
       icon: null,
     },
     brand_growth: {

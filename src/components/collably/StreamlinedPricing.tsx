@@ -63,11 +63,11 @@ export function StreamlinedPricing() {
   ];
 
   return (
-    <section className="py-14 sm:py-20 bg-white text-[#0A0A0E] select-none relative overflow-hidden border-t border-black/5">
+    <section className="py-14 sm:py-20 bg-white dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] select-none relative overflow-hidden border-t border-black/5 dark:border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Header & Toggle */}
         <div className="text-center space-y-3 max-w-2xl mx-auto">
-          <span className="text-[11px] font-mono font-bold tracking-[0.16em] text-[#6A6A78] uppercase block">
+          <span className="text-[11px] font-mono font-bold tracking-[0.16em] text-[#6A6A78] dark:text-[#8E8EA4] uppercase block">
             TRANSPARENT VALUE
           </span>
           <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#0A0A0E] dark:text-white font-display">
@@ -83,7 +83,7 @@ export function StreamlinedPricing() {
                   onClick={() => setIsAnnual(false)}
                   className={`px-3.5 py-1.5 rounded-full transition-all font-bold ${
                     !isAnnual
-                      ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] shadow-xs"
+                      ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs"
                       : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
                   }`}
                 >
@@ -93,12 +93,12 @@ export function StreamlinedPricing() {
                   onClick={() => setIsAnnual(true)}
                   className={`px-3.5 py-1.5 rounded-full transition-all font-bold flex items-center gap-1.5 ${
                     isAnnual
-                      ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] shadow-xs"
+                      ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs"
                       : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
                   }`}
                 >
                   <span>Annual</span>
-                  <span className="px-1.5 py-0.5 rounded-full bg-[#FFD21F] dark:bg-[#0A0A0E] text-[#0A0A0E] dark:text-[#FFD21F] text-[10px] font-mono font-extrabold">
+                  <span className="px-1.5 py-0.5 rounded-full bg-[#0A0A0E] text-white text-[10px] font-mono font-extrabold">
                     Save 20%
                   </span>
                 </button>
@@ -152,10 +152,10 @@ export function StreamlinedPricing() {
                 <div className="pt-6">
                   <Link href={tier.ctaHref}>
                     <button
-                      className={`w-full py-3 rounded-full text-xs font-bold transition-all flex items-center justify-center gap-1.5 active:scale-98 ${
+                      className={`w-full py-3.5 rounded-full text-xs font-bold transition-all flex items-center justify-center gap-1.5 active:scale-98 shadow-sm ${
                         tier.popular
                           ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] shadow-[0_4px_16px_rgba(255,210,31,0.4)]"
-                          : "bg-[#F4F4F8] dark:bg-[#222232] hover:bg-[#0A0A0E] dark:hover:bg-[#FFD21F] hover:text-white dark:hover:text-[#0A0A0E] text-[#0A0A0E] dark:text-white border border-transparent dark:border-white/10"
+                          : "bg-[#0A0A0E] dark:bg-[#FFD21F] hover:bg-[#1A1A24] dark:hover:bg-[#FFE052] text-white dark:text-[#0A0A0E] font-bold shadow-md"
                       }`}
                     >
                       <span>{tier.ctaText}</span>
