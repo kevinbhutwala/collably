@@ -5,6 +5,7 @@ import Link from "next/link";
 import { campaignService } from "@/services/campaign.service";
 import { Campaign } from "@/core/types";
 import { formatCurrency, formatNumber } from "@/core/utils/formatters";
+import { useGlobalCurrency } from "@/context/CurrencyContext";
 import {
   PlusCircle,
   Search,
@@ -23,6 +24,7 @@ import { SafeImage } from "@/components/ui/SafeImage";
 import { cn } from "@/lib/utils";
 
 export default function BrandCampaignsManagementPage() {
+  const { format } = useGlobalCurrency();
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState<"all" | "recruiting" | "active" | "completed">("all");
@@ -104,7 +106,7 @@ export default function BrandCampaignsManagementPage() {
 
         <div className="p-4 rounded-3xl bg-white border border-black/8 shadow-xs space-y-1">
           <span className="text-[10px] font-bold text-[#7A7A8A] uppercase font-mono">Secured Budget</span>
-          <p className="text-xl sm:text-2xl font-black text-[#0A0A0E] font-mono">{formatCurrency(totalEscrowPool || 45000)}</p>
+          <p className="text-xl sm:text-2xl font-black text-[#0A0A0E] font-mono">{format(totalEscrowPool || 45000, "USD")}</p>
           <span className="text-[11px] text-[#5A5A68] font-medium flex items-center gap-1">
             <ShieldCheck className="w-3 h-3 text-[#FFD21F]" /> 100% Protected in Escrow
           </span>

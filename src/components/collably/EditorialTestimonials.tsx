@@ -4,8 +4,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Sparkles, Quote } from "lucide-react";
 import { ScrollRevealText } from "@/components/collably/ScrollRevealText";
+import { useGlobalCurrency } from "@/context/CurrencyContext";
 
 export function EditorialTestimonials() {
+  const { format } = useGlobalCurrency();
+
   const testimonials = [
     {
       quote:
@@ -18,7 +21,7 @@ export function EditorialTestimonials() {
     },
     {
       quote:
-        "Knowing my $3,200 fee was secured in escrow before I picked up the camera gave me complete creative confidence. The payout was in my bank within 12 hours of the brand approving the cut.",
+        `Knowing my ${format(3200, "USD")} fee was secured in escrow before I picked up the camera gave me complete creative confidence. The payout was in my bank within 12 hours of the brand approving the cut.`,
       author: "Marcus Vance",
       role: "Independent 4K Filmmaker",
       company: "890K Subscribers",
@@ -31,7 +34,7 @@ export function EditorialTestimonials() {
       author: "Sarah Jenkins",
       role: "VP of Brand Marketing",
       company: "Kira Cosmetics",
-      result: "$180K Attributed GMV",
+      result: `${format(180000, "USD")} Attributed GMV`,
       avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=160&auto=format&fit=crop&q=80",
     },
   ];

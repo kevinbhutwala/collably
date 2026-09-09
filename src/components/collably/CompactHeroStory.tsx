@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Sparkles, ShieldCheck, Flame, CheckCircle2 } from "lucide-react";
 import { InteractiveTiltCard } from "@/components/ui/InteractiveTiltCard";
+import { useGlobalCurrency } from "@/context/CurrencyContext";
 
 interface HeroCreator {
   id: string;
@@ -14,6 +15,7 @@ interface HeroCreator {
   matchScore: string;
   reach: string;
   rate: string;
+  rateAmount: number;
   image: string;
   tag: string;
   bio: string;
@@ -28,6 +30,7 @@ const HERO_CREATORS: HeroCreator[] = [
     matchScore: "99.4%",
     reach: "485K",
     rate: "$1,400",
+    rateAmount: 1400,
     image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=85",
     tag: "Top 1% Fashion Roster",
     bio: "Editorial fashion creator with high luxury brand conversion and 6.4% avg engagement.",
@@ -40,6 +43,7 @@ const HERO_CREATORS: HeroCreator[] = [
     matchScore: "98.7%",
     reach: "320K",
     rate: "$1,850",
+    rateAmount: 1850,
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=85",
     tag: "4K Cinematic Reviews",
     bio: "Deep-dive tech teardowns, AI workflows, and cinematic consumer electronics.",
@@ -52,6 +56,7 @@ const HERO_CREATORS: HeroCreator[] = [
     matchScore: "99.1%",
     reach: "610K",
     rate: "$2,200",
+    rateAmount: 2200,
     image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&auto=format&fit=crop&q=85",
     tag: "High-Engagement UGC",
     bio: "Clean living, holistic nutrition, and organic storytelling for wellness brands.",
@@ -60,6 +65,7 @@ const HERO_CREATORS: HeroCreator[] = [
 
 export function CompactHeroStory() {
   const [activeIdx, setActiveIdx] = useState(0);
+  const { format } = useGlobalCurrency();
   const activeCreator = HERO_CREATORS[activeIdx];
 
   return (
@@ -211,7 +217,7 @@ export function CompactHeroStory() {
                   </div>
                   <div className="text-right font-mono">
                     <span className="text-[10px] text-[#888898] block uppercase">Starts at</span>
-                    <span className="text-xs font-extrabold text-[#0A0A0E]">{activeCreator.rate}</span>
+                    <span className="text-xs font-extrabold text-[#0A0A0E]">{format(activeCreator.rateAmount, "USD")}</span>
                   </div>
                 </div>
 

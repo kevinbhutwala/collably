@@ -18,6 +18,7 @@ export interface EditorialPortrait {
   followersFormatted: string;
   engagementFormatted: string;
   verifiedRate: string;
+  verifiedRateAmount?: number;
   matchScore: number;
   featuredBrand?: string;
 }
@@ -31,6 +32,7 @@ export interface EditorialBrand {
   logoEmblem: string; // Text / SVG monogram
   activeDealsCount: number;
   totalVolume: string;
+  totalVolumeAmount?: number;
   featuredCreator: string;
   badgeType: "primary" | "ultramarine" | "infrared" | "monochrome";
 }
@@ -52,6 +54,7 @@ export const EDITORIAL_PORTRAITS: Record<string, EditorialPortrait> = {
     followersFormatted: "340K",
     engagementFormatted: "6.8%",
     verifiedRate: "₹28,000",
+    verifiedRateAmount: 350,
     matchScore: 98,
     featuredBrand: "VERTEX LABS",
   },
@@ -70,6 +73,7 @@ export const EDITORIAL_PORTRAITS: Record<string, EditorialPortrait> = {
     followersFormatted: "485K",
     engagementFormatted: "6.4%",
     verifiedRate: "₹32,500",
+    verifiedRateAmount: 390,
     matchScore: 99,
     featuredBrand: "NOVA STUDIO",
   },
@@ -88,6 +92,7 @@ export const EDITORIAL_PORTRAITS: Record<string, EditorialPortrait> = {
     followersFormatted: "510K",
     engagementFormatted: "7.9%",
     verifiedRate: "₹38,000",
+    verifiedRateAmount: 450,
     matchScore: 97,
     featuredBrand: "NORTH FORM",
   },
@@ -108,6 +113,7 @@ export const EDITORIAL_PORTRAITS: Record<string, EditorialPortrait> = {
     followersFormatted: "215K",
     engagementFormatted: "7.1%",
     verifiedRate: "₹18,500",
+    verifiedRateAmount: 220,
     matchScore: 96,
     featuredBrand: "STUDIO 09",
   },
@@ -126,6 +132,7 @@ export const EDITORIAL_PORTRAITS: Record<string, EditorialPortrait> = {
     followersFormatted: "390K",
     engagementFormatted: "5.9%",
     verifiedRate: "₹24,000",
+    verifiedRateAmount: 290,
     matchScore: 97,
     featuredBrand: "KINETIC",
   },
@@ -144,6 +151,7 @@ export const EDITORIAL_PORTRAITS: Record<string, EditorialPortrait> = {
     followersFormatted: "620K",
     engagementFormatted: "8.4%",
     verifiedRate: "₹45,000",
+    verifiedRateAmount: 540,
     matchScore: 98,
     featuredBrand: "AURA AUDIO",
   },
@@ -164,6 +172,7 @@ export const EDITORIAL_PORTRAITS: Record<string, EditorialPortrait> = {
     followersFormatted: "180K",
     engagementFormatted: "9.2%",
     verifiedRate: "₹19,000",
+    verifiedRateAmount: 230,
     matchScore: 95,
     featuredBrand: "HYPERION",
   },
@@ -182,6 +191,7 @@ export const EDITORIAL_PORTRAITS: Record<string, EditorialPortrait> = {
     followersFormatted: "295K",
     engagementFormatted: "8.1%",
     verifiedRate: "₹22,000",
+    verifiedRateAmount: 260,
     matchScore: 96,
     featuredBrand: "SOLARIS",
   },
@@ -200,6 +210,7 @@ export const EDITORIAL_PORTRAITS: Record<string, EditorialPortrait> = {
     followersFormatted: "140K",
     engagementFormatted: "7.6%",
     verifiedRate: "₹16,000",
+    verifiedRateAmount: 190,
     matchScore: 94,
     featuredBrand: "AURA AUDIO",
   },
@@ -217,6 +228,7 @@ export const EDITORIAL_BRANDS: EditorialBrand[] = [
     logoEmblem: "VTX",
     activeDealsCount: 18,
     totalVolume: "₹4,80,000",
+    totalVolumeAmount: 5800,
     featuredCreator: "Marcus Vance",
     badgeType: "ultramarine",
   },
@@ -229,6 +241,7 @@ export const EDITORIAL_BRANDS: EditorialBrand[] = [
     logoEmblem: "NVA",
     activeDealsCount: 24,
     totalVolume: "₹6,20,000",
+    totalVolumeAmount: 7500,
     featuredCreator: "Elena Rostova",
     badgeType: "monochrome",
   },
@@ -241,6 +254,7 @@ export const EDITORIAL_BRANDS: EditorialBrand[] = [
     logoEmblem: "ARA",
     activeDealsCount: 12,
     totalVolume: "₹2,90,000",
+    totalVolumeAmount: 3500,
     featuredCreator: "Chloe Dubois",
     badgeType: "ultramarine",
   },
@@ -253,6 +267,7 @@ export const EDITORIAL_BRANDS: EditorialBrand[] = [
     logoEmblem: "NF",
     activeDealsCount: 15,
     totalVolume: "₹3,40,000",
+    totalVolumeAmount: 4100,
     featuredCreator: "Zoe Kravitz-Ross",
     badgeType: "monochrome",
   },
@@ -265,6 +280,7 @@ export const EDITORIAL_BRANDS: EditorialBrand[] = [
     logoEmblem: "S09",
     activeDealsCount: 9,
     totalVolume: "₹1,85,000",
+    totalVolumeAmount: 2200,
     featuredCreator: "Aanya Patel",
     badgeType: "infrared",
   },
@@ -277,6 +293,7 @@ export const EDITORIAL_BRANDS: EditorialBrand[] = [
     logoEmblem: "KNT",
     activeDealsCount: 7,
     totalVolume: "₹1,95,000",
+    totalVolumeAmount: 2350,
     featuredCreator: "Devon James",
     badgeType: "monochrome",
   },
@@ -289,6 +306,7 @@ export const EDITORIAL_BRANDS: EditorialBrand[] = [
     logoEmblem: "HYP",
     activeDealsCount: 11,
     totalVolume: "₹2,40,000",
+    totalVolumeAmount: 2900,
     featuredCreator: "Kai Takahashi",
     badgeType: "ultramarine",
   },
@@ -301,6 +319,7 @@ export const EDITORIAL_BRANDS: EditorialBrand[] = [
     logoEmblem: "SLR",
     activeDealsCount: 8,
     totalVolume: "₹1,60,000",
+    totalVolumeAmount: 1900,
     featuredCreator: "Maya Lin",
     badgeType: "infrared",
   },

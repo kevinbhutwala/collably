@@ -4,15 +4,17 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Check, ArrowRight, Sparkles } from "lucide-react";
 import { InteractiveTiltCard } from "@/components/ui/InteractiveTiltCard";
+import { useGlobalCurrency } from "@/context/CurrencyContext";
 
 export function StreamlinedPricing() {
   const [isAnnual, setIsAnnual] = useState(true);
+  const { format } = useGlobalCurrency();
 
   const tiers = [
     {
       name: "Creator Starter",
       badge: "FREE FOREVER",
-      price: "$0",
+      price: format(0, "USD"),
       period: "forever",
       desc: "For creators building their media kit and pitching brands.",
       features: [
@@ -28,7 +30,7 @@ export function StreamlinedPricing() {
     {
       name: "Creator Pro",
       badge: "MOST POPULAR",
-      price: isAnnual ? "$24" : "$29",
+      price: isAnnual ? format(24, "USD") : format(29, "USD"),
       period: "/month",
       desc: "For full-time creators scaling brand partnerships.",
       features: [
@@ -45,7 +47,7 @@ export function StreamlinedPricing() {
     {
       name: "Brand Growth",
       badge: "FOR BRANDS",
-      price: isAnnual ? "$159" : "$199",
+      price: isAnnual ? format(159, "USD") : format(199, "USD"),
       period: "/month",
       desc: "For marketing teams running multi-creator campaigns.",
       features: [

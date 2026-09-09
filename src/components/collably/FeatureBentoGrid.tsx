@@ -8,8 +8,10 @@ import {
   FileCheck2,
   Scale,
 } from "lucide-react";
+import { useGlobalCurrency } from "@/context/CurrencyContext";
 
 export function FeatureBentoGrid() {
+  const { format } = useGlobalCurrency();
   const [activeTimestamp, setActiveTimestamp] = useState<number>(42);
   const [isApproved, setIsApproved] = useState<boolean>(false);
 
@@ -119,7 +121,7 @@ export function FeatureBentoGrid() {
               {/* Action Bar */}
               <div className="flex items-center justify-between pt-2 border-t border-white/10 text-xs">
                 <span className="text-[11px] font-mono text-white/60">
-                  Milestone Escrow: <strong className="text-white">₹35,000 Locked</strong>
+                  Milestone Escrow: <strong className="text-white">{format(420, "USD")} Locked</strong>
                 </span>
                 <button
                   onClick={() => setIsApproved(!isApproved)}

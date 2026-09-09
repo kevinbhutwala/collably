@@ -29,6 +29,7 @@ export async function POST(req: NextRequest) {
       location,
       bio,
       startingPrice,
+      currency,
       socialAccounts: inputSocialAccounts,
       youtubeHandle,
       youtubeSubscribers,
@@ -96,6 +97,7 @@ export async function POST(req: NextRequest) {
       const avgEngagementRate = calculateAvgEngagementRate(accounts);
       const tier = getCreatorTier(totalFollowers);
       const basePrice = startingPrice ? parseInt(startingPrice) : Math.max(500, Math.round(totalFollowers * 0.05));
+      const creatorCurrency = (currency as any) || (location?.toLowerCase().includes("india") ? "INR" : "USD");
 
       // Build rate cards based on connected platforms
       const rateCards: RateCardItem[] = [];
@@ -109,6 +111,7 @@ export async function POST(req: NextRequest) {
             title: "Dedicated 60s YouTube Integration / Segment",
             description: "High-retention 60-second mid-roll sponsor integration with clickable link in top pinned comment.",
             basePrice: Math.round(basePrice * 1.5),
+            currency: creatorCurrency,
             turnaroundDays: 7,
             revisionsIncluded: 2,
           });
@@ -119,6 +122,7 @@ export async function POST(req: NextRequest) {
             title: "Dedicated Reel & Story Link Set",
             description: "High-aesthetic 9:16 vertical Reel plus 3-frame story sequence with direct swipe link.",
             basePrice: basePrice,
+            currency: creatorCurrency,
             turnaroundDays: 5,
             revisionsIncluded: 2,
           });
@@ -129,6 +133,7 @@ export async function POST(req: NextRequest) {
             title: "Native TikTok Brand Storytelling",
             description: "Viral format UGC-style TikTok video optimized for high watch time and comment engagement.",
             basePrice: Math.round(basePrice * 0.9),
+            currency: creatorCurrency,
             turnaroundDays: 4,
             revisionsIncluded: 2,
           });
@@ -139,6 +144,7 @@ export async function POST(req: NextRequest) {
             title: "Deep-Dive Sponsored X Thread",
             description: "Analytical 5-post thread with trackable link and brand quote reposts.",
             basePrice: Math.round(basePrice * 0.6),
+            currency: creatorCurrency,
             turnaroundDays: 3,
             revisionsIncluded: 1,
           });
@@ -152,6 +158,7 @@ export async function POST(req: NextRequest) {
           title: "Dedicated Sponsored Partnership",
           description: "High-impact sponsored content with guaranteed delivery.",
           basePrice: basePrice,
+          currency: creatorCurrency,
           turnaroundDays: 5,
           revisionsIncluded: 2,
         });
@@ -178,6 +185,7 @@ export async function POST(req: NextRequest) {
         totalFollowers,
         avgEngagementRate,
         startingPrice: basePrice,
+        currency: creatorCurrency,
         availableForHire: true,
         profileCompleteness: Math.min(100, 60 + accounts.length * 10),
         qualityScore: 85,

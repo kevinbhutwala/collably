@@ -6,6 +6,7 @@ import { CollablyLogo } from "@/components/ui/CollablyLogo";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Modal } from "@/components/ui/Modal";
+import { CurrencySelector } from "@/components/ui/CurrencySelector";
 
 export function CollablyNavbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -41,7 +42,9 @@ export function CollablyNavbar() {
           </nav>
 
           {/* Right Action CTAs */}
-          <div className="hidden sm:flex items-center gap-4">
+          <div className="hidden sm:flex items-center gap-3">
+            <CurrencySelector />
+
             <Link
               href="/login"
               className="text-xs font-bold text-[#0A0A0E] hover:text-black transition-colors font-sans"
@@ -100,7 +103,11 @@ export function CollablyNavbar() {
               ))}
             </div>
 
-            <div className="pt-3 border-t border-black/8 flex flex-col gap-2">
+            <div className="pt-3 border-t border-black/8 flex flex-col gap-2.5">
+              <div className="flex items-center justify-between px-1">
+                <span className="text-xs font-bold text-[#5A5A68]">Currency</span>
+                <CurrencySelector />
+              </div>
               <Link
                 href="/login"
                 onClick={() => setMobileOpen(false)}

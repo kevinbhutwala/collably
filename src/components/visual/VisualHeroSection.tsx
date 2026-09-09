@@ -8,6 +8,7 @@ import { InteractiveTiltCard } from "@/components/ui/InteractiveTiltCard";
 import { Modal } from "@/components/ui/Modal";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { formatCurrency } from "@/core/utils/formatters";
+import { useGlobalCurrency } from "@/context/CurrencyContext";
 
 interface HeroPortrait {
   id: string;
@@ -66,6 +67,7 @@ const HERO_PORTRAITS: HeroPortrait[] = [
 ];
 
 export function VisualHeroSection() {
+  const { format } = useGlobalCurrency();
   const [activeIdx, setActiveIdx] = useState(0);
   const [roleModalOpen, setRoleModalOpen] = useState(false);
   const activePortrait = HERO_PORTRAITS[activeIdx];
@@ -258,7 +260,7 @@ export function VisualHeroSection() {
                   <div className="text-right font-mono">
                     <span className="text-[10px] text-[#888898] block uppercase">Starts at</span>
                     <span className="text-xs font-extrabold text-[#0A0A0E]">
-                      {activePortrait.rateNumber ? formatCurrency(activePortrait.rateNumber) : activePortrait.rate}
+                      {format(activePortrait.rateNumber || 3500, "USD")}
                     </span>
                   </div>
                 </div>

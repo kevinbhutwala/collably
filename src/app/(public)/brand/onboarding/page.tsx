@@ -11,11 +11,13 @@ import {
   ArrowLeft,
   ShieldCheck,
 } from "lucide-react";
+import { useGlobalCurrency } from "@/context/CurrencyContext";
 
 export default function BrandOnboardingWizardPage() {
   const router = useRouter();
   const { setRole } = useAuthStore();
   const { addToast } = useUIStore();
+  const { format } = useGlobalCurrency();
   const [step, setStep] = useState(1);
   const totalSteps = 5;
 
@@ -26,7 +28,7 @@ export default function BrandOnboardingWizardPage() {
     location: "San Francisco, CA",
     headline: "The issue tracker built for high-performance software teams.",
     description: "Linear helps streamline software projects, sprints, tasks, and bug tracking.",
-    budgetTier: "$25,000 - $50,000 / month",
+    budgetTier: "scale",
     targetGoals: ["Developer Awareness", "Signups & Free Trial Conversions", "Product Launch Buzz"],
     teamMembers: "sarah@linear.app, alex@linear.app",
   });
@@ -132,18 +134,22 @@ export default function BrandOnboardingWizardPage() {
               <h3 className="text-xl font-bold text-[#0A0A0E] font-display">Step 3: Estimated Monthly Campaign Budget</h3>
               <p className="text-xs text-[#5A5A68] font-sans font-medium">Helps match you with creator cohorts within your target budget tier.</p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                {["$5k - $15k / mo", "$25k - $50k / mo", "$100k+ Enterprise / mo"].map((tier) => (
+                {[
+                  { id: "growth", label: `${format(5000, "USD")} - ${format(15000, "USD")} / mo` },
+                  { id: "scale", label: `${format(25000, "USD")} - ${format(50000, "USD")} / mo` },
+                  { id: "enterprise", label: `${format(100000, "USD")}+ Enterprise / mo` },
+                ].map((tier) => (
                   <button
-                    key={tier}
+                    key={tier.id}
                     type="button"
-                    onClick={() => setFormData({ ...formData, budgetTier: tier })}
+                    onClick={() => setFormData({ ...formData, budgetTier: tier.id })}
                     className={`p-4 rounded-xl border text-center font-bold transition-all ${
-                      formData.budgetTier === tier
+                      formData.budgetTier === tier.id
                         ? "bg-[#FFD21F] text-[#0A0A0E] border-black/10 shadow-xs"
                         : "bg-[#F8F8FC] text-[#6A6A78] border-black/5 hover:text-[#0A0A0E]"
                     }`}
                   >
-                    {tier}
+                    {tier.label}
                   </button>
                 ))}
               </div>

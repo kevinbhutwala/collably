@@ -4,8 +4,10 @@ import React from "react";
 import { Sparkles, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { EDITORIAL_PORTRAITS } from "@/data/editorialPortraits";
+import { useGlobalCurrency } from "@/context/CurrencyContext";
 
 export function EditorialBigTextSection() {
+  const { format } = useGlobalCurrency();
   const femalePortrait = EDITORIAL_PORTRAITS.supportingFemale2;
   const malePortrait = EDITORIAL_PORTRAITS.supportingMale2;
 
@@ -70,7 +72,7 @@ export function EditorialBigTextSection() {
               <div className="font-mono text-xs pr-2">
                 <span className="font-display font-bold text-[#101010] block">{malePortrait.name}</span>
                 <span className="text-[#101010] font-bold text-[10px] bg-[#FFD21F] px-1.5 py-0.5 rounded numeric-tabular">
-                  {malePortrait.verifiedRate}
+                  {format(malePortrait.verifiedRateAmount || 230, "USD")}
                 </span>
               </div>
             </div>

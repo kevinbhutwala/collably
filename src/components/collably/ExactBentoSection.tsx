@@ -4,13 +4,15 @@ import React from "react";
 import Link from "next/link";
 import { ArrowRight, ChevronDown, Plus, Sparkles, ExternalLink } from "lucide-react";
 import { BrandIcon } from "@/components/ui/BrandLogos";
+import { useGlobalCurrency } from "@/context/CurrencyContext";
 
 export function ExactBentoSection() {
+  const { format } = useGlobalCurrency();
   const brandCampaigns = [
-    { brand: "Nike", title: "Fashion", budget: "$25,000", live: true },
-    { brand: "Spotify", title: "Music", budget: "$18,000", live: true },
-    { brand: "Apple", title: "Tech", budget: "$30,000", live: true },
-    { brand: "L'Oréal", title: "Beauty", budget: "$20,000", live: true },
+    { brand: "Nike", title: "Fashion", budgetAmount: 25000, live: true },
+    { brand: "Spotify", title: "Music", budgetAmount: 18000, live: true },
+    { brand: "Apple", title: "Tech", budgetAmount: 30000, live: true },
+    { brand: "L'Oréal", title: "Beauty", budgetAmount: 20000, live: true },
   ];
 
   const creators = [
@@ -132,7 +134,7 @@ export function ExactBentoSection() {
                     <div>
                       <h4 className="font-bold text-[#0A0A0E] font-display">{c.brand}</h4>
                       <p className="text-[11px] text-[#6A6A78] font-mono">
-                        {c.budget} • {c.title}
+                        {format(c.budgetAmount, "USD")} • {c.title}
                       </p>
                     </div>
                   </div>

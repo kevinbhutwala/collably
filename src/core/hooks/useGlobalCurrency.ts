@@ -21,11 +21,14 @@ export function useGlobalCurrency() {
     return convertCurrency(amount, fromCurrency, selectedCurrency);
   };
 
+  const activeConfig = SUPPORTED_CURRENCIES[selectedCurrency] || SUPPORTED_CURRENCIES.USD;
+
   return {
     currency: selectedCurrency,
+    symbol: activeConfig.symbol,
     setCurrency: setSelectedCurrency,
     format,
     convert,
-    config: SUPPORTED_CURRENCIES[selectedCurrency] || SUPPORTED_CURRENCIES.USD,
+    config: activeConfig,
   };
 }

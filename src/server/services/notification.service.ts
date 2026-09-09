@@ -49,7 +49,7 @@ export class NotificationService {
         {
           userId,
           title: "💰 High-Budget Match",
-          message: "A ₹35,000 ($3,500) campaign matches your rate card.",
+          message: "A premier brand campaign matching your rate card has just launched.",
           type: "payment",
           linkUrl: "/app/campaigns",
         }

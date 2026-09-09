@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { INDUSTRY_PRESETS, IndustryPreset } from "@/data/industries";
 import { formatCurrency } from "@/core/utils/currency";
+import { useGlobalCurrency } from "@/context/CurrencyContext";
 import {
   Layers,
   ArrowRight,
@@ -30,6 +31,7 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 export function InteractiveIndustriesStage() {
+  const { format } = useGlobalCurrency();
   const [activeIndex, setActiveIndex] = useState(0);
   const activePreset: IndustryPreset = INDUSTRY_PRESETS[activeIndex] || INDUSTRY_PRESETS[0];
 
@@ -138,7 +140,9 @@ export function InteractiveIndustriesStage() {
                           <span className="text-[10px] text-[#626862] font-mono block truncate">{c.handle}</span>
                         </div>
                       </div>
-                      <span className="text-xs font-bold text-[#087F5B] font-mono shrink-0">{c.rate}</span>
+                      <span className="text-xs font-bold text-[#087F5B] font-mono shrink-0">
+                        {format(parseInt(c.rate.replace(/[^0-9]/g, '')) || 2400, "USD")}
+                      </span>
                     </div>
                   ))}
                 </div>

@@ -26,11 +26,13 @@ import {
   Loader2,
 } from "lucide-react";
 import { SocialAuthButtons } from "@/components/auth/SocialAuthButtons";
+import { useGlobalCurrency } from "@/context/CurrencyContext";
 
 export default function CreatorRegisterPage() {
   const router = useRouter();
   const { setAuthData } = useAuthStore();
   const { addToast } = useUIStore();
+  const { currency, symbol: currSymbol } = useGlobalCurrency();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -85,6 +87,7 @@ export default function CreatorRegisterPage() {
         location: formData.location,
         primaryCategory: formData.primaryCategory,
         startingPrice: Number(formData.startingPrice) || 500,
+        currency: currency,
         bio:
           formData.bio ||
           `Content creator specializing in ${formData.primaryCategory}. Available for brand integrations and dedicated productions.`,
@@ -237,7 +240,7 @@ export default function CreatorRegisterPage() {
             </div>
 
             <Input
-              label="Starting Sponsorship Rate ($ USD)"
+              label={`Starting Sponsorship Rate (${currSymbol} ${currency})`}
               type="number"
               value={formData.startingPrice}
               onChange={(e) =>

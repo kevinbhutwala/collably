@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CreatorProfile, ExplainableMatchResult, ParsedBriefQuery } from "@/core/types";
 import { ReputationBadgeBar } from "./ReputationBadgeBar";
+import { formatCurrency } from "@/core/utils/formatters";
 
 const EXAMPLE_PROMPTS = [
   "Fitness creator from Mumbai with 50K-250K followers and ₹30K budget",
@@ -139,7 +140,7 @@ export function NaturalLanguageMatchSearch() {
             )}
             {parsedBrief.maxBudget !== undefined && (
               <span className="inline-flex items-center gap-1 rounded-lg border border-[#FFD21F]/40 bg-[#FFD21F]/15 px-2.5 py-1 text-xs font-bold text-[#0A0A0E] dark:text-[#FFD21F]">
-                <span>💰</span> Max {parsedBrief.currency === "INR" ? "₹" : "$"}{parsedBrief.maxBudget.toLocaleString()}
+                <span>💰</span> Max {formatCurrency(parsedBrief.maxBudget, parsedBrief.currency)}
               </span>
             )}
             {parsedBrief.minEngagementRate !== undefined && (

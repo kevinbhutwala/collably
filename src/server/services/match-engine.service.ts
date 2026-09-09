@@ -8,6 +8,7 @@ import {
   CreatorCategory,
   PlatformType,
 } from "@/core/types";
+import { formatCurrency } from "@/core/utils/currency";
 
 export class MatchEngineService {
   private static instance: MatchEngineService;
@@ -303,7 +304,7 @@ export class MatchEngineService {
       let bVal = parseInt(budgetMatch[1], 10);
       if (budgetMatch[2]?.toLowerCase() === "k") bVal *= 1000;
       maxBudget = bVal;
-      extractedTags.push(`Max ${currency === "INR" ? "₹" : "$"}${bVal.toLocaleString()}`);
+      extractedTags.push(`Max ${formatCurrency(bVal, currency as any)}`);
     }
 
     // 5. Detect Platforms

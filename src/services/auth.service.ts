@@ -27,6 +27,7 @@ export interface RegisterParams {
   location?: string;
   bio?: string;
   startingPrice?: number;
+  currency?: string;
   socialAccounts?: SocialAccount[];
   youtubeHandle?: string;
   youtubeSubscribers?: number;
@@ -48,6 +49,7 @@ export interface CreatorRegisterParams {
   location?: string;
   primaryCategory?: string;
   startingPrice?: number;
+  currency?: string;
   bio?: string;
   youtubeHandle?: string;
   youtubeSubscribers?: number;
@@ -105,6 +107,7 @@ class AuthService {
       category: params.primaryCategory,
       primaryCategory: params.primaryCategory,
       startingPrice: params.startingPrice,
+      currency: params.currency,
       bio: params.bio,
       youtubeHandle: params.youtubeHandle,
       youtubeSubscribers: params.youtubeSubscribers,

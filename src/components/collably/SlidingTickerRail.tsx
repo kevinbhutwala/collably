@@ -4,14 +4,17 @@ import React from "react";
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 import { SafeImage } from "@/components/ui/SafeImage";
+import { useGlobalCurrency } from "@/context/CurrencyContext";
 
 export function SlidingTickerRail() {
+  const { format } = useGlobalCurrency();
+
   const topCampaigns = [
-    { brand: "Supabase", title: "Developer Tools 60s YouTube Integration", budget: "$4,200", badge: "Milestone Locked", color: "bg-[#FFD21F]/15 border-[#FFD21F]/30 text-[#FFD21F]" },
-    { brand: "Figma", title: "Design Systems Reel & Tutorial", budget: "$3,800", badge: "Brief Dispatched", color: "bg-white/10 border-white/20 text-white" },
-    { brand: "Notion AI", title: "Productivity Workflow Deep Dive", budget: "$5,500", badge: "Milestone Locked", color: "bg-[#FFD21F]/15 border-[#FFD21F]/30 text-[#FFD21F]" },
-    { brand: "Raycast", title: "macOS Extension Setup Showcase", budget: "$2,900", badge: "In 4K Review", color: "bg-white/10 border-white/20 text-white" },
-    { brand: "Linear", title: "Engineering Sprint Management Breakdown", budget: "$4,600", badge: "Payout Disbursed", color: "bg-[#FFD21F]/15 border-[#FFD21F]/30 text-[#FFD21F]" },
+    { brand: "Supabase", title: "Developer Tools 60s YouTube Integration", budgetAmount: 4200, badge: "Milestone Locked", color: "bg-[#FFD21F]/15 border-[#FFD21F]/30 text-[#FFD21F]" },
+    { brand: "Figma", title: "Design Systems Reel & Tutorial", budgetAmount: 3800, badge: "Brief Dispatched", color: "bg-white/10 border-white/20 text-white" },
+    { brand: "Notion AI", title: "Productivity Workflow Deep Dive", budgetAmount: 5500, badge: "Milestone Locked", color: "bg-[#FFD21F]/15 border-[#FFD21F]/30 text-[#FFD21F]" },
+    { brand: "Raycast", title: "macOS Extension Setup Showcase", budgetAmount: 2900, badge: "In 4K Review", color: "bg-white/10 border-white/20 text-white" },
+    { brand: "Linear", title: "Engineering Sprint Management Breakdown", budgetAmount: 4600, badge: "Payout Disbursed", color: "bg-[#FFD21F]/15 border-[#FFD21F]/30 text-[#FFD21F]" },
   ];
 
   const bottomCreators = [
@@ -48,7 +51,7 @@ export function SlidingTickerRail() {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between gap-2 mb-0.5">
                     <span className="font-bold text-xs text-white truncate font-display">{deal.brand}</span>
-                    <span className="font-mono text-xs font-extrabold text-[#FFD21F]">{deal.budget}</span>
+                    <span className="font-mono text-xs font-extrabold text-[#FFD21F]">{format(deal.budgetAmount, "USD")}</span>
                   </div>
                   <p className="text-[11px] text-white/70 truncate font-sans">{deal.title}</p>
                 </div>

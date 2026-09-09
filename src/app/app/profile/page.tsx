@@ -33,10 +33,15 @@ import {
   Check,
   Loader2,
 } from "lucide-react";
+import { useGlobalCurrency } from "@/context/CurrencyContext";
+import { getCurrencySymbol } from "@/core/utils/currency";
 
 export default function ProfileEditPage() {
   const { role, currentCreator, currentBrand, updateCreatorProfile, updateBrandProfile } = useAuthStore();
   const { addToast } = useUIStore();
+  const { currency: globalCurrency } = useGlobalCurrency();
+  const creatorCurrency = (currentCreator?.currency as any) || globalCurrency || "USD";
+  const currencySymbol = getCurrencySymbol(creatorCurrency);
 
   const isBrand = role === "brand" || role === "brand_owner" || role === "brand_manager";
 
@@ -466,7 +471,7 @@ export default function ProfileEditPage() {
 
           <div className="max-w-xs">
             <Input
-              label="Starting Rate ($ USD)"
+              label={`Starting Rate (${currencySymbol} ${creatorCurrency})`}
               type="number"
               min={100}
               step={50}

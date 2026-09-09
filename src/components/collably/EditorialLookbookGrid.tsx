@@ -5,9 +5,11 @@ import {
   EDITORIAL_PORTRAITS,
   EDITORIAL_BRANDS,
 } from "@/data/editorialPortraits";
+import { useGlobalCurrency } from "@/context/CurrencyContext";
 
 export function EditorialLookbookGrid() {
   const [activeFilter, setActiveFilter] = useState<"ALL" | "BIG" | "MEDIUM" | "SMALL">("ALL");
+  const { format } = useGlobalCurrency();
 
   const bigPortraits = [
     EDITORIAL_PORTRAITS.heroMaleMain,
@@ -114,7 +116,7 @@ export function EditorialLookbookGrid() {
                     <h3 className="text-xl font-display font-bold text-[#FAFAF8]">{bigPortraits[0].name}</h3>
                     <div className="flex items-center justify-between text-xs text-white/90 pt-1 border-t border-white/20 font-mono">
                       <span className="numeric-tabular">{bigPortraits[0].followersFormatted} Reach</span>
-                      <span className="font-bold text-[#FFD21F] numeric-tabular">{bigPortraits[0].verifiedRate}</span>
+                      <span className="font-bold text-[#FFD21F] numeric-tabular">{format(bigPortraits[0].verifiedRateAmount || 350, "USD")}</span>
                     </div>
                   </div>
                 </div>
@@ -142,7 +144,7 @@ export function EditorialLookbookGrid() {
                     <h3 className="text-xl font-display font-bold text-[#FAFAF8]">{bigPortraits[1].name}</h3>
                     <div className="flex items-center justify-between text-xs text-white/90 pt-1 border-t border-white/20 font-mono">
                       <span className="numeric-tabular">{bigPortraits[1].engagementFormatted} ER</span>
-                      <span className="font-bold text-[#FFD21F] numeric-tabular">{bigPortraits[1].verifiedRate}</span>
+                      <span className="font-bold text-[#FFD21F] numeric-tabular">{format(bigPortraits[1].verifiedRateAmount || 390, "USD")}</span>
                     </div>
                   </div>
                 </div>
@@ -174,7 +176,7 @@ export function EditorialLookbookGrid() {
                     <div className="p-3 rounded-xl bg-[#FAFAF8] border border-[#E7E7E4] grid grid-cols-2 gap-2 text-xs font-mono">
                       <div>
                         <span className="text-[10px] text-[#626262] block uppercase tracking-wider">ESCROW VOLUME</span>
-                        <span className="font-bold text-[#101010] font-display numeric-tabular">{brand.totalVolume}</span>
+                        <span className="font-bold text-[#101010] font-display numeric-tabular">{format(brand.totalVolumeAmount || 5000, "USD")}</span>
                       </div>
                       <div>
                         <span className="text-[10px] text-[#626262] block uppercase tracking-wider">ROSTER TALENT</span>
@@ -232,7 +234,7 @@ export function EditorialLookbookGrid() {
                         <h4 className="font-display font-bold text-sm text-[#101010]">{portrait.name}</h4>
                         <span className="text-[11px] text-[#626262] font-mono">@{portrait.handle}</span>
                       </div>
-                      <span className="text-xs font-bold text-[#101010] font-mono numeric-tabular">{portrait.verifiedRate}</span>
+                      <span className="text-xs font-bold text-[#101010] font-mono numeric-tabular">{format(portrait.verifiedRateAmount || 250, "USD")}</span>
                     </div>
 
                     <div className="pt-2 border-t border-[#E7E7E4] flex items-center justify-between text-[11px] text-[#626262]">
@@ -309,7 +311,7 @@ export function EditorialLookbookGrid() {
                   </div>
 
                   <div className="text-right font-mono shrink-0">
-                    <span className="text-xs font-bold text-[#101010] block numeric-tabular">{portrait.verifiedRate}</span>
+                    <span className="text-xs font-bold text-[#101010] block numeric-tabular">{format(portrait.verifiedRateAmount || 200, "USD")}</span>
                     <span className="text-[9px] text-[#101010] font-bold bg-[#FFD21F] px-1.5 py-0.5 rounded">VERIFIED</span>
                   </div>
                 </div>

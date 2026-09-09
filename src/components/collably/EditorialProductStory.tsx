@@ -14,8 +14,10 @@ import {
 import confetti from "canvas-confetti";
 import { Modal } from "@/components/ui/Modal";
 import { EDITORIAL_PORTRAITS } from "@/data/editorialPortraits";
+import { useGlobalCurrency } from "@/context/CurrencyContext";
 
 export function EditorialProductStory() {
+  const { format } = useGlobalCurrency();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
@@ -143,7 +145,7 @@ export function EditorialProductStory() {
                 <div className="absolute bottom-4 left-4 right-4 p-3.5 rounded-xl bg-white/95 backdrop-blur-md border border-[#E7E7E4] shadow-editorial font-mono text-xs flex items-center justify-between">
                   <div>
                     <span className="text-[10px] text-[#626262] block font-sans uppercase tracking-wider">CREATOR RATE</span>
-                    <span className="font-extrabold text-sm text-[#101010] font-display numeric-tabular">{creator.verifiedRate}</span>
+                    <span className="font-extrabold text-sm text-[#101010] font-display numeric-tabular">{format((creator as any).verifiedRateAmount || 390, "USD")}</span>
                   </div>
                   <span className="px-2 py-0.5 rounded bg-[#101010] text-[#FFD21F] font-bold text-[10px]">
                     ✓ READY FOR SIGN-OFF
@@ -164,7 +166,7 @@ export function EditorialProductStory() {
               </div>
               <span className="px-2.5 py-0.5 rounded-full bg-[#FAFAF8] border border-[#E7E7E4] text-[#101010] font-bold flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F]" />
-                <span className="numeric-tabular">₹32,500</span> ESCROW
+                <span className="numeric-tabular">{format(390, "USD")}</span> ESCROW
               </span>
             </div>
 
@@ -257,7 +259,7 @@ export function EditorialProductStory() {
               {approved ? (
                 <div className="p-4 rounded-xl bg-[#FAFAF8] border border-[#E7E7E4] text-[#101010] text-xs font-mono flex items-center justify-between">
                   <span className="font-bold flex items-center gap-2 font-sans">
-                    <span className="w-2 h-2 rounded-full bg-[#FFD21F]" /> ✓ Deliverable approved • <span className="numeric-tabular">₹29,250</span> Creator Net Disbursed via Stripe Connect
+                    <span className="w-2 h-2 rounded-full bg-[#FFD21F]" /> ✓ Deliverable approved • <span className="numeric-tabular">{format(351, "USD")}</span> Creator Net Disbursed via Stripe Connect
                   </span>
                   <span className="font-extrabold text-[10px] text-[#101010] bg-[#FFD21F] px-2 py-0.5 rounded">DISBURSED</span>
                 </div>
@@ -288,18 +290,18 @@ export function EditorialProductStory() {
           <div className="p-4 rounded-xl bg-[#FAFAF8] border border-[#E7E7E4] space-y-1.5 font-mono">
             <div className="flex justify-between">
               <span className="text-[#626262]">Milestone Escrow:</span>
-              <span className="text-[#101010] font-bold numeric-tabular">₹32,500</span>
+              <span className="text-[#101010] font-bold numeric-tabular">{format(390, "USD")}</span>
             </div>
             <div className="flex justify-between text-[#101010]">
               <span>Creator Payout (90%):</span>
               <span className="font-bold flex items-center gap-1 numeric-tabular">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F]" />
-                ₹29,250
+                {format(351, "USD")}
               </span>
             </div>
             <div className="flex justify-between text-[#626262] text-[11px]">
               <span>Platform Fee (10%):</span>
-              <span className="numeric-tabular">₹3,250</span>
+              <span className="numeric-tabular">{format(39, "USD")}</span>
             </div>
           </div>
 

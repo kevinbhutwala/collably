@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import React from 'react';
 import { campaignRepo } from '@/server/repositories/campaign.repo';
 import { CampaignDetailClient } from '@/components/campaigns/CampaignDetailClient';
+import { formatCurrency } from '@/core/utils/currency';
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_APP_URL ||
@@ -22,8 +23,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const budgetFormatted = (campaign.budget?.perCreatorBudget || 0).toLocaleString();
-  const title = `${campaign.title} ($${budgetFormatted}) — Creator Campaign Brief`;
+  const campaignCurrency = (campaign.budget?.currency || 'USD') as any;
+  const budgetFormatted = formatCurrency(campaign.budget?.perCreatorBudget || 0, campaignCurrency);
+  const title = `${campaign.title} (${budgetFormatted}) — Creator Campaign Brief`;
   const description = `${campaign.tagline || campaign.description?.slice(0, 150)} • Sponsored by ${campaign.brand?.companyName}. Apply with creative pitch. 100% pre-funded milestone escrow on AbeyCollab.`;
   const canonicalUrl = `${BASE_URL}/campaigns/${campaign.id}`;
 

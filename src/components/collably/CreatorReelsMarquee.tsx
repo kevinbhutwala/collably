@@ -4,8 +4,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import { CENTRAL_CREATORS } from "@/data/creators";
 import { CheckCircle2, Star, Play, ShieldCheck } from "lucide-react";
+import { useGlobalCurrency } from "@/context/CurrencyContext";
 
 export function CreatorReelsMarquee() {
+  const { format } = useGlobalCurrency();
+
   const reelCards = [
     {
       id: "reel-1",
@@ -14,7 +17,7 @@ export function CreatorReelsMarquee() {
       tag: "4K YouTube Review",
       title: "AI Hardware & SDK Teardown",
       views: "88K Views",
-      payout: "₹28,500",
+      payoutUSD: 350,
     },
     {
       id: "reel-2",
@@ -23,7 +26,7 @@ export function CreatorReelsMarquee() {
       tag: "Fitness & Bio Reel",
       title: "14-Day Recovery Protocol",
       views: "140K Views",
-      payout: "₹24,000",
+      payoutUSD: 300,
     },
     {
       id: "reel-3",
@@ -32,7 +35,7 @@ export function CreatorReelsMarquee() {
       tag: "RED Cinema Cut",
       title: "Minimalist Architectural Design",
       views: "95K Views",
-      payout: "₹22,000",
+      payoutUSD: 275,
     },
     {
       id: "reel-4",
@@ -41,7 +44,7 @@ export function CreatorReelsMarquee() {
       tag: "Clean Skincare",
       title: "Active Formulation Review",
       views: "110K Views",
-      payout: "₹26,000",
+      payoutUSD: 325,
     },
     {
       id: "reel-5",
@@ -50,7 +53,7 @@ export function CreatorReelsMarquee() {
       tag: "Full-Stack Dev",
       title: "Cloud Infrastructure Teardown",
       views: "72K Views",
-      payout: "₹19,500",
+      payoutUSD: 245,
     },
   ];
 
@@ -113,7 +116,7 @@ export function CreatorReelsMarquee() {
                 <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-xs font-mono">
                   <span className="text-white font-bold text-[11px]">{item.views}</span>
                   <span className="px-2 py-0.5 rounded-md bg-[#EAF8F2] text-[#087F5B] text-[10px] font-bold">
-                    {item.payout} Paid
+                    {format(item.payoutUSD, "USD")} Paid
                   </span>
                 </div>
               </div>

@@ -4,8 +4,10 @@ import React from "react";
 import Link from "next/link";
 import { EDITORIAL_ROSTER } from "@/data/editorialPortraits";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { useGlobalCurrency } from "@/context/CurrencyContext";
 
 export function EditorialPortraitWall() {
+  const { format } = useGlobalCurrency();
   return (
     <section className="py-24 sm:py-36 bg-[#FAFAF8] border-b border-[#E7E7E4] relative overflow-hidden select-none text-[#101010]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
@@ -80,7 +82,7 @@ export function EditorialPortraitWall() {
 
                     <div className="text-right font-mono">
                       <span className="text-[9px] text-[#626262] block">STARTING AT</span>
-                      <span className="text-sm font-extrabold text-[#101010] font-display numeric-tabular">{portrait.verifiedRate}</span>
+                      <span className="text-sm font-extrabold text-[#101010] font-display numeric-tabular">{format(portrait.verifiedRateAmount || 350, "USD")}</span>
                     </div>
                   </div>
 

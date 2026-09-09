@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, ArrowRight, Flame, Sparkles, Star } from "lucide-react";
 import { InteractiveTiltCard } from "@/components/ui/InteractiveTiltCard";
+import { useGlobalCurrency } from "@/context/CurrencyContext";
 
 interface CreatorItem {
   id: string;
@@ -14,6 +15,7 @@ interface CreatorItem {
   followers: string;
   engagement: string;
   rate: string;
+  rateAmount: number;
   image: string;
   tag: string;
   rating: number;
@@ -28,6 +30,7 @@ const CREATORS: CreatorItem[] = [
     followers: "485K",
     engagement: "6.4%",
     rate: "$1,400",
+    rateAmount: 1400,
     image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=85",
     tag: "High-Fashion Editorial",
     rating: 4.9,
@@ -40,6 +43,7 @@ const CREATORS: CreatorItem[] = [
     followers: "320K",
     engagement: "4.2%",
     rate: "$1,850",
+    rateAmount: 1850,
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=85",
     tag: "4K Hardware Teardowns",
     rating: 5.0,
@@ -52,6 +56,7 @@ const CREATORS: CreatorItem[] = [
     followers: "275K",
     engagement: "5.8%",
     rate: "$1,200",
+    rateAmount: 1200,
     image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop&q=85",
     tag: "Cinematic Travel & Vlogs",
     rating: 4.8,
@@ -64,6 +69,7 @@ const CREATORS: CreatorItem[] = [
     followers: "510K",
     engagement: "7.1%",
     rate: "$1,650",
+    rateAmount: 1650,
     image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&auto=format&fit=crop&q=85",
     tag: "Calisthenics & Biohacking",
     rating: 5.0,
@@ -80,6 +86,7 @@ const CATEGORIES = [
 
 export function AnimatedCreatorDeck() {
   const [activeTab, setActiveTab] = useState<string>("all");
+  const { format } = useGlobalCurrency();
 
   const filtered =
     activeTab === "all"
@@ -170,7 +177,7 @@ export function AnimatedCreatorDeck() {
                   <div className="p-4 flex items-center justify-between border-t border-black/6 text-xs">
                     <div>
                       <span className="text-[10px] font-mono text-[#7A7A8A] block uppercase">Starts at</span>
-                      <span className="font-mono font-extrabold text-[#0A0A0E] text-sm">{creator.rate}</span>
+                      <span className="font-mono font-extrabold text-[#0A0A0E] text-sm">{format(creator.rateAmount, "USD")}</span>
                     </div>
 
                     <Link

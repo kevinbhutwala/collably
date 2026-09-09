@@ -15,14 +15,16 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { formatCurrency } from "@/core/utils/currency";
+import { useGlobalCurrency } from "@/context/CurrencyContext";
 
 export function InteractiveDashboardShowcase() {
   const [activeMetricTab, setActiveMetricTab] = useState<"revenue" | "creators" | "roas">("revenue");
+  const { format } = useGlobalCurrency();
 
   const statCards = [
     {
       title: "Total Escrow Disbursed",
-      value: "₹24,85,000",
+      value: format(30000, "USD"),
       change: "+34.2%",
       period: "vs last month",
       isPositive: true,
@@ -59,7 +61,7 @@ export function InteractiveDashboardShowcase() {
       action: "Milestone Payment Disbursed",
       target: "Devon Thorne (@devoncodes)",
       campaign: "Vertex Pro AI Launch",
-      amount: "₹35,000",
+      amount: format(420, "USD"),
       time: "4 mins ago",
       status: "COMPLETED",
       statusBg: "bg-[#FFD21F] text-[#101010]",
@@ -68,7 +70,7 @@ export function InteractiveDashboardShowcase() {
       action: "Video Deliverable V2 Submitted",
       target: "Elena Rostova (@elenatech)",
       campaign: "SaaS Workflow 60s Reel",
-      amount: "₹28,000",
+      amount: format(350, "USD"),
       time: "22 mins ago",
       status: "IN REVIEW",
       statusBg: "bg-[#FAFAF8] border border-[#E7E7E4] text-[#101010]",
@@ -77,7 +79,7 @@ export function InteractiveDashboardShowcase() {
       action: "Brief Escrow Funded",
       target: "Marcus Vance (@marcusvance)",
       campaign: "4K Hardware Deep-Dive",
-      amount: "₹45,000",
+      amount: format(540, "USD"),
       time: "1 hour ago",
       status: "LOCKED IN ESCROW",
       statusBg: "bg-[#101010] text-[#FAFAF8]",

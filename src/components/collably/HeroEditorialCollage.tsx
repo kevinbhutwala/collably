@@ -9,8 +9,10 @@ import {
   Zap,
 } from "lucide-react";
 import { EDITORIAL_PORTRAITS } from "@/data/editorialPortraits";
+import { useGlobalCurrency } from "@/context/CurrencyContext";
 
 export function HeroEditorialCollage() {
+  const { format } = useGlobalCurrency();
   const [activeWordIndex, setActiveWordIndex] = useState(0);
   const kineticWords = [
     { text: "CREATE", accent: "text-[#101010]" },
@@ -226,7 +228,7 @@ export function HeroEditorialCollage() {
             </div>
             <div className="flex items-baseline justify-between font-display">
               <span className="text-xl sm:text-2xl font-black font-mono text-[#101010] numeric-tabular">
-                ₹18,500
+                {format(220, "USD")}
               </span>
               <span className="text-xs font-mono text-[#626262] font-bold">
                 Direct to Bank
@@ -252,7 +254,7 @@ export function HeroEditorialCollage() {
                 <span className="font-display font-bold text-[#101010]">TECH LAUNCH</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-ping" />
               </div>
-              <p className="text-[10px] text-[#626262] font-sans">12 Creators • <strong className="text-[#101010] numeric-tabular">₹2,50,000</strong> LIVE</p>
+              <p className="text-[10px] text-[#626262] font-sans">12 Creators • <strong className="text-[#101010] numeric-tabular">{format(3000, "USD")}</strong> LIVE</p>
             </div>
           </motion.div>
         </div>

@@ -15,16 +15,18 @@ import {
   Sparkles,
 } from "lucide-react";
 import { ScrollRevealText } from "@/components/collably/ScrollRevealText";
+import { useGlobalCurrency } from "@/context/CurrencyContext";
 
 export function CampaignLifecycleOS() {
   const [activeStep, setActiveStep] = useState(0);
+  const { format } = useGlobalCurrency();
 
   const stages = [
     {
       id: "brief",
       label: "BRIEF CREATED",
       title: "Brand locks deliverables & budget",
-      detail: "$28,500 contract terms and NDA automatically generated and escrow-funded.",
+      detail: `${format(28500, "USD")} contract terms and NDA automatically generated and escrow-funded.`,
       icon: FileText,
       badge: "Pre-Funded Escrow",
     },

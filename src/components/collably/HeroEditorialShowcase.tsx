@@ -20,6 +20,7 @@ import { InteractiveTiltCard } from "@/components/ui/InteractiveTiltCard";
 import { Modal } from "@/components/ui/Modal";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { TitleIcon } from "@/components/ui/TitleIconBadge";
+import { useGlobalCurrency } from "@/context/CurrencyContext";
 
 interface HeroTalent {
   id: string;
@@ -28,6 +29,7 @@ interface HeroTalent {
   niche: string;
   reach: string;
   startingPrice: string;
+  startingPriceAmount: number;
   matchScore: string;
   portrait: string;
   bRollPreview: string;
@@ -44,6 +46,7 @@ const HERO_TALENT: HeroTalent[] = [
     niche: "AI & Consumer Tech",
     reach: "485K Followers",
     startingPrice: "$3,500",
+    startingPriceAmount: 3500,
     matchScore: "AI Matched",
     portrait: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=900&auto=format&fit=crop&q=85",
     bRollPreview: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=80",
@@ -58,6 +61,7 @@ const HERO_TALENT: HeroTalent[] = [
     niche: "Luxury & Haute Couture",
     reach: "310K Followers",
     startingPrice: "$2,800",
+    startingPriceAmount: 2800,
     matchScore: "Elite Tier",
     portrait: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&auto=format&fit=crop&q=85",
     bRollPreview: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&auto=format&fit=crop&q=80",
@@ -72,6 +76,7 @@ const HERO_TALENT: HeroTalent[] = [
     niche: "Biohacking & Longevity",
     reach: "620K Followers",
     startingPrice: "$3,200",
+    startingPriceAmount: 3200,
     matchScore: "Top Creator",
     portrait: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=900&auto=format&fit=crop&q=85",
     bRollPreview: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&auto=format&fit=crop&q=80",
@@ -81,8 +86,8 @@ const HERO_TALENT: HeroTalent[] = [
   },
 ];
 
-
 export function HeroEditorialShowcase() {
+  const { format } = useGlobalCurrency();
   const [activeIdx, setActiveIdx] = useState(0);
   const [roleModalOpen, setRoleModalOpen] = useState(false);
   const activeTalent = HERO_TALENT[activeIdx];
@@ -285,7 +290,7 @@ export function HeroEditorialShowcase() {
                   </div>
                   <div className="text-right font-mono">
                     <span className="text-[9px] sm:text-[10px] text-[#888898] dark:text-[#8E8EA4] block uppercase">Starts at</span>
-                    <span className="text-xs sm:text-sm font-extrabold text-[#0A0A0E] dark:text-white">{activeTalent.startingPrice}</span>
+                    <span className="text-xs sm:text-sm font-extrabold text-[#0A0A0E] dark:text-white">{format(activeTalent.startingPriceAmount, "USD")}</span>
                   </div>
                 </div>
 
