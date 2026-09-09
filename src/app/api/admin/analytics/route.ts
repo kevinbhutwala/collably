@@ -35,19 +35,45 @@ export async function GET(req: NextRequest) {
     const successfulCollabs = collabs.filter((c) => c.status === "completed" || c.paymentStatus === "paid").length;
     const activeCollabs = collabs.filter((c) => c.status === "active" || c.status === "in_review").length;
 
-    // GMV / Total Escrow Volume
-    const gmv = campaigns.reduce((acc, c) => acc + (c.budget?.totalBudget || 0), 0) +
-                collabs.reduce((acc, c) => acc + (c.totalAgreedBudget || 0), 0);
+    const targetCurrency = (req.nextUrl.searchParams.get("currency") || "USD").toUpperCase();
+    const { exchangeRateService } = await import("@/server/services/exchange-rate.service");
 
-    // Creator Payouts Disbursed
-    const totalPayoutsDisbursed = payouts.reduce((acc, p) => acc + (p.netAmount || 0), 0) || 12450;
+    // GMV / Total Escrow Volume normalized to targetCurrency
+    const gmvCampaigns = campaigns.reduce((acc, c) => {
+      const budget = c.budget?.totalBudget || 0;
+      const curr = c.budget?.currency || "USD";
+      return acc + exchangeRateService.convertCurrencySync(budget, curr, targetCurrency);
+    }, 0);
 
-    // Refunds and Disputes
+    const gmvCollabs = collabs.reduce((acc, c) => {
+      const budget = c.totalAgreedBudget || 0;
+      const curr = c.currency || "USD";
+      return acc + exchangeRateService.convertCurrencySync(budget, curr, targetCurrency);
+    }, 0);
+
+    const gmv = Math.round(gmvCampaigns + gmvCollabs);
+
+    // Creator Payouts Disbursed normalized to targetCurrency
+    const totalPayoutsDisbursed = Math.round(
+      payouts.reduce((acc, p) => {
+        const net = p.netAmount || 0;
+        const curr = (p as any).currency || "USD";
+        return acc + exchangeRateService.convertCurrencySync(net, curr, targetCurrency);
+      }, 0) || exchangeRateService.convertCurrencySync(12450, "USD", targetCurrency)
+    );
+
+    // Refunds and Disputes normalized to targetCurrency
     const totalDisputes = disputes.length;
     const resolvedDisputes = disputes.filter((d) => d.status === "Resolved" || d.status === "Closed").length;
-    const totalRefunds = disputes
-      .filter((d) => (d as any).resolutionOutcome === "FULL_BRAND_REFUND" || d.status === "Resolved")
-      .reduce((acc, d) => acc + (d.amountInDispute || 0), 0);
+    const totalRefunds = Math.round(
+      disputes
+        .filter((d) => (d as any).resolutionOutcome === "FULL_BRAND_REFUND" || d.status === "Resolved")
+        .reduce((acc, d) => {
+          const amt = d.amountInDispute || 0;
+          const curr = d.currency || "USD";
+          return acc + exchangeRateService.convertCurrencySync(amt, curr, targetCurrency);
+        }, 0)
+    );
 
     // Rates
     const conversionRate = totalApplications > 0
@@ -76,6 +102,7 @@ export async function GET(req: NextRequest) {
         totalApplications,
         successfulCollabs,
         activeCollabs,
+        currency: targetCurrency,
         gmv,
         totalPayoutsDisbursed,
         totalRefunds,

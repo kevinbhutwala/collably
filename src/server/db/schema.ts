@@ -50,6 +50,9 @@ export interface PaymentEntity {
   providerPaymentId?: string;
   amount: number;
   currency: string;
+  settlementAmount?: number;
+  settlementCurrency?: string;
+  exchangeRateUsed?: number;
   status: "pending" | "authorized" | "captured" | "failed" | "refund_pending" | "refunded";
   commissionRate: number;
   agencyFee: number;

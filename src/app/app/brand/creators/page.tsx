@@ -12,9 +12,10 @@ import { cn } from "@/lib/utils";
 import { NaturalLanguageMatchSearch } from "@/components/marketplace/NaturalLanguageMatchSearch";
 import { TrendingShowcase } from "@/components/marketplace/TrendingShowcase";
 import { formatCurrency } from "@/core/utils/formatters";
-
+import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
 
 export default function BrandCreatorDiscoveryPage() {
+  const { convert } = useGlobalCurrency();
   const [tabMode, setTabMode] = useState<"directory" | "match" | "trending">("directory");
   const [creators, setCreators] = useState<CreatorProfile[]>([]);
   const [loading, setLoading] = useState(true);
@@ -95,7 +96,10 @@ export default function BrandCreatorDiscoveryPage() {
 
       // Max Budget / Starting Rate
       if (creatorMaxBudget > 0) {
-        if ((c.startingPrice || 1000) > creatorMaxBudget) return false;
+        const creatorRate = c.startingPrice || 1000;
+        const creatorCurrency = (c as any).currency || "USD";
+        const convertedRate = convert(creatorRate, creatorCurrency);
+        if (convertedRate > creatorMaxBudget) return false;
       }
 
       // Min Rating
@@ -159,6 +163,7 @@ export default function BrandCreatorDiscoveryPage() {
     creatorRisingOnly,
     creatorVerifiedOnly,
     creatorSortBy,
+    convert,
   ]);
 
   return (

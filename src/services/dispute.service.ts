@@ -9,6 +9,7 @@ export interface CreateDisputeInput {
   respondentName: string;
   reason: DisputeReason;
   amountInDispute: number;
+  currency?: string;
   description: string;
   evidenceMediaUrls?: string[];
 }

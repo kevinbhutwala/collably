@@ -4,12 +4,12 @@
       "id": "user-creator",
       "name": "Demo Creator",
       "email": "creator@abeycollab.io",
-      "passwordHash": "34b8a076e3953a79afe83e962024eb80:595167c7feada2bb045060d0d93302b49b0645a80e8e7ed2bde0df1b518d767a6dcd5a0f1e0cbb917dfb112d3de569f9205cb39cb599f128ff42f30702af2f7b:210000",
+      "passwordHash": "8a5f705e796e6c9677972e013a1f1bbf:78b0cc19e8ac0211ae83d6d7342ac30df92b170b86bd9f8303a39569387ed33aa37acebb029cb71ca98bd78f8dbeed125523a6b85c76c707692a86051b77047a:210000",
       "role": "creator",
       "avatarUrl": "",
       "verified": true,
       "createdAt": "2026-09-03T18:46:21.709Z",
-      "updatedAt": "2026-09-09T16:32:54.826Z",
+      "updatedAt": "2026-09-09T20:07:12.990Z",
       "preferredCurrency": "AED",
       "preferred_currency": "AED"
     },
@@ -17,7 +17,7 @@
       "id": "user-brand",
       "name": "Demo Brand",
       "email": "brand@abeycollab.io",
-      "passwordHash": "cf37a31ad73b09b7dab6d2607d3e488c:7044b63363b99ac0dfb398a2de8e88aac0242f6d072d04dc4e18c698b9f7e4fa9c19920018a5b77e5498ee4e9dfaab5501309f90c2ac8be44db24e67705cf6c6:210000",
+      "passwordHash": "d578547a232d5ce1ed2b66c673e34b50:219b19fc090a0384cb4cf1539b0c44fc463fdea45625fe96fb5737f2c5b74568d57ccfa682592f9be1815c1e2a71e09b74e60bf167c8add711ed77f72af70017:210000",
       "role": "brand",
       "avatarUrl": "",
       "verified": true,
@@ -30,7 +30,7 @@
       "id": "user-owner",
       "name": "Kevin Bhutwala",
       "email": "kevinbhutwala417@gmail.com",
-      "passwordHash": "bd82cb62d4f8c1e50bdc6c338dd76d5a:777b751b37f4d445a46fdcddaf0b1cdbf5d0adc0782777cb0b6cdb8cf31ee294d50350fb44b2941b95487bd242178d370c7a98ac6f99bcb82215ea022df38ed5:210000",
+      "passwordHash": "6c3ab2d9887fce5cb2090caa2d18cd57:1983f0474c4ed6dac8a3b54d737c3de58b04a2ac61101e55601a7a832f7fc462911597b8193f8ad00ac63c2dfc3b762188c8792d0af89eb80fcb23ee3b77a658:210000",
       "role": "agency_admin",
       "avatarUrl": "",
       "verified": true,
@@ -82,7 +82,7 @@
       "id": "user-creator-legacy",
       "name": "Demo Creator",
       "email": "creator@collably.io",
-      "passwordHash": "34b8a076e3953a79afe83e962024eb80:595167c7feada2bb045060d0d93302b49b0645a80e8e7ed2bde0df1b518d767a6dcd5a0f1e0cbb917dfb112d3de569f9205cb39cb599f128ff42f30702af2f7b:210000",
+      "passwordHash": "8a5f705e796e6c9677972e013a1f1bbf:78b0cc19e8ac0211ae83d6d7342ac30df92b170b86bd9f8303a39569387ed33aa37acebb029cb71ca98bd78f8dbeed125523a6b85c76c707692a86051b77047a:210000",
       "role": "creator",
       "avatarUrl": "",
       "verified": true,
@@ -95,7 +95,7 @@
       "id": "user-brand-legacy",
       "name": "Demo Brand",
       "email": "brand@collably.io",
-      "passwordHash": "cf37a31ad73b09b7dab6d2607d3e488c:7044b63363b99ac0dfb398a2de8e88aac0242f6d072d04dc4e18c698b9f7e4fa9c19920018a5b77e5498ee4e9dfaab5501309f90c2ac8be44db24e67705cf6c6:210000",
+      "passwordHash": "d578547a232d5ce1ed2b66c673e34b50:219b19fc090a0384cb4cf1539b0c44fc463fdea45625fe96fb5737f2c5b74568d57ccfa682592f9be1815c1e2a71e09b74e60bf167c8add711ed77f72af70017:210000",
       "role": "brand",
       "avatarUrl": "",
       "verified": true,
@@ -5798,6 +5798,54 @@
   "aiUsage": [],
   "auditLogs": [
     {
+      "id": "aud-1788984459079",
+      "actorId": "user-owner",
+      "actorName": "Kevin Bhutwala",
+      "actorRole": "agency_admin",
+      "action": "DISPUTE_ARBITRATION_RESOLVED",
+      "entityType": "Dispute",
+      "entityId": "disp-101",
+      "entityName": "Hyperion ANC Headphone Commercial",
+      "metadata": {
+        "split": "50/50",
+        "brandRefund": 1750,
+        "creatorPayout": 1750
+      },
+      "createdAt": "2026-09-09T20:07:39.079Z"
+    },
+    {
+      "id": "aud-1788983937042",
+      "actorId": "user-owner",
+      "actorName": "Kevin Bhutwala",
+      "actorRole": "agency_admin",
+      "action": "DISPUTE_ARBITRATION_RESOLVED",
+      "entityType": "Dispute",
+      "entityId": "disp-101",
+      "entityName": "Hyperion ANC Headphone Commercial",
+      "metadata": {
+        "split": "50/50",
+        "brandRefund": 1750,
+        "creatorPayout": 1750
+      },
+      "createdAt": "2026-09-09T19:58:57.042Z"
+    },
+    {
+      "id": "aud-1788983868357",
+      "actorId": "user-owner",
+      "actorName": "Kevin Bhutwala",
+      "actorRole": "agency_admin",
+      "action": "DISPUTE_ARBITRATION_RESOLVED",
+      "entityType": "Dispute",
+      "entityId": "disp-101",
+      "entityName": "Hyperion ANC Headphone Commercial",
+      "metadata": {
+        "split": "50/50",
+        "brandRefund": 1750,
+        "creatorPayout": 1750
+      },
+      "createdAt": "2026-09-09T19:57:48.357Z"
+    },
+    {
       "actorId": "user-brand",
       "actorName": "brand@abeycollab.io",
       "actorRole": "brand",
@@ -6875,7 +6923,7 @@
     }
   ],
   "reliabilityScores": [],
-  "_lastVerifiedAt": "2026-09-06T00:29:36.976Z",
+  "_lastVerifiedAt": "2026-09-09T20:07:39.081Z",
   "platformMetrics": [
     {
       "id": "met-1",

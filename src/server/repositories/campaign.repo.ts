@@ -1,5 +1,6 @@
 import { db } from "../db/database";
 import { Campaign, CampaignApplication, CampaignFilterParams, ApplicationStatus } from "@/core/types";
+import { exchangeRateService } from "../services/exchange-rate.service";
 
 export class CampaignRepository {
   getAll(filters?: CampaignFilterParams): Campaign[] {
@@ -24,6 +25,51 @@ export class CampaignRepository {
 
     if (filters.status && filters.status !== "all") {
       result = result.filter((c) => c.status === filters.status);
+    }
+
+    // Currency-Normalized Budget Filtering
+    if (filters.minBudget !== undefined || filters.maxBudget !== undefined) {
+      const targetCurrency = filters.filterCurrency || "USD";
+      result = result.filter((c) => {
+        const campBudget = c.budget?.totalBudget || 0;
+        const campCurrency = c.budget?.currency || "USD";
+        const normalizedBudget = exchangeRateService.convertCurrencySync(
+          campBudget,
+          campCurrency,
+          targetCurrency
+        );
+
+        if (filters.minBudget !== undefined && normalizedBudget < filters.minBudget) {
+          return false;
+        }
+        if (filters.maxBudget !== undefined && normalizedBudget > filters.maxBudget) {
+          return false;
+        }
+        return true;
+      });
+    }
+
+    // Currency-Normalized Sorting
+    if (filters.sortBy) {
+      result.sort((a, b) => {
+        if (filters.sortBy === "budget_asc" || filters.sortBy === "budget_desc") {
+          const budgetA = exchangeRateService.convertCurrencySync(
+            a.budget?.totalBudget || 0,
+            a.budget?.currency || "USD",
+            "USD"
+          );
+          const budgetB = exchangeRateService.convertCurrencySync(
+            b.budget?.totalBudget || 0,
+            b.budget?.currency || "USD",
+            "USD"
+          );
+          return filters.sortBy === "budget_asc" ? budgetA - budgetB : budgetB - budgetA;
+        }
+        if (filters.sortBy === "created_desc") {
+          return new Date(b.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime();
+        }
+        return 0;
+      });
     }
 
     return result;
@@ -201,6 +247,7 @@ export class CampaignRepository {
       creator: (creator || { id: app.creatorId, fullName: "Creator Talent" }) as any,
       pitch: app.pitch,
       proposedFee: app.proposedFee,
+      currency: (app as any).currency || campaign?.budget?.currency || "USD",
       estimatedReach: app.estimatedReach || creator?.totalFollowers || 100000,
       status: app.status || "pending",
       sampleLinks: app.sampleLinks || (app as any).portfolioSamples || [],

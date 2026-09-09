@@ -8,8 +8,8 @@ export type UserRole =
   | 'agency_owner'
   | 'super_admin';
 
-export type CurrencyCode = 'INR' | 'USD';
-export type ExtensibleCurrencyCode = CurrencyCode | 'GBP' | 'AED' | string;
+export type CurrencyCode = 'INR' | 'USD' | 'AED' | 'GBP';
+export type ExtensibleCurrencyCode = CurrencyCode | string;
 
 export interface User {
   id: string;
@@ -138,8 +138,10 @@ export interface CreatorFilterParams {
   minEngagement?: number;
   minRate?: number;
   maxRate?: number;
+  filterCurrency?: string;
   tier?: CreatorTier | 'all';
   verifiedOnly?: boolean;
+  sortBy?: 'rate_asc' | 'rate_desc' | 'followers_desc' | 'rating_desc' | string;
 }
 
 export interface BrandProfile {
@@ -248,7 +250,9 @@ export interface CampaignFilterParams {
   searchQuery?: string;
   minBudget?: number;
   maxBudget?: number;
+  filterCurrency?: string;
   platform?: string;
+  sortBy?: 'budget_asc' | 'budget_desc' | 'created_desc' | string;
 }
 
 export type ApplicationStatus = 'pending' | 'shortlisted' | 'accepted' | 'rejected' | 'negotiating';
@@ -639,6 +643,7 @@ export interface DisputeRecord {
   reason: DisputeReason;
   description: string;
   amountInDispute: number;
+  currency?: CurrencyCode;
   filedBy: UserRole;
   status: DisputeStatus;
   stage?: 'Open' | 'Under_Review' | 'Evidence_Requested' | 'Decision' | 'Resolved';

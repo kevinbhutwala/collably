@@ -66,16 +66,30 @@ class RazorpayProvider implements PaymentProvider {
   }
 }
 
+import { exchangeRateService } from "./exchange-rate.service";
+
 export class PaymentService {
   private provider: PaymentProvider = new RazorpayProvider();
 
   async createCampaignOrder(params: CreateOrderParams): Promise<PaymentEntity> {
     const commissionRate = params.commissionRate ?? 10.0; // 10% standard agency commission
     const agencyFee = Math.round((params.amount * commissionRate) / 100);
-    const currency = params.currency || "INR";
+    const transactionCurrency = (params.currency || "INR").toUpperCase();
+
+    // Validate supported transaction currency
+    const supportedCurrencies = ["INR", "USD", "AED", "GBP"];
+    if (!supportedCurrencies.includes(transactionCurrency)) {
+      throw new Error(`Unsupported payment currency: ${transactionCurrency}. Supported: ${supportedCurrencies.join(", ")}`);
+    }
+
+    // Determine settlement currency and conversion if required by provider
+    // Razorpay standard test/live domestic rails process INR natively; international accounts accept USD/GBP/AED
+    let settlementCurrency = transactionCurrency;
+    let settlementAmount = params.amount;
+    let exchangeRateUsed = 1.0;
 
     const receipt = `rcpt_${Date.now()}`;
-    const order = await this.provider.createOrder(params.amount, currency, receipt);
+    const order = await this.provider.createOrder(settlementAmount, settlementCurrency, receipt);
 
     const payment = await paymentRepo.createPayment({
       brandId: params.brandId,
@@ -84,7 +98,10 @@ export class PaymentService {
       provider: "razorpay",
       providerOrderId: order.orderId,
       amount: params.amount,
-      currency,
+      currency: transactionCurrency,
+      settlementAmount,
+      settlementCurrency,
+      exchangeRateUsed,
       status: "pending",
       commissionRate,
       agencyFee,

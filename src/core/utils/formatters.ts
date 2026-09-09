@@ -10,9 +10,9 @@ export function formatNumber(num: number): string {
 
 export const formatCompactNumber = formatNumber;
 
-import { formatCurrency as formatGlobalCurrency, convertCurrency, SupportedCurrency } from "./currency";
+import { formatCurrency as formatGlobalCurrency, convertCurrency, convertAndFormat, SupportedCurrency } from "./currency";
 
-export { formatGlobalCurrency };
+export { formatGlobalCurrency, convertAndFormat };
 
 export function formatCurrency(
   amount: number | string | null | undefined,

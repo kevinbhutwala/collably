@@ -46,7 +46,7 @@ import {
 } from "lucide-react";
 
 function DashboardContent() {
-  const { format } = useGlobalCurrency();
+  const { format, currency: userCurrency, convert } = useGlobalCurrency();
   const { user, role, currentCreator, currentBrand } = useAuthStore();
   const searchParams = useSearchParams();
   const { addToast } = useUIStore();
@@ -102,18 +102,21 @@ function DashboardContent() {
     fetchData();
   }, [role, currentCreator?.id, currentBrand?.id]);
 
-  // Compute dynamic stats from actual state
+  // Compute dynamic stats from actual state normalized to active display currency
   const totalEscrowInTransit = collaborations.reduce(
-    (acc, c) => acc + (c.totalAgreedBudget || 0),
+    (acc, c) => acc + convert(c.totalAgreedBudget || 0, (c as any).currency || "USD"),
     0
   );
   const activeCollabsCount = collaborations.filter(
     (c) => c.status === "active" || c.status === "in_review"
   ).length;
-  const lifetimeEarned = recentPayouts.reduce((acc, p) => acc + (p.netAmount || 0), 0);
+  const lifetimeEarned = recentPayouts.reduce(
+    (acc, p) => acc + convert(p.netAmount || 0, (p as any).currency || "USD"),
+    0
+  );
   const brandTotalBudget = activeCampaigns
     .filter((c) => c.brandId === currentBrand?.id)
-    .reduce((acc, c) => acc + (c.budget?.totalBudget || 0), 0);
+    .reduce((acc, c) => acc + convert(c.budget?.totalBudget || 0, c.budget?.currency || "USD"), 0);
 
   return (
     <div className="space-y-8 text-[#0A0A0E] dark:text-[#F4F4F8] font-sans select-none">

@@ -14,7 +14,7 @@ const createCampaignSchema = z.object({
   budget: z.object({
     totalBudget: z.number().positive("Total budget must be positive"),
     perCreatorBudget: z.number().positive("Milestone budget must be positive"),
-    currency: z.literal("USD").or(z.literal("INR")).default("USD"),
+    currency: z.enum(["INR", "USD", "AED", "GBP"]).or(z.string()).default("USD"),
     paymentTerms: z.string().default("100_escrow_on_approval"),
   }).optional(),
   deliverables: z.array(z.any()).min(1, "Campaign must contain at least one deliverable milestone").optional(),
@@ -37,11 +37,19 @@ export async function GET(req: NextRequest) {
     const category = searchParams.get("category") || undefined;
     const status = searchParams.get("status") as any || undefined;
     const searchQuery = searchParams.get("searchQuery") || undefined;
+    const minBudget = searchParams.get("minBudget") ? parseFloat(searchParams.get("minBudget")!) : undefined;
+    const maxBudget = searchParams.get("maxBudget") ? parseFloat(searchParams.get("maxBudget")!) : undefined;
+    const filterCurrency = searchParams.get("filterCurrency") || searchParams.get("currency") || undefined;
+    const sortBy = searchParams.get("sortBy") || undefined;
 
     const campaigns = campaignRepo.getAll({
       category,
       status,
       searchQuery,
+      minBudget,
+      maxBudget,
+      filterCurrency,
+      sortBy,
     });
 
     return NextResponse.json(campaigns);

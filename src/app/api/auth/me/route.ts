@@ -73,10 +73,11 @@ export async function PATCH(req: NextRequest) {
     const body = await req.json().catch(() => ({}));
     const { preferredCurrency, preferred_currency, country } = body;
 
+    const { getDefaultCurrencyForCountry } = await import("@/core/utils/currency");
     const rawCurrency = (preferredCurrency || preferred_currency)?.toUpperCase();
     if (rawCurrency && !["INR", "USD", "GBP", "AED"].includes(rawCurrency)) {
       return NextResponse.json(
-        { error: "Invalid currency. Supported currencies: INR, USD" },
+        { error: "Invalid currency. Supported currencies: INR, USD, AED, GBP" },
         { status: 400 }
       );
     }
@@ -89,7 +90,7 @@ export async function PATCH(req: NextRequest) {
     if (country) {
       updates.country = country;
       if (!rawCurrency) {
-        const detected = (country === "IN" || country === "India") ? "INR" : "USD";
+        const detected = getDefaultCurrencyForCountry(country);
         updates.preferredCurrency = detected;
         updates.preferred_currency = detected;
       }

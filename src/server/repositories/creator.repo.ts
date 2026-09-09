@@ -1,5 +1,6 @@
 import { db } from "../db/database";
 import { CreatorProfile, CreatorFilterParams, CreatorCategory } from "@/core/types";
+import { exchangeRateService } from "../services/exchange-rate.service";
 
 export class CreatorRepository {
   getAll(filters?: CreatorFilterParams): CreatorProfile[] {
@@ -31,6 +32,70 @@ export class CreatorRepository {
       result = result.filter((c) =>
         c.socialAccounts.some((s) => s.platform === filters.platform)
       );
+    }
+
+    if (filters.minFollowers !== undefined) {
+      result = result.filter((c) => (c.totalFollowers || 0) >= filters.minFollowers!);
+    }
+
+    if (filters.maxFollowers !== undefined) {
+      result = result.filter((c) => (c.totalFollowers || 0) <= filters.maxFollowers!);
+    }
+
+    if (filters.minEngagement !== undefined) {
+      result = result.filter((c) => (c.avgEngagementRate || 0) >= filters.minEngagement!);
+    }
+
+    if (filters.verifiedOnly) {
+      result = result.filter((c) => c.verified);
+    }
+
+    // Currency-Normalized Rate Filtering
+    if (filters.minRate !== undefined || filters.maxRate !== undefined) {
+      const targetCurrency = filters.filterCurrency || "USD";
+      result = result.filter((c) => {
+        const creatorRate = c.startingPrice || 0;
+        const creatorCurrency = (c as any).currency || "USD";
+        const normalizedRate = exchangeRateService.convertCurrencySync(
+          creatorRate,
+          creatorCurrency,
+          targetCurrency
+        );
+
+        if (filters.minRate !== undefined && normalizedRate < filters.minRate) {
+          return false;
+        }
+        if (filters.maxRate !== undefined && normalizedRate > filters.maxRate) {
+          return false;
+        }
+        return true;
+      });
+    }
+
+    // Currency-Normalized Sorting
+    if (filters.sortBy) {
+      result.sort((a, b) => {
+        if (filters.sortBy === "rate_asc" || filters.sortBy === "rate_desc") {
+          const rateA = exchangeRateService.convertCurrencySync(
+            a.startingPrice || 0,
+            (a as any).currency || "USD",
+            "USD"
+          );
+          const rateB = exchangeRateService.convertCurrencySync(
+            b.startingPrice || 0,
+            (b as any).currency || "USD",
+            "USD"
+          );
+          return filters.sortBy === "rate_asc" ? rateA - rateB : rateB - rateA;
+        }
+        if (filters.sortBy === "followers_desc") {
+          return (b.totalFollowers || 0) - (a.totalFollowers || 0);
+        }
+        if (filters.sortBy === "rating_desc") {
+          return (b.rating || 0) - (a.rating || 0);
+        }
+        return 0;
+      });
     }
 
     return result;

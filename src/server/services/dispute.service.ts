@@ -1,5 +1,5 @@
 import { disputeRepo } from "../repositories/dispute.repo";
-import { DisputeRecord, DisputeReason, UserRole } from "@/core/types";
+import { DisputeRecord, DisputeReason, UserRole, CurrencyCode } from "@/core/types";
 
 export class DisputeService {
   async getDisputes(): Promise<DisputeRecord[]> {
@@ -18,6 +18,7 @@ export class DisputeService {
     reason: DisputeReason;
     description: string;
     amountInDispute: number;
+    currency?: CurrencyCode;
     filedBy: UserRole;
     evidenceLinks?: string[];
   }): Promise<DisputeRecord> {

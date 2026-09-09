@@ -13,13 +13,20 @@ export async function GET(req: NextRequest) {
     const creatorId = searchParams.get("creatorId") || undefined;
     const payouts = await paymentService.getPayouts(creatorId);
 
-    // Compute live wallet balance from immutable ledger
+    // Compute live multi-currency wallet balance from immutable ledger
     const { ledgerService } = await import("@/server/services/ledger.service");
     const { creatorRepo } = await import("@/server/repositories/creator.repo");
     const creator = creatorRepo.getByUserId(session.userId);
-    const walletBalance = creator ? ledgerService.getAccountBalance("CREATOR_WALLET", creator.id) : 0;
+    const targetCurrency = searchParams.get("currency") || (creator as any)?.currency || "USD";
+    const balancesByCurrency = creator ? ledgerService.getAccountBalancesByCurrency("CREATOR_WALLET", creator.id) : {};
+    const walletBalance = creator ? ledgerService.getAccountBalanceInCurrency("CREATOR_WALLET", creator.id, targetCurrency) : 0;
 
-    return NextResponse.json({ payouts, walletBalance });
+    return NextResponse.json({
+      payouts,
+      walletBalance,
+      currency: targetCurrency,
+      balancesByCurrency,
+    });
   } catch (error: any) {
     return NextResponse.json({ error: error.message || "Failed to fetch payouts" }, { status: 500 });
   }
@@ -45,17 +52,19 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: "Creator profile not found" }, { status: 404 });
       }
 
-      const withdrawAmount = Number(body.amountDollars) || 3150;
+      const withdrawAmount = Number(body.amountDollars || body.amount) || 3150;
+      const withdrawCurrency = (body.currency || (creator as any).currency || "USD").toUpperCase();
       const bankDestination = body.destinationAccount || "stripe_connect_express_verified";
 
       // Deduct from Creator Wallet via ledger service
       const withdrawalResult = await ledgerService.withdrawCreatorFunds({
         creatorId: creator.id,
         amountDollars: withdrawAmount,
+        currency: withdrawCurrency,
         destinationBankOrStripeId: bankDestination,
       });
 
-      // Record payout record marked as paid
+      // Record payout record marked as paid in withdrawCurrency
       const payout = await paymentRepo.createPayout({
         creatorId: creator.id,
         collaborationId: "withdrawal",
@@ -65,6 +74,7 @@ export async function POST(req: NextRequest) {
         deliverableTitle: "Direct Express Bank Transfer",
         grossAmount: withdrawAmount,
         netAmount: withdrawAmount,
+        currency: withdrawCurrency,
         agencyFee: 0,
         status: "paid", // Status shifts to PAID_OUT
         paymentMethod: "stripe_connect",
@@ -74,6 +84,7 @@ export async function POST(req: NextRequest) {
         success: true,
         status: "PAID_OUT",
         withdrawnAmount: withdrawAmount,
+        currency: withdrawCurrency,
         remainingBalanceDollars: withdrawalResult.remainingBalanceDollars,
         transactionId: withdrawalResult.transactionId,
         payout,

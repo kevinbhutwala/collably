@@ -17,33 +17,38 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: "Forbidden: Admin access required" }, { status: 403 });
     }
 
+    const { searchParams } = new URL(req.url);
+    const targetCurrency = (searchParams.get("currency") || "USD").toUpperCase();
+
     const collaborations = collaborationRepo.getAll();
     const ledgerEntries = ledgerService.getEntries();
 
-    const totalEscrowHeldCents = ledgerService.getAccountBalanceCents("ESCROW_HOLDING", "*");
-    const platformRevenueCents = ledgerService.getAccountBalanceCents("PLATFORM_REVENUE", "*");
-    const creatorWalletsCents = ledgerService.getAccountBalanceCents("CREATOR_WALLET", "*");
+    const totalEscrowHeld = ledgerService.getAccountBalanceInCurrency("ESCROW_HOLDING", "*", targetCurrency);
+    const platformRevenue = ledgerService.getAccountBalanceInCurrency("PLATFORM_REVENUE", "*", targetCurrency);
+    const creatorWallets = ledgerService.getAccountBalanceInCurrency("CREATOR_WALLET", "*", targetCurrency);
 
     const vaults = collaborations.map((c) => {
-      const collabEscrowCents = ledgerService.getAccountBalanceCents("ESCROW_HOLDING", c.id);
+      const collabEscrow = ledgerService.getAccountBalanceInCurrency("ESCROW_HOLDING", c.id, c.currency || "USD");
       return {
         collaborationId: c.id,
         campaignTitle: c.campaignTitle,
         brandName: c.brand?.companyName || "Brand Partner",
         creatorName: c.creator?.fullName || "Creator",
         totalAgreedBudget: c.totalAgreedBudget,
+        currency: c.currency || "USD",
         paymentStatus: c.paymentStatus || c.status,
         isFunded: c.isFunded,
-        escrowBalanceDollars: collabEscrowCents / 100,
+        escrowBalanceDollars: collabEscrow,
         createdAt: c.createdAt,
       };
     });
 
     return NextResponse.json({
       summary: {
-        totalEscrowHeldDollars: totalEscrowHeldCents / 100,
-        platformRevenueDollars: platformRevenueCents / 100,
-        creatorWalletsDollars: creatorWalletsCents / 100,
+        currency: targetCurrency,
+        totalEscrowHeldDollars: totalEscrowHeld,
+        platformRevenueDollars: platformRevenue,
+        creatorWalletsDollars: creatorWallets,
         activeVaultsCount: vaults.filter((v) => v.escrowBalanceDollars > 0).length,
       },
       vaults,

@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { SupportedCurrency } from "@/core/utils/currency";
+import { SupportedCurrency, updateRuntimeExchangeRates } from "@/core/utils/currency";
 
 interface ToastNotification {
   id: string;
@@ -13,11 +13,14 @@ interface UIState {
   modalProps: Record<string, any>;
   toasts: ToastNotification[];
   selectedCurrency: SupportedCurrency;
+  rates: Record<string, number>;
+  rateTimestamp: string;
   openModal: (modalId: string, props?: Record<string, any>) => void;
   closeModal: () => void;
   addToast: (toast: Omit<ToastNotification, 'id'>) => void;
   removeToast: (id: string) => void;
   setSelectedCurrency: (currency: SupportedCurrency) => void;
+  fetchLiveRates: () => Promise<void>;
 }
 
 const getInitialCurrency = (): SupportedCurrency => {
@@ -47,6 +50,21 @@ export const useUIStore = create<UIState>((set) => ({
   modalProps: {},
   toasts: [],
   selectedCurrency: getInitialCurrency(),
+  rates: {},
+  rateTimestamp: "",
+
+  fetchLiveRates: async () => {
+    try {
+      const res = await fetch("/api/fx-rates?base=USD");
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.rates) {
+          updateRuntimeExchangeRates(data.rates);
+          set({ rates: data.rates, rateTimestamp: data.timestamp });
+        }
+      }
+    } catch {}
+  },
 
   openModal: (modalId, props = {}) => set({ activeModal: modalId, modalProps: props }),
   closeModal: () => set({ activeModal: null, modalProps: {} }),

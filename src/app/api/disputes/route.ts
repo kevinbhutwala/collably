@@ -171,6 +171,7 @@ export async function POST(req: NextRequest) {
           brandRefundDollars,
           creatorPayoutDollars,
           feeRatePercent: 10,
+          currency: dispute.currency || "USD",
         });
         txId = splitResult.transactionId;
       }

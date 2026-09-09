@@ -1,5 +1,6 @@
 import { db } from "../db/database";
 import { dollarsToCents, centsToDollars, calculateFeeCents } from "@/core/utils/currency";
+import { exchangeRateService } from "./exchange-rate.service";
 
 export type LedgerAccount =
   | "ESCROW_HOLDING"
@@ -54,21 +55,46 @@ export class LedgerService {
     return all;
   }
 
-  getAccountBalance(account: LedgerAccount, entityId: string): number {
+  /**
+   * Multi-Currency Wallet Balances grouped by original currency
+   * Never combines balances from different currencies into one raw number without conversion
+   */
+  getAccountBalancesByCurrency(account: LedgerAccount, entityId: string): Record<string, number> {
     const all = this.getEntries();
     const accountEntries = all.filter(
       (e: LedgerEntry) => e.account === account && (entityId === "*" || e.entityId === entityId)
     );
-    const totalCents = accountEntries.reduce((sum: number, e: LedgerEntry) => sum + e.netCentsSigned, 0);
-    return centsToDollars(totalCents);
+    const byCurrencyCents: Record<string, number> = {};
+    for (const entry of accountEntries) {
+      const curr = (entry.currency || "USD").toUpperCase();
+      byCurrencyCents[curr] = (byCurrencyCents[curr] || 0) + entry.netCentsSigned;
+    }
+    const result: Record<string, number> = {};
+    for (const [curr, cents] of Object.entries(byCurrencyCents)) {
+      result[curr] = centsToDollars(cents);
+    }
+    return result;
+  }
+
+  /**
+   * Balance converted explicitly into a target comparison/display currency
+   */
+  getAccountBalanceInCurrency(account: LedgerAccount, entityId: string, targetCurrency: string = "USD"): number {
+    const balances = this.getAccountBalancesByCurrency(account, entityId);
+    const target = (targetCurrency || "USD").toUpperCase();
+    let total = 0;
+    for (const [curr, amount] of Object.entries(balances)) {
+      total += exchangeRateService.convertCurrencySync(amount, curr, target);
+    }
+    return Math.round(total * 100) / 100;
+  }
+
+  getAccountBalance(account: LedgerAccount, entityId: string): number {
+    return this.getAccountBalanceInCurrency(account, entityId, "USD");
   }
 
   getAccountBalanceCents(account: LedgerAccount, entityId: string): number {
-    const all = this.getEntries();
-    const accountEntries = all.filter(
-      (e: LedgerEntry) => e.account === account && (entityId === "*" || e.entityId === entityId)
-    );
-    return accountEntries.reduce((sum: number, e: LedgerEntry) => sum + e.netCentsSigned, 0);
+    return Math.round(this.getAccountBalance(account, entityId) * 100);
   }
 
   /**
@@ -358,13 +384,14 @@ export class LedgerService {
     destinationBankOrStripeId: string;
     currency?: string;
   }): Promise<{ transactionId: string; remainingBalanceDollars: number; entry: LedgerEntry }> {
-    const currency = params.currency || "USD";
+    const currency = (params.currency || "USD").toUpperCase();
     const amountCents = dollarsToCents(params.amountDollars);
-    const availableCents = this.getAccountBalanceCents("CREATOR_WALLET", params.creatorId);
+    const availableInTargetCurrency = this.getAccountBalanceInCurrency("CREATOR_WALLET", params.creatorId, currency);
+    const availableCents = dollarsToCents(availableInTargetCurrency);
 
     if (amountCents > availableCents) {
       throw new Error(
-        `Insufficient funds in Creator Wallet: requested $${params.amountDollars}, available $${centsToDollars(availableCents)}`
+        `Insufficient funds in Creator Wallet: requested ${params.amountDollars} ${currency}, available ${availableInTargetCurrency} ${currency}`
       );
     }
 

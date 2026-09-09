@@ -10,9 +10,9 @@ export async function POST(req: NextRequest) {
     const { amount, currency = "INR", receipt, notes } = body;
 
     const normalizedCurrency = String(currency || "INR").toUpperCase();
-    if (!["INR", "USD"].includes(normalizedCurrency)) {
+    if (!["INR", "USD", "AED", "GBP"].includes(normalizedCurrency)) {
       return NextResponse.json(
-        { error: "Unsupported currency. Supported currencies: INR, USD" },
+        { error: "Unsupported currency. Supported currencies: INR, USD, AED, GBP" },
         { status: 400 }
       );
     }
@@ -26,11 +26,11 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Minimum 100 subunits (1 INR or 1 USD in paise / cents)
+    // Minimum 100 subunits (1 unit in subunits)
     if (parsedAmount < 100) {
       return NextResponse.json(
         {
-          error: `Minimum order amount is 100 subunits (${normalizedCurrency === "INR" ? "₹1.00" : "$1.00"}).`,
+          error: `Minimum order amount is 100 subunits for ${normalizedCurrency}.`,
         },
         { status: 400 }
       );

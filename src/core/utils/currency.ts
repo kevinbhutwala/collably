@@ -43,9 +43,9 @@ export const SUPPORTED_CURRENCIES: Record<SupportedCurrency, CurrencyConfig> = {
 };
 
 /**
- * Initial active transaction currencies: INR and USD
+ * Supported active currencies: INR, USD, AED, GBP
  */
-export const ACTIVE_CURRENCIES = ["INR", "USD"] as const;
+export const ACTIVE_CURRENCIES = ["INR", "USD", "AED", "GBP"] as const;
 export type ActiveCurrency = (typeof ACTIVE_CURRENCIES)[number];
 
 export const ACTIVE_CURRENCY_LIST: CurrencyConfig[] = ACTIVE_CURRENCIES.map(
@@ -67,8 +67,17 @@ export const EXTENSIBLE_CURRENCY_LIST = PRIMARY_CURRENCY_LIST;
 
 export const SUPPORTED_CURRENCY_LIST: CurrencyConfig[] = Object.values(SUPPORTED_CURRENCIES);
 
+// Global in-memory dynamic exchange rates cache for client-side evaluation
+let runtimeExchangeRates: Record<string, number> = {};
+
+export function updateRuntimeExchangeRates(rates: Record<string, number>) {
+  if (rates && typeof rates === "object") {
+    runtimeExchangeRates = { ...runtimeExchangeRates, ...rates };
+  }
+}
+
 export function isValidCurrency(currency: any): currency is ActiveCurrency {
-  return typeof currency === "string" && (currency.toUpperCase() === "INR" || currency.toUpperCase() === "USD");
+  return typeof currency === "string" && ["INR", "USD", "AED", "GBP"].includes(currency.toUpperCase());
 }
 
 export function isExtensibleCurrency(currency: any): currency is ExtensibleCurrency {
@@ -78,9 +87,12 @@ export function isExtensibleCurrency(currency: any): currency is ExtensibleCurre
 /**
  * Detect default currency based on user country:
  * India -> INR
- * All other international users -> USD
+ * US -> USD
+ * UAE -> AED
+ * UK -> GBP
+ * Fallback -> USD
  */
-export function getDefaultCurrencyForCountry(country?: string): ActiveCurrency {
+export function getDefaultCurrencyForCountry(country?: string): SupportedCurrency {
   if (!country) return "USD";
   const normalized = country.trim().toUpperCase();
   if (
@@ -91,6 +103,27 @@ export function getDefaultCurrencyForCountry(country?: string): ActiveCurrency {
     normalized === "+91"
   ) {
     return "INR";
+  }
+  if (
+    normalized === "AE" ||
+    normalized === "ARE" ||
+    normalized === "UAE" ||
+    normalized === "DUBAI" ||
+    normalized.includes("EMIRATES") ||
+    normalized === "+971"
+  ) {
+    return "AED";
+  }
+  if (
+    normalized === "GB" ||
+    normalized === "GBR" ||
+    normalized === "UK" ||
+    normalized.includes("UNITED KINGDOM") ||
+    normalized.includes("ENGLAND") ||
+    normalized.includes("BRITAIN") ||
+    normalized === "+44"
+  ) {
+    return "GBP";
   }
   return "USD";
 }
@@ -123,15 +156,44 @@ export function convertCurrency(
   from: SupportedCurrency | string = "USD",
   to: SupportedCurrency | string = "USD"
 ): number {
-  const fromCurr = (from || "USD").toUpperCase() as SupportedCurrency;
-  const toCurr = (to || "USD").toUpperCase() as SupportedCurrency;
+  const fromCurr = (from || "USD").toUpperCase();
+  const toCurr = (to || "USD").toUpperCase();
   if (fromCurr === toCurr || !amount) return amount;
-  const fromRate = SUPPORTED_CURRENCIES[fromCurr]?.exchangeRateToUSD ?? 1.0;
-  const toRate = SUPPORTED_CURRENCIES[toCurr]?.exchangeRateToUSD ?? 1.0;
+
+  const fromRate = runtimeExchangeRates[fromCurr] ?? (SUPPORTED_CURRENCIES[fromCurr as SupportedCurrency]?.exchangeRateToUSD ?? 1.0);
+  const toRate = runtimeExchangeRates[toCurr] ?? (SUPPORTED_CURRENCIES[toCurr as SupportedCurrency]?.exchangeRateToUSD ?? 1.0);
+
   // Convert from -> USD -> to
   const inUSD = amount / fromRate;
   const converted = inUSD * toRate;
   return toCurr === "JPY" ? Math.round(converted) : Math.round(converted * 100) / 100;
+}
+
+/**
+ * Convert and format with explicit approximate prefix (≈) when currencies differ
+ */
+export function convertAndFormat(
+  amount: number | string | null | undefined,
+  fromCurrency: string = "USD",
+  displayCurrency: string = "USD",
+  options?: {
+    compact?: boolean;
+    maximumFractionDigits?: number;
+    minimumFractionDigits?: number;
+    showApprox?: boolean;
+  }
+): string {
+  const num = typeof amount === "number" ? amount : parseFloat(String(amount ?? 0)) || 0;
+  const from = (fromCurrency || "USD").toUpperCase();
+  const target = (displayCurrency || "USD").toUpperCase();
+
+  if (from === target) {
+    return formatCurrency(num, target, options);
+  }
+
+  const converted = convertCurrency(num, from, target);
+  const formatted = formatCurrency(converted, target, options);
+  return options?.showApprox !== false ? `≈ ${formatted}` : formatted;
 }
 
 export interface FeeBreakdown {

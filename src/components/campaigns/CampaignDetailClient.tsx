@@ -15,6 +15,7 @@ import { AICreatorPitchModal } from "@/components/ai/AICreatorPitchModal";
 import { CreativeLoader } from "@/components/ui/CreativeLoader";
 import { formatCurrency, formatNumber } from "@/core/utils/formatters";
 import { getCurrencySymbol } from "@/core/utils/currency";
+import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
 import { CategoryBadge, TitleIcon, DeliverableBadge } from "@/components/ui/TitleIconBadge";
 
 import {
@@ -34,6 +35,7 @@ export function CampaignDetailClient({
   campaignId,
   initialCampaign = null,
 }: CampaignDetailClientProps) {
+  const { currency: displayCurrency, convertAndFormat } = useGlobalCurrency();
   const { currentCreator } = useAuthStore();
   const { addToast } = useUIStore();
 
@@ -209,6 +211,11 @@ export function CampaignDetailClient({
                   <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
                   {formatCurrency(campaign.budget.perCreatorBudget, campaign.budget?.currency)}
                 </span>
+                {campaign.budget?.currency && campaign.budget.currency.toUpperCase() !== displayCurrency.toUpperCase() && (
+                  <span className="text-xs text-[#FFD21F] font-semibold block mt-0.5 drop-shadow-xs">
+                    {convertAndFormat(campaign.budget.perCreatorBudget, campaign.budget.currency)}
+                  </span>
+                )}
               </div>
             </div>
           </div>
@@ -334,13 +341,20 @@ export function CampaignDetailClient({
             </button>
           </div>
 
-          <Input
-            label={`Proposed Fee (${getCurrencySymbol(campaign.budget?.currency || "USD")} ${campaign.budget?.currency || "USD"})`}
-            type="number"
-            value={proposedFee}
-            onChange={(e) => setProposedFee(parseInt(e.target.value) || 0)}
-            required
-          />
+          <div>
+            <Input
+              label={`Proposed Fee (${getCurrencySymbol(campaign.budget?.currency || "USD")} ${campaign.budget?.currency || "USD"})`}
+              type="number"
+              value={proposedFee}
+              onChange={(e) => setProposedFee(parseInt(e.target.value) || 0)}
+              required
+            />
+            {campaign.budget?.currency && campaign.budget.currency.toUpperCase() !== displayCurrency.toUpperCase() && proposedFee > 0 && (
+              <p className="text-[11px] text-[#7A7A8A] font-mono mt-1">
+                Display equivalent: {convertAndFormat(proposedFee, campaign.budget.currency)}
+              </p>
+            )}
+          </div>
 
           <Textarea
             label="Your Creative Angle & Pitch"
