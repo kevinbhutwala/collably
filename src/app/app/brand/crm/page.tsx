@@ -9,12 +9,14 @@ import { Textarea } from "@/components/ui/Input";
 import { Modal } from "@/components/ui/Modal";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { formatCurrency, formatNumber } from "@/core/utils/formatters";
+import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
 import { useUIStore } from "@/stores/ui.store";
 import { useAuthStore } from "@/stores/auth.store";
 import { FeatureGate } from "@/components/subscriptions/FeatureGate";
 import { Plus, FileText, Trash2, UserPlus, Users, MessageSquare } from "lucide-react";
 
 export default function BrandCRMPage() {
+  const { format } = useGlobalCurrency();
   const { addToast } = useUIStore();
   const { currentBrand } = useAuthStore();
   const [contacts, setContacts] = useState<CRMContact[]>([]);
@@ -270,7 +272,7 @@ export default function BrandCRMPage() {
                   <div className="grid grid-cols-2 gap-2 text-xs font-mono pt-2 border-t border-black/5">
                     <div>
                       <span className="text-[#8A8A9A] text-[10px] block">Starting Rate</span>
-                      <span className="font-bold text-[#0A0A0E]">{formatCurrency(c.creator?.startingPrice || 1500)}</span>
+                      <span className="font-bold text-[#0A0A0E]">{format(c.creator?.startingPrice || 1500, (c.creator as any)?.currency || "USD")}</span>
                     </div>
                     <div>
                       <span className="text-[#8A8A9A] text-[10px] block">Audience Reach</span>

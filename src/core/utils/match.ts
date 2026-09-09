@@ -1,4 +1,5 @@
 import { Campaign, CreatorProfile } from "../types";
+import { formatCurrency } from "./currency";
 
 export interface MatchBreakdown {
   overallScore: number;
@@ -56,7 +57,7 @@ export function calculateCreatorCampaignMatch(
   let budgetScore = 80;
   if (campaign.budget.perCreatorBudget >= creator.startingPrice) {
     budgetScore = 96;
-    insights.push(`Budget aligns well with creator's starting rate ($${creator.startingPrice})`);
+    insights.push(`Budget aligns well with creator's starting rate (${formatCurrency(creator.startingPrice, (creator as any).currency || campaign.budget?.currency)})`);
   } else {
     budgetScore = 70;
     insights.push(`Rate negotiation might be needed`);

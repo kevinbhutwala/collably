@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { formatCurrency, formatNumber } from "@/core/utils/formatters";
+import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
 import { CheckCircle2, Star, ArrowUpRight, X } from "lucide-react";
 
 export function CreatorComparisonModal({
@@ -21,6 +22,7 @@ export function CreatorComparisonModal({
   creators: CreatorProfile[];
   onRemoveCreator?: (id: string) => void;
 }) {
+  const { format } = useGlobalCurrency();
   if (creators.length === 0) return null;
 
   return (
@@ -87,7 +89,7 @@ export function CreatorComparisonModal({
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-400">Starting Price:</span>
-                    <span className="font-bold text-[hsl(327,100%,55%)]">{formatCurrency(c.startingPrice, (c as any).currency)}</span>
+                    <span className="font-bold text-[hsl(327,100%,55%)]">{format(c.startingPrice, (c as any).currency || "USD")}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-400">Completed:</span>

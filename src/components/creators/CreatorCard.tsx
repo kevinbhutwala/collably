@@ -6,6 +6,7 @@ import { CreatorProfile } from "@/core/types";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { SocialIcon } from "@/components/ui/SocialIcons";
 import { formatNumber, formatCurrency } from "@/core/utils/formatters";
+import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
 import { CheckCircle2, ArrowRight, Bookmark, Sparkles, Star, Users } from "lucide-react";
 import { useUIStore } from "@/stores/ui.store";
 import { cn } from "@/lib/utils";
@@ -16,6 +17,7 @@ import { getClientCreatorBadges } from "@/core/utils/badge.utils";
 import { useShortlistStore } from "@/stores/shortlist.store";
 
 export function CreatorCard({ creator }: { creator: CreatorProfile }) {
+  const { format } = useGlobalCurrency();
   const { addToast } = useUIStore();
   const { isSaved, toggleSaveCreator } = useShortlistStore();
   const saved = isSaved(creator.id);
@@ -134,7 +136,7 @@ export function CreatorCard({ creator }: { creator: CreatorProfile }) {
         <div>
           <span className="text-[10px] text-[#7A7A8A] uppercase font-bold block">Starting Rate</span>
           <span className="text-sm font-black text-[#0A0A0E] font-mono numeric-tabular">
-            {formatCurrency(creator.startingPrice, (creator as any).currency)}
+            {format(creator.startingPrice, (creator as any).currency || "USD")}
           </span>
         </div>
 

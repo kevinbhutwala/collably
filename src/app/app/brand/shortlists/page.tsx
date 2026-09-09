@@ -9,6 +9,7 @@ import { Input, Textarea } from "@/components/ui/Input";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { CreatorComparisonModal } from "@/components/creators/CreatorComparisonModal";
 import { formatNumber, formatCurrency } from "@/core/utils/formatters";
+import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
 import { useShortlistStore } from "@/stores/shortlist.store";
 import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
@@ -29,6 +30,7 @@ import {
 } from "lucide-react";
 
 export default function BrandShortlistsPage() {
+  const { format } = useGlobalCurrency();
   const { addToast } = useUIStore();
   const { currentBrand } = useAuthStore();
   const {
@@ -220,7 +222,7 @@ export default function BrandShortlistsPage() {
                     {[
                       { label: "Combined Reach", value: formatNumber(totalReach), color: "text-[#0A0A0E]" },
                       { label: "Avg. Engagement", value: `${avgER}%`, color: "text-emerald-600" },
-                      { label: "Avg. Base Rate", value: avgRate > 0 ? formatCurrency(avgRate) : "—", color: "text-[#0A0A0E]" },
+                      { label: "Avg. Base Rate", value: avgRate > 0 ? format(avgRate, "USD") : "—", color: "text-[#0A0A0E]" },
                     ].map((m) => (
                       <div key={m.label} className="bg-[#FAFAFA] px-5 py-3.5 text-center">
                         <p className="text-[10px] font-mono text-[#7A7A8A] uppercase tracking-wider">{m.label}</p>
@@ -320,7 +322,7 @@ export default function BrandShortlistsPage() {
 
                         {/* Base rate */}
                         <div className="text-right">
-                          <span className="text-sm font-bold text-[#0A0A0E]">{formatCurrency(c.startingPrice)}</span>
+                          <span className="text-sm font-bold text-[#0A0A0E]">{format(c.startingPrice, (c as any).currency || "USD")}</span>
                         </div>
 
                         {/* Actions */}

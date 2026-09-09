@@ -247,4 +247,30 @@ test.describe("Multi-Currency Management: USD, INR, GBP, AED Support", () => {
     });
     expect(resBelowMin.status()).toBe(400);
   });
+
+  test("7. Talent Directory: Switching currency immediately updates Starting Rate without manual page refresh", async ({ page }) => {
+    await page.goto(`${BASE_URL}/creators`, { waitUntil: "networkidle" });
+
+    // Currency selector button in header
+    const currencyBtn = page.locator('[data-testid="currency-selector-button"]').first();
+    await expect(currencyBtn).toBeVisible({ timeout: 10_000 });
+
+    // Ensure we start with USD
+    await currencyBtn.click();
+    await page.locator('[data-testid="currency-option-USD"]').first().click();
+    await expect(currencyBtn).toContainText("USD");
+
+    // Check starting price badge on creator card
+    const usdRateBadge = page.locator('span:has-text("$")').first();
+    await expect(usdRateBadge).toBeVisible();
+
+    // Switch to INR via navbar currency selector
+    await currencyBtn.click();
+    await page.locator('[data-testid="currency-option-INR"]').first().click();
+    await expect(currencyBtn).toContainText("INR");
+
+    // The starting rate on the page must update to ₹ immediately without manual refresh!
+    const inrRateBadge = page.locator('span:has-text("₹")').first();
+    await expect(inrRateBadge).toBeVisible({ timeout: 5_000 });
+  });
 });

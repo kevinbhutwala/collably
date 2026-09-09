@@ -10,6 +10,7 @@ import {
   CreatorProfile,
 } from "@/core/types";
 import { formatCurrency, formatNumber } from "@/core/utils/formatters";
+import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
 import { ReputationBadgeBar } from "@/components/marketplace/ReputationBadgeBar";
 import { useUIStore } from "@/stores/ui.store";
 import { useAuthStore } from "@/stores/auth.store";
@@ -32,6 +33,7 @@ import { cn } from "@/lib/utils";
 type TrendingTab = "trending_now" | "rising" | "top_performing" | "campaigns" | "categories";
 
 export default function DedicatedTrendingPage() {
+  const { format } = useGlobalCurrency();
   const { role } = useAuthStore();
   const { addToast } = useUIStore();
   const [activeTab, setActiveTab] = useState<TrendingTab>("trending_now");
@@ -286,7 +288,7 @@ export default function DedicatedTrendingPage() {
                     <div>
                       <span className="text-[10px] text-[#7A7A8A] block uppercase font-bold">Total Budget</span>
                       <span className="font-bold text-[#0A0A0E] dark:text-white">
-                        {formatCurrency(camp.budget?.totalBudget || 0)}
+                        {format(camp.budget?.totalBudget || 0, camp.budget?.currency || "USD")}
                       </span>
                     </div>
                     <div>
@@ -342,7 +344,7 @@ export default function DedicatedTrendingPage() {
               <div className="pt-3 border-t border-black/6 dark:border-white/10 flex items-center justify-between text-xs font-mono">
                 <span className="text-[#7A7A8A]">Avg Deal Budget</span>
                 <span className="font-extrabold text-[#0A0A0E] dark:text-white text-sm">
-                  {formatCurrency(cat.avgBudget)}
+                  {format(cat.avgBudget, "USD")}
                 </span>
               </div>
             </div>
@@ -456,7 +458,7 @@ export default function DedicatedTrendingPage() {
                     <div className="flex items-center justify-between text-[11px] text-[#7A7A8A]">
                       <span>Starting rate:</span>
                       <strong className="text-[#0A0A0E] dark:text-white">
-                        {formatCurrency(creator.startingPrice || 1500)}
+                        {format(creator.startingPrice || 1500, (creator as any).currency || "USD")}
                       </strong>
                     </div>
                   </div>
@@ -505,7 +507,7 @@ export default function DedicatedTrendingPage() {
                     Invite {selectedCreator.fullName}
                   </h3>
                   <p className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-mono">
-                    {selectedCreator.primaryCategory} • Starting {formatCurrency(selectedCreator.startingPrice)}
+                    {selectedCreator.primaryCategory} • Starting {format(selectedCreator.startingPrice, (selectedCreator as any).currency || "USD")}
                   </p>
                 </div>
               </div>

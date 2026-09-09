@@ -70,7 +70,13 @@ export const useUIStore = create<UIState>((set) => ({
 
   setSelectedCurrency: (currency: SupportedCurrency) => {
     if (typeof window !== "undefined") {
-      localStorage.setItem("abeycollab_currency", currency);
+      try {
+        localStorage.setItem("abeycollab_currency", currency);
+        document.cookie = `abeycollab_currency=${currency}; path=/; max-age=31536000; SameSite=Lax`;
+        window.dispatchEvent(new CustomEvent("currencyChange", { detail: currency }));
+        window.dispatchEvent(new Event("storage"));
+      } catch {}
+
       // Persist to user profile in background if logged in
       fetch("/api/auth/me", {
         method: "PATCH",

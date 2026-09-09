@@ -19,6 +19,7 @@ import { CreatorMarketPulseWidget } from "@/components/marketplace/CreatorMarket
 import { BrandMarketIntelligenceWidget } from "@/components/marketplace/BrandMarketIntelligenceWidget";
 import { CreativeLoader } from "@/components/ui/CreativeLoader";
 import { formatCurrency } from "@/core/utils/formatters";
+import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
 
 
 import {
@@ -45,6 +46,7 @@ import {
 } from "lucide-react";
 
 function DashboardContent() {
+  const { format } = useGlobalCurrency();
   const { user, role, currentCreator, currentBrand } = useAuthStore();
   const searchParams = useSearchParams();
   const { addToast } = useUIStore();
@@ -294,7 +296,7 @@ function DashboardContent() {
           <>
             <StatsCard
               title="Secured Payments"
-              value={formatCurrency(totalEscrowInTransit)}
+              value={format(totalEscrowInTransit, "USD")}
               change={totalEscrowInTransit > 0 ? "Secured" : "—"}
               trend="up"
               subtitle="Held safely in escrow"
@@ -318,7 +320,7 @@ function DashboardContent() {
             />
             <StatsCard
               title="Total Earned"
-              value={formatCurrency(lifetimeEarned)}
+              value={format(lifetimeEarned, "USD")}
               change={lifetimeEarned > 0 ? "Paid out" : "—"}
               trend="up"
               subtitle="Paid out to date"
@@ -329,7 +331,7 @@ function DashboardContent() {
           <>
             <StatsCard
               title="Protected Budget"
-              value={formatCurrency(brandTotalBudget)}
+              value={format(brandTotalBudget, "USD")}
               change={brandTotalBudget > 0 ? "Funded" : "—"}
               trend="up"
               subtitle="Locked safely in escrow"
@@ -439,7 +441,7 @@ function DashboardContent() {
                             {collab.campaignTitle}
                           </h3>
                           <p className="text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4]">
-                            {collab.brand?.companyName} • {formatCurrency(collab.totalAgreedBudget)}
+                            {collab.brand?.companyName} • {format(collab.totalAgreedBudget, collab.currency || "USD")}
                           </p>
                         </div>
                       </div>
@@ -502,7 +504,7 @@ function DashboardContent() {
                           {c.category}
                         </span>
                         <span className="text-[11px] font-mono text-[#0A0A0E] dark:text-white font-bold">
-                          {formatCurrency(c.budget?.totalBudget ?? 0)}
+                          {format(c.budget?.totalBudget ?? 0, c.budget?.currency || "USD")}
                         </span>
                       </div>
                       <h3 className="font-bold text-xs sm:text-sm text-[#0A0A0E] dark:text-white group-hover:text-[#8A7000] dark:group-hover:text-[#FFD21F] transition-colors line-clamp-1">
@@ -557,7 +559,7 @@ function DashboardContent() {
                           {creator.primaryCategory}
                         </span>
                         <span className="text-[11px] font-mono text-[#0A0A0E] dark:text-white font-bold">
-                          From {formatCurrency(creator.startingPrice || 500)}
+                          From {format(creator.startingPrice || 500, (creator as any).currency || "USD")}
                         </span>
                       </div>
                       <div className="flex items-center gap-2.5">
@@ -676,7 +678,7 @@ function DashboardContent() {
                     </div>
                     <div className="text-right">
                       <span className="font-bold text-[#0A0A0E] dark:text-white block text-xs">
-                        {role === "creator" ? `+${formatCurrency(p.netAmount)}` : formatCurrency(p.netAmount)}
+                        {role === "creator" ? `+${format(p.netAmount, (p as any).currency || "USD")}` : format(p.netAmount, (p as any).currency || "USD")}
                       </span>
                       <span className="text-[9px] text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-bold">{p.status}</span>
                     </div>

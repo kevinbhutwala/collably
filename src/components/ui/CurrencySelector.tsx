@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Globe, Check, ChevronDown } from "lucide-react";
 import { useUIStore } from "@/stores/ui.store";
 import {
@@ -20,6 +21,7 @@ export function CurrencySelector({
   className = "",
   onCurrencyChange,
 }: CurrencySelectorProps) {
+  const router = useRouter();
   const { selectedCurrency, setSelectedCurrency } = useUIStore();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -50,6 +52,9 @@ export function CurrencySelector({
       onCurrencyChange(code);
     }
     setIsOpen(false);
+    try {
+      router.refresh();
+    } catch {}
   };
 
   if (variant === "cards") {

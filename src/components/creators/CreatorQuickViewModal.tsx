@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Modal } from "@/components/ui/Modal";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { formatNumber, formatCurrency } from "@/core/utils/formatters";
+import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
 import {
   Star,
   CheckCircle2,
@@ -61,6 +62,7 @@ export function CreatorQuickViewModal({
   onBookmarkToggle,
   isBookmarked = false,
 }: CreatorQuickViewModalProps) {
+  const { format } = useGlobalCurrency();
   const [selectedMediaIdx, setSelectedMediaIdx] = useState(0);
 
   if (!creator) return null;
@@ -152,7 +154,7 @@ export function CreatorQuickViewModal({
               <div>
                 <span className="text-[10px] text-[#7A7A8A] uppercase font-bold block">Starting Rate</span>
                 <span className="text-base sm:text-lg font-black text-[#0A0A0E] font-display">
-                  {typeof creator.startingPrice === "number" ? formatCurrency(creator.startingPrice, creator.currency) : creator.startingPrice}
+                  {typeof creator.startingPrice === "number" ? format(creator.startingPrice, creator.currency || "USD") : creator.startingPrice}
                 </span>
               </div>
             </div>

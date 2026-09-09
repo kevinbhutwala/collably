@@ -10,7 +10,7 @@ export function formatNumber(num: number): string {
 
 export const formatCompactNumber = formatNumber;
 
-import { formatCurrency as formatGlobalCurrency, SupportedCurrency } from "./currency";
+import { formatCurrency as formatGlobalCurrency, convertCurrency, SupportedCurrency } from "./currency";
 
 export { formatGlobalCurrency };
 
@@ -19,6 +19,7 @@ export function formatCurrency(
   currency?: string,
   options?: { compact?: boolean; maximumFractionDigits?: number; minimumFractionDigits?: number }
 ): string {
+  const num = typeof amount === "number" ? amount : parseFloat(String(amount ?? 0)) || 0;
   let targetCurrency = currency;
   if (!targetCurrency && typeof window !== "undefined") {
     try {
@@ -30,7 +31,14 @@ export function formatCurrency(
       // ignore
     }
   }
-  return formatGlobalCurrency(amount, (targetCurrency || "USD") as SupportedCurrency, options);
+
+  // If currency was omitted (base USD numeric value) and target currency is set and not USD, convert it
+  if (!currency && targetCurrency && targetCurrency !== "USD") {
+    const converted = convertCurrency(num, "USD", targetCurrency as SupportedCurrency);
+    return formatGlobalCurrency(converted, targetCurrency as SupportedCurrency, options);
+  }
+
+  return formatGlobalCurrency(num, (targetCurrency || "USD") as SupportedCurrency, options);
 }
 
 export function formatPercentage(rate: number): string {

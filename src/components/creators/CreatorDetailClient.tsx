@@ -8,6 +8,7 @@ import { SafeImage } from "@/components/ui/SafeImage";
 import { CreativeLoader } from "@/components/ui/CreativeLoader";
 import { SocialIcon } from "@/components/ui/SocialIcons";
 import { formatNumber, formatCurrency } from "@/core/utils/formatters";
+import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
 import { TrustIndicatorsBar } from "@/components/marketplace/TrustIndicatorsBar";
 import { CategoryBadge, TitleIcon } from "@/components/ui/TitleIconBadge";
 import { SaveToShortlistButton } from "@/components/creators/SaveToShortlistButton";
@@ -26,6 +27,7 @@ export function CreatorDetailClient({
   creatorId,
   initialCreator = null,
 }: CreatorDetailClientProps) {
+  const { format } = useGlobalCurrency();
   const [creator, setCreator] = useState<CreatorProfile | null>(initialCreator);
   const [loading, setLoading] = useState(!initialCreator);
 
@@ -152,7 +154,7 @@ export function CreatorDetailClient({
               <div className="flex justify-between items-baseline">
                 <span className="text-xs text-[#7A7A8A]">Base Sponsorship</span>
                 <span className="text-2xl font-black text-[#0A0A0E]">
-                  {formatCurrency(creator.startingPrice, (creator as any).currency)}
+                  {format(creator.startingPrice, (creator as any).currency || "USD")}
                 </span>
               </div>
 
@@ -210,7 +212,7 @@ export function CreatorDetailClient({
 
                     <div className="text-right shrink-0">
                       <span className="text-base font-extrabold text-[#0A0A0E] font-mono block">
-                        {formatCurrency(rate.basePrice || (rate as any).price || 500, (rate as any).currency || (creator as any).currency)}
+                        {format(rate.basePrice || (rate as any).price || 500, (rate as any).currency || (creator as any).currency || "USD")}
                       </span>
                       <span className="text-[10px] font-mono text-[#7A7A8A]">per asset</span>
                     </div>

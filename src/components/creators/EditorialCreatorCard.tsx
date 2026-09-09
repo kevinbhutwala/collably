@@ -17,6 +17,7 @@ import {
   Video,
 } from "lucide-react";
 import { formatCurrency } from "@/core/utils/formatters";
+import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
 import { TitleIcon } from "@/components/ui/TitleIconBadge";
 
 interface EditorialCreatorCardProps {
@@ -32,6 +33,7 @@ export function EditorialCreatorCard({
   onBookmarkToggle,
   isBookmarked = false,
 }: EditorialCreatorCardProps) {
+  const { format } = useGlobalCurrency();
   const [localBookmarked, setLocalBookmarked] = useState(isBookmarked);
 
   const handleBookmark = (e: React.MouseEvent) => {
@@ -45,7 +47,7 @@ export function EditorialCreatorCard({
 
   const startingPriceDisplay =
     typeof creator.startingPrice === "number"
-      ? formatCurrency(creator.startingPrice, (creator as any).currency)
+      ? format(creator.startingPrice, (creator as any).currency || "USD")
       : creator.startingPrice;
 
   return (
