@@ -22,6 +22,11 @@ import {
   Users,
 } from "lucide-react";
 import { formatCurrency } from "@/core/utils/formatters";
+import {
+  PRIMARY_CURRENCY_LIST,
+  getCurrencySymbol,
+  SupportedCurrency,
+} from "@/core/utils/currency";
 
 const GEOGRAPHY_OPTIONS = [
   "United States",
@@ -84,6 +89,7 @@ export function CampaignWizard() {
     deliverables: [
       { id: "del-1", type: "YouTube 60s Integration" as DeliverableType, count: 1, guidelines: "60-second integrated sponsorship segment highlighting workflow speeds", specifications: ["4K 60fps", "Clear Audio", "Pinned Link in Comments"], maxRevisions: 2 },
     ],
+    currency: "USD" as SupportedCurrency,
     totalBudget: 15000,
     perCreatorBudget: 3000,
     escrowDepositPercentage: 100,
@@ -167,7 +173,7 @@ export function CampaignWizard() {
         budget: {
           totalBudget: formData.totalBudget,
           perCreatorBudget: formData.perCreatorBudget,
-          currency: "USD",
+          currency: formData.currency,
           paymentTerms: "100_escrow_on_approval",
         },
         timeline: {
@@ -453,16 +459,49 @@ export function CampaignWizard() {
               </p>
             </div>
 
+            {/* Currency Selector */}
+            <div className="space-y-2">
+              <label className="text-xs font-bold text-[#0A0A0E] block">
+                Campaign Currency Pool
+              </label>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                {PRIMARY_CURRENCY_LIST.map((curr) => {
+                  const isSelected = formData.currency === curr.code;
+                  return (
+                    <button
+                      key={curr.code}
+                      type="button"
+                      onClick={() => setFormData({ ...formData, currency: curr.code })}
+                      data-testid={`campaign-currency-${curr.code}`}
+                      className={`p-3 rounded-xl border-2 text-left transition-all flex items-center justify-between cursor-pointer ${
+                        isSelected
+                          ? "border-[#FFD21F] bg-[#FFFDF5] shadow-xs font-bold ring-2 ring-[#FFD21F]/20"
+                          : "border-black/8 bg-white hover:border-black/20 text-[#5A5A68]"
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="text-base">{curr.flag}</span>
+                        <span className="text-xs text-[#0A0A0E] font-bold">{curr.code}</span>
+                      </div>
+                      <span className="text-xs font-mono font-extrabold text-[#0A0A0E] bg-black/5 px-1.5 py-0.5 rounded">
+                        {curr.symbol}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Input
-                label="Total Campaign Budget Pool ($ USD)"
+                label={`Total Campaign Budget Pool (${getCurrencySymbol(formData.currency)} ${formData.currency})`}
                 type="number"
                 value={formData.totalBudget}
                 onChange={(e) => setFormData({ ...formData, totalBudget: parseInt(e.target.value) || 0 })}
               />
 
               <Input
-                label="Target Fee Per Creator ($ USD)"
+                label={`Target Fee Per Creator (${getCurrencySymbol(formData.currency)} ${formData.currency})`}
                 type="number"
                 value={formData.perCreatorBudget}
                 onChange={(e) => setFormData({ ...formData, perCreatorBudget: parseInt(e.target.value) || 0 })}
@@ -540,7 +579,7 @@ export function CampaignWizard() {
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-[#7A7A8A] font-mono">TOTAL ESCROW POOL</span>
-                <span className="text-sm font-extrabold font-mono text-[#0A0A0E]">{formatCurrency(formData.totalBudget)}</span>
+                <span className="text-sm font-extrabold font-mono text-[#0A0A0E]">{formatCurrency(formData.totalBudget, formData.currency)}</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-[#7A7A8A] font-mono">TARGET COHORT</span>

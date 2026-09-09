@@ -32,11 +32,37 @@ export const SUPPORTED_CURRENCIES: Record<SupportedCurrency, CurrencyConfig> = {
   AUD: { code: "AUD", symbol: "AU$", name: "Australian Dollar", flag: "🇦🇺", exchangeRateToUSD: 1.52, locale: "en-AU" },
   JPY: { code: "JPY", symbol: "¥", name: "Japanese Yen", flag: "🇯🇵", exchangeRateToUSD: 154.0, locale: "ja-JP" },
   SGD: { code: "SGD", symbol: "SG$", name: "Singapore Dollar", flag: "🇸🇬", exchangeRateToUSD: 1.35, locale: "en-SG" },
-  AED: { code: "AED", symbol: "AED", name: "UAE Dirham", flag: "🇦🇪", exchangeRateToUSD: 3.67, locale: "ar-AE" },
+  AED: { code: "AED", symbol: "AED", name: "UAE Dirham", flag: "🇦🇪", exchangeRateToUSD: 3.67, locale: "en-AE" },
   BRL: { code: "BRL", symbol: "R$", name: "Brazilian Real", flag: "🇧🇷", exchangeRateToUSD: 5.25, locale: "pt-BR" },
 };
 
+/**
+ * Primary focus currencies supported globally across AbeyCollab:
+ * USD ($), INR (₹), GBP (£), and AED (AED)
+ */
+export const PRIMARY_CURRENCIES = ["USD", "INR", "GBP", "AED"] as const;
+export type PrimaryCurrency = (typeof PRIMARY_CURRENCIES)[number];
+
+export const PRIMARY_CURRENCY_LIST: CurrencyConfig[] = PRIMARY_CURRENCIES.map(
+  (code) => SUPPORTED_CURRENCIES[code]
+);
+
 export const SUPPORTED_CURRENCY_LIST: CurrencyConfig[] = Object.values(SUPPORTED_CURRENCIES);
+
+export function getCurrencySymbol(currency: SupportedCurrency | string = "USD"): string {
+  return (
+    SUPPORTED_CURRENCIES[currency as SupportedCurrency]?.symbol ||
+    (currency === "AED" ? "AED" : "$")
+  );
+}
+
+export function getCurrencyFlag(currency: SupportedCurrency | string = "USD"): string {
+  return SUPPORTED_CURRENCIES[currency as SupportedCurrency]?.flag || "🌐";
+}
+
+export function getCurrencyName(currency: SupportedCurrency | string = "USD"): string {
+  return SUPPORTED_CURRENCIES[currency as SupportedCurrency]?.name || currency;
+}
 
 /**
  * Convert an amount from one currency to another using dynamic exchange rates

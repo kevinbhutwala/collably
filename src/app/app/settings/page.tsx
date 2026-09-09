@@ -26,8 +26,11 @@ import {
   ArrowRight,
   Sun,
   Moon,
+  Globe,
 } from "lucide-react";
 import { format } from "date-fns";
+import { CurrencySelector } from "@/components/ui/CurrencySelector";
+import { convertCurrency, formatCurrency } from "@/core/utils/currency";
 
 export default function SettingsPage() {
   const { user, role } = useAuthStore();
@@ -268,8 +271,8 @@ export default function SettingsPage() {
               : "border-transparent text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
           }`}
         >
-          <Sun className="w-4 h-4 text-[#FFD21F]" />
-          <span>Appearance &amp; Theme</span>
+          <Globe className="w-4 h-4 text-[#FFD21F]" />
+          <span>Preferences &amp; Theme</span>
         </button>
       </div>
 
@@ -544,6 +547,19 @@ export default function SettingsPage() {
                 onChange={(e) => setTaxId(e.target.value)}
               />
             </div>
+            {/* Preferred Settlement Currency */}
+            <div className="pt-2 border-t border-black/5 dark:border-white/5 space-y-3">
+              <div>
+                <label className="text-xs font-bold text-[#0A0A0E] dark:text-white block">
+                  Settlement &amp; Escrow Currency
+                </label>
+                <p className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] mt-0.5">
+                  Choose your base currency for receiving campaign milestone payouts and escrow releases.
+                </p>
+              </div>
+              <CurrencySelector variant="cards" />
+            </div>
+
             <div className="pt-2">
               <button
                 onClick={handleSavePreferences}
@@ -627,9 +643,54 @@ export default function SettingsPage() {
         </div>
       )}
 
-      {/* ── TAB 4: APPEARANCE & THEME ── */}
+      {/* ── TAB 4: PREFERENCES & THEME ── */}
       {activeTab === "appearance" && (
         <div className="space-y-6">
+          {/* Global Currency & Localization */}
+          <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
+            <div>
+              <h2 className="text-base sm:text-lg font-black text-[#0A0A0E] dark:text-white tracking-tight font-display flex items-center gap-2">
+                <Globe className="w-5 h-5 text-[#FFD21F]" />
+                <span>Global Currency &amp; Regional Localization</span>
+              </h2>
+              <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#8E8EA4] mt-1 font-sans">
+                Choose your default display and transaction currency. Select among USD, INR, GBP, or AED. Budgets, rates, and analytics convert smoothly using transparent exchange rates.
+              </p>
+            </div>
+
+            <CurrencySelector variant="cards" />
+
+            {/* Live Benchmark Conversion Grid */}
+            <div className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#161622] border border-black/5 dark:border-white/5 space-y-2.5">
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#7A7A8A] dark:text-[#8E8EA4]">
+                  Benchmark Value Comparison ($1,000 USD Base)
+                </span>
+                <span className="text-[10px] font-mono font-bold text-[#8A7000] dark:text-[#FFD21F] bg-[#FFD21F]/15 px-2 py-0.5 rounded-full">
+                  Real-Time Benchmarked
+                </span>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
+                <div className="p-3 rounded-xl bg-white dark:bg-[#1A1A28] border border-black/5 dark:border-white/10 space-y-1">
+                  <span className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] block">🇺🇸 USD (US Dollar)</span>
+                  <span className="font-mono font-extrabold text-sm text-[#0A0A0E] dark:text-white">{formatCurrency(1000, "USD")}</span>
+                </div>
+                <div className="p-3 rounded-xl bg-white dark:bg-[#1A1A28] border border-black/5 dark:border-white/10 space-y-1">
+                  <span className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] block">🇮🇳 INR (Indian Rupee)</span>
+                  <span className="font-mono font-extrabold text-sm text-[#0A0A0E] dark:text-white">{formatCurrency(convertCurrency(1000, "USD", "INR"), "INR")}</span>
+                </div>
+                <div className="p-3 rounded-xl bg-white dark:bg-[#1A1A28] border border-black/5 dark:border-white/10 space-y-1">
+                  <span className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] block">🇬🇧 GBP (British Pound)</span>
+                  <span className="font-mono font-extrabold text-sm text-[#0A0A0E] dark:text-white">{formatCurrency(convertCurrency(1000, "USD", "GBP"), "GBP")}</span>
+                </div>
+                <div className="p-3 rounded-xl bg-white dark:bg-[#1A1A28] border border-black/5 dark:border-white/10 space-y-1">
+                  <span className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] block">🇦🇪 AED (UAE Dirham)</span>
+                  <span className="font-mono font-extrabold text-sm text-[#0A0A0E] dark:text-white">{formatCurrency(convertCurrency(1000, "USD", "AED"), "AED")}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6">
             <div>
               <h2 className="text-base sm:text-lg font-black text-[#0A0A0E] tracking-tight font-display flex items-center gap-2">

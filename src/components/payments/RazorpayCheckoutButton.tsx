@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useUIStore } from "@/stores/ui.store";
 import { Loader2, ShieldCheck } from "lucide-react";
+import { formatCurrency, SupportedCurrency } from "@/core/utils/currency";
 
 export interface RazorpayPrefill {
   name?: string;
@@ -234,7 +235,7 @@ export function RazorpayCheckoutButton({
       ) : (
         <>
           <ShieldCheck className="w-4 h-4 text-[#0A0A0E]" />
-          <span>Pay with Razorpay (₹{amount.toLocaleString()})</span>
+          <span>Pay with Razorpay ({formatCurrency(amount, (currency || "INR") as SupportedCurrency)})</span>
         </>
       )}
     </button>

@@ -213,7 +213,7 @@ export interface Campaign {
   budget: {
     totalBudget: number;
     perCreatorBudget: number;
-    currency: 'USD';
+    currency: 'USD' | 'INR' | 'GBP' | 'AED' | string;
     paymentTerms: '50_50_escrow' | '100_escrow_on_approval' | 'milestone';
     performanceBonus?: string;
   };

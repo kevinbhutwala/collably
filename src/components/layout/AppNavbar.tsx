@@ -44,31 +44,16 @@ import { cn } from "@/lib/utils";
 import { SubscriptionBadge } from "@/components/subscriptions/SubscriptionBadge";
 import { useSubscriptionStore } from "@/stores/subscription.store";
 import { useUIStore } from "@/stores/ui.store";
-import { SUPPORTED_CURRENCIES, SUPPORTED_CURRENCY_LIST } from "@/core/utils/currency";
 import { AbeyCollabLogo } from "@/components/ui/AbeyCollabLogo";
+import { CurrencySelector } from "@/components/ui/CurrencySelector";
 
 export function AppNavbar() {
   const pathname = usePathname();
   const { user, role, logout } = useAuthStore();
-  const { selectedCurrency, setSelectedCurrency } = useUIStore();
-  const [showCurrencyMenu, setShowCurrencyMenu] = useState(false);
   const [showNotifs, setShowNotifs] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [showMobileSidebar, setShowMobileSidebar] = useState(false);
   const [notifications, setNotifications] = useState<NotificationItem[]>([]);
-  const currencyMenuRef = React.useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (currencyMenuRef.current && !currencyMenuRef.current.contains(event.target as Node)) {
-        setShowCurrencyMenu(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  const activeCurrencyConfig = SUPPORTED_CURRENCIES[selectedCurrency] || SUPPORTED_CURRENCIES.USD;
 
   useEffect(() => {
     if (user?.id) {
@@ -239,55 +224,7 @@ export function AppNavbar() {
           )}
 
           {/* Worldwide Currency & Locale Selector */}
-          <div className="relative" ref={currencyMenuRef}>
-            <button
-              type="button"
-              onClick={() => setShowCurrencyMenu(!showCurrencyMenu)}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8] border border-black/8 dark:border-white/10 transition-colors shadow-2xs"
-              aria-label="Select Worldwide Currency"
-              title="Worldwide Currency & Regional Localization"
-            >
-              <Globe className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F] shrink-0" />
-              <span className="font-mono text-[11px] font-extrabold flex items-center gap-1">
-                <span>{activeCurrencyConfig.flag}</span>
-                <span>{activeCurrencyConfig.code}</span>
-              </span>
-              <ChevronDown className="w-3 h-3 text-[#7A7A8A]" />
-            </button>
-
-            {showCurrencyMenu && (
-              <div className="absolute right-0 mt-2 w-56 rounded-2xl bg-white dark:bg-[#12121A] border border-black/10 dark:border-white/10 shadow-2xl p-1.5 z-50 animate-in fade-in zoom-in-95 duration-100 max-h-80 overflow-y-auto">
-                <div className="px-2.5 py-1.5 border-b border-black/8 dark:border-white/10 mb-1">
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-[#7A7A8A]">Worldwide Currency</p>
-                </div>
-                {SUPPORTED_CURRENCY_LIST.map((curr) => (
-                  <button
-                    key={curr.code}
-                    type="button"
-                    onClick={() => {
-                      setSelectedCurrency(curr.code);
-                      setShowCurrencyMenu(false);
-                    }}
-                    className={cn(
-                      "w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-medium transition-colors text-left",
-                      selectedCurrency === curr.code
-                        ? "bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-white font-bold border border-[#FFD21F]/40"
-                        : "hover:bg-black/5 dark:hover:bg-white/5 text-[#5A5A68] dark:text-[#B8B8CC]"
-                    )}
-                  >
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm">{curr.flag}</span>
-                      <span className="font-bold text-[#0A0A0E] dark:text-white">{curr.code}</span>
-                      <span className="text-[10px] text-[#7A7A8A]">({curr.symbol})</span>
-                    </div>
-                    {selectedCurrency === curr.code && (
-                      <Check className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F]" />
-                    )}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
+          <CurrencySelector />
 
           {/* Theme Mode Switcher */}
           <ThemeToggle />
