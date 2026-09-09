@@ -272,7 +272,7 @@ export function CampaignWizard() {
                 label="Campaign Title"
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                placeholder="e.g. Creator Performance Showcase Launch"
+                placeholder="e.g. AI-Powered Sprint Workflows Launch"
                 required
               />
 
