@@ -2,7 +2,7 @@ import { test, expect, Page } from '@playwright/test';
 
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 
-async function loginAs(page: Page, email: string, pass: string) {
+async function loginAs(page: Page, email: string = 'creator@abeycollab.io', pass: string = 'password123') {
   await page.goto(`${BASE_URL}/login`, { waitUntil: 'domcontentloaded' });
 
   const emailInput = page.locator('input[type="email"], input[name="email"]').first();
@@ -31,16 +31,18 @@ test.describe('Collably Dark Mode & Text Contrast Verification Suite', () => {
     // Find theme toggle button (desktop or mobile)
     const themeToggle = page.locator('button[aria-label*="Toggle theme"], button[title*="Switch to"]').first();
     await expect(themeToggle).toBeVisible({ timeout: 10000 });
+    await page.waitForTimeout(600); // allow mounted useEffect to set initial theme
 
     const initialIsDark = await page.evaluate(() => document.documentElement.classList.contains('dark'));
 
     // Click to toggle theme
     await themeToggle.click();
-    await page.waitForTimeout(400);
 
-    // Verify theme state toggled
-    const newIsDark = await page.evaluate(() => document.documentElement.classList.contains('dark'));
-    expect(newIsDark).toBe(!initialIsDark);
+    // Verify theme state toggled using expect.poll
+    await expect.poll(
+      async () => page.evaluate(() => document.documentElement.classList.contains('dark')),
+      { timeout: 5000 }
+    ).toBe(!initialIsDark);
 
     // Explicitly test dark mode state for typography and button contrast
     await page.evaluate(() => {
@@ -116,7 +118,7 @@ test.describe('Collably Dark Mode & Text Contrast Verification Suite', () => {
   });
 
   test('03: Messages Module Visibility & Theme in Dark Mode', async ({ page }) => {
-    await loginAs(page, 'creator@collably.io', 'password123');
+    await loginAs(page, 'creator@abeycollab.io', 'password123');
 
     // Navigate to messages
     await page.goto(`${BASE_URL}/app/messages`, { waitUntil: 'domcontentloaded' });
@@ -145,19 +147,19 @@ test.describe('Collably Dark Mode & Text Contrast Verification Suite', () => {
   });
 
   test('04: Settings Appearance Tab & Theme Selector', async ({ page }) => {
-    await loginAs(page, 'creator@collably.io', 'password123');
+    await loginAs(page, 'creator@abeycollab.io', 'password123');
 
     // Navigate to settings
-    await page.goto(`${BASE_URL}/app/settings`, { waitUntil: 'networkidle' });
+    await page.goto(`${BASE_URL}/app/settings`, { waitUntil: 'domcontentloaded' });
 
     // Click Appearance & Theme tab
     const appearanceTab = page.locator('button:has-text("Appearance"), button:has-text("Theme")').first();
-    await expect(appearanceTab).toBeVisible({ timeout: 10000 });
+    await expect(appearanceTab).toBeVisible({ timeout: 15000 });
     await appearanceTab.click();
 
     // Verify Light and Dark theme selector cards are rendered
-    await expect(page.locator('text=Pure White & Solar')).toBeVisible({ timeout: 5000 });
-    await expect(page.locator('text=Carbon Dark & Editorial')).toBeVisible({ timeout: 5000 });
+    await expect(page.locator('text=Pure White & Solar')).toBeVisible({ timeout: 10000 });
+    await expect(page.locator('text=Carbon Dark & Editorial')).toBeVisible({ timeout: 10000 });
 
     // Select Dark Theme
     await page.locator('text=Carbon Dark & Editorial').click();

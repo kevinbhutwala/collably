@@ -15,7 +15,7 @@ test.describe("Verified Captured Razorpay Payments & Dashboard Status", () => {
 
     // 2. Visit Earnings & Escrow ledger
     await page.goto(`${BASE_URL}/app/earnings`, { waitUntil: "domcontentloaded" });
-    await expect(page.locator("text=Live Razorpay Escrow Deposit Gateway")).toBeVisible({ timeout: 10000 });
+    await expect(page.locator("text=/Razorpay Standard Checkout Active|Live Razorpay Escrow Deposit Gateway/i")).toBeVisible({ timeout: 10000 });
 
     // 3. Check that Pay with Razorpay button is enabled and active
     const payBtn = page.locator('button:has-text("Pay with Razorpay")');

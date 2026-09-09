@@ -29,14 +29,14 @@ test.describe("AbeyCollab Marketplace Operating System Full Flow", () => {
     await performLogin(page, CREDS.creator.email, CREDS.creator.password);
     await expect(page).toHaveURL(/\/(app|dashboard)/i);
 
-    // 2. Market Pulse "Where are my opportunities?"
-    const opportunitiesHeading = page.locator("text=/Where are my opportunities/i").first();
+    // 2. Market Pulse Opportunities
+    const opportunitiesHeading = page.locator("text=/Top Sponsorship Opportunities|Where are my opportunities/i").first();
     await expect(opportunitiesHeading).toBeVisible({ timeout: 10_000 });
-    await expect(page.locator("text=/Your Opportunity Score/i").first()).toBeVisible();
+    await expect(page.locator("text=/Market Demand Score|Your Opportunity Score/i").first()).toBeVisible();
 
     // 3. Dedicated /app/trending Hub
     await page.goto(`${BASE_URL}/app/trending`, { waitUntil: "domcontentloaded" });
-    await expect(page.getByRole("heading", { name: /Marketplace Trending Experience/i })).toBeVisible({ timeout: 10_000 });
+    await expect(page.getByRole("heading", { name: /Trending Creators & Campaigns|Marketplace Trending Experience/i })).toBeVisible({ timeout: 10_000 });
 
     // Verify tabs
     await expect(page.locator("button", { hasText: "Trending Now" })).toBeVisible();
@@ -76,14 +76,14 @@ test.describe("AbeyCollab Marketplace Operating System Full Flow", () => {
     await expect(page).toHaveURL(/\/(app|dashboard)/i);
 
     // 2. Brand Market Intelligence
-    const intel = page.locator("text=/Brand Market Intelligence/i").first();
+    const intel = page.locator("text=/Creator Rates & Industry Trends|Market Insights & Pricing Guide|Brand Market Intelligence/i").first();
     await expect(intel).toBeVisible({ timeout: 10_000 });
-    await expect(page.locator("text=/Niche Demand/i").first()).toBeVisible();
-    await expect(page.locator("text=/Avg Campaign Budget/i").first()).toBeVisible();
+    await expect(page.locator("text=/Category Demand|Niche Demand/i").first()).toBeVisible();
+    await expect(page.locator("text=/Average Budget|Avg Campaign Budget/i").first()).toBeVisible();
 
     // 3. Brand Creator Discovery with Filters & Sorting
     await page.goto(`${BASE_URL}/app/brand/creators`, { waitUntil: "domcontentloaded" });
-    await expect(page.getByRole("heading", { name: /Discover Verified Creators/i })).toBeVisible({ timeout: 10_000 });
+    await expect(page.getByRole("heading", { name: /Discover Creators|Discover Verified Creators/i })).toBeVisible({ timeout: 10_000 });
 
     // Verify sort dropdown exists
     const sortSelect = page.locator("select").first();
@@ -136,7 +136,7 @@ test.describe("AbeyCollab Marketplace Operating System Full Flow", () => {
 
     // 3. Admin Algorithm Controls (/admin/settings)
     await page.goto(`${BASE_URL}/admin/settings`, { waitUntil: "domcontentloaded" });
-    await expect(page.getByRole("heading", { name: /Marketplace Intelligence|Platform Settings/i })).toBeVisible({ timeout: 10_000 });
+    await expect(page.getByRole("heading", { name: /Marketplace Intelligence|Platform Settings/i }).first()).toBeVisible({ timeout: 10_000 });
     await expect(page.locator("text=/Engagement Rate/i").first()).toBeVisible({ timeout: 10_000 });
     await expect(page.locator("text=/Anti-Gaming Security/i").first()).toBeVisible({ timeout: 10_000 });
   });

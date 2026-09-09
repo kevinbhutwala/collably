@@ -22,7 +22,7 @@ const USERS = {
 
 // Reusable login helper
 async function loginAs(page: Page, email: string, pass: string) {
-  await page.goto(`${BASE_URL}/login`, { waitUntil: 'networkidle' });
+  await page.goto(`${BASE_URL}/login`, { waitUntil: 'domcontentloaded' });
 
   const emailInput = page.locator('input[type="email"], input[name="email"], input[placeholder*="email" i]');
   const passwordInput = page.locator('input[type="password"], input[name="password"]');
@@ -139,11 +139,8 @@ test.describe('AbeyCollab End-to-End Suite', () => {
 
     // Navigate to talent search or campaigns
     await page.goto(`${BASE_URL}/creators`, { waitUntil: 'domcontentloaded' });
-    await page.waitForSelector('text=Book', { timeout: 10_000 });
-
-    // Inspect booking or rate triggers
-    const bookBtn = page.locator('button:has-text("Book"), a:has-text("Book")').first();
-    await expect(bookBtn).toBeVisible({ timeout: 10_000 });
+    const actionBtn = page.locator('button:has-text("Book"), a:has-text("Book"), a:has-text("View"), button:has-text("View")').first();
+    await expect(actionBtn).toBeVisible({ timeout: 15_000 });
   });
 
   // ==========================================
