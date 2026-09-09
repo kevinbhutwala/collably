@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { AbeyCollabSymbol } from "@/components/ui/AbeyCollabLogo";
+import { AbeyCollabLogo } from "@/components/ui/AbeyCollabLogo";
 import { ArrowRight, ShieldCheck, Mail, MapPin } from "lucide-react";
 
 export function CinematicFooter() {
@@ -10,15 +10,7 @@ export function CinematicFooter() {
     <footer className="border-t border-black/8 dark:border-white/10 bg-[#F6F6F9] dark:bg-[#07070B] text-[#5A5A68] dark:text-[#8E8EA4] text-xs font-sans select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8">
         <div className="col-span-1 sm:col-span-2 space-y-4">
-
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FFD21F] to-[#FFAE00] border border-black/10 flex items-center justify-center text-[#0A0A0E] group-hover:scale-105 transition-transform shadow-[0_2px_10px_rgba(255,210,31,0.3)]">
-              <AbeyCollabSymbol size={20} />
-            </div>
-            <span className="font-display font-extrabold text-lg sm:text-xl tracking-tight text-[#0A0A0E] dark:text-white">
-              AbeyCollab
-            </span>
-          </Link>
+          <AbeyCollabLogo href="/" size="sm" subtext="CREATOR COLLABORATION PLATFORM" />
           <p className="text-xs text-[#6A6A78] dark:text-[#9A9AA8] max-w-sm font-sans leading-relaxed">
             The creator × brand collaboration platform. Run high-impact campaigns, discover vetted talent, and receive secure milestone payments.
           </p>
