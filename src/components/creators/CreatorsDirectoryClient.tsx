@@ -87,6 +87,7 @@ export function CreatorsDirectoryClient() {
     reach: c.totalFollowers ? `${(c.totalFollowers / 1000).toFixed(0)}K` : undefined,
     engagementRate: c.avgEngagementRate,
     startingPrice: c.startingPrice || c.rateCards?.[0]?.basePrice,
+    currency: (c as any).currency || (c as any).rateCards?.[0]?.currency || "USD",
     matchScore: c.qualityScore,
     bio: c.bio,
     tags: c.primaryCategory ? [c.primaryCategory] : [],

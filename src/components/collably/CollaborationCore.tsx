@@ -13,6 +13,7 @@ import {
   Layers,
 } from "lucide-react";
 import { ScrollRevealText } from "@/components/collably/ScrollRevealText";
+import { formatCurrency } from "@/core/utils/formatters";
 
 export function CollaborationCore() {
   const [activeStep, setActiveStep] = useState(0);
@@ -20,8 +21,8 @@ export function CollaborationCore() {
   const steps = [
     {
       label: "Brand Brief & Milestone Pre-Funded",
-      detail: "Brand locks $3,200 contract budget into Stripe Connect milestone protection before creator records a single frame.",
-      badge: "Milestone Locked ($3,200)",
+      detail: `Brand locks ${formatCurrency(3200)} contract budget into Stripe Connect milestone protection before creator records a single frame.`,
+      badge: `Milestone Locked (${formatCurrency(3200)})`,
       color: "border-pink-500/30 text-white bg-pink-500/10",
     },
     {
@@ -44,7 +45,7 @@ export function CollaborationCore() {
     },
     {
       label: "Instant Automated Creator Payout",
-      detail: "Stripe Connect disburses $2,880 (90% net) directly to creator bank within 24 hours. Zero invoice chasing.",
+      detail: `Stripe Connect disburses ${formatCurrency(2880)} (90% net) directly to creator bank within 24 hours. Zero invoice chasing.`,
       badge: "Disbursed via Stripe (<24h)",
       color: "border-emerald-500/30 text-white bg-emerald-500/10",
     },

@@ -218,7 +218,7 @@ export function AIMatchingExperience() {
               </div>
               <div className="flex justify-between">
                 <span className="text-[#626862]">Starting Rate:</span>
-                <span className="text-[#087F5B] font-bold">₹18,500</span>
+                <span className="text-[#087F5B] font-bold">{formatCurrency(selectedCreator.startingPrice || 18500, (selectedCreator as any).currency)}</span>
               </div>
             </div>
 

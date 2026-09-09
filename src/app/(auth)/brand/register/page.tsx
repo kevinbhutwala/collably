@@ -19,6 +19,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { SocialAuthButtons } from "@/components/auth/SocialAuthButtons";
+import { formatCurrency } from "@/core/utils/formatters";
 
 export default function BrandRegisterPage() {
   const router = useRouter();
@@ -224,10 +225,10 @@ export default function BrandRegisterPage() {
               onChange={(e) => setFormData({ ...formData, monthlyBudget: e.target.value })}
               className="w-full bg-[#F8F8FC] border border-black/10 rounded-2xl px-3.5 py-3 text-sm text-[#0A0A0E] focus:outline-none focus:border-[#FFD21F] transition-all font-sans"
             >
-              <option value="<$5,000">&lt; $5,000 / month</option>
-              <option value="$5,000 - $10,000">$5,000 - $10,000 / month</option>
-              <option value="$10,000 - $25,000">$10,000 - $25,000 / month</option>
-              <option value="$25,000 - $100,000+">$25,000 - $100,000+ / month</option>
+              <option value="<$5,000">&lt; {formatCurrency(5000)} / month</option>
+              <option value="$5,000 - $10,000">{formatCurrency(5000)} - {formatCurrency(10000)} / month</option>
+              <option value="$10,000 - $25,000">{formatCurrency(10000)} - {formatCurrency(25000)} / month</option>
+              <option value="$25,000 - $100,000+">{formatCurrency(25000)} - {formatCurrency(100000)}+ / month</option>
             </select>
           </div>
         </div>

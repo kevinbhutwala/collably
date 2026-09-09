@@ -70,7 +70,7 @@ class AIService {
     if (typeof promptOrInput === "string") {
       prompt = promptOrInput;
     } else {
-      prompt = `Product: ${promptOrInput.productName}. Target Audience: ${promptOrInput.targetAudience || "General"}. Goals: ${(promptOrInput.goals || []).join(", ")}. Budget: $${promptOrInput.budget || 5000}`;
+      prompt = `Product: ${promptOrInput.productName}. Target Audience: ${promptOrInput.targetAudience || "General"}. Goals: ${(promptOrInput.goals || []).join(", ")}. Budget: ${(promptOrInput as any).currency || "USD"} ${promptOrInput.budget || 5000}`;
       category = promptOrInput.industry || category;
     }
 

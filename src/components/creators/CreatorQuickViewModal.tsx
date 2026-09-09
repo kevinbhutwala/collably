@@ -33,6 +33,7 @@ export interface CreatorQuickViewData {
   followersCount?: number;
   engagementRate?: string | number;
   startingPrice?: string | number;
+  currency?: string;
   matchScore?: string | number;
   rating?: number;
   bio?: string;
@@ -151,7 +152,7 @@ export function CreatorQuickViewModal({
               <div>
                 <span className="text-[10px] text-[#7A7A8A] uppercase font-bold block">Starting Rate</span>
                 <span className="text-base sm:text-lg font-black text-[#0A0A0E] font-display">
-                  {typeof creator.startingPrice === "number" ? formatCurrency(creator.startingPrice) : creator.startingPrice}
+                  {typeof creator.startingPrice === "number" ? formatCurrency(creator.startingPrice, creator.currency) : creator.startingPrice}
                 </span>
               </div>
             </div>

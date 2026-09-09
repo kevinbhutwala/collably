@@ -8,8 +8,10 @@ import {
   ArrowRight,
 } from "lucide-react";
 import Link from "next/link";
+import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
 
 export function BrandCreatorNetwork() {
+  const { format } = useGlobalCurrency();
   const maleCreator = EDITORIAL_PORTRAITS.heroMaleMain;
   const femaleCreator = EDITORIAL_PORTRAITS.heroFemaleMain;
   const beautyCreator = EDITORIAL_PORTRAITS.supportingFemale1;
@@ -21,7 +23,7 @@ export function BrandCreatorNetwork() {
       brandNiche: "Smart Hardware & AI",
       creator: maleCreator,
       deliverable: "1x 4K Dedicated Review + Whitelisting",
-      budget: "₹28,000",
+      budgetAmountUSD: 350,
       status: "Pre-Funded Escrow",
     },
     {
@@ -30,7 +32,7 @@ export function BrandCreatorNetwork() {
       brandNiche: "Minimalist Modern Apparel",
       creator: femaleCreator,
       deliverable: "2x 60s Reels + Story Bundle",
-      budget: "₹32,500",
+      budgetAmountUSD: 400,
       status: "Deliverable Approved",
     },
     {
@@ -39,7 +41,7 @@ export function BrandCreatorNetwork() {
       brandNiche: "Clean Botanical Skincare",
       creator: beautyCreator,
       deliverable: "1x Integrated YouTube Spotlight",
-      budget: "₹18,500",
+      budgetAmountUSD: 225,
       status: "Payout Disbursed",
     },
   ];
@@ -122,7 +124,7 @@ export function BrandCreatorNetwork() {
 
                 <div className="flex items-center justify-between">
                   <span className="text-[#626262] text-[10px] uppercase tracking-wider">ESCROW BUDGET:</span>
-                  <span className="font-extrabold text-[#101010] text-sm font-mono numeric-tabular">{deal.budget}</span>
+                  <span className="font-extrabold text-[#101010] text-sm font-mono numeric-tabular">{format(deal.budgetAmountUSD, "USD")}</span>
                 </div>
 
                 <div className="flex items-center gap-1.5 text-[10px] text-[#101010] font-bold pt-1 font-sans">

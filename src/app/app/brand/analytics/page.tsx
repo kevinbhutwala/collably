@@ -46,7 +46,7 @@ export default function BrandAnalyticsPage() {
         />
         <StatsCard
           title="Avg Cost Per Signup"
-          value="$14.20"
+          value={formatCurrency(14.20)}
           trend="down"
           change="-22%"
           subtitle="Cost per signup"
@@ -74,9 +74,9 @@ export default function BrandAnalyticsPage() {
 
         <div className="divide-y divide-black/5 dark:divide-white/10 font-mono text-xs">
           {[
-            { name: "Elena Rostova", platform: "YouTube 60s", views: "142,000", signups: "1,840", spend: "$3,500", roi: "6.4x" },
-            { name: "Marcus Vance", platform: "Instagram Reel", views: "185,000", signups: "940", spend: "$2,800", roi: "4.8x" },
-            { name: "Aria Sterling", platform: "YouTube Dedicated", views: "210,000", signups: "2,200", spend: "$5,000", roi: "5.9x" },
+            { name: "Elena Rostova", platform: "YouTube 60s", views: "142,000", signups: "1,840", spend: formatCurrency(3500), roi: "6.4x" },
+            { name: "Marcus Vance", platform: "Instagram Reel", views: "185,000", signups: "940", spend: formatCurrency(2800), roi: "4.8x" },
+            { name: "Aria Sterling", platform: "YouTube Dedicated", views: "210,000", signups: "2,200", spend: formatCurrency(5000), roi: "5.9x" },
           ].map((row, i) => (
             <div key={i} className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>

@@ -14,6 +14,7 @@ import { MatchScoreBadge } from "@/components/ai/MatchScoreBadge";
 import { AICreatorPitchModal } from "@/components/ai/AICreatorPitchModal";
 import { CreativeLoader } from "@/components/ui/CreativeLoader";
 import { formatCurrency, formatNumber } from "@/core/utils/formatters";
+import { getCurrencySymbol } from "@/core/utils/currency";
 import { CategoryBadge, TitleIcon, DeliverableBadge } from "@/components/ui/TitleIconBadge";
 
 import {
@@ -86,6 +87,7 @@ export function CampaignDetailClient({
         brandName: campaign.brand?.companyName || "Linear Dynamics",
         creatorId: currentCreator?.id || "creator-1",
         proposedFee,
+        currency: campaign.budget?.currency || "USD",
         pitch,
         portfolioSamples: [sampleLink],
       };
@@ -205,7 +207,7 @@ export function CampaignDetailClient({
                 <span className="text-xs text-white/80 block drop-shadow-xs">Creator Budget</span>
                 <span className="text-2xl font-extrabold text-white flex items-center gap-1.5 drop-shadow-xs">
                   <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
-                  {formatCurrency(campaign.budget.perCreatorBudget)}
+                  {formatCurrency(campaign.budget.perCreatorBudget, campaign.budget?.currency)}
                 </span>
               </div>
             </div>
@@ -333,7 +335,7 @@ export function CampaignDetailClient({
           </div>
 
           <Input
-            label="Proposed Fee ($ USD)"
+            label={`Proposed Fee (${getCurrencySymbol(campaign.budget?.currency || "USD")} ${campaign.budget?.currency || "USD"})`}
             type="number"
             value={proposedFee}
             onChange={(e) => setProposedFee(parseInt(e.target.value) || 0)}

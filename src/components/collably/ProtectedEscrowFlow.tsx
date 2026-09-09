@@ -33,7 +33,7 @@ const ESCROW_STAGES: EscrowStage[] = [
     phase: "PHASE 01",
     title: "100% Pre-Funded Escrow Deposit",
     badge: "FUNDS IN CUSTODY",
-    description: "Brand deposits agreed brief budget ($3,500) into Stripe Connect escrow custody before production begins.",
+    description: `Brand deposits agreed brief budget (${formatCurrency(3500)}) into Stripe Connect escrow custody before production begins.`,
     brandAssurance: "Budget remains locked safely. Zero funds leave escrow without formal milestone sign-off.",
     creatorAssurance: "100% payout certainty guaranteed. Never record content on unverified payment promises.",
   },
@@ -69,7 +69,7 @@ const ESCROW_STAGES: EscrowStage[] = [
     phase: "PHASE 05",
     title: "Instant Bank Payout on Sign-off",
     badge: "DISBURSED & PAID",
-    description: "Stripe Connect disburses $3,150 (90% net earnings) directly to creator bank account upon milestone sign-off.",
+    description: `Stripe Connect disburses ${formatCurrency(3150)} (90% net earnings) directly to creator bank account upon milestone sign-off.`,
     brandAssurance: "Complete financial receipt and tax documentation delivered automatically to accounting.",
     creatorAssurance: "Fastest payout in the industry. Keep 90% of verified partnership earnings.",
   },
@@ -111,7 +111,7 @@ export function ProtectedEscrowFlow() {
                 VERIFIED ESCROW ALLOCATION
               </span>
               <div className="flex items-baseline gap-2">
-                <span className="text-3xl sm:text-4xl font-black text-[#0A0A0E] dark:text-white font-display">$3,500.00</span>
+                <span className="text-3xl sm:text-4xl font-black text-[#0A0A0E] dark:text-white font-display">{formatCurrency(3500)}</span>
                 <span className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-sans font-medium">Held in Stripe Connect Custody</span>
               </div>
             </div>

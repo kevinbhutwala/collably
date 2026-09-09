@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Star, CheckCircle2, ArrowRight, Sparkles, Video, Play, Flame } from "lucide-react";
 import { InteractiveTiltCard } from "@/components/ui/InteractiveTiltCard";
 import { SafeImage } from "@/components/ui/SafeImage";
+import { formatCurrency } from "@/core/utils/formatters";
 
 interface OverlappingCreatorCard {
   id: string;
@@ -16,7 +17,8 @@ interface OverlappingCreatorCard {
   mainPortrait: string;
   overlappingImage: string;
   overlappingBadgeText: string;
-  rate: string;
+  rateNumber: number;
+  rate?: string;
   reach: string;
   rating: number;
   tags: string[];
@@ -32,6 +34,7 @@ const CREATORS_OVERLAPPING: OverlappingCreatorCard[] = [
     mainPortrait: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=85",
     overlappingImage: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=80",
     overlappingBadgeText: "4K Master Reel",
+    rateNumber: 3500,
     rate: "$3,500",
     reach: "485K",
     rating: 5.0,
@@ -46,6 +49,7 @@ const CREATORS_OVERLAPPING: OverlappingCreatorCard[] = [
     mainPortrait: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=85",
     overlappingImage: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&auto=format&fit=crop&q=80",
     overlappingBadgeText: "Milan Lookbook",
+    rateNumber: 4200,
     rate: "$4,200",
     reach: "620K",
     rating: 5.0,
@@ -60,6 +64,7 @@ const CREATORS_OVERLAPPING: OverlappingCreatorCard[] = [
     mainPortrait: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&auto=format&fit=crop&q=85",
     overlappingImage: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&auto=format&fit=crop&q=80",
     overlappingBadgeText: "Kinetic Routine",
+    rateNumber: 2800,
     rate: "$2,800",
     reach: "390K",
     rating: 5.0,
@@ -74,6 +79,7 @@ const CREATORS_OVERLAPPING: OverlappingCreatorCard[] = [
     mainPortrait: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&auto=format&fit=crop&q=85",
     overlappingImage: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400&auto=format&fit=crop&q=80",
     overlappingBadgeText: "Alpine Story",
+    rateNumber: 3800,
     rate: "$3,800",
     reach: "510K",
     rating: 5.0,
@@ -173,7 +179,7 @@ export function OverlappingCardsDeck() {
                           <span>{creator.rating.toFixed(1)}</span>
                         </span>
                         <span className="px-2.5 py-1 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-[10px] font-mono font-extrabold shadow-sm">
-                          {creator.rate}
+                          {creator.rateNumber ? formatCurrency(creator.rateNumber) : creator.rate}
                         </span>
                       </div>
 

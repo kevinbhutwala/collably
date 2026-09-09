@@ -152,7 +152,7 @@ export function CreatorDetailClient({
               <div className="flex justify-between items-baseline">
                 <span className="text-xs text-[#7A7A8A]">Base Sponsorship</span>
                 <span className="text-2xl font-black text-[#0A0A0E]">
-                  {formatCurrency(creator.startingPrice)}
+                  {formatCurrency(creator.startingPrice, (creator as any).currency)}
                 </span>
               </div>
 
@@ -210,7 +210,7 @@ export function CreatorDetailClient({
 
                     <div className="text-right shrink-0">
                       <span className="text-base font-extrabold text-[#0A0A0E] font-mono block">
-                        {formatCurrency(rate.basePrice || (rate as any).price || 500)}
+                        {formatCurrency(rate.basePrice || (rate as any).price || 500, (rate as any).currency || (creator as any).currency)}
                       </span>
                       <span className="text-[10px] font-mono text-[#7A7A8A]">per asset</span>
                     </div>

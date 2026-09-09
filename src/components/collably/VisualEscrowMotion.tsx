@@ -3,8 +3,10 @@
 import React, { useState } from "react";
 import { Lock, Video, CheckCircle2, Wallet, ShieldCheck, Sparkles, Check } from "lucide-react";
 import confetti from "canvas-confetti";
+import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
 
 export function VisualEscrowMotion() {
+  const { format } = useGlobalCurrency();
   const [currentStep, setCurrentStep] = useState(2);
   const [released, setReleased] = useState(false);
 
@@ -15,7 +17,7 @@ export function VisualEscrowMotion() {
       badge: "100% Pre-Funded",
       icon: Lock,
       desc: "Campaign budget pre-funded in segregated custody via Stripe Connect.",
-      amount: "₹24,500 Secured",
+      amount: `${format(300, "USD")} Secured`,
     },
     {
       num: "02",
@@ -39,7 +41,7 @@ export function VisualEscrowMotion() {
       badge: "<24h Transfer",
       icon: Wallet,
       desc: "Automated disbursement direct to creator bank account in <24h.",
-      amount: "₹22,050 Net Paid",
+      amount: `${format(270, "USD")} Net Paid`,
     },
   ];
 
@@ -133,7 +135,7 @@ export function VisualEscrowMotion() {
           <div>
             <span className="text-xs font-mono text-[#8A908B] block font-semibold uppercase">Automated Escrow Settlement</span>
             <span className="text-sm font-bold text-[#101310] font-sans">
-              {released ? "✓ ₹22,050 Disbursed to Creator (Stripe Connect)" : "Instant milestone payment release:"}
+              {released ? `✓ ${format(270, "USD")} Disbursed to Creator (Stripe Connect)` : "Instant milestone payment release:"}
             </span>
           </div>
 

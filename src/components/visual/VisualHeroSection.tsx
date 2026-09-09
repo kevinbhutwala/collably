@@ -7,12 +7,14 @@ import { ArrowRight, Sparkles, ShieldCheck, Flame, CheckCircle2, Play, Users, Za
 import { InteractiveTiltCard } from "@/components/ui/InteractiveTiltCard";
 import { Modal } from "@/components/ui/Modal";
 import { SafeImage } from "@/components/ui/SafeImage";
+import { formatCurrency } from "@/core/utils/formatters";
 
 interface HeroPortrait {
   id: string;
   name: string;
   niche: string;
   reach: string;
+  rateNumber?: number;
   rate: string;
   mainImage: string;
   overlappingFrame: string;
@@ -27,6 +29,7 @@ const HERO_PORTRAITS: HeroPortrait[] = [
     name: "Elena Rostova",
     niche: "AI & Consumer Tech",
     reach: "485K Reach",
+    rateNumber: 3500,
     rate: "$3,500",
     mainImage: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=900&auto=format&fit=crop&q=85",
     overlappingFrame: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=80",
@@ -39,6 +42,7 @@ const HERO_PORTRAITS: HeroPortrait[] = [
     name: "Marcus Vance",
     niche: "Luxury & Haute Couture",
     reach: "620K Reach",
+    rateNumber: 4200,
     rate: "$4,200",
     mainImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&auto=format&fit=crop&q=85",
     overlappingFrame: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&auto=format&fit=crop&q=80",
@@ -51,6 +55,7 @@ const HERO_PORTRAITS: HeroPortrait[] = [
     name: "Sofia Chen",
     niche: "Biohacking & Movement",
     reach: "390K Reach",
+    rateNumber: 2800,
     rate: "$2,800",
     mainImage: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=900&auto=format&fit=crop&q=85",
     overlappingFrame: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&auto=format&fit=crop&q=80",
@@ -252,7 +257,9 @@ export function VisualHeroSection() {
                   </div>
                   <div className="text-right font-mono">
                     <span className="text-[10px] text-[#888898] block uppercase">Starts at</span>
-                    <span className="text-xs font-extrabold text-[#0A0A0E]">{activePortrait.rate}</span>
+                    <span className="text-xs font-extrabold text-[#0A0A0E]">
+                      {activePortrait.rateNumber ? formatCurrency(activePortrait.rateNumber) : activePortrait.rate}
+                    </span>
                   </div>
                 </div>
 

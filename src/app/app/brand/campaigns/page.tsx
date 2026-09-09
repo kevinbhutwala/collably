@@ -202,7 +202,7 @@ export default function BrandCampaignsManagementPage() {
                         {c.category}
                       </span>
                       <span className="px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md text-[#FFD21F] text-xs font-mono font-black border border-[#FFD21F]/30">
-                        {formatCurrency(c.budget.totalBudget)}
+                        {formatCurrency(c.budget.totalBudget, c.budget?.currency)}
                       </span>
                     </div>
 
