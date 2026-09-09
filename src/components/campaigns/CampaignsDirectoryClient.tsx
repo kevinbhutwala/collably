@@ -6,6 +6,7 @@ import { campaignService } from "@/services/campaign.service";
 import { Campaign, CreatorCategory } from "@/core/types";
 import { CATEGORIES } from "@/core/constants";
 import { formatCurrency } from "@/core/utils/formatters";
+import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
 import { Sparkles, Search, ArrowRight, ShieldCheck, Calendar, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AnimatedBrandSlider } from "@/components/visual/AnimatedBrandSlider";
@@ -14,6 +15,7 @@ import { CreativeLoader } from "@/components/ui/CreativeLoader";
 import { getCategoryVisual } from "@/core/utils/titleMedia";
 
 export function CampaignsDirectoryClient() {
+  const { currency: displayCurrency, convertAndFormat } = useGlobalCurrency();
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<CreatorCategory | "all">("all");
   const [searchQuery, setSearchQuery] = useState("");
@@ -147,9 +149,23 @@ export function CampaignsDirectoryClient() {
                         </div>
                       </div>
 
-                      <span className="px-3 py-1 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-xs font-mono font-extrabold shadow-2xs">
-                        {formatCurrency(budgetVal, camp.budget?.currency)}
-                      </span>
+                      {(() => {
+                        const originalCurrency = (camp.budget?.currency || "USD").toUpperCase();
+                        const isDifferentCurrency = originalCurrency !== displayCurrency.toUpperCase();
+                        return (
+                          <span
+                            className="px-3 py-1 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-xs font-mono font-extrabold shadow-2xs flex items-center gap-1"
+                            title={isDifferentCurrency ? `Authoritative brief budget: ${formatCurrency(budgetVal, originalCurrency)}` : undefined}
+                          >
+                            <span>{formatCurrency(budgetVal, originalCurrency)}</span>
+                            {isDifferentCurrency && (
+                              <span className="text-[10.5px] font-normal text-[#0A0A0E]/80">
+                                ({convertAndFormat(budgetVal, originalCurrency)})
+                              </span>
+                            )}
+                          </span>
+                        );
+                      })()}
                     </div>
 
                     {/* Title & Description */}

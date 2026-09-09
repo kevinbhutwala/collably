@@ -24,7 +24,7 @@ import { SafeImage } from "@/components/ui/SafeImage";
 import { cn } from "@/lib/utils";
 
 export default function BrandCampaignsManagementPage() {
-  const { format } = useGlobalCurrency();
+  const { currency: displayCurrency, convert, convertAndFormat } = useGlobalCurrency();
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState<"all" | "recruiting" | "active" | "completed">("all");
@@ -54,7 +54,11 @@ export default function BrandCampaignsManagementPage() {
     return true;
   });
 
-  const totalEscrowPool = campaigns.reduce((acc, c) => acc + (c.budget?.totalBudget || 0), 0);
+  const totalEscrowPool = campaigns.reduce((acc, c) => {
+    const origBudget = c.budget?.totalBudget || 0;
+    const origCurr = c.budget?.currency || "USD";
+    return acc + convert(origBudget, origCurr);
+  }, 0);
   const totalApplicants = campaigns.reduce((acc, c) => acc + (c.applicantsCount || 0), 0);
 
   const tabs = [
@@ -106,7 +110,7 @@ export default function BrandCampaignsManagementPage() {
 
         <div className="p-4 rounded-3xl bg-white border border-black/8 shadow-xs space-y-1">
           <span className="text-[10px] font-bold text-[#7A7A8A] uppercase font-mono">Secured Budget</span>
-          <p className="text-xl sm:text-2xl font-black text-[#0A0A0E] font-mono">{format(totalEscrowPool || 45000, "USD")}</p>
+          <p className="text-xl sm:text-2xl font-black text-[#0A0A0E] font-mono">{formatCurrency(totalEscrowPool, displayCurrency)}</p>
           <span className="text-[11px] text-[#5A5A68] font-medium flex items-center gap-1">
             <ShieldCheck className="w-3 h-3 text-[#FFD21F]" /> 100% Protected in Escrow
           </span>
@@ -182,6 +186,8 @@ export default function BrandCampaignsManagementPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {filteredCampaigns.map((c) => {
             const cohortPercentage = Math.round(((c.acceptedCount || 0) / (c.maxCreators || 1)) * 100);
+            const originalCurrency = (c.budget?.currency || "USD").toUpperCase();
+            const isDifferentCurrency = originalCurrency !== displayCurrency.toUpperCase();
             return (
               <div
                 key={c.id}
@@ -203,8 +209,16 @@ export default function BrandCampaignsManagementPage() {
                       <span className="px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-md border border-white/40 text-[#0A0A0E] text-[10px] font-sans font-extrabold uppercase tracking-wider shadow-xs">
                         {c.category}
                       </span>
-                      <span className="px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md text-[#FFD21F] text-xs font-mono font-black border border-[#FFD21F]/30">
-                        {formatCurrency(c.budget.totalBudget, c.budget?.currency)}
+                      <span
+                        className="px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md text-[#FFD21F] text-xs font-mono font-black border border-[#FFD21F]/30 flex items-center gap-1"
+                        title={isDifferentCurrency ? `Authoritative brief budget: ${formatCurrency(c.budget.totalBudget, originalCurrency)}` : undefined}
+                      >
+                        <span>{formatCurrency(c.budget.totalBudget, originalCurrency)}</span>
+                        {isDifferentCurrency && (
+                          <span className="text-[10px] font-normal text-white/80">
+                            ({convertAndFormat(c.budget.totalBudget, originalCurrency)})
+                          </span>
+                        )}
                       </span>
                     </div>
 
@@ -225,6 +239,18 @@ export default function BrandCampaignsManagementPage() {
                       <span className="font-semibold">Creator Roster</span>
                       <span className="font-black text-[#0A0A0E] font-mono">
                         {c.acceptedCount || 0} / {c.maxCreators} accepted
+                      </span>
+                    </div>
+
+                    <div className="flex justify-between items-center text-[#5A5A68]">
+                      <span className="font-semibold">Per Creator Budget</span>
+                      <span className="font-bold text-[#0A0A0E] font-mono">
+                        {formatCurrency(c.budget?.perCreatorBudget || 0, originalCurrency)}
+                        {isDifferentCurrency && (
+                          <span className="text-[10px] text-[#7A7A8A] font-normal ml-1">
+                            ({convertAndFormat(c.budget?.perCreatorBudget || 0, originalCurrency)})
+                          </span>
+                        )}
                       </span>
                     </div>
 

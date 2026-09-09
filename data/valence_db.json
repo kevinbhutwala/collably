@@ -4,7 +4,7 @@
       "id": "user-creator",
       "name": "Demo Creator",
       "email": "creator@abeycollab.io",
-      "passwordHash": "8a5f705e796e6c9677972e013a1f1bbf:78b0cc19e8ac0211ae83d6d7342ac30df92b170b86bd9f8303a39569387ed33aa37acebb029cb71ca98bd78f8dbeed125523a6b85c76c707692a86051b77047a:210000",
+      "passwordHash": "51fa2cdaf36412d651b56f2325133229:5508aa6a7c44fc5caec692c39a6f637cdf4f3e990b9af555387147692d0ee216a548ef81d2abf5acbed203fb5468f01678de9d22c7a61b75ea3c029f719fe363:210000",
       "role": "creator",
       "avatarUrl": "",
       "verified": true,
@@ -17,12 +17,12 @@
       "id": "user-brand",
       "name": "Demo Brand",
       "email": "brand@abeycollab.io",
-      "passwordHash": "d578547a232d5ce1ed2b66c673e34b50:219b19fc090a0384cb4cf1539b0c44fc463fdea45625fe96fb5737f2c5b74568d57ccfa682592f9be1815c1e2a71e09b74e60bf167c8add711ed77f72af70017:210000",
+      "passwordHash": "be4e1332063ede3b64a252d691fc078c:15620501b44672dba5ab73d475bb42df626ac8afc67ca77c146238b8ce591ca1834a942efa017d9532dd7a92ace137f2cef578d673a43e50438d3130ce822705:210000",
       "role": "brand",
       "avatarUrl": "",
       "verified": true,
       "createdAt": "2026-09-03T18:46:21.709Z",
-      "updatedAt": "2026-09-03T18:46:21.709Z",
+      "updatedAt": "2026-09-09T22:42:13.953Z",
       "preferredCurrency": "USD",
       "preferred_currency": "USD"
     },
@@ -30,7 +30,7 @@
       "id": "user-owner",
       "name": "Kevin Bhutwala",
       "email": "kevinbhutwala417@gmail.com",
-      "passwordHash": "6c3ab2d9887fce5cb2090caa2d18cd57:1983f0474c4ed6dac8a3b54d737c3de58b04a2ac61101e55601a7a832f7fc462911597b8193f8ad00ac63c2dfc3b762188c8792d0af89eb80fcb23ee3b77a658:210000",
+      "passwordHash": "1be030b68348af4946c5fc3dddd2922d:e8e3ec271f150ad07bcb33045e9957731bda077deba341d37f8a8b8c543c309af29cca1acad4fdfb08f5eae36b20cdaa6224d2c14a47f87f416a725feae252c7:210000",
       "role": "agency_admin",
       "avatarUrl": "",
       "verified": true,
@@ -48,7 +48,7 @@
       "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
       "verified": false,
       "createdAt": "2026-09-05T21:20:57.898Z",
-      "updatedAt": "2026-09-09T16:29:26.811Z",
+      "updatedAt": "2026-09-09T22:39:06.468Z",
       "preferredCurrency": "INR",
       "preferred_currency": "INR"
     },
@@ -82,7 +82,7 @@
       "id": "user-creator-legacy",
       "name": "Demo Creator",
       "email": "creator@collably.io",
-      "passwordHash": "8a5f705e796e6c9677972e013a1f1bbf:78b0cc19e8ac0211ae83d6d7342ac30df92b170b86bd9f8303a39569387ed33aa37acebb029cb71ca98bd78f8dbeed125523a6b85c76c707692a86051b77047a:210000",
+      "passwordHash": "51fa2cdaf36412d651b56f2325133229:5508aa6a7c44fc5caec692c39a6f637cdf4f3e990b9af555387147692d0ee216a548ef81d2abf5acbed203fb5468f01678de9d22c7a61b75ea3c029f719fe363:210000",
       "role": "creator",
       "avatarUrl": "",
       "verified": true,
@@ -95,7 +95,7 @@
       "id": "user-brand-legacy",
       "name": "Demo Brand",
       "email": "brand@collably.io",
-      "passwordHash": "d578547a232d5ce1ed2b66c673e34b50:219b19fc090a0384cb4cf1539b0c44fc463fdea45625fe96fb5737f2c5b74568d57ccfa682592f9be1815c1e2a71e09b74e60bf167c8add711ed77f72af70017:210000",
+      "passwordHash": "be4e1332063ede3b64a252d691fc078c:15620501b44672dba5ab73d475bb42df626ac8afc67ca77c146238b8ce591ca1834a942efa017d9532dd7a92ace137f2cef578d673a43e50438d3130ce822705:210000",
       "role": "brand",
       "avatarUrl": "",
       "verified": true,
@@ -5460,7 +5460,8 @@
       "id": "msg-1788855602080-7l9zy",
       "readBy": [
         "user-creator",
-        "user-brand"
+        "user-brand",
+        "user-1788643257898"
       ],
       "reactions": [],
       "createdAt": "2026-09-08T08:20:02.080Z"
@@ -5476,7 +5477,8 @@
       "id": "msg-1788857497781-7it43",
       "readBy": [
         "user-creator",
-        "user-brand"
+        "user-brand",
+        "user-1788643257898"
       ],
       "reactions": [],
       "createdAt": "2026-09-08T08:51:37.781Z"
@@ -5797,6 +5799,22 @@
   "webhookEvents": [],
   "aiUsage": [],
   "auditLogs": [
+    {
+      "id": "aud-1788993749252",
+      "actorId": "user-owner",
+      "actorName": "Kevin Bhutwala",
+      "actorRole": "agency_admin",
+      "action": "DISPUTE_ARBITRATION_RESOLVED",
+      "entityType": "Dispute",
+      "entityId": "disp-101",
+      "entityName": "Hyperion ANC Headphone Commercial",
+      "metadata": {
+        "split": "50/50",
+        "brandRefund": 1750,
+        "creatorPayout": 1750
+      },
+      "createdAt": "2026-09-09T22:42:29.252Z"
+    },
     {
       "id": "aud-1788984459079",
       "actorId": "user-owner",
@@ -6923,7 +6941,7 @@
     }
   ],
   "reliabilityScores": [],
-  "_lastVerifiedAt": "2026-09-09T20:07:39.081Z",
+  "_lastVerifiedAt": "2026-09-09T22:42:29.253Z",
   "platformMetrics": [
     {
       "id": "met-1",

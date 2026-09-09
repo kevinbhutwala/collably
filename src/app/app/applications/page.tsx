@@ -8,12 +8,14 @@ import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { formatCurrency } from "@/core/utils/formatters";
+import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
 import { ArrowRight, Clock, CheckCircle2, XCircle, Layers } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function ApplicationsManagementPage() {
   const { role } = useAuthStore();
   const { addToast } = useUIStore();
+  const { currency: displayCurrency, convertAndFormat } = useGlobalCurrency();
   const [applications, setApplications] = useState<CampaignApplication[]>([]);
   const [filter, setFilter] = useState<"all" | "pending" | "accepted" | "rejected">("all");
 
@@ -187,7 +189,12 @@ export default function ApplicationsManagementPage() {
                 <div>
                   <span className="text-[10px] text-[#7A7A8A] font-bold uppercase block">Proposed Fee</span>
                   <span className="text-base font-black text-[#0A0A0E] font-mono numeric-tabular">
-                    {formatCurrency(app.proposedFee)}
+                    {formatCurrency(app.proposedFee, app.currency || "USD")}
+                    {(app.currency || "USD").toUpperCase() !== displayCurrency.toUpperCase() && (
+                      <span className="text-[11px] font-semibold text-[#7A7A8A] font-mono block">
+                        {convertAndFormat(app.proposedFee, app.currency || "USD")}
+                      </span>
+                    )}
                   </span>
                 </div>
 
