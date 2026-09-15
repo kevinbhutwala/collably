@@ -750,7 +750,8 @@ export type SubscriptionStatus =
   | 'past_due'
   | 'cancelled'
   | 'expired'
-  | 'paused';
+  | 'paused'
+  | 'unpaid';
 
 export type SubscriptionInterval = 'monthly' | 'annual';
 

@@ -55,6 +55,11 @@ export class SubscriptionService {
             status: "active",
             interval: "monthly",
           });
+        } else if (sub.price && sub.price > 0) {
+          // Paid plan whose billing cycle expired without confirmed renewal
+          sub = subscriptionRepo.updateByUserId(userId, {
+            status: "past_due",
+          }) || sub;
         }
       }
     }
@@ -179,8 +184,18 @@ export class SubscriptionService {
     }
 
     const sub = await this.getUserSubscription(userId, user.role);
-    if (sub.status !== "active" && sub.status !== "trialing" && sub.status !== "cancelled") {
-      return false;
+    if (sub.status !== "active" && sub.status !== "trialing") {
+      if (sub.status === "cancelled" && sub.cancelAtPeriodEnd) {
+        // Scheduled cancellation retains access until the period end
+        const now = new Date();
+        const periodEnd = new Date(sub.currentPeriodEnd);
+        if (now > periodEnd) {
+          return false;
+        }
+      } else {
+        // past_due, unpaid, incomplete, or hard-cancelled
+        return false;
+      }
     }
 
     const value = sub.features[featureKey as keyof typeof sub.features];
@@ -206,13 +221,24 @@ export class SubscriptionService {
     }
 
     const sub = await this.getUserSubscription(brandUserId, "brand");
-    const limit = sub.features.maxActiveCampaigns;
+    const plan = ALL_PLANS[sub.planId] || BRAND_PLANS.brand_starter;
     const current =
       currentActiveCampaignsCount !== undefined
         ? currentActiveCampaignsCount
         : sub.usage.activeCampaignsCount || 0;
 
-    const plan = ALL_PLANS[sub.planId] || BRAND_PLANS.brand_starter;
+    // If subscription payment is past_due or unpaid, block launching new campaigns
+    if (sub.status === "past_due" || sub.status === "unpaid") {
+      return {
+        allowed: false,
+        limit: 0,
+        current,
+        planName: `${plan.name} (Payment Past Due)`,
+        planId: sub.planId,
+      };
+    }
+
+    const limit = sub.features.maxActiveCampaigns;
     const allowed = limit === -1 || current < limit;
 
     return {
@@ -236,10 +262,21 @@ export class SubscriptionService {
     }
 
     const sub = await this.getUserSubscription(creatorUserId, "creator");
-    const limit = sub.features.maxApplicationsPerMonth;
+    const plan = ALL_PLANS[sub.planId] || CREATOR_PLANS.creator_starter;
     const current = sub.usage.applicationsThisMonth || 0;
 
-    const plan = ALL_PLANS[sub.planId] || CREATOR_PLANS.creator_starter;
+    // If subscription payment is past_due or unpaid, block pitches
+    if (sub.status === "past_due" || sub.status === "unpaid") {
+      return {
+        allowed: false,
+        limit: 0,
+        current,
+        planName: `${plan.name} (Payment Past Due)`,
+        planId: sub.planId,
+      };
+    }
+
+    const limit = sub.features.maxApplicationsPerMonth;
     const allowed = limit === -1 || current < limit;
 
     return {

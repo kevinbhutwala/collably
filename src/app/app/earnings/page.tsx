@@ -75,23 +75,23 @@ export default function EarningsAndEscrowPage() {
   };
 
   return (
-    <div className="space-y-6 text-[#0A0A0E] select-none">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 sm:pb-5 border-b border-black/8">
+    <div className="space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] select-none">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 sm:pb-5 border-b border-black/8 dark:border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5">
+            <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] dark:text-[#EAEAEF] flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               Payments &amp; Earnings
             </span>
-            <span className="text-[#8A8A9A]">•</span>
-            <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] font-mono text-[10px] font-bold">
+            <span className="text-[#8A8A9A] dark:text-[#6A6A7E]">•</span>
+            <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] dark:text-yellow-400 font-mono text-[10px] font-bold">
               Escrow Secured ({config.flag} {currency})
             </span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
+          <h1 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
             {role === "creator" ? "Earnings & Payouts" : "Payments & Invoices"}
           </h1>
-          <p className="text-xs sm:text-sm text-[#5A5A68]">
+          <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4]">
             {role === "creator"
               ? `View your secured payments, completed payouts, and withdraw funds in ${config.name} (${currency}).`
               : `Track your secured campaign funds, completed creator payouts, and invoices in ${config.name} (${currency}).`}
@@ -121,13 +121,13 @@ export default function EarningsAndEscrowPage() {
           title={`In Escrow (${currency})`}
           value={formatCurrency(securedInEscrow, currency)}
           subtitle={securedInEscrow > 0 ? "Held safely until deliverables are approved" : "No active escrow"}
-          icon={<ShieldCheck className="w-4 h-4 text-[#0A0A0E]" />}
+          icon={<ShieldCheck className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />}
         />
         <StatsCard
           title={`Total Paid (${currency})`}
           value={formatCurrency(lifetimeProcessed, currency)}
           subtitle={lifetimeProcessed > 0 ? "All completed milestones" : "No completed payouts yet"}
-          icon={<CheckCircle2 className="w-4 h-4 text-[#0A0A0E]" />}
+          icon={<CheckCircle2 className="w-4 h-4 text-[#0A0A0E] dark:text-emerald-400" />}
         />
       </div>
 
@@ -212,14 +212,14 @@ export default function EarningsAndEscrowPage() {
       </div>
 
       {/* Transaction History */}
-      <div className="p-5 sm:p-7 rounded-3xl bg-white border border-black/8 shadow-xs space-y-4 text-[#0A0A0E]">
-        <div className="flex items-center justify-between pb-3 border-b border-black/8">
+      <div className="p-5 sm:p-7 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
+        <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
           <div>
-            <h3 className="text-base font-bold text-[#0A0A0E] font-display">Payout History</h3>
-            <p className="text-xs text-[#5A5A68]">Recent milestone disbursements.</p>
+            <h3 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">Payout History</h3>
+            <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4]">Recent milestone disbursements.</p>
           </div>
           {payouts.length > 0 && (
-            <button className="px-3 py-1.5 rounded-full bg-black/5 hover:bg-black/10 text-[#0A0A0E] text-xs font-mono transition-all flex items-center gap-1.5 border border-black/5">
+            <button className="px-3 py-1.5 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0A0A0E] dark:text-white text-xs font-mono transition-all flex items-center gap-1.5 border border-black/5 dark:border-white/10">
               <Download className="w-3 h-3" />
               <span>Export</span>
             </button>
@@ -228,7 +228,7 @@ export default function EarningsAndEscrowPage() {
 
         {payouts.length === 0 ? (
           <AnimatedEmptyState
-            icon={<Receipt className="w-7 h-7 text-[#0A0A0E]" />}
+            icon={<Receipt className="w-7 h-7 text-[#0A0A0E] dark:text-[#FFD21F]" />}
             badgeText="Ledger"
             title="No Payout Records"
             description="Completed milestone disbursements will be recorded here."
@@ -238,30 +238,32 @@ export default function EarningsAndEscrowPage() {
             secondaryHref="/app/dashboard"
           />
         ) : (
-          <div className="divide-y divide-black/5 font-mono text-xs">
+          <div className="divide-y divide-black/5 dark:divide-white/5 font-mono text-xs">
             {payouts.map((p) => (
               <div key={p.id} className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div className="space-y-0.5">
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-[#0A0A0E] text-sm font-sans">{p.campaignTitle}</span>
-                    <span className="px-2 py-0.5 rounded-full bg-black/5 border border-black/10 text-[#0A0A0E] text-[10px] font-bold">
+                    <span className="font-bold text-[#0A0A0E] dark:text-white text-sm font-sans">{p.campaignTitle}</span>
+                    <span className="px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10 border border-black/10 dark:border-white/15 text-[#0A0A0E] dark:text-[#EAEAEF] text-[10px] font-bold">
                       {p.brandName}
                     </span>
                   </div>
-                  <p className="text-[#6A6A78] font-sans text-xs">
+                  <p className="text-[#6A6A78] dark:text-[#8E8EA4] font-sans text-xs">
                     {p.paymentMethod} • ID: {p.id}
                   </p>
                 </div>
 
-                <div className="flex items-center justify-between sm:justify-end gap-4 pt-1 sm:pt-0 border-t sm:border-t-0 border-black/5">
+                <div className="flex items-center justify-between sm:justify-end gap-4 pt-1 sm:pt-0 border-t sm:border-t-0 border-black/5 dark:border-white/5">
                   <div>
-                    <span className="text-[#6A6A78] block text-[10px]">Net ({currency})</span>
-                    <span className="text-[#0A0A0E] font-extrabold text-sm numeric-tabular">
+                    <span className="text-[#6A6A78] dark:text-[#8E8EA4] block text-[10px]">Net ({currency})</span>
+                    <span className="text-[#0A0A0E] dark:text-white font-extrabold text-sm numeric-tabular">
                       {formatGlobal(p.netAmount, (p as any).currency || "USD")}
                     </span>
                   </div>
                   <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold font-mono uppercase ${
-                    p.status === "paid" ? "bg-emerald-50 text-emerald-700 border border-emerald-200" : "bg-black/5 text-[#5A5A68]"
+                    p.status === "paid"
+                      ? "bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30"
+                      : "bg-black/5 dark:bg-white/10 text-[#5A5A68] dark:text-[#A0A0B4]"
                   }`}>
                     {p.status}
                   </span>

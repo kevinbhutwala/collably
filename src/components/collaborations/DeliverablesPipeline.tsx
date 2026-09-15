@@ -433,21 +433,21 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
   const approvedCount = deliverables.filter((d) => d.status === "approved").length;
 
   return (
-    <div className="p-5 sm:p-7 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6 text-[#0A0A0E] transition-all">
+    <div className="p-5 sm:p-7 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] transition-all">
       {/* ── Top Executive Deal Header ── */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-black/8">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-black/8 dark:border-white/10">
         <div className="space-y-2 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#F4F4F8] border border-black/5">
-              <ShieldCheck className="w-3 h-3 text-emerald-600" />
+            <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] dark:text-[#F4F4F8] flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#F4F4F8] dark:bg-[#181824] border border-black/5 dark:border-white/10">
+              <ShieldCheck className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
               <span>Escrow Workspace</span>
             </span>
             <span className="text-[#8A8A9A]">•</span>
-            <span className="text-[10px] font-mono text-[#6A6A78]">ID: {collab.id}</span>
+            <span className="text-[10px] font-mono text-[#6A6A78] dark:text-[#8E8EA4]">ID: {collab.id}</span>
             {collab.finalDeadline && (
               <>
                 <span className="text-[#8A8A9A]">•</span>
-                <span className="inline-flex items-center gap-1 text-[10px] font-mono text-[#6A6A78]">
+                <span className="inline-flex items-center gap-1 text-[10px] font-mono text-[#6A6A78] dark:text-[#8E8EA4]">
                   <Calendar className="w-3 h-3 text-[#8A8A9A]" />
                   <span>Due {collab.finalDeadline}</span>
                 </span>
@@ -455,40 +455,40 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
             )}
           </div>
 
-          <h2 className="text-xl sm:text-2xl font-black text-[#0A0A0E] tracking-tight font-display">
+          <h2 className="text-xl sm:text-2xl font-black text-[#0A0A0E] dark:text-white tracking-tight font-display">
             {collab.campaignTitle}
           </h2>
 
           <div className="flex flex-wrap items-center gap-2 pt-0.5">
-            <span className="text-xs text-[#6A6A78] font-mono">Partner:</span>
+            <span className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-mono">Partner:</span>
             {role === "creator" ? (
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#F4F4F8] border border-black/5 text-xs text-[#0A0A0E] font-bold">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#F4F4F8] dark:bg-[#181824] border border-black/5 dark:border-white/10 text-xs text-[#0A0A0E] dark:text-[#F4F4F8] font-bold">
                 <Building2 className="w-3.5 h-3.5 text-[#8A8A9A]" />
                 <span>{collab.brand?.companyName || "Brand Partner"}</span>
                 {collab.brand?.industry && (
-                  <span className="text-[10px] font-mono text-[#7A7A8A] font-normal">• {collab.brand.industry}</span>
+                  <span className="text-[10px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4] font-normal">• {collab.brand.industry}</span>
                 )}
               </span>
             ) : (
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#F4F4F8] border border-black/5 text-xs text-[#0A0A0E] font-bold">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#F4F4F8] dark:bg-[#181824] border border-black/5 dark:border-white/10 text-xs text-[#0A0A0E] dark:text-[#F4F4F8] font-bold">
                 <Users className="w-3.5 h-3.5 text-[#8A8A9A]" />
                 <span>{collab.creator?.fullName || "Creator Partner"}</span>
                 {collab.creator?.handle && (
-                  <span className="text-[10px] font-mono text-[#7A7A8A] font-normal">(@{collab.creator.handle})</span>
+                  <span className="text-[10px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4] font-normal">(@{collab.creator.handle})</span>
                 )}
               </span>
             )}
 
             <Link
               href="/app/messages"
-              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white hover:bg-[#F8F8FC] border border-black/8 text-[11px] font-bold text-[#0A0A0E] transition-colors shadow-2xs"
+              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white dark:bg-[#181824] hover:bg-[#F8F8FC] dark:hover:bg-[#202030] border border-black/8 dark:border-white/10 text-[11px] font-bold text-[#0A0A0E] dark:text-[#F4F4F8] transition-colors shadow-2xs"
             >
               <MessageSquare className="w-3 h-3 text-[#7A7A8A]" />
               <span>Message</span>
             </Link>
 
             <span className="text-[#8A8A9A] hidden sm:inline">•</span>
-            <span className="text-[11px] font-mono text-[#6A6A78] px-2 py-0.5 rounded-full bg-[#F8F8FC] border border-black/5">
+            <span className="text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4] px-2 py-0.5 rounded-full bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10">
               {approvedCount} of {deliverables.length} Deliverables Approved
             </span>
           </div>
@@ -496,8 +496,8 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
 
         <div className="flex flex-wrap items-center gap-3 self-start lg:self-center">
           <div className="text-left lg:text-right font-mono">
-            <span className="text-[10px] text-[#7A7A8A] uppercase font-bold block">Escrow Vault</span>
-            <span className="text-base sm:text-lg font-black text-[#0A0A0E]">
+            <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-bold block">Escrow Vault</span>
+            <span className="text-base sm:text-lg font-black text-[#0A0A0E] dark:text-white">
               {formatCurrency(collab.totalAgreedBudget, collab.currency)}
             </span>
           </div>
@@ -505,8 +505,8 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
           <span
             className={`px-3 py-1 rounded-full text-xs font-mono font-bold border ${
               isFunded
-                ? "bg-emerald-50 text-emerald-800 border-emerald-300"
-                : "bg-amber-50 text-amber-900 border-amber-300"
+                ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border-emerald-300 dark:border-emerald-700"
+                : "bg-amber-50 dark:bg-amber-950/40 text-amber-900 dark:text-amber-300 border-amber-300 dark:border-amber-700"
             }`}
           >
             {isFunded ? "PAYMENT SECURED" : "DEPOSIT PENDING"}
@@ -529,7 +529,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
           <button
             type="button"
             onClick={() => setIsExpanded(!isExpanded)}
-            className="px-3.5 py-2 rounded-full bg-[#F8F8FC] hover:bg-[#EEEEF5] border border-black/10 text-xs font-bold text-[#0A0A0E] transition-all flex items-center gap-1.5 shadow-2xs"
+            className="px-3.5 py-2 rounded-full bg-[#F8F8FC] dark:bg-[#181824] hover:bg-[#EEEEF5] dark:hover:bg-[#222234] border border-black/10 dark:border-white/10 text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8] transition-all flex items-center gap-1.5 shadow-2xs"
           >
             <span>{isExpanded ? "Collapse" : "Open Workspace"}</span>
             <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-200", isExpanded ? "rotate-180" : "")} />
@@ -649,13 +649,13 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
           )}
 
           {/* Sub-Workspace Tab Switcher */}
-          <div className="flex items-center gap-2 border-b border-black/8 pb-3 text-xs font-mono overflow-x-auto">
+          <div className="flex items-center gap-2 border-b border-black/8 dark:border-white/10 pb-3 text-xs font-mono overflow-x-auto">
             <button
               onClick={() => setActiveTab("deliverables")}
               className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all shrink-0 ${
                 activeTab === "deliverables"
                   ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs border border-black/10"
-                  : "bg-[#F8F8FC] text-[#6A6A78] hover:text-[#0A0A0E] border border-black/5"
+                  : "bg-[#F8F8FC] dark:bg-[#181824] text-[#6A6A78] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-[#F4F4F8] border border-black/5 dark:border-white/10"
               }`}
             >
               Deliverables ({deliverables.length})
@@ -665,7 +665,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
               className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 ${
                 activeTab === "review_card"
                   ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs border border-black/10"
-                  : "bg-[#F8F8FC] text-[#6A6A78] hover:text-[#0A0A0E] border border-black/5"
+                  : "bg-[#F8F8FC] dark:bg-[#181824] text-[#6A6A78] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-[#F4F4F8] border border-black/5 dark:border-white/10"
               }`}
             >
               <FileCheck2 className="w-3.5 h-3.5" />
@@ -676,7 +676,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
               className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 ${
                 activeTab === "post_proof"
                   ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs border border-black/10"
-                  : "bg-[#F8F8FC] text-[#6A6A78] hover:text-[#0A0A0E] border border-black/5"
+                  : "bg-[#F8F8FC] dark:bg-[#181824] text-[#6A6A78] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-[#F4F4F8] border border-black/5 dark:border-white/10"
               }`}
             >
               <UploadCloud className="w-3.5 h-3.5" />
@@ -687,7 +687,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
               className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 ${
                 activeTab === "negotiation"
                   ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs border border-black/10"
-                  : "bg-[#F8F8FC] text-[#6A6A78] hover:text-[#0A0A0E] border border-black/5"
+                  : "bg-[#F8F8FC] dark:bg-[#181824] text-[#6A6A78] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-[#F4F4F8] border border-black/5 dark:border-white/10"
               }`}
             >
               <DollarSign className="w-3.5 h-3.5" />
@@ -698,7 +698,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
       {/* Tab 1: Deliverables Pipeline List */}
       {activeTab === "deliverables" && (
         <div className="space-y-4 pt-2">
-          <div className="divide-y divide-black/5">
+          <div className="divide-y divide-black/5 dark:divide-white/5">
             {deliverables.map((del) => {
               const isApproved = del.status === "approved";
               const isSubmitted = del.status === "submitted" || del.status === "under_review";
@@ -713,38 +713,38 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
                 >
                   <div className="space-y-2 flex-1">
                     <div className="flex items-center gap-2">
-                      <h4 className="font-bold text-sm text-[#0A0A0E] font-display">{del.title}</h4>
+                      <h4 className="font-bold text-sm text-[#0A0A0E] dark:text-[#F4F4F8] font-display">{del.title}</h4>
                       <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold ${
                         isApproved
-                          ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
+                          ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800"
                           : isRevision
-                          ? "bg-amber-50 text-amber-800 border border-amber-200"
+                          ? "bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800"
                           : isSubmitted
-                          ? "bg-[#FFD21F]/20 text-[#0A0A0E] border border-[#FFD21F]/50"
-                          : "bg-black/5 text-[#5A5A68]"
+                          ? "bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] border border-[#FFD21F]/50"
+                          : "bg-black/5 dark:bg-white/10 text-[#5A5A68] dark:text-[#A0A0B4]"
                       }`}>
                         {del.status.replace(/_/g, " ").toUpperCase()}
                       </span>
 
                       {isSubmitted && (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-800 text-[10px] font-mono font-bold">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-800 dark:text-amber-300 text-[10px] font-mono font-bold">
                           <Clock className="w-3 h-3" />
                           120h SLA Active
                         </span>
                       )}
                     </div>
-                    <p className="text-xs text-[#6A6A78] font-mono">
+                    <p className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-mono">
                       Format: {del.type} • Revisions: {del.revisionCount}/{del.maxRevisions}
                     </p>
 
                     {currentAssetUrl && (
                       <div className="flex items-center gap-2 text-xs pt-1 font-mono">
-                        <span className="text-[#6A6A78]">Deliverable:</span>
+                        <span className="text-[#6A6A78] dark:text-[#8E8EA4]">Deliverable:</span>
                         <a
                           href={currentAssetUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-[#0A0A0E] font-bold hover:underline flex items-center gap-1 bg-[#F8F8FC] px-2.5 py-1 rounded-md border border-black/5"
+                          className="text-[#0A0A0E] dark:text-[#F4F4F8] font-bold hover:underline flex items-center gap-1 bg-[#F8F8FC] dark:bg-[#181824] px-2.5 py-1 rounded-md border border-black/5 dark:border-white/10"
                         >
                           <span>Open in {getPlatformLabel(currentAssetUrl)} / New Tab</span>
                           <ExternalLink className="w-3 h-3" />
@@ -752,10 +752,10 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
                       </div>
                     )}
 
-                    <div className="flex items-center gap-4 text-xs text-[#6A6A78] font-mono pt-1">
-                      <span>Due: <strong className="text-[#0A0A0E]">{del.dueDate}</strong></span>
+                    <div className="flex items-center gap-4 text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-mono pt-1">
+                      <span>Due: <strong className="text-[#0A0A0E] dark:text-[#F4F4F8]">{del.dueDate}</strong></span>
                       <span>•</span>
-                      <span>Milestone Escrow: <strong className="text-[#0A0A0E] font-extrabold">{formatCurrency(del.payoutAmount, collab.currency)}</strong></span>
+                      <span>Milestone Escrow: <strong className="text-[#0A0A0E] dark:text-[#FFD21F] font-extrabold">{formatCurrency(del.payoutAmount, collab.currency)}</strong></span>
                     </div>
                   </div>
 
@@ -780,7 +780,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
                         className={`px-4 py-2 rounded-full font-bold text-xs transition-all shadow-xs border flex items-center gap-1.5 ${
                           isFunded
                             ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] border-black/10 hover:shadow-sm"
-                            : "bg-black/5 text-[#8A8A9A] border-black/5 cursor-not-allowed"
+                            : "bg-black/5 dark:bg-white/10 text-[#8A8A9A] dark:text-[#6A6A7E] border-black/5 dark:border-white/10 cursor-not-allowed"
                         }`}
                       >
                         <Send className="w-3.5 h-3.5" />
@@ -802,8 +802,8 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
                     )}
 
                     {isApproved && (
-                      <div className="flex items-center gap-1.5 text-xs text-[#0A0A0E] font-mono font-bold bg-emerald-50 border border-emerald-200 px-3.5 py-1.5 rounded-full">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                      <div className="flex items-center gap-1.5 text-xs text-[#0A0A0E] dark:text-emerald-300 font-mono font-bold bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 px-3.5 py-1.5 rounded-full">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                         <span>Payment Released • Tranche Released</span>
                       </div>
                     )}
@@ -851,21 +851,21 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
       {/* Tab 3: Post Proof Verification */}
       {activeTab === "post_proof" && (
         <div className="pt-2 space-y-4">
-          <div className="p-5 rounded-2xl bg-[#F8F8FC] border border-black/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="p-5 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="space-y-1">
-              <h3 className="font-bold text-sm text-[#0A0A0E] flex items-center gap-2">
+              <h3 className="font-bold text-sm text-[#0A0A0E] dark:text-[#F4F4F8] flex items-center gap-2">
                 <span>Public Post Verification</span>
                 {collab.verificationProof?.status === "verified" ? (
-                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[10px] font-mono font-bold border border-emerald-200">
+                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 text-[10px] font-mono font-bold border border-emerald-200 dark:border-emerald-700">
                     VERIFIED LIVE
                   </span>
                 ) : (
-                  <span className="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-900 text-[10px] font-mono font-bold border border-amber-200">
+                  <span className="px-2.5 py-0.5 rounded-full bg-amber-50 dark:bg-amber-950/40 text-amber-900 dark:text-amber-300 text-[10px] font-mono font-bold border border-amber-200 dark:border-amber-700">
                     PENDING SUBMISSION
                   </span>
                 )}
               </h3>
-              <p className="text-xs text-[#6A6A78]">
+              <p className="text-xs text-[#6A6A78] dark:text-[#8E8EA4]">
                 Creator must submit the live post link and proof of publish to fulfill collaboration terms.
               </p>
             </div>
@@ -882,20 +882,20 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
           </div>
 
           {collab.verificationProof && (
-            <div className="p-5 rounded-2xl bg-white border border-black/10 space-y-3">
+            <div className="p-5 rounded-2xl bg-white dark:bg-[#181824] border border-black/10 dark:border-white/10 space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-mono font-bold text-[#6A6A78]">Live Verified Link</span>
-                <span className="text-xs text-[#8A8A9A] font-mono">Published: {collab.verificationProof.publishedAt.split("T")[0]}</span>
+                <span className="text-xs font-mono font-bold text-[#6A6A78] dark:text-[#8E8EA4]">Live Verified Link</span>
+                <span className="text-xs text-[#8A8A9A] dark:text-[#707080] font-mono">Published: {collab.verificationProof.publishedAt.split("T")[0]}</span>
               </div>
               <div className="flex items-center justify-between gap-4">
-                <span className="text-xs font-mono text-[#0A0A0E] font-bold truncate max-w-md">
+                <span className="text-xs font-mono text-[#0A0A0E] dark:text-[#F4F4F8] font-bold truncate max-w-md">
                   {collab.verificationProof.postUrl}
                 </span>
                 <a
                   href={collab.verificationProof.postUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3 py-1.5 rounded-full bg-[#F8F8FC] border border-black/10 text-xs font-bold hover:underline flex items-center gap-1"
+                  className="px-3 py-1.5 rounded-full bg-[#F8F8FC] dark:bg-[#12121A] border border-black/10 dark:border-white/10 text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8] hover:underline flex items-center gap-1"
                 >
                   <span>View Live Post</span>
                   <ExternalLink className="w-3 h-3" />
@@ -924,7 +924,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
         title="Submit Deliverable External Link"
         description="Share your cloud link (Google Drive, Dropbox, Frame.io) for brand review and escrow release."
       >
-        <form onSubmit={handleSubmitContent} className="space-y-4 text-[#0A0A0E]">
+        <form onSubmit={handleSubmitContent} className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
           <div className="space-y-1.5">
             <Input
               label="Deliverable Link (Google Drive, Dropbox, Frame.io, etc.)"
@@ -937,16 +937,16 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
               required
             />
             {urlError && (
-              <p className="text-xs text-red-600 font-sans font-medium flex items-center gap-1">
+              <p className="text-xs text-red-600 dark:text-red-400 font-sans font-medium flex items-center gap-1">
                 <AlertCircle className="w-3.5 h-3.5 shrink-0" />
                 {urlError}
               </p>
             )}
 
-            <div className="flex items-start gap-2 p-3 rounded-xl bg-[#FFFDF5] border border-[#FFD21F]/40 text-xs text-[#6A6A78]">
-              <Info className="w-4 h-4 text-[#0A0A0E] shrink-0 mt-0.5" />
+            <div className="flex items-start gap-2 p-3 rounded-xl bg-[#FFFDF5] dark:bg-[#1A1A26] border border-[#FFD21F]/40 text-xs text-[#6A6A78] dark:text-[#8E8EA4]">
+              <Info className="w-4 h-4 text-[#0A0A0E] dark:text-[#F4F4F8] shrink-0 mt-0.5" />
               <span>
-                <strong className="text-[#0A0A0E]">Sharing Requirement:</strong> Make sure link sharing is set to &ldquo;Anyone with the link can view&rdquo;.
+                <strong className="text-[#0A0A0E] dark:text-[#F4F4F8]">Sharing Requirement:</strong> Make sure link sharing is set to &ldquo;Anyone with the link can view&rdquo;.
               </span>
             </div>
           </div>
@@ -959,8 +959,8 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
             rows={3}
           />
 
-          <div className="p-3.5 rounded-xl bg-[#F8F8FC] border border-black/5 text-xs text-[#5A5A68] space-y-1">
-            <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E]">
+          <div className="p-3.5 rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 text-xs text-[#5A5A68] dark:text-[#8E8EA4] space-y-1">
+            <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E] dark:text-[#F4F4F8]">
               <Clock className="w-3.5 h-3.5" />
               <span>120-Hour Review SLA Guarantee</span>
             </div>
@@ -989,17 +989,17 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
         title="Review Submitted Milestone Deliverable"
         description="Inspect creator external link and release escrow or request changes."
       >
-        <div className="space-y-6 text-[#0A0A0E]">
-          <div className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/5 space-y-2.5">
+        <div className="space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8]">
+          <div className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 space-y-2.5">
             <div className="flex items-center justify-between">
-              <span className="text-[10px] text-[#6A6A78] uppercase font-mono font-bold">External Asset Link</span>
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] text-[10px] font-mono font-bold">
+              <span className="text-[10px] text-[#6A6A78] dark:text-[#8E8EA4] uppercase font-mono font-bold">External Asset Link</span>
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] text-[10px] font-mono font-bold">
                 <Clock className="w-3 h-3" /> 120h SLA Active
               </span>
             </div>
 
             <div className="flex items-center justify-between gap-3 pt-1">
-              <span className="text-xs text-[#0A0A0E] font-mono font-bold truncate max-w-[280px]">
+              <span className="text-xs text-[#0A0A0E] dark:text-[#F4F4F8] font-mono font-bold truncate max-w-[280px]">
                 {selectedDel?.assetUrl || assetUrl}
               </span>
               <a
@@ -1016,8 +1016,8 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
 
           {(selectedDel?.notes || notes) && (
             <div className="space-y-1.5">
-              <span className="text-[10px] text-[#6A6A78] uppercase font-mono font-bold">Creator Notes</span>
-              <div className="p-3.5 rounded-xl bg-white border border-black/10 text-xs text-[#2A2A38] leading-relaxed font-sans">
+              <span className="text-[10px] text-[#6A6A78] dark:text-[#8E8EA4] uppercase font-mono font-bold">Creator Notes</span>
+              <div className="p-3.5 rounded-xl bg-white dark:bg-[#181824] border border-black/10 dark:border-white/10 text-xs text-[#2A2A38] dark:text-[#E0E0EC] leading-relaxed font-sans">
                 {selectedDel?.notes || notes}
               </div>
             </div>
@@ -1026,13 +1026,13 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <button
               type="button"
-              className="flex-1 py-3 rounded-full bg-black/5 hover:bg-black/10 text-[#0A0A0E] text-xs font-bold transition-all border border-black/10 flex items-center justify-center gap-1.5"
+              className="flex-1 py-3 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0A0A0E] dark:text-[#F4F4F8] text-xs font-bold transition-all border border-black/10 dark:border-white/10 flex items-center justify-center gap-1.5"
               onClick={() => {
                 setIsReviewModalOpen(false);
                 setIsDisputeModalOpen(true);
               }}
             >
-              <AlertCircle className="w-4 h-4 text-amber-600" />
+              <AlertCircle className="w-4 h-4 text-amber-600 dark:text-amber-400" />
               <span>Request Revision / Raise Dispute</span>
             </button>
             <button
@@ -1054,14 +1054,14 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
         title="Revision or Formal Dispute"
         description="Enforces revision boundaries and dispute protection."
       >
-        <div className="space-y-4 text-[#0A0A0E]">
+        <div className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
           {selectedDel && (
-            <div className="p-3 rounded-xl bg-[#F8F8FC] border border-black/5 text-xs font-mono flex items-center justify-between">
+            <div className="p-3 rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 text-xs font-mono flex items-center justify-between">
               <span>Revisions Used: <strong>{selectedDel.revisionCount} / {selectedDel.maxRevisions}</strong></span>
               {selectedDel.revisionCount >= selectedDel.maxRevisions ? (
-                <span className="text-red-700 font-bold">Max Revisions Reached</span>
+                <span className="text-red-700 dark:text-red-400 font-bold">Max Revisions Reached</span>
               ) : (
-                <span className="text-emerald-700 font-bold">{selectedDel.maxRevisions - selectedDel.revisionCount} Remaining</span>
+                <span className="text-emerald-700 dark:text-emerald-400 font-bold">{selectedDel.maxRevisions - selectedDel.revisionCount} Remaining</span>
               )}
             </div>
           )}
@@ -1079,7 +1079,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
             <button
               type="button"
               onClick={() => selectedDel && handleRaiseDispute(selectedDel.id)}
-              className="px-4 py-2.5 rounded-full bg-red-50 hover:bg-red-100 text-red-700 font-bold text-xs border border-red-200"
+              className="px-4 py-2.5 rounded-full bg-red-50 dark:bg-red-950/40 hover:bg-red-100 dark:hover:bg-red-900/60 text-red-700 dark:text-red-300 font-bold text-xs border border-red-200 dark:border-red-800"
             >
               Raise Formal Dispute
             </button>
@@ -1087,7 +1087,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
               type="button"
               disabled={Boolean(selectedDel && selectedDel.revisionCount >= selectedDel.maxRevisions)}
               onClick={() => selectedDel && handleRequestRevision(selectedDel.id)}
-              className="flex-1 py-2.5 rounded-full bg-black text-white hover:bg-black/90 font-bold text-xs transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+              className="flex-1 py-2.5 rounded-full bg-black dark:bg-[#202030] text-white hover:bg-black/90 dark:hover:bg-[#2c2c40] font-bold text-xs transition-all disabled:opacity-40 disabled:cursor-not-allowed border border-transparent dark:border-white/10"
             >
               {selectedDel && selectedDel.revisionCount >= selectedDel.maxRevisions ? "Revision Limit Exceeded" : "Send Revision Request"}
             </button>
@@ -1102,7 +1102,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
         title="Submit Live Post Proof"
         description="Verify public content publication to complete collaboration."
       >
-        <form onSubmit={handleSubmitPostProof} className="space-y-4 text-[#0A0A0E]">
+        <form onSubmit={handleSubmitPostProof} className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
           <Input
             label="Live Post URL"
             placeholder="https://www.youtube.com/watch?v=... or https://instagram.com/p/..."
@@ -1112,11 +1112,11 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
           />
 
           <div className="space-y-1">
-            <label className="text-xs font-mono font-bold text-[#6A6A78]">Platform</label>
+            <label className="text-xs font-mono font-bold text-[#6A6A78] dark:text-[#8E8EA4]">Platform</label>
             <select
               value={postPlatform}
               onChange={(e) => setPostPlatform(e.target.value as PlatformType)}
-              className="w-full px-3.5 py-2 rounded-xl bg-white border border-black/15 text-xs font-sans text-[#0A0A0E]"
+              className="w-full px-3.5 py-2 rounded-xl bg-white dark:bg-[#181824] border border-black/15 dark:border-white/10 text-xs font-sans text-[#0A0A0E] dark:text-[#F4F4F8] focus:outline-none focus:border-[#FFD21F]"
             >
               <option value="youtube">YouTube</option>
               <option value="instagram">Instagram</option>
@@ -1152,17 +1152,17 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
         </form>
       </Modal>
 
-      {/* Stage-Aware Cancellation Modal */}
+      {/* Stage-Aware Collaboration Cancellation Modal */}
       <Modal
         isOpen={isCancelModalOpen}
         onClose={() => setIsCancelModalOpen(false)}
         title="Stage-Aware Collaboration Cancellation"
         description="Platform rules automatically calculate fair refunds and creator kill-fees based on progress."
       >
-        <div className="space-y-4 text-[#0A0A0E]">
-          <div className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/10 space-y-2">
-            <span className="text-[10px] font-mono font-bold text-[#6A6A78] uppercase">Financial Settlement Preview</span>
-            <p className="text-xs text-[#0A0A0E] font-bold leading-relaxed">
+        <div className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
+          <div className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/10 dark:border-white/10 space-y-2">
+            <span className="text-[10px] font-mono font-bold text-[#6A6A78] dark:text-[#8E8EA4] uppercase">Financial Settlement Preview</span>
+            <p className="text-xs text-[#0A0A0E] dark:text-[#F4F4F8] font-bold leading-relaxed">
               {getCancellationPreview().desc}
             </p>
           </div>
@@ -1180,7 +1180,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
             <button
               type="button"
               onClick={() => setIsCancelModalOpen(false)}
-              className="px-4 py-2.5 rounded-full bg-black/5 text-[#0A0A0E] font-bold text-xs border border-black/10"
+              className="px-4 py-2.5 rounded-full bg-black/5 dark:bg-white/10 text-[#0A0A0E] dark:text-[#F4F4F8] font-bold text-xs border border-black/10 dark:border-white/10 hover:bg-black/10 dark:hover:bg-white/15"
             >
               Back
             </button>

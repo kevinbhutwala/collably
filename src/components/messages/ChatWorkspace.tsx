@@ -567,14 +567,14 @@ export function ChatWorkspace() {
   }
 
   return (
-    <div className="relative rounded-3xl bg-white border border-black/8 shadow-xs overflow-hidden h-full w-full text-[#0A0A0E] flex flex-col select-none">
+    <div className="relative rounded-3xl bg-white dark:bg-[#0E0E14] border border-black/8 dark:border-white/10 shadow-xs overflow-hidden h-full w-full text-[#0A0A0E] dark:text-[#F4F4F8] flex flex-col select-none">
       <div className="grid grid-cols-1 md:grid-cols-12 flex-1 overflow-hidden h-full">
 
         {/* ══════════════════════════════════════════════════════════════════════
             LEFT COLUMN: DYNAMIC CHAT LIST & CONTROLS
             ══════════════════════════════════════════════════════════════════════ */}
         <div
-          className={`md:col-span-4 border-r border-black/8 flex flex-col h-full bg-[#FAFAFC] overflow-hidden ${
+          className={`md:col-span-4 border-r border-black/8 dark:border-white/10 flex flex-col h-full bg-[#FAFAFC] dark:bg-[#0E0E14] overflow-hidden ${
             mobileView === "chat" ? "hidden md:flex" : "flex"
           }`}
         >
@@ -589,7 +589,7 @@ export function ChatWorkspace() {
                   <h2 className="font-extrabold text-sm text-[#0A0A0E] dark:text-white font-display tracking-tight leading-none">
                     Messages
                   </h2>
-                  <span className="text-[10px] font-mono text-[#7A7A8A]">
+                  <span className="text-[10px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4]">
                     {conversations.length} Active Channels
                   </span>
                 </div>
@@ -608,13 +608,13 @@ export function ChatWorkspace() {
 
             {/* Filter Search Input */}
             <div className="relative">
-              <Search className="w-3.5 h-3.5 text-[#7A7A8A] absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <Search className="w-3.5 h-3.5 text-[#7A7A8A] dark:text-[#8E8EA4] absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 placeholder="Search messages, creators, briefs..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-8 py-2 rounded-2xl bg-[#F8F8FC] border border-black/8 text-xs font-medium text-[#0A0A0E] placeholder:text-[#8A8A9A] focus:outline-none focus:border-[#FFD21F] focus:ring-2 focus:ring-[#FFD21F]/20 transition-all shadow-2xs"
+                className="w-full pl-9 pr-8 py-2 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-xs font-medium text-[#0A0A0E] dark:text-[#F4F4F8] placeholder:text-[#8A8A9A] dark:placeholder:text-[#7A7A8E] focus:outline-none focus:border-[#FFD21F] focus:ring-2 focus:ring-[#FFD21F]/20 transition-all shadow-2xs"
               />
               {searchQuery && (
                 <button
@@ -782,18 +782,18 @@ export function ChatWorkspace() {
             RIGHT COLUMN: ACTIVE CHAT PANE & COMPOSER
             ══════════════════════════════════════════════════════════════════════ */}
         <div
-          className={`md:col-span-8 flex flex-col h-full bg-white relative overflow-hidden ${
+          className={`md:col-span-8 flex flex-col h-full bg-white dark:bg-[#0E0E14] relative overflow-hidden ${
             mobileView === "list" ? "hidden md:flex" : "flex"
           }`}
         >
           {activeConversation ? (
             <>
               {/* Header Bar */}
-              <div className="px-4 sm:px-6 py-3 border-b border-black/8 flex items-center justify-between bg-[#FAFAFC] shrink-0">
+              <div className="px-4 sm:px-6 py-3 border-b border-black/8 dark:border-white/10 flex items-center justify-between bg-[#FAFAFC] dark:bg-[#12121A] shrink-0">
                 <div className="flex items-center gap-3 min-w-0">
                   <button
                     onClick={() => setMobileView("list")}
-                    className="md:hidden p-2 rounded-xl bg-white border border-black/8 hover:bg-black/5 text-[#0A0A0E]"
+                    className="md:hidden p-2 rounded-xl bg-white dark:bg-[#181824] border border-black/8 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/10 text-[#0A0A0E] dark:text-[#F4F4F8]"
                   >
                     <ArrowLeft className="w-4 h-4" />
                   </button>
@@ -801,11 +801,11 @@ export function ChatWorkspace() {
                   <div className="relative w-9 h-9 shrink-0">
                     {partnerAvatar ? (
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img src={partnerAvatar} alt={partnerName} className="w-9 h-9 rounded-xl object-cover border border-black/8" />
+                      <img src={partnerAvatar} alt={partnerName} className="w-9 h-9 rounded-xl object-cover border border-black/8 dark:border-white/10" />
                     ) : (
                       <AvatarFallback name={partnerName} className="w-9 h-9" />
                     )}
-                    <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white" />
+                    <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white dark:ring-[#12121A]" />
                   </div>
 
                   <div className="min-w-0">
@@ -824,10 +824,10 @@ export function ChatWorkspace() {
                         {partnerRole === "agency_admin" ? "Admin" : partnerRole}
                       </span>
                     </div>
-                    <div className="flex items-center gap-2 text-[11px] text-[#6A6A78]">
+                    <div className="flex items-center gap-2 text-[11px] text-[#6A6A78] dark:text-[#8E8EA4]">
                       <span className="truncate">{activeConversation.campaignTitle}</span>
                       <span>•</span>
-                      <span className="inline-flex items-center gap-1 text-emerald-700 font-bold">
+                      <span className="inline-flex items-center gap-1 text-emerald-700 dark:text-emerald-400 font-bold">
                         <ShieldCheck className="w-3 h-3" />
                         <span>Escrow Protected</span>
                       </span>
@@ -843,7 +843,7 @@ export function ChatWorkspace() {
                         window.open(`/campaigns/${activeConversation.campaignId}`, "_blank");
                       }
                     }}
-                    className="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white hover:bg-[#F4F4F8] border border-black/8 text-xs font-semibold text-[#5A5A68] hover:text-[#0A0A0E] transition-colors"
+                    className="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white dark:bg-[#181824] hover:bg-[#F4F4F8] dark:hover:bg-[#202030] border border-black/8 dark:border-white/10 text-xs font-semibold text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-[#F4F4F8] transition-colors"
                   >
                     <span>Brief</span>
                     <ExternalLink className="w-3 h-3" />
@@ -854,15 +854,15 @@ export function ChatWorkspace() {
               {/* Messages Feed */}
               <div
                 ref={messagesContainerRef}
-                className="flex-1 overflow-y-auto px-4 sm:px-6 py-5 space-y-4 bg-white"
+                className="flex-1 overflow-y-auto px-4 sm:px-6 py-5 space-y-4 bg-white dark:bg-[#0E0E14]"
               >
                 {currentMessages.length === 0 ? (
                   <div className="h-full flex flex-col items-center justify-center text-center space-y-2 text-[#9A9AA8]">
-                    <div className="w-12 h-12 rounded-2xl bg-[#F8F8FC] border border-black/8 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 flex items-center justify-center">
                       <Sparkles className="w-6 h-6 text-[#FFD21F]" />
                     </div>
-                    <p className="text-xs font-bold text-[#0A0A0E]">Conversation Initiated</p>
-                    <p className="text-[11px] max-w-xs text-[#7A7A8A]">
+                    <p className="text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8]">Conversation Initiated</p>
+                    <p className="text-[11px] max-w-xs text-[#7A7A8A] dark:text-[#8E8EA4]">
                       Send your initial brief, schedule requirements, or question to start collaborating.
                     </p>
                   </div>
@@ -877,8 +877,8 @@ export function ChatWorkspace() {
                         className={`flex flex-col group relative ${isMine ? "items-end" : "items-start"}`}
                       >
                         {/* Sender Label & Timestamp */}
-                        <div className="flex items-center gap-2 mb-1 px-1 text-[10px] font-mono text-[#8A8A9A]">
-                          <span className="font-bold text-[#4A4A58]">{m.senderName}</span>
+                        <div className="flex items-center gap-2 mb-1 px-1 text-[10px] font-mono text-[#8A8A9A] dark:text-[#7A7A8E]">
+                          <span className="font-bold text-[#4A4A58] dark:text-[#A0A0B4]">{m.senderName}</span>
                           <span>•</span>
                           <span>
                             {new Date(m.createdAt).toLocaleTimeString([], {
@@ -893,7 +893,7 @@ export function ChatWorkspace() {
                           {/* Floating Reaction Bar */}
                           <div
                             className={cn(
-                              "absolute -top-7 z-20 bg-white border border-black/10 rounded-full px-1.5 py-0.5 shadow-md flex items-center gap-1 transition-opacity",
+                              "absolute -top-7 z-20 bg-white dark:bg-[#1C1C2C] border border-black/10 dark:border-white/15 rounded-full px-1.5 py-0.5 shadow-md flex items-center gap-1 transition-opacity",
                               isMine ? "right-0" : "left-0",
                               isReactionMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 group-hover/bubble:opacity-100"
                             )}
@@ -902,7 +902,7 @@ export function ChatWorkspace() {
                               <button
                                 key={emoji}
                                 onClick={() => handleToggleReaction(m.id, emoji)}
-                                className="w-6 h-6 flex items-center justify-center rounded-full hover:bg-[#F4F4F8] hover:scale-125 transition-transform text-xs"
+                                className="w-6 h-6 flex items-center justify-center rounded-full hover:bg-[#F4F4F8] dark:hover:bg-[#252538] hover:scale-125 transition-transform text-xs"
                               >
                                 {emoji}
                               </button>
@@ -915,18 +915,18 @@ export function ChatWorkspace() {
                               "px-4 py-3 rounded-2xl text-sm leading-relaxed shadow-xs transition-all",
                               isMine
                                 ? "bg-gradient-to-r from-[#FFD21F] to-[#FFE052] text-[#0A0A0E] font-medium border border-black/10 rounded-tr-sm"
-                                : "bg-[#F5F5F9] border border-black/6 text-[#0A0A0E] rounded-tl-sm"
+                                : "bg-[#F5F5F9] dark:bg-[#181824] border border-black/6 dark:border-white/10 text-[#0A0A0E] dark:text-[#F4F4F8] rounded-tl-sm"
                             )}
                           >
                             <p className="whitespace-pre-wrap break-words">{m.content}</p>
 
                             {/* Render Attachments */}
                             {m.attachments && m.attachments.length > 0 && (
-                              <div className="mt-2.5 pt-2 border-t border-black/10 space-y-2">
+                              <div className="mt-2.5 pt-2 border-t border-black/10 dark:border-white/10 space-y-2">
                                 {m.attachments.map((att, i) => (
                                   <div
                                     key={i}
-                                    className="p-2.5 rounded-xl bg-white/90 border border-black/10 flex items-center justify-between gap-2 text-xs shadow-2xs"
+                                    className="p-2.5 rounded-xl bg-white/90 dark:bg-[#222234] border border-black/10 dark:border-white/10 flex items-center justify-between gap-2 text-xs shadow-2xs"
                                   >
                                     <div
                                       onClick={() => {
@@ -948,8 +948,8 @@ export function ChatWorkspace() {
                                           <FileText className="w-3.5 h-3.5" />
                                         </div>
                                       )}
-                                      <span className="font-bold text-[#0A0A0E] truncate">{att.name}</span>
-                                      {att.size && <span className="text-[10px] text-[#7A7A8A]">({att.size})</span>}
+                                      <span className="font-bold text-[#0A0A0E] dark:text-[#F4F4F8] truncate">{att.name}</span>
+                                      {att.size && <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4]">({att.size})</span>}
                                     </div>
 
                                     <a
@@ -957,7 +957,7 @@ export function ChatWorkspace() {
                                       download={att.name}
                                       target="_blank"
                                       rel="noreferrer"
-                                      className="p-1.5 rounded-lg hover:bg-black/10 text-[#0A0A0E] shrink-0"
+                                      className="p-1.5 rounded-lg hover:bg-black/10 dark:hover:bg-white/10 text-[#0A0A0E] dark:text-[#F4F4F8] shrink-0"
                                       title="Download attachment"
                                     >
                                       <Download className="w-3.5 h-3.5" />
@@ -989,8 +989,8 @@ export function ChatWorkspace() {
                                   className={cn(
                                     "px-2 py-0.5 rounded-full text-xs font-mono font-bold flex items-center gap-1 border transition-all shadow-2xs",
                                     userReacted
-                                      ? "bg-[#FFD21F]/30 border-[#FFD21F] text-[#0A0A0E]"
-                                      : "bg-white border-black/8 text-[#5A5A68] hover:bg-[#F8F8FC]"
+                                      ? "bg-[#FFD21F]/30 border-[#FFD21F] text-[#0A0A0E] dark:text-[#FFD21F]"
+                                      : "bg-white dark:bg-[#181824] border-black/8 dark:border-white/10 text-[#5A5A68] dark:text-[#A0A0B4] hover:bg-[#F8F8FC] dark:hover:bg-[#202030]"
                                   )}
                                 >
                                   <span>{r.emoji}</span>
@@ -1008,21 +1008,21 @@ export function ChatWorkspace() {
                 {/* Animated Partner Typing Indicator */}
                 {isPartnerTyping && (
                   <div className="flex items-center gap-2 text-xs text-[#7A7A8A] font-medium animate-pulse py-1">
-                    <div className="flex items-center gap-1 bg-[#F5F5F9] px-3 py-2 rounded-2xl border border-black/6">
+                    <div className="flex items-center gap-1 bg-[#F5F5F9] dark:bg-[#181824] px-3 py-2 rounded-2xl border border-black/6 dark:border-white/10">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#8A8A9A] animate-bounce" />
                       <span className="w-1.5 h-1.5 rounded-full bg-[#8A8A9A] animate-bounce [animation-delay:0.2s]" />
                       <span className="w-1.5 h-1.5 rounded-full bg-[#8A8A9A] animate-bounce [animation-delay:0.4s]" />
-                      <span className="text-[11px] font-bold text-[#0A0A0E] ml-1.5 font-display">{partnerName} is typing...</span>
+                      <span className="text-[11px] font-bold text-[#0A0A0E] dark:text-[#F4F4F8] ml-1.5 font-display">{partnerName} is typing...</span>
                     </div>
                   </div>
                 )}
               </div>
 
               {/* Composer Box */}
-              <div className="border-t border-black/8 bg-white p-3 sm:p-4 shrink-0 space-y-2">
+              <div className="border-t border-black/8 dark:border-white/10 bg-white dark:bg-[#12121A] p-3 sm:p-4 shrink-0 space-y-2">
                 {/* Staged Attachment Preview Pill */}
                 {stagedAttachment && (
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#FAF9F5] border border-[#FFD21F]/60 text-xs font-mono shadow-2xs animate-fadeIn">
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#FAF9F5] dark:bg-[#1A1A26] border border-[#FFD21F]/60 text-xs font-mono shadow-2xs animate-fadeIn">
                     {stagedAttachment.type === "video" ? (
                       <Play className="w-3.5 h-3.5 text-red-600" />
                     ) : stagedAttachment.type === "image" ? (
@@ -1031,12 +1031,12 @@ export function ChatWorkspace() {
                     ) : (
                       <FileText className="w-3.5 h-3.5 text-blue-600" />
                     )}
-                    <span className="font-bold text-[#0A0A0E] max-w-xs truncate">{stagedAttachment.name}</span>
+                    <span className="font-bold text-[#0A0A0E] dark:text-[#F4F4F8] max-w-xs truncate">{stagedAttachment.name}</span>
                     <span className="text-[#888898]">({stagedAttachment.size})</span>
                     <button
                       type="button"
                       onClick={() => setStagedAttachment(null)}
-                      className="p-0.5 hover:bg-black/10 rounded-full text-[#6A6A78]"
+                      className="p-0.5 hover:bg-black/10 dark:hover:bg-white/10 rounded-full text-[#6A6A78] dark:text-[#A0A0B4]"
                     >
                       <X className="w-3 h-3" />
                     </button>
@@ -1054,7 +1054,7 @@ export function ChatWorkspace() {
                   <button
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
-                    className="p-2.5 rounded-full hover:bg-[#F4F4F8] text-[#6A6A78] hover:text-[#0A0A0E] transition-colors shrink-0"
+                    className="p-2.5 rounded-full hover:bg-[#F4F4F8] dark:hover:bg-[#1E1E2C] text-[#6A6A78] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-[#F4F4F8] transition-colors shrink-0"
                     title="Attach image, video or deliverable"
                   >
                     <Paperclip className="w-4 h-4" />
@@ -1065,7 +1065,7 @@ export function ChatWorkspace() {
                     placeholder={`Message ${partnerName}... (Press Enter to send)`}
                     value={inputText}
                     onChange={(e) => setInputText(e.target.value)}
-                    className="flex-1 bg-[#F8F8FC] border border-black/8 rounded-full px-4 py-2.5 text-sm font-medium text-[#0A0A0E] placeholder:text-[#9A9AA8] focus:outline-none focus:border-[#FFD21F] focus:ring-2 focus:ring-[#FFD21F]/20 transition-all shadow-2xs"
+                    className="flex-1 bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 rounded-full px-4 py-2.5 text-sm font-medium text-[#0A0A0E] dark:text-[#F4F4F8] placeholder:text-[#9A9AA8] dark:placeholder:text-[#7A7A8E] focus:outline-none focus:border-[#FFD21F] focus:ring-2 focus:ring-[#FFD21F]/20 transition-all shadow-2xs"
                   />
 
                   <button
@@ -1082,14 +1082,14 @@ export function ChatWorkspace() {
           ) : (
             /* Blank state when no conversation is selected */
             <div className="h-full flex flex-col items-center justify-center text-center p-8 space-y-4 text-[#8A8A9A]">
-              <div className="w-14 h-14 rounded-3xl bg-[#FAF9F5] border border-[#FFD21F]/40 flex items-center justify-center shadow-xs">
+              <div className="w-14 h-14 rounded-3xl bg-[#FAF9F5] dark:bg-[#181824] border border-[#FFD21F]/40 flex items-center justify-center shadow-xs">
                 <MessageSquare className="w-7 h-7 text-[#FFD21F]" />
               </div>
               <div className="space-y-1">
                 <h3 className="font-extrabold text-base text-[#0A0A0E] dark:text-white font-display">
                   {conversations.length === 0 ? "No Active Channels" : "Select a Channel"}
                 </h3>
-                <p className="text-xs max-w-sm leading-relaxed text-[#6A6A78]">
+                <p className="text-xs max-w-sm leading-relaxed text-[#6A6A78] dark:text-[#8E8EA4]">
                   {conversations.length === 0
                     ? "Start a direct conversation with any creator or brand on the platform."
                     : "Choose a collaboration from the left to view messages and deliverable drafts."}
@@ -1120,26 +1120,26 @@ export function ChatWorkspace() {
         description="Initiate a direct messaging thread with verified creators or brand partners."
         maxWidth="md"
       >
-        <form onSubmit={handleCreateNewConversation} className="space-y-4 text-[#0A0A0E]">
+        <form onSubmit={handleCreateNewConversation} className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
           {/* Recipient Search & Selector */}
           <div className="space-y-2">
-            <label className="text-xs font-bold font-mono uppercase text-[#5A5A68]">
+            <label className="text-xs font-bold font-mono uppercase text-[#5A5A68] dark:text-[#A0A0B4]">
               Select Partner / Recipient
             </label>
 
             <div className="relative">
-              <Search className="w-3.5 h-3.5 text-[#7A7A8A] absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <Search className="w-3.5 h-3.5 text-[#7A7A8A] dark:text-[#8E8EA4] absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 placeholder="Search by creator name, niche, or brand..."
                 value={recipientSearch}
                 onChange={(e) => setRecipientSearch(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 rounded-2xl bg-[#F8F8FC] border border-black/8 text-xs font-medium text-[#0A0A0E] focus:outline-none focus:border-[#FFD21F]"
+                className="w-full pl-9 pr-4 py-2 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-xs font-medium text-[#0A0A0E] dark:text-[#F4F4F8] placeholder:text-[#8A8A9A] dark:placeholder:text-[#7A7A8E] focus:outline-none focus:border-[#FFD21F]"
               />
             </div>
 
             {/* Recipient Radio Card List */}
-            <div className="max-h-48 overflow-y-auto space-y-1.5 border border-black/8 rounded-2xl p-2 bg-[#FAFAFC]">
+            <div className="max-h-48 overflow-y-auto space-y-1.5 border border-black/8 dark:border-white/10 rounded-2xl p-2 bg-[#FAFAFC] dark:bg-[#12121A]">
               {availableRecipients
                 .filter((r) => {
                   if (!recipientSearch) return true;
@@ -1156,19 +1156,19 @@ export function ChatWorkspace() {
                         "p-2.5 rounded-xl border flex items-center justify-between cursor-pointer transition-all",
                         isSelected
                           ? "bg-[#FFD21F]/20 border-[#FFD21F] shadow-2xs font-bold"
-                          : "bg-white border-black/5 hover:border-black/15"
+                          : "bg-white dark:bg-[#181824] border-black/5 dark:border-white/10 hover:border-black/15 dark:hover:border-white/20"
                       )}
                     >
                       <div className="flex items-center gap-2.5 min-w-0">
                         {rec.avatarUrl ? (
                           // eslint-disable-next-line @next/next/no-img-element
-                          <img src={rec.avatarUrl} alt={rec.name} className="w-8 h-8 rounded-xl object-cover border border-black/8 shrink-0" />
+                          <img src={rec.avatarUrl} alt={rec.name} className="w-8 h-8 rounded-xl object-cover border border-black/8 dark:border-white/10 shrink-0" />
                         ) : (
                           <AvatarFallback name={rec.name} className="w-8 h-8" />
                         )}
                         <div className="min-w-0">
-                          <p className="text-xs font-bold text-[#0A0A0E] truncate">{rec.name}</p>
-                          <p className="text-[10px] text-[#7A7A8A] truncate">{rec.subtitle}</p>
+                          <p className="text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8] truncate">{rec.name}</p>
+                          <p className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] truncate">{rec.subtitle}</p>
                         </div>
                       </div>
 
@@ -1192,7 +1192,7 @@ export function ChatWorkspace() {
 
           {/* Topic / Campaign Title */}
           <div className="space-y-1">
-            <label className="text-xs font-bold font-mono uppercase text-[#5A5A68]">
+            <label className="text-xs font-bold font-mono uppercase text-[#5A5A68] dark:text-[#A0A0B4]">
               Topic / Campaign Subject
             </label>
             <input
@@ -1200,13 +1200,13 @@ export function ChatWorkspace() {
               placeholder="e.g. 4K Product Showcase Reel Integration"
               value={newChatTopic}
               onChange={(e) => setNewChatTopic(e.target.value)}
-              className="w-full px-3.5 py-2 rounded-xl bg-[#F8F8FC] border border-black/8 text-xs font-medium text-[#0A0A0E] focus:outline-none focus:border-[#FFD21F]"
+              className="w-full px-3.5 py-2 rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-xs font-medium text-[#0A0A0E] dark:text-[#F4F4F8] placeholder:text-[#8A8A9A] dark:placeholder:text-[#7A7A8E] focus:outline-none focus:border-[#FFD21F]"
             />
           </div>
 
           {/* Opening Message */}
           <div className="space-y-1">
-            <label className="text-xs font-bold font-mono uppercase text-[#5A5A68]">
+            <label className="text-xs font-bold font-mono uppercase text-[#5A5A68] dark:text-[#A0A0B4]">
               Opening Message
             </label>
             <textarea
@@ -1214,7 +1214,7 @@ export function ChatWorkspace() {
               placeholder="Type your introductory note or collaboration inquiry..."
               value={newChatInitialMessage}
               onChange={(e) => setNewChatInitialMessage(e.target.value)}
-              className="w-full px-3.5 py-2 rounded-xl bg-[#F8F8FC] border border-black/8 text-xs font-medium text-[#0A0A0E] focus:outline-none focus:border-[#FFD21F] resize-none"
+              className="w-full px-3.5 py-2 rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-xs font-medium text-[#0A0A0E] dark:text-[#F4F4F8] placeholder:text-[#8A8A9A] dark:placeholder:text-[#7A7A8E] focus:outline-none focus:border-[#FFD21F] resize-none"
             />
           </div>
 

@@ -70,13 +70,13 @@ export function AICreatorPitchModal({
       description={`Craft a high-converting creative proposal for ${brandName}`}
       maxWidth="xl"
     >
-      <div className="space-y-6 text-white">
+      <div className="space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8]">
         <div className="p-4 rounded-2xl bg-pink-500/10 border border-pink-500/25 space-y-2">
-          <div className="flex items-center gap-2 text-[hsl(327,100%,55%)] font-bold text-xs font-mono">
+          <div className="flex items-center gap-2 text-pink-600 dark:text-[hsl(327,100%,55%)] font-bold text-xs font-mono">
             <Wand2 className="w-4 h-4" />
             <span>Target Brief: {campaignTitle}</span>
           </div>
-          <p className="text-xs text-slate-300 font-sans">
+          <p className="text-xs text-[#5A5A68] dark:text-slate-300 font-sans">
             Tell the AI your unique angle or leave blank for a structured performance proposal.
           </p>
         </div>
@@ -102,8 +102,8 @@ export function AICreatorPitchModal({
 
         {generatedPitch && (
           <div className="space-y-3 pt-2">
-            <label className="text-xs font-bold text-slate-200">Generated Proposal Draft</label>
-            <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 text-xs text-slate-200 leading-relaxed whitespace-pre-line font-sans">
+            <label className="text-xs font-bold text-[#0A0A0E] dark:text-slate-200">Generated Proposal Draft</label>
+            <div className="p-4 rounded-2xl bg-[#F8F8FB] dark:bg-white/[0.04] border border-black/8 dark:border-white/10 text-xs text-[#2A2A38] dark:text-slate-200 leading-relaxed whitespace-pre-line font-sans">
               {generatedPitch}
             </div>
 

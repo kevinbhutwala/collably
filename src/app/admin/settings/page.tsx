@@ -104,18 +104,18 @@ export default function AdminSettingsPage() {
   };
 
   return (
-    <div className="space-y-8 max-w-5xl text-[#0A0A0E]">
+    <div className="space-y-8 max-w-5xl text-[#0A0A0E] dark:text-[#F4F4F8]">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-black/8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-black/8 dark:border-white/10">
         <div>
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-black/5 px-2.5 py-0.5 text-[11px] font-bold text-[#0A0A0E]">
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 px-2.5 py-0.5 text-[11px] font-bold text-[#0A0A0E] dark:text-[#F4F4F8]">
             <Sparkles className="w-3 h-3 text-[#FFD21F]" />
             <span>AbeyCollab Admin Command Center</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0A0A0E] tracking-tight font-display mt-2">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display mt-2">
             Marketplace Intelligence & Platform Settings
           </h1>
-          <p className="text-xs sm:text-sm text-[#5A5A68] mt-0.5 font-sans">
+          <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#9A9AA6] mt-0.5 font-sans">
             Fine-tune real-time trending formulas, rising talent heuristics, badge qualifications, and anti-gaming security.
           </p>
         </div>
@@ -123,9 +123,9 @@ export default function AdminSettingsPage() {
         <div className="flex items-center gap-2">
           <button
             onClick={handleResetDefaults}
-            className="px-4 py-2.5 rounded-full bg-white border border-black/10 hover:bg-neutral-50 text-[#0A0A0E] text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
+            className="px-4 py-2.5 rounded-full bg-white dark:bg-[#181824] border border-black/10 dark:border-white/10 hover:bg-neutral-50 dark:hover:bg-white/5 text-[#0A0A0E] dark:text-[#F4F4F8] text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
           >
-            <RefreshCw className="w-3.5 h-3.5 text-neutral-600" />
+            <RefreshCw className="w-3.5 h-3.5 text-neutral-600 dark:text-[#9A9AA6]" />
             <span>Reset Defaults</span>
           </button>
           <button
@@ -140,8 +140,8 @@ export default function AdminSettingsPage() {
       </div>
 
       {/* 1. Global Financial Settings */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6">
-        <div className="flex items-center gap-2 text-[#0A0A0E] font-bold text-sm font-display">
+      <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
+        <div className="flex items-center gap-2 text-[#0A0A0E] dark:text-white font-bold text-sm font-display">
           <Sliders className="w-4 h-4 text-[#FFD21F]" />
           <span>Financial Parameters & Escrow Limits</span>
         </div>
@@ -164,20 +164,20 @@ export default function AdminSettingsPage() {
 
       {/* 2. Creator Trending Algorithm Weights */}
       {config && (
-        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6">
+        <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 text-[#0A0A0E] font-bold text-sm font-display">
+            <div className="flex items-center gap-2 text-[#0A0A0E] dark:text-white font-bold text-sm font-display">
               <Flame className="w-4 h-4 text-amber-500" />
               <span>Creator Trending Formula Weights (Sum = 100%)</span>
             </div>
-            <span className="text-[11px] font-mono text-neutral-500">
+            <span className="text-[11px] font-mono text-neutral-500 dark:text-[#9A9AA6]">
               Live Weighted Scoring Engine
             </span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 text-xs">
             {/* Engagement Rate */}
-            <div className="p-3.5 rounded-2xl bg-[#F8F8FA] border border-black/5 space-y-2">
+            <div className="p-3.5 rounded-2xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
               <div className="flex justify-between font-semibold">
                 <span>Engagement Rate</span>
                 <span className="font-mono text-[#FFD21F] font-bold">
@@ -198,11 +198,11 @@ export default function AdminSettingsPage() {
                 }
                 className="w-full accent-[#FFD21F] cursor-pointer"
               />
-              <p className="text-[10px] text-[#5A5A68]">Weight for organic audience engagement %</p>
+              <p className="text-[10px] text-[#5A5A68] dark:text-[#9A9AA6]">Weight for organic audience engagement %</p>
             </div>
 
             {/* Engagement Growth */}
-            <div className="p-3.5 rounded-2xl bg-[#F8F8FA] border border-black/5 space-y-2">
+            <div className="p-3.5 rounded-2xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
               <div className="flex justify-between font-semibold">
                 <span>Engagement Growth</span>
                 <span className="font-mono text-[#FFD21F] font-bold">
@@ -223,11 +223,11 @@ export default function AdminSettingsPage() {
                 }
                 className="w-full accent-[#FFD21F] cursor-pointer"
               />
-              <p className="text-[10px] text-[#5A5A68]">MoM velocity of engagement metrics</p>
+              <p className="text-[10px] text-[#5A5A68] dark:text-[#9A9AA6]">MoM velocity of engagement metrics</p>
             </div>
 
             {/* Profile Views */}
-            <div className="p-3.5 rounded-2xl bg-[#F8F8FA] border border-black/5 space-y-2">
+            <div className="p-3.5 rounded-2xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
               <div className="flex justify-between font-semibold">
                 <span>Profile Views & Searches</span>
                 <span className="font-mono text-[#FFD21F] font-bold">
@@ -248,11 +248,11 @@ export default function AdminSettingsPage() {
                 }
                 className="w-full accent-[#FFD21F] cursor-pointer"
               />
-              <p className="text-[10px] text-[#5A5A68]">Deduplicated brand profile views (1h window)</p>
+              <p className="text-[10px] text-[#5A5A68] dark:text-[#9A9AA6]">Deduplicated brand profile views (1h window)</p>
             </div>
 
             {/* Profile Saves */}
-            <div className="p-3.5 rounded-2xl bg-[#F8F8FA] border border-black/5 space-y-2">
+            <div className="p-3.5 rounded-2xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
               <div className="flex justify-between font-semibold">
                 <span>Profile Saves / Bookmarks</span>
                 <span className="font-mono text-[#FFD21F] font-bold">
@@ -273,11 +273,11 @@ export default function AdminSettingsPage() {
                 }
                 className="w-full accent-[#FFD21F] cursor-pointer"
               />
-              <p className="text-[10px] text-[#5A5A68]">Brands shortlisting creator for briefs</p>
+              <p className="text-[10px] text-[#5A5A68] dark:text-[#9A9AA6]">Brands shortlisting creator for briefs</p>
             </div>
 
             {/* Successful Collabs */}
-            <div className="p-3.5 rounded-2xl bg-[#F8F8FA] border border-black/5 space-y-2">
+            <div className="p-3.5 rounded-2xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
               <div className="flex justify-between font-semibold">
                 <span>Completed Escrow Deals</span>
                 <span className="font-mono text-[#FFD21F] font-bold">
@@ -298,11 +298,11 @@ export default function AdminSettingsPage() {
                 }
                 className="w-full accent-[#FFD21F] cursor-pointer"
               />
-              <p className="text-[10px] text-[#5A5A68]">Delivered and approved escrow campaigns</p>
+              <p className="text-[10px] text-[#5A5A68] dark:text-[#9A9AA6]">Delivered and approved escrow campaigns</p>
             </div>
 
             {/* Response Rate */}
-            <div className="p-3.5 rounded-2xl bg-[#F8F8FA] border border-black/5 space-y-2">
+            <div className="p-3.5 rounded-2xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
               <div className="flex justify-between font-semibold">
                 <span>Inquiry Response Speed</span>
                 <span className="font-mono text-[#FFD21F] font-bold">
@@ -323,7 +323,7 @@ export default function AdminSettingsPage() {
                 }
                 className="w-full accent-[#FFD21F] cursor-pointer"
               />
-              <p className="text-[10px] text-[#5A5A68]">Reward creators responding in &lt; 2 hours</p>
+              <p className="text-[10px] text-[#5A5A68] dark:text-[#9A9AA6]">Reward creators responding in &lt; 2 hours</p>
             </div>
           </div>
         </div>
@@ -331,18 +331,18 @@ export default function AdminSettingsPage() {
 
       {/* 3. Rising Creator Criteria & Badge Thresholds */}
       {config && (
-        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6">
-          <div className="flex items-center gap-2 text-[#0A0A0E] font-bold text-sm font-display">
-            <Award className="w-4 h-4 text-purple-600" />
+        <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
+          <div className="flex items-center gap-2 text-[#0A0A0E] dark:text-white font-bold text-sm font-display">
+            <Award className="w-4 h-4 text-purple-600 dark:text-purple-400" />
             <span>Rising Creator Heuristics & Reputation Thresholds</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 text-xs">
             {/* Max Followers for Rising */}
-            <div className="p-4 rounded-2xl bg-[#F8F8FA] border border-black/5 space-y-2">
+            <div className="p-4 rounded-2xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
               <div className="flex justify-between font-semibold">
                 <span>Rising Follower Cap</span>
-                <span className="font-mono font-bold text-purple-700">
+                <span className="font-mono font-bold text-purple-700 dark:text-purple-300">
                   {Math.round(config.risingCriteria.maxFollowers / 1000)}k Max
                 </span>
               </div>
@@ -360,14 +360,14 @@ export default function AdminSettingsPage() {
                 }
                 className="w-full accent-purple-600 cursor-pointer"
               />
-              <p className="text-[10px] text-[#5A5A68]">Creators under this cap qualify for Rising status</p>
+              <p className="text-[10px] text-[#5A5A68] dark:text-[#9A9AA6]">Creators under this cap qualify for Rising status</p>
             </div>
 
             {/* Min Engagement for Rising */}
-            <div className="p-4 rounded-2xl bg-[#F8F8FA] border border-black/5 space-y-2">
+            <div className="p-4 rounded-2xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
               <div className="flex justify-between font-semibold">
                 <span>Rising Min Engagement</span>
-                <span className="font-mono font-bold text-purple-700">
+                <span className="font-mono font-bold text-purple-700 dark:text-purple-300">
                   {config.risingCriteria.minEngagementRate}%
                 </span>
               </div>
@@ -385,14 +385,14 @@ export default function AdminSettingsPage() {
                 }
                 className="w-full accent-purple-600 cursor-pointer"
               />
-              <p className="text-[10px] text-[#5A5A68]">Required engagement rate to trigger Rising badge</p>
+              <p className="text-[10px] text-[#5A5A68] dark:text-[#9A9AA6]">Required engagement rate to trigger Rising badge</p>
             </div>
 
             {/* Fast Responder Hours */}
-            <div className="p-4 rounded-2xl bg-[#F8F8FA] border border-black/5 space-y-2">
+            <div className="p-4 rounded-2xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
               <div className="flex justify-between font-semibold">
                 <span>Fast Responder Threshold</span>
-                <span className="font-mono font-bold text-cyan-700">
+                <span className="font-mono font-bold text-cyan-700 dark:text-cyan-300">
                   &le; {config.badgeThresholds.fastResponderMaxHours} hrs
                 </span>
               </div>
@@ -410,33 +410,33 @@ export default function AdminSettingsPage() {
                 }
                 className="w-full accent-cyan-600 cursor-pointer"
               />
-              <p className="text-[10px] text-[#5A5A68]">Max average latency for ⚡ Fast Responder badge</p>
+              <p className="text-[10px] text-[#5A5A68] dark:text-[#9A9AA6]">Max average latency for ⚡ Fast Responder badge</p>
             </div>
           </div>
         </div>
       )}
 
       {/* 4. Anti-Gaming Security & Suspicious Activity Log */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-4">
+      <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 text-[#0A0A0E] font-bold text-sm font-display">
+          <div className="flex items-center gap-2 text-[#0A0A0E] dark:text-white font-bold text-sm font-display">
             <ShieldAlert className="w-4 h-4 text-rose-500" />
             <span>Anti-Gaming Security & Throttling Feed</span>
           </div>
-          <span className="rounded-full bg-rose-500/10 border border-rose-500/20 px-2.5 py-0.5 text-[10px] font-bold text-rose-600">
+          <span className="rounded-full bg-rose-500/10 border border-rose-500/20 px-2.5 py-0.5 text-[10px] font-bold text-rose-600 dark:text-rose-400">
             {suspicious.length} Incidents Flagged
           </span>
         </div>
 
         {suspicious.length === 0 ? (
-          <div className="rounded-2xl border border-black/5 bg-[#F8F8FA] p-6 text-center text-xs text-[#5A5A68]">
+          <div className="rounded-2xl border border-black/5 dark:border-white/5 bg-[#F8F8FA] dark:bg-[#181824] p-6 text-center text-xs text-[#5A5A68] dark:text-[#9A9AA6]">
             ✓ No suspicious interaction bursts detected. Rate limits, window decay, and deduplication are active.
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead>
-                <tr className="border-b border-black/5 text-[10px] uppercase font-bold text-[#5A5A68]">
+                <tr className="border-b border-black/5 dark:border-white/10 text-[10px] uppercase font-bold text-[#5A5A68] dark:text-[#9A9AA6]">
                   <th className="pb-2">Timestamp</th>
                   <th className="pb-2">Actor ID</th>
                   <th className="pb-2">Target</th>
@@ -445,20 +445,20 @@ export default function AdminSettingsPage() {
                   <th className="pb-2 text-right">Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-black/5 font-mono text-[11px]">
+              <tbody className="divide-y divide-black/5 dark:divide-white/5 font-mono text-[11px]">
                 {suspicious.map((item) => (
-                  <tr key={item.id} className="hover:bg-[#F8F8FA]">
-                    <td className="py-2.5 text-neutral-600">
+                  <tr key={item.id} className="hover:bg-[#F8F8FA] dark:hover:bg-[#181824]">
+                    <td className="py-2.5 text-neutral-600 dark:text-[#9A9AA6]">
                       {new Date(item.detectedAt).toLocaleTimeString()}
                     </td>
-                    <td className="py-2.5 font-bold text-[#0A0A0E]">
+                    <td className="py-2.5 font-bold text-[#0A0A0E] dark:text-[#F4F4F8]">
                       {item.actorId || "Anonymous Session"}
                     </td>
-                    <td className="py-2.5 text-neutral-600">{item.targetId}</td>
-                    <td className="py-2.5 text-rose-600 font-sans">{item.reason}</td>
+                    <td className="py-2.5 text-neutral-600 dark:text-[#9A9AA6]">{item.targetId}</td>
+                    <td className="py-2.5 text-rose-600 dark:text-rose-400 font-sans">{item.reason}</td>
                     <td className="py-2.5">{item.burstCount} actions/min</td>
                     <td className="py-2.5 text-right">
-                      <span className="rounded-md bg-rose-500/10 px-2 py-0.5 text-[10px] font-bold text-rose-600 uppercase">
+                      <span className="rounded-md bg-rose-500/10 px-2 py-0.5 text-[10px] font-bold text-rose-600 dark:text-rose-400 uppercase">
                         {item.status}
                       </span>
                     </td>

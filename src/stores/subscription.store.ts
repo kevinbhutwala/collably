@@ -184,12 +184,16 @@ export const useSubscriptionStore = create<SubscriptionState>((set, get) => ({
     if (subscription.features.adminOverride) return true;
 
     // Check status
-    if (
-      subscription.status !== "active" &&
-      subscription.status !== "trialing" &&
-      subscription.status !== "cancelled"
-    ) {
-      return false;
+    if (subscription.status !== "active" && subscription.status !== "trialing") {
+      if (subscription.status === "cancelled" && subscription.cancelAtPeriodEnd) {
+        const now = new Date();
+        const periodEnd = new Date(subscription.currentPeriodEnd);
+        if (now > periodEnd) {
+          return false;
+        }
+      } else {
+        return false;
+      }
     }
 
     const val = subscription.features[key as keyof typeof subscription.features];
@@ -206,6 +210,11 @@ export const useSubscriptionStore = create<SubscriptionState>((set, get) => ({
 
     if (subscription.features.adminOverride) {
       return { limit: -1, current: 0, percent: 0, allowed: true };
+    }
+
+    // If subscription payment is past_due or unpaid, block quota
+    if (subscription.status === "past_due" || subscription.status === "unpaid") {
+      return { limit: 0, current: 0, percent: 100, allowed: false };
     }
 
     if (metric === "activeCampaigns") {

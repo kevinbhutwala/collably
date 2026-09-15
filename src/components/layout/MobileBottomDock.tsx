@@ -58,14 +58,14 @@ export function MobileBottomDock() {
     /* Only visible below lg breakpoint */
     <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 pb-safe">
       {/* Fade-up ambient gradient above the dock */}
-      <div className="absolute bottom-full left-0 right-0 h-8 bg-gradient-to-t from-[#F8F8FB] to-transparent pointer-events-none" />
+      <div className="absolute bottom-full left-0 right-0 h-8 bg-gradient-to-t from-[#F8F8FB] dark:from-[#07070B] to-transparent pointer-events-none" />
 
       <nav
         className={cn(
           "relative flex items-stretch justify-around",
-          "bg-white/95 backdrop-blur-2xl",
-          "border-t border-black/8",
-          "shadow-[0_-4px_25px_rgba(0,0,0,0.06)]",
+          "bg-white/95 dark:bg-[#0E0E14]/95 backdrop-blur-2xl",
+          "border-t border-black/8 dark:border-white/10",
+          "shadow-[0_-4px_25px_rgba(0,0,0,0.06)] dark:shadow-[0_-4px_25px_rgba(0,0,0,0.5)]",
           "px-1 pt-2 pb-2"
         )}
         style={{ paddingBottom: "calc(0.5rem + env(safe-area-inset-bottom))" }}
@@ -102,7 +102,7 @@ export function MobileBottomDock() {
                   <Icon
                     className={cn(
                       "w-5 h-5 transition-colors duration-200",
-                      isActive ? "text-[#0A0A0E]" : "text-[#7A7A8A]"
+                      isActive ? "text-[#0A0A0E] dark:text-[#FFD21F]" : "text-[#7A7A8A] dark:text-[#8E8EA4]"
                     )}
                     strokeWidth={isActive ? 2.2 : 1.8}
                   />
@@ -118,7 +118,7 @@ export function MobileBottomDock() {
               <span
                 className={cn(
                   "text-[10px] font-bold leading-none tracking-tight font-sans transition-colors duration-200",
-                  isActive ? "text-[#0A0A0E]" : "text-[#7A7A8A]"
+                  isActive ? "text-[#0A0A0E] dark:text-[#FFD21F]" : "text-[#7A7A8A] dark:text-[#8E8EA4]"
                 )}
               >
                 {item.label}

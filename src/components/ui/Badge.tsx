@@ -21,31 +21,31 @@ export function Badge({
   };
 
   const variantStyles = {
-    default: "bg-white/10 text-white border border-white/15 shadow-xs",
-    outline: "bg-white/[0.04] text-white/70 border border-white/10",
-    success: "bg-emerald-500/15 text-emerald-400 border border-emerald-500/30",
-    glow: "bg-[#FFD21F]/20 text-[#FFD21F] border border-[#FFD21F]/40 shadow-[0_0_12px_rgba(255,210,31,0.35)]",
-    gold: "bg-[#FFD21F] text-[#0A0A0E] font-bold border border-white/40 shadow-[0_0_10px_rgba(255,210,31,0.3)]",
-    blue: "bg-[#FFD21F]/15 text-[#FFD21F] border border-[#FFD21F]/30",
+    default: "bg-black/5 dark:bg-white/10 text-[#0A0A0E] dark:text-white border border-black/10 dark:border-white/15 shadow-xs",
+    outline: "bg-black/[0.03] dark:bg-white/[0.04] text-[#5A5A68] dark:text-white/70 border border-black/10 dark:border-white/10",
+    success: "bg-emerald-500/10 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/25 dark:border-emerald-500/30",
+    glow: "bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] border border-[#FFD21F]/40 shadow-[0_0_12px_rgba(255,210,31,0.35)]",
+    gold: "bg-[#FFD21F] text-[#0A0A0E] font-bold border border-black/10 dark:border-white/40 shadow-[0_0_10px_rgba(255,210,31,0.3)]",
+    blue: "bg-[#FFD21F]/15 text-[#0A0A0E] dark:text-[#FFD21F] border border-[#FFD21F]/30",
     micro: "bg-[#FFD21F] text-[#0A0A0E] font-bold border border-[#FFE052]",
-    carbon: "bg-white text-[#0A0A0E] border border-white font-bold",
-    warning: "bg-amber-500/15 text-amber-400 border border-amber-500/30",
-    danger: "bg-red-500/15 text-red-400 border border-red-500/30",
-    purple: "bg-indigo-500/15 text-indigo-400 border border-indigo-500/30",
+    carbon: "bg-[#0A0A0E] text-white dark:bg-white dark:text-[#0A0A0E] border border-black/10 dark:border-white font-bold",
+    warning: "bg-amber-500/10 dark:bg-amber-500/15 text-amber-800 dark:text-amber-400 border border-amber-500/25 dark:border-amber-500/30",
+    danger: "bg-red-500/10 dark:bg-red-500/15 text-red-700 dark:text-red-400 border border-red-500/25 dark:border-red-500/30",
+    purple: "bg-indigo-500/10 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 border border-indigo-500/25 dark:border-indigo-500/30",
   };
 
   const dotStyles = {
-    default: "bg-white",
-    outline: "bg-white/60",
-    success: "bg-emerald-400",
+    default: "bg-[#0A0A0E] dark:bg-white",
+    outline: "bg-[#5A5A68] dark:bg-white/60",
+    success: "bg-emerald-500 dark:bg-emerald-400",
     glow: "bg-[#FFD21F]",
     gold: "bg-[#0A0A0E]",
     blue: "bg-[#FFD21F]",
     micro: "bg-[#0A0A0E]",
-    carbon: "bg-[#0A0A0E]",
-    warning: "bg-amber-400",
-    danger: "bg-red-400",
-    purple: "bg-indigo-400",
+    carbon: "bg-white dark:bg-[#0A0A0E]",
+    warning: "bg-amber-500 dark:bg-amber-400",
+    danger: "bg-red-500 dark:bg-red-400",
+    purple: "bg-indigo-500 dark:bg-indigo-400",
   };
 
   return (

@@ -96,6 +96,43 @@ export function PlanUpgradeModal() {
         throw new Error(orderData.error || "Failed to initialize subscription checkout order.");
       }
 
+      // If in sandbox test mode or when Razorpay live server is unreachable:
+      if (orderData.isTest) {
+        const testPaymentId = `pay_test_${Date.now()}`;
+        const verifyRes = await fetch("/api/verify-payment", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            order_id: orderData.order_id,
+            payment_id: testPaymentId,
+            signature: "test_verified_signature",
+            isTest: true,
+            amount: billingTotalUSD,
+            currency: "USD",
+          }),
+        });
+
+        const verifyData = await verifyRes.json();
+        if (!verifyRes.ok || !verifyData.success) {
+          throw new Error(verifyData.error || "Payment verification failed.");
+        }
+
+        await upgradePlan(
+          plan.id as SubscriptionPlanId,
+          isAnnual ? "annual" : "monthly",
+          testPaymentId
+        );
+
+        addToast({
+          type: "success",
+          title: "Payment Verified & Plan Activated!",
+          message: `Sandbox payment ${testPaymentId} verified. You are now on ${plan.name}!`,
+        });
+        closeUpgradeModal();
+        setProcessingPlanId(null);
+        return;
+      }
+
       const keyId =
         orderData.key_id ||
         process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID ||
@@ -190,18 +227,17 @@ export function PlanUpgradeModal() {
     <Modal
       isOpen={isUpgradeModalOpen}
       onClose={closeUpgradeModal}
-      title="Upgrade Your Workspace Plan"
-      maxWidth="3xl"
+      title="Choose Your Workspace Plan"
+      maxWidth="5xl"
     >
-
-      <div className="space-y-8 text-[#0A0A0E] dark:text-[#F4F4F8] select-none p-1">
+      <div className="space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] select-none p-1">
         {/* Header & Annual Toggle */}
         <div className="text-center space-y-3 max-w-xl mx-auto">
           <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4] font-sans">
-            Choose the tier that matches your collaboration volume. Upgrade or change anytime.
+            Choose the tier that matches your collaboration volume. Upgrade, downgrade, or change anytime.
           </p>
 
-          <div className="pt-2 flex items-center justify-center gap-3">
+          <div className="pt-1 flex items-center justify-center gap-3">
             <div className="inline-flex items-center p-1 rounded-full bg-[#F4F4F8] dark:bg-[#14141E] border border-black/8 dark:border-white/10 text-xs font-sans">
               <button
                 onClick={() => setIsAnnual(false)}
@@ -211,7 +247,7 @@ export function PlanUpgradeModal() {
                     : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
                 }`}
               >
-                Monthly
+                Monthly Billing
               </button>
               <button
                 onClick={() => setIsAnnual(true)}
@@ -221,7 +257,7 @@ export function PlanUpgradeModal() {
                     : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
                 }`}
               >
-                <span>Annual</span>
+                <span>Annual Billing</span>
                 <span className="px-1.5 py-0.5 rounded-full bg-[#0A0A0E] text-white text-[10px] font-mono font-extrabold">
                   Save 20%
                 </span>
@@ -241,41 +277,58 @@ export function PlanUpgradeModal() {
               <div
                 key={p.id}
                 className={`rounded-3xl p-6 flex flex-col justify-between transition-all relative border ${
-                  p.highlight
-                    ? "bg-gradient-to-b from-[#FFFDF5] to-white dark:from-[#1A1A28] dark:to-[#12121C] border-2 border-[#FFD21F] shadow-[0_8px_30px_rgba(255,210,31,0.2)]"
-                    : isCurrent
-                    ? "bg-white dark:bg-[#181824] border-2 border-black/20 dark:border-[#FFD21F]/50 shadow-xs"
-                    : "bg-white dark:bg-[#14141E] border-black/10 dark:border-white/10 hover:border-black/20 shadow-xs"
+                  isCurrent
+                    ? "bg-white dark:bg-[#151522] border-2 border-emerald-500/60 dark:border-emerald-500/50 shadow-md ring-1 ring-emerald-500/20"
+                    : p.highlight
+                    ? "bg-gradient-to-b from-[#FFFDF5] to-white dark:from-[#1A1A28] dark:to-[#12121C] border-2 border-[#FFD21F] shadow-[0_8px_30px_rgba(255,210,31,0.22)]"
+                    : "bg-white dark:bg-[#14141E] border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 shadow-xs"
                 }`}
               >
-                {p.highlight && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[#FFD21F] text-[#0A0A0E] font-mono font-extrabold text-[10px] tracking-wider uppercase shadow-xs flex items-center gap-1 z-20">
-                    <Sparkles className="w-3 h-3" />
-                    <span>RECOMMENDED</span>
-                  </div>
-                )}
-
-                {isCurrent && !p.highlight && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-black/10 dark:bg-[#FFD21F]/20 border border-black/20 dark:border-[#FFD21F]/40 text-[#0A0A0E] dark:text-[#FFD21F] font-mono font-extrabold text-[10px] tracking-wider uppercase shadow-xs z-20">
-                    CURRENT PLAN
-                  </div>
-                )}
-
                 <div className="space-y-4">
-                  <div>
-                    <div className="flex items-center justify-between gap-2">
-                      <h3 className="text-lg font-bold font-display text-[#0A0A0E] dark:text-white">{p.name}</h3>
-                    </div>
-                    <p className="text-xs text-[#6A6A78] dark:text-[#9A9AA8] mt-1 font-sans">{p.description}</p>
+                  {/* Top Status & Badge Pill Area (Cleanly integrated INSIDE the card) */}
+                  <div className="flex items-center justify-between gap-2 min-h-[26px]">
+                    {isCurrent ? (
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-500/40 text-emerald-700 dark:text-emerald-300 font-mono font-bold text-[10px] tracking-wide uppercase">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                        Current Plan
+                      </span>
+                    ) : (
+                      <span className="text-[10px] font-mono text-[#8A8A9A] uppercase tracking-wider font-semibold">
+                        {p.badge || "TIER"}
+                      </span>
+                    )}
+
+                    {p.highlight && (
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] font-mono font-extrabold text-[10px] tracking-wider uppercase shadow-xs">
+                        <Sparkles className="w-3 h-3 text-[#0A0A0E]" />
+                        Popular
+                      </span>
+                    )}
                   </div>
 
-                  <div className="flex items-baseline gap-1 font-mono pt-2">
-                    <span className="text-3xl font-black text-[#0A0A0E] dark:text-white font-display">
-                      ${price}
-                    </span>
-                    <span className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-sans">
-                      {price === 0 ? "forever" : isAnnual ? "/mo (billed annually)" : "/month"}
-                    </span>
+                  <div>
+                    <h3 className="text-lg font-bold font-display text-[#0A0A0E] dark:text-white">
+                      {p.name}
+                    </h3>
+                    <p className="text-xs text-[#6A6A78] dark:text-[#9A9AA8] mt-1 font-sans leading-relaxed min-h-[36px]">
+                      {p.description}
+                    </p>
+                  </div>
+
+                  <div className="pt-1 font-mono">
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-3xl font-black text-[#0A0A0E] dark:text-white font-display">
+                        ${price}
+                      </span>
+                      <span className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-sans">
+                        {price === 0 ? "forever" : isAnnual ? "/mo (annual)" : "/month"}
+                      </span>
+                    </div>
+                    {isAnnual && price > 0 && (
+                      <p className="text-[10px] text-emerald-600 dark:text-emerald-400 font-sans mt-0.5 font-bold">
+                        Billed annually (${price * 12}/yr)
+                      </p>
+                    )}
                   </div>
 
                   <div className="pt-3 border-t border-black/6 dark:border-white/10 space-y-2">
@@ -291,31 +344,37 @@ export function PlanUpgradeModal() {
                 </div>
 
                 <div className="pt-6">
-                  <button
-                    onClick={() => handleSelectPlan(p)}
-                    disabled={isCurrent || (isLoading && isProcessing)}
-                    className={`w-full py-3 rounded-full text-xs font-bold transition-all flex items-center justify-center gap-2 active:scale-98 ${
-                      isCurrent
-                        ? "bg-black/5 dark:bg-white/10 text-[#8A8A9A] dark:text-white/80 cursor-not-allowed border border-black/10 dark:border-white/20 font-bold"
-                        : p.highlight
-                        ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] shadow-[0_4px_16px_rgba(255,210,31,0.4)] font-extrabold"
-                        : "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] hover:bg-[#1A1A24] dark:hover:bg-[#FFE052] font-bold shadow-md"
-                    }`}
-                  >
-                    {isProcessing ? (
-                      <>
-                        <Loader2 className="w-4 h-4 animate-spin text-current" />
-                        <span>Updating...</span>
-                      </>
-                    ) : isCurrent ? (
-                      <span>Active Plan</span>
-                    ) : (
-                      <>
-                        <span>Select {p.name}</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </>
-                    )}
-                  </button>
+                  {isCurrent ? (
+                    <button
+                      disabled
+                      className="w-full py-3 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 cursor-default flex items-center justify-center gap-1.5"
+                    >
+                      <Check className="w-4 h-4 text-emerald-500" />
+                      <span>Current Active Plan</span>
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => handleSelectPlan(p)}
+                      disabled={isLoading && isProcessing}
+                      className={`w-full py-3 rounded-full text-xs font-bold transition-all flex items-center justify-center gap-2 active:scale-98 ${
+                        p.highlight
+                          ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] shadow-[0_4px_16px_rgba(255,210,31,0.4)] font-extrabold"
+                          : "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] hover:bg-[#1A1A24] dark:hover:bg-[#FFE052] font-bold shadow-md"
+                      }`}
+                    >
+                      {isProcessing ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin text-current" />
+                          <span>Updating...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>Select {p.name}</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </>
+                      )}
+                    </button>
+                  )}
                 </div>
               </div>
             );

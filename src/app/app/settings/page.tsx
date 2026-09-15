@@ -42,6 +42,7 @@ export default function SettingsPage() {
     resumePlan,
     isLoading,
     getQuota,
+    openUpgradeModal,
   } = useSubscriptionStore();
   const { addToast } = useUIStore();
 
@@ -56,6 +57,7 @@ export default function SettingsPage() {
   const handleSetTheme = (themeMode: "light" | "dark") => {
     setCurrentTheme(themeMode);
     localStorage.setItem("collably_theme", themeMode);
+    localStorage.setItem("abeycollab_theme", themeMode);
     if (themeMode === "dark") {
       document.documentElement.classList.add("dark");
       document.documentElement.style.colorScheme = "dark";
@@ -129,6 +131,12 @@ export default function SettingsPage() {
 
   const handlePlanChange = async (targetPlan: SubscriptionPlan) => {
     if (subscription?.planId === targetPlan.id) return;
+
+    const price = isAnnual ? targetPlan.annualPrice : targetPlan.monthlyPrice;
+    if (price > 0) {
+      openUpgradeModal(targetPlan.id as SubscriptionPlanId);
+      return;
+    }
 
     setProcessingPlanId(targetPlan.id);
     try {
