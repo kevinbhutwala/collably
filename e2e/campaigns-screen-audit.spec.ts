@@ -60,6 +60,7 @@ test.describe("Campaigns Screens Verification Audit", () => {
 
     // Campaign cards rendered
     const campaignCards = page.locator("main div.group.rounded-3xl");
+    await expect(campaignCards.first()).toBeVisible({ timeout: 10_000 });
     const count = await campaignCards.count();
     expect(count).toBeGreaterThan(0);
 

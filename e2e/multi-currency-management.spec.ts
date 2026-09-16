@@ -15,8 +15,16 @@ const CREDS = {
 
 async function performLogin(page: Page, email: string, pass: string) {
   await page.goto(`${BASE_URL}/login`, { waitUntil: "domcontentloaded" });
-  const emailInput = page.locator('input[type="email"], input[name="email"], input[placeholder*="email" i]');
-  const passwordInput = page.locator('input[type="password"], input[name="password"]');
+  await page.evaluate(() => {
+    try {
+      localStorage.clear();
+      sessionStorage.clear();
+    } catch {}
+  });
+  await page.reload({ waitUntil: "domcontentloaded" });
+
+  const emailInput = page.locator('input[type="email"], input[name="email"], input[placeholder*="email" i]').first();
+  const passwordInput = page.locator('input[type="password"], input[name="password"]').first();
   const submitBtn = page.locator('button[type="submit"]').first();
 
   await expect(emailInput).toBeVisible({ timeout: 10_000 });
@@ -111,7 +119,7 @@ test.describe("Multi-Currency Management: USD, INR, GBP, AED Support", () => {
     // Switch to Payout & Banking tab and verify settlement currency reflects selection
     const payoutTab = page.getByRole("button", { name: /Payout & Banking/i });
     await payoutTab.click();
-    await expect(page.getByText("Settlement & Escrow Currency")).toBeVisible();
+    await expect(page.getByText(/Settlement & Escrow Currency|Settlement &amp; Escrow Currency/i).first()).toBeVisible({ timeout: 10_000 });
   });
 
   test("3. Earnings Dashboard: Metric cards dynamically adjust to selected currency (USD, INR, GBP, AED)", async ({ page }) => {
@@ -254,9 +262,17 @@ test.describe("Multi-Currency Management: USD, INR, GBP, AED Support", () => {
     // Currency selector button in header
     const currencyBtn = page.locator('[data-testid="currency-selector-button"]').first();
     await expect(currencyBtn).toBeVisible({ timeout: 10_000 });
+    const popover = page.locator('[data-testid="currency-selector-popover"]').first();
+
+    // Ensure popover opens reliably after hydration
+    await expect(async () => {
+      if (!await popover.isVisible()) {
+        await currencyBtn.click();
+      }
+      await expect(popover).toBeVisible({ timeout: 2000 });
+    }).toPass({ timeout: 10_000 });
 
     // Ensure we start with USD
-    await currencyBtn.click();
     await page.locator('[data-testid="currency-option-USD"]').first().click();
     await expect(currencyBtn).toContainText("USD");
 
@@ -265,7 +281,13 @@ test.describe("Multi-Currency Management: USD, INR, GBP, AED Support", () => {
     await expect(usdRateBadge).toBeVisible();
 
     // Switch to INR via navbar currency selector
-    await currencyBtn.click();
+    await expect(async () => {
+      if (!await popover.isVisible()) {
+        await currencyBtn.click();
+      }
+      await expect(popover).toBeVisible({ timeout: 2000 });
+    }).toPass({ timeout: 10_000 });
+
     await page.locator('[data-testid="currency-option-INR"]').first().click();
     await expect(currencyBtn).toContainText("INR");
 

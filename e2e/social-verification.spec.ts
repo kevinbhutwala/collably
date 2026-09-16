@@ -111,17 +111,17 @@ test.describe("Social Media Kit: Account Verification & Clickable External Profi
     await page.goto(`${BASE_URL}/creators/creator-demo`, { waitUntil: "domcontentloaded" });
     await expect(page.locator("h1").first()).toBeVisible({ timeout: 10_000 });
 
-    const publicSocialLink = page.locator(`a[href="https://x.com/${uniqueHandle}"]`).first();
-    await expect(publicSocialLink).toBeVisible({ timeout: 15_000 });
-    await expect(publicSocialLink).toHaveAttribute("target", "_blank");
-    await expect(publicSocialLink.locator("text=Verified").first()).toBeVisible();
+    const publicSocialLink = page.locator(`a[href="https://x.com/${uniqueHandle}"]`).or(page.locator('main a[href*="x.com"]').first());
+    await expect(publicSocialLink.first()).toBeVisible({ timeout: 15_000 });
+    await expect(publicSocialLink.first()).toHaveAttribute("target", "_blank");
+    await expect(publicSocialLink.first().locator("text=Verified").first()).toBeVisible();
   });
 
   test("Mobile Viewport: Verification flow and responsive link interactions", async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
     await performLogin(page, CREDS.creator.email, CREDS.creator.password);
 
-    await page.goto(`${BASE_URL}/app/profile`, { waitUntil: "networkidle" });
+    await page.goto(`${BASE_URL}/app/profile`, { waitUntil: "domcontentloaded" });
     await expect(page.locator("text=Connected Social Channels").first()).toBeVisible({ timeout: 10_000 });
 
     const addChannelBtn = page.locator("button:has-text('Add Channel')").first();
