@@ -18,10 +18,25 @@ export function useGlobalCurrency() {
   } = useUIStore();
 
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("abeycollab_currency") as SupportedCurrency;
+      if (saved && ["INR", "USD", "GBP", "AED"].includes(saved)) {
+        setSelectedCurrency(saved);
+      } else {
+        try {
+          const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+          if (tz === "Asia/Kolkata" || tz === "Asia/Calcutta") {
+            setSelectedCurrency("INR");
+          }
+        } catch {
+          // Ignore
+        }
+      }
+    }
     if (!rates || Object.keys(rates).length === 0) {
       fetchLiveRates();
     }
-  }, [rates, fetchLiveRates]);
+  }, [rates, fetchLiveRates, setSelectedCurrency]);
 
   const format = (
     amount: number | string | null | undefined,
