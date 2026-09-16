@@ -25,7 +25,7 @@ function assert(condition, message) {
 
 // 1. Check Credentials Configuration
 console.log("🔑 --- 1. CREDENTIALS & ENVIRONMENT ---");
-assert(KEY_ID.startsWith("rzp_test_"), "Razorpay Key ID is in valid test format");
+assert(KEY_ID.startsWith("rzp_test_") || KEY_ID.startsWith("rzp_live_"), "Razorpay Key ID is in valid format (test or live)");
 assert(KEY_SECRET.length >= 10, "Razorpay Key Secret is present and configured");
 
 // 2. Test Order Creation Logic

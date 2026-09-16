@@ -1,4 +1,4 @@
-import { CreatorCategory, DeliverableType, PlatformType } from "../types";
+import { CreatorCategory, DeliverableType, PlatformType } from "../types/index";
 
 export const CATEGORIES: CreatorCategory[] = [
   'Technology & AI',
@@ -42,7 +42,7 @@ export const CREATOR_TIERS = [
   { label: 'Premium (1M+)', value: 'Premium', min: 1000000, max: 100000000, avgRate: '$15,000+' },
 ];
 
-import { SubscriptionPlan, SubscriptionPlanId } from "../types";
+import { SubscriptionPlan, SubscriptionPlanId } from "../types/index";
 
 export const CREATOR_PLANS: Record<string, SubscriptionPlan> = {
   creator_starter: {

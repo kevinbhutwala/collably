@@ -94,32 +94,74 @@ async function runAutoTests() {
     assert("Public Routes", `${route.name} (${route.path}) returned HTTP ${res.status}`, res.status === 200 && !res.failed, res.error);
   }
 
-  // ── SECTION 2: AUTHENTICATED APP WORKSPACES ──
-  console.log("\n💼 --- 2. WORKSPACE APP MODULES & DASHBOARDS ---");
-  const appRoutes = [
-    { path: "/app/dashboard", name: "Main Analytics & Operations Dashboard" },
+  // ── SECTION 2: GUEST RBAC ISOLATION CHECKS ──
+  console.log("\n🛡️ --- 2. GUEST RBAC ISOLATION & REDIRECT GATES ---");
+  const guestDashboard = await fetchRoute("/app/dashboard");
+  assert("RBAC Isolation", "Unauthenticated /app/dashboard redirects to login (HTTP 307)", guestDashboard.status === 307);
+  const guestAdmin = await fetchRoute("/admin");
+  assert("RBAC Isolation", "Unauthenticated /admin redirects to login (HTTP 307)", guestAdmin.status === 307);
+
+  // ── SECTION 3: AUTHENTICATED CREATOR WORKSPACES ──
+  console.log("\n💼 --- 3. AUTHENTICATED CREATOR WORKSPACE APPS ---");
+  const creatorLogin = await fetchRoute("/api/auth/login", {
+    method: "POST",
+    body: { email: "creator@abeycollab.io", password: "password123" },
+  });
+  const creatorCookie = creatorLogin.headers?.["set-cookie"]?.[0]?.split(";")?.[0] || `abeycollab_session=${creatorLogin.json?.token}`;
+  assert("Auth Service", "Creator login succeeded (HTTP 200)", creatorLogin.status === 200 && !!creatorLogin.json?.token);
+
+  const creatorRoutes = [
+    { path: "/app/dashboard", name: "Creator Operations Dashboard" },
     { path: "/app/messages", name: "Direct Messages & Threaded Channels" },
     { path: "/app/collaborations", name: "4K Frame QA & Collaboration Studio" },
     { path: "/app/campaigns", name: "Brand Campaign Management" },
     { path: "/app/applications", name: "Pitch Applications Desk" },
     { path: "/app/analytics", name: "Performance & ROAS Attribution" },
     { path: "/app/earnings", name: "Escrow Ledger & Payout Disbursements" },
-    { path: "/app/profile", name: "Creator/Brand Media Kit Editor" },
+    { path: "/app/profile", name: "Creator Media Kit Editor" },
     { path: "/app/settings", name: "Account & Payout Security Settings" },
     { path: "/app/support", name: "Concierge Support Desk" },
-    { path: "/app/brand/campaigns", name: "Brand Campaigns Overview" },
-    { path: "/app/brand/campaigns/create", name: "7-Step AI Campaign Wizard" },
-    { path: "/app/brand/crm", name: "Creator Relationship CRM" },
-    { path: "/app/brand/shortlists", name: "Curated Talent Shortlists" },
+    { path: "/app/trending", name: "Dedicated Trending Creators Hub" },
+    { path: "/app/growth", name: "Creator Growth Center" },
   ];
 
-  for (const route of appRoutes) {
-    const res = await fetchRoute(route.path);
-    assert("App Modules", `${route.name} (${route.path}) returned HTTP ${res.status}`, res.status === 200);
+  for (const route of creatorRoutes) {
+    const res = await fetchRoute(route.path, { headers: { Cookie: creatorCookie } });
+    assert("Creator Workspace", `${route.name} (${route.path}) returned HTTP ${res.status}`, res.status === 200);
   }
 
-  // ── SECTION 3: ADMIN & SUPERVISION SUITE ──
-  console.log("\n👑 --- 3. ADMIN GOVERNANCE & SUPERVISION MODULES ---");
+  // ── SECTION 4: AUTHENTICATED BRAND WORKSPACES ──
+  console.log("\n🏢 --- 4. AUTHENTICATED BRAND WORKSPACE APPS ---");
+  const brandLogin = await fetchRoute("/api/auth/login", {
+    method: "POST",
+    body: { email: "brand@abeycollab.io", password: "password123" },
+  });
+  const brandCookie = brandLogin.headers?.["set-cookie"]?.[0]?.split(";")?.[0] || `abeycollab_session=${brandLogin.json?.token}`;
+  assert("Auth Service", "Brand login succeeded (HTTP 200)", brandLogin.status === 200 && !!brandLogin.json?.token);
+
+  const brandRoutes = [
+    { path: "/app/brand/campaigns", name: "Brand Campaigns Overview" },
+    { path: "/app/brand/campaigns/create", name: "7-Step AI Campaign Wizard" },
+    { path: "/app/brand/creators", name: "Creator Discovery Directory" },
+    { path: "/app/brand/crm", name: "Creator Relationship CRM" },
+    { path: "/app/brand/shortlists", name: "Curated Talent Shortlists" },
+    { path: "/app/brand/analytics", name: "Campaign ROI Telemetry" },
+  ];
+
+  for (const route of brandRoutes) {
+    const res = await fetchRoute(route.path, { headers: { Cookie: brandCookie } });
+    assert("Brand Workspace", `${route.name} (${route.path}) returned HTTP ${res.status}`, res.status === 200);
+  }
+
+  // ── SECTION 5: ADMIN GOVERNANCE & SUPERVISION SUITE ──
+  console.log("\n👑 --- 5. ADMIN GOVERNANCE & SUPERVISION MODULES ---");
+  const adminLogin = await fetchRoute("/api/auth/login", {
+    method: "POST",
+    body: { email: "kevinbhutwala417@gmail.com", password: "admin123" },
+  });
+  const adminCookie = adminLogin.headers?.["set-cookie"]?.[0]?.split(";")?.[0] || `abeycollab_session=${adminLogin.json?.token}`;
+  assert("Auth Service", "Admin login succeeded (HTTP 200)", adminLogin.status === 200 && !!adminLogin.json?.token);
+
   const adminRoutes = [
     { path: "/admin", name: "Admin Executive Command Center" },
     { path: "/admin/audit", name: "Immutable Audit Log Stream" },
@@ -134,7 +176,7 @@ async function runAutoTests() {
   ];
 
   for (const route of adminRoutes) {
-    const res = await fetchRoute(route.path);
+    const res = await fetchRoute(route.path, { headers: { Cookie: adminCookie } });
     assert("Admin Suite", `${route.name} (${route.path}) returned HTTP ${res.status}`, res.status === 200);
   }
 
