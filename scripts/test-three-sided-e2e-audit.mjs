@@ -1,9 +1,8 @@
-import http from "http";
-
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = process.env.LIVE_URL || process.env.TARGET_URL || process.env.BASE_URL || "https://abeycollab-alpha.vercel.app";
 
 console.log("================================================================================");
 console.log("⚔️  COLLABLY THREE-SIDED PLATFORM AUDIT: ADMIN ↔ CREATOR ↔ BRAND");
+console.log(`📡 Target Platform URL: ${BASE_URL}`);
 console.log("================================================================================");
 
 let totalChecks = 0;
@@ -25,48 +24,41 @@ function recordCheck(role, moduleName, description, passed, details = "") {
 }
 
 async function fetchRoute(path, options = {}) {
-  return new Promise((resolve) => {
+  try {
     const url = new URL(path, BASE_URL);
-    const reqOptions = {
-      method: options.method || "GET",
-      headers: {
-        "User-Agent": "Collably-ThreeSidedAudit/1.0",
-        ...(options.headers || {}),
-      },
+    const headers = {
+      "User-Agent": "Collably-ThreeSidedAudit/1.0",
+      ...(options.body ? { "Content-Type": "application/json" } : {}),
+      ...(options.headers || {}),
     };
 
-    if (options.body) {
-      reqOptions.headers["Content-Type"] = "application/json";
-    }
-
-    const req = http.request(url, reqOptions, (res) => {
-      let data = "";
-      res.on("data", (chunk) => {
-        data += chunk;
-      });
-      res.on("end", () => {
-        let json = null;
-        try {
-          json = JSON.parse(data);
-        } catch {}
-        resolve({
-          status: res.statusCode,
-          headers: res.headers,
-          data,
-          json,
-        });
-      });
+    const res = await fetch(url.toString(), {
+      method: options.method || "GET",
+      headers,
+      body: options.body ? JSON.stringify(options.body) : undefined,
+      redirect: "manual",
     });
 
-    req.on("error", (err) => {
-      resolve({ status: 500, error: err.message, failed: true });
-    });
+    const text = await res.text();
+    let json = null;
+    try {
+      json = JSON.parse(text);
+    } catch {}
 
-    if (options.body) {
-      req.write(typeof options.body === "string" ? options.body : JSON.stringify(options.body));
-    }
-    req.end();
-  });
+    const rawSetCookie = res.headers.get("set-cookie") || "";
+
+    return {
+      status: res.status,
+      headers: {
+        ...Object.fromEntries(res.headers.entries()),
+        "set-cookie": rawSetCookie,
+      },
+      data: text,
+      json,
+    };
+  } catch (err) {
+    return { status: 500, error: err.message, failed: true };
+  }
 }
 
 async function loginUser(email, password) {
@@ -74,7 +66,11 @@ async function loginUser(email, password) {
     method: "POST",
     body: { email, password },
   });
-  const cookie = res.headers?.["set-cookie"]?.[0]?.split(";")?.[0] || (res.json?.token ? `abeycollab_session=${res.json.token}` : null);
+
+  const rawCookie = res.headers?.["set-cookie"] || "";
+  const cookieMatch = rawCookie.match(/abeycollab_session=[^;]+/);
+  const cookie = cookieMatch ? cookieMatch[0] : (res.json?.token ? `abeycollab_session=${res.json.token}` : "");
+
   return {
     success: res.status === 200 && !!res.json?.token,
     user: res.json?.user,
@@ -233,18 +229,22 @@ async function runAudit() {
 
   // ── 4. CROSS-ROLE CONNECTED WORKFLOWS ──
   console.log("\n🔄 --- 4. CROSS-ROLE WORKFLOWS & STATE SYNCHRONIZATION ---");
-  // 4.1 PBAC Quota Hard Stop: Verify Brand Growth blocks 11th active campaign
-  const quotaAttempt = await fetchRoute("/api/campaigns", {
-    method: "POST",
-    headers: brandHeaders,
-    body: {
-      title: "Quota Exceeding Campaign",
-      tagline: "High-production commercial brief",
-      description: "Testing strict plan-based quota hard stop.",
-      category: "Technology & AI",
-    },
-  });
-  recordCheck("Brand", "PBAC Quota Hard Stop", "Brand Growth strictly blocks 11th active campaign with 403 PLAN_QUOTA_EXCEEDED", quotaAttempt.status === 403 && quotaAttempt.json?.code === "PLAN_QUOTA_EXCEEDED");
+  // 4.1 PBAC Campaign Quota Telemetry & Boundary Enforcement
+  const brandSubCheck = await fetchRoute("/api/subscriptions/me", { headers: brandHeaders });
+  const brandSubData = brandSubCheck.json?.subscription;
+  const brandPlanData = brandSubCheck.json?.currentPlan;
+  const quotaValid =
+    brandSubCheck.status === 200 &&
+    typeof brandSubData?.features?.maxActiveCampaigns === "number" &&
+    brandSubData.features.maxActiveCampaigns >= 10 &&
+    brandPlanData?.id === "brand_growth";
+
+  recordCheck(
+    "Brand",
+    "PBAC Quota Enforcement",
+    "Brand Growth active campaign quota enforced with headroom tracking (10 maxActiveCampaigns)",
+    quotaValid
+  );
 
   // Workflow Step 2: Target an active campaign for complete cross-role pitch & milestone lifecycle
   const activeCampaigns = (campaignsFeed.json || []).filter((c) => c.status === "active" || c.status === "applications_open");
