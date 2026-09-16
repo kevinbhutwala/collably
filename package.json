@@ -18,6 +18,8 @@
     "test:all": "node scripts/test-multi-currency-engine.mjs && node scripts/run-tests.mjs && node scripts/test-subscriptions.mjs && node scripts/test-subscriptions-e2e.mjs && node scripts/test-payment-protection.mjs && node scripts/test-full-platform-e2e.mjs && node scripts/test-marketplace-intelligence.mjs && node --experimental-strip-types scripts/e2e-full-system-test.ts && node --experimental-strip-types scripts/frontend-journey-autotest.ts",
     "test:live": "node --env-file=.env.local --experimental-strip-types scripts/live-supabase-full-e2e.ts",
     "test:playwright": "playwright test",
+    "test:audit": "node scripts/test-three-sided-e2e-audit.mjs",
+    "test:sanity": "node scripts/live-production-sanity-test.mjs",
     "db:migrate": "node --env-file=.env.local --experimental-strip-types scripts/migrate-legacy-data.ts",
     "db:seed": "node --env-file=.env.local --experimental-strip-types scripts/seed.ts",
     "db:seed:supabase": "node --env-file=.env.local --experimental-strip-types scripts/seed-supabase.ts",
