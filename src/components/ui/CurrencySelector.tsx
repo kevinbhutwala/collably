@@ -52,9 +52,6 @@ export function CurrencySelector({
       onCurrencyChange(code);
     }
     setIsOpen(false);
-    try {
-      router.refresh();
-    } catch {}
   };
 
   if (variant === "cards") {

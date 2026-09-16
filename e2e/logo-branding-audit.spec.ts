@@ -1,8 +1,10 @@
 import { test, expect } from '@playwright/test';
 
+const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
+
 test.describe('AbeyCollab Logo & Brand Visual Audit', () => {
   test('landing page renders updated handshake emblem logo', async ({ page }) => {
-    await page.goto('http://localhost:3000/');
+    await page.goto(`${BASE_URL}/`);
     await page.waitForLoadState('networkidle');
 
     // Check that AbeyCollab logo is visible
@@ -33,7 +35,7 @@ test.describe('AbeyCollab Logo & Brand Visual Audit', () => {
   });
 
   test('auth page renders updated handshake logo', async ({ page }) => {
-    await page.goto('http://localhost:3000/login');
+    await page.goto(`${BASE_URL}/login`);
     await page.waitForLoadState('networkidle');
 
     // Header logo in auth layout
@@ -48,7 +50,7 @@ test.describe('AbeyCollab Logo & Brand Visual Audit', () => {
 
   test('app dashboard header renders updated logo', async ({ page }) => {
     // Seed session in localStorage to access /app/dashboard
-    await page.goto('http://localhost:3000/login');
+    await page.goto(`${BASE_URL}/login`);
     await page.evaluate(() => {
       localStorage.setItem('auth-storage', JSON.stringify({
         state: {
@@ -67,7 +69,7 @@ test.describe('AbeyCollab Logo & Brand Visual Audit', () => {
       }));
     });
 
-    await page.goto('http://localhost:3000/app/dashboard');
+    await page.goto(`${BASE_URL}/app/dashboard`);
     await page.waitForLoadState('networkidle');
 
     // Dashboard header logo

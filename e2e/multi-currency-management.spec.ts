@@ -14,7 +14,7 @@ const CREDS = {
 };
 
 async function performLogin(page: Page, email: string, pass: string) {
-  await page.goto(`${BASE_URL}/login`, { waitUntil: "networkidle" });
+  await page.goto(`${BASE_URL}/login`, { waitUntil: "domcontentloaded" });
   const emailInput = page.locator('input[type="email"], input[name="email"], input[placeholder*="email" i]');
   const passwordInput = page.locator('input[type="password"], input[name="password"]');
   const submitBtn = page.locator('button[type="submit"]').first();
@@ -34,7 +34,7 @@ test.describe("Multi-Currency Management: USD, INR, GBP, AED Support", () => {
   });
 
   test("1. Public Navbar: Currency Selector popover allows seamless switching between USD, INR, GBP, AED", async ({ page }) => {
-    await page.goto(`${BASE_URL}/`, { waitUntil: "networkidle" });
+    await page.goto(`${BASE_URL}/`, { waitUntil: "domcontentloaded" });
 
     // Ensure CurrencySelector button is present on Navbar
     const currencyBtn = page.locator('[data-testid="currency-selector-button"]').first();
@@ -78,7 +78,7 @@ test.describe("Multi-Currency Management: USD, INR, GBP, AED Support", () => {
   test("2. Settings Page: Regional Preferences & Theme displays interactive currency cards and live benchmark comparisons", async ({ page }) => {
     await performLogin(page, CREDS.creator.email, CREDS.creator.password);
 
-    await page.goto(`${BASE_URL}/app/settings`, { waitUntil: "networkidle" });
+    await page.goto(`${BASE_URL}/app/settings`, { waitUntil: "domcontentloaded" });
 
     // Switch to Preferences & Theme tab
     const prefsTab = page.getByRole("button", { name: /Preferences & Theme/i });
@@ -118,7 +118,7 @@ test.describe("Multi-Currency Management: USD, INR, GBP, AED Support", () => {
     await performLogin(page, CREDS.creator.email, CREDS.creator.password);
 
     // Set currency to GBP via settings
-    await page.goto(`${BASE_URL}/app/settings`, { waitUntil: "networkidle" });
+    await page.goto(`${BASE_URL}/app/settings`, { waitUntil: "domcontentloaded" });
     const prefsTab = page.getByRole("button", { name: /Preferences & Theme/i });
     await prefsTab.click();
     const cardGBP = page.locator('[data-testid="currency-card-GBP"]').first();
@@ -126,7 +126,7 @@ test.describe("Multi-Currency Management: USD, INR, GBP, AED Support", () => {
     await expect(cardGBP).toContainText("Active");
 
     // Navigate to Earnings page
-    await page.goto(`${BASE_URL}/app/earnings`, { waitUntil: "networkidle" });
+    await page.goto(`${BASE_URL}/app/earnings`, { waitUntil: "domcontentloaded" });
     await expect(page.getByRole("main").getByRole("heading", { name: /Earnings & Payouts/i })).toBeVisible({ timeout: 10_000 });
 
     // Verify metric cards display GBP label
@@ -148,7 +148,7 @@ test.describe("Multi-Currency Management: USD, INR, GBP, AED Support", () => {
   test("4. Campaign Creator: Step 5 allows selecting currency pool (USD, INR, GBP, AED) with dynamic labels", async ({ page }) => {
     await performLogin(page, CREDS.brand.email, CREDS.brand.password);
 
-    await page.goto(`${BASE_URL}/app/brand/campaigns/create`, { waitUntil: "networkidle" });
+    await page.goto(`${BASE_URL}/app/brand/campaigns/create`, { waitUntil: "domcontentloaded" });
     await expect(page.getByRole("heading", { name: /Campaign Overview & Basics/i })).toBeVisible({ timeout: 10_000 });
 
     // Fill Step 1
@@ -194,7 +194,7 @@ test.describe("Multi-Currency Management: USD, INR, GBP, AED Support", () => {
   test("5. Single Currency Display Rule: Platform never displays compound slashed currencies", async ({ page }) => {
     await performLogin(page, CREDS.creator.email, CREDS.creator.password);
 
-    await page.goto(`${BASE_URL}/app/earnings`, { waitUntil: "networkidle" });
+    await page.goto(`${BASE_URL}/app/earnings`, { waitUntil: "domcontentloaded" });
     const content = await page.content();
 
     // Verify no compound slashes like "₹10,000 / $120" or "$500 / ₹"
@@ -249,7 +249,7 @@ test.describe("Multi-Currency Management: USD, INR, GBP, AED Support", () => {
   });
 
   test("7. Talent Directory: Switching currency immediately updates Starting Rate without manual page refresh", async ({ page }) => {
-    await page.goto(`${BASE_URL}/creators`, { waitUntil: "networkidle" });
+    await page.goto(`${BASE_URL}/creators`, { waitUntil: "domcontentloaded" });
 
     // Currency selector button in header
     const currencyBtn = page.locator('[data-testid="currency-selector-button"]').first();

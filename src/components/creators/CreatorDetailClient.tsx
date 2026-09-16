@@ -32,18 +32,25 @@ export function CreatorDetailClient({
   const [loading, setLoading] = useState(!initialCreator);
 
   useEffect(() => {
-    if (!creator) {
-      const fetch = async () => {
-        setLoading(true);
+    let isMounted = true;
+    const fetchLatest = async () => {
+      try {
         const data = await creatorService.getCreatorById(creatorId);
-        setCreator(data || null);
-        setLoading(false);
-      };
-      if (creatorId) {
-        fetch();
+        if (data && isMounted) {
+          setCreator(data);
+        }
+      } catch {
+      } finally {
+        if (isMounted) setLoading(false);
       }
+    };
+    if (creatorId) {
+      fetchLatest();
     }
-  }, [creatorId, creator]);
+    return () => {
+      isMounted = false;
+    };
+  }, [creatorId]);
 
   if (loading) {
     return (

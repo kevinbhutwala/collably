@@ -14,7 +14,7 @@ const CREDS = {
 };
 
 async function performLogin(page: Page, email: string, pass: string) {
-  await page.goto(`${BASE_URL}/login`, { waitUntil: "networkidle" });
+  await page.goto(`${BASE_URL}/login`, { waitUntil: "domcontentloaded" });
   const emailInput = page.locator('input[type="email"], input[name="email"], input[placeholder*="email" i]');
   const passwordInput = page.locator('input[type="password"], input[name="password"]');
   const submitBtn = page.locator('button[type="submit"]').first();
@@ -31,7 +31,7 @@ async function performLogin(page: Page, email: string, pass: string) {
 test.describe("Campaigns Screens Verification Audit", () => {
   test("1. Brand 'My Campaigns' Screen (/app/brand/campaigns) loads, displays stats, cards, and filters", async ({ page }) => {
     await performLogin(page, CREDS.brand.email, CREDS.brand.password);
-    await page.goto(`${BASE_URL}/app/brand/campaigns`, { waitUntil: "networkidle" });
+    await page.goto(`${BASE_URL}/app/brand/campaigns`, { waitUntil: "domcontentloaded" });
 
     // Main header validation
     const header = page.locator("main h1").first();
@@ -73,7 +73,7 @@ test.describe("Campaigns Screens Verification Audit", () => {
 
   test("2. Currency Switcher Reactivity on 'My Campaigns' screen", async ({ page }) => {
     await performLogin(page, CREDS.brand.email, CREDS.brand.password);
-    await page.goto(`${BASE_URL}/app/brand/campaigns`, { waitUntil: "networkidle" });
+    await page.goto(`${BASE_URL}/app/brand/campaigns`, { waitUntil: "domcontentloaded" });
 
     const currencyBtn = page.locator('[data-testid="currency-selector-button"]').first();
     if (await currencyBtn.isVisible()) {
@@ -96,7 +96,7 @@ test.describe("Campaigns Screens Verification Audit", () => {
 
   test("3. Discover Campaigns Screen (/app/campaigns) loads and displays CampaignCards", async ({ page }) => {
     await performLogin(page, CREDS.creator.email, CREDS.creator.password);
-    await page.goto(`${BASE_URL}/app/campaigns`, { waitUntil: "networkidle" });
+    await page.goto(`${BASE_URL}/app/campaigns`, { waitUntil: "domcontentloaded" });
 
     const header = page.locator("main h1").first();
     await expect(header).toContainText("Discover Campaigns");
@@ -113,7 +113,7 @@ test.describe("Campaigns Screens Verification Audit", () => {
 
   test("4. Applications Screen (/app/applications) displays proposed fees with currency", async ({ page }) => {
     await performLogin(page, CREDS.brand.email, CREDS.brand.password);
-    await page.goto(`${BASE_URL}/app/applications`, { waitUntil: "networkidle" });
+    await page.goto(`${BASE_URL}/app/applications`, { waitUntil: "domcontentloaded" });
 
     // Verify main page header
     const heading = page.locator("main h1").first();

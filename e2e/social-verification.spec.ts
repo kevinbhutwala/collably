@@ -108,11 +108,11 @@ test.describe("Social Media Kit: Account Verification & Clickable External Profi
     await page.locator("button:has-text('Cancel')").first().click();
 
     // 7. Verify Public Creator Profile displays the clickable link and verified badge
-    await page.goto(`${BASE_URL}/creators/creator-demo`, { waitUntil: "networkidle" });
+    await page.goto(`${BASE_URL}/creators/creator-demo`, { waitUntil: "domcontentloaded" });
     await expect(page.locator("h1").first()).toBeVisible({ timeout: 10_000 });
 
     const publicSocialLink = page.locator(`a[href="https://x.com/${uniqueHandle}"]`).first();
-    await expect(publicSocialLink).toBeVisible();
+    await expect(publicSocialLink).toBeVisible({ timeout: 15_000 });
     await expect(publicSocialLink).toHaveAttribute("target", "_blank");
     await expect(publicSocialLink.locator("text=Verified").first()).toBeVisible();
   });

@@ -1,9 +1,11 @@
 import { test, expect } from '@playwright/test';
 
+const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
+
 test.describe('Modals Dark Mode Text & Contrast Audit', () => {
   test('Campaign proposal modal has high-contrast legible text in dark mode', async ({ page }) => {
     // Seed creator auth so "Apply to Campaign" button is active
-    await page.goto('http://localhost:3000/login');
+    await page.goto(`${BASE_URL}/login`);
     await page.evaluate(() => {
       localStorage.setItem('auth-storage', JSON.stringify({
         state: {
@@ -20,7 +22,7 @@ test.describe('Modals Dark Mode Text & Contrast Audit', () => {
       }));
     });
 
-    await page.goto('http://localhost:3000/campaigns/camp-1');
+    await page.goto(`${BASE_URL}/campaigns/camp-1`);
     await page.waitForLoadState('networkidle');
 
     // Enable dark mode
@@ -45,7 +47,7 @@ test.describe('Modals Dark Mode Text & Contrast Audit', () => {
   });
 
   test('Creator Quick View modal has dark mode background and legible text', async ({ page }) => {
-    await page.goto('http://localhost:3000/creators');
+    await page.goto(`${BASE_URL}/creators`);
     await page.waitForLoadState('networkidle');
 
     // Enable dark mode
