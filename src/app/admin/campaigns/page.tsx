@@ -1,21 +1,69 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { Campaign } from "@/core/types";
 import { MOCK_CAMPAIGNS } from "@/mock/campaigns.mock";
 import { formatCurrency } from "@/core/utils/formatters";
 import { useUIStore } from "@/stores/ui.store";
 
 export default function AdminCampaignsQueuePage() {
   const { addToast } = useUIStore();
-  const [campaigns] = useState(MOCK_CAMPAIGNS);
+  const [campaigns, setCampaigns] = useState<Campaign[]>(MOCK_CAMPAIGNS);
+  const [loading, setLoading] = useState(true);
 
-  const handleApprove = (id: string) => {
-    addToast({
-      type: "success",
-      title: "Campaign Approved",
-      message: "Campaign brief approved and broadcasted to creator discovery index.",
-    });
+  const fetchCampaigns = async () => {
+    try {
+      const res = await fetch("/api/campaigns", { cache: "no-store" });
+      if (res.ok) {
+        const data = await res.json();
+        if (Array.isArray(data) && data.length > 0) {
+          setCampaigns(data);
+        }
+      }
+    } catch {
+      // Keep mock fallback
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchCampaigns();
+  }, []);
+
+  const handleUpdateStatus = async (id: string, newStatus: string) => {
+    try {
+      const res = await fetch(`/api/campaigns/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: newStatus }),
+      });
+
+      if (res.ok) {
+        setCampaigns((prev) =>
+          prev.map((c) => (c.id === id ? { ...c, status: newStatus as any } : c))
+        );
+        addToast({
+          type: "success",
+          title: `Campaign ${newStatus === "active" ? "Approved" : "Status Updated"}`,
+          message: `Campaign brief status is now ${newStatus}.`,
+        });
+      } else {
+        const data = await res.json();
+        addToast({
+          type: "error",
+          title: "Update Failed",
+          message: data.error || "Failed to update campaign status.",
+        });
+      }
+    } catch (err: any) {
+      addToast({
+        type: "error",
+        title: "Network Error",
+        message: err.message || "Failed to communicate with API.",
+      });
+    }
   };
 
   return (
@@ -43,18 +91,18 @@ export default function AdminCampaignsQueuePage() {
                 <div className="flex items-center gap-2">
                   <span className="font-bold text-sm text-[#0A0A0E] dark:text-white font-display">{c.title}</span>
                   <span className="px-2.5 py-0.5 rounded-full bg-black/5 dark:bg-white/10 border border-black/8 dark:border-white/10 text-[#0A0A0E] dark:text-[#EAEAEF] font-mono text-[10px] font-bold">
-                    {c.brand.companyName}
+                    {c.brand?.companyName || "Brand Partner"}
                   </span>
                 </div>
                 <p className="text-xs text-[#7A7A8A] dark:text-[#8E8EA4] font-mono">
-                  {c.category} • {c.deliverables.length} Deliverable Types • {c.acceptedCount}/{c.maxCreators} Creators
+                  {c.category} • {c.deliverables?.length || 1} Deliverable Types • {c.acceptedCount || 0}/{c.maxCreators || 5} Creators
                 </p>
               </div>
 
               <div className="flex items-center gap-4 font-mono text-xs">
                 <div>
                   <span className="text-[#7A7A8A] dark:text-[#8E8EA4] block text-[10px]">Total Escrow</span>
-                  <span className="text-[#0A0A0E] dark:text-white font-extrabold">{formatCurrency(c.budget.totalBudget)}</span>
+                  <span className="text-[#0A0A0E] dark:text-white font-extrabold">{formatCurrency(c.budget?.totalBudget || 5000)}</span>
                 </div>
                 <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30 text-[10px] font-mono font-bold uppercase">
                   {c.status}
@@ -65,12 +113,21 @@ export default function AdminCampaignsQueuePage() {
                       Inspect
                     </button>
                   </Link>
-                  <button
-                    onClick={() => handleApprove(c.id)}
-                    className="px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10"
-                  >
-                    Approve Brief
-                  </button>
+                  {c.status !== "active" ? (
+                    <button
+                      onClick={() => handleUpdateStatus(c.id, "active")}
+                      className="px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10"
+                    >
+                      Approve Brief
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => handleUpdateStatus(c.id, "suspended")}
+                      className="px-4 py-2 rounded-full bg-rose-500/10 hover:bg-rose-500/20 text-rose-600 dark:text-rose-400 text-xs font-bold transition-all border border-rose-500/20"
+                    >
+                      Suspend
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

@@ -21,6 +21,7 @@ import {
   AlgorithmWeightsConfig,
   UserBadgeEntity,
   SuspiciousActivityRecord,
+  FeatureFlagConfig,
 } from "@/core/types";
 
 
@@ -129,6 +130,7 @@ export interface DatabaseState {
   algorithmConfig?: AlgorithmWeightsConfig;
   userBadges?: UserBadgeEntity[];
   suspiciousActivities?: SuspiciousActivityRecord[];
+  featureFlags?: FeatureFlagConfig;
 }
 
 

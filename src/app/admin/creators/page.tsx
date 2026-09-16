@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { CreatorProfile } from "@/core/types";
 import { MOCK_CREATORS } from "@/mock/creators.mock";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { formatNumber } from "@/core/utils/formatters";
@@ -9,17 +10,62 @@ import { CheckCircle2 } from "lucide-react";
 
 export default function AdminCreatorsPage() {
   const { addToast } = useUIStore();
-  const [creators, setCreators] = useState(MOCK_CREATORS);
+  const [creators, setCreators] = useState<CreatorProfile[]>(MOCK_CREATORS);
+  const [loading, setLoading] = useState(true);
 
-  const toggleVerify = (id: string) => {
-    setCreators((prev) =>
-      prev.map((c) => (c.id === id ? { ...c, verified: !c.verified } : c))
-    );
-    addToast({
-      type: "success",
-      title: "Creator Verification Updated",
-      message: "Creator verification status saved.",
-    });
+  const fetchCreators = async () => {
+    try {
+      const res = await fetch("/api/creators", { cache: "no-store" });
+      if (res.ok) {
+        const data = await res.json();
+        if (Array.isArray(data) && data.length > 0) {
+          setCreators(data);
+        }
+      }
+    } catch {
+      // Keep fallback
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchCreators();
+  }, []);
+
+  const toggleVerify = async (id: string, currentVerified: boolean) => {
+    try {
+      const nextVerified = !currentVerified;
+      const res = await fetch(`/api/creators/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ verified: nextVerified }),
+      });
+
+      if (res.ok) {
+        setCreators((prev) =>
+          prev.map((c) => (c.id === id ? { ...c, verified: nextVerified } : c))
+        );
+        addToast({
+          type: "success",
+          title: "Creator Verification Updated",
+          message: `Creator is now ${nextVerified ? "Verified" : "Unverified"}.`,
+        });
+      } else {
+        const err = await res.json();
+        addToast({
+          type: "error",
+          title: "Update Failed",
+          message: err.error || "Failed to update verification status.",
+        });
+      }
+    } catch (err: any) {
+      addToast({
+        type: "error",
+        title: "Network Error",
+        message: err.message || "Failed to update creator.",
+      });
+    }
   };
 
   return (
@@ -60,32 +106,30 @@ export default function AdminCreatorsPage() {
                     {c.verified && <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />}
                   </h3>
                   <p className="text-xs text-[#7A7A8A] dark:text-[#8E8EA4] font-mono">
-                    @{c.handle} • {c.primaryCategory} • {c.location}
+                    @{c.handle} • {c.primaryCategory} • {formatNumber(c.totalFollowers || 50000)} Followers
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-6 font-mono text-xs">
-                <div>
-                  <span className="text-[#7A7A8A] dark:text-[#8E8EA4] block text-[10px]">Followers</span>
-                  <span className="text-[#0A0A0E] dark:text-white font-bold">{formatNumber(c.totalFollowers)}</span>
-                </div>
-                <div>
-                  <span className="text-[#7A7A8A] dark:text-[#8E8EA4] block text-[10px]">Engagement</span>
-                  <span className="text-emerald-700 dark:text-emerald-400 font-bold flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                    {c.avgEngagementRate}%
-                  </span>
-                </div>
-                <button
-                  onClick={() => toggleVerify(c.id)}
-                  className={`px-4 py-2 rounded-full text-xs font-semibold font-mono transition-all border ${
+              <div className="flex items-center gap-3 font-mono text-xs">
+                <span
+                  className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase border ${
                     c.verified
-                      ? "bg-black/5 dark:bg-white/10 text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-white border-black/10 dark:border-white/10"
-                      : "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] font-bold shadow-xs border-black/10"
+                      ? "bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-500/30"
+                      : "bg-black/5 dark:bg-white/10 text-[#7A7A8A] dark:text-[#8E8EA4] border-black/10 dark:border-white/10"
                   }`}
                 >
-                  {c.verified ? "Revoke Badge" : "Grant Verified"}
+                  {c.verified ? "Verified" : "Unverified"}
+                </span>
+                <button
+                  onClick={() => toggleVerify(c.id, !!c.verified)}
+                  className={`px-4 py-2 rounded-full text-xs font-bold transition-all border ${
+                    c.verified
+                      ? "bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0A0A0E] dark:text-white border-black/10 dark:border-white/10"
+                      : "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] border-black/10 shadow-xs"
+                  }`}
+                >
+                  {c.verified ? "Revoke Badge" : "Grant Verified Badge"}
                 </button>
               </div>
             </div>

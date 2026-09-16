@@ -704,7 +704,7 @@ export interface AuditEvent {
   actorName: string;
   actorRole: UserRole;
   action: string;
-  entityType: 'Campaign' | 'Collaboration' | 'Deliverable' | 'Payment' | 'Creator' | 'Brand' | 'Dispute';
+  entityType: 'Campaign' | 'Collaboration' | 'Deliverable' | 'Payment' | 'Creator' | 'Brand' | 'Dispute' | 'PlatformSettings';
   entityId: string;
   entityName: string;
   metadata?: Record<string, any>;

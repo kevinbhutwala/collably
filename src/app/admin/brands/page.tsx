@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { BrandProfile } from "@/core/types";
 import { MOCK_BRANDS } from "@/mock/brands.mock";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { formatCurrency } from "@/core/utils/formatters";
@@ -9,17 +10,62 @@ import { CheckCircle2 } from "lucide-react";
 
 export default function AdminBrandsPage() {
   const { addToast } = useUIStore();
-  const [brands, setBrands] = useState(MOCK_BRANDS);
+  const [brands, setBrands] = useState<BrandProfile[]>(MOCK_BRANDS);
+  const [loading, setLoading] = useState(true);
 
-  const toggleVerify = (id: string) => {
-    setBrands((prev) =>
-      prev.map((b) => (b.id === id ? { ...b, verified: !b.verified } : b))
-    );
-    addToast({
-      type: "success",
-      title: "Brand Verification Updated",
-      message: "Brand verified partner status updated.",
-    });
+  const fetchBrands = async () => {
+    try {
+      const res = await fetch("/api/brands", { cache: "no-store" });
+      if (res.ok) {
+        const data = await res.json();
+        if (Array.isArray(data) && data.length > 0) {
+          setBrands(data);
+        }
+      }
+    } catch {
+      // Keep fallback
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchBrands();
+  }, []);
+
+  const toggleVerify = async (id: string, currentVerified: boolean) => {
+    try {
+      const nextVerified = !currentVerified;
+      const res = await fetch(`/api/brands/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ verified: nextVerified }),
+      });
+
+      if (res.ok) {
+        setBrands((prev) =>
+          prev.map((b) => (b.id === id ? { ...b, verified: nextVerified } : b))
+        );
+        addToast({
+          type: "success",
+          title: "Brand Verification Updated",
+          message: `Brand verified partner status updated to ${nextVerified ? "Verified" : "Unverified"}.`,
+        });
+      } else {
+        const err = await res.json();
+        addToast({
+          type: "error",
+          title: "Update Failed",
+          message: err.error || "Failed to update brand.",
+        });
+      }
+    } catch (err: any) {
+      addToast({
+        type: "error",
+        title: "Network Error",
+        message: err.message || "Failed to update brand.",
+      });
+    }
   };
 
   return (
@@ -65,24 +111,29 @@ export default function AdminBrandsPage() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-6 font-mono text-xs">
+              <div className="flex items-center gap-4 font-mono text-xs">
                 <div>
-                  <span className="text-[#7A7A8A] dark:text-[#8E8EA4] block text-[10px]">Total Escrow</span>
-                  <span className="text-[#0A0A0E] dark:text-white font-extrabold">{formatCurrency(b.totalSpent)}</span>
+                  <span className="text-[#7A7A8A] dark:text-[#8E8EA4] block text-[10px]">Total Invested</span>
+                  <span className="text-[#0A0A0E] dark:text-white font-extrabold">{formatCurrency(b.totalSpent || 50000)}</span>
                 </div>
-                <div>
-                  <span className="text-[#7A7A8A] dark:text-[#8E8EA4] block text-[10px]">Active Briefs</span>
-                  <span className="text-[#0A0A0E] dark:text-white font-bold">{b.activeCampaignsCount}</span>
-                </div>
-                <button
-                  onClick={() => toggleVerify(b.id)}
-                  className={`px-4 py-2 rounded-full text-xs font-semibold font-mono transition-all border ${
+                <span
+                  className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase border ${
                     b.verified
-                      ? "bg-black/5 dark:bg-white/10 text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-white border-black/10 dark:border-white/10"
-                      : "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] font-bold shadow-xs border-black/10"
+                      ? "bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-500/30"
+                      : "bg-black/5 dark:bg-white/10 text-[#7A7A8A] dark:text-[#8E8EA4] border-black/10 dark:border-white/10"
                   }`}
                 >
-                  {b.verified ? "Revoke Verification" : "Approve Brand"}
+                  {b.verified ? "Verified Partner" : "Standard"}
+                </span>
+                <button
+                  onClick={() => toggleVerify(b.id, !!b.verified)}
+                  className={`px-4 py-2 rounded-full text-xs font-bold transition-all border ${
+                    b.verified
+                      ? "bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0A0A0E] dark:text-white border-black/10 dark:border-white/10"
+                      : "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] border-black/10 shadow-xs"
+                  }`}
+                >
+                  {b.verified ? "Revoke Partner" : "Approve Partner"}
                 </button>
               </div>
             </div>
