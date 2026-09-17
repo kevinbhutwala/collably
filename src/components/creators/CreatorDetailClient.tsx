@@ -16,6 +16,7 @@ import {
   CheckCircle2,
   ArrowRight,
   ExternalLink,
+  MessageSquare,
 } from "lucide-react";
 
 interface CreatorDetailClientProps {
@@ -181,9 +182,19 @@ export function CreatorDetailClient({
               </div>
 
               <Link href="/app/brand/campaigns/create" className="block">
-                <button className="w-full py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all shadow-[0_4px_14px_rgba(255,210,31,0.4)] border border-black/10 flex items-center justify-center gap-2">
+                <button className="w-full py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all shadow-[0_4px_14px_rgba(255,210,31,0.4)] border border-black/10 flex items-center justify-center gap-2 cursor-pointer">
                   <span>Send Campaign Brief</span>
                   <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </Link>
+
+              <Link
+                href={`/app/messages?recipientId=${creator.userId || creator.id}&recipientName=${encodeURIComponent(creator.fullName)}`}
+                className="block"
+              >
+                <button className="w-full py-2.5 rounded-full bg-white dark:bg-white/5 hover:bg-[#F0F0F4] dark:hover:bg-white/10 border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer">
+                  <MessageSquare className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-white" />
+                  <span>Direct Message</span>
                 </button>
               </Link>
 

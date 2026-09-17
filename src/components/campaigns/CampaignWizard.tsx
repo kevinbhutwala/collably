@@ -96,9 +96,9 @@ export function CampaignWizard() {
     totalBudget: selectedCurrency === "INR" ? 100000 : 15000,
     perCreatorBudget: selectedCurrency === "INR" ? 20000 : 3000,
     escrowDepositPercentage: 100,
-    applicationDeadline: "2026-09-15",
-    contentSubmissionDeadline: "2026-09-30",
-    campaignLiveDate: "2026-10-05",
+    applicationDeadline: new Date(Date.now() + 14 * 86400000).toISOString().split("T")[0],
+    contentSubmissionDeadline: new Date(Date.now() + 30 * 86400000).toISOString().split("T")[0],
+    campaignLiveDate: new Date(Date.now() + 45 * 86400000).toISOString().split("T")[0],
     maxCreators: 5,
   });
 
@@ -191,7 +191,7 @@ export function CampaignWizard() {
         },
         timeline: {
           applicationDeadline: formData.applicationDeadline,
-          startDate: "2026-09-15",
+          startDate: new Date().toISOString().split("T")[0],
           contentSubmissionDeadline: formData.contentSubmissionDeadline,
           campaignEndDate: formData.campaignLiveDate,
         },

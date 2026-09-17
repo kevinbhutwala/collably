@@ -513,6 +513,11 @@ export interface Conversation {
   };
   unreadCount: number;
   updatedAt: string;
+  pinnedBy?: string[];
+  mutedBy?: string[];
+  archivedBy?: string[];
+  contextType?: "campaign" | "milestone" | "direct";
+  contextId?: string;
 }
 
 export interface PayoutRecord {

@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import { useSearchParams } from "next/navigation";
 import { useAuthStore } from "@/stores/auth.store";
 import { messageService } from "@/services/message.service";
+import { useRealtimeChat } from "@/hooks/useRealtimeChat";
 import { ChatMessage, Conversation, UserRole } from "@/core/types";
 import {
   Send,
@@ -25,6 +27,9 @@ import {
   Building2,
   MoreVertical,
   ExternalLink,
+  Pin,
+  Volume2,
+  VolumeX,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Modal } from "@/components/ui/Modal";
@@ -62,6 +67,13 @@ interface RecipientOption {
 
 export function ChatWorkspace() {
   const { user, role } = useAuthStore();
+  const searchParams = useSearchParams();
+
+  const paramRecipientId = searchParams.get("recipientId");
+  const paramRecipientName = searchParams.get("recipientName");
+  const paramCampaignId = searchParams.get("campaignId");
+  const paramCampaignTitle = searchParams.get("campaignTitle");
+  const paramConvId = searchParams.get("convId");
 
   // State
   const [conversations, setConversations] = useState<Conversation[]>([]);
@@ -69,12 +81,15 @@ export function ChatWorkspace() {
   const [messagesMap, setMessagesMap] = useState<Record<string, ChatMessage[]>>({});
   const [inputText, setInputText] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
+  const [inChatSearchQuery, setInChatSearchQuery] = useState("");
+  const [isInChatSearchOpen, setIsInChatSearchOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<"all" | "unread" | "brands" | "creators">("all");
   const [isLoading, setIsLoading] = useState(true);
   const [mobileView, setMobileView] = useState<"list" | "chat">("list");
 
   // Partner typing indicator state
   const [isPartnerTyping, setIsPartnerTyping] = useState(false);
+  const [typingPartnerName, setTypingPartnerName] = useState("");
 
   // Staged attachment (prior to sending)
   const [stagedAttachment, setStagedAttachment] = useState<{
@@ -143,6 +158,37 @@ export function ChatWorkspace() {
     loadConversations();
   }, [loadConversations]);
 
+  // Handle deep linking from URL parameters
+  useEffect(() => {
+    if (paramConvId) {
+      setActiveConvId(paramConvId);
+      setMobileView("chat");
+      return;
+    }
+
+    if (paramRecipientId && user?.id) {
+      messageService
+        .findOrCreateDirect({
+          recipientId: paramRecipientId,
+          recipientName: paramRecipientName || undefined,
+          campaignId: paramCampaignId || undefined,
+          campaignTitle: paramCampaignTitle || undefined,
+          senderId: user.id,
+          senderRole: role || "creator",
+        })
+        .then((conv) => {
+          if (conv) {
+            setConversations((prev) => {
+              if (prev.some((c) => c.id === conv.id)) return prev;
+              return [conv, ...prev];
+            });
+            setActiveConvId(conv.id);
+            setMobileView("chat");
+          }
+        });
+    }
+  }, [paramRecipientId, paramRecipientName, paramCampaignId, paramCampaignTitle, paramConvId, user?.id, role]);
+
   // Load messages for the active conversation
   const loadActiveMessages = useCallback(async (convId: string, silent = false) => {
     if (!convId) return;
@@ -167,7 +213,54 @@ export function ChatWorkspace() {
     }
   }, [activeConvId, loadActiveMessages, user?.id]);
 
-  // Live polling synchronization every 4 seconds
+  // Realtime synchronization hook (BroadcastChannel + Supabase + Typing Presence)
+  const { broadcastEvent, notifyTyping } = useRealtimeChat({
+    activeConvId,
+    currentUserId: user?.id,
+    onNewMessage: (msg) => {
+      setMessagesMap((prev) => ({
+        ...prev,
+        [msg.conversationId]: [...(prev[msg.conversationId] || []).filter((m) => m.id !== msg.id), msg],
+      }));
+      setConversations((prev) =>
+        prev.map((c) =>
+          c.id === msg.conversationId
+            ? {
+                ...c,
+                lastMessage: { content: msg.content, senderName: msg.senderName, createdAt: msg.createdAt },
+                updatedAt: msg.createdAt,
+                unreadCount: c.id === activeConvId ? 0 : (c.unreadCount || 0) + 1,
+              }
+            : c
+        )
+      );
+      if (msg.conversationId === activeConvId) {
+        scrollToBottom(true);
+      }
+    },
+    onTyping: ({ conversationId, userName, isTyping }) => {
+      if (conversationId === activeConvId) {
+        setIsPartnerTyping(isTyping);
+        setTypingPartnerName(userName);
+      }
+    },
+    onReactionToggled: (messageId, reactions) => {
+      setMessagesMap((prev) => {
+        const msgs = prev[activeConvId] || [];
+        return {
+          ...prev,
+          [activeConvId]: msgs.map((m) => (m.id === messageId ? { ...m, reactions } : m)),
+        };
+      });
+    },
+    onConversationRead: (convId, readUserId) => {
+      if (readUserId !== user?.id && convId === activeConvId) {
+        // Partner marked conversation as read
+      }
+    },
+  });
+
+  // Fast adaptive fallback polling (every 3 seconds)
   useEffect(() => {
     const interval = setInterval(() => {
       loadConversations(true);
@@ -283,9 +376,54 @@ export function ChatWorkspace() {
     }
   };
 
-  // Trigger simulated smart partner response
+  // Pin / Unpin conversation
+  const handleTogglePin = async (convId: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!user?.id) return;
+    const res = await messageService.togglePin(convId, user.id);
+    setConversations((prev) =>
+      prev
+        .map((c) => {
+          if (c.id !== convId) return c;
+          const pinnedBy = c.pinnedBy || [];
+          const newPinned = res.isPinned
+            ? [...pinnedBy.filter((id) => id !== user.id), user.id]
+            : pinnedBy.filter((id) => id !== user.id);
+          return { ...c, pinnedBy: newPinned };
+        })
+        .sort((a, b) => {
+          const aPinned = a.pinnedBy?.includes(user.id) ? 1 : 0;
+          const bPinned = b.pinnedBy?.includes(user.id) ? 1 : 0;
+          if (aPinned !== bPinned) return bPinned - aPinned;
+          return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
+        })
+    );
+  };
+
+  // Mute / Unmute conversation
+  const handleToggleMute = async (convId: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!user?.id) return;
+    const res = await messageService.toggleMute(convId, user.id);
+    setConversations((prev) =>
+      prev.map((c) => {
+        if (c.id !== convId) return c;
+        const mutedBy = c.mutedBy || [];
+        const newMuted = res.isMuted
+          ? [...mutedBy.filter((id) => id !== user.id), user.id]
+          : mutedBy.filter((id) => id !== user.id);
+        return { ...c, mutedBy: newMuted };
+      })
+    );
+  };
+
+  // Trigger simulated smart concierge response only when talking to concierge
   const triggerSimulatedPartnerReply = (sentContent: string, currentConvId: string) => {
-    if (!partnerName || partnerName.includes("Me")) return;
+    const isConcierge =
+      partnerRole === "agency_admin" ||
+      partnerName.toLowerCase().includes("concierge") ||
+      partnerName.toLowerCase().includes("desk");
+    if (!isConcierge) return;
 
     setTimeout(() => {
       setIsPartnerTyping(true);
@@ -294,24 +432,19 @@ export function ChatWorkspace() {
       setTimeout(async () => {
         setIsPartnerTyping(false);
 
-        // Context-aware response generation
-        let replyContent = "Sounds great! Looking forward to aligning on the next milestone deliverable.";
+        let replyContent = "Hello! The AbeyCollab Concierge team is here to assist with escrow deposits, contract terms, or milestone deliveries.";
         const lower = sentContent.toLowerCase();
 
         if (lower.includes("script") || lower.includes("draft") || lower.includes("cut") || lower.includes("video")) {
-          replyContent = `Thanks for sharing! Our team is reviewing the cut now. We'll leave any timestamped notes directly in the 4K QA player within 24 hours.`;
+          replyContent = `Thanks for the update. Milestone deliverable reviews must be approved within 120 hours per our SLA protection terms.`;
         } else if (lower.includes("escrow") || lower.includes("pay") || lower.includes("rate") || lower.includes("budget")) {
-          replyContent = `The milestone escrow funds are 100% pre-funded and held in the platform vault. Payout disburses immediately upon deliverable sign-off.`;
-        } else if (lower.includes("hello") || lower.includes("hi") || lower.includes("hey")) {
-          replyContent = `Hello! Excited to collaborate with you on this brief. What timeline are you thinking for the initial rough cut?`;
-        } else if (lower.includes("shared:") || stagedAttachment) {
-          replyContent = `Received the file! Downloading the asset now to verify resolution and specs.`;
+          replyContent = `All campaign payments are held securely in the AbeyCollab smart escrow vault and released only upon client approval.`;
         }
 
         const partnerMsg: ChatMessage = {
           id: `msg-reply-${Date.now()}`,
           conversationId: currentConvId,
-          senderId: typeof activePartner === "object" ? activePartner.userId : "partner",
+          senderId: typeof activePartner === "object" ? activePartner.userId : "user-admin",
           senderName: partnerName,
           senderAvatar: partnerAvatar,
           senderRole: partnerRole as any,
@@ -327,6 +460,8 @@ export function ChatWorkspace() {
           [currentConvId]: [...(prev[currentConvId] || []), partnerMsg],
         }));
 
+        broadcastEvent({ type: "NEW_MESSAGE", message: partnerMsg });
+
         setConversations((prev) =>
           prev.map((c) =>
             c.id === currentConvId
@@ -339,7 +474,6 @@ export function ChatWorkspace() {
           )
         );
 
-        // Persist partner response
         await messageService.sendMessage(
           currentConvId,
           partnerMsg.senderId,
@@ -349,8 +483,8 @@ export function ChatWorkspace() {
           partnerMsg.content,
           []
         );
-      }, 2500);
-    }, 1200);
+      }, 2000);
+    }, 1000);
   };
 
   // Send message handler
@@ -387,6 +521,8 @@ export function ChatWorkspace() {
 
     setInputText("");
     setStagedAttachment(null);
+    notifyTyping(senderName, false);
+    broadcastEvent({ type: "NEW_MESSAGE", message: newMsg });
 
     setConversations((prev) =>
       prev.map((c) =>
@@ -411,7 +547,6 @@ export function ChatWorkspace() {
         newMsg.attachments
       );
 
-      // Trigger realistic smart auto-reply
       triggerSimulatedPartnerReply(finalContent, activeConvId);
     } catch (err) {
       console.error("Failed to persist message:", err);
@@ -692,6 +827,8 @@ export function ChatWorkspace() {
                 const pAvatar = typeof partner === "object" && partner?.avatarUrl ? partner.avatarUrl : "";
                 const pRole = typeof partner === "object" ? partner?.role : "brand";
                 const isActive = conv.id === activeConvId;
+                const isPinned = conv.pinnedBy?.includes(user?.id || "");
+                const isMuted = conv.mutedBy?.includes(user?.id || "");
 
                 return (
                   <div
@@ -733,15 +870,22 @@ export function ChatWorkspace() {
                             {pRole === "agency_admin" ? "Admin" : pRole}
                           </span>
                         </div>
-
-                        {conv.lastMessage?.createdAt && (
-                          <span className="text-[10px] font-mono text-[#9A9AA8] shrink-0">
-                            {new Date(conv.lastMessage.createdAt).toLocaleTimeString([], {
-                              hour: "2-digit",
-                              minute: "2-digit",
-                            })}
-                          </span>
-                        )}
+                        <div className="flex items-center gap-1.5 shrink-0">
+                          {isPinned && (
+                            <Pin className="w-3 h-3 text-[#FFD21F] fill-[#FFD21F] shrink-0 rotate-45" />
+                          )}
+                          {isMuted && (
+                            <VolumeX className="w-3 h-3 text-[#8A8A9A] shrink-0" />
+                          )}
+                          {conv.lastMessage?.createdAt && (
+                            <span className="text-[10px] font-mono text-[#9A9AA8] shrink-0">
+                              {new Date(conv.lastMessage.createdAt).toLocaleTimeString([], {
+                                hour: "2-digit",
+                                minute: "2-digit",
+                              })}
+                            </span>
+                          )}
+                        </div>
                       </div>
 
                       <p className="text-[11px] font-semibold text-[#5A5A68] truncate mb-1">
@@ -753,21 +897,37 @@ export function ChatWorkspace() {
                           {conv.lastMessage?.content || "Tap to open channel..."}
                         </p>
 
-                        <div className="flex items-center gap-1.5 shrink-0">
+                        <div className="flex items-center gap-1 shrink-0">
                           {conv.unreadCount > 0 && (
                             <span className="px-1.5 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-[10px] font-extrabold font-mono shadow-2xs">
                               {conv.unreadCount}
                             </span>
                           )}
 
-                          {/* Quick Delete Option on Hover */}
-                          <button
-                            onClick={(e) => handleDeleteConversation(conv.id, e)}
-                            className="opacity-0 group-hover:opacity-100 p-1 hover:bg-black/5 rounded-md text-[#A0A0B0] hover:text-rose-600 transition-opacity"
-                            title="Delete channel"
-                          >
-                            <Trash2 className="w-3 h-3" />
-                          </button>
+                          {/* Quick Action Icons on Hover */}
+                          <div className="opacity-0 group-hover:opacity-100 flex items-center gap-1 transition-opacity">
+                            <button
+                              onClick={(e) => handleTogglePin(conv.id, e)}
+                              className="p-1 hover:bg-black/5 dark:hover:bg-white/10 rounded-md text-[#A0A0B0] hover:text-[#FFD21F] transition-colors"
+                              title={isPinned ? "Unpin thread" : "Pin thread to top"}
+                            >
+                              <Pin className={`w-3 h-3 ${isPinned ? "fill-current text-[#FFD21F]" : ""}`} />
+                            </button>
+                            <button
+                              onClick={(e) => handleToggleMute(conv.id, e)}
+                              className="p-1 hover:bg-black/5 dark:hover:bg-white/10 rounded-md text-[#A0A0B0] hover:text-[#0A0A0E] dark:hover:text-white transition-colors"
+                              title={isMuted ? "Unmute alerts" : "Mute alerts"}
+                            >
+                              {isMuted ? <Volume2 className="w-3 h-3" /> : <VolumeX className="w-3 h-3" />}
+                            </button>
+                            <button
+                              onClick={(e) => handleDeleteConversation(conv.id, e)}
+                              className="p-1 hover:bg-black/5 dark:hover:bg-white/10 rounded-md text-[#A0A0B0] hover:text-rose-600 transition-colors"
+                              title="Delete channel"
+                            >
+                              <Trash2 className="w-3 h-3" />
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -835,39 +995,120 @@ export function ChatWorkspace() {
                   </div>
                 </div>
 
-                {/* Right Top Actions */}
+                {/* Right Top Actions: In-Chat Search, Pin, Mute, Campaign Link */}
                 <div className="flex items-center gap-2">
                   <button
-                    onClick={() => {
-                      if (activeConversation.campaignId) {
-                        window.open(`/campaigns/${activeConversation.campaignId}`, "_blank");
-                      }
-                    }}
-                    className="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white dark:bg-[#181824] hover:bg-[#F4F4F8] dark:hover:bg-[#202030] border border-black/8 dark:border-white/10 text-xs font-semibold text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-[#F4F4F8] transition-colors"
+                    onClick={() => setIsInChatSearchOpen(!isInChatSearchOpen)}
+                    className={cn(
+                      "p-2 rounded-full border border-black/8 dark:border-white/10 text-xs transition-colors cursor-pointer",
+                      isInChatSearchOpen
+                        ? "bg-[#FFD21F] text-[#0A0A0E]"
+                        : "bg-white dark:bg-[#181824] text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-white"
+                    )}
+                    title="Search in messages"
                   >
-                    <span>Brief</span>
-                    <ExternalLink className="w-3 h-3" />
+                    <Search className="w-3.5 h-3.5" />
                   </button>
+
+                  <button
+                    onClick={(e) => handleTogglePin(activeConvId, e)}
+                    className={cn(
+                      "p-2 rounded-full border border-black/8 dark:border-white/10 text-xs transition-colors cursor-pointer",
+                      activeConversation.pinnedBy?.includes(user?.id || "")
+                        ? "bg-[#FFD21F] text-[#0A0A0E]"
+                        : "bg-white dark:bg-[#181824] text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-white"
+                    )}
+                    title={activeConversation.pinnedBy?.includes(user?.id || "") ? "Unpin thread" : "Pin thread to top"}
+                  >
+                    <Pin className={`w-3.5 h-3.5 ${activeConversation.pinnedBy?.includes(user?.id || "") ? "fill-current" : ""}`} />
+                  </button>
+
+                  <button
+                    onClick={(e) => handleToggleMute(activeConvId, e)}
+                    className={cn(
+                      "p-2 rounded-full border border-black/8 dark:border-white/10 text-xs transition-colors cursor-pointer",
+                      activeConversation.mutedBy?.includes(user?.id || "")
+                        ? "bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300"
+                        : "bg-white dark:bg-[#181824] text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-white"
+                    )}
+                    title={activeConversation.mutedBy?.includes(user?.id || "") ? "Unmute alerts" : "Mute alerts"}
+                  >
+                    {activeConversation.mutedBy?.includes(user?.id || "") ? (
+                      <VolumeX className="w-3.5 h-3.5" />
+                    ) : (
+                      <Volume2 className="w-3.5 h-3.5" />
+                    )}
+                  </button>
+
+                  {activeConversation.campaignId && (
+                    <button
+                      onClick={() => {
+                        window.open(`/campaigns/${activeConversation.campaignId}`, "_blank");
+                      }}
+                      className="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white dark:bg-[#181824] hover:bg-[#F4F4F8] dark:hover:bg-[#202030] border border-black/8 dark:border-white/10 text-xs font-semibold text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-[#F4F4F8] transition-colors"
+                    >
+                      <span>Brief</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </button>
+                  )}
                 </div>
               </div>
+
+              {/* In-Chat Search Bar Drawer */}
+              {isInChatSearchOpen && (
+                <div className="px-4 py-2 border-b border-black/8 dark:border-white/10 bg-[#FAF9F5] dark:bg-[#161622] flex items-center gap-2 animate-fadeIn">
+                  <Search className="w-3.5 h-3.5 text-[#8A8A9A]" />
+                  <input
+                    type="text"
+                    placeholder="Search messages in this thread..."
+                    value={inChatSearchQuery}
+                    onChange={(e) => setInChatSearchQuery(e.target.value)}
+                    className="flex-1 bg-transparent text-xs text-[#0A0A0E] dark:text-white focus:outline-hidden"
+                  />
+                  {inChatSearchQuery && (
+                    <button onClick={() => setInChatSearchQuery("")} className="text-[#8A8A9A] hover:text-[#0A0A0E]">
+                      <X className="w-3.5 h-3.5" />
+                    </button>
+                  )}
+                  <button
+                    onClick={() => {
+                      setIsInChatSearchOpen(false);
+                      setInChatSearchQuery("");
+                    }}
+                    className="text-xs text-[#8A8A9A] hover:text-[#0A0A0E] font-medium"
+                  >
+                    Close
+                  </button>
+                </div>
+              )}
 
               {/* Messages Feed */}
               <div
                 ref={messagesContainerRef}
                 className="flex-1 overflow-y-auto px-4 sm:px-6 py-5 space-y-4 bg-white dark:bg-[#0E0E14]"
               >
-                {currentMessages.length === 0 ? (
+                {(inChatSearchQuery.trim()
+                  ? currentMessages.filter((m) => m.content.toLowerCase().includes(inChatSearchQuery.toLowerCase()))
+                  : currentMessages
+                ).length === 0 ? (
                   <div className="h-full flex flex-col items-center justify-center text-center space-y-2 text-[#9A9AA8]">
                     <div className="w-12 h-12 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 flex items-center justify-center">
                       <Sparkles className="w-6 h-6 text-[#FFD21F]" />
                     </div>
-                    <p className="text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8]">Conversation Initiated</p>
+                    <p className="text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8]">
+                      {inChatSearchQuery ? "No messages match your search" : "Conversation Initiated"}
+                    </p>
                     <p className="text-[11px] max-w-xs text-[#7A7A8A] dark:text-[#8E8EA4]">
-                      Send your initial brief, schedule requirements, or question to start collaborating.
+                      {inChatSearchQuery
+                        ? "Try searching for a different keyword or clear the search filter."
+                        : "Send your initial brief, schedule requirements, or question to start collaborating."}
                     </p>
                   </div>
                 ) : (
-                  currentMessages.map((m) => {
+                  (inChatSearchQuery.trim()
+                    ? currentMessages.filter((m) => m.content.toLowerCase().includes(inChatSearchQuery.toLowerCase()))
+                    : currentMessages
+                  ).map((m) => {
                     const isMine = m.senderId === user?.id || m.senderId === "user-current";
                     const isReactionMenuOpen = activeReactionMenuMsgId === m.id;
 
@@ -1064,7 +1305,10 @@ export function ChatWorkspace() {
                     type="text"
                     placeholder={`Message ${partnerName}... (Press Enter to send)`}
                     value={inputText}
-                    onChange={(e) => setInputText(e.target.value)}
+                    onChange={(e) => {
+                      setInputText(e.target.value);
+                      notifyTyping(user?.name || "User", true);
+                    }}
                     className="flex-1 bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 rounded-full px-4 py-2.5 text-sm font-medium text-[#0A0A0E] dark:text-[#F4F4F8] placeholder:text-[#9A9AA8] dark:placeholder:text-[#7A7A8E] focus:outline-none focus:border-[#FFD21F] focus:ring-2 focus:ring-[#FFD21F]/20 transition-all shadow-2xs"
                   />
 

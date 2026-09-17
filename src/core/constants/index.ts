@@ -1,4 +1,4 @@
-import { CreatorCategory, DeliverableType, PlatformType } from "../types/index";
+import type { CreatorCategory, DeliverableType, PlatformType } from "../types";
 
 export const CATEGORIES: CreatorCategory[] = [
   'Technology & AI',

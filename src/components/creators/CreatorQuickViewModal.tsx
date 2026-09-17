@@ -20,6 +20,7 @@ import {
   Users,
   Film,
   Camera,
+  MessageSquare,
 } from "lucide-react";
 
 export interface CreatorQuickViewData {
@@ -217,22 +218,31 @@ export function CreatorQuickViewModal({
           </div>
 
           {/* Action CTAs */}
-          <div className="pt-4 border-t border-black/8 dark:border-white/10 flex flex-col sm:flex-row items-center gap-3">
+          <div className="pt-4 border-t border-black/8 dark:border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-2.5">
             <Link
               href={`/creators/${creator.id}`}
               onClick={onClose}
-              className="w-full sm:w-1/2 py-3 rounded-full bg-white dark:bg-white/5 hover:bg-[#F8F8FC] dark:hover:bg-white/10 border border-black/10 dark:border-white/15 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all text-center flex items-center justify-center gap-1.5 shadow-xs hover-lift"
+              className="py-2.5 rounded-full bg-white dark:bg-white/5 hover:bg-[#F8F8FC] dark:hover:bg-white/10 border border-black/10 dark:border-white/15 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all text-center flex items-center justify-center gap-1.5 shadow-xs"
             >
-              <span>Full Media Kit</span>
-              <ExternalLink className="w-3.5 h-3.5 text-[#7A7A8A] dark:text-[#A0A0B0]" />
+              <span>Media Kit</span>
+              <ExternalLink className="w-3 h-3 text-[#7A7A8A] dark:text-[#A0A0B0]" />
+            </Link>
+
+            <Link
+              href={`/app/messages?recipientId=${(creator as any).userId || creator.id}&recipientName=${encodeURIComponent(creator.name)}`}
+              onClick={onClose}
+              className="py-2.5 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all text-center flex items-center justify-center gap-1.5 shadow-xs cursor-pointer"
+            >
+              <MessageSquare className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-white" />
+              <span>Message</span>
             </Link>
 
             <Link
               href="/app/brand/campaigns/create"
               onClick={onClose}
-              className="w-full sm:w-1/2 py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs transition-all text-center flex items-center justify-center gap-1.5 shadow-[0_2px_12px_rgba(255,210,31,0.35)] border border-black/10 hover-lift"
+              className="py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs transition-all text-center flex items-center justify-center gap-1.5 shadow-[0_2px_12px_rgba(255,210,31,0.35)] border border-black/10 cursor-pointer"
             >
-              <span>Book via Escrow</span>
+              <span>Book Escrow</span>
               <ArrowRight className="w-3.5 h-3.5 text-[#0A0A0E]" />
             </Link>
           </div>

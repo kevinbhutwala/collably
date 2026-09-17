@@ -67,10 +67,31 @@ export async function POST(req: NextRequest) {
       ];
     }
 
+    // Check if an existing direct conversation already exists between these users
+    if (body.recipientId && (body.findOrCreate || !body.campaignId)) {
+      const existing = await messageRepo.findDirectConversation(currentUserId, body.recipientId, body.campaignId);
+      if (existing) {
+        if (body.initialMessage) {
+          await messageRepo.createMessage({
+            conversationId: existing.id,
+            senderId: currentUserId,
+            senderRole: senderParticipant.role as any,
+            senderName: senderParticipant.name,
+            senderAvatar: senderParticipant.avatarUrl,
+            content: body.initialMessage,
+            attachments: body.attachments || [],
+          });
+        }
+        return NextResponse.json({ success: true, conversation: existing, isExisting: true });
+      }
+    }
+
     const conv = await messageRepo.createConversation({
       campaignId: body.campaignId || undefined,
       campaignTitle: body.campaignTitle || (body.campaignId ? "Campaign Brief" : "Direct Collaboration"),
       participants,
+      contextType: body.campaignId ? "campaign" : "direct",
+      contextId: body.campaignId || undefined,
     });
 
     // Optional initial message

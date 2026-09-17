@@ -59,7 +59,7 @@ export class ApplicationService {
       type: "application",
       entityType: "Application",
       entityId: application.id,
-      linkUrl: `/app/brand/campaigns/${campaign.id}`,
+      linkUrl: `/app/applications`,
     });
 
     return application;
@@ -132,7 +132,7 @@ export class ApplicationService {
       type: "application",
       entityType: "Collaboration",
       entityId: collaboration.id,
-      linkUrl: `/app/creator/collaborations/${collaboration.id}`,
+      linkUrl: `/app/collaborations/${collaboration.id}`,
     });
 
     // 6. Record Audit Log

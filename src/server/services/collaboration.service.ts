@@ -72,7 +72,7 @@ export class CollaborationService {
       type: "deliverable",
       entityType: "Collaboration",
       entityId: collab.id,
-      linkUrl: `/app/brand/collaborations/${collab.id}`,
+      linkUrl: `/app/collaborations/${collab.id}`,
     });
 
     return updatedCollab;
@@ -111,7 +111,7 @@ export class CollaborationService {
       type: "deliverable",
       entityType: "Collaboration",
       entityId: collab.id,
-      linkUrl: `/app/creator/collaborations/${collab.id}`,
+      linkUrl: `/app/collaborations/${collab.id}`,
     });
 
     return updated;
@@ -168,7 +168,7 @@ export class CollaborationService {
       type: "payment",
       entityType: "Collaboration",
       entityId: collab.id,
-      linkUrl: `/app/creator/collaborations/${collab.id}`,
+      linkUrl: `/app/collaborations/${collab.id}`,
     });
 
     // Check if all deliverables in collaboration are approved -> mark collaboration completed

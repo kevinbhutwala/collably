@@ -59,12 +59,22 @@ export function DeliverableReviewCard({
   const [status, setStatus] = useState<"submitted" | "approved" | "revision_requested">(initialStatus);
   const [isRevisionModalOpen, setIsRevisionModalOpen] = useState(false);
   const [isDisputeModalOpen, setIsDisputeModalOpen] = useState(false);
+  const [isCertificateModalOpen, setIsCertificateModalOpen] = useState(false);
   const [revisionFeedback, setRevisionFeedback] = useState("");
   const [disputeReason, setDisputeReason] = useState("");
-  const [timeLeft, setTimeLeft] = useState({ hours: 119, minutes: 48, seconds: 12 });
+  const [timeLeft, setTimeLeft] = useState(() => {
+    if (submittedAt) {
+      const deadline = new Date(submittedAt).getTime() + 120 * 3600 * 1000;
+      const diff = Math.max(0, deadline - Date.now());
+      const hours = Math.floor(diff / (1000 * 3600));
+      const minutes = Math.floor((diff % (1000 * 3600)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      return { hours, minutes, seconds };
+    }
+    return { hours: 119, minutes: 48, seconds: 12 };
+  });
 
   useEffect(() => {
-    // 120-hour SLA countdown timer simulation
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev.seconds > 0) {
@@ -242,9 +252,19 @@ export function DeliverableReviewCard({
 
           <div className="flex items-center gap-3 w-full sm:w-auto">
             {status === "approved" ? (
-              <div className="w-full sm:w-auto px-5 py-3 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-600 text-emerald-800 dark:text-emerald-300 font-bold text-xs flex items-center justify-center gap-2 font-mono">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                <span>Tranche Released to Creator Payout</span>
+              <div className="flex flex-wrap items-center gap-2">
+                <div className="px-4 py-2.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-600 text-emerald-800 dark:text-emerald-300 font-bold text-xs flex items-center justify-center gap-2 font-mono">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <span>Tranche Released to Creator Payout</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsCertificateModalOpen(true)}
+                  className="px-4 py-2.5 rounded-full bg-black dark:bg-white text-white dark:text-black font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs"
+                >
+                  <FileCheck2 className="w-3.5 h-3.5 text-[#FFD21F]" />
+                  <span>View Rights &amp; License Certificate</span>
+                </button>
               </div>
             ) : (
               <>
@@ -333,6 +353,62 @@ export function DeliverableReviewCard({
             </button>
           </div>
         </form>
+      </Modal>
+      {/* Commercial License & Deliverable Certificate Modal */}
+      <Modal
+        isOpen={isCertificateModalOpen}
+        onClose={() => setIsCertificateModalOpen(false)}
+        title="Commercial License & Rights Assignment Certificate"
+        description="Official legally-binding certificate of content ownership and commercial usage assignment."
+      >
+        <div className="space-y-5 text-[#0A0A0E] dark:text-[#F4F4F8] font-sans">
+          <div className="p-5 rounded-2xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/8 dark:border-white/10 space-y-3 font-mono text-xs">
+            <div className="flex items-center justify-between pb-2 border-b border-black/10 dark:border-white/10">
+              <span className="text-[#6A6A78] uppercase text-[10px]">Certificate ID</span>
+              <span className="font-bold text-[#0A0A0E] dark:text-white">CERT-ABEY-{Date.now().toString().slice(-8)}</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-[#6A6A78]">Licensed Deliverable</span>
+              <span className="font-bold">{title} ({deliverableType})</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-[#6A6A78]">Licensor (Creator)</span>
+              <span className="font-bold">{creatorName} (@{creatorHandle})</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-[#6A6A78]">Escrow Compensation</span>
+              <span className="font-bold">{formatCurrency(payoutAmount, currency)} (Paid in Full)</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-[#6A6A78]">Usage Scope</span>
+              <span className="text-emerald-600 dark:text-emerald-400 font-bold">Worldwide Perpetual Digital Distribution</span>
+            </div>
+          </div>
+
+          <div className="text-xs text-[#5A5A68] dark:text-[#9A9AA6] leading-relaxed space-y-2">
+            <p>
+              Under the AbeyCollab Master Marketplace Services Agreement, upon final deliverable approval and confirmed escrow release, the Creator irrevocably grants to the sponsoring Brand full commercial distribution, synchronization, and promotional rights for the approved deliverables.
+            </p>
+          </div>
+
+          <div className="flex justify-end gap-2 pt-2">
+            <button
+              type="button"
+              onClick={() => setIsCertificateModalOpen(false)}
+              className="px-4 py-2 rounded-xl text-xs font-semibold hover:bg-black/5 dark:hover:bg-white/5 transition-all"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              onClick={() => window.print()}
+              className="px-4 py-2 rounded-xl bg-black dark:bg-white text-white dark:text-black text-xs font-semibold hover:opacity-90 transition-all flex items-center gap-1.5 shadow-xs"
+            >
+              <FileCheck2 className="w-3.5 h-3.5 text-[#FFD21F]" />
+              Print / Save Certificate
+            </button>
+          </div>
+        </div>
       </Modal>
     </div>
   );

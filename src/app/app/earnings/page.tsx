@@ -12,7 +12,8 @@ import { formatCurrency } from "@/core/utils/formatters";
 import { convertCurrency } from "@/core/utils/currency";
 import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
 import { RazorpayCheckoutButton } from "@/components/payments/RazorpayCheckoutButton";
-import { Wallet, ShieldCheck, Download, ArrowRight, CheckCircle2, Receipt, Globe, Landmark, ArrowRightLeft, CreditCard, ExternalLink } from "lucide-react";
+import { TaxInvoiceModal, InvoiceData } from "@/components/payments/TaxInvoiceModal";
+import { Wallet, ShieldCheck, Download, ArrowRight, CheckCircle2, Receipt, Globe, Landmark, ArrowRightLeft, CreditCard, ExternalLink, FileText } from "lucide-react";
 
 export default function EarningsAndEscrowPage() {
   const { role, currentCreator, currentBrand } = useAuthStore();
@@ -21,6 +22,26 @@ export default function EarningsAndEscrowPage() {
   const [payouts, setPayouts] = useState<PayoutRecord[]>([]);
   const [collaborations, setCollaborations] = useState<Collaboration[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selectedInvoice, setSelectedInvoice] = useState<InvoiceData | null>(null);
+  const [isInvoiceModalOpen, setIsInvoiceModalOpen] = useState(false);
+
+  const handleOpenInvoice = (p: PayoutRecord) => {
+    setSelectedInvoice({
+      invoiceNumber: `INV-${p.id.replace(/^pay-/, "").slice(-8).toUpperCase()}`,
+      issueDate: p.releasedAt || new Date().toISOString(),
+      campaignTitle: p.campaignTitle,
+      deliverableTitle: p.deliverableTitle,
+      brandName: p.brandName,
+      creatorName: p.creatorName,
+      currency: (p as any).currency || "USD",
+      grossAmount: p.grossAmount,
+      platformFee: p.agencyFee,
+      netAmount: p.netAmount,
+      transactionId: p.id,
+      paymentMethod: p.paymentMethod,
+    });
+    setIsInvoiceModalOpen(true);
+  };
 
   useEffect(() => {
     const fetch = async () => {
@@ -267,12 +288,27 @@ export default function EarningsAndEscrowPage() {
                   }`}>
                     {p.status}
                   </span>
+
+                  <button
+                    type="button"
+                    onClick={() => handleOpenInvoice(p)}
+                    className="p-1.5 rounded-full hover:bg-black/5 dark:hover:bg-white/10 text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white transition-all"
+                    title="View &amp; Print Tax Invoice"
+                  >
+                    <FileText className="w-4 h-4 text-[#FFD21F]" />
+                  </button>
                 </div>
               </div>
             ))}
           </div>
         )}
       </div>
+
+      <TaxInvoiceModal
+        isOpen={isInvoiceModalOpen}
+        onClose={() => setIsInvoiceModalOpen(false)}
+        invoice={selectedInvoice}
+      />
     </div>
   );
 }

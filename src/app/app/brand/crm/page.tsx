@@ -323,7 +323,10 @@ export default function BrandCRMPage() {
                     <Plus className="w-3.5 h-3.5" />
                     <span>Add Note</span>
                   </button>
-                  <Link href="/app/messages" className="flex-1">
+                  <Link
+                    href={`/app/messages?recipientId=${c.creator.userId || c.creator.id}&recipientName=${encodeURIComponent(c.creator.fullName)}`}
+                    className="flex-1"
+                  >
                     <button className="w-full py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs cursor-pointer">
                       Message
                     </button>

@@ -100,6 +100,7 @@ export function AppSidebar() {
     { href: "/admin/brands", label: "Brand Accounts", icon: Briefcase },
     { href: "/admin/campaigns", label: "Campaign Approvals", icon: Compass },
     { href: "/admin/collaborations", label: "Active Escrows", icon: FileCheck2 },
+    { href: "/admin/messages", label: "Communications Monitor", icon: MessageSquare, badge: "Live" },
     { href: "/admin/disputes", label: "Disputes & Resolution", icon: Scale, badge: "Review" },
     { href: "/admin/payments", label: "Payment & Escrow Vault", icon: BadgeDollarSign },
     { href: "/admin/reports", label: "Financial Reports", icon: FileText },
