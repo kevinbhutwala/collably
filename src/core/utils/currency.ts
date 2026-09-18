@@ -76,6 +76,18 @@ export function updateRuntimeExchangeRates(rates: Record<string, number>) {
   }
 }
 
+export function getRuntimeExchangeRates(): Record<string, number> {
+  return { ...runtimeExchangeRates };
+}
+
+export function getExchangeRateToUSD(currency: SupportedCurrency | string = "USD"): number {
+  const code = (currency || "USD").toUpperCase();
+  return (
+    runtimeExchangeRates[code] ??
+    (SUPPORTED_CURRENCIES[code as SupportedCurrency]?.exchangeRateToUSD ?? 1.0)
+  );
+}
+
 export function isValidCurrency(currency: any): currency is ActiveCurrency {
   return typeof currency === "string" && ["INR", "USD", "AED", "GBP"].includes(currency.toUpperCase());
 }

@@ -20,40 +20,36 @@ interface UIState {
   addToast: (toast: Omit<ToastNotification, 'id'>) => void;
   removeToast: (id: string) => void;
   setSelectedCurrency: (currency: SupportedCurrency) => void;
-  fetchLiveRates: () => Promise<void>;
+  fetchLiveRates: (force?: boolean) => Promise<void>;
 }
 
-const getInitialCurrency = (): SupportedCurrency => {
-  if (typeof window !== "undefined") {
-    const saved = localStorage.getItem("abeycollab_currency") as SupportedCurrency;
-    if (saved && ["INR", "USD", "GBP", "AED"].includes(saved)) return saved;
-
-    // Detect if user is in India
-    try {
-      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      if (tz === "Asia/Kolkata" || tz === "Asia/Calcutta") {
-        return "INR";
-      }
-      const lang = navigator.language || "";
-      if (lang.toLowerCase().includes("in") || lang.toLowerCase().startsWith("hi")) {
-        return "INR";
-      }
-    } catch {
-      // Fallback
-    }
-  }
-  return "USD";
+const DEFAULT_RATES: Record<string, number> = {
+  USD: 1.0,
+  INR: 83.5,
+  GBP: 0.78,
+  AED: 3.67,
+  EUR: 0.92,
+  CAD: 1.36,
+  AUD: 1.52,
+  JPY: 154.0,
+  SGD: 1.35,
+  BRL: 5.25,
 };
 
-export const useUIStore = create<UIState>((set) => ({
+export const useUIStore = create<UIState>((set, get) => ({
   activeModal: null,
   modalProps: {},
   toasts: [],
   selectedCurrency: "USD",
-  rates: {},
-  rateTimestamp: "",
+  rates: DEFAULT_RATES,
+  rateTimestamp: new Date().toISOString(),
 
-  fetchLiveRates: async () => {
+  fetchLiveRates: async (force: boolean = false) => {
+    // Avoid re-fetching if recently fetched within last 5 minutes (unless force is true)
+    const lastTimestamp = get().rateTimestamp;
+    if (!force && lastTimestamp && Date.now() - new Date(lastTimestamp).getTime() < 300000) {
+      return;
+    }
     try {
       const res = await fetch("/api/fx-rates?base=USD");
       if (res.ok) {
@@ -87,12 +83,14 @@ export const useUIStore = create<UIState>((set) => ({
     })),
 
   setSelectedCurrency: (currency: SupportedCurrency) => {
+    const current = get().selectedCurrency;
+    if (current === currency) return;
+
     if (typeof window !== "undefined") {
       try {
         localStorage.setItem("abeycollab_currency", currency);
         document.cookie = `abeycollab_currency=${currency}; path=/; max-age=31536000; SameSite=Lax`;
         window.dispatchEvent(new CustomEvent("currencyChange", { detail: currency }));
-        window.dispatchEvent(new Event("storage"));
       } catch {}
 
       // Persist to user profile in background if logged in

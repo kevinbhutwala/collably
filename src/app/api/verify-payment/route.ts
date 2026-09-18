@@ -72,11 +72,14 @@ export async function POST(req: NextRequest) {
     // Record verified transaction in database ledger
     try {
       const { paymentRepo } = await import("@/server/repositories/payment.repo");
-      const grossAmount = body.amount ? Number(body.amount) : 500;
+      const { exchangeRateService } = await import("@/server/services/exchange-rate.service");
+      const effectiveRate = body.exchangeRate ? Number(body.exchangeRate) : exchangeRateService.getExchangeRateSync("USD", "INR");
+      const grossAmount = body.amount ? Number(body.amount) : (body.usdAmount ? Math.round(Number(body.usdAmount) * effectiveRate) : 500);
       const currency = (body.currency || "INR").toUpperCase();
       const commissionRate = 0.10;
       const agencyFee = Math.round(grossAmount * commissionRate);
       const netAmount = grossAmount - agencyFee;
+      const usdAmount = body.usdAmount ? Number(body.usdAmount) : Math.round((grossAmount / effectiveRate) * 100) / 100;
 
       await paymentRepo.createPayment({
         brandId: body.brandId || "brand_active",
@@ -94,6 +97,9 @@ export async function POST(req: NextRequest) {
           orderId,
           signature,
           netAmount,
+          usdAmount,
+          amountINR: currency === "INR" ? grossAmount : Math.round(grossAmount * effectiveRate),
+          exchangeRate: effectiveRate,
         },
       });
 

@@ -845,6 +845,10 @@ export interface SubscriptionEntity {
   currency: string;
   features: PlanFeatureSet;
   usage: PlanUsageStats;
+  amountPaid?: number;
+  lastPaymentId?: string;
+  lastPaymentDate?: string;
+  paymentMethod?: string;
   createdAt: string;
   updatedAt: string;
 }

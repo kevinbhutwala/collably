@@ -7,7 +7,9 @@ import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
 import { CREATOR_PLANS, BRAND_PLANS } from "@/core/constants";
 import { SubscriptionPlan, SubscriptionPlanId } from "@/core/types";
-import { Check, Sparkles, Zap, ShieldCheck, Crown, Loader2, ArrowRight } from "lucide-react";
+import { Check, Sparkles, Zap, ShieldCheck, Crown, Loader2, ArrowRight, CreditCard, Lock, RefreshCw } from "lucide-react";
+import { useGlobalCurrency } from "@/context/CurrencyContext";
+import { getExchangeRateToUSD } from "@/core/utils/currency";
 
 export function PlanUpgradeModal() {
   const {
@@ -20,9 +22,33 @@ export function PlanUpgradeModal() {
   } = useSubscriptionStore();
   const { role } = useAuthStore();
   const { addToast } = useUIStore();
+  const { rates, rateTimestamp } = useGlobalCurrency();
+  const [isRefreshingRates, setIsRefreshingRates] = useState(false);
 
   const [isAnnual, setIsAnnual] = useState(true);
   const [processingPlanId, setProcessingPlanId] = useState<string | null>(null);
+
+  const inrRate = getExchangeRateToUSD("INR");
+
+  const handleRefreshRates = async () => {
+    setIsRefreshingRates(true);
+    try {
+      await useUIStore.getState().fetchLiveRates(true);
+      addToast({
+        type: "success",
+        title: "Exchange Rates Updated",
+        message: `Live exchange rates refreshed (1 USD = ₹${getExchangeRateToUSD("INR").toFixed(2)} INR).`,
+      });
+    } catch {
+      addToast({
+        type: "info",
+        title: "Rates Current",
+        message: "Using verified fallback and cached exchange rate data.",
+      });
+    } finally {
+      setIsRefreshingRates(false);
+    }
+  };
 
   const isBrand = role === "brand" || role === "brand_owner" || role === "brand_manager";
   const plans = isBrand ? Object.values(BRAND_PLANS) : Object.values(CREATOR_PLANS);
@@ -71,10 +97,11 @@ export function PlanUpgradeModal() {
         throw new Error("Unable to connect to Razorpay payment gateway.");
       }
 
-      // Convert USD pricing to INR paise (min 100 paise)
+      // Convert USD pricing to INR paise (min 100 paise) using live or cached exchange rate
       const annualTotalUSD = plan.annualPrice * 12;
       const billingTotalUSD = isAnnual ? annualTotalUSD : plan.monthlyPrice;
-      const amountInINR = Math.round(billingTotalUSD * 83.5);
+      const currentRate = inrRate || 83.5;
+      const amountInINR = Math.round(billingTotalUSD * currentRate);
       const amountInPaise = Math.max(amountInINR * 100, 100);
 
       const orderRes = await fetch("/api/create-order", {
@@ -87,6 +114,7 @@ export function PlanUpgradeModal() {
           notes: {
             planId: plan.id,
             interval: isAnnual ? "annual" : "monthly",
+            exchangeRate: currentRate,
           },
         }),
       });
@@ -94,43 +122,6 @@ export function PlanUpgradeModal() {
       const orderData = await orderRes.json();
       if (!orderRes.ok || !orderData.order_id) {
         throw new Error(orderData.error || "Failed to initialize subscription checkout order.");
-      }
-
-      // If in sandbox test mode or when Razorpay live server is unreachable:
-      if (orderData.isTest) {
-        const testPaymentId = `pay_test_${Date.now()}`;
-        const verifyRes = await fetch("/api/verify-payment", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            order_id: orderData.order_id,
-            payment_id: testPaymentId,
-            signature: "test_verified_signature",
-            isTest: true,
-            amount: billingTotalUSD,
-            currency: "USD",
-          }),
-        });
-
-        const verifyData = await verifyRes.json();
-        if (!verifyRes.ok || !verifyData.success) {
-          throw new Error(verifyData.error || "Payment verification failed.");
-        }
-
-        await upgradePlan(
-          plan.id as SubscriptionPlanId,
-          isAnnual ? "annual" : "monthly",
-          testPaymentId
-        );
-
-        addToast({
-          type: "success",
-          title: "Payment Verified & Plan Activated!",
-          message: `Sandbox payment ${testPaymentId} verified. You are now on ${plan.name}!`,
-        });
-        closeUpgradeModal();
-        setProcessingPlanId(null);
-        return;
       }
 
       const keyId =
@@ -145,7 +136,7 @@ export function PlanUpgradeModal() {
         name: "AbeyCollab Subscriptions",
         description: `${plan.name} (${isAnnual ? "Annual Billing" : "Monthly Billing"})`,
         image: "/favicon.svg",
-        order_id: orderData.order_id,
+        order_id: orderData.isTest ? undefined : orderData.order_id,
         prefill: {
           name: "AbeyCollab Workspace",
           email: "billing@abeycollab.io",
@@ -170,7 +161,7 @@ export function PlanUpgradeModal() {
           razorpay_signature: string;
         }) {
           try {
-            // Verify signature on backend
+            // Verify signature on backend with exact matching amounts
             const verifyRes = await fetch("/api/verify-payment", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -178,6 +169,10 @@ export function PlanUpgradeModal() {
                 order_id: response.razorpay_order_id,
                 payment_id: response.razorpay_payment_id,
                 signature: response.razorpay_signature,
+                amount: amountInINR,
+                currency: "INR",
+                usdAmount: billingTotalUSD,
+                exchangeRate: currentRate,
               }),
             });
 
@@ -237,7 +232,7 @@ export function PlanUpgradeModal() {
             Choose the tier that matches your collaboration volume. Upgrade, downgrade, or change anytime.
           </p>
 
-          <div className="pt-1 flex items-center justify-center gap-3">
+          <div className="pt-1 flex flex-wrap items-center justify-center gap-3">
             <div className="inline-flex items-center p-1 rounded-full bg-[#F4F4F8] dark:bg-[#14141E] border border-black/8 dark:border-white/10 text-xs font-sans">
               <button
                 onClick={() => setIsAnnual(false)}
@@ -263,6 +258,16 @@ export function PlanUpgradeModal() {
                 </span>
               </button>
             </div>
+
+            <button
+              onClick={handleRefreshRates}
+              disabled={isRefreshingRates}
+              title="Refresh live exchange rate from financial feeds"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-mono font-bold bg-[#F4F4F8] dark:bg-[#14141E] border border-black/8 dark:border-white/10 text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-white transition-all shadow-xs"
+            >
+              <RefreshCw className={`w-3 h-3 text-[#FFD21F] ${isRefreshingRates ? "animate-spin" : ""}`} />
+              <span>$1 = ₹{inrRate.toFixed(2)}</span>
+            </button>
           </div>
         </div>
 
@@ -324,6 +329,11 @@ export function PlanUpgradeModal() {
                         {price === 0 ? "forever" : isAnnual ? "/mo (annual)" : "/month"}
                       </span>
                     </div>
+                    {price > 0 && (
+                      <p className="text-[11px] text-[#6A6A78] dark:text-[#A0A0B4] font-mono mt-1 font-semibold">
+                        ≈ ₹{Math.round((isAnnual ? price * 12 : price) * inrRate).toLocaleString("en-IN")} INR ($1 = ₹{inrRate.toFixed(2)})
+                      </p>
+                    )}
                     {isAnnual && price > 0 && (
                       <p className="text-[10px] text-emerald-600 dark:text-emerald-400 font-sans mt-0.5 font-bold">
                         Billed annually (${price * 12}/yr)
@@ -365,15 +375,27 @@ export function PlanUpgradeModal() {
                       {isProcessing ? (
                         <>
                           <Loader2 className="w-4 h-4 animate-spin text-current" />
-                          <span>Updating...</span>
+                          <span>Connecting to Gateway...</span>
+                        </>
+                      ) : price > 0 ? (
+                        <>
+                          <CreditCard className="w-3.5 h-3.5" />
+                          <span>Pay ${isAnnual ? price * 12 : price} (₹{Math.round((isAnnual ? price * 12 : price) * 83.5).toLocaleString("en-IN")}) &amp; Activate</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
                         </>
                       ) : (
                         <>
-                          <span>Select {p.name}</span>
+                          <span>Switch to Free Starter</span>
                           <ArrowRight className="w-3.5 h-3.5" />
                         </>
                       )}
                     </button>
+                  )}
+                  {price > 0 && !isCurrent && (
+                    <div className="flex items-center justify-center gap-1 text-[10px] text-[#6A6A78] dark:text-[#8E8EA4] mt-2">
+                      <Lock className="w-2.5 h-2.5 text-emerald-500" />
+                      <span>Secured with Razorpay 256-bit encryption</span>
+                    </div>
                   )}
                 </div>
               </div>

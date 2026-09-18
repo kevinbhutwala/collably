@@ -5,7 +5,7 @@ import { calculateTotalFollowers, calculateAvgEngagementRate, getCreatorTier } f
 
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
   try {
-    const creator = creatorRepo.getById(params.id);
+    const creator = creatorRepo.getById(params.id) || creatorRepo.getByUserId(params.id);
     if (!creator) {
       return NextResponse.json({ error: "Creator not found" }, { status: 404 });
     }

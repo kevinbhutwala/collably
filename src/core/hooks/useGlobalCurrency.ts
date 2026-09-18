@@ -21,22 +21,22 @@ export function useGlobalCurrency() {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("abeycollab_currency") as SupportedCurrency;
       if (saved && ["INR", "USD", "GBP", "AED"].includes(saved)) {
-        setSelectedCurrency(saved);
+        if (saved !== useUIStore.getState().selectedCurrency) {
+          useUIStore.getState().setSelectedCurrency(saved);
+        }
       } else {
         try {
           const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-          if (tz === "Asia/Kolkata" || tz === "Asia/Calcutta") {
-            setSelectedCurrency("INR");
+          if ((tz === "Asia/Kolkata" || tz === "Asia/Calcutta") && useUIStore.getState().selectedCurrency !== "INR") {
+            useUIStore.getState().setSelectedCurrency("INR");
           }
         } catch {
           // Ignore
         }
       }
     }
-    if (!rates || Object.keys(rates).length === 0) {
-      fetchLiveRates();
-    }
-  }, [rates, fetchLiveRates, setSelectedCurrency]);
+    useUIStore.getState().fetchLiveRates();
+  }, []);
 
   const format = (
     amount: number | string | null | undefined,

@@ -24,10 +24,16 @@ export function CurrencySelector({
   const router = useRouter();
   const { selectedCurrency, setSelectedCurrency } = useUIStore();
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const displayCurrency = mounted ? selectedCurrency : "USD";
   const activeConfig =
-    SUPPORTED_CURRENCIES[selectedCurrency] || SUPPORTED_CURRENCIES.USD;
+    SUPPORTED_CURRENCIES[displayCurrency] || SUPPORTED_CURRENCIES.USD;
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -58,7 +64,7 @@ export function CurrencySelector({
     return (
       <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 ${className}`}>
         {PRIMARY_CURRENCY_LIST.map((curr) => {
-          const isSelected = selectedCurrency === curr.code;
+          const isSelected = displayCurrency === curr.code;
           return (
             <button
               key={curr.code}
@@ -112,7 +118,7 @@ export function CurrencySelector({
     return (
       <div className={`relative inline-block ${className}`}>
         <select
-          value={selectedCurrency}
+          value={displayCurrency}
           onChange={(e) => handleSelect(e.target.value as SupportedCurrency)}
           className="appearance-none w-full bg-white dark:bg-[#161622] border border-black/10 dark:border-white/10 rounded-xl px-3 py-2 pr-8 text-xs font-bold text-[#0A0A0E] dark:text-white focus:outline-hidden focus:ring-2 focus:ring-[#FFD21F]"
           data-testid="currency-select-dropdown"
@@ -161,7 +167,7 @@ export function CurrencySelector({
 
           <div className="space-y-0.5">
             {PRIMARY_CURRENCY_LIST.map((curr) => {
-              const isSelected = selectedCurrency === curr.code;
+              const isSelected = displayCurrency === curr.code;
               return (
                 <button
                   key={curr.code}

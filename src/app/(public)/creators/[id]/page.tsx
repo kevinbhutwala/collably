@@ -13,7 +13,7 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const creator = creatorRepo.getById(params.id);
+  const creator = creatorRepo.getById(params.id) || creatorRepo.getByUserId(params.id);
 
   if (!creator) {
     return {
@@ -65,7 +65,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default function CreatorDetailPage({ params }: Props) {
-  const creator = creatorRepo.getById(params.id);
+  const creator = creatorRepo.getById(params.id) || creatorRepo.getByUserId(params.id);
   const socialLinks = creator?.socialAccounts?.map((s) => s.url).filter(Boolean) || [];
 
   const jsonLd = creator

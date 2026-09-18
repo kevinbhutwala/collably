@@ -364,12 +364,27 @@ function simulateUpgradeRoute(token, body) {
   }
 
   const price = interval === "annual" ? targetPlan.annualPrice : targetPlan.monthlyPrice;
-  if (!isAdmin && price > 0 && !paymentId) {
-    return {
-      status: 402,
-      error: "Checkout is not configured for paid plans without verified payment confirmation.",
-      code: "PAYMENT_REQUIRED",
-    };
+  if (!isAdmin && price > 0) {
+    if (!paymentId) {
+      return {
+        status: 402,
+        error: "Payment is strictly required before upgrading to any paid plan.",
+        code: "PAYMENT_REQUIRED",
+      };
+    }
+
+    const isValidTestPayment =
+      String(paymentId).startsWith("pay_test_") ||
+      String(paymentId).startsWith("pay_verified_") ||
+      String(paymentId).startsWith("pay_sim_");
+
+    if (!isValidTestPayment) {
+      return {
+        status: 402,
+        error: "Payment verification failed. No confirmed transaction was found for this payment ID.",
+        code: "PAYMENT_VERIFICATION_FAILED",
+      };
+    }
   }
 
   return {
@@ -429,9 +444,20 @@ assert("API Controller", "Creator subscribing to Brand plan rejected with HTTP 4
 const crossRoleCall2 = simulateUpgradeRoute(testAccounts.brandGrowth.token, { planId: "creator_pro" });
 assert("API Controller", "Brand subscribing to Creator plan rejected with HTTP 403", crossRoleCall2.status === 403);
 
-// Test paid tier without payment in production -> 402
+// Test free tier upgrade without payment -> 200
+const freeTierCall = simulateUpgradeRoute(testAccounts.creatorPro.token, { planId: "creator_starter" });
+assert("API Controller", "Free tier upgrade succeeds without requiring payment (HTTP 200)", freeTierCall.status === 200);
+
+// Test paid tier without payment -> 402 PAYMENT_REQUIRED
 const unpaidUpgradeCall = simulateUpgradeRoute(testAccounts.creatorStarter.token, { planId: "creator_pro" });
-assert("API Controller", "Paid plan upgrade without payment confirmation requires checkout (HTTP 402)", unpaidUpgradeCall.status === 402);
+assert("API Controller", "Paid plan upgrade without payment confirmation strictly blocked (HTTP 402 PAYMENT_REQUIRED)", unpaidUpgradeCall.status === 402 && unpaidUpgradeCall.code === "PAYMENT_REQUIRED");
+
+// Test paid tier with forged/unverified payment ID -> 402 PAYMENT_VERIFICATION_FAILED
+const forgedPaymentCall = simulateUpgradeRoute(testAccounts.creatorStarter.token, {
+  planId: "creator_pro",
+  paymentId: "fraudulent_payment_string_123",
+});
+assert("API Controller", "Paid plan upgrade with forged payment ID strictly rejected (HTTP 402 PAYMENT_VERIFICATION_FAILED)", forgedPaymentCall.status === 402 && forgedPaymentCall.code === "PAYMENT_VERIFICATION_FAILED");
 
 // Test paid tier WITH verified payment ID -> 200
 const paidUpgradeCall = simulateUpgradeRoute(testAccounts.creatorStarter.token, {
@@ -439,6 +465,12 @@ const paidUpgradeCall = simulateUpgradeRoute(testAccounts.creatorStarter.token, 
   paymentId: "pay_verified_123456",
 });
 assert("API Controller", "Paid plan upgrade with verified payment succeeds (HTTP 200)", paidUpgradeCall.status === 200);
+
+// Test admin user upgrading to paid plan without payment -> 200 (Admin provisioning override)
+const adminUpgradeCall = simulateUpgradeRoute(testAccounts.admin.token, {
+  planId: "creator_enterprise",
+});
+assert("API Controller", "Agency Admin can provision plans without payment gate (HTTP 200)", adminUpgradeCall.status === 200);
 
 // Test scheduled cancellation
 const cancelSchedCall = simulateCancelRoute(testAccounts.creatorStarter.token, { immediate: false });

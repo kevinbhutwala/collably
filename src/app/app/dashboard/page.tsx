@@ -43,6 +43,8 @@ import {
   BarChart3,
   ChevronRight,
   Send,
+  FileCheck2,
+  Clapperboard,
 } from "lucide-react";
 
 function DashboardContent() {
@@ -311,7 +313,7 @@ function DashboardContent() {
               change={activeCollabsCount > 0 ? "Active" : "—"}
               trend="up"
               subtitle="Content in progress"
-              icon={<Clock className="w-4 h-4 text-[#0A0A0E]" />}
+              icon={<FileCheck2 className="w-4 h-4 text-[#8A7000] dark:text-[#FFD21F]" />}
             />
             <StatsCard
               title="Engagement Rate"
@@ -387,15 +389,20 @@ function DashboardContent() {
           {/* Active Collaborations Pipeline */}
           <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-5">
             <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
-              <div>
-                <h2 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">
-                  {role === "creator" ? "Active Projects & Content" : "Content Review & Approvals"}
-                </h2>
-                <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
-                  {role === "creator"
-                    ? "Track drafts, revisions, and approval progress."
-                    : "Review creator submissions and approve payments."}
-                </p>
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-xl bg-[#FFD21F]/15 dark:bg-[#FFD21F]/10 border border-[#FFD21F]/30 flex items-center justify-center shrink-0">
+                  <FileCheck2 className="w-4 h-4 text-[#8A7000] dark:text-[#FFD21F]" />
+                </div>
+                <div>
+                  <h2 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">
+                    {role === "creator" ? "Active Projects & Content" : "Content Review & Approvals"}
+                  </h2>
+                  <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
+                    {role === "creator"
+                      ? "Track drafts, revisions, and approval progress."
+                      : "Review creator submissions and approve payments."}
+                  </p>
+                </div>
               </div>
 
               <Link
@@ -455,8 +462,9 @@ function DashboardContent() {
                     </div>
 
                     <div className="flex items-center justify-between pt-2 border-t border-black/6 dark:border-white/10 text-xs font-mono">
-                      <span className="text-[#5A5A68] dark:text-[#8E8EA4] text-[11px]">
-                        Draft: <strong className="text-[#0A0A0E] dark:text-white">{collab.deliverables?.[0]?.title || "Draft #1"}</strong>
+                      <span className="text-[#5A5A68] dark:text-[#8E8EA4] text-[11px] flex items-center gap-1.5">
+                        <Clapperboard className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F]" />
+                        <span>Content: <strong className="text-[#0A0A0E] dark:text-white">{collab.deliverables?.[0]?.title || "Draft #1"}</strong></span>
                       </span>
                       <Link
                         href="/app/collaborations"

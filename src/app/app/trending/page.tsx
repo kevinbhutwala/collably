@@ -21,6 +21,7 @@ import {
   Sparkles,
   ArrowRight,
   Send,
+  MessageSquare,
   CheckCircle2,
   Clock,
   ShieldCheck,
@@ -472,13 +473,28 @@ export default function DedicatedTrendingPage() {
                       <ArrowRight className="w-3 h-3" />
                     </button>
                   </Link>
-                  <button
-                    onClick={() => handleOpenInvite(creator)}
-                    className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-extrabold transition-all flex items-center justify-center gap-1 shadow-2xs border border-black/10 cursor-pointer"
-                  >
-                    <span>Invite</span>
-                    <Send className="w-3 h-3" />
-                  </button>
+
+                  {/* Brands / Admins: Invite to campaign */}
+                  {(role === "brand" || role === "brand_owner" || role === "brand_manager" || role === "agency_admin" || role === "super_admin") ? (
+                    <button
+                      onClick={() => handleOpenInvite(creator)}
+                      className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-extrabold transition-all flex items-center justify-center gap-1 shadow-2xs border border-black/10 cursor-pointer"
+                    >
+                      <span>Invite</span>
+                      <Send className="w-3 h-3" />
+                    </button>
+                  ) : (
+                    /* Creators: Message / Connect */
+                    <Link
+                      href={`/app/messages?recipientId=${encodeURIComponent(creator.id)}&recipientName=${encodeURIComponent(creator.fullName)}`}
+                      className="flex-1"
+                    >
+                      <button className="w-full py-2.5 rounded-xl bg-[#0A0A0E] dark:bg-[#FFD21F] hover:bg-[#1A1A24] dark:hover:bg-[#FFE052] text-white dark:text-[#0A0A0E] text-xs font-bold transition-all flex items-center justify-center gap-1 shadow-2xs border border-black/10 cursor-pointer">
+                        <span>Message</span>
+                        <MessageSquare className="w-3 h-3" />
+                      </button>
+                    </Link>
+                  )}
                 </div>
               </div>
             );

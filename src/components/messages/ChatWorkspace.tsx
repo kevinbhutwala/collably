@@ -139,13 +139,21 @@ export function ChatWorkspace() {
     if (!silent) setIsLoading(true);
     try {
       const convs = await messageService.getConversations(user?.id);
-      setConversations(convs || []);
-
       if (convs && convs.length > 0) {
-        setActiveConvId((current) => {
-          if (current && convs.some((c) => c.id === current)) return current;
-          return convs[0].id;
+        // Deduplicate by id — prevents duplicates when polling races with local state
+        const seen = new Set<string>();
+        const deduped = convs.filter((c) => {
+          if (seen.has(c.id)) return false;
+          seen.add(c.id);
+          return true;
         });
+        setConversations(deduped);
+        setActiveConvId((current) => {
+          if (current && deduped.some((c) => c.id === current)) return current;
+          return deduped[0].id;
+        });
+      } else {
+        setConversations([]);
       }
     } catch (err) {
       console.error("Failed to load conversations:", err);
@@ -194,7 +202,31 @@ export function ChatWorkspace() {
     if (!convId) return;
     try {
       const msgs = await messageService.getMessages(convId);
-      setMessagesMap((prev) => ({ ...prev, [convId]: msgs || [] }));
+      setMessagesMap((prev) => {
+        const incoming = msgs || [];
+        // Deduplicate: keep existing optimistic messages that don't yet have a DB counterpart
+        // A "DB message" has an id like msg-TIMESTAMP-SUFFIX; an optimistic one is msg-TIMESTAMP (no suffix).
+        // Strategy: build a Set of all incoming ids, then merge so that any local msg whose
+        // content+senderId matches an incoming msg is dropped in favour of the DB version.
+        const incomingIds = new Set(incoming.map((m) => m.id));
+        const existing = prev[convId] || [];
+        // Keep only local optimistic messages that are NOT yet in the DB response
+        const localOnly = existing.filter((localMsg) => {
+          if (incomingIds.has(localMsg.id)) return false; // already in DB
+          // Also drop if DB has a message with same content + sender within 10s (optimistic twin)
+          return !incoming.some(
+            (dbMsg) =>
+              dbMsg.senderId === localMsg.senderId &&
+              dbMsg.content === localMsg.content &&
+              Math.abs(new Date(dbMsg.createdAt).getTime() - new Date(localMsg.createdAt).getTime()) < 10_000
+          );
+        });
+        // Merge: DB messages + remaining local-only, sort by createdAt
+        const merged = [...incoming, ...localOnly].sort(
+          (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+        );
+        return { ...prev, [convId]: merged };
+      });
     } catch (err) {
       console.error("Failed to load messages:", err);
     }
@@ -218,10 +250,25 @@ export function ChatWorkspace() {
     activeConvId,
     currentUserId: user?.id,
     onNewMessage: (msg) => {
-      setMessagesMap((prev) => ({
-        ...prev,
-        [msg.conversationId]: [...(prev[msg.conversationId] || []).filter((m) => m.id !== msg.id), msg],
-      }));
+      setMessagesMap((prev) => {
+        const existing = prev[msg.conversationId] || [];
+        // Drop any existing message that is either:
+        // 1. Same id (exact match)
+        // 2. Optimistic twin: same sender + same content sent within 10 seconds
+        const filtered = existing.filter(
+          (m) =>
+            m.id !== msg.id &&
+            !(
+              m.senderId === msg.senderId &&
+              m.content === msg.content &&
+              Math.abs(new Date(m.createdAt).getTime() - new Date(msg.createdAt).getTime()) < 10_000
+            )
+        );
+        return {
+          ...prev,
+          [msg.conversationId]: [...filtered, msg],
+        };
+      });
       setConversations((prev) =>
         prev.map((c) =>
           c.id === msg.conversationId
@@ -537,7 +584,7 @@ export function ChatWorkspace() {
     );
 
     try {
-      await messageService.sendMessage(
+      const persistedMsg = await messageService.sendMessage(
         activeConvId,
         newMsg.senderId,
         newMsg.senderRole,
@@ -546,6 +593,21 @@ export function ChatWorkspace() {
         newMsg.content,
         newMsg.attachments
       );
+
+      // Replace the optimistic message with the real persisted one (has stable DB id)
+      if (persistedMsg && persistedMsg.id && persistedMsg.id !== newMsg.id) {
+        setMessagesMap((prev) => {
+          const msgs = prev[activeConvId] || [];
+          // Drop optimistic, insert persisted (avoid duplication)
+          const without = msgs.filter((m) => m.id !== newMsg.id && m.id !== persistedMsg.id);
+          return {
+            ...prev,
+            [activeConvId]: [...without, persistedMsg].sort(
+              (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+            ),
+          };
+        });
+      }
 
       triggerSimulatedPartnerReply(finalContent, activeConvId);
     } catch (err) {

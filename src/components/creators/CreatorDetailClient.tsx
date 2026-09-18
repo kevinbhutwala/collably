@@ -127,7 +127,7 @@ export function CreatorDetailClient({
 
                 {/* Social Channel Links */}
                 <div className="flex flex-wrap items-center gap-2 pt-2">
-                  {creator.socialAccounts.map((sa) => {
+                  {(creator.socialAccounts || []).map((sa) => {
                     const isVerified = sa.verifiedBadge || sa.verificationStatus === "verified";
                     return (
                       <a
@@ -210,7 +210,7 @@ export function CreatorDetailClient({
             <div className="p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6">
               <h2 className="text-xl font-bold text-[#0A0A0E] font-display">Rate Card &amp; Sponsorship Options</h2>
               <div className="space-y-4">
-                {creator.rateCards.map((rate) => (
+                {(creator.rateCards || []).map((rate) => (
                   <div
                     key={rate.id}
                     className="p-5 rounded-2xl bg-[#F8F8FC] border border-black/5 flex items-center justify-between gap-4"
@@ -248,7 +248,7 @@ export function CreatorDetailClient({
                 <div>
                   <span className="text-[11px] text-[#7A7A8A] uppercase font-bold block mb-2">Top Geographies</span>
                   <div className="space-y-2">
-                    {creator.audience.topCountries.map((geo) => (
+                    {(creator.audience?.topCountries || []).map((geo) => (
                       <div key={geo.country} className="space-y-1">
                         <div className="flex justify-between text-[#0A0A0E]">
                           <span>{geo.country}</span>
@@ -268,7 +268,7 @@ export function CreatorDetailClient({
                 <div className="pt-4 border-t border-black/8">
                   <span className="text-[11px] text-[#7A7A8A] uppercase font-bold block mb-2">Gender Breakdown</span>
                   <div className="grid grid-cols-2 gap-2">
-                    {creator.audience.genderSplit.map((g) => (
+                    {(creator.audience?.genderSplit || []).map((g) => (
                       <div key={g.gender} className="p-3 rounded-xl bg-[#F8F8FC] border border-black/5 text-center">
                         <span className="text-[10px] text-[#7A7A8A] uppercase block">{g.gender}</span>
                         <span className="text-sm font-black text-[#0A0A0E]">{g.percentage}%</span>

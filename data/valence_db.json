@@ -4,20 +4,20 @@
       "id": "user-creator",
       "name": "Demo Creator",
       "email": "creator@abeycollab.io",
-      "passwordHash": "5707c2bf9719b38077fe533cca3bff32:d1c12320f00040c0bcf58a42dee44d3272541528047c41166d7ca0998040bbc152cdb888efdc64a045206ff81067c0a6833549d7406622c8394bf0ed19f29e16:210000",
+      "passwordHash": "3e0431a52d75b5a706acaff9efd9fd76:92472e45887e230dfda5ce988610d50ad9e0f936494cdaca915129ecce1b770b1842d4db47a8cd9f7e3dde89eadb1331636febf6ec0b7083db82ec9891629ca3:210000",
       "role": "creator",
       "avatarUrl": "",
       "verified": true,
       "createdAt": "2026-09-03T18:46:21.709Z",
-      "updatedAt": "2026-09-09T20:07:12.990Z",
-      "preferredCurrency": "AED",
-      "preferred_currency": "AED"
+      "updatedAt": "2026-09-18T04:34:38.306Z",
+      "preferredCurrency": "INR",
+      "preferred_currency": "INR"
     },
     {
       "id": "user-brand",
       "name": "Demo Brand",
       "email": "brand@abeycollab.io",
-      "passwordHash": "bdf5b2eb970164376fcf47f0cc88f59f:7db73a97c7d106c26abe848884450e58b8c10651f3a31b1fd7d3cbbb5512d74a7b5b301010b5798bb90ae3919a231473b1f10d89eff285e56f76473ac0b28de3:210000",
+      "passwordHash": "778124ec96311620513a113a178ca9d8:141395305b9b1501627b9aea74668d1410d2b6357d7de757b18368e3d404dfb61cbd92898ea50ef8694927005b0ac540357cba19af1d5aae990c400d7fe29917:210000",
       "role": "brand",
       "avatarUrl": "",
       "verified": true,
@@ -30,7 +30,7 @@
       "id": "user-owner",
       "name": "Kevin Bhutwala",
       "email": "kevinbhutwala417@gmail.com",
-      "passwordHash": "e2f47efb56bcd628d91d8a6251ec9d9b:3f3cc60f535f5c125691826cb735a3e9f7ec8e3c24605a91572aa45d5a96da24f8e07751922bca37995968381ad45c7497edf05609f158259002ee6350b40ffa:210000",
+      "passwordHash": "8d496d311756104ef295ed119a4abffa:4a47e57a95b3c2f1529f84eccc9f75ba127f402da80ec26d7b904530ecd3c3f9741639ac8eead47fa55f8d6dd74181c4ff78c93b01d52c4f01c48b9effb2ffc4:210000",
       "role": "agency_admin",
       "avatarUrl": "",
       "verified": true,
@@ -82,7 +82,7 @@
       "id": "user-creator-legacy",
       "name": "Demo Creator",
       "email": "creator@collably.io",
-      "passwordHash": "5707c2bf9719b38077fe533cca3bff32:d1c12320f00040c0bcf58a42dee44d3272541528047c41166d7ca0998040bbc152cdb888efdc64a045206ff81067c0a6833549d7406622c8394bf0ed19f29e16:210000",
+      "passwordHash": "3e0431a52d75b5a706acaff9efd9fd76:92472e45887e230dfda5ce988610d50ad9e0f936494cdaca915129ecce1b770b1842d4db47a8cd9f7e3dde89eadb1331636febf6ec0b7083db82ec9891629ca3:210000",
       "role": "creator",
       "avatarUrl": "",
       "verified": true,
@@ -95,7 +95,7 @@
       "id": "user-brand-legacy",
       "name": "Demo Brand",
       "email": "brand@collably.io",
-      "passwordHash": "bdf5b2eb970164376fcf47f0cc88f59f:7db73a97c7d106c26abe848884450e58b8c10651f3a31b1fd7d3cbbb5512d74a7b5b301010b5798bb90ae3919a231473b1f10d89eff285e56f76473ac0b28de3:210000",
+      "passwordHash": "778124ec96311620513a113a178ca9d8:141395305b9b1501627b9aea74668d1410d2b6357d7de757b18368e3d404dfb61cbd92898ea50ef8694927005b0ac540357cba19af1d5aae990c400d7fe29917:210000",
       "role": "brand",
       "avatarUrl": "",
       "verified": true,
@@ -103,9 +103,681 @@
       "updatedAt": "2026-09-07T22:15:17.692Z",
       "preferredCurrency": "USD",
       "preferred_currency": "USD"
+    },
+    {
+      "id": "user-1789707222450",
+      "name": "Elena Rostova",
+      "email": "elena@abeycollab.io",
+      "passwordHash": "f89c3294d3c03ad14e98da79239ed6f8:d92a34eda710a2b3c24c34d28ee5dadd202d5b32342286c9a4fec79f239e508a78b9b2f352ae37584dc5ec10c599499c172c6c86d7693676783f8a9bd0386ef9:210000",
+      "role": "creator",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "verified": false,
+      "createdAt": "2026-09-18T04:53:42.450Z",
+      "updatedAt": "2026-09-18T11:34:15.698Z",
+      "preferredCurrency": "INR",
+      "preferred_currency": "INR"
+    },
+    {
+      "id": "user-1789707227118",
+      "name": "Marcus Vance",
+      "email": "marcus@abeycollab.io",
+      "passwordHash": "b1981c70a0c68826edfee743cfd141f0:df86e8586a32a38c92c186b547ab00d27e75e6bd73dd4a3fd6f2134fef59f7c0414eabccdc6b743444ee960a49257323a41ea040ea68226de993348e7c1d1d3e:210000",
+      "role": "creator",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "verified": false,
+      "createdAt": "2026-09-18T04:53:47.118Z",
+      "updatedAt": "2026-09-18T04:53:47.118Z",
+      "preferredCurrency": "USD",
+      "preferred_currency": "USD"
+    },
+    {
+      "id": "user-1789707231099",
+      "name": "Aria Chen",
+      "email": "aria@abeycollab.io",
+      "passwordHash": "5636852722538f632791648eec32f688:a6416996e32fd4ce669e245be9bd3e081a8c224eb321efe4d8376249269bb866f9593f81805c632348e20ebbfaa4eeb4c645051ff3b5d9277380f11ab60cd9de:210000",
+      "role": "creator",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "verified": false,
+      "createdAt": "2026-09-18T04:53:51.099Z",
+      "updatedAt": "2026-09-18T04:53:51.099Z",
+      "preferredCurrency": "USD",
+      "preferred_currency": "USD"
+    },
+    {
+      "id": "user-1789707236600",
+      "name": "Devon Thorne",
+      "email": "devon@abeycollab.io",
+      "passwordHash": "d68ab0458b364ada3aae0cee94261ca6:1afd90e9a7048670499373a5fb67ad0777ce9cd82616b079a174917b92083cb05ce5a7f3bb7a034c9dbafa6d42f50c5da4535e467fc4a71b74ac629bb10315ad:210000",
+      "role": "creator",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "verified": false,
+      "createdAt": "2026-09-18T04:53:56.600Z",
+      "updatedAt": "2026-09-18T04:53:56.600Z",
+      "preferredCurrency": "USD",
+      "preferred_currency": "USD"
+    },
+    {
+      "id": "user-1789707240648",
+      "name": "Chloe Dubois",
+      "email": "chloe@abeycollab.io",
+      "passwordHash": "33df719e2bdc6901d805c0f2d58f9811:3cfaec0dc27d27a782c0ff597a70f0e0a9926421d2e6509b4b8d7f7ba15b650a48293e038904723e8910c685f8701630f12e9799199a4890a0a330e013a16cbc:210000",
+      "role": "creator",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "verified": false,
+      "createdAt": "2026-09-18T04:54:00.648Z",
+      "updatedAt": "2026-09-18T04:54:00.648Z",
+      "preferredCurrency": "USD",
+      "preferred_currency": "USD"
+    },
+    {
+      "id": "user-1789707244128",
+      "name": "Kai Takahashi",
+      "email": "kai@abeycollab.io",
+      "passwordHash": "4a524d66aacc5c6931c2d3b388e1d62b:d60927e64eea42f326f12ee0241cfde05908d6d8f4f14d9606cd4c47ab71b89e60eff88502a1884c2bc3d35845f38acb1d9f45bded0df8d3102b904f6ae55cf1:210000",
+      "role": "creator",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "verified": false,
+      "createdAt": "2026-09-18T04:54:04.128Z",
+      "updatedAt": "2026-09-18T04:54:04.128Z",
+      "preferredCurrency": "USD",
+      "preferred_currency": "USD"
     }
   ],
   "creators": [
+    {
+      "id": "creator-1789707244130",
+      "userId": "user-1789707244128",
+      "fullName": "Kai Takahashi",
+      "handle": "kaigaming",
+      "headline": "Gaming & Esports Creator & Digital Storyteller",
+      "bio": "Pro Esports Caster & Next-Gen Game Hardware Tester",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+      "location": "United States",
+      "languages": [
+        "English"
+      ],
+      "primaryCategory": "Gaming & Esports",
+      "secondaryCategories": [
+        "Design & Creative"
+      ],
+      "verified": false,
+      "featured": false,
+      "tier": "Micro",
+      "rating": 5,
+      "completedCampaignsCount": 0,
+      "totalFollowers": 15000,
+      "avgEngagementRate": 3.8,
+      "startingPrice": 3800,
+      "currency": "USD",
+      "availableForHire": true,
+      "profileCompleteness": 70,
+      "qualityScore": 85,
+      "socialAccounts": [
+        {
+          "id": "sa-1789707244130-x",
+          "platform": "x",
+          "handle": "kaigaming",
+          "url": "https://x.com/kaigaming",
+          "followers": 15000,
+          "engagementRate": 3.8,
+          "avgViews": 7500,
+          "verifiedBadge": false
+        }
+      ],
+      "audience": {
+        "topCountries": [
+          {
+            "country": "United States",
+            "percentage": 65
+          },
+          {
+            "country": "United Kingdom",
+            "percentage": 20
+          },
+          {
+            "country": "Canada",
+            "percentage": 15
+          }
+        ],
+        "ageDistribution": [
+          {
+            "range": "18-24",
+            "percentage": 30
+          },
+          {
+            "range": "25-34",
+            "percentage": 55
+          },
+          {
+            "range": "35-44",
+            "percentage": 15
+          }
+        ],
+        "genderSplit": [
+          {
+            "gender": "Male",
+            "percentage": 55
+          },
+          {
+            "gender": "Female",
+            "percentage": 45
+          }
+        ],
+        "interests": [
+          "Gaming & Esports",
+          "Digital Products",
+          "Lifestyle"
+        ]
+      },
+      "rateCards": [
+        {
+          "id": "rc-1789707244130-0",
+          "deliverableType": "X (Twitter) Thread",
+          "title": "Deep-Dive Sponsored X Thread",
+          "description": "Analytical 5-post thread with trackable link and brand quote reposts.",
+          "basePrice": 2280,
+          "currency": "USD",
+          "turnaroundDays": 3,
+          "revisionsIncluded": 1
+        }
+      ]
+    },
+    {
+      "id": "creator-1789707240650",
+      "userId": "user-1789707240648",
+      "fullName": "Chloe Dubois",
+      "handle": "chloedubois",
+      "headline": "Beauty & Skincare Creator & Digital Storyteller",
+      "bio": "Parisian Clean Beauty & Botanical Skincare Authority",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+      "location": "United States",
+      "languages": [
+        "English"
+      ],
+      "primaryCategory": "Beauty & Skincare",
+      "secondaryCategories": [
+        "Design & Creative"
+      ],
+      "verified": false,
+      "featured": false,
+      "tier": "Micro",
+      "rating": 5,
+      "completedCampaignsCount": 0,
+      "totalFollowers": 15000,
+      "avgEngagementRate": 3.8,
+      "startingPrice": 3000,
+      "currency": "USD",
+      "availableForHire": true,
+      "profileCompleteness": 70,
+      "qualityScore": 85,
+      "socialAccounts": [
+        {
+          "id": "sa-1789707240649-x",
+          "platform": "x",
+          "handle": "chloedubois",
+          "url": "https://x.com/chloedubois",
+          "followers": 15000,
+          "engagementRate": 3.8,
+          "avgViews": 7500,
+          "verifiedBadge": false
+        }
+      ],
+      "audience": {
+        "topCountries": [
+          {
+            "country": "United States",
+            "percentage": 65
+          },
+          {
+            "country": "United Kingdom",
+            "percentage": 20
+          },
+          {
+            "country": "Canada",
+            "percentage": 15
+          }
+        ],
+        "ageDistribution": [
+          {
+            "range": "18-24",
+            "percentage": 30
+          },
+          {
+            "range": "25-34",
+            "percentage": 55
+          },
+          {
+            "range": "35-44",
+            "percentage": 15
+          }
+        ],
+        "genderSplit": [
+          {
+            "gender": "Male",
+            "percentage": 55
+          },
+          {
+            "gender": "Female",
+            "percentage": 45
+          }
+        ],
+        "interests": [
+          "Beauty & Skincare",
+          "Digital Products",
+          "Lifestyle"
+        ]
+      },
+      "rateCards": [
+        {
+          "id": "rc-1789707240650-0",
+          "deliverableType": "X (Twitter) Thread",
+          "title": "Deep-Dive Sponsored X Thread",
+          "description": "Analytical 5-post thread with trackable link and brand quote reposts.",
+          "basePrice": 1800,
+          "currency": "USD",
+          "turnaroundDays": 3,
+          "revisionsIncluded": 1
+        }
+      ]
+    },
+    {
+      "id": "creator-1789707236602",
+      "userId": "user-1789707236600",
+      "fullName": "Devon Thorne",
+      "handle": "devoncodes",
+      "headline": "Technology & AI Creator & Digital Storyteller",
+      "bio": "Full-Stack Tech Lead & Open-Source Creator",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+      "location": "United States",
+      "languages": [
+        "English"
+      ],
+      "primaryCategory": "Technology & AI",
+      "secondaryCategories": [
+        "Design & Creative"
+      ],
+      "verified": false,
+      "featured": false,
+      "tier": "Micro",
+      "rating": 5,
+      "completedCampaignsCount": 0,
+      "totalFollowers": 15000,
+      "avgEngagementRate": 3.8,
+      "startingPrice": 2400,
+      "currency": "USD",
+      "availableForHire": true,
+      "profileCompleteness": 70,
+      "qualityScore": 85,
+      "socialAccounts": [
+        {
+          "id": "sa-1789707236602-x",
+          "platform": "x",
+          "handle": "devoncodes",
+          "url": "https://x.com/devoncodes",
+          "followers": 15000,
+          "engagementRate": 3.8,
+          "avgViews": 7500,
+          "verifiedBadge": false
+        }
+      ],
+      "audience": {
+        "topCountries": [
+          {
+            "country": "United States",
+            "percentage": 65
+          },
+          {
+            "country": "United Kingdom",
+            "percentage": 20
+          },
+          {
+            "country": "Canada",
+            "percentage": 15
+          }
+        ],
+        "ageDistribution": [
+          {
+            "range": "18-24",
+            "percentage": 30
+          },
+          {
+            "range": "25-34",
+            "percentage": 55
+          },
+          {
+            "range": "35-44",
+            "percentage": 15
+          }
+        ],
+        "genderSplit": [
+          {
+            "gender": "Male",
+            "percentage": 55
+          },
+          {
+            "gender": "Female",
+            "percentage": 45
+          }
+        ],
+        "interests": [
+          "Technology & AI",
+          "Digital Products",
+          "Lifestyle"
+        ]
+      },
+      "rateCards": [
+        {
+          "id": "rc-1789707236602-0",
+          "deliverableType": "X (Twitter) Thread",
+          "title": "Deep-Dive Sponsored X Thread",
+          "description": "Analytical 5-post thread with trackable link and brand quote reposts.",
+          "basePrice": 1440,
+          "currency": "USD",
+          "turnaroundDays": 3,
+          "revisionsIncluded": 1
+        }
+      ]
+    },
+    {
+      "id": "creator-1789707231100",
+      "userId": "user-1789707231099",
+      "fullName": "Aria Chen",
+      "handle": "ariachen",
+      "headline": "Fitness & Wellness Creator & Digital Storyteller",
+      "bio": "Biohacker & Clinical Nutritionist",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+      "location": "United States",
+      "languages": [
+        "English"
+      ],
+      "primaryCategory": "Fitness & Wellness",
+      "secondaryCategories": [
+        "Design & Creative"
+      ],
+      "verified": false,
+      "featured": false,
+      "tier": "Micro",
+      "rating": 5,
+      "completedCampaignsCount": 0,
+      "totalFollowers": 15000,
+      "avgEngagementRate": 3.8,
+      "startingPrice": 3200,
+      "currency": "USD",
+      "availableForHire": true,
+      "profileCompleteness": 70,
+      "qualityScore": 85,
+      "socialAccounts": [
+        {
+          "id": "sa-1789707231100-x",
+          "platform": "x",
+          "handle": "ariachen",
+          "url": "https://x.com/ariachen",
+          "followers": 15000,
+          "engagementRate": 3.8,
+          "avgViews": 7500,
+          "verifiedBadge": false
+        }
+      ],
+      "audience": {
+        "topCountries": [
+          {
+            "country": "United States",
+            "percentage": 65
+          },
+          {
+            "country": "United Kingdom",
+            "percentage": 20
+          },
+          {
+            "country": "Canada",
+            "percentage": 15
+          }
+        ],
+        "ageDistribution": [
+          {
+            "range": "18-24",
+            "percentage": 30
+          },
+          {
+            "range": "25-34",
+            "percentage": 55
+          },
+          {
+            "range": "35-44",
+            "percentage": 15
+          }
+        ],
+        "genderSplit": [
+          {
+            "gender": "Male",
+            "percentage": 55
+          },
+          {
+            "gender": "Female",
+            "percentage": 45
+          }
+        ],
+        "interests": [
+          "Fitness & Wellness",
+          "Digital Products",
+          "Lifestyle"
+        ]
+      },
+      "rateCards": [
+        {
+          "id": "rc-1789707231100-0",
+          "deliverableType": "X (Twitter) Thread",
+          "title": "Deep-Dive Sponsored X Thread",
+          "description": "Analytical 5-post thread with trackable link and brand quote reposts.",
+          "basePrice": 1920,
+          "currency": "USD",
+          "turnaroundDays": 3,
+          "revisionsIncluded": 1
+        }
+      ]
+    },
+    {
+      "id": "creator-1789707227120",
+      "userId": "user-1789707227118",
+      "fullName": "Marcus Vance",
+      "handle": "marcusvance",
+      "headline": "Design & Creative Creator & Digital Storyteller",
+      "bio": "Architectural Cinematographer & Luxury Design Critic",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+      "location": "United States",
+      "languages": [
+        "English"
+      ],
+      "primaryCategory": "Design & Creative",
+      "secondaryCategories": [
+        "Design & Creative"
+      ],
+      "verified": false,
+      "featured": false,
+      "tier": "Micro",
+      "rating": 5,
+      "completedCampaignsCount": 0,
+      "totalFollowers": 15000,
+      "avgEngagementRate": 3.8,
+      "startingPrice": 2800,
+      "currency": "USD",
+      "availableForHire": true,
+      "profileCompleteness": 70,
+      "qualityScore": 85,
+      "socialAccounts": [
+        {
+          "id": "sa-1789707227119-x",
+          "platform": "x",
+          "handle": "marcusvance",
+          "url": "https://x.com/marcusvance",
+          "followers": 15000,
+          "engagementRate": 3.8,
+          "avgViews": 7500,
+          "verifiedBadge": false
+        }
+      ],
+      "audience": {
+        "topCountries": [
+          {
+            "country": "United States",
+            "percentage": 65
+          },
+          {
+            "country": "United Kingdom",
+            "percentage": 20
+          },
+          {
+            "country": "Canada",
+            "percentage": 15
+          }
+        ],
+        "ageDistribution": [
+          {
+            "range": "18-24",
+            "percentage": 30
+          },
+          {
+            "range": "25-34",
+            "percentage": 55
+          },
+          {
+            "range": "35-44",
+            "percentage": 15
+          }
+        ],
+        "genderSplit": [
+          {
+            "gender": "Male",
+            "percentage": 55
+          },
+          {
+            "gender": "Female",
+            "percentage": 45
+          }
+        ],
+        "interests": [
+          "Design & Creative",
+          "Digital Products",
+          "Lifestyle"
+        ]
+      },
+      "rateCards": [
+        {
+          "id": "rc-1789707227120-0",
+          "deliverableType": "X (Twitter) Thread",
+          "title": "Deep-Dive Sponsored X Thread",
+          "description": "Analytical 5-post thread with trackable link and brand quote reposts.",
+          "basePrice": 1680,
+          "currency": "USD",
+          "turnaroundDays": 3,
+          "revisionsIncluded": 1
+        }
+      ]
+    },
+    {
+      "id": "creator-1789707222454",
+      "userId": "user-1789707222450",
+      "fullName": "Elena Rostova",
+      "handle": "elenatech",
+      "headline": "Technology & AI Creator & Digital Storyteller",
+      "bio": "AI Engineer & Next-Gen Hardware Reviewer",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+      "location": "United States",
+      "languages": [
+        "English"
+      ],
+      "primaryCategory": "Technology & AI",
+      "secondaryCategories": [
+        "Design & Creative"
+      ],
+      "verified": false,
+      "featured": false,
+      "tier": "Micro",
+      "rating": 5,
+      "completedCampaignsCount": 0,
+      "totalFollowers": 15000,
+      "avgEngagementRate": 3.8,
+      "startingPrice": 2200,
+      "currency": "USD",
+      "availableForHire": true,
+      "profileCompleteness": 70,
+      "qualityScore": 85,
+      "socialAccounts": [
+        {
+          "id": "sa-1789707222453-x",
+          "platform": "x",
+          "handle": "elenatech",
+          "url": "https://x.com/elenatech",
+          "followers": 15000,
+          "engagementRate": 3.8,
+          "avgViews": 7500,
+          "verifiedBadge": false
+        }
+      ],
+      "audience": {
+        "topCountries": [
+          {
+            "country": "United States",
+            "percentage": 65
+          },
+          {
+            "country": "United Kingdom",
+            "percentage": 20
+          },
+          {
+            "country": "Canada",
+            "percentage": 15
+          }
+        ],
+        "ageDistribution": [
+          {
+            "range": "18-24",
+            "percentage": 30
+          },
+          {
+            "range": "25-34",
+            "percentage": 55
+          },
+          {
+            "range": "35-44",
+            "percentage": 15
+          }
+        ],
+        "genderSplit": [
+          {
+            "gender": "Male",
+            "percentage": 55
+          },
+          {
+            "gender": "Female",
+            "percentage": 45
+          }
+        ],
+        "interests": [
+          "Technology & AI",
+          "Digital Products",
+          "Lifestyle"
+        ]
+      },
+      "rateCards": [
+        {
+          "id": "rc-1789707222454-0",
+          "deliverableType": "X (Twitter) Thread",
+          "title": "Deep-Dive Sponsored X Thread",
+          "description": "Analytical 5-post thread with trackable link and brand quote reposts.",
+          "basePrice": 1320,
+          "currency": "USD",
+          "turnaroundDays": 3,
+          "revisionsIncluded": 1
+        }
+      ]
+    },
     {
       "id": "creator-demo",
       "userId": "user-creator",
@@ -2610,6 +3282,337 @@
   ],
   "collaborations": [
     {
+      "campaignId": "camp-direct-1789719701789",
+      "campaignTitle": "Partnership: Chloe Dubois Showcase",
+      "brandId": "brand-1788643257899",
+      "brand": {
+        "id": "brand-1788643257899",
+        "userId": "user-1788643257898",
+        "companyName": "Adidas",
+        "industry": "Fashion & Luxury",
+        "headline": "Adidas Official Brand Workspace",
+        "description": "Verified enterprise brand on Collably sponsoring creator partnerships.",
+        "logoUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+        "websiteUrl": "https://collably.io",
+        "location": "San Francisco, CA",
+        "companySize": "10-50",
+        "verified": true,
+        "activeCampaignsCount": 0,
+        "totalSpent": 0,
+        "socialHandles": {},
+        "createdAt": "2026-09-05T21:20:57.899Z"
+      },
+      "creatorId": "creator-5",
+      "creator": {
+        "id": "creator-5",
+        "userId": "user-c5",
+        "fullName": "Chloe Dubois",
+        "handle": "chloedubois_paris",
+        "headline": "Parisian Clean Beauty & Botanical Skincare Authority",
+        "bio": "Unfiltered ingredient chemistry breakdowns and clinical skincare routines for conscious beauty consumers.",
+        "avatarUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&auto=format&fit=crop&q=80",
+        "location": "Paris, France",
+        "languages": [
+          "French",
+          "English"
+        ],
+        "primaryCategory": "Beauty & Skincare",
+        "secondaryCategories": [
+          "Lifestyle & Travel"
+        ],
+        "verified": true,
+        "featured": true,
+        "tier": "Elite",
+        "rating": 4.97,
+        "completedCampaignsCount": 31,
+        "totalFollowers": 520000,
+        "avgEngagementRate": 8.2,
+        "startingPrice": 3000,
+        "availableForHire": true,
+        "profileCompleteness": 95,
+        "qualityScore": 97,
+        "socialAccounts": [
+          {
+            "id": "sa-5-ig",
+            "platform": "instagram",
+            "handle": "chloedubois_paris",
+            "url": "https://instagram.com",
+            "followers": 340000,
+            "engagementRate": 8.6,
+            "avgViews": 110000,
+            "verifiedBadge": true
+          },
+          {
+            "id": "sa-5-tt",
+            "platform": "tiktok",
+            "handle": "chloeskincare",
+            "url": "https://tiktok.com",
+            "followers": 180000,
+            "engagementRate": 7.4,
+            "avgViews": 90000,
+            "verifiedBadge": true
+          }
+        ],
+        "audience": {
+          "topCountries": [
+            {
+              "country": "France",
+              "percentage": 40
+            },
+            {
+              "country": "United States",
+              "percentage": 35
+            },
+            {
+              "country": "United Kingdom",
+              "percentage": 15
+            }
+          ],
+          "ageDistribution": [
+            {
+              "range": "18-24",
+              "percentage": 38
+            },
+            {
+              "range": "25-34",
+              "percentage": 48
+            }
+          ],
+          "genderSplit": [
+            {
+              "gender": "Female",
+              "percentage": 88
+            },
+            {
+              "gender": "Male",
+              "percentage": 12
+            }
+          ],
+          "interests": [
+            "Clean Skincare",
+            "Clinical Formulation",
+            "French Pharmacy"
+          ]
+        },
+        "rateCards": [
+          {
+            "id": "rc-6",
+            "deliverableType": "Instagram Reel",
+            "title": "14-Day Barrier Routine Reel",
+            "description": "Macro texture demonstration with 4K B-roll and clear ingredient CTA.",
+            "basePrice": 3000,
+            "turnaroundDays": 8,
+            "revisionsIncluded": 2,
+            "currency": "USD"
+          }
+        ],
+        "currency": "USD"
+      },
+      "totalAgreedBudget": 3000,
+      "escrowStatus": "pending_deposit",
+      "status": "active",
+      "paymentStatus": "payment_pending",
+      "isFunded": false,
+      "startDate": "2026-09-18T08:21:41.789Z",
+      "finalDeadline": "2026-10-02T08:21:41.789Z",
+      "postingDeadline": "2026-10-02T08:21:41.789Z",
+      "deliverables": [
+        {
+          "id": "del-1789719701789-1",
+          "type": "Short-Form Video (Reels / Shorts)",
+          "title": "Partnership: Chloe Dubois Showcase - Primary Deliverable",
+          "status": "assigned",
+          "dueDate": "2026-10-02T08:21:41.789Z",
+          "payoutAmount": 3000,
+          "revisionCount": 0,
+          "maxRevisions": 2,
+          "notes": "Hi Chloe Dubois, we love your content and would love to collaborate with you on our upcoming milestone-backed campaign.",
+          "submissions": [],
+          "currency": "USD"
+        }
+      ],
+      "negotiationHistory": [
+        {
+          "id": "offer-1789719701789",
+          "senderRole": "brand",
+          "senderName": "Adidas",
+          "amount": 3000,
+          "deliverableTerms": "Short-Form Video (Reels / Shorts)",
+          "notes": "Hi Chloe Dubois, we love your content and would love to collaborate with you on our upcoming milestone-backed campaign.",
+          "status": "offered",
+          "createdAt": "2026-09-18T08:21:41.789Z"
+        }
+      ],
+      "id": "collab-1789719701789",
+      "createdAt": "2026-09-18T08:21:41.789Z",
+      "updatedAt": "2026-09-18T08:21:41.789Z",
+      "currency": "USD"
+    },
+    {
+      "campaignId": "camp-direct-1789719323197",
+      "campaignTitle": "Partnership: Kai Takahashi Showcase",
+      "brandId": "brand-1788643257899",
+      "brand": {
+        "id": "brand-1788643257899",
+        "userId": "user-1788643257898",
+        "companyName": "Adidas",
+        "industry": "Fashion & Luxury",
+        "headline": "Adidas Official Brand Workspace",
+        "description": "Verified enterprise brand on Collably sponsoring creator partnerships.",
+        "logoUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+        "websiteUrl": "https://collably.io",
+        "location": "San Francisco, CA",
+        "companySize": "10-50",
+        "verified": true,
+        "activeCampaignsCount": 0,
+        "totalSpent": 0,
+        "socialHandles": {},
+        "createdAt": "2026-09-05T21:20:57.899Z"
+      },
+      "creatorId": "creator-1789707244130",
+      "creator": {
+        "id": "creator-1789707244130",
+        "userId": "user-1789707244128",
+        "fullName": "Kai Takahashi",
+        "handle": "kaigaming",
+        "headline": "Gaming & Esports Creator & Digital Storyteller",
+        "bio": "Pro Esports Caster & Next-Gen Game Hardware Tester",
+        "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+        "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+        "location": "United States",
+        "languages": [
+          "English"
+        ],
+        "primaryCategory": "Gaming & Esports",
+        "secondaryCategories": [
+          "Design & Creative"
+        ],
+        "verified": false,
+        "featured": false,
+        "tier": "Micro",
+        "rating": 5,
+        "completedCampaignsCount": 0,
+        "totalFollowers": 15000,
+        "avgEngagementRate": 3.8,
+        "startingPrice": 3800,
+        "currency": "USD",
+        "availableForHire": true,
+        "profileCompleteness": 70,
+        "qualityScore": 85,
+        "socialAccounts": [
+          {
+            "id": "sa-1789707244130-x",
+            "platform": "x",
+            "handle": "kaigaming",
+            "url": "https://x.com/kaigaming",
+            "followers": 15000,
+            "engagementRate": 3.8,
+            "avgViews": 7500,
+            "verifiedBadge": false
+          }
+        ],
+        "audience": {
+          "topCountries": [
+            {
+              "country": "United States",
+              "percentage": 65
+            },
+            {
+              "country": "United Kingdom",
+              "percentage": 20
+            },
+            {
+              "country": "Canada",
+              "percentage": 15
+            }
+          ],
+          "ageDistribution": [
+            {
+              "range": "18-24",
+              "percentage": 30
+            },
+            {
+              "range": "25-34",
+              "percentage": 55
+            },
+            {
+              "range": "35-44",
+              "percentage": 15
+            }
+          ],
+          "genderSplit": [
+            {
+              "gender": "Male",
+              "percentage": 55
+            },
+            {
+              "gender": "Female",
+              "percentage": 45
+            }
+          ],
+          "interests": [
+            "Gaming & Esports",
+            "Digital Products",
+            "Lifestyle"
+          ]
+        },
+        "rateCards": [
+          {
+            "id": "rc-1789707244130-0",
+            "deliverableType": "X (Twitter) Thread",
+            "title": "Deep-Dive Sponsored X Thread",
+            "description": "Analytical 5-post thread with trackable link and brand quote reposts.",
+            "basePrice": 2280,
+            "currency": "USD",
+            "turnaroundDays": 3,
+            "revisionsIncluded": 1
+          }
+        ]
+      },
+      "totalAgreedBudget": 3800,
+      "escrowStatus": "pending_deposit",
+      "status": "active",
+      "paymentStatus": "payment_pending",
+      "isFunded": false,
+      "startDate": "2026-09-18T08:15:23.197Z",
+      "finalDeadline": "2026-10-02T08:15:23.197Z",
+      "postingDeadline": "2026-10-02T08:15:23.197Z",
+      "deliverables": [
+        {
+          "id": "del-1789719323197-1",
+          "type": "Short-Form Video (Reels / Shorts)",
+          "title": "Partnership: Kai Takahashi Showcase - Primary Deliverable",
+          "status": "assigned",
+          "dueDate": "2026-10-02T08:15:23.197Z",
+          "payoutAmount": 3800,
+          "revisionCount": 0,
+          "maxRevisions": 2,
+          "notes": "Hi Kai Takahashi, we love your content and would love to collaborate with you on our upcoming milestone-backed campaign.",
+          "submissions": [],
+          "currency": "USD"
+        }
+      ],
+      "negotiationHistory": [
+        {
+          "id": "offer-1789719323197",
+          "senderRole": "brand",
+          "senderName": "Adidas",
+          "amount": 3800,
+          "deliverableTerms": "Short-Form Video (Reels / Shorts)",
+          "notes": "Hi Kai Takahashi, we love your content and would love to collaborate with you on our upcoming milestone-backed campaign.",
+          "status": "offered",
+          "createdAt": "2026-09-18T08:15:23.197Z"
+        }
+      ],
+      "id": "collab-1789719323198",
+      "createdAt": "2026-09-18T08:15:23.198Z",
+      "updatedAt": "2026-09-18T08:15:23.198Z",
+      "currency": "USD"
+    },
+    {
       "campaignId": "camp-1788857479971",
       "campaignTitle": "AI Studio Hardware Series 1788857475990",
       "brandId": "brand-demo",
@@ -4012,6 +5015,222 @@
   ],
   "payouts": [
     {
+      "creatorId": "creator_escrow",
+      "collaborationId": "escrow_order_test_1789721543884_ukgjo",
+      "campaignTitle": "Live Razorpay Escrow Deposit",
+      "brandName": "AbeyCollab Verified Brand",
+      "creatorName": "Creator Escrow Custody",
+      "deliverableTitle": "Secured Escrow Deposit",
+      "grossAmount": 500,
+      "netAmount": 450,
+      "agencyFee": 50,
+      "currency": "INR",
+      "status": "paid",
+      "paymentMethod": "razorpay",
+      "environment": "live",
+      "isTest": false,
+      "id": "payout-1789721544432-905zv",
+      "createdAt": "2026-09-18T08:52:24.432Z"
+    },
+    {
+      "creatorId": "creator_escrow",
+      "collaborationId": "escrow_order_test_1789708394446_x6ijy",
+      "campaignTitle": "Live Razorpay Escrow Deposit",
+      "brandName": "AbeyCollab Verified Brand",
+      "creatorName": "Creator Escrow Custody",
+      "deliverableTitle": "Secured Escrow Deposit",
+      "grossAmount": 288,
+      "netAmount": 259,
+      "agencyFee": 29,
+      "currency": "USD",
+      "status": "paid",
+      "paymentMethod": "razorpay",
+      "environment": "live",
+      "isTest": false,
+      "id": "payout-1789708394907-6n7j1",
+      "createdAt": "2026-09-18T05:13:14.907Z"
+    },
+    {
+      "creatorId": "creator_escrow",
+      "collaborationId": "escrow_order_test_1789708039936_jxax8",
+      "campaignTitle": "Live Razorpay Escrow Deposit",
+      "brandName": "AbeyCollab Verified Brand",
+      "creatorName": "Creator Escrow Custody",
+      "deliverableTitle": "Secured Escrow Deposit",
+      "grossAmount": 288,
+      "netAmount": 259,
+      "agencyFee": 29,
+      "currency": "USD",
+      "status": "paid",
+      "paymentMethod": "razorpay",
+      "environment": "live",
+      "isTest": false,
+      "id": "payout-1789708040180-vwob7",
+      "createdAt": "2026-09-18T05:07:20.180Z"
+    },
+    {
+      "creatorId": "creator_escrow",
+      "collaborationId": "escrow_order_test_1789707861816_dm22d",
+      "campaignTitle": "Live Razorpay Escrow Deposit",
+      "brandName": "AbeyCollab Verified Brand",
+      "creatorName": "Creator Escrow Custody",
+      "deliverableTitle": "Secured Escrow Deposit",
+      "grossAmount": 948,
+      "netAmount": 853,
+      "agencyFee": 95,
+      "currency": "USD",
+      "status": "paid",
+      "paymentMethod": "razorpay",
+      "environment": "live",
+      "isTest": false,
+      "id": "payout-1789707861864-2vc95",
+      "createdAt": "2026-09-18T05:04:21.864Z"
+    },
+    {
+      "creatorId": "creator_escrow",
+      "collaborationId": "escrow_order_test_1789707857941_78lfy",
+      "campaignTitle": "Live Razorpay Escrow Deposit",
+      "brandName": "AbeyCollab Verified Brand",
+      "creatorName": "Creator Escrow Custody",
+      "deliverableTitle": "Secured Escrow Deposit",
+      "grossAmount": 288,
+      "netAmount": 259,
+      "agencyFee": 29,
+      "currency": "USD",
+      "status": "paid",
+      "paymentMethod": "razorpay",
+      "environment": "live",
+      "isTest": false,
+      "id": "payout-1789707858131-frs5t",
+      "createdAt": "2026-09-18T05:04:18.131Z"
+    },
+    {
+      "creatorId": "creator_escrow",
+      "collaborationId": "escrow_order_test_1789707455532_4l8uy",
+      "campaignTitle": "Live Razorpay Escrow Deposit",
+      "brandName": "AbeyCollab Verified Brand",
+      "creatorName": "Creator Escrow Custody",
+      "deliverableTitle": "Secured Escrow Deposit",
+      "grossAmount": 948,
+      "netAmount": 853,
+      "agencyFee": 95,
+      "currency": "USD",
+      "status": "paid",
+      "paymentMethod": "razorpay",
+      "environment": "live",
+      "isTest": false,
+      "id": "payout-1789707455585-afx95",
+      "createdAt": "2026-09-18T04:57:35.585Z"
+    },
+    {
+      "creatorId": "creator_escrow",
+      "collaborationId": "escrow_order_test_1789707441557_dic3e",
+      "campaignTitle": "Live Razorpay Escrow Deposit",
+      "brandName": "AbeyCollab Verified Brand",
+      "creatorName": "Creator Escrow Custody",
+      "deliverableTitle": "Secured Escrow Deposit",
+      "grossAmount": 288,
+      "netAmount": 259,
+      "agencyFee": 29,
+      "currency": "USD",
+      "status": "paid",
+      "paymentMethod": "razorpay",
+      "environment": "live",
+      "isTest": false,
+      "id": "payout-1789707441928-i938j",
+      "createdAt": "2026-09-18T04:57:21.928Z"
+    },
+    {
+      "creatorId": "creator_escrow",
+      "collaborationId": "escrow_order_test_1789707067144_ic04g",
+      "campaignTitle": "Live Razorpay Escrow Deposit",
+      "brandName": "AbeyCollab Verified Brand",
+      "creatorName": "Creator Escrow Custody",
+      "deliverableTitle": "Secured Escrow Deposit",
+      "grossAmount": 948,
+      "netAmount": 853,
+      "agencyFee": 95,
+      "currency": "USD",
+      "status": "paid",
+      "paymentMethod": "razorpay",
+      "environment": "live",
+      "isTest": false,
+      "id": "payout-1789707067185-egr3u",
+      "createdAt": "2026-09-18T04:51:07.185Z"
+    },
+    {
+      "creatorId": "creator_escrow",
+      "collaborationId": "escrow_order_test_1789707062967_u7xnc",
+      "campaignTitle": "Live Razorpay Escrow Deposit",
+      "brandName": "AbeyCollab Verified Brand",
+      "creatorName": "Creator Escrow Custody",
+      "deliverableTitle": "Secured Escrow Deposit",
+      "grossAmount": 288,
+      "netAmount": 259,
+      "agencyFee": 29,
+      "currency": "USD",
+      "status": "paid",
+      "paymentMethod": "razorpay",
+      "environment": "live",
+      "isTest": false,
+      "id": "payout-1789707063155-h7ao5",
+      "createdAt": "2026-09-18T04:51:03.155Z"
+    },
+    {
+      "creatorId": "creator_escrow",
+      "collaborationId": "escrow_order_test_1789706591777_sv8vd",
+      "campaignTitle": "Live Razorpay Escrow Deposit",
+      "brandName": "AbeyCollab Verified Brand",
+      "creatorName": "Creator Escrow Custody",
+      "deliverableTitle": "Secured Escrow Deposit",
+      "grossAmount": 948,
+      "netAmount": 853,
+      "agencyFee": 95,
+      "currency": "USD",
+      "status": "paid",
+      "paymentMethod": "razorpay",
+      "environment": "live",
+      "isTest": false,
+      "id": "payout-1789706591820-xxqv4",
+      "createdAt": "2026-09-18T04:43:11.820Z"
+    },
+    {
+      "creatorId": "creator_escrow",
+      "collaborationId": "escrow_order_test_1789706586937_rv1ky",
+      "campaignTitle": "Live Razorpay Escrow Deposit",
+      "brandName": "AbeyCollab Verified Brand",
+      "creatorName": "Creator Escrow Custody",
+      "deliverableTitle": "Secured Escrow Deposit",
+      "grossAmount": 288,
+      "netAmount": 259,
+      "agencyFee": 29,
+      "currency": "USD",
+      "status": "paid",
+      "paymentMethod": "razorpay",
+      "environment": "live",
+      "isTest": false,
+      "id": "payout-1789706587195-immvj",
+      "createdAt": "2026-09-18T04:43:07.195Z"
+    },
+    {
+      "creatorId": "creator_escrow",
+      "collaborationId": "escrow_order_test_1789706392194_tmtrx",
+      "campaignTitle": "Live Razorpay Escrow Deposit",
+      "brandName": "AbeyCollab Verified Brand",
+      "creatorName": "Creator Escrow Custody",
+      "deliverableTitle": "Secured Escrow Deposit",
+      "grossAmount": 500,
+      "netAmount": 450,
+      "agencyFee": 50,
+      "currency": "INR",
+      "status": "paid",
+      "paymentMethod": "razorpay",
+      "environment": "live",
+      "isTest": false,
+      "id": "payout-1789706392680-0e1nz",
+      "createdAt": "2026-09-18T04:39:52.680Z"
+    },
+    {
       "creatorId": "creator-demo",
       "collaborationId": "collab-unfunded",
       "campaignId": "camp-4",
@@ -4186,13 +5405,13 @@
       "id": "sub-creator",
       "userId": "user-creator",
       "role": "creator",
-      "planId": "creator_pro",
+      "planId": "creator_enterprise",
       "status": "active",
-      "interval": "monthly",
-      "currentPeriodStart": "2026-09-03T18:46:21.709Z",
-      "currentPeriodEnd": "2027-09-03T18:46:21.709Z",
+      "interval": "annual",
+      "currentPeriodStart": "2026-09-18T04:51:07.543Z",
+      "currentPeriodEnd": "2027-09-18T04:51:07.543Z",
       "cancelAtPeriodEnd": false,
-      "price": 29,
+      "price": 948,
       "currency": "USD",
       "features": {
         "mediaKit": true,
@@ -4202,8 +5421,8 @@
         "aiPitchGenerator": true,
         "verifiedBadge": true,
         "priorityDiscovery": true,
-        "multiCreatorManagement": false,
-        "customDomain": false,
+        "multiCreatorManagement": true,
+        "customDomain": true,
         "maxActiveCampaigns": 0,
         "crmPipeline": false,
         "aiCreatorMatching": false,
@@ -4211,8 +5430,8 @@
         "maxTeamSeats": 0,
         "advancedRoiTelemetry": false,
         "contractCompliance": false,
-        "dedicatedAccountManager": false,
-        "apiAccess": false
+        "dedicatedAccountManager": true,
+        "apiAccess": true
       },
       "usage": {
         "activeCampaignsCount": 0,
@@ -4222,7 +5441,7 @@
         "lastResetDate": "2026-09-03T18:46:21.709Z"
       },
       "createdAt": "2026-09-03T18:46:21.709Z",
-      "updatedAt": "2026-09-08T08:51:21.714Z"
+      "updatedAt": "2026-09-18T04:51:07.543Z"
     },
     {
       "id": "sub-brand",
@@ -4350,6 +5569,52 @@
       },
       "createdAt": "2026-09-05T21:21:10.627Z",
       "updatedAt": "2026-09-10T07:50:47.840Z"
+    },
+    {
+      "id": "sub-1789707280307-apyeq",
+      "userId": "user-1789707222450",
+      "role": "creator",
+      "planId": "creator_starter",
+      "status": "active",
+      "interval": "monthly",
+      "currentPeriodStart": "2026-09-18T04:54:40.306Z",
+      "currentPeriodEnd": "2026-10-18T04:54:40.306Z",
+      "cancelAtPeriodEnd": false,
+      "price": 0,
+      "currency": "USD",
+      "features": {
+        "mediaKit": true,
+        "maxApplicationsPerMonth": 5,
+        "instantPayouts": false,
+        "advancedAnalytics": false,
+        "aiPitchGenerator": false,
+        "verifiedBadge": false,
+        "priorityDiscovery": false,
+        "multiCreatorManagement": false,
+        "customDomain": false,
+        "maxActiveCampaigns": 0,
+        "crmPipeline": false,
+        "aiCreatorMatching": false,
+        "creatorShortlists": false,
+        "maxTeamSeats": 0,
+        "advancedRoiTelemetry": false,
+        "contractCompliance": false,
+        "dedicatedAccountManager": false,
+        "apiAccess": false
+      },
+      "usage": {
+        "activeCampaignsCount": 0,
+        "applicationsThisMonth": 0,
+        "crmContactsCount": 0,
+        "aiTokensUsed": 0,
+        "lastResetDate": "2026-09-18T04:54:40.306Z"
+      },
+      "createdAt": "2026-09-18T04:54:40.306Z",
+      "updatedAt": "2026-09-18T04:54:40.306Z",
+      "amountPaid": 0,
+      "lastPaymentId": "STARTER_FREE_TIER",
+      "lastPaymentDate": "2026-09-18T04:54:40.306Z",
+      "paymentMethod": "free"
     }
   ],
   "crmContacts": [
@@ -5472,6 +6737,285 @@
   "tickets": [],
   "payments": [
     {
+      "brandId": "brand_active",
+      "amount": 500,
+      "currency": "INR",
+      "status": "captured",
+      "commissionRate": 0.1,
+      "agencyFee": 50,
+      "provider": "razorpay",
+      "providerOrderId": "order_test_1789721543884_ukgjo",
+      "providerPaymentId": "pay_test_1789721543887",
+      "metadata": {
+        "verifiedAt": "2026-09-18T08:52:24.428Z",
+        "paymentId": "pay_test_1789721543887",
+        "orderId": "order_test_1789721543884_ukgjo",
+        "signature": "test_verified_signature",
+        "netAmount": 450,
+        "usdAmount": 5.99,
+        "amountINR": 500,
+        "exchangeRate": 83.5
+      },
+      "environment": "test",
+      "isTest": true,
+      "id": "pay-1789721544429-ual15",
+      "createdAt": "2026-09-18T08:52:24.429Z",
+      "updatedAt": "2026-09-18T08:52:24.429Z"
+    },
+    {
+      "brandId": "brand_active",
+      "amount": 288,
+      "currency": "USD",
+      "status": "captured",
+      "commissionRate": 0.1,
+      "agencyFee": 29,
+      "provider": "razorpay",
+      "providerOrderId": "order_test_1789708394446_x6ijy",
+      "providerPaymentId": "pay_test_1789708394449",
+      "metadata": {
+        "verifiedAt": "2026-09-18T05:13:14.904Z",
+        "paymentId": "pay_test_1789708394449",
+        "orderId": "order_test_1789708394446_x6ijy",
+        "signature": "test_verified_signature",
+        "netAmount": 259
+      },
+      "environment": "test",
+      "isTest": true,
+      "id": "pay-1789708394904-h21k5",
+      "createdAt": "2026-09-18T05:13:14.904Z",
+      "updatedAt": "2026-09-18T05:13:14.904Z"
+    },
+    {
+      "brandId": "brand_active",
+      "amount": 288,
+      "currency": "USD",
+      "status": "captured",
+      "commissionRate": 0.1,
+      "agencyFee": 29,
+      "provider": "razorpay",
+      "providerOrderId": "order_test_1789708039936_jxax8",
+      "providerPaymentId": "pay_test_1789708039937",
+      "metadata": {
+        "verifiedAt": "2026-09-18T05:07:20.179Z",
+        "paymentId": "pay_test_1789708039937",
+        "orderId": "order_test_1789708039936_jxax8",
+        "signature": "test_verified_signature",
+        "netAmount": 259
+      },
+      "environment": "test",
+      "isTest": true,
+      "id": "pay-1789708040179-yx1nx",
+      "createdAt": "2026-09-18T05:07:20.179Z",
+      "updatedAt": "2026-09-18T05:07:20.179Z"
+    },
+    {
+      "brandId": "brand_active",
+      "amount": 948,
+      "currency": "USD",
+      "status": "captured",
+      "commissionRate": 0.1,
+      "agencyFee": 95,
+      "provider": "razorpay",
+      "providerOrderId": "order_test_1789707861816_dm22d",
+      "providerPaymentId": "pay_test_1789707861818",
+      "metadata": {
+        "verifiedAt": "2026-09-18T05:04:21.863Z",
+        "paymentId": "pay_test_1789707861818",
+        "orderId": "order_test_1789707861816_dm22d",
+        "signature": "test_verified_signature",
+        "netAmount": 853
+      },
+      "environment": "test",
+      "isTest": true,
+      "id": "pay-1789707861863-21oid",
+      "createdAt": "2026-09-18T05:04:21.863Z",
+      "updatedAt": "2026-09-18T05:04:21.863Z"
+    },
+    {
+      "brandId": "brand_active",
+      "amount": 288,
+      "currency": "USD",
+      "status": "captured",
+      "commissionRate": 0.1,
+      "agencyFee": 29,
+      "provider": "razorpay",
+      "providerOrderId": "order_test_1789707857941_78lfy",
+      "providerPaymentId": "pay_test_1789707857943",
+      "metadata": {
+        "verifiedAt": "2026-09-18T05:04:18.130Z",
+        "paymentId": "pay_test_1789707857943",
+        "orderId": "order_test_1789707857941_78lfy",
+        "signature": "test_verified_signature",
+        "netAmount": 259
+      },
+      "environment": "test",
+      "isTest": true,
+      "id": "pay-1789707858130-r1g3w",
+      "createdAt": "2026-09-18T05:04:18.130Z",
+      "updatedAt": "2026-09-18T05:04:18.130Z"
+    },
+    {
+      "brandId": "brand_active",
+      "amount": 948,
+      "currency": "USD",
+      "status": "captured",
+      "commissionRate": 0.1,
+      "agencyFee": 95,
+      "provider": "razorpay",
+      "providerOrderId": "order_test_1789707455532_4l8uy",
+      "providerPaymentId": "pay_test_1789707455535",
+      "metadata": {
+        "verifiedAt": "2026-09-18T04:57:35.583Z",
+        "paymentId": "pay_test_1789707455535",
+        "orderId": "order_test_1789707455532_4l8uy",
+        "signature": "test_verified_signature",
+        "netAmount": 853
+      },
+      "environment": "test",
+      "isTest": true,
+      "id": "pay-1789707455583-8ew5e",
+      "createdAt": "2026-09-18T04:57:35.583Z",
+      "updatedAt": "2026-09-18T04:57:35.583Z"
+    },
+    {
+      "brandId": "brand_active",
+      "amount": 288,
+      "currency": "USD",
+      "status": "captured",
+      "commissionRate": 0.1,
+      "agencyFee": 29,
+      "provider": "razorpay",
+      "providerOrderId": "order_test_1789707441557_dic3e",
+      "providerPaymentId": "pay_test_1789707441559",
+      "metadata": {
+        "verifiedAt": "2026-09-18T04:57:21.926Z",
+        "paymentId": "pay_test_1789707441559",
+        "orderId": "order_test_1789707441557_dic3e",
+        "signature": "test_verified_signature",
+        "netAmount": 259
+      },
+      "environment": "test",
+      "isTest": true,
+      "id": "pay-1789707441926-mjiq1",
+      "createdAt": "2026-09-18T04:57:21.926Z",
+      "updatedAt": "2026-09-18T04:57:21.926Z"
+    },
+    {
+      "brandId": "brand_active",
+      "amount": 948,
+      "currency": "USD",
+      "status": "captured",
+      "commissionRate": 0.1,
+      "agencyFee": 95,
+      "provider": "razorpay",
+      "providerOrderId": "order_test_1789707067144_ic04g",
+      "providerPaymentId": "pay_test_1789707067146",
+      "metadata": {
+        "verifiedAt": "2026-09-18T04:51:07.184Z",
+        "paymentId": "pay_test_1789707067146",
+        "orderId": "order_test_1789707067144_ic04g",
+        "signature": "test_verified_signature",
+        "netAmount": 853
+      },
+      "environment": "test",
+      "isTest": true,
+      "id": "pay-1789707067184-tzz8v",
+      "createdAt": "2026-09-18T04:51:07.184Z",
+      "updatedAt": "2026-09-18T04:51:07.184Z"
+    },
+    {
+      "brandId": "brand_active",
+      "amount": 288,
+      "currency": "USD",
+      "status": "captured",
+      "commissionRate": 0.1,
+      "agencyFee": 29,
+      "provider": "razorpay",
+      "providerOrderId": "order_test_1789707062967_u7xnc",
+      "providerPaymentId": "pay_test_1789707062969",
+      "metadata": {
+        "verifiedAt": "2026-09-18T04:51:03.154Z",
+        "paymentId": "pay_test_1789707062969",
+        "orderId": "order_test_1789707062967_u7xnc",
+        "signature": "test_verified_signature",
+        "netAmount": 259
+      },
+      "environment": "test",
+      "isTest": true,
+      "id": "pay-1789707063154-6iwiw",
+      "createdAt": "2026-09-18T04:51:03.154Z",
+      "updatedAt": "2026-09-18T04:51:03.154Z"
+    },
+    {
+      "brandId": "brand_active",
+      "amount": 948,
+      "currency": "USD",
+      "status": "captured",
+      "commissionRate": 0.1,
+      "agencyFee": 95,
+      "provider": "razorpay",
+      "providerOrderId": "order_test_1789706591777_sv8vd",
+      "providerPaymentId": "pay_test_1789706591779",
+      "metadata": {
+        "verifiedAt": "2026-09-18T04:43:11.818Z",
+        "paymentId": "pay_test_1789706591779",
+        "orderId": "order_test_1789706591777_sv8vd",
+        "signature": "test_verified_signature",
+        "netAmount": 853
+      },
+      "environment": "test",
+      "isTest": true,
+      "id": "pay-1789706591818-dshy7",
+      "createdAt": "2026-09-18T04:43:11.818Z",
+      "updatedAt": "2026-09-18T04:43:11.818Z"
+    },
+    {
+      "brandId": "brand_active",
+      "amount": 288,
+      "currency": "USD",
+      "status": "captured",
+      "commissionRate": 0.1,
+      "agencyFee": 29,
+      "provider": "razorpay",
+      "providerOrderId": "order_test_1789706586937_rv1ky",
+      "providerPaymentId": "pay_test_1789706586939",
+      "metadata": {
+        "verifiedAt": "2026-09-18T04:43:07.194Z",
+        "paymentId": "pay_test_1789706586939",
+        "orderId": "order_test_1789706586937_rv1ky",
+        "signature": "test_verified_signature",
+        "netAmount": 259
+      },
+      "environment": "test",
+      "isTest": true,
+      "id": "pay-1789706587194-wdy84",
+      "createdAt": "2026-09-18T04:43:07.194Z",
+      "updatedAt": "2026-09-18T04:43:07.194Z"
+    },
+    {
+      "brandId": "brand_active",
+      "amount": 500,
+      "currency": "INR",
+      "status": "captured",
+      "commissionRate": 0.1,
+      "agencyFee": 50,
+      "provider": "razorpay",
+      "providerOrderId": "order_test_1789706392194_tmtrx",
+      "providerPaymentId": "pay_test_1789706392196",
+      "metadata": {
+        "verifiedAt": "2026-09-18T04:39:52.677Z",
+        "paymentId": "pay_test_1789706392196",
+        "orderId": "order_test_1789706392194_tmtrx",
+        "signature": "test_verified_signature",
+        "netAmount": 450
+      },
+      "environment": "test",
+      "isTest": true,
+      "id": "pay-1789706392677-rxbnb",
+      "createdAt": "2026-09-18T04:39:52.677Z",
+      "updatedAt": "2026-09-18T04:39:52.677Z"
+    },
+    {
       "id": "pay-rzp-card-1007",
       "brandId": "brand_active",
       "amount": 500,
@@ -5515,6 +7059,85 @@
   ],
   "mediaAssets": [],
   "conversations": [
+    {
+      "campaignTitle": "Direct Collaboration",
+      "participants": [
+        {
+          "userId": "user-1789707222450",
+          "name": "Elena Rostova",
+          "role": "creator",
+          "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80"
+        },
+        {
+          "userId": "creator-7",
+          "name": "Kai Takahashi",
+          "role": "creator",
+          "avatarUrl": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=500&auto=format&fit=crop&q=80"
+        }
+      ],
+      "contextType": "direct",
+      "id": "conv-1789720462377-w0m0l",
+      "unreadCount": 0,
+      "updatedAt": "2026-09-18T08:34:22.377Z",
+      "pinnedBy": [],
+      "mutedBy": [],
+      "archivedBy": []
+    },
+    {
+      "campaignTitle": "Direct Collaboration",
+      "participants": [
+        {
+          "userId": "user-1789707222450",
+          "name": "Elena Rostova",
+          "role": "creator",
+          "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80"
+        },
+        {
+          "userId": "user-1789707231099",
+          "name": "Aria Chen",
+          "role": "creator",
+          "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80"
+        }
+      ],
+      "contextType": "direct",
+      "id": "conv-1789707356784-7txct",
+      "unreadCount": 0,
+      "updatedAt": "2026-09-18T04:55:56.784Z",
+      "pinnedBy": [],
+      "mutedBy": [
+        "user-1789707222450"
+      ],
+      "archivedBy": []
+    },
+    {
+      "campaignTitle": "Direct Brief Proposal",
+      "participants": [
+        {
+          "userId": "user-creator",
+          "name": "Demo Creator",
+          "role": "creator",
+          "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80"
+        },
+        {
+          "userId": "user-c1",
+          "name": "Elena Rostova",
+          "role": "creator",
+          "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80"
+        }
+      ],
+      "contextType": "direct",
+      "id": "conv-1789706460803-d9gir",
+      "unreadCount": 0,
+      "updatedAt": "2026-09-18T04:41:06.303Z",
+      "pinnedBy": [],
+      "mutedBy": [],
+      "archivedBy": [],
+      "lastMessage": {
+        "content": "hy",
+        "senderName": "Demo Creator",
+        "createdAt": "2026-09-18T04:41:06.303Z"
+      }
+    },
     {
       "id": "conv-1",
       "campaignId": "camp-1",
@@ -5939,9 +7562,64 @@
       ],
       "reactions": [],
       "createdAt": "2026-09-15T15:25:03.483Z"
+    },
+    {
+      "conversationId": "conv-1789706460803-d9gir",
+      "senderId": "user-creator",
+      "senderRole": "creator",
+      "senderName": "Demo Creator",
+      "senderAvatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "content": "hy",
+      "attachments": [],
+      "id": "msg-1789706466303-hq7nr",
+      "readBy": [
+        "user-creator"
+      ],
+      "reactions": [],
+      "createdAt": "2026-09-18T04:41:06.303Z"
     }
   ],
   "notifications": [
+    {
+      "userId": "user-1789707222450",
+      "title": "💰 High-Budget Match",
+      "message": "A premier brand campaign matching your rate card has just launched.",
+      "type": "payment",
+      "linkUrl": "/app/campaigns",
+      "id": "notif-1789707281832-n7uhq",
+      "read": false,
+      "createdAt": "2026-09-18T04:54:41.832Z"
+    },
+    {
+      "userId": "user-1789707222450",
+      "title": "📈 Momentum Surge",
+      "message": "Your profile is trending this week in discovery feeds.",
+      "type": "system",
+      "linkUrl": "/app/trending",
+      "id": "notif-1789707281829-2kptv",
+      "read": false,
+      "createdAt": "2026-09-18T04:54:41.829Z"
+    },
+    {
+      "userId": "user-1789707222450",
+      "title": "🎯 Campaign Matches",
+      "message": "You match 4 new active campaigns.",
+      "type": "campaign",
+      "linkUrl": "/app/campaigns",
+      "id": "notif-1789707281827-hdigd",
+      "read": false,
+      "createdAt": "2026-09-18T04:54:41.827Z"
+    },
+    {
+      "userId": "user-1789707222450",
+      "title": "🔥 High Category Demand",
+      "message": "3 brands are looking for creators in your category.",
+      "type": "campaign",
+      "linkUrl": "/app/campaigns",
+      "id": "notif-1789707281823-vg380",
+      "read": false,
+      "createdAt": "2026-09-18T04:54:41.824Z"
+    },
     {
       "userId": "user-creator",
       "title": "Milestone Approved & Disbursed!",
@@ -7608,6 +9286,32 @@
       "targetId": "creator-3",
       "targetType": "creator",
       "timestamp": "2026-09-05T16:50:19.458Z"
+    },
+    {
+      "id": "metric-1789719323460-6f0s9d",
+      "eventType": "invitation_sent",
+      "actorId": "user-1789707222450",
+      "actorRole": "creator",
+      "targetId": "creator-1789707244130",
+      "targetType": "creator",
+      "sessionHash": "OjoxOk1vemlsbGEvNS4wIChN",
+      "metadata": {
+        "budget": 3800
+      },
+      "timestamp": "2026-09-18T08:15:23.460Z"
+    },
+    {
+      "id": "metric-1789719702165-ln9lqz",
+      "eventType": "invitation_sent",
+      "actorId": "user-1789707222450",
+      "actorRole": "creator",
+      "targetId": "creator-5",
+      "targetType": "creator",
+      "sessionHash": "OjoxOk1vemlsbGEvNS4wIChN",
+      "metadata": {
+        "budget": 3000
+      },
+      "timestamp": "2026-09-18T08:21:42.165Z"
     }
   ],
   "algorithmConfig": {

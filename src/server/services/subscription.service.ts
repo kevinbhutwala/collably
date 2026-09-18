@@ -85,7 +85,9 @@ export class SubscriptionService {
   async upgradeOrChangePlan(
     userId: string,
     planId: SubscriptionPlanId,
-    interval: SubscriptionInterval = "monthly"
+    interval: SubscriptionInterval = "monthly",
+    paymentId?: string,
+    amountPaid?: number
   ): Promise<SubscriptionEntity> {
     const plan = ALL_PLANS[planId];
     if (!plan) {
@@ -111,6 +113,7 @@ export class SubscriptionService {
     periodEnd.setDate(periodEnd.getDate() + (interval === "annual" ? 365 : 30));
 
     const price = interval === "annual" ? plan.annualPrice * 12 : plan.monthlyPrice;
+    const finalAmountPaid = price > 0 ? (amountPaid !== undefined ? amountPaid : price) : 0;
 
     let sub = subscriptionRepo.findByUserId(userId);
     if (!sub) {
@@ -122,6 +125,14 @@ export class SubscriptionService {
         interval,
         price,
       });
+      if (finalAmountPaid > 0 || paymentId) {
+        sub = subscriptionRepo.updateByUserId(userId, {
+          amountPaid: finalAmountPaid,
+          lastPaymentId: paymentId,
+          lastPaymentDate: paymentId ? now.toISOString() : undefined,
+          paymentMethod: paymentId ? "razorpay" : undefined,
+        }) || sub;
+      }
     } else {
       sub = subscriptionRepo.updateByUserId(userId, {
         planId,
@@ -129,6 +140,10 @@ export class SubscriptionService {
         status: "active",
         interval,
         price,
+        amountPaid: finalAmountPaid,
+        lastPaymentId: paymentId || sub.lastPaymentId,
+        lastPaymentDate: paymentId ? now.toISOString() : sub.lastPaymentDate,
+        paymentMethod: paymentId ? "razorpay" : sub.paymentMethod,
         currentPeriodStart: now.toISOString(),
         currentPeriodEnd: periodEnd.toISOString(),
         cancelAtPeriodEnd: false,
