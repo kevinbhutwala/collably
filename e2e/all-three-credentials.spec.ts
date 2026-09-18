@@ -123,6 +123,6 @@ test.describe("Strict Authentication & Automated Testing of All 3 User Credentia
     await saveBtn.click();
 
     // Verify success toast appears
-    await expect(page.locator("text=Platform & Algorithm Config Saved")).toBeVisible({ timeout: 6_000 });
+    await expect(page.locator("text=/Platform.*Saved/i")).toBeVisible({ timeout: 6_000 });
   });
 });

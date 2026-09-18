@@ -107,7 +107,7 @@ export class NotificationService {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            from: "AbeyCollab Platform <notifications@abeycollab.com>",
+            from: process.env.RESEND_FROM_EMAIL || "AbeyCollab Platform <notifications@abeycollab.com>",
             to: [params.to],
             subject: params.subject,
             html: htmlBody,
