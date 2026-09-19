@@ -178,6 +178,8 @@ class DatabaseClient {
     }
   }
 
+  private lastStatCheckTime = 0;
+
   private persist(): void {
     if (!this.state) return;
     try {
@@ -188,12 +190,8 @@ class DatabaseClient {
           // Ignore
         }
       }
-      fs.writeFileSync(DB_FILE, JSON.stringify(this.state, null, 2), "utf-8");
-      try {
-        this.lastLoadedMtime = fs.statSync(DB_FILE).mtimeMs;
-      } catch {
-        // Ignore
-      }
+      fs.writeFileSync(DB_FILE, JSON.stringify(this.state), "utf-8");
+      this.lastLoadedMtime = Date.now();
     } catch (err) {
       // In serverless environments where local filesystem might be read-only or ephemeral,
       // fail gracefully and keep in-memory state active.
@@ -204,19 +202,25 @@ class DatabaseClient {
   public getState(): DatabaseState {
     if (!this.state) {
       this.ensureInitialized();
-    } else if (fs.existsSync(DB_FILE)) {
-      try {
-        const stats = fs.statSync(DB_FILE);
-        if (stats.mtimeMs > this.lastLoadedMtime) {
-          const raw = fs.readFileSync(DB_FILE, "utf-8");
-          const parsed = JSON.parse(raw);
-          if (parsed && typeof parsed === "object") {
-            this.state = parsed;
-            this.lastLoadedMtime = stats.mtimeMs;
+    } else {
+      const now = Date.now();
+      if (now - this.lastStatCheckTime > 250) {
+        this.lastStatCheckTime = now;
+        if (fs.existsSync(DB_FILE)) {
+          try {
+            const stats = fs.statSync(DB_FILE);
+            if (stats.mtimeMs > this.lastLoadedMtime) {
+              const raw = fs.readFileSync(DB_FILE, "utf-8");
+              const parsed = JSON.parse(raw);
+              if (parsed && typeof parsed === "object") {
+                this.state = parsed;
+                this.lastLoadedMtime = stats.mtimeMs;
+              }
+            }
+          } catch {
+            // Keep in-memory
           }
         }
-      } catch {
-        // Keep in-memory
       }
     }
     return this.state!;

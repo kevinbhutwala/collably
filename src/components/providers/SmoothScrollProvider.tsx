@@ -1,10 +1,13 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import { motion, useScroll, useSpring } from "framer-motion";
 
 export function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const lenisRef = useRef<Lenis | null>(null);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -15,15 +18,17 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
   useEffect(() => {
     // Initialize Lenis smooth virtual inertia scroll
     const lenis = new Lenis({
-      duration: 1.1,
+      duration: 1.0,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
       wheelMultiplier: 0.95,
-      touchMultiplier: 1.2,
+      touchMultiplier: 1.0,
       infinite: false,
     });
+
+    lenisRef.current = lenis;
 
     let animationFrameId: number;
 
@@ -37,8 +42,18 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
     return () => {
       cancelAnimationFrame(animationFrameId);
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
+
+  // Smoothly reset scroll position to top on route change
+  useEffect(() => {
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: true });
+    } else if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    }
+  }, [pathname]);
 
   return (
     <>

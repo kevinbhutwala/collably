@@ -53,11 +53,12 @@ const VERIFIED_FALLBACK_RATES: Record<string, number> = {
 
 export class ExchangeRateService {
   private cache: Map<string, number> = new Map();
-  private lastFetchedAt: number = 0;
+  private lastFetchedAt: number = Date.now();
   private cacheTTLMs: number = 60 * 60 * 1000; // 1 Hour TTL
   private providerName: string = "open-er-api";
   private isStaleCache: boolean = false;
   private lastFetchTimestamp: string = new Date().toISOString();
+  private isFetching: boolean = false;
 
   constructor() {
     // Seed initial cache with verified fallback rates
@@ -75,9 +76,14 @@ export class ExchangeRateService {
       return this.getSnapshot();
     }
 
+    if (this.isFetching) {
+      return this.getSnapshot();
+    }
+
+    this.isFetching = true;
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 3500);
+      const timeoutId = setTimeout(() => controller.abort(), 1200);
 
       // Primary Provider: open.er-api.com
       const res = await fetch("https://open.er-api.com/v6/latest/USD", {
@@ -102,10 +108,10 @@ export class ExchangeRateService {
         }
       }
     } catch (primaryErr) {
-      // Primary failed, attempt secondary provider
+      // Primary failed, attempt secondary provider with fast timeout
       try {
         const controller2 = new AbortController();
-        const timeoutId2 = setTimeout(() => controller2.abort(), 3500);
+        const timeoutId2 = setTimeout(() => controller2.abort(), 1200);
         const res2 = await fetch("https://api.exchangerate-api.com/v4/latest/USD", {
           signal: controller2.signal,
           headers: { Accept: "application/json" },
@@ -128,10 +134,12 @@ export class ExchangeRateService {
           }
         }
       } catch (secondaryErr) {
-        // Both network requests failed - mark as stale and use verified fallback
+        // Both network requests failed - mark as fallback and use verified fallback
         this.isStaleCache = true;
         this.providerName = "verified-fallback-cache";
       }
+    } finally {
+      this.isFetching = false;
     }
 
     return this.getSnapshot();

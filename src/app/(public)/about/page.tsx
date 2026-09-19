@@ -4,7 +4,10 @@ import Script from "next/script";
 import { EditorialCTA } from "@/components/collably/EditorialCTA";
 import { Sparkles, ShieldCheck, Zap, Globe } from "lucide-react";
 
-const BASE_URL = 'https://abeycollab.vercel.app';
+const BASE_URL =
+  process.env.NEXT_PUBLIC_APP_URL ||
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  'https://abeycollab.vercel.app';
 
 export const metadata: Metadata = {
   title: 'About Us — Operating System for the Creator Economy',
@@ -25,21 +28,47 @@ export const metadata: Metadata = {
     description: 'Empowering independent creators and high-growth brands through trust, transparency, and escrow protection.',
     images: ['/og-image.png'],
   },
-};
-
-const aboutJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'AboutPage',
-  name: 'About AbeyCollab',
-  url: `${BASE_URL}/about`,
-  description: 'Operating system and milestone escrow infrastructure for the global creator economy.',
-  mainEntity: {
-    '@type': 'Organization',
-    name: 'AbeyCollab',
-    url: BASE_URL,
-    logo: `${BASE_URL}/icon.svg`,
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About AbeyCollab — Infrastructure for the Creator Economy',
+    description: 'Empowering independent creators and high-growth brands through trust, transparency, and escrow protection.',
+    images: ['/og-image.png'],
   },
 };
+
+const aboutJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: 'About AbeyCollab',
+    url: `${BASE_URL}/about`,
+    description: 'Operating system and milestone escrow infrastructure for the global creator economy.',
+    mainEntity: {
+      '@type': 'Organization',
+      name: 'AbeyCollab',
+      url: BASE_URL,
+      logo: `${BASE_URL}/icon.svg`,
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: BASE_URL,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'About',
+        item: `${BASE_URL}/about`,
+      },
+    ],
+  },
+];
 
 
 export default function AboutPage() {

@@ -22,6 +22,10 @@ interface AuthState {
   setAuthData: (user: User, creator?: CreatorProfile | null, brand?: BrandProfile | null) => void;
 }
 
+let activeSessionCheck: Promise<boolean> | null = null;
+let lastSessionCheckSuccess = 0;
+const SESSION_CACHE_TTL_MS = 20000; // 20s cache for verified active sessions
+
 export const useAuthStore = create<AuthState>((set, get) => ({
   user: null,
   role: "creator",
@@ -31,36 +35,59 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   isLoading: true,
 
   checkSession: async () => {
-    try {
-      const data = await authService.getSession();
-      if (data.authenticated && data.user) {
-        set({
-          user: data.user,
-          role: data.user.role,
-          currentCreator: data.creatorProfile || null,
-          currentBrand: data.brandProfile || null,
-          isAuthenticated: true,
-          isLoading: false,
-        });
-        if (data.subscription) {
-          useSubscriptionStore.getState().setSubscription(data.subscription);
-        } else {
-          useSubscriptionStore.getState().fetchSubscription();
-        }
-        return true;
-      }
-    } catch {
-      // Unauthenticated
+    const state = get();
+    // Fast path: If already authenticated and checked recently, skip duplicate network call
+    if (
+      state.isAuthenticated &&
+      state.user &&
+      Date.now() - lastSessionCheckSuccess < SESSION_CACHE_TTL_MS
+    ) {
+      return true;
     }
-    set({
-      user: null,
-      currentCreator: null,
-      currentBrand: null,
-      isAuthenticated: false,
-      isLoading: false,
-    });
-    useSubscriptionStore.getState().setSubscription(null);
-    return false;
+
+    // In-flight deduplication: return existing active promise
+    if (activeSessionCheck) {
+      return activeSessionCheck;
+    }
+
+    activeSessionCheck = (async () => {
+      try {
+        const data = await authService.getSession();
+        if (data.authenticated && data.user) {
+          lastSessionCheckSuccess = Date.now();
+          set({
+            user: data.user,
+            role: data.user.role,
+            currentCreator: data.creatorProfile || null,
+            currentBrand: data.brandProfile || null,
+            isAuthenticated: true,
+            isLoading: false,
+          });
+          if (data.subscription) {
+            useSubscriptionStore.getState().setSubscription(data.subscription);
+          } else {
+            useSubscriptionStore.getState().fetchSubscription().catch(() => {});
+          }
+          return true;
+        }
+      } catch {
+        // Unauthenticated
+      } finally {
+        activeSessionCheck = null;
+      }
+      lastSessionCheckSuccess = 0;
+      set({
+        user: null,
+        currentCreator: null,
+        currentBrand: null,
+        isAuthenticated: false,
+        isLoading: false,
+      });
+      useSubscriptionStore.getState().setSubscription(null);
+      return false;
+    })();
+
+    return activeSessionCheck;
   },
 
   login: async (email: string, password: string) => {
@@ -172,6 +199,8 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   },
 
   logout: async () => {
+    lastSessionCheckSuccess = 0;
+    activeSessionCheck = null;
     try {
       await authService.logout();
     } catch {

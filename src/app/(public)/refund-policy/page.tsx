@@ -3,18 +3,75 @@ import React from "react";
 import Link from "next/link";
 import { RotateCcw, ArrowLeft } from "lucide-react";
 
-const BASE_URL = 'https://abeycollab.vercel.app';
+const BASE_URL =
+  process.env.NEXT_PUBLIC_APP_URL ||
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  'https://abeycollab.vercel.app';
 
 export const metadata: Metadata = {
   title: 'Escrow, Cancellation & Refund Policy',
   description:
     'Transparent protection policies: 100% pre-work refunds, stage-aware kill fees, 120-hour brand review SLAs, and judicial dispute arbitration.',
+  keywords: [
+    'refund policy',
+    'escrow refund rules',
+    'creator cancellation policy',
+    'dispute arbitration',
+    'kill fee guidelines',
+  ],
   alternates: { canonical: `${BASE_URL}/refund-policy` },
+  openGraph: {
+    type: 'website',
+    url: `${BASE_URL}/refund-policy`,
+    title: 'Escrow, Cancellation & Refund Policy — AbeyCollab',
+    description: 'Clear, transparent escrow protection, cancellation rules, and refund criteria.',
+    images: ['/og-image.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Escrow, Cancellation & Refund Policy — AbeyCollab',
+    description: '100% pre-work refunds, 7-day review windows, and fair creator kill-fee guarantees.',
+    images: ['/og-image.png'],
+  },
 };
+
+const refundJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Escrow, Cancellation & Refund Policy — AbeyCollab',
+    url: `${BASE_URL}/refund-policy`,
+    description: 'Escrow protection and cancellation terms for AbeyCollab.',
+    inLanguage: 'en-US',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: BASE_URL,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Refund Policy',
+        item: `${BASE_URL}/refund-policy`,
+      },
+    ],
+  },
+];
 
 export default function RefundPolicyPage() {
   return (
     <div className="py-16 sm:py-24 bg-[#FAFAFC] text-[#0A0A0E] min-h-screen">
+      <script
+        id="refund-policy-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(refundJsonLd) }}
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="space-y-4">
           <Link href="/" className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[#7A7A8A] hover:text-[#0A0A0E] transition-colors">

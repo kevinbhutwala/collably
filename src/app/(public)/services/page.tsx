@@ -18,7 +18,10 @@ import {
   Crown,
 } from "lucide-react";
 
-const BASE_URL = "https://abeycollab.vercel.app";
+const BASE_URL =
+  process.env.NEXT_PUBLIC_APP_URL ||
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  "https://abeycollab.vercel.app";
 
 export const metadata: Metadata = {
   title: "Agency Services — Creator Representation & Campaign Strategy",
@@ -39,66 +42,92 @@ export const metadata: Metadata = {
     description: "End-to-end campaign management, UGC production, and elite talent representation.",
     images: ["/og-image.png"],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Agency Services | AbeyCollab Creator Commerce",
+    description: "End-to-end campaign management, UGC production, and elite talent representation.",
+    images: ["/og-image.png"],
+  },
 };
 
-const servicesJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  serviceType: "Creator Management & Influencer Campaign Execution",
-  provider: {
-    "@type": "Organization",
-    name: "AbeyCollab",
-    url: BASE_URL,
+const servicesJsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: "Creator Management & Influencer Campaign Execution",
+    provider: {
+      "@type": "Organization",
+      name: "AbeyCollab",
+      url: BASE_URL,
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "AbeyCollab Services",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Creator Talent Representation",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "End-to-End Campaign Strategy",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "High-Converting UGC & Video Production",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Attribution & Audience Intelligence",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Protected Escrow & Milestone Settlement",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "AI-Powered Talent Discovery & NLP Brief Matching",
+          },
+        },
+      ],
+    },
   },
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "AbeyCollab Services",
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
     itemListElement: [
       {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Creator Talent Representation",
-        },
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: BASE_URL,
       },
       {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "End-to-End Campaign Strategy",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "High-Converting UGC & Video Production",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Attribution & Audience Intelligence",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Protected Escrow & Milestone Settlement",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "AI-Powered Talent Discovery & NLP Brief Matching",
-        },
+        "@type": "ListItem",
+        position: 2,
+        name: "Services",
+        item: `${BASE_URL}/services`,
       },
     ],
   },
-};
+];
 
 export default function ServicesPage() {
   const services = [

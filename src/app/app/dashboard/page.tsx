@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, Suspense } from "react";
+import React, { useEffect, useState, useRef, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useAuthStore } from "@/stores/auth.store";
@@ -76,10 +76,15 @@ function DashboardContent() {
   const [collaborations, setCollaborations] = useState<Collaboration[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [showQuickStart, setShowQuickStart] = useState(true);
+  const hasLoadedRef = useRef(false);
 
   useEffect(() => {
+    let isCancelled = false;
     const fetchData = async () => {
-      setIsLoading(true);
+      // Only show full loading skeleton on initial mount when no data is present yet
+      if (!hasLoadedRef.current) {
+        setIsLoading(true);
+      }
       try {
         const [camps, creators, payouts, collabs] = await Promise.all([
           campaignService.getCampaigns(),
@@ -91,17 +96,25 @@ function DashboardContent() {
           ),
         ]);
 
-        setActiveCampaigns(camps || []);
-        setFeaturedCreators(creators || []);
-        setRecentPayouts(payouts || []);
-        setCollaborations(collabs || []);
+        if (!isCancelled) {
+          setActiveCampaigns(camps || []);
+          setFeaturedCreators(creators || []);
+          setRecentPayouts(payouts || []);
+          setCollaborations(collabs || []);
+          hasLoadedRef.current = true;
+        }
       } catch (err) {
         console.error("Dashboard fetch error:", err);
       } finally {
-        setIsLoading(false);
+        if (!isCancelled) {
+          setIsLoading(false);
+        }
       }
     };
     fetchData();
+    return () => {
+      isCancelled = true;
+    };
   }, [role, currentCreator?.id, currentBrand?.id]);
 
   // Compute dynamic stats from actual state normalized to active display currency

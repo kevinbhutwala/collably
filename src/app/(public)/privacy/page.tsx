@@ -3,18 +3,75 @@ import React from "react";
 import Link from "next/link";
 import { ShieldCheck, ArrowLeft } from "lucide-react";
 
-const BASE_URL = 'https://abeycollab.vercel.app';
+const BASE_URL =
+  process.env.NEXT_PUBLIC_APP_URL ||
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  'https://abeycollab.vercel.app';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy & Data Protection',
   description:
-    'Learn how AbeyCollab safeguards creator media assets, verified metrics, audience data, and financial escrow transactions.',
+    'Learn how AbeyCollab safeguards creator media assets, verified metrics, audience data, and financial escrow transactions with enterprise encryption.',
+  keywords: [
+    'privacy policy',
+    'creator data privacy',
+    'gdpr compliance',
+    'dpdp compliance',
+    'influencer data protection',
+  ],
   alternates: { canonical: `${BASE_URL}/privacy` },
+  openGraph: {
+    type: 'website',
+    url: `${BASE_URL}/privacy`,
+    title: 'Privacy Policy — AbeyCollab',
+    description: 'Learn how AbeyCollab safeguards creator media assets, verified metrics, and transactions.',
+    images: ['/og-image.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Privacy Policy — AbeyCollab',
+    description: 'Enterprise data security, encryption standards, and privacy commitments for creators and brands.',
+    images: ['/og-image.png'],
+  },
 };
+
+const privacyJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Privacy Policy — AbeyCollab',
+    url: `${BASE_URL}/privacy`,
+    description: 'Information security and privacy policy for AbeyCollab.',
+    inLanguage: 'en-US',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: BASE_URL,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Privacy Policy',
+        item: `${BASE_URL}/privacy`,
+      },
+    ],
+  },
+];
 
 export default function PrivacyPolicyPage() {
   return (
     <div className="py-16 sm:py-24 bg-[#FAFAFC] text-[#0A0A0E] min-h-screen">
+      <script
+        id="privacy-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(privacyJsonLd) }}
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="space-y-4">
           <Link href="/" className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[#7A7A8A] hover:text-[#0A0A0E] transition-colors">

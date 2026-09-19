@@ -362,6 +362,25 @@
   animation: gold-pulse 3s infinite ease-in-out;
 }
 
+/* ══════════════════════════════════════════════════════════════════════════
+   SMOOTH INTERACTION & GPU ACCELERATION
+   ══════════════════════════════════════════════════════════════════════════ */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html:not(.lenis) {
+    scroll-behavior: smooth;
+  }
+}
+
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
 /* Smooth custom scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
