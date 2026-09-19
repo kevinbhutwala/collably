@@ -106,7 +106,7 @@ export default function EarningsAndEscrowPage() {
             </span>
             <span className="text-[#8A8A9A] dark:text-[#6A6A7E]">•</span>
             <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] dark:text-yellow-400 font-mono text-[10px] font-bold">
-              Escrow Secured ({config.flag} {currency})
+              Protected Payments ({config.flag} {currency})
             </span>
           </div>
           <h1 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
@@ -114,8 +114,8 @@ export default function EarningsAndEscrowPage() {
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4]">
             {role === "creator"
-              ? `View your secured payments, completed payouts, and withdraw funds in ${config.name} (${currency}).`
-              : `Track your secured campaign funds, completed creator payouts, and invoices in ${config.name} (${currency}).`}
+              ? `View your safe payments, completed payouts, and withdraw funds in ${config.name} (${currency}).`
+              : `Track your protected campaign budget, completed creator payouts, and tax receipts in ${config.name} (${currency}).`}
           </p>
         </div>
 
@@ -135,13 +135,13 @@ export default function EarningsAndEscrowPage() {
         <StatsCard
           title={`Available Balance (${currency})`}
           value={formatCurrency(availableForPayout, currency)}
-          subtitle={availableForPayout > 0 ? "Ready for worldwide withdrawal" : "No pending payouts"}
+          subtitle={availableForPayout > 0 ? "Ready to withdraw anytime" : "No pending payouts"}
           icon={<Wallet className="w-4 h-4 text-[#FFD21F]" />}
         />
         <StatsCard
-          title={`In Escrow (${currency})`}
+          title={`Protected in Escrow (${currency})`}
           value={formatCurrency(securedInEscrow, currency)}
-          subtitle={securedInEscrow > 0 ? "Held safely until deliverables are approved" : "No active escrow"}
+          subtitle={securedInEscrow > 0 ? "Held safely until work is approved" : "No active projects"}
           icon={<ShieldCheck className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />}
         />
         <StatsCard
@@ -237,7 +237,7 @@ export default function EarningsAndEscrowPage() {
         <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
           <div>
             <h3 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">Payout History</h3>
-            <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4]">Recent milestone disbursements.</p>
+            <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4]">Record of all completed project payments and deposits.</p>
           </div>
           {payouts.length > 0 && (
             <button className="px-3 py-1.5 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0A0A0E] dark:text-white text-xs font-mono transition-all flex items-center gap-1.5 border border-black/5 dark:border-white/10">
@@ -250,10 +250,10 @@ export default function EarningsAndEscrowPage() {
         {payouts.length === 0 ? (
           <AnimatedEmptyState
             icon={<Receipt className="w-7 h-7 text-[#0A0A0E] dark:text-[#FFD21F]" />}
-            badgeText="Ledger"
-            title="No Payout Records"
-            description="Completed milestone disbursements will be recorded here."
-            actionText={role === "creator" ? "Browse Campaigns" : "Create Brief"}
+            badgeText="Payment History"
+            title="No Payments Yet"
+            description="When project milestones are approved, your earnings and download receipts will appear here."
+            actionText={role === "creator" ? "Browse Campaigns" : "Post a Campaign"}
             actionHref={role === "creator" ? "/app/campaigns" : "/app/brand/campaigns/create"}
             secondaryText="Return to Dashboard"
             secondaryHref="/app/dashboard"

@@ -207,7 +207,7 @@ export default function BrandCreatorDiscoveryPage() {
               : "bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/6 dark:border-white/8"
           )}
         >
-          <span>👥</span> All Verified Creators
+          <span>👥</span> Browse All Creators
         </button>
         <button
           onClick={() => setTabMode("match")}
@@ -218,7 +218,7 @@ export default function BrandCreatorDiscoveryPage() {
               : "bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/6 dark:border-white/8"
           )}
         >
-          <span>🎯</span> Natural Language Brief Match
+          <span>🎯</span> AI Creator Match
         </button>
         <button
           onClick={() => setTabMode("trending")}
@@ -229,7 +229,7 @@ export default function BrandCreatorDiscoveryPage() {
               : "bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/6 dark:border-white/8"
           )}
         >
-          <span>🔥</span> Trending Talent Hub
+          <span>🔥</span> Popular &amp; Trending
         </button>
       </div>
 
@@ -309,11 +309,11 @@ export default function BrandCreatorDiscoveryPage() {
                 className="px-3 py-1.5 rounded-xl border border-black/10 dark:border-white/10 bg-[#F5F5F9] dark:bg-[#181824] text-xs font-bold text-[#0A0A0E] dark:text-white focus:outline-none focus:border-[#FFD21F] cursor-pointer"
               >
                 <option value="best_match">Best Match</option>
-                <option value="trending">🔥 Trending Momentum</option>
-                <option value="rising">📈 Rising High Growth</option>
-                <option value="top_rated">⭐ Top Rated</option>
-                <option value="most_successful">🏆 Most Successful Deals</option>
-                <option value="newest">🌱 Newest</option>
+                <option value="trending">🔥 Trending Now</option>
+                <option value="rising">📈 Fast Growing</option>
+                <option value="top_rated">⭐ Highest Rated</option>
+                <option value="most_successful">🏆 Most Completed Deals</option>
+                <option value="newest">🌱 Recently Joined</option>
               </select>
             </div>
           </div>
@@ -322,8 +322,8 @@ export default function BrandCreatorDiscoveryPage() {
           {filteredCreators.length === 0 ? (
             <div className="py-16 text-center rounded-3xl bg-white dark:bg-[#14141E] border border-black/8 dark:border-white/10 p-8 space-y-3 shadow-xs">
               <Users className="w-8 h-8 text-[#8A8A9A] mx-auto" />
-              <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white">No creators match your current filters</h3>
-              <p className="text-xs text-[#6A6A78] dark:text-[#8E8EA4]">Try adjusting follower benchmarks, categories, or clearing search terms.</p>
+              <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white">No creators found</h3>
+              <p className="text-xs text-[#6A6A78] dark:text-[#8E8EA4]">Try loosening your filters or clearing search keywords.</p>
               <button
                 onClick={resetCreatorFilters}
                 className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold shadow-xs transition-all border border-black/10 cursor-pointer"

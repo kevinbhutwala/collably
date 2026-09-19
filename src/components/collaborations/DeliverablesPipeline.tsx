@@ -116,14 +116,14 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
       );
       addToast({
         type: "success",
-        title: "Escrow Secured & Locked!",
-        message: `Vault funded for ${formatCurrency(collab.totalAgreedBudget, collab.currency)}. Creator has been unblocked to begin work.`,
+        title: "Payment Secured & Protected!",
+        message: `Project budget of ${formatCurrency(collab.totalAgreedBudget, collab.currency)} is deposited safely in escrow. Creator can now begin work.`,
       });
     } catch (err: any) {
       addToast({
         type: "error",
-        title: "Funding Failed",
-        message: err.message || "Failed to fund escrow vault.",
+        title: "Deposit Failed",
+        message: err.message || "Failed to complete payment deposit.",
       });
     } finally {
       setIsFunding(false);
@@ -199,14 +199,14 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
       setIsSubmitModalOpen(false);
       addToast({
         type: "success",
-        title: "Deliverable Link Submitted",
-        message: "Milestone status updated to SUBMITTED. The 120-hour review SLA timer has started.",
+        title: "Content Link Submitted",
+        message: "Your draft has been sent to the brand. The 120-hour review period has started.",
       });
     } catch (err: any) {
       addToast({
         type: "error",
         title: "Submission Failed",
-        message: err.message || "Failed to submit deliverable link.",
+        message: err.message || "Failed to submit link.",
       });
     } finally {
       setIsSubmitting(false);
@@ -226,14 +226,14 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
       setIsReviewModalOpen(false);
       addToast({
         type: "success",
-        title: "Milestone Approved & Disbursed",
-        message: "Escrow funds released directly to creator payout account.",
+        title: "Work Approved & Payment Sent",
+        message: "Protected payment released directly to the creator's payout account.",
       });
     } catch (err: any) {
       addToast({
         type: "error",
         title: "Approval Failed",
-        message: err.message || "Could not complete disbursement.",
+        message: err.message || "Could not complete payment release.",
       });
     }
   };
@@ -767,8 +767,8 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
                           if (!isFunded) {
                             addToast({
                               type: "error",
-                              title: "Escrow Unfunded",
-                              message: "Brand must fund escrow before deliverable submissions are allowed.",
+                              title: "Deposit Pending",
+                              message: "Brand must deposit project payment into escrow before you can submit drafts.",
                             });
                             return;
                           }
@@ -784,7 +784,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
                         }`}
                       >
                         <Send className="w-3.5 h-3.5" />
-                        <span>{isSubmitted ? "Update Deliverable Link" : "Submit Deliverable Link"}</span>
+                        <span>{isSubmitted ? "Update Content Link" : "Submit Content Link"}</span>
                       </button>
                     )}
 
@@ -804,7 +804,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
                     {isApproved && (
                       <div className="flex items-center gap-1.5 text-xs text-[#0A0A0E] dark:text-emerald-300 font-mono font-bold bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 px-3.5 py-1.5 rounded-full">
                         <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                        <span>Payment Released • Tranche Released</span>
+                        <span>Payment Released</span>
                       </div>
                     )}
                   </div>

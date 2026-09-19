@@ -271,7 +271,7 @@ export default function SettingsPage() {
           }`}
         >
           <CreditCard className="w-4 h-4 text-[#FFD21F]" />
-          <span>Plan &amp; Billing</span>
+          <span>Plans &amp; Billing</span>
         </button>
 
         <button
@@ -283,7 +283,7 @@ export default function SettingsPage() {
           }`}
         >
           <Wallet className="w-4 h-4 text-[#FFD21F]" />
-          <span>Payout &amp; Banking</span>
+          <span>Bank &amp; Payouts</span>
         </button>
 
         <button
@@ -295,7 +295,7 @@ export default function SettingsPage() {
           }`}
         >
           <Smartphone className="w-4 h-4 text-[#FFD21F]" />
-          <span>API &amp; Security</span>
+          <span>Security &amp; Password</span>
         </button>
 
         <button
@@ -307,7 +307,7 @@ export default function SettingsPage() {
           }`}
         >
           <Globe className="w-4 h-4 text-[#FFD21F]" />
-          <span>Preferences &amp; Theme</span>
+          <span>Currency &amp; Theme</span>
         </button>
       </div>
 
@@ -698,24 +698,24 @@ export default function SettingsPage() {
           <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
             <div className="flex items-center gap-2 text-[#0A0A0E] dark:text-white font-bold text-sm font-display">
               <Wallet className="w-4 h-4 text-[#FFD21F]" />
-              <span>Escrow &amp; Payout Rails</span>
+              <span>Payout Method &amp; Bank Account</span>
             </div>
             <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] leading-relaxed">
               {role === "creator"
-                ? "Configure your bank account, IBAN, or UPI ID for automated escrow release upon deliverable approval."
-                : "Manage funding accounts and corporate payment credentials for 100% pre-funded campaign escrow deposits."}
+                ? "Enter your bank account or UPI ID to receive automatic payments as soon as your content is approved."
+                : "Manage your payment method for securely funding project budgets."}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               <Input
-                label="Bank Account / UPI / Payout ID"
-                placeholder="e.g. yourname@okaxis or IBAN/Account #"
+                label="Bank Account / UPI / IBAN"
+                placeholder="e.g. yourname@upi or Account number"
                 value={payoutAccount}
                 onChange={(e) => setPayoutAccount(e.target.value)}
               />
               <Input
-                label="Tax Identification / PAN / W-9 / GST"
-                placeholder="e.g. ABCDE1234F or Tax ID"
+                label="Tax Identification / PAN / W-9"
+                placeholder="e.g. Tax ID or PAN number"
                 value={taxId}
                 onChange={(e) => setTaxId(e.target.value)}
               />
@@ -803,14 +803,14 @@ export default function SettingsPage() {
           <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
             <div className="flex items-center gap-2 text-[#0A0A0E] dark:text-white font-bold text-sm font-display">
               <Smartphone className="w-4 h-4 text-[#FFD21F]" />
-              <span>Cross-Platform API &amp; Security Status</span>
+              <span>Workspace Sync &amp; Security</span>
             </div>
             <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] leading-relaxed font-sans">
-              Your credentials, active subscriptions, and campaigns are synchronized in realtime across the AbeyCollab Web &amp; Mobile Workspace.
+              Your account, projects, and messages stay automatically in sync across your phone and computer.
             </p>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-mono text-[10px] font-bold">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-pulse" />
-              Core API &amp; Webhook Rails: Connected &amp; Ready
+              Connected &amp; Secure
             </span>
           </div>
         </div>

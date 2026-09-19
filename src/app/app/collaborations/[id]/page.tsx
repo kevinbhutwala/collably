@@ -150,7 +150,7 @@ export default function SingleCollaborationWorkspacePage() {
                   : "bg-amber-50 dark:bg-amber-950/40 text-amber-900 dark:text-amber-300 border-amber-300 dark:border-amber-700/50"
               }`}
             >
-              {isFunded ? "ESCROW SECURED" : "ESCROW PENDING"}
+              {isFunded ? "PAYMENT PROTECTED" : "DEPOSIT PENDING"}
             </span>
             <span className="px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950/40 text-blue-800 dark:text-blue-300 border border-blue-300 dark:border-blue-700/50 text-[11px] font-mono font-bold">
               {(collab.paymentStatus || collab.status).replace(/_/g, " ").toUpperCase()}
@@ -170,7 +170,7 @@ export default function SingleCollaborationWorkspacePage() {
         <div className="flex items-center gap-6 p-4 rounded-2xl bg-[#FAFAFC] dark:bg-[#181824] border border-black/5 dark:border-white/5">
           <div>
             <span className="text-[10px] font-mono text-[#7A7A8A] uppercase tracking-wider block">
-              Agreed Milestone
+              Agreed Budget
             </span>
             <span className="text-2xl font-extrabold font-mono text-[#0A0A0E] dark:text-white">
               {formatCurrency(collab.totalAgreedBudget, collab.currency)}

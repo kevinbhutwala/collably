@@ -40,14 +40,14 @@ export default function AppCampaignsPage() {
             </span>
             <span className="text-[#8A8A9A] dark:text-[#6A6A7E]">•</span>
             <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] dark:text-yellow-400 font-mono text-[10px] font-bold">
-              Escrow Secured
+              Protected Brand Payments
             </span>
           </div>
           <h1 className="text-xl sm:text-2xl font-black text-[#0A0A0E] dark:text-white font-display tracking-tight">
             Discover Campaigns
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4]">
-            Browse active sponsor briefs and submit creative pitches.
+            Browse active brand projects with upfront funding and send your pitch.
           </p>
         </div>
       </div>
@@ -66,7 +66,7 @@ export default function AppCampaignsPage() {
             )}
           >
             <Sparkles className={cn("w-3.5 h-3.5", selectedCategory === "all" ? "text-[#8A7000] dark:text-[#FFD21F]" : "text-[#7A7A8A] dark:text-[#8E8EA4]")} />
-            <span>All Briefs</span>
+            <span>All Campaigns</span>
           </button>
 
           {CATEGORIES.slice(0, 6).map((cat) => {
@@ -95,7 +95,7 @@ export default function AppCampaignsPage() {
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search briefs, brands, or niches..."
+            placeholder="Search campaigns, brands, or topics..."
             className="w-full bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 rounded-2xl pl-9 pr-3 py-2 text-xs font-medium text-[#0A0A0E] dark:text-white placeholder:text-[#8A8A9A] dark:placeholder:text-[#6A6A7E] focus:outline-none focus:border-[#FFD21F] focus:ring-2 focus:ring-[#FFD21F]/20 shadow-xs transition-all"
           />
         </div>
@@ -106,13 +106,13 @@ export default function AppCampaignsPage() {
         <CreativeLoader
           size="md"
           label="Loading Campaigns"
-          subtext="Fetching open sponsorship briefs..."
+          subtext="Finding the latest brand campaigns..."
         />
       ) : campaigns.length === 0 ? (
         <div className="py-16 text-center rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-6 space-y-2 shadow-xs">
           <Compass className="w-7 h-7 text-[#7A7A8A] dark:text-[#8E8EA4] mx-auto" />
           <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display">No campaigns found</h3>
-          <p className="text-xs text-[#6A6A78] dark:text-[#A0A0B4]">Try selecting a different category or clearing search filters.</p>
+          <p className="text-xs text-[#6A6A78] dark:text-[#A0A0B4]">Try selecting another category or typing different search terms.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
