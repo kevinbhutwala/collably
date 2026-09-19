@@ -9,20 +9,20 @@ export function CompactFAQ() {
 
   const faqs = [
     {
-      q: "How does 100% escrow protection work?",
-      a: "Milestone funds are deposited upfront into segregated custody via Stripe Connect, and released to the creator within 24 hours only after the brand approves the final video deliverable.",
+      q: "How does payment protection work?",
+      a: "When a brand starts a project, they set aside the fee safely with AbeyCollab. The creator knows the money is waiting, and the brand only releases it once they review and approve the final work.",
     },
     {
-      q: "What is AbeyCollab's platform fee?",
-      a: "AbeyCollab charges a flat 10% platform fee on completed milestones. There are zero listing fees or hidden subscription requirements to pitch.",
+      q: "What is AbeyCollab's fee?",
+      a: "AbeyCollab charges a simple 10% fee on completed projects. There are no fees to sign up, no hidden charges, and creators keep 90% of what they earn.",
     },
     {
-      q: "How are video revisions handled?",
-      a: "Marketers use our 4K frame-accurate video review player to leave timestamped comments directly on video cuts for fast, clear turnaround.",
+      q: "How do revisions and feedback work?",
+      a: "Creators share draft links directly in the project space. Brands can leave notes, point out specific moments in the video, and request small tweaks easily.",
     },
     {
-      q: "How quickly do creators get paid?",
-      a: "Payouts are automated and arrive directly in the creator's connected bank account in less than 24 hours (or 2 hours on Pro).",
+      q: "How quickly do creators receive their money?",
+      a: "Once the brand approves the final post, payment is sent directly to the creator's bank account within 24 hours (or in as little as 2 hours on Creator Pro).",
     },
   ];
 

@@ -8,7 +8,7 @@ const BASE_URL =
 export const metadata: Metadata = {
   title: 'Create Your Account — Join as Creator or Brand',
   description:
-    'Join AbeyCollab. Creators get free media kit hosting and milestone escrow security. Brands hire audited video creators with guaranteed payouts.',
+    'Join AbeyCollab. Creators get a free media kit and guaranteed on-time payments. Brands discover top video creators and pay only when satisfied.',
   alternates: { canonical: `${BASE_URL}/register` },
   openGraph: {
     type: 'website',

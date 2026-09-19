@@ -247,7 +247,7 @@ export function DeliverableReviewCard({
         <div className="pt-3 border-t border-black/8 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-xs text-[#6A6A78] dark:text-[#9A9AB0] flex items-center gap-2">
             <FolderLock className="w-4 h-4 text-emerald-600" />
-            <span>Escrow vault holds <strong className="text-[#0A0A0E] dark:text-white font-sans">{formatCurrency(payoutAmount, currency)}</strong> in FDIC-insured trust</span>
+            <span>Protected payment of <strong className="text-[#0A0A0E] dark:text-white font-sans">{formatCurrency(payoutAmount, currency)}</strong> held safely until approved</span>
           </div>
 
           <div className="flex items-center gap-3 w-full sm:w-auto">
@@ -255,7 +255,7 @@ export function DeliverableReviewCard({
               <div className="flex flex-wrap items-center gap-2">
                 <div className="px-4 py-2.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-600 text-emerald-800 dark:text-emerald-300 font-bold text-xs flex items-center justify-center gap-2 font-mono">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                  <span>Tranche Released to Creator Payout</span>
+                  <span>Payment Released to Creator</span>
                 </div>
                 <button
                   type="button"
@@ -263,7 +263,7 @@ export function DeliverableReviewCard({
                   className="px-4 py-2.5 rounded-full bg-black dark:bg-white text-white dark:text-black font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs"
                 >
                   <FileCheck2 className="w-3.5 h-3.5 text-[#FFD21F]" />
-                  <span>View Rights &amp; License Certificate</span>
+                  <span>View Usage Agreement</span>
                 </button>
               </div>
             ) : (
@@ -274,7 +274,7 @@ export function DeliverableReviewCard({
                   className="flex-1 sm:flex-none px-4 py-2.5 rounded-full bg-[#F8F8FC] hover:bg-[#EFEFF6] dark:bg-white/10 dark:hover:bg-white/15 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all border border-black/10 dark:border-white/10 flex items-center justify-center gap-1.5"
                 >
                   <AlertCircle className="w-3.5 h-3.5 text-amber-600" />
-                  <span>Request Revision / Raise Dispute</span>
+                  <span>Request Edits</span>
                 </button>
 
                 <button
@@ -283,7 +283,7 @@ export function DeliverableReviewCard({
                   className="flex-1 sm:flex-none px-6 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-black text-xs transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1.5"
                 >
                   <CheckCircle2 className="w-4 h-4 text-[#0A0A0E]" />
-                  <span>Approve &amp; Release Escrow</span>
+                  <span>Approve &amp; Send Payment</span>
                 </button>
               </>
             )}

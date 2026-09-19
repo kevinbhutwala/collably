@@ -8,13 +8,13 @@ const BASE_URL =
 export const metadata: Metadata = {
   title: 'Sign In to Your Workspace',
   description:
-    'Sign in to your AbeyCollab creator or brand account. Access active campaign briefs, escrow funds, 4K review player, and direct messaging.',
+    'Sign in to your AbeyCollab creator or brand account. View your projects, chat with partners, and manage payments.',
   alternates: { canonical: `${BASE_URL}/login` },
   openGraph: {
     type: 'website',
     url: `${BASE_URL}/login`,
     title: 'Sign In to Your Workspace | AbeyCollab',
-    description: 'Sign in to your AbeyCollab account to manage milestone-protected creator collaborations.',
+    description: 'Sign in to your AbeyCollab account to view your campaigns, messages, and secure payments.',
     images: ['/og-image.png'],
   },
   twitter: {

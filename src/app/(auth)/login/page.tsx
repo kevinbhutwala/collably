@@ -95,7 +95,7 @@ function LoginForm() {
           Welcome back
         </h1>
         <p className="text-xs text-[#6A6A78] font-sans">
-          Access your brand briefs, milestone escrows, and 4K QA studio.
+          Sign in to view your projects, messages, and payments.
         </p>
       </div>
 

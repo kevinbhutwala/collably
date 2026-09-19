@@ -148,14 +148,14 @@ export default function CollaborationsWorkspacePage() {
             </span>
             <span className="text-[#8A8A9A]">•</span>
             <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] dark:text-[#FFD21F] font-mono text-[10px] font-bold">
-              100% Protected Escrow
+              Protected Payments
             </span>
           </div>
           <h1 className="text-xl sm:text-2xl font-black text-[#0A0A0E] dark:text-white tracking-tight font-display">
-            Active Collaborations &amp; Deals
+            Active Projects &amp; Deals
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4]">
-            Submit content drafts, review feedback, and approve secured payments in one place.
+            Review drafts, share feedback, and manage safe payments in one place.
           </p>
         </div>
 
@@ -171,7 +171,7 @@ export default function CollaborationsWorkspacePage() {
             <Link href="/app/brand/campaigns/create">
               <button className="px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all flex items-center gap-1.5 shadow-[0_4px_14px_rgba(255,210,31,0.35)] border border-black/10 active:scale-98">
                 <Plus className="w-3.5 h-3.5" />
-                <span>Post Campaign</span>
+                <span>Post a Campaign</span>
               </button>
             </Link>
           )}
@@ -182,14 +182,14 @@ export default function CollaborationsWorkspacePage() {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
         <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-1">
           <div className="flex items-center justify-between text-xs text-[#6A6A78] dark:text-[#8E8EA4]">
-            <span className="font-medium">Active Deals</span>
+            <span className="font-medium">Active Projects</span>
             <FileCheck2 className="w-4 h-4 text-[#8A7000] dark:text-[#FFD21F]" />
           </div>
           <span className="text-2xl font-black text-[#0A0A0E] dark:text-white font-display block">
             {stats.activeCount}
           </span>
           <span className="text-[11px] font-mono text-[#8A8A9A] dark:text-[#707080] block">
-            {stats.total} total recorded
+            {stats.total} total projects
           </span>
         </div>
 
@@ -202,33 +202,33 @@ export default function CollaborationsWorkspacePage() {
             {stats.needsActionCount}
           </span>
           <span className="text-[11px] font-mono text-amber-800/80 dark:text-amber-300/80 block">
-            {role === "brand" ? "Awaiting review or deposit" : "Awaiting draft or revisions"}
+            {role === "brand" ? "Awaiting review or payment" : "Awaiting draft or edits"}
           </span>
         </div>
 
         <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-1">
           <div className="flex items-center justify-between text-xs text-[#6A6A78] dark:text-[#8E8EA4]">
-            <span className="font-medium">Protected in Escrow</span>
+            <span className="font-medium">Protected Funds</span>
             <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
           </div>
           <span className="text-2xl font-black text-emerald-700 dark:text-emerald-400 font-display block">
             {formatCurrency(stats.inEscrowDollars)}
           </span>
           <span className="text-[11px] font-mono text-emerald-800/80 dark:text-emerald-300/80 block">
-            Safe in platform custody
+            Held safely until approved
           </span>
         </div>
 
         <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-1">
           <div className="flex items-center justify-between text-xs text-[#6A6A78] dark:text-[#8E8EA4]">
-            <span className="font-medium">Completed Deals</span>
+            <span className="font-medium">Completed</span>
             <CheckCircle2 className="w-4 h-4 text-[#FFD21F]" />
           </div>
           <span className="text-2xl font-black text-[#0A0A0E] dark:text-white font-display block">
             {stats.completedCount}
           </span>
           <span className="text-[11px] font-mono text-[#8A8A9A] dark:text-[#707080] block">
-            100% payout released
+            Paid &amp; finalized
           </span>
         </div>
       </div>
@@ -240,7 +240,7 @@ export default function CollaborationsWorkspacePage() {
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
               <h3 className="text-xs font-bold uppercase tracking-wider text-[#0A0A0E] dark:text-[#F4F4F8] font-mono">
-                How Deals &amp; Escrow Payments Work
+                How Projects &amp; Safe Payments Work
               </h3>
             </div>
             <button
@@ -258,9 +258,9 @@ export default function CollaborationsWorkspacePage() {
                 1
               </div>
               <div className="space-y-0.5">
-                <span className="text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8] block">Funds Deposited Safely</span>
+                <span className="text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8] block">Payment Held Safely</span>
                 <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
-                  The brand deposits project money upfront into the secure platform vault before the creator begins work.
+                  The brand sets aside the project fee upfront. The money is locked safely with AbeyCollab before you begin.
                 </p>
               </div>
             </div>
@@ -270,9 +270,9 @@ export default function CollaborationsWorkspacePage() {
                 2
               </div>
               <div className="space-y-0.5">
-                <span className="text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8] block">Submit Drafts &amp; Feedback</span>
+                <span className="text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8] block">Review Drafts &amp; Share Notes</span>
                 <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
-                  Creators upload preview links. Brands review, give feedback, and have a 120-hour window to review.
+                  The creator shares a preview link. The brand has 5 days to review, give feedback, or request small edits.
                 </p>
               </div>
             </div>
@@ -282,9 +282,9 @@ export default function CollaborationsWorkspacePage() {
                 3
               </div>
               <div className="space-y-0.5">
-                <span className="text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8] block">Guaranteed Payout Release</span>
+                <span className="text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8] block">Automatic Fast Payout</span>
                 <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
-                  Once the draft is approved and public post is confirmed, funds release automatically to the creator.
+                  When the work is approved and posted, payment is released right away to the creator’s bank account.
                 </p>
               </div>
             </div>

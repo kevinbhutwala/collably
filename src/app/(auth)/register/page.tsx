@@ -44,17 +44,17 @@ export default function RegisterPage() {
 
             <h2 className="text-lg font-bold text-[#0A0A0E] font-display">I am a Creator</h2>
             <p className="text-xs text-[#5A5A68] leading-relaxed font-sans">
-              Connect social accounts, build your audited media kit, pitch verified brand campaigns, and receive guaranteed escrow payouts.
+              Share your media kit, pitch to paid brand campaigns, and always get paid on time with guaranteed payment protection.
             </p>
 
             <div className="space-y-1.5 pt-1 text-xs text-[#4A4A58] font-sans">
               <div className="flex items-center gap-2">
                 <Check className="w-3.5 h-3.5 text-[#087F5B]" />
-                <span>100% Escrow payout guarantee</span>
+                <span>Guaranteed payment on approved work</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check className="w-3.5 h-3.5 text-[#087F5B]" />
-                <span>Audited 1-click Media Kit</span>
+                <span>Ready-to-share Media Kit</span>
               </div>
             </div>
           </div>
@@ -81,17 +81,17 @@ export default function RegisterPage() {
 
             <h2 className="text-lg font-bold text-[#0A0A0E] font-display">I am a Brand / Business</h2>
             <p className="text-xs text-[#5A5A68] leading-relaxed font-sans">
-              Publish campaign briefs, match with 50K+ vetted creators, collaborate in 4K frame-accurate QA, and automate contracts.
+              Post project briefs, discover verified creators, review video drafts in one place, and pay only when satisfied.
             </p>
 
             <div className="space-y-1.5 pt-1 text-xs text-[#4A4A58] font-sans">
               <div className="flex items-center gap-2">
                 <Check className="w-3.5 h-3.5 text-[#087F5B]" />
-                <span>AI creator matching engine</span>
+                <span>Smart creator discovery</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check className="w-3.5 h-3.5 text-[#087F5B]" />
-                <span>Automated 1099 compliance</span>
+                <span>Clear contracts &amp; tax invoices</span>
               </div>
             </div>
           </div>

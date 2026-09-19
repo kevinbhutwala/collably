@@ -66,10 +66,10 @@ const homeFaqJsonLd = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'How does 100% escrow protection work?',
+      name: 'How does payment protection work?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Milestone funds are deposited upfront into segregated custody via Stripe Connect, and released to the creator within 24 hours only after the brand approves the final video deliverable.',
+        text: 'When a brand starts a project, they set aside the fee safely with AbeyCollab. The creator knows the money is waiting, and the brand only releases it once they review and approve the final work.',
       },
     },
     {
@@ -77,7 +77,7 @@ const homeFaqJsonLd = {
       name: "What is AbeyCollab's platform fee?",
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'AbeyCollab charges a flat 10% platform fee on completed milestones. There are zero listing fees or hidden subscription requirements to pitch.',
+        text: 'AbeyCollab charges a simple 10% fee on completed projects. There are zero listing fees or hidden subscription requirements to pitch.',
       },
     },
     {
@@ -85,7 +85,7 @@ const homeFaqJsonLd = {
       name: 'How are video revisions handled?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Marketers use our 4K frame-accurate video review player to leave timestamped comments directly on video cuts for fast, clear turnaround.',
+        text: 'Creators share draft links directly in the project space. Brands can leave notes, point out specific moments in the video, and request small tweaks easily.',
       },
     },
     {

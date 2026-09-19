@@ -64,7 +64,7 @@ export default function AuthLayout({
 
       {/* Footer copyright */}
       <footer className="py-4 text-center text-[11px] sm:text-xs font-sans text-[#7A7A8A] dark:text-[#8E8EA4] border-t border-black/8 dark:border-white/10 bg-white/70 dark:bg-[#0E0E14]/70 relative z-10 px-4">
-        © {new Date().getFullYear()} AbeyCollab Inc. • Protected by Escrow Payment Infrastructure
+        © {new Date().getFullYear()} AbeyCollab Inc. • Safe payments and direct creator partnerships
       </footer>
     </div>
   );

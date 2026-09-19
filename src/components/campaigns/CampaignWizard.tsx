@@ -228,7 +228,7 @@ export function CampaignWizard() {
     { num: 2, title: "Audience" },
     { num: 3, title: "Criteria" },
     { num: 4, title: "Deliverables" },
-    { num: 5, title: "Budget & Escrow" },
+    { num: 5, title: "Budget & Payments" },
     { num: 6, title: "Timeline" },
     { num: 7, title: "Review" },
   ];
@@ -453,20 +453,20 @@ export function CampaignWizard() {
           </div>
         )}
 
-        {/* STEP 5: BUDGET & ESCROW */}
+        {/* STEP 5: BUDGET & PAYMENTS */}
         {step === 5 && (
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-extrabold text-[#0A0A0E] dark:text-white font-display">Budget &amp; Escrow Terms</h2>
+              <h2 className="text-2xl font-extrabold text-[#0A0A0E] dark:text-white font-display">Budget &amp; Payments</h2>
               <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] mt-1 font-sans font-medium">
-                Configure your total pool and per-creator payout caps.
+                Set your total campaign budget and the amount you would like to offer each creator.
               </p>
             </div>
 
             {/* Currency Selector */}
             <div className="space-y-2">
               <label className="text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8] block">
-                Campaign Currency Pool
+                Currency
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 {PRIMARY_CURRENCY_LIST.map((curr) => {
@@ -582,11 +582,11 @@ export function CampaignWizard() {
                 <span className="text-sm font-bold text-[#0A0A0E] dark:text-[#F4F4F8] font-display">{formData.title}</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-[#7A7A8A] dark:text-[#8E8EA4] font-mono">TOTAL ESCROW POOL</span>
+                <span className="text-xs font-bold text-[#7A7A8A] dark:text-[#8E8EA4] font-mono">CAMPAIGN BUDGET</span>
                 <span className="text-sm font-extrabold font-mono text-[#0A0A0E] dark:text-[#FFD21F]">{formatCurrency(formData.totalBudget, formData.currency)}</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-[#7A7A8A] dark:text-[#8E8EA4] font-mono">TARGET COHORT</span>
+                <span className="text-xs font-bold text-[#7A7A8A] dark:text-[#8E8EA4] font-mono">TARGET CREATORS</span>
                 <span className="text-sm font-bold text-[#0A0A0E] dark:text-[#F4F4F8] font-sans">{formData.maxCreators} Creators</span>
               </div>
               <div className="flex items-center justify-between">
@@ -629,7 +629,7 @@ export function CampaignWizard() {
               rightIcon={<CheckCircle2 className="w-5 h-5 text-[#0A0A0E]" />}
               className="rounded-full"
             >
-              Launch Brief &amp; Pre-Authorize Escrow
+              Publish Campaign
             </Button>
           )}
         </div>

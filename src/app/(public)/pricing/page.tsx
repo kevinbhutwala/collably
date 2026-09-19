@@ -54,10 +54,10 @@ const pricingStructuredData = [
     mainEntity: [
       {
         '@type': 'Question',
-        name: 'How does milestone-protected escrow work on AbeyCollab?',
+        name: 'How does payment protection work on AbeyCollab?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'When a brand approves a collaboration proposal, the milestone funds are deposited into secure escrow via Razorpay or Stripe. Funds remain protected in escrow custody until the brand reviews and approves the deliverable, ensuring creators are guaranteed payment for completed work.',
+          text: 'When a brand agrees to a project, they set aside the funds safely with AbeyCollab. The money is held securely until the brand reviews and approves the work, ensuring creators are guaranteed payment for completed deliverables.',
         },
       },
       {
@@ -65,7 +65,7 @@ const pricingStructuredData = [
         name: 'How much does it cost to get started as a creator?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'AbeyCollab Creator Starter is 100% free forever ($0/mo). Creators receive a verified public media kit, rate card hosting, and up to 5 brand applications per month. Creator Pro ($29/mo) unlocks unlimited applications, AI pitch drafting, and instant 2-hour payouts.',
+          text: 'AbeyCollab Creator Starter is 100% free forever ($0/mo). Creators get a public media kit, rate card hosting, and up to 5 brand applications per month. Creator Pro ($29/mo) unlocks unlimited applications, AI pitch help, and fast 2-hour payouts.',
         },
       },
       {
@@ -73,23 +73,23 @@ const pricingStructuredData = [
         name: 'What payment methods are supported on AbeyCollab?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'We support Razorpay (Cards, UPI, Netbanking, direct handle @abeycollab), Stripe Connect, PayPal Global, Wise, and international SWIFT wire transfers across 120+ countries and 10 global currencies.',
+          text: 'We support all major payment methods including Cards, UPI, Netbanking, Stripe, PayPal, Wise, and bank wire transfers across 120+ countries.',
         },
       },
       {
         '@type': 'Question',
-        name: 'What happens if a brand fails to review a submitted deliverable?',
+        name: 'What happens if a brand takes a long time to review a draft?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'AbeyCollab enforces an automated 120-hour (5-day) review SLA watchdog. If a brand takes no action within 120 hours of deliverable submission, the system automatically approves the milestone and releases the funds to the creator.',
+          text: 'AbeyCollab provides a 5-day (120-hour) review window. If a brand does not request revisions or respond within 5 days, the work is automatically approved and payment is released to the creator.',
         },
       },
       {
         '@type': 'Question',
-        name: 'What is the platform commission rate on collaborations?',
+        name: 'What is the platform fee on completed projects?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'AbeyCollab charges a standard 10% platform fee on funded collaborations. There are zero hidden fees, zero invoice chasing charges, and zero processing penalties.',
+          text: 'AbeyCollab charges a simple 10% fee on completed projects. There are no hidden deductions or payment processing surprises.',
         },
       },
     ],

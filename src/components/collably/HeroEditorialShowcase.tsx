@@ -147,13 +147,13 @@ export function HeroEditorialShowcase() {
                 onClick={() => setRoleModalOpen(true)}
                 className="min-h-12 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-sm transition-all shadow-[0_4px_20px_rgba(255,210,31,0.5)] flex items-center justify-center gap-2 group active:scale-[0.98] border border-black/10 font-sans hover-lift"
               >
-                <span>Launch Campaign Brief</span>
+                <span>Post a Campaign</span>
                 <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-1 transition-transform" />
               </button>
 
               <Link href="/creators" className="w-full sm:w-auto min-h-12 px-7 py-3.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#14141E] dark:hover:bg-[#1E1E2C] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-sm transition-all shadow-xs active:scale-[0.98] flex items-center justify-center gap-2 hover-lift">
                   <Users className="w-4 h-4 text-[#8A7000] dark:text-[#FFD21F]" />
-                  <span>Explore Creator Roster</span>
+                  <span>Browse Creators</span>
               </Link>
             </div>
 
@@ -161,17 +161,17 @@ export function HeroEditorialShowcase() {
             <div className="flex flex-wrap items-center gap-4 pt-3 border-t border-black/6 dark:border-white/10 text-xs font-mono text-[#5A5A68] dark:text-[#8E8EA4]">
               <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E] dark:text-white">
                 <ShieldCheck className="w-4 h-4 text-[#087F5B]" />
-                <span>100% Pre-funded Escrow</span>
+                <span>Protected Payments</span>
               </div>
               <span>•</span>
               <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E] dark:text-white">
                 <Zap className="w-4 h-4 text-[#FFD21F]" />
-                <span>Instant Payout on Approval</span>
+                <span>Fast Payout on Approval</span>
               </div>
               <span>•</span>
               <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E] dark:text-white">
                 <Lock className="w-4 h-4 text-[#0A0A0E] dark:text-white" />
-                <span>Zero Unpaid Invoices</span>
+                <span>Clear Upfront Pricing</span>
               </div>
             </div>
           </motion.div>
@@ -315,8 +315,8 @@ export function HeroEditorialShowcase() {
       <Modal
         isOpen={roleModalOpen}
         onClose={() => setRoleModalOpen(false)}
-        title="Join AbeyCollab Commerce"
-        description="Select your pathway to start hiring creators or showcase your verified portfolio."
+        title="Get Started on AbeyCollab"
+        description="Choose how you want to use AbeyCollab today."
         maxWidth="md"
       >
         <div className="space-y-3 pt-2 text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans">
@@ -326,8 +326,8 @@ export function HeroEditorialShowcase() {
             className="w-full text-left p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#1A1A28] border-2 border-[#FFD21F] hover:shadow-md transition-all group flex items-center justify-between block hover-lift"
           >
             <div>
-              <h4 className="text-sm font-bold font-display text-[#0A0A0E] dark:text-white">I am a Brand / Business</h4>
-              <p className="text-xs text-[#6A6A78] dark:text-[#A0A0B4]">Post briefs, hire creators &amp; escrow funds safely</p>
+              <h4 className="text-sm font-bold font-display text-[#0A0A0E] dark:text-white">I am a Brand or Business</h4>
+              <p className="text-xs text-[#6A6A78] dark:text-[#A0A0B4]">Post a campaign, find creators, and pay safely</p>
             </div>
             <ArrowRight className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F] group-hover:translate-x-1 transition-transform" />
           </Link>
@@ -338,8 +338,8 @@ export function HeroEditorialShowcase() {
             className="w-full text-left p-4 rounded-2xl bg-[#FAFAFC] dark:bg-[#14141E] border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 hover:bg-white dark:hover:bg-[#1C1C28] hover:shadow-md transition-all group flex items-center justify-between block hover-lift"
           >
             <div>
-              <h4 className="text-sm font-bold font-display text-[#0A0A0E] dark:text-white">I am a Content Creator</h4>
-              <p className="text-xs text-[#6A6A78] dark:text-[#A0A0B4]">Publish media kit, receive inbound deals &amp; get paid</p>
+              <h4 className="text-sm font-bold font-display text-[#0A0A0E] dark:text-white">I am a Creator</h4>
+              <p className="text-xs text-[#6A6A78] dark:text-[#A0A0B4]">Share your media kit, pitch campaigns, and get paid</p>
             </div>
             <ArrowRight className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F] group-hover:translate-x-1 transition-transform" />
           </Link>

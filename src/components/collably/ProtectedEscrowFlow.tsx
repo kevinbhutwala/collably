@@ -30,48 +30,48 @@ interface EscrowStage {
 const ESCROW_STAGES: EscrowStage[] = [
   {
     id: 0,
-    phase: "PHASE 01",
-    title: "100% Pre-Funded Escrow Deposit",
-    badge: "FUNDS IN CUSTODY",
-    description: `Brand deposits agreed brief budget (${formatCurrency(3500)}) into Stripe Connect escrow custody before production begins.`,
-    brandAssurance: "Budget remains locked safely. Zero funds leave escrow without formal milestone sign-off.",
-    creatorAssurance: "100% payout certainty guaranteed. Never record content on unverified payment promises.",
+    phase: "STEP 01",
+    title: "Protected Payment Upfront",
+    badge: "FUNDS SECURED",
+    description: `The brand sets aside the project budget (${formatCurrency(3500)}) safely before content creation starts.`,
+    brandAssurance: "Your budget stays protected. Money is only released when you approve the work.",
+    creatorAssurance: "Guaranteed payment. You know the funds are already there before you film.",
   },
   {
     id: 1,
-    phase: "PHASE 02",
-    title: "4K Master Draft Submission",
-    badge: "MILESTONE DELIVERED",
-    description: "Creator uploads uncompressed 4K master ProRes cut and clean audio stems directly into the QA workspace.",
-    brandAssurance: "Automatic frame indexing, audio waveform analysis, and script requirement verification.",
-    creatorAssurance: "Timestamped delivery certificate logged to immutable audit trail, meeting turnaround SLA.",
+    phase: "STEP 02",
+    title: "Draft Submission",
+    badge: "WORK DELIVERED",
+    description: "The creator shares a private preview link to their video draft and includes notes for the brand.",
+    brandAssurance: "Review the full draft at your own pace with creator notes right beside it.",
+    creatorAssurance: "Your delivery time is recorded and saved directly to the project timeline.",
   },
   {
     id: 2,
-    phase: "PHASE 03",
-    title: "Frame-Accurate QA & Revisions",
+    phase: "STEP 03",
+    title: "Clear Feedback & Edits",
     badge: "IN REVIEW",
-    description: "Brand inspects video with timecoded annotations (e.g. 00:14) and requests capped minor revisions if needed.",
-    brandAssurance: "Ensure every deliverable matches brief specs and commercial guidelines before release.",
-    creatorAssurance: "Revision caps prevent scope creep; feedback is specific and actionable with exact timestamps.",
+    description: "The brand watches the draft, shares feedback, and can request small tweaks if needed.",
+    brandAssurance: "Make sure the content meets your guidelines before you give final approval.",
+    creatorAssurance: "Feedback is specific and clear, so you can make fast adjustments without guesswork.",
   },
   {
     id: 3,
-    phase: "PHASE 04",
-    title: "1-Click Commercial Sign-off",
+    phase: "STEP 04",
+    title: "1-Click Approval",
     badge: "APPROVED",
-    description: "Brand clicks Approve. Perpetual commercial licensing and raw 4K asset download rights transfer instantly.",
-    brandAssurance: "Immediate legal IP clearance and high-speed raw ProRes master download links.",
-    creatorAssurance: "Escrow lock releases automatically upon brand sign-off with zero invoice chasing.",
+    description: "The brand clicks Approve. Commercial rights and final high-resolution files are unlocked right away.",
+    brandAssurance: "Immediate rights to use the video across your marketing channels.",
+    creatorAssurance: "Payment unlocks instantly upon approval with zero invoices to track down.",
   },
   {
     id: 4,
-    phase: "PHASE 05",
-    title: "Instant Bank Payout on Sign-off",
-    badge: "DISBURSED & PAID",
-    description: `Stripe Connect disburses ${formatCurrency(3150)} (90% net earnings) directly to creator bank account upon milestone sign-off.`,
-    brandAssurance: "Complete financial receipt and tax documentation delivered automatically to accounting.",
-    creatorAssurance: "Fastest payout in the industry. Keep 90% of verified partnership earnings.",
+    phase: "STEP 05",
+    title: "Fast Direct Deposit",
+    badge: "PAID",
+    description: `Payment of ${formatCurrency(3150)} (90% of the project fee) is sent straight to the creator’s bank account.`,
+    brandAssurance: "Automatic receipt and invoice sent straight to your billing receipts.",
+    creatorAssurance: "Fast payouts directly to your bank account. Keep 90% of what you earn.",
   },
 ];
 
@@ -87,18 +87,18 @@ export function ProtectedEscrowFlow() {
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFFDF5] dark:bg-[#14141E] border border-[#FFD21F]/50 text-xs font-mono font-bold text-[#0A0A0E] dark:text-white shadow-2xs">
             <ShieldCheck className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F]" />
-            <span>FINANCIAL TRUST ARCHITECTURE</span>
+            <span>SAFE PAYMENTS FOR BOTH SIDES</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#0A0A0E] dark:text-white tracking-tight font-display">
-            Protected Milestone Escrow. <br />
+            Safe, Guaranteed Payments. <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD21F] via-[#FFAE00] to-[#FFD21F]">
-              Fair for Both Sides.
+              Fair for Everyone.
             </span>
           </h2>
 
           <p className="text-xs sm:text-base text-[#5A5A68] dark:text-[#8E8EA4] leading-relaxed">
-            Replacing traditional 90-day invoice delays and unverified payment promises with automated milestone escrow custody.
+            No more waiting 60–90 days for unpaid invoices or worrying if a partner will follow through. Funds are held safely and paid automatically.
           </p>
         </div>
 
