@@ -90,7 +90,7 @@ export function CreatorsDirectoryClient() {
     currency: (c as any).currency || (c as any).rateCards?.[0]?.currency || "USD",
     matchScore: c.qualityScore,
     bio: c.bio,
-    tags: c.primaryCategory ? [c.primaryCategory] : [],
+    tags: c.primaryCategory ? [c.primaryCategory, ...(c.verified ? ["Top Creator"] : [])] : ["Top Creator"],
     sampleDeliverables: [
       {
         title: "4K Master Product Reel",
@@ -106,31 +106,31 @@ export function CreatorsDirectoryClient() {
   });
 
   return (
-    <div className="py-12 sm:py-16 bg-[#FAFAFC] text-[#0A0A0E] min-h-screen select-none space-y-12 font-sans">
+    <div className="py-12 sm:py-16 bg-white dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] min-h-screen select-none space-y-12 font-sans">
       {/* Top Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         <div className="space-y-4 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-xs font-mono font-bold text-[#0A0A0E]">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-xs font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F]">
             <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
             <span>AUDITED CREATOR TALENT DIRECTORY</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#0A0A0E] tracking-tight font-display">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#0A0A0E] dark:text-white tracking-tight font-display">
             Discover Verified Creators
           </h1>
-          <p className="text-xs sm:text-sm text-[#5A5A68] font-sans max-w-xl leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#8E8EA4] font-sans max-w-xl leading-relaxed">
             Direct access to audited video creators, complete with verified audience demographics, 4K production reels, and 1-click booking.
           </p>
         </div>
 
         {/* Mode Selector Tabs */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none border-b border-black/8 pt-2">
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none border-b border-black/8 dark:border-white/10 pt-2">
           <button
             onClick={() => setViewMode("directory")}
             className={cn(
               "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer",
               viewMode === "directory"
-                ? "bg-[#0A0A0E] text-white shadow-sm"
-                : "bg-white text-neutral-600 hover:text-black border border-black/5"
+                ? "bg-[#0A0A0E] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E] shadow-sm"
+                : "bg-white dark:bg-[#14141E] text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white border border-black/5 dark:border-white/10"
             )}
           >
             <span>👥</span> All Talent Directory
@@ -141,7 +141,7 @@ export function CreatorsDirectoryClient() {
               "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer",
               viewMode === "trending"
                 ? "bg-[#FFD21F] text-[#0A0A0E] shadow-sm border border-black/10"
-                : "bg-white text-neutral-600 hover:text-black border border-black/5"
+                : "bg-white dark:bg-[#14141E] text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white border border-black/5 dark:border-white/10"
             )}
           >
             <span>🔥</span> Trending Hub
@@ -152,7 +152,7 @@ export function CreatorsDirectoryClient() {
               "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer",
               viewMode === "match"
                 ? "bg-purple-600 text-white shadow-sm"
-                : "bg-white text-neutral-600 hover:text-black border border-black/5"
+                : "bg-white dark:bg-[#14141E] text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white border border-black/5 dark:border-white/10"
             )}
           >
             <span>🎯</span> AI Brief Match
@@ -163,7 +163,7 @@ export function CreatorsDirectoryClient() {
               "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer",
               viewMode === "leaderboards"
                 ? "bg-emerald-600 text-white shadow-sm"
-                : "bg-white text-neutral-600 hover:text-black border border-black/5"
+                : "bg-white dark:bg-[#14141E] text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white border border-black/5 dark:border-white/10"
             )}
           >
             <span>🏆</span> Leaderboards
@@ -178,13 +178,13 @@ export function CreatorsDirectoryClient() {
           <div className="space-y-4 pt-2">
             {/* Search Input Bar */}
             <div className="relative max-w-xl">
-              <Search className="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-[#8A8A9A]" />
+              <Search className="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-[#8A8A9A] dark:text-[#6A6A78]" />
               <input
                 type="text"
                 placeholder="Search by creator name, niche, handle, or bio keywords..."
                 value={creatorSearchQuery}
                 onChange={(e) => setCreatorSearchQuery(e.target.value)}
-                className="w-full pl-11 pr-4 py-3 rounded-full bg-white border border-black/10 text-xs text-[#0A0A0E] placeholder:text-[#8A8A9A] focus:outline-none focus:border-black/30 shadow-xs"
+                className="w-full pl-11 pr-4 py-3 rounded-full bg-white dark:bg-[#14141E] border border-black/10 dark:border-white/15 text-xs text-[#0A0A0E] dark:text-white placeholder:text-[#8A8A9A] dark:placeholder:text-[#6A6A78] focus:outline-none focus:border-[#FFD21F] shadow-xs"
               />
             </div>
 
@@ -195,8 +195,8 @@ export function CreatorsDirectoryClient() {
                 className={cn(
                   "px-4 py-2 rounded-full text-xs font-bold transition-all shrink-0 cursor-pointer",
                   creatorCategory === "all"
-                    ? "bg-[#0A0A0E] text-white shadow-xs"
-                    : "bg-white text-[#5A5A68] hover:text-[#0A0A0E] border border-black/8"
+                    ? "bg-[#0A0A0E] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E] shadow-xs"
+                    : "bg-white dark:bg-[#14141E] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/8 dark:border-white/10"
                 )}
               >
                 All Niches
@@ -212,8 +212,8 @@ export function CreatorsDirectoryClient() {
                     className={cn(
                       "px-3.5 py-1.5 rounded-full text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 cursor-pointer",
                       isSelected
-                        ? "bg-[#0A0A0E] text-white shadow-xs"
-                        : "bg-white text-[#5A5A68] hover:text-[#0A0A0E] border border-black/8"
+                        ? "bg-[#0A0A0E] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E] shadow-xs"
+                        : "bg-white dark:bg-[#14141E] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/8 dark:border-white/10"
                     )}
                   >
                     <CatIcon className="w-3.5 h-3.5" />
@@ -234,10 +234,10 @@ export function CreatorsDirectoryClient() {
           </div>
         ) : (
           creators.length === 0 ? (
-            <div className="py-24 text-center rounded-3xl bg-white border border-black/8 p-8 space-y-3">
+            <div className="py-24 text-center rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-8 space-y-3">
               <Users className="w-8 h-8 text-[#8A8A9A] mx-auto opacity-50" />
-              <h3 className="text-base font-bold text-[#0A0A0E] font-display">No creators match your filter</h3>
-              <p className="text-xs text-[#5A5A68] max-w-sm mx-auto">
+              <h3 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">No creators match your filter</h3>
+              <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] max-w-sm mx-auto">
                 Try clearing your search query or selecting &ldquo;All Niches&rdquo; to browse our full talent roster.
               </p>
               <button
@@ -245,7 +245,7 @@ export function CreatorsDirectoryClient() {
                   setCreatorCategory("all");
                   setCreatorSearchQuery("");
                 }}
-                className="px-4 py-2 rounded-full bg-[#0A0A0E] text-white text-xs font-bold"
+                className="px-4 py-2 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] text-xs font-bold"
               >
                 Reset Filters
               </button>

@@ -215,10 +215,10 @@ export function VisualHeroSection() {
               <motion.div
                 initial={{ y: -10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="absolute top-4 left-4 z-20 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-white/40 shadow-lg flex items-center gap-1.5 text-xs font-mono font-bold text-[#0A0A0E]"
+                className="absolute top-4 left-4 z-20 px-3 py-1.5 rounded-full bg-white/95 dark:bg-[#14141E]/95 backdrop-blur-md border border-white/40 dark:border-white/20 shadow-lg flex items-center gap-1.5 text-xs font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F]"
               >
                 <Sparkles className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
-                <span>{activePortrait.matchScore}</span>
+                <span className="text-[#0A0A0E] dark:text-white">{activePortrait.matchScore}</span>
               </motion.div>
 
               {/* Top Right Live Reel Badge */}

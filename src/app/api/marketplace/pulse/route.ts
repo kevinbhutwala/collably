@@ -3,6 +3,8 @@ import { marketPulseService } from "@/server/services/market-pulse.service";
 import { verifySessionToken } from "@/server/auth/crypto";
 import { db } from "@/server/db/database";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);

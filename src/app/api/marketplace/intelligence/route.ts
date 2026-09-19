@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { marketPulseService } from "@/server/services/market-pulse.service";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);

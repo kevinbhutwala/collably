@@ -183,20 +183,20 @@ export function ExactHeroSection() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="absolute -top-4 right-6 sm:right-16 z-30 px-4 py-3 rounded-2xl bg-white/95 backdrop-blur-xl border border-black/8 shadow-[0_10px_30px_rgba(0,0,0,0.08)] flex items-center gap-3 min-w-[200px]"
+              className="absolute -top-4 right-6 sm:right-16 z-30 px-4 py-3 rounded-2xl bg-white/95 dark:bg-[#14141E]/95 backdrop-blur-xl border border-black/8 dark:border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.08)] flex items-center gap-3 min-w-[200px]"
             >
-              <div className="w-8 h-8 rounded-lg bg-[#0A0A0E] flex items-center justify-center text-white font-black text-xs shrink-0">
+              <div className="w-8 h-8 rounded-lg bg-[#0A0A0E] dark:bg-[#FFD21F] flex items-center justify-center text-white dark:text-[#0A0A0E] font-black text-xs shrink-0">
                 <span>✓</span>
               </div>
               <div className="flex-1 min-w-0 font-sans">
                 <div className="flex items-center justify-between gap-2">
-                  <h4 className="text-xs font-bold text-[#0A0A0E] truncate">Nike</h4>
-                  <span className="px-1.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 text-[9px] font-mono font-bold">
+                  <h4 className="text-xs font-bold text-[#0A0A0E] dark:text-white truncate">Nike</h4>
+                  <span className="px-1.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-[9px] font-mono font-bold">
                     Live
                   </span>
                 </div>
-                <p className="text-[10px] text-[#6A6A78]">Fashion Campaign</p>
-                <p className="text-xs font-bold text-[#0A0A0E] font-mono mt-0.5">$25,000</p>
+                <p className="text-[10px] text-[#6A6A78] dark:text-[#8E8EA4]">Fashion Campaign</p>
+                <p className="text-xs font-bold text-[#0A0A0E] dark:text-white font-mono mt-0.5">$25,000</p>
               </div>
             </motion.div>
 
@@ -205,27 +205,27 @@ export function ExactHeroSection() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="absolute bottom-6 left-2 sm:left-6 z-30 px-4 py-2.5 rounded-2xl bg-white/95 backdrop-blur-xl border border-black/8 shadow-[0_10px_30px_rgba(0,0,0,0.08)] flex items-center gap-3"
+              className="absolute bottom-6 left-2 sm:left-6 z-30 px-4 py-2.5 rounded-2xl bg-white/95 dark:bg-[#14141E]/95 backdrop-blur-xl border border-black/8 dark:border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.08)] flex items-center gap-3"
             >
               <div className="space-y-0.5">
-                <span className="text-[10px] font-mono text-[#6A6A78] block">Campaign Match</span>
+                <span className="text-[10px] font-mono text-[#6A6A78] dark:text-[#8E8EA4] block">Campaign Match</span>
                 <div className="flex items-center gap-2">
                   <div className="flex -space-x-1.5">
                     <img
                       src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=50&auto=format&fit=crop&q=80"
                       alt="Matched Creator"
-                      className="w-5 h-5 rounded-full border border-white object-cover"
+                      className="w-5 h-5 rounded-full border border-white dark:border-white/20 object-cover"
                     />
                     <img
                       src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&auto=format&fit=crop&q=80"
                       alt="Matched Creator"
-                      className="w-5 h-5 rounded-full border border-white object-cover"
+                      className="w-5 h-5 rounded-full border border-white dark:border-white/20 object-cover"
                     />
                   </div>
-                  <span className="text-sm font-bold text-[#0A0A0E] font-mono">98%</span>
+                  <span className="text-sm font-bold text-[#0A0A0E] dark:text-white font-mono">98%</span>
                 </div>
               </div>
-              <div className="w-6 h-6 rounded-full bg-black/5 flex items-center justify-center text-[#0A0A0E]">
+              <div className="w-6 h-6 rounded-full bg-black/5 dark:bg-white/10 flex items-center justify-center text-[#0A0A0E] dark:text-white">
                 <ChevronRight className="w-3.5 h-3.5" />
               </div>
             </motion.div>

@@ -71,10 +71,14 @@ export function EditorialCreatorCard({
 
           {/* Top Badges */}
           <div className="absolute top-3 inset-x-3 flex items-center justify-between z-10">
-            <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold text-white flex items-center gap-1 border border-white/15">
+            <span className="px-2.5 py-1 rounded-full bg-black/60 dark:bg-[#14141E]/90 backdrop-blur-md text-[10px] font-mono font-bold text-white flex items-center gap-1 border border-white/15 dark:border-white/20">
               <Sparkles className="w-3 h-3 text-[#FFD21F] fill-[#FFD21F]" />
               {creator.matchScore != null ? (
-                <span>{creator.matchScore}% AI Match</span>
+                <span>
+                  {typeof creator.matchScore === "number"
+                    ? `${creator.matchScore}% AI Match`
+                    : creator.matchScore}
+                </span>
               ) : (
                 <span>AI Verified</span>
               )}
@@ -107,7 +111,7 @@ export function EditorialCreatorCard({
                 e.stopPropagation();
                 onQuickView(creator);
               }}
-              className="absolute bottom-16 right-3 z-20 w-20 sm:w-22 aspect-square rounded-xl overflow-hidden border-2 border-white shadow-[0_8px_20px_rgba(0,0,0,0.35)] bg-black group-hover:border-[#FFD21F] transition-colors"
+              className="absolute bottom-16 right-3 z-20 w-20 sm:w-22 aspect-square rounded-xl overflow-hidden border-2 border-white dark:border-white/20 shadow-[0_8px_20px_rgba(0,0,0,0.35)] bg-black group-hover:border-[#FFD21F] transition-colors"
             >
               <SafeImage
                 src={creator.sampleDeliverables[0].imageUrl}
@@ -148,16 +152,27 @@ export function EditorialCreatorCard({
           </div>
 
           {creator.tags && creator.tags.length > 0 && (
-            <div className="flex flex-wrap gap-1 font-mono text-[10px] text-[#4A4A58] dark:text-[#A0A0B4]">
-              {creator.tags.slice(0, 2).map((tag) => (
-                <span
-                  key={tag}
-                  className="px-2 py-0.5 rounded-md bg-[#F4F4F8] dark:bg-[#181824] border border-black/5 dark:border-white/10 text-[10px] text-[#4A4A58] dark:text-[#C0C0D4] flex items-center gap-1"
-                >
-                  <TitleIcon title={tag} category={creator.category} className="w-2.5 h-2.5 text-[#A37F00] dark:text-[#FFD21F]" />
-                  <span>{tag}</span>
-                </span>
-              ))}
+            <div className="flex flex-wrap gap-1 font-mono text-[10px]">
+              {creator.tags.map((tag) => {
+                const isSpecial =
+                  tag.toLowerCase().includes("top creator") ||
+                  tag.toLowerCase().includes("elite tier") ||
+                  tag.toLowerCase().includes("verified creator") ||
+                  tag.toLowerCase().includes("established creator");
+                return (
+                  <span
+                    key={tag}
+                    className={`px-2 py-0.5 rounded-md border text-[10px] flex items-center gap-1 transition-colors ${
+                      isSpecial
+                        ? "bg-[#FFD21F]/15 dark:bg-[#FFD21F]/20 border-[#FFD21F]/30 dark:border-[#FFD21F]/40 text-[#8A6500] dark:text-[#FFD21F] font-bold"
+                        : "bg-[#F4F4F8] dark:bg-[#181824] border-black/5 dark:border-white/10 text-[#4A4A58] dark:text-[#C0C0D4]"
+                    }`}
+                  >
+                    <TitleIcon title={tag} category={creator.category} className={`w-2.5 h-2.5 ${isSpecial ? "text-[#8A6500] dark:text-[#FFD21F]" : "text-[#A37F00] dark:text-[#FFD21F]"}`} />
+                    <span>{tag}</span>
+                  </span>
+                );
+              })}
             </div>
           )}
         </div>

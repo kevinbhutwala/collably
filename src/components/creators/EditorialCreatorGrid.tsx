@@ -20,7 +20,7 @@ const FEATURED_TALENT: CreatorQuickViewData[] = [
     reach: "485K",
     engagementRate: 6.8,
     startingPrice: 3500,
-    matchScore: undefined,
+    matchScore: 98,
     bio: "Principal tech creator covering artificial intelligence tooling, developer hardware, and future-of-work software suites.",
     tags: ["Technology & AI", "RED V-Raptor 8K", "Verified Creator"],
     sampleDeliverables: [
@@ -47,7 +47,7 @@ const FEATURED_TALENT: CreatorQuickViewData[] = [
     reach: "310K",
     engagementRate: 5.4,
     startingPrice: 2800,
-    matchScore: undefined,
+    matchScore: 96,
     bio: "Milan & Paris fashion cinematographer specializing in luxury editorial lookbooks and high-aesthetic brand identity drops.",
     tags: ["Design & Creative", "ARRI Alexa Mini", "Elite Tier"],
     sampleDeliverables: [
@@ -69,7 +69,7 @@ const FEATURED_TALENT: CreatorQuickViewData[] = [
     reach: "620K",
     engagementRate: 7.1,
     startingPrice: 3200,
-    matchScore: undefined,
+    matchScore: 99,
     bio: "High-performance wellness advocate creating dynamic protocol integrations and metabolic science walkthroughs.",
     tags: ["Fitness & Wellness", "Sony FX3", "Top Creator"],
     sampleDeliverables: [
@@ -91,7 +91,7 @@ const FEATURED_TALENT: CreatorQuickViewData[] = [
     reach: "510K",
     engagementRate: 6.2,
     startingPrice: 3800,
-    matchScore: undefined,
+    matchScore: 95,
     bio: "Automotive documentary filmmaker and lifestyle storyteller producing cinematic road trip narratives and luxury vehicle showcases.",
     tags: ["Lifestyle & Travel", "Anamorphic Lenses", "Established Creator"],
     sampleDeliverables: [

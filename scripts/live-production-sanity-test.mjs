@@ -52,8 +52,17 @@ async function runSanitySuite() {
 
   for (const r of routes) {
     try {
-      const res = await fetch(`${BASE_URL}${r.path}`);
-      assert(res.status === 200, `${r.name} (${r.path}) loaded with HTTP 200 OK`);
+      let res;
+      for (let attempt = 0; attempt < 3; attempt++) {
+        try {
+          res = await fetch(`${BASE_URL}${r.path}`, { headers: { "User-Agent": "CollablySanity/1.0" } });
+          if (res.status === 200) break;
+        } catch (e) {
+          if (attempt === 2) throw e;
+          await new Promise((resolve) => setTimeout(resolve, 600));
+        }
+      }
+      assert(res && res.status === 200, `${r.name} (${r.path}) loaded with HTTP 200 OK`);
     } catch (err) {
       assert(false, `${r.name} (${r.path}) failed to load: ${err.message}`);
     }

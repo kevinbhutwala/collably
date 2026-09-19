@@ -213,7 +213,7 @@ export function HeroEditorialShowcase() {
             <InteractiveTiltCard
               maxTilt={9}
               glowColor="rgba(255, 210, 31, 0.32)"
-              className="relative w-full max-w-[320px] xs:max-w-[360px] sm:max-w-[430px] aspect-[4/5] rounded-3xl overflow-hidden border-2 border-white shadow-[0_24px_70px_rgba(10,10,14,0.16)] bg-[#0A0A0E] group"
+              className="relative w-full max-w-[320px] xs:max-w-[360px] sm:max-w-[430px] aspect-[4/5] rounded-3xl overflow-hidden border-2 border-white dark:border-white/15 shadow-[0_24px_70px_rgba(10,10,14,0.16)] bg-[#0A0A0E] group"
             >
               {/* Primary Background Portrait */}
               <AnimatePresence mode="wait">
@@ -240,10 +240,10 @@ export function HeroEditorialShowcase() {
               <motion.div
                 initial={{ y: -10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="absolute top-3 sm:top-4 left-3 sm:left-4 z-20 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-white/40 shadow-lg flex items-center gap-1.5 text-[11px] sm:text-xs font-mono font-bold text-[#0A0A0E]"
+                className="absolute top-3 sm:top-4 left-3 sm:left-4 z-20 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-white/95 dark:bg-[#14141E]/95 backdrop-blur-md border border-white/40 dark:border-white/20 shadow-lg flex items-center gap-1.5 text-[11px] sm:text-xs font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F]"
               >
                 <Sparkles className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
-                <span>{activeTalent.matchScore}</span>
+                <span className="text-[#0A0A0E] dark:text-white">{activeTalent.matchScore}</span>
               </motion.div>
 
               {/* Top Right Live Reach Badge */}
@@ -255,7 +255,7 @@ export function HeroEditorialShowcase() {
               {/* 🌟 OVERLAPPING FLOATING 4K VIDEO ASSET CARD */}
               <motion.div
                 whileHover={{ scale: 1.08, rotate: 2 }}
-                className="absolute bottom-20 sm:bottom-22 right-3 sm:right-4 z-20 w-20 sm:w-28 aspect-video rounded-2xl overflow-hidden border-2 border-white shadow-[0_12px_30px_rgba(0,0,0,0.45)] bg-black"
+                className="absolute bottom-20 sm:bottom-22 right-3 sm:right-4 z-20 w-20 sm:w-28 aspect-video rounded-2xl overflow-hidden border-2 border-white dark:border-white/20 shadow-[0_12px_30px_rgba(0,0,0,0.45)] bg-black"
               >
                 <SafeImage
                   src={activeTalent.bRollPreview}

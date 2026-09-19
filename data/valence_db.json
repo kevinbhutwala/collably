@@ -4,12 +4,12 @@
       "id": "user-creator",
       "name": "Demo Creator",
       "email": "creator@abeycollab.io",
-      "passwordHash": "3e0431a52d75b5a706acaff9efd9fd76:92472e45887e230dfda5ce988610d50ad9e0f936494cdaca915129ecce1b770b1842d4db47a8cd9f7e3dde89eadb1331636febf6ec0b7083db82ec9891629ca3:210000",
+      "passwordHash": "0df44eac5c092b0fd5bdcce8f8f59b24:1b66771bca94743186525cf3f7b4a0aacf716f9cab5c034af7e310b47cb7862bd889611f62c2970e7ab4d7afd32b9effe7f9b987b4e10b712c7fed923dbe46f4:210000",
       "role": "creator",
       "avatarUrl": "",
       "verified": true,
       "createdAt": "2026-09-03T18:46:21.709Z",
-      "updatedAt": "2026-09-18T04:34:38.306Z",
+      "updatedAt": "2026-09-19T07:27:13.903Z",
       "preferredCurrency": "INR",
       "preferred_currency": "INR"
     },
@@ -17,20 +17,20 @@
       "id": "user-brand",
       "name": "Demo Brand",
       "email": "brand@abeycollab.io",
-      "passwordHash": "778124ec96311620513a113a178ca9d8:141395305b9b1501627b9aea74668d1410d2b6357d7de757b18368e3d404dfb61cbd92898ea50ef8694927005b0ac540357cba19af1d5aae990c400d7fe29917:210000",
+      "passwordHash": "c9562fffd445bcd643ee081673b77303:83db2c44b7d9025ff8f7d67e00cae4e6e5c21c70b754be21380073449910d2cdaf7695d3fb0d91fddb3b513c386a5560c80235377a3ebbef309bcc3d9e528654:210000",
       "role": "brand",
       "avatarUrl": "",
       "verified": true,
       "createdAt": "2026-09-03T18:46:21.709Z",
-      "updatedAt": "2026-09-09T22:42:13.953Z",
-      "preferredCurrency": "USD",
-      "preferred_currency": "USD"
+      "updatedAt": "2026-09-19T07:27:24.970Z",
+      "preferredCurrency": "INR",
+      "preferred_currency": "INR"
     },
     {
       "id": "user-owner",
       "name": "Kevin Bhutwala",
       "email": "kevinbhutwala417@gmail.com",
-      "passwordHash": "8d496d311756104ef295ed119a4abffa:4a47e57a95b3c2f1529f84eccc9f75ba127f402da80ec26d7b904530ecd3c3f9741639ac8eead47fa55f8d6dd74181c4ff78c93b01d52c4f01c48b9effb2ffc4:210000",
+      "passwordHash": "5a0bc2da2aa6de1593f9bb80f3677fac:b7ce1ae4b1b69f6ccd9fc62849dc37ca3b236e6464e069d39335252438cd210f0197ce31426d50b1fbb49507d2df5e0d0b9cdb5252be330b0299e48002e98386:210000",
       "role": "agency_admin",
       "avatarUrl": "",
       "verified": true,
@@ -82,7 +82,7 @@
       "id": "user-creator-legacy",
       "name": "Demo Creator",
       "email": "creator@collably.io",
-      "passwordHash": "3e0431a52d75b5a706acaff9efd9fd76:92472e45887e230dfda5ce988610d50ad9e0f936494cdaca915129ecce1b770b1842d4db47a8cd9f7e3dde89eadb1331636febf6ec0b7083db82ec9891629ca3:210000",
+      "passwordHash": "0df44eac5c092b0fd5bdcce8f8f59b24:1b66771bca94743186525cf3f7b4a0aacf716f9cab5c034af7e310b47cb7862bd889611f62c2970e7ab4d7afd32b9effe7f9b987b4e10b712c7fed923dbe46f4:210000",
       "role": "creator",
       "avatarUrl": "",
       "verified": true,
@@ -95,7 +95,7 @@
       "id": "user-brand-legacy",
       "name": "Demo Brand",
       "email": "brand@collably.io",
-      "passwordHash": "778124ec96311620513a113a178ca9d8:141395305b9b1501627b9aea74668d1410d2b6357d7de757b18368e3d404dfb61cbd92898ea50ef8694927005b0ac540357cba19af1d5aae990c400d7fe29917:210000",
+      "passwordHash": "c9562fffd445bcd643ee081673b77303:83db2c44b7d9025ff8f7d67e00cae4e6e5c21c70b754be21380073449910d2cdaf7695d3fb0d91fddb3b513c386a5560c80235377a3ebbef309bcc3d9e528654:210000",
       "role": "brand",
       "avatarUrl": "",
       "verified": true,
@@ -113,7 +113,7 @@
       "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
       "verified": false,
       "createdAt": "2026-09-18T04:53:42.450Z",
-      "updatedAt": "2026-09-18T11:34:15.698Z",
+      "updatedAt": "2026-09-19T07:27:47.473Z",
       "preferredCurrency": "INR",
       "preferred_currency": "INR"
     },
@@ -6737,6 +6737,28 @@
   "tickets": [],
   "payments": [
     {
+      "brandId": "brand-1",
+      "collaborationId": "collab_live_sanity_test",
+      "provider": "razorpay",
+      "providerOrderId": "order_rzp_1789802820896_56bf063c",
+      "amount": 500,
+      "currency": "INR",
+      "settlementAmount": 500,
+      "settlementCurrency": "INR",
+      "exchangeRateUsed": 1,
+      "status": "pending",
+      "commissionRate": 10,
+      "agencyFee": 50,
+      "metadata": {
+        "receipt": "rcpt_1789802820881"
+      },
+      "environment": "live",
+      "isTest": false,
+      "id": "pay-1789802820897-royry",
+      "createdAt": "2026-09-19T07:27:00.897Z",
+      "updatedAt": "2026-09-19T07:27:00.897Z"
+    },
+    {
       "brandId": "brand_active",
       "amount": 500,
       "currency": "INR",
@@ -7934,6 +7956,53 @@
   "webhookEvents": [],
   "aiUsage": [],
   "auditLogs": [
+    {
+      "actorId": "user-owner",
+      "actorName": "kevinbhutwala417@gmail.com",
+      "actorRole": "agency_admin",
+      "action": "FEATURE_FLAGS_UPDATED",
+      "entityType": "PlatformSettings",
+      "entityId": "global_feature_flags",
+      "entityName": "Global Feature Flags",
+      "metadata": {
+        "updates": {
+          "ai_matching": true,
+          "ai_assistant": false,
+          "payments_escrow": true,
+          "creator_verification": true,
+          "timecoded_video_review": true,
+          "dispute_management": true,
+          "advanced_analytics": true
+        },
+        "newFlags": {
+          "ai_matching": true,
+          "ai_assistant": false,
+          "payments_escrow": true,
+          "creator_verification": true,
+          "timecoded_video_review": true,
+          "dispute_management": true,
+          "advanced_analytics": true
+        }
+      },
+      "id": "aud-1789802851705",
+      "createdAt": "2026-09-19 07:27:31"
+    },
+    {
+      "id": "aud-1789802667334",
+      "actorId": "user-owner",
+      "actorName": "Kevin Bhutwala",
+      "actorRole": "agency_admin",
+      "action": "DISPUTE_ARBITRATION_RESOLVED",
+      "entityType": "Dispute",
+      "entityId": "disp-101",
+      "entityName": "Hyperion ANC Headphone Commercial",
+      "metadata": {
+        "split": "50/50",
+        "brandRefund": 1750,
+        "creatorPayout": 1750
+      },
+      "createdAt": "2026-09-19T07:24:27.334Z"
+    },
     {
       "id": "aud-1789684547622",
       "actorId": "user-owner",
@@ -9236,7 +9305,7 @@
     }
   ],
   "reliabilityScores": [],
-  "_lastVerifiedAt": "2026-09-17T22:35:47.624Z",
+  "_lastVerifiedAt": "2026-09-19T07:24:27.336Z",
   "platformMetrics": [
     {
       "id": "met-1",
@@ -9348,8 +9417,17 @@
       "brandFavoriteMinRehireRate": 60,
       "newTalentMaxAccountAgeDays": 30
     },
-    "updatedAt": "2026-09-08T14:22:02.276Z"
+    "updatedAt": "2026-09-19T07:27:31.699Z"
   },
   "userBadges": [],
-  "suspiciousActivities": []
+  "suspiciousActivities": [],
+  "featureFlags": {
+    "ai_matching": true,
+    "ai_assistant": false,
+    "payments_escrow": true,
+    "creator_verification": true,
+    "timecoded_video_review": true,
+    "dispute_management": true,
+    "advanced_analytics": true
+  }
 }

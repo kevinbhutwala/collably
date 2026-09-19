@@ -89,7 +89,7 @@ export function CreatorQuickViewModal({
       maxWidth="3xl"
       className="p-0 overflow-hidden"
     >
-      <div className="flex flex-col md:flex-row text-[#0A0A0E] font-sans select-none max-h-[85vh] overflow-y-auto">
+      <div className="flex flex-col md:flex-row text-[#0A0A0E] dark:text-[#F4F4F8] font-sans select-none max-h-[85vh] overflow-y-auto">
         {/* Left: High-Fashion Visual & Media Showcase */}
         <div className="md:w-5/12 bg-[#0A0A0E] relative min-h-[320px] md:min-h-full flex flex-col justify-between p-6 text-white overflow-hidden">
           <SafeImage
@@ -103,9 +103,15 @@ export function CreatorQuickViewModal({
 
           {/* Top Badges */}
           <div className="relative z-10 flex items-center justify-between">
-            <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-xs font-mono font-bold flex items-center gap-1.5">
+            <span className="px-3 py-1 rounded-full bg-black/60 dark:bg-[#14141E]/90 backdrop-blur-md border border-white/20 dark:border-white/15 text-xs font-mono font-bold flex items-center gap-1.5 text-white">
               <Sparkles className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
-              <span>{creator.matchScore}% Match Affinity</span>
+              <span>
+                {creator.matchScore != null
+                  ? typeof creator.matchScore === "number"
+                    ? `${creator.matchScore}% Match Affinity`
+                    : `${creator.matchScore}`
+                  : "AI Verified"}
+              </span>
             </span>
 
             {onBookmarkToggle && (
@@ -204,15 +210,26 @@ export function CreatorQuickViewModal({
 
             {/* Equipment / Production Tags */}
             {creator.tags && creator.tags.length > 0 && (
-              <div className="flex flex-wrap gap-1.5">
-                {creator.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-2.5 py-1 rounded-full bg-[#F4F4F8] dark:bg-white/10 border border-black/6 dark:border-white/10 text-[10px] font-mono font-medium text-[#4A4A58] dark:text-[#D0D0E0]"
-                  >
-                    {tag}
-                  </span>
-                ))}
+              <div className="flex flex-wrap gap-1.5 font-mono text-[10px]">
+                {creator.tags.map((tag) => {
+                  const isSpecial =
+                    tag.toLowerCase().includes("top creator") ||
+                    tag.toLowerCase().includes("elite tier") ||
+                    tag.toLowerCase().includes("verified creator") ||
+                    tag.toLowerCase().includes("established creator");
+                  return (
+                    <span
+                      key={tag}
+                      className={`px-2.5 py-1 rounded-full border text-[10px] font-medium transition-colors ${
+                        isSpecial
+                          ? "bg-[#FFD21F]/15 dark:bg-[#FFD21F]/20 border-[#FFD21F]/30 dark:border-[#FFD21F]/40 text-[#8A6500] dark:text-[#FFD21F] font-bold"
+                          : "bg-[#F4F4F8] dark:bg-white/10 border-black/6 dark:border-white/10 text-[#4A4A58] dark:text-[#D0D0E0]"
+                      }`}
+                    >
+                      {tag}
+                    </span>
+                  );
+                })}
               </div>
             )}
           </div>

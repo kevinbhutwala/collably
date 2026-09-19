@@ -3,6 +3,8 @@ import { trendingService } from "@/server/services/trending.service";
 import { db } from "@/server/db/database";
 import { TimeframeWindow, LeaderboardEntry, PlatformType } from "@/core/types";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);

@@ -79,13 +79,13 @@ export function CreatorDetailClient({
   }
 
   return (
-    <div className="py-12 sm:py-16 bg-[#FAFAFC] text-[#0A0A0E] min-h-screen">
+    <div className="py-12 sm:py-16 bg-white dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Profile Master Card */}
-        <div className="rounded-3xl bg-white border border-black/8 p-8 sm:p-12 shadow-xs space-y-8">
+        <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-8 sm:p-12 shadow-xs space-y-8">
           <div className="flex flex-col md:flex-row md:items-start justify-between gap-8">
             <div className="flex flex-col sm:flex-row items-start gap-6">
-              <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border border-black/8 bg-[#F5F5F9] shrink-0 shadow-xs">
+              <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 bg-[#F5F5F9] dark:bg-neutral-800 shrink-0 shadow-xs">
                 <SafeImage
                   src={creator.avatarUrl}
                   alt={creator.fullName}
@@ -98,7 +98,7 @@ export function CreatorDetailClient({
 
               <div className="space-y-2">
                 <div className="flex flex-wrap items-center gap-2">
-                  <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
+                  <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
                     {creator.fullName}
                   </h1>
                   {creator.verified && (
@@ -107,16 +107,16 @@ export function CreatorDetailClient({
                   <CategoryBadge category={creator.primaryCategory} size="sm" showIcon={true} />
                 </div>
 
-                <p className="text-sm font-mono text-[#6A6A78]">
+                <p className="text-sm font-mono text-[#6A6A78] dark:text-[#8E8EA4]">
                   @{creator.handle} • {creator.location}
                 </p>
 
                 {/* Editorial Pull Quote */}
-                <p className="text-xl sm:text-2xl text-[#0A0A0E] font-serif italic max-w-2xl pt-1 leading-snug">
+                <p className="text-xl sm:text-2xl text-[#0A0A0E] dark:text-[#E0E0EC] font-serif italic max-w-2xl pt-1 leading-snug">
                   &ldquo;{creator.headline}&rdquo;
                 </p>
 
-                <p className="text-sm text-[#5A5A68] max-w-2xl leading-relaxed font-sans font-normal pt-1">
+                <p className="text-sm text-[#5A5A68] dark:text-[#A0A0B0] max-w-2xl leading-relaxed font-sans font-normal pt-1">
                   {creator.bio}
                 </p>
 
@@ -135,21 +135,21 @@ export function CreatorDetailClient({
                         href={sa.url || "#"}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#F8F8FC] hover:bg-white border border-black/8 text-[#0A0A0E] transition-all hover:scale-102 hover:shadow-xs group text-xs font-mono"
+                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#F8F8FC] dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 border border-black/8 dark:border-white/10 text-[#0A0A0E] dark:text-white transition-all hover:scale-102 hover:shadow-xs group text-xs font-mono"
                         title={`${sa.platform.toUpperCase()}: @${sa.handle} (${formatNumber(sa.followers)} followers)${isVerified ? " • Verified Channel" : ""}`}
                       >
-                        <SocialIcon platform={sa.platform} className="w-3.5 h-3.5 shrink-0 text-[#5A5A68] group-hover:text-[#0A0A0E]" />
+                        <SocialIcon platform={sa.platform} className="w-3.5 h-3.5 shrink-0 text-[#5A5A68] dark:text-[#8E8EA4] group-hover:text-[#0A0A0E] dark:group-hover:text-white" />
                         <span className="font-bold text-xs">@{sa.handle}</span>
                         {isVerified && (
                           <span
-                            className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold"
+                            className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 text-[10px] font-bold"
                             title="Verified Channel Ownership"
                           >
-                            <CheckCircle2 className="w-2.5 h-2.5 text-emerald-600 fill-emerald-100" />
+                            <CheckCircle2 className="w-2.5 h-2.5 text-emerald-600 dark:text-emerald-400 fill-emerald-100 dark:fill-emerald-950" />
                             <span>Verified</span>
                           </span>
                         )}
-                        <ExternalLink className="w-2.5 h-2.5 text-[#8A8A9A] group-hover:text-[#0A0A0E] transition-colors shrink-0 opacity-70 group-hover:opacity-100" />
+                        <ExternalLink className="w-2.5 h-2.5 text-[#8A8A9A] dark:text-[#7A7A8A] group-hover:text-[#0A0A0E] dark:group-hover:text-white transition-colors shrink-0 opacity-70 group-hover:opacity-100" />
                       </a>
                     );
                   })}
@@ -158,26 +158,26 @@ export function CreatorDetailClient({
             </div>
 
             {/* Quick Pricing & Contact CTA */}
-            <div className="p-6 rounded-3xl bg-[#F8F8FC] border border-black/8 font-mono space-y-4 shrink-0 w-full md:w-72">
+            <div className="p-6 rounded-3xl bg-[#F8F8FC] dark:bg-[#161622] border border-black/8 dark:border-white/10 font-mono space-y-4 shrink-0 w-full md:w-72">
               <div className="flex justify-between items-baseline">
-                <span className="text-xs text-[#7A7A8A]">Base Sponsorship</span>
-                <span className="text-2xl font-black text-[#0A0A0E]">
+                <span className="text-xs text-[#7A7A8A] dark:text-[#8E8EA4]">Base Sponsorship</span>
+                <span className="text-2xl font-black text-[#0A0A0E] dark:text-white">
                   {format(creator.startingPrice, (creator as any).currency || "USD")}
                 </span>
               </div>
 
-              <div className="space-y-2 text-xs border-y border-black/8 py-3">
-                <div className="flex justify-between text-[#6A6A78]">
+              <div className="space-y-2 text-xs border-y border-black/8 dark:border-white/10 py-3">
+                <div className="flex justify-between text-[#6A6A78] dark:text-[#8E8EA4]">
                   <span>Status</span>
-                  <span className="font-bold text-emerald-700">Available for Hire</span>
+                  <span className="font-bold text-emerald-600 dark:text-emerald-400">Available for Hire</span>
                 </div>
-                <div className="flex justify-between text-[#6A6A78]">
+                <div className="flex justify-between text-[#6A6A78] dark:text-[#8E8EA4]">
                   <span>Avg Turnaround</span>
-                  <span className="font-bold text-[#0A0A0E]">4 - 7 Business Days</span>
+                  <span className="font-bold text-[#0A0A0E] dark:text-white">4 - 7 Business Days</span>
                 </div>
-                <div className="flex justify-between text-[#6A6A78]">
+                <div className="flex justify-between text-[#6A6A78] dark:text-[#8E8EA4]">
                   <span>Past Campaigns</span>
-                  <span className="font-bold text-[#0A0A0E]">{creator.completedCampaignsCount} Completed</span>
+                  <span className="font-bold text-[#0A0A0E] dark:text-white">{creator.completedCampaignsCount} Completed</span>
                 </div>
               </div>
 
@@ -207,32 +207,32 @@ export function CreatorDetailClient({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Left: Rate Card & Deliverables */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6">
-              <h2 className="text-xl font-bold text-[#0A0A0E] font-display">Rate Card &amp; Sponsorship Options</h2>
+            <div className="p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
+              <h2 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">Rate Card &amp; Sponsorship Options</h2>
               <div className="space-y-4">
                 {(creator.rateCards || []).map((rate) => (
                   <div
                     key={rate.id}
-                    className="p-5 rounded-2xl bg-[#F8F8FC] border border-black/5 flex items-center justify-between gap-4"
+                    className="p-5 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/5 dark:border-white/5 flex items-center justify-between gap-4"
                   >
                     <div className="flex items-start gap-3.5">
-                      <span className="w-10 h-10 rounded-xl bg-white border border-black/8 flex items-center justify-center text-[#A37F00] shrink-0 shadow-2xs">
+                      <span className="w-10 h-10 rounded-xl bg-white dark:bg-white/10 border border-black/8 dark:border-white/10 flex items-center justify-center text-[#A37F00] dark:text-[#FFD21F] shrink-0 shadow-2xs">
                         <TitleIcon title={rate.title || rate.deliverableType} category={creator.primaryCategory} className="w-5 h-5" />
                       </span>
                       <div>
-                        <h3 className="font-bold text-sm text-[#0A0A0E] font-sans">{rate.title || rate.deliverableType}</h3>
-                        <p className="text-xs text-[#5A5A68] mt-0.5">{rate.description}</p>
-                        <span className="text-[10px] font-mono text-[#7A7A8A] block mt-1">
+                        <h3 className="font-bold text-sm text-[#0A0A0E] dark:text-white font-sans">{rate.title || rate.deliverableType}</h3>
+                        <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B0] mt-0.5">{rate.description}</p>
+                        <span className="text-[10px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4] block mt-1">
                           Turnaround: {rate.turnaroundDays} days • Max {rate.revisionsIncluded || 2} revisions
                         </span>
                       </div>
                     </div>
 
                     <div className="text-right shrink-0">
-                      <span className="text-base font-extrabold text-[#0A0A0E] font-mono block">
+                      <span className="text-base font-extrabold text-[#0A0A0E] dark:text-white font-mono block">
                         {format(rate.basePrice || (rate as any).price || 500, (rate as any).currency || (creator as any).currency || "USD")}
                       </span>
-                      <span className="text-[10px] font-mono text-[#7A7A8A]">per asset</span>
+                      <span className="text-[10px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4]">per asset</span>
                     </div>
                   </div>
                 ))}
@@ -242,19 +242,19 @@ export function CreatorDetailClient({
 
           {/* Right: Audited Demographics */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6">
-              <h2 className="text-xl font-bold text-[#0A0A0E] font-display">Audience Telemetry &amp; Geo</h2>
+            <div className="p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
+              <h2 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">Audience Telemetry &amp; Geo</h2>
               <div className="space-y-4 font-mono text-xs">
                 <div>
-                  <span className="text-[11px] text-[#7A7A8A] uppercase font-bold block mb-2">Top Geographies</span>
+                  <span className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-bold block mb-2">Top Geographies</span>
                   <div className="space-y-2">
                     {(creator.audience?.topCountries || []).map((geo) => (
                       <div key={geo.country} className="space-y-1">
-                        <div className="flex justify-between text-[#0A0A0E]">
+                        <div className="flex justify-between text-[#0A0A0E] dark:text-white">
                           <span>{geo.country}</span>
                           <span className="font-bold">{geo.percentage}%</span>
                         </div>
-                        <div className="w-full h-1.5 rounded-full bg-black/5 overflow-hidden">
+                        <div className="w-full h-1.5 rounded-full bg-black/5 dark:bg-white/10 overflow-hidden">
                           <div
                             className="h-full bg-[#FFD21F] rounded-full"
                             style={{ width: `${geo.percentage}%` }}
@@ -265,13 +265,13 @@ export function CreatorDetailClient({
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-black/8">
-                  <span className="text-[11px] text-[#7A7A8A] uppercase font-bold block mb-2">Gender Breakdown</span>
+                <div className="pt-4 border-t border-black/8 dark:border-white/10">
+                  <span className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-bold block mb-2">Gender Breakdown</span>
                   <div className="grid grid-cols-2 gap-2">
                     {(creator.audience?.genderSplit || []).map((g) => (
-                      <div key={g.gender} className="p-3 rounded-xl bg-[#F8F8FC] border border-black/5 text-center">
-                        <span className="text-[10px] text-[#7A7A8A] uppercase block">{g.gender}</span>
-                        <span className="text-sm font-black text-[#0A0A0E]">{g.percentage}%</span>
+                      <div key={g.gender} className="p-3 rounded-xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/5 dark:border-white/5 text-center">
+                        <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] uppercase block">{g.gender}</span>
+                        <span className="text-sm font-black text-[#0A0A0E] dark:text-white">{g.percentage}%</span>
                       </div>
                     ))}
                   </div>
