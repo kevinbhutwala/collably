@@ -414,7 +414,7 @@ export function ContinuousProductStory() {
                     >
                       <div className="relative aspect-video rounded-2xl overflow-hidden bg-black border border-black/10">
                         <SafeImage
-                          src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800"
+                          src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&auto=format&fit=crop&q=80"
                           alt="Video cut"
                           width={600}
                           height={340}

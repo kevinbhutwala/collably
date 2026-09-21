@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
     const senderId = session?.userId || body.senderId;
     const senderRole = session?.role || body.senderRole || "creator";
     const senderName = body.senderName || (session?.email ? session.email.split("@")[0] : "Collaborator");
-    const senderAvatar = body.senderAvatar || (senderRole === "creator" ? "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80" : "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80");
+    const senderAvatar = body.senderAvatar || (senderRole === "creator" ? "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&auto=format&fit=crop&q=80" : "https://webassets.linear.app/images/ornj730p/production/f79251b06e9edeeacbf2875384defe629e000b3c-352x352.png?w=200&auto=format&fit=crop&q=80");
 
     const message = await messageRepo.createMessage({
       conversationId: body.conversationId,

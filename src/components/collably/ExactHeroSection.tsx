@@ -92,18 +92,18 @@ export function ExactHeroSection() {
             <div className="flex items-center gap-3.5 pt-4">
               <div className="flex -space-x-2">
                 <img
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80"
-                  alt="Creator 1"
+                  src="/creators/elena-rostova.jpg"
+                  alt="Elena Rostova"
                   className="w-8 h-8 rounded-full border-2 border-white object-cover shadow-xs"
                 />
                 <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80"
-                  alt="Creator 2"
+                  src="/creators/ankur-warikoo.webp"
+                  alt="Ankur Warikoo"
                   className="w-8 h-8 rounded-full border-2 border-white object-cover shadow-xs"
                 />
                 <img
-                  src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&auto=format&fit=crop&q=80"
-                  alt="Creator 3"
+                  src="/creators/prajakta-koli.png"
+                  alt="Prajakta Koli"
                   className="w-8 h-8 rounded-full border-2 border-white object-cover shadow-xs"
                 />
               </div>
@@ -131,7 +131,7 @@ export function ExactHeroSection() {
             >
               <div className="aspect-[3/4] w-full relative">
                 <img
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=85"
+                  src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&auto=format&fit=crop&q=85"
                   alt="High Fashion Creator"
                   className="w-full h-full object-cover filter contrast-105"
                 />
@@ -147,7 +147,7 @@ export function ExactHeroSection() {
             >
               <div className="aspect-[4/5] w-full relative">
                 <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=85"
+                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&auto=format&fit=crop&q=85"
                   alt="Tech Creator"
                   className="w-full h-full object-cover filter contrast-105"
                 />

@@ -10,11 +10,104 @@ import { useUIStore } from "@/stores/ui.store";
 
 const FEATURED_TALENT: CreatorQuickViewData[] = [
   {
+    id: "ankur",
+    name: "Ankur Warikoo",
+    handle: "@ankurwarikoo",
+    avatarUrl: "/creators/ankur-warikoo.webp",
+    heroImage: "/creators/ankur-warikoo.webp",
+    category: "tech",
+    niche: "Entrepreneurship & Career Growth",
+    reach: "3.2M",
+    engagementRate: 5.8,
+    startingPrice: 3000,
+    matchScore: 99,
+    bio: "Keynote speaker, author, and entrepreneur producing high-impact frameworks on personal finance, SaaS growth, and career acceleration.",
+    tags: ["India Top Creator 🇮🇳", "Finance & Startups", "Verified Creator"],
+    sampleDeliverables: [
+      {
+        title: "Keynote 60s Video Integration",
+        specs: "4K Master Studio • Hindi & English",
+        imageUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&auto=format&fit=crop&q=80",
+      },
+      {
+        title: "Executive LinkedIn & X Breakdown",
+        specs: "Audited 3.2M Audience",
+        imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&auto=format&fit=crop&q=80",
+      },
+    ],
+  },
+  {
+    id: "prajakta",
+    name: "Prajakta Koli",
+    handle: "@mostlysane",
+    avatarUrl: "/creators/prajakta-koli.png",
+    heroImage: "/creators/prajakta-koli.png",
+    category: "lifestyle",
+    niche: "Comedy & Narrative Storytelling",
+    reach: "5.2M",
+    engagementRate: 6.4,
+    startingPrice: 3800,
+    matchScore: 97,
+    bio: "Leading Indian digital creator and actress crafting viral sketches, relatable observational comedy, and lifestyle campaigns.",
+    tags: ["India Top Creator 🇮🇳", "Entertainment & Culture", "Elite Creator"],
+    sampleDeliverables: [
+      {
+        title: "Branded Narrative Sketch Reel",
+        specs: "Sony FX3 • 4K HDR",
+        imageUrl: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&auto=format&fit=crop&q=80",
+      },
+    ],
+  },
+  {
+    id: "tanmay",
+    name: "Tanmay Bhat",
+    handle: "@tanmaybhat",
+    avatarUrl: "/creators/tanmay-bhat.png",
+    heroImage: "/creators/tanmay-bhat.png",
+    category: "tech",
+    niche: "Fintech & Comedy Creative Direction",
+    reach: "4.8M",
+    engagementRate: 7.2,
+    startingPrice: 4200,
+    matchScore: 99,
+    bio: "Pioneer of Indian comedy and creator economy veteran producing viral fintech advertisement campaigns and brand drops.",
+    tags: ["India Top Creator 🇮🇳", "Fintech & Comedy", "Top Performer"],
+    sampleDeliverables: [
+      {
+        title: "Dedicated YouTube Feature Cut",
+        specs: "Multi-cam 4K ProRes",
+        imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80",
+      },
+    ],
+  },
+  {
+    id: "kusha",
+    name: "Kusha Kapila",
+    handle: "@kushakapila",
+    avatarUrl: "/creators/kusha-kapila.jpg",
+    heroImage: "/creators/kusha-kapila.jpg",
+    category: "fashion",
+    niche: "Fashion & Satirical Entertainment",
+    reach: "3.6M",
+    engagementRate: 6.1,
+    startingPrice: 3200,
+    matchScore: 98,
+    bio: "Celebrated satirist and fashion icon creating high-energy relatable sketches and luxury couture collaborations.",
+    tags: ["India Top Creator 🇮🇳", "Fashion & Comedy", "Verified Creator"],
+    sampleDeliverables: [
+      {
+        title: "High-Fashion Editorial Reel",
+        specs: "4K 60fps • Bespoke Styling",
+        imageUrl: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&auto=format&fit=crop&q=80",
+      },
+    ],
+  },
+  {
     id: "elena",
     name: "Elena Rostova",
     handle: "@elenarostova",
-    avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=85",
-    heroImage: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=85",
+    avatarUrl: "/creators/elena-rostova.jpg",
+    heroImage: "/creators/elena-rostova.jpg",
     category: "tech",
     niche: "AI & Consumer Tech",
     reach: "485K",
@@ -40,8 +133,8 @@ const FEATURED_TALENT: CreatorQuickViewData[] = [
     id: "marcus",
     name: "Marcus Vance",
     handle: "@marcusvisuals",
-    avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=85",
-    heroImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=85",
+    avatarUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&auto=format&fit=crop&q=80",
+    heroImage: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&auto=format&fit=crop&q=80",
     category: "fashion",
     niche: "Luxury & Haute Couture",
     reach: "310K",
@@ -84,8 +177,8 @@ const FEATURED_TALENT: CreatorQuickViewData[] = [
     id: "devon",
     name: "Devon Thorne",
     handle: "@devoncinema",
-    avatarUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&auto=format&fit=crop&q=85",
-    heroImage: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&auto=format&fit=crop&q=85",
+    avatarUrl: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&auto=format&fit=crop&q=80",
+    heroImage: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&auto=format&fit=crop&q=80",
     category: "lifestyle",
     niche: "Automotive & Lifestyle",
     reach: "510K",
@@ -105,8 +198,8 @@ const FEATURED_TALENT: CreatorQuickViewData[] = [
 ];
 
 const CATEGORIES = [
-
   { id: "all", label: "All Talent" },
+  { id: "india", label: "India Top Creators 🇮🇳" },
   { id: "tech", label: "Tech & AI" },
   { id: "fashion", label: "Fashion & Luxury" },
   { id: "fitness", label: "Athletics & Bio" },
@@ -149,6 +242,8 @@ export function EditorialCreatorGrid() {
   const filtered =
     activeTab === "all"
       ? FEATURED_TALENT
+      : activeTab === "india"
+      ? FEATURED_TALENT.filter((c) => c.tags?.some((t) => t.includes("India") || t.includes("🇮🇳")))
       : FEATURED_TALENT.filter((c) => c.category === activeTab);
 
   return (

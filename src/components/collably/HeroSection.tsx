@@ -145,8 +145,8 @@ export function HeroSection() {
             {/* Step 1 */}
             <div className="p-3.5 rounded-xl bg-[#FCFCFA] border border-[#E2E6E1] relative">
               <span className="text-[10px] font-mono font-bold text-[#087F5B] block mb-1">01 • CREATOR</span>
-              <h4 className="text-xs font-bold text-[#101310] font-display">Elena Rostova</h4>
-              <p className="text-[11px] text-[#626862] font-mono mt-0.5">Matched (98%)</p>
+              <h4 className="text-xs font-bold text-[#101310] font-display">Marques Brownlee</h4>
+              <p className="text-[11px] text-[#626862] font-mono mt-0.5">Matched (99%)</p>
               <div className="absolute right-3 top-3 w-2 h-2 rounded-full bg-[#087F5B]" />
             </div>
 
@@ -288,9 +288,11 @@ export function HeroSection() {
                         <div className="overflow-hidden">
                           <h4 className="text-xs font-bold text-[#101310] font-sans truncate flex items-center gap-1">
                             {c.fullName}
-                            <CheckCircle2 className="w-3 h-3 text-[#087F5B] shrink-0" />
+                            <svg className="w-3 h-3 fill-[#0095F6] text-white shrink-0 inline" viewBox="0 0 24 24">
+                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.25 14.5l-3.75-3.75 1.41-1.41 2.34 2.34 5.34-5.34 1.41 1.41-6.75 6.75z" />
+                            </svg>
                           </h4>
-                          <p className="text-[11px] text-[#626862] font-mono truncate">{c.primaryCategory}</p>
+                          <p className="text-[11px] text-[#626862] font-mono truncate">@{c.handle} • {c.primaryCategory}</p>
                         </div>
                       </div>
                       <span className="px-2 py-1 rounded bg-[#EAF8F2] text-[#087F5B] font-mono text-[10px] font-bold shrink-0 border border-[#C3EBDA]">
@@ -314,7 +316,7 @@ export function HeroSection() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <span className="w-2.5 h-2.5 rounded-full bg-[#087F5B] animate-pulse" />
-                      <h4 className="text-xs font-bold text-[#101310] font-sans">Elena Rostova • AI Smartwatch Review</h4>
+                      <h4 className="text-xs font-bold text-[#101310] font-sans">Marques Brownlee • Smartwatch Hardware Review</h4>
                     </div>
                     <span className="px-2 py-0.5 rounded bg-[#EAF8F2] text-[#087F5B] text-[10px] font-mono font-bold border border-[#C3EBDA]">
                       00:14 / 00:60

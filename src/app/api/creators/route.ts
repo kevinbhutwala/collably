@@ -6,6 +6,7 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const category = searchParams.get("category") || undefined;
     const platform = searchParams.get("platform") as any || undefined;
+    const region = searchParams.get("region") || undefined;
     const searchQuery = searchParams.get("searchQuery") || undefined;
     const minRate = searchParams.get("minRate") ? parseFloat(searchParams.get("minRate")!) : undefined;
     const maxRate = searchParams.get("maxRate") ? parseFloat(searchParams.get("maxRate")!) : undefined;
@@ -19,6 +20,7 @@ export async function GET(req: NextRequest) {
     const creators = creatorRepo.getAll({
       category,
       platform,
+      region,
       searchQuery,
       minRate,
       maxRate,

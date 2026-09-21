@@ -7,7 +7,7 @@ import { SafeImage } from "@/components/ui/SafeImage";
 import { SocialIcon } from "@/components/ui/SocialIcons";
 import { formatNumber, formatCurrency } from "@/core/utils/formatters";
 import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
-import { CheckCircle2, ArrowRight, Bookmark, Sparkles, Star, Users } from "lucide-react";
+import { CheckCircle2, ArrowRight, Bookmark, Sparkles, Star, Users, MapPin } from "lucide-react";
 import { useUIStore } from "@/stores/ui.store";
 import { cn } from "@/lib/utils";
 import { ReputationBadgeBar } from "@/components/marketplace/ReputationBadgeBar";
@@ -50,15 +50,32 @@ export function CreatorCard({ creator }: { creator: CreatorProfile }) {
               />
             </div>
             <div className="min-w-0">
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-1.5 flex-wrap">
                 <h3 className="font-extrabold text-sm sm:text-base text-[#0A0A0E] group-hover:text-[#A37F00] transition-colors font-display truncate">
                   {creator.fullName}
                 </h3>
+                {creator.isInstagramVerified && (
+                  <span title="Verified on Instagram">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#0095F6] fill-[#0095F6] text-white shrink-0" />
+                  </span>
+                )}
                 {creator.verified && (
-                  <CheckCircle2 className="w-4 h-4 text-[#FFD21F] shrink-0 fill-[#0A0A0E]" />
+                  <span title="AbeyCollab Verified Member">
+                    <CheckCircle2 className="w-4 h-4 text-[#FFD21F] shrink-0 fill-[#0A0A0E]" />
+                  </span>
                 )}
               </div>
-              <p className="text-xs text-[#7A7A8A] font-mono truncate">@{creator.handle}</p>
+              <a
+                href={creator.instagramUrl || `https://www.instagram.com/${(creator.handle || "").replace(/^@/, "")}/`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="text-xs text-[#7A7A8A] hover:text-[#0A0A0E] font-mono truncate flex items-center gap-1 transition-colors"
+                title="View on Instagram"
+              >
+                <span>@{creator.handle.replace(/^@/, "")}</span>
+                <span className="text-[9px] text-[#A0A0B0]">↗</span>
+              </a>
             </div>
           </div>
 
@@ -83,6 +100,22 @@ export function CreatorCard({ creator }: { creator: CreatorProfile }) {
           </div>
         </div>
 
+        {/* Regional Hub & Location Pill */}
+        <div className="flex items-center gap-1.5 flex-wrap mb-2.5">
+          {creator.location && (
+            <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#F4F4F8] border border-black/8 text-[11px] font-mono font-semibold text-[#3A3A48]">
+              <span className="text-xs">{creator.countryFlag || (creator.location.includes("India") ? "🇮🇳" : creator.location.includes("United States") ? "🇺🇸" : "🇦🇪")}</span>
+              <span>{creator.location}</span>
+            </div>
+          )}
+          {creator.profileSource === "instagram_public" && (
+            <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-amber-500/10 border border-amber-500/20 text-[10px] font-mono font-medium text-amber-800 dark:text-amber-400">
+              <SocialIcon platform="instagram" colored={true} size={11} />
+              <span>IG Sourced</span>
+            </div>
+          )}
+        </div>
+
         {/* Headline & Bio */}
         <p className="text-xs text-[#0A0A0E] font-bold line-clamp-1 mb-1">
           {creator.headline}
@@ -98,17 +131,20 @@ export function CreatorCard({ creator }: { creator: CreatorProfile }) {
 
         {/* Social Accounts Badge Strip */}
         {creator.socialAccounts && creator.socialAccounts.length > 0 && (
-
           <div className="flex items-center gap-1.5 mb-4 overflow-x-auto no-scrollbar">
             {creator.socialAccounts.map((sa) => (
-              <span
+              <a
                 key={sa.id}
+                href={sa.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
                 title={`${sa.platform.toUpperCase()}: ${formatNumber(sa.followers)} followers`}
                 className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-[#F8F8FC] border border-black/6 text-xs text-[#5A5A68] hover:text-[#0A0A0E] transition-colors shrink-0"
               >
-                <SocialIcon platform={sa.platform} className="w-3.5 h-3.5" />
+                <SocialIcon platform={sa.platform} size={13} />
                 <span className="text-[11px] font-mono font-bold">{formatNumber(sa.followers)}</span>
-              </span>
+              </a>
             ))}
           </div>
         )}
@@ -116,7 +152,7 @@ export function CreatorCard({ creator }: { creator: CreatorProfile }) {
         {/* Key Metrics Strip */}
         <div className="grid grid-cols-2 gap-2 p-3 rounded-2xl bg-[#FAFAFC] border border-black/5 mb-2">
           <div>
-            <span className="text-[10px] text-[#7A7A8A] uppercase font-bold block">Total Audience</span>
+            <span className="text-[10px] text-[#7A7A8A] uppercase font-bold block">IG Followers</span>
             <span className="font-black text-[#0A0A0E] text-sm font-mono numeric-tabular">
               {formatNumber(creator.totalFollowers)}
             </span>
@@ -134,17 +170,19 @@ export function CreatorCard({ creator }: { creator: CreatorProfile }) {
       {/* Footer Pricing & CTA */}
       <div className="mt-3 pt-3 border-t border-black/6 flex items-center justify-between gap-3">
         <div>
-          <span className="text-[10px] text-[#7A7A8A] uppercase font-bold block">Starting Rate</span>
+          <span className="text-[10px] text-[#7A7A8A] uppercase font-bold block">Sample Rate</span>
           <span className="text-sm font-black text-[#0A0A0E] font-mono numeric-tabular">
+            <span className="text-[10px] font-normal text-[#7A7A8A] mr-0.5">Est.</span>
             {format(creator.startingPrice, (creator as any).currency || "USD")}
           </span>
         </div>
 
-        <Link href={`/creators/${creator.id}`}>
-          <button className="px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs transition-all flex items-center gap-1.5 shadow-2xs border border-black/10">
-            <span>View Media Kit</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </button>
+        <Link
+          href={`/creators/${creator.id}`}
+          className="px-4 py-2 rounded-full bg-white hover:bg-[#F5F5F9] border border-black/10 text-xs font-bold text-[#0A0A0E] transition-all flex items-center gap-1 hover:border-[#FFD21F] shadow-xs"
+        >
+          <span>Media Kit</span>
+          <ArrowRight className="w-3 h-3 text-[#7A7A8A]" />
         </Link>
       </div>
     </div>

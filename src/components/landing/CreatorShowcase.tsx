@@ -30,13 +30,13 @@ export function CreatorShowcase() {
           <div className="space-y-3 max-w-2xl">
             <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-pink-300 text-xs font-mono font-bold">
               <Sparkles className="w-3.5 h-3.5 text-gold" />
-              <span>Founding Cohort Spotlight</span>
+              <span>Real Creator Discovery</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-display">
-              Sample media kits &amp; rate cards
+              Public Instagram creator media kits
             </h2>
             <p className="text-sm sm:text-base text-slate-300 font-sans">
-              Illustrative creator profiles demonstrating verified multi-platform audience metrics and automated deliverables on AbeyCollab.
+              Discover real Instagram creators with public metrics. Deliverables and rates are illustrative market estimates until claimed by the creator.
             </p>
           </div>
 
@@ -86,7 +86,9 @@ export function CreatorShowcase() {
               <div>
                 {/* Top Label */}
                 <div className="flex items-center justify-between mb-3 text-[10px] font-mono text-slate-400">
-                  <span className="bg-white/[0.05] px-2 py-0.5 rounded border border-white/10 text-slate-300">Sample Profile</span>
+                  <span className="bg-gradient-to-r from-[#833AB4]/20 to-[#E1306C]/20 border border-[#E1306C]/30 text-pink-200 px-2 py-0.5 rounded text-[10px] font-mono flex items-center gap-1">
+                    Instagram Sourced • Unclaimed
+                  </span>
                   <Badge variant="glow" size="sm">
                     {creator.primaryCategory}
                   </Badge>
@@ -109,11 +111,23 @@ export function CreatorShowcase() {
                       <h3 className="font-bold text-sm text-white transition-colors font-display">
                         {creator.fullName}
                       </h3>
-                      {creator.verified && (
-                        <CheckCircle2 className="w-3.5 h-3.5 fill-sky-500 text-white shrink-0" />
+                      {creator.isInstagramVerified && (
+                        <span title="Meta Verified">
+                          <svg className="w-3.5 h-3.5 fill-[#0095F6] text-white shrink-0" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.25 14.5l-3.75-3.75 1.41-1.41 2.34 2.34 5.34-5.34 1.41 1.41-6.75 6.75z" />
+                          </svg>
+                        </span>
                       )}
                     </div>
-                    <p className="text-xs text-slate-400 font-mono">@{creator.handle}</p>
+                    <a
+                      href={creator.instagramUrl || `https://www.instagram.com/${creator.instagramUsername || creator.handle}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-pink-400 hover:text-pink-300 hover:underline font-mono inline-flex items-center gap-1"
+                    >
+                      @{creator.instagramUsername || creator.handle}
+                      <ArrowUpRight className="w-3 h-3 opacity-70" />
+                    </a>
                   </div>
                 </div>
 
@@ -152,7 +166,7 @@ export function CreatorShowcase() {
               {/* Action Footer */}
               <div className="pt-4 border-t border-white/10 flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] text-slate-400 uppercase block font-mono">Starting At</span>
+                  <span className="text-[10px] text-slate-400 uppercase block font-mono">Est. Rate (Demo)</span>
                   <span className="text-sm font-bold text-white font-mono">
                     {formatCurrency(creator.startingPrice)}
                   </span>
@@ -166,7 +180,7 @@ export function CreatorShowcase() {
                   </Link>
                   <Link href="/creator/register">
                     <Button variant="accent" size="sm">
-                      Claim Your Rate
+                      Claim Profile
                     </Button>
                   </Link>
                 </div>

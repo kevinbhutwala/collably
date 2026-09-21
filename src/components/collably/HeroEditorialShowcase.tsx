@@ -48,11 +48,56 @@ const HERO_TALENT: HeroTalent[] = [
     startingPrice: "$3,500",
     startingPriceAmount: 3500,
     matchScore: "AI Matched",
-    portrait: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=900&auto=format&fit=crop&q=85",
+    portrait: "/creators/elena-rostova.jpg",
     bRollPreview: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=80",
     specs: "RED V-Raptor 8K • 60fps",
     badgeText: "4K Master Reel",
     verifiedSponsor: "Technology & AI",
+  },
+  {
+    id: "ankur",
+    name: "Ankur Warikoo",
+    handle: "@ankurwarikoo",
+    niche: "Finance & Career Direction",
+    reach: "3.2M Followers",
+    startingPrice: "$3,000",
+    startingPriceAmount: 3000,
+    matchScore: "India Top Creator 🇮🇳",
+    portrait: "/creators/ankur-warikoo.webp",
+    bRollPreview: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80",
+    specs: "4K Master Studio • Hindi & English",
+    badgeText: "Keynote Master",
+    verifiedSponsor: "Finance & Careers",
+  },
+  {
+    id: "prajakta",
+    name: "Prajakta Koli",
+    handle: "@mostlysane",
+    niche: "Comedy & Storytelling",
+    reach: "5.2M Followers",
+    startingPrice: "$3,800",
+    startingPriceAmount: 3800,
+    matchScore: "India Top Creator 🇮🇳",
+    portrait: "/creators/prajakta-koli.png",
+    bRollPreview: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&auto=format&fit=crop&q=80",
+    specs: "Sony FX3 • 4K S-Log3",
+    badgeText: "Editorial Comedy Cut",
+    verifiedSponsor: "Entertainment & Lifestyle",
+  },
+  {
+    id: "tanmay",
+    name: "Tanmay Bhat",
+    handle: "@tanmaybhat",
+    niche: "Fintech & Comedy Direction",
+    reach: "4.8M Followers",
+    startingPrice: "$4,200",
+    startingPriceAmount: 4200,
+    matchScore: "India Top Creator 🇮🇳",
+    portrait: "/creators/tanmay-bhat.png",
+    bRollPreview: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=80",
+    specs: "Multi-cam 4K ProRes",
+    badgeText: "Campaign Studio Cut",
+    verifiedSponsor: "Fintech & Startups",
   },
   {
     id: "marcus",
@@ -63,14 +108,14 @@ const HERO_TALENT: HeroTalent[] = [
     startingPrice: "$2,800",
     startingPriceAmount: 2800,
     matchScore: "Elite Tier",
-    portrait: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&auto=format&fit=crop&q=85",
+    portrait: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=900&auto=format&fit=crop&q=85",
     bRollPreview: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&auto=format&fit=crop&q=80",
     specs: "ARRI Alexa Mini • ProRes 4444",
     badgeText: "Lookbook Reel",
     verifiedSponsor: "Design & Creative",
   },
   {
-    id: "sofia",
+    id: "aria",
     name: "Aria Chen",
     handle: "@ariawellness",
     niche: "Biohacking & Longevity",
@@ -290,7 +335,7 @@ export function HeroEditorialShowcase() {
                   </div>
                   <div className="text-right font-mono">
                     <span className="text-[9px] sm:text-[10px] text-[#888898] dark:text-[#8E8EA4] block uppercase">Starts at</span>
-                    <span className="text-xs sm:text-sm font-extrabold text-[#0A0A0E] dark:text-white">{format(activeTalent.startingPriceAmount, "USD")}</span>
+                    <span suppressHydrationWarning className="text-xs sm:text-sm font-extrabold text-[#0A0A0E] dark:text-white">{format(activeTalent.startingPriceAmount, "USD")}</span>
                   </div>
                 </div>
 

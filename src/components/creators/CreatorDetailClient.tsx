@@ -101,24 +101,78 @@ export function CreatorDetailClient({
                   <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
                     {creator.fullName}
                   </h1>
+                  {creator.isInstagramVerified && (
+                    <span title="Verified on Instagram" className="inline-flex items-center">
+                      <CheckCircle2 className="w-5 h-5 text-[#0095F6] fill-[#0095F6] text-white shrink-0" />
+                    </span>
+                  )}
                   {creator.verified && (
-                    <CheckCircle2 className="w-6 h-6 text-[#FFD21F] shrink-0 fill-[#0A0A0E]" />
+                    <span title="AbeyCollab Verified Member" className="inline-flex items-center">
+                      <CheckCircle2 className="w-6 h-6 text-[#FFD21F] shrink-0 fill-[#0A0A0E]" />
+                    </span>
                   )}
                   <CategoryBadge category={creator.primaryCategory} size="sm" showIcon={true} />
                 </div>
 
-                <p className="text-sm font-mono text-[#6A6A78] dark:text-[#8E8EA4]">
-                  @{creator.handle} • {creator.location}
-                </p>
+                <div className="flex flex-wrap items-center gap-3 text-sm font-mono text-[#6A6A78] dark:text-[#8E8EA4]">
+                  <a
+                    href={creator.instagramUrl || `https://www.instagram.com/${(creator.handle || "").replace(/^@/, "")}/`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0A0A0E] dark:text-white hover:text-[#FFD21F] transition-colors"
+                    title="View verified Instagram profile"
+                  >
+                    <SocialIcon platform="instagram" colored={true} size={14} />
+                    <span>@{creator.handle.replace(/^@/, "")}</span>
+                    <ExternalLink className="w-3 h-3 opacity-70" />
+                  </a>
+                  <span>•</span>
+                  <span className="inline-flex items-center gap-1 font-bold text-[#0A0A0E] dark:text-white">
+                    <span>{creator.countryFlag || (creator.location.includes("India") ? "🇮🇳" : creator.location.includes("United States") ? "🇺🇸" : "🇦🇪")}</span>
+                    <span>{creator.location}</span>
+                  </span>
+                  {creator.profileSource === "instagram_public" && (
+                    <span className="px-2 py-0.5 rounded-md bg-amber-500/10 border border-amber-500/20 text-amber-800 dark:text-amber-300 text-[10px] font-bold">
+                      Instagram Public Profile
+                    </span>
+                  )}
+                </div>
 
                 {/* Editorial Pull Quote */}
                 <p className="text-xl sm:text-2xl text-[#0A0A0E] dark:text-[#E0E0EC] font-serif italic max-w-2xl pt-1 leading-snug">
                   &ldquo;{creator.headline}&rdquo;
                 </p>
 
-                <p className="text-sm text-[#5A5A68] dark:text-[#A0A0B0] max-w-2xl leading-relaxed font-sans font-normal pt-1">
-                  {creator.bio}
-                </p>
+                <div className="space-y-1 pt-1">
+                  <span className="text-[10px] uppercase font-mono tracking-wider text-[#7A7A8A] dark:text-[#A0A0B0] font-bold block">
+                    Public Instagram Bio
+                  </span>
+                  <p className="text-sm text-[#5A5A68] dark:text-[#A0A0B0] max-w-2xl leading-relaxed font-sans font-normal">
+                    {creator.bio}
+                  </p>
+                </div>
+
+                {/* Sourcing & Claiming Notice */}
+                {creator.profileSource === "instagram_public" && (
+                  <div className="p-3.5 rounded-2xl bg-[#F8F8FC] dark:bg-white/5 border border-black/8 dark:border-white/10 max-w-2xl space-y-1 font-sans">
+                    <div className="flex items-center justify-between text-xs font-mono font-bold text-[#0A0A0E] dark:text-white">
+                      <span className="flex items-center gap-1.5">
+                        <SocialIcon platform="instagram" colored={true} size={13} />
+                        <span>Public Discovery Profile (Unclaimed)</span>
+                      </span>
+                      <span className="text-[10px] text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800">
+                        Instagram Sourced
+                      </span>
+                    </div>
+                    <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B0] leading-relaxed">
+                      Public profile metadata is indexed from Instagram. Are you @{creator.handle.replace(/^@/, "")}?{" "}
+                      <Link href="/creator/register" className="text-[#0A0A0E] dark:text-[#FFD21F] font-bold underline hover:opacity-80">
+                        Claim this profile
+                      </Link>{" "}
+                      to set direct rate cards and connect your verified account.
+                    </p>
+                  </div>
+                )}
 
                 {/* Trust Indicators Bar */}
                 <div className="pt-2">
@@ -208,7 +262,19 @@ export function CreatorDetailClient({
           {/* Left: Rate Card & Deliverables */}
           <div className="lg:col-span-7 space-y-6">
             <div className="p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
-              <h2 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">Rate Card &amp; Sponsorship Options</h2>
+              <div className="flex items-center justify-between flex-wrap gap-2">
+                <div>
+                  <h2 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">
+                    Sample Deliverables &amp; Market Estimates
+                  </h2>
+                  <p className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-sans mt-0.5">
+                    Benchmark estimates based on public reach. Final quotes are confirmed upon campaign brief review.
+                  </p>
+                </div>
+                <span className="px-2.5 py-1 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#8A6500] dark:text-[#FFD21F] text-[10px] font-mono font-bold">
+                  Demo Rate Estimate
+                </span>
+              </div>
               <div className="space-y-4">
                 {(creator.rateCards || []).map((rate) => (
                   <div
@@ -223,16 +289,17 @@ export function CreatorDetailClient({
                         <h3 className="font-bold text-sm text-[#0A0A0E] dark:text-white font-sans">{rate.title || rate.deliverableType}</h3>
                         <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B0] mt-0.5">{rate.description}</p>
                         <span className="text-[10px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4] block mt-1">
-                          Turnaround: {rate.turnaroundDays} days • Max {rate.revisionsIncluded || 2} revisions
+                          Estimated Turnaround: {rate.turnaroundDays} days • Max {rate.revisionsIncluded || 2} revisions
                         </span>
                       </div>
                     </div>
 
                     <div className="text-right shrink-0">
                       <span className="text-base font-extrabold text-[#0A0A0E] dark:text-white font-mono block">
+                        <span className="text-xs font-normal text-[#7A7A8A] mr-1">Est.</span>
                         {format(rate.basePrice || (rate as any).price || 500, (rate as any).currency || (creator as any).currency || "USD")}
                       </span>
-                      <span className="text-[10px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4]">per asset</span>
+                      <span className="text-[10px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4]">per deliverable</span>
                     </div>
                   </div>
                 ))}
@@ -279,6 +346,17 @@ export function CreatorDetailClient({
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Compliance & Rights Attribution Footer */}
+        <div className="p-6 rounded-3xl bg-[#F8F8FC] dark:bg-[#12121A] border border-black/6 dark:border-white/10 text-xs text-[#6A6A78] dark:text-[#8E8EA4] space-y-2 font-sans">
+          <div className="flex items-center gap-2 font-mono font-bold text-[#0A0A0E] dark:text-white text-xs">
+            <SocialIcon platform="instagram" colored={true} size={15} />
+            <span>Public Instagram Data Attribution &amp; Rights Notice</span>
+          </div>
+          <p className="leading-relaxed">
+            All Instagram usernames (@{(creator.handle || "").replace(/^@/, "")}), public profile photographs, follower statistics, and bios are sourced from publicly available Instagram accounts for identification and creator discovery purposes. All trademarks, photos, and creative works remain the property of their respective creators and are not represented as AbeyCollab-owned assets. Sourced creators have not verified or claimed an AbeyCollab partner agreement unless explicitly marked with the AbeyCollab Verified badge.
+          </p>
         </div>
       </div>
     </div>

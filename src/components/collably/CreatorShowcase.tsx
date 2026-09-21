@@ -6,22 +6,29 @@ import { motion } from "framer-motion";
 import { CENTRAL_CREATORS } from "@/data/creators";
 import { Star, CheckCircle, ArrowRight, Sparkles } from "lucide-react";
 import { formatCurrency } from "@/core/utils/currency";
+import { SocialIcon } from "@/components/ui/SocialIcons";
 
 export function CreatorShowcase() {
-  const [activeCategory, setActiveCategory] = useState<string>("All");
+  const [activeHub, setActiveHub] = useState<string>("All");
 
-  const categories = [
-    "All",
-    "Technology & AI",
-    "Design & Creative",
-    "Fitness & Wellness",
-    "Beauty & Skincare",
+  const hubs = [
+    { id: "All", label: "All Regions", flag: "🌐" },
+    { id: "India", label: "India", flag: "🇮🇳" },
+    { id: "United States", label: "United States", flag: "🇺🇸" },
+    { id: "Dubai / UAE", label: "Dubai / UAE", flag: "🇦🇪" },
   ];
 
   const filteredCreators =
-    activeCategory === "All"
+    activeHub === "All"
       ? CENTRAL_CREATORS.slice(0, 6)
-      : CENTRAL_CREATORS.filter((c) => c.primaryCategory === activeCategory).slice(0, 6);
+      : CENTRAL_CREATORS.filter((c) => {
+          const loc = (c.location || "").toLowerCase();
+          const r = ((c as any).region || "").toLowerCase();
+          if (activeHub === "India") return loc.includes("india") || r.includes("india");
+          if (activeHub === "United States") return loc.includes("united states") || r.includes("united states");
+          if (activeHub === "Dubai / UAE") return loc.includes("dubai") || loc.includes("emirates") || r.includes("dubai");
+          return true;
+        }).slice(0, 6);
 
   return (
     <section className="py-20 sm:py-28 bg-[#FCFCFA] border-b border-[#E2E6E1] relative overflow-hidden text-[#101310] select-none">
@@ -37,23 +44,24 @@ export function CreatorShowcase() {
               World-class talent.
             </h2>
             <p className="text-sm sm:text-base text-[#626862] font-sans">
-              Discover verified creators with audited audience demographics and transparent rate cards.
+              Discover verified creators across India, the United States, and Dubai with audited audience demographics.
             </p>
           </div>
 
-          {/* Category Tabs */}
+          {/* Regional Hub Tabs */}
           <div className="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none">
-            {categories.map((category) => (
+            {hubs.map((hub) => (
               <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`px-3.5 py-1.5 rounded-[9px] text-xs font-semibold transition-all whitespace-nowrap ${
-                  activeCategory === category
+                key={hub.id}
+                onClick={() => setActiveHub(hub.id)}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all whitespace-nowrap flex items-center gap-1.5 ${
+                  activeHub === hub.id
                     ? "bg-[#087F5B] text-white shadow-xs"
                     : "bg-[#F6F7F3] text-[#626862] hover:text-[#101310] hover:bg-[#E2E6E1] border border-[#E2E6E1]"
                 }`}
               >
-                {category}
+                <span>{hub.flag}</span>
+                <span>{hub.label}</span>
               </button>
             ))}
           </div>
@@ -76,13 +84,19 @@ export function CreatorShowcase() {
 
                 {/* Badges */}
                 <div className="absolute top-3 left-3 flex items-center gap-1.5">
-                  <span className="px-2.5 py-0.5 rounded-md bg-[#101310]/80 backdrop-blur-md text-white font-mono text-[10px] font-bold">
-                    {creator.primaryCategory}
+                  <span className="px-2.5 py-0.5 rounded-md bg-[#101310]/80 backdrop-blur-md text-white font-mono text-[10px] font-bold flex items-center gap-1">
+                    <SocialIcon platform="instagram" colored={true} size={11} />
+                    <span>Instagram Profile</span>
                   </span>
                 </div>
 
                 <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-white">
-                  <span className="font-bold">{creator.totalFollowers > 999 ? `${(creator.totalFollowers / 1000).toFixed(0)}K` : creator.totalFollowers} Reach</span>
+                  <span className="font-bold">
+                    {creator.totalFollowers >= 1000000
+                      ? `${(creator.totalFollowers / 1000000).toFixed(1)}M`
+                      : `${(creator.totalFollowers / 1000).toFixed(0)}K`}{" "}
+                    IG Reach
+                  </span>
                   <span className="font-bold text-[#8DD9BA]">{creator.avgEngagementRate}% ER</span>
                 </div>
               </div>
@@ -91,14 +105,28 @@ export function CreatorShowcase() {
               <div className="p-5 space-y-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h4 className="text-sm font-bold text-[#101310] font-sans flex items-center gap-1">
-                      {creator.fullName}
-                      <CheckCircle className="w-3.5 h-3.5 text-[#087F5B]" />
+                    <h4 className="text-sm font-bold text-[#101310] font-sans flex items-center gap-1.5">
+                      <span>{creator.fullName}</span>
+                      <span title="Verified on Instagram">
+                        <CheckCircle className="w-3.5 h-3.5 text-[#0095F6] fill-[#0095F6] text-white" />
+                      </span>
                     </h4>
-                    <p className="text-xs text-[#626862] font-mono">@{creator.handle}</p>
+                    <a
+                      href={creator.instagramUrl || `https://www.instagram.com/${creator.handle}/`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-[#626862] hover:text-[#087F5B] font-mono transition-colors"
+                      title="View Instagram Profile"
+                    >
+                      @{creator.handle} ↗
+                    </a>
+                    <div className="flex items-center gap-1 text-[11px] text-[#626862] font-mono mt-0.5">
+                      <span>{creator.countryFlag || (creator.location.includes("India") ? "🇮🇳" : creator.location.includes("United States") ? "🇺🇸" : "🇦🇪")}</span>
+                      <span className="truncate max-w-[140px]">{creator.location}</span>
+                    </div>
                   </div>
                   <div className="text-right">
-                    <span className="text-[10px] text-[#8A908B] font-mono block">STARTING AT</span>
+                    <span className="text-[9px] text-[#8A908B] font-mono block uppercase">Demo Est.</span>
                     <span className="text-sm font-bold text-[#101310] font-mono">
                       {formatCurrency(creator.startingPrice || 18500)}
                     </span>

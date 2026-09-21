@@ -39,6 +39,7 @@ export function CreatorsDirectoryClient() {
     setCreatorCategory,
     setCreatorSearchQuery,
   } = useFilterStore();
+  const [creatorRegion, setCreatorRegion] = useState<string>("all");
 
   useEffect(() => {
     const fetchCreators = async () => {
@@ -46,6 +47,7 @@ export function CreatorsDirectoryClient() {
       const data = await creatorService.getCreators({
         category: creatorCategory,
         platform: creatorPlatform,
+        region: creatorRegion !== "all" ? creatorRegion : undefined,
         minFollowers: creatorMinFollowers || undefined,
         minEngagement: creatorMinEngagement || undefined,
         searchQuery: creatorSearchQuery || undefined,
@@ -59,6 +61,7 @@ export function CreatorsDirectoryClient() {
   }, [
     creatorCategory,
     creatorPlatform,
+    creatorRegion,
     creatorMinFollowers,
     creatorMinEngagement,
     creatorSearchQuery,
@@ -76,34 +79,59 @@ export function CreatorsDirectoryClient() {
     });
   };
 
-  const transformToQuickView = (c: CreatorProfile): CreatorQuickViewData => ({
-    id: c.id,
-    name: c.fullName || "Verified Creator",
-    handle: c.handle || "@creator",
-    avatarUrl: c.avatarUrl || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800",
-    heroImage: c.coverImageUrl || c.avatarUrl,
-    niche: c.headline || c.primaryCategory || "Technology & AI",
-    category: c.primaryCategory || "tech",
-    reach: c.totalFollowers ? `${(c.totalFollowers / 1000).toFixed(0)}K` : undefined,
-    engagementRate: c.avgEngagementRate,
-    startingPrice: c.startingPrice || c.rateCards?.[0]?.basePrice,
-    currency: (c as any).currency || (c as any).rateCards?.[0]?.currency || "USD",
-    matchScore: c.qualityScore,
-    bio: c.bio,
-    tags: c.primaryCategory ? [c.primaryCategory, ...(c.verified ? ["Top Creator"] : [])] : ["Top Creator"],
-    sampleDeliverables: [
-      {
-        title: "4K Master Product Reel",
-        specs: "4K Production",
-        imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80",
-      },
-      {
-        title: "60s Dedicated Integration",
-        specs: "Short-form Content",
-        imageUrl: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&auto=format&fit=crop&q=80",
-      },
-    ],
-  });
+  const transformToQuickView = (c: CreatorProfile): CreatorQuickViewData => {
+    const cleanHandle = (c.handle || "").replace(/^@/, "");
+    const deliverables = c.rateCards && c.rateCards.length > 0
+      ? c.rateCards.map((rc) => ({
+          title: rc.title,
+          specs: rc.deliverableType,
+          imageUrl: c.coverImageUrl || c.avatarUrl,
+        }))
+      : [
+          {
+            title: "60s Master Product Reel",
+            specs: "4K Master Production",
+            imageUrl: c.coverImageUrl || c.avatarUrl || "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80",
+          },
+          {
+            title: "Story / Carousel Integration",
+            specs: "Multi-Asset Feed Cut",
+            imageUrl: c.avatarUrl || "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&auto=format&fit=crop&q=80",
+          },
+        ];
+
+    return {
+      id: c.id,
+      name: c.fullName || "Verified Creator",
+      handle: `@${cleanHandle}`,
+      avatarUrl: c.avatarUrl || "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800",
+      heroImage: c.coverImageUrl || c.avatarUrl,
+      niche: c.headline || c.primaryCategory || "Technology & AI",
+      category: c.primaryCategory || "Technology & AI",
+      reach: c.totalFollowers
+        ? c.totalFollowers >= 1000000
+          ? `${(c.totalFollowers / 1000000).toFixed(1)}M`
+          : `${(c.totalFollowers / 1000).toFixed(0)}K`
+        : undefined,
+      engagementRate: c.avgEngagementRate,
+      startingPrice: c.startingPrice || c.rateCards?.[0]?.basePrice,
+      currency: (c as any).currency || (c as any).rateCards?.[0]?.currency || "USD",
+      matchScore: c.qualityScore,
+      bio: c.bio,
+      tags: [
+        c.primaryCategory,
+        c.profileSource === "instagram_public" ? "Instagram Sourced" : "AbeyCollab Verified",
+      ],
+      sampleDeliverables: deliverables,
+      location: c.location,
+      profileSource: c.profileSource || "instagram_public",
+      isInstagramVerified: c.isInstagramVerified ?? true,
+      isAbeyCollabVerified: c.isAbeyCollabVerified ?? false,
+      isClaimedOnAbeyCollab: c.isClaimedOnAbeyCollab ?? false,
+      instagramUrl: c.instagramUrl || `https://www.instagram.com/${cleanHandle}/`,
+      isSampleRate: true,
+    };
+  };
 
   return (
     <div className="py-12 sm:py-16 bg-white dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] min-h-screen select-none space-y-12 font-sans">
@@ -188,6 +216,47 @@ export function CreatorsDirectoryClient() {
               />
             </div>
 
+            {/* Regional Hub Filter Pills */}
+            <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+              <span className="text-[11px] font-mono font-bold text-[#7A7A8A] dark:text-[#A0A0B4] uppercase tracking-wider shrink-0 mr-1 flex items-center gap-1">
+                <span>📍</span>
+                <span>Hub:</span>
+              </span>
+              {[
+                { id: "all", label: "All Regions", flag: "🌐", count: "25" },
+                { id: "India", label: "India", flag: "🇮🇳", count: "15" },
+                { id: "United States", label: "United States", flag: "🇺🇸", count: "5" },
+                { id: "Dubai / UAE", label: "Dubai / UAE", flag: "🇦🇪", count: "5" },
+              ].map((hub) => {
+                const isSelected = creatorRegion === hub.id;
+                return (
+                  <button
+                    key={hub.id}
+                    onClick={() => setCreatorRegion(hub.id)}
+                    className={cn(
+                      "px-3.5 py-1.5 rounded-full text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 cursor-pointer",
+                      isSelected
+                        ? "bg-[#0A0A0E] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E] shadow-xs"
+                        : "bg-white dark:bg-[#14141E] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/8 dark:border-white/10"
+                    )}
+                  >
+                    <span className="text-sm">{hub.flag}</span>
+                    <span>{hub.label}</span>
+                    <span
+                      className={cn(
+                        "text-[10px] px-1.5 py-0.2 rounded-full font-mono font-bold",
+                        isSelected
+                          ? "bg-white/20 dark:bg-black/20 text-white dark:text-[#0A0A0E]"
+                          : "bg-black/5 dark:bg-white/10 text-[#7A7A8A] dark:text-[#A0A0B4]"
+                      )}
+                    >
+                      {hub.count}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
             {/* Category Filter Pills */}
             <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
               <button
@@ -243,6 +312,7 @@ export function CreatorsDirectoryClient() {
               <button
                 onClick={() => {
                   setCreatorCategory("all");
+                  setCreatorRegion("all");
                   setCreatorSearchQuery("");
                 }}
                 className="px-4 py-2 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] text-xs font-bold"

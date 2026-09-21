@@ -18,12 +18,12 @@ export function SlidingTickerRail() {
   ];
 
   const bottomCreators = [
-    { name: "Elena Rostova", handle: "@elenatech", niche: "AI & Hardware", followers: "485K", engagement: "6.4%", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80" },
-    { name: "Marcus Vance", handle: "@marcusvance", niche: "Design & UX", followers: "320K", engagement: "5.8%", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80" },
-    { name: "Aria Chen", handle: "@ariachenwellness", niche: "Health & Fitness", followers: "610K", engagement: "7.1%", avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500&auto=format&fit=crop&q=80" },
-    { name: "Devon Thorne", handle: "@devoncodes", niche: "Software & Dev", followers: "240K", engagement: "8.2%", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=80" },
-    { name: "Chloe Dubois", handle: "@chloedubois_paris", niche: "Luxury & Lifestyle", followers: "890K", engagement: "4.9%", avatar: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500&auto=format&fit=crop&q=80" },
-    { name: "Siddharth Nair", handle: "@sidfintech", niche: "Finance & Wealth", followers: "415K", engagement: "6.7%", avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&auto=format&fit=crop&q=80" },
+    { name: "Elena Rostova", handle: "@elenatech", niche: "AI & Hardware", followers: "485K", engagement: "6.4%", avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&auto=format&fit=crop&q=80" },
+    { name: "Marcus Vance", handle: "@marcusvance", niche: "Design & UX", followers: "320K", engagement: "5.8%", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&auto=format&fit=crop&q=80" },
+    { name: "Aria Chen", handle: "@ariachenwellness", niche: "Health & Fitness", followers: "610K", engagement: "7.1%", avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&auto=format&fit=crop&q=80" },
+    { name: "Devon Thorne", handle: "@devoncodes", niche: "Software & Dev", followers: "240K", engagement: "8.2%", avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&auto=format&fit=crop&q=80" },
+    { name: "Chloe Dubois", handle: "@chloedubois_paris", niche: "Luxury & Lifestyle", followers: "890K", engagement: "4.9%", avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&auto=format&fit=crop&q=80" },
+    { name: "Siddharth Nair", handle: "@sidfintech", niche: "Finance & Wealth", followers: "415K", engagement: "6.7%", avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&auto=format&fit=crop&q=80" },
   ];
 
   return (
@@ -51,7 +51,7 @@ export function SlidingTickerRail() {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between gap-2 mb-0.5">
                     <span className="font-bold text-xs text-white truncate font-display">{deal.brand}</span>
-                    <span className="font-mono text-xs font-extrabold text-[#FFD21F]">{format(deal.budgetAmount, "USD")}</span>
+                    <span suppressHydrationWarning className="font-mono text-xs font-extrabold text-[#FFD21F]">{format(deal.budgetAmount, "USD")}</span>
                   </div>
                   <p className="text-[11px] text-white/70 truncate font-sans">{deal.title}</p>
                 </div>

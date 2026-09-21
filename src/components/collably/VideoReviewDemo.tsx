@@ -57,7 +57,7 @@ export function VideoReviewDemo() {
   const videoSrc =
     "https://assets.mixkit.co/videos/preview/mixkit-young-woman-vlogger-recording-a-video-41484-large.mp4";
   const posterImg =
-    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1200&auto=format&fit=crop&q=80";
+    "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=1200&auto=format&fit=crop&q=80";
 
   const handleTimeUpdate = () => {
     if (videoRef.current) {

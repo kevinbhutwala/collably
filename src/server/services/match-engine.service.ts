@@ -390,7 +390,7 @@ export class MatchEngineService {
       applicantsCount: 0,
       acceptedCount: 0,
       maxCreators: 5,
-      coverImage: "",
+      coverImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&auto=format&fit=crop&q=80",
       featured: false,
       brand: state.brands[0] || ({ id: "brand-searcher", companyName: "Searching Brand" } as any),
       createdAt: new Date().toISOString(),

@@ -1,5 +1,10 @@
 import { CampaignApplication } from "../core/types";
-import { MOCK_CREATORS } from "./creators.mock";
+import {
+  ELENA_ROSTOVA_PROFILE,
+  MARCUS_VANCE_PROFILE,
+  ARIA_CHEN_PROFILE,
+  DEVON_THORNE_PROFILE,
+} from "./creators.mock";
 
 export const MOCK_APPLICATIONS: CampaignApplication[] = [
   {
@@ -8,9 +13,9 @@ export const MOCK_APPLICATIONS: CampaignApplication[] = [
     campaignTitle: "AI-Powered Sprint Workflows Launch",
     brandId: "brand-1",
     brandName: "Linear Dynamics",
-    brandLogo: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
-    creatorId: "creator-1",
-    creator: MOCK_CREATORS[0],
+    brandLogo: "/brands/linear.png",
+    creatorId: "creator-demo",
+    creator: ELENA_ROSTOVA_PROFILE,
     pitch: "I use Linear every day for my engineering sprint reviews. I will craft a seamless 60-second in-depth demo of your new AI triage assistant integrated inside my upcoming 'The Autonomous Engineer' YouTube episode (averaging 90k views) plus a dedicated architectural X thread.",
     proposedFee: 3500,
     estimatedReach: 140000,
@@ -29,9 +34,9 @@ export const MOCK_APPLICATIONS: CampaignApplication[] = [
     campaignTitle: "AI-Powered Sprint Workflows Launch",
     brandId: "brand-1",
     brandName: "Linear Dynamics",
-    brandLogo: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
-    creatorId: "creator-6",
-    creator: MOCK_CREATORS[5],
+    brandLogo: "/brands/linear.png",
+    creatorId: "creator-devon",
+    creator: DEVON_THORNE_PROFILE,
     pitch: "I build open-source SaaS products and manage all my GitHub issues via Linear. I'd love to produce an authentic live coding stream and post a 7-part X thread covering the speed improvements of Linear AI vs Jira.",
     proposedFee: 1400,
     estimatedReach: 65000,
@@ -47,9 +52,9 @@ export const MOCK_APPLICATIONS: CampaignApplication[] = [
     campaignTitle: "The Architecture of Time: Autumn Collection",
     brandId: "brand-2",
     brandName: "Aethel Watches",
-    brandLogo: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=200&auto=format&fit=crop&q=80",
+    brandLogo: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&auto=format&fit=crop&q=80",
     creatorId: "creator-2",
-    creator: MOCK_CREATORS[1],
+    creator: MARCUS_VANCE_PROFILE,
     pitch: "London Fashion Week backdrop with bespoke tailoring. I'll shoot the Titanium Monolith with 35mm cinematic lens aesthetics emphasizing the architectural bevels and custom matte gray dial.",
     proposedFee: 2800,
     estimatedReach: 120000,
@@ -65,9 +70,9 @@ export const MOCK_APPLICATIONS: CampaignApplication[] = [
     campaignTitle: "Thermal Contrast & Sleep Recovery Protocol",
     brandId: "brand-3",
     brandName: "Kuro Recovery Lab",
-    brandLogo: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=200&auto=format&fit=crop&q=80",
-    creatorId: "creator-3",
-    creator: MOCK_CREATORS[2],
+    brandLogo: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&auto=format&fit=crop&q=80",
+    creatorId: "creator-aria",
+    creator: ARIA_CHEN_PROFILE,
     pitch: "As an ex-biochemist, I will conduct a 14-day continuous biometric audit comparing Kuro's 38°F cold plunge against control weeks, measuring deep sleep percentage and morning HRV recovery scores.",
     proposedFee: 5000,
     estimatedReach: 210000,

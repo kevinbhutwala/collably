@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
       userId: currentUserId,
       name: currentUser?.name || currentCreator?.fullName || currentBrand?.companyName || "Me",
       role: session?.role || body.senderRole || (currentBrand ? "brand" : "creator"),
-      avatarUrl: currentUser?.avatarUrl || currentCreator?.avatarUrl || currentBrand?.logoUrl || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      avatarUrl: currentUser?.avatarUrl || currentCreator?.avatarUrl || currentBrand?.logoUrl || "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&auto=format&fit=crop&q=80",
     };
 
     let participants: any[] = [];

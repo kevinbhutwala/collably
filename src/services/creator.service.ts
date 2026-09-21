@@ -6,6 +6,7 @@ class CreatorService {
       const params = new URLSearchParams();
       if (filters?.category) params.set("category", filters.category);
       if (filters?.platform) params.set("platform", filters.platform);
+      if (filters?.region) params.set("region", filters.region);
       if (filters?.searchQuery) params.set("searchQuery", filters.searchQuery);
 
       const url = `/api/creators${params.toString() ? `?${params.toString()}` : ""}`;

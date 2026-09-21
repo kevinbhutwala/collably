@@ -211,8 +211,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
       <body className="min-h-screen bg-white dark:bg-[#0A0A0E] text-[#0A0A0E] dark:text-[#F4F4F8] antialiased font-sans selection:bg-[#FFD21F] selection:text-[#0A0A0E]">
         {children}
-        <Analytics />
-        <SpeedInsights />
+        {process.env.NODE_ENV === "production" && (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        )}
         <CommandPalette />
         <ToastContainer />
       </body>

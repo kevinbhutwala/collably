@@ -1,16 +1,20 @@
 import { Collaboration } from "../core/types";
 import { MOCK_BRANDS } from "./brands.mock";
-import { MOCK_CREATORS } from "./creators.mock";
+import {
+  ELENA_ROSTOVA_PROFILE,
+  MARCUS_VANCE_PROFILE,
+  ARIA_CHEN_PROFILE,
+} from "./creators.mock";
 
 export const MOCK_COLLABORATIONS: Collaboration[] = [
   {
     id: "collab-1",
     campaignId: "camp-1",
     campaignTitle: "AI-Powered Sprint Workflows Launch",
-    brandId: "brand-demo",
-    brand: { ...MOCK_BRANDS[0], id: "brand-demo", userId: "user-brand" },
+    brandId: "brand-1",
+    brand: MOCK_BRANDS[0],
     creatorId: "creator-demo",
-    creator: { ...MOCK_CREATORS[0], id: "creator-demo", userId: "user-creator" },
+    creator: ELENA_ROSTOVA_PROFILE,
     totalAgreedBudget: 3500,
     escrowStatus: "held_in_escrow",
     status: "active",
@@ -73,9 +77,16 @@ export const MOCK_COLLABORATIONS: Collaboration[] = [
     campaignId: "camp-4",
     campaignTitle: "Cybersecurity Hardware Key Launch",
     brandId: "brand-demo",
-    brand: { ...MOCK_BRANDS[0], id: "brand-demo", userId: "user-brand", companyName: "SecureVault Inc" },
+    brand: {
+      ...MOCK_BRANDS[0],
+      id: "brand-demo",
+      userId: "user-brand",
+      companyName: "SecureVault Inc",
+      logoUrl: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=400&auto=format&fit=crop&q=80",
+      coverImageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&auto=format&fit=crop&q=80",
+    },
     creatorId: "creator-demo",
-    creator: { ...MOCK_CREATORS[0], id: "creator-demo", userId: "user-creator" },
+    creator: ELENA_ROSTOVA_PROFILE,
     totalAgreedBudget: 2200,
     escrowStatus: "pending_deposit",
     status: "payment_pending",
@@ -106,7 +117,7 @@ export const MOCK_COLLABORATIONS: Collaboration[] = [
     brandId: "brand-2",
     brand: MOCK_BRANDS[1],
     creatorId: "creator-2",
-    creator: MOCK_CREATORS[1],
+    creator: MARCUS_VANCE_PROFILE,
     totalAgreedBudget: 2800,
     escrowStatus: "partially_released",
     status: "active",
@@ -182,8 +193,8 @@ export const MOCK_COLLABORATIONS: Collaboration[] = [
     campaignTitle: "Thermal Contrast & Sleep Recovery Protocol",
     brandId: "brand-3",
     brand: MOCK_BRANDS[2],
-    creatorId: "creator-3",
-    creator: MOCK_CREATORS[2],
+    creatorId: "creator-aria",
+    creator: ARIA_CHEN_PROFILE,
     totalAgreedBudget: 5000,
     escrowStatus: "held_in_escrow",
     status: "active",

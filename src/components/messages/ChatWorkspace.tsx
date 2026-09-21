@@ -541,7 +541,7 @@ export function ChatWorkspace() {
     if ((!messageContent && !stagedAttachment) || !activeConvId) return;
 
     const senderName = user?.name || (role === "brand" ? "Brand Partner" : "Elena Rostova");
-    const senderAvatar = user?.avatarUrl || (role === "brand" ? "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80" : "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80");
+    const senderAvatar = user?.avatarUrl || (role === "brand" ? "https://webassets.linear.app/images/ornj730p/production/f79251b06e9edeeacbf2875384defe629e000b3c-352x352.png?w=200&auto=format&fit=crop&q=80" : "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&auto=format&fit=crop&q=80");
     const senderRole = role || "creator";
 
     const currentStaged = stagedAttachment ? [{ ...stagedAttachment }] : [];

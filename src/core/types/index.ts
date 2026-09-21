@@ -95,6 +95,14 @@ export interface CreatorPortfolioItem {
 
 export type CreatorTier = 'Nano' | 'Micro' | 'Rising' | 'Established' | 'Mid-Tier' | 'Macro' | 'Elite' | 'Premium';
 
+export type CreatorProfileSource = 'instagram_public' | 'abeycollab_verified' | 'demo_sample';
+
+export interface CreatorDataAttribution {
+  instagramDataSourcedAt?: string;
+  rateType?: 'sample_market_estimate' | 'creator_set';
+  disclaimer?: string;
+}
+
 export interface CreatorProfile {
   id: string;
   userId: string;
@@ -127,11 +135,24 @@ export interface CreatorProfile {
   createdAt?: string;
   updatedAt?: string;
   joinedDate?: string;
+  // Regional Hub
+  region?: 'India' | 'United States' | 'Dubai / UAE' | string;
+  countryCode?: 'IN' | 'US' | 'AE' | string;
+  countryFlag?: string;
+  // Provenance & Platform Sourcing
+  profileSource?: CreatorProfileSource;
+  isInstagramVerified?: boolean;
+  isAbeyCollabVerified?: boolean;
+  isClaimedOnAbeyCollab?: boolean;
+  instagramUrl?: string;
+  instagramUsername?: string;
+  dataAttribution?: CreatorDataAttribution;
 }
 
 export interface CreatorFilterParams {
   category?: string;
   platform?: PlatformType | 'all';
+  region?: string;
   searchQuery?: string;
   minFollowers?: number;
   maxFollowers?: number;
@@ -167,6 +188,7 @@ export type DeliverableType =
   | 'Instagram Reel'
   | 'Instagram Story Set (3x)'
   | 'Instagram Dedicated Post'
+  | 'Carousel Post'
   | 'YouTube Dedicated Video'
   | 'YouTube 60s Integration'
   | 'YouTube Short'

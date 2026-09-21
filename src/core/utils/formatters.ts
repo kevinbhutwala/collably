@@ -16,29 +16,12 @@ export { formatGlobalCurrency, convertAndFormat };
 
 export function formatCurrency(
   amount: number | string | null | undefined,
-  currency?: string,
+  currency: string = "USD",
   options?: { compact?: boolean; maximumFractionDigits?: number; minimumFractionDigits?: number }
 ): string {
   const num = typeof amount === "number" ? amount : parseFloat(String(amount ?? 0)) || 0;
-  let targetCurrency = currency;
-  if (!targetCurrency && typeof window !== "undefined") {
-    try {
-      const stored = localStorage.getItem("abeycollab_currency");
-      if (stored) {
-        targetCurrency = stored;
-      }
-    } catch {
-      // ignore
-    }
-  }
-
-  // If currency was omitted (base USD numeric value) and target currency is set and not USD, convert it
-  if (!currency && targetCurrency && targetCurrency !== "USD") {
-    const converted = convertCurrency(num, "USD", targetCurrency as SupportedCurrency);
-    return formatGlobalCurrency(converted, targetCurrency as SupportedCurrency, options);
-  }
-
-  return formatGlobalCurrency(num, (targetCurrency || "USD") as SupportedCurrency, options);
+  const targetCurrency = (currency || "USD") as SupportedCurrency;
+  return formatGlobalCurrency(num, targetCurrency, options);
 }
 
 export function formatPercentage(rate: number): string {

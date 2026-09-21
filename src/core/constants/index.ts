@@ -26,6 +26,7 @@ export const DELIVERABLE_TYPES: DeliverableType[] = [
   'Instagram Reel',
   'Instagram Story Set (3x)',
   'Instagram Dedicated Post',
+  'Carousel Post',
   'YouTube Dedicated Video',
   'YouTube 60s Integration',
   'YouTube Short',

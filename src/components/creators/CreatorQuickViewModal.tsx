@@ -21,6 +21,7 @@ import {
   Film,
   Camera,
   MessageSquare,
+  MapPin,
 } from "lucide-react";
 
 export interface CreatorQuickViewData {
@@ -46,7 +47,15 @@ export interface CreatorQuickViewData {
     specs: string;
     imageUrl: string;
   }>;
+  profileSource?: 'instagram_public' | 'abeycollab_verified' | 'demo_sample';
+  isInstagramVerified?: boolean;
+  isAbeyCollabVerified?: boolean;
+  isClaimedOnAbeyCollab?: boolean;
+  instagramUrl?: string;
+  isSampleRate?: boolean;
 }
+
+import { SocialIcon } from "@/components/ui/SocialIcons";
 
 interface CreatorQuickViewModalProps {
   creator: CreatorQuickViewData | null;
@@ -64,22 +73,25 @@ export function CreatorQuickViewModal({
   isBookmarked = false,
 }: CreatorQuickViewModalProps) {
   const { format } = useGlobalCurrency();
-  const [selectedMediaIdx, setSelectedMediaIdx] = useState(0);
 
   if (!creator) return null;
 
   const deliverables = creator.sampleDeliverables || [
     {
-      title: "4K Master Product Reel",
-      specs: "RED V-Raptor 8K • 60fps",
+      title: "60s Master Product Reel",
+      specs: "4K Master Production • Audio Mix",
       imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80",
     },
     {
-      title: "60s Dedicated Mid-roll Integration",
-      specs: "Sony FX3 • S-Log3 ProRes",
+      title: "Carousel / Story Feature Set",
+      specs: "Multi-Slide Asset Pack",
       imageUrl: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&auto=format&fit=crop&q=80",
     },
   ];
+
+  const cleanHandle = (creator.handle || "").replace(/^@/, "");
+  const igUrl = creator.instagramUrl || `https://www.instagram.com/${cleanHandle}/`;
+  const isInstagramSourced = creator.profileSource === "instagram_public" || !creator.isAbeyCollabVerified;
 
   return (
     <Modal
@@ -103,15 +115,9 @@ export function CreatorQuickViewModal({
 
           {/* Top Badges */}
           <div className="relative z-10 flex items-center justify-between">
-            <span className="px-3 py-1 rounded-full bg-black/60 dark:bg-[#14141E]/90 backdrop-blur-md border border-white/20 dark:border-white/15 text-xs font-mono font-bold flex items-center gap-1.5 text-white">
-              <Sparkles className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
-              <span>
-                {creator.matchScore != null
-                  ? typeof creator.matchScore === "number"
-                    ? `${creator.matchScore}% Match Affinity`
-                    : `${creator.matchScore}`
-                  : "AI Verified"}
-              </span>
+            <span className="px-3 py-1 rounded-full bg-black/70 dark:bg-[#14141E]/95 backdrop-blur-md border border-white/20 text-xs font-mono font-bold flex items-center gap-1.5 text-white">
+              <SocialIcon platform="instagram" colored={true} size={13} />
+              <span>Instagram Profile</span>
             </span>
 
             {onBookmarkToggle && (
@@ -130,24 +136,44 @@ export function CreatorQuickViewModal({
 
           {/* Bottom Portrait Info */}
           <div className="relative z-10 space-y-2 pt-24">
-            <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-[10px] font-mono font-extrabold uppercase">
-              {creator.category}
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-[10px] font-mono font-extrabold uppercase">
+                {creator.category}
+              </div>
+              {creator.location && (
+                <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[10px] font-mono font-bold">
+                  <MapPin className="w-3 h-3 text-[#FFD21F]" />
+                  <span>{creator.location.includes("India") ? "🇮🇳" : creator.location.includes("United States") ? "🇺🇸" : "🇦🇪"} {creator.location}</span>
+                </div>
+              )}
             </div>
             <h2 className="text-2xl font-black font-display text-white tracking-tight flex items-center gap-2">
               <span>{creator.name}</span>
-              <CheckCircle2 className="w-4 h-4 text-[#087F5B]" />
+              <span title="Verified on Instagram">
+                <CheckCircle2 className="w-4 h-4 text-[#0095F6] fill-[#0095F6] text-white" />
+              </span>
             </h2>
-            <p className="text-xs text-white/80 font-mono">{creator.handle}</p>
+            <a
+              href={igUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs text-white/90 hover:text-[#FFD21F] font-mono transition-colors"
+              title="Open Instagram profile in new tab"
+            >
+              <SocialIcon platform="instagram" size={13} />
+              <span>@{cleanHandle}</span>
+              <ExternalLink className="w-3 h-3 opacity-80" />
+            </a>
           </div>
         </div>
 
         {/* Right: Telemetry, Rate Cards & Direct Booking Action */}
-        <div className="md:w-7/12 p-6 sm:p-8 space-y-6 bg-white dark:bg-[#101018] flex flex-col justify-between">
-          <div className="space-y-6">
+        <div className="md:w-7/12 p-6 sm:p-8 space-y-5 bg-white dark:bg-[#101018] flex flex-col justify-between">
+          <div className="space-y-5">
             {/* Telemetry Strip */}
             <div className="grid grid-cols-3 gap-3 p-3.5 rounded-2xl bg-[#F8F8FC] dark:bg-white/5 border border-black/6 dark:border-white/10 text-left font-mono">
               <div>
-                <span className="text-[10px] text-[#7A7A8A] dark:text-[#A0A0B4] uppercase font-bold block">Verified Reach</span>
+                <span className="text-[10px] text-[#7A7A8A] dark:text-[#A0A0B4] uppercase font-bold block">IG Followers</span>
                 <span className="text-base sm:text-lg font-black text-[#0A0A0E] dark:text-white font-display">
                   {creator.reach}
                 </span>
@@ -159,28 +185,46 @@ export function CreatorQuickViewModal({
                 </span>
               </div>
               <div>
-                <span className="text-[10px] text-[#7A7A8A] dark:text-[#A0A0B4] uppercase font-bold block">Starting Rate</span>
-                <span className="text-base sm:text-lg font-black text-[#0A0A0E] dark:text-white font-display">
+                <span className="text-[10px] text-[#7A7A8A] dark:text-[#A0A0B4] uppercase font-bold block">Sample Rate</span>
+                <span className="text-base sm:text-lg font-black text-[#0A0A0E] dark:text-white font-display" title="Estimated benchmark">
+                  <span className="text-xs font-normal text-[#7A7A8A] mr-0.5">Est.</span>
                   {typeof creator.startingPrice === "number" ? format(creator.startingPrice, creator.currency || "USD") : creator.startingPrice}
                 </span>
               </div>
             </div>
 
+            {/* Sourcing & Provenance Alert */}
+            {isInstagramSourced && (
+              <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-[#0A0A0E] dark:text-[#E0E0EC] space-y-1">
+                <div className="flex items-center justify-between text-xs font-mono font-bold text-amber-800 dark:text-amber-400">
+                  <span className="flex items-center gap-1.5">
+                    <SocialIcon platform="instagram" colored={true} size={13} />
+                    <span>Instagram-Sourced Public Profile</span>
+                  </span>
+                  <span className="text-[9px] uppercase tracking-wider bg-amber-200/60 dark:bg-amber-950/60 px-2 py-0.5 rounded font-mono font-bold">
+                    Unclaimed
+                  </span>
+                </div>
+                <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-normal font-sans">
+                  Profile metadata is publicly sourced from Instagram. Deliverables and rates shown are demo market estimates for planning purposes.
+                </p>
+              </div>
+            )}
+
             {/* Bio / Summary */}
             <div className="space-y-1.5">
               <h4 className="text-xs font-bold uppercase tracking-wider text-[#7A7A8A] dark:text-[#A0A0B4] font-mono">
-                Creator Overview &amp; Niche
+                Public Instagram Bio
               </h4>
               <p className="text-xs sm:text-sm text-[#4A4A58] dark:text-[#C0C0D0] leading-relaxed font-sans">
-                {creator.bio ||
-                  `Specialized in ${creator.niche}. Delivering studio-grade 4K cinematic integrations, authentic product storytelling, and high-converting commercial rights.`}
+                {creator.bio}
               </p>
             </div>
 
             {/* Production Deliverables Reel */}
             <div className="space-y-2">
               <h4 className="text-xs font-bold uppercase tracking-wider text-[#7A7A8A] dark:text-[#A0A0B4] font-mono flex items-center justify-between">
-                <span>Verified Deliverable Cuts</span>
+                <span>Sample Deliverables (Demo Benchmarks)</span>
                 <span className="text-[10px] text-[#087F5B] dark:text-emerald-400 font-bold">100% Escrow Protected</span>
               </h4>
               <div className="grid grid-cols-2 gap-2.5">
@@ -207,51 +251,27 @@ export function CreatorQuickViewModal({
                 ))}
               </div>
             </div>
-
-            {/* Equipment / Production Tags */}
-            {creator.tags && creator.tags.length > 0 && (
-              <div className="flex flex-wrap gap-1.5 font-mono text-[10px]">
-                {creator.tags.map((tag) => {
-                  const isSpecial =
-                    tag.toLowerCase().includes("top creator") ||
-                    tag.toLowerCase().includes("elite tier") ||
-                    tag.toLowerCase().includes("verified creator") ||
-                    tag.toLowerCase().includes("established creator");
-                  return (
-                    <span
-                      key={tag}
-                      className={`px-2.5 py-1 rounded-full border text-[10px] font-medium transition-colors ${
-                        isSpecial
-                          ? "bg-[#FFD21F]/15 dark:bg-[#FFD21F]/20 border-[#FFD21F]/30 dark:border-[#FFD21F]/40 text-[#8A6500] dark:text-[#FFD21F] font-bold"
-                          : "bg-[#F4F4F8] dark:bg-white/10 border-black/6 dark:border-white/10 text-[#4A4A58] dark:text-[#D0D0E0]"
-                      }`}
-                    >
-                      {tag}
-                    </span>
-                  );
-                })}
-              </div>
-            )}
           </div>
 
           {/* Action CTAs */}
           <div className="pt-4 border-t border-black/8 dark:border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+            <a
+              href={igUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="py-2.5 rounded-full bg-[#F4F4F8] hover:bg-[#EAEAEF] dark:bg-white/5 dark:hover:bg-white/10 border border-black/10 dark:border-white/15 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all text-center flex items-center justify-center gap-1.5 shadow-xs"
+            >
+              <SocialIcon platform="instagram" colored={true} size={13} />
+              <span>Instagram</span>
+              <ExternalLink className="w-3 h-3 opacity-70" />
+            </a>
+
             <Link
               href={`/creators/${creator.id}`}
               onClick={onClose}
               className="py-2.5 rounded-full bg-white dark:bg-white/5 hover:bg-[#F8F8FC] dark:hover:bg-white/10 border border-black/10 dark:border-white/15 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all text-center flex items-center justify-center gap-1.5 shadow-xs"
             >
-              <span>Media Kit</span>
-              <ExternalLink className="w-3 h-3 text-[#7A7A8A] dark:text-[#A0A0B0]" />
-            </Link>
-
-            <Link
-              href={`/app/messages?recipientId=${(creator as any).userId || creator.id}&recipientName=${encodeURIComponent(creator.name)}`}
-              onClick={onClose}
-              className="py-2.5 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all text-center flex items-center justify-center gap-1.5 shadow-xs cursor-pointer"
-            >
-              <MessageSquare className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-white" />
-              <span>Message</span>
+              <span>Full Media Kit</span>
             </Link>
 
             <Link

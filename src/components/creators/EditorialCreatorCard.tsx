@@ -15,10 +15,12 @@ import {
   Heart,
   Eye,
   Video,
+  ExternalLink,
 } from "lucide-react";
 import { formatCurrency } from "@/core/utils/formatters";
 import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
 import { TitleIcon } from "@/components/ui/TitleIconBadge";
+import { SocialIcon } from "@/components/ui/SocialIcons";
 
 interface EditorialCreatorCardProps {
   creator: CreatorQuickViewData;
@@ -50,6 +52,10 @@ export function EditorialCreatorCard({
       ? format(creator.startingPrice, (creator as any).currency || "USD")
       : creator.startingPrice;
 
+  const cleanHandle = (creator.handle || "").replace(/^@/, "");
+  const igUrl = (creator as any).instagramUrl || `https://www.instagram.com/${cleanHandle}/`;
+  const isInstagramSourced = (creator as any).profileSource === "instagram_public" || !(creator as any).isAbeyCollabVerified;
+
   return (
     <InteractiveTiltCard
       maxTilt={8}
@@ -61,7 +67,7 @@ export function EditorialCreatorCard({
         <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden bg-[#0A0A0E]">
           {/* Main Primary Portrait */}
           <SafeImage
-            src={creator.avatarUrl || creator.heroImage || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800"}
+            src={creator.avatarUrl || creator.heroImage || "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800"}
             alt={creator.name}
             width={800}
             height={1000}
@@ -71,17 +77,9 @@ export function EditorialCreatorCard({
 
           {/* Top Badges */}
           <div className="absolute top-3 inset-x-3 flex items-center justify-between z-10">
-            <span className="px-2.5 py-1 rounded-full bg-black/60 dark:bg-[#14141E]/90 backdrop-blur-md text-[10px] font-mono font-bold text-white flex items-center gap-1 border border-white/15 dark:border-white/20">
-              <Sparkles className="w-3 h-3 text-[#FFD21F] fill-[#FFD21F]" />
-              {creator.matchScore != null ? (
-                <span>
-                  {typeof creator.matchScore === "number"
-                    ? `${creator.matchScore}% AI Match`
-                    : creator.matchScore}
-                </span>
-              ) : (
-                <span>AI Verified</span>
-              )}
+            <span className="px-2.5 py-1 rounded-full bg-black/70 dark:bg-[#14141E]/95 backdrop-blur-md text-[10px] font-mono font-bold text-white flex items-center gap-1.5 border border-white/20">
+              <SocialIcon platform="instagram" colored={true} size={12} />
+              <span>Instagram Profile</span>
             </span>
 
             <div className="flex items-center gap-1.5">
@@ -97,7 +95,11 @@ export function EditorialCreatorCard({
                 <Heart className={`w-3.5 h-3.5 ${localBookmarked ? "fill-current" : ""}`} />
               </button>
 
-              <span className="px-2.5 py-1 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-[10px] font-mono font-extrabold shadow-sm">
+              <span
+                className="px-2 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-[10px] font-mono font-extrabold shadow-sm flex items-center gap-1"
+                title="Sample Market Rate Estimate"
+              >
+                <span className="text-[8px] font-normal opacity-75">Est.</span>
                 {startingPriceDisplay}
               </span>
             </div>
@@ -124,18 +126,31 @@ export function EditorialCreatorCard({
                 <Play className="w-4 h-4 text-white fill-white opacity-90" />
               </div>
               <span className="absolute bottom-1 inset-x-1 text-[8px] font-mono font-bold text-white text-center truncate bg-black/70 rounded px-0.5">
-                4K Reel
+                Sample Reel
               </span>
             </motion.div>
           )}
 
           {/* Bottom Portrait Info */}
-          <div className="absolute bottom-3 inset-x-3 z-10 text-white space-y-0.5 max-w-[65%]">
-            <div className="flex items-center gap-1">
-              <h3 className="text-base font-bold font-display">{creator.name}</h3>
-              <CheckCircle2 className="w-3.5 h-3.5 text-[#087F5B]" />
+          <div className="absolute bottom-3 inset-x-3 z-10 text-white space-y-1 max-w-[68%]">
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <h3 className="text-base font-bold font-display leading-tight truncate">{creator.name}</h3>
+              <span title="Verified Instagram Account" className="inline-flex items-center shrink-0">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#0095F6] fill-[#0095F6] text-white" />
+              </span>
             </div>
-            <div className="flex items-center gap-1.5">
+            <a
+              href={igUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-1 text-[11px] font-mono text-white/80 hover:text-[#FFD21F] transition-colors"
+              title={`View @${cleanHandle} on Instagram`}
+            >
+              <span>@{cleanHandle}</span>
+              <ExternalLink className="w-2.5 h-2.5 opacity-70" />
+            </a>
+            <div className="flex items-center gap-1.5 pt-0.5">
               <TitleIcon title={creator.niche} category={creator.category} className="w-3 h-3 text-[#FFD21F] shrink-0 drop-shadow-xs" />
               <p className="text-[11px] text-white/90 font-sans truncate">{creator.niche}</p>
             </div>
@@ -145,15 +160,30 @@ export function EditorialCreatorCard({
         {/* Tags & Telemetry */}
         <div className="space-y-2">
           <div className="flex items-center justify-between text-xs font-mono text-[#5A5A68] dark:text-[#8E8EA4]">
-            <span className="font-bold text-[#0A0A0E] dark:text-white">{creator.reach} Reach</span>
+            <span className="font-bold text-[#0A0A0E] dark:text-white flex items-center gap-1">
+              <span>{creator.reach}</span>
+              <span className="text-[10px] font-normal text-[#7A7A8A]">IG reach</span>
+            </span>
             <span className="text-emerald-700 dark:text-emerald-400 font-bold bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded-full border border-emerald-200/60 dark:border-emerald-800 text-[10px]">
               {typeof creator.engagementRate === "number" ? `${creator.engagementRate}% ER` : creator.engagementRate}
             </span>
           </div>
 
-          {creator.tags && creator.tags.length > 0 && (
-            <div className="flex flex-wrap gap-1 font-mono text-[10px]">
-              {creator.tags.map((tag) => {
+          <div className="flex flex-wrap gap-1 font-mono text-[10px]">
+            {creator.location && (
+              <span className="px-2 py-0.5 rounded-md border text-[10px] font-mono font-bold flex items-center gap-1 bg-[#F4F4F8] dark:bg-[#181824] border-black/8 dark:border-white/10 text-[#0A0A0E] dark:text-[#E0E0EC]">
+                <span>{creator.location.includes("India") ? "🇮🇳" : creator.location.includes("United States") ? "🇺🇸" : "🇦🇪"}</span>
+                <span className="truncate max-w-[130px]">{creator.location}</span>
+              </span>
+            )}
+            {isInstagramSourced && (
+              <span className="px-2 py-0.5 rounded-md border text-[10px] flex items-center gap-1 bg-[#F4F4F8] dark:bg-[#181824] border-black/8 dark:border-white/10 text-[#4A4A58] dark:text-[#C0C0D4]">
+                <SocialIcon platform="instagram" colored={true} size={10} />
+                <span>IG Sourced</span>
+              </span>
+            )}
+            {creator.tags && creator.tags.length > 0 && (
+              creator.tags.slice(0, 2).map((tag) => {
                 const isSpecial =
                   tag.toLowerCase().includes("top creator") ||
                   tag.toLowerCase().includes("elite tier") ||
@@ -172,9 +202,9 @@ export function EditorialCreatorCard({
                     <span>{tag}</span>
                   </span>
                 );
-              })}
-            </div>
-          )}
+              })
+            )}
+          </div>
         </div>
       </div>
 
@@ -182,7 +212,7 @@ export function EditorialCreatorCard({
       <div className="pt-3 border-t border-black/6 dark:border-white/10 flex items-center justify-between text-xs gap-2">
         <button
           onClick={() => onQuickView(creator)}
-          className="px-3 py-1.5 rounded-full bg-[#F4F4F8] hover:bg-[#EAEAEF] dark:bg-[#1C1C28] dark:hover:bg-[#252535] text-[#0A0A0E] dark:text-[#E0E0EC] text-[11px] font-bold transition-colors flex items-center gap-1"
+          className="px-3 py-1.5 rounded-full bg-[#F4F4F8] hover:bg-[#EAEAEF] dark:bg-[#1C1C28] dark:hover:bg-[#252535] text-[#0A0A0E] dark:text-[#E0E0EC] text-[11px] font-bold transition-colors flex items-center gap-1 cursor-pointer"
         >
           <Eye className="w-3 h-3 text-[#7A7A8A]" />
           <span>Quick View</span>
@@ -192,7 +222,7 @@ export function EditorialCreatorCard({
           href={`/creators/${creator.id}`}
           className="px-3.5 py-1.5 rounded-full bg-[#FAF9F5] dark:bg-[#FFD21F] hover:bg-[#FFD21F] dark:hover:bg-[#FFE052] text-[#0A0A0E] font-sans font-bold text-xs transition-colors flex items-center gap-1 border border-black/8 dark:border-transparent hover-lift"
         >
-          <span>Book</span>
+          <span>Media Kit</span>
           <ArrowRight className="w-3 h-3" />
         </Link>
       </div>

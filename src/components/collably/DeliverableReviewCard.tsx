@@ -45,7 +45,7 @@ export function DeliverableReviewCard({
   currency = "USD",
   creatorName = "Elena Rostova",
   creatorHandle = "elenatech",
-  creatorAvatar = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100",
+  creatorAvatar = "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&auto=format&fit=crop&q=80",
   assetUrl = "https://drive.google.com/file/d/1a2b3c4d5e6f7g8h9/view?usp=sharing",
   notes = "Color graded to Linear brand guidelines. Rough cut audio mixed at -14 LUFS. Primary product onboarding b-roll starts at 04:12.",
   submittedAt,

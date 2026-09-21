@@ -12,48 +12,48 @@ export function CreatorReelsMarquee() {
   const reelCards = [
     {
       id: "reel-1",
-      creator: CENTRAL_CREATORS[0],
-      videoThumbnail: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=80",
-      tag: "4K YouTube Review",
-      title: "AI Hardware & SDK Teardown",
-      views: "88K Views",
+      creator: CENTRAL_CREATORS[0], // Marques Brownlee
+      videoThumbnail: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&auto=format&fit=crop&q=80",
+      tag: "Next-Gen Tech Reel",
+      title: "Next-Gen Smartphone & EV Teardown",
+      views: "650K Views",
       payoutUSD: 350,
     },
     {
       id: "reel-2",
-      creator: CENTRAL_CREATORS[2],
-      videoThumbnail: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop&q=80",
-      tag: "Fitness & Bio Reel",
-      title: "14-Day Recovery Protocol",
-      views: "140K Views",
+      creator: CENTRAL_CREATORS[2], // Sara Dietschy
+      videoThumbnail: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600&auto=format&fit=crop&q=80",
+      tag: "Studio Gear Vlog",
+      title: "Creative Entrepreneur Studio Build",
+      views: "190K Views",
       payoutUSD: 300,
     },
     {
       id: "reel-3",
-      creator: CENTRAL_CREATORS[1],
-      videoThumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80",
+      creator: CENTRAL_CREATORS[1], // Peter McKinnon
+      videoThumbnail: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&auto=format&fit=crop&q=80",
       tag: "RED Cinema Cut",
-      title: "Minimalist Architectural Design",
-      views: "95K Views",
+      title: "Visual Mastery & Camera Architecture",
+      views: "480K Views",
       payoutUSD: 275,
     },
     {
       id: "reel-4",
-      creator: CENTRAL_CREATORS[4],
-      videoThumbnail: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&auto=format&fit=crop&q=80",
-      tag: "Clean Skincare",
-      title: "Active Formulation Review",
-      views: "110K Views",
+      creator: CENTRAL_CREATORS[3], // Ali Abdaal
+      videoThumbnail: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&auto=format&fit=crop&q=80",
+      tag: "Productivity Guide",
+      title: "Evidence-Based Workflow Systems",
+      views: "320K Views",
       payoutUSD: 325,
     },
     {
       id: "reel-5",
-      creator: CENTRAL_CREATORS[3],
-      videoThumbnail: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&auto=format&fit=crop&q=80",
-      tag: "Full-Stack Dev",
-      title: "Cloud Infrastructure Teardown",
-      views: "72K Views",
-      payoutUSD: 245,
+      creator: CENTRAL_CREATORS[6], // Zach King
+      videoThumbnail: "https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&auto=format&fit=crop&q=80",
+      tag: "VFX Magic Reel",
+      title: "Mind-Bending Visual FX Illusion",
+      views: "4.2M Views",
+      payoutUSD: 500,
     },
   ];
 

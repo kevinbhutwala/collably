@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ShieldCheck,
@@ -15,7 +15,7 @@ import {
   Building2,
   Users,
 } from "lucide-react";
-import { formatCurrency } from "@/core/utils/formatters";
+import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
 
 interface EscrowStage {
   id: number;
@@ -27,58 +27,67 @@ interface EscrowStage {
   creatorAssurance: string;
 }
 
-const ESCROW_STAGES: EscrowStage[] = [
-  {
-    id: 0,
-    phase: "STEP 01",
-    title: "Protected Payment Upfront",
-    badge: "FUNDS SECURED",
-    description: `The brand sets aside the project budget (${formatCurrency(3500)}) safely before content creation starts.`,
-    brandAssurance: "Your budget stays protected. Money is only released when you approve the work.",
-    creatorAssurance: "Guaranteed payment. You know the funds are already there before you film.",
-  },
-  {
-    id: 1,
-    phase: "STEP 02",
-    title: "Draft Submission",
-    badge: "WORK DELIVERED",
-    description: "The creator shares a private preview link to their video draft and includes notes for the brand.",
-    brandAssurance: "Review the full draft at your own pace with creator notes right beside it.",
-    creatorAssurance: "Your delivery time is recorded and saved directly to the project timeline.",
-  },
-  {
-    id: 2,
-    phase: "STEP 03",
-    title: "Clear Feedback & Edits",
-    badge: "IN REVIEW",
-    description: "The brand watches the draft, shares feedback, and can request small tweaks if needed.",
-    brandAssurance: "Make sure the content meets your guidelines before you give final approval.",
-    creatorAssurance: "Feedback is specific and clear, so you can make fast adjustments without guesswork.",
-  },
-  {
-    id: 3,
-    phase: "STEP 04",
-    title: "1-Click Approval",
-    badge: "APPROVED",
-    description: "The brand clicks Approve. Commercial rights and final high-resolution files are unlocked right away.",
-    brandAssurance: "Immediate rights to use the video across your marketing channels.",
-    creatorAssurance: "Payment unlocks instantly upon approval with zero invoices to track down.",
-  },
-  {
-    id: 4,
-    phase: "STEP 05",
-    title: "Fast Direct Deposit",
-    badge: "PAID",
-    description: `Payment of ${formatCurrency(3150)} (90% of the project fee) is sent straight to the creator’s bank account.`,
-    brandAssurance: "Automatic receipt and invoice sent straight to your billing receipts.",
-    creatorAssurance: "Fast payouts directly to your bank account. Keep 90% of what you earn.",
-  },
-];
-
-
 export function ProtectedEscrowFlow() {
   const [activeStageIdx, setActiveStageIdx] = useState(0);
-  const activeStage = ESCROW_STAGES[activeStageIdx];
+  const { format } = useGlobalCurrency();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const displayBudget = mounted ? format(3500, "USD") : "$3,500";
+  const displayPayout = mounted ? format(3150, "USD") : "$3,150";
+
+  const escrowStages: EscrowStage[] = [
+    {
+      id: 0,
+      phase: "STEP 01",
+      title: "Protected Payment Upfront",
+      badge: "FUNDS SECURED",
+      description: `The brand sets aside the project budget (${displayBudget}) safely before content creation starts.`,
+      brandAssurance: "Your budget stays protected. Money is only released when you approve the work.",
+      creatorAssurance: "Guaranteed payment. You know the funds are already there before you film.",
+    },
+    {
+      id: 1,
+      phase: "STEP 02",
+      title: "Draft Submission",
+      badge: "WORK DELIVERED",
+      description: "The creator shares a private preview link to their video draft and includes notes for the brand.",
+      brandAssurance: "Review the full draft at your own pace with creator notes right beside it.",
+      creatorAssurance: "Your delivery time is recorded and saved directly to the project timeline.",
+    },
+    {
+      id: 2,
+      phase: "STEP 03",
+      title: "Clear Feedback & Edits",
+      badge: "IN REVIEW",
+      description: "The brand watches the draft, shares feedback, and can request small tweaks if needed.",
+      brandAssurance: "Make sure the content meets your guidelines before you give final approval.",
+      creatorAssurance: "Feedback is specific and clear, so you can make fast adjustments without guesswork.",
+    },
+    {
+      id: 3,
+      phase: "STEP 04",
+      title: "1-Click Approval",
+      badge: "APPROVED",
+      description: "The brand clicks Approve. Commercial rights and final high-resolution files are unlocked right away.",
+      brandAssurance: "Immediate rights to use the video across your marketing channels.",
+      creatorAssurance: "Payment unlocks instantly upon approval with zero invoices to track down.",
+    },
+    {
+      id: 4,
+      phase: "STEP 05",
+      title: "Fast Direct Deposit",
+      badge: "PAID",
+      description: `Payment of ${displayPayout} (90% of the project fee) is sent straight to the creator’s bank account.`,
+      brandAssurance: "Automatic receipt and invoice sent straight to your billing receipts.",
+      creatorAssurance: "Fast payouts directly to your bank account. Keep 90% of what you earn.",
+    },
+  ];
+
+  const activeStage = escrowStages[activeStageIdx];
 
   return (
     <section className="py-20 sm:py-28 bg-[#FAFAFC] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] select-none border-t border-black/8 dark:border-white/10 relative overflow-hidden font-sans">
@@ -111,7 +120,7 @@ export function ProtectedEscrowFlow() {
                 VERIFIED ESCROW ALLOCATION
               </span>
               <div className="flex items-baseline gap-2">
-                <span className="text-3xl sm:text-4xl font-black text-[#0A0A0E] dark:text-white font-display">{formatCurrency(3500)}</span>
+                <span suppressHydrationWarning className="text-3xl sm:text-4xl font-black text-[#0A0A0E] dark:text-white font-display">{displayBudget}</span>
                 <span className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-sans font-medium">Held in Stripe Connect Custody</span>
               </div>
             </div>
@@ -125,7 +134,7 @@ export function ProtectedEscrowFlow() {
 
           {/* 5-Phase Horizontal Step Rail */}
           <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none sm:grid sm:grid-cols-5 sm:gap-2.5 -mx-2 px-2 sm:mx-0 sm:px-0">
-            {ESCROW_STAGES.map((st, idx) => (
+            {escrowStages.map((st, idx) => (
               <button
                 key={st.id}
                 onClick={() => setActiveStageIdx(idx)}

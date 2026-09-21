@@ -133,7 +133,7 @@ export function StreamlinedPricing() {
                   </div>
 
                   <div className="flex items-baseline gap-1 font-mono pt-2">
-                    <span className="text-4xl font-black text-[#0A0A0E] dark:text-white font-display">{tier.price}</span>
+                    <span suppressHydrationWarning className="text-4xl font-black text-[#0A0A0E] dark:text-white font-display">{tier.price}</span>
                     <span className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-sans">{tier.period}</span>
                   </div>
 

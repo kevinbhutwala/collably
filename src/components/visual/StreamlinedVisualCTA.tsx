@@ -8,10 +8,11 @@ import { Modal } from "@/components/ui/Modal";
 import { SafeImage } from "@/components/ui/SafeImage";
 
 const AVATAR_STRIP = [
-  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200",
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200",
-  "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200",
-  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200",
+  "/creators/elena-rostova.jpg",
+  "/creators/ankur-warikoo.webp",
+  "/creators/prajakta-koli.png",
+  "/creators/mkbhd.jpg",
+  "/creators/tanmay-bhat.png",
 ];
 
 export function StreamlinedVisualCTA() {

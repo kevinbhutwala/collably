@@ -20,7 +20,7 @@ import { formatCurrency } from "@/core/utils/currency";
 
 export function AIMatchingExperience() {
   const [searchQuery, setSearchQuery] = useState(
-    "Find Indian fitness creators under ₹15K with 5%+ engagement"
+    "Find tech & creative lifestyle creators with high engagement and 4K production"
   );
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [analyzingStep, setAnalyzingStep] = useState("");
@@ -140,9 +140,21 @@ export function AIMatchingExperience() {
                     <div>
                       <h4 className="text-sm font-bold text-[#101310] font-sans flex items-center gap-1">
                         {creator.fullName}
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#087F5B]" />
+                        <svg className="w-3.5 h-3.5 fill-[#0095F6] text-white shrink-0 inline" viewBox="0 0 24 24">
+                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.25 14.5l-3.75-3.75 1.41-1.41 2.34 2.34 5.34-5.34 1.41 1.41-6.75 6.75z" />
+                        </svg>
                       </h4>
-                      <p className="text-xs text-[#626862] font-mono">@{creator.handle}</p>
+                      <div className="flex items-center gap-1.5">
+                        <a
+                          href={`https://www.instagram.com/${creator.handle}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs text-[#0095F6] hover:underline font-mono"
+                        >
+                          @{creator.handle}
+                        </a>
+                        <span className="text-[10px] text-[#8A908B] font-mono">• IG</span>
+                      </div>
                     </div>
                   </div>
 
@@ -151,19 +163,31 @@ export function AIMatchingExperience() {
                   </span>
                 </div>
 
+                {/* Sourcing Indicator */}
+                <div className="flex items-center justify-between text-[10px] font-mono px-2.5 py-1 rounded-md bg-[#F4F6F3] text-[#626862] border border-[#E2E6E1]">
+                  <span>Source: Real Instagram Profile</span>
+                  <span className="text-[#087F5B] font-semibold">Unclaimed</span>
+                </div>
+
                 {/* Metrics Rail */}
                 <div className="grid grid-cols-3 gap-2 p-3 rounded-xl bg-[#FCFCFA] border border-[#E2E6E1] text-center font-mono">
                   <div>
                     <span className="text-[10px] text-[#626862] block">REACH</span>
-                    <span className="text-xs font-bold text-[#101310]">{creator.totalFollowers > 999 ? `${(creator.totalFollowers / 1000).toFixed(0)}K` : creator.totalFollowers}</span>
+                    <span className="text-xs font-bold text-[#101310]">
+                      {creator.totalFollowers >= 1000000
+                        ? `${(creator.totalFollowers / 1000000).toFixed(1)}M`
+                        : creator.totalFollowers >= 1000
+                        ? `${(creator.totalFollowers / 1000).toFixed(0)}K`
+                        : creator.totalFollowers}
+                    </span>
                   </div>
                   <div>
                     <span className="text-[10px] text-[#626862] block">ENGAGEMENT</span>
                     <span className="text-xs font-bold text-[#087F5B]">{creator.avgEngagementRate}%</span>
                   </div>
                   <div>
-                    <span className="text-[10px] text-[#626862] block">RATE</span>
-                    <span className="text-xs font-bold text-[#101310]">{formatCurrency(creator.startingPrice || 18500)}</span>
+                    <span className="text-[10px] text-[#626862] block">EST. RATE</span>
+                    <span className="text-xs font-bold text-[#101310]">{formatCurrency(creator.startingPrice || 18500, (creator as any).currency || "USD")}</span>
                   </div>
                 </div>
 

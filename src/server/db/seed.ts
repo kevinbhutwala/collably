@@ -3,6 +3,7 @@ import { hashPassword } from "../auth/crypto";
 import crypto from "crypto";
 import { ALL_PLANS } from "@/core/constants";
 import { SubscriptionEntity, CreatorProfile, BrandProfile, AlgorithmWeightsConfig, PlatformMetricEntity, UserBadgeEntity } from "@/core/types";
+import { MOCK_BRANDS } from "@/mock/brands.mock";
 import { MOCK_CAMPAIGNS } from "@/mock/campaigns.mock";
 import { MOCK_CREATORS } from "@/mock/creators.mock";
 import { MOCK_CONVERSATIONS, MOCK_MESSAGES } from "@/mock/messages.mock";
@@ -66,7 +67,7 @@ export function getInitialSeedDatabase(): DatabaseState {
       email: "creator@abeycollab.io",
       passwordHash: creatorPasswordHash,
       role: "creator",
-      avatarUrl: "",
+      avatarUrl: "/creators/elena-rostova.jpg",
       verified: true,
       createdAt: now,
       updatedAt: now,
@@ -77,7 +78,7 @@ export function getInitialSeedDatabase(): DatabaseState {
       email: "creator@collably.io",
       passwordHash: creatorPasswordHash,
       role: "creator",
-      avatarUrl: "",
+      avatarUrl: "/creators/elena-rostova.jpg",
       verified: true,
       createdAt: now,
       updatedAt: now,
@@ -89,7 +90,7 @@ export function getInitialSeedDatabase(): DatabaseState {
       email: "brand@abeycollab.io",
       passwordHash: brandPasswordHash,
       role: "brand",
-      avatarUrl: "",
+      avatarUrl: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=400&auto=format&fit=crop&q=80",
       verified: true,
       createdAt: now,
       updatedAt: now,
@@ -100,7 +101,7 @@ export function getInitialSeedDatabase(): DatabaseState {
       email: "brand@collably.io",
       passwordHash: brandPasswordHash,
       role: "brand",
-      avatarUrl: "",
+      avatarUrl: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=400&auto=format&fit=crop&q=80",
       verified: true,
       createdAt: now,
       updatedAt: now,
@@ -112,7 +113,7 @@ export function getInitialSeedDatabase(): DatabaseState {
       email: "kevinbhutwala417@gmail.com",
       passwordHash: adminPasswordHash,
       role: "agency_admin",
-      avatarUrl: "",
+      avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80",
       verified: true,
       createdAt: now,
       updatedAt: now,
@@ -213,8 +214,8 @@ export function getInitialSeedDatabase(): DatabaseState {
       handle: "democreator",
       headline: "Technology & AI creator",
       bio: "A verified creator profile used to explore the AbeyCollab workspace.",
-      avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
-      coverImageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+      avatarUrl: "/creators/elena-rostova.jpg",
+      coverImageUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&auto=format&fit=crop&q=80",
       location: "Worldwide",
       languages: ["English"],
       primaryCategory: "Technology & AI",
@@ -230,6 +231,10 @@ export function getInitialSeedDatabase(): DatabaseState {
       availableForHire: true,
       profileCompleteness: 90,
       qualityScore: 92,
+      profileSource: "abeycollab_verified",
+      isAbeyCollabVerified: true,
+      isInstagramVerified: false,
+      isClaimedOnAbeyCollab: true,
       socialAccounts: [],
       audience: {
         topCountries: [{ country: "United States", percentage: 55 }, { country: "India", percentage: 20 }],
@@ -250,8 +255,8 @@ export function getInitialSeedDatabase(): DatabaseState {
       industry: "Technology & AI",
       headline: "A modern brand workspace",
       description: "A verified demo brand profile for testing campaign, payment, and creator workflows.",
-      logoUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
-      coverImageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+      logoUrl: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=400&auto=format&fit=crop&q=80",
+      coverImageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&auto=format&fit=crop&q=80",
       websiteUrl: "https://example.com",
       location: "San Francisco, CA",
       companySize: "11-50",
@@ -261,6 +266,7 @@ export function getInitialSeedDatabase(): DatabaseState {
       socialHandles: {},
       createdAt: now,
     },
+    ...MOCK_BRANDS.filter((b) => b.id !== "brand-demo"),
   ];
 
   // Seed baseline platform metrics for trending calculation
