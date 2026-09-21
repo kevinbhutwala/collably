@@ -32,40 +32,40 @@ export function ContactClient() {
   };
 
   return (
-    <div className="py-16 sm:py-24 bg-[#FAFAFC] text-[#0A0A0E] min-h-screen">
+    <div className="py-16 sm:py-24 bg-[#FAFAFC] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Column info */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-black/8 text-xs font-mono font-bold text-[#0A0A0E] shadow-xs">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 text-xs font-mono font-bold text-[#0A0A0E] dark:text-white shadow-xs">
               <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
               <span>Get in Touch</span>
             </div>
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
               Let&apos;s build an iconic campaign together.
             </h1>
-            <p className="text-base text-[#5A5A68] leading-relaxed font-sans font-medium">
+            <p className="text-base text-[#5A5A68] dark:text-[#8E8EA4] leading-relaxed font-sans font-medium">
               Whether you are a brand looking to launch a managed creator cohort or a talent agency seeking enterprise roster integration, our executive team is ready.
             </p>
 
-            <div className="space-y-4 pt-4 text-xs font-mono text-[#6A6A78]">
+            <div className="space-y-4 pt-4 text-xs font-mono text-[#6A6A78] dark:text-[#8E8EA4]">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-xl bg-white border border-black/8 flex items-center justify-center text-[#0A0A0E] shadow-xs">
+                <div className="w-8 h-8 rounded-xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 flex items-center justify-center text-[#0A0A0E] dark:text-[#FFD21F] shadow-xs">
                   <Mail className="w-4 h-4" />
                 </div>
-                <span className="text-[#0A0A0E] font-bold">partnerships@abeycollab.com</span>
+                <span className="text-[#0A0A0E] dark:text-white font-bold">partnerships@abeycollab.com</span>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-xl bg-white border border-black/8 flex items-center justify-center text-[#0A0A0E] shadow-xs">
+                <div className="w-8 h-8 rounded-xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 flex items-center justify-center text-[#0A0A0E] dark:text-[#FFD21F] shadow-xs">
                   <Building2 className="w-4 h-4" />
                 </div>
-                <span>San Francisco, CA • New York, NY • London, UK</span>
+                <span className="text-[#6A6A78] dark:text-[#8E8EA4]">San Francisco, CA • New York, NY • London, UK</span>
               </div>
             </div>
           </div>
 
           {/* Right Form Card */}
-          <div className="lg:col-span-7 p-8 sm:p-10 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6 text-[#0A0A0E]">
+          <div className="lg:col-span-7 p-8 sm:p-10 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6 text-[#0A0A0E] dark:text-white">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
@@ -94,16 +94,16 @@ export function ContactClient() {
                   required
                 />
                 <div className="space-y-1.5 text-left font-sans">
-                  <label className="block text-xs font-semibold text-[#0A0A0E]">Primary Goal</label>
+                  <label className="block text-xs font-semibold text-[#0A0A0E] dark:text-white">Primary Goal</label>
                   <select
                     value={formData.interest}
                     onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
-                    className="w-full bg-[#F8F8FC] border border-black/10 rounded-xl px-3.5 py-2.5 text-xs text-[#0A0A0E] focus:outline-none focus:border-[#FFD21F] shadow-xs"
+                    className="w-full bg-[#F8F8FC] dark:bg-[#161622] border border-black/10 dark:border-white/12 rounded-xl px-3.5 py-2.5 text-xs text-[#0A0A0E] dark:text-white focus:outline-none focus:border-[#FFD21F] shadow-xs cursor-pointer"
                   >
-                    <option value="Brand Campaign Management">Brand Campaign Management</option>
-                    <option value="Creator Talent Representation">Creator Talent Representation</option>
-                    <option value="Enterprise Retainer Consultation">Enterprise Retainer Consultation</option>
-                    <option value="Press & Inquiries">Press &amp; Inquiries</option>
+                    <option value="Brand Campaign Management" className="dark:bg-[#161622] text-[#0A0A0E] dark:text-white">Brand Campaign Management</option>
+                    <option value="Creator Talent Representation" className="dark:bg-[#161622] text-[#0A0A0E] dark:text-white">Creator Talent Representation</option>
+                    <option value="Enterprise Retainer Consultation" className="dark:bg-[#161622] text-[#0A0A0E] dark:text-white">Enterprise Retainer Consultation</option>
+                    <option value="Press & Inquiries" className="dark:bg-[#161622] text-[#0A0A0E] dark:text-white">Press &amp; Inquiries</option>
                   </select>
                 </div>
               </div>

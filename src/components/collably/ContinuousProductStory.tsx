@@ -308,23 +308,23 @@ export function ContinuousProductStory() {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div className="p-3.5 rounded-2xl bg-[#FFFDF5] dark:bg-[#1A1A28] border border-[#FFD21F]/40 space-y-2">
                           <div className="flex items-center justify-between">
-                            <span className="text-xs font-bold font-display text-[#0A0A0E] dark:text-white">Elena Rostova</span>
+                            <span className="text-xs font-bold font-display text-[#0A0A0E] dark:text-white">Sara Dietschy</span>
                             <span className="text-[10px] font-mono font-extrabold text-[#0A0A0E] bg-[#FFD21F] px-1.5 py-0.5 rounded">
-                              Elite
+                              Verified
                             </span>
                           </div>
-                          <p className="text-[11px] text-[#5A5A68] dark:text-[#8E8EA4]">485K Followers • AI &amp; Tech</p>
+                          <p className="text-[11px] text-[#5A5A68] dark:text-[#8E8EA4]">920K Followers • Tech &amp; Creative</p>
                           <div className="w-full h-1.5 rounded-full bg-emerald-500" />
                         </div>
 
                         <div className="p-3.5 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/6 dark:border-white/10 space-y-2">
                           <div className="flex items-center justify-between">
-                            <span className="text-xs font-bold font-display text-[#0A0A0E] dark:text-white">Marcus Vance</span>
+                            <span className="text-xs font-bold font-display text-[#0A0A0E] dark:text-white">Peter McKinnon</span>
                             <span className="text-[10px] font-mono font-extrabold text-[#0A0A0E] dark:text-white bg-black/10 dark:bg-white/10 px-1.5 py-0.5 rounded">
-                              Verified
+                              Benchmark
                             </span>
                           </div>
-                          <p className="text-[11px] text-[#5A5A68] dark:text-[#8E8EA4]">310K Followers • Design</p>
+                          <p className="text-[11px] text-[#5A5A68] dark:text-[#8E8EA4]">5.9M Followers • Cinema &amp; Photo</p>
                           <div className="w-full h-1.5 rounded-full bg-emerald-400" />
                         </div>
                       </div>
@@ -348,7 +348,7 @@ export function ContinuousProductStory() {
                           </div>
                           <div>
                             <h4 className="text-xs font-bold text-[#0A0A0E] dark:text-white">AI Match Analysis</h4>
-                            <p className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4]">Your Campaign × Elena Rostova</p>
+                            <p className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4]">Your Campaign × Sara Dietschy</p>
                           </div>
                         </div>
                         <span className="text-sm font-black font-display text-[#0A0A0E] dark:text-[#FFD21F]">Strong Match</span>

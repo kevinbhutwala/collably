@@ -40,18 +40,18 @@ interface HeroTalent {
 
 const HERO_TALENT: HeroTalent[] = [
   {
-    id: "elena",
-    name: "Elena Rostova",
-    handle: "@elenarostova",
-    niche: "AI & Consumer Tech",
-    reach: "485K Followers",
+    id: "sara",
+    name: "Sara Dietschy",
+    handle: "@saradietschy",
+    niche: "Creative Tech & Studio Productivity",
+    reach: "920K Followers",
     startingPrice: "$3,500",
     startingPriceAmount: 3500,
     matchScore: "AI Matched",
-    portrait: "/creators/elena-rostova.jpg",
+    portrait: "/creators/sara-dietschy.jpg",
     bRollPreview: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=80",
-    specs: "RED V-Raptor 8K • 60fps",
-    badgeText: "4K Master Reel",
+    specs: "Sony FX3 4K • S-Log3",
+    badgeText: "4K Studio Cut",
     verifiedSponsor: "Technology & AI",
   },
   {

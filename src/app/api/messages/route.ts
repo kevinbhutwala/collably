@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { messageRepo } from "@/server/repositories/message.repo";
 import { SecurityService } from "@/server/services/security.service";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);

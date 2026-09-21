@@ -47,7 +47,7 @@ export interface CreatorQuickViewData {
     specs: string;
     imageUrl: string;
   }>;
-  profileSource?: 'instagram_public' | 'abeycollab_verified' | 'demo_sample' | 'sample_benchmark';
+  profileSource?: 'instagram_public' | 'abeycollab_verified' | 'market_benchmark' | 'sample_benchmark';
   isSignedTalent?: boolean;
   cohortBadge?: string;
   turnaroundDays?: number;
@@ -188,7 +188,9 @@ export function CreatorQuickViewModal({
                 </span>
               </div>
               <div>
-                <span className="text-[10px] text-[#7A7A8A] dark:text-[#A0A0B4] uppercase font-bold block">Sample Rate</span>
+                <span className="text-[10px] text-[#7A7A8A] dark:text-[#A0A0B4] uppercase font-bold block">
+                  {creator.isSignedTalent ? "Rate Card" : "Benchmark Rate"}
+                </span>
                 <span className="text-base sm:text-lg font-black text-[#0A0A0E] dark:text-white font-display" title="Estimated benchmark">
                   <span className="text-xs font-normal text-[#7A7A8A] mr-0.5">Est.</span>
                   {typeof creator.startingPrice === "number" ? format(creator.startingPrice, creator.currency || "USD") : creator.startingPrice}
@@ -209,7 +211,7 @@ export function CreatorQuickViewModal({
                   </span>
                 </div>
                 <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-normal font-sans">
-                  Profile metadata is publicly sourced from Instagram. Deliverables and rates shown are demo market estimates for planning purposes.
+                  Profile metadata is publicly sourced from Instagram. Deliverables and rates shown are market reference benchmarks for campaign planning purposes.
                 </p>
               </div>
             )}
@@ -235,7 +237,7 @@ export function CreatorQuickViewModal({
                     ? "bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800"
                     : "bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-800"
                 }`}>
-                  {creator.isSignedTalent ? "Guaranteed 5-Day SLA" : "Sample Benchmark"}
+                  {creator.isSignedTalent ? "Guaranteed 5-Day SLA" : "Market Benchmark"}
                 </span>
               </div>
               <div className="grid grid-cols-2 gap-2.5">

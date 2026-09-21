@@ -3,6 +3,8 @@ import { crmRepo } from "@/server/repositories/crm.repo";
 import { brandRepo } from "@/server/repositories/brand.repo";
 import { verifySessionToken } from "@/server/auth/crypto";
 
+export const dynamic = "force-dynamic";
+
 function resolveBrandId(req: NextRequest, queryBrandId?: string): string {
   if (queryBrandId && queryBrandId !== "undefined") return queryBrandId;
   const token =

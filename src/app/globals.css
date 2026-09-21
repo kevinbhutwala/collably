@@ -641,8 +641,66 @@ html.lenis, html.lenis body {
 }
 
 /* ── 5. CARDS, WORKSPACES & PANELS ── */
-.dark .bg-white {
+.dark .bg-white,
+.dark [class*="bg-[#FFFFFF]"],
+.dark [class*="bg-[#ffffff]"] {
   background-color: #12121A !important;
+}
+
+.dark .bg-texture-paper-white {
+  background-color: #07070B !important;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(255, 210, 31, 0.08) 0%, rgba(20, 20, 32, 0.5) 40%, transparent 80%),
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.03) 1px, transparent 0),
+    linear-gradient(180deg, #07070B 0%, #0D0D14 50%, #08080C 100%) !important;
+  color: #F4F4F8 !important;
+}
+
+.dark .bg-texture-sand {
+  background-color: #0A0A0F !important;
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.03) 1px, transparent 0),
+    linear-gradient(180deg, #09090D 0%, #0E0E18 100%) !important;
+  color: #F4F4F8 !important;
+}
+
+.dark .bg-gold-mesh {
+  background: 
+    radial-gradient(circle at 50% 0%, rgba(255, 210, 31, 0.12) 0%, rgba(20, 20, 32, 0.8) 40%, #07070B 80%),
+    linear-gradient(135deg, #07070B 0%, #12121C 50%, #07070B 100%) !important;
+}
+
+.dark .bg-gold-gradient-hero {
+  background: linear-gradient(135deg, #0C0C14 0%, #12121C 40%, #181824 80%, #1E1E2C 100%) !important;
+  border: 1px solid rgba(255, 210, 31, 0.3) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 35px rgba(255, 210, 31, 0.1) !important;
+}
+
+.dark .bg-gold-glass {
+  background: rgba(14, 14, 22, 0.88) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 210, 31, 0.3) !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.08) !important;
+}
+
+.dark .bg-gold-glass-card {
+  background: rgba(18, 18, 28, 0.95) !important;
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 210, 31, 0.25) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+.dark .hero-headline,
+.dark .section-headline {
+  color: #F4F4F8 !important;
+}
+
+.dark .editorial-body {
+  color: #B0B0C4 !important;
+}
+
+.dark .micro-label {
+  color: #F4F4F8 !important;
 }
 
 .dark [class*="bg-[#FAFAFC]"],
@@ -725,8 +783,16 @@ html.lenis, html.lenis body {
 .dark .border-black\/15,
 .dark .divide-black\/5,
 .dark .divide-black\/8,
-.dark .divide-black\/10 {
-  border-color: rgba(255, 255, 255, 0.08);
+.dark .divide-black\/10,
+.dark [class*="border-[#E7E7E4]"],
+.dark [class*="border-[#e7e7e4]"],
+.dark [class*="border-[#E8E8EE]"],
+.dark [class*="border-[#e8e8ee]"],
+.dark [class*="border-[#E2E2EA]"],
+.dark [class*="border-[#e2e2ea]"],
+.dark [class*="border-[#EAEAEF]"],
+.dark [class*="border-[#eaeaef]"] {
+  border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 /* ── 8. HOVER & INTERACTIVE STATES ── */

@@ -95,11 +95,11 @@ export interface CreatorPortfolioItem {
 
 export type CreatorTier = 'Nano' | 'Micro' | 'Rising' | 'Established' | 'Mid-Tier' | 'Macro' | 'Elite' | 'Premium';
 
-export type CreatorProfileSource = 'instagram_public' | 'abeycollab_verified' | 'demo_sample' | 'sample_benchmark';
+export type CreatorProfileSource = 'instagram_public' | 'abeycollab_verified' | 'market_benchmark' | 'sample_benchmark';
 
 export interface CreatorDataAttribution {
   instagramDataSourcedAt?: string;
-  rateType?: 'sample_market_estimate' | 'creator_set';
+  rateType?: 'market_benchmark' | 'creator_set' | 'sample_market_estimate';
   disclaimer?: string;
 }
 

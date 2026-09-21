@@ -4,6 +4,8 @@ import { subscriptionService } from "@/server/services/subscription.service";
 import { verifySessionToken } from "@/server/auth/crypto";
 import { ALL_PLANS } from "@/core/constants";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest) {
   try {
     const token =

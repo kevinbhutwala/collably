@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { slaAutoReleaseWorker } from "@/server/services/sla-worker.service";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest) {
   try {
     const authHeader = req.headers.get("authorization");

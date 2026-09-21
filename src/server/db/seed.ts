@@ -6,7 +6,6 @@ import { SubscriptionEntity, CreatorProfile, BrandProfile, AlgorithmWeightsConfi
 import { MOCK_BRANDS } from "@/mock/brands.mock";
 import { MOCK_CAMPAIGNS } from "@/mock/campaigns.mock";
 import { MOCK_CREATORS, ELENA_ROSTOVA_PROFILE } from "@/mock/creators.mock";
-import { MOCK_CONVERSATIONS, MOCK_MESSAGES } from "@/mock/messages.mock";
 import { MOCK_COLLABORATIONS } from "@/mock/collaborations.mock";
 
 export const DEFAULT_ALGORITHM_CONFIG: AlgorithmWeightsConfig = {
@@ -60,48 +59,26 @@ export function getInitialSeedDatabase(): DatabaseState {
   const futureDate = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString();
 
   const initialUsers: UserEntity[] = [
-    // ── 1. Demo Creator ──
+    // ── 1. Verified Creator Account ──
     {
       id: "user-creator",
-      name: "Demo Creator",
+      name: "Creator Partner",
       email: "creator@abeycollab.io",
       passwordHash: creatorPasswordHash,
       role: "creator",
-      avatarUrl: "/creators/elena-rostova.jpg",
+      avatarUrl: "/creators/sara-dietschy.jpg",
       verified: true,
       createdAt: now,
       updatedAt: now,
     },
-    {
-      id: "user-creator-legacy",
-      name: "Demo Creator",
-      email: "creator@collably.io",
-      passwordHash: creatorPasswordHash,
-      role: "creator",
-      avatarUrl: "/creators/elena-rostova.jpg",
-      verified: true,
-      createdAt: now,
-      updatedAt: now,
-    },
-    // ── 2. Demo Brand ──
+    // ── 2. Verified Brand Account ──
     {
       id: "user-brand",
-      name: "Demo Brand",
+      name: "Brand Partner",
       email: "brand@abeycollab.io",
       passwordHash: brandPasswordHash,
       role: "brand",
-      avatarUrl: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=400&auto=format&fit=crop&q=80",
-      verified: true,
-      createdAt: now,
-      updatedAt: now,
-    },
-    {
-      id: "user-brand-legacy",
-      name: "Demo Brand",
-      email: "brand@collably.io",
-      passwordHash: brandPasswordHash,
-      role: "brand",
-      avatarUrl: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=400&auto=format&fit=crop&q=80",
+      avatarUrl: "/brands/linear.png",
       verified: true,
       createdAt: now,
       updatedAt: now,
@@ -215,19 +192,19 @@ export function getInitialSeedDatabase(): DatabaseState {
     {
       id: "brand-demo",
       userId: "user-brand",
-      companyName: "Demo Brand",
+      companyName: "Brand Partner",
       industry: "Technology & AI",
-      headline: "A modern brand workspace",
-      description: "A verified demo brand profile for testing campaign, payment, and creator workflows.",
-      logoUrl: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=400&auto=format&fit=crop&q=80",
-      coverImageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&auto=format&fit=crop&q=80",
-      websiteUrl: "https://example.com",
+      headline: "Strategic Brand Partner Workspace",
+      description: "Verified brand workspace for commissioning creator campaigns and managing escrow deliverables.",
+      logoUrl: "/brands/linear.png",
+      coverImageUrl: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&auto=format&fit=crop&q=80",
+      websiteUrl: "https://linear.app",
       location: "San Francisco, CA",
-      companySize: "11-50",
+      companySize: "51-200",
       verified: true,
-      activeCampaignsCount: 0,
-      totalSpent: 0,
-      socialHandles: {},
+      activeCampaignsCount: 1,
+      totalSpent: 45000,
+      socialHandles: { x: "linear" },
       createdAt: now,
     },
     ...MOCK_BRANDS.filter((b) => b.id !== "brand-demo"),
@@ -259,8 +236,8 @@ export function getInitialSeedDatabase(): DatabaseState {
     tickets: [],
     payments: [],
     mediaAssets: [],
-    conversations: [...MOCK_CONVERSATIONS],
-    messages: Object.values(MOCK_MESSAGES).flat(),
+    conversations: [],
+    messages: [],
     notifications: [],
     webhookEvents: [],
     aiUsage: [],

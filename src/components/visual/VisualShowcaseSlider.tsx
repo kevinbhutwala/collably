@@ -9,8 +9,8 @@ import { SafeImage } from "@/components/ui/SafeImage";
 const SHOWCASE_WORKS = [
   {
     title: "AIR MAX SNEAKER DROP",
-    brand: "Nike Running",
-    creator: "Elena Rostova",
+    brand: "Adidas Running",
+    creator: "Emma Chamberlain",
     mainImage: "https://images.unsplash.com/photo-1552346154-21d32810aba3?w=700&auto=format&fit=crop&q=80",
     overlappingThumb: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&auto=format&fit=crop&q=80",
     roas: "6.2× ROAS",
@@ -19,16 +19,16 @@ const SHOWCASE_WORKS = [
   {
     title: "FX3 CINEMA TEARDOWN",
     brand: "Sony Alpha",
-    creator: "Marcus Vance",
+    creator: "Peter McKinnon",
     mainImage: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=700&auto=format&fit=crop&q=80",
     overlappingThumb: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=80",
     roas: "4.8× ROAS",
     views: "980K Views",
   },
   {
-    title: "BIOHACKING RECOVERY",
-    brand: "TheraPulse Bio",
-    creator: "Sofia Chen",
+    title: "CREATIVE STUDIO PRODUCTIVITY",
+    brand: "Linear & Raycast",
+    creator: "Sara Dietschy",
     mainImage: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=700&auto=format&fit=crop&q=80",
     overlappingThumb: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300&auto=format&fit=crop&q=80",
     roas: "5.5× ROAS",
@@ -47,23 +47,23 @@ const SHOWCASE_WORKS = [
 
 export function VisualShowcaseSlider() {
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#FAF9F5] text-[#0A0A0E] select-none overflow-hidden border-t border-black/6 font-sans">
+    <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#FAF9F5] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] select-none overflow-hidden border-t border-black/6 dark:border-white/10 font-sans">
       <div className="max-w-7xl mx-auto w-full space-y-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/6 dark:border-white/10">
           <div className="space-y-2">
-            <span className="text-xs font-mono font-bold tracking-tight text-[#8A7000] uppercase flex items-center gap-1.5">
+            <span className="text-xs font-mono font-bold tracking-tight text-[#8A7000] dark:text-[#FFD21F] uppercase flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
               SELECTED CAMPAIGN DELIVERABLES
             </span>
-            <h2 className="text-2xl sm:text-4xl font-black font-display tracking-tight text-[#0A0A0E]">
+            <h2 className="text-2xl sm:text-4xl font-black font-display tracking-tight text-[#0A0A0E] dark:text-white">
               Crafted for High-Growth Brands.
             </h2>
           </div>
 
           <Link
             href="/case-studies"
-            className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#0A0A0E] hover:underline"
+            className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#0A0A0E] dark:text-white hover:underline"
           >
             <span>View All Case Studies</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -77,7 +77,7 @@ export function VisualShowcaseSlider() {
               key={work.title}
               maxTilt={8}
               glowColor="rgba(255, 210, 31, 0.25)"
-              className="rounded-3xl bg-white border border-black/8 hover:border-[#FFD21F] shadow-[0_12px_40px_rgba(0,0,0,0.06)] transition-all p-4 space-y-3 flex flex-col justify-between group cursor-pointer"
+              className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 hover:border-[#FFD21F] dark:hover:border-[#FFD21F] shadow-[0_12px_40px_rgba(0,0,0,0.06)] dark:shadow-[0_12px_36px_rgba(0,0,0,0.4)] transition-all p-4 space-y-3 flex flex-col justify-between group cursor-pointer"
             >
               {/* Overlapping Image Visual */}
               <div className="relative aspect-[4/4.5] w-full rounded-2xl overflow-hidden bg-[#0A0A0E]">
@@ -91,7 +91,7 @@ export function VisualShowcaseSlider() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
 
                 {/* Overlapping Floating Creator Avatar Thumbnail */}
-                <div className="absolute bottom-12 right-3 w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-lg bg-black z-20">
+                <div className="absolute bottom-12 right-3 w-12 h-12 rounded-full overflow-hidden border-2 border-white dark:border-white/20 shadow-lg bg-black z-20">
                   <SafeImage
                     src={work.overlappingThumb}
                     alt={work.creator}
@@ -119,11 +119,11 @@ export function VisualShowcaseSlider() {
               </div>
 
               {/* Action */}
-              <div className="pt-2 border-t border-black/6 flex items-center justify-between text-xs font-mono text-[#6A6A78]">
+              <div className="pt-2 border-t border-black/6 dark:border-white/10 flex items-center justify-between text-xs font-mono text-[#6A6A78] dark:text-[#8E8EA4]">
                 <span>Campaign Master</span>
                 <Link
                   href="/case-studies"
-                  className="text-xs font-bold text-[#0A0A0E] hover:underline flex items-center gap-1"
+                  className="text-xs font-bold text-[#0A0A0E] dark:text-white hover:text-[#8A7000] dark:hover:text-[#FFD21F] flex items-center gap-1 transition-colors"
                 >
                   <span>Reel</span>
                   <ArrowRight className="w-3 h-3" />

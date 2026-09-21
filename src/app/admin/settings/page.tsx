@@ -535,7 +535,7 @@ export default function AdminSettingsPage() {
       {config && (
         <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
           <div className="flex items-center gap-2 text-[#0A0A0E] dark:text-white font-bold text-sm font-display">
-            <Award className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+            <Award className="w-4 h-4 text-amber-500 dark:text-amber-400" />
             <span>Rising Creator Heuristics & Reputation Thresholds</span>
           </div>
 
@@ -544,7 +544,7 @@ export default function AdminSettingsPage() {
             <div className="p-4 rounded-2xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
               <div className="flex justify-between font-semibold">
                 <span>Rising Follower Cap</span>
-                <span className="font-mono font-bold text-purple-700 dark:text-purple-300">
+                <span className="font-mono font-bold text-amber-700 dark:text-amber-300">
                   {Math.round(config.risingCriteria.maxFollowers / 1000)}k Max
                 </span>
               </div>
@@ -560,7 +560,7 @@ export default function AdminSettingsPage() {
                     risingCriteria: { ...config.risingCriteria, maxFollowers: parseInt(e.target.value) },
                   })
                 }
-                className="w-full accent-purple-600 cursor-pointer"
+                className="w-full accent-amber-500 cursor-pointer"
               />
               <p className="text-[10px] text-[#5A5A68] dark:text-[#9A9AA6]">Creators under this cap qualify for Rising status</p>
             </div>
@@ -569,7 +569,7 @@ export default function AdminSettingsPage() {
             <div className="p-4 rounded-2xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
               <div className="flex justify-between font-semibold">
                 <span>Rising Min Engagement</span>
-                <span className="font-mono font-bold text-purple-700 dark:text-purple-300">
+                <span className="font-mono font-bold text-amber-700 dark:text-amber-300">
                   {config.risingCriteria.minEngagementRate}%
                 </span>
               </div>
@@ -585,7 +585,7 @@ export default function AdminSettingsPage() {
                     risingCriteria: { ...config.risingCriteria, minEngagementRate: parseFloat(e.target.value) },
                   })
                 }
-                className="w-full accent-purple-600 cursor-pointer"
+                className="w-full accent-amber-500 cursor-pointer"
               />
               <p className="text-[10px] text-[#5A5A68] dark:text-[#9A9AA6]">Required engagement rate to trigger Rising badge</p>
             </div>

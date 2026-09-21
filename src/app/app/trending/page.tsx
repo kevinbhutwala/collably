@@ -219,7 +219,7 @@ export default function DedicatedTrendingPage() {
               : "bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/6 dark:border-white/8"
           )}
         >
-          <Award className="w-3.5 h-3.5 text-purple-500" />
+          <Award className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
           <span>Top Performers</span>
         </button>
 

@@ -25,6 +25,8 @@ function checkAdminAuth(req: NextRequest): boolean {
   );
 }
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest) {
   try {
     const isAdmin = checkAdminAuth(req);

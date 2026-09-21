@@ -3,6 +3,8 @@ import { messageRepo } from "@/server/repositories/message.repo";
 import { SecurityService } from "@/server/services/security.service";
 import { db } from "@/server/db/database";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest) {
   try {
     const session = SecurityService.getSession(req);

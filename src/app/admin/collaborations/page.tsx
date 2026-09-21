@@ -261,7 +261,7 @@ export default function AdminCollaborationsPage() {
                         </span>
                       )}
                       {isDisputed && (
-                        <span className="px-2 py-0.5 rounded-full bg-purple-50 dark:bg-purple-950/40 text-purple-800 dark:text-purple-300 border border-purple-300 dark:border-purple-700/50 text-[10px] font-mono font-bold flex items-center gap-1">
+                        <span className="px-2 py-0.5 rounded-full bg-rose-50 dark:bg-rose-950/40 text-rose-800 dark:text-rose-300 border border-rose-300 dark:border-rose-700/50 text-[10px] font-mono font-bold flex items-center gap-1">
                           <Scale className="w-3 h-3" /> DISPUTED
                         </span>
                       )}

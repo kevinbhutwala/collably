@@ -3,6 +3,8 @@ import { creatorRepo } from "@/server/repositories/creator.repo";
 import { SecurityService } from "@/server/services/security.service";
 import { calculateTotalFollowers, calculateAvgEngagementRate, getCreatorTier } from "@/core/utils/social";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
   try {
     const creator = creatorRepo.getById(params.id) || creatorRepo.getByUserId(params.id);

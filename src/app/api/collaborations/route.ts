@@ -4,6 +4,8 @@ import { verifySessionToken } from "@/server/auth/crypto";
 import { db } from "@/server/db/database";
 import { Collaboration } from "@/core/types";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);

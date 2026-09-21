@@ -109,12 +109,20 @@ export function AppNavbar() {
 
   const currentTitle = getScreenTitle(pathname);
 
-  const creatorNavItems = [
+  interface NavItem {
+    href: string;
+    label: string;
+    icon: any;
+    badge?: string;
+    highlight?: boolean;
+  }
+
+  const creatorNavItems: NavItem[] = [
     { href: "/app/dashboard", label: "Dashboard", icon: LayoutDashboard },
-    { href: "/app/campaigns", label: "Find Campaigns", icon: Compass, badge: "8 live" },
+    { href: "/app/campaigns", label: "Find Campaigns", icon: Compass },
     { href: "/app/applications", label: "My Applications", icon: Briefcase },
-    { href: "/app/collaborations", label: "My Deals & Projects", icon: FileCheck2, badge: "3 active" },
-    { href: "/app/messages", label: "Messages", icon: MessageSquare, badge: "1" },
+    { href: "/app/collaborations", label: "My Deals & Projects", icon: FileCheck2 },
+    { href: "/app/messages", label: "Messages", icon: MessageSquare },
     { href: "/app/earnings", label: "Earnings & Payouts", icon: Wallet },
     { href: "/app/analytics", label: "Audience Analytics", icon: BarChart3 },
     { href: "/app/profile", label: "Media Kit & Profile", icon: Sparkles },
@@ -122,21 +130,21 @@ export function AppNavbar() {
     { href: "/app/settings", label: "Account & Plan", icon: Settings },
   ];
 
-  const brandNavItems = [
+  const brandNavItems: NavItem[] = [
     { href: "/app/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { href: "/app/brand/campaigns/create", label: "Post Campaign", icon: Plus, highlight: true },
-    { href: "/app/brand/campaigns", label: "My Campaigns", icon: Briefcase, badge: "3" },
+    { href: "/app/brand/campaigns", label: "My Campaigns", icon: Briefcase },
     { href: "/app/brand/creators", label: "Find Creators", icon: Users },
     { href: "/app/brand/crm", label: "Creator Contacts & CRM", icon: FolderGit2 },
     { href: "/app/brand/shortlists", label: "Shortlisted Talent", icon: Layers },
-    { href: "/app/collaborations", label: "Active Deals & Escrow", icon: FileCheck2, badge: "3" },
+    { href: "/app/collaborations", label: "Active Deals & Escrow", icon: FileCheck2 },
     { href: "/app/messages", label: "Messages", icon: MessageSquare },
     { href: "/app/brand/analytics", label: "Campaign Results & ROI", icon: BarChart3 },
     { href: "/app/support", label: "Help & Support", icon: HelpCircle },
     { href: "/app/settings", label: "Account & Plan", icon: Settings },
   ];
 
-  const adminNavItems = [
+  const adminNavItems: NavItem[] = [
     { href: "/admin", label: "Admin Overview", icon: LayoutDashboard },
     { href: "/admin/creators", label: "Creator Verification", icon: Users, badge: "Pending" },
     { href: "/admin/brands", label: "Brand Accounts", icon: Briefcase },

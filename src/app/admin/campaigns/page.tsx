@@ -3,13 +3,12 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Campaign } from "@/core/types";
-import { MOCK_CAMPAIGNS } from "@/mock/campaigns.mock";
 import { formatCurrency } from "@/core/utils/formatters";
 import { useUIStore } from "@/stores/ui.store";
 
 export default function AdminCampaignsQueuePage() {
   const { addToast } = useUIStore();
-  const [campaigns, setCampaigns] = useState<Campaign[]>(MOCK_CAMPAIGNS);
+  const [campaigns, setCampaigns] = useState<Campaign[]>([]);
   const [loading, setLoading] = useState(true);
 
   const fetchCampaigns = async () => {
@@ -17,12 +16,10 @@ export default function AdminCampaignsQueuePage() {
       const res = await fetch("/api/campaigns", { cache: "no-store" });
       if (res.ok) {
         const data = await res.json();
-        if (Array.isArray(data) && data.length > 0) {
-          setCampaigns(data);
-        }
+        setCampaigns(Array.isArray(data) ? data : []);
       }
     } catch {
-      // Keep mock fallback
+      setCampaigns([]);
     } finally {
       setLoading(false);
     }
@@ -84,8 +81,13 @@ export default function AdminCampaignsQueuePage() {
       </div>
 
       <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
-        <div className="divide-y divide-black/5 dark:divide-white/5">
-          {campaigns.map((c) => (
+        {loading ? (
+          <div className="py-12 text-center text-xs font-mono text-[#7A7A8A]">Loading campaign queue...</div>
+        ) : campaigns.length === 0 ? (
+          <div className="py-12 text-center text-xs font-mono text-[#7A7A8A]">No campaigns submitted yet.</div>
+        ) : (
+          <div className="divide-y divide-black/5 dark:divide-white/5">
+            {campaigns.map((c) => (
             <div key={c.id} className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
@@ -132,7 +134,8 @@ export default function AdminCampaignsQueuePage() {
               </div>
             </div>
           ))}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );

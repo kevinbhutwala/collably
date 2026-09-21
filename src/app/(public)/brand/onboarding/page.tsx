@@ -15,22 +15,22 @@ import { useGlobalCurrency } from "@/context/CurrencyContext";
 
 export default function BrandOnboardingWizardPage() {
   const router = useRouter();
-  const { setRole } = useAuthStore();
+  const { user, setRole } = useAuthStore();
   const { addToast } = useUIStore();
   const { format } = useGlobalCurrency();
   const [step, setStep] = useState(1);
   const totalSteps = 5;
 
   const [formData, setFormData] = useState({
-    companyName: "Linear Dynamics",
+    companyName: "",
     industry: "Developer Tools & AI",
-    website: "https://linear.app",
-    location: "San Francisco, CA",
-    headline: "The issue tracker built for high-performance software teams.",
-    description: "Linear helps streamline software projects, sprints, tasks, and bug tracking.",
+    website: "",
+    location: "",
+    headline: "",
+    description: "",
     budgetTier: "scale",
     targetGoals: ["Developer Awareness", "Signups & Free Trial Conversions", "Product Launch Buzz"],
-    teamMembers: "sarah@linear.app, alex@linear.app",
+    teamMembers: user?.email || "",
   });
 
   const handleNext = () => {
@@ -52,21 +52,21 @@ export default function BrandOnboardingWizardPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAFAFC] text-[#0A0A0E] py-12 px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center">
+    <div className="min-h-screen bg-[#FAFAFC] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] py-12 px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center">
       <div className="w-full max-w-3xl space-y-8">
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-black/8 text-xs font-mono font-bold text-[#0A0A0E] shadow-xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 text-xs font-mono font-bold text-[#0A0A0E] dark:text-white shadow-xs">
             <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
             <span>Brand Enterprise Onboarding • Step {step} of {totalSteps}</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
             Configure Your Brand Workspace
           </h1>
-          <p className="text-sm text-[#5A5A68] font-sans font-medium">
+          <p className="text-sm text-[#5A5A68] dark:text-[#8E8EA4] font-sans font-medium">
             Set up your company profile, escrow parameters, and target creator cohorts.
           </p>
 
-          <div className="w-full h-2 rounded-full bg-black/5 overflow-hidden mt-4">
+          <div className="w-full h-2 rounded-full bg-black/5 dark:bg-white/10 overflow-hidden mt-4">
             <div
               className="h-full bg-[#FFD21F] transition-all duration-300 rounded-full"
               style={{ width: `${(step / totalSteps) * 100}%` }}
@@ -74,22 +74,24 @@ export default function BrandOnboardingWizardPage() {
           </div>
         </div>
 
-        <div className="p-8 sm:p-12 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6 text-[#0A0A0E]">
+        <div className="p-8 sm:p-12 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8]">
           {/* Step 1: Company Profile */}
           {step === 1 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-[#0A0A0E] font-display">Step 1: Company Identity</h3>
+              <h3 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">Step 1: Company Identity</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
                   label="Company / Organization Name"
                   value={formData.companyName}
                   onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
+                  placeholder="e.g. Acme Corp"
                   required
                 />
                 <Input
                   label="Primary Industry"
                   value={formData.industry}
                   onChange={(e) => setFormData({ ...formData, industry: e.target.value })}
+                  placeholder="e.g. Technology & AI"
                   required
                 />
               </div>
@@ -98,12 +100,14 @@ export default function BrandOnboardingWizardPage() {
                   label="Official Website URL"
                   value={formData.website}
                   onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                  placeholder="https://example.com"
                   required
                 />
                 <Input
                   label="Headquarters Location"
                   value={formData.location}
                   onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                  placeholder="e.g. San Francisco, CA"
                   required
                 />
               </div>
@@ -113,16 +117,18 @@ export default function BrandOnboardingWizardPage() {
           {/* Step 2: Value Proposition & Narrative */}
           {step === 2 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-[#0A0A0E] font-display">Step 2: Brand Tagline &amp; Mission</h3>
+              <h3 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">Step 2: Brand Tagline &amp; Mission</h3>
               <Input
                 label="Headline Value Proposition"
                 value={formData.headline}
                 onChange={(e) => setFormData({ ...formData, headline: e.target.value })}
+                placeholder="e.g. Developer productivity platform built for high-performance teams"
               />
               <Textarea
                 label="Company Overview (Visible on Campaign Briefs)"
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                placeholder="Briefly describe what your product does and what kind of creator partnerships you are looking for..."
                 rows={4}
               />
             </div>
@@ -131,8 +137,8 @@ export default function BrandOnboardingWizardPage() {
           {/* Step 3: Campaign Budget Tiers */}
           {step === 3 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-[#0A0A0E] font-display">Step 3: Estimated Monthly Campaign Budget</h3>
-              <p className="text-xs text-[#5A5A68] font-sans font-medium">Helps match you with creator cohorts within your target budget tier.</p>
+              <h3 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">Step 3: Estimated Monthly Campaign Budget</h3>
+              <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] font-sans font-medium">Helps match you with creator cohorts within your target budget tier.</p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
                 {[
                   { id: "growth", label: `${format(5000, "USD")} - ${format(15000, "USD")} / mo` },
@@ -146,7 +152,7 @@ export default function BrandOnboardingWizardPage() {
                     className={`p-4 rounded-xl border text-center font-bold transition-all ${
                       formData.budgetTier === tier.id
                         ? "bg-[#FFD21F] text-[#0A0A0E] border-black/10 shadow-xs"
-                        : "bg-[#F8F8FC] text-[#6A6A78] border-black/5 hover:text-[#0A0A0E]"
+                        : "bg-[#F8F8FC] dark:bg-[#181824] text-[#6A6A78] dark:text-[#A0A0B4] border-black/5 dark:border-white/10 hover:text-[#0A0A0E] dark:hover:text-white"
                     }`}
                   >
                     {tier.label}
@@ -159,7 +165,7 @@ export default function BrandOnboardingWizardPage() {
           {/* Step 4: Marketing Objectives */}
           {step === 4 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-[#0A0A0E] font-display">Step 4: Primary Campaign Objectives</h3>
+              <h3 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">Step 4: Primary Campaign Objectives</h3>
               <div className="grid grid-cols-2 gap-3 text-xs">
                 {[
                   "Developer Awareness",
@@ -169,7 +175,7 @@ export default function BrandOnboardingWizardPage() {
                   "App Installs & Downloads",
                   "SEO & Thought Leadership",
                 ].map((obj) => (
-                  <label key={obj} className="p-3.5 rounded-xl bg-[#F8F8FC] border border-black/5 flex items-center gap-2.5 cursor-pointer hover:border-[#FFD21F]">
+                  <label key={obj} className="p-3.5 rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 flex items-center gap-2.5 cursor-pointer hover:border-[#FFD21F] dark:hover:border-[#FFD21F]">
                     <input
                       type="checkbox"
                       checked={formData.targetGoals.includes(obj)}
@@ -179,7 +185,7 @@ export default function BrandOnboardingWizardPage() {
                       }}
                       className="rounded text-[#FFD21F] focus:ring-[#FFD21F]"
                     />
-                    <span className="font-medium text-[#0A0A0E] font-sans">{obj}</span>
+                    <span className="font-medium text-[#0A0A0E] dark:text-white font-sans">{obj}</span>
                   </label>
                 ))}
               </div>
@@ -189,7 +195,7 @@ export default function BrandOnboardingWizardPage() {
           {/* Step 5: Team Seats & Escrow Confirmation */}
           {step === 5 && (
             <div className="space-y-6">
-              <h3 className="text-xl font-bold text-[#0A0A0E] font-display">Step 5: Team Access &amp; Escrow Protection</h3>
+              <h3 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">Step 5: Team Access &amp; Escrow Protection</h3>
               <Input
                 label="Invite Teammate Emails"
                 placeholder="colleague@brand.com, manager@agency.com"
@@ -197,11 +203,11 @@ export default function BrandOnboardingWizardPage() {
                 value={formData.teamMembers}
                 onChange={(e) => setFormData({ ...formData, teamMembers: e.target.value })}
               />
-              <div className="p-6 rounded-2xl bg-[#F8F8FC] border border-black/5 flex items-start gap-3">
-                <ShieldCheck className="w-5 h-5 text-[#0A0A0E] shrink-0 mt-0.5" />
+              <div className="p-6 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 flex items-start gap-3">
+                <ShieldCheck className="w-5 h-5 text-[#0A0A0E] dark:text-[#FFD21F] shrink-0 mt-0.5" />
                 <div className="space-y-1">
-                  <h4 className="text-xs font-bold text-[#0A0A0E] font-display">100% Escrow Milestone Protection</h4>
-                  <p className="text-xs text-[#5A5A68] leading-relaxed font-sans font-medium">
+                  <h4 className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">100% Escrow Milestone Protection</h4>
+                  <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] leading-relaxed font-sans font-medium">
                     Your campaign funds remain secured in the AbeyCollab escrow vault until your marketing team reviews and signs off on deliverables.
                   </p>
                 </div>
@@ -210,7 +216,7 @@ export default function BrandOnboardingWizardPage() {
           )}
 
           {/* Navigation Controls */}
-          <div className="flex items-center justify-between pt-6 border-t border-black/8">
+          <div className="flex items-center justify-between pt-6 border-t border-black/8 dark:border-white/10">
             <Button
               variant="secondary"
               size="md"

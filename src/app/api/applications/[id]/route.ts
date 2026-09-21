@@ -3,6 +3,8 @@ import { campaignRepo } from "@/server/repositories/campaign.repo";
 import { applicationService } from "@/server/services/application.service";
 import { SecurityService } from "@/server/services/security.service";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(
   req: NextRequest,
   { params }: { params: { id: string } }

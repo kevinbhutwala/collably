@@ -3,6 +3,8 @@ import { collaborationRepo } from "@/server/repositories/collaboration.repo";
 import { auditRepo } from "@/server/repositories/audit.repo";
 import { SecurityService } from "@/server/services/security.service";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
   try {
     const collab = collaborationRepo.getById(params.id);

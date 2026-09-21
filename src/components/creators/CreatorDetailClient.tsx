@@ -55,7 +55,7 @@ export function CreatorDetailClient({
 
   if (loading) {
     return (
-      <div className="py-32 text-center bg-[#FAFAFC] text-[#0A0A0E] min-h-screen flex items-center justify-center">
+      <div className="py-32 text-center bg-[#FAFAFC] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] min-h-screen flex items-center justify-center">
         <CreativeLoader
           size="lg"
           label="Loading Creator Media Kit"
@@ -67,10 +67,10 @@ export function CreatorDetailClient({
 
   if (!creator) {
     return (
-      <div className="py-32 text-center space-y-4 bg-[#FAFAFC] text-[#0A0A0E] min-h-screen">
-        <h2 className="text-2xl font-bold font-display">Creator profile not found</h2>
+      <div className="py-32 text-center space-y-4 bg-[#FAFAFC] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] min-h-screen">
+        <h2 className="text-2xl font-bold font-display text-[#0A0A0E] dark:text-white">Creator profile not found</h2>
         <Link href="/creators">
-          <button className="px-6 py-2.5 rounded-full bg-white border border-black/10 text-xs font-bold text-[#0A0A0E] hover:bg-[#F5F5F9]">
+          <button className="px-6 py-2.5 rounded-full bg-white dark:bg-[#14141E] border border-black/10 dark:border-white/10 text-xs font-bold text-[#0A0A0E] dark:text-white hover:bg-[#F5F5F9] dark:hover:bg-[#1C1C28] cursor-pointer">
             Back to Directory
           </button>
         </Link>
@@ -265,14 +265,14 @@ export function CreatorDetailClient({
               <div className="flex items-center justify-between flex-wrap gap-2">
                 <div>
                   <h2 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">
-                    Sample Deliverables &amp; Market Estimates
+                    Deliverables &amp; Rate Benchmarks
                   </h2>
                   <p className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-sans mt-0.5">
-                    Benchmark estimates based on public reach. Final quotes are confirmed upon campaign brief review.
+                    Benchmark estimates based on verified reach. Final quotes are confirmed upon campaign brief review.
                   </p>
                 </div>
                 <span className="px-2.5 py-1 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#8A6500] dark:text-[#FFD21F] text-[10px] font-mono font-bold">
-                  Demo Rate Estimate
+                  {creator.isSignedTalent ? "Verified Rate Card" : "Market Benchmark"}
                 </span>
               </div>
               <div className="space-y-4">

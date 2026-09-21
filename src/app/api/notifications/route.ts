@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { notificationService } from "@/server/services/notification.service";
 import { SecurityService } from "@/server/services/security.service";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest) {
   try {
     const session = SecurityService.getSession(req);

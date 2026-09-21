@@ -28,7 +28,7 @@ export function NegotiationTimeline({
           {
             id: "off-1",
             senderRole: "creator",
-            senderName: "Elena Rostova",
+            senderName: "Sara Dietschy",
             amount: 3800,
             deliverableTerms: "1x YouTube 60s + 1x X Thread",
             notes: "My standard rate for high-retention technical audiences.",
@@ -48,7 +48,7 @@ export function NegotiationTimeline({
           {
             id: "off-3",
             senderRole: "creator",
-            senderName: "Elena Rostova",
+            senderName: "Sara Dietschy",
             amount: 3500,
             deliverableTerms: "1x YouTube 60s + 1x X Thread + 30-Day Organic Rights",
             notes: "Final compromise rate with fast 7-day turnaround delivery.",

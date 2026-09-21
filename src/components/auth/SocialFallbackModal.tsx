@@ -99,18 +99,18 @@ export function SocialFallbackModal({
               type="button"
               onClick={() =>
                 handleQuickAccount(
-                  role === "brand" ? "alex.brand@gmail.com" : "elena.creator@gmail.com",
-                  role === "brand" ? "Alex Rivera" : "Elena Rostova"
+                  role === "brand" ? "brand.partner@gmail.com" : "creator.partner@gmail.com",
+                  role === "brand" ? "Brand Partner" : "Creator Partner"
                 )
               }
               className="p-2.5 rounded-2xl bg-[#F8F8FC] hover:bg-[#FFFDF5] border border-black/8 hover:border-[#FFD21F] text-left transition-all flex items-center justify-between"
             >
               <div>
                 <p className="font-bold text-[#0A0A0E]">
-                  {role === "brand" ? "Alex Rivera" : "Elena Rostova"}
+                  {role === "brand" ? "Brand Partner" : "Creator Partner"}
                 </p>
                 <p className="text-[11px] text-[#7A7A8A]">
-                  {role === "brand" ? "alex.brand@gmail.com" : "elena.creator@gmail.com"}
+                  {role === "brand" ? "brand.partner@gmail.com" : "creator.partner@gmail.com"}
                 </p>
               </div>
               <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E]">
@@ -159,7 +159,7 @@ export function SocialFallbackModal({
 
           <Input
             label="Display Name"
-            placeholder="Elena Rostova"
+            placeholder="Your Full Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />

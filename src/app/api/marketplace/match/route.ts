@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { matchEngineService } from "@/server/services/match-engine.service";
 import { db } from "@/server/db/database";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();

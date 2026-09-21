@@ -7,7 +7,7 @@ import { ArrowRight, Play, Sparkles, CheckCircle2, ChevronRight } from "lucide-r
 
 export function ExactHeroSection() {
   return (
-    <section className="relative min-h-[92vh] lg:min-h-[96vh] bg-texture-paper-white text-[#0A0A0E] overflow-hidden pt-8 pb-16 sm:pb-20 select-none">
+    <section className="relative min-h-[92vh] lg:min-h-[96vh] bg-texture-paper-white dark:bg-[#07070B] dark:bg-none text-[#0A0A0E] dark:text-white overflow-hidden pt-8 pb-16 sm:pb-20 select-none">
       {/* Background Ambient Glows */}
       <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#FFD21F]/15 rounded-full blur-[140px] pointer-events-none -z-0" />
       <div className="absolute top-1/3 right-10 w-[400px] h-[400px] bg-[#FFD21F]/10 rounded-full blur-[130px] pointer-events-none -z-0" />
@@ -92,8 +92,8 @@ export function ExactHeroSection() {
             <div className="flex items-center gap-3.5 pt-4">
               <div className="flex -space-x-2">
                 <img
-                  src="/creators/elena-rostova.jpg"
-                  alt="Elena Rostova"
+                  src="/creators/sara-dietschy.jpg"
+                  alt="Sara Dietschy"
                   className="w-8 h-8 rounded-full border-2 border-white object-cover shadow-xs"
                 />
                 <img

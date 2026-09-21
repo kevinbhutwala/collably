@@ -11,6 +11,8 @@ const pitchSchema = z.object({
   campaignId: z.string().min(1),
 });
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: NextRequest) {
   try {
     const session = SecurityService.getSession(req);

@@ -4,6 +4,8 @@ import { creatorRepo } from "@/server/repositories/creator.repo";
 import { brandRepo } from "@/server/repositories/brand.repo";
 import { SecurityService } from "@/server/services/security.service";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(
   req: NextRequest,
   { params }: { params: { id: string } }

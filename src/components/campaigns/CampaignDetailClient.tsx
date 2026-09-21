@@ -50,7 +50,7 @@ export function CampaignDetailClient({
     initialCampaign?.budget?.perCreatorBudget || 3500
   );
   const [pitch, setPitch] = useState<string>("");
-  const [sampleLink, setSampleLink] = useState<string>("https://youtube.com/@elenatech/videos");
+  const [sampleLink, setSampleLink] = useState<string>("");
 
   useEffect(() => {
     if (!campaign) {
@@ -85,13 +85,13 @@ export function CampaignDetailClient({
       const appPayload = {
         campaignId: campaign.id,
         campaignTitle: campaign.title,
-        brandId: campaign.brandId || "brand-1",
-        brandName: campaign.brand?.companyName || "Linear Dynamics",
-        creatorId: currentCreator?.id || "creator-1",
+        brandId: campaign.brandId || campaign.brand?.id || "brand-partner",
+        brandName: campaign.brand?.companyName || "Brand Partner",
+        creatorId: currentCreator?.id || "creator-partner",
         proposedFee,
         currency: campaign.budget?.currency || "USD",
         pitch,
-        portfolioSamples: [sampleLink],
+        portfolioSamples: sampleLink ? [sampleLink] : [],
       };
 
       const newApp = await applicationService.applyToCampaign(appPayload);
@@ -130,7 +130,7 @@ export function CampaignDetailClient({
 
   if (loading) {
     return (
-      <div className="py-32 text-center bg-[#FAFAFC] text-[#0A0A0E] min-h-screen flex items-center justify-center">
+      <div className="py-32 text-center bg-[#FAFAFC] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] min-h-screen flex items-center justify-center">
         <CreativeLoader
           size="lg"
           label="Loading Campaign Brief"
@@ -142,10 +142,10 @@ export function CampaignDetailClient({
 
   if (!campaign) {
     return (
-      <div className="py-32 text-center space-y-4 bg-[#FAFAFC] text-[#0A0A0E] min-h-screen">
-        <h2 className="text-2xl font-bold font-display">Campaign brief not found</h2>
+      <div className="py-32 text-center space-y-4 bg-[#FAFAFC] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] min-h-screen">
+        <h2 className="text-2xl font-bold font-display text-[#0A0A0E] dark:text-white">Campaign brief not found</h2>
         <Link href="/campaigns">
-          <button className="px-6 py-2.5 rounded-full bg-white border border-black/10 text-xs font-bold text-[#0A0A0E] hover:bg-[#F5F5F9]">
+          <button className="px-6 py-2.5 rounded-full bg-white dark:bg-[#14141E] border border-black/10 dark:border-white/10 text-xs font-bold text-[#0A0A0E] dark:text-white hover:bg-[#F5F5F9] dark:hover:bg-[#1C1C28] cursor-pointer">
             Back to Campaigns
           </button>
         </Link>
@@ -154,12 +154,12 @@ export function CampaignDetailClient({
   }
 
   return (
-    <div className="py-12 sm:py-16 bg-[#FAFAFC] text-[#0A0A0E] min-h-screen">
+    <div className="py-12 sm:py-16 bg-[#FAFAFC] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Campaign Master Card */}
-        <div className="rounded-3xl bg-white border border-black/8 overflow-hidden shadow-xs">
+        <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 overflow-hidden shadow-xs">
           {/* Banner Hero */}
-          <div className="relative h-64 sm:h-80 w-full bg-[#F5F5F9]">
+          <div className="relative h-64 sm:h-80 w-full bg-[#F5F5F9] dark:bg-[#181824]">
             <SafeImage
               src={campaign.coverImage}
               alt={campaign.title}
@@ -180,7 +180,7 @@ export function CampaignDetailClient({
 
             <div className="absolute bottom-6 left-6 right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <div className="flex items-center gap-3.5">
-                <div className="relative w-14 h-14 rounded-2xl overflow-hidden bg-white/90 border border-white shrink-0 shadow-xs backdrop-blur-md">
+                <div className="relative w-14 h-14 rounded-2xl overflow-hidden bg-white/90 dark:bg-[#181824]/90 border border-white dark:border-white/20 shrink-0 shadow-xs backdrop-blur-md">
                   <SafeImage
                     src={campaign.brand.logoUrl}
                     alt={campaign.brand.companyName}
@@ -221,23 +221,23 @@ export function CampaignDetailClient({
           </div>
 
           {/* Quick Action Bar */}
-          <div className="p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-black/8 bg-white">
-            <div className="flex items-center gap-6 text-xs text-[#6A6A78] font-mono">
+          <div className="p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-black/8 dark:border-white/10 bg-white dark:bg-[#12121A]">
+            <div className="flex items-center gap-6 text-xs text-[#6A6A78] dark:text-[#9A9AA8] font-mono">
               <div className="flex items-center gap-1.5">
-                <Users className="w-4 h-4 text-[#0A0A0E]" />
+                <Users className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />
                 <span>
                   {campaign.acceptedCount}/{campaign.maxCreators} Creators Accepted
                 </span>
               </div>
               <div className="flex items-center gap-1.5">
-                <Calendar className="w-4 h-4 text-[#0A0A0E]" />
+                <Calendar className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />
                 <span>Content Due: {campaign.timeline.contentSubmissionDeadline}</span>
               </div>
             </div>
 
             <button
               onClick={() => setIsApplyModalOpen(true)}
-              className="px-6 py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs sm:text-sm transition-all shadow-[0_4px_14px_rgba(255,210,31,0.4)] border border-black/10 flex items-center gap-2"
+              className="px-6 py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs sm:text-sm transition-all shadow-[0_4px_14px_rgba(255,210,31,0.4)] border border-black/10 flex items-center gap-2 cursor-pointer"
             >
               <span>Pitch Creative Angle &amp; Apply</span>
               <ArrowRight className="w-4 h-4 text-[#0A0A0E]" />
@@ -249,32 +249,32 @@ export function CampaignDetailClient({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Left: Brief Narrative */}
           <div className="lg:col-span-8 space-y-6">
-            <div className="p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6">
-              <h2 className="text-xl font-bold text-[#0A0A0E] font-display">Campaign Brief &amp; Direction</h2>
-              <p className="text-sm text-[#5A5A68] leading-relaxed whitespace-pre-line font-sans font-medium">
+            <div className="p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
+              <h2 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">Campaign Brief &amp; Direction</h2>
+              <p className="text-sm text-[#5A5A68] dark:text-[#9A9AA8] leading-relaxed whitespace-pre-line font-sans font-medium">
                 {campaign.description}
               </p>
 
-              <div className="pt-4 border-t border-black/8">
-                <h3 className="text-sm font-bold text-[#0A0A0E] mb-3 font-display">Required Deliverables</h3>
+              <div className="pt-4 border-t border-black/8 dark:border-white/10">
+                <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white mb-3 font-display">Required Deliverables</h3>
                 <div className="space-y-3">
                   {campaign.deliverables.map((del) => (
                     <div
                       key={del.id}
-                      className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/5 space-y-1.5"
+                      className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 space-y-1.5"
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
                           <DeliverableBadge type={del.type} />
-                          <span className="text-xs font-mono font-bold text-[#0A0A0E] uppercase">
+                          <span className="text-xs font-mono font-bold text-[#0A0A0E] dark:text-white uppercase">
                             × {del.count}
                           </span>
                         </div>
-                        <span className="px-2 py-0.5 rounded-full bg-white border border-black/8 text-[#6A6A78] text-[10px] font-mono font-bold">
+                        <span className="px-2 py-0.5 rounded-full bg-white dark:bg-[#202030] border border-black/8 dark:border-white/10 text-[#6A6A78] dark:text-[#9A9AA8] text-[10px] font-mono font-bold">
                           Max {del.maxRevisions} Revisions
                         </span>
                       </div>
-                      <p className="text-xs text-[#5A5A68] font-sans">{del.guidelines}</p>
+                      <p className="text-xs text-[#5A5A68] dark:text-[#9A9AA8] font-sans">{del.guidelines}</p>
                     </div>
                   ))}
                 </div>
@@ -284,34 +284,34 @@ export function CampaignDetailClient({
 
           {/* Right: Requirements & Escrow terms */}
           <div className="lg:col-span-4 space-y-6">
-            <div className="p-6 rounded-3xl bg-white border border-black/8 shadow-xs space-y-4">
-              <h3 className="text-xs font-bold text-[#0A0A0E] uppercase tracking-wider font-mono">
+            <div className="p-6 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4">
+              <h3 className="text-xs font-bold text-[#0A0A0E] dark:text-white uppercase tracking-wider font-mono">
                 Creator Criteria
               </h3>
               <div className="space-y-3 font-mono text-xs">
-                <div className="flex justify-between text-[#6A6A78]">
+                <div className="flex justify-between text-[#6A6A78] dark:text-[#8E8EA4]">
                   <span>Min Followers:</span>
-                  <span className="font-bold text-[#0A0A0E]">{formatNumber(campaign.creatorRequirements.minFollowers)}</span>
+                  <span className="font-bold text-[#0A0A0E] dark:text-white">{formatNumber(campaign.creatorRequirements.minFollowers)}</span>
                 </div>
-                <div className="flex justify-between text-[#6A6A78]">
+                <div className="flex justify-between text-[#6A6A78] dark:text-[#8E8EA4]">
                   <span>Min Engagement:</span>
-                  <span className="font-bold text-[#0A0A0E] flex items-center gap-1">
+                  <span className="font-bold text-[#0A0A0E] dark:text-white flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F]" />
                     {campaign.creatorRequirements.minEngagementRate}%
                   </span>
                 </div>
-                <div className="flex justify-between text-[#6A6A78]">
+                <div className="flex justify-between text-[#6A6A78] dark:text-[#8E8EA4]">
                   <span>Target Geographies:</span>
-                  <span className="font-bold text-[#0A0A0E]">{campaign.targetAudience.locations.join(", ")}</span>
+                  <span className="font-bold text-[#0A0A0E] dark:text-white">{campaign.targetAudience.locations.join(", ")}</span>
                 </div>
               </div>
             </div>
 
-            <div className="p-6 rounded-3xl bg-[#F8F8FC] border border-black/8 flex items-start gap-3">
-              <ShieldCheck className="w-5 h-5 text-[#0A0A0E] shrink-0 mt-0.5" />
+            <div className="p-6 rounded-3xl bg-[#F8F8FC] dark:bg-[#14141E] border border-black/8 dark:border-white/10 flex items-start gap-3">
+              <ShieldCheck className="w-5 h-5 text-[#0A0A0E] dark:text-[#FFD21F] shrink-0 mt-0.5" />
               <div>
-                <h4 className="text-xs font-bold text-[#0A0A0E] font-display">Pre-Funded Escrow Pool</h4>
-                <p className="text-xs text-[#5A5A68] mt-1 leading-relaxed font-sans font-medium">
+                <h4 className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">Pre-Funded Escrow Pool</h4>
+                <p className="text-xs text-[#5A5A68] dark:text-[#9A9AA8] mt-1 leading-relaxed font-sans font-medium">
                   The brand has deposited 100% of this campaign budget in escrow. Funds are guaranteed upon milestone approval.
                 </p>
               </div>
@@ -357,6 +357,7 @@ export function CampaignDetailClient({
             label="Sample Work / Previous Sponsorship Link"
             value={sampleLink}
             onChange={(e) => setSampleLink(e.target.value)}
+            placeholder="e.g. https://youtube.com/watch?v=... or portfolio URL"
             required
           />
 

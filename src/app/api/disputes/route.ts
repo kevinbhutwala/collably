@@ -7,6 +7,8 @@ import { creatorRepo } from "@/server/repositories/creator.repo";
 import { brandRepo } from "@/server/repositories/brand.repo";
 import { collaborationRepo } from "@/server/repositories/collaboration.repo";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest) {
   try {
     const session = SecurityService.getSession(req);

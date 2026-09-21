@@ -28,7 +28,7 @@ export function CinematicFooter() {
           <h4 className="text-xs font-bold uppercase tracking-wider text-[#0A0A0E] dark:text-white mb-4 font-mono">
             Platform
           </h4>
-          <ul className="space-y-2.5 text-xs text-[#6A6A78] font-sans">
+          <ul className="space-y-2.5 text-xs text-[#6A6A78] dark:text-[#A0A0B8] font-sans">
             <li><Link href="/for-brands" className="hover:text-[#0A0A0E] dark:hover:text-white transition-colors">For Brands</Link></li>
             <li><Link href="/creators" className="hover:text-[#0A0A0E] dark:hover:text-white transition-colors">For Creators</Link></li>
             <li><Link href="/campaigns" className="hover:text-[#0A0A0E] dark:hover:text-white transition-colors">Campaigns</Link></li>
@@ -40,7 +40,7 @@ export function CinematicFooter() {
           <h4 className="text-xs font-bold uppercase tracking-wider text-[#0A0A0E] dark:text-white mb-4 font-mono">
             Resources
           </h4>
-          <ul className="space-y-2.5 text-xs text-[#6A6A78] font-sans">
+          <ul className="space-y-2.5 text-xs text-[#6A6A78] dark:text-[#A0A0B8] font-sans">
             <li><Link href="/case-studies" className="hover:text-[#0A0A0E] dark:hover:text-white transition-colors">Case Studies</Link></li>
             <li><Link href="/services" className="hover:text-[#0A0A0E] dark:hover:text-white transition-colors">Agency Solutions</Link></li>
             <li><Link href="/about" className="hover:text-[#0A0A0E] dark:hover:text-white transition-colors">About Us</Link></li>
@@ -52,7 +52,7 @@ export function CinematicFooter() {
           <h4 className="text-xs font-bold uppercase tracking-wider text-[#0A0A0E] dark:text-white mb-4 font-mono">
             Legal &amp; Trust
           </h4>
-          <ul className="space-y-2.5 text-xs text-[#6A6A78] font-sans">
+          <ul className="space-y-2.5 text-xs text-[#6A6A78] dark:text-[#A0A0B8] font-sans">
             <li><Link href="/privacy" className="hover:text-[#0A0A0E] dark:hover:text-white transition-colors">Privacy Policy</Link></li>
             <li><Link href="/terms" className="hover:text-[#0A0A0E] dark:hover:text-white transition-colors">Terms of Service</Link></li>
             <li><Link href="/dpa" className="hover:text-[#0A0A0E] dark:hover:text-white transition-colors">Data Processing (DPA)</Link></li>

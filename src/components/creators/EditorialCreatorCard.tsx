@@ -110,7 +110,7 @@ export function EditorialCreatorCard({
                     ? "bg-[#FFD21F] text-[#0A0A0E]"
                     : "bg-black/60 text-white border border-white/20"
                 }`}
-                title={creator.isSignedTalent ? "Verified Fixed Deliverable Rate" : "Sample Market Rate Estimate"}
+                title={creator.isSignedTalent ? "Verified Fixed Deliverable Rate" : "Market Rate Benchmark"}
               >
                 {!creator.isSignedTalent && <span className="text-[8px] font-normal opacity-75">Est.</span>}
                 {startingPriceDisplay}
@@ -139,7 +139,7 @@ export function EditorialCreatorCard({
                 <Play className="w-4 h-4 text-white fill-white opacity-90" />
               </div>
               <span className="absolute bottom-1 inset-x-1 text-[8px] font-mono font-bold text-white text-center truncate bg-black/70 rounded px-0.5">
-                Sample Reel
+                Featured Reel
               </span>
             </motion.div>
           )}

@@ -5,6 +5,8 @@ import { brandRepo } from "@/server/repositories/brand.repo";
 import { subscriptionService } from "@/server/services/subscription.service";
 import { verifySessionToken } from "@/server/auth/crypto";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest) {
   try {
     const token =

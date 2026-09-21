@@ -6,7 +6,7 @@ import { ArrowRight, Zap, Lock } from "lucide-react";
 
 export function EditorialCTA() {
   return (
-    <section className="py-24 sm:py-36 bg-[#FAFAF8] border-t border-[#E7E7E4] relative overflow-hidden text-center select-none text-[#101010]">
+    <section className="py-24 sm:py-36 bg-[#FAFAF8] dark:bg-[#07070B] border-t border-[#E7E7E4] dark:border-white/10 relative overflow-hidden text-center select-none text-[#101010] dark:text-[#F4F4F8]">
       {/* Signature Ambient Chrome & Micro-Accent Glow */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[950px] h-[450px] pointer-events-none opacity-60"
@@ -19,20 +19,20 @@ export function EditorialCTA() {
       />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 relative z-10">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-[11px] font-sans font-semibold uppercase tracking-[0.1em] text-[#101010] shadow-xs">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] dark:bg-[#12121A] border border-[#E7E7E4] dark:border-white/10 text-[11px] font-sans font-semibold uppercase tracking-[0.1em] text-[#101010] dark:text-white shadow-xs">
           <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
           <span>FOUNDING CREATOR COHORT &amp; BRAND BETA OPEN</span>
         </div>
 
         <div className="space-y-4">
-          <h2 className="section-headline text-center uppercase tracking-tight">
+          <h2 className="section-headline text-center uppercase tracking-tight text-[#0A0A0E] dark:text-white">
             Create great content. <br />
-            <span className="font-serif italic font-normal text-[#626262] normal-case text-[clamp(3.25rem,7.5vw,7.5rem)]">
+            <span className="font-serif italic font-normal text-[#626262] dark:text-[#A0A0B4] normal-case text-[clamp(3.25rem,7.5vw,7.5rem)]">
               Never chase an invoice.
             </span>
           </h2>
 
-          <p className="editorial-body mx-auto text-center">
+          <p className="editorial-body mx-auto text-center text-[#5A5A68] dark:text-[#8E8EA4]">
             Join vetted creators and ambitious brands moving collaboration milestones through one trusted workspace.
           </p>
         </div>
@@ -48,26 +48,26 @@ export function EditorialCTA() {
 
           <Link
             href="/creator/register"
-            className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#FFFFFF] hover:bg-[#F4F4F0] border border-[#E7E7E4] text-[#101010] font-bold shadow-xs transition-all flex items-center justify-center gap-2 tracking-tight"
+            className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#FFFFFF] dark:bg-[#14141E] hover:bg-[#F4F4F0] dark:hover:bg-[#1C1C28] border border-[#E7E7E4] dark:border-white/10 text-[#101010] dark:text-white font-bold shadow-xs transition-all flex items-center justify-center gap-2 tracking-tight"
           >
             <span>Join as a Creator</span>
-            <ArrowRight className="w-4 h-4 text-[#101010]" />
+            <ArrowRight className="w-4 h-4 text-[#101010] dark:text-white" />
           </Link>
         </div>
 
         {/* Verified Trust Strip */}
-        <div className="pt-8 sm:pt-10 flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-xs font-sans text-[#626262] border-t border-[#E7E7E4] max-w-2xl mx-auto">
+        <div className="pt-8 sm:pt-10 flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-xs font-sans text-[#626262] dark:text-[#8E8EA4] border-t border-[#E7E7E4] dark:border-white/10 max-w-2xl mx-auto">
           <div className="flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
-            <span className="text-[#101010] font-semibold">100% Milestone Protection</span>
+            <span className="text-[#101010] dark:text-white font-semibold">100% Milestone Protection</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <Zap className="w-4 h-4 text-[#101010]" />
-            <span className="text-[#101010] font-semibold">&lt; 24h Creator Payouts</span>
+            <Zap className="w-4 h-4 text-[#101010] dark:text-[#FFD21F]" />
+            <span className="text-[#101010] dark:text-white font-semibold">&lt; 24h Creator Payouts</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <Lock className="w-4 h-4 text-[#101010]" />
-            <span className="text-[#101010] font-semibold">10% Transparent Fee</span>
+            <Lock className="w-4 h-4 text-[#101010] dark:text-white" />
+            <span className="text-[#101010] dark:text-white font-semibold">10% Transparent Fee</span>
           </div>
         </div>
       </div>

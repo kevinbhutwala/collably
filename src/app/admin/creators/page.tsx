@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import { CreatorProfile } from "@/core/types";
-import { MOCK_CREATORS } from "@/mock/creators.mock";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { formatNumber } from "@/core/utils/formatters";
 import { useUIStore } from "@/stores/ui.store";
@@ -10,7 +9,7 @@ import { CheckCircle2 } from "lucide-react";
 
 export default function AdminCreatorsPage() {
   const { addToast } = useUIStore();
-  const [creators, setCreators] = useState<CreatorProfile[]>(MOCK_CREATORS);
+  const [creators, setCreators] = useState<CreatorProfile[]>([]);
   const [loading, setLoading] = useState(true);
 
   const fetchCreators = async () => {
@@ -18,12 +17,10 @@ export default function AdminCreatorsPage() {
       const res = await fetch("/api/creators", { cache: "no-store" });
       if (res.ok) {
         const data = await res.json();
-        if (Array.isArray(data) && data.length > 0) {
-          setCreators(data);
-        }
+        setCreators(Array.isArray(data) ? data : []);
       }
     } catch {
-      // Keep fallback
+      setCreators([]);
     } finally {
       setLoading(false);
     }
@@ -86,8 +83,13 @@ export default function AdminCreatorsPage() {
       </div>
 
       <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
-        <div className="divide-y divide-black/5 dark:divide-white/5">
-          {creators.map((c) => (
+        {loading ? (
+          <div className="py-12 text-center text-xs font-mono text-[#7A7A8A]">Loading talent roster...</div>
+        ) : creators.length === 0 ? (
+          <div className="py-12 text-center text-xs font-mono text-[#7A7A8A]">No creators found in directory.</div>
+        ) : (
+          <div className="divide-y divide-black/5 dark:divide-white/5">
+            {creators.map((c) => (
             <div key={c.id} className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex items-center gap-3.5">
                 <div className="relative w-12 h-12 rounded-2xl overflow-hidden bg-[#F5F5F9] dark:bg-[#181824] border border-black/8 dark:border-white/10 shrink-0">
@@ -134,7 +136,8 @@ export default function AdminCreatorsPage() {
               </div>
             </div>
           ))}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1431,7 +1431,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "isSignedTalent": false,
     "profileCompleteness": 98,
     "qualityScore": 97,
-    "profileSource": "sample_benchmark",
+    "profileSource": "market_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -1439,7 +1439,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "instagramUsername": "ankurwarikoo",
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
-      "rateType": "sample_market_estimate",
+      "rateType": "market_benchmark",
       "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
@@ -1538,7 +1538,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
         "id": "rc-ankur-1",
         "deliverableType": "Instagram Reel",
         "title": "Actionable 60s Financial Framework Reel",
-        "description": "Analytical educational video breaking down financial tools, SaaS products, or career insights. (Demo rate estimate)",
+        "description": "Analytical educational video breaking down financial tools, SaaS products, or career insights.",
         "basePrice": 3500,
         "turnaroundDays": 7,
         "revisionsIncluded": 2,
@@ -1548,7 +1548,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
         "id": "rc-ankur-2",
         "deliverableType": "Carousel Post",
         "title": "Educational Step-by-Step Carousel",
-        "description": "High-retention 8-slide educational breakdown with book references and brand tie-in. (Demo rate estimate)",
+        "description": "High-retention 8-slide educational breakdown with book references and brand tie-in.",
         "basePrice": 2500,
         "turnaroundDays": 5,
         "revisionsIncluded": 1,
@@ -1591,7 +1591,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "isSignedTalent": false,
     "profileCompleteness": 96,
     "qualityScore": 97,
-    "profileSource": "sample_benchmark",
+    "profileSource": "market_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -1599,7 +1599,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "instagramUsername": "kushakapila",
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
-      "rateType": "sample_market_estimate",
+      "rateType": "market_benchmark",
       "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
@@ -1688,7 +1688,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
         "id": "rc-kusha-1",
         "deliverableType": "Instagram Reel",
         "title": "Character Comedy & Pop-Culture Integration",
-        "description": "High-virality comic skit featuring brand integration in natural narrative. (Demo rate estimate)",
+        "description": "High-virality comic skit featuring brand integration in natural narrative.",
         "basePrice": 4000,
         "turnaroundDays": 7,
         "revisionsIncluded": 2,
@@ -1730,7 +1730,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "isSignedTalent": false,
     "profileCompleteness": 99,
     "qualityScore": 99,
-    "profileSource": "sample_benchmark",
+    "profileSource": "market_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -1738,7 +1738,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "instagramUsername": "mostlysane",
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
-      "rateType": "sample_market_estimate",
+      "rateType": "market_benchmark",
       "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
@@ -1827,7 +1827,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
         "id": "rc-prajakta-1",
         "deliverableType": "Instagram Reel",
         "title": "Narrative Lifestyle Brand Story",
-        "description": "Warm, relatable lifestyle video with seamless storytelling placement. (Demo rate estimate)",
+        "description": "Warm, relatable lifestyle video with seamless storytelling placement.",
         "basePrice": 5500,
         "turnaroundDays": 8,
         "revisionsIncluded": 2,
@@ -1869,7 +1869,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "isSignedTalent": false,
     "profileCompleteness": 98,
     "qualityScore": 99,
-    "profileSource": "sample_benchmark",
+    "profileSource": "market_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -1877,7 +1877,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "instagramUsername": "mkbhd",
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
-      "rateType": "sample_market_estimate",
+      "rateType": "market_benchmark",
       "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
@@ -1972,20 +1972,20 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     },
     "rateCards": [
       {
-        "id": "rc-1-demo",
+        "id": "rc-mkbhd-1",
         "deliverableType": "Instagram Reel",
-        "title": "Dedicated 60s Reel Feature (Sample Estimate)",
-        "description": "Hands-on industrial hardware review with macro 4K B-roll and link in bio. (Demo rate estimate)",
+        "title": "Dedicated 60s Reel Feature",
+        "description": "Hands-on industrial hardware review with macro 4K B-roll and link in bio.",
         "basePrice": 12500,
         "turnaroundDays": 10,
         "revisionsIncluded": 2,
         "currency": "USD"
       },
       {
-        "id": "rc-2-demo",
+        "id": "rc-mkbhd-2",
         "deliverableType": "Carousel Post",
-        "title": "Technical Carousel & Story Set (Sample Estimate)",
-        "description": "High-res studio photography breakdown with interactive poll sticker. (Demo rate estimate)",
+        "title": "Technical Carousel & Story Set",
+        "description": "High-res studio photography breakdown with interactive poll sticker.",
         "basePrice": 6500,
         "turnaroundDays": 5,
         "revisionsIncluded": 1,
@@ -2026,7 +2026,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "isSignedTalent": false,
     "profileCompleteness": 99,
     "qualityScore": 99,
-    "profileSource": "sample_benchmark",
+    "profileSource": "market_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -2034,7 +2034,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "instagramUsername": "zachking",
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
-      "rateType": "sample_market_estimate",
+      "rateType": "market_benchmark",
       "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
@@ -2122,7 +2122,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
         "id": "rc-zach-1",
         "deliverableType": "Instagram Reel",
         "title": "Bespoke Digital Magic Visual FX Reel",
-        "description": "Custom conceptual illusion integrating physical product with mind-bending digital effects. (Demo rate estimate)",
+        "description": "Custom conceptual illusion integrating physical product with mind-bending digital effects.",
         "basePrice": 22000,
         "turnaroundDays": 14,
         "revisionsIncluded": 3,
@@ -2164,7 +2164,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "isSignedTalent": false,
     "profileCompleteness": 98,
     "qualityScore": 98,
-    "profileSource": "sample_benchmark",
+    "profileSource": "market_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -2172,7 +2172,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "instagramUsername": "emmachamberlain",
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
-      "rateType": "sample_market_estimate",
+      "rateType": "market_benchmark",
       "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
@@ -2261,7 +2261,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
         "id": "rc-emma-1",
         "deliverableType": "Instagram Reel",
         "title": "Editorial Lookbook & Daily Aesthetic Reel",
-        "description": "Candid 35mm film aesthetic styling with organic apparel/accessory integration. (Demo rate estimate)",
+        "description": "Candid 35mm film aesthetic styling with organic apparel/accessory integration.",
         "basePrice": 18000,
         "turnaroundDays": 10,
         "revisionsIncluded": 2,
@@ -2302,7 +2302,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "isSignedTalent": false,
     "profileCompleteness": 97,
     "qualityScore": 98,
-    "profileSource": "sample_benchmark",
+    "profileSource": "market_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -2310,7 +2310,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "instagramUsername": "saradietschy",
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
-      "rateType": "sample_market_estimate",
+      "rateType": "market_benchmark",
       "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
@@ -2394,7 +2394,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
         "id": "rc-sara-1",
         "deliverableType": "Instagram Reel",
         "title": "Studio Desk Setup Feature",
-        "description": "Aesthetic studio integration highlighting industrial product design. (Demo rate estimate)",
+        "description": "Aesthetic studio integration highlighting industrial product design.",
         "basePrice": 2800,
         "turnaroundDays": 7,
         "revisionsIncluded": 2,
@@ -2435,7 +2435,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "isSignedTalent": false,
     "profileCompleteness": 98,
     "qualityScore": 98,
-    "profileSource": "sample_benchmark",
+    "profileSource": "market_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -2443,7 +2443,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "instagramUsername": "joshuaweissman",
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
-      "rateType": "sample_market_estimate",
+      "rateType": "market_benchmark",
       "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
@@ -2527,7 +2527,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
         "id": "rc-josh-1",
         "deliverableType": "Instagram Reel",
         "title": "Cinematic Recipe & Cookware Feature",
-        "description": "Macro 4K sizzle reel showcasing premium cookware or food brand in recipe execution. (Demo rate estimate)",
+        "description": "Macro 4K sizzle reel showcasing premium cookware or food brand in recipe execution.",
         "basePrice": 8500,
         "turnaroundDays": 8,
         "revisionsIncluded": 2,
@@ -2569,7 +2569,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "isSignedTalent": false,
     "profileCompleteness": 99,
     "qualityScore": 99,
-    "profileSource": "sample_benchmark",
+    "profileSource": "market_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -2577,7 +2577,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "instagramUsername": "hudabeauty",
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
-      "rateType": "sample_market_estimate",
+      "rateType": "market_benchmark",
       "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
@@ -2665,8 +2665,8 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
       {
         "id": "rc-huda-1",
         "deliverableType": "Instagram Reel",
-        "title": "Dedicated Clinical Glam Integration (Sample Estimate)",
-        "description": "High-definition beauty macro breakdown, application demo, and honest wear test. (Demo rate estimate)",
+        "title": "Dedicated Clinical Glam Integration",
+        "description": "High-definition beauty macro breakdown, application demo, and honest wear test.",
         "basePrice": 35000,
         "turnaroundDays": 14,
         "revisionsIncluded": 2,
@@ -2707,7 +2707,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "isSignedTalent": false,
     "profileCompleteness": 99,
     "qualityScore": 99,
-    "profileSource": "sample_benchmark",
+    "profileSource": "market_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -2715,7 +2715,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "instagramUsername": "supercarblondie",
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
-      "rateType": "sample_market_estimate",
+      "rateType": "market_benchmark",
       "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
@@ -2804,7 +2804,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
         "id": "rc-scb-1",
         "deliverableType": "Instagram Reel",
         "title": "Hypercar First Look & Tech Demo",
-        "description": "Dynamic cinematic walkthrough of futuristic vehicle or luxury engineering tech. (Demo rate estimate)",
+        "description": "Dynamic cinematic walkthrough of futuristic vehicle or luxury engineering tech.",
         "basePrice": 20000,
         "turnaroundDays": 10,
         "revisionsIncluded": 2,
@@ -2846,7 +2846,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "isSignedTalent": false,
     "profileCompleteness": 97,
     "qualityScore": 98,
-    "profileSource": "sample_benchmark",
+    "profileSource": "market_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -2854,7 +2854,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "instagramUsername": "muradosmann",
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
-      "rateType": "sample_market_estimate",
+      "rateType": "market_benchmark",
       "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
@@ -2933,7 +2933,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
         "id": "rc-murad-1",
         "deliverableType": "Instagram Reel",
         "title": "Iconic #FollowMeTo Architectural Showcase",
-        "description": "Breathtaking architectural composition integrating luxury destination or hotel property. (Demo rate estimate)",
+        "description": "Breathtaking architectural composition integrating luxury destination or hotel property.",
         "basePrice": 8000,
         "turnaroundDays": 12,
         "revisionsIncluded": 2,
@@ -2977,7 +2977,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "isSignedTalent": false,
     "profileCompleteness": 99,
     "qualityScore": 99,
-    "profileSource": "sample_benchmark",
+    "profileSource": "market_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -2985,7 +2985,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "instagramUsername": "karenwazen",
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
-      "rateType": "sample_market_estimate",
+      "rateType": "market_benchmark",
       "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
@@ -3064,7 +3064,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
         "id": "rc-karen-1",
         "deliverableType": "Instagram Reel",
         "title": "Couture Fashion & Accessory Spotlight",
-        "description": "European & Middle Eastern editorial styling with luxury product focus and high-conversion aesthetic. (Demo rate estimate)",
+        "description": "European & Middle Eastern editorial styling with luxury product focus and high-conversion aesthetic.",
         "basePrice": 14000,
         "turnaroundDays": 10,
         "revisionsIncluded": 2,
@@ -3106,7 +3106,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "isSignedTalent": false,
     "profileCompleteness": 99,
     "qualityScore": 99,
-    "profileSource": "sample_benchmark",
+    "profileSource": "market_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -3114,7 +3114,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "instagramUsername": "bhuvan.bam22",
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
-      "rateType": "sample_market_estimate",
+      "rateType": "market_benchmark",
       "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
@@ -3203,7 +3203,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
         "id": "rc-bhuvan-1",
         "deliverableType": "Instagram Reel",
         "title": "Character Comedy & Pop-Culture Sketch",
-        "description": "Multi-character original comic narrative with organic story-integrated product placement. (Demo rate estimate)",
+        "description": "Multi-character original comic narrative with organic story-integrated product placement.",
         "basePrice": 15000,
         "turnaroundDays": 14,
         "revisionsIncluded": 2,
@@ -3246,7 +3246,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "isSignedTalent": false,
     "profileCompleteness": 99,
     "qualityScore": 99,
-    "profileSource": "sample_benchmark",
+    "profileSource": "market_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -3254,7 +3254,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "instagramUsername": "carryminati",
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
-      "rateType": "sample_market_estimate",
+      "rateType": "market_benchmark",
       "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
@@ -3343,7 +3343,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
         "id": "rc-carry-1",
         "deliverableType": "Instagram Reel",
         "title": "High-Energy Gaming & Culture Reel",
-        "description": "Viral high-octane commentary with direct product spotlight. (Demo rate estimate)",
+        "description": "Viral high-octane commentary with direct product spotlight.",
         "basePrice": 18000,
         "turnaroundDays": 12,
         "revisionsIncluded": 2,
@@ -3385,7 +3385,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "isSignedTalent": false,
     "profileCompleteness": 98,
     "qualityScore": 98,
-    "profileSource": "sample_benchmark",
+    "profileSource": "market_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -3393,7 +3393,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "instagramUsername": "technicalguruji",
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
-      "rateType": "sample_market_estimate",
+      "rateType": "market_benchmark",
       "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
@@ -3482,7 +3482,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
         "id": "rc-tg-1",
         "deliverableType": "Instagram Reel",
         "title": "First Look Smartphone Unboxing & Specs",
-        "description": "Studio unboxing in 4K with benchmark testing and camera comparisons. (Demo rate estimate)",
+        "description": "Studio unboxing in 4K with benchmark testing and camera comparisons.",
         "basePrice": 6500,
         "turnaroundDays": 7,
         "revisionsIncluded": 2,
@@ -3525,7 +3525,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "isSignedTalent": false,
     "profileCompleteness": 97,
     "qualityScore": 98,
-    "profileSource": "sample_benchmark",
+    "profileSource": "market_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -3533,7 +3533,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "instagramUsername": "tanmaybhat",
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
-      "rateType": "sample_market_estimate",
+      "rateType": "market_benchmark",
       "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
@@ -3622,7 +3622,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
         "id": "rc-tb-1",
         "deliverableType": "Instagram Reel",
         "title": "Humorous Business Teardown Reel",
-        "description": "Laugh-out-loud commentary breaking down product utility and value proposition. (Demo rate estimate)",
+        "description": "Laugh-out-loud commentary breaking down product utility and value proposition.",
         "basePrice": 4200,
         "turnaroundDays": 7,
         "revisionsIncluded": 2,
@@ -3665,7 +3665,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "isSignedTalent": false,
     "profileCompleteness": 99,
     "qualityScore": 99,
-    "profileSource": "sample_benchmark",
+    "profileSource": "market_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -3673,7 +3673,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
     "instagramUsername": "khan_zaalim",
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
-      "rateType": "sample_market_estimate",
+      "rateType": "market_benchmark",
       "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
@@ -3762,7 +3762,7 @@ export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
         "id": "rc-zk-1",
         "deliverableType": "Instagram Reel",
         "title": "Warm Nostalgic Narrative Reel",
-        "description": "Heartwarming observational monologue delivered with signature warmth. (Demo rate estimate)",
+        "description": "Heartwarming observational monologue delivered with signature warmth.",
         "basePrice": 8500,
         "turnaroundDays": 10,
         "revisionsIncluded": 2,

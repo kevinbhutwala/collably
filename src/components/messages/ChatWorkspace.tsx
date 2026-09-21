@@ -540,8 +540,8 @@ export function ChatWorkspace() {
     const messageContent = inputText.trim();
     if ((!messageContent && !stagedAttachment) || !activeConvId) return;
 
-    const senderName = user?.name || (role === "brand" ? "Brand Partner" : "Elena Rostova");
-    const senderAvatar = user?.avatarUrl || (role === "brand" ? "https://webassets.linear.app/images/ornj730p/production/f79251b06e9edeeacbf2875384defe629e000b3c-352x352.png?w=200&auto=format&fit=crop&q=80" : "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&auto=format&fit=crop&q=80");
+    const senderName = user?.name || (role === "brand" ? "Brand Partner" : "Creator Partner");
+    const senderAvatar = user?.avatarUrl || (role === "brand" ? "https://webassets.linear.app/images/ornj730p/production/f79251b06e9edeeacbf2875384defe629e000b3c-352x352.png?w=200&auto=format&fit=crop&q=80" : "/creators/sara-dietschy.jpg");
     const senderRole = role || "creator";
 
     const currentStaged = stagedAttachment ? [{ ...stagedAttachment }] : [];
@@ -923,10 +923,10 @@ export function ChatWorkspace() {
                             className={cn(
                               "text-[8px] font-mono font-bold px-1.5 py-0.5 rounded-full uppercase shrink-0",
                               pRole === "brand"
-                                ? "bg-purple-100 text-purple-700"
+                                ? "bg-blue-100 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800/40"
                                 : pRole === "agency_admin"
-                                ? "bg-amber-100 text-amber-700"
-                                : "bg-emerald-100 text-emerald-700"
+                                ? "bg-amber-100 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/40"
+                                : "bg-emerald-100 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/40"
                             )}
                           >
                             {pRole === "agency_admin" ? "Admin" : pRole}
@@ -1037,10 +1037,10 @@ export function ChatWorkspace() {
                         className={cn(
                           "text-[9px] font-mono font-bold px-1.5 py-0.5 rounded-full uppercase shrink-0",
                           partnerRole === "brand"
-                            ? "bg-purple-100 text-purple-700"
+                            ? "bg-blue-100 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800/40"
                             : partnerRole === "agency_admin"
-                            ? "bg-amber-100 text-amber-700"
-                            : "bg-emerald-100 text-emerald-700"
+                            ? "bg-amber-100 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/40"
+                            : "bg-emerald-100 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/40"
                         )}
                       >
                         {partnerRole === "agency_admin" ? "Admin" : partnerRole}
@@ -1482,10 +1482,10 @@ export function ChatWorkspace() {
                         className={cn(
                           "text-[9px] font-mono font-bold px-1.5 py-0.5 rounded-full uppercase shrink-0",
                           rec.role === "brand"
-                            ? "bg-purple-100 text-purple-700"
+                            ? "bg-blue-100 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800/40"
                             : rec.role === "agency_admin"
-                            ? "bg-amber-100 text-amber-700"
-                            : "bg-emerald-100 text-emerald-700"
+                            ? "bg-amber-100 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/40"
+                            : "bg-emerald-100 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/40"
                         )}
                       >
                         {rec.role === "agency_admin" ? "Concierge" : rec.role}

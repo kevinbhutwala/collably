@@ -50,18 +50,18 @@ export function CreatorFilterPanel() {
   if (creatorVerifiedOnly) activeFilterCount++;
 
   return (
-    <div className="p-6 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6 text-[#0A0A0E] select-none font-sans">
+    <div className="p-6 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans">
       {/* Panel Header */}
-      <div className="flex items-center justify-between pb-4 border-b border-black/8">
+      <div className="flex items-center justify-between pb-4 border-b border-black/8 dark:border-white/10">
         <div className="flex items-center gap-2.5">
-          <div className="w-7 h-7 rounded-xl bg-[#FFD21F]/20 flex items-center justify-center text-[#0A0A0E]">
-            <SlidersHorizontal className="w-3.5 h-3.5 text-[#0A0A0E]" />
+          <div className="w-7 h-7 rounded-xl bg-[#FFD21F]/20 flex items-center justify-center text-[#0A0A0E] dark:text-[#FFD21F]">
+            <SlidersHorizontal className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F]" />
           </div>
           <div>
-            <h3 className="font-extrabold text-sm text-[#0A0A0E] font-display leading-tight">
+            <h3 className="font-extrabold text-sm text-[#0A0A0E] dark:text-white font-display leading-tight">
               Talent Filters
             </h3>
-            <span className="text-[10px] text-[#7A7A8A] font-medium">
+            <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] font-medium">
               Refine creator match
             </span>
           </div>
@@ -70,13 +70,13 @@ export function CreatorFilterPanel() {
         {activeFilterCount > 0 ? (
           <button
             onClick={resetCreatorFilters}
-            className="text-xs text-red-600 hover:text-red-700 flex items-center gap-1 transition-colors font-bold font-mono px-2.5 py-1 rounded-full bg-red-50 hover:bg-red-100"
+            className="text-xs text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 flex items-center gap-1 transition-colors font-bold font-mono px-2.5 py-1 rounded-full bg-red-50 dark:bg-red-950/30 hover:bg-red-100 dark:hover:bg-red-900/40"
           >
             <RotateCcw className="w-3 h-3" />
             <span>Clear ({activeFilterCount})</span>
           </button>
         ) : (
-          <span className="text-[10px] font-mono font-bold text-[#7A7A8A] px-2 py-0.5 rounded-full bg-[#F4F4F8]">
+          <span className="text-[10px] font-mono font-bold text-[#7A7A8A] dark:text-[#8E8EA4] px-2 py-0.5 rounded-full bg-[#F4F4F8] dark:bg-[#181824]">
             Default
           </span>
         )}
@@ -84,47 +84,47 @@ export function CreatorFilterPanel() {
 
       {/* Active Filter Chips (Removable) */}
       {activeFilterCount > 0 && (
-        <div className="flex flex-wrap gap-1.5 pt-1 pb-2 border-b border-black/5">
+        <div className="flex flex-wrap gap-1.5 pt-1 pb-2 border-b border-black/5 dark:border-white/10">
           {creatorCategory !== "all" && (
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-[#FFFDF5] border border-[#FFD21F]/50 text-[11px] font-bold text-[#0A0A0E] shadow-2xs">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-[#FFFDF5] dark:bg-[#FFD21F]/15 border border-[#FFD21F]/50 text-[11px] font-bold text-[#0A0A0E] dark:text-white shadow-2xs">
               <span>{creatorCategory}</span>
-              <button onClick={() => setCreatorCategory("all")} className="hover:text-red-600">
+              <button onClick={() => setCreatorCategory("all")} className="hover:text-red-600 dark:hover:text-red-400">
                 <X className="w-3 h-3" />
               </button>
             </span>
           )}
 
           {creatorPlatform !== "all" && (
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-[#FFFDF5] border border-[#FFD21F]/50 text-[11px] font-bold text-[#0A0A0E] capitalize shadow-2xs">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-[#FFFDF5] dark:bg-[#FFD21F]/15 border border-[#FFD21F]/50 text-[11px] font-bold text-[#0A0A0E] dark:text-white capitalize shadow-2xs">
               <span>{creatorPlatform}</span>
-              <button onClick={() => setCreatorPlatform("all")} className="hover:text-red-600">
+              <button onClick={() => setCreatorPlatform("all")} className="hover:text-red-600 dark:hover:text-red-400">
                 <X className="w-3 h-3" />
               </button>
             </span>
           )}
 
           {creatorMinFollowers > 0 && (
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-[#FFFDF5] border border-[#FFD21F]/50 text-[11px] font-bold text-[#0A0A0E] shadow-2xs">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-[#FFFDF5] dark:bg-[#FFD21F]/15 border border-[#FFD21F]/50 text-[11px] font-bold text-[#0A0A0E] dark:text-white shadow-2xs">
               <span>{creatorMinFollowers / 1000}K+ Reach</span>
-              <button onClick={() => setCreatorMinFollowers(0)} className="hover:text-red-600">
+              <button onClick={() => setCreatorMinFollowers(0)} className="hover:text-red-600 dark:hover:text-red-400">
                 <X className="w-3 h-3" />
               </button>
             </span>
           )}
 
           {creatorMinEngagement > 0 && (
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-[#FFFDF5] border border-[#FFD21F]/50 text-[11px] font-bold text-[#0A0A0E] shadow-2xs">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-[#FFFDF5] dark:bg-[#FFD21F]/15 border border-[#FFD21F]/50 text-[11px] font-bold text-[#0A0A0E] dark:text-white shadow-2xs">
               <span>{creatorMinEngagement}%+ ER</span>
-              <button onClick={() => setCreatorMinEngagement(0)} className="hover:text-red-600">
+              <button onClick={() => setCreatorMinEngagement(0)} className="hover:text-red-600 dark:hover:text-red-400">
                 <X className="w-3 h-3" />
               </button>
             </span>
           )}
 
           {creatorVerifiedOnly && (
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-[#FFFDF5] border border-[#FFD21F]/50 text-[11px] font-bold text-[#0A0A0E] shadow-2xs">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-[#FFFDF5] dark:bg-[#FFD21F]/15 border border-[#FFD21F]/50 text-[11px] font-bold text-[#0A0A0E] dark:text-white shadow-2xs">
               <span>Verified Only</span>
-              <button onClick={() => setCreatorVerifiedOnly(false)} className="hover:text-red-600">
+              <button onClick={() => setCreatorVerifiedOnly(false)} className="hover:text-red-600 dark:hover:text-red-400">
                 <X className="w-3 h-3" />
               </button>
             </span>
@@ -134,20 +134,20 @@ export function CreatorFilterPanel() {
 
       {/* Keyword Search Input */}
       <div className="space-y-1.5">
-        <label className="text-xs font-bold text-[#0A0A0E]">Search Talent</label>
+        <label className="text-xs font-bold text-[#0A0A0E] dark:text-white">Search Talent</label>
         <div className="relative">
-          <Search className="w-3.5 h-3.5 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#7A7A8A]" />
+          <Search className="w-3.5 h-3.5 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#7A7A8A] dark:text-[#8E8EA4]" />
           <input
             type="text"
             value={creatorSearchQuery}
             onChange={(e) => setCreatorSearchQuery(e.target.value)}
             placeholder="Search name, @handle, keywords..."
-            className="w-full bg-[#F5F5F9] border border-black/8 rounded-2xl pl-9 pr-7 py-2.5 text-xs font-medium text-[#0A0A0E] placeholder:text-[#8A8A9A] focus:outline-none focus:border-[#FFD21F] focus:ring-2 focus:ring-[#FFD21F]/20 focus:bg-white transition-all shadow-2xs"
+            className="w-full bg-[#F5F5F9] dark:bg-[#181824] border border-black/8 dark:border-white/10 rounded-2xl pl-9 pr-7 py-2.5 text-xs font-medium text-[#0A0A0E] dark:text-white placeholder:text-[#8A8A9A] dark:placeholder:text-[#6E6E80] focus:outline-none focus:border-[#FFD21F] focus:ring-2 focus:ring-[#FFD21F]/20 focus:bg-white dark:focus:bg-[#181824] transition-all shadow-2xs"
           />
           {creatorSearchQuery && (
             <button
               onClick={() => setCreatorSearchQuery("")}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#7A7A8A] hover:text-[#0A0A0E]"
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#7A7A8A] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
             >
               <X className="w-3.5 h-3.5" />
             </button>
@@ -157,17 +157,17 @@ export function CreatorFilterPanel() {
 
       {/* Content Category Dropdown */}
       <div className="space-y-1.5">
-        <label className="text-xs font-bold text-[#0A0A0E]">Niche &amp; Content Category</label>
+        <label className="text-xs font-bold text-[#0A0A0E] dark:text-white">Niche &amp; Content Category</label>
         <select
           value={creatorCategory || "all"}
           onChange={(e) =>
             setCreatorCategory(e.target.value as CreatorCategory | "all")
           }
-          className="w-full bg-[#F5F5F9] border border-black/8 rounded-2xl px-3.5 py-2.5 text-xs font-semibold text-[#0A0A0E] focus:outline-none focus:border-[#FFD21F] focus:bg-white transition-all shadow-2xs"
+          className="w-full bg-[#F5F5F9] dark:bg-[#181824] border border-black/8 dark:border-white/10 rounded-2xl px-3.5 py-2.5 text-xs font-semibold text-[#0A0A0E] dark:text-white focus:outline-none focus:border-[#FFD21F] focus:bg-white dark:focus:bg-[#181824] transition-all shadow-2xs"
         >
-          <option value="all" className="bg-white text-[#0A0A0E]">All Categories</option>
+          <option value="all" className="bg-white dark:bg-[#181824] text-[#0A0A0E] dark:text-white">All Categories</option>
           {CATEGORIES.map((c) => (
-            <option key={c} value={c} className="bg-white text-[#0A0A0E]">
+            <option key={c} value={c} className="bg-white dark:bg-[#181824] text-[#0A0A0E] dark:text-white">
               {c}
             </option>
           ))}
@@ -176,7 +176,7 @@ export function CreatorFilterPanel() {
 
       {/* Social Platform Channels */}
       <div className="space-y-2">
-        <label className="text-xs font-bold text-[#0A0A0E]">Primary Platform</label>
+        <label className="text-xs font-bold text-[#0A0A0E] dark:text-white">Primary Platform</label>
         <div className="grid grid-cols-2 gap-1.5">
           {PLATFORMS.map((p) => {
             const isSelected = creatorPlatform === p.id;
@@ -187,15 +187,15 @@ export function CreatorFilterPanel() {
                 className={cn(
                   "py-2 px-3 rounded-xl border text-xs font-bold transition-all flex items-center justify-between gap-1.5",
                   isSelected
-                    ? "bg-[#0A0A0E] text-white border-black shadow-xs"
-                    : "bg-[#F8F8FC] border-black/6 text-[#5A5A68] hover:bg-black/5 hover:text-[#0A0A0E]"
+                    ? "bg-[#0A0A0E] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E] border-black dark:border-[#FFD21F] shadow-xs"
+                    : "bg-[#F8F8FC] dark:bg-[#181824] border-black/6 dark:border-white/10 text-[#5A5A68] dark:text-[#B0B0C4] hover:bg-black/5 dark:hover:bg-white/10 hover:text-[#0A0A0E] dark:hover:text-white"
                 )}
               >
                 <div className="flex items-center gap-1.5">
                   <SocialIcon platform={p.id as any} className="w-3.5 h-3.5" />
                   <span className="capitalize text-[11px]">{p.name}</span>
                 </div>
-                {isSelected && <Check className="w-3 h-3 text-[#FFD21F]" />}
+                {isSelected && <Check className="w-3 h-3 text-[#FFD21F] dark:text-[#0A0A0E]" />}
               </button>
             );
           })}
@@ -205,9 +205,9 @@ export function CreatorFilterPanel() {
       {/* Audience Reach Range */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <label className="text-xs font-bold text-[#0A0A0E]">Minimum Audience</label>
+          <label className="text-xs font-bold text-[#0A0A0E] dark:text-white">Minimum Audience</label>
           {creatorMinFollowers > 0 && (
-            <span className="text-[10px] font-mono font-bold text-emerald-700">
+            <span className="text-[10px] font-mono font-bold text-emerald-700 dark:text-emerald-400">
               {creatorMinFollowers.toLocaleString()}+
             </span>
           )}
@@ -222,8 +222,8 @@ export function CreatorFilterPanel() {
                 className={cn(
                   "py-2 px-2 rounded-xl border text-[11px] font-mono font-bold transition-all text-center",
                   isSelected
-                    ? "bg-[#FFD21F] text-[#0A0A0E] border-black/10 shadow-xs font-black"
-                    : "bg-[#F8F8FC] border-black/5 text-[#5A5A68] hover:bg-black/5 hover:text-[#0A0A0E]"
+                    ? "bg-[#FFD21F] text-[#0A0A0E] border-black/10 dark:border-[#FFD21F] shadow-xs font-black"
+                    : "bg-[#F8F8FC] dark:bg-[#181824] border-black/5 dark:border-white/10 text-[#5A5A68] dark:text-[#B0B0C4] hover:bg-black/5 dark:hover:bg-white/10 hover:text-[#0A0A0E] dark:hover:text-white"
                 )}
               >
                 {tier.label}
@@ -236,12 +236,12 @@ export function CreatorFilterPanel() {
       {/* Engagement Rate Minimum */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <label className="text-xs font-bold text-[#0A0A0E] flex items-center gap-1">
+          <label className="text-xs font-bold text-[#0A0A0E] dark:text-white flex items-center gap-1">
             <Flame className="w-3.5 h-3.5 text-amber-500" />
             <span>Engagement Rate</span>
           </label>
           {creatorMinEngagement > 0 && (
-            <span className="text-[10px] font-mono font-bold text-amber-700">
+            <span className="text-[10px] font-mono font-bold text-amber-700 dark:text-amber-400">
               {creatorMinEngagement}%+
             </span>
           )}
@@ -256,8 +256,8 @@ export function CreatorFilterPanel() {
                 className={cn(
                   "py-2 px-2.5 rounded-xl border text-[11px] font-mono font-bold transition-all text-center",
                   isSelected
-                    ? "bg-[#FFD21F] text-[#0A0A0E] border-black/10 shadow-xs font-black"
-                    : "bg-[#F8F8FC] border-black/5 text-[#5A5A68] hover:bg-black/5 hover:text-[#0A0A0E]"
+                    ? "bg-[#FFD21F] text-[#0A0A0E] border-black/10 dark:border-[#FFD21F] shadow-xs font-black"
+                    : "bg-[#F8F8FC] dark:bg-[#181824] border-black/5 dark:border-white/10 text-[#5A5A68] dark:text-[#B0B0C4] hover:bg-black/5 dark:hover:bg-white/10 hover:text-[#0A0A0E] dark:hover:text-white"
                 )}
               >
                 {tier.label}
@@ -268,14 +268,14 @@ export function CreatorFilterPanel() {
       </div>
 
       {/* Verified Only Toggle */}
-      <div className="pt-3 border-t border-black/8 flex items-center justify-between">
+      <div className="pt-3 border-t border-black/8 dark:border-white/10 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-700">
+          <div className="w-7 h-7 rounded-xl bg-emerald-50 dark:bg-emerald-500/15 border border-emerald-200 dark:border-emerald-500/30 flex items-center justify-center text-emerald-700 dark:text-emerald-400">
             <ShieldCheck className="w-3.5 h-3.5" />
           </div>
           <div>
-            <p className="text-xs font-bold text-[#0A0A0E]">Verified Talent Only</p>
-            <p className="text-[10px] text-[#7A7A8A]">Audited media kit &amp; reach</p>
+            <p className="text-xs font-bold text-[#0A0A0E] dark:text-white">Verified Talent Only</p>
+            <p className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4]">Audited media kit &amp; reach</p>
           </div>
         </div>
 
@@ -284,7 +284,7 @@ export function CreatorFilterPanel() {
           onClick={() => setCreatorVerifiedOnly(!creatorVerifiedOnly)}
           className={cn(
             "w-11 h-6 rounded-full transition-colors relative",
-            creatorVerifiedOnly ? "bg-[#FFD21F]" : "bg-black/15"
+            creatorVerifiedOnly ? "bg-[#FFD21F]" : "bg-black/15 dark:bg-white/20"
           )}
         >
           <div

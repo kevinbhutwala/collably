@@ -153,7 +153,7 @@ const pricingStructuredData = [
 
 export default function PricingPage() {
   return (
-    <div className="bg-[#FAFAFC] text-[#0A0A0E] min-h-screen space-y-12">
+    <div className="bg-[#FAFAFC] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] min-h-screen space-y-12">
       <script
         id="pricing-faq-schema"
         type="application/ld+json"

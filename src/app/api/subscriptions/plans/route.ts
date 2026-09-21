@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { CREATOR_PLANS, BRAND_PLANS, ALL_PLANS } from "@/core/constants";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   return NextResponse.json({
     creatorPlans: Object.values(CREATOR_PLANS),

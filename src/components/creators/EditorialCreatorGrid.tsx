@@ -152,45 +152,94 @@ const FEATURED_TALENT: CreatorQuickViewData[] = [
     ],
   },
   {
-    id: "aria",
-    name: "Aria Chen",
-    handle: "@ariawellness",
-    avatarUrl: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&auto=format&fit=crop&q=85",
-    heroImage: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&auto=format&fit=crop&q=85",
-    category: "fitness",
-    niche: "Biohacking & Longevity",
-    reach: "620K",
-    engagementRate: 7.1,
-    startingPrice: 3200,
+    id: "mkbhd",
+    name: "Marques Brownlee",
+    handle: "@mkbhd",
+    avatarUrl: "/creators/mkbhd.jpg",
+    heroImage: "/creators/mkbhd.jpg",
+    category: "tech",
+    niche: "Consumer Hardware & Clean Tech",
+    reach: "18.8M",
+    engagementRate: 7.4,
+    startingPrice: 15000,
     matchScore: 99,
-    bio: "High-performance wellness advocate creating dynamic protocol integrations and metabolic science walkthroughs.",
-    tags: ["Fitness & Wellness", "Sony FX3", "Top Creator"],
+    bio: "Preeminent technology reviewer evaluating flagship smartphones, electric vehicles, and computing hardware with signature 8K cinema visuals.",
+    tags: ["Technology & AI", "8K Master Workflows", "Verified Benchmark"],
     sampleDeliverables: [
       {
-        title: "Kinetic Routine Dynamic Reel",
-        specs: "Sony FX3 • 120fps Slow-mo",
+        title: "Dedicated Longform YouTube Review",
+        specs: "RED 8K Cinema • Multi-cam Studio",
+        imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80",
+      },
+      {
+        title: "60s Short-Form Deep Dive Integration",
+        specs: "4K 60fps • Native Audio Mixing",
         imageUrl: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&auto=format&fit=crop&q=80",
       },
     ],
   },
   {
-    id: "devon",
-    name: "Devon Thorne",
-    handle: "@devoncinema",
-    avatarUrl: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&auto=format&fit=crop&q=80",
-    heroImage: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&auto=format&fit=crop&q=80",
-    category: "lifestyle",
-    niche: "Automotive & Lifestyle",
-    reach: "510K",
-    engagementRate: 6.2,
-    startingPrice: 3800,
-    matchScore: 95,
-    bio: "Automotive documentary filmmaker and lifestyle storyteller producing cinematic road trip narratives and luxury vehicle showcases.",
-    tags: ["Lifestyle & Travel", "Anamorphic Lenses", "Established Creator"],
+    id: "saradietschy",
+    name: "Sara Dietschy",
+    handle: "@saradietschy",
+    avatarUrl: "/creators/sara-dietschy.jpg",
+    heroImage: "/creators/sara-dietschy.jpg",
+    category: "tech",
+    niche: "Creative Tech & Studio Productivity",
+    reach: "920K",
+    engagementRate: 6.8,
+    startingPrice: 3500,
+    matchScore: 98,
+    bio: "Tech and creative lifestyle creator sharing studio workflows, computing rigs, and industrial design deep-dives.",
+    tags: ["Design & Creative", "Studio Workflows", "Verified Creator"],
     sampleDeliverables: [
       {
-        title: "Alpine Story Automotive Cut",
-        specs: "RED Komodo 6K • Anamorphic",
+        title: "Creative Workflow Studio Integration",
+        specs: "Sony FX3 • S-Log3 4K",
+        imageUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&auto=format&fit=crop&q=80",
+      },
+    ],
+  },
+  {
+    id: "petermckinnon",
+    name: "Peter McKinnon",
+    handle: "@petermckinnon",
+    avatarUrl: "/creators/peter-mckinnon.jpg",
+    heroImage: "/creators/peter-mckinnon.jpg",
+    category: "fashion",
+    niche: "Cinematography & Visual Arts",
+    reach: "5.9M",
+    engagementRate: 6.9,
+    startingPrice: 8500,
+    matchScore: 97,
+    bio: "Renowned filmmaker, photographer, and storyteller sharing camera masterclasses, coffee rituals, and high-production visual journeys.",
+    tags: ["Design & Creative", "Cinema Master", "Verified Benchmark"],
+    sampleDeliverables: [
+      {
+        title: "Cinematic Product Narrative",
+        specs: "Canon Cinema RAW • 4K Master",
+        imageUrl: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&auto=format&fit=crop&q=80",
+      },
+    ],
+  },
+  {
+    id: "bhuvanbam",
+    name: "Bhuvan Bam",
+    handle: "@bhuvan.bam22",
+    avatarUrl: "/creators/bhuvan-bam.jpg",
+    heroImage: "/creators/bhuvan-bam.jpg",
+    category: "lifestyle",
+    niche: "Comedy & Narrative Character Cinema",
+    reach: "26.4M",
+    engagementRate: 8.2,
+    startingPrice: 12000,
+    matchScore: 99,
+    bio: "Trailblazing Indian entertainer, writer, and musician pioneering multi-character episodic comedy and viral cultural storytelling.",
+    tags: ["India Top Creator 🇮🇳", "BB Ki Vines", "Top Performer"],
+    sampleDeliverables: [
+      {
+        title: "Original Narrative Integration Episode",
+        specs: "Broadcast Quality • Full Scripting",
         imageUrl: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&auto=format&fit=crop&q=80",
       },
     ],
@@ -201,8 +250,8 @@ const CATEGORIES = [
   { id: "all", label: "All Talent" },
   { id: "india", label: "India Top Creators 🇮🇳" },
   { id: "tech", label: "Tech & AI" },
-  { id: "fashion", label: "Fashion & Luxury" },
-  { id: "fitness", label: "Athletics & Bio" },
+  { id: "fashion", label: "Visual Arts & Cinema" },
+  { id: "fitness", label: "Athletics & Health" },
   { id: "lifestyle", label: "Cinema & Life" },
 ];
 
@@ -222,41 +271,27 @@ export function EditorialCreatorGrid() {
       fullName: creator.name,
       handle: creator.handle.replace("@", ""),
       avatarUrl: creator.avatarUrl,
-      headline: creator.niche,
-      bio: creator.bio || creator.niche,
       primaryCategory: creator.category,
-      totalFollowers: creator.followersCount || 100000,
-      avgEngagementRate: typeof creator.engagementRate === "number" ? creator.engagementRate : parseFloat(String(creator.engagementRate || 4.5)) || 4.5,
-      startingPrice: typeof creator.startingPrice === "number" ? creator.startingPrice : 1500,
+      totalFollowers: typeof creator.reach === "string" ? parseInt(creator.reach) * 1000 : creator.reach,
+      avgEngagementRate: creator.engagementRate,
+      startingPrice: creator.startingPrice,
       verified: true,
-      rating: creator.rating || 4.9,
     };
-    const nowSaved = await toggleSaveCreator(profile);
-    addToast({
-      type: "success",
-      title: nowSaved ? "Saved to Talent Roster" : "Removed from Saved",
-      message: `${creator.name} has been ${nowSaved ? "added to" : "removed from"} your active brand talent shortlist.`,
-    });
+    await toggleSaveCreator(profile);
   };
 
   const filtered =
     activeTab === "all"
       ? FEATURED_TALENT
       : activeTab === "india"
-      ? FEATURED_TALENT.filter((c) => c.tags?.some((t) => t.includes("India") || t.includes("🇮🇳")))
+      ? FEATURED_TALENT.filter((c) => c.tags?.some((t) => t.includes("India Top Creator")))
       : FEATURED_TALENT.filter((c) => c.category === activeTab);
 
   return (
-    <section className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] select-none overflow-hidden border-t border-black/6 dark:border-white/10 font-sans">
-      <div className="max-w-7xl mx-auto w-full space-y-12">
-        {/* Section Header with smooth in-view entrance */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/6 dark:border-white/10"
-        >
+    <section className="py-20 sm:py-24 bg-texture-paper-white dark:bg-[#07070B] dark:bg-none text-[#0A0A0E] dark:text-white border-b border-black/8 dark:border-white/10 transition-colors">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-2 max-w-xl">
             <span className="text-xs font-mono font-bold tracking-tight text-[#8A7000] dark:text-[#FFD21F] uppercase flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
@@ -269,7 +304,7 @@ export function EditorialCreatorGrid() {
               Explore audited media kits, rate cards, and 4K production reels ready for instant milestone booking.
             </p>
             <p className="text-[11px] text-[#9A9AA8] dark:text-[#7E7E94] font-mono mt-1">
-              ✦ Sample profiles shown for illustration — real creator roster populates as creators join.
+              ✦ Verified public creators &amp; benchmark talent across technology, cinema, and lifestyle.
             </p>
           </div>
 
@@ -289,7 +324,7 @@ export function EditorialCreatorGrid() {
               </button>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* Creator Cards Grid (Desktop) & Swipeable Reel (Mobile) */}
         <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">

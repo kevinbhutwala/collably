@@ -5,6 +5,8 @@ import { collaborationRepo } from "@/server/repositories/collaboration.repo";
 import { auditRepo } from "@/server/repositories/audit.repo";
 import { db } from "@/server/db/database";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest) {
   try {
     const session = SecurityService.getSession(req);

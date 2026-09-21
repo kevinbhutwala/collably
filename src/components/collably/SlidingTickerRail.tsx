@@ -18,12 +18,12 @@ export function SlidingTickerRail() {
   ];
 
   const bottomCreators = [
-    { name: "Elena Rostova", handle: "@elenatech", niche: "AI & Hardware", followers: "485K", engagement: "6.4%", avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&auto=format&fit=crop&q=80" },
-    { name: "Marcus Vance", handle: "@marcusvance", niche: "Design & UX", followers: "320K", engagement: "5.8%", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&auto=format&fit=crop&q=80" },
-    { name: "Aria Chen", handle: "@ariachenwellness", niche: "Health & Fitness", followers: "610K", engagement: "7.1%", avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&auto=format&fit=crop&q=80" },
-    { name: "Devon Thorne", handle: "@devoncodes", niche: "Software & Dev", followers: "240K", engagement: "8.2%", avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&auto=format&fit=crop&q=80" },
-    { name: "Chloe Dubois", handle: "@chloedubois_paris", niche: "Luxury & Lifestyle", followers: "890K", engagement: "4.9%", avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&auto=format&fit=crop&q=80" },
-    { name: "Siddharth Nair", handle: "@sidfintech", niche: "Finance & Wealth", followers: "415K", engagement: "6.7%", avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&auto=format&fit=crop&q=80" },
+    { name: "Marques Brownlee", handle: "@mkbhd", niche: "Tech & Hardware", followers: "18.8M", engagement: "7.4%", avatar: "/creators/mkbhd.jpg" },
+    { name: "Sara Dietschy", handle: "@saradietschy", niche: "Studio & Creative Tech", followers: "920K", engagement: "6.8%", avatar: "/creators/sara-dietschy.jpg" },
+    { name: "Peter McKinnon", handle: "@petermckinnon", niche: "Cinematography & Photo", followers: "5.9M", engagement: "6.9%", avatar: "/creators/peter-mckinnon.jpg" },
+    { name: "Ankur Warikoo", handle: "@ankurwarikoo", niche: "Finance & Startups", followers: "3.2M", engagement: "5.8%", avatar: "/creators/ankur-warikoo.webp" },
+    { name: "Prajakta Koli", handle: "@mostlysane", niche: "Comedy & Storytelling", followers: "5.2M", engagement: "6.4%", avatar: "/creators/prajakta-koli.png" },
+    { name: "Tanmay Bhat", handle: "@tanmaybhat", niche: "Fintech & Comedy", followers: "4.8M", engagement: "7.2%", avatar: "/creators/tanmay-bhat.png" },
   ];
 
   return (

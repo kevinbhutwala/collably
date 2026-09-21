@@ -38,9 +38,9 @@ export function PerformanceROI() {
   ];
 
   const channelPerformance = [
-    { platform: "YouTube 60s Integration", creator: "Devon Thorne (@devoncodes)", views: "72,000", clicks: "4,120", conversions: "1,840", roas: "5.2×" },
-    { platform: "X Technical Thread", creator: "Elena Rostova (@elenatech)", views: "125,000", clicks: "2,890", conversions: "1,120", roas: "4.6×" },
-    { platform: "Instagram 4K Reel", creator: "Marcus Vance (@marcusvance)", views: "95,000", clicks: "1,650", conversions: "880", roas: "4.1×" },
+    { platform: "YouTube 60s Integration", creator: "Marques Brownlee (@mkbhd)", views: "480,000", clicks: "14,120", conversions: "3,840", roas: "6.2×" },
+    { platform: "X Technical Thread", creator: "Sara Dietschy (@saradietschy)", views: "125,000", clicks: "2,890", conversions: "1,120", roas: "4.6×" },
+    { platform: "Instagram 4K Reel", creator: "Peter McKinnon (@petermckinnon)", views: "245,000", clicks: "6,650", conversions: "1,880", roas: "5.1×" },
   ];
 
   return (

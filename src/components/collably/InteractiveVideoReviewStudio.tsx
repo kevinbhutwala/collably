@@ -39,8 +39,9 @@ export function InteractiveVideoReviewStudio() {
             title="Dedicated 4K Technical Integration Segment"
             deliverableType="YouTube 60s Integration"
             payoutAmount={2500}
-            creatorName="Elena Rostova"
-            creatorHandle="elenatech"
+            creatorName="Sara Dietschy"
+            creatorHandle="saradietschy"
+            creatorAvatar="/creators/sara-dietschy.jpg"
             assetUrl="https://drive.google.com/file/d/1a2b3c4d5e6f7g8h9/view?usp=sharing"
             notes="Color graded to Linear brand guidelines. Rough cut audio mixed at -14 LUFS. Primary product onboarding b-roll starts at 04:12."
             isInteractiveDemo={true}

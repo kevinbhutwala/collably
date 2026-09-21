@@ -43,9 +43,9 @@ export function DeliverableReviewCard({
   deliverableType = "YouTube 60s Integration",
   payoutAmount = 2500,
   currency = "USD",
-  creatorName = "Elena Rostova",
-  creatorHandle = "elenatech",
-  creatorAvatar = "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&auto=format&fit=crop&q=80",
+  creatorName = "Sara Dietschy",
+  creatorHandle = "saradietschy",
+  creatorAvatar = "/creators/sara-dietschy.jpg",
   assetUrl = "https://drive.google.com/file/d/1a2b3c4d5e6f7g8h9/view?usp=sharing",
   notes = "Color graded to Linear brand guidelines. Rough cut audio mixed at -14 LUFS. Primary product onboarding b-roll starts at 04:12.",
   submittedAt,
@@ -298,7 +298,7 @@ export function DeliverableReviewCard({
         title="Request Deliverable Revision"
         description="Detail what changes are requested before milestone release."
       >
-        <form onSubmit={handleConfirmRevision} className="space-y-4 text-[#0A0A0E]">
+        <form onSubmit={handleConfirmRevision} className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
           <Textarea
             label="Specific Edits or Revision Notes"
             placeholder="e.g. Please increase volume on vocal hook and emphasize the CTA link clearly..."
@@ -314,13 +314,13 @@ export function DeliverableReviewCard({
                 setIsRevisionModalOpen(false);
                 setIsDisputeModalOpen(true);
               }}
-              className="px-4 py-2.5 rounded-full bg-red-50 hover:bg-red-100 text-red-700 font-bold text-xs border border-red-200"
+              className="px-4 py-2.5 rounded-full bg-red-50 hover:bg-red-100 dark:bg-red-950/40 dark:hover:bg-red-900/50 text-red-700 dark:text-red-300 font-bold text-xs border border-red-200 dark:border-red-800"
             >
               Escalate to Admin Dispute
             </button>
             <button
               type="submit"
-              className="flex-1 py-2.5 rounded-full bg-black text-white hover:bg-black/90 font-bold text-xs transition-all"
+              className="flex-1 py-2.5 rounded-full bg-black text-white hover:bg-black/90 dark:bg-[#FFD21F] dark:text-[#0A0A0E] dark:hover:bg-[#FFE052] font-bold text-xs transition-all"
             >
               Send Revision Request to Creator
             </button>
@@ -335,7 +335,7 @@ export function DeliverableReviewCard({
         title="Raise Milestone Dispute"
         description="Freeze escrow tranche and submit case to AbeyCollab arbitration desk."
       >
-        <form onSubmit={handleConfirmDispute} className="space-y-4 text-[#0A0A0E]">
+        <form onSubmit={handleConfirmDispute} className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
           <Textarea
             label="Reason for Formal Dispute"
             placeholder="Explain contract terms breach or unresolved deliverable failure..."

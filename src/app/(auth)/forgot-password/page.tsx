@@ -84,27 +84,27 @@ function ForgotPasswordForm() {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto rounded-3xl bg-white border border-black/8 p-6 sm:p-8 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.06)] relative z-10 text-[#0A0A0E] select-none">
+    <div className="w-full max-w-md mx-auto rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-6 sm:p-8 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.06)] relative z-10 text-[#0A0A0E] dark:text-[#F4F4F8] select-none">
       {/* Top Header */}
-      <div className="flex items-center justify-between pb-3 border-b border-black/8">
+      <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
         <Link
           href="/login"
-          className="inline-flex items-center gap-1.5 text-xs font-sans font-semibold text-[#7A7A8A] hover:text-[#0A0A0E] transition-colors group"
+          className="inline-flex items-center gap-1.5 text-xs font-sans font-semibold text-[#7A7A8A] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white transition-colors group"
         >
           <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
           <span>Back to Sign In</span>
         </Link>
-        <span className="text-[10px] font-mono text-[#0A0A0E] font-bold uppercase flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40">
-          <KeyRound className="w-3 h-3 text-[#0A0A0E]" />
+        <span className="text-[10px] font-mono text-[#0A0A0E] dark:text-[#FFD21F] font-bold uppercase flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40">
+          <KeyRound className="w-3 h-3 text-[#0A0A0E] dark:text-[#FFD21F]" />
           Recovery
         </span>
       </div>
 
       <div className="text-center space-y-1.5">
-        <h1 className="text-2xl sm:text-3xl font-black text-[#0A0A0E] tracking-tight font-display">
+        <h1 className="text-2xl sm:text-3xl font-black text-[#0A0A0E] dark:text-white tracking-tight font-display">
           {isResetMode ? "Set New Password" : "Reset Password"}
         </h1>
-        <p className="text-xs text-[#6A6A78] font-sans">
+        <p className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-sans">
           {isResetMode
             ? "Enter your new account password to regain workspace access."
             : "Enter your registered email address to recover your account."}
@@ -112,14 +112,14 @@ function ForgotPasswordForm() {
       </div>
 
       {errorMessage && (
-        <div className="p-3.5 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
+        <div className="p-3.5 rounded-2xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 text-xs flex items-center gap-2">
           <AlertCircle className="w-4 h-4 shrink-0" />
           <span>{errorMessage}</span>
         </div>
       )}
 
       {successMessage && (
-        <div className="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs flex items-center gap-2">
+        <div className="p-3.5 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 text-xs flex items-center gap-2">
           <CheckCircle2 className="w-4 h-4 shrink-0" />
           <span>{successMessage}</span>
         </div>
@@ -133,7 +133,7 @@ function ForgotPasswordForm() {
           placeholder="name@agency.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          icon={<Mail className="w-4 h-4 text-[#7A7A8A]" />}
+          icon={<Mail className="w-4 h-4 text-[#7A7A8A] dark:text-[#8E8EA4]" />}
           disabled={isResetMode && Boolean(initialEmail)}
         />
 
@@ -146,12 +146,12 @@ function ForgotPasswordForm() {
               placeholder="Minimum 8 characters"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
-              icon={<Lock className="w-4 h-4 text-[#7A7A8A]" />}
+              icon={<Lock className="w-4 h-4 text-[#7A7A8A] dark:text-[#8E8EA4]" />}
               rightElement={
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="text-[#7A7A8A] hover:text-[#0A0A0E] transition-colors p-1"
+                  className="text-[#7A7A8A] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white transition-colors p-1"
                   aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -166,7 +166,7 @@ function ForgotPasswordForm() {
               placeholder="Re-enter password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              icon={<Lock className="w-4 h-4 text-[#7A7A8A]" />}
+              icon={<Lock className="w-4 h-4 text-[#7A7A8A] dark:text-[#8E8EA4]" />}
             />
           </>
         )}
@@ -190,9 +190,9 @@ function ForgotPasswordForm() {
       </form>
 
       <div className="text-center pt-2">
-        <p className="text-xs text-[#6A6A78]">
+        <p className="text-xs text-[#6A6A78] dark:text-[#8E8EA4]">
           Remembered your credentials?{" "}
-          <Link href="/login" className="text-[#0A0A0E] hover:underline font-bold">
+          <Link href="/login" className="text-[#0A0A0E] dark:text-[#FFD21F] hover:underline font-bold">
             Sign In
           </Link>
         </p>
@@ -205,7 +205,7 @@ export default function ForgotPasswordPage() {
   return (
     <Suspense
       fallback={
-        <div className="w-full max-w-md p-8 rounded-3xl bg-white border border-black/8 text-center text-[#0A0A0E] shadow-sm">
+        <div className="w-full max-w-md p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 text-center text-[#0A0A0E] dark:text-[#F4F4F8] shadow-sm">
           <CreativeLoader size="sm" label="Loading..." />
         </div>
       }

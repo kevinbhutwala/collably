@@ -66,7 +66,7 @@ const termsJsonLd = [
 
 export default function TermsOfServicePage() {
   return (
-    <div className="py-16 sm:py-24 bg-[#FAFAFC] text-[#0A0A0E] min-h-screen">
+    <div className="py-16 sm:py-24 bg-[#FAFAFC] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] min-h-screen">
       <script
         id="terms-schema"
         type="application/ld+json"
@@ -74,65 +74,65 @@ export default function TermsOfServicePage() {
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="space-y-4">
-          <Link href="/" className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[#7A7A8A] hover:text-[#0A0A0E] transition-colors">
+          <Link href="/" className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[#7A7A8A] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white transition-colors">
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Back to Home</span>
           </Link>
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-black/8 text-xs font-mono font-bold text-[#0A0A0E] shadow-xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 text-xs font-mono font-bold text-[#0A0A0E] dark:text-white shadow-xs">
             <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
             <span>Legal Agreement</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
             Terms of Service
           </h1>
-          <p className="text-sm text-[#7A7A8A] font-mono">
+          <p className="text-sm text-[#7A7A8A] dark:text-[#8E8EA4] font-mono">
             Last Updated: August 31, 2026 • AbeyCollab Inc.
           </p>
         </div>
 
-        <div className="space-y-8 text-sm text-[#6B6B6B] leading-relaxed border-t border-[#E7E7E4] pt-8 font-sans font-medium">
+        <div className="space-y-8 text-sm text-[#6B6B6B] dark:text-[#8E8EA4] leading-relaxed border-t border-[#E7E7E4] dark:border-white/10 pt-8 font-sans font-medium">
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-[#111111] font-display">1. Acceptance of Terms</h2>
+            <h2 className="text-xl font-bold text-[#111111] dark:text-white font-display">1. Acceptance of Terms</h2>
             <p>
               By creating an account, publishing a campaign brief, connecting social channels, or submitting content on AbeyCollab (&quot;Platform&quot;), you agree to be bound by these Terms of Service. If you are entering into this agreement on behalf of a company, you represent that you have the authority to bind such entity.
             </p>
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-[#111111] font-display">2. Milestone Escrow &amp; Payments</h2>
-            <ul className="list-disc pl-5 space-y-2 text-[#6B6B6B]">
-              <li><strong className="text-[#111111]">Brand Deposit:</strong> When a brand accepts a creator application or launches a direct booking, the agreed campaign budget is pre-funded into AbeyCollab Escrow.</li>
-              <li><strong className="text-[#111111]">Deliverable Review Period:</strong> Brands have 7 calendar days to review submitted content, request revisions within the agreed scope, or approve the deliverable.</li>
-              <li><strong className="text-[#111111]">Milestone Release:</strong> Upon brand approval (or expiration of the review window without active dispute), escrow funds are automatically disbursed to the creator.</li>
-              <li><strong className="text-[#111111]">Platform Fee:</strong> AbeyCollab charges a 10% platform fee deducted upon milestone release. Creators receive 90% of the agreed contract price.</li>
+            <h2 className="text-xl font-bold text-[#111111] dark:text-white font-display">2. Milestone Escrow &amp; Payments</h2>
+            <ul className="list-disc pl-5 space-y-2 text-[#6B6B6B] dark:text-[#8E8EA4]">
+              <li><strong className="text-[#111111] dark:text-white">Brand Deposit:</strong> When a brand accepts a creator application or launches a direct booking, the agreed campaign budget is pre-funded into AbeyCollab Escrow.</li>
+              <li><strong className="text-[#111111] dark:text-white">Deliverable Review Period:</strong> Brands have 7 calendar days to review submitted content, request revisions within the agreed scope, or approve the deliverable.</li>
+              <li><strong className="text-[#111111] dark:text-white">Milestone Release:</strong> Upon brand approval (or expiration of the review window without active dispute), escrow funds are automatically disbursed to the creator.</li>
+              <li><strong className="text-[#111111] dark:text-white">Platform Fee:</strong> AbeyCollab charges a 10% platform fee deducted upon milestone release. Creators receive 90% of the agreed contract price.</li>
             </ul>
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-[#111111] font-display">3. Creator Deliverable Obligations</h2>
+            <h2 className="text-xl font-bold text-[#111111] dark:text-white font-display">3. Creator Deliverable Obligations</h2>
             <p>
               Creators agree to produce original, authentic content in accordance with the brief guidelines and delivery deadlines. Creators must disclose brand sponsorships in compliance with applicable advertising standards (e.g. FTC guidelines and #ad disclosure rules).
             </p>
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-[#111111] font-display">4. Intellectual Property &amp; Commercial Usage</h2>
+            <h2 className="text-xl font-bold text-[#111111] dark:text-white font-display">4. Intellectual Property &amp; Commercial Usage</h2>
             <p>
               Unless specified otherwise in a custom campaign brief, approval of a deliverable grants the brand a non-exclusive, worldwide digital advertising license for the duration agreed in the rate card. The creator retains organic portfolio display and credit rights.
             </p>
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-[#111111] font-display">5. Dispute Arbitration &amp; Refunds</h2>
+            <h2 className="text-xl font-bold text-[#111111] dark:text-white font-display">5. Dispute Arbitration &amp; Refunds</h2>
             <p>
               If a deliverable is rejected or a creator fails to meet production milestones, either party may trigger AbeyCollab Dispute Arbitration. AbeyCollab staff will review video uploads, brief specifications, and revision history within 4 hours. In the event of an uncured default by a creator, escrow funds are refunded to the brand.
             </p>
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-[#111111] font-display">6. Contact &amp; Legal Inquiries</h2>
+            <h2 className="text-xl font-bold text-[#111111] dark:text-white font-display">6. Contact &amp; Legal Inquiries</h2>
             <p>
-              For legal notices or questions regarding these terms, contact <span className="font-mono text-[#111111] font-bold">legal@abeycollab.com</span>.
+              For legal notices or questions regarding these terms, contact <span className="font-mono text-[#111111] dark:text-white font-bold">legal@abeycollab.com</span>.
             </p>
           </section>
         </div>

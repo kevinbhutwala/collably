@@ -196,7 +196,7 @@ export function HeroEditorialCollage() {
             className="absolute top-4 sm:top-6 right-8 sm:right-28 lg:right-44 z-30 p-3 sm:p-4 rounded-xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-editorial max-w-[200px] sm:max-w-[230px]"
           >
             <div className="flex items-center justify-between gap-2 pb-1.5 border-b border-[#E7E7E4] text-xs font-mono">
-              <span className="font-display font-bold text-[#101010] truncate">Elena Rostova</span>
+              <span className="font-display font-bold text-[#101010] truncate">Sara Dietschy</span>
               <span className="px-1.5 py-0.5 rounded bg-[#FFD21F] text-[#101010] font-bold text-[10px]">
                 98% MATCH
               </span>
@@ -204,7 +204,7 @@ export function HeroEditorialCollage() {
             <div className="grid grid-cols-2 gap-2 pt-2 text-[10px] font-mono text-[#626262]">
               <div>
                 <span className="tracking-wider">REACH</span>
-                <p className="font-bold text-[#101010] text-xs numeric-tabular">485K</p>
+                <p className="font-bold text-[#101010] text-xs numeric-tabular">920K</p>
               </div>
               <div>
                 <span className="tracking-wider">ENGAGEMENT</span>

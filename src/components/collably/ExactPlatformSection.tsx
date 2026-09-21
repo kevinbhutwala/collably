@@ -17,7 +17,7 @@ export function ExactPlatformSection() {
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-texture-paper-white border-y border-black/10 text-[#0A0A0E] select-none relative overflow-hidden">
+    <section className="py-20 sm:py-28 bg-texture-paper-white dark:bg-[#07070B] dark:bg-none border-y border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white select-none relative overflow-hidden">
       {/* Subtle background ambient gold flare on light paper */}
       <div className="absolute top-0 right-1/4 w-[450px] h-[450px] bg-[#FFD21F]/15 rounded-full blur-[140px] pointer-events-none" />
 

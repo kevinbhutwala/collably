@@ -120,39 +120,39 @@ export default function CreatorRegisterPage() {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto rounded-3xl bg-white border border-black/8 p-6 sm:p-10 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.06)] relative z-10 text-[#0A0A0E] select-none">
+    <div className="w-full max-w-2xl mx-auto rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-6 sm:p-10 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.06)] relative z-10 text-[#0A0A0E] dark:text-[#F4F4F8] select-none">
       {/* Top Header */}
-      <div className="flex items-center justify-between pb-3 border-b border-black/8">
+      <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-xs font-sans font-semibold text-[#7A7A8A] hover:text-[#0A0A0E] transition-colors group"
+          className="inline-flex items-center gap-1.5 text-xs font-sans font-semibold text-[#7A7A8A] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white transition-colors group"
         >
           <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
           <span>Home</span>
         </Link>
         <Link
           href="/register"
-          className="text-xs font-sans font-semibold text-[#7A7A8A] hover:text-[#0A0A0E] transition-colors"
+          className="text-xs font-sans font-semibold text-[#7A7A8A] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white transition-colors"
         >
           Switch to Brand &rarr;
         </Link>
       </div>
 
       <div className="space-y-1.5">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] text-[11px] font-bold font-mono">
-          <Sparkles className="w-3.5 h-3.5 fill-[#FFD21F] text-[#0A0A0E]" />
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] dark:text-[#FFD21F] text-[11px] font-bold font-mono">
+          <Sparkles className="w-3.5 h-3.5 fill-[#FFD21F] text-[#0A0A0E] dark:text-[#FFD21F]" />
           <span>Creator Media Kit Registration</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-black text-[#0A0A0E] tracking-tight font-display">
+        <h1 className="text-2xl sm:text-3xl font-black text-[#0A0A0E] dark:text-white tracking-tight font-display">
           Create Your Creator Profile
         </h1>
-        <p className="text-xs sm:text-sm text-[#5A5A68] font-sans">
+        <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#8E8EA4] font-sans">
           Connect your channels to generate your verified rate card and audited telemetry.
         </p>
       </div>
 
       {errorMessage && (
-        <div className="p-3.5 rounded-2xl bg-red-50 border border-red-200 text-red-600 text-xs flex items-center gap-2">
+        <div className="p-3.5 rounded-2xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-300 text-xs flex items-center gap-2">
           <AlertCircle className="w-4 h-4 shrink-0" />
           <span>{errorMessage}</span>
         </div>
@@ -164,15 +164,15 @@ export default function CreatorRegisterPage() {
       </div>
 
       <div className="relative flex py-1 items-center">
-        <div className="flex-grow border-t border-black/8" />
-        <span className="flex-shrink mx-3 text-[10px] font-mono text-[#8A8A98] uppercase">or fill details</span>
-        <div className="flex-grow border-t border-black/8" />
+        <div className="flex-grow border-t border-black/8 dark:border-white/10" />
+        <span className="flex-shrink mx-3 text-[10px] font-mono text-[#8A8A98] dark:text-[#7E7E94] uppercase">or fill details</span>
+        <div className="flex-grow border-t border-black/8 dark:border-white/10" />
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Section 1: Basic Information */}
         <div className="space-y-4">
-          <h2 className="text-xs font-bold uppercase tracking-wider text-[#0A0A0E] font-mono flex items-center gap-1.5">
+          <h2 className="text-xs font-bold uppercase tracking-wider text-[#0A0A0E] dark:text-white font-mono flex items-center gap-1.5">
             <span>1. Creator Identity</span>
           </h2>
 
@@ -181,14 +181,14 @@ export default function CreatorRegisterPage() {
               label="Full Name / Brand Name"
               value={formData.fullName}
               onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-              placeholder="Elena Rostova"
+              placeholder="e.g. Marques Brownlee"
               required
             />
             <Input
               label="Primary Handle (@)"
               value={formData.handle}
               onChange={(e) => setFormData({ ...formData, handle: e.target.value })}
-              placeholder="elenatech"
+              placeholder="mkbhd"
               required
             />
           </div>
@@ -199,7 +199,7 @@ export default function CreatorRegisterPage() {
               type="email"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              placeholder="elena@example.com"
+              placeholder="you@example.com"
               required
             />
             <Input
@@ -213,7 +213,7 @@ export default function CreatorRegisterPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="text-[#7A7A8A] hover:text-[#0A0A0E] transition-colors p-1"
+                  className="text-[#7A7A8A] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white transition-colors p-1"
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
@@ -223,16 +223,16 @@ export default function CreatorRegisterPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-1.5 text-left font-sans">
-              <label className="block text-xs font-bold text-[#0A0A0E]">Primary Content Niche</label>
+              <label className="block text-xs font-bold text-[#0A0A0E] dark:text-white">Primary Content Niche</label>
               <select
                 value={formData.primaryCategory}
                 onChange={(e) =>
                   setFormData({ ...formData, primaryCategory: e.target.value as CreatorCategory })
                 }
-                className="w-full bg-[#F8F8FC] border border-black/10 rounded-2xl px-3.5 py-3 text-sm text-[#0A0A0E] focus:outline-none focus:border-[#FFD21F] transition-all font-sans"
+                className="w-full bg-[#F8F8FC] dark:bg-[#181824] border border-black/10 dark:border-white/10 rounded-2xl px-3.5 py-3 text-sm text-[#0A0A0E] dark:text-white focus:outline-none focus:border-[#FFD21F] transition-all font-sans"
               >
                 {CATEGORIES.map((cat) => (
-                  <option key={cat} value={cat} className="bg-white text-[#0A0A0E]">
+                  <option key={cat} value={cat} className="bg-white dark:bg-[#181824] text-[#0A0A0E] dark:text-white">
                     {cat}
                   </option>
                 ))}
@@ -252,28 +252,28 @@ export default function CreatorRegisterPage() {
         </div>
 
         {/* Section 2: Social Media Channels */}
-        <div className="space-y-4 pt-4 border-t border-black/8">
+        <div className="space-y-4 pt-4 border-t border-black/8 dark:border-white/10">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <h2 className="text-xs font-bold uppercase tracking-wider text-[#0A0A0E] font-mono">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-[#0A0A0E] dark:text-white font-mono">
               2. Connect Social Channels
             </h2>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] text-[11px] font-mono font-bold border border-[#FFD21F]/40 self-start sm:self-auto">
-              <Users className="w-3.5 h-3.5 text-[#0A0A0E]" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] text-[11px] font-mono font-bold border border-[#FFD21F]/40 self-start sm:self-auto">
+              <Users className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F]" />
               <span>Est. Reach: {totalReach.toLocaleString()} ({currentTier} Tier)</span>
             </div>
           </div>
 
           {/* YouTube */}
-          <div className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/6 space-y-2">
-            <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E]">
-              <div className="w-6 h-6 rounded-lg bg-red-100 text-red-600 flex items-center justify-center">
+          <div className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/6 dark:border-white/10 space-y-2">
+            <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white">
+              <div className="w-6 h-6 rounded-lg bg-red-100 dark:bg-red-950/50 text-red-600 dark:text-red-400 flex items-center justify-center">
                 <Youtube className="w-3.5 h-3.5" />
               </div>
               <span>YouTube Channel</span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Input
-                placeholder="Channel handle (e.g. @ElenaTech)"
+                placeholder="Channel handle (e.g. @mkbhd)"
                 value={formData.youtubeHandle}
                 onChange={(e) => setFormData({ ...formData, youtubeHandle: e.target.value })}
               />
@@ -289,16 +289,16 @@ export default function CreatorRegisterPage() {
           </div>
 
           {/* Instagram */}
-          <div className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/6 space-y-2">
-            <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E]">
-              <div className="w-6 h-6 rounded-lg bg-pink-100 text-pink-600 flex items-center justify-center">
+          <div className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/6 dark:border-white/10 space-y-2">
+            <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white">
+              <div className="w-6 h-6 rounded-lg bg-pink-100 dark:bg-pink-950/50 text-pink-600 dark:text-pink-400 flex items-center justify-center">
                 <Instagram className="w-3.5 h-3.5" />
               </div>
               <span>Instagram Profile</span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Input
-                placeholder="Instagram handle (e.g. @elena_creates)"
+                placeholder="Instagram handle (e.g. @saradietschy)"
                 value={formData.instagramHandle}
                 onChange={(e) => setFormData({ ...formData, instagramHandle: e.target.value })}
               />
@@ -314,16 +314,16 @@ export default function CreatorRegisterPage() {
           </div>
 
           {/* TikTok */}
-          <div className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/6 space-y-2">
-            <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E]">
-              <div className="w-6 h-6 rounded-lg bg-black/10 text-black flex items-center justify-center">
+          <div className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/6 dark:border-white/10 space-y-2">
+            <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white">
+              <div className="w-6 h-6 rounded-lg bg-black/10 dark:bg-white/10 text-black dark:text-white flex items-center justify-center">
                 <Video className="w-3.5 h-3.5" />
               </div>
               <span>TikTok Channel</span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Input
-                placeholder="TikTok handle (e.g. @elenatok)"
+                placeholder="TikTok handle (e.g. @yourcreator)"
                 value={formData.tiktokHandle}
                 onChange={(e) => setFormData({ ...formData, tiktokHandle: e.target.value })}
               />
@@ -339,16 +339,16 @@ export default function CreatorRegisterPage() {
           </div>
 
           {/* X / Twitter */}
-          <div className="p-4 rounded-2xl bg-[#F8F8FC] border border-black/6 space-y-2">
-            <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E]">
-              <div className="w-6 h-6 rounded-lg bg-black/10 text-black flex items-center justify-center">
+          <div className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/6 dark:border-white/10 space-y-2">
+            <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white">
+              <div className="w-6 h-6 rounded-lg bg-black/10 dark:bg-white/10 text-black dark:text-white flex items-center justify-center">
                 <Twitter className="w-3.5 h-3.5" />
               </div>
               <span>X (Twitter) Profile</span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Input
-                placeholder="X handle (e.g. @elenatech)"
+                placeholder="X handle (e.g. @mkbhd)"
                 value={formData.xHandle}
                 onChange={(e) => setFormData({ ...formData, xHandle: e.target.value })}
               />
@@ -365,7 +365,7 @@ export default function CreatorRegisterPage() {
         </div>
 
         {/* Section 3: Bio */}
-        <div className="space-y-2 pt-4 border-t border-black/8">
+        <div className="space-y-2 pt-4 border-t border-black/8 dark:border-white/10">
           <Textarea
             label="Bio & Audience Demographics"
             value={formData.bio}
@@ -396,10 +396,10 @@ export default function CreatorRegisterPage() {
         </div>
       </form>
 
-      <div className="pt-3 border-t border-black/8 text-center">
-        <p className="text-xs text-[#5A5A68]">
+      <div className="pt-3 border-t border-black/8 dark:border-white/10 text-center">
+        <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
           Already have an account?{" "}
-          <Link href="/login" className="text-[#0A0A0E] hover:underline font-bold">
+          <Link href="/login" className="text-[#0A0A0E] dark:text-[#FFD21F] hover:underline font-bold">
             Sign In
           </Link>
         </p>

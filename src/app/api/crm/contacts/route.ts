@@ -3,6 +3,8 @@ import { crmRepo } from "@/server/repositories/crm.repo";
 import { SecurityService } from "@/server/services/security.service";
 import { subscriptionService } from "@/server/services/subscription.service";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest) {
   try {
     const session = SecurityService.getSession(req);

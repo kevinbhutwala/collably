@@ -182,21 +182,21 @@ export default function ServicesPage() {
   ];
 
   return (
-    <div className="bg-[#FAFAFC] text-[#0A0A0E] min-h-screen">
+    <div className="bg-[#FAFAFC] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] min-h-screen">
       <Script
         id="services-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }}
       />
       <div className="pt-24 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-black/8 text-xs font-mono font-bold text-[#0A0A0E] shadow-xs">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 text-xs font-mono font-bold text-[#0A0A0E] dark:text-white shadow-xs">
           <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
           <span>Agency Services &amp; Managed Solutions</span>
         </div>
-        <h1 className="text-4xl sm:text-6xl font-extrabold text-[#0A0A0E] tracking-tight font-display">
+        <h1 className="text-4xl sm:text-6xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
           Modern Agency Services Built for Scale
         </h1>
-        <p className="text-base text-[#5A5A68] max-w-2xl mx-auto font-sans font-medium leading-relaxed">
+        <p className="text-base text-[#5A5A68] dark:text-[#8E8EA4] max-w-2xl mx-auto font-sans font-medium leading-relaxed">
           Whether self-serve via our SaaS platform or fully managed by our talent strategy team, we power world-class creator marketing.
         </p>
       </div>
@@ -208,10 +208,10 @@ export default function ServicesPage() {
             return (
               <div
                 key={i}
-                className="group rounded-3xl bg-white border border-black/8 hover:border-[#FFD21F] shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between overflow-hidden"
+                className="group rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 hover:border-[#FFD21F] dark:hover:border-[#FFD21F] shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between overflow-hidden"
               >
                 {/* Visual Image Stage Matched to Title */}
-                <div className="relative h-48 w-full bg-[#F0F0F4] overflow-hidden border-b border-black/5">
+                <div className="relative h-48 w-full bg-[#F0F0F4] dark:bg-[#181824] overflow-hidden border-b border-black/5 dark:border-white/10">
                   <SafeImage
                     src={s.image}
                     alt={s.title}
@@ -243,21 +243,21 @@ export default function ServicesPage() {
                 {/* Card Body */}
                 <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                   <div className="space-y-3">
-                    <p className="text-xs text-[#5A5A68] leading-relaxed font-sans font-medium">
+                    <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] leading-relaxed font-sans font-medium">
                       {s.description}
                     </p>
 
-                    <ul className="space-y-2 pt-2 border-t border-black/5 font-mono text-xs text-[#5A5A68]">
+                    <ul className="space-y-2 pt-2 border-t border-black/5 dark:border-white/10 font-mono text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
                       {s.features.map((f, j) => (
-                        <li key={j} className="flex items-center gap-2 font-sans font-medium text-[#0A0A0E] text-[11px]">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                        <li key={j} className="flex items-center gap-2 font-sans font-medium text-[#0A0A0E] dark:text-white text-[11px]">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                           <span>{f}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <div className="pt-4 border-t border-black/8">
+                  <div className="pt-4 border-t border-black/8 dark:border-white/10">
                     <Link href="/contact">
                       <Button variant="secondary" size="sm" className="w-full rounded-full" rightIcon={<ArrowRight className="w-3.5 h-3.5" />}>
                         Inquire for Custom Scope

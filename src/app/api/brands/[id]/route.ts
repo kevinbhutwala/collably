@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { brandRepo } from "@/server/repositories/brand.repo";
 import { SecurityService } from "@/server/services/security.service";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
   try {
     const brand = brandRepo.getById(params.id);

@@ -1,5 +1,4 @@
 import { ChatMessage, Conversation, UserRole } from "../core/types";
-import { MOCK_CONVERSATIONS, MOCK_MESSAGES } from "@/mock/messages.mock";
 
 class MessageService {
   async getConversations(userId?: string): Promise<Conversation[]> {
@@ -15,7 +14,7 @@ class MessageService {
     } catch (err) {
       console.warn("Failed to fetch conversations from API, using fallback:", err);
     }
-    return MOCK_CONVERSATIONS;
+    return [];
   }
 
   async getMessages(conversationId: string): Promise<ChatMessage[]> {
@@ -30,7 +29,7 @@ class MessageService {
     } catch (err) {
       console.warn("Failed to fetch messages from API, using fallback:", err);
     }
-    return MOCK_MESSAGES[conversationId] || [];
+    return [];
   }
 
   async sendMessage(

@@ -163,7 +163,7 @@ export function Navbar() {
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-xl bg-[#F4F4F8] border border-black/8 text-[#0A0A0E] hover:bg-[#EAEAEF] transition-colors active:scale-95 touch-manipulation"
+              className="p-2.5 rounded-xl bg-[#F4F4F8] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-[#0A0A0E] dark:text-white hover:bg-[#EAEAEF] dark:hover:bg-[#222232] transition-colors active:scale-95 touch-manipulation"
               aria-label="Toggle Menu"
               aria-expanded={mobileMenuOpen}
               aria-controls="public-navigation"
@@ -262,29 +262,29 @@ export function Navbar() {
         description="Select your pathway to access tailored briefings and verified creator kits."
         maxWidth="md"
       >
-        <div className="space-y-3 pt-2 text-[#0A0A0E] select-none font-sans">
+        <div className="space-y-3 pt-2 text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans">
           <Link
             href="/brand/register"
             onClick={() => setRoleModalOpen(false)}
-            className="w-full text-left p-4 rounded-2xl bg-[#FFFDF5] border-2 border-[#FFD21F] hover:shadow-md transition-all group flex items-center justify-between block hover-lift"
+            className="w-full text-left p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#1A1A28] border-2 border-[#FFD21F] hover:shadow-md transition-all group flex items-center justify-between block hover-lift"
           >
             <div>
-              <h4 className="text-sm font-bold font-display">I am a Brand / Business</h4>
-              <p className="text-xs text-[#6A6A78]">Post campaign briefs, hire creators &amp; escrow funds</p>
+              <h4 className="text-sm font-bold font-display text-[#0A0A0E] dark:text-white">I am a Brand / Business</h4>
+              <p className="text-xs text-[#6A6A78] dark:text-[#A0A0B4]">Post campaign briefs, hire creators &amp; escrow funds</p>
             </div>
-            <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F] group-hover:translate-x-1 transition-transform" />
           </Link>
 
           <Link
             href="/creator/register"
             onClick={() => setRoleModalOpen(false)}
-            className="w-full text-left p-4 rounded-2xl bg-[#FAFAFC] border border-black/10 hover:border-black/20 hover:bg-white hover:shadow-md transition-all group flex items-center justify-between block hover-lift"
+            className="w-full text-left p-4 rounded-2xl bg-[#FAFAFC] dark:bg-[#14141E] border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 hover:bg-white dark:hover:bg-[#1C1C28] hover:shadow-md transition-all group flex items-center justify-between block hover-lift"
           >
             <div>
-              <h4 className="text-sm font-bold font-display">I am a Creator</h4>
-              <p className="text-xs text-[#6A6A78]">Pitch briefs, share audited media kit &amp; get paid</p>
+              <h4 className="text-sm font-bold font-display text-[#0A0A0E] dark:text-white">I am a Creator</h4>
+              <p className="text-xs text-[#6A6A78] dark:text-[#A0A0B4]">Pitch briefs, share audited media kit &amp; get paid</p>
             </div>
-            <ArrowRight className="w-4 h-4 text-[#08080C] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 text-[#08080C] dark:text-[#FFD21F] group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </Modal>

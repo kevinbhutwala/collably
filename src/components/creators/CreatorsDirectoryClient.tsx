@@ -180,7 +180,7 @@ export function CreatorsDirectoryClient() {
       ],
       sampleDeliverables: deliverables,
       location: c.location,
-      profileSource: c.profileSource || (c.isSignedTalent ? "abeycollab_verified" : "sample_benchmark"),
+      profileSource: c.profileSource || (c.isSignedTalent ? "abeycollab_verified" : "market_benchmark"),
       isSignedTalent: c.isSignedTalent !== false && (c.isSignedTalent || c.isAbeyCollabVerified || c.availableForHire),
       cohortBadge: c.cohortBadge || (c.isSignedTalent ? "Founding Cohort '26" : undefined),
       turnaroundDays: c.turnaroundGuaranteedDays || 5,
@@ -247,7 +247,7 @@ export function CreatorsDirectoryClient() {
             className={cn(
               "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer",
               viewMode === "match"
-                ? "bg-purple-600 text-white shadow-sm"
+                ? "bg-[#0A0A0E] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E] shadow-sm"
                 : "bg-white dark:bg-[#14141E] text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white border border-black/5 dark:border-white/10"
             )}
           >

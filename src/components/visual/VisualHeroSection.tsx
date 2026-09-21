@@ -26,42 +26,42 @@ interface HeroPortrait {
 
 const HERO_PORTRAITS: HeroPortrait[] = [
   {
-    id: "elena",
-    name: "Elena Rostova",
-    niche: "AI & Consumer Tech",
-    reach: "485K Reach",
+    id: "sara",
+    name: "Sara Dietschy",
+    niche: "Studio & Creative Tech",
+    reach: "920K Reach",
     rateNumber: 3500,
     rate: "$3,500",
-    mainImage: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=900&auto=format&fit=crop&q=85",
+    mainImage: "/creators/sara-dietschy.jpg",
     overlappingFrame: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=80",
-    frameLabel: "4K Cinema Cut",
-    specs: "RED V-Raptor 8K",
+    frameLabel: "Studio Setup 4K",
+    specs: "Sony FX3 ProRes",
     matchScore: "99.4%",
   },
   {
-    id: "marcus",
-    name: "Marcus Vance",
-    niche: "Luxury & Haute Couture",
-    reach: "620K Reach",
-    rateNumber: 4200,
-    rate: "$4,200",
-    mainImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&auto=format&fit=crop&q=85",
+    id: "mkbhd",
+    name: "Marques Brownlee",
+    niche: "Consumer Hardware & Clean Tech",
+    reach: "18.8M Reach",
+    rateNumber: 15000,
+    rate: "$15,000",
+    mainImage: "/creators/mkbhd.jpg",
     overlappingFrame: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&auto=format&fit=crop&q=80",
-    frameLabel: "Milan Lookbook",
-    specs: "ARRI Alexa Mini",
-    matchScore: "98.7%",
+    frameLabel: "8K Cinema Review",
+    specs: "RED 8K Master",
+    matchScore: "99.8%",
   },
   {
-    id: "sofia",
-    name: "Sofia Chen",
-    niche: "Biohacking & Movement",
-    reach: "390K Reach",
-    rateNumber: 2800,
-    rate: "$2,800",
-    mainImage: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=900&auto=format&fit=crop&q=85",
+    id: "peter",
+    name: "Peter McKinnon",
+    niche: "Cinematography & Visual Arts",
+    reach: "5.9M Reach",
+    rateNumber: 8500,
+    rate: "$8,500",
+    mainImage: "/creators/peter-mckinnon.jpg",
     overlappingFrame: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&auto=format&fit=crop&q=80",
-    frameLabel: "Kinetic Reel",
-    specs: "Sony FX3 ProRes",
+    frameLabel: "Cinema Masterclass",
+    specs: "Canon Cinema RAW",
     matchScore: "99.1%",
   },
 ];
@@ -73,7 +73,7 @@ export function VisualHeroSection() {
   const activePortrait = HERO_PORTRAITS[activeIdx];
 
   return (
-    <section className="relative min-h-[90vh] sm:min-h-screen bg-white text-[#0A0A0E] flex flex-col justify-between pt-20 sm:pt-24 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden select-none font-sans">
+    <section className="relative min-h-[90vh] sm:min-h-screen bg-white dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] flex flex-col justify-between pt-20 sm:pt-24 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden select-none font-sans">
       {/* Background Solar Ambience with gentle breathing animation */}
       <motion.div
         animate={{
@@ -100,15 +100,15 @@ export function VisualHeroSection() {
             className="lg:col-span-6 space-y-6 text-left"
           >
             {/* Live Platform Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF9F5] border border-black/8 shadow-2xs">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF9F5] dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-2xs">
               <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
-              <span className="text-xs font-mono font-bold tracking-tight text-[#0A0A0E]">
+              <span className="text-xs font-mono font-bold tracking-tight text-[#0A0A0E] dark:text-[#FFD21F]">
                 ABEYCOLLAB • CREATOR COMMERCE PLATFORM
               </span>
             </div>
 
             {/* Headline */}
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black font-display tracking-tight text-[#0A0A0E] leading-[1.02]">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black font-display tracking-tight text-[#0A0A0E] dark:text-white leading-[1.02]">
               WHERE VISIONARY BRANDS MEET{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700]">
                 CINEMATIC
@@ -117,7 +117,7 @@ export function VisualHeroSection() {
             </h1>
 
             {/* Minimal Subtitle */}
-            <p className="text-sm sm:text-base text-[#5A5A68] max-w-lg leading-relaxed font-sans font-normal">
+            <p className="text-sm sm:text-base text-[#5A5A68] dark:text-[#8E8EA4] max-w-lg leading-relaxed font-sans font-normal">
               Direct access to 50,000+ audited creator media kits, frame-accurate 4K review, and 100% pre-funded milestone escrow vaults.
             </p>
 
@@ -125,28 +125,28 @@ export function VisualHeroSection() {
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <button
                 onClick={() => setRoleModalOpen(true)}
-                className="px-7 py-4 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(255,210,31,0.5)] flex items-center gap-2 group active:scale-[0.98] border border-black/10 font-sans hover-lift"
+                className="px-7 py-4 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(255,210,31,0.5)] flex items-center gap-2 group active:scale-[0.98] border border-black/10 font-sans hover-lift cursor-pointer"
               >
                 <span>Launch Campaign Brief</span>
                 <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-1 transition-transform" />
               </button>
 
               <Link href="/creators">
-                <button className="px-6 py-4 rounded-full bg-white hover:bg-[#F8F8FC] border border-black/10 text-[#0A0A0E] font-bold text-xs sm:text-sm transition-all shadow-xs active:scale-[0.98] flex items-center gap-2 hover-lift">
-                  <Users className="w-4 h-4 text-[#8A7000]" />
+                <button className="px-6 py-4 rounded-full bg-white dark:bg-[#14141E] hover:bg-[#F8F8FC] dark:hover:bg-[#1C1C28] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs sm:text-sm transition-all shadow-xs active:scale-[0.98] flex items-center gap-2 hover-lift cursor-pointer">
+                  <Users className="w-4 h-4 text-[#8A7000] dark:text-[#FFD21F]" />
                   <span>Explore Roster</span>
                 </button>
               </Link>
             </div>
 
             {/* Proof Micro Bar */}
-            <div className="flex items-center gap-4 pt-3 border-t border-black/6 text-xs font-mono text-[#5A5A68]">
-              <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E]">
-                <ShieldCheck className="w-4 h-4 text-[#087F5B]" />
+            <div className="flex items-center gap-4 pt-3 border-t border-black/6 dark:border-white/10 text-xs font-mono text-[#5A5A68] dark:text-[#8E8EA4]">
+              <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E] dark:text-white">
+                <ShieldCheck className="w-4 h-4 text-[#087F5B] dark:text-emerald-400" />
                 <span>$14.8M Escrow Vaults</span>
               </div>
               <span>•</span>
-              <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E]">
+              <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E] dark:text-white">
                 <Zap className="w-4 h-4 text-[#FFD21F]" />
                 <span>&lt; 2h Instant Payout SLA</span>
               </div>
@@ -163,20 +163,20 @@ export function VisualHeroSection() {
             className="lg:col-span-6 relative flex flex-col items-center"
           >
             {/* Top Selector Chips */}
-            <div className="flex items-center gap-2 mb-4 bg-[#F4F4F8] p-1.5 rounded-full border border-black/6 shadow-xs z-20">
+            <div className="flex items-center gap-2 mb-4 bg-[#F4F4F8] dark:bg-[#14141E] p-1.5 rounded-full border border-black/6 dark:border-white/10 shadow-xs z-20">
               {HERO_PORTRAITS.map((p, i) => (
                 <button
                   key={p.id}
                   onClick={() => setActiveIdx(i)}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-sans font-bold transition-all flex items-center gap-1.5 ${
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-sans font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
                     activeIdx === i
-                      ? "bg-white text-[#0A0A0E] shadow-sm border border-black/8"
-                      : "text-[#6A6A78] hover:text-[#0A0A0E]"
+                      ? "bg-white dark:bg-[#1F1F2E] text-[#0A0A0E] dark:text-white shadow-sm border border-black/8 dark:border-white/10"
+                      : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
                   }`}
                 >
                   <span
                     className={`w-2 h-2 rounded-full ${
-                      activeIdx === i ? "bg-[#FFD21F]" : "bg-black/20"
+                      activeIdx === i ? "bg-[#FFD21F]" : "bg-black/20 dark:bg-white/20"
                     }`}
                   />
                   <span>{p.name.split(" ")[0]}</span>
@@ -248,28 +248,28 @@ export function VisualHeroSection() {
               </motion.div>
 
               {/* Bottom Glass Identity Bar */}
-              <div className="absolute bottom-4 inset-x-4 z-20 p-4 rounded-2xl bg-white/95 backdrop-blur-xl border border-black/8 shadow-xl space-y-2 text-[#0A0A0E]">
+              <div className="absolute bottom-4 inset-x-4 z-20 p-4 rounded-2xl bg-white/95 dark:bg-[#101018]/95 backdrop-blur-xl border border-black/8 dark:border-white/10 shadow-xl space-y-2 text-[#0A0A0E] dark:text-[#F4F4F8]">
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="flex items-center gap-1.5">
-                      <h3 className="text-sm font-bold font-display">{activePortrait.name}</h3>
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#087F5B]" />
+                      <h3 className="text-sm font-bold font-display text-[#0A0A0E] dark:text-white">{activePortrait.name}</h3>
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#087F5B] dark:text-emerald-400" />
                     </div>
-                    <p className="text-[11px] text-[#6A6A78] font-sans">{activePortrait.niche}</p>
+                    <p className="text-[11px] text-[#6A6A78] dark:text-[#8E8EA4] font-sans">{activePortrait.niche}</p>
                   </div>
                   <div className="text-right font-mono">
-                    <span className="text-[10px] text-[#888898] block uppercase">Starts at</span>
-                    <span className="text-xs font-extrabold text-[#0A0A0E]">
+                    <span className="text-[10px] text-[#888898] dark:text-[#7A7A8A] block uppercase">Starts at</span>
+                    <span className="text-xs font-extrabold text-[#0A0A0E] dark:text-white">
                       {format(activePortrait.rateNumber || 3500, "USD")}
                     </span>
                   </div>
                 </div>
 
-                <div className="pt-2 border-t border-black/6 flex items-center justify-between text-[11px] font-mono">
-                  <span className="text-[#5A5A68] truncate max-w-[180px]">{activePortrait.specs}</span>
+                <div className="pt-2 border-t border-black/6 dark:border-white/10 flex items-center justify-between text-[11px] font-mono">
+                  <span className="text-[#5A5A68] dark:text-[#8E8EA4] truncate max-w-[180px]">{activePortrait.specs}</span>
                   <Link
                     href={`/creators`}
-                    className="text-xs font-bold text-[#0A0A0E] hover:text-[#8A7000] flex items-center gap-0.5 shrink-0 transition-colors"
+                    className="text-xs font-bold text-[#0A0A0E] dark:text-white hover:text-[#8A7000] dark:hover:text-[#FFD21F] flex items-center gap-0.5 shrink-0 transition-colors"
                   >
                     <span>View Deck</span>
                     <ArrowRight className="w-3 h-3" />
@@ -289,29 +289,29 @@ export function VisualHeroSection() {
         description="Select your portal to start hiring creators or showcase your verified portfolio."
         maxWidth="md"
       >
-        <div className="space-y-3 pt-2 text-[#0A0A0E] select-none font-sans">
+        <div className="space-y-3 pt-2 text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans">
           <Link
             href="/brand/register"
             onClick={() => setRoleModalOpen(false)}
-            className="w-full text-left p-4 rounded-2xl bg-[#FFFDF5] border-2 border-[#FFD21F] hover:shadow-md transition-all group flex items-center justify-between block hover-lift"
+            className="w-full text-left p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#18160E] border-2 border-[#FFD21F] hover:shadow-md transition-all group flex items-center justify-between block hover-lift"
           >
             <div>
-              <h4 className="text-sm font-bold font-display">I am a Brand / Business</h4>
-              <p className="text-xs text-[#6A6A78]">Post briefs, hire creators &amp; escrow funds safely</p>
+              <h4 className="text-sm font-bold font-display text-[#0A0A0E] dark:text-white">I am a Brand / Business</h4>
+              <p className="text-xs text-[#6A6A78] dark:text-[#8E8EA4]">Post briefs, hire creators &amp; escrow funds safely</p>
             </div>
-            <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F] group-hover:translate-x-1 transition-transform" />
           </Link>
 
           <Link
             href="/creator/register"
             onClick={() => setRoleModalOpen(false)}
-            className="w-full text-left p-4 rounded-2xl bg-[#FAFAFC] border border-black/10 hover:border-black/20 hover:bg-white hover:shadow-md transition-all group flex items-center justify-between block hover-lift"
+            className="w-full text-left p-4 rounded-2xl bg-[#FAFAFC] dark:bg-[#14141E] border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 hover:bg-white dark:hover:bg-[#1C1C28] hover:shadow-md transition-all group flex items-center justify-between block hover-lift"
           >
             <div>
-              <h4 className="text-sm font-bold font-display">I am a Content Creator</h4>
-              <p className="text-xs text-[#6A6A78]">Publish media kit, receive inbound deals &amp; get paid</p>
+              <h4 className="text-sm font-bold font-display text-[#0A0A0E] dark:text-white">I am a Content Creator</h4>
+              <p className="text-xs text-[#6A6A78] dark:text-[#8E8EA4]">Publish media kit, receive inbound deals &amp; get paid</p>
             </div>
-            <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 text-[#0A0A0E] dark:text-white group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </Modal>

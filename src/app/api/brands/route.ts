@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { brandRepo } from "@/server/repositories/brand.repo";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   try {
     const brands = brandRepo.getAll();
