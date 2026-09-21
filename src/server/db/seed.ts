@@ -5,7 +5,7 @@ import { ALL_PLANS } from "@/core/constants";
 import { SubscriptionEntity, CreatorProfile, BrandProfile, AlgorithmWeightsConfig, PlatformMetricEntity, UserBadgeEntity } from "@/core/types";
 import { MOCK_BRANDS } from "@/mock/brands.mock";
 import { MOCK_CAMPAIGNS } from "@/mock/campaigns.mock";
-import { MOCK_CREATORS } from "@/mock/creators.mock";
+import { MOCK_CREATORS, ELENA_ROSTOVA_PROFILE } from "@/mock/creators.mock";
 import { MOCK_CONVERSATIONS, MOCK_MESSAGES } from "@/mock/messages.mock";
 import { MOCK_COLLABORATIONS } from "@/mock/collaborations.mock";
 
@@ -207,43 +207,7 @@ export function getInitialSeedDatabase(): DatabaseState {
   // Functional demo profiles keep the published login credentials usable for
   // real API flows rather than only for mock-driven screens.
   const initialCreators: CreatorProfile[] = [
-    {
-      id: "creator-demo",
-      userId: "user-creator",
-      fullName: "Demo Creator",
-      handle: "democreator",
-      headline: "Technology & AI creator",
-      bio: "A verified creator profile used to explore the AbeyCollab workspace.",
-      avatarUrl: "/creators/elena-rostova.jpg",
-      coverImageUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&auto=format&fit=crop&q=80",
-      location: "Worldwide",
-      languages: ["English"],
-      primaryCategory: "Technology & AI",
-      secondaryCategories: ["Design & Creative"],
-      verified: true,
-      featured: true,
-      tier: "Mid-Tier",
-      rating: 4.9,
-      completedCampaignsCount: 12,
-      totalFollowers: 125000,
-      avgEngagementRate: 5.2,
-      startingPrice: 1500,
-      availableForHire: true,
-      profileCompleteness: 90,
-      qualityScore: 92,
-      profileSource: "abeycollab_verified",
-      isAbeyCollabVerified: true,
-      isInstagramVerified: false,
-      isClaimedOnAbeyCollab: true,
-      socialAccounts: [],
-      audience: {
-        topCountries: [{ country: "United States", percentage: 55 }, { country: "India", percentage: 20 }],
-        ageDistribution: [{ range: "25-34", percentage: 52 }, { range: "18-24", percentage: 31 }],
-        genderSplit: [{ gender: "Female", percentage: 52 }, { gender: "Male", percentage: 48 }],
-        interests: ["Technology", "Creator Economy", "Design"],
-      },
-      rateCards: [],
-    },
+    ELENA_ROSTOVA_PROFILE,
     ...MOCK_CREATORS.filter((c) => c.userId !== "user-creator"),
   ];
 

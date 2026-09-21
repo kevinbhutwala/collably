@@ -47,7 +47,10 @@ export interface CreatorQuickViewData {
     specs: string;
     imageUrl: string;
   }>;
-  profileSource?: 'instagram_public' | 'abeycollab_verified' | 'demo_sample';
+  profileSource?: 'instagram_public' | 'abeycollab_verified' | 'demo_sample' | 'sample_benchmark';
+  isSignedTalent?: boolean;
+  cohortBadge?: string;
+  turnaroundDays?: number;
   isInstagramVerified?: boolean;
   isAbeyCollabVerified?: boolean;
   isClaimedOnAbeyCollab?: boolean;
@@ -223,10 +226,18 @@ export function CreatorQuickViewModal({
 
             {/* Production Deliverables Reel */}
             <div className="space-y-2">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-[#7A7A8A] dark:text-[#A0A0B4] font-mono flex items-center justify-between">
-                <span>Sample Deliverables (Demo Benchmarks)</span>
-                <span className="text-[10px] text-[#087F5B] dark:text-emerald-400 font-bold">100% Escrow Protected</span>
-              </h4>
+              <div className="flex items-center justify-between">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-[#7A7A8A] dark:text-[#A0A0B4] font-mono">
+                  {creator.isSignedTalent ? "Verified Deliverable Packages" : "Market Reference Deliverables"}
+                </h4>
+                <span className={`text-[10px] font-bold font-mono px-2 py-0.5 rounded-full ${
+                  creator.isSignedTalent
+                    ? "bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800"
+                    : "bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-800"
+                }`}>
+                  {creator.isSignedTalent ? "Guaranteed 5-Day SLA" : "Sample Benchmark"}
+                </span>
+              </div>
               <div className="grid grid-cols-2 gap-2.5">
                 {deliverables.map((item, idx) => (
                   <div
@@ -251,6 +262,13 @@ export function CreatorQuickViewModal({
                 ))}
               </div>
             </div>
+
+            {/* Benchmark Disclaimer Notice if not signed */}
+            {!creator.isSignedTalent && (
+              <div className="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/50 text-[11px] text-amber-900 dark:text-amber-200 leading-relaxed font-sans">
+                <strong>Market Benchmark Notice:</strong> This profile is an unclaimed public creator reference for pricing benchmarks. Direct instant escrow booking is enabled for signed creators in the <strong>Founding Cohort</strong>.
+              </div>
+            )}
           </div>
 
           {/* Action CTAs */}
@@ -274,14 +292,24 @@ export function CreatorQuickViewModal({
               <span>Full Media Kit</span>
             </Link>
 
-            <Link
-              href="/app/brand/campaigns/create"
-              onClick={onClose}
-              className="py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs transition-all text-center flex items-center justify-center gap-1.5 shadow-[0_2px_12px_rgba(255,210,31,0.35)] border border-black/10 cursor-pointer"
-            >
-              <span>Book Escrow</span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#0A0A0E]" />
-            </Link>
+            {creator.isSignedTalent ? (
+              <Link
+                href="/app/brand/campaigns/create"
+                onClick={onClose}
+                className="py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs transition-all text-center flex items-center justify-center gap-1.5 shadow-[0_2px_12px_rgba(255,210,31,0.35)] border border-black/10 cursor-pointer"
+              >
+                <span>Book Escrow (5d)</span>
+                <ArrowRight className="w-3.5 h-3.5 text-[#0A0A0E]" />
+              </Link>
+            ) : (
+              <Link
+                href="/contact"
+                onClick={onClose}
+                className="py-2.5 rounded-full bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all text-center flex items-center justify-center gap-1.5 border border-black/10 cursor-pointer"
+              >
+                <span>Request Representation</span>
+              </Link>
+            )}
           </div>
         </div>
       </div>

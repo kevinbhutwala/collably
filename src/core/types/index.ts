@@ -43,10 +43,10 @@ export interface SocialAccount {
   id: string;
   platform: PlatformType;
   handle: string;
-  url: string;
+  url?: string;
   followers: number;
   engagementRate: number;
-  avgViews: number;
+  avgViews?: number;
   verifiedBadge: boolean;
   verificationStatus?: 'unverified' | 'pending' | 'verified';
   verificationCode?: string;
@@ -95,7 +95,7 @@ export interface CreatorPortfolioItem {
 
 export type CreatorTier = 'Nano' | 'Micro' | 'Rising' | 'Established' | 'Mid-Tier' | 'Macro' | 'Elite' | 'Premium';
 
-export type CreatorProfileSource = 'instagram_public' | 'abeycollab_verified' | 'demo_sample';
+export type CreatorProfileSource = 'instagram_public' | 'abeycollab_verified' | 'demo_sample' | 'sample_benchmark';
 
 export interface CreatorDataAttribution {
   instagramDataSourcedAt?: string;
@@ -147,6 +147,20 @@ export interface CreatorProfile {
   instagramUrl?: string;
   instagramUsername?: string;
   dataAttribution?: CreatorDataAttribution;
+  // Founding Cohort & Pre-Launch Agreement Tracking
+  isSignedTalent?: boolean;
+  agreementStatus?: string;
+  cohortBadge?: string;
+  turnaroundGuaranteedDays?: number;
+  acceptingBriefsCount?: number;
+  rawAssetsPackage?: {
+    proResUrl?: string;
+    brollZipUrl?: string;
+    thumbnailPsdUrl?: string;
+    captionsSrtUrl?: string;
+    checksumSha256?: string;
+    fileSizeFormatted?: string;
+  };
 }
 
 export interface CreatorFilterParams {
@@ -262,6 +276,9 @@ export interface Campaign {
   coverImage: string;
   featured: boolean;
   matchScore?: number;
+  isPreNegotiated?: boolean;
+  recommendedCreatorIds?: string[];
+  preApprovedRights?: string;
   createdAt: string;
   updatedAt: string;
 }
@@ -324,6 +341,7 @@ export interface TimecodedComment {
   authorRole: UserRole;
   authorAvatar: string;
   comment: string;
+  category?: 'visual' | 'audio' | 'pacing' | 'overlay' | 'copy' | 'general';
   resolved: boolean;
   createdAt: string;
 }
@@ -343,6 +361,14 @@ export interface DeliverableSubmission {
   feedback?: string;
   status: DeliverableStatus;
   timecodedComments?: TimecodedComment[];
+  rawAssetsPackage?: {
+    proResUrl?: string;
+    brollZipUrl?: string;
+    thumbnailPsdUrl?: string;
+    captionsSrtUrl?: string;
+    checksumSha256?: string;
+    fileSizeFormatted?: string;
+  };
   publishedLiveUrl?: string;
   publishedStats?: {
     views: number;

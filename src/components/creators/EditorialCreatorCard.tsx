@@ -77,29 +77,42 @@ export function EditorialCreatorCard({
 
           {/* Top Badges */}
           <div className="absolute top-3 inset-x-3 flex items-center justify-between z-10">
-            <span className="px-2.5 py-1 rounded-full bg-black/70 dark:bg-[#14141E]/95 backdrop-blur-md text-[10px] font-mono font-bold text-white flex items-center gap-1.5 border border-white/20">
-              <SocialIcon platform="instagram" colored={true} size={12} />
-              <span>Instagram Profile</span>
-            </span>
+            {creator.isSignedTalent ? (
+              <span className="px-2.5 py-1 rounded-full bg-emerald-950/90 backdrop-blur-md text-[10px] font-mono font-bold text-emerald-300 flex items-center gap-1 border border-emerald-500/40 shadow-xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span>Founding Cohort</span>
+              </span>
+            ) : (
+              <span className="px-2.5 py-1 rounded-full bg-black/70 dark:bg-[#14141E]/95 backdrop-blur-md text-[10px] font-mono font-bold text-white flex items-center gap-1.5 border border-white/20">
+                <SocialIcon platform="instagram" colored={true} size={12} />
+                <span>Benchmark</span>
+              </span>
+            )}
 
             <div className="flex items-center gap-1.5">
-              <button
-                onClick={handleBookmark}
-                aria-label="Save Creator"
-                className={`p-1.5 rounded-full backdrop-blur-md border transition-all ${
-                  localBookmarked
-                    ? "bg-[#FFD21F] text-[#0A0A0E] border-[#FFD21F] shadow-sm"
-                    : "bg-black/50 text-white/90 border-white/20 hover:bg-white/20 hover:text-white"
-                }`}
-              >
-                <Heart className={`w-3.5 h-3.5 ${localBookmarked ? "fill-current" : ""}`} />
-              </button>
+              {onBookmarkToggle && (
+                <button
+                  onClick={handleBookmark}
+                  aria-label="Save Creator"
+                  className={`p-1.5 rounded-full backdrop-blur-md border transition-all ${
+                    localBookmarked
+                      ? "bg-[#FFD21F] text-[#0A0A0E] border-[#FFD21F] shadow-sm"
+                      : "bg-black/50 text-white/90 border-white/20 hover:bg-white/20 hover:text-white"
+                  }`}
+                >
+                  <Heart className={`w-3.5 h-3.5 ${localBookmarked ? "fill-current" : ""}`} />
+                </button>
+              )}
 
               <span
-                className="px-2 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-[10px] font-mono font-extrabold shadow-sm flex items-center gap-1"
-                title="Sample Market Rate Estimate"
+                className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-extrabold shadow-sm flex items-center gap-1 ${
+                  creator.isSignedTalent
+                    ? "bg-[#FFD21F] text-[#0A0A0E]"
+                    : "bg-black/60 text-white border border-white/20"
+                }`}
+                title={creator.isSignedTalent ? "Verified Fixed Deliverable Rate" : "Sample Market Rate Estimate"}
               >
-                <span className="text-[8px] font-normal opacity-75">Est.</span>
+                {!creator.isSignedTalent && <span className="text-[8px] font-normal opacity-75">Est.</span>}
                 {startingPriceDisplay}
               </span>
             </div>

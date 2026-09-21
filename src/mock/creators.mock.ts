@@ -1,7 +1,1402 @@
 import { CreatorProfile } from "../core/types";
 
-export const MOCK_CREATORS: CreatorProfile[] = [
-  {
+export const ELENA_ROSTOVA_PROFILE: CreatorProfile = {
+  "id": "creator-demo",
+  "userId": "user-creator",
+  "fullName": "Elena Rostova",
+  "handle": "elenarostova",
+  "headline": "Developer Tooling & AI Workflows Specialist",
+  "bio": "Principal tech creator testing developer hardware, terminal tooling, and AI agent frameworks. Ex-SWE at Stripe.",
+  "avatarUrl": "/creators/elena-rostova.jpg",
+  "coverImageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+  "location": "San Francisco, CA",
+  "region": "United States",
+  "countryCode": "US",
+  "countryFlag": "\ud83c\uddfa\ud83c\uddf8",
+  "languages": [
+    "English"
+  ],
+  "primaryCategory": "Technology & AI",
+  "secondaryCategories": [
+    "Design & Creative"
+  ],
+  "verified": true,
+  "featured": true,
+  "tier": "Mid-Tier",
+  "rating": 4.95,
+  "completedCampaignsCount": 14,
+  "totalFollowers": 125000,
+  "avgEngagementRate": 5.4,
+  "startingPrice": 1500,
+  "currency": "USD",
+  "availableForHire": true,
+  "profileCompleteness": 100,
+  "qualityScore": 96,
+  "profileSource": "abeycollab_verified",
+  "isAbeyCollabVerified": true,
+  "isInstagramVerified": true,
+  "isClaimedOnAbeyCollab": true,
+  "isSignedTalent": true,
+  "agreementStatus": "Signed Beta Pilot Agreement",
+  "cohortBadge": "Founding Cohort '26",
+  "turnaroundGuaranteedDays": 5,
+  "acceptingBriefsCount": 2,
+  "socialAccounts": [
+    {
+      "id": "sa-elena-yt",
+      "platform": "youtube",
+      "handle": "elenarostova",
+      "followers": 85000,
+      "engagementRate": 5.8,
+      "verifiedBadge": true
+    },
+    {
+      "id": "sa-elena-x",
+      "platform": "x",
+      "handle": "elenarostova",
+      "followers": 40000,
+      "engagementRate": 4.9,
+      "verifiedBadge": true
+    }
+  ],
+  "audience": {
+    "topCountries": [
+      {
+        "country": "United States",
+        "percentage": 55
+      },
+      {
+        "country": "United Kingdom",
+        "percentage": 18
+      }
+    ],
+    "ageDistribution": [
+      {
+        "range": "25-34",
+        "percentage": 58
+      },
+      {
+        "range": "18-24",
+        "percentage": 28
+      }
+    ],
+    "genderSplit": [
+      {
+        "gender": "Male",
+        "percentage": 62
+      },
+      {
+        "gender": "Female",
+        "percentage": 38
+      }
+    ],
+    "interests": [
+      "Developer Tools",
+      "AI Engineering",
+      "Productivity"
+    ]
+  },
+  "rateCards": [
+    {
+      "id": "rc-elena-1",
+      "deliverableType": "YouTube 60s Integration",
+      "title": "Dedicated 60s Software Triage Integration",
+      "description": "Hands-on workflow screen recording with custom graphic callouts.",
+      "basePrice": 1500,
+      "turnaroundDays": 5,
+      "revisionsIncluded": 2,
+      "currency": "USD"
+    },
+    {
+      "id": "rc-elena-2",
+      "deliverableType": "Instagram Reel",
+      "title": "4K Workflow Deep-Dive Reel",
+      "description": "High-energy vertical reel walking through setup and utility.",
+      "basePrice": 950,
+      "turnaroundDays": 5,
+      "revisionsIncluded": 2,
+      "currency": "USD"
+    }
+  ]
+};
+
+export const MARCUS_VANCE_PROFILE: CreatorProfile = {
+  "id": "creator-2",
+  "userId": "user-1789707227118",
+  "fullName": "Marcus Vance",
+  "handle": "marcusvisuals",
+  "headline": "Luxury Horology & Minimalist Product Cinematographer",
+  "bio": "London-based director crafting macro 4K visuals for luxury timepieces, architectural hardware, and industrial design.",
+  "avatarUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&auto=format&fit=crop&q=80",
+  "coverImageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1200&auto=format&fit=crop&q=80",
+  "location": "London, United Kingdom",
+  "region": "United Kingdom",
+  "countryCode": "GB",
+  "countryFlag": "\ud83c\uddec\ud83c\udde7",
+  "languages": [
+    "English"
+  ],
+  "primaryCategory": "Design & Creative",
+  "secondaryCategories": [
+    "Fashion & Style"
+  ],
+  "verified": true,
+  "featured": true,
+  "tier": "Macro",
+  "rating": 4.98,
+  "completedCampaignsCount": 9,
+  "totalFollowers": 310000,
+  "avgEngagementRate": 5.4,
+  "startingPrice": 2000,
+  "currency": "USD",
+  "availableForHire": true,
+  "profileCompleteness": 98,
+  "qualityScore": 97,
+  "profileSource": "abeycollab_verified",
+  "isAbeyCollabVerified": true,
+  "isInstagramVerified": true,
+  "isClaimedOnAbeyCollab": true,
+  "isSignedTalent": true,
+  "agreementStatus": "Signed Beta Pilot Agreement",
+  "cohortBadge": "Founding Cohort '26",
+  "turnaroundGuaranteedDays": 5,
+  "acceptingBriefsCount": 1,
+  "socialAccounts": [
+    {
+      "id": "sa-marcus-ig",
+      "platform": "instagram",
+      "handle": "marcusvisuals",
+      "followers": 240000,
+      "engagementRate": 5.6,
+      "verifiedBadge": true
+    }
+  ],
+  "audience": {
+    "topCountries": [
+      {
+        "country": "United Kingdom",
+        "percentage": 45
+      },
+      {
+        "country": "United States",
+        "percentage": 30
+      }
+    ],
+    "ageDistribution": [
+      {
+        "range": "25-34",
+        "percentage": 55
+      },
+      {
+        "range": "35-44",
+        "percentage": 30
+      }
+    ],
+    "genderSplit": [
+      {
+        "gender": "Male",
+        "percentage": 65
+      },
+      {
+        "gender": "Female",
+        "percentage": 35
+      }
+    ],
+    "interests": [
+      "Architecture",
+      "Horology",
+      "Cinematography"
+    ]
+  },
+  "rateCards": [
+    {
+      "id": "rc-marcus-1",
+      "deliverableType": "Instagram Reel",
+      "title": "Titanium Monolith Architectural Reel",
+      "description": "Filmed on ARRI Alexa Mini with 35mm cine glass.",
+      "basePrice": 2000,
+      "turnaroundDays": 5,
+      "revisionsIncluded": 2,
+      "currency": "USD"
+    }
+  ]
+};
+
+export const ARIA_CHEN_PROFILE: CreatorProfile = {
+  "id": "creator-aria",
+  "userId": "user-1789707231099",
+  "fullName": "Aria Chen",
+  "handle": "ariachenwellness",
+  "headline": "Biometric Sleep Science & Contrast Therapy Specialist",
+  "bio": "Ex-biochemist exploring cold thermogenesis, infrared cellular recovery, circadian protocols, and biometric sleep optimization.",
+  "avatarUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&auto=format&fit=crop&q=80",
+  "coverImageUrl": "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=1200&auto=format&fit=crop&q=80",
+  "location": "Austin, TX, United States",
+  "region": "United States",
+  "countryCode": "US",
+  "countryFlag": "\ud83c\uddfa\ud83c\uddf8",
+  "languages": [
+    "English",
+    "Mandarin"
+  ],
+  "primaryCategory": "Fitness & Wellness",
+  "secondaryCategories": [
+    "Lifestyle & Travel"
+  ],
+  "verified": true,
+  "featured": true,
+  "tier": "Macro",
+  "rating": 4.95,
+  "completedCampaignsCount": 8,
+  "totalFollowers": 210000,
+  "avgEngagementRate": 6.2,
+  "startingPrice": 3500,
+  "currency": "USD",
+  "availableForHire": true,
+  "profileCompleteness": 97,
+  "qualityScore": 95,
+  "profileSource": "abeycollab_verified",
+  "isAbeyCollabVerified": true,
+  "isInstagramVerified": true,
+  "isClaimedOnAbeyCollab": true,
+  "isSignedTalent": true,
+  "agreementStatus": "Signed Beta Pilot Agreement",
+  "cohortBadge": "Founding Cohort '26",
+  "turnaroundGuaranteedDays": 5,
+  "acceptingBriefsCount": 2,
+  "socialAccounts": [
+    {
+      "id": "sa-aria-yt",
+      "platform": "youtube",
+      "handle": "ariachenwellness",
+      "followers": 150000,
+      "engagementRate": 6.4,
+      "verifiedBadge": true
+    }
+  ],
+  "audience": {
+    "topCountries": [
+      {
+        "country": "United States",
+        "percentage": 65
+      },
+      {
+        "country": "Canada",
+        "percentage": 15
+      }
+    ],
+    "ageDistribution": [
+      {
+        "range": "25-34",
+        "percentage": 50
+      },
+      {
+        "range": "35-44",
+        "percentage": 35
+      }
+    ],
+    "genderSplit": [
+      {
+        "gender": "Female",
+        "percentage": 58
+      },
+      {
+        "gender": "Male",
+        "percentage": 42
+      }
+    ],
+    "interests": [
+      "Biohacking",
+      "Cold Therapy",
+      "Longevity",
+      "Sleep Science"
+    ]
+  },
+  "rateCards": [
+    {
+      "id": "rc-aria-1",
+      "deliverableType": "YouTube Dedicated Video",
+      "title": "14-Day Biometric Sleep & Contrast Protocol",
+      "description": "Data-driven recovery audit featuring wearable sensor integration.",
+      "basePrice": 3500,
+      "turnaroundDays": 5,
+      "revisionsIncluded": 2,
+      "currency": "USD"
+    }
+  ]
+};
+
+export const DEVON_THORNE_PROFILE: CreatorProfile = {
+  "id": "creator-devon",
+  "userId": "user-1789707236600",
+  "fullName": "Devon Thorne",
+  "handle": "devoncodes",
+  "headline": "Open Source Systems Engineer & CLI Architect",
+  "bio": "Building distributed systems and CLI developer tooling. Creator of speed-coding workflows, dotfiles breakdowns, and IDE extension guides.",
+  "avatarUrl": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&auto=format&fit=crop&q=80",
+  "coverImageUrl": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&auto=format&fit=crop&q=80",
+  "location": "San Francisco, CA, United States",
+  "region": "United States",
+  "countryCode": "US",
+  "countryFlag": "\ud83c\uddfa\ud83c\uddf8",
+  "languages": [
+    "English"
+  ],
+  "primaryCategory": "Technology & AI",
+  "secondaryCategories": [
+    "Design & Creative"
+  ],
+  "verified": true,
+  "featured": true,
+  "tier": "Mid-Tier",
+  "rating": 4.92,
+  "completedCampaignsCount": 7,
+  "totalFollowers": 145000,
+  "avgEngagementRate": 6.8,
+  "startingPrice": 1800,
+  "currency": "USD",
+  "availableForHire": true,
+  "profileCompleteness": 96,
+  "qualityScore": 94,
+  "profileSource": "abeycollab_verified",
+  "isAbeyCollabVerified": true,
+  "isInstagramVerified": true,
+  "isClaimedOnAbeyCollab": true,
+  "isSignedTalent": true,
+  "agreementStatus": "Signed Beta Pilot Agreement",
+  "cohortBadge": "Founding Cohort '26",
+  "turnaroundGuaranteedDays": 5,
+  "acceptingBriefsCount": 2,
+  "socialAccounts": [],
+  "audience": {
+    "topCountries": [
+      {
+        "country": "United States",
+        "percentage": 55
+      },
+      {
+        "country": "Germany",
+        "percentage": 15
+      }
+    ],
+    "ageDistribution": [
+      {
+        "range": "25-34",
+        "percentage": 65
+      },
+      {
+        "range": "18-24",
+        "percentage": 25
+      }
+    ],
+    "genderSplit": [
+      {
+        "gender": "Male",
+        "percentage": 80
+      },
+      {
+        "gender": "Female",
+        "percentage": 20
+      }
+    ],
+    "interests": [
+      "Developer Tools",
+      "Rust",
+      "TypeScript",
+      "CLI"
+    ]
+  },
+  "rateCards": [
+    {
+      "id": "rc-devon-1",
+      "deliverableType": "YouTube 60s Integration",
+      "title": "Extension API Code Walkthrough",
+      "description": "Live screen-recorded workflow with public GitHub repo link.",
+      "basePrice": 1800,
+      "turnaroundDays": 5,
+      "revisionsIncluded": 2,
+      "currency": "USD"
+    }
+  ]
+};
+
+export const CHLOE_DUBOIS_PROFILE: CreatorProfile = {
+  "id": "creator-chloe",
+  "userId": "user-1789707240648",
+  "fullName": "Chloe Dubois",
+  "handle": "chloedubois",
+  "headline": "Cinematic Travel & Mediterranean Hospitality Director",
+  "bio": "Documentary filmmaker capturing organic coastal soundscapes, luxury boutique hospitality, and visual minimalism across Mediterranean destinations.",
+  "avatarUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&auto=format&fit=crop&q=80",
+  "coverImageUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&auto=format&fit=crop&q=80",
+  "location": "Nice, France",
+  "region": "France",
+  "countryCode": "FR",
+  "countryFlag": "\ud83c\uddeb\ud83c\uddf7",
+  "languages": [
+    "English",
+    "French"
+  ],
+  "primaryCategory": "Lifestyle & Travel",
+  "secondaryCategories": [
+    "Design & Creative"
+  ],
+  "verified": true,
+  "featured": true,
+  "tier": "Mid-Tier",
+  "rating": 4.96,
+  "completedCampaignsCount": 9,
+  "totalFollowers": 185000,
+  "avgEngagementRate": 5.9,
+  "startingPrice": 2200,
+  "currency": "USD",
+  "availableForHire": true,
+  "profileCompleteness": 98,
+  "qualityScore": 96,
+  "profileSource": "abeycollab_verified",
+  "isAbeyCollabVerified": true,
+  "isInstagramVerified": true,
+  "isClaimedOnAbeyCollab": true,
+  "isSignedTalent": true,
+  "agreementStatus": "Signed Beta Pilot Agreement",
+  "cohortBadge": "Founding Cohort '26",
+  "turnaroundGuaranteedDays": 5,
+  "acceptingBriefsCount": 1,
+  "socialAccounts": [],
+  "audience": {
+    "topCountries": [
+      {
+        "country": "France",
+        "percentage": 45
+      },
+      {
+        "country": "United States",
+        "percentage": 25
+      }
+    ],
+    "ageDistribution": [
+      {
+        "range": "25-34",
+        "percentage": 55
+      },
+      {
+        "range": "18-24",
+        "percentage": 30
+      }
+    ],
+    "genderSplit": [
+      {
+        "gender": "Female",
+        "percentage": 60
+      },
+      {
+        "gender": "Male",
+        "percentage": 40
+      }
+    ],
+    "interests": [
+      "Travel",
+      "Photography",
+      "Hospitality",
+      "Sound Design"
+    ]
+  },
+  "rateCards": [
+    {
+      "id": "rc-chloe-1",
+      "deliverableType": "Instagram Reel",
+      "title": "4K Organic Hospitality Showcase Reel",
+      "description": "Atmospheric, color-graded visual poem highlighting architecture and ambiance.",
+      "basePrice": 2200,
+      "turnaroundDays": 5,
+      "revisionsIncluded": 2,
+      "currency": "USD"
+    }
+  ]
+};
+
+export const KAI_TAKAHASHI_PROFILE: CreatorProfile = {
+  "id": "creator-kai",
+  "userId": "user-1789707244128",
+  "fullName": "Kai Takahashi",
+  "handle": "kaistudio",
+  "headline": "Tokyo Streetwear & Cyberpunk Industrial Design",
+  "bio": "Visual director and apparel designer exploring Tokyo's cyberpunk architecture, brutalist typography, and technical outerwear collections.",
+  "avatarUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&auto=format&fit=crop&q=80",
+  "coverImageUrl": "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=1200&auto=format&fit=crop&q=80",
+  "location": "Tokyo, Japan",
+  "region": "Japan",
+  "countryCode": "JP",
+  "countryFlag": "\ud83c\uddef\ud83c\uddf5",
+  "languages": [
+    "English",
+    "Japanese"
+  ],
+  "primaryCategory": "Design & Creative",
+  "secondaryCategories": [
+    "Fashion & Style"
+  ],
+  "verified": true,
+  "featured": true,
+  "tier": "Mid-Tier",
+  "rating": 4.93,
+  "completedCampaignsCount": 6,
+  "totalFollowers": 160000,
+  "avgEngagementRate": 7.1,
+  "startingPrice": 1900,
+  "currency": "USD",
+  "availableForHire": true,
+  "profileCompleteness": 95,
+  "qualityScore": 93,
+  "profileSource": "abeycollab_verified",
+  "isAbeyCollabVerified": true,
+  "isInstagramVerified": true,
+  "isClaimedOnAbeyCollab": true,
+  "isSignedTalent": true,
+  "agreementStatus": "Signed Beta Pilot Agreement",
+  "cohortBadge": "Founding Cohort '26",
+  "turnaroundGuaranteedDays": 5,
+  "acceptingBriefsCount": 2,
+  "socialAccounts": [],
+  "audience": {
+    "topCountries": [
+      {
+        "country": "Japan",
+        "percentage": 50
+      },
+      {
+        "country": "United States",
+        "percentage": 30
+      }
+    ],
+    "ageDistribution": [
+      {
+        "range": "18-24",
+        "percentage": 45
+      },
+      {
+        "range": "25-34",
+        "percentage": 45
+      }
+    ],
+    "genderSplit": [
+      {
+        "gender": "Male",
+        "percentage": 70
+      },
+      {
+        "gender": "Female",
+        "percentage": 30
+      }
+    ],
+    "interests": [
+      "Streetwear",
+      "Cyberpunk",
+      "Tokyo Culture",
+      "Gaming"
+    ]
+  },
+  "rateCards": [
+    {
+      "id": "rc-kai-1",
+      "deliverableType": "Instagram Reel",
+      "title": "Cyberpunk Neon Technical Outerwear Reel",
+      "description": "Fast-paced rhythmic editing with custom sound design and motion tracking.",
+      "basePrice": 1900,
+      "turnaroundDays": 5,
+      "revisionsIncluded": 2,
+      "currency": "USD"
+    }
+  ]
+};
+
+export const SIDDHARTH_MEHTA_PROFILE: CreatorProfile = {
+  "id": "creator-sid",
+  "userId": "user-c-sid",
+  "fullName": "Siddharth Mehta",
+  "handle": "sidmehtafilm",
+  "headline": "Commercial Tech & Hardware Videographer",
+  "bio": "Mumbai & Bengaluru commercial director filming tactile macro close-ups, mechanical keyboards, headphones, and modern workstation gear.",
+  "avatarUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80",
+  "coverImageUrl": "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?w=1200&auto=format&fit=crop&q=80",
+  "location": "Bengaluru, India",
+  "region": "India",
+  "countryCode": "IN",
+  "countryFlag": "\ud83c\uddee\ud83c\uddf3",
+  "languages": [
+    "English",
+    "Hindi"
+  ],
+  "primaryCategory": "Technology & AI",
+  "secondaryCategories": [
+    "Design & Creative"
+  ],
+  "verified": true,
+  "featured": true,
+  "tier": "Micro",
+  "rating": 4.96,
+  "completedCampaignsCount": 11,
+  "totalFollowers": 84000,
+  "avgEngagementRate": 7.4,
+  "startingPrice": 1020,
+  "currency": "USD",
+  "availableForHire": true,
+  "profileCompleteness": 98,
+  "qualityScore": 95,
+  "profileSource": "abeycollab_verified",
+  "isAbeyCollabVerified": true,
+  "isInstagramVerified": true,
+  "isClaimedOnAbeyCollab": true,
+  "isSignedTalent": true,
+  "agreementStatus": "Signed Beta Pilot Agreement",
+  "cohortBadge": "Founding Cohort '26",
+  "turnaroundGuaranteedDays": 5,
+  "acceptingBriefsCount": 2,
+  "socialAccounts": [],
+  "audience": {
+    "topCountries": [
+      {
+        "country": "India",
+        "percentage": 70
+      },
+      {
+        "country": "United States",
+        "percentage": 15
+      }
+    ],
+    "ageDistribution": [
+      {
+        "range": "18-24",
+        "percentage": 40
+      },
+      {
+        "range": "25-34",
+        "percentage": 50
+      }
+    ],
+    "genderSplit": [
+      {
+        "gender": "Male",
+        "percentage": 82
+      },
+      {
+        "gender": "Female",
+        "percentage": 18
+      }
+    ],
+    "interests": [
+      "Hardware",
+      "Keyboards",
+      "Cinematography",
+      "Gadgets"
+    ]
+  },
+  "rateCards": [
+    {
+      "id": "rc-sid-1",
+      "deliverableType": "Instagram Reel",
+      "title": "Tactile Macro Hardware Showcase",
+      "description": "Probe lens 4K macro video with crisp Foley sound design.",
+      "basePrice": 1020,
+      "turnaroundDays": 5,
+      "revisionsIncluded": 2,
+      "currency": "USD"
+    }
+  ]
+};
+
+export const ANANYA_DESHMUKH_PROFILE: CreatorProfile = {
+  "id": "creator-ananya",
+  "userId": "user-c-ananya",
+  "fullName": "Ananya Deshmukh",
+  "handle": "ananyacreates",
+  "headline": "Minimalist Desk Setups & Productivity UGC Creator",
+  "bio": "Creating clean aesthetic desk tours, Notion workspace templates, and warm analog productivity breakdowns that convert on Reels and TikTok.",
+  "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=80",
+  "coverImageUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&auto=format&fit=crop&q=80",
+  "location": "Pune, India",
+  "region": "India",
+  "countryCode": "IN",
+  "countryFlag": "\ud83c\uddee\ud83c\uddf3",
+  "languages": [
+    "English",
+    "Marathi",
+    "Hindi"
+  ],
+  "primaryCategory": "Design & Creative",
+  "secondaryCategories": [
+    "Lifestyle & Travel"
+  ],
+  "verified": true,
+  "featured": true,
+  "tier": "Micro",
+  "rating": 4.94,
+  "completedCampaignsCount": 9,
+  "totalFollowers": 62000,
+  "avgEngagementRate": 8.1,
+  "startingPrice": 660,
+  "currency": "USD",
+  "availableForHire": true,
+  "profileCompleteness": 96,
+  "qualityScore": 93,
+  "profileSource": "abeycollab_verified",
+  "isAbeyCollabVerified": true,
+  "isInstagramVerified": true,
+  "isClaimedOnAbeyCollab": true,
+  "isSignedTalent": true,
+  "agreementStatus": "Signed Beta Pilot Agreement",
+  "cohortBadge": "Founding Cohort '26",
+  "turnaroundGuaranteedDays": 5,
+  "acceptingBriefsCount": 3,
+  "socialAccounts": [],
+  "audience": {
+    "topCountries": [
+      {
+        "country": "India",
+        "percentage": 60
+      },
+      {
+        "country": "United States",
+        "percentage": 25
+      }
+    ],
+    "ageDistribution": [
+      {
+        "range": "18-24",
+        "percentage": 55
+      },
+      {
+        "range": "25-34",
+        "percentage": 35
+      }
+    ],
+    "genderSplit": [
+      {
+        "gender": "Female",
+        "percentage": 65
+      },
+      {
+        "gender": "Male",
+        "percentage": 35
+      }
+    ],
+    "interests": [
+      "Productivity",
+      "Desk Setups",
+      "Minimalism",
+      "Notion"
+    ]
+  },
+  "rateCards": [
+    {
+      "id": "rc-ananya-1",
+      "deliverableType": "Instagram Reel",
+      "title": "Aesthetic Workspace Integration Reel",
+      "description": "Cozy desk routine featuring product naturally in daily workflow.",
+      "basePrice": 660,
+      "turnaroundDays": 5,
+      "revisionsIncluded": 2,
+      "currency": "USD"
+    }
+  ]
+};
+
+export const ROHAN_VARMA_PROFILE: CreatorProfile = {
+  "id": "creator-rohan",
+  "userId": "user-c-rohan",
+  "fullName": "Rohan Varma",
+  "handle": "rohanvarma.lens",
+  "headline": "4K Slow-Motion Culinary & Beverage Filmmaker",
+  "bio": "Specializing in high-speed Phantom macro food & cocktail cinematography. Creating sensory, sizzle-heavy short-form reels for gourmet brands.",
+  "avatarUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&auto=format&fit=crop&q=80",
+  "coverImageUrl": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&auto=format&fit=crop&q=80",
+  "location": "New Delhi, India",
+  "region": "India",
+  "countryCode": "IN",
+  "countryFlag": "\ud83c\uddee\ud83c\uddf3",
+  "languages": [
+    "English",
+    "Hindi"
+  ],
+  "primaryCategory": "Food & Culinary",
+  "secondaryCategories": [
+    "Design & Creative"
+  ],
+  "verified": true,
+  "featured": true,
+  "tier": "Micro",
+  "rating": 4.97,
+  "completedCampaignsCount": 8,
+  "totalFollowers": 95000,
+  "avgEngagementRate": 6.9,
+  "startingPrice": 1140,
+  "currency": "USD",
+  "availableForHire": true,
+  "profileCompleteness": 97,
+  "qualityScore": 95,
+  "profileSource": "abeycollab_verified",
+  "isAbeyCollabVerified": true,
+  "isInstagramVerified": true,
+  "isClaimedOnAbeyCollab": true,
+  "isSignedTalent": true,
+  "agreementStatus": "Signed Beta Pilot Agreement",
+  "cohortBadge": "Founding Cohort '26",
+  "turnaroundGuaranteedDays": 5,
+  "acceptingBriefsCount": 1,
+  "socialAccounts": [],
+  "audience": {
+    "topCountries": [
+      {
+        "country": "India",
+        "percentage": 65
+      },
+      {
+        "country": "United Arab Emirates",
+        "percentage": 20
+      }
+    ],
+    "ageDistribution": [
+      {
+        "range": "25-34",
+        "percentage": 60
+      },
+      {
+        "range": "18-24",
+        "percentage": 25
+      }
+    ],
+    "genderSplit": [
+      {
+        "gender": "Male",
+        "percentage": 55
+      },
+      {
+        "gender": "Female",
+        "percentage": 45
+      }
+    ],
+    "interests": [
+      "Gourmet Food",
+      "Cocktails",
+      "Slow-Mo Cinematography"
+    ]
+  },
+  "rateCards": [
+    {
+      "id": "rc-rohan-1",
+      "deliverableType": "Instagram Reel",
+      "title": "Sensory High-Speed Slow-Mo Reel",
+      "description": "1000fps liquid pour, sizzle, and garnish sequence with studio lighting.",
+      "basePrice": 1140,
+      "turnaroundDays": 5,
+      "revisionsIncluded": 2,
+      "currency": "USD"
+    }
+  ]
+};
+
+export const MAYA_LIN_PROFILE: CreatorProfile = {
+  "id": "creator-maya",
+  "userId": "user-c-maya",
+  "fullName": "Maya Lin",
+  "handle": "mayalin.ux",
+  "headline": "Fintech UX & SaaS Motion Design Director",
+  "bio": "Senior product designer analyzing micro-interactions, dashboard ergonomics, and fintech checkout flows with fluid kinetic typography.",
+  "avatarUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&auto=format&fit=crop&q=80",
+  "coverImageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&fit=crop&q=80",
+  "location": "Singapore",
+  "region": "Singapore",
+  "countryCode": "SG",
+  "countryFlag": "\ud83c\uddf8\ud83c\uddec",
+  "languages": [
+    "English",
+    "Mandarin"
+  ],
+  "primaryCategory": "Design & Creative",
+  "secondaryCategories": [
+    "Technology & AI"
+  ],
+  "verified": true,
+  "featured": true,
+  "tier": "Micro",
+  "rating": 4.95,
+  "completedCampaignsCount": 7,
+  "totalFollowers": 78000,
+  "avgEngagementRate": 6.5,
+  "startingPrice": 1400,
+  "currency": "USD",
+  "availableForHire": true,
+  "profileCompleteness": 96,
+  "qualityScore": 94,
+  "profileSource": "abeycollab_verified",
+  "isAbeyCollabVerified": true,
+  "isInstagramVerified": true,
+  "isClaimedOnAbeyCollab": true,
+  "isSignedTalent": true,
+  "agreementStatus": "Signed Beta Pilot Agreement",
+  "cohortBadge": "Founding Cohort '26",
+  "turnaroundGuaranteedDays": 5,
+  "acceptingBriefsCount": 2,
+  "socialAccounts": [],
+  "audience": {
+    "topCountries": [
+      {
+        "country": "Singapore",
+        "percentage": 35
+      },
+      {
+        "country": "United States",
+        "percentage": 40
+      }
+    ],
+    "ageDistribution": [
+      {
+        "range": "25-34",
+        "percentage": 65
+      },
+      {
+        "range": "35-44",
+        "percentage": 20
+      }
+    ],
+    "genderSplit": [
+      {
+        "gender": "Female",
+        "percentage": 52
+      },
+      {
+        "gender": "Male",
+        "percentage": 48
+      }
+    ],
+    "interests": [
+      "UI/UX Design",
+      "Fintech",
+      "Motion Graphics",
+      "Product Design"
+    ]
+  },
+  "rateCards": [
+    {
+      "id": "rc-maya-1",
+      "deliverableType": "Instagram Reel",
+      "title": "SaaS UX Breakdown with Kinetic Animation",
+      "description": "Custom AfterEffects screen capture and interface triage.",
+      "basePrice": 1400,
+      "turnaroundDays": 5,
+      "revisionsIncluded": 2,
+      "currency": "USD"
+    }
+  ]
+};
+
+export const NICO_ALVAREZ_PROFILE: CreatorProfile = {
+  "id": "creator-nico",
+  "userId": "user-c-nico",
+  "fullName": "Nico Alvarez",
+  "handle": "nicoalvarez",
+  "headline": "Everyday Carry (EDC) & Minimalist Tech Storyteller",
+  "bio": "Curating heirloom titanium tools, mechanical watches, and functional everyday carry. High-converting organic creator for modern lifestyle gear.",
+  "avatarUrl": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=800&auto=format&fit=crop&q=80",
+  "coverImageUrl": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=1200&auto=format&fit=crop&q=80",
+  "location": "Austin, TX, United States",
+  "region": "United States",
+  "countryCode": "US",
+  "countryFlag": "\ud83c\uddfa\ud83c\uddf8",
+  "languages": [
+    "English",
+    "Spanish"
+  ],
+  "primaryCategory": "Lifestyle & Travel",
+  "secondaryCategories": [
+    "Technology & AI"
+  ],
+  "verified": true,
+  "featured": true,
+  "tier": "Mid-Tier",
+  "rating": 4.93,
+  "completedCampaignsCount": 10,
+  "totalFollowers": 112000,
+  "avgEngagementRate": 6.3,
+  "startingPrice": 1650,
+  "currency": "USD",
+  "availableForHire": true,
+  "profileCompleteness": 97,
+  "qualityScore": 94,
+  "profileSource": "abeycollab_verified",
+  "isAbeyCollabVerified": true,
+  "isInstagramVerified": true,
+  "isClaimedOnAbeyCollab": true,
+  "isSignedTalent": true,
+  "agreementStatus": "Signed Beta Pilot Agreement",
+  "cohortBadge": "Founding Cohort '26",
+  "turnaroundGuaranteedDays": 5,
+  "acceptingBriefsCount": 2,
+  "socialAccounts": [],
+  "audience": {
+    "topCountries": [
+      {
+        "country": "United States",
+        "percentage": 75
+      },
+      {
+        "country": "Canada",
+        "percentage": 15
+      }
+    ],
+    "ageDistribution": [
+      {
+        "range": "25-34",
+        "percentage": 58
+      },
+      {
+        "range": "35-44",
+        "percentage": 30
+      }
+    ],
+    "genderSplit": [
+      {
+        "gender": "Male",
+        "percentage": 85
+      },
+      {
+        "gender": "Female",
+        "percentage": 15
+      }
+    ],
+    "interests": [
+      "EDC",
+      "Gear",
+      "Minimalism",
+      "Watches"
+    ]
+  },
+  "rateCards": [
+    {
+      "id": "rc-nico-1",
+      "deliverableType": "Instagram Reel",
+      "title": "Field-Tested EDC Pocket Dump Reel",
+      "description": "Natural outdoor lighting showcasing gear durability and utility.",
+      "basePrice": 1650,
+      "turnaroundDays": 5,
+      "revisionsIncluded": 2,
+      "currency": "USD"
+    }
+  ]
+};
+
+export const TARA_KAPOOR_PROFILE: CreatorProfile = {
+  "id": "creator-tara",
+  "userId": "user-c-tara",
+  "fullName": "Tara Kapoor",
+  "handle": "tarakapoor.fit",
+  "headline": "High-Performance Athletic Science & Recovery Coach",
+  "bio": "Certified strength and conditioning specialist breaking down lactate threshold training, VO2 max protocols, and wearable biometrics.",
+  "avatarUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&auto=format&fit=crop&q=80",
+  "coverImageUrl": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=1200&auto=format&fit=crop&q=80",
+  "location": "Bengaluru, India",
+  "region": "India",
+  "countryCode": "IN",
+  "countryFlag": "\ud83c\uddee\ud83c\uddf3",
+  "languages": [
+    "English",
+    "Hindi",
+    "Kannada"
+  ],
+  "primaryCategory": "Fitness & Wellness",
+  "secondaryCategories": [
+    "Lifestyle & Travel"
+  ],
+  "verified": true,
+  "featured": true,
+  "tier": "Mid-Tier",
+  "rating": 4.96,
+  "completedCampaignsCount": 8,
+  "totalFollowers": 130000,
+  "avgEngagementRate": 7.0,
+  "startingPrice": 1450,
+  "currency": "USD",
+  "availableForHire": true,
+  "profileCompleteness": 98,
+  "qualityScore": 96,
+  "profileSource": "abeycollab_verified",
+  "isAbeyCollabVerified": true,
+  "isInstagramVerified": true,
+  "isClaimedOnAbeyCollab": true,
+  "isSignedTalent": true,
+  "agreementStatus": "Signed Beta Pilot Agreement",
+  "cohortBadge": "Founding Cohort '26",
+  "turnaroundGuaranteedDays": 5,
+  "acceptingBriefsCount": 1,
+  "socialAccounts": [],
+  "audience": {
+    "topCountries": [
+      {
+        "country": "India",
+        "percentage": 75
+      },
+      {
+        "country": "Singapore",
+        "percentage": 10
+      }
+    ],
+    "ageDistribution": [
+      {
+        "range": "18-24",
+        "percentage": 35
+      },
+      {
+        "range": "25-34",
+        "percentage": 55
+      }
+    ],
+    "genderSplit": [
+      {
+        "gender": "Female",
+        "percentage": 60
+      },
+      {
+        "gender": "Male",
+        "percentage": 40
+      }
+    ],
+    "interests": [
+      "Athletics",
+      "Running",
+      "Wearables",
+      "Strength"
+    ]
+  },
+  "rateCards": [
+    {
+      "id": "rc-tara-1",
+      "deliverableType": "Instagram Reel",
+      "title": "Wearable Biometrics & Training Reel",
+      "description": "Real sweat workout testing athletic apparel or recovery hardware.",
+      "basePrice": 1450,
+      "turnaroundDays": 5,
+      "revisionsIncluded": 2,
+      "currency": "USD"
+    }
+  ]
+};
+
+export const LUCAS_LINDQVIST_PROFILE: CreatorProfile = {
+  "id": "creator-lucas",
+  "userId": "user-c-lucas",
+  "fullName": "Lucas Lindqvist",
+  "handle": "lucaslindqvist",
+  "headline": "Scandinavian Architectural & Industrial Videographer",
+  "bio": "Stockholm-based cinematographer documenting natural wood craftsmanship, architectural acoustics, and mid-century modern furniture design.",
+  "avatarUrl": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=800&auto=format&fit=crop&q=80",
+  "coverImageUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=1200&auto=format&fit=crop&q=80",
+  "location": "Stockholm, Sweden",
+  "region": "Sweden",
+  "countryCode": "SE",
+  "countryFlag": "\ud83c\uddf8\ud83c\uddea",
+  "languages": [
+    "English",
+    "Swedish"
+  ],
+  "primaryCategory": "Design & Creative",
+  "secondaryCategories": [
+    "Lifestyle & Travel"
+  ],
+  "verified": true,
+  "featured": true,
+  "tier": "Micro",
+  "rating": 4.95,
+  "completedCampaignsCount": 9,
+  "totalFollowers": 94000,
+  "avgEngagementRate": 6.7,
+  "startingPrice": 1750,
+  "currency": "USD",
+  "availableForHire": true,
+  "profileCompleteness": 96,
+  "qualityScore": 95,
+  "profileSource": "abeycollab_verified",
+  "isAbeyCollabVerified": true,
+  "isInstagramVerified": true,
+  "isClaimedOnAbeyCollab": true,
+  "isSignedTalent": true,
+  "agreementStatus": "Signed Beta Pilot Agreement",
+  "cohortBadge": "Founding Cohort '26",
+  "turnaroundGuaranteedDays": 5,
+  "acceptingBriefsCount": 2,
+  "socialAccounts": [],
+  "audience": {
+    "topCountries": [
+      {
+        "country": "Sweden",
+        "percentage": 40
+      },
+      {
+        "country": "United States",
+        "percentage": 35
+      }
+    ],
+    "ageDistribution": [
+      {
+        "range": "25-34",
+        "percentage": 60
+      },
+      {
+        "range": "35-44",
+        "percentage": 25
+      }
+    ],
+    "genderSplit": [
+      {
+        "gender": "Male",
+        "percentage": 58
+      },
+      {
+        "gender": "Female",
+        "percentage": 42
+      }
+    ],
+    "interests": [
+      "Nordic Design",
+      "Furniture",
+      "Architecture",
+      "Woodcraft"
+    ]
+  },
+  "rateCards": [
+    {
+      "id": "rc-lucas-1",
+      "deliverableType": "Instagram Reel",
+      "title": "Architectural Craft & Materiality Reel",
+      "description": "Moody, grain-textured 4K portrait of furniture design or space.",
+      "basePrice": 1750,
+      "turnaroundDays": 5,
+      "revisionsIncluded": 2,
+      "currency": "USD"
+    }
+  ]
+};
+
+export const ZOE_KINCAID_PROFILE: CreatorProfile = {
+  "id": "creator-zoe",
+  "userId": "user-c-zoe",
+  "fullName": "Zoe Kincaid",
+  "handle": "zoekincaid.ugc",
+  "headline": "Direct-to-Consumer UGC Filmmaker & Conversion Specialist",
+  "bio": "Creating scroll-stopping TikTok and Meta video ad hooks for modern DTC brands. Over $2.4M in direct tracked client ad revenue generated.",
+  "avatarUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&auto=format&fit=crop&q=80",
+  "coverImageUrl": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=1200&auto=format&fit=crop&q=80",
+  "location": "London, United Kingdom",
+  "region": "United Kingdom",
+  "countryCode": "GB",
+  "countryFlag": "\ud83c\uddec\ud83c\udde7",
+  "languages": [
+    "English"
+  ],
+  "primaryCategory": "Beauty & Skincare",
+  "secondaryCategories": [
+    "Fashion & Style"
+  ],
+  "verified": true,
+  "featured": true,
+  "tier": "Mid-Tier",
+  "rating": 4.97,
+  "completedCampaignsCount": 16,
+  "totalFollowers": 140000,
+  "avgEngagementRate": 8.4,
+  "startingPrice": 1800,
+  "currency": "USD",
+  "availableForHire": true,
+  "profileCompleteness": 99,
+  "qualityScore": 97,
+  "profileSource": "abeycollab_verified",
+  "isAbeyCollabVerified": true,
+  "isInstagramVerified": true,
+  "isClaimedOnAbeyCollab": true,
+  "isSignedTalent": true,
+  "agreementStatus": "Signed Beta Pilot Agreement",
+  "cohortBadge": "Founding Cohort '26",
+  "turnaroundGuaranteedDays": 5,
+  "acceptingBriefsCount": 2,
+  "socialAccounts": [],
+  "audience": {
+    "topCountries": [
+      {
+        "country": "United Kingdom",
+        "percentage": 50
+      },
+      {
+        "country": "United States",
+        "percentage": 35
+      }
+    ],
+    "ageDistribution": [
+      {
+        "range": "18-24",
+        "percentage": 50
+      },
+      {
+        "range": "25-34",
+        "percentage": 40
+      }
+    ],
+    "genderSplit": [
+      {
+        "gender": "Female",
+        "percentage": 78
+      },
+      {
+        "gender": "Male",
+        "percentage": 22
+      }
+    ],
+    "interests": [
+      "DTC",
+      "Skincare",
+      "TikTok Ads",
+      "UGC Video"
+    ]
+  },
+  "rateCards": [
+    {
+      "id": "rc-zoe-1",
+      "deliverableType": "TikTok Video",
+      "title": "High-Converting 3-Hook UGC Ad Pack",
+      "description": "3 alternate hooks + 1 core conversion body for Meta/TikTok paid testing.",
+      "basePrice": 1800,
+      "turnaroundDays": 5,
+      "revisionsIncluded": 2,
+      "currency": "USD"
+    }
+  ]
+};
+
+/**
+ * Founding Cohort '26: Handpicked active creators and professional videographers
+ * with signed beta pilot representation agreements, guaranteed 5-day delivery SLAs, and verified rates.
+ */
+export const FOUNDING_COHORT_PROFILES: CreatorProfile[] = [
+  ELENA_ROSTOVA_PROFILE,
+  MARCUS_VANCE_PROFILE,
+  ARIA_CHEN_PROFILE,
+  DEVON_THORNE_PROFILE,
+  CHLOE_DUBOIS_PROFILE,
+  KAI_TAKAHASHI_PROFILE,
+  SIDDHARTH_MEHTA_PROFILE,
+  ANANYA_DESHMUKH_PROFILE,
+  ROHAN_VARMA_PROFILE,
+  MAYA_LIN_PROFILE,
+  NICO_ALVAREZ_PROFILE,
+  TARA_KAPOOR_PROFILE,
+  LUCAS_LINDQVIST_PROFILE,
+  ZOE_KINCAID_PROFILE
+];
+
+/**
+ * Reference Market Benchmarks: Unclaimed public creator profiles for pricing and category benchmarks.
+ * These profiles are strictly not available for commercial hire without direct agency representation.
+ */
+export const REFERENCE_BENCHMARK_PROFILES: CreatorProfile[] = [
+{
     "id": "creator-in-1",
     "userId": "user-c-in-1",
     "fullName": "Ankur Warikoo",
@@ -32,10 +1427,11 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "avgEngagementRate": 4.6,
     "startingPrice": 3500,
     "currency": "USD",
-    "availableForHire": true,
+    "availableForHire": false,
+    "isSignedTalent": false,
     "profileCompleteness": 98,
     "qualityScore": 97,
-    "profileSource": "instagram_public",
+    "profileSource": "sample_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -44,7 +1440,7 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
       "rateType": "sample_market_estimate",
-      "disclaimer": "Public profile information sourced from Instagram. Profile photo and bio remain property of @ankurwarikoo. Rates and deliverables shown are sample market estimates for campaign planning."
+      "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
       {
@@ -191,10 +1587,11 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "avgEngagementRate": 6.1,
     "startingPrice": 4000,
     "currency": "USD",
-    "availableForHire": true,
+    "availableForHire": false,
+    "isSignedTalent": false,
     "profileCompleteness": 96,
     "qualityScore": 97,
-    "profileSource": "instagram_public",
+    "profileSource": "sample_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -203,7 +1600,7 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
       "rateType": "sample_market_estimate",
-      "disclaimer": "Public profile information sourced from Instagram. Profile photo and bio remain property of @kushakapila. Rates and deliverables shown are sample market estimates for campaign planning."
+      "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
       {
@@ -329,10 +1726,11 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "avgEngagementRate": 6.4,
     "startingPrice": 5500,
     "currency": "USD",
-    "availableForHire": true,
+    "availableForHire": false,
+    "isSignedTalent": false,
     "profileCompleteness": 99,
     "qualityScore": 99,
-    "profileSource": "instagram_public",
+    "profileSource": "sample_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -341,7 +1739,7 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
       "rateType": "sample_market_estimate",
-      "disclaimer": "Public profile information sourced from Instagram. Profile photo and bio remain property of @mostlysane. Rates and deliverables shown are sample market estimates for campaign planning."
+      "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
       {
@@ -467,10 +1865,11 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "avgEngagementRate": 5.8,
     "startingPrice": 12500,
     "currency": "USD",
-    "availableForHire": true,
+    "availableForHire": false,
+    "isSignedTalent": false,
     "profileCompleteness": 98,
     "qualityScore": 99,
-    "profileSource": "instagram_public",
+    "profileSource": "sample_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -479,7 +1878,7 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
       "rateType": "sample_market_estimate",
-      "disclaimer": "Public profile information sourced from Instagram. Profile photo and bio remain property of @mkbhd. Rates and deliverables shown are sample market estimates for campaign planning."
+      "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
       {
@@ -623,10 +2022,11 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "avgEngagementRate": 8.2,
     "startingPrice": 22000,
     "currency": "USD",
-    "availableForHire": true,
+    "availableForHire": false,
+    "isSignedTalent": false,
     "profileCompleteness": 99,
     "qualityScore": 99,
-    "profileSource": "instagram_public",
+    "profileSource": "sample_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -635,7 +2035,7 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
       "rateType": "sample_market_estimate",
-      "disclaimer": "Public profile information sourced from Instagram. Profile photo and bio remain property of @zachking. Rates and deliverables shown are sample market estimates for campaign planning."
+      "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
       {
@@ -760,10 +2160,11 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "avgEngagementRate": 7.4,
     "startingPrice": 18000,
     "currency": "USD",
-    "availableForHire": true,
+    "availableForHire": false,
+    "isSignedTalent": false,
     "profileCompleteness": 98,
     "qualityScore": 98,
-    "profileSource": "instagram_public",
+    "profileSource": "sample_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -772,7 +2173,7 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
       "rateType": "sample_market_estimate",
-      "disclaimer": "Public profile information sourced from Instagram. Profile photo and bio remain property of @emmachamberlain. Rates and deliverables shown are sample market estimates for campaign planning."
+      "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
       {
@@ -897,10 +2298,11 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "avgEngagementRate": 6.4,
     "startingPrice": 2800,
     "currency": "USD",
-    "availableForHire": true,
+    "availableForHire": false,
+    "isSignedTalent": false,
     "profileCompleteness": 97,
     "qualityScore": 98,
-    "profileSource": "instagram_public",
+    "profileSource": "sample_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -909,7 +2311,7 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
       "rateType": "sample_market_estimate",
-      "disclaimer": "Public profile information sourced from Instagram. Profile photo and bio remain property of @saradietschy. Rates and deliverables shown are sample market estimates for campaign planning."
+      "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
       {
@@ -1029,10 +2431,11 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "avgEngagementRate": 6.2,
     "startingPrice": 8500,
     "currency": "USD",
-    "availableForHire": true,
+    "availableForHire": false,
+    "isSignedTalent": false,
     "profileCompleteness": 98,
     "qualityScore": 98,
-    "profileSource": "instagram_public",
+    "profileSource": "sample_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -1041,7 +2444,7 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
       "rateType": "sample_market_estimate",
-      "disclaimer": "Public profile information sourced from Instagram. Profile photo and bio remain property of @joshuaweissman. Rates and deliverables shown are sample market estimates for campaign planning."
+      "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
       {
@@ -1162,10 +2565,11 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "avgEngagementRate": 4.9,
     "startingPrice": 35000,
     "currency": "USD",
-    "availableForHire": true,
+    "availableForHire": false,
+    "isSignedTalent": false,
     "profileCompleteness": 99,
     "qualityScore": 99,
-    "profileSource": "instagram_public",
+    "profileSource": "sample_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -1174,7 +2578,7 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
       "rateType": "sample_market_estimate",
-      "disclaimer": "Public profile information sourced from Instagram. Profile photo and bio remain property of @hudabeauty. Rates and deliverables shown are sample market estimates for campaign planning."
+      "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
       {
@@ -1299,10 +2703,11 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "avgEngagementRate": 6.7,
     "startingPrice": 20000,
     "currency": "USD",
-    "availableForHire": true,
+    "availableForHire": false,
+    "isSignedTalent": false,
     "profileCompleteness": 99,
     "qualityScore": 99,
-    "profileSource": "instagram_public",
+    "profileSource": "sample_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -1311,7 +2716,7 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
       "rateType": "sample_market_estimate",
-      "disclaimer": "Public profile information sourced from Instagram. Profile photo and bio remain property of @supercarblondie. Rates and deliverables shown are sample market estimates for campaign planning."
+      "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
       {
@@ -1437,10 +2842,11 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "avgEngagementRate": 5.1,
     "startingPrice": 8000,
     "currency": "USD",
-    "availableForHire": true,
+    "availableForHire": false,
+    "isSignedTalent": false,
     "profileCompleteness": 97,
     "qualityScore": 98,
-    "profileSource": "instagram_public",
+    "profileSource": "sample_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -1449,7 +2855,7 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
       "rateType": "sample_market_estimate",
-      "disclaimer": "Public profile information sourced from Instagram. Profile photo and bio remain property of @muradosmann. Rates and deliverables shown are sample market estimates for campaign planning."
+      "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
       {
@@ -1567,10 +2973,11 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "avgEngagementRate": 5.9,
     "startingPrice": 14000,
     "currency": "USD",
-    "availableForHire": true,
+    "availableForHire": false,
+    "isSignedTalent": false,
     "profileCompleteness": 99,
     "qualityScore": 99,
-    "profileSource": "instagram_public",
+    "profileSource": "sample_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -1579,7 +2986,7 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
       "rateType": "sample_market_estimate",
-      "disclaimer": "Public profile information sourced from Instagram. Profile photo and bio remain property of @karenwazen. Rates and deliverables shown are sample market estimates for campaign planning."
+      "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
       {
@@ -1695,10 +3102,11 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "avgEngagementRate": 7.8,
     "startingPrice": 15000,
     "currency": "USD",
-    "availableForHire": true,
+    "availableForHire": false,
+    "isSignedTalent": false,
     "profileCompleteness": 99,
     "qualityScore": 99,
-    "profileSource": "instagram_public",
+    "profileSource": "sample_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -1707,7 +3115,7 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
       "rateType": "sample_market_estimate",
-      "disclaimer": "Public profile information sourced from Instagram. Profile photo and bio remain property of @bhuvan.bam22. Rates and deliverables shown are sample market estimates for campaign planning."
+      "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
       {
@@ -1834,10 +3242,11 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "avgEngagementRate": 8.5,
     "startingPrice": 18000,
     "currency": "USD",
-    "availableForHire": true,
+    "availableForHire": false,
+    "isSignedTalent": false,
     "profileCompleteness": 99,
     "qualityScore": 99,
-    "profileSource": "instagram_public",
+    "profileSource": "sample_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -1846,7 +3255,7 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
       "rateType": "sample_market_estimate",
-      "disclaimer": "Public profile information sourced from Instagram. Profile photo and bio remain property of @carryminati. Rates and deliverables shown are sample market estimates for campaign planning."
+      "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
       {
@@ -1972,10 +3381,11 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "avgEngagementRate": 5.6,
     "startingPrice": 6500,
     "currency": "USD",
-    "availableForHire": true,
+    "availableForHire": false,
+    "isSignedTalent": false,
     "profileCompleteness": 98,
     "qualityScore": 98,
-    "profileSource": "instagram_public",
+    "profileSource": "sample_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -1984,7 +3394,7 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
       "rateType": "sample_market_estimate",
-      "disclaimer": "Public profile information sourced from Instagram. Profile photo and bio remain property of @technicalguruji. Rates and deliverables shown are sample market estimates for campaign planning."
+      "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
       {
@@ -2111,10 +3521,11 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "avgEngagementRate": 6.8,
     "startingPrice": 4200,
     "currency": "USD",
-    "availableForHire": true,
+    "availableForHire": false,
+    "isSignedTalent": false,
     "profileCompleteness": 97,
     "qualityScore": 98,
-    "profileSource": "instagram_public",
+    "profileSource": "sample_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -2123,7 +3534,7 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
       "rateType": "sample_market_estimate",
-      "disclaimer": "Public profile information sourced from Instagram. Profile photo and bio remain property of @tanmaybhat. Rates and deliverables shown are sample market estimates for campaign planning."
+      "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
       {
@@ -2250,10 +3661,11 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "avgEngagementRate": 8.9,
     "startingPrice": 8500,
     "currency": "USD",
-    "availableForHire": true,
+    "availableForHire": false,
+    "isSignedTalent": false,
     "profileCompleteness": 99,
     "qualityScore": 99,
-    "profileSource": "instagram_public",
+    "profileSource": "sample_benchmark",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": false,
     "isClaimedOnAbeyCollab": false,
@@ -2262,7 +3674,7 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
       "rateType": "sample_market_estimate",
-      "disclaimer": "Public profile information sourced from Instagram. Profile photo and bio remain property of @khan_zaalim. Rates and deliverables shown are sample market estimates for campaign planning."
+      "disclaimer": "Market Reference Benchmark: Profile is unclaimed and not available for commercial booking on AbeyCollab without direct agency representation."
     },
     "socialAccounts": [
       {
@@ -2360,302 +3772,10 @@ export const MOCK_CREATORS: CreatorProfile[] = [
   }
 ];
 
-export const ELENA_ROSTOVA_PROFILE: CreatorProfile = {
-  id: "creator-demo",
-  userId: "user-creator",
-  fullName: "Elena Rostova",
-  handle: "elenarostova",
-  headline: "Technology & AI creator",
-  bio: "Principal tech creator covering artificial intelligence tooling, developer hardware, and future-of-work software suites.",
-  avatarUrl: "/creators/elena-rostova.jpg",
-  coverImageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
-  location: "Worldwide",
-  region: "Global",
-  countryFlag: "🌐",
-  languages: ["English"],
-  primaryCategory: "Technology & AI",
-  secondaryCategories: ["Design & Creative"],
-  verified: true,
-  featured: true,
-  tier: "Mid-Tier",
-  rating: 4.9,
-  completedCampaignsCount: 12,
-  totalFollowers: 125000,
-  avgEngagementRate: 5.2,
-  startingPrice: 1500,
-  currency: "USD",
-  availableForHire: true,
-  profileCompleteness: 100,
-  qualityScore: 92,
-  profileSource: "abeycollab_verified",
-  isAbeyCollabVerified: true,
-  isInstagramVerified: false,
-  isClaimedOnAbeyCollab: true,
-  socialAccounts: [],
-  audience: {
-    topCountries: [{ country: "United States", percentage: 55 }, { country: "India", percentage: 20 }],
-    ageDistribution: [{ range: "25-34", percentage: 52 }, { range: "18-24", percentage: 31 }],
-    genderSplit: [{ gender: "Female", percentage: 52 }, { gender: "Male", percentage: 48 }],
-    interests: ["Technology", "Creator Economy", "Design"],
-  },
-  rateCards: [
-    {
-      id: "rc-elena-1",
-      deliverableType: "YouTube 60s Integration",
-      title: "Dedicated 60s Software Triage Integration",
-      description: "Hands-on workflow screen recording with custom graphic callouts.",
-      basePrice: 1500,
-      turnaroundDays: 7,
-      revisionsIncluded: 2,
-      currency: "USD",
-    }
-  ],
-};
-
-export const MARCUS_VANCE_PROFILE: CreatorProfile = {
-  id: "creator-2",
-  userId: "user-1789707227118",
-  fullName: "Marcus Vance",
-  handle: "marcusvisuals",
-  headline: "Luxury Horology, Architecture & Fine Art Cinematographer",
-  bio: "Milan & Paris fashion cinematographer specializing in luxury editorial lookbooks, mechanical watches, and high-aesthetic brand identity drops.",
-  avatarUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&auto=format&fit=crop&q=80",
-  coverImageUrl: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1200&auto=format&fit=crop&q=80",
-  location: "London, United Kingdom",
-  region: "United Kingdom",
-  countryCode: "GB",
-  countryFlag: "🇬🇧",
-  languages: ["English"],
-  primaryCategory: "Design & Creative",
-  secondaryCategories: ["Fashion & Style"],
-  verified: true,
-  featured: true,
-  tier: "Macro",
-  rating: 4.98,
-  completedCampaignsCount: 8,
-  totalFollowers: 310000,
-  avgEngagementRate: 5.4,
-  startingPrice: 2800,
-  currency: "USD",
-  availableForHire: true,
-  profileCompleteness: 98,
-  qualityScore: 96,
-  profileSource: "abeycollab_verified",
-  isAbeyCollabVerified: true,
-  isClaimedOnAbeyCollab: true,
-  socialAccounts: [],
-  audience: {
-    topCountries: [{ country: "United Kingdom", percentage: 45 }, { country: "United States", percentage: 30 }],
-    ageDistribution: [{ range: "25-34", percentage: 55 }, { range: "35-44", percentage: 30 }],
-    genderSplit: [{ gender: "Male", percentage: 65 }, { gender: "Female", percentage: 35 }],
-    interests: ["Architecture", "Luxury Watches", "Fine Art", "Cinematography"],
-  },
-  rateCards: [
-    {
-      id: "rc-marcus-1",
-      deliverableType: "Instagram Reel",
-      title: "Titanium Monolith Architectural Reel",
-      description: "Filmed on ARRI Alexa Mini with 35mm cine glass.",
-      basePrice: 2000,
-      turnaroundDays: 8,
-      revisionsIncluded: 2,
-      currency: "USD",
-    }
-  ],
-};
-
-export const ARIA_CHEN_PROFILE: CreatorProfile = {
-  id: "creator-aria",
-  userId: "user-1789707231099",
-  fullName: "Aria Chen",
-  handle: "ariachenwellness",
-  headline: "Biometric Sleep Science, Contrast Therapy & Longevity Researcher",
-  bio: "Ex-biochemist exploring cold thermogenesis, infrared cellular recovery, circadian protocols, and biometric sleep optimization.",
-  avatarUrl: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&auto=format&fit=crop&q=80",
-  coverImageUrl: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=1200&auto=format&fit=crop&q=80",
-  location: "Austin, TX, United States",
-  region: "United States",
-  countryCode: "US",
-  countryFlag: "🇺🇸",
-  languages: ["English", "Mandarin"],
-  primaryCategory: "Fitness & Wellness",
-  secondaryCategories: ["Lifestyle & Travel"],
-  verified: true,
-  featured: true,
-  tier: "Macro",
-  rating: 4.95,
-  completedCampaignsCount: 6,
-  totalFollowers: 210000,
-  avgEngagementRate: 6.2,
-  startingPrice: 3500,
-  currency: "USD",
-  availableForHire: true,
-  profileCompleteness: 97,
-  qualityScore: 95,
-  profileSource: "abeycollab_verified",
-  isAbeyCollabVerified: true,
-  isClaimedOnAbeyCollab: true,
-  socialAccounts: [],
-  audience: {
-    topCountries: [{ country: "United States", percentage: 65 }, { country: "Canada", percentage: 15 }],
-    ageDistribution: [{ range: "25-34", percentage: 50 }, { range: "35-44", percentage: 35 }],
-    genderSplit: [{ gender: "Female", percentage: 58 }, { gender: "Male", percentage: 42 }],
-    interests: ["Biohacking", "Cold Therapy", "Longevity", "Sleep Science"],
-  },
-  rateCards: [
-    {
-      id: "rc-aria-1",
-      deliverableType: "YouTube Dedicated Video",
-      title: "14-Day Biometric Sleep & Contrast Protocol",
-      description: "Data-driven recovery audit featuring wearable sensor integration.",
-      basePrice: 3800,
-      turnaroundDays: 14,
-      revisionsIncluded: 2,
-      currency: "USD",
-    }
-  ],
-};
-
-export const DEVON_THORNE_PROFILE: CreatorProfile = {
-  id: "creator-devon",
-  userId: "user-1789707236600",
-  fullName: "Devon Thorne",
-  handle: "devoncodes",
-  headline: "Open Source Systems Engineer, CLI Architect & DevRel Specialist",
-  bio: "Building distributed systems and CLI developer tooling. Creator of speed-coding workflows, dotfiles breakdowns, and IDE extension guides.",
-  avatarUrl: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&auto=format&fit=crop&q=80",
-  coverImageUrl: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&auto=format&fit=crop&q=80",
-  location: "San Francisco, CA, United States",
-  region: "United States",
-  countryCode: "US",
-  countryFlag: "🇺🇸",
-  languages: ["English"],
-  primaryCategory: "Technology & AI",
-  secondaryCategories: ["Design & Creative"],
-  verified: true,
-  featured: true,
-  tier: "Mid-Tier",
-  rating: 4.92,
-  completedCampaignsCount: 5,
-  totalFollowers: 145000,
-  avgEngagementRate: 6.8,
-  startingPrice: 2000,
-  currency: "USD",
-  availableForHire: true,
-  profileCompleteness: 96,
-  qualityScore: 94,
-  profileSource: "abeycollab_verified",
-  isAbeyCollabVerified: true,
-  isClaimedOnAbeyCollab: true,
-  socialAccounts: [],
-  audience: {
-    topCountries: [{ country: "United States", percentage: 55 }, { country: "Germany", percentage: 15 }],
-    ageDistribution: [{ range: "25-34", percentage: 65 }, { range: "18-24", percentage: 25 }],
-    genderSplit: [{ gender: "Male", percentage: 80 }, { gender: "Female", percentage: 20 }],
-    interests: ["Developer Tools", "Rust", "TypeScript", "CLI"],
-  },
-  rateCards: [
-    {
-      id: "rc-devon-1",
-      deliverableType: "YouTube 60s Integration",
-      title: "Extension API Code Walkthrough",
-      description: "Live screen-recorded workflow with public GitHub repo link.",
-      basePrice: 1800,
-      turnaroundDays: 7,
-      revisionsIncluded: 2,
-      currency: "USD",
-    }
-  ],
-};
-
-export const CHLOE_DUBOIS_PROFILE: CreatorProfile = {
-  id: "creator-chloe",
-  userId: "user-1789707240648",
-  fullName: "Chloe Dubois",
-  handle: "chloedubois",
-  headline: "Cinematic Travel, Soundscapes & French Riviera Editorial Direction",
-  bio: "Documentary filmmaker capturing organic coastal soundscapes, luxury boutique hospitality, and visual minimalism across Mediterranean destinations.",
-  avatarUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&auto=format&fit=crop&q=80",
-  coverImageUrl: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&auto=format&fit=crop&q=80",
-  location: "Nice, France",
-  region: "France",
-  countryCode: "FR",
-  countryFlag: "🇫🇷",
-  languages: ["English", "French"],
-  primaryCategory: "Lifestyle & Travel",
-  secondaryCategories: ["Design & Creative"],
-  verified: true,
-  featured: true,
-  tier: "Mid-Tier",
-  rating: 4.96,
-  completedCampaignsCount: 7,
-  totalFollowers: 185000,
-  avgEngagementRate: 5.9,
-  startingPrice: 2200,
-  currency: "USD",
-  availableForHire: true,
-  profileCompleteness: 98,
-  qualityScore: 96,
-  profileSource: "abeycollab_verified",
-  isAbeyCollabVerified: true,
-  isClaimedOnAbeyCollab: true,
-  socialAccounts: [],
-  audience: {
-    topCountries: [{ country: "France", percentage: 45 }, { country: "United States", percentage: 25 }],
-    ageDistribution: [{ range: "25-34", percentage: 55 }, { range: "18-24", percentage: 30 }],
-    genderSplit: [{ gender: "Female", percentage: 60 }, { gender: "Male", percentage: 40 }],
-    interests: ["Travel", "Photography", "Hospitality", "Sound Design"],
-  },
-  rateCards: [],
-};
-
-export const KAI_TAKAHASHI_PROFILE: CreatorProfile = {
-  id: "creator-kai",
-  userId: "user-1789707244128",
-  fullName: "Kai Takahashi",
-  handle: "kaistudio",
-  headline: "Tokyo Streetwear, Neo-Tokyo Aesthetics & Cyberpunk Industrial Design",
-  bio: "Visual director and apparel designer exploring Tokyo's cyberpunk architecture, brutalist typography, and technical outerwear collections.",
-  avatarUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&auto=format&fit=crop&q=80",
-  coverImageUrl: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=1200&auto=format&fit=crop&q=80",
-  location: "Tokyo, Japan",
-  region: "Japan",
-  countryCode: "JP",
-  countryFlag: "🇯🇵",
-  languages: ["English", "Japanese"],
-  primaryCategory: "Design & Creative",
-  secondaryCategories: ["Fashion & Style"],
-  verified: true,
-  featured: true,
-  tier: "Mid-Tier",
-  rating: 4.93,
-  completedCampaignsCount: 4,
-  totalFollowers: 160000,
-  avgEngagementRate: 7.1,
-  startingPrice: 1900,
-  currency: "USD",
-  availableForHire: true,
-  profileCompleteness: 95,
-  qualityScore: 93,
-  profileSource: "abeycollab_verified",
-  isAbeyCollabVerified: true,
-  isClaimedOnAbeyCollab: true,
-  socialAccounts: [],
-  audience: {
-    topCountries: [{ country: "Japan", percentage: 50 }, { country: "United States", percentage: 30 }],
-    ageDistribution: [{ range: "18-24", percentage: 45 }, { range: "25-34", percentage: 45 }],
-    genderSplit: [{ gender: "Male", percentage: 70 }, { gender: "Female", percentage: 30 }],
-    interests: ["Streetwear", "Cyberpunk", "Tokyo Culture", "Gaming"],
-  },
-  rateCards: [],
-};
-
-// Also append personas to master list so they are discoverable in search
-MOCK_CREATORS.push(
-  ELENA_ROSTOVA_PROFILE,
-  MARCUS_VANCE_PROFILE,
-  ARIA_CHEN_PROFILE,
-  DEVON_THORNE_PROFILE,
-  CHLOE_DUBOIS_PROFILE,
-  KAI_TAKAHASHI_PROFILE
-);
+/**
+ * Master Creator Directory Roster: Signed launch cohort prioritized first, followed by reference profiles.
+ */
+export const MOCK_CREATORS: CreatorProfile[] = [
+  ...FOUNDING_COHORT_PROFILES,
+  ...REFERENCE_BENCHMARK_PROFILES,
+];

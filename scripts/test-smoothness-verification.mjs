@@ -95,6 +95,9 @@ async function runAllSmoothnessTests() {
     return Math.round(usd * toRate * 100) / 100;
   }
 
+  // JIT warm-up to ensure stable benchmarking
+  convert(100, "USD", "INR");
+
   const fxStart = performance.now();
   const convertedINR = convert(3000, "USD", "INR"); // $3,000 to ₹
   const convertedBackUSD = convert(convertedINR, "INR", "USD");

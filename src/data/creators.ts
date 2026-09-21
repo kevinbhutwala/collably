@@ -18,7 +18,7 @@ export const CENTRAL_CREATORS: EnrichedCreator[] = MOCK_CREATORS.map((c, idx) =>
   ...c,
   matchScore: 95 + (idx % 5),
   matchReasons: [
-    `Key regional influencer in ${c.region || c.location} with ${(c.totalFollowers / 1000000).toFixed(1)}M verified audience`,
+    `Key talent in ${c.region || c.location} with ${c.totalFollowers >= 1000000 ? (c.totalFollowers / 1000000).toFixed(1) + 'M' : Math.round(c.totalFollowers / 1000) + 'K'} verified audience`,
     `Consistent ${c.avgEngagementRate}% Instagram engagement with prime demographic alignment`,
     `High quality score of ${c.qualityScore}/100 across ${c.primaryCategory} deliverables`,
   ],

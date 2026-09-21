@@ -1,17 +1,34 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { TimecodedComment } from "@/core/types";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
+import { Modal } from "@/components/ui/Modal";
 import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
+import confetti from "canvas-confetti";
 import {
   Play,
   Pause,
   MessageSquare,
   CheckCircle2,
   Send,
+  Download,
+  FileVideo,
+  Layers,
+  FileText,
+  ShieldCheck,
+  Sparkles,
+  ExternalLink,
+  Sliders,
+  Volume2,
+  VolumeX,
+  Clock,
+  ArrowRightLeft,
+  Check,
+  Eye,
+  FileSpreadsheet,
 } from "lucide-react";
 
 export function TimecodedReviewPlayer({
@@ -27,9 +44,23 @@ export function TimecodedReviewPlayer({
 }) {
   const { user, role } = useAuthStore();
   const { addToast } = useUIStore();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const [activeVersion, setActiveVersion] = useState<"v1" | "v2">("v2");
+  const [activeTab, setActiveTab] = useState<"review" | "assets" | "license">("review");
   const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(18); // default to 00:18
+  const [isMuted, setIsMuted] = useState(true);
+  const [currentTime, setCurrentTime] = useState(14);
+  const [duration, setDuration] = useState(60);
+  const [selectedCategory, setSelectedCategory] = useState<
+    "visual" | "audio" | "pacing" | "overlay" | "copy"
+  >("visual");
   const [newComment, setNewComment] = useState("");
+  const [downloadingBundle, setDownloadingBundle] = useState(false);
+  const [downloadProgress, setDownloadProgress] = useState(0);
+  const [licenseModalOpen, setLicenseModalOpen] = useState(false);
+  const [activeFilter, setActiveFilter] = useState<"all" | "unresolved">("all");
+
   const [comments, setComments] = useState<TimecodedComment[]>(
     initialComments.length > 0
       ? initialComments
@@ -38,26 +69,57 @@ export function TimecodedReviewPlayer({
             id: "tc-1",
             timestampSeconds: 14,
             timestampLabel: "00:14",
-            authorName: "Linear Marketing",
+            authorName: "Marcus Vance (Brand Lead)",
             authorRole: "brand",
-            authorAvatar: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
-            comment: "Great hook! Could we brighten the screen recording by 10% here?",
+            authorAvatar:
+              "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&auto=format&fit=crop&q=80",
+            category: "visual",
+            comment:
+              "Color grade on the 4K outdoor sequence looks pristine. Please bump contrast +5% in shadows.",
             resolved: true,
-            createdAt: "2026-08-28 14:40",
+            createdAt: "Aug 28, 14:40",
           },
           {
             id: "tc-2",
+            timestampSeconds: 32,
+            timestampLabel: "00:32",
+            authorName: "Elena Rostova",
+            authorRole: "creator",
+            authorAvatar: "/creators/elena-rostova.jpg",
+            category: "audio",
+            comment:
+              "Updated Foley sound design for tactile keyboard clicks here in v2.",
+            resolved: true,
+            createdAt: "Aug 28, 15:10",
+          },
+          {
+            id: "tc-3",
             timestampSeconds: 45,
             timestampLabel: "00:45",
-            authorName: "Linear Marketing",
+            authorName: "Marcus Vance (Brand Lead)",
             authorRole: "brand",
-            authorAvatar: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
-            comment: "Please make sure the discount code 'ABEYCOLLAB20' text stays on screen for at least 4 seconds.",
+            authorAvatar:
+              "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&auto=format&fit=crop&q=80",
+            category: "overlay",
+            comment:
+              "Ensure promotional link callout stays on screen for at least 4.5 seconds before cut.",
             resolved: false,
-            createdAt: "2026-08-28 14:45",
+            createdAt: "Aug 28, 15:25",
           },
         ]
   );
+
+  const videoSources = {
+    v1: "https://assets.mixkit.co/videos/preview/mixkit-young-woman-vlogger-recording-a-video-41484-large.mp4",
+    v2: "https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-man-typing-on-a-laptop-41487-large.mp4",
+  };
+
+  const handleTimeUpdate = () => {
+    if (videoRef.current) {
+      setCurrentTime(Math.floor(videoRef.current.currentTime));
+      setDuration(Math.floor(videoRef.current.duration || 60));
+    }
+  };
 
   const formatSeconds = (sec: number) => {
     const m = Math.floor(sec / 60)
@@ -67,17 +129,45 @@ export function TimecodedReviewPlayer({
     return `${m}:${s}`;
   };
 
+  const handleSeek = (sec: number) => {
+    setCurrentTime(sec);
+    if (videoRef.current) {
+      videoRef.current.currentTime = sec;
+    }
+  };
+
+  const handleTogglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play().catch(() => {});
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
   const handleAddComment = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newComment.trim()) return;
+
+    if (videoRef.current && isPlaying) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
 
     const item: TimecodedComment = {
       id: `tc-${Date.now()}`,
       timestampSeconds: currentTime,
       timestampLabel: formatSeconds(currentTime),
-      authorName: user?.name || "Reviewer",
+      authorName: user?.name || (role === "brand" ? "Brand Lead" : "Verified Creator"),
       authorRole: role,
-      authorAvatar: user?.avatarUrl || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80",
+      authorAvatar:
+        user?.avatarUrl ||
+        (role === "brand"
+          ? "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&auto=format&fit=crop&q=80"
+          : "/creators/elena-rostova.jpg"),
+      category: selectedCategory,
       comment: newComment,
       resolved: false,
       createdAt: "Just now",
@@ -87,8 +177,8 @@ export function TimecodedReviewPlayer({
     setNewComment("");
     addToast({
       type: "success",
-      title: "Feedback Added",
-      message: `Annotated at ${formatSeconds(currentTime)}`,
+      title: "Pin Dropped",
+      message: `Annotated [${selectedCategory.toUpperCase()}] at ${formatSeconds(currentTime)}`,
     });
   };
 
@@ -98,143 +188,697 @@ export function TimecodedReviewPlayer({
     );
   };
 
-  return (
-    <div className="rounded-2xl bg-[#FFFFFF] border border-[#E7E7E4] shadow-xs overflow-hidden grid grid-cols-1 lg:grid-cols-12 text-[#111111]">
-      {/* Left Player Area */}
-      <div className="lg:col-span-7 bg-[#FAFAF8] p-6 flex flex-col justify-between text-[#111111] relative border-b lg:border-b-0 lg:border-r border-[#E7E7E4]">
-        <div className="flex items-center justify-between pb-4">
-          <div className="space-y-0.5">
-            <span className="px-2 py-0.5 rounded bg-[#FFFFFF] border border-[#E7E7E4] text-[#111111] text-[10px] font-mono font-bold">
-              4K Raw Deliverable v2
-            </span>
-            <h4 className="text-sm font-bold text-[#111111] font-display">{videoTitle}</h4>
-          </div>
-          <span className="text-xs font-mono text-[#6B6B6B]">Duration: 01:00</span>
-        </div>
+  const handleDownloadBundle = () => {
+    setDownloadingBundle(true);
+    setDownloadProgress(10);
+    const interval = setInterval(() => {
+      setDownloadProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          setDownloadingBundle(false);
+          addToast({
+            type: "success",
+            title: "Production Bundle Ready",
+            message: "4K Master, Raw B-Roll, Subtitles and PSD package downloaded.",
+          });
+          return 100;
+        }
+        return prev + 25;
+      });
+    }, 300);
+  };
 
-        {/* Video Canvas Mock */}
-        <div className="relative aspect-video rounded-xl bg-[#FFFFFF] border border-[#E7E7E4] flex items-center justify-center overflow-hidden my-4 shadow-xs">
-          <div className="text-center space-y-3">
-            <button
-              onClick={() => setIsPlaying(!isPlaying)}
-              className="w-12 h-12 rounded-full bg-[#111111] text-[#FAFAF8] flex items-center justify-center mx-auto shadow-xs hover:scale-105 transition-transform"
-            >
-              {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5 ml-0.5" />}
-            </button>
-            <p className="text-xs text-[#6B6B6B] font-mono">
-              Scrub or click timeline to drop timestamped feedback pin
+  const exportNLEMarkers = () => {
+    const csvContent =
+      "data:text/csv;charset=utf-8," +
+      ["Timecode,Category,Author,Comment,Status"]
+        .concat(
+          comments.map(
+            (c) =>
+              `"${c.timestampLabel}","${c.category || "general"}","${c.authorName}","${c.comment.replace(/"/g, '""')}","${c.resolved ? "Resolved" : "Pending"}"`
+          )
+        )
+        .join("\n");
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `${videoTitle.toLowerCase().replace(/\s+/g, "_")}_markers.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    addToast({
+      type: "success",
+      title: "NLE Markers Exported",
+      message: "Import directly into DaVinci Resolve or Adobe Premiere Pro.",
+    });
+  };
+
+  const filteredComments =
+    activeFilter === "unresolved" ? comments.filter((c) => !c.resolved) : comments;
+
+  const categoryColor = (cat?: string) => {
+    switch (cat) {
+      case "visual":
+        return "bg-amber-500/10 text-amber-700 border-amber-300";
+      case "audio":
+        return "bg-blue-500/10 text-blue-700 border-blue-300";
+      case "pacing":
+        return "bg-purple-500/10 text-purple-700 border-purple-300";
+      case "overlay":
+        return "bg-emerald-500/10 text-emerald-700 border-emerald-300";
+      case "copy":
+        return "bg-rose-500/10 text-rose-700 border-rose-300";
+      default:
+        return "bg-gray-100 text-gray-700 border-gray-300";
+    }
+  };
+
+  return (
+    <div className="rounded-2xl bg-white border border-[#E7E7E4] shadow-sm overflow-hidden text-[#111111]">
+      {/* Top Header & Tool Tabs */}
+      <div className="px-6 py-4 bg-[#FAFAF8] border-b border-[#E7E7E4] flex flex-wrap items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-xl bg-[#111111] text-white flex items-center justify-center font-bold text-sm shadow-xs">
+            <FileVideo className="w-4 h-4" />
+          </div>
+          <div>
+            <div className="flex items-center gap-2">
+              <h3 className="text-sm font-bold text-[#111111] font-display">{videoTitle}</h3>
+              <Badge variant="outline" className="text-[10px] font-mono font-semibold">
+                SLA: 5-Day Delivery Guarantee
+              </Badge>
+            </div>
+            <p className="text-xs text-[#6B6B6B]">
+              Frame-accurate review, automated raw asset downloads &amp; perpetual commercial rights.
             </p>
           </div>
-
-          {/* Timestamp Indicator */}
-          <div className="absolute top-4 right-4 px-2.5 py-1 rounded-md bg-[#111111] text-xs font-mono font-bold text-[#FAFAF8]">
-            {formatSeconds(currentTime)} / 01:00
-          </div>
         </div>
 
-        {/* Interactive Scrub Bar */}
-        <div className="space-y-2">
-          <input
-            type="range"
-            min="0"
-            max="60"
-            value={currentTime}
-            onChange={(e) => setCurrentTime(parseInt(e.target.value))}
-            className="w-full h-1.5 bg-[#E7E7E4] rounded-lg appearance-none cursor-pointer accent-[#111111]"
-          />
-          <div className="flex justify-between text-[10px] font-mono text-[#6B6B6B]">
-            <span>00:00</span>
-            <span>00:30</span>
-            <span>01:00</span>
-          </div>
+        {/* View Switcher Tabs */}
+        <div className="flex items-center gap-1.5 p-1 rounded-xl bg-white border border-[#E7E7E4] shadow-xs">
+          <button
+            onClick={() => setActiveTab("review")}
+            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+              activeTab === "review"
+                ? "bg-[#111111] text-white shadow-xs"
+                : "text-[#6B6B6B] hover:text-[#111111]"
+            }`}
+          >
+            <MessageSquare className="w-3.5 h-3.5" />
+            <span>Review &amp; Annotate</span>
+          </button>
+          <button
+            onClick={() => setActiveTab("assets")}
+            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+              activeTab === "assets"
+                ? "bg-[#111111] text-white shadow-xs"
+                : "text-[#6B6B6B] hover:text-[#111111]"
+            }`}
+          >
+            <Download className="w-3.5 h-3.5" />
+            <span>Raw Asset Vault</span>
+          </button>
+          <button
+            onClick={() => setLicenseModalOpen(true)}
+            className="px-3 py-1.5 rounded-lg text-xs font-bold text-[#6B6B6B] hover:text-[#111111] transition-all flex items-center gap-1.5"
+          >
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+            <span>License Certificate</span>
+          </button>
         </div>
       </div>
 
-      {/* Right Comments & Approval Rail */}
-      <div className="lg:col-span-5 p-6 flex flex-col justify-between h-full bg-[#FFFFFF] space-y-6">
-        <div className="space-y-4">
-          <div className="flex items-center justify-between border-b border-[#E7E7E4] pb-3">
-            <h4 className="text-sm font-bold text-[#111111] flex items-center gap-1.5 font-display">
-              <MessageSquare className="w-4 h-4 text-[#111111]" />
-              <span>Timecoded Feedback ({comments.length})</span>
-            </h4>
-            <span className="text-[11px] font-mono text-[#6B6B6B]">Precision Video Notes</span>
-          </div>
-
-          <div className="space-y-3 max-h-72 overflow-y-auto pr-1">
-            {comments.map((c) => (
-              <div
-                key={c.id}
-                className={`p-3.5 rounded-xl border transition-all text-xs ${
-                  c.resolved
-                    ? "bg-[#FAFAF8] border-[#E7E7E4] text-[#6B6B6B] opacity-75"
-                    : "bg-[#FAFAF8] border-[#E7E7E4] text-[#111111] shadow-xs"
-                }`}
-              >
-                <div className="flex items-center justify-between mb-1.5 font-mono">
-                  <div className="flex items-center gap-2">
-                    <span className="px-2 py-0.5 rounded bg-[#FFFFFF] border border-[#E7E7E4] text-[10px] font-bold text-[#111111]">
-                      {c.timestampLabel}
-                    </span>
-                    <strong className="text-[#111111] font-sans">{c.authorName}</strong>
-                  </div>
+      {activeTab === "review" && (
+        <div className="grid grid-cols-1 lg:grid-cols-12">
+          {/* Left Player Area */}
+          <div className="lg:col-span-7 bg-[#FAFAF8] p-6 flex flex-col justify-between relative border-b lg:border-b-0 lg:border-r border-[#E7E7E4]">
+            {/* Version Comparison Bar */}
+            <div className="flex items-center justify-between pb-3 mb-2 border-b border-[#E7E7E4]/80">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-mono font-bold text-[#6B6B6B]">Version:</span>
+                <div className="flex rounded-lg border border-[#E7E7E4] p-0.5 bg-white">
                   <button
-                    onClick={() => toggleResolve(c.id)}
-                    className={`text-[10px] font-sans font-bold flex items-center gap-1 ${
-                      c.resolved ? "text-[#111111]" : "text-[#6B6B6B] hover:text-[#111111]"
+                    onClick={() => {
+                      setActiveVersion("v1");
+                      handleSeek(10);
+                    }}
+                    className={`px-2.5 py-1 rounded-md text-[11px] font-mono font-bold transition-all ${
+                      activeVersion === "v1"
+                        ? "bg-[#111111] text-white"
+                        : "text-[#6B6B6B] hover:text-[#111111]"
                     }`}
                   >
-                    <CheckCircle2 className="w-3.5 h-3.5" />
-                    {c.resolved ? "Resolved" : "Mark Resolved"}
+                    v1 Rough Cut
+                  </button>
+                  <button
+                    onClick={() => {
+                      setActiveVersion("v2");
+                      handleSeek(14);
+                    }}
+                    className={`px-2.5 py-1 rounded-md text-[11px] font-mono font-bold transition-all flex items-center gap-1 ${
+                      activeVersion === "v2"
+                        ? "bg-[#111111] text-white"
+                        : "text-[#6B6B6B] hover:text-[#111111]"
+                    }`}
+                  >
+                    <span>v2 Master (Final)</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                   </button>
                 </div>
-                <p className="leading-relaxed font-sans text-[#111111]">{c.comment}</p>
               </div>
-            ))}
+
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setIsMuted(!isMuted)}
+                  className="p-1.5 rounded-lg border border-[#E7E7E4] bg-white text-[#6B6B6B] hover:text-[#111111]"
+                  title={isMuted ? "Unmute" : "Mute"}
+                >
+                  {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
+                </button>
+                <span className="text-xs font-mono text-[#6B6B6B]">
+                  {formatSeconds(currentTime)} / {formatSeconds(duration)}
+                </span>
+              </div>
+            </div>
+
+            {/* Video Player Canvas */}
+            <div className="relative aspect-video rounded-xl bg-black border border-[#E7E7E4] overflow-hidden shadow-sm flex items-center justify-center group">
+              <video
+                ref={videoRef}
+                src={videoSources[activeVersion]}
+                muted={isMuted}
+                onTimeUpdate={handleTimeUpdate}
+                playsInline
+                loop
+                className="w-full h-full object-cover"
+              />
+
+              {/* Play / Pause Big Center Trigger */}
+              <button
+                onClick={handleTogglePlay}
+                className="absolute inset-0 m-auto w-14 h-14 rounded-full bg-black/70 backdrop-blur-sm border border-white/20 text-white flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+              >
+                {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6 ml-0.5" />}
+              </button>
+
+              {/* Version Pill Overlay */}
+              <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-sm text-white text-[10px] font-mono font-bold flex items-center gap-1.5 border border-white/10">
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                <span>{activeVersion.toUpperCase()} PRORES MASTER (4K UHD)</span>
+              </div>
+
+              {/* Current Timecode Floating Display */}
+              <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-sm text-white text-xs font-mono font-bold border border-white/10">
+                {formatSeconds(currentTime)}
+              </div>
+            </div>
+
+            {/* Interactive Timeline Scrub Bar with Pin Drop Markers */}
+            <div className="space-y-2 mt-4">
+              <div className="relative w-full py-2">
+                {/* Pin markers positioned on timeline */}
+                <div className="absolute inset-x-0 top-1.5 h-2 pointer-events-none">
+                  {comments.map((c) => {
+                    const leftPct = Math.min(100, Math.max(0, (c.timestampSeconds / duration) * 100));
+                    return (
+                      <button
+                        key={c.id}
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleSeek(c.timestampSeconds);
+                        }}
+                        style={{ left: `${leftPct}%` }}
+                        className={`pointer-events-auto absolute -top-1 -ml-1.5 w-3 h-3 rounded-full border-2 border-white shadow-xs transition-transform hover:scale-125 ${
+                          c.resolved ? "bg-emerald-500" : "bg-amber-500"
+                        }`}
+                        title={`${c.timestampLabel} - ${c.comment}`}
+                      />
+                    );
+                  })}
+                </div>
+
+                <input
+                  type="range"
+                  min="0"
+                  max={duration}
+                  value={currentTime}
+                  onChange={(e) => handleSeek(parseInt(e.target.value))}
+                  className="w-full h-2 bg-[#E7E7E4] rounded-lg appearance-none cursor-pointer accent-[#111111]"
+                />
+              </div>
+
+              <div className="flex justify-between items-center text-[10px] font-mono text-[#6B6B6B]">
+                <span>00:00 (Intro Hook)</span>
+                <span className="flex items-center gap-2">
+                  <span className="inline-flex items-center gap-1">
+                    <span className="w-2 h-2 rounded-full bg-amber-500" />
+                    <span>Pending Revision</span>
+                  </span>
+                  <span className="inline-flex items-center gap-1">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                    <span>Resolved</span>
+                  </span>
+                </span>
+                <span>{formatSeconds(duration)} (End Card)</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Annotations & Action Panel */}
+          <div className="lg:col-span-5 p-6 flex flex-col justify-between h-full bg-white space-y-4">
+            <div className="space-y-3">
+              {/* Header with Filters & NLE Export */}
+              <div className="flex items-center justify-between border-b border-[#E7E7E4] pb-3">
+                <div className="flex items-center gap-2">
+                  <h4 className="text-sm font-bold text-[#111111] font-display">Feedback Notes</h4>
+                  <span className="px-1.5 py-0.5 rounded-full bg-[#FAFAF8] border border-[#E7E7E4] text-[10px] font-mono font-bold text-[#6B6B6B]">
+                    {comments.length}
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-1.5">
+                  <button
+                    onClick={() =>
+                      setActiveFilter(activeFilter === "all" ? "unresolved" : "all")
+                    }
+                    className="text-[11px] font-mono text-[#6B6B6B] hover:text-[#111111] px-2 py-0.5 rounded border border-[#E7E7E4]"
+                  >
+                    {activeFilter === "all" ? "Filter: All" : "Filter: Open"}
+                  </button>
+                  <button
+                    onClick={exportNLEMarkers}
+                    className="p-1 rounded text-[#6B6B6B] hover:text-[#111111] border border-[#E7E7E4] hover:bg-[#FAFAF8]"
+                    title="Export DaVinci Resolve / Premiere Markers (.csv)"
+                  >
+                    <FileSpreadsheet className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Comments Scrollable Stream */}
+              <div className="space-y-2.5 max-h-72 overflow-y-auto pr-1">
+                {filteredComments.map((c) => (
+                  <div
+                    key={c.id}
+                    onClick={() => handleSeek(c.timestampSeconds)}
+                    className={`p-3 rounded-xl border transition-all text-xs cursor-pointer ${
+                      c.resolved
+                        ? "bg-[#FAFAF8] border-[#E7E7E4] text-[#6B6B6B] opacity-75"
+                        : "bg-white border-[#E7E7E4] text-[#111111] shadow-xs hover:border-[#111111]"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-1.5">
+                      <div className="flex items-center gap-2">
+                        <span className="px-1.5 py-0.5 rounded bg-[#FAFAF8] border border-[#E7E7E4] text-[10px] font-mono font-bold text-[#111111]">
+                          {c.timestampLabel}
+                        </span>
+                        <span
+                          className={`px-1.5 py-0.5 rounded border text-[9px] font-mono font-bold uppercase ${categoryColor(
+                            c.category
+                          )}`}
+                        >
+                          {c.category || "note"}
+                        </span>
+                        <strong className="text-[#111111] font-sans text-xs">
+                          {c.authorName}
+                        </strong>
+                      </div>
+
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleResolve(c.id);
+                        }}
+                        className={`text-[10px] font-bold flex items-center gap-1 ${
+                          c.resolved
+                            ? "text-emerald-600"
+                            : "text-[#6B6B6B] hover:text-[#111111]"
+                        }`}
+                      >
+                        <CheckCircle2 className="w-3.5 h-3.5" />
+                        <span>{c.resolved ? "Resolved" : "Resolve"}</span>
+                      </button>
+                    </div>
+                    <p className="leading-relaxed font-sans text-[#222222] pl-0.5">{c.comment}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Comment Drop Form with Category Pills */}
+            <form
+              onSubmit={handleAddComment}
+              className="space-y-3 pt-3 border-t border-[#E7E7E4]"
+            >
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-mono font-bold text-[#6B6B6B]">
+                    CATEGORY TAG:
+                  </span>
+                  <span className="text-[10px] font-mono text-[#111111] font-bold">
+                    Drop Pin @ {formatSeconds(currentTime)}
+                  </span>
+                </div>
+                <div className="flex flex-wrap gap-1">
+                  {(["visual", "audio", "pacing", "overlay", "copy"] as const).map((cat) => (
+                    <button
+                      key={cat}
+                      type="button"
+                      onClick={() => setSelectedCategory(cat)}
+                      className={`px-2 py-0.5 rounded-md text-[10px] font-mono font-bold uppercase transition-all ${
+                        selectedCategory === cat
+                          ? "bg-[#111111] text-white"
+                          : "bg-[#FAFAF8] text-[#6B6B6B] border border-[#E7E7E4] hover:text-[#111111]"
+                      }`}
+                    >
+                      {cat}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <input
+                  type="text"
+                  value={newComment}
+                  onChange={(e) => setNewComment(e.target.value)}
+                  placeholder={`Add ${selectedCategory} note at ${formatSeconds(currentTime)}...`}
+                  className="flex-1 bg-[#FAFAF8] border border-[#E7E7E4] rounded-lg px-3.5 py-2 text-xs text-[#111111] placeholder:text-[#6B6B6B] focus:outline-none focus:border-[#111111] shadow-xs"
+                />
+                <Button variant="primary" size="sm" type="submit" className="rounded-lg">
+                  <Send className="w-3.5 h-3.5" />
+                </Button>
+              </div>
+
+              {/* Review Decision Buttons for Brand */}
+              <div className="flex gap-2 pt-2 border-t border-[#E7E7E4]/80">
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  className="flex-1 rounded-lg text-xs"
+                  onClick={() =>
+                    onRequestRevision &&
+                    onRequestRevision("Please address the timecoded notes marked on the timeline.")
+                  }
+                >
+                  Request v3 Revisions
+                </Button>
+                <Button
+                  variant="primary"
+                  size="sm"
+                  className="flex-1 rounded-lg text-xs bg-emerald-600 hover:bg-emerald-700 text-white border-0"
+                  onClick={() => {
+                    confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
+                    if (onApprove) onApprove();
+                  }}
+                >
+                  <Check className="w-3.5 h-3.5 mr-1" />
+                  Approve Deliverables
+                </Button>
+              </div>
+            </form>
           </div>
         </div>
+      )}
 
-        {/* Comment Input */}
-        <form onSubmit={handleAddComment} className="space-y-3 pt-2 border-t border-[#E7E7E4]">
-          <div className="flex items-center gap-2">
-            <span className="px-2 py-1 rounded bg-[#FAFAF8] border border-[#E7E7E4] font-mono text-xs text-[#111111] font-bold shrink-0">
-              Pin at {formatSeconds(currentTime)}
-            </span>
-            <input
-              type="text"
-              value={newComment}
-              onChange={(e) => setNewComment(e.target.value)}
-              placeholder="Leave note at current timestamp..."
-              className="flex-1 bg-[#FAFAF8] border border-[#E7E7E4] rounded-lg px-3.5 py-1.5 text-xs text-[#111111] placeholder:text-[#6B6B6B] focus:outline-none focus:border-[#111111] shadow-xs"
-            />
-            <Button variant="primary" size="sm" type="submit" className="rounded-[9px]">
-              <Send className="w-3.5 h-3.5" />
+      {/* Raw Asset Vault Sub-view */}
+      {activeTab === "assets" && (
+        <div className="p-6 space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#E7E7E4]">
+            <div>
+              <h4 className="text-base font-bold text-[#111111] font-display">
+                Automated Raw Asset &amp; Production Deliverables Vault
+              </h4>
+              <p className="text-xs text-[#6B6B6B]">
+                High-bitrate camera masters, clean B-roll footage, subtitles, and layered thumbnail files.
+              </p>
+            </div>
+            <Button
+              variant="primary"
+              size="sm"
+              disabled={downloadingBundle}
+              onClick={handleDownloadBundle}
+              className="rounded-xl flex items-center gap-2"
+            >
+              <Download className="w-4 h-4" />
+              <span>
+                {downloadingBundle
+                  ? `Packaging (${downloadProgress}%)...`
+                  : "Download Complete Bundle (.zip - 2.4 GB)"}
+              </span>
             </Button>
           </div>
 
-          {/* Action Approval Controls */}
-          {role === "brand" && (
-            <div className="flex gap-2 pt-2">
-              <Button
-                variant="secondary"
-                size="sm"
-                className="flex-1 rounded-[9px]"
-                onClick={() => onRequestRevision && onRequestRevision("Please address timecoded comments.")}
-              >
-                Request Revisions
-              </Button>
-              <Button
-                variant="primary"
-                size="sm"
-                className="flex-1 rounded-[9px]"
-                onClick={() => onApprove && onApprove()}
-              >
-                Approve &amp; Release Tranche
-              </Button>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* 4K ProRes Master */}
+            <div className="p-4 rounded-xl border border-[#E7E7E4] bg-[#FAFAF8] space-y-3">
+              <div className="flex items-start justify-between">
+                <div className="w-8 h-8 rounded-lg bg-[#111111] text-white flex items-center justify-center font-bold">
+                  <FileVideo className="w-4 h-4" />
+                </div>
+                <span className="px-2 py-0.5 rounded bg-white border border-[#E7E7E4] text-[10px] font-mono font-bold">
+                  1.42 GB
+                </span>
+              </div>
+              <div>
+                <h5 className="text-xs font-bold text-[#111111]">4K ProRes 422 HQ Master</h5>
+                <p className="text-[11px] text-[#6B6B6B]">
+                  3840x2160 • 60fps • 10-bit Rec.709 • 120Mbps
+                </p>
+              </div>
+              <div className="pt-2 border-t border-[#E7E7E4] flex items-center justify-between text-[10px] font-mono text-[#6B6B6B]">
+                <span>SHA: 8f4b...c912</span>
+                <a
+                  href={videoSources.v2}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-bold text-[#111111] hover:underline flex items-center gap-1"
+                >
+                  Download <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
             </div>
-          )}
-        </form>
-      </div>
+
+            {/* 9:16 Vertical Reel Cut */}
+            <div className="p-4 rounded-xl border border-[#E7E7E4] bg-[#FAFAF8] space-y-3">
+              <div className="flex items-start justify-between">
+                <div className="w-8 h-8 rounded-lg bg-[#111111] text-white flex items-center justify-center font-bold">
+                  <Layers className="w-4 h-4" />
+                </div>
+                <span className="px-2 py-0.5 rounded bg-white border border-[#E7E7E4] text-[10px] font-mono font-bold">
+                  185 MB
+                </span>
+              </div>
+              <div>
+                <h5 className="text-xs font-bold text-[#111111]">Vertical Short / Reel Cut (9:16)</h5>
+                <p className="text-[11px] text-[#6B6B6B]">
+                  1080x1920 • 60fps • Master audio mix
+                </p>
+              </div>
+              <div className="pt-2 border-t border-[#E7E7E4] flex items-center justify-between text-[10px] font-mono text-[#6B6B6B]">
+                <span>SHA: 2e7a...01bf</span>
+                <a
+                  href={videoSources.v1}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-bold text-[#111111] hover:underline flex items-center gap-1"
+                >
+                  Download <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            </div>
+
+            {/* Clean B-Roll Pack */}
+            <div className="p-4 rounded-xl border border-[#E7E7E4] bg-[#FAFAF8] space-y-3">
+              <div className="flex items-start justify-between">
+                <div className="w-8 h-8 rounded-lg bg-[#111111] text-white flex items-center justify-center font-bold">
+                  <FileVideo className="w-4 h-4" />
+                </div>
+                <span className="px-2 py-0.5 rounded bg-white border border-[#E7E7E4] text-[10px] font-mono font-bold">
+                  840 MB
+                </span>
+              </div>
+              <div>
+                <h5 className="text-xs font-bold text-[#111111]">Clean B-Roll Package (.zip)</h5>
+                <p className="text-[11px] text-[#6B6B6B]">
+                  Uncompressed footage without graphics or voiceover for ad remixing.
+                </p>
+              </div>
+              <div className="pt-2 border-t border-[#E7E7E4] flex items-center justify-between text-[10px] font-mono text-[#6B6B6B]">
+                <span>12 Individual Clips</span>
+                <button
+                  onClick={handleDownloadBundle}
+                  className="font-bold text-[#111111] hover:underline flex items-center gap-1"
+                >
+                  Download <Download className="w-3 h-3" />
+                </button>
+              </div>
+            </div>
+
+            {/* Layered Thumbnail PSD */}
+            <div className="p-4 rounded-xl border border-[#E7E7E4] bg-[#FAFAF8] space-y-3">
+              <div className="flex items-start justify-between">
+                <div className="w-8 h-8 rounded-lg bg-[#111111] text-white flex items-center justify-center font-bold">
+                  <FileText className="w-4 h-4" />
+                </div>
+                <span className="px-2 py-0.5 rounded bg-white border border-[#E7E7E4] text-[10px] font-mono font-bold">
+                  48 MB
+                </span>
+              </div>
+              <div>
+                <h5 className="text-xs font-bold text-[#111111]">Layered Thumbnail Package (.psd + .png)</h5>
+                <p className="text-[11px] text-[#6B6B6B]">
+                  High-res cutouts, color-graded background &amp; font styles.
+                </p>
+              </div>
+              <div className="pt-2 border-t border-[#E7E7E4] flex items-center justify-between text-[10px] font-mono text-[#6B6B6B]">
+                <span>3840x2160 PSD</span>
+                <button
+                  onClick={handleDownloadBundle}
+                  className="font-bold text-[#111111] hover:underline flex items-center gap-1"
+                >
+                  Download <Download className="w-3 h-3" />
+                </button>
+              </div>
+            </div>
+
+            {/* Subtitle Sync */}
+            <div className="p-4 rounded-xl border border-[#E7E7E4] bg-[#FAFAF8] space-y-3">
+              <div className="flex items-start justify-between">
+                <div className="w-8 h-8 rounded-lg bg-[#111111] text-white flex items-center justify-center font-bold">
+                  <FileText className="w-4 h-4" />
+                </div>
+                <span className="px-2 py-0.5 rounded bg-white border border-[#E7E7E4] text-[10px] font-mono font-bold">
+                  6 KB
+                </span>
+              </div>
+              <div>
+                <h5 className="text-xs font-bold text-[#111111]">Timed Subtitles (.srt + .vtt)</h5>
+                <p className="text-[11px] text-[#6B6B6B]">
+                  Frame-accurate caption timestamps in English.
+                </p>
+              </div>
+              <div className="pt-2 border-t border-[#E7E7E4] flex items-center justify-between text-[10px] font-mono text-[#6B6B6B]">
+                <span>Auto-caption verified</span>
+                <button
+                  onClick={handleDownloadBundle}
+                  className="font-bold text-[#111111] hover:underline flex items-center gap-1"
+                >
+                  Download <Download className="w-3 h-3" />
+                </button>
+              </div>
+            </div>
+
+            {/* Commercial Rights Certificate Card */}
+            <div className="p-4 rounded-xl border border-emerald-300 bg-emerald-50/50 space-y-3">
+              <div className="flex items-start justify-between">
+                <div className="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold">
+                  <ShieldCheck className="w-4 h-4" />
+                </div>
+                <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-mono font-bold">
+                  Verified Legal
+                </span>
+              </div>
+              <div>
+                <h5 className="text-xs font-bold text-emerald-950">
+                  Commercial Rights Certificate
+                </h5>
+                <p className="text-[11px] text-emerald-800">
+                  Worldwide, perpetual digital distribution rights backed by escrow contract.
+                </p>
+              </div>
+              <div className="pt-2 border-t border-emerald-200 flex items-center justify-between text-[10px] font-mono text-emerald-800">
+                <span>Cert #ABEY-CR-8921</span>
+                <button
+                  onClick={() => setLicenseModalOpen(true)}
+                  className="font-bold text-emerald-900 hover:underline flex items-center gap-1"
+                >
+                  Inspect Certificate <Eye className="w-3 h-3" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Commercial License Modal */}
+      <Modal
+        isOpen={licenseModalOpen}
+        onClose={() => setLicenseModalOpen(false)}
+        title="Commercial Digital Rights Certificate"
+        maxWidth="2xl"
+      >
+        <div className="space-y-6 text-[#111111]">
+          <div className="p-6 rounded-2xl bg-[#FAFAF8] border border-[#E7E7E4] space-y-4 font-mono text-xs">
+            <div className="flex items-center justify-between border-b border-[#E7E7E4] pb-3">
+              <div className="space-y-0.5">
+                <span className="text-[10px] font-bold text-[#6B6B6B]">CERTIFICATE ID:</span>
+                <p className="font-bold text-[#111111]">ABEY-RIGHTS-2026-0828-9842</p>
+              </div>
+              <div className="text-right space-y-0.5">
+                <span className="text-[10px] font-bold text-[#6B6B6B]">ISSUANCE DATE:</span>
+                <p className="font-bold text-[#111111]">August 28, 2026</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <span className="text-[10px] font-bold text-[#6B6B6B]">LICENSOR (CREATOR):</span>
+                <p className="font-bold text-[#111111] font-sans text-sm">Elena Rostova (@elenarostova)</p>
+                <p className="text-[10px] text-[#6B6B6B]">San Francisco, CA • Verified Founding Cohort</p>
+              </div>
+              <div>
+                <span className="text-[10px] font-bold text-[#6B6B6B]">LICENSEE (BRAND):</span>
+                <p className="font-bold text-[#111111] font-sans text-sm">Linear Dynamics Inc.</p>
+                <p className="text-[10px] text-[#6B6B6B]">San Francisco, CA • Verified Corporate Entity</p>
+              </div>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-white border border-[#E7E7E4] space-y-2">
+              <div className="flex items-center gap-1.5 text-emerald-700 font-bold">
+                <Check className="w-4 h-4" />
+                <span>Worldwide Perpetual Digital Distribution Rights Granted</span>
+              </div>
+              <p className="font-sans text-[11px] text-[#444444] leading-relaxed">
+                Licensor grants Licensee exclusive rights to publish, syndicate, excerpt, and run paid performance advertising across all digital platforms (YouTube, Instagram, TikTok, X, LinkedIn, Web) in perpetuity without secondary residuals.
+              </p>
+            </div>
+
+            <div className="flex items-center justify-between text-[11px] text-[#6B6B6B] pt-2 border-t border-[#E7E7E4]">
+              <span>Escrow Ledger Transaction: tx_8849204_settled</span>
+              <span className="text-emerald-700 font-bold">Double-Entry Verified</span>
+            </div>
+          </div>
+
+          <div className="flex justify-end gap-3">
+            <Button
+              variant="secondary"
+              size="sm"
+              onClick={() => setLicenseModalOpen(false)}
+            >
+              Close
+            </Button>
+            <Button
+              variant="primary"
+              size="sm"
+              onClick={() => {
+                addToast({
+                  type: "success",
+                  title: "Certificate Downloaded",
+                  message: "PDF copy saved with tamper-evident digital seal.",
+                });
+                setLicenseModalOpen(false);
+              }}
+              className="flex items-center gap-2"
+            >
+              <Download className="w-4 h-4" />
+              <span>Download Signed PDF</span>
+            </Button>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 }
