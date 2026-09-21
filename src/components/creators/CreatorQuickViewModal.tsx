@@ -287,9 +287,9 @@ export function CreatorQuickViewModal({
             <Link
               href={`/creators/${creator.id}`}
               onClick={onClose}
-              className="py-2.5 rounded-full bg-white dark:bg-white/5 hover:bg-[#F8F8FC] dark:hover:bg-white/10 border border-black/10 dark:border-white/15 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all text-center flex items-center justify-center gap-1.5 shadow-xs"
+              className="py-2.5 rounded-full bg-white dark:bg-[#1C1C28] hover:bg-[#F8F8FC] dark:hover:bg-[#28283C] border border-black/10 dark:border-white/20 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all text-center flex items-center justify-center gap-1.5 shadow-xs"
             >
-              <span>Full Media Kit</span>
+              <span className="text-[#0A0A0E] dark:text-white font-bold">Full Media Kit</span>
             </Link>
 
             {creator.isSignedTalent ? (

@@ -233,10 +233,10 @@ export function EditorialCreatorCard({
 
         <Link
           href={`/creators/${creator.id}`}
-          className="px-3.5 py-1.5 rounded-full bg-[#FAF9F5] dark:bg-[#FFD21F] hover:bg-[#FFD21F] dark:hover:bg-[#FFE052] text-[#0A0A0E] font-sans font-bold text-xs transition-colors flex items-center gap-1 border border-black/8 dark:border-transparent hover-lift"
+          className="px-3.5 py-1.5 rounded-full bg-[#FFD21F] hover:bg-[#FFE052] dark:bg-[#FFD21F] dark:hover:bg-[#FFE052] text-[#0A0A0E] dark:text-[#0A0A0E] font-sans font-bold text-xs transition-colors flex items-center gap-1 border border-black/10 shadow-xs hover-lift"
         >
-          <span>Media Kit</span>
-          <ArrowRight className="w-3 h-3" />
+          <span className="text-[#0A0A0E] dark:text-[#0A0A0E] font-bold">Media Kit</span>
+          <ArrowRight className="w-3 h-3 text-[#0A0A0E] dark:text-[#0A0A0E]" />
         </Link>
       </div>
     </InteractiveTiltCard>

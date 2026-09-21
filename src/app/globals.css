@@ -587,6 +587,30 @@ html.lenis, html.lenis body {
   color: #0A0A0E !important;
 }
 
+/* Explicitly preserve Solar Yellow button background & text in dark mode */
+.dark button[class*="bg-[#FFD21F]"],
+.dark a[class*="bg-[#FFD21F]"],
+.dark [class*="dark:bg-[#FFD21F]"],
+.dark [class*="bg-[#FFD21F]"] {
+  background-color: #FFD21F !important;
+  color: #0A0A0E !important;
+}
+
+.dark button[class*="bg-[#FFD21F]"] *,
+.dark a[class*="bg-[#FFD21F]"] *,
+.dark [class*="dark:bg-[#FFD21F]"] *,
+.dark [class*="bg-[#FFD21F]"] * {
+  color: #0A0A0E !important;
+}
+
+/* Explicitly guarantee white/light text visibility on dark elements */
+.dark [class*="dark:text-white"],
+.dark [class*="dark:text-white"] *,
+.dark [class*="dark:text-[#F4F4F8]"],
+.dark [class*="dark:text-[#F4F4F8]"] * {
+  color: #F4F4F8 !important;
+}
+
 /* ── 3. SECONDARY TEXTS, DESCRIPTIONS & PILLS ── */
 .dark [class*="text-[#4A4A58]"],
 .dark [class*="text-[#5A5A68]"],

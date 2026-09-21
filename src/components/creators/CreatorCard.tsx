@@ -179,10 +179,10 @@ export function CreatorCard({ creator }: { creator: CreatorProfile }) {
 
         <Link
           href={`/creators/${creator.id}`}
-          className="px-4 py-2 rounded-full bg-white hover:bg-[#F5F5F9] border border-black/10 text-xs font-bold text-[#0A0A0E] transition-all flex items-center gap-1 hover:border-[#FFD21F] shadow-xs"
+          className="px-4 py-2 rounded-full bg-[#FFD21F] hover:bg-[#FFE052] dark:bg-[#FFD21F] dark:hover:bg-[#FFE052] border border-black/10 text-xs font-bold text-[#0A0A0E] dark:text-[#0A0A0E] transition-all flex items-center gap-1 shadow-xs hover-lift"
         >
-          <span>Media Kit</span>
-          <ArrowRight className="w-3 h-3 text-[#7A7A8A]" />
+          <span className="text-[#0A0A0E] dark:text-[#0A0A0E] font-bold">Media Kit</span>
+          <ArrowRight className="w-3 h-3 text-[#0A0A0E] dark:text-[#0A0A0E]" />
         </Link>
       </div>
     </div>
