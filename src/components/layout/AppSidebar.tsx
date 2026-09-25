@@ -96,7 +96,8 @@ export function AppSidebar() {
 
   const adminNavItems: NavItem[] = [
     { href: "/admin", label: "Admin Overview", icon: LayoutDashboard },
-    { href: "/admin/creators", label: "Creator Verification", icon: Users, badge: "Pending" },
+    { href: "/admin/users", label: "User Directory & Cohorts", icon: Users, badge: "Users" },
+    { href: "/admin/creators", label: "Creator Verification", icon: Sparkles, badge: "Pending" },
     { href: "/admin/brands", label: "Brand Accounts", icon: Briefcase },
     { href: "/admin/campaigns", label: "Campaign Approvals", icon: Compass },
     { href: "/admin/collaborations", label: "Active Escrows", icon: FileCheck2 },

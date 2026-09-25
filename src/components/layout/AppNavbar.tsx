@@ -90,6 +90,7 @@ export function AppNavbar() {
     if (path === "/app/brand/shortlists") return "Shortlisted Talent";
     if (path === "/app/brand/analytics") return "Campaign Results & ROI";
     if (path === "/admin") return "Admin Overview";
+    if (path === "/admin/users") return "User Directory & Cohorts";
     if (path === "/admin/creators") return "Creator Verification";
     if (path === "/admin/brands") return "Brand Accounts";
     if (path === "/admin/campaigns") return "Campaign Approvals";
@@ -146,7 +147,8 @@ export function AppNavbar() {
 
   const adminNavItems: NavItem[] = [
     { href: "/admin", label: "Admin Overview", icon: LayoutDashboard },
-    { href: "/admin/creators", label: "Creator Verification", icon: Users, badge: "Pending" },
+    { href: "/admin/users", label: "User Directory & Cohorts", icon: Users, badge: "Users" },
+    { href: "/admin/creators", label: "Creator Verification", icon: Sparkles, badge: "Pending" },
     { href: "/admin/brands", label: "Brand Accounts", icon: Briefcase },
     { href: "/admin/campaigns", label: "Campaign Approvals", icon: Compass },
     { href: "/admin/collaborations", label: "Active Escrows", icon: FileCheck2 },

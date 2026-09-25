@@ -36,6 +36,10 @@ export class UserRepository {
     return (db.getState().users || []).find((u) => u.id === id);
   }
 
+  getAll(): UserEntity[] {
+    return [...(db.getState().users || [])];
+  }
+
   getAllUsersCount(): number {
     return (db.getState().users || []).length;
   }

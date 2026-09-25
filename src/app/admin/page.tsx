@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
+import Link from "next/link";
 import { StatsCard } from "@/components/ui/StatsCard";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { AnimatedEmptyState } from "@/components/ui/AnimatedEmptyState";
@@ -103,14 +104,24 @@ export default function AgencyAdminCommandCenter() {
             Realtime platform gross volume, creator roster verification, and escrow settlement control.
           </p>
         </div>
-        <button
-          onClick={fetchData}
-          disabled={isLoading}
-          className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 border border-black/8 dark:border-white/10 text-xs font-bold text-[#0A0A0E] dark:text-white transition-all disabled:opacity-50"
-        >
-          <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? "animate-spin" : ""}`} />
-          <span>Refresh</span>
-        </button>
+        <div className="flex items-center gap-2.5">
+          <Link
+            href="/admin/users"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-xs font-bold hover:brightness-105 transition-all shadow-xs border border-black/10"
+          >
+            <Users className="w-3.5 h-3.5" />
+            <span>User Directory & Cohorts</span>
+          </Link>
+
+          <button
+            onClick={fetchData}
+            disabled={isLoading}
+            className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 border border-black/8 dark:border-white/10 text-xs font-bold text-[#0A0A0E] dark:text-white transition-all disabled:opacity-50"
+          >
+            <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? "animate-spin" : ""}`} />
+            <span>Refresh</span>
+          </button>
+        </div>
       </div>
 
       {/* Global System Telemetry — computed from live data */}
