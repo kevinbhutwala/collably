@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next';
 const BASE_URL =
   process.env.NEXT_PUBLIC_APP_URL ||
   process.env.NEXT_PUBLIC_SITE_URL ||
-  'https://abeycollab.vercel.app';
+  'https://abeycollab.com';
 
 export default function robots(): MetadataRoute.Robots {
   return {

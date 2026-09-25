@@ -5,7 +5,7 @@ import { campaignRepo } from '@/server/repositories/campaign.repo';
 const BASE =
   process.env.NEXT_PUBLIC_APP_URL ||
   process.env.NEXT_PUBLIC_SITE_URL ||
-  'https://abeycollab.vercel.app';
+  'https://abeycollab.com';
 const now = new Date();
 
 export default function sitemap(): MetadataRoute.Sitemap {

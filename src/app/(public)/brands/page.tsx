@@ -5,7 +5,7 @@ import { BrandsDirectoryClient } from '@/components/brands/BrandsDirectoryClient
 const BASE_URL =
   process.env.NEXT_PUBLIC_APP_URL ||
   process.env.NEXT_PUBLIC_SITE_URL ||
-  'https://abeycollab.vercel.app';
+  'https://abeycollab.com';
 
 export const metadata: Metadata = {
   title: 'Partner Brands & Enterprise Sponsors',

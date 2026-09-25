@@ -31,7 +31,7 @@ const jetbrainsMono = JetBrains_Mono({
 const BASE_URL =
   process.env.NEXT_PUBLIC_APP_URL ||
   process.env.NEXT_PUBLIC_SITE_URL ||
-  'https://abeycollab.vercel.app';
+  'https://abeycollab.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
