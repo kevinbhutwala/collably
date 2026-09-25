@@ -154,7 +154,7 @@ export function AppSidebar() {
                     isGated
                       ? "bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] border border-[#FFD21F]/40"
                       : isActive
-                      ? "bg-[#0A0A0E] text-white"
+                      ? "bg-black/15 text-[#0A0A0E] border border-black/20"
                       : "bg-black/5 dark:bg-white/10 text-[#5A5A68] dark:text-[#A0A0B4] border border-black/8 dark:border-white/10"
                   )}
                 >

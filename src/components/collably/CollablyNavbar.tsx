@@ -2,15 +2,18 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { CollablyLogo } from "@/components/ui/CollablyLogo";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Modal } from "@/components/ui/Modal";
 import { CurrencySelector } from "@/components/ui/CurrencySelector";
+import { cn } from "@/lib/utils";
 
 export function CollablyNavbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [roleModalOpen, setRoleModalOpen] = useState(false);
+  const pathname = usePathname();
 
   const navLinks = [
     { href: "/campaigns", label: "Explore Briefs" },
@@ -29,16 +32,24 @@ export function CollablyNavbar() {
           </div>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-8 text-xs font-bold tracking-normal font-sans text-[#5A5A68]">
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="hover:text-[#0A0A0E] transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
+          <nav className="hidden lg:flex items-center gap-2 text-xs font-bold tracking-normal font-sans text-[#5A5A68]">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className={cn(
+                    "px-3.5 py-1.5 rounded-full transition-all",
+                    isActive
+                      ? "bg-[#FFD21F] text-[#0A0A0E] font-bold shadow-xs border border-black/10"
+                      : "hover:text-[#0A0A0E] hover:bg-black/5"
+                  )}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Right Action CTAs */}

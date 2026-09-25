@@ -21,6 +21,7 @@ import { formatCurrency } from "@/core/utils/formatters";
 import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
 import { TitleIcon } from "@/components/ui/TitleIconBadge";
 import { SocialIcon } from "@/components/ui/SocialIcons";
+import { cn } from "@/lib/utils";
 
 interface EditorialCreatorCardProps {
   creator: CreatorQuickViewData;
@@ -65,15 +66,23 @@ export function EditorialCreatorCard({
       <div className="space-y-4">
         {/* Layered Visual Portrait Container */}
         <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden bg-[#0A0A0E]">
-          {/* Main Primary Portrait */}
+          {/* Ambient blurred backdrop for letterbox aspect ratios */}
+          <SafeImage
+            src={creator.avatarUrl || creator.heroImage || "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800"}
+            alt=""
+            width={800}
+            height={1000}
+            className="absolute inset-0 w-full h-full object-cover filter blur-2xl opacity-40 scale-110 pointer-events-none"
+          />
+          {/* Main Primary Portrait - object-contain ensures 100% of photo is visible */}
           <SafeImage
             src={creator.avatarUrl || creator.heroImage || "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800"}
             alt={creator.name}
             width={800}
             height={1000}
-            className="w-full h-full object-cover filter contrast-105 group-hover:scale-105 transition-transform duration-700"
+            className="relative w-full h-full object-contain filter contrast-105 group-hover:scale-105 transition-transform duration-700 object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 via-25% to-transparent pointer-events-none" />
 
           {/* Top Badges */}
           <div className="absolute top-3 inset-x-3 flex items-center justify-between z-10">
@@ -147,9 +156,13 @@ export function EditorialCreatorCard({
           {/* Bottom Portrait Info */}
           <div className="absolute bottom-3 inset-x-3 z-10 text-white space-y-1 max-w-[68%]">
             <div className="flex items-center gap-1.5 flex-wrap">
-              <h3 className="text-base font-bold font-display leading-tight truncate">{creator.name}</h3>
-              <span title="Verified Instagram Account" className="inline-flex items-center shrink-0">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#0095F6] fill-[#0095F6] text-white" />
+              <h3 className="text-base font-extrabold font-display leading-tight truncate text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)]">
+                {creator.name}
+              </h3>
+              <span title="Verified Instagram Account" className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-[#0095F6] text-white shadow-xs shrink-0">
+                <svg viewBox="0 0 24 24" className="w-2.5 h-2.5 fill-none stroke-white stroke-[3.5]" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
               </span>
             </div>
             <a
@@ -157,15 +170,15 @@ export function EditorialCreatorCard({
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center gap-1 text-[11px] font-mono text-white/80 hover:text-[#FFD21F] transition-colors"
+              className="inline-flex items-center gap-1 text-[11px] font-mono font-medium text-white/95 hover:text-[#FFD21F] transition-colors drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]"
               title={`View @${cleanHandle} on Instagram`}
             >
               <span>@{cleanHandle}</span>
-              <ExternalLink className="w-2.5 h-2.5 opacity-70" />
+              <ExternalLink className="w-2.5 h-2.5 opacity-80" />
             </a>
             <div className="flex items-center gap-1.5 pt-0.5">
-              <TitleIcon title={creator.niche} category={creator.category} className="w-3 h-3 text-[#FFD21F] shrink-0 drop-shadow-xs" />
-              <p className="text-[11px] text-white/90 font-sans truncate">{creator.niche}</p>
+              <TitleIcon title={creator.niche} category={creator.category} className="w-3.5 h-3.5 text-[#FFD21F] shrink-0 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]" />
+              <p className="text-[11px] text-white font-medium font-sans truncate drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">{creator.niche}</p>
             </div>
           </div>
         </div>

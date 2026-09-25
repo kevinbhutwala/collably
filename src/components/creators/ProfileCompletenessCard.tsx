@@ -48,7 +48,7 @@ export function ProfileCompletenessCard({ creator }: { creator?: CreatorProfile 
   const strokeDashoffset = circumference - (score / 100) * circumference;
 
   return (
-    <div className="p-5 sm:p-6 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8] select-none relative overflow-hidden">
+    <div className="p-4 sm:p-5 lg:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8] select-none relative overflow-hidden">
       {/* Background Ambient Aura */}
       <div className="absolute top-0 right-0 w-36 h-36 bg-[#FFD21F]/10 rounded-full blur-3xl pointer-events-none" />
 

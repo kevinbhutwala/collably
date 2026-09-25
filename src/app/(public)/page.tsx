@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     absolute: 'AbeyCollab — Creator Commerce Platform | Milestone Escrow & Instant Payouts',
   },
   description:
-    'AbeyCollab connects high-growth brands with verified creators through milestone-protected escrow campaigns, transparent rate cards, 4K video QA review studio, and guaranteed 24-hour payouts.',
+    'AbeyCollab connects high-growth brands with verified creators through milestone-protected escrow campaigns, transparent rate cards, 4K video deliverable review, and guaranteed 24-hour payouts.',
   keywords: [
     'creator marketplace',
     'influencer marketing platform',
@@ -107,7 +107,7 @@ export default function AbeyCollabLandingPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqJsonLd) }}
       />
-      <div className="relative min-h-screen bg-white dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] font-sans selection:bg-[#FFD21F] selection:text-[#0A0A0E] overflow-x-hidden">
+      <div className="relative min-h-screen bg-white dark:bg-[#08080C] text-[#0A0A0E] dark:text-white font-sans selection:bg-[#FFD21F] selection:text-[#0A0A0E] overflow-x-hidden">
         {/* 01 — High-Impact Value-Focused Editorial Hero */}
         <HeroEditorialShowcase />
 

@@ -65,7 +65,7 @@ export function PricingComparisonModule() {
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-texture-paper-white dark:bg-[#07070B] dark:bg-none border-y border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white select-none relative overflow-hidden">
+    <section className="py-20 sm:py-28 bg-texture-paper-white border-y border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white select-none relative overflow-hidden">
       {/* Background ambient solar flare on light canvas */}
       <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-[#FFD21F]/15 rounded-full blur-[140px] pointer-events-none" />
 

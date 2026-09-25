@@ -10,6 +10,60 @@ import { useUIStore } from "@/stores/ui.store";
 
 const FEATURED_TALENT: CreatorQuickViewData[] = [
   {
+    id: "prarthaana",
+    name: "Prarthana",
+    handle: "@prarthaana.04",
+    avatarUrl: "/creators/prarthana.jpg",
+    heroImage: "/creators/prarthana.jpg",
+    category: "fashion",
+    niche: "Fashion, Travel & Aesthetic Lifestyle",
+    reach: "30K",
+    engagementRate: 6.8,
+    startingPrice: 450,
+    matchScore: 98,
+    bio: "Living quiet Living boujee 🧿 • 444 • 🇮🇳 🇦🇪 🇹🇭 🇮🇹 🇭🇰 🇶🇦 🇪🇸 🇬🇮 🇨🇭",
+    tags: ["India Creator 🇮🇳", "Fashion & Lifestyle", "22 Posts"],
+    sampleDeliverables: [
+      {
+        title: "Aesthetic Fashion & Lifestyle Reel",
+        specs: "4K Master Styling • Color Graded",
+        imageUrl: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&auto=format&fit=crop&q=80",
+      },
+      {
+        title: "Curated 6-Slide Editorial Drop",
+        specs: "High-Res Editorial Photography",
+        imageUrl: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&auto=format&fit=crop&q=80",
+      },
+    ],
+  },
+  {
+    id: "kushihanamsagar",
+    name: "Kushi Hanamsagar",
+    handle: "@kushihanamsagar9",
+    avatarUrl: "/creators/kushi-hanamsagar.jpg",
+    heroImage: "/creators/kushi-hanamsagar.jpg",
+    category: "lifestyle",
+    niche: "Cinema, Visual Arts & Creative Direction",
+    reach: "869",
+    engagementRate: 7.4,
+    startingPrice: 150,
+    matchScore: 97,
+    bio: "Shree ram🔆 • Authentic visual storytelling & everyday aesthetic moments",
+    tags: ["India Creator 🇮🇳", "Cinema & Arts", "34 Posts"],
+    sampleDeliverables: [
+      {
+        title: "Authentic Lifestyle Vignette Reel",
+        specs: "4K Cinema • Sound Designed",
+        imageUrl: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&auto=format&fit=crop&q=80",
+      },
+      {
+        title: "Photo Drop / Editorial Carousel",
+        specs: "Creative Stills & Color Graded",
+        imageUrl: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&auto=format&fit=crop&q=80",
+      },
+    ],
+  },
+  {
     id: "ankur",
     name: "Ankur Warikoo",
     handle: "@ankurwarikoo",
@@ -33,50 +87,6 @@ const FEATURED_TALENT: CreatorQuickViewData[] = [
         title: "Executive LinkedIn & X Breakdown",
         specs: "Audited 3.2M Audience",
         imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&auto=format&fit=crop&q=80",
-      },
-    ],
-  },
-  {
-    id: "prajakta",
-    name: "Prajakta Koli",
-    handle: "@mostlysane",
-    avatarUrl: "/creators/prajakta-koli.png",
-    heroImage: "/creators/prajakta-koli.png",
-    category: "lifestyle",
-    niche: "Comedy & Narrative Storytelling",
-    reach: "5.2M",
-    engagementRate: 6.4,
-    startingPrice: 3800,
-    matchScore: 97,
-    bio: "Leading Indian digital creator and actress crafting viral sketches, relatable observational comedy, and lifestyle campaigns.",
-    tags: ["India Top Creator 🇮🇳", "Entertainment & Culture", "Elite Creator"],
-    sampleDeliverables: [
-      {
-        title: "Branded Narrative Sketch Reel",
-        specs: "Sony FX3 • 4K HDR",
-        imageUrl: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&auto=format&fit=crop&q=80",
-      },
-    ],
-  },
-  {
-    id: "tanmay",
-    name: "Tanmay Bhat",
-    handle: "@tanmaybhat",
-    avatarUrl: "/creators/tanmay-bhat.png",
-    heroImage: "/creators/tanmay-bhat.png",
-    category: "tech",
-    niche: "Fintech & Comedy Creative Direction",
-    reach: "4.8M",
-    engagementRate: 7.2,
-    startingPrice: 4200,
-    matchScore: 99,
-    bio: "Pioneer of Indian comedy and creator economy veteran producing viral fintech advertisement campaigns and brand drops.",
-    tags: ["India Top Creator 🇮🇳", "Fintech & Comedy", "Top Performer"],
-    sampleDeliverables: [
-      {
-        title: "Dedicated YouTube Feature Cut",
-        specs: "Multi-cam 4K ProRes",
-        imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80",
       },
     ],
   },
@@ -109,13 +119,13 @@ const FEATURED_TALENT: CreatorQuickViewData[] = [
     avatarUrl: "/creators/elena-rostova.jpg",
     heroImage: "/creators/elena-rostova.jpg",
     category: "tech",
-    niche: "AI & Consumer Tech",
+    niche: "Consumer Hardware & Tech",
     reach: "485K",
     engagementRate: 6.8,
     startingPrice: 3500,
     matchScore: 98,
-    bio: "Principal tech creator covering artificial intelligence tooling, developer hardware, and future-of-work software suites.",
-    tags: ["Technology & AI", "RED V-Raptor 8K", "Verified Creator"],
+    bio: "Principal tech creator covering consumer hardware, developer tools, and high-performance computing setups.",
+    tags: ["Consumer Tech", "RED V-Raptor 8K", "Verified Creator"],
     sampleDeliverables: [
       {
         title: "4K Master Product Reel",
@@ -126,28 +136,6 @@ const FEATURED_TALENT: CreatorQuickViewData[] = [
         title: "60s Dedicated Mid-roll Integration",
         specs: "Sony FX3 • S-Log3 ProRes",
         imageUrl: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&auto=format&fit=crop&q=80",
-      },
-    ],
-  },
-  {
-    id: "marcus",
-    name: "Marcus Vance",
-    handle: "@marcusvisuals",
-    avatarUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&auto=format&fit=crop&q=80",
-    heroImage: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&auto=format&fit=crop&q=80",
-    category: "fashion",
-    niche: "Luxury & Haute Couture",
-    reach: "310K",
-    engagementRate: 5.4,
-    startingPrice: 2800,
-    matchScore: 96,
-    bio: "Milan & Paris fashion cinematographer specializing in luxury editorial lookbooks and high-aesthetic brand identity drops.",
-    tags: ["Design & Creative", "ARRI Alexa Mini", "Elite Tier"],
-    sampleDeliverables: [
-      {
-        title: "Lookbook Editorial Cut",
-        specs: "ARRI Alexa Mini • ProRes 4444",
-        imageUrl: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&auto=format&fit=crop&q=80",
       },
     ],
   },
@@ -164,7 +152,7 @@ const FEATURED_TALENT: CreatorQuickViewData[] = [
     startingPrice: 15000,
     matchScore: 99,
     bio: "Preeminent technology reviewer evaluating flagship smartphones, electric vehicles, and computing hardware with signature 8K cinema visuals.",
-    tags: ["Technology & AI", "8K Master Workflows", "Verified Benchmark"],
+    tags: ["Consumer Hardware", "8K Master Workflows", "Verified Benchmark"],
     sampleDeliverables: [
       {
         title: "Dedicated Longform YouTube Review",
@@ -185,16 +173,16 @@ const FEATURED_TALENT: CreatorQuickViewData[] = [
     avatarUrl: "/creators/sara-dietschy.jpg",
     heroImage: "/creators/sara-dietschy.jpg",
     category: "tech",
-    niche: "Creative Tech & Studio Productivity",
+    niche: "Creative Tech & Professional Gear",
     reach: "920K",
     engagementRate: 6.8,
     startingPrice: 3500,
     matchScore: 98,
-    bio: "Tech and creative lifestyle creator sharing studio workflows, computing rigs, and industrial design deep-dives.",
-    tags: ["Design & Creative", "Studio Workflows", "Verified Creator"],
+    bio: "Tech and creative lifestyle creator sharing camera setups, computing rigs, and industrial design deep-dives.",
+    tags: ["Design & Creative", "Pro Video Workflows", "Verified Creator"],
     sampleDeliverables: [
       {
-        title: "Creative Workflow Studio Integration",
+        title: "Creative Production Integration",
         specs: "Sony FX3 • S-Log3 4K",
         imageUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&auto=format&fit=crop&q=80",
       },
@@ -249,7 +237,7 @@ const FEATURED_TALENT: CreatorQuickViewData[] = [
 const CATEGORIES = [
   { id: "all", label: "All Talent" },
   { id: "india", label: "India Top Creators 🇮🇳" },
-  { id: "tech", label: "Tech & AI" },
+  { id: "tech", label: "Tech & Gear" },
   { id: "fashion", label: "Visual Arts & Cinema" },
   { id: "fitness", label: "Athletics & Health" },
   { id: "lifestyle", label: "Cinema & Life" },
@@ -288,7 +276,7 @@ export function EditorialCreatorGrid() {
       : FEATURED_TALENT.filter((c) => c.category === activeTab);
 
   return (
-    <section className="py-20 sm:py-24 bg-texture-paper-white dark:bg-[#07070B] dark:bg-none text-[#0A0A0E] dark:text-white border-b border-black/8 dark:border-white/10 transition-colors">
+    <section className="py-20 sm:py-24 bg-texture-paper-white text-[#0A0A0E] dark:text-white border-b border-black/8 dark:border-white/10 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">

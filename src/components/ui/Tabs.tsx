@@ -42,13 +42,13 @@ export function Tabs({
               onClick={() => onChange(tab.id)}
               className={cn(
                 "relative px-3.5 py-1.5 text-xs sm:text-sm font-semibold rounded-lg transition-all duration-200 flex items-center gap-2 select-none",
-                isActive ? "text-[#FAFAF8] dark:text-white" : "text-[#6B6B6B] dark:text-[#8E8EA4] hover:text-[#111111] dark:hover:text-white"
+                isActive ? "text-[#FAFAF8] dark:text-[#0A0A0E] font-bold" : "text-[#6B6B6B] dark:text-[#8E8EA4] hover:text-[#111111] dark:hover:text-white"
               )}
             >
               {isActive && (
                 <motion.div
                   layoutId="segment-pill"
-                  className="absolute inset-0 bg-[#111111] dark:bg-[#1E1E2C] border border-transparent dark:border-[#FFD21F]/40 rounded-lg shadow-xs"
+                  className="absolute inset-0 bg-[#111111] dark:bg-[#FFD21F] rounded-lg shadow-xs"
                   transition={{ type: "spring", bounce: 0.15, duration: 0.3 }}
                 />
               )}
@@ -60,7 +60,7 @@ export function Tabs({
                     className={cn(
                       "text-[10px] px-1.5 py-0.5 rounded-md font-bold font-mono",
                       isActive
-                        ? "bg-[#2A2A38] text-[#FFD21F] border border-[#FFD21F]/30"
+                        ? "bg-black/20 text-[#FAFAF8] dark:text-[#0A0A0E] border border-black/10"
                         : "bg-black/5 dark:bg-white/10 text-[#6B6B6B] dark:text-[#8E8EA4] border border-[#E7E7E4] dark:border-white/10"
                     )}
                   >
@@ -86,7 +86,7 @@ export function Tabs({
             className={cn(
               "px-3.5 py-1.5 text-xs sm:text-sm font-semibold rounded-lg transition-all duration-150 flex items-center gap-2 select-none whitespace-nowrap font-display",
               isActive
-                ? "bg-[#111111] dark:bg-[#1E1E2C] text-[#FAFAF8] dark:text-white border border-transparent dark:border-[#FFD21F]/40 shadow-xs"
+                ? "bg-[#111111] dark:bg-[#FFD21F] text-[#FAFAF8] dark:text-[#0A0A0E] border border-transparent dark:border-[#FFD21F] shadow-xs font-bold"
                 : "bg-white dark:bg-[#121218] text-[#6B6B6B] dark:text-[#8E8EA4] hover:text-[#111111] dark:hover:text-white border border-[#E7E7E4] dark:border-white/10"
             )}
           >
@@ -96,7 +96,7 @@ export function Tabs({
               <span className={cn(
                 "text-xs px-1.5 py-0.5 rounded-md font-mono font-bold",
                 isActive
-                  ? "bg-[#2A2A38] text-[#FFD21F] border border-[#FFD21F]/30"
+                  ? "bg-black/20 text-[#FAFAF8] dark:text-[#0A0A0E]"
                   : "bg-[#FAFAF8] dark:bg-white/10 text-[#6B6B6B] dark:text-[#8E8EA4]"
               )}>
                 {tab.count}

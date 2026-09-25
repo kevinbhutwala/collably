@@ -86,45 +86,45 @@ export function CreatorFilterPanel() {
       {activeFilterCount > 0 && (
         <div className="flex flex-wrap gap-1.5 pt-1 pb-2 border-b border-black/5 dark:border-white/10">
           {creatorCategory !== "all" && (
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-[#FFFDF5] dark:bg-[#FFD21F]/15 border border-[#FFD21F]/50 text-[11px] font-bold text-[#0A0A0E] dark:text-white shadow-2xs">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-[#FFD21F] border border-black/10 text-[11px] font-bold text-[#0A0A0E] dark:text-[#0A0A0E] shadow-2xs">
               <span>{creatorCategory}</span>
-              <button onClick={() => setCreatorCategory("all")} className="hover:text-red-600 dark:hover:text-red-400">
+              <button onClick={() => setCreatorCategory("all")} className="text-[#0A0A0E]/70 hover:text-red-600 dark:hover:text-red-700">
                 <X className="w-3 h-3" />
               </button>
             </span>
           )}
 
           {creatorPlatform !== "all" && (
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-[#FFFDF5] dark:bg-[#FFD21F]/15 border border-[#FFD21F]/50 text-[11px] font-bold text-[#0A0A0E] dark:text-white capitalize shadow-2xs">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-[#FFD21F] border border-black/10 text-[11px] font-bold text-[#0A0A0E] dark:text-[#0A0A0E] capitalize shadow-2xs">
               <span>{creatorPlatform}</span>
-              <button onClick={() => setCreatorPlatform("all")} className="hover:text-red-600 dark:hover:text-red-400">
+              <button onClick={() => setCreatorPlatform("all")} className="text-[#0A0A0E]/70 hover:text-red-600 dark:hover:text-red-700">
                 <X className="w-3 h-3" />
               </button>
             </span>
           )}
 
           {creatorMinFollowers > 0 && (
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-[#FFFDF5] dark:bg-[#FFD21F]/15 border border-[#FFD21F]/50 text-[11px] font-bold text-[#0A0A0E] dark:text-white shadow-2xs">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-[#FFD21F] border border-black/10 text-[11px] font-bold text-[#0A0A0E] dark:text-[#0A0A0E] shadow-2xs">
               <span>{creatorMinFollowers / 1000}K+ Reach</span>
-              <button onClick={() => setCreatorMinFollowers(0)} className="hover:text-red-600 dark:hover:text-red-400">
+              <button onClick={() => setCreatorMinFollowers(0)} className="text-[#0A0A0E]/70 hover:text-red-600 dark:hover:text-red-700">
                 <X className="w-3 h-3" />
               </button>
             </span>
           )}
 
           {creatorMinEngagement > 0 && (
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-[#FFFDF5] dark:bg-[#FFD21F]/15 border border-[#FFD21F]/50 text-[11px] font-bold text-[#0A0A0E] dark:text-white shadow-2xs">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-[#FFD21F] border border-black/10 text-[11px] font-bold text-[#0A0A0E] dark:text-[#0A0A0E] shadow-2xs">
               <span>{creatorMinEngagement}%+ ER</span>
-              <button onClick={() => setCreatorMinEngagement(0)} className="hover:text-red-600 dark:hover:text-red-400">
+              <button onClick={() => setCreatorMinEngagement(0)} className="text-[#0A0A0E]/70 hover:text-red-600 dark:hover:text-red-700">
                 <X className="w-3 h-3" />
               </button>
             </span>
           )}
 
           {creatorVerifiedOnly && (
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-[#FFFDF5] dark:bg-[#FFD21F]/15 border border-[#FFD21F]/50 text-[11px] font-bold text-[#0A0A0E] dark:text-white shadow-2xs">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-[#FFD21F] border border-black/10 text-[11px] font-bold text-[#0A0A0E] dark:text-[#0A0A0E] shadow-2xs">
               <span>Verified Only</span>
-              <button onClick={() => setCreatorVerifiedOnly(false)} className="hover:text-red-600 dark:hover:text-red-400">
+              <button onClick={() => setCreatorVerifiedOnly(false)} className="text-[#0A0A0E]/70 hover:text-red-600 dark:hover:text-red-700">
                 <X className="w-3 h-3" />
               </button>
             </span>

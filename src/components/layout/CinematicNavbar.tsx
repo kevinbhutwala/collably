@@ -55,8 +55,8 @@ export function CinematicNavbar() {
                 className={cn(
                   "text-xs sm:text-[13px] font-sans transition-colors tracking-tight",
                   isActive
-                    ? "text-[#FFD21F] font-bold"
-                    : "text-white/70 hover:text-white font-normal"
+                    ? "bg-[#FFD21F] text-[#0A0A0E] font-bold px-3 py-1 rounded-full shadow-xs"
+                    : "text-white/70 hover:text-white font-normal px-2 py-1"
                 )}
               >
                 {link.label}
@@ -123,7 +123,12 @@ export function CinematicNavbar() {
               key={link.href}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/5 transition-colors font-sans"
+              className={cn(
+                "px-3 py-2 rounded-xl text-sm transition-colors font-sans font-medium",
+                pathname === link.href
+                  ? "bg-[#FFD21F] text-[#0A0A0E] font-bold shadow-xs"
+                  : "text-white/70 hover:text-white hover:bg-white/5"
+              )}
             >
               {link.label}
             </Link>

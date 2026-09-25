@@ -62,7 +62,7 @@ export function CaseStudiesSection() {
               <div className="space-y-3 pt-2 font-sans">
                 {[
                   "Milestone release — funds disbursed only when QA requirements are met",
-                  "Timecoded video review studio with frame-accurate annotations",
+                  "Direct video review room with frame-accurate notes and timestamps",
                   "Guaranteed delivery turnaround with automatic escrow refund on default",
                   "Full commercial licensing and raw 4K asset download rights",
                 ].map((item, idx) => (

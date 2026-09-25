@@ -10,7 +10,7 @@ export const MOCK_COLLABORATIONS: Collaboration[] = [
   {
     id: "collab-1",
     campaignId: "camp-1",
-    campaignTitle: "AI-Powered Sprint Workflows Launch",
+    campaignTitle: "Linear 2.0: High-Velocity Product Engineering",
     brandId: "brand-1",
     brand: MOCK_BRANDS[0],
     creatorId: "creator-demo",
@@ -29,7 +29,7 @@ export const MOCK_COLLABORATIONS: Collaboration[] = [
       {
         id: "collab-del-1",
         type: "YouTube 60s Integration",
-        title: "Dedicated AI Triage 60s Segment in Main Video",
+        title: "Dedicated Linear 60s Integration in Main Video",
         status: "under_review",
         dueDate: "2026-09-10",
         payoutAmount: 2500,

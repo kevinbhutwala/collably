@@ -21,6 +21,7 @@ import { Modal } from "@/components/ui/Modal";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { TitleIcon } from "@/components/ui/TitleIconBadge";
 import { useGlobalCurrency } from "@/context/CurrencyContext";
+import { cn } from "@/lib/utils";
 
 interface HeroTalent {
   id: string;
@@ -40,19 +41,49 @@ interface HeroTalent {
 
 const HERO_TALENT: HeroTalent[] = [
   {
+    id: "prarthaana",
+    name: "Prarthana",
+    handle: "@prarthaana.04",
+    niche: "Fashion, Travel & Aesthetic Lifestyle",
+    reach: "30K Followers",
+    startingPrice: "$450",
+    startingPriceAmount: 450,
+    matchScore: "India Creator 🇮🇳",
+    portrait: "/creators/prarthana.jpg",
+    bRollPreview: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&auto=format&fit=crop&q=80",
+    specs: "4K Master Styling • Color Graded",
+    badgeText: "Editorial Reel",
+    verifiedSponsor: "Fashion & Style",
+  },
+  {
+    id: "kushihanamsagar",
+    name: "Kushi Hanamsagar",
+    handle: "@kushihanamsagar9",
+    niche: "Visual Storytelling & Lifestyle Moments",
+    reach: "869 Followers",
+    startingPrice: "$150",
+    startingPriceAmount: 150,
+    matchScore: "India Creator 🇮🇳",
+    portrait: "/creators/kushi-hanamsagar.jpg",
+    bRollPreview: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&auto=format&fit=crop&q=80",
+    specs: "Sony Cinema • 4K Master",
+    badgeText: "Cinema Reel",
+    verifiedSponsor: "Design & Creative",
+  },
+  {
     id: "sara",
     name: "Sara Dietschy",
     handle: "@saradietschy",
-    niche: "Creative Tech & Studio Productivity",
+    niche: "Creative Tech & Professional Gear",
     reach: "920K Followers",
     startingPrice: "$3,500",
     startingPriceAmount: 3500,
-    matchScore: "AI Matched",
+    matchScore: "Verified Creator 🌟",
     portrait: "/creators/sara-dietschy.jpg",
     bRollPreview: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=80",
     specs: "Sony FX3 4K • S-Log3",
-    badgeText: "4K Studio Cut",
-    verifiedSponsor: "Technology & AI",
+    badgeText: "4K Master Cut",
+    verifiedSponsor: "Tech & Production",
   },
   {
     id: "ankur",
@@ -65,69 +96,9 @@ const HERO_TALENT: HeroTalent[] = [
     matchScore: "India Top Creator 🇮🇳",
     portrait: "/creators/ankur-warikoo.webp",
     bRollPreview: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80",
-    specs: "4K Master Studio • Hindi & English",
+    specs: "4K Master Production • Hindi & English",
     badgeText: "Keynote Master",
     verifiedSponsor: "Finance & Careers",
-  },
-  {
-    id: "prajakta",
-    name: "Prajakta Koli",
-    handle: "@mostlysane",
-    niche: "Comedy & Storytelling",
-    reach: "5.2M Followers",
-    startingPrice: "$3,800",
-    startingPriceAmount: 3800,
-    matchScore: "India Top Creator 🇮🇳",
-    portrait: "/creators/prajakta-koli.png",
-    bRollPreview: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&auto=format&fit=crop&q=80",
-    specs: "Sony FX3 • 4K S-Log3",
-    badgeText: "Editorial Comedy Cut",
-    verifiedSponsor: "Entertainment & Lifestyle",
-  },
-  {
-    id: "tanmay",
-    name: "Tanmay Bhat",
-    handle: "@tanmaybhat",
-    niche: "Fintech & Comedy Direction",
-    reach: "4.8M Followers",
-    startingPrice: "$4,200",
-    startingPriceAmount: 4200,
-    matchScore: "India Top Creator 🇮🇳",
-    portrait: "/creators/tanmay-bhat.png",
-    bRollPreview: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=80",
-    specs: "Multi-cam 4K ProRes",
-    badgeText: "Campaign Studio Cut",
-    verifiedSponsor: "Fintech & Startups",
-  },
-  {
-    id: "marcus",
-    name: "Marcus Vance",
-    handle: "@marcusvisuals",
-    niche: "Luxury & Haute Couture",
-    reach: "310K Followers",
-    startingPrice: "$2,800",
-    startingPriceAmount: 2800,
-    matchScore: "Elite Tier",
-    portrait: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=900&auto=format&fit=crop&q=85",
-    bRollPreview: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&auto=format&fit=crop&q=80",
-    specs: "ARRI Alexa Mini • ProRes 4444",
-    badgeText: "Lookbook Reel",
-    verifiedSponsor: "Design & Creative",
-  },
-  {
-    id: "aria",
-    name: "Aria Chen",
-    handle: "@ariawellness",
-    niche: "Biohacking & Longevity",
-    reach: "620K Followers",
-    startingPrice: "$3,200",
-    startingPriceAmount: 3200,
-    matchScore: "Top Creator",
-    portrait: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=900&auto=format&fit=crop&q=85",
-    bRollPreview: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&auto=format&fit=crop&q=80",
-    specs: "Sony FX3 • S-Log3 ProRes",
-    badgeText: "Wellness Reel",
-    verifiedSponsor: "Fitness & Wellness",
   },
 ];
 
@@ -138,7 +109,7 @@ export function HeroEditorialShowcase() {
   const activeTalent = HERO_TALENT[activeIdx];
 
   return (
-    <section className="relative min-h-[calc(100svh-4rem)] lg:min-h-[85vh] bg-white dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] flex flex-col justify-between pt-10 sm:pt-14 pb-14 sm:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden font-sans">
+    <section className="relative min-h-[calc(100svh-4rem)] lg:min-h-[85vh] bg-white dark:bg-[#08080C] text-[#0A0A0E] dark:text-white flex flex-col justify-between pt-10 sm:pt-14 pb-14 sm:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden font-sans">
       {/* Background Solar Flare with Gentle Breathing Cycle */}
       <motion.div
         animate={{
@@ -173,9 +144,9 @@ export function HeroEditorialShowcase() {
             </div>
 
             {/* Confident Large Headline */}
-            <h1 className="max-w-[11ch] text-[clamp(2.75rem,6.1vw,5.75rem)] font-black font-display tracking-[-0.055em] text-[#0A0A0E] dark:text-white leading-[0.98]">
+            <h1 className="max-w-xl lg:max-w-2xl text-[clamp(2.5rem,5.5vw,5rem)] font-black font-display tracking-[-0.04em] text-[#0A0A0E] dark:text-white leading-[1.05]">
               Where visionary brands meet{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD21F] via-[#D9A900] to-[#8A6500]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFB800] dark:from-[#FFD21F] dark:via-[#FFE575] dark:to-[#FFC700]">
                 cinematic creators.
               </span>
             </h1>
@@ -268,16 +239,25 @@ export function HeroEditorialShowcase() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.45, ease: "easeOut" }}
-                  className="absolute inset-0"
+                  className="absolute inset-0 bg-[#0A0A0E] overflow-hidden"
                 >
+                  {/* Ambient Blurred Extension */}
+                  <SafeImage
+                    src={activeTalent.portrait}
+                    alt=""
+                    width={900}
+                    height={1125}
+                    className="absolute inset-0 w-full h-full object-cover filter blur-2xl opacity-40 scale-110 pointer-events-none"
+                  />
+                  {/* Full Sharp Image */}
                   <SafeImage
                     src={activeTalent.portrait}
                     alt={activeTalent.name}
                     width={900}
                     height={1125}
-                    className="w-full h-full object-cover filter contrast-105 group-hover:scale-105 transition-transform duration-700"
+                    className="relative w-full h-full object-contain filter contrast-105 group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
                 </motion.div>
               </AnimatePresence>
 
@@ -300,7 +280,7 @@ export function HeroEditorialShowcase() {
               {/* 🌟 OVERLAPPING FLOATING 4K VIDEO ASSET CARD */}
               <motion.div
                 whileHover={{ scale: 1.08, rotate: 2 }}
-                className="absolute bottom-20 sm:bottom-22 right-3 sm:right-4 z-20 w-20 sm:w-28 aspect-video rounded-2xl overflow-hidden border-2 border-white dark:border-white/20 shadow-[0_12px_30px_rgba(0,0,0,0.45)] bg-black"
+                className="absolute bottom-[118px] sm:bottom-[126px] right-3 sm:right-4 z-20 w-20 sm:w-26 aspect-video rounded-2xl overflow-hidden border-2 border-white dark:border-white/20 shadow-[0_12px_30px_rgba(0,0,0,0.45)] bg-black"
               >
                 <SafeImage
                   src={activeTalent.bRollPreview}
@@ -342,7 +322,7 @@ export function HeroEditorialShowcase() {
                 <div className="pt-1.5 sm:pt-2 border-t border-black/6 dark:border-white/10 flex items-center justify-between text-[10px] sm:text-[11px] font-mono">
                   <span className="text-[#5A5A68] dark:text-[#8E8EA4] truncate max-w-[140px] sm:max-w-[180px]">{activeTalent.specs}</span>
                   <Link
-                    href="/creators"
+                    href={`/creators/${activeTalent.id}`}
                     className="text-[11px] sm:text-xs font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-white flex items-center gap-0.5 shrink-0 transition-colors"
                   >
                     <span>View Deck</span>

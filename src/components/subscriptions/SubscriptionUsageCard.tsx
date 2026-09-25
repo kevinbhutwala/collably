@@ -22,7 +22,7 @@ export function SubscriptionUsageCard() {
     : "Next month";
 
   return (
-    <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-7 shadow-xs space-y-5 text-[#0A0A0E] dark:text-[#F4F4F8] select-none relative overflow-hidden">
+    <div className="rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-4 sm:p-6 lg:p-7 shadow-xs space-y-5 text-[#0A0A0E] dark:text-[#F4F4F8] select-none relative overflow-hidden">
       {/* Background flare */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFD21F]/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -46,7 +46,7 @@ export function SubscriptionUsageCard() {
 
         <button
           onClick={() => openUpgradeModal()}
-          className="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5 shrink-0 self-start sm:self-center"
+          className="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5 shrink-0 self-start sm:self-center hover-lift cursor-pointer"
         >
           <Sparkles className="w-3 h-3 text-[#0A0A0E]" />
           <span>Manage Plan</span>

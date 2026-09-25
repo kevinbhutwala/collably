@@ -11,7 +11,7 @@ interface AnimatedBrandSliderProps {
 }
 
 const BRANDS = [
-  { name: "TECH & AI", badge: "DEVELOPER TOOLS" },
+  { name: "TECH & GEAR", badge: "DEVELOPER TOOLS" },
   { name: "FASHION", badge: "EDITORIAL CONTENT" },
   { name: "FITNESS", badge: "WELLNESS CAMPAIGNS" },
   { name: "CONSUMER APPS", badge: "GROWTH MARKETING" },

@@ -12,7 +12,7 @@ const BASE_URL =
 export const metadata: Metadata = {
   title: 'About Us — Operating System for the Creator Economy',
   description:
-    'AbeyCollab is building the commerce infrastructure for the global creator economy. Eliminating 90-day invoice chasing through milestone escrow protection, transparent creator rate cards, and AI-powered brand matching.',
+    'AbeyCollab is building the commerce infrastructure for the global creator economy. Eliminating 90-day invoice chasing through milestone escrow protection, transparent creator rate cards, and verified brand-creator matching.',
   keywords: [
     'about AbeyCollab',
     'creator economy infrastructure',

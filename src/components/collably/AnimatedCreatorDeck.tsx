@@ -109,15 +109,15 @@ export function AnimatedCreatorDeck() {
           </div>
 
           {/* Category Filter Tabs */}
-          <div className="flex flex-wrap items-center gap-1.5 bg-white p-1 rounded-full border border-black/8 shadow-2xs">
+          <div className="flex flex-wrap items-center gap-1.5 bg-white dark:bg-[#14141E] p-1 rounded-full border border-black/8 dark:border-white/10 shadow-2xs">
             {CATEGORIES.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setActiveTab(cat.id)}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-sans font-bold transition-all ${
                   activeTab === cat.id
-                    ? "bg-[#0A0A0E] text-white shadow-sm"
-                    : "bg-[#F4F4F8] text-[#5A5A68] hover:bg-[#EAEAEF]"
+                    ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] shadow-sm"
+                    : "bg-[#F4F4F8] dark:bg-[#1E1E2C] text-[#5A5A68] dark:text-[#8E8EA4] hover:bg-[#EAEAEF] dark:hover:bg-[#282838] dark:hover:text-white"
                 }`}
               >
                 {cat.label}
@@ -150,7 +150,7 @@ export function AnimatedCreatorDeck() {
                       alt={creator.name}
                       className="w-full h-full object-cover filter contrast-105 group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 via-40% to-transparent pointer-events-none" />
 
                     {/* Top Rating & Verified Badges */}
                     <div className="absolute top-3 inset-x-3 flex items-center justify-between z-10">
@@ -165,11 +165,11 @@ export function AnimatedCreatorDeck() {
 
                     {/* Bottom Portrait Info */}
                     <div className="absolute bottom-3 inset-x-3 z-10 text-white space-y-0.5">
-                      <div className="flex items-center gap-1">
-                        <h3 className="text-base font-bold font-display">{creator.name}</h3>
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#087F5B]" />
+                      <div className="flex items-center gap-1.5">
+                        <h3 className="text-base font-extrabold font-display text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)] truncate">{creator.name}</h3>
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0095F6] fill-[#0095F6] text-white shrink-0 drop-shadow-sm" />
                       </div>
-                      <p className="text-[11px] text-white/80 font-sans">{creator.categoryLabel}</p>
+                      <p className="text-[11px] text-white/95 font-medium font-sans drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">{creator.categoryLabel}</p>
                     </div>
                   </div>
 

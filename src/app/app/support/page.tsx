@@ -29,7 +29,7 @@ export default function SupportAndDisputePage() {
   const [ticketMessage, setTicketMessage] = useState("");
 
   // Dispute Form
-  const [disputeCampaign, setDisputeCampaign] = useState("AI-Powered Sprint Workflows Launch");
+  const [disputeCampaign, setDisputeCampaign] = useState("Linear 2.0: High-Velocity Engineering");
   const [disputeReason, setDisputeReason] = useState<DisputeRecord["reason"]>("Scope_Mismatch");
   const [disputeAmount, setDisputeAmount] = useState(3500);
   const [disputeDesc, setDisputeDesc] = useState("");

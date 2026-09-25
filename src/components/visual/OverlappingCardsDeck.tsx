@@ -205,11 +205,11 @@ export function OverlappingCardsDeck() {
 
                       {/* Bottom Portrait Info */}
                       <div className="absolute bottom-3 inset-x-3 z-10 text-white space-y-0.5 max-w-[65%]">
-                        <div className="flex items-center gap-1">
-                          <h3 className="text-base font-bold font-display">{creator.name}</h3>
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#087F5B]" />
+                        <div className="flex items-center gap-1.5">
+                          <h3 className="text-base font-extrabold font-display text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)] truncate">{creator.name}</h3>
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#0095F6] fill-[#0095F6] text-white shrink-0 drop-shadow-sm" />
                         </div>
-                        <p className="text-[11px] text-white/80 font-sans truncate">{creator.categoryLabel}</p>
+                        <p className="text-[11px] text-white/95 font-medium font-sans truncate drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">{creator.categoryLabel}</p>
                       </div>
                     </div>
 

@@ -192,7 +192,7 @@ export default function AdminCommunicationsPage() {
             onClick={() => setActiveTab("all")}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
               activeTab === "all"
-                ? "bg-[#0A0A0E] dark:bg-white text-white dark:text-[#0A0A0E]"
+                ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E]"
                 : "bg-black/5 dark:bg-white/5 text-[#6A6A78] dark:text-[#A0A0B0] hover:text-[#0A0A0E] dark:hover:text-white"
             }`}
           >
@@ -202,7 +202,7 @@ export default function AdminCommunicationsPage() {
             onClick={() => setActiveTab("flagged")}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
               activeTab === "flagged"
-                ? "bg-amber-500 text-black font-extrabold"
+                ? "bg-[#FFD21F] text-[#0A0A0E] dark:text-[#0A0A0E] font-extrabold"
                 : "bg-black/5 dark:bg-white/5 text-[#6A6A78] dark:text-[#A0A0B0] hover:text-[#0A0A0E] dark:hover:text-white"
             }`}
           >

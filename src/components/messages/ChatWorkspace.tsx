@@ -837,7 +837,7 @@ export function ChatWorkspace() {
                   className={cn(
                     "px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold transition-all shrink-0 select-none",
                     activeTab === tab.id
-                      ? "bg-[#0A0A0E] dark:bg-[#222234] text-white dark:text-[#FFD21F] border border-transparent dark:border-[#FFD21F]/40 shadow-2xs font-bold"
+                      ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] border border-transparent dark:border-[#FFD21F] shadow-2xs font-bold"
                       : "bg-[#F0F0F4] dark:bg-[#14141E] hover:bg-[#EAEAEF] dark:hover:bg-[#1E1E2C] text-[#6A6A78] dark:text-[#8E8EA4]"
                   )}
                 >

@@ -208,7 +208,7 @@ export class CampaignRepository {
       const synthApp: CampaignApplication = {
         id,
         campaignId: fallbackCampaign?.id || "camp-1",
-        campaignTitle: fallbackCampaign?.title || "AI-Powered Sprint Workflows Launch",
+        campaignTitle: fallbackCampaign?.title || "Linear 2.0: High-Velocity Product Engineering",
         brandId: brand?.id || "brand-1",
         brandName: brand?.companyName || "Linear Dynamics",
         brandLogo: brand?.logoUrl || "",

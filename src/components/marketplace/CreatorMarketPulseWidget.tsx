@@ -81,7 +81,7 @@ export function CreatorMarketPulseWidget({ creatorId }: { creatorId?: string }) 
           <h4 className="text-xs font-semibold uppercase tracking-wider text-[#6A6A78] dark:text-[#8E8EA4]">
             Typical Brand Sponsorship Rates
           </h4>
-          <div className="mt-3.5 grid grid-cols-3 gap-2.5 text-center font-mono">
+          <div className="mt-3.5 grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-2.5 text-center font-mono">
             <div className="rounded-xl bg-white dark:bg-[#1C1C2A] border border-black/4 dark:border-white/5 p-3 shadow-2xs">
               <div className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-bold">Average Deal Size</div>
               <div className="mt-0.5 text-sm font-extrabold text-[#0A0A0E] dark:text-white">

@@ -97,7 +97,7 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
       </div>
 
       {/* Market Pulse Quick Metrics Strip */}
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#1A1A28] border border-black/6 dark:border-white/6 font-mono">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3 p-3.5 sm:p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#1A1A28] border border-black/6 dark:border-white/6 font-mono">
         <div>
           <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] block uppercase font-bold">Category Demand</span>
           <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400">Demand ↑ 18%</span>

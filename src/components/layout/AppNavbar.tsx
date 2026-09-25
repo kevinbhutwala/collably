@@ -367,20 +367,20 @@ export function AppNavbar() {
                   <Link
                     href="/"
                     onClick={() => setShowProfileMenu(false)}
-                    className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-black/5 hover:text-[#0A0A0E] transition-colors"
+                    className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-black/5 dark:hover:bg-white/10 hover:text-[#0A0A0E] dark:hover:text-white transition-colors"
                   >
-                    <ExternalLink className="w-3.5 h-3.5 text-[#7A7A8A]" />
+                    <ExternalLink className="w-3.5 h-3.5 text-[#7A7A8A] dark:text-[#8E8EA4]" />
                     <span>Public Website</span>
                   </Link>
                 </div>
 
-                <div className="pt-1 mt-1 border-t border-black/8">
+                <div className="pt-1 mt-1 border-t border-black/8 dark:border-white/10">
                   <button
                     onClick={() => {
                       setShowProfileMenu(false);
                       logout();
                     }}
-                    className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold text-red-600 hover:bg-red-50 transition-colors text-left"
+                    className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors text-left cursor-pointer"
                   >
                     <LogOut className="w-3.5 h-3.5" />
                     <span>Sign Out</span>
@@ -436,7 +436,7 @@ export function AppNavbar() {
                         className={cn(
                           "flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all select-none",
                           isActive
-                            ? "bg-[#FFD21F] text-[#0A0A0E] font-bold shadow-xs border border-black/10"
+                            ? "bg-[#FFD21F] text-[#0A0A0E] dark:text-[#0A0A0E] font-bold shadow-xs border border-black/10"
                             : "text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white hover:bg-[#F4F4F8] dark:hover:bg-white/10"
                         )}
                       >
@@ -447,7 +447,7 @@ export function AppNavbar() {
                         {item.badge && (
                           <span className={cn(
                             "text-[10px] px-2 py-0.5 rounded-full font-mono font-bold",
-                            isActive ? "bg-[#0A0A0E] text-white" : "bg-black/5 dark:bg-white/10 text-[#5A5A68] dark:text-[#8E8EA4] border border-black/8 dark:border-white/10"
+                            isActive ? "bg-black/15 text-[#0A0A0E] border border-black/20" : "bg-black/5 dark:bg-white/10 text-[#5A5A68] dark:text-[#8E8EA4] border border-black/8 dark:border-white/10"
                           )}>
                             {item.badge}
                           </span>

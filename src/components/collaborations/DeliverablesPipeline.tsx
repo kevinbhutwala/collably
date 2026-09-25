@@ -654,7 +654,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
               onClick={() => setActiveTab("deliverables")}
               className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all shrink-0 ${
                 activeTab === "deliverables"
-                  ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs border border-black/10"
+                  ? "bg-[#FFD21F] text-[#0A0A0E] dark:text-[#0A0A0E] shadow-xs border border-black/10"
                   : "bg-[#F8F8FC] dark:bg-[#181824] text-[#6A6A78] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-[#F4F4F8] border border-black/5 dark:border-white/10"
               }`}
             >
@@ -664,7 +664,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
               onClick={() => setActiveTab("review_card")}
               className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 ${
                 activeTab === "review_card"
-                  ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs border border-black/10"
+                  ? "bg-[#FFD21F] text-[#0A0A0E] dark:text-[#0A0A0E] shadow-xs border border-black/10"
                   : "bg-[#F8F8FC] dark:bg-[#181824] text-[#6A6A78] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-[#F4F4F8] border border-black/5 dark:border-white/10"
               }`}
             >
@@ -675,7 +675,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
               onClick={() => setActiveTab("post_proof")}
               className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 ${
                 activeTab === "post_proof"
-                  ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs border border-black/10"
+                  ? "bg-[#FFD21F] text-[#0A0A0E] dark:text-[#0A0A0E] shadow-xs border border-black/10"
                   : "bg-[#F8F8FC] dark:bg-[#181824] text-[#6A6A78] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-[#F4F4F8] border border-black/5 dark:border-white/10"
               }`}
             >
@@ -686,7 +686,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
               onClick={() => setActiveTab("negotiation")}
               className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 ${
                 activeTab === "negotiation"
-                  ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs border border-black/10"
+                  ? "bg-[#FFD21F] text-[#0A0A0E] dark:text-[#0A0A0E] shadow-xs border border-black/10"
                   : "bg-[#F8F8FC] dark:bg-[#181824] text-[#6A6A78] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-[#F4F4F8] border border-black/5 dark:border-white/10"
               }`}
             >

@@ -51,30 +51,14 @@ export default function SettingsPage() {
   const { addToast } = useUIStore();
 
   const [activeTab, setActiveTab] = useState<"billing" | "payout" | "security" | "appearance">("billing");
-  const [currentTheme, setCurrentTheme] = useState<"light" | "dark">("light");
+  const [currentTheme] = useState<"light">("light");
 
   React.useEffect(() => {
-    const isDark = document.documentElement.classList.contains("dark");
-    setCurrentTheme(isDark ? "dark" : "light");
+    document.documentElement.classList.remove("dark");
+    document.documentElement.style.colorScheme = "light";
+    localStorage.setItem("collably_theme", "light");
+    localStorage.setItem("abeycollab_theme", "light");
   }, []);
-
-  const handleSetTheme = (themeMode: "light" | "dark") => {
-    setCurrentTheme(themeMode);
-    localStorage.setItem("collably_theme", themeMode);
-    localStorage.setItem("abeycollab_theme", themeMode);
-    if (themeMode === "dark") {
-      document.documentElement.classList.add("dark");
-      document.documentElement.style.colorScheme = "dark";
-    } else {
-      document.documentElement.classList.remove("dark");
-      document.documentElement.style.colorScheme = "light";
-    }
-    addToast({
-      type: "success",
-      title: `${themeMode === "dark" ? "Dark" : "Light"} Theme Activated`,
-      message: `Interface styling switched to ${themeMode} mode with high contrast.`,
-    });
-  };
   const [isAnnual, setIsAnnual] = useState(subscription?.interval === "annual");
   const [processingPlanId, setProcessingPlanId] = useState<string | null>(null);
   const [isCancelling, setIsCancelling] = useState(false);
@@ -864,104 +848,40 @@ export default function SettingsPage() {
             </div>
           </div>
 
-          <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8]">
+          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6 text-[#0A0A0E]">
             <div>
-              <h2 className="text-base sm:text-lg font-black text-[#0A0A0E] dark:text-white tracking-tight font-display flex items-center gap-2">
+              <h2 className="text-base sm:text-lg font-black text-[#0A0A0E] tracking-tight font-display flex items-center gap-2">
                 <Sun className="w-5 h-5 text-[#FFD21F]" />
-                <span>Interface Theme &amp; Contrast</span>
+                <span>Interface Theme &amp; Visual Design</span>
               </h2>
-              <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#8E8EA4] mt-1 font-sans">
-                Choose your preferred visual theme. Dark mode features high-contrast carbon surfaces engineered for low-light editing and 4K QA workflows.
+              <p className="text-xs sm:text-sm text-[#5A5A68] mt-1 font-sans">
+                The platform is currently operating in high-clarity Pure White &amp; Solar Yellow mode.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              {/* Light Mode Card */}
-              <div
-                onClick={() => handleSetTheme("light")}
-                className={`p-5 rounded-2xl border-2 transition-all cursor-pointer space-y-3 relative hover-lift ${
-                  currentTheme === "light"
-                    ? "border-[#FFD21F] bg-[#FFFDF5] dark:bg-[#1A1A28] shadow-xs"
-                    : "border-black/8 dark:border-white/10 bg-[#FAFAFC] dark:bg-[#12121A] hover:border-black/20"
-                }`}
-              >
+            <div className="max-w-md pt-2">
+              {/* Active Light Mode Card */}
+              <div className="p-5 rounded-2xl border-2 border-[#FFD21F] bg-[#FFFDF5] shadow-xs space-y-3 relative">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Sun className="w-5 h-5 text-amber-500" />
-                    <span className="text-sm font-extrabold text-[#0A0A0E] dark:text-white font-display">Pure White &amp; Solar</span>
+                    <span className="text-sm font-extrabold text-[#0A0A0E] font-display">Pure White &amp; Solar</span>
                   </div>
-                  {currentTheme === "light" && (
-                    <span className="px-2 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-[10px] font-mono font-bold flex items-center gap-1">
-                      <Check className="w-3 h-3" />
-                      <span>Active</span>
-                    </span>
-                  )}
+                  <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-[10px] font-mono font-bold flex items-center gap-1">
+                    <Check className="w-3 h-3" />
+                    <span>Active Standard</span>
+                  </span>
                 </div>
 
-                <div className="p-3 rounded-xl bg-white dark:bg-[#161622] border border-black/8 dark:border-white/10 space-y-2">
+                <div className="p-3 rounded-xl bg-white border border-black/8 space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8]">Milestone Brief</span>
+                    <span className="text-xs font-bold text-[#0A0A0E]">Milestone Brief</span>
                     <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E]">
                       $3,500
                     </span>
                   </div>
-                  <p className="text-[11px] text-[#7A7A8A] dark:text-[#A0A0B4]">Clean paper white background with crisp typography and sunlight yellow accents.</p>
+                  <p className="text-[11px] text-[#7A7A8A]">Clean paper white background with crisp typography and sunlight yellow accents.</p>
                 </div>
-
-                <button
-                  type="button"
-                  className={`w-full py-2 rounded-xl text-xs font-bold transition-all ${
-                    currentTheme === "light"
-                      ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E]"
-                      : "bg-white dark:bg-white/10 border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white hover:bg-black/5"
-                  }`}
-                >
-                  {currentTheme === "light" ? "Current Mode" : "Select Light Theme"}
-                </button>
-              </div>
-
-              {/* Dark Mode Card */}
-              <div
-                onClick={() => handleSetTheme("dark")}
-                className={`p-5 rounded-2xl border-2 transition-all cursor-pointer space-y-3 relative hover-lift ${
-                  currentTheme === "dark"
-                    ? "border-[#FFD21F] bg-[#14141E] shadow-[0_0_20px_rgba(255,210,31,0.12)] text-white"
-                    : "border-black/8 dark:border-white/10 bg-[#181824] text-white hover:border-white/30"
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <Moon className="w-5 h-5 text-[#FFD21F]" />
-                    <span className="text-sm font-extrabold text-white font-display">Carbon Dark &amp; Editorial</span>
-                  </div>
-                  {currentTheme === "dark" && (
-                    <span className="px-2 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-[10px] font-mono font-bold flex items-center gap-1">
-                      <Check className="w-3 h-3" />
-                      <span>Active</span>
-                    </span>
-                  )}
-                </div>
-
-                <div className="p-3 rounded-xl bg-[#09090D] border border-white/10 space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-[#F4F4F8]">Milestone Brief</span>
-                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E]">
-                      $3,500
-                    </span>
-                  </div>
-                  <p className="text-[11px] text-[#A0A0B4]">Deep carbon black canvas with high-contrast text and glowing solar yellow accents.</p>
-                </div>
-
-                <button
-                  type="button"
-                  className={`w-full py-2 rounded-xl text-xs font-bold transition-all ${
-                    currentTheme === "dark"
-                      ? "bg-[#FFD21F] text-[#0A0A0E]"
-                      : "bg-white/10 border border-white/20 text-white hover:bg-white/20"
-                  }`}
-                >
-                  {currentTheme === "dark" ? "Current Mode" : "Select Dark Theme"}
-                </button>
               </div>
             </div>
           </div>

@@ -88,7 +88,7 @@ export default function AdminPaymentsVaultPage() {
   };
 
   const vaults = data?.vaults || [
-    { collaborationId: "collab-1", campaignTitle: "AI-Powered Sprint Workflows", brandName: "Linear Dynamics", creatorName: "Sara Dietschy", totalAgreedBudget: 3500, escrowBalanceDollars: 3500, paymentStatus: "submitted_for_review", isFunded: true },
+    { collaborationId: "collab-1", campaignTitle: "Linear 2.0: High-Velocity Engineering", brandName: "Linear Dynamics", creatorName: "Sara Dietschy", totalAgreedBudget: 3500, escrowBalanceDollars: 3500, paymentStatus: "submitted_for_review", isFunded: true },
     { collaborationId: "collab-2", campaignTitle: "Productivity at Speed of Thought", brandName: "Raycast", creatorName: "Marques Brownlee", totalAgreedBudget: 8500, escrowBalanceDollars: 8500, paymentStatus: "approved", isFunded: true },
     { collaborationId: "collab-3", campaignTitle: "Next-Gen Database & Auth", brandName: "Supabase", creatorName: "Ankur Warikoo", totalAgreedBudget: 4200, escrowBalanceDollars: 4200, paymentStatus: "payment_pending", isFunded: false },
   ];

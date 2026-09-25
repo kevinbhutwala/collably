@@ -107,14 +107,23 @@ export function CreatorQuickViewModal({
       <div className="flex flex-col md:flex-row text-[#0A0A0E] dark:text-[#F4F4F8] font-sans select-none max-h-[85vh] overflow-y-auto">
         {/* Left: High-Fashion Visual & Media Showcase */}
         <div className="md:w-5/12 bg-[#0A0A0E] relative min-h-[320px] md:min-h-full flex flex-col justify-between p-6 text-white overflow-hidden">
+          {/* Ambient blurred backdrop for letterbox aspect ratios */}
+          <SafeImage
+            src={creator.heroImage || creator.avatarUrl}
+            alt=""
+            width={600}
+            height={800}
+            className="absolute inset-0 w-full h-full object-cover filter blur-2xl opacity-40 scale-110 pointer-events-none"
+          />
+          {/* Main Primary Portrait - full photo visible */}
           <SafeImage
             src={creator.heroImage || creator.avatarUrl}
             alt={creator.name}
             width={600}
             height={800}
-            className="absolute inset-0 w-full h-full object-cover filter contrast-105 opacity-90"
+            className="absolute inset-0 w-full h-full object-contain filter contrast-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent pointer-events-none" />
 
           {/* Top Badges */}
           <div className="relative z-10 flex items-center justify-between">

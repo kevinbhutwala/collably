@@ -160,7 +160,7 @@ export function ContinuousProductStory() {
   const activeStep = WORKFLOW_STEPS[activeStepIdx];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#FAFAFC] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] select-none border-t border-black/8 dark:border-white/10 relative overflow-hidden font-sans">
+    <section className="py-20 sm:py-28 bg-[#FAFAFC] dark:bg-[#08080C] text-[#0A0A0E] dark:text-white select-none border-t border-black/8 dark:border-white/10 relative overflow-hidden font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -297,7 +297,7 @@ export function ContinuousProductStory() {
                         <div className="flex items-center gap-2">
                           <Search className="w-4 h-4 text-[#7A7A8A] dark:text-[#8E8EA4] shrink-0" />
                           <span className="text-xs font-medium text-[#0A0A0E] dark:text-white truncate">
-                            &ldquo;AI tools, RED 8K, Tier-1 US&rdquo;
+                            &ldquo;Tech gear, 4K Cinema, Tier-1 Audience&rdquo;
                           </span>
                         </div>
                         <span className="text-[10px] font-mono font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800 shrink-0 self-start xs:self-center">
@@ -343,12 +343,12 @@ export function ContinuousProductStory() {
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <div className="w-8 h-8 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-bold">
-                            AI
+                          <div className="w-8 h-8 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-bold shadow-xs">
+                            <CheckCircle2 className="w-4 h-4 text-[#0A0A0E]" />
                           </div>
                           <div>
-                            <h4 className="text-xs font-bold text-[#0A0A0E] dark:text-white">AI Match Analysis</h4>
-                            <p className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4]">Your Campaign × Sara Dietschy</p>
+                            <h4 className="text-xs font-bold text-[#0A0A0E] dark:text-white">Audience &amp; Deliverable Fit</h4>
+                            <p className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4]">Campaign Alignment × Sara Dietschy</p>
                           </div>
                         </div>
                         <span className="text-sm font-black font-display text-[#0A0A0E] dark:text-[#FFD21F]">Strong Match</span>

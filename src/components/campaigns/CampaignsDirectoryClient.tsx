@@ -60,7 +60,7 @@ export function CampaignsDirectoryClient() {
               className={cn(
                 "px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap shrink-0 flex items-center gap-1.5 cursor-pointer",
                 selectedCategory === "all"
-                  ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs font-bold border border-black/10"
+                  ? "bg-[#FFD21F] text-[#0A0A0E] dark:text-[#0A0A0E] shadow-xs font-bold border border-black/10"
                   : "bg-white dark:bg-[#14141E] text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/8 dark:border-white/10"
               )}
             >
@@ -77,7 +77,7 @@ export function CampaignsDirectoryClient() {
                   className={cn(
                     "px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap shrink-0 flex items-center gap-1.5 cursor-pointer",
                     selectedCategory === cat
-                      ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs font-bold border border-black/10"
+                      ? "bg-[#FFD21F] text-[#0A0A0E] dark:text-[#0A0A0E] shadow-xs font-bold border border-black/10"
                       : "bg-white dark:bg-[#14141E] text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/8 dark:border-white/10"
                   )}
                 >

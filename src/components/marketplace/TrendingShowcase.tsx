@@ -98,7 +98,7 @@ export function TrendingShowcase() {
             onClick={() => setActiveTab(tab.id)}
             className={`flex items-center gap-2 whitespace-nowrap rounded-xl px-4 py-2 text-xs font-bold transition-all cursor-pointer ${
               activeTab === tab.id
-                ? "border border-[#FFD21F]/40 bg-[#FFD21F]/15 text-[#0A0A0E] dark:text-[#FFD21F] shadow-xs"
+                ? "border border-[#FFD21F] bg-[#FFD21F] dark:bg-[#FFD21F] text-[#0A0A0E] dark:text-[#0A0A0E] shadow-xs font-bold"
                 : "border border-black/6 dark:border-white/8 bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
             }`}
           >

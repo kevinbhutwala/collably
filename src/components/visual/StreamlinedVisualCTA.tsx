@@ -8,11 +8,11 @@ import { Modal } from "@/components/ui/Modal";
 import { SafeImage } from "@/components/ui/SafeImage";
 
 const AVATAR_STRIP = [
-  "/creators/elena-rostova.jpg",
+  "/creators/prarthana.jpg",
+  "/creators/kushi-hanamsagar.jpg",
+  "/creators/sara-dietschy.jpg",
   "/creators/ankur-warikoo.webp",
-  "/creators/prajakta-koli.png",
   "/creators/mkbhd.jpg",
-  "/creators/tanmay-bhat.png",
 ];
 
 export function StreamlinedVisualCTA() {

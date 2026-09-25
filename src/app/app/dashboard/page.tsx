@@ -75,8 +75,24 @@ function DashboardContent() {
   const [recentPayouts, setRecentPayouts] = useState<PayoutRecord[]>([]);
   const [collaborations, setCollaborations] = useState<Collaboration[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [showQuickStart, setShowQuickStart] = useState(true);
+  const [showQuickStart, setShowQuickStart] = useState(false);
   const hasLoadedRef = useRef(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const dismissed = localStorage.getItem("abeycollab_quickstart_dismissed");
+      if (!dismissed) {
+        setShowQuickStart(true);
+      }
+    }
+  }, []);
+
+  const handleDismissQuickStart = () => {
+    setShowQuickStart(false);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("abeycollab_quickstart_dismissed", "true");
+    }
+  };
 
   useEffect(() => {
     let isCancelled = false;
@@ -136,8 +152,8 @@ function DashboardContent() {
   return (
     <div className="space-y-8 text-[#0A0A0E] dark:text-[#F4F4F8] font-sans select-none">
       {/* ── Welcome Banner ── */}
-      <div className="rounded-3xl bg-gradient-to-br from-[#FFFDF5] via-white to-[#FFF9E6] dark:from-[#181826] dark:via-[#14141E] dark:to-[#1A1A28] border border-[#FFD21F]/30 dark:border-[#FFD21F]/40 p-5 sm:p-7 shadow-[0_10px_30px_rgba(0,0,0,0.04)] relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-5">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-[#FFD21F]/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="rounded-3xl bg-gradient-to-br from-[#FFFDF5] via-white to-[#FFF9E6] dark:from-[#161622] dark:via-[#12121A] dark:to-[#181824] border border-[#FFD21F]/30 dark:border-white/10 p-5 sm:p-7 shadow-[0_10px_30px_rgba(0,0,0,0.04)] relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-5">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-[#FFD21F]/15 dark:bg-[#FFD21F]/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="space-y-1.5 relative z-10 max-w-xl">
           <div className="flex flex-wrap items-center gap-2">
@@ -161,17 +177,17 @@ function DashboardContent() {
         </div>
 
         {/* Quick Action CTAs */}
-        <div className="flex flex-wrap items-center gap-2.5 relative z-10">
+        <div className="flex flex-wrap items-center gap-2.5 relative z-10 w-full sm:w-auto">
           {role === "creator" ? (
             <>
-              <Link href="/app/campaigns">
-                <button className="px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all flex items-center gap-1.5 shadow-xs border border-black/10">
+              <Link href="/app/campaigns" className="flex-1 sm:flex-initial">
+                <button className="w-full sm:w-auto px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs border border-black/10">
                   <Compass className="w-3.5 h-3.5 text-[#0A0A0E]" />
                   <span>Find Campaigns</span>
                 </button>
               </Link>
-              <Link href="/app/profile">
-                <button className="px-4 py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#1C1C28] dark:hover:bg-[#252535] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-xs">
+              <Link href="/app/profile" className="flex-1 sm:flex-initial">
+                <button className="w-full sm:w-auto px-4 py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#1C1C28] dark:hover:bg-[#252535] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs">
                   <Sparkles className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F]" />
                   <span>My Media Kit</span>
                 </button>
@@ -179,14 +195,14 @@ function DashboardContent() {
             </>
           ) : (
             <>
-              <Link href="/app/brand/campaigns/create">
-                <button className="px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all flex items-center gap-1.5 shadow-xs border border-black/10">
+              <Link href="/app/brand/campaigns/create" className="flex-1 sm:flex-initial">
+                <button className="w-full sm:w-auto px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs border border-black/10">
                   <FolderPlus className="w-3.5 h-3.5 text-[#0A0A0E]" />
                   <span>Post Campaign</span>
                 </button>
               </Link>
-              <Link href="/app/brand/creators">
-                <button className="px-4 py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#1C1C28] dark:hover:bg-[#252535] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-xs">
+              <Link href="/app/brand/creators" className="flex-1 sm:flex-initial">
+                <button className="w-full sm:w-auto px-4 py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#1C1C28] dark:hover:bg-[#252535] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs">
                   <Users className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F]" />
                   <span>Find Creators</span>
                 </button>
@@ -198,7 +214,7 @@ function DashboardContent() {
 
       {/* ── Quick Start: How AbeyCollab Works ── */}
       {showQuickStart && (
-        <div className="rounded-3xl bg-white dark:bg-[#12121A] border-2 border-[#FFD21F]/50 p-5 sm:p-6 shadow-[0_6px_24px_rgba(255,210,31,0.08)] relative overflow-hidden transition-all">
+        <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-[#FFD21F]/40 dark:border-white/10 p-5 sm:p-6 shadow-[0_6px_24px_rgba(0,0,0,0.06)] relative overflow-hidden transition-all">
           <div className="flex items-center justify-between gap-3 pb-3.5 border-b border-black/8 dark:border-white/10">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
@@ -211,8 +227,8 @@ function DashboardContent() {
             </div>
 
             <button
-              onClick={() => setShowQuickStart(false)}
-              className="p-1 rounded-full hover:bg-black/5 dark:hover:bg-white/10 text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white transition-colors text-xs flex items-center gap-1"
+              onClick={handleDismissQuickStart}
+              className="p-1 rounded-full hover:bg-black/5 dark:hover:bg-white/10 text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white transition-colors text-xs flex items-center gap-1 cursor-pointer"
               title="Dismiss guide"
             >
               <span className="text-[11px] font-mono hidden sm:inline">Got it, dismiss</span>
@@ -428,8 +444,28 @@ function DashboardContent() {
             </div>
 
             {isLoading ? (
-              <div className="py-8 text-center text-xs font-mono text-[#7A7A8A] dark:text-[#8E8EA4]">
-                Loading projects...
+              <div className="space-y-3">
+                {[1, 2].map((i) => (
+                  <div
+                    key={i}
+                    className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 animate-pulse space-y-3"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="w-9 h-9 rounded-xl bg-black/6 dark:bg-white/10 shrink-0" />
+                        <div className="space-y-1.5">
+                          <div className="w-32 sm:w-48 h-3.5 rounded bg-black/6 dark:bg-white/10" />
+                          <div className="w-24 sm:w-36 h-2.5 rounded bg-black/6 dark:bg-white/10" />
+                        </div>
+                      </div>
+                      <div className="w-16 h-5 rounded-full bg-black/6 dark:bg-white/10 shrink-0" />
+                    </div>
+                    <div className="pt-2 border-t border-black/6 dark:border-white/10 flex items-center justify-between">
+                      <div className="w-28 h-2.5 rounded bg-black/6 dark:bg-white/10" />
+                      <div className="w-16 h-2.5 rounded bg-black/6 dark:bg-white/10" />
+                    </div>
+                  </div>
+                ))}
               </div>
             ) : collaborations.length === 0 ? (
               <AnimatedEmptyState
@@ -474,14 +510,14 @@ function DashboardContent() {
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between pt-2 border-t border-black/6 dark:border-white/10 text-xs font-mono">
-                      <span className="text-[#5A5A68] dark:text-[#8E8EA4] text-[11px] flex items-center gap-1.5">
-                        <Clapperboard className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F]" />
-                        <span>Content: <strong className="text-[#0A0A0E] dark:text-white">{collab.deliverables?.[0]?.title || "Draft #1"}</strong></span>
+                    <div className="flex items-center justify-between pt-2 border-t border-black/6 dark:border-white/10 text-xs font-mono gap-2">
+                      <span className="text-[#5A5A68] dark:text-[#8E8EA4] text-[11px] flex items-center gap-1.5 min-w-0">
+                        <Clapperboard className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F] shrink-0" />
+                        <span className="truncate">Content: <strong className="text-[#0A0A0E] dark:text-white">{collab.deliverables?.[0]?.title || "Draft #1"}</strong></span>
                       </span>
                       <Link
                         href="/app/collaborations"
-                        className="text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-[#FFE052] font-bold flex items-center gap-1 transition-colors text-[11px]"
+                        className="text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-[#FFE052] font-bold flex items-center gap-1 transition-colors text-[11px] shrink-0"
                       >
                         <span>Workspace</span>
                         <ArrowUpRight className="w-3 h-3" />
@@ -693,14 +729,14 @@ function DashboardContent() {
             ) : (
               <div className="divide-y divide-black/5 dark:divide-white/5 font-mono text-xs">
                 {recentPayouts.slice(0, 3).map((p) => (
-                  <div key={p.id} className="py-2.5 flex items-center justify-between">
-                    <div>
-                      <span className="font-bold text-[#0A0A0E] dark:text-white block truncate max-w-[130px] font-sans text-xs">
+                  <div key={p.id} className="py-2.5 flex items-center justify-between gap-3">
+                    <div className="min-w-0 flex-1">
+                      <span className="font-bold text-[#0A0A0E] dark:text-white block truncate max-w-[140px] sm:max-w-[200px] xl:max-w-[240px] font-sans text-xs">
                         {p.campaignTitle}
                       </span>
-                      <span className="text-[10px] text-[#6A6A78] dark:text-[#8E8EA4]">{p.brandName}</span>
+                      <span className="text-[10px] text-[#6A6A78] dark:text-[#8E8EA4] block truncate">{p.brandName}</span>
                     </div>
-                    <div className="text-right">
+                    <div className="text-right shrink-0">
                       <span className="font-bold text-[#0A0A0E] dark:text-white block text-xs">
                         {role === "creator" ? `+${format(p.netAmount, (p as any).currency || "USD")}` : format(p.netAmount, (p as any).currency || "USD")}
                       </span>

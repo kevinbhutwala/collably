@@ -106,7 +106,7 @@ export function Navbar() {
                   className={cn(
                     "px-4 py-1.5 text-xs font-semibold rounded-full transition-all select-none font-sans tracking-tight",
                     isActive
-                      ? "bg-[#FFD21F] text-[#0A0A0E] shadow-[0_2px_10px_rgba(255,210,31,0.4)] font-bold border border-black/10"
+                      ? "bg-[#FFD21F] dark:bg-[#FFD21F] text-[#0A0A0E] dark:text-[#0A0A0E] shadow-[0_2px_10px_rgba(255,210,31,0.4)] font-bold border border-black/10"
                       : "text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/10"
                   )}
                 >
@@ -208,7 +208,7 @@ export function Navbar() {
                       className={cn(
                         "block px-4 py-3 rounded-2xl text-sm font-bold transition-colors font-sans",
                         isActive
-                          ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs"
+                          ? "bg-[#FFD21F] dark:bg-[#FFD21F] text-[#0A0A0E] dark:text-[#0A0A0E] shadow-xs"
                           : "text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white hover:bg-[#F4F4F8] dark:hover:bg-white/10"
                       )}
                     >

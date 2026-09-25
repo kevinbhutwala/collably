@@ -56,23 +56,44 @@ async function main() {
   let failCount = 0;
 
   // 1. Migrate Users / Profiles
+  const profileIdByEmail = new Map<string, string>();
+  const profileIdByUserId = new Map<string, string>();
+
   if (data.users && data.users.length > 0) {
     for (const u of data.users) {
-      const { error } = await supabase.from("profiles").upsert({
-        id: toUuid(u.id),
-        user_id: toUuid(u.id),
-        email: u.email,
-        name: u.name,
-        role: u.role === "brand" ? "brand_owner" : u.role === "admin" ? "super_admin" : u.role,
-        avatar_url: u.avatarUrl,
-        verified: u.verified || false,
-        created_at: u.createdAt || new Date().toISOString(),
-      });
+      const email = u.email?.toLowerCase().trim();
+      const uuid = toUuid(u.id);
+
+      // Check if profile exists with this email or id
+      const { data: existing } = await supabase
+        .from("profiles")
+        .select("id, email")
+        .eq("email", email)
+        .maybeSingle();
+
+      const targetId = existing?.id || uuid;
+
+      const { error } = await supabase.from("profiles").upsert(
+        {
+          id: targetId,
+          user_id: targetId,
+          email: email,
+          name: u.name,
+          role: u.role === "brand" ? "brand_owner" : u.role === "admin" ? "super_admin" : u.role,
+          avatar_url: u.avatarUrl,
+          verified: u.verified || false,
+          created_at: u.createdAt || new Date().toISOString(),
+        },
+        { onConflict: "id" }
+      );
+
       if (error) {
-        console.error(`❌ Failed to migrate profile ${u.email}:`, error.message);
+        console.error(`❌ Failed to migrate profile ${email}:`, error.message);
         failCount++;
       } else {
         successCount++;
+        profileIdByEmail.set(email, targetId);
+        profileIdByUserId.set(u.id, targetId);
       }
     }
     console.log(`✓ Profiles migrated.`);
@@ -81,28 +102,68 @@ async function main() {
   // 2. Migrate Creator Profiles
   if (data.creators && data.creators.length > 0) {
     for (const c of data.creators) {
-      const { error } = await supabase.from("creator_profiles").upsert({
-        id: toUuid(c.id),
-        profile_id: toUuid(c.userId || c.id),
-        handle: c.handle,
-        headline: c.headline,
-        bio: c.bio,
-        cover_image_url: c.coverImageUrl,
-        location: c.location,
-        languages: c.languages || ["English"],
-        primary_category: c.primaryCategory,
-        secondary_categories: c.secondaryCategories || [],
-        tier: c.tier || "Micro",
-        rating: c.rating || 5.0,
-        completed_campaigns_count: c.completedCampaignsCount || 0,
-        total_followers: c.totalFollowers || 0,
-        avg_engagement_rate: c.avgEngagementRate || 0,
-        starting_price: c.startingPrice || 500,
-        available_for_hire: c.availableForHire ?? true,
-        featured: c.featured ?? false,
-        verified: c.verified ?? false,
-        created_at: c.createdAt || new Date().toISOString(),
-      });
+      let profileId = c.userId ? profileIdByUserId.get(c.userId) : undefined;
+      const cleanHandle = (c.handle || "").toLowerCase().replace(/[^a-z0-9_]/g, "");
+      const syntheticEmail = `${cleanHandle || "creator"}@creators.collably.io`;
+
+      if (!profileId) {
+        // Ensure parent profile exists in profiles table
+        const { data: existing } = await supabase
+          .from("profiles")
+          .select("id")
+          .eq("email", syntheticEmail)
+          .maybeSingle();
+
+        if (existing?.id) {
+          profileId = existing.id;
+        } else {
+          const newId = toUuid(c.userId || c.id);
+          const { error: profErr } = await supabase.from("profiles").upsert(
+            {
+              id: newId,
+              user_id: newId,
+              email: syntheticEmail,
+              name: c.fullName || c.name || c.handle,
+              role: "creator",
+              avatar_url: c.avatarUrl,
+              verified: c.verified ?? false,
+              created_at: c.createdAt || new Date().toISOString(),
+            },
+            { onConflict: "id" }
+          );
+          if (profErr) {
+            console.warn(`⚠️ Creator profile placeholder note for ${c.handle}:`, profErr.message);
+          }
+          profileId = newId;
+        }
+      }
+
+      const { error } = await supabase.from("creator_profiles").upsert(
+        {
+          id: toUuid(c.id),
+          profile_id: profileId,
+          handle: c.handle,
+          headline: c.headline,
+          bio: c.bio,
+          cover_image_url: c.coverImageUrl,
+          location: c.location,
+          languages: c.languages || ["English"],
+          primary_category: c.primaryCategory,
+          secondary_categories: c.secondaryCategories || [],
+          tier: c.tier || "Micro",
+          rating: c.rating || 5.0,
+          completed_campaigns_count: c.completedCampaignsCount || 0,
+          total_followers: c.totalFollowers || 0,
+          avg_engagement_rate: c.avgEngagementRate || 0,
+          starting_price: c.startingPrice || 500,
+          available_for_hire: c.availableForHire ?? true,
+          featured: c.featured ?? false,
+          verified: c.verified ?? false,
+          created_at: c.createdAt || new Date().toISOString(),
+        },
+        { onConflict: "id" }
+      );
+
       if (error) {
         console.error(`❌ Failed to migrate creator ${c.handle}:`, error.message);
         failCount++;
@@ -116,23 +177,63 @@ async function main() {
   // 3. Migrate Brand Profiles
   if (data.brands && data.brands.length > 0) {
     for (const b of data.brands) {
-      const { error } = await supabase.from("brand_profiles").upsert({
-        id: toUuid(b.id),
-        profile_id: toUuid(b.userId || b.id),
-        company_name: b.companyName,
-        industry: b.industry,
-        headline: b.headline,
-        description: b.description,
-        logo_url: b.logoUrl,
-        cover_image_url: b.coverImageUrl,
-        website_url: b.websiteUrl,
-        location: b.location,
-        company_size: b.companySize || "11-50",
-        verified: b.verified ?? false,
-        active_campaigns_count: b.activeCampaignsCount || 0,
-        total_spent: b.totalSpent || 0,
-        created_at: b.createdAt || new Date().toISOString(),
-      });
+      let brandProfileId = b.userId ? profileIdByUserId.get(b.userId) : undefined;
+      const cleanName = (b.companyName || "").toLowerCase().replace(/[^a-z0-9_]/g, "");
+      const syntheticEmail = `${cleanName || "brand"}@brands.collably.io`;
+
+      if (!brandProfileId) {
+        // Ensure parent profile exists in profiles table
+        const { data: existing } = await supabase
+          .from("profiles")
+          .select("id")
+          .eq("email", syntheticEmail)
+          .maybeSingle();
+
+        if (existing?.id) {
+          brandProfileId = existing.id;
+        } else {
+          const newId = toUuid(b.userId || b.id);
+          const { error: profErr } = await supabase.from("profiles").upsert(
+            {
+              id: newId,
+              user_id: newId,
+              email: syntheticEmail,
+              name: b.companyName,
+              role: "brand_owner",
+              avatar_url: b.logoUrl,
+              verified: b.verified ?? false,
+              created_at: b.createdAt || new Date().toISOString(),
+            },
+            { onConflict: "id" }
+          );
+          if (profErr) {
+            console.warn(`⚠️ Brand profile placeholder note for ${b.companyName}:`, profErr.message);
+          }
+          brandProfileId = newId;
+        }
+      }
+
+      const { error } = await supabase.from("brand_profiles").upsert(
+        {
+          id: toUuid(b.id),
+          profile_id: brandProfileId,
+          company_name: b.companyName,
+          industry: b.industry,
+          headline: b.headline,
+          description: b.description,
+          logo_url: b.logoUrl,
+          cover_image_url: b.coverImageUrl,
+          website_url: b.websiteUrl,
+          location: b.location,
+          company_size: b.companySize || "11-50",
+          verified: b.verified ?? false,
+          active_campaigns_count: b.activeCampaignsCount || 0,
+          total_spent: b.totalSpent || 0,
+          created_at: b.createdAt || new Date().toISOString(),
+        },
+        { onConflict: "id" }
+      );
+
       if (error) {
         console.error(`❌ Failed to migrate brand ${b.companyName}:`, error.message);
         failCount++;

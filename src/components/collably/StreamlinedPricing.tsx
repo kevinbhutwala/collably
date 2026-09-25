@@ -52,7 +52,7 @@ export function StreamlinedPricing() {
       desc: "For marketing teams running multi-creator campaigns.",
       features: [
         "Unlimited active campaign briefs",
-        "AI creator matching & scoring",
+        "Verified creator matching & audience scoring",
         "Automated contract & 1099 compliance",
         "Multi-seat team CRM workspace",
       ],

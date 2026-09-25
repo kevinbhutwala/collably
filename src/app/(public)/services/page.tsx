@@ -103,7 +103,7 @@ const servicesJsonLd = [
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "AI-Powered Talent Discovery & NLP Brief Matching",
+            name: "Audience-Verified Talent Discovery & Smart Brief Matching",
           },
         },
       ],
@@ -173,11 +173,11 @@ export default function ServicesPage() {
     },
     {
       icon: Sparkles,
-      tag: "ALGORITHM HUB",
-      title: "AI-Powered Talent Discovery & NLP Matching",
-      description: "Explainable multi-attribute matchmaking matching brand brief narratives with high-engagement rising creator cohorts.",
+      tag: "SMART MATCHING",
+      title: "Audience-Verified Talent Discovery & Brief Matching",
+      description: "Transparent multi-attribute matchmaking connecting brand briefs with high-engagement verified creator cohorts.",
       image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1000&auto=format&fit=crop&q=80",
-      features: ["Prompt-based natural language search", "Audience retention score weighting", "Anti-gaming burst rate limiting"],
+      features: ["Natural keyword topic discovery", "Audience retention score weighting", "Authentic engagement verification"],
     },
   ];
 

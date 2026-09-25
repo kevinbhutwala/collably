@@ -66,33 +66,33 @@
 
   .dark {
     /* ══════════════════════════════════════════════════════════════════════════
-       ABEYCOLLAB — DARK THEME SYSTEM & CARBON EDITORIAL PALETTE
+       ABEYCOLLAB — STANDARDIZED LIGHT THEME SYSTEM & HIGH-CLARITY SURFACES
        ══════════════════════════════════════════════════════════════════════════ */
-    --color-text-primary: #F4F4F8;
-    --color-text-secondary: #B0B0C4;
-    --color-text-muted: #7A7A8E;
+    --color-text-primary: #0A0A0E;
+    --color-text-secondary: #4A4A58;
+    --color-text-muted: #7A7A8C;
     --color-theme: #FFD21F;
     --color-theme-hover: #FFE052;
-    --color-theme-ink: #0A0A0E;
-    --color-infrared: #FF453A;
-    --color-success: #30D158;
+    --color-theme-ink: #8A6500;
+    --color-infrared: #FF3B30;
+    --color-success: #087F5B;
 
     /* Core Canvas & Surfaces */
-    --background: #09090D;
-    --background-alt: #111118;
-    --foreground: #F4F4F8;
-    --foreground-muted: #9A9AA8;
+    --background: #FFFFFF;
+    --background-alt: #F8F8FB;
+    --foreground: #0A0A0E;
+    --foreground-muted: #666678;
     
     /* Surfaces */
-    --card: #13131C;
-    --card-foreground: #F4F4F8;
-    --surface-secondary: #181824;
-    --surface-chrome: #20202E;
+    --card: #FFFFFF;
+    --card-foreground: #0A0A0E;
+    --surface-secondary: #F4F4F8;
+    --surface-chrome: #EAEAEF;
     
     /* Borders & Hairlines */
-    --border: #222230;
-    --border-light: #1A1A26;
-    --input: #222230;
+    --border: #E8E8EE;
+    --border-light: #F0F0F5;
+    --input: #E2E2EA;
     --ring: #FFD21F;
     
     /* Accent & Micro Accent */
@@ -104,11 +104,11 @@
     /* Semantic Compatibility */
     --primary: #FFD21F;
     --primary-foreground: #0A0A0E;
-    --secondary: #181824;
-    --secondary-foreground: #F4F4F8;
-    --muted: #13131C;
-    --muted-foreground: #9A9AA8;
-    --destructive: #FF453A;
+    --secondary: #F4F4F8;
+    --secondary-foreground: #0A0A0E;
+    --muted: #F8F8FB;
+    --muted-foreground: #767688;
+    --destructive: #FF3B30;
     --destructive-foreground: #FFFFFF;
   }
 }
@@ -141,7 +141,7 @@
     font-family: var(--font-display), 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     letter-spacing: -0.035em;
     font-weight: 700;
-    color: var(--color-text-primary);
+    color: inherit;
   }
   ::selection { background: #FFD21F; color: #0A0A0E; }
   :focus-visible {
@@ -547,68 +547,90 @@ html.lenis, html.lenis body {
    ══════════════════════════════════════════════════════════════════════════ */
 
 .dark {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 /* ── 1. PRIMARY HEADINGS, TITLES & HIGH-CONTRAST LABELS ── */
-.dark [class*="text-[#0A0A0E]"],
-.dark [class*="text-[#0a0a0e]"],
-.dark [class*="text-[#101010]"],
-.dark [class*="text-[#111111]"],
+.dark [class*="text-[#0A0A0E]"]:not(.bg-clip-text):not([class*="bg-clip-text"]):not(.text-transparent):not([class*="text-transparent"]),
+.dark [class*="text-[#0a0a0e]"]:not(.bg-clip-text):not([class*="bg-clip-text"]):not(.text-transparent):not([class*="text-transparent"]),
+.dark [class*="text-[#101010]"]:not(.bg-clip-text):not([class*="bg-clip-text"]):not(.text-transparent):not([class*="text-transparent"]),
+.dark [class*="text-[#111111]"]:not(.bg-clip-text):not([class*="bg-clip-text"]):not(.text-transparent):not([class*="text-transparent"]),
 .dark [class*="text-[#07070B]"],
 .dark [class*="text-[#1A1A1E]"],
 .dark [class*="text-[#1c1c24]"],
 .dark [class*="text-[#202028]"],
 .dark [class*="text-[#22222a]"],
-.dark .text-black,
+.dark [class*="text-[#22222E]"],
+.dark [class*="text-[#22222e]"],
+.dark [class*="text-[#101310]"],
+.dark [class*="text-[#18181B]"],
+.dark [class*="text-[#18181b]"],
+.dark .text-black:not(.bg-clip-text):not([class*="bg-clip-text"]):not(.text-transparent),
+.dark .text-zinc-950,
 .dark .text-zinc-900,
+.dark .text-neutral-950,
 .dark .text-neutral-900,
+.dark .text-gray-950,
 .dark .text-gray-900 {
   color: #F4F4F8 !important;
 }
 
-/* ── 2. SOLAR ACCENT BUTTON CONTRAST PRESERVATION ──
+/* Explicitly guarantee white/light text visibility on dark elements */
+.dark [class*="dark:text-white"],
+.dark [class*="dark:text-[#F4F4F8]"],
+.dark [class*="dark:text-[#f4f4f8]"] {
+  color: #F4F4F8 !important;
+}
+
+.dark [class*="dark:text-[#FFD21F]"] {
+  color: #FFD21F !important;
+}
+
+/* ── 2. SOLAR ACCENT BUTTON & YELLOW BACKGROUND CONTRAST PRESERVATION ──
    When elements are inside bright solar yellow buttons/badges, text MUST
    remain crisp carbon black (#0A0A0E) for perfect contrast! */
 .dark button[class*="bg-[#FFD21F]"],
 .dark button[class*="bg-[#FFD21F]"] *,
+.dark button[class*="bg-[#FFD21F]"] svg,
 .dark a[class*="bg-[#FFD21F]"],
 .dark a[class*="bg-[#FFD21F]"] *,
+.dark a[class*="bg-[#FFD21F]"] svg,
 .dark button[class*="from-[#FFD21F]"],
 .dark button[class*="from-[#FFD21F]"] *,
+.dark button[class*="from-[#FFD21F]"] svg,
 .dark a[class*="from-[#FFD21F]"],
 .dark a[class*="from-[#FFD21F]"] *,
+.dark a[class*="from-[#FFD21F]"] svg,
+.dark button[class*="dark:bg-[#FFD21F]"],
+.dark button[class*="dark:bg-[#FFD21F]"] *,
+.dark button[class*="dark:bg-[#FFD21F]"] svg,
+.dark a[class*="dark:bg-[#FFD21F]"],
+.dark a[class*="dark:bg-[#FFD21F]"] *,
+.dark a[class*="dark:bg-[#FFD21F]"] svg,
 .dark button[class*="bg-theme"],
 .dark button[class*="bg-theme"] *,
+.dark button[class*="bg-theme"] svg,
+.dark a.bg-theme,
+.dark a.bg-theme *,
+.dark a.bg-theme svg,
 .dark .badge-solar,
 .dark .badge-solar *,
 .dark .badge-yellow,
-.dark .badge-yellow * {
+.dark .badge-yellow *,
+.dark span[class*="bg-[#FFD21F]"]:not([class*="bg-[#FFD21F]/"]):not([class*="dark:bg-[#FFD21F]/"]):not([class*="selection:"]),
+.dark span[class*="dark:bg-[#FFD21F]"]:not([class*="bg-[#FFD21F]/"]):not([class*="dark:bg-[#FFD21F]/"]):not([class*="selection:"]),
+.dark [class*="dark:text-[#0A0A0E]"],
+.dark [class*="dark:text-[#0a0a0e]"] {
   color: #0A0A0E !important;
 }
 
-/* Explicitly preserve Solar Yellow button background & text in dark mode */
-.dark button[class*="bg-[#FFD21F]"],
-.dark a[class*="bg-[#FFD21F]"],
-.dark [class*="dark:bg-[#FFD21F]"],
-.dark [class*="bg-[#FFD21F]"] {
-  background-color: #FFD21F !important;
-  color: #0A0A0E !important;
-}
-
-.dark button[class*="bg-[#FFD21F]"] *,
-.dark a[class*="bg-[#FFD21F]"] *,
-.dark [class*="dark:bg-[#FFD21F]"] *,
-.dark [class*="bg-[#FFD21F]"] * {
-  color: #0A0A0E !important;
-}
-
-/* Explicitly guarantee white/light text visibility on dark elements */
-.dark [class*="dark:text-white"],
-.dark [class*="dark:text-white"] *,
-.dark [class*="dark:text-[#F4F4F8]"],
-.dark [class*="dark:text-[#F4F4F8]"] * {
-  color: #F4F4F8 !important;
+/* ── 2B. TEXT GRADIENTS & TRANSPARENT HEADLINES ── */
+.dark .bg-clip-text,
+.dark [class*="bg-clip-text"],
+.dark .text-transparent,
+.dark [class*="text-transparent"] {
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
 }
 
 /* ── 3. SECONDARY TEXTS, DESCRIPTIONS & PILLS ── */
@@ -645,6 +667,25 @@ html.lenis, html.lenis body {
 .dark [class*="bg-[#FFFFFF]"],
 .dark [class*="bg-[#ffffff]"] {
   background-color: #12121A !important;
+}
+
+.dark [class*="bg-[#FAFAFC]"],
+.dark [class*="bg-[#F8F8FB]"],
+.dark [class*="bg-[#F8F8FC]"],
+.dark [class*="bg-[#FAFAF8]"],
+.dark [class*="bg-[#FAF9F5]"],
+.dark .bg-zinc-50,
+.dark .bg-gray-50 {
+  background-color: #0A0A0F !important;
+}
+
+.dark [class*="bg-[#F4F4F8]"],
+.dark [class*="bg-[#F5F5F9]"],
+.dark [class*="bg-[#F0F0F4]"],
+.dark [class*="bg-[#EAEAEF]"],
+.dark .bg-zinc-100,
+.dark .bg-gray-100 {
+  background-color: #181824 !important;
 }
 
 .dark .bg-texture-paper-white {
@@ -703,25 +744,6 @@ html.lenis, html.lenis body {
   color: #F4F4F8 !important;
 }
 
-.dark [class*="bg-[#FAFAFC]"],
-.dark [class*="bg-[#F8F8FB]"],
-.dark [class*="bg-[#F8F8FC]"],
-.dark [class*="bg-[#FAFAF8]"],
-.dark [class*="bg-[#FAF9F5]"],
-.dark .bg-zinc-50,
-.dark .bg-gray-50 {
-  background-color: #0A0A0F !important;
-}
-
-.dark [class*="bg-[#F4F4F8]"],
-.dark [class*="bg-[#F5F5F9]"],
-.dark [class*="bg-[#F0F0F4]"],
-.dark [class*="bg-[#EAEAEF]"],
-.dark .bg-zinc-100,
-.dark .bg-gray-100 {
-  background-color: #181824 !important;
-}
-
 /* ── 5B. SELECTED, ACTIVE & HIGHLIGHTED CARDS / ITEMS ──
    Selected, active, or highlighted cards / tabs / items MUST REMAIN DARK in dark mode!
    Never flash white backgrounds or light yellow washes in dark mode.
@@ -748,11 +770,11 @@ html.lenis, html.lenis body {
   color: #F4F4F8 !important;
 }
 
-/* Ensure child text and labels inside highlighted / selected elements are crisp off-white */
-.dark [class*="bg-[#FFFDF5]"] *:not(button):not(button *):not(a[class*="from-[#FFD21F]"] *):not(a[class*="bg-[#FFD21F]"] *),
-.dark [class*="from-[#FFFDF5]"] *:not(button):not(button *):not(a[class*="from-[#FFD21F]"] *):not(a[class*="bg-[#FFD21F]"] *),
-.dark [aria-selected="true"] *:not(button):not(button *),
-.dark [data-state="active"] *:not(button):not(button *) {
+/* Ensure child text and labels inside highlighted / selected elements are crisp off-white, EXCEPT on buttons/links */
+.dark [class*="bg-[#FFFDF5]"] *:not(button):not(button *):not(a):not(a *):not(.badge-solar):not(.badge-yellow),
+.dark [class*="from-[#FFFDF5]"] *:not(button):not(button *):not(a):not(a *):not(.badge-solar):not(.badge-yellow),
+.dark [aria-selected="true"] *:not(button):not(button *):not(a):not(a *):not(.badge-solar):not(.badge-yellow),
+.dark [data-state="active"] *:not(button):not(button *):not(a):not(a *):not(.badge-solar):not(.badge-yellow) {
   color: #F4F4F8 !important;
 }
 
@@ -783,16 +805,8 @@ html.lenis, html.lenis body {
 .dark .border-black\/15,
 .dark .divide-black\/5,
 .dark .divide-black\/8,
-.dark .divide-black\/10,
-.dark [class*="border-[#E7E7E4]"],
-.dark [class*="border-[#e7e7e4]"],
-.dark [class*="border-[#E8E8EE]"],
-.dark [class*="border-[#e8e8ee]"],
-.dark [class*="border-[#E2E2EA]"],
-.dark [class*="border-[#e2e2ea]"],
-.dark [class*="border-[#EAEAEF]"],
-.dark [class*="border-[#eaeaef]"] {
-  border-color: rgba(255, 255, 255, 0.1) !important;
+.dark .divide-black\/10 {
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 /* ── 8. HOVER & INTERACTIVE STATES ── */
@@ -857,3 +871,5 @@ html.lenis, html.lenis body {
 .dark header {
   border-color: rgba(255, 255, 255, 0.08) !important;
 }
+
+
