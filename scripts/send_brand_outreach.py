@@ -44,6 +44,30 @@ def get_niche_creators(category: str):
             "creators_html": "<strong>Kunal Rajput</strong> (<em>@subtle.strength</em>, 50K), <strong>Ashfina Charania</strong> (<em>@thewickedsoul</em>, 65K), and <strong>Sid Bhawsar</strong> (<em>@thesept_boy</em>, 92K)",
             "roster_url": "https://abeycollab.com/creators?category=Fitness"
         }
+    elif any(k in cat_lower for k in ["tech", "keyboard", "audio", "desk", "smartwatch"]):
+        return {
+            "subject": "Minimalist desk & tech showcase for {brand_name} (milestone escrow)",
+            "niche_label": "Tech & Workspace",
+            "creators_text": "Sid Bhawsar (@thesept_boy, 92K), Daniel Titchener (@danieltitchener, 140K), and Martin Flindt (@martinflindt, 95K)",
+            "creators_html": "<strong>Sid Bhawsar</strong> (<em>@thesept_boy</em>, 92K), <strong>Daniel Titchener</strong> (<em>@danieltitchener</em>, 140K), and <strong>Martin Flindt</strong> (<em>@martinflindt</em>, 95K)",
+            "roster_url": "https://abeycollab.com/creators?category=Tech"
+        }
+    elif any(k in cat_lower for k in ["beverage", "soda", "coffee", "roaster", "cereal", "food", "snack", "cocktail", "nutrition", "protein"]):
+        return {
+            "subject": "Quick creator collab idea for {brand_name} (0% agency fee pilot)",
+            "niche_label": "Food & Beverage",
+            "creators_text": "Shreya Arora (@shreya.arora, 84K), Ashfina Charania (@thewickedsoul, 65K), and Kunal Rajput (@subtle.strength, 50K)",
+            "creators_html": "<strong>Shreya Arora</strong> (<em>@shreya.arora</em>, 84K), <strong>Ashfina Charania</strong> (<em>@thewickedsoul</em>, 65K), and <strong>Kunal Rajput</strong> (<em>@subtle.strength</em>, 50K)",
+            "roster_url": "https://abeycollab.com/creators?category=Lifestyle"
+        }
+    elif any(k in cat_lower for k in ["pet", "home", "cookware", "kitchen", "fragrance", "incense", "travel", "edc"]):
+        return {
+            "subject": "Aesthetic visual campaigns for {brand_name} (vetted creator roster)",
+            "niche_label": "Design & Lifestyle",
+            "creators_text": "Samantha Ferreira (@samanthaferreira, 98K), Ashfina Charania (@thewickedsoul, 65K), and Sid Bhawsar (@thesept_boy, 92K)",
+            "creators_html": "<strong>Samantha Ferreira</strong> (<em>@samanthaferreira</em>, 98K), <strong>Ashfina Charania</strong> (<em>@thewickedsoul</em>, 65K), and <strong>Sid Bhawsar</strong> (<em>@thesept_boy</em>, 92K)",
+            "roster_url": "https://abeycollab.com/creators?category=Lifestyle"
+        }
     else:
         return {
             "subject": "Quick idea for {brand_name} × creator collaborations",
