@@ -37,6 +37,7 @@ interface HeroTalent {
   specs: string;
   badgeText: string;
   verifiedSponsor: string;
+  glowColor: string;
 }
 
 const HERO_TALENT: HeroTalent[] = [
@@ -54,6 +55,7 @@ const HERO_TALENT: HeroTalent[] = [
     specs: "4K Master Styling • Color Graded",
     badgeText: "Editorial Reel",
     verifiedSponsor: "Fashion & Style",
+    glowColor: "rgba(255, 210, 31, 0.35)",
   },
   {
     id: "kushihanamsagar",
@@ -69,6 +71,7 @@ const HERO_TALENT: HeroTalent[] = [
     specs: "Sony Cinema • 4K Master",
     badgeText: "Cinema Reel",
     verifiedSponsor: "Design & Creative",
+    glowColor: "rgba(56, 189, 248, 0.35)",
   },
   {
     id: "dipti",
@@ -84,6 +87,7 @@ const HERO_TALENT: HeroTalent[] = [
     specs: "4K Master Styling • Color Graded",
     badgeText: "Lookbook Reel",
     verifiedSponsor: "Contemporary Fashion",
+    glowColor: "rgba(244, 114, 182, 0.35)",
   },
   {
     id: "sehitha",
@@ -99,12 +103,22 @@ const HERO_TALENT: HeroTalent[] = [
     specs: "Science Backed • Clinical Breakdown",
     badgeText: "Clinical Reel",
     verifiedSponsor: "Skincare Science",
+    glowColor: "rgba(52, 211, 153, 0.35)",
   },
+];
+
+const LIVE_DEALS = [
+  { creator: "@prarthaana.04", brand: "Nykaa Festive", amount: "₹45,000", action: "locked escrow deal" },
+  { creator: "@sehithamd", brand: "DermaCo Clinical", amount: "₹38,000", action: "accepted brand brief" },
+  { creator: "@kushihanamsagar9", brand: "UrbanMonkey", amount: "₹22,000", action: "milestone released" },
+  { creator: "@diptipariharsharma", brand: "FabIndia Festive", amount: "₹52,000", action: "approved 4K master" },
+  { creator: "@vasudha.rai", brand: "Forest Essentials", amount: "₹65,000", action: "campaign locked" },
 ];
 
 export function HeroEditorialShowcase() {
   const { format } = useGlobalCurrency();
   const [activeIdx, setActiveIdx] = useState(0);
+  const [dealIdx, setDealIdx] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [roleModalOpen, setRoleModalOpen] = useState(false);
   const activeTalent = HERO_TALENT[activeIdx];
@@ -117,6 +131,14 @@ export function HeroEditorialShowcase() {
     }, 5000);
     return () => clearInterval(timer);
   }, [isPaused]);
+
+  // Cycle live transactions ticker
+  useEffect(() => {
+    const dealTimer = setInterval(() => {
+      setDealIdx((prev) => (prev + 1) % LIVE_DEALS.length);
+    }, 4200);
+    return () => clearInterval(dealTimer);
+  }, []);
 
   const nextTalent = useCallback(() => {
     setActiveIdx((prev) => (prev + 1) % HERO_TALENT.length);
@@ -153,12 +175,34 @@ export function HeroEditorialShowcase() {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-6 space-y-5 sm:space-y-7 text-left"
           >
-            {/* Live Trust Pill */}
-            <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-[#FAF9F5] dark:bg-[#14141E] border border-black/8 dark:border-white/10 shadow-2xs max-w-full">
-              <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse shrink-0" />
-              <span className="text-[10px] sm:text-[11px] font-mono font-bold tracking-tight text-[#0A0A0E] dark:text-white truncate">
-                “ABEY, LET’S COLLAB.” • THE CREATOR × BRAND COMMERCE PLATFORM
-              </span>
+            {/* Live Trust Pill + Live Dynamic Social Proof Ticker */}
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 max-w-full">
+              <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-[#FAF9F5] dark:bg-[#14141E] border border-black/8 dark:border-white/10 shadow-2xs max-w-full shrink-0">
+                <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse shrink-0" />
+                <span className="text-[10px] sm:text-[11px] font-mono font-bold tracking-tight text-[#0A0A0E] dark:text-white truncate">
+                  “ABEY, LET’S COLLAB.” • COMMERCE PLATFORM
+                </span>
+              </div>
+
+              {/* Dynamic Live Marketplace Activity Ticker */}
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/25 text-[10px] sm:text-[11px] font-mono text-emerald-800 dark:text-emerald-300 max-w-full overflow-hidden shadow-2xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping shrink-0" />
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={dealIdx}
+                    initial={{ opacity: 0, y: 4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -4 }}
+                    transition={{ duration: 0.22 }}
+                    className="truncate text-left"
+                  >
+                    <span className="font-bold text-[#0A0A0E] dark:text-white">{LIVE_DEALS[dealIdx].creator}</span>{" "}
+                    <span>{LIVE_DEALS[dealIdx].action}</span> with{" "}
+                    <span className="font-bold text-[#0A0A0E] dark:text-white">{LIVE_DEALS[dealIdx].brand}</span> •{" "}
+                    <span className="font-extrabold text-[#9A7000] dark:text-[#FFD21F]">{LIVE_DEALS[dealIdx].amount}</span>
+                  </motion.span>
+                </AnimatePresence>
+              </div>
             </div>
 
             {/* Confident Large Headline */}
@@ -228,29 +272,41 @@ export function HeroEditorialShowcase() {
             {/* Top Selector Chips with smooth horizontal scroll on mobile */}
             <div className="w-full max-w-[340px] xs:max-w-[380px] sm:max-w-[440px] flex items-center justify-between mb-3 px-1">
               <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1 scroll-smooth max-w-full -mx-1 px-1">
-                {HERO_TALENT.map((t, i) => (
-                  <button
-                    key={t.id}
-                    onClick={() => {
-                      setActiveIdx(i);
-                      setIsPaused(true);
-                    }}
-                    aria-pressed={activeIdx === i}
-                    aria-label={`Show ${t.name}'s creator profile`}
-                    className={`px-3 py-1.5 rounded-full text-xs font-sans font-bold transition-all flex items-center gap-1.5 shrink-0 ${
-                      activeIdx === i
-                        ? "bg-[#0A0A0E] text-white dark:bg-white dark:text-[#0A0A0E] shadow-sm ring-2 ring-[#FFD21F]"
-                        : "bg-[#F4F4F8] dark:bg-[#14141E] text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/6 dark:border-white/10"
-                    }`}
-                  >
-                    <span
-                      className={`w-1.5 h-1.5 rounded-full ${
-                        activeIdx === i ? "bg-[#FFD21F] animate-pulse" : "bg-black/20 dark:bg-white/20"
+                {HERO_TALENT.map((t, i) => {
+                  const isActive = activeIdx === i;
+                  return (
+                    <button
+                      key={t.id}
+                      onClick={() => {
+                        setActiveIdx(i);
+                        setIsPaused(true);
+                      }}
+                      aria-pressed={isActive}
+                      aria-label={`Show ${t.name}'s creator profile`}
+                      className={`relative overflow-hidden px-3.5 py-1.5 rounded-full text-xs font-sans font-bold transition-all flex items-center gap-1.5 shrink-0 ${
+                        isActive
+                          ? "bg-[#0A0A0E] text-white dark:bg-white dark:text-[#0A0A0E] shadow-sm ring-2 ring-[#FFD21F]"
+                          : "bg-[#F4F4F8] dark:bg-[#14141E] text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/6 dark:border-white/10"
                       }`}
-                    />
-                    <span>{t.name.split(" ")[0]}</span>
-                  </button>
-                ))}
+                    >
+                      <span
+                        className={`w-1.5 h-1.5 rounded-full z-10 ${
+                          isActive ? "bg-[#FFD21F] animate-pulse" : "bg-black/20 dark:bg-white/20"
+                        }`}
+                      />
+                      <span className="z-10">{t.name.split(" ")[0]}</span>
+                      {isActive && !isPaused && (
+                        <motion.span
+                          key={`progress-${i}-${activeIdx}`}
+                          initial={{ width: "0%" }}
+                          animate={{ width: "100%" }}
+                          transition={{ duration: 5, ease: "linear" }}
+                          className="absolute bottom-0 left-0 h-0.5 bg-[#FFD21F] pointer-events-none"
+                        />
+                      )}
+                    </button>
+                  );
+                })}
               </div>
               <div className="hidden sm:flex items-center gap-1 shrink-0 text-xs font-mono text-[#8E8EA4]">
                 <span>0{activeIdx + 1}</span>
@@ -262,7 +318,7 @@ export function HeroEditorialShowcase() {
             {/* Main Interactive Overlapping Portrait Card with 3D Tilt */}
             <InteractiveTiltCard
               maxTilt={9}
-              glowColor="rgba(255, 210, 31, 0.32)"
+              glowColor={activeTalent.glowColor || "rgba(255, 210, 31, 0.32)"}
               className="relative w-full max-w-[300px] xs:max-w-[340px] sm:max-w-[400px] lg:max-w-[430px] aspect-[4/5] rounded-3xl overflow-hidden border-2 border-white dark:border-white/15 shadow-[0_24px_70px_rgba(10,10,14,0.16)] bg-[#0A0A0E] group mx-auto"
             >
               {/* Prev / Next Quick Nav Controls (Accessible on touch and hover) */}

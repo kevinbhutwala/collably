@@ -204,10 +204,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             __html: `
               (function() {
                 try {
-                  localStorage.setItem('abeycollab_theme', 'light');
-                  localStorage.setItem('collably_theme', 'light');
-                  document.documentElement.classList.remove('dark');
-                  document.documentElement.style.colorScheme = 'light';
+                  var saved = localStorage.getItem('abeycollab_theme') || localStorage.getItem('collably_theme');
+                  if (saved === 'dark' || (!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.style.colorScheme = 'dark';
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.style.colorScheme = 'light';
+                  }
                 } catch (e) {}
               })();
             `,

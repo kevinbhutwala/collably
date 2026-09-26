@@ -305,44 +305,54 @@ export function MarketplaceLeaderboards() {
 
             {/* Rank 1 (Gold - Elevated Center) */}
             {top1 && (
-              <Link
-                href={`/creators/${top1.creator.id}`}
-                className="flex flex-col items-center text-center p-4 sm:p-6 rounded-2xl bg-gradient-to-b from-[#FFFDF0] to-[#FFF9DB] dark:from-[#221F10] dark:to-[#16140B] border-2 border-[#FFD21F] shadow-[0_10px_35px_rgba(255,210,31,0.28)] transition-all group hover:-translate-y-1.5 -mt-4 sm:-mt-6"
-              >
-                <div className="flex items-center gap-1 text-2xl sm:text-3xl mb-1.5">
-                  <span>👑</span>
-                  <span className="text-lg sm:text-xl">🥇</span>
-                </div>
-                <div className="relative w-15 h-15 sm:w-22 sm:h-22 rounded-full overflow-hidden border-2 sm:border-3 border-[#FFD21F] bg-neutral-200 dark:bg-neutral-800 shadow-xl ring-4 ring-[#FFD21F]/25">
-                  {top1.creator.avatarUrl ? (
-                    <Image
-                      src={top1.creator.avatarUrl}
-                      alt={top1.creator.fullName}
-                      fill
-                      className="object-cover"
-                    />
-                  ) : (
-                    <div className="flex h-full w-full items-center justify-center font-bold text-xs">
-                      {top1.creator.fullName.charAt(0)}
-                    </div>
-                  )}
-                </div>
-                <div className="mt-2.5 w-full truncate">
-                  <div className="flex items-center justify-center gap-1">
-                    <h4 className="text-xs sm:text-base font-extrabold text-[#0A0A0E] dark:text-white truncate group-hover:text-[#A37F00] dark:group-hover:text-[#FFD21F] transition-colors">
-                      {top1.creator.fullName}
-                    </h4>
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#087F5B] shrink-0" />
+              <div className="relative group -mt-4 sm:-mt-6">
+                {/* Ambient Golden Halo Glow */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFB800] rounded-3xl blur-md opacity-35 group-hover:opacity-75 transition duration-500 group-hover:duration-200 animate-pulse pointer-events-none" />
+
+                <Link
+                  href={`/creators/${top1.creator.id}`}
+                  className="relative flex flex-col items-center text-center p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#FFFDF0] via-[#FFFBE6] to-[#FFF6C8] dark:from-[#221F10] dark:via-[#1C1A0D] dark:to-[#141208] border-2 border-[#FFD21F] shadow-[0_12px_40px_rgba(255,210,31,0.32)] transition-all group-hover:-translate-y-1.5 active:scale-[0.98] block"
+                >
+                  {/* Luxury Corner Tag */}
+                  <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-[#FFD21F]/30 border border-[#FFD21F]/60 text-[9px] font-mono font-black text-[#8A6500] dark:text-[#FFD21F] tracking-wider uppercase">
+                    #1 Leader
                   </div>
-                  <p className="text-[10px] text-neutral-600 dark:text-neutral-400 truncate">
-                    @{top1.creator.handle}
-                  </p>
-                </div>
-                <div className="mt-2 inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-[#FFD21F] text-[10px] font-mono font-extrabold text-[#0A0A0E] shadow-xs">
-                  <Flame className="w-3 h-3 fill-[#0A0A0E]" />
-                  <span>{top1.trendingScore}</span>
-                </div>
-              </Link>
+
+                  <div className="flex items-center gap-1 text-2xl sm:text-3xl mb-1.5">
+                    <span>👑</span>
+                    <span className="text-lg sm:text-xl">🥇</span>
+                  </div>
+                  <div className="relative w-15 h-15 sm:w-22 sm:h-22 rounded-full overflow-hidden border-2 sm:border-3 border-[#FFD21F] bg-neutral-200 dark:bg-neutral-800 shadow-xl ring-4 ring-[#FFD21F]/30 group-hover:ring-[#FFD21F]/60 transition-all">
+                    {top1.creator.avatarUrl ? (
+                      <Image
+                        src={top1.creator.avatarUrl}
+                        alt={top1.creator.fullName}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center font-bold text-xs">
+                        {top1.creator.fullName.charAt(0)}
+                      </div>
+                    )}
+                  </div>
+                  <div className="mt-2.5 w-full truncate">
+                    <div className="flex items-center justify-center gap-1">
+                      <h4 className="text-xs sm:text-base font-extrabold text-[#0A0A0E] dark:text-white truncate group-hover:text-[#A37F00] dark:group-hover:text-[#FFD21F] transition-colors">
+                        {top1.creator.fullName}
+                      </h4>
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#087F5B] shrink-0" />
+                    </div>
+                    <p className="text-[10px] text-neutral-600 dark:text-neutral-400 truncate">
+                      @{top1.creator.handle}
+                    </p>
+                  </div>
+                  <div className="mt-2 inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-gradient-to-r from-[#FFD21F] to-[#FFC700] text-[10px] font-mono font-extrabold text-[#0A0A0E] shadow-sm">
+                    <Flame className="w-3 h-3 fill-[#0A0A0E]" />
+                    <span>Score: {top1.trendingScore}</span>
+                  </div>
+                </Link>
+              </div>
             )}
 
             {/* Rank 3 (Bronze) */}

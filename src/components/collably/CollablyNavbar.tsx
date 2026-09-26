@@ -8,6 +8,7 @@ import { ArrowRight, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Modal } from "@/components/ui/Modal";
 import { CurrencySelector } from "@/components/ui/CurrencySelector";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { cn } from "@/lib/utils";
 
 export function CollablyNavbar() {
@@ -53,12 +54,13 @@ export function CollablyNavbar() {
           </nav>
 
           {/* Right Action CTAs */}
-          <div className="hidden sm:flex items-center gap-3">
+          <div className="hidden sm:flex items-center gap-2.5">
             <CurrencySelector />
+            <ThemeToggle />
 
             <Link
               href="/login"
-              className="text-xs font-bold text-[#0A0A0E] hover:text-black transition-colors font-sans"
+              className="text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8] hover:text-black dark:hover:text-white transition-colors font-sans px-2"
             >
               Sign In
             </Link>
@@ -72,8 +74,9 @@ export function CollablyNavbar() {
             </button>
           </div>
 
-          {/* Mobile Menu Trigger */}
+          {/* Mobile Menu Trigger & Quick Theme Toggle */}
           <div className="flex sm:hidden items-center gap-2">
+            <ThemeToggle className="w-8 h-8 p-1.5" />
             <button
               onClick={() => setRoleModalOpen(true)}
               className="px-3.5 py-1.5 rounded-full text-xs font-bold text-[#0A0A0E] bg-[#FFD21F] shadow-xs font-sans"
@@ -82,7 +85,7 @@ export function CollablyNavbar() {
             </button>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="p-2 rounded-full bg-[#F4F4F8] border border-black/8 text-[#0A0A0E] hover:bg-[#EAEAEF] transition-colors"
+              className="p-2 rounded-full bg-[#F4F4F8] dark:bg-[#14141E] border border-black/8 dark:border-white/10 text-[#0A0A0E] dark:text-white hover:bg-[#EAEAEF] dark:hover:bg-[#1C1C28] transition-colors"
               aria-label="Toggle Menu"
             >
               {mobileOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -99,7 +102,7 @@ export function CollablyNavbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.18 }}
-            className="fixed inset-x-0 top-[64px] z-30 p-5 bg-white border-b border-black/8 shadow-xl flex flex-col gap-3 lg:hidden text-[#0A0A0E]"
+            className="fixed inset-x-0 top-[64px] z-30 p-5 bg-white dark:bg-[#0E0E16] border-b border-black/8 dark:border-white/10 shadow-xl flex flex-col gap-3 lg:hidden text-[#0A0A0E] dark:text-[#F4F4F8]"
           >
             <div className="space-y-1">
               {navLinks.map((link) => (
@@ -107,22 +110,26 @@ export function CollablyNavbar() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="block px-3 py-2.5 rounded-xl text-xs font-bold text-[#5A5A68] hover:text-[#0A0A0E] hover:bg-[#F4F4F8]"
+                  className="block px-3 py-2.5 rounded-xl text-xs font-bold text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-white hover:bg-[#F4F4F8] dark:hover:bg-[#181824]"
                 >
                   {link.label}
                 </Link>
               ))}
             </div>
 
-            <div className="pt-3 border-t border-black/8 flex flex-col gap-2.5">
+            <div className="pt-3 border-t border-black/8 dark:border-white/10 flex flex-col gap-2.5">
               <div className="flex items-center justify-between px-1">
-                <span className="text-xs font-bold text-[#5A5A68]">Currency</span>
+                <span className="text-xs font-bold text-[#5A5A68] dark:text-[#A0A0B4]">Currency</span>
                 <CurrencySelector />
+              </div>
+              <div className="flex items-center justify-between px-1">
+                <span className="text-xs font-bold text-[#5A5A68] dark:text-[#A0A0B4]">Appearance</span>
+                <ThemeToggle showLabel />
               </div>
               <Link
                 href="/login"
                 onClick={() => setMobileOpen(false)}
-                className="w-full py-2.5 text-center rounded-xl bg-[#F4F4F8] text-xs font-bold text-[#0A0A0E]"
+                className="w-full py-2.5 text-center rounded-xl bg-[#F4F4F8] dark:bg-[#181824] text-xs font-bold text-[#0A0A0E] dark:text-white"
               >
                 Sign In
               </Link>
