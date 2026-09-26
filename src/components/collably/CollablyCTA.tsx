@@ -19,7 +19,7 @@ export function AbeyCollabCTA() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8 relative z-10">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF8F2] border border-[#C3EBDA] text-xs font-mono font-semibold text-[#087F5B]">
           <span className="w-2 h-2 rounded-full bg-[#087F5B] animate-pulse" />
-          <span>Founding Creator Cohort &amp; Brand Beta Open</span>
+          <span>“Abey, let’s collab.” • Founding Creator Cohort &amp; Brand Beta Open</span>
         </div>
 
         <div className="space-y-3">
