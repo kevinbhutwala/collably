@@ -1,9 +1,9 @@
 /**
  * Live Production Sanity Test Suite
- * Target: https://abeycollab-alpha.vercel.app
+ * Target: https://www.abeycollab.com (or https://abeycollab-alpha.vercel.app)
  */
 
-const BASE_URL = process.env.LIVE_URL || "https://abeycollab-alpha.vercel.app";
+const BASE_URL = process.env.LIVE_URL || "https://www.abeycollab.com";
 
 console.log("\n================================================================================");
 console.log("🚀 EXECUTING LIVE PRODUCTION SANITY TEST ON VERCEL DEPLOYMENT");
