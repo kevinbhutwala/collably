@@ -99,7 +99,7 @@ export type CreatorProfileSource = 'instagram_public' | 'abeycollab_verified' | 
 
 export interface CreatorDataAttribution {
   instagramDataSourcedAt?: string;
-  rateType?: 'market_benchmark' | 'creator_set' | 'sample_market_estimate';
+  rateType?: 'market_benchmark' | 'creator_set' | 'sample_market_estimate' | 'creator_direct';
   disclaimer?: string;
 }
 
@@ -108,6 +108,7 @@ export interface CreatorProfile {
   userId: string;
   fullName: string;
   handle: string;
+  slug?: string;
   headline: string;
   bio: string;
   avatarUrl: string;

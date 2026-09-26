@@ -18,12 +18,13 @@ export function SlidingTickerRail() {
   ];
 
   const bottomCreators = [
-    { name: "Marques Brownlee", handle: "@mkbhd", niche: "Tech & Hardware", followers: "18.8M", engagement: "7.4%", avatar: "/creators/mkbhd.jpg" },
-    { name: "Sara Dietschy", handle: "@saradietschy", niche: "Studio & Creative Tech", followers: "920K", engagement: "6.8%", avatar: "/creators/sara-dietschy.jpg" },
-    { name: "Peter McKinnon", handle: "@petermckinnon", niche: "Cinematography & Photo", followers: "5.9M", engagement: "6.9%", avatar: "/creators/peter-mckinnon.jpg" },
-    { name: "Ankur Warikoo", handle: "@ankurwarikoo", niche: "Finance & Startups", followers: "3.2M", engagement: "5.8%", avatar: "/creators/ankur-warikoo.webp" },
-    { name: "Prajakta Koli", handle: "@mostlysane", niche: "Comedy & Storytelling", followers: "5.2M", engagement: "6.4%", avatar: "/creators/prajakta-koli.png" },
-    { name: "Tanmay Bhat", handle: "@tanmaybhat", niche: "Fintech & Comedy", followers: "4.8M", engagement: "7.2%", avatar: "/creators/tanmay-bhat.png" },
+    { name: "Prarthana", handle: "@prarthaana.04", niche: "Fashion & Style", followers: "30K", engagement: "6.8%", avatar: "/creators/prarthana.jpg" },
+    { name: "Dipti Parihar Sharma", handle: "@diptipariharsharma", niche: "Contemporary Fashion", followers: "99.3K", engagement: "5.8%", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=80" },
+    { name: "Dr. Sehitha", handle: "@sehithamd", niche: "Skincare Science", followers: "52K", engagement: "6.4%", avatar: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=80" },
+    { name: "Ujwal Puri", handle: "@ompsyram", niche: "Urban Cinematography", followers: "100K", engagement: "7.8%", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&auto=format&fit=crop&q=80" },
+    { name: "Decoding Tech", handle: "@decodingtech", niche: "Tech & Hardware", followers: "81.9K", engagement: "5.2%", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80" },
+    { name: "Ashfina Charania", handle: "@thewickedsoul", niche: "Coffee & Food ASMR", followers: "65K", engagement: "6.9%", avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&auto=format&fit=crop&q=80" },
+    { name: "Kushi Hanamsagar", handle: "@kushihanamsagar9", niche: "Visual Storytelling", followers: "869", engagement: "7.4%", avatar: "/creators/kushi-hanamsagar.jpg" },
   ];
 
   return (

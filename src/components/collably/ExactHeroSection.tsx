@@ -92,18 +92,18 @@ export function ExactHeroSection() {
             <div className="flex items-center gap-3.5 pt-4">
               <div className="flex -space-x-2">
                 <img
-                  src="/creators/sara-dietschy.jpg"
-                  alt="Sara Dietschy"
+                  src="/creators/prarthana.jpg"
+                  alt="Prarthana"
                   className="w-8 h-8 rounded-full border-2 border-white object-cover shadow-xs"
                 />
                 <img
-                  src="/creators/ankur-warikoo.webp"
-                  alt="Ankur Warikoo"
+                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=80"
+                  alt="Dipti Parihar Sharma"
                   className="w-8 h-8 rounded-full border-2 border-white object-cover shadow-xs"
                 />
                 <img
-                  src="/creators/prajakta-koli.png"
-                  alt="Prajakta Koli"
+                  src="/creators/kushi-hanamsagar.jpg"
+                  alt="Kushi Hanamsagar"
                   className="w-8 h-8 rounded-full border-2 border-white object-cover shadow-xs"
                 />
               </div>
