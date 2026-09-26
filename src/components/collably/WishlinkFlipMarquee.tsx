@@ -267,10 +267,10 @@ export function WishlinkFlipMarquee() {
   }, []);
 
   return (
-    <section className="py-14 sm:py-20 bg-[#FAF9F6] border-y border-black/6 select-none overflow-hidden font-sans">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3 mb-10 sm:mb-14">
+    <section className="py-20 sm:py-28 bg-[#FAF9F6] border-y border-black/6 select-none overflow-hidden font-sans">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 mb-12 sm:mb-16">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-black/8 shadow-2xs">
-          <Sparkles className="w-3.5 h-3.5 text-[#FFD21F]" />
+          <Sparkles className="w-3.5 h-3.5 text-[#E98415]" />
           <span className="text-xs font-mono font-bold tracking-tight text-[#0A0A0E]">
             EXCLUSIVE ROSTER &amp; BRAND DEALS
           </span>
@@ -278,7 +278,7 @@ export function WishlinkFlipMarquee() {
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A0A0E] font-display tracking-tight">
           We have The Best With Us
         </h2>
-        <p className="text-sm sm:text-base text-[#5A5A68] max-w-lg mx-auto font-sans font-medium">
+        <p className="text-base sm:text-lg text-[#5A5A68] max-w-lg mx-auto font-sans font-medium">
           Top creators match with category-leading brands. Flip any card to view verified escrow deals.
         </p>
       </div>

@@ -89,65 +89,68 @@ export function WishlinkHeroShowcase() {
 
   return (
     <>
-      <section className="relative min-h-[90vh] bg-white text-[#0A0A0E] flex flex-col justify-center pt-24 sm:pt-28 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden font-sans select-none">
+      <section className="relative min-h-[92vh] bg-white text-[#0A0A0E] flex flex-col justify-center pt-28 sm:pt-36 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden font-sans select-none">
         {/* Soft Ambient Background Aura */}
-        <div className="absolute top-12 left-1/2 -translate-x-1/2 w-[700px] sm:w-[1000px] h-[450px] bg-gradient-to-b from-[#FFD21F]/20 via-[#FFE052]/8 to-transparent rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-12 left-1/2 -translate-x-1/2 w-[700px] sm:w-[1000px] h-[500px] bg-gradient-to-b from-[#FFD21F]/20 via-[#FFE052]/8 to-transparent rounded-full blur-[140px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto w-full relative z-10 flex-1 flex flex-col justify-center">
-          {/* Top Wishlink-Style Proof Badges Bar */}
-          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-6 sm:mb-8">
-            {/* Escrow Partner Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF9F5] border border-black/8 shadow-2xs">
-              <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
-              <span className="text-xs font-mono font-extrabold text-[#0A0A0E]">
-                RAZORPAY ESCROW PARTNER
-              </span>
+          {/* Top Wishlink-Style Header Bar with Official Store Ratings & Partners */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 sm:mb-12 pb-6 border-b border-black/6">
+            {/* Left: Role Switcher */}
+            <div className="inline-flex p-1 rounded-full bg-[#F4F4F8] border border-black/8 shadow-2xs self-start">
+              <button
+                type="button"
+                onClick={() => setActiveTab("creator")}
+                className={`px-5 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
+                  activeTab === "creator"
+                    ? "bg-[#0A0A0E] text-white shadow-xs"
+                    : "text-[#5A5A68] hover:text-[#0A0A0E]"
+                }`}
+              >
+                For Creators
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab("brand")}
+                className={`px-5 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
+                  activeTab === "brand"
+                    ? "bg-[#0A0A0E] text-white shadow-xs"
+                    : "text-[#5A5A68] hover:text-[#0A0A0E]"
+                }`}
+              >
+                For Brands
+              </button>
             </div>
 
-            {/* Ratings & Deal Proof */}
-            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-800 text-xs font-mono font-bold shadow-2xs">
-              <Star className="w-3.5 h-3.5 fill-emerald-600 text-emerald-600" />
-              <span>4.9★ Rating</span>
-              <span className="text-emerald-700/60">• 1,450+ Verified Deals</span>
-            </div>
+            {/* Right: Wishlink-Style App Store & Partner Badges */}
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
+              {/* Meta & Escrow Badge */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF9F5] border border-black/8 shadow-2xs">
+                <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
+                <span className="text-[11px] font-mono font-extrabold text-[#0A0A0E]">
+                  RAZORPAY ESCROW &bull; META GRAPH PARTNER
+                </span>
+              </div>
 
-            {/* Official Tagline */}
-            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] text-xs font-mono font-bold">
-              <span>✨ “Abey, let’s collab.”</span>
+              {/* Play Store Rating */}
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-black/8 text-[#0A0A0E] text-[11px] font-mono font-bold shadow-2xs">
+                <Star className="w-3.5 h-3.5 fill-[#FFD21F] text-[#FFD21F]" />
+                <span>Play Store 4.8★</span>
+              </div>
+
+              {/* App Store Rating */}
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-black/8 text-[#0A0A0E] text-[11px] font-mono font-bold shadow-2xs">
+                <Star className="w-3.5 h-3.5 fill-[#FFD21F] text-[#FFD21F]" />
+                <span>App Store 4.7★</span>
+              </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
             {/* ══════════════════════════════════════════════════════════════════
                 LEFT: WISHLINK-STYLE MINIMALIST, HIGH-IMPACT HEADLINE & CTAS
                 ══════════════════════════════════════════════════════════════════ */}
             <div className="lg:col-span-6 space-y-6 text-left">
-              {/* Creator vs Brand Segment Selector (Wishlink Signature) */}
-              <div className="inline-flex p-1 rounded-full bg-[#F4F4F8] border border-black/8 shadow-2xs">
-                <button
-                  type="button"
-                  onClick={() => setActiveTab("creator")}
-                  className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${
-                    activeTab === "creator"
-                      ? "bg-[#0A0A0E] text-white shadow-xs"
-                      : "text-[#5A5A68] hover:text-[#0A0A0E]"
-                  }`}
-                >
-                  For Creators
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setActiveTab("brand")}
-                  className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${
-                    activeTab === "brand"
-                      ? "bg-[#0A0A0E] text-white shadow-xs"
-                      : "text-[#5A5A68] hover:text-[#0A0A0E]"
-                  }`}
-                >
-                  For Brands
-                </button>
-              </div>
-
               {/* Exact Wishlink-Style Punchy Headline (Less Text) */}
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black font-display tracking-tight text-[#0A0A0E] leading-[1.05]">
                 {activeTab === "creator" ? (

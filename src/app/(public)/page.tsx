@@ -3,16 +3,11 @@ import React from 'react';
 import { WishlinkHeroShowcase } from '@/components/collably/WishlinkHeroShowcase';
 import { WishlinkFlipMarquee } from '@/components/collably/WishlinkFlipMarquee';
 import { WishlinkPillarsSection } from '@/components/collably/WishlinkPillarsSection';
+import { WishlinkSpaciousShowcase } from '@/components/collably/WishlinkSpaciousShowcase';
+import { WishlinkCreatorStories } from '@/components/collably/WishlinkCreatorStories';
+import { WishlinkLaunchpadCTA } from '@/components/collably/WishlinkLaunchpadCTA';
 import { WishlinkStickyCTA } from '@/components/collably/WishlinkStickyCTA';
-import { EditorialCreatorGrid } from '@/components/creators/EditorialCreatorGrid';
-import { ContinuousProductStory } from '@/components/collably/ContinuousProductStory';
-import { InteractiveVideoReviewStudio } from '@/components/collably/InteractiveVideoReviewStudio';
-import { ProtectedEscrowFlow } from '@/components/collably/ProtectedEscrowFlow';
-import { CaseStudiesSection } from '@/components/landing/CaseStudiesSection';
-import { StatsSection } from '@/components/landing/StatsSection';
-import { StreamlinedPricing } from '@/components/collably/StreamlinedPricing';
 import { CompactFAQ } from '@/components/collably/CompactFAQ';
-import { StreamlinedVisualCTA } from '@/components/visual/StreamlinedVisualCTA';
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_APP_URL ||
@@ -24,7 +19,7 @@ export const metadata: Metadata = {
     absolute: 'AbeyCollab — Creator Commerce Platform | Milestone Escrow & Instant Payouts',
   },
   description:
-    'AbeyCollab connects high-growth brands with verified creators through milestone-protected escrow campaigns, transparent rate cards, 4K video deliverable review, and guaranteed 24-hour payouts.',
+    'AbeyCollab connects high-growth brands with verified creators through milestone-protected escrow campaigns, transparent rate cards, Auto-DM engagement, and guaranteed 24-hour payouts.',
   keywords: [
     'creator marketplace',
     'influencer marketing platform',
@@ -68,10 +63,18 @@ const homeFaqJsonLd = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'How does payment protection work?',
+      name: 'How does payment protection work on AbeyCollab?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'When a brand starts a project, they set aside the fee safely with AbeyCollab. The creator knows the money is waiting, and the brand only releases it once they review and approve the final work.',
+        text: 'When a brand starts a project, they deposit 100% of the campaign fee safely into Razorpay Escrow. Creators know the funds are locked and guaranteed before creating content, and the money is released within 24 hours of deliverable approval.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How does the AbeyCollab Engage (Auto-DM) engine work?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'AbeyCollab connects with your Instagram account via official Meta Graph APIs. When brands or followers comment on your reels, your verified media kit, rate card, or product link is automatically sent to their DMs in under 3 seconds.',
       },
     },
     {
@@ -79,15 +82,7 @@ const homeFaqJsonLd = {
       name: "What is AbeyCollab's platform fee?",
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'AbeyCollab charges a simple 10% fee on completed projects. There are zero listing fees or hidden subscription requirements to pitch.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How are video revisions handled?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Creators share draft links directly in the project space. Brands can leave notes, point out specific moments in the video, and request small tweaks easily.',
+        text: 'Joining and creating your verified media kit is 100% free. AbeyCollab charges a simple platform fee on completed brand deals, with zero hidden listing fees or subscriptions.',
       },
     },
     {
@@ -95,7 +90,7 @@ const homeFaqJsonLd = {
       name: 'How quickly do creators get paid?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Payouts are automated and arrive directly in the creator's connected bank account in less than 24 hours (or 2 hours on Pro).",
+        text: 'Payouts are automated and arrive directly in the creator’s connected bank account in less than 24 hours after brand approval.',
       },
     },
   ],
@@ -110,43 +105,28 @@ export default function AbeyCollabLandingPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqJsonLd) }}
       />
       <div className="relative min-h-screen bg-white text-[#0A0A0E] font-sans selection:bg-[#FFD21F] selection:text-[#0A0A0E] overflow-x-hidden">
-        {/* 01 — Wishlink-Style Punchy Minimalist Hero with Floating 3D Stickers */}
+        {/* 01 — Wishlink-Style Minimalist, Spacious Hero with Floating 3D Stickers */}
         <WishlinkHeroShowcase />
 
         {/* 02 — Signature Wishlink Dual-Track 3D Flip Card Marquee ("We have The Best With Us") */}
         <WishlinkFlipMarquee />
 
-        {/* 03 — 3 Core Pillars (Monetise, Engage & Automate DMs, Collaborate Directly) */}
+        {/* 03 — 3 Core Pillars (Monetise with Escrow, Turn Comments into Deals, Direct Brand Collabs) */}
         <WishlinkPillarsSection />
 
-        {/* 04 — Curated Talent Directory with Quick View & Mobile Swipeable Reel */}
-        <EditorialCreatorGrid />
+        {/* 04 — Spacious Wishlink Essentials Visual Showcase with Large Imagery & Breathing Room */}
+        <WishlinkSpaciousShowcase />
 
-        {/* 05 — 7-Step Continuous Product Story OS (Discover → Match → Collab → Review → Approve → Pay → Grow) */}
-        <ContinuousProductStory />
+        {/* 05 — Editorial Creator Stories & Real Brand Partnerships ("Loved by Creators, trusted by Brands") */}
+        <WishlinkCreatorStories />
 
-        {/* 06 — Standout Interactive 4K Timestamped Video QA Review Studio */}
-        <InteractiveVideoReviewStudio />
+        {/* 06 — Wishlink Signature "Your launchpad to success!!" High-Conversion Closing Banner */}
+        <WishlinkLaunchpadCTA />
 
-        {/* 07 — Protected Milestone Escrow & Financial Trust Journey */}
-        <ProtectedEscrowFlow />
-
-        {/* 08 — Audited Enterprise Brand Results & Escrow Guarantee */}
-        <CaseStudiesSection />
-
-        {/* 09 — Platform Performance Metrics */}
-        <StatsSection />
-
-        {/* 10 — Transparent Workspace Pricing with Monthly/Annual Toggle */}
-        <StreamlinedPricing />
-
-        {/* 11 — Compact FAQ & Objection Handlers */}
+        {/* 07 — Clean, Spacious FAQ & Objection Handlers */}
         <CompactFAQ />
 
-        {/* 12 — High-Impact Closing CTA */}
-        <StreamlinedVisualCTA />
-
-        {/* 13 — Signature Wishlink Floating Sticky Bottom Quick Sign-Up Bar */}
+        {/* 08 — Signature Wishlink Floating Sticky Bottom Quick Sign-Up Bar */}
         <WishlinkStickyCTA />
       </div>
     </>
