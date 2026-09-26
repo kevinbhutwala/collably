@@ -872,4 +872,34 @@ html.lenis, html.lenis body {
   border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
+/* ── WISHLINK-STYLE 3D FLIP MARQUEE ANIMATIONS ── */
+@keyframes marqueeLeft {
+  0% {
+    transform: translate3d(0%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-33.333%, 0, 0);
+  }
+}
+
+@keyframes marqueeRight {
+  0% {
+    transform: translate3d(-33.333%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+.animate-marquee-left {
+  animation: marqueeLeft 35s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-right {
+  animation: marqueeRight 35s linear infinite;
+  will-change: transform;
+}
+
+
 

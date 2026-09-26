@@ -160,14 +160,14 @@ export function Navbar() {
                   onClick={() => setRoleModalOpen(true)}
                   className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-extrabold shadow-[0_2px_12px_rgba(255,210,31,0.35)] border border-black/10 transition-all active:scale-98 flex items-center gap-1.5 font-sans hover-lift"
                 >
-                  <span>Get Started</span>
+                  <span>Sign up</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </>
             )}
           </div>
 
-          {/* Mobile & Tablet Hamburger + Quick Start (< 1024px) */}
+          {/* Mobile & Tablet Hamburger + Quick Sign up (< 1024px) */}
           <div className="flex lg:hidden items-center gap-2 shrink-0">
             <CurrencySelector />
             {isAuthenticated ? (
@@ -183,7 +183,7 @@ export function Navbar() {
                 onClick={() => setRoleModalOpen(true)}
                 className="px-3.5 py-1.5 rounded-full text-xs font-extrabold text-[#0A0A0E] bg-gradient-to-r from-[#FFD21F] to-[#FFE052] shadow-xs font-sans border border-black/8 active:scale-95"
               >
-                Start
+                Sign up
               </button>
             )}
             <button
@@ -289,7 +289,7 @@ export function Navbar() {
                       }}
                       className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] text-xs font-extrabold shadow-sm flex items-center justify-center gap-1.5"
                     >
-                      <span>Get Started</span>
+                      <span>Sign up</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </button>
                   </>

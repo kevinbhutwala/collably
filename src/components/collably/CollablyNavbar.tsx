@@ -99,7 +99,7 @@ export function CollablyNavbar() {
                   onClick={() => setRoleModalOpen(true)}
                   className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-xs font-extrabold text-[#0A0A0E] bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] border border-black/10 shadow-[0_2px_12px_rgba(255,210,31,0.4)] active:scale-[0.98] transition-all font-sans"
                 >
-                  <span>Get Started</span>
+                  <span>Sign up</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </>
@@ -121,7 +121,7 @@ export function CollablyNavbar() {
                 onClick={() => setRoleModalOpen(true)}
                 className="px-3.5 py-1.5 rounded-full text-xs font-bold text-[#0A0A0E] bg-[#FFD21F] shadow-xs font-sans"
               >
-                Start
+                Sign up
               </button>
             )}
             <button
@@ -208,7 +208,7 @@ export function CollablyNavbar() {
                     }}
                     className="w-full py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] text-xs font-extrabold"
                   >
-                    Get Started
+                    Sign up
                   </button>
                 </>
               )}
