@@ -109,12 +109,15 @@ export const metadata: Metadata = {
   category: 'Business & Technology',
   icons: {
     icon: [
+      { url: '/favicon.ico', sizes: '48x48' },
+      { url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/favicon-192x192.png', sizes: '192x192', type: 'image/png' },
       { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/favicon.png', type: 'image/png' },
     ],
-    shortcut: '/favicon.svg',
+    shortcut: '/favicon.ico',
     apple: [
-      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],
   },
   manifest: '/manifest.webmanifest',
@@ -127,7 +130,14 @@ const structuredData = [
     name: 'AbeyCollab',
     alternateName: 'AbeyCollab Marketplace',
     url: BASE_URL,
-    logo: `${BASE_URL}/icon.svg`,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${BASE_URL}/branding/abeycollab-icon-square.png`,
+      width: '305',
+      height: '305',
+      caption: 'AbeyCollab Logo',
+    },
+    image: `${BASE_URL}/branding/abeycollab-logo.png`,
     description:
       'Enterprise creator-brand marketplace featuring milestone-protected escrow, transparent rate cards, and instant payouts.',
     foundingDate: '2024',
@@ -184,6 +194,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" suppressHydrationWarning className={`${jakarta.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}>
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="48x48" />
+        <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <script
           dangerouslySetInnerHTML={{
             __html: `

@@ -12,24 +12,36 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: '#FFD21F',
     icons: [
       {
-        src: '/favicon.svg',
-        sizes: 'any',
-        type: 'image/svg+xml',
+        src: '/favicon.ico',
+        sizes: '48x48',
+        type: 'image/x-icon',
       },
       {
-        src: '/favicon.png',
-        sizes: '32x32',
+        src: '/favicon-48x48.png',
+        sizes: '48x48',
         type: 'image/png',
       },
       {
-        src: '/apple-icon.png',
+        src: '/favicon-96x96.png',
+        sizes: '96x96',
+        type: 'image/png',
+      },
+      {
+        src: '/apple-touch-icon.png',
         sizes: '180x180',
         type: 'image/png',
       },
       {
-        src: '/branding/abeycollab-icon-128.png',
-        sizes: '128x128',
+        src: '/favicon-192x192.png',
+        sizes: '192x192',
         type: 'image/png',
+        purpose: 'maskable',
+      },
+      {
+        src: '/favicon-512x512.png',
+        sizes: '512x512',
+        type: 'image/png',
+        purpose: 'maskable',
       },
     ],
   };
