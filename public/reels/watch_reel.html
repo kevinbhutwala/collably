@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AbeyCollab Debut Reel — Studio Player & Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #090d16;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+  .wrapper {
+    max-width: 1080px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Phone Mockup Frame */
+  .phone-frame {
+    width: 360px;
+    height: 640px;
+    background: #000000;
+    border-radius: 44px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 0 10px #1e293b, 0 0 0 12px #334155;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .phone-notch {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 22px;
+    background: #000000;
+    border-radius: 12px;
+    z-index: 10;
+  }
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 36px;
+    display: block;
+  }
+
+  /* Info / Action Panel */
+  .panel {
+    flex: 1;
+    min-width: 320px;
+    max-width: 540px;
+  }
+  .badge {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
+    border: 1px solid rgba(165, 180, 252, 0.3);
+    color: #a5b4fc;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    background: linear-gradient(to right, #ffffff, #cbd5e1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  p {
+    color: #94a3b8;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .btn-group {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 14px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+    transition: transform 0.2s;
+  }
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #f1f5f9;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 14px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-primary:hover, .btn-secondary:hover { transform: translateY(-2px); }
+
+  .card-box {
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .card-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: #e2e8f0;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-code {
+    font-family: monospace;
+    font-size: 12px;
+    color: #94a3b8;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 12px;
+    border-radius: 8px;
+    max-height: 120px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    user-select: all;
+  }
+</style>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Phone Mockup Frame -->
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <video id="reelVideo" autoplay loop muted playsinline controls>
+        <source src="abeycollab_debut_reel.webm" type="video/webm">
+        Your browser does not support WebM video.
+      </video>
+    </div>
+
+    <!-- Info Panel -->
+    <div class="panel">
+      <div class="badge">🎬 Production Ready</div>
+      <h1>AbeyCollab Debut Reel (9:16)</h1>
+      <p>An 18-second viral video reel designed for high retention loops, calling out absurd barter DMs and introducing AbeyCollab's milestone escrow protection.</p>
+
+      <div class="btn-group">
+        <a href="abeycollab_debut_reel.webm" download="abeycollab_debut_reel.webm" class="btn-primary">
+          ⬇️ Download Video (.webm)
+        </a>
+        <a href="abeycollab_reel_preview.html" target="_blank" class="btn-secondary">
+          🖥️ Fullscreen Preview
+        </a>
+      </div>
+
+      <div class="card-box">
+        <div class="card-title">📝 Ready-to-Post Caption (Tap to Copy)</div>
+        <div class="card-code">Tell me your DMs don’t look like this without telling me your DMs don’t look like this… 💀👇
+
+If you’ve ever been offered “exposure” for a 3-day video shoot or had to send 47 follow-ups for an invoice that was due 3 months ago — we built this for you.
+
+Say goodbye to:
+❌ Unpaid "barter" pitches asking for 10 deliverables
+❌ Agency middlemen taking 50% cuts
+❌ Chasing brands for delayed payments
+
+Say hello to @abeycollab:
+🎯 Direct, verified briefs from fast-growing D2C brands in your niche
+🛡️ Milestone Escrow Protection — payments are locked before you shoot & released on time
+💰 0% Platform Commission — you keep 100% of your rate
+
+🔗 Tap link in bio (@abeycollab) to join the early creator cohort!
+
+---
+#creatorcollab #influencerindia #contentcreatorindia #indiancreators #branddeals #influencermarketing #d2cindia #abeycollab</div>
+      </div>
+
+      <div class="card-box">
+        <div class="card-title">🎵 Recommended Trending Sound</div>
+        <p style="margin: 0; font-size: 13px; color: #cbd5e1;">In Instagram Reels editor, pair this video with a trending comedic sound (e.g. dramatic violin or high-energy Phonk beat) set to 20% background volume.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
