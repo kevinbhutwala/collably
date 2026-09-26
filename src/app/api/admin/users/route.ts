@@ -57,8 +57,35 @@ export async function GET(req: NextRequest) {
       });
     }
 
+    interface EnrichedUser {
+      id: string;
+      name: string;
+      email: string;
+      role: string;
+      avatarUrl: string;
+      verified: boolean;
+      createdAt: string;
+      updatedAt?: string;
+      lastLoginAt?: string;
+      lastActiveAt?: string;
+      isOnline: boolean;
+      isLoggedIn: boolean;
+      country?: string;
+      isNew: boolean;
+      isNewThisWeek: boolean;
+      category: string;
+      handle?: string;
+      companyName?: string;
+      followers?: number;
+      tier?: string;
+      profileId?: string;
+      campaignsCount?: number;
+      websiteUrl?: string;
+      bio?: string;
+    }
+
     // Enrich users with linked profile data and live activity state
-    let enrichedUsers = allUsers.map((u) => {
+    let enrichedUsers: EnrichedUser[] = allUsers.map((u) => {
       const creator = creatorByUserId.get(u.id) || creatorByEmail.get(u.email.toLowerCase());
       const brand = brandByUserId.get(u.id);
 

@@ -111,6 +111,7 @@ export interface CreatorDataAttribution {
 export interface CreatorProfile {
   id: string;
   userId: string;
+  email?: string;
   fullName: string;
   handle: string;
   slug?: string;
@@ -188,6 +189,7 @@ export interface CreatorFilterParams {
 export interface BrandProfile {
   id: string;
   userId: string;
+  email?: string;
   companyName: string;
   industry: string;
   headline: string;

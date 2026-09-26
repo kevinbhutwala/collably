@@ -210,7 +210,9 @@ export async function POST(req: NextRequest) {
         },
         rateCards,
       };
-      creatorRepo.createOrUpdate(creatorProfile);
+      if (creatorProfile) {
+        creatorRepo.createOrUpdate(creatorProfile);
+      }
     } else if (role === "brand") {
       const cName = companyName || name;
       brandProfile = {
@@ -232,7 +234,9 @@ export async function POST(req: NextRequest) {
         socialHandles: {},
         createdAt: new Date().toISOString(),
       };
-      brandRepo.createOrUpdate(brandProfile);
+      if (brandProfile) {
+        brandRepo.createOrUpdate(brandProfile);
+      }
     }
 
     const token = createSessionToken({
