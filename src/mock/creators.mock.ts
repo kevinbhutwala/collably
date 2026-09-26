@@ -77,7 +77,7 @@ export const DEVON_THORNE_PROFILE: CreatorProfile = ELENA_ROSTOVA_PROFILE;
  * - Prarthana and Kushi Hanamsagar are retained as core anchor creators.
  * - Mid-tier range: ~30K - 100K followers.
  * - Zero mega-celebrities.
- * - Verified authentic local photos for each creator.
+ * - Verified authentic local photos for each creator directly from Instagram CDN.
  */
 export const MOCK_CREATORS: CreatorProfile[] = [
   {
@@ -388,37 +388,173 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     ]
   },
   {
-    "id": "creator-dipti",
-    "userId": "user-c-dipti",
-    "fullName": "Dipti Parihar Sharma",
-    "handle": "diptipariharsharma",
-    "slug": "diptipariharsharma",
-    "headline": "Contemporary Fashion Stylist & Editorial Lookbook Creator",
-    "bio": "Blending cultural storytelling with modern fashion & editorial draping. Featured in Cosmopolitan & Grazia India.",
-    "avatarUrl": "/creators/dipti-parihar.jpg",
-    "coverImageUrl": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&auto=format&fit=crop&q=80",
-    "location": "Bengaluru, India",
+    "id": "creator-chetali",
+    "userId": "user-c-chetali",
+    "fullName": "Chetali Chadha",
+    "handle": "chetalichadha",
+    "slug": "chetalichadha",
+    "headline": "Skincare Educator & Cosmetic Science Specialist",
+    "bio": "Featured in Elle India. Demystifying active skincare ingredients, sunscreen formulations, and anti-aging science.",
+    "avatarUrl": "/creators/chetali-chadha.jpg",
+    "coverImageUrl": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&auto=format&fit=crop&q=80",
+    "location": "Mumbai, India",
     "region": "India",
     "countryCode": "IN",
     "countryFlag": "🇮🇳",
     "languages": [
       "English",
-      "Hindi",
-      "Kannada"
+      "Hindi"
     ],
-    "primaryCategory": "Fashion & Style",
+    "primaryCategory": "Beauty & Skincare",
     "secondaryCategories": [
-      "Visual Storytelling & Design",
-      "Travel & Lifestyle"
+      "Education & Coaching",
+      "Fitness & Health"
     ],
     "verified": true,
     "featured": true,
     "tier": "Mid-Tier",
-    "rating": 4.96,
-    "completedCampaignsCount": 24,
-    "totalFollowers": 99300,
+    "rating": 4.98,
+    "completedCampaignsCount": 32,
+    "totalFollowers": 78000,
+    "avgEngagementRate": 6.2,
+    "startingPrice": 460,
+    "currency": "USD",
+    "availableForHire": true,
+    "isSignedTalent": true,
+    "profileCompleteness": 100,
+    "qualityScore": 99,
+    "profileSource": "abeycollab_verified",
+    "isInstagramVerified": true,
+    "isAbeyCollabVerified": true,
+    "isClaimedOnAbeyCollab": true,
+    "instagramUrl": "https://www.instagram.com/chetalichadha/",
+    "instagramUsername": "chetalichadha",
+    "turnaroundGuaranteedDays": 4,
+    "dataAttribution": {
+      "instagramDataSourcedAt": "2026-09",
+      "rateType": "creator_direct",
+      "disclaimer": "Verified creator profile on AbeyCollab. Managed with escrow milestone protection."
+    },
+    "socialAccounts": [
+      {
+        "id": "sa-chetali-ig",
+        "platform": "instagram",
+        "handle": "chetalichadha",
+        "url": "https://www.instagram.com/chetalichadha/",
+        "followers": 78000,
+        "engagementRate": 6.2,
+        "avgViews": 46000,
+        "verifiedBadge": true
+      }
+    ],
+    "audience": {
+      "topCountries": [
+        {
+          "country": "India",
+          "percentage": 86
+        },
+        {
+          "country": "United States",
+          "percentage": 6
+        },
+        {
+          "country": "UAE",
+          "percentage": 4
+        }
+      ],
+      "ageDistribution": [
+        {
+          "range": "18-24",
+          "percentage": 38
+        },
+        {
+          "range": "25-34",
+          "percentage": 50
+        },
+        {
+          "range": "35-44",
+          "percentage": 10
+        },
+        {
+          "range": "45+",
+          "percentage": 2
+        }
+      ],
+      "genderSplit": [
+        {
+          "gender": "Female",
+          "percentage": 84
+        },
+        {
+          "gender": "Male",
+          "percentage": 14
+        },
+        {
+          "gender": "Other",
+          "percentage": 2
+        }
+      ],
+      "interests": [
+        "Clinical Skincare",
+        "Ingredient Science",
+        "Anti-Aging",
+        "Barrier Health"
+      ]
+    },
+    "rateCards": [
+      {
+        "id": "rc-cc-1",
+        "deliverableType": "Instagram Reel",
+        "title": "Scientific Ingredient Breakdown Reel (60s)",
+        "description": "Educational reel decoding ingredient percentages, application methodology, and honest verdict.",
+        "basePrice": 460,
+        "turnaroundDays": 4,
+        "revisionsIncluded": 2,
+        "currency": "USD"
+      },
+      {
+        "id": "rc-cc-2",
+        "deliverableType": "Carousel Post",
+        "title": "Skincare Myth-Busting Carousel (6-8 Slides)",
+        "description": "High-res educational infographics and skin texture photography breaking down clinical claims.",
+        "basePrice": 320,
+        "turnaroundDays": 3,
+        "revisionsIncluded": 1,
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "id": "creator-tanya-singh",
+    "userId": "user-c-tanyasingh",
+    "fullName": "Tanya Singh",
+    "handle": "itistanyasingh",
+    "slug": "itistanyasingh",
+    "headline": "Clean Beauty Enthusiast & Daily Skincare Routines",
+    "bio": "Simplifying everyday skincare for sensitive Indian skin. Tested routines, honest product comparisons, and radiant finish tutorials.",
+    "avatarUrl": "/creators/tanya-singh.jpg",
+    "coverImageUrl": "https://images.unsplash.com/photo-1512290900672-1f41d3d63d81?w=1200&auto=format&fit=crop&q=80",
+    "location": "New Delhi, India",
+    "region": "India",
+    "countryCode": "IN",
+    "countryFlag": "🇮🇳",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "primaryCategory": "Beauty & Skincare",
+    "secondaryCategories": [
+      "Fashion & Style",
+      "Lifestyle & Travel"
+    ],
+    "verified": true,
+    "featured": true,
+    "tier": "Mid-Tier",
+    "rating": 4.95,
+    "completedCampaignsCount": 26,
+    "totalFollowers": 64000,
     "avgEngagementRate": 5.8,
-    "startingPrice": 420,
+    "startingPrice": 400,
     "currency": "USD",
     "availableForHire": true,
     "isSignedTalent": true,
@@ -428,8 +564,8 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     "isInstagramVerified": true,
     "isAbeyCollabVerified": true,
     "isClaimedOnAbeyCollab": true,
-    "instagramUrl": "https://www.instagram.com/diptipariharsharma/",
-    "instagramUsername": "diptipariharsharma",
+    "instagramUrl": "https://www.instagram.com/itistanyasingh/",
+    "instagramUsername": "itistanyasingh",
     "turnaroundGuaranteedDays": 4,
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
@@ -438,13 +574,13 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     },
     "socialAccounts": [
       {
-        "id": "sa-dipti-ig",
+        "id": "sa-ts-ig",
         "platform": "instagram",
-        "handle": "diptipariharsharma",
-        "url": "https://www.instagram.com/diptipariharsharma/",
-        "followers": 99300,
+        "handle": "itistanyasingh",
+        "url": "https://www.instagram.com/itistanyasingh/",
+        "followers": 64000,
         "engagementRate": 5.8,
-        "avgViews": 45000,
+        "avgViews": 38000,
         "verifiedBadge": true
       }
     ],
@@ -452,7 +588,7 @@ export const MOCK_CREATORS: CreatorProfile[] = [
       "topCountries": [
         {
           "country": "India",
-          "percentage": 85
+          "percentage": 87
         },
         {
           "country": "United States",
@@ -460,17 +596,17 @@ export const MOCK_CREATORS: CreatorProfile[] = [
         },
         {
           "country": "UAE",
-          "percentage": 5
+          "percentage": 4
         }
       ],
       "ageDistribution": [
         {
           "range": "18-24",
-          "percentage": 48
+          "percentage": 46
         },
         {
           "range": "25-34",
-          "percentage": 42
+          "percentage": 44
         },
         {
           "range": "35-44",
@@ -484,10 +620,147 @@ export const MOCK_CREATORS: CreatorProfile[] = [
       "genderSplit": [
         {
           "gender": "Female",
-          "percentage": 78
+          "percentage": 86
         },
         {
           "gender": "Male",
+          "percentage": 12
+        },
+        {
+          "gender": "Other",
+          "percentage": 2
+        }
+      ],
+      "interests": [
+        "Glass Skin",
+        "Sunscreen Reviews",
+        "Sensitive Skin Routines",
+        "Clean Cosmetics"
+      ]
+    },
+    "rateCards": [
+      {
+        "id": "rc-ts-1",
+        "deliverableType": "Instagram Reel",
+        "title": "Aesthetic Morning Routine & Product Spotlight (60s)",
+        "description": "Natural daylight video demonstrating application texture, skin finish, and direct shopping links.",
+        "basePrice": 400,
+        "turnaroundDays": 4,
+        "revisionsIncluded": 2,
+        "currency": "USD"
+      },
+      {
+        "id": "rc-ts-2",
+        "deliverableType": "Carousel Post",
+        "title": "Step-by-Step Routine Carousel (6 Slides)",
+        "description": "Side-by-side texture swatches and application photography with ingredient callouts.",
+        "basePrice": 270,
+        "turnaroundDays": 3,
+        "revisionsIncluded": 1,
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "id": "creator-mann-vaishnav",
+    "userId": "user-c-mannvaishnav",
+    "fullName": "Mann Vaishnav",
+    "handle": "mr_mannvaishnav",
+    "slug": "mann-vaishnav",
+    "headline": "Men's Skincare, Grooming & Modern Masculine Aesthetics",
+    "bio": "Normalizing skincare & grooming routines for Indian men. Barrier repair, beard grooming & sharp everyday style.",
+    "avatarUrl": "/creators/mann-vaishnav.jpg",
+    "coverImageUrl": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1200&auto=format&fit=crop&q=80",
+    "location": "Jaipur, India",
+    "region": "India",
+    "countryCode": "IN",
+    "countryFlag": "🇮🇳",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "primaryCategory": "Beauty & Skincare",
+    "secondaryCategories": [
+      "Fashion & Style",
+      "Fitness & Health"
+    ],
+    "verified": true,
+    "featured": true,
+    "tier": "Mid-Tier",
+    "rating": 4.96,
+    "completedCampaignsCount": 29,
+    "totalFollowers": 88000,
+    "avgEngagementRate": 5.9,
+    "startingPrice": 440,
+    "currency": "USD",
+    "availableForHire": true,
+    "isSignedTalent": true,
+    "profileCompleteness": 99,
+    "qualityScore": 98,
+    "profileSource": "abeycollab_verified",
+    "isInstagramVerified": true,
+    "isAbeyCollabVerified": true,
+    "isClaimedOnAbeyCollab": true,
+    "instagramUrl": "https://www.instagram.com/mr_mannvaishnav/",
+    "instagramUsername": "mr_mannvaishnav",
+    "turnaroundGuaranteedDays": 4,
+    "dataAttribution": {
+      "instagramDataSourcedAt": "2026-09",
+      "rateType": "creator_direct",
+      "disclaimer": "Verified creator profile on AbeyCollab. Managed with escrow milestone protection."
+    },
+    "socialAccounts": [
+      {
+        "id": "sa-mv-ig",
+        "platform": "instagram",
+        "handle": "mr_mannvaishnav",
+        "url": "https://www.instagram.com/mr_mannvaishnav/",
+        "followers": 88000,
+        "engagementRate": 5.9,
+        "avgViews": 45000,
+        "verifiedBadge": true
+      }
+    ],
+    "audience": {
+      "topCountries": [
+        {
+          "country": "India",
+          "percentage": 88
+        },
+        {
+          "country": "UAE",
+          "percentage": 5
+        },
+        {
+          "country": "United States",
+          "percentage": 4
+        }
+      ],
+      "ageDistribution": [
+        {
+          "range": "18-24",
+          "percentage": 52
+        },
+        {
+          "range": "25-34",
+          "percentage": 40
+        },
+        {
+          "range": "35-44",
+          "percentage": 6
+        },
+        {
+          "range": "45+",
+          "percentage": 2
+        }
+      ],
+      "genderSplit": [
+        {
+          "gender": "Male",
+          "percentage": 78
+        },
+        {
+          "gender": "Female",
           "percentage": 20
         },
         {
@@ -496,40 +769,30 @@ export const MOCK_CREATORS: CreatorProfile[] = [
         }
       ],
       "interests": [
-        "Contemporary Fashion",
-        "Editorial Draping",
-        "Textile Storytelling",
-        "Lookbooks"
+        "Men's Grooming",
+        "Active Skincare",
+        "Haircare",
+        "Casual Menswear"
       ]
     },
     "rateCards": [
       {
-        "id": "rc-dipti-1",
+        "id": "rc-mv-1",
         "deliverableType": "Instagram Reel",
-        "title": "Editorial Fashion & Styling Reel (60s)",
-        "description": "High-production styled reel with narrative pacing, trending audio, and color grading.",
-        "basePrice": 420,
+        "title": "Men's Grooming Routine & Product Integration Reel",
+        "description": "High-energy grooming video showing routine integration, skin texture before/after, and product links.",
+        "basePrice": 440,
         "turnaroundDays": 4,
         "revisionsIncluded": 2,
         "currency": "USD"
       },
       {
-        "id": "rc-dipti-2",
+        "id": "rc-mv-2",
         "deliverableType": "Carousel Post",
-        "title": "Curated Lookbook Photo Carousel (6-8 Slides)",
-        "description": "Editorial lifestyle photography showcasing styling details, texture, and tags.",
-        "basePrice": 280,
+        "title": "Everyday Grooming Essentials (5 Slides)",
+        "description": "Clean flat lays and on-face product shots highlighting texture and ease of application.",
+        "basePrice": 290,
         "turnaroundDays": 3,
-        "revisionsIncluded": 1,
-        "currency": "USD"
-      },
-      {
-        "id": "rc-dipti-3",
-        "deliverableType": "Instagram Story Set (3x)",
-        "title": "Interactive Story Set & Link Sticker",
-        "description": "3x story sequence sharing fit details, fabric feel, and direct brand link.",
-        "basePrice": 140,
-        "turnaroundDays": 2,
         "revisionsIncluded": 1,
         "currency": "USD"
       }
@@ -668,418 +931,6 @@ export const MOCK_CREATORS: CreatorProfile[] = [
         "description": "High-res photography capturing interior details, culinary highlights, and booking guide.",
         "basePrice": 320,
         "turnaroundDays": 4,
-        "revisionsIncluded": 1,
-        "currency": "USD"
-      }
-    ]
-  },
-  {
-    "id": "creator-damini",
-    "userId": "user-c-damini",
-    "fullName": "Damini Sinha",
-    "handle": "daminisinha",
-    "slug": "daminisinha",
-    "headline": "High-Street Fashion, Wardrobe Curation & Clean Beauty Creator",
-    "bio": "Curating transitional seasonal wardrobes, clean beauty routines & high-street styling tips for the modern professional.",
-    "avatarUrl": "/creators/damini-sinha.jpg",
-    "coverImageUrl": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&auto=format&fit=crop&q=80",
-    "location": "New Delhi, India",
-    "region": "India",
-    "countryCode": "IN",
-    "countryFlag": "🇮🇳",
-    "languages": [
-      "English",
-      "Hindi"
-    ],
-    "primaryCategory": "Fashion & Style",
-    "secondaryCategories": [
-      "Beauty & Skincare",
-      "Lifestyle & Travel"
-    ],
-    "verified": true,
-    "featured": true,
-    "tier": "Mid-Tier",
-    "rating": 4.97,
-    "completedCampaignsCount": 29,
-    "totalFollowers": 99900,
-    "avgEngagementRate": 6.1,
-    "startingPrice": 440,
-    "currency": "USD",
-    "availableForHire": true,
-    "isSignedTalent": true,
-    "profileCompleteness": 99,
-    "qualityScore": 98,
-    "profileSource": "abeycollab_verified",
-    "isInstagramVerified": true,
-    "isAbeyCollabVerified": true,
-    "isClaimedOnAbeyCollab": true,
-    "instagramUrl": "https://www.instagram.com/daminisinha/",
-    "instagramUsername": "daminisinha",
-    "turnaroundGuaranteedDays": 4,
-    "dataAttribution": {
-      "instagramDataSourcedAt": "2026-09",
-      "rateType": "creator_direct",
-      "disclaimer": "Verified creator profile on AbeyCollab. Managed with escrow milestone protection."
-    },
-    "socialAccounts": [
-      {
-        "id": "sa-damini-ig",
-        "platform": "instagram",
-        "handle": "daminisinha",
-        "url": "https://www.instagram.com/daminisinha/",
-        "followers": 99900,
-        "engagementRate": 6.1,
-        "avgViews": 48000,
-        "verifiedBadge": true
-      }
-    ],
-    "audience": {
-      "topCountries": [
-        {
-          "country": "India",
-          "percentage": 86
-        },
-        {
-          "country": "United States",
-          "percentage": 5
-        },
-        {
-          "country": "Canada",
-          "percentage": 4
-        }
-      ],
-      "ageDistribution": [
-        {
-          "range": "18-24",
-          "percentage": 44
-        },
-        {
-          "range": "25-34",
-          "percentage": 46
-        },
-        {
-          "range": "35-44",
-          "percentage": 8
-        },
-        {
-          "range": "45+",
-          "percentage": 2
-        }
-      ],
-      "genderSplit": [
-        {
-          "gender": "Female",
-          "percentage": 82
-        },
-        {
-          "gender": "Male",
-          "percentage": 16
-        },
-        {
-          "gender": "Other",
-          "percentage": 2
-        }
-      ],
-      "interests": [
-        "High-Street Styling",
-        "Capsule Wardrobes",
-        "Clean Beauty",
-        "Luxury Fragrance"
-      ]
-    },
-    "rateCards": [
-      {
-        "id": "rc-damini-1",
-        "deliverableType": "Instagram Reel",
-        "title": "Capsule Styling / Wear-it-3-Ways Reel",
-        "description": "Dynamic styling video demonstrating multi-outfit utility with product tags and styling voiceover.",
-        "basePrice": 440,
-        "turnaroundDays": 4,
-        "revisionsIncluded": 2,
-        "currency": "USD"
-      },
-      {
-        "id": "rc-damini-2",
-        "deliverableType": "Carousel Post",
-        "title": "Editorial Outfit Inspiration Carousel (6-8 Slides)",
-        "description": "High-definition photography breaking down textures, accessories, and shopping links.",
-        "basePrice": 300,
-        "turnaroundDays": 3,
-        "revisionsIncluded": 1,
-        "currency": "USD"
-      }
-    ]
-  },
-  {
-    "id": "creator-ujwal",
-    "userId": "user-c-ujwal",
-    "fullName": "Ujwal Puri",
-    "handle": "ompsyram",
-    "slug": "ompsyram",
-    "headline": "Aerial & Urban Travel Photographer",
-    "bio": "Capturing the architectural soul of India's coastal skylines, historic monsoons, and cinematic cityscapes.",
-    "avatarUrl": "/creators/ujwal-puri.jpg",
-    "coverImageUrl": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200&auto=format&fit=crop&q=80",
-    "location": "Mumbai, India",
-    "region": "India",
-    "countryCode": "IN",
-    "countryFlag": "🇮🇳",
-    "languages": [
-      "English",
-      "Hindi",
-      "Marathi"
-    ],
-    "primaryCategory": "Visual Storytelling & Design",
-    "secondaryCategories": [
-      "Travel & Lifestyle",
-      "Tech & Gadgets"
-    ],
-    "verified": true,
-    "featured": true,
-    "tier": "Mid-Tier",
-    "rating": 4.99,
-    "completedCampaignsCount": 38,
-    "totalFollowers": 100000,
-    "avgEngagementRate": 6.8,
-    "startingPrice": 520,
-    "currency": "USD",
-    "availableForHire": true,
-    "isSignedTalent": true,
-    "profileCompleteness": 100,
-    "qualityScore": 99,
-    "profileSource": "abeycollab_verified",
-    "isInstagramVerified": true,
-    "isAbeyCollabVerified": true,
-    "isClaimedOnAbeyCollab": true,
-    "instagramUrl": "https://www.instagram.com/ompsyram/",
-    "instagramUsername": "ompsyram",
-    "turnaroundGuaranteedDays": 5,
-    "dataAttribution": {
-      "instagramDataSourcedAt": "2026-09",
-      "rateType": "creator_direct",
-      "disclaimer": "Verified creator profile on AbeyCollab. Managed with escrow milestone protection."
-    },
-    "socialAccounts": [
-      {
-        "id": "sa-ujwal-ig",
-        "platform": "instagram",
-        "handle": "ompsyram",
-        "url": "https://www.instagram.com/ompsyram/",
-        "followers": 100000,
-        "engagementRate": 6.8,
-        "avgViews": 65000,
-        "verifiedBadge": true
-      }
-    ],
-    "audience": {
-      "topCountries": [
-        {
-          "country": "India",
-          "percentage": 79
-        },
-        {
-          "country": "United States",
-          "percentage": 9
-        },
-        {
-          "country": "United Kingdom",
-          "percentage": 6
-        }
-      ],
-      "ageDistribution": [
-        {
-          "range": "18-24",
-          "percentage": 35
-        },
-        {
-          "range": "25-34",
-          "percentage": 49
-        },
-        {
-          "range": "35-44",
-          "percentage": 13
-        },
-        {
-          "range": "45+",
-          "percentage": 3
-        }
-      ],
-      "genderSplit": [
-        {
-          "gender": "Male",
-          "percentage": 62
-        },
-        {
-          "gender": "Female",
-          "percentage": 36
-        },
-        {
-          "gender": "Other",
-          "percentage": 2
-        }
-      ],
-      "interests": [
-        "Urban Photography",
-        "Drone Filmmaking",
-        "Travel Gear",
-        "Coastal Cityscapes"
-      ]
-    },
-    "rateCards": [
-      {
-        "id": "rc-ujwal-1",
-        "deliverableType": "Instagram Reel",
-        "title": "Cinematic Aerial & Cityscape Reel (4K 60s)",
-        "description": "Drone footage & street-level cinematic storytelling showcasing location, automotive, or camera hardware.",
-        "basePrice": 550,
-        "turnaroundDays": 5,
-        "revisionsIncluded": 2,
-        "currency": "USD"
-      },
-      {
-        "id": "rc-ujwal-2",
-        "deliverableType": "Carousel Post",
-        "title": "Signature Architectural Photo Gallery (5-8 Stills)",
-        "description": "High-resolution RAW developed imagery formatted for editorial and social branding.",
-        "basePrice": 400,
-        "turnaroundDays": 4,
-        "revisionsIncluded": 1,
-        "currency": "USD"
-      }
-    ]
-  },
-  {
-    "id": "creator-decodingtech",
-    "userId": "user-c-decodingtech",
-    "fullName": "Decoding Tech",
-    "handle": "decodingtech",
-    "slug": "decodingtech",
-    "headline": "In-Depth Consumer Tech Reviews & Clean Desk Setups",
-    "bio": "Honest smartphone reviews, audio gear tests & aesthetic productivity setups. Zero sponsored hype, 100% real testing.",
-    "avatarUrl": "/creators/decoding-tech.jpg",
-    "coverImageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&auto=format&fit=crop&q=80",
-    "location": "Pune, India",
-    "region": "India",
-    "countryCode": "IN",
-    "countryFlag": "🇮🇳",
-    "languages": [
-      "English",
-      "Hindi"
-    ],
-    "primaryCategory": "Tech & Gadgets",
-    "secondaryCategories": [
-      "Visual Storytelling & Design",
-      "Gaming & Entertainment"
-    ],
-    "verified": true,
-    "featured": true,
-    "tier": "Mid-Tier",
-    "rating": 4.94,
-    "completedCampaignsCount": 27,
-    "totalFollowers": 81900,
-    "avgEngagementRate": 5.4,
-    "startingPrice": 450,
-    "currency": "USD",
-    "availableForHire": true,
-    "isSignedTalent": true,
-    "profileCompleteness": 99,
-    "qualityScore": 97,
-    "profileSource": "abeycollab_verified",
-    "isInstagramVerified": true,
-    "isAbeyCollabVerified": true,
-    "isClaimedOnAbeyCollab": true,
-    "instagramUrl": "https://www.instagram.com/decodingtech/",
-    "instagramUsername": "decodingtech",
-    "turnaroundGuaranteedDays": 6,
-    "dataAttribution": {
-      "instagramDataSourcedAt": "2026-09",
-      "rateType": "creator_direct",
-      "disclaimer": "Verified creator profile on AbeyCollab. Managed with escrow milestone protection."
-    },
-    "socialAccounts": [
-      {
-        "id": "sa-decodingtech-ig",
-        "platform": "instagram",
-        "handle": "decodingtech",
-        "url": "https://www.instagram.com/decodingtech/",
-        "followers": 81900,
-        "engagementRate": 5.4,
-        "avgViews": 42000,
-        "verifiedBadge": true
-      }
-    ],
-    "audience": {
-      "topCountries": [
-        {
-          "country": "India",
-          "percentage": 84
-        },
-        {
-          "country": "United States",
-          "percentage": 7
-        },
-        {
-          "country": "UAE",
-          "percentage": 4
-        }
-      ],
-      "ageDistribution": [
-        {
-          "range": "18-24",
-          "percentage": 52
-        },
-        {
-          "range": "25-34",
-          "percentage": 39
-        },
-        {
-          "range": "35-44",
-          "percentage": 7
-        },
-        {
-          "range": "45+",
-          "percentage": 2
-        }
-      ],
-      "genderSplit": [
-        {
-          "gender": "Male",
-          "percentage": 81
-        },
-        {
-          "gender": "Female",
-          "percentage": 17
-        },
-        {
-          "gender": "Other",
-          "percentage": 2
-        }
-      ],
-      "interests": [
-        "Consumer Electronics",
-        "Smartphones",
-        "Clean Desk Setups",
-        "Mechanical Keyboards"
-      ]
-    },
-    "rateCards": [
-      {
-        "id": "rc-dt-1",
-        "deliverableType": "Instagram Reel",
-        "title": "Cinematic Tech Unboxing & Feature Breakdown (60s)",
-        "description": "High frame-rate macro shots, honest pros & cons breakdown, and real-world performance test.",
-        "basePrice": 450,
-        "turnaroundDays": 5,
-        "revisionsIncluded": 2,
-        "currency": "USD"
-      },
-      {
-        "id": "rc-dt-2",
-        "deliverableType": "Carousel Post",
-        "title": "Desk Setup Feature & Hardware Breakdown (6-8 Slides)",
-        "description": "Aesthetic studio photography highlighting ergonomic and aesthetic integration.",
-        "basePrice": 300,
-        "turnaroundDays": 3,
         "revisionsIncluded": 1,
         "currency": "USD"
       }
@@ -1490,6 +1341,143 @@ export const MOCK_CREATORS: CreatorProfile[] = [
         "deliverableType": "Carousel Post",
         "title": "5-Slide Routine Breakdown & Ingredient Review",
         "description": "Macro skin texture shots, ingredient list callouts, and direct purchase sticker.",
+        "basePrice": 260,
+        "turnaroundDays": 3,
+        "revisionsIncluded": 1,
+        "currency": "USD"
+      }
+    ]
+  },
+  {
+    "id": "creator-sid",
+    "userId": "user-c-sid",
+    "fullName": "Sid Bhawsar",
+    "handle": "thesept_boy",
+    "slug": "sid-bhawsar",
+    "headline": "Men's Everyday Aesthetics, Minimalist Styling & Grooming",
+    "bio": "Known as @thesept_boy. Simplifying classic men's sophistication with wearable, comfortable contemporary styling.",
+    "avatarUrl": "/creators/sid-bhawsar.jpg",
+    "coverImageUrl": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&auto=format&fit=crop&q=80",
+    "location": "Indore, India",
+    "region": "India",
+    "countryCode": "IN",
+    "countryFlag": "🇮🇳",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "primaryCategory": "Fashion & Style",
+    "secondaryCategories": [
+      "Visual Storytelling & Design",
+      "Lifestyle & Travel"
+    ],
+    "verified": true,
+    "featured": true,
+    "tier": "Mid-Tier",
+    "rating": 4.94,
+    "completedCampaignsCount": 24,
+    "totalFollowers": 92000,
+    "avgEngagementRate": 5.7,
+    "startingPrice": 390,
+    "currency": "USD",
+    "availableForHire": true,
+    "isSignedTalent": true,
+    "profileCompleteness": 98,
+    "qualityScore": 97,
+    "profileSource": "abeycollab_verified",
+    "isInstagramVerified": true,
+    "isAbeyCollabVerified": true,
+    "isClaimedOnAbeyCollab": true,
+    "instagramUrl": "https://www.instagram.com/thesept_boy/",
+    "instagramUsername": "thesept_boy",
+    "turnaroundGuaranteedDays": 4,
+    "dataAttribution": {
+      "instagramDataSourcedAt": "2026-09",
+      "rateType": "creator_direct",
+      "disclaimer": "Verified creator profile on AbeyCollab. Managed with escrow milestone protection."
+    },
+    "socialAccounts": [
+      {
+        "id": "sa-sid-ig",
+        "platform": "instagram",
+        "handle": "thesept_boy",
+        "url": "https://www.instagram.com/thesept_boy/",
+        "followers": 92000,
+        "engagementRate": 5.7,
+        "avgViews": 40000,
+        "verifiedBadge": true
+      }
+    ],
+    "audience": {
+      "topCountries": [
+        {
+          "country": "India",
+          "percentage": 85
+        },
+        {
+          "country": "United States",
+          "percentage": 6
+        },
+        {
+          "country": "UAE",
+          "percentage": 4
+        }
+      ],
+      "ageDistribution": [
+        {
+          "range": "18-24",
+          "percentage": 50
+        },
+        {
+          "range": "25-34",
+          "percentage": 41
+        },
+        {
+          "range": "35-44",
+          "percentage": 7
+        },
+        {
+          "range": "45+",
+          "percentage": 2
+        }
+      ],
+      "genderSplit": [
+        {
+          "gender": "Male",
+          "percentage": 75
+        },
+        {
+          "gender": "Female",
+          "percentage": 23
+        },
+        {
+          "gender": "Other",
+          "percentage": 2
+        }
+      ],
+      "interests": [
+        "Minimalist Wardrobe",
+        "Layering Guides",
+        "Sneaker Pairings",
+        "Men's Fragrance"
+      ]
+    },
+    "rateCards": [
+      {
+        "id": "rc-sid-1",
+        "deliverableType": "Instagram Reel",
+        "title": "Minimalist Men's Fit Breakdown Reel (60s)",
+        "description": "Relatable styling guide explaining fabric weight, color coordination, and footwear pairings.",
+        "basePrice": 390,
+        "turnaroundDays": 4,
+        "revisionsIncluded": 2,
+        "currency": "USD"
+      },
+      {
+        "id": "rc-sid-2",
+        "deliverableType": "Carousel Post",
+        "title": "Everyday Outfit Grid & Texture Gallery",
+        "description": "Clean flat lays and on-body photos detailing accessible staple pieces.",
         "basePrice": 260,
         "turnaroundDays": 3,
         "revisionsIncluded": 1,
@@ -1910,16 +1898,16 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     ]
   },
   {
-    "id": "creator-sid",
-    "userId": "user-c-sid",
-    "fullName": "Sid Bhawsar",
-    "handle": "thesept_boy",
-    "slug": "sid-bhawsar",
-    "headline": "Men's Everyday Aesthetics, Minimalist Styling & Grooming",
-    "bio": "Known as @thesept_boy. Simplifying classic men's sophistication with wearable, comfortable contemporary styling.",
-    "avatarUrl": "/creators/sid-bhawsar.jpg",
-    "coverImageUrl": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&auto=format&fit=crop&q=80",
-    "location": "Indore, India",
+    "id": "creator-vasudha",
+    "userId": "user-c-vasudha",
+    "fullName": "Vasudha Rai",
+    "handle": "vasudha.rai",
+    "slug": "vasudha-rai",
+    "headline": "Holistic Beauty Author & Clean Wellness Columnist",
+    "bio": "Author of Glow. Former beauty director. Holistic rituals, ayurvedic herbal formulations & radiant skin wellness.",
+    "avatarUrl": "/creators/vasudha-rai.jpg",
+    "coverImageUrl": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1200&auto=format&fit=crop&q=80",
+    "location": "New Delhi, India",
     "region": "India",
     "countryCode": "IN",
     "countryFlag": "🇮🇳",
@@ -1927,30 +1915,30 @@ export const MOCK_CREATORS: CreatorProfile[] = [
       "English",
       "Hindi"
     ],
-    "primaryCategory": "Fashion & Style",
+    "primaryCategory": "Beauty & Skincare",
     "secondaryCategories": [
-      "Visual Storytelling & Design",
-      "Lifestyle & Travel"
+      "Fitness & Health",
+      "Education & Coaching"
     ],
     "verified": true,
     "featured": true,
     "tier": "Mid-Tier",
-    "rating": 4.94,
-    "completedCampaignsCount": 24,
-    "totalFollowers": 92000,
-    "avgEngagementRate": 5.7,
-    "startingPrice": 390,
+    "rating": 4.98,
+    "completedCampaignsCount": 35,
+    "totalFollowers": 82000,
+    "avgEngagementRate": 6.1,
+    "startingPrice": 500,
     "currency": "USD",
     "availableForHire": true,
     "isSignedTalent": true,
-    "profileCompleteness": 98,
-    "qualityScore": 97,
+    "profileCompleteness": 100,
+    "qualityScore": 99,
     "profileSource": "abeycollab_verified",
     "isInstagramVerified": true,
     "isAbeyCollabVerified": true,
     "isClaimedOnAbeyCollab": true,
-    "instagramUrl": "https://www.instagram.com/thesept_boy/",
-    "instagramUsername": "thesept_boy",
+    "instagramUrl": "https://www.instagram.com/vasudha.rai/",
+    "instagramUsername": "vasudha.rai",
     "turnaroundGuaranteedDays": 4,
     "dataAttribution": {
       "instagramDataSourcedAt": "2026-09",
@@ -1959,13 +1947,13 @@ export const MOCK_CREATORS: CreatorProfile[] = [
     },
     "socialAccounts": [
       {
-        "id": "sa-sid-ig",
+        "id": "sa-vr-ig",
         "platform": "instagram",
-        "handle": "thesept_boy",
-        "url": "https://www.instagram.com/thesept_boy/",
-        "followers": 92000,
-        "engagementRate": 5.7,
-        "avgViews": 40000,
+        "handle": "vasudha.rai",
+        "url": "https://www.instagram.com/vasudha.rai/",
+        "followers": 82000,
+        "engagementRate": 6.1,
+        "avgViews": 42000,
         "verifiedBadge": true
       }
     ],
@@ -1973,43 +1961,43 @@ export const MOCK_CREATORS: CreatorProfile[] = [
       "topCountries": [
         {
           "country": "India",
-          "percentage": 85
+          "percentage": 83
         },
         {
           "country": "United States",
-          "percentage": 6
+          "percentage": 8
         },
         {
-          "country": "UAE",
-          "percentage": 4
+          "country": "United Kingdom",
+          "percentage": 5
         }
       ],
       "ageDistribution": [
         {
           "range": "18-24",
-          "percentage": 50
+          "percentage": 25
         },
         {
           "range": "25-34",
-          "percentage": 41
+          "percentage": 55
         },
         {
           "range": "35-44",
-          "percentage": 7
+          "percentage": 16
         },
         {
           "range": "45+",
-          "percentage": 2
+          "percentage": 4
         }
       ],
       "genderSplit": [
         {
-          "gender": "Male",
-          "percentage": 75
+          "gender": "Female",
+          "percentage": 88
         },
         {
-          "gender": "Female",
-          "percentage": 23
+          "gender": "Male",
+          "percentage": 10
         },
         {
           "gender": "Other",
@@ -2017,29 +2005,29 @@ export const MOCK_CREATORS: CreatorProfile[] = [
         }
       ],
       "interests": [
-        "Minimalist Wardrobe",
-        "Layering Guides",
-        "Sneaker Pairings",
-        "Men's Fragrance"
+        "Ayurvedic Beauty",
+        "Holistic Wellness",
+        "Skin Diet",
+        "Herbal Actives"
       ]
     },
     "rateCards": [
       {
-        "id": "rc-sid-1",
+        "id": "rc-vr-1",
         "deliverableType": "Instagram Reel",
-        "title": "Minimalist Men's Fit Breakdown Reel (60s)",
-        "description": "Relatable styling guide explaining fabric weight, color coordination, and footwear pairings.",
-        "basePrice": 390,
+        "title": "Holistic Skin Ritual & Wellness Masterclass Reel",
+        "description": "Calm, thoughtful video narrating botanicals, lifestyle habits, and application mindfulness.",
+        "basePrice": 500,
         "turnaroundDays": 4,
         "revisionsIncluded": 2,
         "currency": "USD"
       },
       {
-        "id": "rc-sid-2",
+        "id": "rc-vr-2",
         "deliverableType": "Carousel Post",
-        "title": "Everyday Outfit Grid & Texture Gallery",
-        "description": "Clean flat lays and on-body photos detailing accessible staple pieces.",
-        "basePrice": 260,
+        "title": "Herbal Actives & Routine Guide Carousel (6 Slides)",
+        "description": "Editorial aesthetic breakdown of formulation benefits, skin physiology, and usage guide.",
+        "basePrice": 340,
         "turnaroundDays": 3,
         "revisionsIncluded": 1,
         "currency": "USD"
