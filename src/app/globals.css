@@ -151,15 +151,6 @@
   button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
 }
 
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
-}
-
 /* ══════════════════════════════════════════════════════════════════════════
    #FFD21F & PURE WHITE LUXURY GRADIENT UTILITIES
    ══════════════════════════════════════════════════════════════════════════ */
