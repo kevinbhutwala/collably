@@ -20,10 +20,10 @@ LOG_PATH = os.path.join(os.path.dirname(__file__), "../data/creator_outreach_log
 
 SMTP_HOST = "smtp.gmail.com"
 SMTP_PORT = 465
-SENDER_EMAIL = os.environ.get("SENDER_EMAIL", "iisshhaa012000@gmail.com")
+SENDER_EMAIL = os.environ.get("SENDER_EMAIL", "abeycollabisha@gmail.com")
 REPLY_TO_EMAIL = "abeycollab@gmail.com"
-SENDER_NAME = "Kevin Bhutwala | AbeyCollab"
-DEFAULT_PASSWORD = os.environ.get("GMAIL_APP_PASSWORD", "")
+SENDER_NAME = "Isha | AbeyCollab"
+DEFAULT_PASSWORD = os.environ.get("GMAIL_APP_PASSWORD", "syrm cpid dwrj uqcw")
 
 
 def get_first_name(full_name: str) -> str:
