@@ -210,7 +210,7 @@ def main():
         status = row.get("Status", "").strip()
 
         # Check status
-        if status.lower().startswith("replied") or status.lower().startswith("skip"):
+        if status.lower().startswith("replied") or status.lower().startswith("skip") or status.lower().startswith("sent"):
             print(f"[-] [{idx}/{len(leads)}] Skipping {brand_name} (Status: {status})")
             skipped_count += 1
             continue
@@ -248,7 +248,16 @@ def main():
             try:
                 server.sendmail(SENDER_EMAIL, [recipient_email], msg.as_string())
                 print(f"[+] [{idx}/{len(leads)}] Sent to {brand_name} <{recipient_email}>")
+                row["Status"] = f"Sent ({time.strftime('%Y-%m-%d %H:%M')})"
                 success_count += 1
+                
+                # Persist status immediately to CSV
+                with open(CSV_FILE_PATH, mode="w", encoding="utf-8", newline="") as f_out:
+                    fieldnames = ["Brand Name", "Category", "Email ID", "Instagram Handle", "Website", "Pitch Hook / Angle", "Status"]
+                    writer = csv.DictWriter(f_out, fieldnames=fieldnames)
+                    writer.writeheader()
+                    writer.writerows(leads)
+                
                 time.sleep(2)  # Pause between sends to adhere to rate limits
             except Exception as e:
                 print(f"[!] Failed to send to {brand_name} ({recipient_email}): {e}")
