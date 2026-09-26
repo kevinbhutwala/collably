@@ -244,12 +244,10 @@ def main():
                 print(f"[!] Failed to send to {creator_name} ({email_addr}): {err_str}")
                 log_send(creator_name, email_addr, subject, f"Failed: {err_str}")
                 if '550' in err_str and 'limit' in err_str.lower():
-                    print("
-[!] Gmail daily sending limit reached for today (550). Halting further dispatches to protect account reputation.")
+                    print("\n[!] Gmail daily sending limit reached for today (550). Halting further dispatches to protect account reputation.")
                     break
                 elif 'closed' in err_str.lower() or 'connect' in err_str.lower():
-                    print("
-[!] SMTP connection terminated by host. Halting dispatch.")
+                    print("\n[!] SMTP connection terminated by host. Halting dispatch.")
                     break
 
         if args.limit and sent_count >= args.limit:
