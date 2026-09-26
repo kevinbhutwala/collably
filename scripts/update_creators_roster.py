@@ -3,8 +3,8 @@
 Update AbeyCollab Creators Roster:
 - 70% Indian Creators (14 creators) & 30% USA Creators (6 creators) = 20 creators total.
 - Retains Prarthana (30K) and Kushi Hanamsagar (869) exactly as they are.
-- Zero mega-celebrities (No MKBHD, Bhuvan Bam, Tanmay Bhat, Zakir Khan, Peter McKinnon, Sara Dietschy, Ali Abdaal, Zach King, Ankur Warikoo, etc.).
-- All replacement creators are verified real creators in the 50K–100K range.
+- Local avatar URLs for instant, high-resolution rendering.
+- Zero mega-celebrities.
 - Synchronizes data/valence_db.json and src/mock/creators.mock.ts.
 """
 
@@ -25,6 +25,7 @@ kushi = next(c for c in existing_creators if "kushi" in c.get("fullName", "").lo
 prarthana["region"] = "India"
 prarthana["countryCode"] = "IN"
 prarthana["countryFlag"] = "🇮🇳"
+prarthana["avatarUrl"] = "/creators/prarthana.jpg"
 prarthana["verified"] = True
 prarthana["featured"] = True
 prarthana["isAbeyCollabVerified"] = True
@@ -33,6 +34,7 @@ prarthana["isInstagramVerified"] = True
 kushi["region"] = "India"
 kushi["countryCode"] = "IN"
 kushi["countryFlag"] = "🇮🇳"
+kushi["avatarUrl"] = "/creators/kushi-hanamsagar.jpg"
 kushi["verified"] = True
 kushi["featured"] = True
 kushi["isAbeyCollabVerified"] = True
@@ -49,7 +51,7 @@ INDIAN_CREATORS = [
         "slug": "diptipariharsharma",
         "headline": "Contemporary Fashion Stylist & Editorial Lookbook Creator",
         "bio": "Blending cultural storytelling with modern fashion & editorial draping. Featured in Cosmopolitan & Grazia India.",
-        "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=80",
+        "avatarUrl": "/creators/dipti-parihar.jpg",
         "coverImageUrl": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&auto=format&fit=crop&q=80",
         "location": "Bengaluru, India",
         "region": "India",
@@ -115,7 +117,7 @@ INDIAN_CREATORS = [
         "slug": "sehithamd",
         "headline": "Board-Certified Dermatologist & Clinical Skin Science Educator",
         "bio": "MD Dermatology. Demystifying active skincare ingredients, barrier repair science, and clinical skin health.",
-        "avatarUrl": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=80",
+        "avatarUrl": "/creators/dr-sehitha.jpg",
         "coverImageUrl": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&auto=format&fit=crop&q=80",
         "location": "Hyderabad, India",
         "region": "India",
@@ -181,7 +183,7 @@ INDIAN_CREATORS = [
         "slug": "decodingtech",
         "headline": "Honest Hardware & Consumer Tech Reviewer",
         "bio": "Clear, jargon-free hardware reviews, battery benchmarks, and everyday consumer audio testing.",
-        "avatarUrl": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=800&auto=format&fit=crop&q=80",
+        "avatarUrl": "/creators/decoding-tech.jpg",
         "coverImageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&auto=format&fit=crop&q=80",
         "location": "Pune, India",
         "region": "India",
@@ -247,7 +249,7 @@ INDIAN_CREATORS = [
         "slug": "thewickedsoul",
         "headline": "Specialty Coffee Roaster & Artisanal Culinary ASMR",
         "bio": "Culinary visualist documenting artisanal coffee roasters, pour-over rituals, and Mumbai dining culture.",
-        "avatarUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&auto=format&fit=crop&q=80",
+        "avatarUrl": "/creators/ashfina-charania.jpg",
         "coverImageUrl": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1200&auto=format&fit=crop&q=80",
         "location": "Mumbai, India",
         "region": "India",
@@ -313,7 +315,7 @@ INDIAN_CREATORS = [
         "slug": "daminisinha",
         "headline": "Streetwear Stylist & Capsule Wardrobe Designer",
         "bio": "Curating high-low streetwear, relaxed tailoring, and functional modular wardrobes in New Delhi.",
-        "avatarUrl": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&auto=format&fit=crop&q=80",
+        "avatarUrl": "/creators/damini-sinha.jpg",
         "coverImageUrl": "https://images.unsplash.com/photo-1445205170230-053b83016050?w=1200&auto=format&fit=crop&q=80",
         "location": "New Delhi, India",
         "region": "India",
@@ -379,7 +381,7 @@ INDIAN_CREATORS = [
         "slug": "harish_vekariya88",
         "headline": "Calisthenics Athlete & Functional Movement Coach",
         "bio": "Guiding bodyweight strength progressions, mobility protocols, and joint longevity in Ahmedabad.",
-        "avatarUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&auto=format&fit=crop&q=80",
+        "avatarUrl": "/creators/harish-vekariya.jpg",
         "coverImageUrl": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=1200&auto=format&fit=crop&q=80",
         "location": "Ahmedabad, India",
         "region": "India",
@@ -445,7 +447,7 @@ INDIAN_CREATORS = [
         "slug": "ompsyram",
         "headline": "Urban Architectural Cinematographer & Drone Pilot",
         "bio": "Capturing Mumbai's architectural silhouettes, maritime horizons, and atmospheric rain aesthetics.",
-        "avatarUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&auto=format&fit=crop&q=80",
+        "avatarUrl": "/creators/ujwal-puri.jpg",
         "coverImageUrl": "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=1200&auto=format&fit=crop&q=80",
         "location": "Mumbai, India",
         "region": "India",
@@ -511,7 +513,7 @@ INDIAN_CREATORS = [
         "slug": "yoganshi31",
         "headline": "Campus Style & Everyday Relatable Fashion",
         "bio": "Budget styling, campus everyday fits, and accessible thrift flips for Gen-Z college students.",
-        "avatarUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&auto=format&fit=crop&q=80",
+        "avatarUrl": "/creators/yoganshi.jpg",
         "coverImageUrl": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&auto=format&fit=crop&q=80",
         "location": "Jaipur, India",
         "region": "India",
@@ -577,7 +579,7 @@ INDIAN_CREATORS = [
         "slug": "gurfanshaikh",
         "headline": "Desk Setup Architect & Mechanical Keyboard Enthusiast",
         "bio": "Minimalist mechanical keyboard sound tests, ergonomic desk ergonomics, and ambient lighting.",
-        "avatarUrl": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&auto=format&fit=crop&q=80",
+        "avatarUrl": "/creators/gurfan-shaikh.jpg",
         "coverImageUrl": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=1200&auto=format&fit=crop&q=80",
         "location": "Bengaluru, India",
         "region": "India",
@@ -643,7 +645,7 @@ INDIAN_CREATORS = [
         "slug": "namratha.achar",
         "headline": "Strength & Mobility Athlete / Conditioning Coach",
         "bio": "Olympic weightlifting fundamentals, joint stability, and clean performance nutrition in Bengaluru.",
-        "avatarUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&q=80",
+        "avatarUrl": "/creators/namratha-achar.jpg",
         "coverImageUrl": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=1200&auto=format&fit=crop&q=80",
         "location": "Bengaluru, India",
         "region": "India",
@@ -708,8 +710,8 @@ INDIAN_CREATORS = [
         "handle": "shriyadwivedi",
         "slug": "shriyadwivedi",
         "headline": "Boutique Stays & Mindful Travel Visual Storyteller",
-        "bio": "Curating slow-living retreats, boutique eco-stays, and coastal aesthetic photography.",
-        "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=80",
+        "bio": "Curating slow-living retreats, boutique eco-stays, and coastal aesthetic photography in Goa.",
+        "avatarUrl": "/creators/shriya-dwivedi.jpg",
         "coverImageUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&auto=format&fit=crop&q=80",
         "location": "Goa, India",
         "region": "India",
@@ -775,7 +777,7 @@ INDIAN_CREATORS = [
         "slug": "subtle.strength",
         "headline": "Strength & Conditioning Coach / Functional Performance",
         "bio": "Intentional athletic strength training, joint durability, and sustainable conditioning for high performers in Mumbai.",
-        "avatarUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&auto=format&fit=crop&q=80",
+        "avatarUrl": "/creators/kunal-rajput.jpg",
         "coverImageUrl": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=1200&auto=format&fit=crop&q=80",
         "location": "Mumbai, India",
         "region": "India",
@@ -844,7 +846,7 @@ USA_CREATORS = [
         "slug": "daniel_titchener",
         "headline": "Architectural Designer & Minimalist Workspace Curator",
         "bio": "Exploring intentional living, architectural ergonomics, and calm computing environments in Austin.",
-        "avatarUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80",
+        "avatarUrl": "/creators/daniel-titchener.jpg",
         "coverImageUrl": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&auto=format&fit=crop&q=80",
         "location": "Austin, TX, USA",
         "region": "United States",
@@ -910,7 +912,7 @@ USA_CREATORS = [
         "slug": "caimarsalizi",
         "headline": "Workspace Aesthetics & Creative Tech Curator",
         "bio": "Designing serene, tactile creative spaces, custom desk ergonomics, and audio-visual setups in Los Angeles.",
-        "avatarUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80",
+        "avatarUrl": "/creators/caimar-salizi.jpg",
         "coverImageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&auto=format&fit=crop&q=80",
         "location": "Los Angeles, CA, USA",
         "region": "United States",
@@ -976,7 +978,7 @@ USA_CREATORS = [
         "slug": "cameracave",
         "headline": "Independent Cinematographer & Camera Rig Reviewer",
         "bio": "Practical camera build tests, cinema lenses, optical filters, and indie filmmaking workflows in New York.",
-        "avatarUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&auto=format&fit=crop&q=80",
+        "avatarUrl": "/creators/martin-flindt.jpg",
         "coverImageUrl": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1200&auto=format&fit=crop&q=80",
         "location": "New York, NY, USA",
         "region": "United States",
@@ -1042,7 +1044,7 @@ USA_CREATORS = [
         "slug": "ekaterina_lovik",
         "headline": "Design-Led Living, Smart Home & Intentional Spaces",
         "bio": "Smart home living, warm minimalist interior curation, and wellness rituals in Chicago.",
-        "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=80",
+        "avatarUrl": "/creators/ekaterina-lovik.jpg",
         "coverImageUrl": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&auto=format&fit=crop&q=80",
         "location": "Chicago, IL, USA",
         "region": "United States",
@@ -1108,7 +1110,7 @@ USA_CREATORS = [
         "slug": "livschreiber",
         "headline": "Founder, Stylist & Capsule Fashion Creator",
         "bio": "New York casual chic, capsule wardrobes, and founder lifestyle for modern women.",
-        "avatarUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&auto=format&fit=crop&q=80",
+        "avatarUrl": "/creators/liv-schreiber.jpg",
         "coverImageUrl": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&auto=format&fit=crop&q=80",
         "location": "New York, NY, USA",
         "region": "United States",
@@ -1174,7 +1176,7 @@ USA_CREATORS = [
         "slug": "vanshikat",
         "headline": "Clean Beauty, Skincare Rituals & Mindful Living",
         "bio": "Documenting barrier repair routines, everyday radiant glow, and mindful beauty rituals in Pittsburgh.",
-        "avatarUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&auto=format&fit=crop&q=80",
+        "avatarUrl": "/creators/vanshika-tomar.jpg",
         "coverImageUrl": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&auto=format&fit=crop&q=80",
         "location": "Pittsburgh, PA, USA",
         "region": "United States",
@@ -1237,15 +1239,11 @@ USA_CREATORS = [
 # Total: 14 Indian + 6 USA = 20 total creators (70% Indian, 30% USA)
 ALL_CREATORS = INDIAN_CREATORS + USA_CREATORS
 
-print(f"Total creators: {len(ALL_CREATORS)}")
-print(f"Indian creators: {len(INDIAN_CREATORS)} ({len(INDIAN_CREATORS)/len(ALL_CREATORS)*100:.1f}%)")
-print(f"USA creators: {len(USA_CREATORS)} ({len(USA_CREATORS)/len(ALL_CREATORS)*100:.1f}%)")
-
 # Update valence_db.json
 db["creators"] = ALL_CREATORS
 with open(DB_PATH, "w", encoding="utf-8") as f:
     json.dump(db, f, indent=2)
-print("Updated data/valence_db.json successfully.")
+print("Updated data/valence_db.json with local avatars successfully.")
 
 # Update src/mock/creators.mock.ts
 ts_content = f"""import {{ CreatorProfile }} from "../core/types";
