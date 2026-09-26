@@ -202,10 +202,10 @@ export function CreatorsDirectoryClient() {
       : creators;
 
   return (
-    <div className="py-12 sm:py-16 bg-white dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] min-h-screen select-none space-y-12 font-sans">
+    <div className="pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 bg-white dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] min-h-screen select-none space-y-8 sm:space-y-10 font-sans">
       {/* Top Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-        <div className="space-y-4 max-w-3xl">
+        <div className="space-y-3.5 max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-xs font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F]">
             <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
             <span>FOUNDING CREATOR COHORT &bull; PRE-LAUNCH TALENT</span>
@@ -218,15 +218,15 @@ export function CreatorsDirectoryClient() {
           </p>
         </div>
 
-        {/* Mode Selector Tabs */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none border-b border-black/8 dark:border-white/10 pt-2">
+        {/* Mode Selector Tabs (Sleek Segmented Pill Rail) */}
+        <div className="p-1.5 rounded-2xl bg-neutral-100 dark:bg-white/[0.04] border border-black/6 dark:border-white/10 inline-flex flex-wrap items-center gap-1.5 max-w-full">
           <button
             onClick={() => setViewMode("directory")}
             className={cn(
-              "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer",
+              "px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 shrink-0 cursor-pointer",
               viewMode === "directory"
-                ? "bg-[#0A0A0E] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E] shadow-sm"
-                : "bg-white dark:bg-[#14141E] text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white border border-black/5 dark:border-white/10"
+                ? "bg-[#0A0A0E] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E] shadow-xs"
+                : "text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white"
             )}
           >
             <span>👥</span> Talent Directory
@@ -234,10 +234,10 @@ export function CreatorsDirectoryClient() {
           <button
             onClick={() => setViewMode("trending")}
             className={cn(
-              "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer",
+              "px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 shrink-0 cursor-pointer",
               viewMode === "trending"
-                ? "bg-[#FFD21F] text-[#0A0A0E] shadow-sm border border-black/10"
-                : "bg-white dark:bg-[#14141E] text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white border border-black/5 dark:border-white/10"
+                ? "bg-[#0A0A0E] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E] shadow-xs"
+                : "text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white"
             )}
           >
             <span>🔥</span> Trending Hub
@@ -245,10 +245,10 @@ export function CreatorsDirectoryClient() {
           <button
             onClick={() => setViewMode("match")}
             className={cn(
-              "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer",
+              "px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 shrink-0 cursor-pointer",
               viewMode === "match"
-                ? "bg-[#0A0A0E] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E] shadow-sm"
-                : "bg-white dark:bg-[#14141E] text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white border border-black/5 dark:border-white/10"
+                ? "bg-[#0A0A0E] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E] shadow-xs"
+                : "text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white"
             )}
           >
             <span>🎯</span> AI Brief Match
@@ -256,10 +256,10 @@ export function CreatorsDirectoryClient() {
           <button
             onClick={() => setViewMode("leaderboards")}
             className={cn(
-              "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer",
+              "px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 shrink-0 cursor-pointer",
               viewMode === "leaderboards"
-                ? "bg-emerald-600 text-white shadow-sm"
-                : "bg-white dark:bg-[#14141E] text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white border border-black/5 dark:border-white/10"
+                ? "bg-emerald-600 text-white shadow-xs"
+                : "text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white"
             )}
           >
             <span>🏆</span> Leaderboards
