@@ -686,22 +686,25 @@ export default function AdminUsersPanel() {
                           {user.role}
                         </span>
 
-                        {/* Live Session Status */}
-                        {user.isOnline ? (
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 inline-flex items-center gap-1.5 shadow-2xs">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                            <span>ONLINE</span>
-                          </span>
-                        ) : user.lastLoginAt ? (
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-black/5 dark:bg-white/5 text-[#5A5A68] dark:text-[#8E8EA4] border border-black/5 dark:border-white/5">
-                            LOGGED IN
-                          </span>
-                        ) : null}
-
                         {/* Category Pill */}
                         <span className="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[#F0F0F5] dark:bg-[#1E1E2C] text-[#475569] dark:text-[#A0A0B8] border border-black/5 dark:border-white/5">
                           {user.category}
                         </span>
+
+                        {/* Mobile-only session indicator */}
+                        <div className="sm:hidden inline-flex items-center">
+                          {user.isOnline ? (
+                            <span className="px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 inline-flex items-center gap-1">
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                              <span>ONLINE</span>
+                            </span>
+                          ) : user.lastLoginAt ? (
+                            <span className="px-1.5 py-0.5 rounded-full text-[9px] font-mono font-semibold bg-black/5 dark:bg-white/5 text-[#5A5A68] dark:text-[#8E8EA4] border border-black/5 dark:border-white/5 inline-flex items-center gap-1">
+                              <span className="w-1 h-1 rounded-full bg-emerald-500/70" />
+                              <span>LOGGED IN</span>
+                            </span>
+                          ) : null}
+                        </div>
                       </div>
 
                       <div className="flex items-center gap-3 text-xs text-[#5A5A68] dark:text-[#8E8EA4] font-mono mt-1">
@@ -732,6 +735,27 @@ export default function AdminUsersPanel() {
 
                   {/* Middle / Right: Stats & Actions */}
                   <div className="flex items-center gap-4 sm:gap-6 self-end md:self-auto shrink-0">
+                    {/* Aligned Session Status Column (Desktop & Tablet) */}
+                    <div className="hidden sm:flex flex-col items-center justify-center w-28 shrink-0">
+                      {user.isOnline ? (
+                        <span className="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 inline-flex items-center gap-1.5 shadow-2xs">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                          <span>ONLINE</span>
+                        </span>
+                      ) : user.lastLoginAt ? (
+                        <span
+                          className="px-2.5 py-1 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 inline-flex items-center gap-1.5"
+                          title={`Last login: ${new Date(user.lastLoginAt).toLocaleString()}`}
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                          <span>LOGGED IN</span>
+                        </span>
+                      ) : (
+                        <span className="px-2.5 py-1 rounded-full text-[10px] font-mono font-medium bg-black/5 dark:bg-white/5 text-[#8E8EA4] dark:text-[#6A6A7E] border border-black/5 dark:border-white/5">
+                          OFFLINE
+                        </span>
+                      )}
+                    </div>
                     {/* Follower / Metric */}
                     <div className="text-right hidden sm:block">
                       <div className="text-xs font-bold text-[#0A0A0E] dark:text-white font-mono">
