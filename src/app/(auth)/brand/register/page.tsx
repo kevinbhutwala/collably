@@ -68,6 +68,9 @@ export default function BrandRegisterPage() {
       });
 
       if (res.user) {
+        if (res.token) {
+          authService.saveToken(res.token);
+        }
         setAuthData(res.user, res.creatorProfile, res.brandProfile);
         addToast({
           type: "success",

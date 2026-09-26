@@ -241,10 +241,12 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   },
 
   setAuthData: (user: User, creator?: CreatorProfile | null, brand?: BrandProfile | null) => {
+    lastSessionCheckSuccess = Date.now();
     set({
       user,
       role: user.role,
       isAuthenticated: true,
+      isLoading: false,
       currentCreator: creator || null,
       currentBrand: brand || null,
     });

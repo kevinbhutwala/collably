@@ -73,15 +73,50 @@ export interface SocialAuthClientParams {
   companyName?: string;
 }
 
+const TOKEN_KEY = "abeycollab_session_token";
+
 class AuthService {
+  getStoredToken(): string | null {
+    if (typeof window === "undefined") return null;
+    try {
+      return localStorage.getItem(TOKEN_KEY) || localStorage.getItem("collably_session_token");
+    } catch {
+      return null;
+    }
+  }
+
+  saveToken(token?: string) {
+    if (typeof window === "undefined" || !token) return;
+    try {
+      localStorage.setItem(TOKEN_KEY, token);
+      localStorage.setItem("collably_session_token", token);
+    } catch {
+      // Ignore
+    }
+  }
+
+  clearToken() {
+    if (typeof window === "undefined") return;
+    try {
+      localStorage.removeItem(TOKEN_KEY);
+      localStorage.removeItem("collably_session_token");
+    } catch {
+      // Ignore
+    }
+  }
+
   async login(email: string, password: string): Promise<AuthResponse> {
     const res = await fetch("/api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email: email.trim(), password }),
+      credentials: "include",
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || "Login failed");
+    if (data.token) {
+      this.saveToken(data.token);
+    }
     return data;
   }
 
@@ -89,10 +124,17 @@ class AuthService {
     const res = await fetch("/api/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(params),
+      body: JSON.stringify({
+        ...params,
+        email: params.email.trim(),
+      }),
+      credentials: "include",
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || "Registration failed");
+    if (data.token) {
+      this.saveToken(data.token);
+    }
     return data;
   }
 
@@ -127,24 +169,46 @@ class AuthService {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(params),
+      credentials: "include",
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || "Social authentication failed");
+    if (data.token) {
+      this.saveToken(data.token);
+    }
     return data;
   }
 
   async getSession(): Promise<AuthResponse> {
     try {
-      const res = await fetch("/api/auth/me", { cache: "no-store" });
+      const token = this.getStoredToken();
+      const headers: Record<string, string> = {};
+      if (token) {
+        headers["Authorization"] = `Bearer ${token}`;
+      }
+      const res = await fetch("/api/auth/me", {
+        headers,
+        cache: "no-store",
+        credentials: "include",
+      });
       if (!res.ok) return { authenticated: false };
-      return await res.json();
+      const data = await res.json();
+      if (!data.authenticated && token) {
+        this.clearToken();
+      }
+      return data;
     } catch {
       return { authenticated: false };
     }
   }
 
   async logout(): Promise<void> {
-    await fetch("/api/auth/logout", { method: "POST" });
+    this.clearToken();
+    try {
+      await fetch("/api/auth/logout", { method: "POST", credentials: "include" });
+    } catch {
+      // Ignore
+    }
   }
 }
 

@@ -28,6 +28,17 @@ export class UserRepository {
       return users.find((u) => u.email.toLowerCase() === targetEmail.toLowerCase());
     }
 
+    // Handle lookup (@handle or handle)
+    const cleanHandle = normalized.replace(/^@/, "");
+    const creators = db.getState().creators || [];
+    const matchingCreator = creators.find(
+      (c) => c.handle && c.handle.toLowerCase().replace(/^@/, "") === cleanHandle
+    );
+    if (matchingCreator && matchingCreator.userId) {
+      const userByCreator = users.find((u) => u.id === matchingCreator.userId);
+      if (userByCreator) return userByCreator;
+    }
+
     return undefined;
   }
 
@@ -63,6 +74,7 @@ export class UserRepository {
     }
     const passwordHash = data.passwordHash || hashPassword(data.password!);
 
+    const nowIso = new Date().toISOString();
     const newUser: UserEntity = {
       id: `user-${Date.now()}`,
       name: data.name,
@@ -71,8 +83,10 @@ export class UserRepository {
       role: data.role,
       avatarUrl: data.avatarUrl || `https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80`,
       verified: data.verified ?? false,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      createdAt: nowIso,
+      updatedAt: nowIso,
+      lastLoginAt: nowIso,
+      lastActiveAt: nowIso,
     };
 
     db.updateState((state) => {

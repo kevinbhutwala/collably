@@ -47,7 +47,7 @@ function LoginForm() {
     setErrorMessage("");
 
     try {
-      await login(email, password);
+      await login(email.trim(), password);
       addToast({
         type: "success",
         title: "Signed in successfully",
@@ -119,10 +119,10 @@ function LoginForm() {
 
       <form onSubmit={handleLogin} className="space-y-4">
         <Input
-          label="Email Address"
-          type="email"
+          label="Email Address or Creator Handle"
+          type="text"
           required
-          placeholder="name@agency.com"
+          placeholder="name@example.com or @handle"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           icon={<Mail className="w-4 h-4 text-[#7A7A8A] dark:text-[#8E8EA4]" />}

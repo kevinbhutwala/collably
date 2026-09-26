@@ -3,7 +3,6 @@ import path from "path";
 import { DatabaseState } from "./schema";
 import { getInitialSeedDatabase } from "./seed";
 import { MOCK_COLLABORATIONS } from "@/mock/collaborations.mock";
-import bundledDbJson from "../../../data/valence_db.json";
 
 const isServerless = process.env.VERCEL === "1" || !!process.env.AWS_LAMBDA_FUNCTION_NAME;
 const DATA_DIR = isServerless ? path.join("/tmp", "data") : path.join(process.cwd(), "data");
@@ -31,21 +30,23 @@ class DatabaseClient {
       let rawState: DatabaseState | null = null;
       if (fs.existsSync(DB_FILE)) {
         try {
-          rawState = JSON.parse(fs.readFileSync(DB_FILE, "utf-8"));
-          this.lastLoadedMtime = fs.statSync(DB_FILE).mtimeMs;
+          const content = fs.readFileSync(DB_FILE, "utf-8");
+          if (content && content.trim().startsWith("{")) {
+            rawState = JSON.parse(content);
+            this.lastLoadedMtime = fs.statSync(DB_FILE).mtimeMs;
+          }
         } catch {
           rawState = null;
         }
       } else if (fs.existsSync(BUNDLED_DB_FILE)) {
         try {
-          rawState = JSON.parse(fs.readFileSync(BUNDLED_DB_FILE, "utf-8"));
+          const content = fs.readFileSync(BUNDLED_DB_FILE, "utf-8");
+          if (content && content.trim().startsWith("{")) {
+            rawState = JSON.parse(content);
+          }
         } catch {
           rawState = null;
         }
-      }
-
-      if (!rawState) {
-        rawState = JSON.parse(JSON.stringify(bundledDbJson)) as DatabaseState;
       }
 
       this.state = rawState || getInitialSeedDatabase();
@@ -248,8 +249,14 @@ class DatabaseClient {
           // Ignore
         }
       }
-      fs.writeFileSync(DB_FILE, JSON.stringify(this.state), "utf-8");
-      this.lastLoadedMtime = Date.now();
+      const tmpFile = `${DB_FILE}.tmp.${Date.now()}`;
+      fs.writeFileSync(tmpFile, JSON.stringify(this.state), "utf-8");
+      fs.renameSync(tmpFile, DB_FILE);
+      try {
+        this.lastLoadedMtime = fs.statSync(DB_FILE).mtimeMs;
+      } catch {
+        this.lastLoadedMtime = Date.now();
+      }
     } catch (err) {
       // In serverless environments where local filesystem might be read-only or ephemeral,
       // fail gracefully and keep in-memory state active.
@@ -262,17 +269,19 @@ class DatabaseClient {
       this.ensureInitialized();
     } else {
       const now = Date.now();
-      if (now - this.lastStatCheckTime > 250) {
+      if (now - this.lastStatCheckTime > 500) {
         this.lastStatCheckTime = now;
         if (fs.existsSync(DB_FILE)) {
           try {
             const stats = fs.statSync(DB_FILE);
             if (stats.mtimeMs > this.lastLoadedMtime) {
               const raw = fs.readFileSync(DB_FILE, "utf-8");
-              const parsed = JSON.parse(raw);
-              if (parsed && typeof parsed === "object") {
-                this.state = parsed;
-                this.lastLoadedMtime = stats.mtimeMs;
+              if (raw && raw.trim().startsWith("{")) {
+                const parsed = JSON.parse(raw);
+                if (parsed && typeof parsed === "object" && Array.isArray(parsed.users)) {
+                  this.state = parsed;
+                  this.lastLoadedMtime = stats.mtimeMs;
+                }
               }
             }
           } catch {

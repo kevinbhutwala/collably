@@ -8,9 +8,9 @@ import { buildSocialAccountsFromInput, calculateTotalFollowers, calculateAvgEnga
 import { z } from "zod";
 
 const registrationSchema = z.object({
-  name: z.string().trim().min(2).max(120),
-  email: z.string().trim().email().max(254),
-  password: z.string().min(8).max(128),
+  name: z.string().trim().min(2, "Name must be at least 2 characters").max(120),
+  email: z.string().trim().email("Please enter a valid email address").max(254),
+  password: z.string().min(6, "Password must be at least 6 characters").max(128),
   role: z.enum(["creator", "brand"]),
 });
 
@@ -167,6 +167,7 @@ export async function POST(req: NextRequest) {
       creatorProfile = {
         id: `creator-${Date.now()}`,
         userId: newUser.id,
+        email: newUser.email,
         fullName: name,
         handle: cleanHandle,
         headline: `${category || "Technology"} Creator & Digital Storyteller`,
@@ -215,6 +216,7 @@ export async function POST(req: NextRequest) {
       brandProfile = {
         id: `brand-${Date.now()}`,
         userId: newUser.id,
+        email: newUser.email,
         companyName: cName,
         industry: industry || "Technology & AI",
         headline: `${cName} Official Brand Workspace`,
@@ -267,6 +269,13 @@ export async function POST(req: NextRequest) {
     return response;
   } catch (err: any) {
     console.error("Register API error:", err);
+    if (err instanceof z.ZodError) {
+      const firstIssue = err.issues[0];
+      return NextResponse.json(
+        { error: firstIssue?.message || "Invalid registration information" },
+        { status: 400 }
+      );
+    }
     return NextResponse.json(
       { error: err.message || "Registration failed" },
       { status: 400 }

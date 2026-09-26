@@ -210,7 +210,7 @@ export default function AdminUsersPanel() {
 
     // Tab Filter
     if (activeTab === "active") {
-      result = result.filter((u) => u.isOnline || Boolean(u.lastLoginAt));
+      result = result.filter((u) => u.isOnline || Boolean(u.lastLoginAt) || Boolean(u.lastActiveAt));
     } else if (activeTab === "new") {
       result = result.filter((u) => u.isNew || u.isNewThisWeek);
     } else if (activeTab === "creator") {

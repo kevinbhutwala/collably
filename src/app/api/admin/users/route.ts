@@ -74,11 +74,13 @@ export async function GET(req: NextRequest) {
         ? now
         : u.lastActiveAt
         ? new Date(u.lastActiveAt).getTime()
+        : u.createdAt
+        ? new Date(u.createdAt).getTime()
         : 0;
 
       // Online if currently querying or active within last 15 minutes
       const isOnline = isCurrentSessionUser || (now - lastActiveTime) < 15 * 60 * 1000;
-      const isLoggedIn = Boolean(u.lastLoginAt || isOnline);
+      const isLoggedIn = Boolean(u.lastLoginAt || u.createdAt || isOnline);
 
       let category = "General";
       let handle: string | undefined = undefined;
@@ -122,8 +124,8 @@ export async function GET(req: NextRequest) {
         verified: isVerified,
         createdAt: u.createdAt,
         updatedAt: u.updatedAt,
-        lastLoginAt: u.lastLoginAt,
-        lastActiveAt: isCurrentSessionUser ? new Date(now).toISOString() : u.lastActiveAt,
+        lastLoginAt: u.lastLoginAt || u.createdAt,
+        lastActiveAt: isCurrentSessionUser ? new Date(now).toISOString() : (u.lastActiveAt || u.createdAt),
         isOnline,
         isLoggedIn,
         country: u.country,

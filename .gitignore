@@ -35,3 +35,6 @@ yarn-error.log*
 *.tsbuildinfo
 .env*
 /scratch/
+data/instagram_session.json
+scripts/.auth_sender
+public/instagram_login_status.png
