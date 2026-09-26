@@ -38,107 +38,33 @@ def build_email_content(row: dict) -> tuple[str, str, str]:
     handle = row["Instagram Handle"].strip()
     reason = row["Personalization Reason"].strip()
 
-    subject = f"Hey {first_name} — brand collabs on AbeyCollab? ({handle})"
+    subject = f"collab question for {handle}"
 
     plain_text = f"""Hey {first_name},
 
-Hope you're having a productive week!
+Hope you're having a good week.
 
-I came across your work over on {handle} — really love how you approach {category.lower()} content. {reason}
+Came across your profile on {handle} — really love how you approach your content. {reason}
 
-I'm Kevin, founder of AbeyCollab (https://abeycollab.com). We're an India-first platform connecting high-quality creators directly with fast-growing D2C and lifestyle brands.
+I'm Isha, reaching out from the partnerships team at AbeyCollab (https://abeycollab.com). We're an Indian platform connecting digital creators directly with emerging D2C and lifestyle brands for paid collaborations and product campaigns.
 
-We built AbeyCollab because dealing with brand collabs today is frankly broken:
-• Chasing endless Instagram DMs and random agencies
-• Payment delays and unclear campaign deliverables
-• Having to pitch dozens of brands without hearing back
+We built AbeyCollab to make brand collabs simple and transparent:
+- Direct campaign briefs tailored to your specific niche ({category})
+- Milestone escrow protection so your payment is locked in advance and released on time
+- 0% platform fee for creators (you keep 100% of your commercial rate)
 
-On AbeyCollab:
-1. Brands post verified campaign briefs directly in your niche ({category}).
-2. Milestone Escrow Protection ensures your agreed payout is locked before you shoot a single frame and released promptly upon delivery approval.
-3. Zero fees for creators — 100% of your commercial rate goes to you.
+We are currently onboarding a curated group of creators for upcoming campaigns across fashion, lifestyle, and tech.
 
-We are currently onboarding a curated cohort of 30 creators for our upcoming festive & Q4 brand campaigns with D2C labels across beauty, fashion, fitness, and lifestyle.
+Are you currently taking on brand collaborations? If you're open to exploring, simply reply to this email and I'd be happy to share some of the active brand briefs with you.
 
-Would love to send you an early access invite to browse open brand briefs. If you're open to exploring, simply reply to this email or drop a quick "interested" and I'll share your direct invite link!
-
-Best regards,
-
-Kevin Bhutwala
-Founder, AbeyCollab
+Best,
+Isha
+AbeyCollab Partnerships
 https://abeycollab.com
 abeycollab@gmail.com
 """
 
-    html_text = f"""<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<style>
-  body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #222; margin: 0; padding: 20px; background-color: #f7f9fc; }}
-  .container {{ max-width: 580px; margin: 0 auto; background: #ffffff; padding: 32px; border-radius: 12px; border: 1px solid #e5e9f2; }}
-  .badge {{ display: inline-block; background: #ede9fe; color: #6d28d9; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; }}
-  h2 {{ color: #0f172a; margin-top: 0; font-size: 20px; }}
-  p {{ margin: 0 0 16px; font-size: 15px; color: #334155; }}
-  .quote-box {{ background: #f8fafc; border-left: 3px solid #6366f1; padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 16px 0; font-size: 14px; color: #475569; }}
-  .benefit-card {{ background: #fdfdfd; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 18px; margin-bottom: 10px; }}
-  .benefit-title {{ font-weight: 600; color: #1e293b; font-size: 14px; margin-bottom: 4px; }}
-  .benefit-desc {{ font-size: 13px; color: #64748b; margin: 0; }}
-  .btn {{ display: inline-block; background: #4f46e5; color: #ffffff !important; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; margin: 16px 0; }}
-  .footer {{ font-size: 12px; color: #94a3b8; margin-top: 24px; padding-top: 16px; border-top: 1px solid #f1f5f9; }}
-</style>
-</head>
-<body>
-<div class="container">
-  <div class="badge">Creator Invitation</div>
-  <h2>Hey {first_name},</h2>
-  
-  <p>Hope you're having a great week!</p>
-  
-  <p>I came across your content over on <strong>{handle}</strong> — really love how you approach your craft. <br>
-  <div class="quote-box">✨ <em>{reason}</em></div>
-  </p>
-
-  <p>I'm Kevin, founder of <a href="https://abeycollab.com" style="color:#4f46e5;text-decoration:none;font-weight:600;">AbeyCollab</a>. We're an India-first platform connecting genuine creators directly with fast-growing D2C and lifestyle startups.</p>
-
-  <p>We built AbeyCollab because creator brand partnerships today are painful — endless unanswered Instagram DMs, payment delays, and middlemen taking huge cuts.</p>
-
-  <p><strong>How AbeyCollab works for you:</strong></p>
-  
-  <div class="benefit-card">
-    <div class="benefit-title">🎯 Relevant Brand Matches</div>
-    <div class="benefit-desc">D2C brands post active campaigns directly in your niche ({category}). No random or misaligned pitches.</div>
-  </div>
-
-  <div class="benefit-card">
-    <div class="benefit-title">🛡️ Escrow Milestone Protection</div>
-    <div class="benefit-desc">The brand deposits funds into milestone escrow before you produce content. Once approved, payout is guaranteed immediately.</div>
-  </div>
-
-  <div class="benefit-card">
-    <div class="benefit-title">💰 0% Agency Fee for Creators</div>
-    <div class="benefit-desc">100% of your agreed commercial fee goes directly to your bank account. No commissions deducted.</div>
-  </div>
-
-  <p>We are currently onboarding a select cohort of 30 creators for our upcoming brand campaigns with emerging Indian D2C labels.</p>
-
-  <p>Would love to welcome you onboard. Simply reply directly to this email or drop a quick <em>"interested"</em> and I'll send over your direct invite access!</p>
-
-  <p style="margin-top:20px;">
-    Best regards,<br>
-    <strong>Kevin Bhutwala</strong><br>
-    <span style="font-size:13px;color:#64748b;">Founder, AbeyCollab<br>
-    <a href="https://abeycollab.com" style="color:#6366f1;">abeycollab.com</a> | abeycollab@gmail.com</span>
-  </p>
-  
-  <div class="footer">
-    You received this email because your contact was publicly listed for business/collaboration inquiries on your social profile. If you do not wish to hear from us, simply reply with "unsubscribe".
-  </div>
-</div>
-</body>
-</html>
-"""
-    return subject, plain_text, html_text
+    return subject, plain_text, None
 
 
 def log_send(creator_name: str, email_addr: str, subject: str, status: str):
@@ -224,13 +150,10 @@ def main():
             print(f"    Reason:   {row['Personalization Reason']}")
             sent_count += 1
         else:
-            msg = MIMEMultipart("alternative")
+            msg = MIMEText(plain_body, "plain", "utf-8")
             msg["Subject"] = subject
             msg["From"] = f"{SENDER_NAME} <{SENDER_EMAIL}>"
             msg["To"] = f"{creator_name} <{email_addr}>"
-            msg["Reply-To"] = REPLY_TO_EMAIL
-            msg.attach(MIMEText(plain_body, "plain"))
-            msg.attach(MIMEText(html_body, "html"))
 
             try:
                 server.sendmail(SENDER_EMAIL, [email_addr], msg.as_string())
