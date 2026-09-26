@@ -36,14 +36,14 @@ export function InteractiveVideoReviewStudio() {
         {/* Deliverable Review Card Interactive Showcase */}
         <div className="pt-2">
           <DeliverableReviewCard
-            title="Dedicated 4K Technical Integration Segment"
-            deliverableType="YouTube 60s Integration"
-            payoutAmount={2500}
-            creatorName="Sara Dietschy"
-            creatorHandle="saradietschy"
-            creatorAvatar="/creators/sara-dietschy.jpg"
+            title="Editorial Fashion & Styling Reel (60s)"
+            deliverableType="Instagram Reel"
+            payoutAmount={420}
+            creatorName="Dipti Parihar Sharma"
+            creatorHandle="diptipariharsharma"
+            creatorAvatar="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=80"
             assetUrl="https://drive.google.com/file/d/1a2b3c4d5e6f7g8h9/view?usp=sharing"
-            notes="Color graded to Linear brand guidelines. Rough cut audio mixed at -14 LUFS. Primary product onboarding b-roll starts at 04:12."
+            notes="Color graded to editorial guidelines. Audio mixed at -14 LUFS. Primary product styling b-roll starts at 00:14."
             isInteractiveDemo={true}
           />
         </div>

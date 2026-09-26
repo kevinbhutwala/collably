@@ -66,7 +66,7 @@ export function getInitialSeedDatabase(): DatabaseState {
       email: "creator@abeycollab.io",
       passwordHash: creatorPasswordHash,
       role: "creator",
-      avatarUrl: "/creators/sara-dietschy.jpg",
+      avatarUrl: "/creators/prarthana.jpg",
       verified: true,
       createdAt: now,
       updatedAt: now,

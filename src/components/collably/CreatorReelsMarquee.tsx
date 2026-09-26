@@ -12,47 +12,47 @@ export function CreatorReelsMarquee() {
   const reelCards = [
     {
       id: "reel-1",
-      creator: CENTRAL_CREATORS[0], // Marques Brownlee
-      videoThumbnail: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&auto=format&fit=crop&q=80",
-      tag: "Next-Gen Tech Reel",
-      title: "Next-Gen Smartphone & EV Teardown",
-      views: "650K Views",
-      payoutUSD: 350,
+      creator: CENTRAL_CREATORS[2] || CENTRAL_CREATORS[0], // Dipti Parihar
+      videoThumbnail: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&auto=format&fit=crop&q=80",
+      tag: "Editorial Style Reel",
+      title: "Contemporary Drape & Capsule Wardrobe",
+      views: "68K Views",
+      payoutUSD: 420,
     },
     {
       id: "reel-2",
-      creator: CENTRAL_CREATORS[2], // Sara Dietschy
-      videoThumbnail: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600&auto=format&fit=crop&q=80",
-      tag: "Studio Gear Vlog",
-      title: "Creative Entrepreneur Studio Build",
-      views: "190K Views",
-      payoutUSD: 300,
+      creator: CENTRAL_CREATORS[15] || CENTRAL_CREATORS[0], // Caimar Salizi
+      videoThumbnail: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&auto=format&fit=crop&q=80",
+      tag: "Studio Ergonomics",
+      title: "Tactile Creative Desk Setup Redesign",
+      views: "62K Views",
+      payoutUSD: 480,
     },
     {
       id: "reel-3",
-      creator: CENTRAL_CREATORS[1], // Peter McKinnon
-      videoThumbnail: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&auto=format&fit=crop&q=80",
-      tag: "RED Cinema Cut",
-      title: "Visual Mastery & Camera Architecture",
-      views: "480K Views",
-      payoutUSD: 275,
+      creator: CENTRAL_CREATORS[4] || CENTRAL_CREATORS[0], // Decoding Tech
+      videoThumbnail: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600&auto=format&fit=crop&q=80",
+      tag: "Hardware Review",
+      title: "Wireless Audiophile Headphone Benchmark",
+      views: "52K Views",
+      payoutUSD: 380,
     },
     {
       id: "reel-4",
-      creator: CENTRAL_CREATORS[3], // Ali Abdaal
-      videoThumbnail: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&auto=format&fit=crop&q=80",
-      tag: "Productivity Guide",
-      title: "Evidence-Based Workflow Systems",
-      views: "320K Views",
-      payoutUSD: 325,
+      creator: CENTRAL_CREATORS[14] || CENTRAL_CREATORS[0], // Daniel Titchener
+      videoThumbnail: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&auto=format&fit=crop&q=80",
+      tag: "Minimalist Space",
+      title: "Architectural Studio Tour & Lighting",
+      views: "58K Views",
+      payoutUSD: 520,
     },
     {
       id: "reel-5",
-      creator: CENTRAL_CREATORS[6], // Zach King
-      videoThumbnail: "https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&auto=format&fit=crop&q=80",
-      tag: "VFX Magic Reel",
-      title: "Mind-Bending Visual FX Illusion",
-      views: "4.2M Views",
+      creator: CENTRAL_CREATORS[3] || CENTRAL_CREATORS[0], // Dr. Sehitha
+      videoThumbnail: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&auto=format&fit=crop&q=80",
+      tag: "Clinical Skin Science",
+      title: "Active Ingredient & Barrier Repair Guide",
+      views: "48K Views",
       payoutUSD: 500,
     },
   ];

@@ -541,7 +541,7 @@ export function ChatWorkspace() {
     if ((!messageContent && !stagedAttachment) || !activeConvId) return;
 
     const senderName = user?.name || (role === "brand" ? "Brand Partner" : "Creator Partner");
-    const senderAvatar = user?.avatarUrl || (role === "brand" ? "https://webassets.linear.app/images/ornj730p/production/f79251b06e9edeeacbf2875384defe629e000b3c-352x352.png?w=200&auto=format&fit=crop&q=80" : "/creators/sara-dietschy.jpg");
+    const senderAvatar = user?.avatarUrl || (role === "brand" ? "https://webassets.linear.app/images/ornj730p/production/f79251b06e9edeeacbf2875384defe629e000b3c-352x352.png?w=200&auto=format&fit=crop&q=80" : "/creators/prarthana.jpg");
     const senderRole = role || "creator";
 
     const currentStaged = stagedAttachment ? [{ ...stagedAttachment }] : [];

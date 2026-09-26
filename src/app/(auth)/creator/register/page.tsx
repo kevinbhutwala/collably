@@ -181,14 +181,14 @@ export default function CreatorRegisterPage() {
               label="Full Name / Brand Name"
               value={formData.fullName}
               onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-              placeholder="e.g. Marques Brownlee"
+              placeholder="e.g. Dipti Parihar"
               required
             />
             <Input
               label="Primary Handle (@)"
               value={formData.handle}
               onChange={(e) => setFormData({ ...formData, handle: e.target.value })}
-              placeholder="mkbhd"
+              placeholder="diptiparihar"
               required
             />
           </div>
@@ -273,7 +273,7 @@ export default function CreatorRegisterPage() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Input
-                placeholder="Channel handle (e.g. @mkbhd)"
+                placeholder="Channel handle (e.g. @decodingtech)"
                 value={formData.youtubeHandle}
                 onChange={(e) => setFormData({ ...formData, youtubeHandle: e.target.value })}
               />
@@ -298,7 +298,7 @@ export default function CreatorRegisterPage() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Input
-                placeholder="Instagram handle (e.g. @saradietschy)"
+                placeholder="Instagram handle (e.g. @prarthaana.04)"
                 value={formData.instagramHandle}
                 onChange={(e) => setFormData({ ...formData, instagramHandle: e.target.value })}
               />
@@ -348,7 +348,7 @@ export default function CreatorRegisterPage() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Input
-                placeholder="X handle (e.g. @mkbhd)"
+                placeholder="X handle (e.g. @caimarsalizi)"
                 value={formData.xHandle}
                 onChange={(e) => setFormData({ ...formData, xHandle: e.target.value })}
               />

@@ -161,7 +161,7 @@ export function EditorialProductStory() {
             <div className="flex items-center justify-between pb-3 border-b border-[#E7E7E4] text-xs font-mono">
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#FFD21F] animate-pulse" />
-                <span className="text-[#101010] font-display font-bold text-sm">Sara Dietschy • AI Smartwatch Reel</span>
+                <span className="text-[#101010] font-display font-bold text-sm">Dipti Parihar • Sustainable Fashion Reel</span>
                 <span className="text-[#626262] hidden sm:inline">• Cut v2 (4K 60FPS)</span>
               </div>
               <span className="px-2.5 py-0.5 rounded-full bg-[#FAFAF8] border border-[#E7E7E4] text-[#101010] font-bold flex items-center gap-1.5">

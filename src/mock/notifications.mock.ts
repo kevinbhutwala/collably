@@ -26,7 +26,7 @@ export const MOCK_NOTIFICATIONS: NotificationItem[] = [
     userId: "user-b1",
     type: "deliverable",
     title: "New Deliverable Submitted",
-    message: "Sara Dietschy submitted a rough cut for 'Dedicated AI Triage 60s Segment'.",
+    message: "Dipti Parihar submitted a rough cut for 'Editorial Fashion & Styling Reel'.",
     linkUrl: "/app/collaborations",
     read: true,
     createdAt: "2026-08-28T14:32:00Z",

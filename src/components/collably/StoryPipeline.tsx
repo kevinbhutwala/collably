@@ -29,8 +29,8 @@ export function StoryPipeline() {
       uiPreview: (
         <div className="space-y-3 p-5 rounded-2xl bg-[#120c16] border border-white/10 text-xs font-mono text-white shadow-sm">
           <div className="flex items-center justify-between text-[11px] text-slate-400 pb-2 border-b border-white/10">
-            <span className="font-bold text-white">Sara Dietschy (@saradietschy)</span>
-            <span className="text-emerald-400 font-bold">920k Followers</span>
+            <span className="font-bold text-white">Dipti Parihar (@diptipariharsharma)</span>
+            <span className="text-emerald-400 font-bold">99.3k Followers</span>
           </div>
           <div className="grid grid-cols-2 gap-2 text-[11px]">
             <div className="p-2.5 rounded-xl bg-white/[0.04] border border-white/5">

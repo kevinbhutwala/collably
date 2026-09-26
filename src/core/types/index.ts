@@ -27,14 +27,19 @@ export interface User {
 
 export type CreatorCategory =
   | 'Technology & AI'
+  | 'Technology & Hardware'
   | 'Design & Creative'
+  | 'Visual Storytelling & Design'
   | 'Fashion & Style'
   | 'Beauty & Skincare'
   | 'Fitness & Wellness'
+  | 'Fitness & Health'
   | 'Finance & Business'
   | 'Gaming & Esports'
   | 'Lifestyle & Travel'
+  | 'Travel & Lifestyle'
   | 'Food & Culinary'
+  | 'Food & Beverage'
   | 'Education & Science';
 
 export type PlatformType = 'youtube' | 'instagram' | 'tiktok' | 'x' | 'linkedin' | 'threads';

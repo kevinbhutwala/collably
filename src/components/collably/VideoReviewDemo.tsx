@@ -136,7 +136,7 @@ export function VideoReviewDemo() {
           <div className="flex items-center justify-between pb-3 border-b border-[#E2E6E1] text-xs font-mono">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-[#087F5B] animate-pulse" />
-              <span className="text-[#101310] font-bold font-sans">Sara Dietschy • AI Smartwatch Reel</span>
+              <span className="text-[#101310] font-bold font-sans">Dipti Parihar • Sustainable Fashion Reel</span>
               <span className="text-[#8A908B] hidden sm:inline">•</span>
               <span className="text-[#626862] hidden sm:inline">Cut v2 (4K 60FPS)</span>
             </div>

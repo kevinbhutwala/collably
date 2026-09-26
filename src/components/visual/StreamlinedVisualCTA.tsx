@@ -10,9 +10,9 @@ import { SafeImage } from "@/components/ui/SafeImage";
 const AVATAR_STRIP = [
   "/creators/prarthana.jpg",
   "/creators/kushi-hanamsagar.jpg",
-  "/creators/sara-dietschy.jpg",
-  "/creators/ankur-warikoo.webp",
-  "/creators/mkbhd.jpg",
+  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=80",
+  "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=80",
+  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80",
 ];
 
 export function StreamlinedVisualCTA() {

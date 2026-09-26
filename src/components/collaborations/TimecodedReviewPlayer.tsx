@@ -120,7 +120,7 @@ export function TimecodedReviewPlayer({
         user?.avatarUrl ||
         (role === "brand"
           ? "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&auto=format&fit=crop&q=80"
-          : "/creators/sara-dietschy.jpg"),
+          : "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=80"),
       category: selectedCategory,
       comment: newComment,
       resolved: false,
@@ -788,8 +788,8 @@ export function TimecodedReviewPlayer({
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <span className="text-[10px] font-bold text-[#6B6B6B] dark:text-[#8E8EA4]">LICENSOR (CREATOR):</span>
-                <p className="font-bold text-[#111111] dark:text-white font-sans text-sm">Sara Dietschy (@saradietschy)</p>
-                <p className="text-[10px] text-[#6B6B6B] dark:text-[#8E8EA4]">New York, NY • Verified Technology Creator</p>
+                <p className="font-bold text-[#111111] dark:text-white font-sans text-sm">Dipti Parihar (@diptipariharsharma)</p>
+                <p className="text-[10px] text-[#6B6B6B] dark:text-[#8E8EA4]">Bengaluru, IN • Verified Fashion Creator</p>
               </div>
               <div>
                 <span className="text-[10px] font-bold text-[#6B6B6B] dark:text-[#8E8EA4]">LICENSEE (BRAND):</span>
