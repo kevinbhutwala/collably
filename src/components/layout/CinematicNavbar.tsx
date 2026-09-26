@@ -7,7 +7,6 @@ import { AbeyCollabLogo } from "@/components/ui/AbeyCollabLogo";
 import { Sparkles, Menu, X, ArrowRight, User, LogOut } from "lucide-react";
 import { useAuthStore } from "@/stores/auth.store";
 import { cn } from "@/lib/utils";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export function CinematicNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -100,9 +99,6 @@ export function CinematicNavbar() {
               </Link>
             </>
           )}
-
-          {/* Theme Mode Toggle */}
-          <ThemeToggle className="text-white border-white/10 hover:bg-white/10" />
         </div>
 
         {/* Mobile Menu Button */}

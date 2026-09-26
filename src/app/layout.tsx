@@ -204,14 +204,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             __html: `
               (function() {
                 try {
-                  var saved = localStorage.getItem('abeycollab_theme') || localStorage.getItem('collably_theme');
-                  if (saved === 'dark' || (!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                    document.documentElement.classList.add('dark');
-                    document.documentElement.style.colorScheme = 'dark';
-                  } else {
-                    document.documentElement.classList.remove('dark');
-                    document.documentElement.style.colorScheme = 'light';
-                  }
+                  localStorage.removeItem('abeycollab_theme');
+                  localStorage.removeItem('collably_theme');
+                  localStorage.setItem('abeycollab_theme', 'light');
+                  localStorage.setItem('collably_theme', 'light');
+                  document.documentElement.classList.remove('dark');
+                  document.documentElement.style.colorScheme = 'light';
                 } catch (e) {}
               })();
             `,
@@ -223,7 +221,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className="min-h-screen bg-white dark:bg-[#0A0A0E] text-[#0A0A0E] dark:text-[#F4F4F8] antialiased font-sans selection:bg-[#FFD21F] selection:text-[#0A0A0E]">
+      <body className="min-h-screen bg-white text-[#0A0A0E] antialiased font-sans selection:bg-[#FFD21F] selection:text-[#0A0A0E]">
         {children}
         {process.env.NODE_ENV === "production" && (
           <>

@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { AbeyCollabLogo } from "@/components/ui/AbeyCollabLogo";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export default function AuthLayout({
   children,
@@ -35,10 +34,8 @@ export default function AuthLayout({
         {/* Center: Brand Logo */}
         <AbeyCollabLogo href="/" size="sm" variant="full" />
 
-        {/* Right: Theme Toggle & Quick Action Switcher */}
+        {/* Right: Quick Action Switcher */}
         <div className="flex items-center gap-2 text-xs font-sans">
-          <ThemeToggle />
-
           {isLoginPage ? (
             <Link
               href="/register"

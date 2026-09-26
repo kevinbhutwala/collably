@@ -8,7 +8,6 @@ import { ArrowRight, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Modal } from "@/components/ui/Modal";
 import { CurrencySelector } from "@/components/ui/CurrencySelector";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { cn } from "@/lib/utils";
 import { useAuthStore } from "@/stores/auth.store";
 
@@ -58,7 +57,6 @@ export function CollablyNavbar() {
           {/* Right Action CTAs */}
           <div className="hidden sm:flex items-center gap-2.5">
             <CurrencySelector />
-            <ThemeToggle />
 
             {isAuthenticated ? (
               <div className="flex items-center gap-2.5">
@@ -108,9 +106,8 @@ export function CollablyNavbar() {
             )}
           </div>
 
-          {/* Mobile Menu Trigger & Quick Theme Toggle */}
+          {/* Mobile Menu Trigger */}
           <div className="flex sm:hidden items-center gap-2">
-            <ThemeToggle className="w-8 h-8 p-1.5" />
             {isAuthenticated ? (
               <Link
                 href={user?.role === "brand" ? "/app/brand/campaigns" : "/app/dashboard"}
@@ -165,10 +162,6 @@ export function CollablyNavbar() {
               <div className="flex items-center justify-between px-1">
                 <span className="text-xs font-bold text-[#5A5A68] dark:text-[#A0A0B8]">Currency</span>
                 <CurrencySelector />
-              </div>
-              <div className="flex items-center justify-between px-1">
-                <span className="text-xs font-bold text-[#5A5A68] dark:text-[#A0A0B8]">Appearance</span>
-                <ThemeToggle showLabel />
               </div>
               {isAuthenticated ? (
                 <div className="flex flex-col gap-2 pt-1">

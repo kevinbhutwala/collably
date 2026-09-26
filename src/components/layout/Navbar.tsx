@@ -9,7 +9,6 @@ import { cn } from "@/lib/utils";
 import { useAuthStore } from "@/stores/auth.store";
 import { Modal } from "@/components/ui/Modal";
 import { motion, AnimatePresence } from "framer-motion";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { CurrencySelector } from "@/components/ui/CurrencySelector";
 
 export function Navbar() {
@@ -166,15 +165,11 @@ export function Navbar() {
                 </button>
               </>
             )}
-
-            {/* Theme Mode Toggle (Desktop) */}
-            <ThemeToggle />
           </div>
 
           {/* Mobile & Tablet Hamburger + Quick Start (< 1024px) */}
           <div className="flex lg:hidden items-center gap-2 shrink-0">
             <CurrencySelector />
-            <ThemeToggle />
             {isAuthenticated ? (
               <Link
                 href={user?.role === "brand" ? "/app/brand/campaigns" : "/app/dashboard"}
