@@ -29,6 +29,11 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ authenticated: false }, { status: 200 });
     }
 
+    const nowIso = new Date().toISOString();
+    userRepo.updateUser(user.id, {
+      lastActiveAt: nowIso,
+    });
+
     const creatorProfile = user.role === "creator" ? creatorRepo.getByUserId(user.id) : null;
     const brandProfile = user.role === "brand" ? brandRepo.getByUserId(user.id) : null;
     const subscription = await subscriptionService.getUserSubscription(user.id, user.role);
@@ -42,6 +47,8 @@ export async function GET(req: NextRequest) {
         role: user.role,
         avatarUrl: user.avatarUrl,
         verified: user.verified,
+        lastLoginAt: user.lastLoginAt,
+        lastActiveAt: nowIso,
         preferredCurrency: user.preferredCurrency || user.preferred_currency || (user.country === "IN" ? "INR" : "USD"),
         preferred_currency: user.preferred_currency || user.preferredCurrency || (user.country === "IN" ? "INR" : "USD"),
         country: user.country || "US",

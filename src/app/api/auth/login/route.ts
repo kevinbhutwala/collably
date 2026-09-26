@@ -24,6 +24,12 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const nowIso = new Date().toISOString();
+    userRepo.updateUser(user.id, {
+      lastLoginAt: nowIso,
+      lastActiveAt: nowIso,
+    });
+
     const token = createSessionToken({
       userId: user.id,
       email: user.email,

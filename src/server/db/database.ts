@@ -90,6 +90,64 @@ class DatabaseClient {
           }
         }
 
+        // Synchronize creators as real users in db.users
+        const defaultPasswordHash = seed.users[0]?.passwordHash || "";
+        for (const creator of this.state!.creators) {
+          const targetUserId = creator.userId || `user-c-${creator.id}`;
+          if (!creator.userId) creator.userId = targetUserId;
+          const cleanHandle = (creator.handle || creator.id).replace(/[^a-zA-Z0-9_]/g, "").toLowerCase();
+          const targetEmail = (creator as any).email || `${cleanHandle}@abeycollab.io`;
+
+          const existingUser = this.state!.users.find(
+            (u) => u.id === targetUserId || u.email.toLowerCase() === targetEmail.toLowerCase()
+          );
+
+          if (!existingUser) {
+            this.state!.users.push({
+              id: targetUserId,
+              name: creator.fullName,
+              email: targetEmail,
+              passwordHash: defaultPasswordHash,
+              role: "creator",
+              avatarUrl: creator.avatarUrl,
+              verified: Boolean(creator.verified),
+              country: creator.region || (creator.location?.includes("India") ? "IN" : "US"),
+              createdAt: (creator as any).createdAt || new Date().toISOString(),
+              updatedAt: (creator as any).updatedAt || new Date().toISOString(),
+            });
+          } else {
+            if (!existingUser.avatarUrl && creator.avatarUrl) existingUser.avatarUrl = creator.avatarUrl;
+            if (creator.verified && !existingUser.verified) existingUser.verified = true;
+          }
+        }
+
+        // Synchronize brands as real users in db.users
+        for (const brand of this.state!.brands) {
+          const targetUserId = brand.userId || `user-b-${brand.id}`;
+          if (!brand.userId) brand.userId = targetUserId;
+          const cleanName = (brand.companyName || brand.id).replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+          const targetEmail = (brand as any).email || `contact@${cleanName}.com`;
+
+          const existingUser = this.state!.users.find(
+            (u) => u.id === targetUserId || u.email.toLowerCase() === targetEmail.toLowerCase()
+          );
+
+          if (!existingUser) {
+            this.state!.users.push({
+              id: targetUserId,
+              name: brand.companyName,
+              email: targetEmail,
+              passwordHash: defaultPasswordHash,
+              role: "brand",
+              avatarUrl: brand.logoUrl,
+              verified: Boolean(brand.verified),
+              country: brand.location?.includes("India") ? "IN" : "US",
+              createdAt: (brand as any).createdAt || new Date().toISOString(),
+              updatedAt: (brand as any).updatedAt || new Date().toISOString(),
+            });
+          }
+        }
+
         // Merge only the 3 seed subscriptions
         for (const seedSub of seed.subscriptions) {
           if (!this.state!.subscriptions.some((s) => s.userId === seedSub.userId)) {

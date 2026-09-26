@@ -50,7 +50,14 @@ export async function GET(req: NextRequest) {
     const sevenDaysAgo = now - 7 * 24 * 60 * 60 * 1000;
     const fourteenDaysAgo = now - 14 * 24 * 60 * 60 * 1000;
 
-    // Enrich users with linked profile data
+    // Touch current admin user's activity
+    if (session.userId) {
+      userRepo.updateUser(session.userId, {
+        lastActiveAt: new Date(now).toISOString(),
+      });
+    }
+
+    // Enrich users with linked profile data and live activity state
     let enrichedUsers = allUsers.map((u) => {
       const creator = creatorByUserId.get(u.id) || creatorByEmail.get(u.email.toLowerCase());
       const brand = brandByUserId.get(u.id);
@@ -58,6 +65,20 @@ export async function GET(req: NextRequest) {
       const userJoinedTime = u.createdAt ? new Date(u.createdAt).getTime() : now;
       const isNew = userJoinedTime >= fourteenDaysAgo;
       const isNewThisWeek = userJoinedTime >= sevenDaysAgo;
+
+      const isCurrentSessionUser =
+        u.id === session.userId ||
+        u.email.toLowerCase() === session.email.toLowerCase();
+
+      const lastActiveTime = isCurrentSessionUser
+        ? now
+        : u.lastActiveAt
+        ? new Date(u.lastActiveAt).getTime()
+        : 0;
+
+      // Online if currently querying or active within last 15 minutes
+      const isOnline = isCurrentSessionUser || (now - lastActiveTime) < 15 * 60 * 1000;
+      const isLoggedIn = Boolean(u.lastLoginAt || isOnline);
 
       let category = "General";
       let handle: string | undefined = undefined;
@@ -101,6 +122,10 @@ export async function GET(req: NextRequest) {
         verified: isVerified,
         createdAt: u.createdAt,
         updatedAt: u.updatedAt,
+        lastLoginAt: u.lastLoginAt,
+        lastActiveAt: isCurrentSessionUser ? new Date(now).toISOString() : u.lastActiveAt,
+        isOnline,
+        isLoggedIn,
         country: u.country,
         isNew,
         isNewThisWeek,
@@ -131,6 +156,10 @@ export async function GET(req: NextRequest) {
           verified: Boolean(c.verified),
           createdAt: c.createdAt || c.joinedDate || new Date().toISOString(),
           updatedAt: c.updatedAt || new Date().toISOString(),
+          lastLoginAt: undefined,
+          lastActiveAt: undefined,
+          isOnline: false,
+          isLoggedIn: false,
           country: c.region || "Global",
           isNew: false,
           isNewThisWeek: false,
@@ -161,6 +190,10 @@ export async function GET(req: NextRequest) {
           verified: Boolean(b.verified),
           createdAt: b.createdAt || new Date().toISOString(),
           updatedAt: new Date().toISOString(),
+          lastLoginAt: undefined,
+          lastActiveAt: undefined,
+          isOnline: false,
+          isLoggedIn: false,
           country: b.location || "Global",
           isNew: false,
           isNewThisWeek: false,
@@ -179,6 +212,7 @@ export async function GET(req: NextRequest) {
 
     // Compute stats across full population
     const totalUsers = enrichedUsers.length;
+    const onlineNowCount = enrichedUsers.filter((u) => u.isOnline).length;
     const creatorsCount = enrichedUsers.filter((u) => u.role === "creator").length;
     const brandsCount = enrichedUsers.filter((u) => u.role === "brand" || u.role.includes("brand")).length;
     const adminsCount = enrichedUsers.filter((u) => u.role.includes("admin") || u.role.includes("owner")).length;
@@ -201,7 +235,9 @@ export async function GET(req: NextRequest) {
     let filtered = enrichedUsers;
 
     if (roleFilter !== "all") {
-      if (roleFilter === "new") {
+      if (roleFilter === "active" || roleFilter === "online") {
+        filtered = filtered.filter((u) => u.isOnline);
+      } else if (roleFilter === "new") {
         filtered = filtered.filter((u) => u.isNew || u.isNewThisWeek);
       } else if (roleFilter === "creator") {
         filtered = filtered.filter((u) => u.role === "creator");
@@ -240,6 +276,19 @@ export async function GET(req: NextRequest) {
 
     // Apply Sorting
     filtered.sort((a, b) => {
+      if (sortBy === "active") {
+        const timeA = Math.max(
+          a.isOnline ? Number.MAX_SAFE_INTEGER : 0,
+          a.lastActiveAt ? new Date(a.lastActiveAt).getTime() : 0,
+          a.lastLoginAt ? new Date(a.lastLoginAt).getTime() : 0
+        );
+        const timeB = Math.max(
+          b.isOnline ? Number.MAX_SAFE_INTEGER : 0,
+          b.lastActiveAt ? new Date(b.lastActiveAt).getTime() : 0,
+          b.lastLoginAt ? new Date(b.lastLoginAt).getTime() : 0
+        );
+        return timeB - timeA;
+      }
       if (sortBy === "oldest") {
         return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
       }
@@ -257,6 +306,7 @@ export async function GET(req: NextRequest) {
       users: filtered,
       stats: {
         total: totalUsers,
+        onlineNow: onlineNowCount,
         creators: creatorsCount,
         brands: brandsCount,
         admins: adminsCount,

@@ -37,6 +37,10 @@ interface UserItem {
   verified: boolean;
   createdAt: string;
   updatedAt?: string;
+  lastLoginAt?: string;
+  lastActiveAt?: string;
+  isOnline?: boolean;
+  isLoggedIn?: boolean;
   country?: string;
   isNew: boolean;
   isNewThisWeek: boolean;
@@ -53,6 +57,7 @@ interface UserItem {
 
 interface StatsData {
   total: number;
+  onlineNow: number;
   creators: number;
   brands: number;
   admins: number;
@@ -71,11 +76,11 @@ export default function AdminUsersPanel() {
   const [updatingId, setUpdatingId] = useState<string | null>(null);
 
   // Filters
-  const [activeTab, setActiveTab] = useState<"all" | "new" | "creator" | "brand" | "admin">("all");
+  const [activeTab, setActiveTab] = useState<"all" | "active" | "new" | "creator" | "brand" | "admin">("all");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [statusFilter, setStatusFilter] = useState<"all" | "verified" | "unverified">("all");
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortBy, setSortBy] = useState<"newest" | "oldest" | "name" | "role">("newest");
+  const [sortBy, setSortBy] = useState<"newest" | "active" | "oldest" | "name" | "role">("newest");
 
   const fetchUsers = useCallback(async () => {
     setLoading(true);
@@ -204,7 +209,9 @@ export default function AdminUsersPanel() {
     let result = [...users];
 
     // Tab Filter
-    if (activeTab === "new") {
+    if (activeTab === "active") {
+      result = result.filter((u) => u.isOnline || Boolean(u.lastLoginAt));
+    } else if (activeTab === "new") {
       result = result.filter((u) => u.isNew || u.isNewThisWeek);
     } else if (activeTab === "creator") {
       result = result.filter((u) => u.role === "creator");
@@ -244,6 +251,19 @@ export default function AdminUsersPanel() {
 
     // Sorting
     result.sort((a, b) => {
+      if (sortBy === "active") {
+        const timeA = Math.max(
+          a.isOnline ? Number.MAX_SAFE_INTEGER : 0,
+          a.lastActiveAt ? new Date(a.lastActiveAt).getTime() : 0,
+          a.lastLoginAt ? new Date(a.lastLoginAt).getTime() : 0
+        );
+        const timeB = Math.max(
+          b.isOnline ? Number.MAX_SAFE_INTEGER : 0,
+          b.lastActiveAt ? new Date(b.lastActiveAt).getTime() : 0,
+          b.lastLoginAt ? new Date(b.lastLoginAt).getTime() : 0
+        );
+        return timeB - timeA;
+      }
       if (sortBy === "oldest") {
         return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
       }
@@ -318,7 +338,7 @@ export default function AdminUsersPanel() {
       </div>
 
       {/* Stats Cards Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
         <div className="p-4 rounded-2xl bg-white dark:bg-[#111118] border border-black/8 dark:border-white/10 shadow-2xs">
           <div className="flex items-center justify-between text-xs font-mono text-[#5A5A68] dark:text-[#8E8EA4] mb-1">
             <span>Total Accounts</span>
@@ -328,7 +348,23 @@ export default function AdminUsersPanel() {
             {stats ? stats.total : users.length}
           </div>
           <div className="text-[11px] font-mono text-[#5A5A68] dark:text-[#8E8EA4] mt-1">
-            Registered on AbeyCollab
+            Registered accounts
+          </div>
+        </div>
+
+        <div className="p-4 rounded-2xl bg-white dark:bg-[#111118] border border-emerald-500/30 shadow-2xs">
+          <div className="flex items-center justify-between text-xs font-mono text-emerald-600 dark:text-emerald-400 mb-1">
+            <span className="font-bold flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Active Now</span>
+            </span>
+            <Users className="w-4 h-4 text-emerald-500" />
+          </div>
+          <div className="text-2xl font-black text-emerald-600 dark:text-emerald-400 font-display">
+            {stats ? stats.onlineNow : users.filter((u) => u.isOnline).length}
+          </div>
+          <div className="text-[11px] font-mono text-[#5A5A68] dark:text-[#8E8EA4] mt-1">
+            Live authenticated sessions
           </div>
         </div>
 
@@ -402,6 +438,22 @@ export default function AdminUsersPanel() {
             }`}
           >
             All Users ({users.length})
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              setActiveTab("active");
+              setSelectedCategory("all");
+            }}
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all inline-flex items-center gap-2 ${
+              activeTab === "active"
+                ? "bg-emerald-600 text-white shadow-xs"
+                : "bg-white dark:bg-[#12121A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/8 dark:border-white/10"
+            }`}
+          >
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span>Active Now ({stats?.onlineNow ?? users.filter((u) => u.isOnline).length})</span>
           </button>
 
           <button
@@ -543,6 +595,7 @@ export default function AdminUsersPanel() {
               className="px-3 py-2 rounded-xl bg-[#F8F8FB] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-xs font-medium text-[#0A0A0E] dark:text-white focus:outline-hidden"
             >
               <option value="newest">Newest First</option>
+              <option value="active">Recently Active</option>
               <option value="oldest">Oldest First</option>
               <option value="name">Name (A-Z)</option>
               <option value="role">Role</option>
@@ -633,6 +686,18 @@ export default function AdminUsersPanel() {
                           {user.role}
                         </span>
 
+                        {/* Live Session Status */}
+                        {user.isOnline ? (
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 inline-flex items-center gap-1.5 shadow-2xs">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                            <span>ONLINE</span>
+                          </span>
+                        ) : user.lastLoginAt ? (
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-black/5 dark:bg-white/5 text-[#5A5A68] dark:text-[#8E8EA4] border border-black/5 dark:border-white/5">
+                            LOGGED IN
+                          </span>
+                        ) : null}
+
                         {/* Category Pill */}
                         <span className="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[#F0F0F5] dark:bg-[#1E1E2C] text-[#475569] dark:text-[#A0A0B8] border border-black/5 dark:border-white/5">
                           {user.category}
@@ -677,7 +742,16 @@ export default function AdminUsersPanel() {
                           : user.country || "Global"}
                       </div>
                       <div className="text-[10px] font-mono text-[#5A5A68] dark:text-[#8E8EA4]">
-                        Joined {new Date(user.createdAt).toLocaleDateString()}
+                        {user.isOnline ? (
+                          <span className="text-emerald-600 dark:text-emerald-400 font-bold flex items-center justify-end gap-1">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                            <span>Active now</span>
+                          </span>
+                        ) : user.lastActiveAt ? (
+                          <span>Active {new Date(user.lastActiveAt).toLocaleDateString()}</span>
+                        ) : (
+                          <span>Joined {new Date(user.createdAt).toLocaleDateString()}</span>
+                        )}
                       </div>
                     </div>
 
@@ -818,6 +892,38 @@ export default function AdminUsersPanel() {
 
             {/* Metadata Fields */}
             <div className="space-y-3 p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#14141E] border border-black/5 dark:border-white/5 text-xs font-mono">
+              <div className="flex justify-between items-center py-1 border-b border-black/5 dark:border-white/5">
+                <span className="text-[#5A5A68] dark:text-[#8E8EA4]">Live Session Status:</span>
+                {selectedUser.isOnline ? (
+                  <span className="inline-flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-bold">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span>Online Now</span>
+                  </span>
+                ) : selectedUser.lastLoginAt ? (
+                  <span className="text-[#5A5A68] dark:text-[#8E8EA4] font-medium">Logged In Previously</span>
+                ) : (
+                  <span className="text-[#8E8EA4]">Offline</span>
+                )}
+              </div>
+
+              {selectedUser.lastActiveAt && (
+                <div className="flex justify-between items-center py-1 border-b border-black/5 dark:border-white/5">
+                  <span className="text-[#5A5A68] dark:text-[#8E8EA4]">Last Active:</span>
+                  <span className="text-[#0A0A0E] dark:text-white font-bold">
+                    {new Date(selectedUser.lastActiveAt).toLocaleString()}
+                  </span>
+                </div>
+              )}
+
+              {selectedUser.lastLoginAt && (
+                <div className="flex justify-between items-center py-1 border-b border-black/5 dark:border-white/5">
+                  <span className="text-[#5A5A68] dark:text-[#8E8EA4]">Last Logged In:</span>
+                  <span className="text-[#0A0A0E] dark:text-white font-bold">
+                    {new Date(selectedUser.lastLoginAt).toLocaleString()}
+                  </span>
+                </div>
+              )}
+
               <div className="flex justify-between items-center py-1 border-b border-black/5 dark:border-white/5">
                 <span className="text-[#5A5A68] dark:text-[#8E8EA4]">User ID:</span>
                 <span className="text-[#0A0A0E] dark:text-white font-bold select-all truncate max-w-[200px]">

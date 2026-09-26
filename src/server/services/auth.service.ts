@@ -35,6 +35,12 @@ export class AuthService {
       throw new Error("Invalid email or password");
     }
 
+    const nowIso = new Date().toISOString();
+    userRepo.updateUser(userEntity.id, {
+      lastLoginAt: nowIso,
+      lastActiveAt: nowIso,
+    });
+
     const token = createSessionToken({
       userId: userEntity.id,
       email: userEntity.email,
@@ -232,6 +238,12 @@ export class AuthService {
         });
       }
     }
+
+    const nowIso = new Date().toISOString();
+    userRepo.updateUser(existingUser.id, {
+      lastLoginAt: nowIso,
+      lastActiveAt: nowIso,
+    });
 
     const token = createSessionToken({
       userId: existingUser.id,
