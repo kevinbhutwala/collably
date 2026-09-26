@@ -1,6 +1,13 @@
 import type { Metadata } from 'next';
 import React from 'react';
-import { CollabSignalHome } from '@/components/collably/CollabSignalHome';
+import { WishlinkHeroShowcase } from '@/components/collably/WishlinkHeroShowcase';
+import { WishlinkFlipMarquee } from '@/components/collably/WishlinkFlipMarquee';
+import { WishlinkPillarsSection } from '@/components/collably/WishlinkPillarsSection';
+import { WishlinkSpaciousShowcase } from '@/components/collably/WishlinkSpaciousShowcase';
+import { WishlinkCreatorStories } from '@/components/collably/WishlinkCreatorStories';
+import { WishlinkLaunchpadCTA } from '@/components/collably/WishlinkLaunchpadCTA';
+import { WishlinkStickyCTA } from '@/components/collably/WishlinkStickyCTA';
+import { CompactFAQ } from '@/components/collably/CompactFAQ';
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_APP_URL ||
@@ -97,7 +104,31 @@ export default function AbeyCollabLandingPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqJsonLd) }}
       />
-      <CollabSignalHome />
+      <div className="relative min-h-screen bg-white text-[#0A0A0E] font-sans selection:bg-[#FFD21F] selection:text-[#0A0A0E] overflow-x-hidden">
+        {/* 01 — Wishlink-Style Minimalist, Spacious Hero with Floating 3D Stickers */}
+        <WishlinkHeroShowcase />
+
+        {/* 02 — Signature Wishlink Dual-Track 3D Flip Card Marquee ("We have The Best With Us") */}
+        <WishlinkFlipMarquee />
+
+        {/* 03 — 3 Core Pillars (Monetise with Escrow, Turn Comments into Deals, Direct Brand Collabs) */}
+        <WishlinkPillarsSection />
+
+        {/* 04 — Spacious Wishlink Essentials Visual Showcase with Large Imagery & Breathing Room */}
+        <WishlinkSpaciousShowcase />
+
+        {/* 05 — Editorial Creator Stories & Real Brand Partnerships ("Loved by Creators, trusted by Brands") */}
+        <WishlinkCreatorStories />
+
+        {/* 06 — Wishlink Signature "Your launchpad to success!!" High-Conversion Closing Banner */}
+        <WishlinkLaunchpadCTA />
+
+        {/* 07 — Clean, Spacious FAQ & Objection Handlers */}
+        <CompactFAQ />
+
+        {/* 08 — Signature Wishlink Floating Sticky Bottom Quick Sign-Up Bar */}
+        <WishlinkStickyCTA />
+      </div>
     </>
   );
 }
