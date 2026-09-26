@@ -11,42 +11,46 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     background: #090d16;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     color: #ffffff;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px 20px;
+    padding: 32px 16px;
+    overflow-x: hidden;
   }
   .wrapper {
     max-width: 1080px;
     width: 100%;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    gap: 48px;
+    gap: 40px;
     align-items: center;
     justify-content: center;
   }
   
-  /* Phone Mockup Frame */
+  /* Responsive Phone Mockup Frame */
   .phone-frame {
-    width: 360px;
-    height: 640px;
+    width: 100%;
+    max-width: 330px;
+    aspect-ratio: 9/16;
     background: #000000;
-    border-radius: 44px;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 0 10px #1e293b, 0 0 0 12px #334155;
+    border-radius: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 0 8px #1e293b, 0 0 0 10px #334155;
     position: relative;
     overflow: hidden;
     flex-shrink: 0;
+    margin: 0 auto;
   }
   .phone-notch {
     position: absolute;
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 100px;
-    height: 22px;
+    width: 90px;
+    height: 20px;
     background: #000000;
     border-radius: 12px;
     z-index: 10;
@@ -55,77 +59,104 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 36px;
+    border-radius: 32px;
     display: block;
   }
 
   /* Info / Action Panel */
   .panel {
     flex: 1;
-    min-width: 320px;
-    max-width: 540px;
+    min-width: 280px;
+    max-width: 560px;
+    width: 100%;
   }
   .badge {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
     border: 1px solid rgba(165, 180, 252, 0.3);
     color: #a5b4fc;
     padding: 6px 14px;
     border-radius: 999px;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
+  }
+  .pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
   }
   h1 {
-    font-size: 36px;
+    font-size: clamp(24px, 4.5vw, 36px);
     font-weight: 900;
-    letter-spacing: -1px;
+    letter-spacing: -0.5px;
     line-height: 1.15;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     background: linear-gradient(to right, #ffffff, #cbd5e1);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+  .tagline-accent {
+    color: #ffd21f;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
   p {
     color: #94a3b8;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.6;
-    margin-bottom: 24px;
+    margin-bottom: 22px;
   }
   .btn-group {
     display: flex;
-    gap: 14px;
-    margin-bottom: 32px;
+    gap: 12px;
+    margin-bottom: 24px;
     flex-wrap: wrap;
   }
   .btn-primary {
     background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
     color: #ffffff;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
-    padding: 14px 28px;
+    padding: 12px 24px;
     border-radius: 12px;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     gap: 8px;
     box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    border: none;
   }
   .btn-secondary {
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: #f1f5f9;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
-    padding: 14px 24px;
+    padding: 12px 20px;
     border-radius: 12px;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    transition: transform 0.2s;
   }
   .btn-primary:hover, .btn-secondary:hover { transform: translateY(-2px); }
 
@@ -133,18 +164,32 @@
     background: rgba(30, 41, 59, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 16px;
+    padding: 16px;
+    margin-bottom: 14px;
+    position: relative;
   }
   .card-title {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 800;
     color: #e2e8f0;
     margin-bottom: 8px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 8px;
   }
+  .copy-btn {
+    background: rgba(99, 102, 241, 0.25);
+    border: 1px solid rgba(99, 102, 241, 0.5);
+    color: #a5b4fc;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .copy-btn:hover { background: rgba(99, 102, 241, 0.4); }
   .card-code {
     font-family: monospace;
     font-size: 12px;
@@ -157,11 +202,40 @@
     white-space: pre-wrap;
     user-select: all;
   }
+
+  /* Toast Notification */
+  #toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #10b981;
+    color: #000;
+    font-weight: 800;
+    font-size: 13px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 999;
+  }
+  #toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    body { padding: 20px 14px; }
+    .wrapper { gap: 28px; }
+    .btn-group { flex-direction: column; }
+    .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+  }
 </style>
 </head>
 <body>
   <div class="wrapper">
-    <!-- Phone Mockup Frame -->
+    <!-- Responsive Phone Mockup Frame -->
     <div class="phone-frame">
       <div class="phone-notch"></div>
       <video id="reelVideo" autoplay loop muted playsinline controls>
@@ -172,9 +246,13 @@
 
     <!-- Info Panel -->
     <div class="panel">
-      <div class="badge">🎬 Production Ready</div>
-      <h1>AbeyCollab Debut Reel (9:16)</h1>
-      <p>An 18-second viral video reel designed for high retention loops, calling out absurd barter DMs and introducing AbeyCollab's milestone escrow protection.</p>
+      <div class="badge">
+        <span class="pulse-dot"></span>
+        <span>Production Ready • 9:16 Vertical</span>
+      </div>
+      <h1>AbeyCollab Debut Reel</h1>
+      <div class="tagline-accent">✨ “Abey, let’s collab.”</div>
+      <p>An 18.5-second high-energy animated reel designed for viral retention loops on Instagram, calling out absurd barter pitches and showcasing milestone escrow protection.</p>
 
       <div class="btn-group">
         <a href="abeycollab_debut_reel.webm" download="abeycollab_debut_reel.webm" class="btn-primary">
@@ -186,8 +264,11 @@
       </div>
 
       <div class="card-box">
-        <div class="card-title">📝 Ready-to-Post Caption (Tap to Copy)</div>
-        <div class="card-code">Abey, let’s collab. 🤝🔥
+        <div class="card-title">
+          <span>📝 Ready-to-Post Caption</span>
+          <button class="copy-btn" onclick="copyCaption()">📋 Copy Caption</button>
+        </div>
+        <div class="card-code" id="captionText">Abey, let’s collab. 🤝🔥
 
 Tell me your DMs don’t look like this without telling me your DMs don’t look like this… 💀👇
 
@@ -212,10 +293,25 @@ Toh DMs bandh karo, aur bolo... Abey, let’s collab.
       </div>
 
       <div class="card-box">
-        <div class="card-title">🎵 Recommended Trending Sound</div>
-        <p style="margin: 0; font-size: 13px; color: #cbd5e1;">In Instagram Reels editor, pair this video with a trending comedic sound (e.g. dramatic violin or high-energy Phonk beat) set to 20% background volume.</p>
+        <div class="card-title">
+          <span>🎵 Audio Recommendation</span>
+        </div>
+        <p style="margin: 0; font-size: 13px; color: #cbd5e1;">In the Instagram Reels editor, pair this video with a trending audio track (e.g. dramatic Bollywood violin or high-energy Phonk beat) set to ~25% background volume.</p>
       </div>
     </div>
   </div>
+
+  <div id="toast">Caption copied to clipboard! ✨</div>
+
+  <script>
+    function copyCaption() {
+      const text = document.getElementById('captionText').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => { toast.classList.remove('show'); }, 2500);
+      });
+    }
+  </script>
 </body>
 </html>

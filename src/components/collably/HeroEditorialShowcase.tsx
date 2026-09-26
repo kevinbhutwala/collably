@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -13,8 +13,8 @@ import {
   Users,
   Zap,
   Lock,
-  Star,
-  Check,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { InteractiveTiltCard } from "@/components/ui/InteractiveTiltCard";
 import { Modal } from "@/components/ui/Modal";
@@ -105,11 +105,29 @@ const HERO_TALENT: HeroTalent[] = [
 export function HeroEditorialShowcase() {
   const { format } = useGlobalCurrency();
   const [activeIdx, setActiveIdx] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const [roleModalOpen, setRoleModalOpen] = useState(false);
   const activeTalent = HERO_TALENT[activeIdx];
 
+  // Auto-cycle creators every 5 seconds to showcase diversity
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setActiveIdx((prev) => (prev + 1) % HERO_TALENT.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [isPaused]);
+
+  const nextTalent = useCallback(() => {
+    setActiveIdx((prev) => (prev + 1) % HERO_TALENT.length);
+  }, []);
+
+  const prevTalent = useCallback(() => {
+    setActiveIdx((prev) => (prev - 1 + HERO_TALENT.length) % HERO_TALENT.length);
+  }, []);
+
   return (
-    <section className="relative min-h-[calc(100svh-4rem)] lg:min-h-[85vh] bg-white dark:bg-[#08080C] text-[#0A0A0E] dark:text-white flex flex-col justify-between pt-10 sm:pt-14 pb-14 sm:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden font-sans">
+    <section className="relative min-h-[calc(100svh-4rem)] lg:min-h-[85vh] bg-white dark:bg-[#08080C] text-[#0A0A0E] dark:text-white flex flex-col justify-center pt-20 sm:pt-24 lg:pt-28 pb-12 sm:pb-16 lg:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden font-sans">
       {/* Background Solar Flare with Gentle Breathing Cycle */}
       <motion.div
         animate={{
@@ -125,7 +143,7 @@ export function HeroEditorialShowcase() {
       />
 
       <div className="max-w-7xl mx-auto w-full flex-1 flex flex-col justify-center my-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-14 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-14 items-center">
           {/* ══════════════════════════════════════════════════════════════════════
               LEFT: POWERFUL EDITORIAL VALUE PROPOSITION (Answers all 4 user questions)
               ══════════════════════════════════════════════════════════════════════ */}
@@ -133,18 +151,18 @@ export function HeroEditorialShowcase() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 space-y-7 text-left"
+            className="lg:col-span-6 space-y-5 sm:space-y-7 text-left"
           >
             {/* Live Trust Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF9F5] dark:bg-[#14141E] border border-black/8 dark:border-white/10 shadow-2xs">
-              <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
-              <span className="text-[11px] font-mono font-bold tracking-tight text-[#0A0A0E] dark:text-white">
+            <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-[#FAF9F5] dark:bg-[#14141E] border border-black/8 dark:border-white/10 shadow-2xs max-w-full">
+              <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse shrink-0" />
+              <span className="text-[10px] sm:text-[11px] font-mono font-bold tracking-tight text-[#0A0A0E] dark:text-white truncate">
                 “ABEY, LET’S COLLAB.” • THE CREATOR × BRAND COMMERCE PLATFORM
               </span>
             </div>
 
             {/* Confident Large Headline */}
-            <h1 className="max-w-xl lg:max-w-2xl text-[clamp(2.5rem,5.5vw,5rem)] font-black font-display tracking-[-0.04em] text-[#0A0A0E] dark:text-white leading-[1.05]">
+            <h1 className="max-w-xl lg:max-w-2xl text-[clamp(2.15rem,5.2vw,4.5rem)] font-black font-display tracking-tight text-[#0A0A0E] dark:text-white leading-[1.08] sm:leading-[1.04]">
               Where visionary brands meet{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFB800] dark:from-[#FFD21F] dark:via-[#FFE575] dark:to-[#FFC700]">
                 cinematic creators.
@@ -152,41 +170,43 @@ export function HeroEditorialShowcase() {
             </h1>
 
             {/* Short, clear value statement */}
-            <p className="text-base sm:text-lg text-[#5A5A68] dark:text-[#9A9AA8] max-w-xl leading-relaxed font-sans font-normal">
+            <p className="text-sm sm:text-base lg:text-lg text-[#5A5A68] dark:text-[#9A9AA8] max-w-xl leading-relaxed font-sans font-normal">
               Discover the right talent, align on the work, review every frame and release payment with complete confidence.
             </p>
 
-
             {/* Action Buttons (Dominant Primary CTA + Clean Secondary) */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-3.5 pt-1 sm:pt-2">
               <button
                 onClick={() => setRoleModalOpen(true)}
-                className="min-h-12 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-sm transition-all shadow-[0_4px_20px_rgba(255,210,31,0.5)] flex items-center justify-center gap-2 group active:scale-[0.98] border border-black/10 font-sans hover-lift"
+                className="w-full sm:w-auto min-h-12 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-sm transition-all shadow-[0_4px_20px_rgba(255,210,31,0.5)] flex items-center justify-center gap-2 group active:scale-[0.98] border border-black/10 font-sans hover-lift"
               >
                 <span>Post a Campaign</span>
-                <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-1 transition-transform shrink-0" />
               </button>
 
-              <Link href="/creators" className="w-full sm:w-auto min-h-12 px-7 py-3.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#14141E] dark:hover:bg-[#1E1E2C] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-sm transition-all shadow-xs active:scale-[0.98] flex items-center justify-center gap-2 hover-lift">
-                  <Users className="w-4 h-4 text-[#8A7000] dark:text-[#FFD21F]" />
-                  <span>Browse Creators</span>
+              <Link
+                href="/creators"
+                className="w-full sm:w-auto min-h-12 px-7 py-3.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#14141E] dark:hover:bg-[#1E1E2C] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-sm transition-all shadow-xs active:scale-[0.98] flex items-center justify-center gap-2 hover-lift"
+              >
+                <Users className="w-4 h-4 text-[#8A7000] dark:text-[#FFD21F] shrink-0" />
+                <span>Browse 40+ Creators</span>
               </Link>
             </div>
 
             {/* Proof Micro Bar */}
-            <div className="flex flex-wrap items-center gap-4 pt-3 border-t border-black/6 dark:border-white/10 text-xs font-mono text-[#5A5A68] dark:text-[#8E8EA4]">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-3 border-t border-black/6 dark:border-white/10 text-[11px] sm:text-xs font-mono text-[#5A5A68] dark:text-[#8E8EA4]">
               <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E] dark:text-white">
-                <ShieldCheck className="w-4 h-4 text-[#087F5B]" />
+                <ShieldCheck className="w-4 h-4 text-[#087F5B] shrink-0" />
                 <span>Protected Payments</span>
               </div>
-              <span>•</span>
+              <span className="hidden sm:inline text-black/20 dark:text-white/20">•</span>
               <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E] dark:text-white">
-                <Zap className="w-4 h-4 text-[#FFD21F]" />
+                <Zap className="w-4 h-4 text-[#FFD21F] shrink-0" />
                 <span>Fast Payout on Approval</span>
               </div>
-              <span>•</span>
+              <span className="hidden sm:inline text-black/20 dark:text-white/20">•</span>
               <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E] dark:text-white">
-                <Lock className="w-4 h-4 text-[#0A0A0E] dark:text-white" />
+                <Lock className="w-4 h-4 text-[#0A0A0E] dark:text-white shrink-0" />
                 <span>Clear Upfront Pricing</span>
               </div>
             </div>
@@ -199,38 +219,78 @@ export function HeroEditorialShowcase() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 relative flex flex-col items-center"
+            className="lg:col-span-6 relative flex flex-col items-center w-full"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={() => setIsPaused(true)}
+            onTouchEnd={() => setIsPaused(false)}
           >
-            {/* Top Selector Chips */}
-            <div className="flex items-center gap-2 mb-4 bg-[#F4F4F8] dark:bg-[#14141E] p-1.5 rounded-full border border-black/6 dark:border-white/10 shadow-xs z-20">
-              {HERO_TALENT.map((t, i) => (
-                <button
-                  key={t.id}
-                  onClick={() => setActiveIdx(i)}
-                  aria-pressed={activeIdx === i}
-                  aria-label={`Show ${t.name}'s creator profile`}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-sans font-bold transition-all flex items-center gap-1.5 ${
-                    activeIdx === i
-                      ? "bg-white dark:bg-[#1E1E2C] text-[#0A0A0E] dark:text-[#FFD21F] shadow-sm border border-black/8 dark:border-[#FFD21F]/40"
-                      : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
-                  }`}
-                >
-                  <span
-                    className={`w-2 h-2 rounded-full ${
-                      activeIdx === i ? "bg-[#FFD21F]" : "bg-black/20 dark:bg-white/20"
+            {/* Top Selector Chips with smooth horizontal scroll on mobile */}
+            <div className="w-full max-w-[340px] xs:max-w-[380px] sm:max-w-[440px] flex items-center justify-between mb-3 px-1">
+              <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1 scroll-smooth max-w-full -mx-1 px-1">
+                {HERO_TALENT.map((t, i) => (
+                  <button
+                    key={t.id}
+                    onClick={() => {
+                      setActiveIdx(i);
+                      setIsPaused(true);
+                    }}
+                    aria-pressed={activeIdx === i}
+                    aria-label={`Show ${t.name}'s creator profile`}
+                    className={`px-3 py-1.5 rounded-full text-xs font-sans font-bold transition-all flex items-center gap-1.5 shrink-0 ${
+                      activeIdx === i
+                        ? "bg-[#0A0A0E] text-white dark:bg-white dark:text-[#0A0A0E] shadow-sm ring-2 ring-[#FFD21F]"
+                        : "bg-[#F4F4F8] dark:bg-[#14141E] text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/6 dark:border-white/10"
                     }`}
-                  />
-                  <span>{t.name.split(" ")[0]}</span>
-                </button>
-              ))}
+                  >
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full ${
+                        activeIdx === i ? "bg-[#FFD21F] animate-pulse" : "bg-black/20 dark:bg-white/20"
+                      }`}
+                    />
+                    <span>{t.name.split(" ")[0]}</span>
+                  </button>
+                ))}
+              </div>
+              <div className="hidden sm:flex items-center gap-1 shrink-0 text-xs font-mono text-[#8E8EA4]">
+                <span>0{activeIdx + 1}</span>
+                <span>/</span>
+                <span>0{HERO_TALENT.length}</span>
+              </div>
             </div>
 
             {/* Main Interactive Overlapping Portrait Card with 3D Tilt */}
             <InteractiveTiltCard
               maxTilt={9}
               glowColor="rgba(255, 210, 31, 0.32)"
-              className="relative w-full max-w-[320px] xs:max-w-[360px] sm:max-w-[430px] aspect-[4/5] rounded-3xl overflow-hidden border-2 border-white dark:border-white/15 shadow-[0_24px_70px_rgba(10,10,14,0.16)] bg-[#0A0A0E] group"
+              className="relative w-full max-w-[300px] xs:max-w-[340px] sm:max-w-[400px] lg:max-w-[430px] aspect-[4/5] rounded-3xl overflow-hidden border-2 border-white dark:border-white/15 shadow-[0_24px_70px_rgba(10,10,14,0.16)] bg-[#0A0A0E] group mx-auto"
             >
+              {/* Prev / Next Quick Nav Controls (Accessible on touch and hover) */}
+              <div className="absolute inset-y-0 inset-x-2 z-20 flex items-center justify-between pointer-events-none opacity-0 group-hover:opacity-100 sm:transition-opacity">
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    prevTalent();
+                  }}
+                  aria-label="Previous talent"
+                  className="pointer-events-auto p-2 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/20 text-white transition-transform active:scale-95 shadow-md"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    nextTalent();
+                  }}
+                  aria-label="Next talent"
+                  className="pointer-events-auto p-2 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/20 text-white transition-transform active:scale-95 shadow-md"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+
               {/* Primary Background Portrait */}
               <AnimatePresence mode="wait">
                 <motion.div
@@ -257,7 +317,7 @@ export function HeroEditorialShowcase() {
                     height={1125}
                     className="relative w-full h-full object-contain filter contrast-105 group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
                 </motion.div>
               </AnimatePresence>
 
@@ -280,7 +340,7 @@ export function HeroEditorialShowcase() {
               {/* 🌟 OVERLAPPING FLOATING 4K VIDEO ASSET CARD */}
               <motion.div
                 whileHover={{ scale: 1.08, rotate: 2 }}
-                className="absolute bottom-[118px] sm:bottom-[126px] right-3 sm:right-4 z-20 w-20 sm:w-26 aspect-video rounded-2xl overflow-hidden border-2 border-white dark:border-white/20 shadow-[0_12px_30px_rgba(0,0,0,0.45)] bg-black"
+                className="absolute bottom-[108px] sm:bottom-[126px] right-2.5 sm:right-4 z-20 w-20 sm:w-26 aspect-video rounded-xl sm:rounded-2xl overflow-hidden border-2 border-white dark:border-white/20 shadow-[0_12px_30px_rgba(0,0,0,0.45)] bg-black"
               >
                 <SafeImage
                   src={activeTalent.bRollPreview}
@@ -298,32 +358,31 @@ export function HeroEditorialShowcase() {
               </motion.div>
 
               {/* Bottom Glass Identity Bar */}
-              {/* Bottom Glass Identity Bar */}
-              <div className="absolute bottom-3 sm:bottom-4 inset-x-3 sm:inset-x-4 z-20 p-3 sm:p-4 rounded-2xl bg-white/95 dark:bg-[#0E0E16]/95 backdrop-blur-xl border border-black/8 dark:border-white/10 shadow-xl space-y-1.5 sm:space-y-2 text-[#0A0A0E] dark:text-[#F4F4F8]">
-                <div className="flex items-center justify-between">
-                  <div>
+              <div className="absolute bottom-2.5 sm:bottom-4 inset-x-2.5 sm:inset-x-4 z-20 p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/95 dark:bg-[#0E0E16]/95 backdrop-blur-xl border border-black/8 dark:border-white/10 shadow-xl space-y-1 sm:space-y-2 text-[#0A0A0E] dark:text-[#F4F4F8]">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="min-w-0">
                     <div className="flex items-center gap-1.5">
-                      <h3 className="text-xs sm:text-sm font-bold font-display text-[#0A0A0E] dark:text-white">{activeTalent.name}</h3>
-                      <CheckCircle2 className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#087F5B]" />
+                      <h3 className="text-xs sm:text-sm font-bold font-display text-[#0A0A0E] dark:text-white truncate">{activeTalent.name}</h3>
+                      <CheckCircle2 className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#087F5B] shrink-0" />
                     </div>
                     <div className="flex items-center gap-1.5 mt-0.5">
-                      <div className="w-4 h-4 rounded-md bg-[#FFD21F]/20 flex items-center justify-center text-[#A37F00] dark:text-[#FFD21F] shrink-0">
-                        <TitleIcon title={activeTalent.niche} category={activeTalent.verifiedSponsor} className="w-2.5 h-2.5" />
+                      <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-md bg-[#FFD21F]/20 flex items-center justify-center text-[#A37F00] dark:text-[#FFD21F] shrink-0">
+                        <TitleIcon title={activeTalent.niche} category={activeTalent.verifiedSponsor} className="w-2 sm:w-2.5 h-2 sm:h-2.5" />
                       </div>
-                      <p className="text-[10px] sm:text-[11px] text-[#6A6A78] dark:text-[#A0A0B4] font-sans">{activeTalent.niche}</p>
+                      <p className="text-[9px] sm:text-[11px] text-[#6A6A78] dark:text-[#A0A0B4] font-sans truncate">{activeTalent.niche}</p>
                     </div>
                   </div>
-                  <div className="text-right font-mono">
-                    <span className="text-[9px] sm:text-[10px] text-[#888898] dark:text-[#8E8EA4] block uppercase">Starts at</span>
+                  <div className="text-right font-mono shrink-0">
+                    <span className="text-[8px] sm:text-[10px] text-[#888898] dark:text-[#8E8EA4] block uppercase">Starts at</span>
                     <span suppressHydrationWarning className="text-xs sm:text-sm font-extrabold text-[#0A0A0E] dark:text-white">{format(activeTalent.startingPriceAmount, "USD")}</span>
                   </div>
                 </div>
 
-                <div className="pt-1.5 sm:pt-2 border-t border-black/6 dark:border-white/10 flex items-center justify-between text-[10px] sm:text-[11px] font-mono">
-                  <span className="text-[#5A5A68] dark:text-[#8E8EA4] truncate max-w-[140px] sm:max-w-[180px]">{activeTalent.specs}</span>
+                <div className="pt-1.5 sm:pt-2 border-t border-black/6 dark:border-white/10 flex items-center justify-between text-[9px] sm:text-[11px] font-mono">
+                  <span className="text-[#5A5A68] dark:text-[#8E8EA4] truncate max-w-[130px] sm:max-w-[180px]">{activeTalent.specs}</span>
                   <Link
                     href={`/creators/${activeTalent.id}`}
-                    className="text-[11px] sm:text-xs font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-white flex items-center gap-0.5 shrink-0 transition-colors"
+                    className="text-[10px] sm:text-xs font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-white flex items-center gap-0.5 shrink-0 transition-colors"
                   >
                     <span>View Deck</span>
                     <ArrowRight className="w-3 h-3" />
@@ -331,7 +390,6 @@ export function HeroEditorialShowcase() {
                 </div>
               </div>
             </InteractiveTiltCard>
-
           </motion.div>
         </div>
       </div>
