@@ -21,10 +21,14 @@ export interface RegisterParams {
   role: "creator" | "brand";
   handle?: string;
   companyName?: string;
+  contactName?: string;
   category?: string;
   primaryCategory?: string;
   industry?: string;
   location?: string;
+  websiteUrl?: string;
+  companySize?: string;
+  monthlyBudget?: string;
   bio?: string;
   startingPrice?: number;
   currency?: string;

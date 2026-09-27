@@ -10,7 +10,7 @@ import { z } from "zod";
 const registrationSchema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters").max(120),
   email: z.string().trim().email("Please enter a valid email address").max(254),
-  password: z.string().min(6, "Password must be at least 6 characters").max(128),
+  password: z.string().min(8, "Password must be at least 8 characters").max(128),
   role: z.enum(["creator", "brand"]),
 });
 
@@ -24,9 +24,14 @@ export async function POST(req: NextRequest) {
       role,
       handle,
       companyName,
+      contactName,
       category,
+      primaryCategory,
       industry,
       location,
+      websiteUrl,
+      companySize,
+      monthlyBudget,
       bio,
       startingPrice,
       currency,
@@ -43,7 +48,12 @@ export async function POST(req: NextRequest) {
       linkedinFollowers,
     } = body;
 
-    const credentials = registrationSchema.parse({ name, email, password, role });
+    const credentials = registrationSchema.parse({
+      name: (role === "brand" ? (contactName || name || companyName) : name)?.trim(),
+      email: email?.trim(),
+      password,
+      role,
+    });
 
     const newUser = userRepo.createUser({
       name: credentials.name,
@@ -225,9 +235,9 @@ export async function POST(req: NextRequest) {
         description: `Verified enterprise brand on AbeyCollab sponsoring creator partnerships.`,
         logoUrl: newUser.avatarUrl || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
         coverImageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
-        websiteUrl: "https://abeycollab.com",
-        location: "San Francisco, CA",
-        companySize: "10-50",
+        websiteUrl: websiteUrl || "https://abeycollab.com",
+        location: location || "San Francisco, CA",
+        companySize: companySize || "11-50",
         verified: true,
         activeCampaignsCount: 0,
         totalSpent: 0,
@@ -280,9 +290,11 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
+    const message = err.message || "Registration failed";
+    const status = message.toLowerCase().includes("already exists") ? 409 : 400;
     return NextResponse.json(
-      { error: err.message || "Registration failed" },
-      { status: 400 }
+      { error: message },
+      { status }
     );
   }
 }

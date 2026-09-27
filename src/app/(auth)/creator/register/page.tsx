@@ -78,28 +78,64 @@ export default function CreatorRegisterPage() {
     setIsSubmitting(true);
     setErrorMessage("");
 
+    const nameVal = formData.fullName.trim();
+    const handleVal = formData.handle.trim().replace(/^@/, "");
+    const emailVal = formData.email.trim();
+    const priceVal = Number(formData.startingPrice);
+
+    if (nameVal.length < 2) {
+      setErrorMessage("Full name must be at least 2 characters.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (handleVal.length < 2) {
+      setErrorMessage("Primary handle must be at least 2 characters.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailVal)) {
+      setErrorMessage("Please enter a valid email address.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (formData.password.length < 8) {
+      setErrorMessage("Password must be at least 8 characters long.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!priceVal || priceVal <= 0) {
+      setErrorMessage("Starting sponsorship rate must be greater than 0.");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const res = await authService.registerCreator({
-        fullName: formData.fullName,
-        email: formData.email,
+        fullName: nameVal,
+        email: emailVal,
         password: formData.password,
-        handle: formData.handle.startsWith("@") ? formData.handle : `@${formData.handle}`,
-        location: formData.location,
+        handle: `@${handleVal}`,
+        location: formData.location.trim() || "United States",
         primaryCategory: formData.primaryCategory,
-        startingPrice: Number(formData.startingPrice) || 500,
+        startingPrice: priceVal,
         currency: currency,
         bio:
-          formData.bio ||
+          formData.bio.trim() ||
           `Content creator specializing in ${formData.primaryCategory}. Available for brand integrations and dedicated productions.`,
-        youtubeHandle: formData.youtubeHandle,
+        youtubeHandle: formData.youtubeHandle.trim(),
         youtubeSubscribers: Number(formData.youtubeSubscribers) || 0,
-        instagramHandle: formData.instagramHandle,
+        instagramHandle: formData.instagramHandle.trim(),
         instagramFollowers: Number(formData.instagramFollowers) || 0,
-        tiktokHandle: formData.tiktokHandle,
+        tiktokHandle: formData.tiktokHandle.trim(),
         tiktokFollowers: Number(formData.tiktokFollowers) || 0,
-        xHandle: formData.xHandle || formData.handle,
+        xHandle: formData.xHandle.trim() || handleVal,
         xFollowers: Number(formData.xFollowers) || 0,
-        linkedinHandle: formData.linkedinHandle,
+        linkedinHandle: formData.linkedinHandle.trim(),
         linkedinFollowers: Number(formData.linkedinFollowers) || 0,
       });
 
@@ -111,12 +147,12 @@ export default function CreatorRegisterPage() {
         addToast({
           type: "success",
           title: "Creator Account Activated",
-          message: "Welcome to AbeyCollab! Your media kit and social accounts are live.",
+          message: `Welcome to AbeyCollab, ${nameVal}! Your media kit and verified telemetry are live.`,
         });
         router.push("/app/dashboard");
       }
     } catch (err: any) {
-      setErrorMessage(err.message || "Registration failed");
+      setErrorMessage(err.message || "Registration failed. Please check your entries and try again.");
     } finally {
       setIsSubmitting(false);
     }

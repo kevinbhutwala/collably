@@ -75,10 +75,25 @@ console.log("=================================================");
 console.log("🔐 RUNNING END-TO-END LOGIN SIMULATION FOR ALL ACCOUNTS");
 console.log("=================================================");
 
+const aliasMap = {
+  "creator@collably.io": "creator@abeycollab.io",
+  "creator@collably.com": "creator@abeycollab.io",
+  "creator@abeycollab.com": "creator@abeycollab.io",
+  "brand@collably.io": "brand@abeycollab.io",
+  "brand@collably.com": "brand@abeycollab.io",
+  "brand@abeycollab.com": "brand@abeycollab.io",
+  "admin@abeycollab.io": "kevinbhutwala417@gmail.com",
+  "admin@abeycollab.com": "kevinbhutwala417@gmail.com",
+  "admin@collably.io": "kevinbhutwala417@gmail.com",
+  "admin@collably.com": "kevinbhutwala417@gmail.com",
+};
+
 let allPassed = true;
 
 for (const tc of testCases) {
-  const user = db.users.find((u) => u.email.toLowerCase() === tc.email.toLowerCase());
+  const normalized = tc.email.toLowerCase();
+  const targetEmail = aliasMap[normalized] || normalized;
+  const user = db.users.find((u) => u.email.toLowerCase() === targetEmail);
   if (!user) {
     console.error(`❌ [FAIL] User not found: ${tc.email}`);
     allPassed = false;

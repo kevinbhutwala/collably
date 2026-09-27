@@ -38,6 +38,10 @@ function LoginForm() {
       setErrorMessage("Your session has expired. Please sign in again to continue.");
     } else if (errorParam === "auth_required") {
       setErrorMessage("You must sign in to your verified account to access that page.");
+    } else if (errorParam === "admin_required") {
+      setErrorMessage("Administrative access required. Please sign in with an authorized admin account.");
+    } else if (errorParam === "brand_access_denied") {
+      setErrorMessage("Brand workspace access required. Please sign in with a brand account.");
     }
   }, [searchParams]);
 
@@ -46,8 +50,21 @@ function LoginForm() {
     setIsLoading(true);
     setErrorMessage("");
 
+    const idVal = email.trim();
+    if (!idVal) {
+      setErrorMessage("Please enter your email address or creator handle.");
+      setIsLoading(false);
+      return;
+    }
+
+    if (!password) {
+      setErrorMessage("Please enter your account password.");
+      setIsLoading(false);
+      return;
+    }
+
     try {
-      await login(email.trim(), password);
+      await login(idVal, password);
       addToast({
         type: "success",
         title: "Signed in successfully",
@@ -67,7 +84,7 @@ function LoginForm() {
           : "/app/dashboard";
       router.push(targetDestination);
     } catch (err: any) {
-      setErrorMessage(err.message || "Invalid email or password");
+      setErrorMessage(err.message || "Invalid email/handle or password. Please check your credentials and try again.");
     } finally {
       setIsLoading(false);
     }

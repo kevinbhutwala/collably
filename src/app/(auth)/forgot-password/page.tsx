@@ -39,6 +39,14 @@ function ForgotPasswordForm() {
     setErrorMessage("");
     setSuccessMessage("");
 
+    const emailVal = email.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailVal)) {
+      setErrorMessage("Please enter a valid email address.");
+      setIsLoading(false);
+      return;
+    }
+
     if (isResetMode) {
       if (newPassword.length < 8) {
         setErrorMessage("Password must be at least 8 characters long.");
@@ -57,7 +65,7 @@ function ForgotPasswordForm() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          email,
+          email: emailVal,
           ...(isResetMode ? { newPassword } : {}),
         }),
       });

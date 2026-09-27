@@ -12,15 +12,16 @@ export class UserRepository {
 
     // Cross-domain alias resolution
     const aliasMap: Record<string, string> = {
-      "creator@abeycollab.io": "creator@collably.io",
-      "creator@abeycollab.com": "creator@collably.io",
-      "brand@abeycollab.io": "brand@collably.io",
-      "brand@abeycollab.com": "brand@collably.io",
+      "creator@collably.io": "creator@abeycollab.io",
+      "creator@collably.com": "creator@abeycollab.io",
+      "creator@abeycollab.com": "creator@abeycollab.io",
+      "brand@collably.io": "brand@abeycollab.io",
+      "brand@collably.com": "brand@abeycollab.io",
+      "brand@abeycollab.com": "brand@abeycollab.io",
       "admin@abeycollab.io": "kevinbhutwala417@gmail.com",
       "admin@abeycollab.com": "kevinbhutwala417@gmail.com",
       "admin@collably.io": "kevinbhutwala417@gmail.com",
-      "creator@collably.io": "creator@collably.io",
-      "brand@collably.io": "brand@collably.io",
+      "admin@collably.com": "kevinbhutwala417@gmail.com",
     };
 
     const targetEmail = aliasMap[normalized];
@@ -66,11 +67,14 @@ export class UserRepository {
   }): UserEntity {
     const existing = this.findByEmail(data.email);
     if (existing) {
-      throw new Error("User with this email already exists");
+      throw new Error("An account with this email address already exists. Please sign in or use a different email.");
     }
 
     if (!data.passwordHash && !data.password) {
       throw new Error("A password or password hash is required to create a user");
+    }
+    if (data.password && data.password.length < 8) {
+      throw new Error("Password must be at least 8 characters long");
     }
     const passwordHash = data.passwordHash || hashPassword(data.password!);
 

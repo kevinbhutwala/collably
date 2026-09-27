@@ -38,33 +38,52 @@ export const DeliverableTypeEnum = z.enum([
 
 // Auth Schemas
 export const LoginSchema = z.object({
-  email: z.string().email('Please enter a valid email address'),
-  password: z.string().min(8, 'Password must be at least 8 characters'),
+  email: z
+    .string()
+    .trim()
+    .min(2, "Please enter your email address or creator handle"),
+  password: z
+    .string()
+    .min(6, "Password must be at least 6 characters")
+    .max(128, "Password cannot exceed 128 characters"),
 });
 
 export const CreatorRegisterSchema = z.object({
-  fullName: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Please enter a valid email address'),
-  password: z.string().min(8, 'Password must be at least 8 characters'),
-  handle: z.string().min(2, 'Handle must be at least 2 characters'),
+  fullName: z.string().trim().min(2, "Full name must be at least 2 characters").max(100),
+  email: z.string().trim().email("Please enter a valid email address").max(254),
+  password: z.string().min(8, "Password must be at least 8 characters").max(128),
+  handle: z.string().trim().min(2, "Handle must be at least 2 characters").max(60),
   primaryCategory: CreatorCategoryEnum,
-  location: z.string().min(2, 'Location is required'),
+  location: z.string().trim().min(2, "Location is required"),
   instagramHandle: z.string().optional(),
+  instagramFollowers: z.number().nonnegative().optional(),
   youtubeHandle: z.string().optional(),
+  youtubeSubscribers: z.number().nonnegative().optional(),
   tiktokHandle: z.string().optional(),
-  startingPrice: z.number().min(1, 'Minimum starting price must be greater than 0'),
-  bio: z.string().min(20, 'Bio must be at least 20 characters'),
+  tiktokFollowers: z.number().nonnegative().optional(),
+  xHandle: z.string().optional(),
+  xFollowers: z.number().nonnegative().optional(),
+  linkedinHandle: z.string().optional(),
+  linkedinFollowers: z.number().nonnegative().optional(),
+  startingPrice: z.number().min(1, "Starting price must be greater than 0"),
+  currency: z.string().optional(),
+  bio: z.string().max(2000).optional().or(z.literal("")),
 });
 
 export const BrandRegisterSchema = z.object({
-  companyName: z.string().min(2, 'Company name is required'),
-  contactName: z.string().min(2, 'Contact person name is required'),
-  email: z.string().email('Please enter a valid business email'),
-  password: z.string().min(8, 'Password must be at least 8 characters'),
-  websiteUrl: z.string().url('Please enter a valid website URL'),
-  industry: z.string().min(2, 'Industry is required'),
-  companySize: z.enum(['1-10', '11-50', '51-200', '201-1000', '1000+']),
-  monthlyBudget: z.string().min(1, 'Please select your estimated monthly creator budget'),
+  companyName: z.string().trim().min(2, "Company name is required").max(120),
+  contactName: z.string().trim().min(2, "Contact person name is required").max(120),
+  email: z.string().trim().email("Please enter a valid work email address").max(254),
+  password: z.string().min(8, "Password must be at least 8 characters").max(128),
+  websiteUrl: z
+    .string()
+    .trim()
+    .url("Please enter a valid website URL (e.g. https://brand.com)")
+    .optional()
+    .or(z.literal("")),
+  industry: z.string().trim().min(2, "Industry is required"),
+  companySize: z.string().optional().or(z.literal("")),
+  monthlyBudget: z.string().optional().or(z.literal("")),
 });
 
 // Campaign Creation Schema (7-Step Wizard)

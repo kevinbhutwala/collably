@@ -57,14 +57,52 @@ export default function BrandRegisterPage() {
     setIsSubmitting(true);
     setErrorMessage("");
 
+    const compName = formData.companyName.trim();
+    const contName = formData.contactName.trim();
+    const emailVal = formData.email.trim();
+    let webUrl = formData.websiteUrl.trim();
+
+    if (compName.length < 2) {
+      setErrorMessage("Company name must be at least 2 characters.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (contName.length < 2) {
+      setErrorMessage("Marketing lead name must be at least 2 characters.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailVal)) {
+      setErrorMessage("Please enter a valid work email address.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (formData.password.length < 8) {
+      setErrorMessage("Password must be at least 8 characters long.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (webUrl && !/^https?:\/\//i.test(webUrl)) {
+      webUrl = `https://${webUrl}`;
+    }
+
     try {
       const res = await authService.register({
-        name: formData.contactName || formData.companyName,
-        email: formData.email,
+        name: contName || compName,
+        contactName: contName,
+        companyName: compName,
+        email: emailVal,
         password: formData.password,
         role: "brand",
-        companyName: formData.companyName,
         industry: formData.industry,
+        websiteUrl: webUrl,
+        companySize: formData.companySize,
+        monthlyBudget: formData.monthlyBudget,
       });
 
       if (res.user) {
@@ -75,12 +113,12 @@ export default function BrandRegisterPage() {
         addToast({
           type: "success",
           title: "Brand Workspace Ready",
-          message: "Welcome to AbeyCollab! Your brand account is ready.",
+          message: `Welcome to AbeyCollab, ${contName || compName}! Your brand workspace is active.`,
         });
         router.push("/app/brand/campaigns/create");
       }
     } catch (err: any) {
-      setErrorMessage(err.message || "Registration failed");
+      setErrorMessage(err.message || "Registration failed. Please check your entries and try again.");
     } finally {
       setIsSubmitting(false);
     }
