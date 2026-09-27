@@ -49,8 +49,12 @@ export function BrandsDirectoryClient() {
             >
               <div className="space-y-4">
                 <div className="flex items-center gap-3.5">
-                  <div className="w-14 h-14 rounded-2xl bg-[#F8F8FC] border border-black/8 text-[#0A0A0E] flex items-center justify-center shrink-0 shadow-xs">
-                    <BrandIcon name={brand.companyName} size={28} className="text-[#0A0A0E]" />
+                  <div className="w-20 h-14 rounded-2xl bg-white border border-black/8 text-[#0A0A0E] flex items-center justify-center shrink-0 shadow-xs p-2 overflow-hidden">
+                    {brand.logoUrl ? (
+                      <img src={brand.logoUrl} alt={brand.companyName} className="max-w-full max-h-full object-contain" />
+                    ) : (
+                      <BrandIcon name={brand.companyName} size={28} className="text-[#0A0A0E]" />
+                    )}
                   </div>
                   <div>
                     <h3 className="font-bold text-base text-[#0A0A0E] flex items-center gap-1.5 font-display">

@@ -187,7 +187,7 @@ export function CampaignDetailClient({
                     fallbackType="brand"
                     fallbackName={campaign.brand.companyName}
                     fill
-                    className="object-cover"
+                    className="object-contain p-1"
                   />
                 </div>
                 <div>

@@ -194,6 +194,28 @@ export function LuminaryLogo({ className, size = 24 }: BrandLogoProps) {
   );
 }
 
+export function TheWholeTruthLogo({ className, size = 24 }: BrandLogoProps) {
+  return (
+    <img
+      src="/brands/the-whole-truth.png"
+      alt="The Whole Truth Foods"
+      style={{ maxHeight: size }}
+      className={cn("h-auto object-contain shrink-0", className)}
+    />
+  );
+}
+
+export function SnitchLogo({ className, size = 24 }: BrandLogoProps) {
+  return (
+    <img
+      src="/brands/snitch.png"
+      alt="Snitch"
+      style={{ maxHeight: size }}
+      className={cn("h-auto object-contain shrink-0", className)}
+    />
+  );
+}
+
 /**
  * Universal BrandIcon resolver: matches brand name to its vector logo
  */
@@ -208,6 +230,8 @@ export function BrandIcon({
 }) {
   const norm = name.toLowerCase();
 
+  if (norm.includes("whole truth") || norm.includes("the whole truth")) return <TheWholeTruthLogo size={size} className={className} />;
+  if (norm.includes("snitch")) return <SnitchLogo size={size} className={className} />;
   if (norm.includes("linear")) return <LinearLogo size={size} className={className} />;
   if (norm.includes("stripe")) return <StripeLogo size={size} className={className} />;
   if (norm.includes("notion")) return <NotionLogo size={size} className={className} />;

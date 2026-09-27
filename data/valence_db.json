@@ -5,56 +5,181 @@
       "name": "Kevin Bhutwala",
       "email": "kevinbhutwala417@gmail.com",
       "role": "agency_admin",
-      "createdAt": "2024-01-01"
+      "createdAt": "2024-01-01",
+      "passwordHash": "2c73d79dccf44af6d5d20e1c14746f3c:2acd20b270c4937feadc711683611fe726b640b7aa5596d24470c01556a36dcfb91de70ba699de30a505c3054c398e5caafdf22bc06e533fd08af5fd6d1657b6:210000",
+      "preferredCurrency": "USD",
+      "preferred_currency": "USD",
+      "lastActiveAt": "2026-09-27T19:39:33.766Z",
+      "updatedAt": "2026-09-27T19:39:33.766Z"
     },
     {
       "id": "user-brand-truth",
       "name": "The Whole Truth Foods",
       "email": "partnerships@thewholetruthfoods.com",
       "role": "brand",
-      "createdAt": "2024-02-15"
+      "createdAt": "2024-02-15",
+      "preferredCurrency": "USD",
+      "preferred_currency": "USD"
     },
     {
       "id": "user-brand-snitch",
       "name": "Snitch",
       "email": "influencer.reach@snitch.co.in",
       "role": "brand",
-      "createdAt": "2024-01-20"
+      "createdAt": "2024-01-20",
+      "preferredCurrency": "INR",
+      "preferred_currency": "INR"
     },
     {
       "id": "user-c-waseem",
       "name": "Waseem Khan",
       "email": "Bloggermaster786@gmail.com",
       "role": "creator",
-      "createdAt": "2024-03-01"
+      "createdAt": "2024-03-01",
+      "avatarUrl": "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=800&auto=format&fit=crop&q=80",
+      "verified": true,
+      "preferredCurrency": "USD",
+      "preferred_currency": "USD"
     },
     {
       "id": "user-c-prarthana",
       "name": "Prarthana",
       "email": "prarthaana04@creators.collably.io",
       "role": "creator",
-      "createdAt": "2024-03-05"
+      "createdAt": "2024-03-05",
+      "avatarUrl": "/creators/prarthana.jpg",
+      "verified": true,
+      "preferredCurrency": "USD",
+      "preferred_currency": "USD"
     },
     {
       "id": "user-c-kushi",
       "name": "Kushi Hanamsagar",
-      "email": "kushihanamsagar9@creators.collably.io",
+      "email": "kushihanamsagar9@abeycollab.io",
       "role": "creator",
-      "createdAt": "2024-03-10"
+      "createdAt": "2024-03-10",
+      "passwordHash": "72b206aed047cb5aa2b047143d95ba6a:af005d6d12659002ea6c5d250d5f097a45e599bea99a6cf715b6398adc3893aa1056ac2a69a6c1b4637485e685878c49336af49eaa0d97afbe8dcb490aa76751:210000",
+      "avatarUrl": "/creators/kushi-hanamsagar.jpg",
+      "verified": true,
+      "preferredCurrency": "USD",
+      "preferred_currency": "USD"
     },
     {
       "id": "user-c-pooja",
       "name": "Pooja Bera",
       "email": "berapooja1994@gmail.com",
       "role": "creator",
-      "createdAt": "2024-03-12"
+      "createdAt": "2024-03-12",
+      "avatarUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&auto=format&fit=crop&q=80",
+      "verified": true,
+      "preferredCurrency": "USD",
+      "preferred_currency": "USD"
     },
     {
       "id": "user-c-kunal",
       "name": "Kunal Rajput",
       "email": "subtle.strength@abeycollab.io",
       "role": "creator",
-      "createdAt": "2024-03-15"
+      "createdAt": "2024-03-15",
+      "avatarUrl": "/creators/kunal-rajput.jpg",
+      "verified": true,
+      "preferredCurrency": "USD",
+      "preferred_currency": "USD"
+    },
+    {
+      "id": "user-creator",
+      "name": "Creator Partner",
+      "email": "creator@abeycollab.io",
+      "passwordHash": "72b206aed047cb5aa2b047143d95ba6a:af005d6d12659002ea6c5d250d5f097a45e599bea99a6cf715b6398adc3893aa1056ac2a69a6c1b4637485e685878c49336af49eaa0d97afbe8dcb490aa76751:210000",
+      "role": "creator",
+      "avatarUrl": "/creators/prarthana.jpg",
+      "verified": true,
+      "createdAt": "2026-09-27T19:38:59.769Z",
+      "updatedAt": "2026-09-27T19:38:59.769Z",
+      "preferredCurrency": "USD",
+      "preferred_currency": "USD"
+    },
+    {
+      "id": "user-brand",
+      "name": "Brand Partner",
+      "email": "brand@abeycollab.io",
+      "passwordHash": "fe8e6b6a65edb6de8fb54c5dc337a6fc:e00158f69270f59c1a6ca57e2b8614b5f6b1671299d59dfdd6a04a54451f9f19c89e9d37170f8c8e3b266911c074eb58c16411ffd30b8d3601edb581446f27dc:210000",
+      "role": "brand",
+      "avatarUrl": "/brands/linear.png",
+      "verified": true,
+      "createdAt": "2026-09-27T19:38:59.769Z",
+      "updatedAt": "2026-09-27T19:38:59.769Z",
+      "preferredCurrency": "USD",
+      "preferred_currency": "USD"
+    },
+    {
+      "id": "user-c-alex",
+      "name": "Alex Rivera",
+      "email": "alex.rivera@abeycollab.io",
+      "passwordHash": "72b206aed047cb5aa2b047143d95ba6a:af005d6d12659002ea6c5d250d5f097a45e599bea99a6cf715b6398adc3893aa1056ac2a69a6c1b4637485e685878c49336af49eaa0d97afbe8dcb490aa76751:210000",
+      "role": "creator",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      "verified": false,
+      "createdAt": "2026-09-27T19:38:59.769Z",
+      "updatedAt": "2026-09-27T19:38:59.769Z",
+      "preferredCurrency": "USD",
+      "preferred_currency": "USD"
+    },
+    {
+      "id": "user-c-sheena",
+      "name": "Sheena Kalra",
+      "email": "eatmorelosemore@abeycollab.io",
+      "passwordHash": "f5f6199fc2cac0ac220e1488b81a7d0d:bcaba2112c7286ddd9d5ec52e1a30af8acda84eefef91252645b32dbf45a4b55038ba795e9a92d66fba1e514db1e039c8904e244ef57306a1c3a10e58714384b:210000",
+      "role": "creator",
+      "avatarUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80",
+      "verified": true,
+      "country": "IN",
+      "createdAt": "2026-09-27T19:38:59.770Z",
+      "updatedAt": "2026-09-27T19:38:59.770Z",
+      "preferredCurrency": "INR",
+      "preferred_currency": "INR"
+    },
+    {
+      "id": "user-c-ramsha",
+      "name": "Ramsha Sultan",
+      "email": "ramshasultankhan@abeycollab.io",
+      "passwordHash": "f5f6199fc2cac0ac220e1488b81a7d0d:bcaba2112c7286ddd9d5ec52e1a30af8acda84eefef91252645b32dbf45a4b55038ba795e9a92d66fba1e514db1e039c8904e244ef57306a1c3a10e58714384b:210000",
+      "role": "creator",
+      "avatarUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=80",
+      "verified": true,
+      "country": "IN",
+      "createdAt": "2026-09-27T19:38:59.770Z",
+      "updatedAt": "2026-09-27T19:38:59.770Z",
+      "preferredCurrency": "INR",
+      "preferred_currency": "INR"
+    },
+    {
+      "id": "user-c-aryan",
+      "name": "Aryan Sharma",
+      "email": "aryantech@abeycollab.io",
+      "passwordHash": "f5f6199fc2cac0ac220e1488b81a7d0d:bcaba2112c7286ddd9d5ec52e1a30af8acda84eefef91252645b32dbf45a4b55038ba795e9a92d66fba1e514db1e039c8904e244ef57306a1c3a10e58714384b:210000",
+      "role": "creator",
+      "avatarUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80",
+      "verified": true,
+      "country": "IN",
+      "createdAt": "2026-09-27T19:38:59.770Z",
+      "updatedAt": "2026-09-27T19:38:59.770Z",
+      "preferredCurrency": "INR",
+      "preferred_currency": "INR"
+    },
+    {
+      "id": "user-b2",
+      "name": "Snitch",
+      "email": "contact@snitch.com",
+      "passwordHash": "72b206aed047cb5aa2b047143d95ba6a:af005d6d12659002ea6c5d250d5f097a45e599bea99a6cf715b6398adc3893aa1056ac2a69a6c1b4637485e685878c49336af49eaa0d97afbe8dcb490aa76751:210000",
+      "role": "brand",
+      "avatarUrl": "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=400&auto=format&fit=crop&q=80",
+      "verified": true,
+      "country": "IN",
+      "createdAt": "2024-01-20",
+      "updatedAt": "2026-09-27T19:39:18.551Z",
+      "preferredCurrency": "INR",
+      "preferred_currency": "INR"
     }
   ],
   "creators": [
@@ -1166,7 +1291,7 @@
       "industry": "Fitness & Health Nutrition",
       "headline": "100% Clean-Label Nutrition, Whey Isolate & Real Food",
       "description": "India's first 100% clean-label food company. 0% added sugar, 0% artificial chemicals, real ingredients. Partnering with credible health, fitness, and lifestyle creators.",
-      "logoUrl": "/brands/the-whole-truth.svg",
+      "logoUrl": "/brands/the-whole-truth.png",
       "coverImageUrl": "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=1200&auto=format&fit=crop&q=80",
       "websiteUrl": "https://thewholetruthfoods.com",
       "location": "Mumbai, India",
@@ -1188,8 +1313,52 @@
       "industry": "Fashion & Streetwear",
       "headline": "Contemporary Menswear & Streetwear for the Unconventional Generation",
       "description": "Encapsulating inspirations from around the globe, Snitch crafts fast-paced contemporary streetwear, Korean parachute pants, and transitional menswear for the style-forward generation.",
-      "logoUrl": "/brands/snitch.svg",
+      "logoUrl": "/brands/snitch.png",
       "coverImageUrl": "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1200&auto=format&fit=crop&q=80",
+      "websiteUrl": "https://snitch.co.in",
+      "location": "Bengaluru, India",
+      "companySize": "201-500",
+      "verified": true,
+      "activeCampaignsCount": 2,
+      "totalSpent": 420000,
+      "socialHandles": {
+        "instagram": "snitch.co.in",
+        "youtube": "snitchfashion",
+        "x": "snitch_india"
+      },
+      "createdAt": "2024-01-20"
+    },
+    {
+      "id": "brand-1",
+      "userId": "user-brand",
+      "companyName": "The Whole Truth Foods",
+      "industry": "Fitness & Health Nutrition",
+      "headline": "100% Clean-Label Nutrition, Whey Isolate & Real Food",
+      "description": "India's first 100% clean-label food company. 0% added sugar, 0% artificial chemicals, real ingredients. Partnering with credible health, fitness, and lifestyle creators.",
+      "logoUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&auto=format&fit=crop&q=80",
+      "coverImageUrl": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=1200&auto=format&fit=crop&q=80",
+      "websiteUrl": "https://thewholetruthfoods.com",
+      "location": "Mumbai, India",
+      "companySize": "51-200",
+      "verified": true,
+      "activeCampaignsCount": 2,
+      "totalSpent": 350000,
+      "socialHandles": {
+        "instagram": "thewholetruthfoods",
+        "youtube": "thewholetruthfoods",
+        "x": "wholetruthfoods"
+      },
+      "createdAt": "2024-02-15"
+    },
+    {
+      "id": "brand-2",
+      "userId": "user-b2",
+      "companyName": "Snitch",
+      "industry": "Fashion & Streetwear",
+      "headline": "Contemporary Menswear & Streetwear for the Unconventional Generation",
+      "description": "Encapsulating inspirations from around the globe, Snitch crafts fast-paced contemporary streetwear, Korean parachute pants, and transitional menswear for the style-forward generation.",
+      "logoUrl": "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=400&auto=format&fit=crop&q=80",
+      "coverImageUrl": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&auto=format&fit=crop&q=80",
       "websiteUrl": "https://snitch.co.in",
       "location": "Bengaluru, India",
       "companySize": "201-500",
@@ -1322,7 +1491,7 @@
       ],
       "createdAt": "2026-09-20",
       "updatedAt": "2026-09-25",
-      "brandLogoUrl": "/brands/the-whole-truth.svg",
+      "brandLogoUrl": "/brands/the-whole-truth.png",
       "coverImageUrl": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=1200&auto=format&fit=crop&q=80"
     },
     {
@@ -1428,7 +1597,7 @@
       ],
       "createdAt": "2026-09-22",
       "updatedAt": "2026-09-26",
-      "brandLogoUrl": "/brands/the-whole-truth.svg",
+      "brandLogoUrl": "/brands/the-whole-truth.png",
       "coverImageUrl": "https://images.unsplash.com/photo-1544816155-12df9643f363?w=1200&auto=format&fit=crop&q=80"
     },
     {
@@ -1545,7 +1714,7 @@
       ],
       "createdAt": "2026-09-21",
       "updatedAt": "2026-09-25",
-      "brandLogoUrl": "/brands/snitch.svg",
+      "brandLogoUrl": "/brands/snitch.png",
       "coverImageUrl": "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1200&auto=format&fit=crop&q=80"
     },
     {
@@ -1652,7 +1821,7 @@
       ],
       "createdAt": "2026-09-23",
       "updatedAt": "2026-09-26",
-      "brandLogoUrl": "/brands/snitch.svg",
+      "brandLogoUrl": "/brands/snitch.png",
       "coverImageUrl": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=1200&auto=format&fit=crop&q=80"
     }
   ],
