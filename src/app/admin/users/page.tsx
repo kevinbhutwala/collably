@@ -806,16 +806,26 @@ export default function AdminUsersPanel() {
                     {/* Col 1-4: User Identity */}
                     <div className="col-span-4 flex items-center gap-3.5 min-w-0">
                       <div className="relative shrink-0">
-                        <div className="w-10 h-10 rounded-xl overflow-hidden border border-black/10 dark:border-white/10 bg-black/5">
-                          <SafeImage
-                            src={user.avatarUrl || ""}
-                            alt={user.name}
-                            fallbackType={user.role === "brand" ? "brand" : "creator"}
-                            fallbackName={user.name}
-                            fill
-                            className={user.role === "brand" ? "object-contain p-1" : "object-cover"}
-                          />
-                        </div>
+                        {user.role === "brand" ? (
+                          <div className="w-14 h-10 rounded-xl bg-white border border-black/10 dark:border-white/20 flex items-center justify-center p-1.5 shadow-2xs overflow-hidden">
+                            <img
+                              src={user.avatarUrl || (user.name.toLowerCase().includes("snitch") ? "/brands/snitch.png" : "/brands/the-whole-truth.png")}
+                              alt={user.name}
+                              className="max-w-full max-h-full object-contain"
+                            />
+                          </div>
+                        ) : (
+                          <div className="w-10 h-10 rounded-xl overflow-hidden border border-black/10 dark:border-white/10 bg-black/5 relative">
+                            <SafeImage
+                              src={user.avatarUrl || ""}
+                              alt={user.name}
+                              fallbackType="creator"
+                              fallbackName={user.name}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                        )}
                         {user.isOnline ? (
                           <span
                             className="w-3 h-3 rounded-full bg-emerald-500 border-2 border-white dark:border-[#111118] absolute -top-0.5 -right-0.5 animate-pulse"
@@ -1003,16 +1013,26 @@ export default function AdminUsersPanel() {
                     <div className="flex items-center justify-between gap-3">
                       <div className="flex items-center gap-3 min-w-0">
                         <div className="relative shrink-0">
-                          <div className="w-10 h-10 rounded-xl overflow-hidden border border-black/10 dark:border-white/10 bg-black/5">
-                            <SafeImage
-                              src={user.avatarUrl || ""}
-                              alt={user.name}
-                              fallbackType={user.role === "brand" ? "brand" : "creator"}
-                              fallbackName={user.name}
-                              fill
-                              className={user.role === "brand" ? "object-contain p-1" : "object-cover"}
-                            />
-                          </div>
+                          {user.role === "brand" ? (
+                            <div className="w-14 h-10 rounded-xl bg-white border border-black/10 dark:border-white/20 flex items-center justify-center p-1.5 shadow-2xs overflow-hidden">
+                              <img
+                                src={user.avatarUrl || (user.name.toLowerCase().includes("snitch") ? "/brands/snitch.png" : "/brands/the-whole-truth.png")}
+                                alt={user.name}
+                                className="max-w-full max-h-full object-contain"
+                              />
+                            </div>
+                          ) : (
+                            <div className="w-10 h-10 rounded-xl overflow-hidden border border-black/10 dark:border-white/10 bg-black/5 relative">
+                              <SafeImage
+                                src={user.avatarUrl || ""}
+                                alt={user.name}
+                                fallbackType="creator"
+                                fallbackName={user.name}
+                                fill
+                                className="object-cover"
+                              />
+                            </div>
+                          )}
                           {user.isOnline ? (
                             <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white dark:border-[#111118] absolute -top-0.5 -right-0.5 animate-pulse" />
                           ) : user.lastLoginAt ? (
@@ -1128,16 +1148,26 @@ export default function AdminUsersPanel() {
 
             {/* Profile Avatar & Primary Info */}
             <div className="text-center space-y-3">
-              <div className="w-20 h-20 rounded-3xl mx-auto overflow-hidden border-2 border-[#FFD21F] relative shadow-md">
-                <SafeImage
-                  src={selectedUser.avatarUrl || ""}
-                  alt={selectedUser.name}
-                  fallbackType={selectedUser.role === "brand" ? "brand" : "creator"}
-                  fallbackName={selectedUser.name}
-                  fill
-                  className={selectedUser.role === "brand" ? "object-contain p-2" : "object-cover"}
-                />
-              </div>
+              {selectedUser.role === "brand" ? (
+                <div className="w-36 h-20 rounded-2xl mx-auto overflow-hidden bg-white border-2 border-[#FFD21F] p-3 flex items-center justify-center shadow-md">
+                  <img
+                    src={selectedUser.avatarUrl || (selectedUser.name.toLowerCase().includes("snitch") ? "/brands/snitch.png" : "/brands/the-whole-truth.png")}
+                    alt={selectedUser.name}
+                    className="max-w-full max-h-full object-contain"
+                  />
+                </div>
+              ) : (
+                <div className="w-20 h-20 rounded-3xl mx-auto overflow-hidden border-2 border-[#FFD21F] relative shadow-md">
+                  <SafeImage
+                    src={selectedUser.avatarUrl || ""}
+                    alt={selectedUser.name}
+                    fallbackType="creator"
+                    fallbackName={selectedUser.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              )}
 
               <div>
                 <h2 className="text-xl font-extrabold text-[#0A0A0E] dark:text-white font-display">

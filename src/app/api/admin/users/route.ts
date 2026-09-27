@@ -190,12 +190,17 @@ export async function GET(req: NextRequest) {
       // If profile is verified in creator/brand repo, sync to user
       const isVerified = Boolean(u.verified || creator?.verified || brand?.verified);
 
+      const resolvedAvatar =
+        (u.role === "brand" || Boolean(brand))
+          ? (brand?.logoUrl || (u.name.toLowerCase().includes("snitch") ? "/brands/snitch.png" : "/brands/the-whole-truth.png"))
+          : (creator?.avatarUrl || u.avatarUrl || "");
+
       return {
         id: u.id,
         name: u.name,
         email: u.email,
         role: u.role,
-        avatarUrl: u.avatarUrl || `https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80`,
+        avatarUrl: resolvedAvatar,
         verified: isVerified,
         createdAt: u.createdAt,
         updatedAt: u.updatedAt,
