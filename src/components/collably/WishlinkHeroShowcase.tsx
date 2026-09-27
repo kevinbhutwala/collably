@@ -264,26 +264,26 @@ export function WishlinkHeroShowcase() {
               {/* ── WISHLINK FLOATING REACTION STICKERS & BADGES ── */}
               {/* Floating Sticker 1: Escrow Deposited (Top-Left) */}
               <motion.div
-                animate={{ y: [0, -8, 0] }}
+                animate={{ y: [0, -6, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-4 -left-2 sm:-left-6 p-3 sm:p-3.5 rounded-2xl bg-white/95 backdrop-blur-md border border-black/10 shadow-xl flex items-center gap-2.5 z-20"
+                className="absolute -top-3 left-2 sm:-left-6 p-2.5 sm:p-3.5 rounded-2xl bg-white/95 backdrop-blur-md border border-black/10 shadow-xl flex items-center gap-2 sm:gap-2.5 z-20"
               >
-                <div className="w-9 h-9 rounded-xl bg-emerald-500/15 text-emerald-700 flex items-center justify-center font-bold text-sm">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-emerald-500/15 text-emerald-700 flex items-center justify-center font-bold text-xs sm:text-sm shrink-0">
                   💰
                 </div>
                 <div className="text-left font-mono">
-                  <p className="text-[10px] text-[#7A7A8A] font-semibold uppercase">Escrow Vault</p>
-                  <p className="text-xs font-extrabold text-[#0A0A0E]">₹1,25,000 Locked</p>
+                  <p className="text-[9px] sm:text-[10px] text-[#7A7A8A] font-semibold uppercase">Escrow Vault</p>
+                  <p className="text-[11px] sm:text-xs font-extrabold text-[#0A0A0E]">₹1,25,000 Locked</p>
                 </div>
               </motion.div>
 
-              {/* Floating Sticker 2: Brand Partner Deal (Top-Right) */}
+              {/* Floating Sticker 2: Brand Partner Deal (Top-Right) — hidden on tiny screens (< 640px) */}
               <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute top-12 -right-2 sm:-right-8 p-3 rounded-2xl bg-white/95 backdrop-blur-md border border-black/10 shadow-xl flex items-center gap-2.5 z-20"
+                className="hidden sm:flex absolute top-12 -right-2 sm:-right-8 p-3 rounded-2xl bg-white/95 backdrop-blur-md border border-black/10 shadow-xl items-center gap-2.5 z-20"
               >
-                <div className="w-8 h-8 rounded-xl bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center font-bold text-xs">
+                <div className="w-8 h-8 rounded-xl bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center font-bold text-xs shrink-0">
                   ⚡️
                 </div>
                 <div className="text-left font-sans">
@@ -292,11 +292,11 @@ export function WishlinkHeroShowcase() {
                 </div>
               </motion.div>
 
-              {/* Floating Sticker 3: Instant 24h Release (Bottom-Left) */}
+              {/* Floating Sticker 3: Instant 24h Release (Bottom-Left) — hidden on tiny screens (< 640px) */}
               <motion.div
                 animate={{ y: [0, -6, 0] }}
                 transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute bottom-14 -left-2 sm:-left-8 p-3 rounded-2xl bg-white/95 backdrop-blur-md border border-black/10 shadow-xl flex items-center gap-2.5 z-20"
+                className="hidden sm:flex absolute bottom-14 -left-2 sm:-left-8 p-3 rounded-2xl bg-white/95 backdrop-blur-md border border-black/10 shadow-xl items-center gap-2.5 z-20"
               >
                 <span className="text-xl">🚀</span>
                 <div className="text-left font-mono">
@@ -307,21 +307,21 @@ export function WishlinkHeroShowcase() {
 
               {/* Floating Sticker 4: Emojis just like Wishlink */}
               <motion.div
-                animate={{ scale: [1, 1.15, 1], rotate: [0, 6, 0] }}
+                animate={{ scale: [1, 1.08, 1], rotate: [0, 4, 0] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-4 right-10 sm:right-6 px-3 py-1.5 rounded-full bg-white border border-black/10 shadow-lg flex items-center gap-1.5 text-xs font-mono font-bold z-20"
+                className="absolute -bottom-3 right-3 sm:right-6 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-black/10 shadow-lg flex items-center gap-1.5 text-[11px] sm:text-xs font-mono font-bold z-20"
               >
                 <span>🔥</span>
                 <span>Zero Chasing Invoices</span>
               </motion.div>
 
               {/* Creator Selector Thumbnails below photo */}
-              <div className="flex items-center gap-2 mt-5">
+              <div className="flex items-center gap-1.5 sm:gap-2 mt-5 overflow-x-auto no-scrollbar max-w-full py-1">
                 {CREATOR_SHOWCASE.map((creator, i) => (
                   <button
                     key={creator.id}
                     onClick={() => setSelectedIdx(i)}
-                    className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
+                    className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all shrink-0 cursor-pointer ${
                       selectedIdx === i
                         ? "bg-[#0A0A0E] text-white shadow-xs"
                         : "bg-[#F4F4F8] text-[#5A5A68] hover:text-[#0A0A0E] border border-black/8"

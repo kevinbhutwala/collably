@@ -185,7 +185,7 @@ export default function AdminPaymentsVaultPage() {
                 </p>
               </div>
 
-              <div className="flex items-center gap-5">
+              <div className="flex items-center justify-between sm:justify-start gap-3 sm:gap-5 flex-wrap pt-2 sm:pt-0 border-t sm:border-t-0 border-black/5 dark:border-white/5">
                 <div>
                   <span className="text-[#7A7A8A] dark:text-[#8E8EA4] block text-[10px]">Agreed Fee</span>
                   <span className="text-[#0A0A0E] dark:text-white font-extrabold">{formatCurrency(v.totalAgreedBudget)}</span>
@@ -205,7 +205,7 @@ export default function AdminPaymentsVaultPage() {
                     setOverrideAmount(v.escrowBalanceDollars || v.totalAgreedBudget);
                     setIsModalOpen(true);
                   }}
-                  className="px-3.5 py-1.5 rounded-full bg-[#F8F8FC] dark:bg-[#181824] hover:bg-black/5 dark:hover:bg-white/10 text-[#0A0A0E] dark:text-white border border-black/10 dark:border-white/10 text-xs font-bold transition-all shrink-0"
+                  className="px-3.5 py-1.5 rounded-full bg-[#F8F8FC] dark:bg-[#181824] hover:bg-black/5 dark:hover:bg-white/10 text-[#0A0A0E] dark:text-white border border-black/10 dark:border-white/10 text-xs font-bold transition-all shrink-0 ml-auto sm:ml-0"
                 >
                   Manual Override
                 </button>

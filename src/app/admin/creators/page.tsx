@@ -113,9 +113,9 @@ export default function AdminCreatorsPage() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 font-mono text-xs">
+              <div className="flex items-center justify-between sm:justify-start gap-3 font-mono text-xs flex-wrap pt-2 sm:pt-0 border-t sm:border-t-0 border-black/5 dark:border-white/5">
                 <span
-                  className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase border ${
+                  className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase border shrink-0 ${
                     c.verified
                       ? "bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-500/30"
                       : "bg-black/5 dark:bg-white/10 text-[#7A7A8A] dark:text-[#8E8EA4] border-black/10 dark:border-white/10"
@@ -125,7 +125,7 @@ export default function AdminCreatorsPage() {
                 </span>
                 <button
                   onClick={() => toggleVerify(c.id, !!c.verified)}
-                  className={`px-4 py-2 rounded-full text-xs font-bold transition-all border ${
+                  className={`px-4 py-2 rounded-full text-xs font-bold transition-all border shrink-0 ${
                     c.verified
                       ? "bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0A0A0E] dark:text-white border-black/10 dark:border-white/10"
                       : "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] border-black/10 shadow-xs"

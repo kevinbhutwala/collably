@@ -101,15 +101,15 @@ export default function AdminCampaignsQueuePage() {
                 </p>
               </div>
 
-              <div className="flex items-center gap-4 font-mono text-xs">
+              <div className="flex items-center justify-between sm:justify-start gap-3 sm:gap-4 font-mono text-xs flex-wrap pt-2 sm:pt-0 border-t sm:border-t-0 border-black/5 dark:border-white/5">
                 <div>
                   <span className="text-[#7A7A8A] dark:text-[#8E8EA4] block text-[10px]">Total Escrow</span>
                   <span className="text-[#0A0A0E] dark:text-white font-extrabold">{formatCurrency(c.budget?.totalBudget || 5000)}</span>
                 </div>
-                <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30 text-[10px] font-mono font-bold uppercase">
+                <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30 text-[10px] font-mono font-bold uppercase shrink-0">
                   {c.status}
                 </span>
-                <div className="flex gap-2">
+                <div className="flex items-center gap-2 flex-wrap">
                   <Link href={`/campaigns/${c.id}`} target="_blank">
                     <button className="px-4 py-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0A0A0E] dark:text-white text-xs font-bold transition-all border border-black/10 dark:border-white/10">
                       Inspect

@@ -85,7 +85,7 @@ export default function AgencyAdminCommandCenter() {
   return (
     <div className="space-y-8 text-[#0A0A0E] dark:text-[#F4F4F8] select-none">
       {/* Header */}
-      <div className="hidden lg:flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-black/8 dark:border-white/10">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-black/8 dark:border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-xs font-mono font-bold uppercase text-[#0A0A0E] dark:text-[#EAEAEF] flex items-center gap-1.5">
@@ -97,26 +97,26 @@ export default function AgencyAdminCommandCenter() {
               Live Data
             </span>
           </div>
-          <h1 className="text-2xl sm:text-4xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
+          <h1 className="text-xl sm:text-3xl lg:text-4xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
             Agency Admin Command Center
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4] mt-0.5 font-sans">
             Realtime platform gross volume, creator roster verification, and escrow settlement control.
           </p>
         </div>
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2.5 flex-wrap">
           <Link
             href="/admin/users"
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-xs font-bold hover:brightness-105 transition-all shadow-xs border border-black/10"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-xs font-bold hover:brightness-105 transition-all shadow-xs border border-black/10 shrink-0"
           >
             <Users className="w-3.5 h-3.5" />
-            <span>User Directory & Cohorts</span>
+            <span>User Directory &amp; Cohorts</span>
           </Link>
 
           <button
             onClick={fetchData}
             disabled={isLoading}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 border border-black/8 dark:border-white/10 text-xs font-bold text-[#0A0A0E] dark:text-white transition-all disabled:opacity-50"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 border border-black/8 dark:border-white/10 text-xs font-bold text-[#0A0A0E] dark:text-white transition-all disabled:opacity-50 shrink-0"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? "animate-spin" : ""}`} />
             <span>Refresh</span>

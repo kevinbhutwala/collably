@@ -1,6 +1,7 @@
 import React from "react";
 import { AppNavbar } from "@/components/layout/AppNavbar";
 import { AppSidebar } from "@/components/layout/AppSidebar";
+import { MobileBottomDock } from "@/components/layout/MobileBottomDock";
 import { AuthGuard } from "@/components/auth/AuthGuard";
 
 export default function AdminLayout({
@@ -19,12 +20,14 @@ export default function AdminLayout({
         {/* Main Body: Fixed Static Sidebar on Left, Independent Scrollable Main Screen on Right */}
         <div className="flex flex-1 overflow-hidden relative z-10">
           <AppSidebar />
-          <main className="flex-1 h-full overflow-y-auto overflow-x-hidden p-4 sm:p-7 lg:p-9 pb-10 w-full">
+          <main className="flex-1 h-full overflow-y-auto overflow-x-hidden p-4 sm:p-7 lg:p-9 pb-24 lg:pb-10 w-full">
             <div className="max-w-7xl mx-auto w-full">
               {children}
             </div>
           </main>
         </div>
+
+        <MobileBottomDock />
       </div>
     </AuthGuard>
   );

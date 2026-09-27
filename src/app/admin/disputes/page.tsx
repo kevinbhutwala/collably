@@ -189,13 +189,13 @@ export default function AdminDisputesArbitrationPage() {
                     </div>
 
                     {/* 5-Stage Stepper Bar */}
-                    <div className="flex items-center gap-1.5 pt-1">
+                    <div className="flex items-center gap-1.5 pt-1 overflow-x-auto no-scrollbar py-0.5 max-w-full">
                       {STAGES.map((s, idx) => {
                         const activeIdx = STAGES.indexOf(currentStage as string);
                         const isPastOrCurrent = activeIdx >= idx;
                         return (
-                          <div key={s} className="flex items-center gap-1.5">
-                            <span className={`px-2 py-0.5 rounded-md text-[9px] font-mono font-bold ${
+                          <div key={s} className="flex items-center gap-1.5 shrink-0">
+                            <span className={`px-2 py-0.5 rounded-md text-[9px] font-mono font-bold whitespace-nowrap ${
                               isPastOrCurrent
                                 ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E]"
                                 : "bg-black/5 dark:bg-white/10 text-[#8A8A9A] dark:text-[#8E8EA4]"
@@ -203,7 +203,7 @@ export default function AdminDisputesArbitrationPage() {
                               {s.replace(/_/g, " ")}
                             </span>
                             {idx < STAGES.length - 1 && (
-                              <ArrowRight className="w-2.5 h-2.5 text-[#8A8A9A] dark:text-[#8E8EA4]" />
+                              <ArrowRight className="w-2.5 h-2.5 text-[#8A8A9A] dark:text-[#8E8EA4] shrink-0" />
                             )}
                           </div>
                         );

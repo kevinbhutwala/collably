@@ -903,3 +903,26 @@ html.lenis, html.lenis body {
 
 
 
+
+/* ── 12. RESPONSIVE UTILITIES & SAFE AREAS ── */
+@layer utilities {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .table-responsive-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .text-natural {
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+}
