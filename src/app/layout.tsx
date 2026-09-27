@@ -54,9 +54,6 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  verification: {
-    google: 'HNyLvhNLTlvY4Cl7955LGVeHMtCeDnb__8HuJFnBWlk',
-  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -102,7 +99,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+    google: 'HNyLvhNLTlvY4Cl7955LGVeHMtCeDnb__8HuJFnBWlk',
     yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION || undefined,
   },
   category: 'Business & Technology',
