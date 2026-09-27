@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="400" height="120">
+  <rect width="400" height="120" rx="16" fill="#0A0A0E"/>
+  <text x="200" y="74" fill="#FFFFFF" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="44" letter-spacing="10" text-anchor="middle">SNITCH</text>
+  <line x1="80" y1="88" x2="320" y2="88" stroke="#FFD21F" stroke-width="3" stroke-linecap="round"/>
+</svg>
