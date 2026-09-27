@@ -149,7 +149,112 @@ export const PRARTHANA_PROFILE: CreatorProfile = {
   ]
 };
 
-// 4. Pooja Bera (Fashion & Streetwear Styling)
+// 4. Kushi Hanamsagar (Design & Creative / Visual Storytelling)
+export const KUSHI_HANAMSAGAR_PROFILE: CreatorProfile = {
+  id: "kushihanamsagar",
+  userId: "user-c-kushi",
+  fullName: "Kushi Hanamsagar",
+  handle: "kushihanamsagar9",
+  slug: "kushihanamsagar",
+  headline: "Digital Creator & Visual Storyteller",
+  bio: "Shree ram🔆 • Visual storytelling & authentic lifestyle moments",
+  avatarUrl: "/creators/kushi-hanamsagar.jpg",
+  coverImageUrl: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1200&auto=format&fit=crop&q=80",
+  location: "Mumbai, India",
+  languages: ["English", "Hindi", "Kannada"],
+  primaryCategory: "Design & Creative",
+  secondaryCategories: ["Lifestyle & Culture" as any, "Fashion & Style"],
+  verified: true,
+  featured: true,
+  tier: "Rising",
+  rating: 4.95,
+  completedCampaignsCount: 18,
+  totalFollowers: 869,
+  avgEngagementRate: 7.4,
+  startingPrice: 15000,
+  currency: "INR",
+  availableForHire: true,
+  profileCompleteness: 100,
+  qualityScore: 98,
+  profileSource: "abeycollab_verified",
+  isAbeyCollabVerified: true,
+  isInstagramVerified: true,
+  isClaimedOnAbeyCollab: true,
+  isSignedTalent: true,
+  cohortBadge: "Founding Cohort '26",
+  socialAccounts: [
+    {
+      id: "sa-kushi-ig",
+      platform: "instagram",
+      handle: "kushihanamsagar9",
+      url: "https://www.instagram.com/kushihanamsagar9/",
+      followers: 869,
+      engagementRate: 7.4,
+      avgViews: 650,
+      verifiedBadge: true,
+    },
+  ],
+  audience: {
+    topCountries: [
+      { country: "India", percentage: 84 },
+      { country: "United States", percentage: 6 },
+      { country: "United Arab Emirates", percentage: 5 },
+      { country: "Canada", percentage: 3 },
+    ],
+    ageDistribution: [
+      { range: "18-24", percentage: 52 },
+      { range: "25-34", percentage: 38 },
+      { range: "35-44", percentage: 8 },
+      { range: "45+", percentage: 2 },
+    ],
+    genderSplit: [
+      { gender: "Female", percentage: 58 },
+      { gender: "Male", percentage: 39 },
+      { gender: "Other", percentage: 3 },
+    ],
+    interests: [
+      "Cinematography",
+      "Creative Direction",
+      "Visual Arts",
+      "Short Films",
+      "Music & Culture",
+    ],
+  },
+  rateCards: [
+    {
+      id: "rc-kushi-1",
+      deliverableType: "Instagram Reel",
+      title: "Authentic Lifestyle Reel",
+      description: "Creative short-form reel with organic integration and music pairing.",
+      basePrice: 15000,
+      turnaroundDays: 3,
+      revisionsIncluded: 2,
+      currency: "INR",
+    },
+    {
+      id: "rc-kushi-2",
+      deliverableType: "Carousel Post",
+      title: "Photo Drop / Carousel Post",
+      description: "Authentic photo set showcasing product in everyday settings.",
+      basePrice: 10000,
+      turnaroundDays: 2,
+      revisionsIncluded: 1,
+      currency: "INR",
+    },
+    {
+      id: "rc-kushi-3",
+      deliverableType: "Instagram Story Set (3x)",
+      title: "Interactive Story Sequence (3x)",
+      description: "Engaging real-time story sequence with brand tag and sticker.",
+      basePrice: 5000,
+      turnaroundDays: 1,
+      revisionsIncluded: 1,
+      currency: "INR",
+    },
+  ],
+};
+
+// 5. Pooja Bera (Fashion & Streetwear Styling)
 export const POOJA_BERA_PROFILE: CreatorProfile = {
   id: "creator-pooja",
   userId: "user-c-pooja",
@@ -388,6 +493,7 @@ export const ARYAN_SHARMA_PROFILE: CreatorProfile = {
 export const MOCK_CREATORS: CreatorProfile[] = [
   WASEEM_KHAN_PROFILE,
   PRARTHANA_PROFILE,
+  KUSHI_HANAMSAGAR_PROFILE,
   POOJA_BERA_PROFILE,
   DIETITIAN_SHEENA_PROFILE,
   RAMSHA_SULTAN_PROFILE,

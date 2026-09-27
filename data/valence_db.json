@@ -120,6 +120,20 @@
       "verified": true,
       "createdAt": "2026-09-27T06:25:20.138Z",
       "updatedAt": "2026-09-27T06:25:20.138Z"
+    },
+    {
+      "id": "user-c-kushi",
+      "name": "Kushi Hanamsagar",
+      "email": "kushihanamsagar9@abeycollab.io",
+      "passwordHash": "53e606f0eff47aeb7fbf4f1ebbac0e20:95df4edb91b53860f96d738711443e80c68c60f1239e4e6d22865383f9a573e1eb2072cc6b80f828077bff48018e092870e6a6e872ce408cf837c90090aac39d:210000",
+      "role": "creator",
+      "avatarUrl": "/creators/kushi-hanamsagar.jpg",
+      "verified": true,
+      "country": "India",
+      "createdAt": "2026-09-26T15:00:37.329Z",
+      "updatedAt": "2026-09-26T15:00:37.329Z",
+      "preferredCurrency": "INR",
+      "preferred_currency": "INR"
     }
   ],
   "creators": [
@@ -334,6 +348,159 @@
           "currency": "INR",
           "turnaroundDays": 3,
           "revisionsIncluded": 2
+        }
+      ]
+    },
+    {
+      "id": "kushihanamsagar",
+      "userId": "user-c-kushi",
+      "fullName": "Kushi Hanamsagar",
+      "handle": "kushihanamsagar9",
+      "slug": "kushihanamsagar",
+      "headline": "Digital Creator & Visual Storyteller",
+      "bio": "Shree ram🔆 • Visual storytelling & authentic lifestyle moments",
+      "avatarUrl": "/creators/kushi-hanamsagar.jpg",
+      "coverImageUrl": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1200&auto=format&fit=crop&q=80",
+      "location": "Mumbai, India",
+      "region": "India",
+      "countryCode": "IN",
+      "countryFlag": "🇮🇳",
+      "languages": [
+        "English",
+        "Hindi",
+        "Kannada"
+      ],
+      "primaryCategory": "Design & Creative",
+      "secondaryCategories": [
+        "Lifestyle & Culture",
+        "Fashion & Style"
+      ],
+      "verified": true,
+      "featured": true,
+      "tier": "Rising",
+      "rating": 4.95,
+      "completedCampaignsCount": 18,
+      "totalFollowers": 869,
+      "avgEngagementRate": 7.4,
+      "startingPrice": 15000,
+      "currency": "INR",
+      "availableForHire": true,
+      "isSignedTalent": true,
+      "profileCompleteness": 100,
+      "qualityScore": 98,
+      "profileSource": "abeycollab_verified",
+      "isInstagramVerified": true,
+      "isAbeyCollabVerified": true,
+      "isClaimedOnAbeyCollab": true,
+      "instagramUrl": "https://www.instagram.com/kushihanamsagar9",
+      "instagramUsername": "kushihanamsagar9",
+      "turnaroundGuaranteedDays": 5,
+      "dataAttribution": {
+        "instagramDataSourcedAt": "2026-09",
+        "rateType": "creator_direct",
+        "disclaimer": "Verified creator profile on AbeyCollab. Managed with escrow milestone protection."
+      },
+      "socialAccounts": [
+        {
+          "id": "sa-kushi-ig",
+          "platform": "instagram",
+          "handle": "kushihanamsagar9",
+          "url": "https://www.instagram.com/kushihanamsagar9/",
+          "followers": 869,
+          "engagementRate": 7.4,
+          "avgViews": 650,
+          "verifiedBadge": true
+        }
+      ],
+      "audience": {
+        "topCountries": [
+          {
+            "country": "India",
+            "percentage": 84
+          },
+          {
+            "country": "United States",
+            "percentage": 6
+          },
+          {
+            "country": "United Arab Emirates",
+            "percentage": 5
+          },
+          {
+            "country": "Canada",
+            "percentage": 3
+          }
+        ],
+        "ageDistribution": [
+          {
+            "range": "18-24",
+            "percentage": 52
+          },
+          {
+            "range": "25-34",
+            "percentage": 38
+          },
+          {
+            "range": "35-44",
+            "percentage": 8
+          },
+          {
+            "range": "45+",
+            "percentage": 2
+          }
+        ],
+        "genderSplit": [
+          {
+            "gender": "Female",
+            "percentage": 58
+          },
+          {
+            "gender": "Male",
+            "percentage": 39
+          },
+          {
+            "gender": "Other",
+            "percentage": 3
+          }
+        ],
+        "interests": [
+          "Cinematography",
+          "Creative Direction",
+          "Visual Arts",
+          "Short Films",
+          "Music & Culture"
+        ]
+      },
+      "rateCards": [
+        {
+          "id": "rc-kushi-1",
+          "deliverableType": "Instagram Reel",
+          "title": "Authentic Lifestyle Reel",
+          "description": "Creative short-form reel with organic integration and music pairing.",
+          "basePrice": 15000,
+          "turnaroundDays": 3,
+          "revisionsIncluded": 2,
+          "currency": "INR"
+        },
+        {
+          "id": "rc-kushi-2",
+          "deliverableType": "Carousel Post",
+          "title": "Photo Drop / Carousel Post",
+          "description": "Authentic photo set showcasing product in everyday settings.",
+          "basePrice": 10000,
+          "turnaroundDays": 2,
+          "revisionsIncluded": 1,
+          "currency": "INR"
+        },
+        {
+          "id": "rc-kushi-3",
+          "deliverableType": "Instagram Story Set (3x)",
+          "title": "Interactive Story Sequence (3x)",
+          "description": "Engaging real-time story sequence with brand tag and sticker.",
+          "basePrice": 5000,
+          "turnaroundDays": 1,
+          "revisionsIncluded": 1,
+          "currency": "INR"
         }
       ]
     },

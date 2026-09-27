@@ -95,6 +95,18 @@ export function getInitialSeedDatabase(): DatabaseState {
       createdAt: now,
       updatedAt: now,
     },
+    // ── 4. Kushi Hanamsagar ──
+    {
+      id: "user-c-kushi",
+      name: "Kushi Hanamsagar",
+      email: "kushihanamsagar9@abeycollab.io",
+      passwordHash: creatorPasswordHash,
+      role: "creator",
+      avatarUrl: "/creators/kushi-hanamsagar.jpg",
+      verified: true,
+      createdAt: now,
+      updatedAt: now,
+    },
   ];
 
   const initialSubscriptions: SubscriptionEntity[] = [

@@ -132,7 +132,8 @@ export class CreatorRepository {
         c.id === id ||
         c.id.toLowerCase() === cleanId ||
         c.handle.toLowerCase() === cleanId ||
-        (c as any).slug?.toLowerCase() === cleanId
+        (c as any).slug?.toLowerCase() === cleanId ||
+        (cleanId === "kushi" && (c.id === "kushihanamsagar" || c.handle.toLowerCase().includes("kushi")))
     );
   }
 
