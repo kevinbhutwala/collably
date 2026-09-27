@@ -13,7 +13,7 @@ import { convertCurrency } from "@/core/utils/currency";
 import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
 import { RazorpayCheckoutButton } from "@/components/payments/RazorpayCheckoutButton";
 import { TaxInvoiceModal, InvoiceData } from "@/components/payments/TaxInvoiceModal";
-import { Wallet, ShieldCheck, Download, ArrowRight, CheckCircle2, Receipt, Globe, Landmark, ArrowRightLeft, CreditCard, ExternalLink, FileText } from "lucide-react";
+import { Wallet, ShieldCheck, Download, ArrowRight, CheckCircle2, Receipt, Globe, Landmark, ArrowRightLeft, CreditCard, ExternalLink, FileText, RefreshCw } from "lucide-react";
 
 export default function EarningsAndEscrowPage() {
   const { role, currentCreator, currentBrand } = useAuthStore();
@@ -22,6 +22,7 @@ export default function EarningsAndEscrowPage() {
   const [payouts, setPayouts] = useState<PayoutRecord[]>([]);
   const [collaborations, setCollaborations] = useState<Collaboration[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const [selectedInvoice, setSelectedInvoice] = useState<InvoiceData | null>(null);
   const [isInvoiceModalOpen, setIsInvoiceModalOpen] = useState(false);
 
@@ -43,27 +44,38 @@ export default function EarningsAndEscrowPage() {
     setIsInvoiceModalOpen(true);
   };
 
-  useEffect(() => {
-    const fetch = async () => {
-      setLoading(true);
-      try {
-        const [payoutData, collabData] = await Promise.all([
-          paymentService.getPayouts(),
-          collaborationService.getCollaborations(
-            role === "creator" ? "creator" : "brand",
-            role === "creator" ? currentCreator?.id : currentBrand?.id
-          ),
-        ]);
-        setPayouts(payoutData || []);
-        setCollaborations(collabData || []);
-      } catch {
-        setPayouts([]);
-        setCollaborations([]);
-      } finally {
-        setLoading(false);
+  const fetchData = async (showToast = false) => {
+    if (showToast) setIsRefreshing(true);
+    else setLoading(true);
+    try {
+      const targetCreatorId = role === "creator" ? currentCreator?.id : undefined;
+      const [payoutData, collabData] = await Promise.all([
+        paymentService.getPayouts(targetCreatorId),
+        collaborationService.getCollaborations(
+          role === "creator" ? "creator" : "brand",
+          role === "creator" ? currentCreator?.id : currentBrand?.id
+        ),
+      ]);
+      setPayouts(payoutData || []);
+      setCollaborations(collabData || []);
+      if (showToast) {
+        addToast({
+          type: "success",
+          title: "Earnings Refreshed",
+          message: "Latest balances and payout milestones synchronized.",
+        });
       }
-    };
-    fetch();
+    } catch {
+      setPayouts([]);
+      setCollaborations([]);
+    } finally {
+      setLoading(false);
+      setIsRefreshing(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
   }, [role, currentCreator?.id, currentBrand?.id]);
 
   // Compute real dynamic financial metrics normalized to active viewer currency
@@ -119,15 +131,28 @@ export default function EarningsAndEscrowPage() {
           </p>
         </div>
 
-        {role === "creator" && (
+        <div className="flex items-center gap-2 self-start sm:self-center">
           <button
-            onClick={handleWithdraw}
-            className="px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5 self-start sm:self-center"
+            type="button"
+            onClick={() => fetchData(true)}
+            disabled={loading || isRefreshing}
+            className="px-3.5 py-2.5 rounded-full bg-white dark:bg-[#161622] hover:bg-black/5 dark:hover:bg-white/5 border border-black/8 dark:border-white/10 text-xs font-bold transition-all shadow-xs flex items-center gap-1.5 text-[#0A0A0E] dark:text-white"
+            title="Refresh Earnings & Payouts"
           >
-            <span>Withdraw Balance</span>
-            <ArrowRight className="w-3.5 h-3.5 text-[#0A0A0E]" />
+            <RefreshCw className={`w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F] ${isRefreshing ? "animate-spin" : ""}`} />
+            <span>{isRefreshing ? "Refreshing..." : "Refresh"}</span>
           </button>
-        )}
+
+          {role === "creator" && (
+            <button
+              onClick={handleWithdraw}
+              className="px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5"
+            >
+              <span>Withdraw Balance</span>
+              <ArrowRight className="w-3.5 h-3.5 text-[#0A0A0E]" />
+            </button>
+          )}
+        </div>
       </div>
 
       {/* 3 Real Computed Metric Cards */}

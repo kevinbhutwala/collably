@@ -13,12 +13,23 @@ export async function GET(req: NextRequest) {
 
     const { searchParams } = new URL(req.url);
     const creatorId = searchParams.get("creatorId") || undefined;
-    const payouts = await paymentService.getPayouts(creatorId);
+
+    const { creatorRepo } = await import("@/server/repositories/creator.repo");
+    const creator = creatorRepo.getByUserId(session.userId);
+
+    const isAdmin = ["super_admin", "agency_admin", "agency_owner"].includes(session.role);
+    let targetCreatorId = creatorId;
+
+    if (session.role === "creator") {
+      targetCreatorId = creator ? creator.id : "__none__";
+    } else if (!isAdmin) {
+      targetCreatorId = creatorId || "__none__";
+    }
+
+    const payouts = targetCreatorId === "__none__" ? [] : await paymentService.getPayouts(targetCreatorId);
 
     // Compute live multi-currency wallet balance from immutable ledger
     const { ledgerService } = await import("@/server/services/ledger.service");
-    const { creatorRepo } = await import("@/server/repositories/creator.repo");
-    const creator = creatorRepo.getByUserId(session.userId);
     const targetCurrency = searchParams.get("currency") || (creator as any)?.currency || "USD";
     const balancesByCurrency = creator ? ledgerService.getAccountBalancesByCurrency("CREATOR_WALLET", creator.id) : {};
     const walletBalance = creator ? ledgerService.getAccountBalanceInCurrency("CREATOR_WALLET", creator.id, targetCurrency) : 0;

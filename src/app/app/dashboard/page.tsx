@@ -105,7 +105,7 @@ function DashboardContent() {
         const [camps, creators, payouts, collabs] = await Promise.all([
           campaignService.getCampaigns(),
           creatorService.getCreators(),
-          paymentService.getPayouts(),
+          paymentService.getPayouts(role === "creator" ? currentCreator?.id : undefined),
           collaborationService.getCollaborations(
             role === "creator" ? "creator" : "brand",
             role === "creator" ? currentCreator?.id : currentBrand?.id
@@ -141,10 +141,12 @@ function DashboardContent() {
   const activeCollabsCount = collaborations.filter(
     (c) => c.status === "active" || c.status === "in_review"
   ).length;
-  const lifetimeEarned = recentPayouts.reduce(
-    (acc, p) => acc + convert(p.netAmount || 0, (p as any).currency || "USD"),
-    0
-  );
+  const lifetimeEarned = role === "creator"
+    ? recentPayouts.reduce(
+        (acc, p) => acc + convert(p.netAmount || 0, (p as any).currency || "USD"),
+        0
+      )
+    : 0;
   const brandTotalBudget = activeCampaigns
     .filter((c) => c.brandId === currentBrand?.id)
     .reduce((acc, c) => acc + convert(c.budget?.totalBudget || 0, c.budget?.currency || "USD"), 0);

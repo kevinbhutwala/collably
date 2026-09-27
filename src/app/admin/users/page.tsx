@@ -80,6 +80,7 @@ export default function AdminUsersPanel() {
   const [activeTab, setActiveTab] = useState<"all" | "active" | "new" | "creator" | "brand" | "admin">("all");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [statusFilter, setStatusFilter] = useState<"all" | "verified" | "unverified">("all");
+  const [genderFilter, setGenderFilter] = useState<"all" | "male" | "female">("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState<"newest" | "active" | "oldest" | "name" | "role">("newest");
 
@@ -236,6 +237,13 @@ export default function AdminUsersPanel() {
       result = result.filter((u) => !u.verified);
     }
 
+    // Gender Filter
+    if (genderFilter !== "all") {
+      result = result.filter(
+        (u) => (u.gender || "").toLowerCase() === genderFilter.toLowerCase()
+      );
+    }
+
     // Search Query
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase().trim();
@@ -247,7 +255,9 @@ export default function AdminUsersPanel() {
           (u.companyName && u.companyName.toLowerCase().includes(q)) ||
           (u.category && u.category.toLowerCase().includes(q)) ||
           (u.country && u.country.toLowerCase().includes(q)) ||
-          (u.role && u.role.toLowerCase().includes(q))
+          (u.role && u.role.toLowerCase().includes(q)) ||
+          (u.id && u.id.toLowerCase().includes(q)) ||
+          (u.gender && u.gender.toLowerCase().includes(q))
       );
     }
 
@@ -279,7 +289,7 @@ export default function AdminUsersPanel() {
     });
 
     return result;
-  }, [users, activeTab, selectedCategory, statusFilter, searchQuery, sortBy]);
+  }, [users, activeTab, selectedCategory, statusFilter, genderFilter, searchQuery, sortBy]);
 
   // Compute available categories for pill selector based on active tab
   const visibleCategories = useMemo(() => {
@@ -288,6 +298,8 @@ export default function AdminUsersPanel() {
     if (activeTab === "creator") pool = pool.filter((u) => u.role === "creator");
     else if (activeTab === "brand") pool = pool.filter((u) => u.role === "brand" || u.role.includes("brand"));
     else if (activeTab === "new") pool = pool.filter((u) => u.isNew || u.isNewThisWeek);
+    else if (activeTab === "active") pool = pool.filter((u) => u.isOnline || Boolean(u.lastLoginAt) || Boolean(u.lastActiveAt));
+    else if (activeTab === "admin") pool = pool.filter((u) => u.role.includes("admin") || u.role.includes("owner"));
 
     pool.forEach((u) => {
       if (u.category) {
@@ -299,6 +311,35 @@ export default function AdminUsersPanel() {
       .map(([name, count]) => ({ name, count }))
       .sort((a, b) => b.count - a.count);
   }, [users, activeTab]);
+
+  // Safely reset category filter if category no longer exists in current cohort
+  useEffect(() => {
+    if (selectedCategory !== "all" && visibleCategories.length > 0) {
+      const exists = visibleCategories.some(
+        (c) => c.name.toLowerCase() === selectedCategory.toLowerCase()
+      );
+      if (!exists) {
+        setSelectedCategory("all");
+      }
+    }
+  }, [visibleCategories, selectedCategory]);
+
+  const hasActiveFilters =
+    activeTab !== "all" ||
+    selectedCategory !== "all" ||
+    statusFilter !== "all" ||
+    genderFilter !== "all" ||
+    Boolean(searchQuery.trim()) ||
+    sortBy !== "newest";
+
+  const resetAllFilters = () => {
+    setActiveTab("all");
+    setSelectedCategory("all");
+    setStatusFilter("all");
+    setGenderFilter("all");
+    setSearchQuery("");
+    setSortBy("newest");
+  };
 
   return (
     <div className="space-y-7 pb-16">
@@ -580,7 +621,7 @@ export default function AdminUsersPanel() {
             )}
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap">
             <select
               value={statusFilter}
               onChange={(e: any) => setStatusFilter(e.target.value)}
@@ -589,6 +630,16 @@ export default function AdminUsersPanel() {
               <option value="all">All Statuses</option>
               <option value="verified">Verified Only</option>
               <option value="unverified">Pending / Unverified</option>
+            </select>
+
+            <select
+              value={genderFilter}
+              onChange={(e: any) => setGenderFilter(e.target.value)}
+              className="px-3 py-2 rounded-xl bg-[#F8F8FB] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-xs font-medium text-[#0A0A0E] dark:text-white focus:outline-hidden"
+            >
+              <option value="all">All Genders</option>
+              <option value="male">Male (♂)</option>
+              <option value="female">Female (♀)</option>
             </select>
 
             <select
@@ -602,6 +653,18 @@ export default function AdminUsersPanel() {
               <option value="name">Name (A-Z)</option>
               <option value="role">Role</option>
             </select>
+
+            {hasActiveFilters && (
+              <button
+                type="button"
+                onClick={resetAllFilters}
+                className="px-3 py-2 rounded-xl bg-amber-500/15 text-amber-700 dark:text-[#FFD21F] border border-amber-500/30 text-xs font-bold hover:bg-amber-500/25 transition-colors shrink-0 flex items-center gap-1"
+                title="Reset all filters"
+              >
+                <X className="w-3.5 h-3.5" />
+                <span>Reset</span>
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -631,15 +694,10 @@ export default function AdminUsersPanel() {
             <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] font-mono max-w-sm mx-auto mt-1">
               No registered user records match your selected role, category, or search criteria.
             </p>
-            {(activeTab !== "all" || selectedCategory !== "all" || statusFilter !== "all" || searchQuery) && (
+            {hasActiveFilters && (
               <button
                 type="button"
-                onClick={() => {
-                  setActiveTab("all");
-                  setSelectedCategory("all");
-                  setStatusFilter("all");
-                  setSearchQuery("");
-                }}
+                onClick={resetAllFilters}
                 className="mt-4 px-4 py-2 rounded-xl text-xs font-bold bg-[#FFD21F] text-[#0A0A0E] hover:bg-[#FFE052] transition-colors shadow-xs"
               >
                 Reset All Filters
