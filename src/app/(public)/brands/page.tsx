@@ -2,10 +2,8 @@ import type { Metadata } from 'next';
 import React from 'react';
 import { BrandsDirectoryClient } from '@/components/brands/BrandsDirectoryClient';
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_APP_URL ||
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  'https://abeycollab.com';
+import { SITE_URL, absoluteUrl } from '@/lib/seo';
+const BASE_URL = SITE_URL;
 
 export const metadata: Metadata = {
   title: 'Partner Brands & Enterprise Sponsors',
@@ -24,13 +22,13 @@ export const metadata: Metadata = {
     url: `${BASE_URL}/brands`,
     title: 'Partner Brands & Sponsors',
     description: 'Explore brands launching milestone-protected campaigns on AbeyCollab.',
-    images: ['/og-image.png'],
+    images: [absoluteUrl('/og-image.png')],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Partner Brands & Sponsors',
     description: 'Leading brands hiring creators with guaranteed escrow budgets.',
-    images: ['/og-image.png'],
+    images: [absoluteUrl('/og-image.png')],
   },
 };
 

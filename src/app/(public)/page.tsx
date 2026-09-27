@@ -8,11 +8,7 @@ import { WishlinkCreatorStories } from '@/components/collably/WishlinkCreatorSto
 import { WishlinkLaunchpadCTA } from '@/components/collably/WishlinkLaunchpadCTA';
 import { WishlinkStickyCTA } from '@/components/collably/WishlinkStickyCTA';
 import { CompactFAQ } from '@/components/collably/CompactFAQ';
-
-const BASE_URL =
-  process.env.NEXT_PUBLIC_APP_URL ||
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  'https://abeycollab.com';
+import { SITE_URL, absoluteUrl } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: {
@@ -21,6 +17,8 @@ export const metadata: Metadata = {
   description:
     'AbeyCollab connects high-growth brands with verified creators through milestone-protected escrow campaigns, transparent rate cards, Auto-DM engagement, and guaranteed 24-hour payouts.',
   keywords: [
+    'AbeyCollab',
+    'abeycollab',
     'creator marketplace',
     'influencer marketing platform',
     'hire content creators',
@@ -28,20 +26,19 @@ export const metadata: Metadata = {
     'brand creator deals',
     'ugc creator marketplace',
     'youtube sponsorships',
-    'tiktok brand campaigns',
     'instagram creator media kit',
-    'verified influencer platform',
+    'verified influencer platform India',
   ],
-  alternates: { canonical: BASE_URL },
+  alternates: { canonical: SITE_URL },
   openGraph: {
     type: 'website',
-    url: BASE_URL,
+    url: SITE_URL,
     title: 'AbeyCollab — Creator Commerce Platform | Milestone Escrow & Instant Payouts',
     description:
       'Connect brands with verified content creators through milestone-protected escrow, transparent rate cards, and instant payouts.',
     images: [
       {
-        url: '/og-image.png',
+        url: absoluteUrl('/og-image.png'),
         width: 1200,
         height: 630,
         alt: 'AbeyCollab Creator Commerce Platform',
@@ -53,7 +50,7 @@ export const metadata: Metadata = {
     title: 'AbeyCollab — Creator Commerce Platform',
     description:
       'Milestone-protected creator campaigns, verified rate cards, and instant payouts.',
-    images: ['/og-image.png'],
+    images: [absoluteUrl('/og-image.png')],
   },
 };
 

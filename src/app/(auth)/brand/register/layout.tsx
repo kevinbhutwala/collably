@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_APP_URL ||
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  'https://abeycollab.com';
+import { SITE_URL, absoluteUrl } from '@/lib/seo';
+const BASE_URL = SITE_URL;
 
 export const metadata: Metadata = {
   title: 'Brand Registration & Campaign Workspace Onboarding',
@@ -15,13 +13,13 @@ export const metadata: Metadata = {
     url: `${BASE_URL}/brand/register`,
     title: 'Brand Registration & Workspace Onboarding | AbeyCollab',
     description: 'Post creator briefs, review video drafts with frame-accurate notes, and release escrow upon sign-off.',
-    images: ['/og-image.png'],
+    images: [absoluteUrl('/og-image.png')],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Brand Registration | AbeyCollab',
     description: 'Launch creator sponsorship briefs with 100% milestone escrow guarantee.',
-    images: ['/og-image.png'],
+    images: [absoluteUrl('/og-image.png')],
   },
 };
 

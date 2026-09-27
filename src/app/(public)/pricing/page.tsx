@@ -5,10 +5,8 @@ import { CompactFAQ } from '@/components/collably/CompactFAQ';
 import { AnimatedBrandSlider } from '@/components/visual/AnimatedBrandSlider';
 import { StreamlinedVisualCTA } from '@/components/visual/StreamlinedVisualCTA';
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_APP_URL ||
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  'https://abeycollab.com';
+import { SITE_URL, absoluteUrl } from '@/lib/seo';
+const BASE_URL = SITE_URL;
 
 export const metadata: Metadata = {
   title: 'Pricing & Plans — Transparent Creator & Brand Workspaces',
@@ -43,7 +41,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AbeyCollab Pricing — Free & Pro Creator Workspaces',
     description: 'Start free forever. Upgrade for unlimited campaign applications and instant payouts.',
-    images: ['/og-image.png'],
+    images: [absoluteUrl('/og-image.png')],
   },
 };
 

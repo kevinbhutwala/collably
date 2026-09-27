@@ -3,10 +3,8 @@ import React from "react";
 import Link from "next/link";
 import { Database, ArrowLeft } from "lucide-react";
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_APP_URL ||
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  'https://abeycollab.com';
+import { SITE_URL, absoluteUrl } from '@/lib/seo';
+const BASE_URL = SITE_URL;
 
 export const metadata: Metadata = {
   title: 'Data Processing Agreement (DPA) — Enterprise Compliance',
@@ -25,13 +23,13 @@ export const metadata: Metadata = {
     url: `${BASE_URL}/dpa`,
     title: 'Data Processing Agreement (DPA) — AbeyCollab',
     description: 'Enterprise compliance, GDPR, UK GDPR, and India DPDP contractual clauses.',
-    images: ['/og-image.png'],
+    images: [absoluteUrl('/og-image.png')],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Data Processing Agreement — AbeyCollab',
     description: 'Standard Contractual Clauses & data processor obligations for brands and creators.',
-    images: ['/og-image.png'],
+    images: [absoluteUrl('/og-image.png')],
   },
 };
 

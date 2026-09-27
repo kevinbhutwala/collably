@@ -3,10 +3,8 @@ import React from "react";
 import Link from "next/link";
 import { Scale, ArrowLeft } from "lucide-react";
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_APP_URL ||
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  'https://abeycollab.com';
+import { SITE_URL, absoluteUrl } from '@/lib/seo';
+const BASE_URL = SITE_URL;
 
 export const metadata: Metadata = {
   title: 'Terms of Service — Platform Usage & Escrow Rules',
@@ -25,13 +23,13 @@ export const metadata: Metadata = {
     url: `${BASE_URL}/terms`,
     title: 'Terms of Service — AbeyCollab Platform',
     description: 'Usage guidelines, milestone escrow rules, deliverable review windows, and platform terms.',
-    images: ['/og-image.png'],
+    images: [absoluteUrl('/og-image.png')],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Terms of Service — AbeyCollab',
     description: 'Platform usage guidelines, milestone escrow commitments, and collaboration agreements.',
-    images: ['/og-image.png'],
+    images: [absoluteUrl('/og-image.png')],
   },
 };
 

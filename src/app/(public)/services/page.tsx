@@ -18,10 +18,8 @@ import {
   Crown,
 } from "lucide-react";
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_APP_URL ||
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  "https://abeycollab.com";
+import { SITE_URL, absoluteUrl } from '@/lib/seo';
+const BASE_URL = SITE_URL;
 
 export const metadata: Metadata = {
   title: "Agency Services — Creator Representation & Campaign Strategy",
@@ -40,13 +38,13 @@ export const metadata: Metadata = {
     url: `${BASE_URL}/services`,
     title: "Agency Services | AbeyCollab Creator Commerce",
     description: "End-to-end campaign management, UGC production, and elite talent representation.",
-    images: ["/og-image.png"],
+    images: [absoluteUrl("/og-image.png")],
   },
   twitter: {
     card: "summary_large_image",
     title: "Agency Services | AbeyCollab Creator Commerce",
     description: "End-to-end campaign management, UGC production, and elite talent representation.",
-    images: ["/og-image.png"],
+    images: [absoluteUrl("/og-image.png")],
   },
 };
 

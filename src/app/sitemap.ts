@@ -1,11 +1,9 @@
 import { MetadataRoute } from 'next';
 import { creatorRepo } from '@/server/repositories/creator.repo';
 import { campaignRepo } from '@/server/repositories/campaign.repo';
+import { SITE_URL } from '@/lib/seo';
 
-const BASE =
-  process.env.NEXT_PUBLIC_APP_URL ||
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  'https://abeycollab.com';
+const BASE = SITE_URL;
 const now = new Date();
 
 export default function sitemap(): MetadataRoute.Sitemap {

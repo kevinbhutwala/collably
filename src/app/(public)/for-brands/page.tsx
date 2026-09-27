@@ -18,10 +18,8 @@ import { CaseStudiesSection } from "@/components/landing/CaseStudiesSection";
 import { StatsSection } from "@/components/landing/StatsSection";
 import { StreamlinedVisualCTA } from "@/components/visual/StreamlinedVisualCTA";
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_APP_URL ||
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  "https://abeycollab.com";
+import { SITE_URL, absoluteUrl } from '@/lib/seo';
+const BASE_URL = SITE_URL;
 
 export const metadata: Metadata = {
   title: "Creator Marketing for High-Growth Brands — 100% Escrow Protected",
@@ -43,14 +41,14 @@ export const metadata: Metadata = {
     title: "Creator Marketing for High-Growth Brands",
     description:
       "Hire audited video creators with 100% escrow protection. Frame-accurate 4K review player and guaranteed milestone releases.",
-    images: ["/og-image.png"],
+    images: [absoluteUrl("/og-image.png")],
   },
   twitter: {
     card: "summary_large_image",
     title: "Creator Marketing for Brands",
     description:
       "Zero upfront release risk. Review 4K video drafts with frame-accurate comments and release payments only on sign-off.",
-    images: ["/og-image.png"],
+    images: [absoluteUrl("/og-image.png")],
   },
 };
 

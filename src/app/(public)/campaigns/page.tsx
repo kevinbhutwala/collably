@@ -3,10 +3,8 @@ import React from 'react';
 import { campaignRepo } from '@/server/repositories/campaign.repo';
 import { CampaignsDirectoryClient } from '@/components/campaigns/CampaignsDirectoryClient';
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_APP_URL ||
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  'https://abeycollab.com';
+import { SITE_URL, absoluteUrl } from '@/lib/seo';
+const BASE_URL = SITE_URL;
 
 export const metadata: Metadata = {
   title: 'Active Creator Campaigns & Brand Briefs — Milestone Escrow Deals',
@@ -29,14 +27,14 @@ export const metadata: Metadata = {
     title: 'Active Creator Campaigns & Brand Briefs | AbeyCollab',
     description:
       'Pitch creative concepts to top brands funding pre-allocated escrow campaigns. Guaranteed payouts on delivery.',
-    images: ['/og-image.png'],
+    images: [absoluteUrl('/og-image.png')],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Active Creator Campaigns & Brand Briefs | AbeyCollab',
     description:
       'Discover active production briefs from premier verified brands. Guaranteed milestone escrow payouts.',
-    images: ['/og-image.png'],
+    images: [absoluteUrl('/og-image.png')],
   },
 };
 

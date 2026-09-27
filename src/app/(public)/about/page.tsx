@@ -4,10 +4,8 @@ import Script from "next/script";
 import { EditorialCTA } from "@/components/collably/EditorialCTA";
 import { Sparkles, ShieldCheck, Zap, Globe } from "lucide-react";
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_APP_URL ||
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  'https://abeycollab.com';
+import { SITE_URL, absoluteUrl } from '@/lib/seo';
+const BASE_URL = SITE_URL;
 
 export const metadata: Metadata = {
   title: 'About Us — Operating System for the Creator Economy',
@@ -26,13 +24,13 @@ export const metadata: Metadata = {
     url: `${BASE_URL}/about`,
     title: 'About AbeyCollab — Infrastructure for the Creator Economy',
     description: 'Empowering independent creators and high-growth brands through trust, transparency, and escrow protection.',
-    images: ['/og-image.png'],
+    images: [absoluteUrl('/og-image.png')],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'About AbeyCollab — Infrastructure for the Creator Economy',
     description: 'Empowering independent creators and high-growth brands through trust, transparency, and escrow protection.',
-    images: ['/og-image.png'],
+    images: [absoluteUrl('/og-image.png')],
   },
 };
 

@@ -28,36 +28,25 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_APP_URL ||
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  'https://abeycollab.com';
+import {
+  SITE_URL,
+  SITE_NAME,
+  DEFAULT_TITLE,
+  TITLE_TEMPLATE,
+  DEFAULT_DESCRIPTION,
+  SEO_KEYWORDS,
+  globalStructuredData,
+} from '@/lib/seo';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(BASE_URL),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: 'AbeyCollab — Creator & Brand Marketplace | Milestone Escrow & Instant Payouts',
-    template: '%s | AbeyCollab',
+    default: DEFAULT_TITLE,
+    template: TITLE_TEMPLATE,
   },
-  description:
-    'AbeyCollab is the premier creator commerce and influencer marketplace. Connect brands with verified content creators through milestone-protected escrow campaigns, transparent rate cards, 4K video review studio, and instant Razorpay payments.',
-  keywords: [
-    'creator marketplace',
-    'influencer marketing platform',
-    'brand creator collaboration',
-    'milestone escrow payments',
-    'razorpay creator payments',
-    'hire influencers',
-    'find content creators',
-    'ugc creators marketplace',
-    'youtube sponsorships',
-    'instagram brand deals',
-    'tiktok creator briefs',
-    'verified creator media kit',
-    'influencer campaign management',
-    'creator economy software',
-  ],
-  authors: [{ name: 'AbeyCollab Team', url: BASE_URL }],
+  description: DEFAULT_DESCRIPTION,
+  keywords: SEO_KEYWORDS,
+  authors: [{ name: 'AbeyCollab Team', url: SITE_URL }],
   creator: 'AbeyCollab',
   publisher: 'AbeyCollab Media Inc.',
   formatDetection: {
@@ -69,17 +58,16 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     alternateLocale: ['en_GB', 'en_IN'],
-    url: BASE_URL,
-    siteName: 'AbeyCollab',
-    title: 'AbeyCollab — Creator & Brand Marketplace | Milestone Escrow & Instant Payouts',
-    description:
-      'Milestone-protected influencer campaigns, verified creator rate cards, and instant payouts via Razorpay & Stripe. Built for high-growth brands and professional creators.',
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
     images: [
       {
-        url: '/og-image.png',
+        url: `${SITE_URL}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: 'AbeyCollab — Creator Commerce & Brand Collaboration Platform',
+        alt: 'AbeyCollab — Creator Marketplace & Brand Collaboration Platform',
       },
     ],
   },
@@ -87,13 +75,17 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@abeycollab',
     creator: '@abeycollab',
-    title: 'AbeyCollab — Creator & Brand Collaboration Marketplace',
-    description:
-      'Milestone-protected campaigns, vetted creator discovery, 4K video review studio, and guaranteed payouts.',
-    images: ['/og-image.png'],
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    images: [`${SITE_URL}/og-image.png`],
   },
   alternates: {
-    canonical: BASE_URL,
+    canonical: SITE_URL,
+    languages: {
+      'en-US': SITE_URL,
+      'en-IN': SITE_URL,
+      'x-default': SITE_URL,
+    },
   },
   robots: {
     index: true,
@@ -105,6 +97,10 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+    yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION || undefined,
   },
   category: 'Business & Technology',
   icons: {
@@ -122,73 +118,6 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.webmanifest',
 };
-
-const structuredData = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'AbeyCollab',
-    alternateName: 'AbeyCollab Marketplace',
-    url: BASE_URL,
-    logo: {
-      '@type': 'ImageObject',
-      url: `${BASE_URL}/branding/abeycollab-icon-square.png`,
-      width: '305',
-      height: '305',
-      caption: 'AbeyCollab Logo',
-    },
-    image: `${BASE_URL}/branding/abeycollab-logo.png`,
-    description:
-      'Enterprise creator-brand marketplace featuring milestone-protected escrow, transparent rate cards, and instant payouts.',
-    foundingDate: '2024',
-    sameAs: [
-      'https://twitter.com/abeycollab',
-      'https://instagram.com/abeycollab',
-      'https://linkedin.com/company/abeycollab',
-      'https://razorpay.me/@abeycollab',
-    ],
-    contactPoint: {
-      '@type': 'ContactPoint',
-      contactType: 'Customer & Talent Support',
-      email: 'support@abeycollab.com',
-      availableLanguage: ['English'],
-    },
-    paymentAccepted: ['Razorpay', 'Credit Card', 'Debit Card', 'UPI', 'Netbanking', 'Stripe'],
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'AbeyCollab',
-    url: BASE_URL,
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${BASE_URL}/creators?searchQuery={search_term_string}`,
-      },
-      'query-input': 'required name=search_term_string',
-    },
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
-    name: 'AbeyCollab Platform',
-    operatingSystem: 'All Modern Web Browsers',
-    applicationCategory: 'BusinessApplication',
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '1450',
-      bestRating: '5',
-      worstRating: '1',
-    },
-    offers: {
-      '@type': 'Offer',
-      price: '0.00',
-      priceCurrency: 'USD',
-    },
-  },
-];
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -218,7 +147,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <script
           id="global-structured-data"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalStructuredData) }}
         />
       </head>
       <body className="min-h-screen bg-white text-[#0A0A0E] antialiased font-sans selection:bg-[#FFD21F] selection:text-[#0A0A0E]">

@@ -3,10 +3,8 @@ import React from "react";
 import Link from "next/link";
 import { ShieldCheck, ArrowLeft } from "lucide-react";
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_APP_URL ||
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  'https://abeycollab.com';
+import { SITE_URL, absoluteUrl } from '@/lib/seo';
+const BASE_URL = SITE_URL;
 
 export const metadata: Metadata = {
   title: 'Privacy Policy & Data Protection',
@@ -25,13 +23,13 @@ export const metadata: Metadata = {
     url: `${BASE_URL}/privacy`,
     title: 'Privacy Policy — AbeyCollab',
     description: 'Learn how AbeyCollab safeguards creator media assets, verified metrics, and transactions.',
-    images: ['/og-image.png'],
+    images: [absoluteUrl('/og-image.png')],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Privacy Policy — AbeyCollab',
     description: 'Enterprise data security, encryption standards, and privacy commitments for creators and brands.',
-    images: ['/og-image.png'],
+    images: [absoluteUrl('/og-image.png')],
   },
 };
 

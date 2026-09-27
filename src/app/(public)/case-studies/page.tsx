@@ -2,10 +2,8 @@ import type { Metadata } from 'next';
 import React from 'react';
 import { CaseStudiesClient } from '@/components/landing/CaseStudiesClient';
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_APP_URL ||
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  'https://abeycollab.com';
+import { SITE_URL, absoluteUrl } from '@/lib/seo';
+const BASE_URL = SITE_URL;
 
 export const metadata: Metadata = {
   title: 'Creator Campaign Case Studies & Brand ROI Results',
@@ -26,14 +24,14 @@ export const metadata: Metadata = {
     title: 'Creator Campaign Case Studies & Brand ROI Results',
     description:
       'Verified performance metrics from top brands. 4.8x average ROAS and millions of impressions delivered with zero invoice chasing.',
-    images: ['/og-image.png'],
+    images: [absoluteUrl('/og-image.png')],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Creator Marketing Case Studies',
     description:
       'Explore verified performance metrics, ROAS, and video creative from top creator campaigns.',
-    images: ['/og-image.png'],
+    images: [absoluteUrl('/og-image.png')],
   },
 };
 

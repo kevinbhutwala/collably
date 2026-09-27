@@ -3,10 +3,8 @@ import React from "react";
 import Link from "next/link";
 import { RotateCcw, ArrowLeft } from "lucide-react";
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_APP_URL ||
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  'https://abeycollab.com';
+import { SITE_URL, absoluteUrl } from '@/lib/seo';
+const BASE_URL = SITE_URL;
 
 export const metadata: Metadata = {
   title: 'Escrow, Cancellation & Refund Policy',
@@ -25,13 +23,13 @@ export const metadata: Metadata = {
     url: `${BASE_URL}/refund-policy`,
     title: 'Escrow, Cancellation & Refund Policy — AbeyCollab',
     description: 'Clear, transparent escrow protection, cancellation rules, and refund criteria.',
-    images: ['/og-image.png'],
+    images: [absoluteUrl('/og-image.png')],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Escrow, Cancellation & Refund Policy — AbeyCollab',
     description: '100% pre-work refunds, 7-day review windows, and fair creator kill-fee guarantees.',
-    images: ['/og-image.png'],
+    images: [absoluteUrl('/og-image.png')],
   },
 };
 

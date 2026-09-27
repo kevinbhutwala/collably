@@ -2,10 +2,8 @@ import type { Metadata } from 'next';
 import React from 'react';
 import { ContactClient } from '@/components/landing/ContactClient';
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_APP_URL ||
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  'https://abeycollab.com';
+import { SITE_URL, absoluteUrl } from '@/lib/seo';
+const BASE_URL = SITE_URL;
 
 export const metadata: Metadata = {
   title: 'Contact Partnerships & Support',
@@ -24,14 +22,14 @@ export const metadata: Metadata = {
     title: 'Contact Partnerships & Support',
     description:
       'Reach out to our talent and brand partnership directors. 4-hour response SLA.',
-    images: ['/og-image.png'],
+    images: [absoluteUrl('/og-image.png')],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Contact Partnerships & Support',
     description:
       'Reach out to our talent and brand partnership directors. 4-hour response SLA.',
-    images: ['/og-image.png'],
+    images: [absoluteUrl('/og-image.png')],
   },
 };
 

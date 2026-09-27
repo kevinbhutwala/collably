@@ -4,10 +4,8 @@ import { campaignRepo } from '@/server/repositories/campaign.repo';
 import { CampaignDetailClient } from '@/components/campaigns/CampaignDetailClient';
 import { formatCurrency } from '@/core/utils/currency';
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_APP_URL ||
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  'https://abeycollab.com';
+import { SITE_URL, absoluteUrl } from '@/lib/seo';
+const BASE_URL = SITE_URL;
 
 interface Props {
   params: { id: string };
