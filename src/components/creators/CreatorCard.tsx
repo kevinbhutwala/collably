@@ -132,20 +132,34 @@ export function CreatorCard({ creator }: { creator: CreatorProfile }) {
         {/* Social Accounts Badge Strip */}
         {creator.socialAccounts && creator.socialAccounts.length > 0 && (
           <div className="flex items-center gap-1.5 mb-4 overflow-x-auto no-scrollbar">
-            {creator.socialAccounts.map((sa) => (
-              <a
-                key={sa.id}
-                href={sa.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                title={`${sa.platform.toUpperCase()}: ${formatNumber(sa.followers)} followers`}
-                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/6 dark:border-white/10 text-xs text-[#5A5A68] dark:text-[#9A9AA8] hover:text-[#0A0A0E] dark:hover:text-white transition-colors shrink-0"
-              >
-                <SocialIcon platform={sa.platform} size={13} />
-                <span className="text-[11px] font-mono font-bold">{formatNumber(sa.followers)}</span>
-              </a>
-            ))}
+            {creator.socialAccounts.map((sa) => {
+              const cleanHandle = sa.handle.replace(/^@/, "");
+              const platformUrl = sa.url || (() => {
+                switch (sa.platform) {
+                  case "instagram": return `https://www.instagram.com/${cleanHandle}/`;
+                  case "youtube":   return `https://www.youtube.com/@${cleanHandle}`;
+                  case "tiktok":    return `https://www.tiktok.com/@${cleanHandle}`;
+                  case "x":         return `https://x.com/${cleanHandle}`;
+                  case "linkedin":  return `https://www.linkedin.com/in/${cleanHandle}`;
+                  case "threads":   return `https://www.threads.net/@${cleanHandle}`;
+                  default:          return `#`;
+                }
+              })();
+              return (
+                <a
+                  key={sa.id}
+                  href={platformUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  title={`${sa.platform.toUpperCase()}: ${formatNumber(sa.followers)} followers`}
+                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/6 dark:border-white/10 text-xs text-[#5A5A68] dark:text-[#9A9AA8] hover:text-[#0A0A0E] dark:hover:text-white transition-colors shrink-0"
+                >
+                  <SocialIcon platform={sa.platform} size={13} />
+                  <span className="text-[11px] font-mono font-bold">{formatNumber(sa.followers)}</span>
+                </a>
+              );
+            })}
           </div>
         )}
 
