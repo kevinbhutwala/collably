@@ -59,6 +59,7 @@ interface UserItem {
 interface StatsData {
   total: number;
   onlineNow: number;
+  loggedIn?: number;
   creators: number;
   brands: number;
   admins: number;
@@ -66,6 +67,23 @@ interface StatsData {
   verified: number;
   unverified: number;
   categories: { name: string; count: number }[];
+}
+
+function formatRelativeTime(isoString?: string): string {
+  if (!isoString) return "Never";
+  const date = new Date(isoString);
+  const now = new Date();
+  const diffSec = Math.floor((now.getTime() - date.getTime()) / 1000);
+  if (isNaN(diffSec)) return "Recently";
+  if (diffSec < 60) return "Just now";
+  const diffMin = Math.floor(diffSec / 60);
+  if (diffMin < 60) return `${diffMin}m ago`;
+  const diffHour = Math.floor(diffMin / 60);
+  if (diffHour < 24) return `${diffHour}h ago`;
+  const diffDay = Math.floor(diffHour / 24);
+  if (diffDay < 7) return `${diffDay}d ago`;
+  if (diffDay < 30) return `${Math.floor(diffDay / 7)}w ago`;
+  return date.toLocaleDateString(undefined, { month: "short", day: "numeric" });
 }
 
 export default function AdminUsersPanel() {
@@ -77,7 +95,7 @@ export default function AdminUsersPanel() {
   const [updatingId, setUpdatingId] = useState<string | null>(null);
 
   // Filters
-  const [activeTab, setActiveTab] = useState<"all" | "active" | "new" | "creator" | "brand" | "admin">("all");
+  const [activeTab, setActiveTab] = useState<"all" | "loggedin" | "active" | "new" | "creator" | "brand" | "admin">("all");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [statusFilter, setStatusFilter] = useState<"all" | "verified" | "unverified">("all");
   const [genderFilter, setGenderFilter] = useState<"all" | "male" | "female">("all");
@@ -211,8 +229,10 @@ export default function AdminUsersPanel() {
     let result = [...users];
 
     // Tab Filter
-    if (activeTab === "active") {
-      result = result.filter((u) => u.isOnline || Boolean(u.lastLoginAt) || Boolean(u.lastActiveAt));
+    if (activeTab === "loggedin") {
+      result = result.filter((u) => u.isOnline || u.isLoggedIn || Boolean(u.lastLoginAt) || Boolean(u.lastActiveAt));
+    } else if (activeTab === "active") {
+      result = result.filter((u) => u.isOnline);
     } else if (activeTab === "new") {
       result = result.filter((u) => u.isNew || u.isNewThisWeek);
     } else if (activeTab === "creator") {
@@ -263,7 +283,7 @@ export default function AdminUsersPanel() {
 
     // Sorting
     result.sort((a, b) => {
-      if (sortBy === "active") {
+      if (sortBy === "active" || activeTab === "loggedin" || activeTab === "active") {
         const timeA = Math.max(
           a.isOnline ? Number.MAX_SAFE_INTEGER : 0,
           a.lastActiveAt ? new Date(a.lastActiveAt).getTime() : 0,
@@ -274,7 +294,7 @@ export default function AdminUsersPanel() {
           b.lastActiveAt ? new Date(b.lastActiveAt).getTime() : 0,
           b.lastLoginAt ? new Date(b.lastLoginAt).getTime() : 0
         );
-        return timeB - timeA;
+        if (timeA !== timeB) return timeB - timeA;
       }
       if (sortBy === "oldest") {
         return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
@@ -298,7 +318,8 @@ export default function AdminUsersPanel() {
     if (activeTab === "creator") pool = pool.filter((u) => u.role === "creator");
     else if (activeTab === "brand") pool = pool.filter((u) => u.role === "brand" || u.role.includes("brand"));
     else if (activeTab === "new") pool = pool.filter((u) => u.isNew || u.isNewThisWeek);
-    else if (activeTab === "active") pool = pool.filter((u) => u.isOnline || Boolean(u.lastLoginAt) || Boolean(u.lastActiveAt));
+    else if (activeTab === "loggedin") pool = pool.filter((u) => u.isOnline || u.isLoggedIn || Boolean(u.lastLoginAt) || Boolean(u.lastActiveAt));
+    else if (activeTab === "active") pool = pool.filter((u) => u.isOnline);
     else if (activeTab === "admin") pool = pool.filter((u) => u.role.includes("admin") || u.role.includes("owner"));
 
     pool.forEach((u) => {
@@ -391,7 +412,23 @@ export default function AdminUsersPanel() {
             {stats ? stats.total : users.length}
           </div>
           <div className="text-[11px] font-mono text-[#5A5A68] dark:text-[#8E8EA4] mt-1">
-            Registered accounts
+            Registered directory
+          </div>
+        </div>
+
+        <div className="p-4 rounded-2xl bg-white dark:bg-[#111118] border border-emerald-500/40 shadow-2xs">
+          <div className="flex items-center justify-between text-xs font-mono text-emerald-600 dark:text-emerald-400 mb-1">
+            <span className="font-bold flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-500" />
+              <span>Logged In Users</span>
+            </span>
+            <Users className="w-4 h-4 text-emerald-500" />
+          </div>
+          <div className="text-2xl font-black text-emerald-600 dark:text-emerald-400 font-display">
+            {stats?.loggedIn ?? users.filter((u) => u.isOnline || u.isLoggedIn || u.lastLoginAt).length}
+          </div>
+          <div className="text-[11px] font-mono text-[#5A5A68] dark:text-[#8E8EA4] mt-1">
+            Active session records
           </div>
         </div>
 
@@ -401,26 +438,13 @@ export default function AdminUsersPanel() {
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span>Active Now</span>
             </span>
-            <Users className="w-4 h-4 text-emerald-500" />
+            <Sparkles className="w-4 h-4 text-emerald-500" />
           </div>
           <div className="text-2xl font-black text-emerald-600 dark:text-emerald-400 font-display">
             {stats ? stats.onlineNow : users.filter((u) => u.isOnline).length}
           </div>
           <div className="text-[11px] font-mono text-[#5A5A68] dark:text-[#8E8EA4] mt-1">
-            Live authenticated sessions
-          </div>
-        </div>
-
-        <div className="p-4 rounded-2xl bg-white dark:bg-[#111118] border border-emerald-500/20 shadow-2xs">
-          <div className="flex items-center justify-between text-xs font-mono text-emerald-600 dark:text-emerald-400 mb-1">
-            <span>New Signups</span>
-            <Sparkles className="w-4 h-4 text-emerald-500" />
-          </div>
-          <div className="text-2xl font-black text-emerald-600 dark:text-emerald-400 font-display">
-            {stats ? stats.newThisWeek : users.filter((u) => u.isNewThisWeek).length}
-          </div>
-          <div className="text-[11px] font-mono text-[#5A5A68] dark:text-[#8E8EA4] mt-1">
-            Joined last 7 days
+            Live online right now
           </div>
         </div>
 
@@ -481,6 +505,22 @@ export default function AdminUsersPanel() {
             }`}
           >
             All Users ({users.length})
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              setActiveTab("loggedin");
+              setSelectedCategory("all");
+            }}
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all inline-flex items-center gap-2 ${
+              activeTab === "loggedin"
+                ? "bg-emerald-600 text-white shadow-xs"
+                : "bg-white dark:bg-[#12121A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/8 dark:border-white/10"
+            }`}
+          >
+            <span className="w-2 h-2 rounded-full bg-emerald-400" />
+            <span>Logged In Users ({stats?.loggedIn ?? users.filter((u) => u.isOnline || u.isLoggedIn || u.lastLoginAt).length})</span>
           </button>
 
           <button
@@ -669,13 +709,57 @@ export default function AdminUsersPanel() {
         </div>
       </div>
 
+      {/* Active Sessions Telemetry Banner (when Logged In tab is selected) */}
+      {activeTab === "loggedin" && (
+        <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-emerald-500/10 via-emerald-500/5 to-transparent border border-emerald-500/25 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-2xs">
+          <div className="flex items-center gap-3.5">
+            <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-500/30">
+              <Users className="w-5 h-5" />
+            </div>
+            <div>
+              <h4 className="text-sm font-bold text-[#0A0A0E] dark:text-white flex items-center gap-2">
+                <span>Active Authenticated Sessions</span>
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-700 dark:text-emerald-300">
+                  {filteredUsers.length} Users Listed
+                </span>
+              </h4>
+              <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] font-mono mt-0.5">
+                Displaying all users with active or recent authenticated sessions. Ranked by most recent activity.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2.5 shrink-0">
+            <div className="px-3.5 py-1.5 rounded-xl bg-white dark:bg-[#12121A] border border-emerald-500/30 text-xs font-mono text-emerald-600 dark:text-emerald-400 flex items-center gap-2 shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="font-bold">{stats?.onlineNow ?? users.filter((u) => u.isOnline).length} Online Now</span>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Users Table / Grid */}
       <div className="bg-white dark:bg-[#111118] border border-black/8 dark:border-white/10 rounded-2xl shadow-2xs overflow-hidden">
-        <div className="px-5 py-3.5 border-b border-black/8 dark:border-white/10 flex items-center justify-between text-xs font-mono text-[#5A5A68] dark:text-[#8E8EA4]">
-          <span className="font-bold text-[#0A0A0E] dark:text-white">
-            Displaying {filteredUsers.length} Users
-          </span>
-          <span>Click any row to inspect full profile</span>
+        {/* Table Title Bar */}
+        <div className="px-6 py-4 border-b border-black/8 dark:border-white/10 flex items-center justify-between text-xs font-mono text-[#5A5A68] dark:text-[#8E8EA4] bg-white dark:bg-[#111118]">
+          <div className="flex items-center gap-2">
+            <span className="font-bold text-[#0A0A0E] dark:text-white text-sm">
+              {activeTab === "loggedin" ? "Logged In & Active Users" : "User Directory"}
+            </span>
+            <span className="px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-[11px] font-bold text-[#0A0A0E] dark:text-white">
+              {filteredUsers.length}
+            </span>
+          </div>
+          <span className="hidden sm:inline text-[11px]">Click any row to inspect complete audit profile</span>
+        </div>
+
+        {/* Desktop Aligned Column Headers */}
+        <div className="hidden lg:grid grid-cols-12 gap-4 px-6 py-3 bg-[#F6F6F9] dark:bg-[#14141E] border-b border-black/8 dark:border-white/10 text-[11px] font-mono font-bold uppercase tracking-wider text-[#5A5A68] dark:text-[#8E8EA4]">
+          <div className="col-span-4">User & Identity</div>
+          <div className="col-span-2">Role & Cohort</div>
+          <div className="col-span-1 text-center">Gender</div>
+          <div className="col-span-2 text-center">Session Status</div>
+          <div className="col-span-1 text-right">Reach / Deals</div>
+          <div className="col-span-2 text-right">Verification & Audit</div>
         </div>
 
         {loading ? (
@@ -709,45 +793,254 @@ export default function AdminUsersPanel() {
             {filteredUsers.map((user) => {
               const isCreator = user.role === "creator";
               const isBrand = user.role === "brand" || user.role.includes("brand");
-              const isAdmin = user.role.includes("admin") || user.role.includes("owner");
               const isNew = user.isNew || user.isNewThisWeek;
 
               return (
                 <div
                   key={user.id}
                   onClick={() => setSelectedUser(user)}
-                  className="p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 hover:bg-[#F8F8FC] dark:hover:bg-[#161622] transition-colors cursor-pointer group"
+                  className="px-5 py-4 sm:px-6 hover:bg-[#F8F8FC] dark:hover:bg-[#151522] transition-colors cursor-pointer group"
                 >
-                  {/* Left: User Identity & Category */}
-                  <div className="flex items-center gap-3.5 min-w-0">
-                    <div className="relative shrink-0">
-                      <div className="w-11 h-11 rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 bg-black/5">
-                        <SafeImage
-                          src={user.avatarUrl || `https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80`}
-                          alt={user.name}
-                          fill
-                          className="object-cover"
-                        />
+                  {/* Desktop Aligned Grid (lg and up) */}
+                  <div className="hidden lg:grid grid-cols-12 gap-4 items-center">
+                    {/* Col 1-4: User Identity */}
+                    <div className="col-span-4 flex items-center gap-3.5 min-w-0">
+                      <div className="relative shrink-0">
+                        <div className="w-10 h-10 rounded-xl overflow-hidden border border-black/10 dark:border-white/10 bg-black/5">
+                          <SafeImage
+                            src={user.avatarUrl || `https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80`}
+                            alt={user.name}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                        {user.isOnline ? (
+                          <span
+                            className="w-3 h-3 rounded-full bg-emerald-500 border-2 border-white dark:border-[#111118] absolute -top-0.5 -right-0.5 animate-pulse"
+                            title="Online Now"
+                          />
+                        ) : user.lastLoginAt ? (
+                          <span
+                            className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 border-2 border-white dark:border-[#111118] absolute -top-0.5 -right-0.5"
+                            title="Active Session"
+                          />
+                        ) : null}
                       </div>
-                      {user.verified && (
-                        <CheckCircle2 className="w-4 h-4 text-emerald-500 fill-white dark:fill-[#111118] absolute -bottom-1 -right-1" />
+
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2">
+                          <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white group-hover:text-[#D97706] dark:group-hover:text-[#FFD21F] transition-colors truncate">
+                            {user.name}
+                          </h3>
+                          {user.verified && (
+                            <span title="Verified Account" className="inline-flex">
+                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                            </span>
+                          )}
+                          {isNew && (
+                            <span className="px-1.5 py-0.2 rounded-full text-[9px] font-mono font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 shrink-0">
+                              NEW
+                            </span>
+                          )}
+                        </div>
+
+                        <div className="flex items-center gap-2 text-xs text-[#5A5A68] dark:text-[#8E8EA4] font-mono mt-0.5">
+                          {user.handle ? (
+                            <span className="text-[#0A0A0E] dark:text-white font-semibold shrink-0">
+                              @{user.handle}
+                            </span>
+                          ) : user.companyName ? (
+                            <span className="text-[#0A0A0E] dark:text-white font-semibold truncate max-w-[120px]">
+                              {user.companyName}
+                            </span>
+                          ) : null}
+                          <span className="truncate">{user.email}</span>
+                          <button
+                            type="button"
+                            onClick={(e) => copyToClipboard(user.email, "Email", e)}
+                            className="hover:text-[#0A0A0E] dark:hover:text-white shrink-0 p-0.5"
+                            title="Copy Email"
+                          >
+                            <Copy className="w-3 h-3" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Col 5-6: Role & Cohort */}
+                    <div className="col-span-2 flex flex-col items-start gap-1 min-w-0">
+                      <span
+                        className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider ${
+                          isCreator
+                            ? "bg-amber-500/15 text-amber-700 dark:text-[#FFD21F] border border-amber-500/30"
+                            : isBrand
+                            ? "bg-blue-500/15 text-blue-700 dark:text-blue-400 border border-blue-500/30"
+                            : "bg-purple-500/15 text-purple-700 dark:text-purple-300 border border-purple-500/30"
+                        }`}
+                      >
+                        {user.role}
+                      </span>
+                      <span className="px-2 py-0.5 rounded-md text-[11px] font-medium bg-[#F0F0F5] dark:bg-[#1A1A26] text-[#475569] dark:text-[#A0A0B8] border border-black/5 dark:border-white/5 truncate max-w-[150px]">
+                        {user.category}
+                      </span>
+                    </div>
+
+                    {/* Col 7: Gender */}
+                    <div className="col-span-1 flex items-center justify-center">
+                      {user.gender ? (
+                        <span
+                          className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold capitalize border ${
+                            user.gender.toLowerCase() === "male"
+                              ? "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20"
+                              : "bg-pink-500/10 text-pink-600 dark:text-pink-400 border-pink-500/20"
+                          }`}
+                        >
+                          {user.gender}
+                        </span>
+                      ) : (
+                        <span className="text-[11px] font-mono text-[#8E8EA4] dark:text-[#5A5A68]">—</span>
                       )}
                     </div>
 
-                    <div className="min-w-0">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white group-hover:text-[#D97706] dark:group-hover:text-[#FFD21F] transition-colors truncate">
-                          {user.name}
-                        </h3>
-
-                        {/* NEW Badge */}
-                        {isNew && (
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                            NEW
+                    {/* Col 8-9: Session Status */}
+                    <div className="col-span-2 flex flex-col items-center justify-center text-center">
+                      {user.isOnline ? (
+                        <>
+                          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 inline-flex items-center gap-1.5 shadow-2xs">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                            <span>ONLINE NOW</span>
                           </span>
-                        )}
+                          <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 mt-1">
+                            Active just now
+                          </span>
+                        </>
+                      ) : user.isLoggedIn || user.lastLoginAt ? (
+                        <>
+                          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 inline-flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                            <span>LOGGED IN</span>
+                          </span>
+                          <span className="text-[10px] font-mono text-[#5A5A68] dark:text-[#8E8EA4] mt-1" title={user.lastLoginAt}>
+                            Active {formatRelativeTime(user.lastActiveAt || user.lastLoginAt)}
+                          </span>
+                        </>
+                      ) : (
+                        <>
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-medium bg-black/5 dark:bg-white/5 text-[#8E8EA4] dark:text-[#6A6A7E] border border-black/5 dark:border-white/5">
+                            OFFLINE
+                          </span>
+                          <span className="text-[10px] font-mono text-[#8E8EA4] dark:text-[#5A5A68] mt-1" title={user.createdAt}>
+                            Joined {formatRelativeTime(user.createdAt)}
+                          </span>
+                        </>
+                      )}
+                    </div>
 
-                        {/* Role Badge */}
+                    {/* Col 10: Reach / Metric */}
+                    <div className="col-span-1 text-right">
+                      <div className="text-xs font-bold text-[#0A0A0E] dark:text-white font-mono">
+                        {user.followers !== undefined
+                          ? formatNumber(user.followers)
+                          : user.campaignsCount !== undefined
+                          ? `${user.campaignsCount}`
+                          : user.country || "Global"}
+                      </div>
+                      <div className="text-[10px] font-mono text-[#5A5A68] dark:text-[#8E8EA4]">
+                        {user.followers !== undefined
+                          ? "Followers"
+                          : user.campaignsCount !== undefined
+                          ? "Campaigns"
+                          : "Region"}
+                      </div>
+                    </div>
+
+                    {/* Col 11-12: Verification & Action */}
+                    <div className="col-span-2 flex items-center justify-end gap-2.5">
+                      <button
+                        type="button"
+                        disabled={updatingId === user.id}
+                        onClick={(e) => handleToggleVerify(user.id, user.verified, e)}
+                        className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border inline-flex items-center gap-1.5 shrink-0 ${
+                          user.verified
+                            ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border-emerald-500/30 hover:bg-emerald-500/25"
+                            : "bg-[#F4F4F8] dark:bg-[#1E1E2C] text-[#5A5A68] dark:text-[#A0A0B8] border-black/8 dark:border-white/10 hover:border-[#FFD21F] hover:text-[#0A0A0E] dark:hover:text-white"
+                        }`}
+                        title={user.verified ? "Click to revoke verification" : "Click to approve and verify"}
+                      >
+                        {updatingId === user.id ? (
+                          <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                        ) : user.verified ? (
+                          <>
+                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
+                            <span>Verified</span>
+                          </>
+                        ) : (
+                          <>
+                            <span className="w-2 h-2 rounded-full bg-amber-400" />
+                            <span>Verify</span>
+                          </>
+                        )}
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedUser(user);
+                        }}
+                        className="p-1.5 rounded-lg text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+                        title="Inspect Profile"
+                      >
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Mobile / Tablet Responsive Layout (< lg) */}
+                  <div className="lg:hidden flex flex-col gap-3">
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-3 min-w-0">
+                        <div className="relative shrink-0">
+                          <div className="w-10 h-10 rounded-xl overflow-hidden border border-black/10 dark:border-white/10 bg-black/5">
+                            <SafeImage
+                              src={user.avatarUrl || `https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80`}
+                              alt={user.name}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                          {user.isOnline ? (
+                            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white dark:border-[#111118] absolute -top-0.5 -right-0.5 animate-pulse" />
+                          ) : user.lastLoginAt ? (
+                            <span className="w-2 rounded-full bg-emerald-500/80 border-2 border-white dark:border-[#111118] absolute -top-0.5 -right-0.5" />
+                          ) : null}
+                        </div>
+                        <div className="min-w-0">
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white truncate">
+                              {user.name}
+                            </h3>
+                            {user.verified && (
+                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                            )}
+                            {isNew && (
+                              <span className="px-1.5 py-0.2 rounded-full text-[9px] font-mono font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                                NEW
+                              </span>
+                            )}
+                          </div>
+                          <div className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] font-mono truncate">
+                            {user.handle ? `@${user.handle} • ` : ""}{user.email}
+                          </div>
+                        </div>
+                      </div>
+
+                      <ChevronRight className="w-4 h-4 text-[#8E8EA4] shrink-0" />
+                    </div>
+
+                    {/* Badges & Session Row for Mobile */}
+                    <div className="flex items-center justify-between gap-2 pt-2 border-t border-black/5 dark:border-white/5 flex-wrap">
+                      <div className="flex items-center gap-1.5 flex-wrap">
                         <span
                           className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider ${
                             isCreator
@@ -759,135 +1052,47 @@ export default function AdminUsersPanel() {
                         >
                           {user.role}
                         </span>
-
-                        {/* Category Pill */}
-                        <span className="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[#F0F0F5] dark:bg-[#1E1E2C] text-[#475569] dark:text-[#A0A0B8] border border-black/5 dark:border-white/5">
+                        <span className="px-2 py-0.5 rounded-md text-[10px] font-medium bg-[#F0F0F5] dark:bg-[#1A1A26] text-[#475569] dark:text-[#A0A0B8]">
                           {user.category}
                         </span>
-
-                        {/* Gender Badge */}
                         {user.gender && (
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-medium capitalize bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border border-indigo-500/20">
+                          <span className="px-1.5 py-0.5 rounded-full text-[9px] font-mono capitalize bg-indigo-500/10 text-indigo-700 dark:text-indigo-300">
                             {user.gender}
                           </span>
                         )}
-
-                        {/* Mobile-only session indicator */}
-                        <div className="sm:hidden inline-flex items-center">
-                          {user.isOnline ? (
-                            <span className="px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 inline-flex items-center gap-1">
-                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                              <span>ONLINE</span>
-                            </span>
-                          ) : user.lastLoginAt ? (
-                            <span className="px-1.5 py-0.5 rounded-full text-[9px] font-mono font-semibold bg-black/5 dark:bg-white/5 text-[#5A5A68] dark:text-[#8E8EA4] border border-black/5 dark:border-white/5 inline-flex items-center gap-1">
-                              <span className="w-1 h-1 rounded-full bg-emerald-500/70" />
-                              <span>LOGGED IN</span>
-                            </span>
-                          ) : null}
-                        </div>
                       </div>
 
-                      <div className="flex items-center gap-3 text-xs text-[#5A5A68] dark:text-[#8E8EA4] font-mono mt-1">
-                        <span className="truncate">{user.email}</span>
+                      <div className="flex items-center gap-2">
+                        {user.isOnline ? (
+                          <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 inline-flex items-center gap-1">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                            <span>ONLINE</span>
+                          </span>
+                        ) : user.lastLoginAt ? (
+                          <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-semibold bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 inline-flex items-center gap-1">
+                            <span className="w-1 h-1 rounded-full bg-emerald-500" />
+                            <span>LOGGED IN</span>
+                          </span>
+                        ) : (
+                          <span className="px-1.5 py-0.5 rounded-full text-[9px] font-mono font-medium bg-black/5 dark:bg-white/5 text-[#8E8EA4]">
+                            OFFLINE
+                          </span>
+                        )}
+
                         <button
                           type="button"
-                          onClick={(e) => copyToClipboard(user.email, "Email", e)}
-                          className="hover:text-[#0A0A0E] dark:hover:text-white"
-                          title="Copy Email"
+                          disabled={updatingId === user.id}
+                          onClick={(e) => handleToggleVerify(user.id, user.verified, e)}
+                          className={`px-2.5 py-1 rounded-lg text-[11px] font-bold border ${
+                            user.verified
+                              ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border-emerald-500/30"
+                              : "bg-[#F4F4F8] dark:bg-[#1E1E2C] text-[#5A5A68] dark:text-[#A0A0B8] border-black/8 dark:border-white/10"
+                          }`}
                         >
-                          <Copy className="w-3 h-3" />
+                          {user.verified ? "Verified" : "Verify"}
                         </button>
-
-                        {user.handle && (
-                          <span className="text-[#0A0A0E] dark:text-white font-semibold">
-                            @{user.handle}
-                          </span>
-                        )}
-
-                        {user.companyName && (
-                          <span className="text-[#0A0A0E] dark:text-white font-semibold">
-                            {user.companyName}
-                          </span>
-                        )}
                       </div>
                     </div>
-                  </div>
-
-                  {/* Middle / Right: Stats & Actions */}
-                  <div className="flex items-center gap-4 sm:gap-6 self-end md:self-auto shrink-0">
-                    {/* Aligned Session Status Column (Desktop & Tablet) */}
-                    <div className="hidden sm:flex flex-col items-center justify-center w-28 shrink-0">
-                      {user.isOnline ? (
-                        <span className="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 inline-flex items-center gap-1.5 shadow-2xs">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                          <span>ONLINE</span>
-                        </span>
-                      ) : user.lastLoginAt ? (
-                        <span
-                          className="px-2.5 py-1 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 inline-flex items-center gap-1.5"
-                          title={`Last login: ${new Date(user.lastLoginAt).toLocaleString()}`}
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                          <span>LOGGED IN</span>
-                        </span>
-                      ) : (
-                        <span className="px-2.5 py-1 rounded-full text-[10px] font-mono font-medium bg-black/5 dark:bg-white/5 text-[#8E8EA4] dark:text-[#6A6A7E] border border-black/5 dark:border-white/5">
-                          OFFLINE
-                        </span>
-                      )}
-                    </div>
-                    {/* Follower / Metric */}
-                    <div className="text-right hidden sm:block">
-                      <div className="text-xs font-bold text-[#0A0A0E] dark:text-white font-mono">
-                        {user.followers !== undefined
-                          ? `${formatNumber(user.followers)} followers`
-                          : user.campaignsCount !== undefined
-                          ? `${user.campaignsCount} campaigns`
-                          : user.country || "Global"}
-                      </div>
-                      <div className="text-[10px] font-mono text-[#5A5A68] dark:text-[#8E8EA4]">
-                        {user.isOnline ? (
-                          <span className="text-emerald-600 dark:text-emerald-400 font-bold flex items-center justify-end gap-1">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                            <span>Active now</span>
-                          </span>
-                        ) : user.lastActiveAt ? (
-                          <span>Active {new Date(user.lastActiveAt).toLocaleDateString()}</span>
-                        ) : (
-                          <span>Joined {new Date(user.createdAt).toLocaleDateString()}</span>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Verification Toggle */}
-                    <button
-                      type="button"
-                      disabled={updatingId === user.id}
-                      onClick={(e) => handleToggleVerify(user.id, user.verified, e)}
-                      className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border inline-flex items-center gap-1.5 ${
-                        user.verified
-                          ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border-emerald-500/30 hover:bg-emerald-500/25"
-                          : "bg-[#F4F4F8] dark:bg-[#1E1E2C] text-[#5A5A68] dark:text-[#A0A0B8] border-black/8 dark:border-white/10 hover:border-[#FFD21F] hover:text-[#0A0A0E] dark:hover:text-white"
-                      }`}
-                      title={user.verified ? "Click to revoke verification" : "Click to approve and verify"}
-                    >
-                      {updatingId === user.id ? (
-                        <RefreshCw className="w-3.5 h-3.5 animate-spin" />
-                      ) : user.verified ? (
-                        <>
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
-                          <span>Verified</span>
-                        </>
-                      ) : (
-                        <>
-                          <span className="w-2 h-2 rounded-full bg-amber-400" />
-                          <span>Verify</span>
-                        </>
-                      )}
-                    </button>
-
-                    <ChevronRight className="w-4 h-4 text-[#8E8EA4] group-hover:text-[#0A0A0E] dark:group-hover:text-white transition-colors" />
                   </div>
                 </div>
               );

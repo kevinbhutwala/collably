@@ -149,13 +149,13 @@ export async function GET(req: NextRequest) {
         ? now
         : u.lastActiveAt
         ? new Date(u.lastActiveAt).getTime()
-        : u.createdAt
-        ? new Date(u.createdAt).getTime()
         : 0;
 
-      // Online if currently querying or active within last 15 minutes
-      const isOnline = isCurrentSessionUser || (now - lastActiveTime) < 15 * 60 * 1000;
-      const isLoggedIn = Boolean(u.lastLoginAt || u.createdAt || isOnline);
+      // Online if currently active session or active within the last 15 minutes
+      const isOnline = isCurrentSessionUser || (lastActiveTime > 0 && (now - lastActiveTime) < 15 * 60 * 1000);
+      const lastLoginTime = u.lastLoginAt ? new Date(u.lastLoginAt).getTime() : 0;
+      // Logged in if currently online or active login session within 7 days
+      const isLoggedIn = isOnline || (lastLoginTime > 0 && (now - lastLoginTime) < 7 * 24 * 60 * 60 * 1000);
 
       let category = "General";
       let handle: string | undefined = undefined;
@@ -292,6 +292,7 @@ export async function GET(req: NextRequest) {
     // Compute stats across full population
     const totalUsers = enrichedUsers.length;
     const onlineNowCount = enrichedUsers.filter((u) => u.isOnline).length;
+    const loggedInCount = enrichedUsers.filter((u) => u.isOnline || u.isLoggedIn).length;
     const creatorsCount = enrichedUsers.filter((u) => u.role === "creator").length;
     const brandsCount = enrichedUsers.filter((u) => u.role === "brand" || u.role.includes("brand")).length;
     const adminsCount = enrichedUsers.filter((u) => u.role.includes("admin") || u.role.includes("owner")).length;
@@ -386,6 +387,7 @@ export async function GET(req: NextRequest) {
       stats: {
         total: totalUsers,
         onlineNow: onlineNowCount,
+        loggedIn: loggedInCount,
         creators: creatorsCount,
         brands: brandsCount,
         admins: adminsCount,
