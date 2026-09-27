@@ -74,7 +74,7 @@ export default function BrandOnboardingWizardPage() {
           </div>
         </div>
 
-        <div className="p-8 sm:p-12 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8]">
+        <div className="p-5 sm:p-8 md:p-12 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8]">
           {/* Step 1: Company Profile */}
           {step === 1 && (
             <div className="space-y-4">
@@ -166,7 +166,7 @@ export default function BrandOnboardingWizardPage() {
           {step === 4 && (
             <div className="space-y-4">
               <h3 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">Step 4: Primary Campaign Objectives</h3>
-              <div className="grid grid-cols-2 gap-3 text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                 {[
                   "Developer Awareness",
                   "Signups & Free Trial Conversions",
@@ -203,7 +203,7 @@ export default function BrandOnboardingWizardPage() {
                 value={formData.teamMembers}
                 onChange={(e) => setFormData({ ...formData, teamMembers: e.target.value })}
               />
-              <div className="p-6 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 flex items-start gap-3">
+              <div className="p-5 sm:p-6 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 flex items-start gap-3">
                 <ShieldCheck className="w-5 h-5 text-[#0A0A0E] dark:text-[#FFD21F] shrink-0 mt-0.5" />
                 <div className="space-y-1">
                   <h4 className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">100% Escrow Milestone Protection</h4>
@@ -216,14 +216,14 @@ export default function BrandOnboardingWizardPage() {
           )}
 
           {/* Navigation Controls */}
-          <div className="flex items-center justify-between pt-6 border-t border-black/8 dark:border-white/10">
+          <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-6 border-t border-black/8 dark:border-white/10">
             <Button
               variant="secondary"
               size="md"
               onClick={handleBack}
               disabled={step === 1}
               leftIcon={<ArrowLeft className="w-4 h-4" />}
-              className="rounded-full"
+              className="rounded-full w-full sm:w-auto"
             >
               Back
             </Button>
@@ -233,7 +233,7 @@ export default function BrandOnboardingWizardPage() {
               size="md"
               onClick={handleNext}
               rightIcon={<ArrowRight className="w-4 h-4 text-[#0A0A0E]" />}
-              className="rounded-full"
+              className="rounded-full w-full sm:w-auto"
             >
               {step === totalSteps ? "Launch Brand Workspace" : "Continue"}
             </Button>

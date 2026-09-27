@@ -518,7 +518,7 @@ export default function ProfileEditPage() {
               return (
                 <div
                   key={acc.id}
-                  className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/6 dark:border-white/10 flex items-center justify-between gap-3"
+                  className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/6 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
                 >
                   <div className="flex items-center gap-3 min-w-0">
                     <div className="w-9 h-9 rounded-xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 flex items-center justify-center text-[#0A0A0E] dark:text-white shadow-2xs shrink-0">
@@ -558,7 +558,7 @@ export default function ProfileEditPage() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-1 shrink-0">
+                  <div className="flex items-center justify-between sm:justify-end gap-1.5 pt-2 sm:pt-0 border-t sm:border-0 border-black/5 dark:border-white/5 shrink-0">
                     {!isAccountVerified && (
                       <button
                         type="button"
@@ -640,18 +640,18 @@ export default function ProfileEditPage() {
               />
             </div>
 
-            <div className="flex justify-end gap-2 pt-3 border-t border-black/8 dark:border-white/10">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-2 pt-3 border-t border-black/8 dark:border-white/10">
               <button
                 type="button"
                 onClick={() => setShowAddModal(false)}
-                className="px-4 py-2 rounded-full border border-black/10 dark:border-white/10 text-xs font-bold text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-white"
+                className="w-full sm:w-auto px-4 py-2 rounded-full border border-black/10 dark:border-white/10 text-xs font-bold text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-white"
               >
                 Cancel
               </button>
               <button
                 type="button"
                 onClick={handleAddSocialAccount}
-                className="px-5 py-2 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] hover:bg-[#20202B] dark:hover:bg-[#FFE052] text-white dark:text-[#0A0A0E] text-xs font-bold transition-all"
+                className="w-full sm:w-auto px-5 py-2 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] hover:bg-[#20202B] dark:hover:bg-[#FFE052] text-white dark:text-[#0A0A0E] text-xs font-bold transition-all"
               >
                 Add Channel
               </button>

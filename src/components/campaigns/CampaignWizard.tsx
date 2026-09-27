@@ -257,8 +257,8 @@ export function CampaignWizard() {
       )}
 
       {/* Wizard Step Indicator */}
-      <div className="p-6 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs">
-        <div className="flex items-center justify-between overflow-x-auto no-scrollbar gap-2 pb-2">
+      <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs">
+        <div className="flex items-center justify-between overflow-x-auto no-scrollbar touch-pan-x gap-2 pb-2">
           {stepsMeta.map((s) => {
             const isCompleted = step > s.num;
             const isCurrent = step === s.num;
@@ -290,7 +290,7 @@ export function CampaignWizard() {
       </div>
 
       {/* Main Wizard Form Container */}
-      <div className="p-8 sm:p-10 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-8 text-[#0A0A0E] dark:text-[#F4F4F8]">
+      <div className="p-5 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-8 text-[#0A0A0E] dark:text-[#F4F4F8]">
         {/* STEP 1: BASICS */}
         {step === 1 && (
           <div className="space-y-6">
@@ -576,20 +576,20 @@ export function CampaignWizard() {
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 space-y-4">
-              <div className="flex items-center justify-between">
+            <div className="p-5 sm:p-6 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                 <span className="text-xs font-bold text-[#7A7A8A] dark:text-[#8E8EA4] font-mono">TITLE</span>
-                <span className="text-sm font-bold text-[#0A0A0E] dark:text-[#F4F4F8] font-display">{formData.title}</span>
+                <span className="text-sm font-bold text-[#0A0A0E] dark:text-[#F4F4F8] font-display break-words">{formData.title}</span>
               </div>
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                 <span className="text-xs font-bold text-[#7A7A8A] dark:text-[#8E8EA4] font-mono">CAMPAIGN BUDGET</span>
                 <span className="text-sm font-extrabold font-mono text-[#0A0A0E] dark:text-[#FFD21F]">{formatCurrency(formData.totalBudget, formData.currency)}</span>
               </div>
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                 <span className="text-xs font-bold text-[#7A7A8A] dark:text-[#8E8EA4] font-mono">TARGET CREATORS</span>
                 <span className="text-sm font-bold text-[#0A0A0E] dark:text-[#F4F4F8] font-sans">{formData.maxCreators} Creators</span>
               </div>
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                 <span className="text-xs font-bold text-[#7A7A8A] dark:text-[#8E8EA4] font-mono">CONTENT DUE</span>
                 <span className="text-sm font-bold text-[#0A0A0E] dark:text-[#F4F4F8] font-sans">{formData.contentSubmissionDeadline}</span>
               </div>
@@ -598,14 +598,14 @@ export function CampaignWizard() {
         )}
 
         {/* Wizard Navigation Footer */}
-        <div className="pt-6 border-t border-black/8 dark:border-white/10 flex items-center justify-between">
+        <div className="pt-6 border-t border-black/8 dark:border-white/10 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3">
           <Button
             variant="secondary"
             size="md"
             onClick={() => setStep((s) => Math.max(1, s - 1))}
             disabled={step === 1}
             leftIcon={<ArrowLeft className="w-4 h-4" />}
-            className="rounded-full"
+            className="rounded-full w-full sm:w-auto"
           >
             Previous
           </Button>
@@ -616,7 +616,7 @@ export function CampaignWizard() {
               size="md"
               onClick={() => setStep((s) => Math.min(7, s + 1))}
               rightIcon={<ArrowRight className="w-4 h-4 text-[#0A0A0E]" />}
-              className="rounded-full"
+              className="rounded-full w-full sm:w-auto"
             >
               Continue to Step {step + 1}
             </Button>
@@ -627,7 +627,7 @@ export function CampaignWizard() {
               onClick={handlePublish}
               isLoading={isPublishing}
               rightIcon={<CheckCircle2 className="w-5 h-5 text-[#0A0A0E]" />}
-              className="rounded-full"
+              className="rounded-full w-full sm:w-auto"
             >
               Publish Campaign
             </Button>

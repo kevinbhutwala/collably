@@ -33,8 +33,8 @@ export function CreatorComparisonModal({
       description="Compare audience demographics, rate cards, and engagement authenticity across shortlisted creators."
       maxWidth="4xl"
     >
-      <div className="space-y-6 overflow-x-auto text-[#0A0A0E] dark:text-white">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 min-w-[600px]">
+      <div className="space-y-6 text-[#0A0A0E] dark:text-white">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full">
           {creators.map((c) => (
             <div
               key={c.id}

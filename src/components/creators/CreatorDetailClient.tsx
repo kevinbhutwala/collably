@@ -82,7 +82,7 @@ export function CreatorDetailClient({
     <div className="py-12 sm:py-16 bg-white dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Profile Master Card */}
-        <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-8 sm:p-12 shadow-xs space-y-8">
+        <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-8 md:p-12 shadow-xs space-y-8">
           <div className="flex flex-col md:flex-row md:items-start justify-between gap-8">
             <div className="flex flex-col sm:flex-row items-start gap-6">
               <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 bg-[#F5F5F9] dark:bg-neutral-800 shrink-0 shadow-xs">
@@ -98,7 +98,7 @@ export function CreatorDetailClient({
 
               <div className="space-y-2">
                 <div className="flex flex-wrap items-center gap-2">
-                  <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display break-words">
                     {creator.fullName}
                   </h1>
                   {creator.isInstagramVerified && (
@@ -261,7 +261,7 @@ export function CreatorDetailClient({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Left: Rate Card & Deliverables */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
+            <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
               <div className="flex items-center justify-between flex-wrap gap-2">
                 <div>
                   <h2 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">
@@ -279,13 +279,13 @@ export function CreatorDetailClient({
                 {(creator.rateCards || []).map((rate) => (
                   <div
                     key={rate.id}
-                    className="p-5 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/5 dark:border-white/5 flex items-center justify-between gap-4"
+                    className="p-4 sm:p-5 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/5 dark:border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4"
                   >
                     <div className="flex items-start gap-3.5">
                       <span className="w-10 h-10 rounded-xl bg-white dark:bg-white/10 border border-black/8 dark:border-white/10 flex items-center justify-center text-[#A37F00] dark:text-[#FFD21F] shrink-0 shadow-2xs">
                         <TitleIcon title={rate.title || rate.deliverableType} category={creator.primaryCategory} className="w-5 h-5" />
                       </span>
-                      <div>
+                      <div className="min-w-0">
                         <h3 className="font-bold text-sm text-[#0A0A0E] dark:text-white font-sans">{rate.title || rate.deliverableType}</h3>
                         <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B0] mt-0.5">{rate.description}</p>
                         <span className="text-[10px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4] block mt-1">
@@ -294,12 +294,15 @@ export function CreatorDetailClient({
                       </div>
                     </div>
 
-                    <div className="text-right shrink-0">
-                      <span className="text-base font-extrabold text-[#0A0A0E] dark:text-white font-mono block">
-                        <span className="text-xs font-normal text-[#7A7A8A] mr-1">Est.</span>
-                        {format(rate.basePrice || (rate as any).price || 500, (rate as any).currency || (creator as any).currency || "USD")}
-                      </span>
-                      <span className="text-[10px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4]">per deliverable</span>
+                    <div className="flex items-center justify-between sm:justify-end sm:text-right shrink-0 pt-2 sm:pt-0 border-t sm:border-0 border-black/5 dark:border-white/5">
+                      <span className="text-xs text-[#7A7A8A] sm:hidden">Rate</span>
+                      <div>
+                        <span className="text-base font-extrabold text-[#0A0A0E] dark:text-white font-mono block">
+                          <span className="text-xs font-normal text-[#7A7A8A] mr-1">Est.</span>
+                          {format(rate.basePrice || (rate as any).price || 500, (rate as any).currency || (creator as any).currency || "USD")}
+                        </span>
+                        <span className="text-[10px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4]">per deliverable</span>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -309,7 +312,7 @@ export function CreatorDetailClient({
 
           {/* Right: Audited Demographics */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
+            <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
               <h2 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">Audience Telemetry &amp; Geo</h2>
               <div className="space-y-4 font-mono text-xs">
                 <div>

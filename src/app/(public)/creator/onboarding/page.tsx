@@ -104,7 +104,7 @@ export default function CreatorOnboardingWizardPage() {
         </div>
 
         {/* Step Card Container */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8]">
+        <div className="p-5 sm:p-8 md:p-12 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8]">
           {/* Step 1: Basic Info */}
           {step === 1 && (
             <div className="space-y-4">
@@ -255,7 +255,7 @@ export default function CreatorOnboardingWizardPage() {
             <div className="space-y-4">
               <h3 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">Step 6: Supported Deliverable Formats</h3>
               <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] font-sans">Select formats you regularly produce for brand partners.</p>
-              <div className="grid grid-cols-2 gap-3 text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                 {["YouTube 60s Integration", "Instagram Reel", "TikTok Video", "X (Twitter) Thread", "UGC Video Ad", "Keynote Appearance"].map((srv) => (
                   <label key={srv} className="p-3.5 rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 flex items-center gap-2.5 cursor-pointer hover:border-[#FFD21F] dark:hover:border-[#FFD21F]">
                     <input
@@ -294,13 +294,13 @@ export default function CreatorOnboardingWizardPage() {
           {step === 8 && (
             <div className="space-y-4">
               <h3 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">Step 8: Current Booking Availability</h3>
-              <div className="grid grid-cols-3 gap-3 text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 text-xs">
                 {["Available", "Busy (2 Wk Delay)", "Booked (Waitlist)"].map((av) => (
                   <button
                     key={av}
                     type="button"
                     onClick={() => setFormData({ ...formData, availability: av })}
-                    className={`p-4 rounded-xl border text-center font-bold transition-all ${
+                    className={`p-3.5 sm:p-4 rounded-xl border text-center font-bold transition-all ${
                       formData.availability === av
                         ? "bg-[#FFD21F] text-[#0A0A0E] border-black/10 shadow-xs"
                         : "bg-[#F8F8FC] dark:bg-[#181824] text-[#6A6A78] dark:text-[#8E8EA4] border-black/5 dark:border-white/10 hover:text-[#0A0A0E] dark:hover:text-white"
@@ -323,9 +323,9 @@ export default function CreatorOnboardingWizardPage() {
                 </span>
               </div>
 
-              <div className="p-6 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 space-y-4">
+              <div className="p-5 sm:p-6 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 space-y-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center font-bold text-base font-mono shadow-xs border border-black/10">
+                  <div className="w-12 h-12 rounded-xl bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center font-bold text-base font-mono shadow-xs border border-black/10 shrink-0">
                     {formData.fullName.slice(0, 2).toUpperCase()}
                   </div>
                   <div>
@@ -335,9 +335,9 @@ export default function CreatorOnboardingWizardPage() {
                 </div>
                 <p className="text-xs text-[#0A0A0E] dark:text-white font-semibold font-sans">{formData.headline}</p>
                 <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] leading-relaxed font-sans">{formData.bio}</p>
-                <div className="flex gap-4 font-mono text-xs pt-2 border-t border-black/5 dark:border-white/10 text-[#5A5A68] dark:text-[#8E8EA4]">
+                <div className="flex flex-wrap gap-x-4 gap-y-2 font-mono text-xs pt-2 border-t border-black/5 dark:border-white/10 text-[#5A5A68] dark:text-[#8E8EA4]">
                   <span>Reach: <strong className="text-[#0A0A0E] dark:text-white">{formData.totalReach.toLocaleString()}</strong></span>
-                  <span>Engagement: <strong className="text-[#0A0A0E] dark:text-white flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />{formData.avgEngagement}%</strong></span>
+                  <span>Engagement: <strong className="text-[#0A0A0E] dark:text-white inline-flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />{formData.avgEngagement}%</strong></span>
                   <span>Starting: <strong className="text-[#0A0A0E] dark:text-white">{formatCurrency(formData.startingFee)}</strong></span>
                 </div>
               </div>
@@ -345,14 +345,14 @@ export default function CreatorOnboardingWizardPage() {
           )}
 
           {/* Navigation Controls */}
-          <div className="flex items-center justify-between pt-6 border-t border-black/8 dark:border-white/10">
+          <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-6 border-t border-black/8 dark:border-white/10">
             <Button
               variant="secondary"
               size="md"
               onClick={handleBack}
               disabled={step === 1}
               leftIcon={<ArrowLeft className="w-4 h-4" />}
-              className="rounded-full"
+              className="rounded-full w-full sm:w-auto"
             >
               Back
             </Button>
@@ -362,7 +362,7 @@ export default function CreatorOnboardingWizardPage() {
               size="md"
               onClick={handleNext}
               rightIcon={<ArrowRight className="w-4 h-4 text-[#0A0A0E]" />}
-              className="rounded-full"
+              className="rounded-full w-full sm:w-auto"
             >
               {step === totalSteps ? "Publish Media Kit & Launch" : "Continue"}
             </Button>

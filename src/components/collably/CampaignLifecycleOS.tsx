@@ -133,7 +133,7 @@ export function CampaignLifecycleOS() {
         {/* Operating System UI Stage */}
         <div className="max-w-5xl mx-auto rounded-3xl bg-[#120c16] border border-white/10 shadow-card p-6 sm:p-8 space-y-8 text-white">
           {/* Top Progress Track */}
-          <div className="overflow-x-auto pb-2 scrollbar-none">
+          <div className="overflow-x-auto pb-2 scrollbar-none no-scrollbar touch-pan-x">
             <div className="flex items-center justify-between min-w-[700px] gap-2">
               {stages.map((st, i) => {
                 const Icon = st.icon;

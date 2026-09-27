@@ -274,7 +274,7 @@ export function CreatorsDirectoryClient() {
           <div className="space-y-5 pt-2">
             {/* Primary Roster Sub-Filter: Founding Cohort vs All Talent */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-2xl bg-[#FAFAF8] dark:bg-[#101018] border border-black/8 dark:border-white/10 shadow-xs">
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <button
                   onClick={() => setTalentRosterFilter("cohort")}
                   className={cn(
@@ -301,7 +301,7 @@ export function CreatorsDirectoryClient() {
                 </button>
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-3">
                 <span className="hidden md:inline-flex text-xs font-mono text-[#6A6A78] dark:text-[#8E8EA4]">
                   5-Day Turnaround SLA Guaranteed
                 </span>

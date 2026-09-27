@@ -282,7 +282,7 @@ export default function CreatorRegisterPage() {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-6 sm:p-10 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.06)] relative z-10 text-[#0A0A0E] dark:text-[#F4F4F8] select-none">
+    <div className="w-full max-w-2xl mx-auto rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-8 md:p-10 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.06)] relative z-10 text-[#0A0A0E] dark:text-[#F4F4F8] select-none">
 
       {/* Top Header */}
       <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
@@ -407,7 +407,7 @@ export default function CreatorRegisterPage() {
                 </p>
 
                 {/* Preset avatars */}
-                <div className="flex items-center gap-1.5 pt-1">
+                <div className="flex items-center gap-1.5 pt-1 flex-wrap">
                   <span className="text-[10px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4]">Or pick:</span>
                   {AVATAR_PRESETS.map((preset, idx) => (
                     <button key={idx} type="button"
