@@ -224,13 +224,13 @@ export default function AdminUsersPanel() {
     // Category Filter
     if (selectedCategory !== "all") {
       result = result.filter(
-        (u) => u.category.toLowerCase() === selectedCategory.toLowerCase()
+        (u) => (u.category || "").toLowerCase() === selectedCategory.toLowerCase()
       );
     }
 
     // Status Filter
     if (statusFilter === "verified") {
-      result = result.filter((u) => u.verified);
+      result = result.filter((u) => Boolean(u.verified));
     } else if (statusFilter === "unverified") {
       result = result.filter((u) => !u.verified);
     }
@@ -240,12 +240,13 @@ export default function AdminUsersPanel() {
       const q = searchQuery.toLowerCase().trim();
       result = result.filter(
         (u) =>
-          u.name.toLowerCase().includes(q) ||
-          u.email.toLowerCase().includes(q) ||
+          (u.name && u.name.toLowerCase().includes(q)) ||
+          (u.email && u.email.toLowerCase().includes(q)) ||
           (u.handle && u.handle.toLowerCase().includes(q)) ||
           (u.companyName && u.companyName.toLowerCase().includes(q)) ||
-          u.category.toLowerCase().includes(q) ||
-          (u.country && u.country.toLowerCase().includes(q))
+          (u.category && u.category.toLowerCase().includes(q)) ||
+          (u.country && u.country.toLowerCase().includes(q)) ||
+          (u.role && u.role.toLowerCase().includes(q))
       );
     }
 
@@ -629,6 +630,20 @@ export default function AdminUsersPanel() {
             <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] font-mono max-w-sm mx-auto mt-1">
               No registered user records match your selected role, category, or search criteria.
             </p>
+            {(activeTab !== "all" || selectedCategory !== "all" || statusFilter !== "all" || searchQuery) && (
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveTab("all");
+                  setSelectedCategory("all");
+                  setStatusFilter("all");
+                  setSearchQuery("");
+                }}
+                className="mt-4 px-4 py-2 rounded-xl text-xs font-bold bg-[#FFD21F] text-[#0A0A0E] hover:bg-[#FFE052] transition-colors shadow-xs"
+              >
+                Reset All Filters
+              </button>
+            )}
           </div>
         ) : (
           <div className="divide-y divide-black/5 dark:divide-white/5">

@@ -107,6 +107,18 @@ export function getInitialSeedDatabase(): DatabaseState {
       createdAt: now,
       updatedAt: now,
     },
+    // ── 5. Alex Rivera ──
+    {
+      id: "user-c-alex",
+      name: "Alex Rivera",
+      email: "alex.rivera@abeycollab.io",
+      passwordHash: creatorPasswordHash,
+      role: "creator",
+      avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      verified: false,
+      createdAt: now,
+      updatedAt: now,
+    },
   ];
 
   const initialSubscriptions: SubscriptionEntity[] = [

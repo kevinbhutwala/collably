@@ -3,6 +3,7 @@ import { userRepo } from "@/server/repositories/user.repo";
 import { creatorRepo } from "@/server/repositories/creator.repo";
 import { brandRepo } from "@/server/repositories/brand.repo";
 import { SecurityService } from "@/server/services/security.service";
+import { isSupabaseConfigured, getSupabaseAdmin } from "@/server/db/supabase";
 
 export const dynamic = "force-dynamic";
 
@@ -26,6 +27,52 @@ export async function GET(req: NextRequest) {
     const sortBy = searchParams.get("sort") || "newest";
 
     const allUsers = userRepo.getAll();
+
+    // Cross-instance cloud synchronization: merge all Supabase cloud profiles
+    if (isSupabaseConfigured) {
+      try {
+        const supabase = getSupabaseAdmin();
+        if (supabase) {
+          const { data: supaProfiles } = await supabase.from("profiles").select("*");
+          if (supaProfiles && Array.isArray(supaProfiles)) {
+            for (const sp of supaProfiles) {
+              const spEmail = (sp.email || "").toLowerCase().trim();
+              const exists = allUsers.some(
+                (u) =>
+                  u.id === sp.id ||
+                  u.id === sp.user_id ||
+                  (spEmail && u.email.toLowerCase().trim() === spEmail)
+              );
+              if (!exists) {
+                const normRole =
+                  sp.role === "brand_owner" || sp.role === "brand_member"
+                    ? "brand"
+                    : sp.role === "super_admin"
+                    ? "agency_admin"
+                    : sp.role || "creator";
+
+                allUsers.push({
+                  id: sp.id || sp.user_id || `user-supa-${Date.now()}`,
+                  name: sp.name || spEmail.split("@")[0] || "User",
+                  email: spEmail,
+                  passwordHash: "",
+                  role: normRole as any,
+                  avatarUrl: sp.avatar_url || `https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80`,
+                  verified: Boolean(sp.verified),
+                  createdAt: sp.created_at || new Date().toISOString(),
+                  updatedAt: sp.updated_at || new Date().toISOString(),
+                  lastLoginAt: sp.created_at || new Date().toISOString(),
+                  lastActiveAt: sp.updated_at || new Date().toISOString(),
+                });
+              }
+            }
+          }
+        }
+      } catch (err) {
+        console.warn("Supabase profiles retrieval fallback:", err);
+      }
+    }
+
     const allCreators = creatorRepo.getAll();
     const allBrands = brandRepo.getAll();
 

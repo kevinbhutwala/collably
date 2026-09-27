@@ -1,7 +1,9 @@
+import crypto from "crypto";
 import { db } from "../db/database";
 import { UserEntity } from "../db/schema";
 import { hashPassword, verifyPassword } from "../auth/crypto";
 import { UserRole } from "@/core/types";
+import { isSupabaseConfigured, getSupabaseAdmin } from "../db/supabase";
 
 export class UserRepository {
   findByEmail(email: string): UserEntity | undefined {
@@ -97,6 +99,44 @@ export class UserRepository {
       state.users = state.users || [];
       state.users.push(newUser);
     });
+
+    // Cloud database cross-instance synchronization (Supabase)
+    if (isSupabaseConfigured) {
+      try {
+        const supabase = getSupabaseAdmin();
+        if (supabase) {
+          (async () => {
+            try {
+              const supaId = crypto.randomUUID();
+              const { data: existing } = await supabase
+                .from("profiles")
+                .select("id")
+                .eq("email", newUser.email)
+                .maybeSingle();
+
+              const targetId = existing?.id || supaId;
+              const { error } = await supabase.from("profiles").upsert({
+                id: targetId,
+                user_id: targetId,
+                email: newUser.email,
+                name: newUser.name,
+                role: newUser.role,
+                avatar_url: newUser.avatarUrl,
+                verified: newUser.verified,
+                status: "active",
+                created_at: newUser.createdAt,
+                updated_at: newUser.updatedAt,
+              });
+              if (error) console.error("Supabase profile sync warning:", error.message);
+            } catch {
+              // Ignore background sync errors
+            }
+          })();
+        }
+      } catch {
+        // Safe fallback
+      }
+    }
 
     return newUser;
   }

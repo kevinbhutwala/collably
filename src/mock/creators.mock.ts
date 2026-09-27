@@ -490,6 +490,57 @@ export const ARYAN_SHARMA_PROFILE: CreatorProfile = {
   ]
 };
 
+// 9. Alex Rivera (Technology & AI / Sample Creator Anchor)
+export const ALEX_RIVERA_PROFILE: CreatorProfile = {
+  id: "creator-alex",
+  userId: "user-c-alex",
+  fullName: "Alex Rivera",
+  handle: "alexrivera",
+  slug: "alex-rivera-tech",
+  headline: "Next-Gen Tech Reviews & Workflow Productivity",
+  bio: "Tech creator reviewing next-gen gadgets, developer tools, and workflow productivity setups.",
+  avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+  coverImageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200&auto=format&fit=crop&q=80",
+  location: "United States",
+  languages: ["English"],
+  primaryCategory: "Technology & AI",
+  secondaryCategories: ["Design & Creative"],
+  verified: false,
+  featured: false,
+  tier: "Micro",
+  rating: 4.98,
+  completedCampaignsCount: 12,
+  totalFollowers: 155000,
+  avgEngagementRate: 5.2,
+  startingPrice: 45000,
+  currency: "INR",
+  availableForHire: true,
+  profileCompleteness: 100,
+  qualityScore: 96,
+  profileSource: "abeycollab_verified",
+  isAbeyCollabVerified: false,
+  isInstagramVerified: true,
+  isClaimedOnAbeyCollab: true,
+  isSignedTalent: true,
+  cohortBadge: "Founding Cohort '26",
+  socialAccounts: [
+    { id: "sa-alex-yt", platform: "youtube", handle: "AlexRiveraTech", followers: 42000, engagementRate: 5.4, verifiedBadge: true },
+    { id: "sa-alex-ig", platform: "instagram", handle: "alex_rivera", followers: 28000, engagementRate: 4.8, verifiedBadge: true },
+    { id: "sa-alex-tt", platform: "tiktok", handle: "alexrivera.tech", followers: 65000, engagementRate: 5.8, verifiedBadge: false },
+    { id: "sa-alex-x", platform: "x", handle: "alexrivera_ai", followers: 14000, engagementRate: 4.5, verifiedBadge: false },
+    { id: "sa-alex-li", platform: "linkedin", handle: "alex-rivera-tech", followers: 6000, engagementRate: 3.8, verifiedBadge: false },
+  ],
+  audience: {
+    topCountries: [{ country: "United States", percentage: 65 }, { country: "United Kingdom", percentage: 20 }, { country: "Canada", percentage: 15 }],
+    ageDistribution: [{ range: "18-24", percentage: 30 }, { range: "25-34", percentage: 55 }, { range: "35-44", percentage: 15 }],
+    genderSplit: [{ gender: "Male", percentage: 65 }, { gender: "Female", percentage: 35 }],
+    interests: ["Gadgets", "Developer Tools", "AI Software", "Desk Setups"]
+  },
+  rateCards: [
+    { id: "rc-al-1", deliverableType: "YouTube 60s Integration", title: "Dedicated Tech Sponsorship", description: "60-second in-depth hardware or software breakdown.", basePrice: 45000, currency: "INR", turnaroundDays: 5, revisionsIncluded: 2 }
+  ]
+};
+
 export const MOCK_CREATORS: CreatorProfile[] = [
   WASEEM_KHAN_PROFILE,
   PRARTHANA_PROFILE,
@@ -500,4 +551,5 @@ export const MOCK_CREATORS: CreatorProfile[] = [
   KUNAL_RAJPUT_PROFILE,
   ARYAN_SHARMA_PROFILE,
   ELENA_ROSTOVA_PROFILE,
+  ALEX_RIVERA_PROFILE,
 ];
