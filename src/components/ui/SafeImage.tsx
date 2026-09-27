@@ -100,6 +100,18 @@ export function SafeImage({
     );
   }
 
+  if (!props.fill && !props.width && !props.height) {
+    return (
+      <img
+        src={typeof src === "string" ? src : (src as any)?.src || ""}
+        alt={alt || "Asset preview"}
+        className={className}
+        onError={() => setError(true)}
+        {...(props as any)}
+      />
+    );
+  }
+
   return (
     <Image
       src={src}

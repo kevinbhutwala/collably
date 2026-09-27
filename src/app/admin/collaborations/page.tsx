@@ -514,7 +514,7 @@ export default function AdminCollaborationsPage() {
             </div>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse">
+              <table className="w-full min-w-[850px] text-left border-collapse">
                 <thead>
                   <tr className="border-b border-black/8 dark:border-white/10 bg-[#FAFAFC] dark:bg-[#151520] text-[10px] font-mono text-[#7A7A8A] uppercase tracking-wider">
                     <th className="py-2.5 px-4 font-bold">Brand Partner</th>

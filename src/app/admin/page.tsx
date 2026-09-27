@@ -16,6 +16,7 @@ import {
   Sparkles,
   Loader2,
   RefreshCw,
+  Lock,
 } from "lucide-react";
 
 export default function AgencyAdminCommandCenter() {
@@ -105,6 +106,14 @@ export default function AgencyAdminCommandCenter() {
           </p>
         </div>
         <div className="flex items-center gap-2.5 flex-wrap">
+          <Link
+            href="/admin/collaborations"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-black dark:bg-white text-white dark:text-black text-xs font-bold hover:opacity-90 transition-all shadow-xs border border-black/10 shrink-0"
+          >
+            <Lock className="w-3.5 h-3.5 text-[#FFD21F]" />
+            <span>Active Escrows &amp; SLA</span>
+          </Link>
+
           <Link
             href="/admin/users"
             className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-xs font-bold hover:brightness-105 transition-all shadow-xs border border-black/10 shrink-0"
@@ -244,9 +253,17 @@ export default function AgencyAdminCommandCenter() {
               <h3 className="text-lg font-bold text-[#0A0A0E] dark:text-white font-display">Active Campaign Escrows</h3>
               <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] font-sans">Milestone custody status across deals.</p>
             </div>
-            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-yellow-400 border border-[#FFD21F]/40 text-xs font-mono font-bold">
-              {activeCampaignsCount} Active
-            </span>
+            <div className="flex items-center gap-2">
+              <Link
+                href="/admin/collaborations"
+                className="text-xs font-mono font-bold text-[#D97706] dark:text-[#FFD21F] hover:underline"
+              >
+                Open Escrow Vault ➔
+              </Link>
+              <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-yellow-400 border border-[#FFD21F]/40 text-xs font-mono font-bold">
+                {activeCampaignsCount} Active
+              </span>
+            </div>
           </div>
 
           {isLoading ? (
