@@ -184,11 +184,8 @@ export function getInitialSeedDatabase(): DatabaseState {
   // Curated brands and campaigns roster
   const initialBrands: BrandProfile[] = [...MOCK_BRANDS];
 
-  // Curated creators roster from database state
-  const initialCreators: CreatorProfile[] = [
-    ELENA_ROSTOVA_PROFILE,
-    ...MOCK_CREATORS.filter((c) => c.id !== "creator-demo").slice(0, 7),
-  ];
+  // Curated creators roster (8 creators)
+  const initialCreators: CreatorProfile[] = [...MOCK_CREATORS];
 
   // Seed baseline platform metrics for trending calculation
   const seedMetrics: PlatformMetricEntity[] = [
