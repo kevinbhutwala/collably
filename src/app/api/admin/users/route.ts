@@ -129,6 +129,7 @@ export async function GET(req: NextRequest) {
       campaignsCount?: number;
       websiteUrl?: string;
       bio?: string;
+      gender?: string;
     }
 
     // Enrich users with linked profile data and live activity state
@@ -214,6 +215,7 @@ export async function GET(req: NextRequest) {
         campaignsCount,
         websiteUrl,
         bio,
+        gender: u.gender || (creator as any)?.gender || undefined,
       };
     });
 
@@ -248,6 +250,7 @@ export async function GET(req: NextRequest) {
           campaignsCount: c.completedCampaignsCount || 0,
           websiteUrl: undefined,
           bio: c.bio || c.headline,
+          gender: c.gender || undefined,
         });
       }
     });

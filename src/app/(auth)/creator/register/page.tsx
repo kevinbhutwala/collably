@@ -24,8 +24,21 @@ import {
   Eye,
   EyeOff,
   Loader2,
+  Camera,
+  Upload,
+  Check,
+  Trash2,
+  User as UserIcon,
 } from "lucide-react";
 import { useGlobalCurrency } from "@/context/CurrencyContext";
+import { SafeImage } from "@/components/ui/SafeImage";
+
+const AVATAR_PRESETS = [
+  { label: "Male Creator 1", url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80", gender: "male" as const },
+  { label: "Female Creator 1", url: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=80", gender: "female" as const },
+  { label: "Male Creator 2", url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80", gender: "male" as const },
+  { label: "Female Creator 2", url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80", gender: "female" as const },
+];
 
 export default function CreatorRegisterPage() {
   const router = useRouter();
@@ -35,12 +48,15 @@ export default function CreatorRegisterPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const fileInputRef = React.useRef<HTMLInputElement | null>(null);
 
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     password: "",
     handle: "",
+    avatarUrl: "",
+    gender: "" as "male" | "female" | "",
     location: "United States",
     primaryCategory: "Technology & AI" as CreatorCategory,
     startingPrice: 500,
@@ -57,6 +73,27 @@ export default function CreatorRegisterPage() {
     linkedinHandle: "",
     linkedinFollowers: "" as unknown as number,
   });
+
+  const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > 5 * 1024 * 1024) {
+      setErrorMessage("Photo size must be less than 5MB");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      updateField("avatarUrl", reader.result as string);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleRemovePhoto = () => {
+    updateField("avatarUrl", "");
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  };
 
   // Calculate live total reach based on active platform inputs
   const calculateTotalReach = () => {
@@ -76,6 +113,8 @@ export default function CreatorRegisterPage() {
       email: `alex.rivera.${randomSuffix}@example.com`,
       password: "Password123!",
       handle: `alexcreatives_${randomSuffix}`,
+      avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      gender: "male",
       location: "United States",
       primaryCategory: "Technology & AI" as CreatorCategory,
       startingPrice: 450,
@@ -143,12 +182,26 @@ export default function CreatorRegisterPage() {
       return;
     }
 
+    if (!formData.avatarUrl || !formData.avatarUrl.trim()) {
+      setErrorMessage("Please upload a profile photo. Profile photo is mandatory.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!formData.gender) {
+      setErrorMessage("Please select your gender (Male or Female). Gender selection is mandatory.");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const res = await authService.registerCreator({
         fullName: nameVal,
         email: emailVal,
         password: formData.password,
         handle: `@${handleVal}`,
+        avatarUrl: formData.avatarUrl,
+        gender: formData.gender,
         location: formData.location.trim() || "United States",
         primaryCategory: formData.primaryCategory,
         startingPrice: priceVal,
@@ -258,6 +311,184 @@ export default function CreatorRegisterPage() {
           <h2 className="text-xs font-bold uppercase tracking-wider text-[#0A0A0E] dark:text-white font-mono flex items-center gap-1.5">
             <span>1. Creator Identity</span>
           </h2>
+
+          {/* Mandatory Profile Photo Upload */}
+          <div className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 space-y-3">
+            <div className="flex items-center justify-between">
+              <label className="text-xs font-bold text-[#0A0A0E] dark:text-white flex items-center gap-1.5">
+                <Camera className="w-3.5 h-3.5 text-amber-500" />
+                <span>Profile Photo</span>
+                <span className="text-red-500 font-bold">*</span>
+                <span className="text-[11px] font-normal text-[#5A5A68] dark:text-[#8E8EA4]">(Mandatory)</span>
+              </label>
+              {formData.avatarUrl && (
+                <span className="text-[11px] font-mono font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+                  <Check className="w-3 h-3" /> Attached
+                </span>
+              )}
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              {/* Circular Avatar Preview */}
+              <div className="relative group shrink-0">
+                <div className={`w-20 h-20 rounded-full overflow-hidden border-2 transition-all flex items-center justify-center relative ${
+                  formData.avatarUrl 
+                    ? "border-amber-500 shadow-[0_0_12px_rgba(255,210,31,0.3)] bg-black/5" 
+                    : "border-dashed border-black/20 dark:border-white/20 bg-black/5 dark:bg-white/5"
+                }`}>
+                  {formData.avatarUrl ? (
+                    <SafeImage
+                      src={formData.avatarUrl}
+                      alt="Creator Avatar Preview"
+                      fill
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className="flex flex-col items-center justify-center text-[#7A7A8A] dark:text-[#8E8EA4]">
+                      <UserIcon className="w-7 h-7 opacity-40" />
+                      <span className="text-[9px] font-mono mt-0.5 opacity-60">Required</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Action Buttons & File Input */}
+              <div className="flex-1 space-y-2">
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  accept="image/jpeg,image/png,image/webp"
+                  onChange={handlePhotoUpload}
+                  className="hidden"
+                />
+
+                <div className="flex items-center gap-2 flex-wrap">
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="px-3.5 py-2 rounded-xl text-xs font-bold bg-[#0A0A0E] text-white dark:bg-white dark:text-[#0A0A0E] hover:opacity-90 transition-opacity inline-flex items-center gap-1.5 shadow-xs"
+                  >
+                    <Upload className="w-3.5 h-3.5" />
+                    <span>{formData.avatarUrl ? "Change Photo" : "Upload Photo"}</span>
+                  </button>
+
+                  {formData.avatarUrl && (
+                    <button
+                      type="button"
+                      onClick={handleRemovePhoto}
+                      className="px-3 py-2 rounded-xl text-xs font-bold bg-red-500/10 text-red-600 dark:text-red-400 hover:bg-red-500/20 border border-red-500/20 transition-colors inline-flex items-center gap-1"
+                    >
+                      <Trash2 className="w-3 h-3" />
+                      <span>Remove</span>
+                    </button>
+                  )}
+                </div>
+
+                <p className="text-[11px] text-[#5A5A68] dark:text-[#8E8EA4]">
+                  Upload JPG, PNG or WebP under 5MB. Mandatory for brand discovery and verified status.
+                </p>
+
+                {/* Preset Avatars */}
+                <div className="flex items-center gap-1.5 pt-1">
+                  <span className="text-[10px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4]">Or pick sample:</span>
+                  {AVATAR_PRESETS.map((preset, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => {
+                        updateField("avatarUrl", preset.url);
+                        if (!formData.gender) {
+                          updateField("gender", preset.gender);
+                        }
+                      }}
+                      className={`w-6 h-6 rounded-full overflow-hidden border transition-transform hover:scale-110 relative ${
+                        formData.avatarUrl === preset.url ? "ring-2 ring-amber-500 border-amber-500" : "border-black/10 dark:border-white/10"
+                      }`}
+                      title={preset.label}
+                    >
+                      <SafeImage src={preset.url} alt={preset.label} fill className="object-cover" />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Mandatory Gender Selection (Male / Female) */}
+          <div className="space-y-1.5 text-left font-sans">
+            <div className="flex items-center justify-between">
+              <label className="block text-xs font-bold text-[#0A0A0E] dark:text-white">
+                <span>Gender</span>
+                <span className="text-red-500 font-bold ml-1">*</span>
+                <span className="text-[11px] font-normal text-[#5A5A68] dark:text-[#8E8EA4] ml-1.5">(Mandatory for campaign matching)</span>
+              </label>
+              {formData.gender && (
+                <span className="text-[11px] font-mono font-bold text-amber-600 dark:text-[#FFD21F] capitalize">
+                  Selected: {formData.gender}
+                </span>
+              )}
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+              <button
+                type="button"
+                onClick={() => updateField("gender", "male")}
+                className={`p-3.5 rounded-2xl border transition-all text-left flex items-center justify-between ${
+                  formData.gender === "male"
+                    ? "border-amber-500 bg-amber-500/15 dark:bg-amber-500/20 text-[#0A0A0E] dark:text-white ring-2 ring-amber-500/30"
+                    : "border-black/10 dark:border-white/10 bg-[#F8F8FC] dark:bg-[#181824] text-[#5A5A68] dark:text-[#8E8EA4] hover:border-black/20 dark:hover:border-white/20"
+                }`}
+              >
+                <div className="flex items-center gap-2.5">
+                  <div className={`w-8 h-8 rounded-xl flex items-center justify-center font-bold text-base ${
+                    formData.gender === "male" 
+                      ? "bg-amber-500 text-[#0A0A0E]" 
+                      : "bg-black/5 dark:bg-white/5 text-[#5A5A68] dark:text-[#8E8EA4]"
+                  }`}>
+                    ♂
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-[#0A0A0E] dark:text-white">Male</p>
+                    <p className="text-[10px] text-[#5A5A68] dark:text-[#8E8EA4]">Male Creator</p>
+                  </div>
+                </div>
+                {formData.gender === "male" && (
+                  <div className="w-5 h-5 rounded-full bg-amber-500 text-[#0A0A0E] flex items-center justify-center shrink-0">
+                    <Check className="w-3 h-3 stroke-[3]" />
+                  </div>
+                )}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => updateField("gender", "female")}
+                className={`p-3.5 rounded-2xl border transition-all text-left flex items-center justify-between ${
+                  formData.gender === "female"
+                    ? "border-amber-500 bg-amber-500/15 dark:bg-amber-500/20 text-[#0A0A0E] dark:text-white ring-2 ring-amber-500/30"
+                    : "border-black/10 dark:border-white/10 bg-[#F8F8FC] dark:bg-[#181824] text-[#5A5A68] dark:text-[#8E8EA4] hover:border-black/20 dark:hover:border-white/20"
+                }`}
+              >
+                <div className="flex items-center gap-2.5">
+                  <div className={`w-8 h-8 rounded-xl flex items-center justify-center font-bold text-base ${
+                    formData.gender === "female" 
+                      ? "bg-amber-500 text-[#0A0A0E]" 
+                      : "bg-black/5 dark:bg-white/5 text-[#5A5A68] dark:text-[#8E8EA4]"
+                  }`}>
+                    ♀
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-[#0A0A0E] dark:text-white">Female</p>
+                    <p className="text-[10px] text-[#5A5A68] dark:text-[#8E8EA4]">Female Creator</p>
+                  </div>
+                </div>
+                {formData.gender === "female" && (
+                  <div className="w-5 h-5 rounded-full bg-amber-500 text-[#0A0A0E] flex items-center justify-center shrink-0">
+                    <Check className="w-3 h-3 stroke-[3]" />
+                  </div>
+                )}
+              </button>
+            </div>
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input

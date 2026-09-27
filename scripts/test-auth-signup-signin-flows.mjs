@@ -51,6 +51,8 @@ const CreatorRegisterSchema = z.object({
   primaryCategory: CreatorCategoryEnum,
   location: z.string().trim().min(2, "Location is required"),
   startingPrice: z.number().min(1, "Starting price must be greater than 0"),
+  avatarUrl: z.string().min(1, "Profile photo is required"),
+  gender: z.enum(["male", "female"], { errorMap: () => ({ message: "Gender (Male or Female) is mandatory" }) }),
   bio: z.string().max(2000).optional().or(z.literal("")),
 });
 
@@ -72,7 +74,7 @@ assert("Schema", "1.3 LoginSchema rejects empty identifier", !LoginSchema.safePa
 assert("Schema", "1.4 LoginSchema rejects short password (<6 chars)", !LoginSchema.safeParse({ email: "creator@abeycollab.io", password: "123" }).success);
 
 // CreatorRegisterSchema checks
-assert("Schema", "1.5 CreatorRegisterSchema accepts valid creator payload", CreatorRegisterSchema.safeParse({
+assert("Schema", "1.5 CreatorRegisterSchema accepts valid creator payload with avatarUrl and gender", CreatorRegisterSchema.safeParse({
   fullName: "Rohan Varma",
   email: "rohan@example.com",
   password: "StrongPassword123!",
@@ -80,7 +82,33 @@ assert("Schema", "1.5 CreatorRegisterSchema accepts valid creator payload", Crea
   primaryCategory: "Technology & AI",
   location: "Mumbai, India",
   startingPrice: 450,
+  avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500",
+  gender: "male",
   bio: "Tech creator reviewing gadgets and AI workflows.",
+}).success);
+
+assert("Schema", "1.5b CreatorRegisterSchema rejects missing avatar photo", !CreatorRegisterSchema.safeParse({
+  fullName: "Rohan Varma",
+  email: "rohan@example.com",
+  password: "StrongPassword123!",
+  handle: "@rohanvarma",
+  primaryCategory: "Technology & AI",
+  location: "Mumbai, India",
+  startingPrice: 450,
+  avatarUrl: "",
+  gender: "male",
+}).success);
+
+assert("Schema", "1.5c CreatorRegisterSchema rejects missing or invalid gender", !CreatorRegisterSchema.safeParse({
+  fullName: "Rohan Varma",
+  email: "rohan@example.com",
+  password: "StrongPassword123!",
+  handle: "@rohanvarma",
+  primaryCategory: "Technology & AI",
+  location: "Mumbai, India",
+  startingPrice: 450,
+  avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500",
+  gender: "",
 }).success);
 
 assert("Schema", "1.6 CreatorRegisterSchema rejects password < 8 characters", !CreatorRegisterSchema.safeParse({
@@ -91,6 +119,8 @@ assert("Schema", "1.6 CreatorRegisterSchema rejects password < 8 characters", !C
   primaryCategory: "Technology & AI",
   location: "Mumbai, India",
   startingPrice: 450,
+  avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500",
+  gender: "male",
 }).success);
 
 assert("Schema", "1.7 CreatorRegisterSchema rejects invalid email format", !CreatorRegisterSchema.safeParse({
@@ -101,6 +131,8 @@ assert("Schema", "1.7 CreatorRegisterSchema rejects invalid email format", !Crea
   primaryCategory: "Technology & AI",
   location: "Mumbai, India",
   startingPrice: 450,
+  avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500",
+  gender: "female",
 }).success);
 
 assert("Schema", "1.8 CreatorRegisterSchema rejects non-positive starting price", !CreatorRegisterSchema.safeParse({
@@ -111,6 +143,8 @@ assert("Schema", "1.8 CreatorRegisterSchema rejects non-positive starting price"
   primaryCategory: "Technology & AI",
   location: "Mumbai, India",
   startingPrice: 0,
+  avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500",
+  gender: "male",
 }).success);
 
 // BrandRegisterSchema checks

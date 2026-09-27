@@ -53,6 +53,7 @@ interface UserItem {
   campaignsCount?: number;
   websiteUrl?: string;
   bio?: string;
+  gender?: string;
 }
 
 interface StatsData {
@@ -706,6 +707,13 @@ export default function AdminUsersPanel() {
                           {user.category}
                         </span>
 
+                        {/* Gender Badge */}
+                        {user.gender && (
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-medium capitalize bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border border-indigo-500/20">
+                            {user.gender}
+                          </span>
+                        )}
+
                         {/* Mobile-only session indicator */}
                         <div className="sm:hidden inline-flex items-center">
                           {user.isOnline ? (
@@ -990,6 +998,15 @@ export default function AdminUsersPanel() {
                   {selectedUser.country || "Global"}
                 </span>
               </div>
+
+              {selectedUser.gender && (
+                <div className="flex justify-between items-center py-1 border-b border-black/5 dark:border-white/5">
+                  <span className="text-[#5A5A68] dark:text-[#8E8EA4]">Gender:</span>
+                  <span className="text-[#0A0A0E] dark:text-white font-bold capitalize">
+                    {selectedUser.gender}
+                  </span>
+                </div>
+              )}
 
               {selectedUser.followers !== undefined && (
                 <div className="flex justify-between items-center py-1 border-b border-black/5 dark:border-white/5">

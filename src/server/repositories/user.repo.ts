@@ -65,6 +65,7 @@ export class UserRepository {
     passwordHash?: string;
     role: UserRole;
     avatarUrl?: string;
+    gender?: "male" | "female" | "other" | string;
     verified?: boolean;
   }): UserEntity {
     const existing = this.findByEmail(data.email);
@@ -88,6 +89,7 @@ export class UserRepository {
       passwordHash,
       role: data.role,
       avatarUrl: data.avatarUrl || `https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80`,
+      gender: data.gender,
       verified: data.verified ?? false,
       createdAt: nowIso,
       updatedAt: nowIso,

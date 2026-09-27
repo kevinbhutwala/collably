@@ -43,6 +43,8 @@ export interface RegisterParams {
   xFollowers?: number;
   linkedinHandle?: string;
   linkedinFollowers?: number;
+  gender?: "male" | "female" | "other" | string;
+  avatarUrl?: string;
 }
 
 export interface CreatorRegisterParams {
@@ -55,6 +57,8 @@ export interface CreatorRegisterParams {
   startingPrice?: number;
   currency?: string;
   bio?: string;
+  gender?: "male" | "female" | "other" | string;
+  avatarUrl?: string;
   youtubeHandle?: string;
   youtubeSubscribers?: number;
   instagramHandle?: string;
@@ -155,6 +159,8 @@ class AuthService {
       startingPrice: params.startingPrice,
       currency: params.currency,
       bio: params.bio,
+      gender: params.gender,
+      avatarUrl: params.avatarUrl,
       youtubeHandle: params.youtubeHandle,
       youtubeSubscribers: params.youtubeSubscribers,
       instagramHandle: params.instagramHandle,

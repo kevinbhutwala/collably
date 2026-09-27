@@ -21,6 +21,7 @@ export interface User {
   preferredCurrency?: CurrencyCode;
   preferred_currency?: CurrencyCode;
   country?: string;
+  gender?: "male" | "female" | "other" | string;
   createdAt?: string;
   updatedAt?: string;
 }
@@ -120,6 +121,7 @@ export interface CreatorProfile {
   avatarUrl: string;
   coverImageUrl: string;
   location: string;
+  gender?: "male" | "female" | "other" | string;
   languages: string[];
   primaryCategory: CreatorCategory;
   secondaryCategories: CreatorCategory[];

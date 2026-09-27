@@ -36,6 +36,8 @@ export async function POST(req: NextRequest) {
       startingPrice,
       currency,
       socialAccounts: inputSocialAccounts,
+      gender,
+      avatarUrl,
       youtubeHandle,
       youtubeSubscribers,
       instagramHandle,
@@ -60,6 +62,8 @@ export async function POST(req: NextRequest) {
       email: credentials.email,
       password: credentials.password,
       role: credentials.role,
+      avatarUrl: avatarUrl || undefined,
+      gender: gender || undefined,
     });
 
     let creatorProfile: CreatorProfile | null = null;
@@ -182,6 +186,7 @@ export async function POST(req: NextRequest) {
         handle: cleanHandle,
         headline: `${category || "Technology"} Creator & Digital Storyteller`,
         bio: bio || `Creating high-impact sponsored campaigns and organic content for premier brand partners.`,
+        gender: (gender as any) || undefined,
         avatarUrl: newUser.avatarUrl || `https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80`,
         coverImageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
         location: location || "United States",

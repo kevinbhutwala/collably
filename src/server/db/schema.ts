@@ -36,6 +36,7 @@ export interface UserEntity {
   preferredCurrency?: CurrencyCode;
   preferred_currency?: CurrencyCode;
   country?: string;
+  gender?: "male" | "female" | "other" | string;
   lastLoginAt?: string;
   lastActiveAt?: string;
   createdAt: string;
