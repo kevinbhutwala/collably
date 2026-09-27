@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
 import { authService } from "@/services/auth.service";
 import { Input } from "@/components/ui/Input";
+import { SafeImage } from "@/components/ui/SafeImage";
 import {
   ArrowRight,
   ArrowLeft,
@@ -18,6 +19,10 @@ import {
   Loader2,
   CheckCircle2,
   XCircle,
+  Upload,
+  Trash2,
+  Check,
+  Camera,
 } from "lucide-react";
 import { formatCurrency } from "@/core/utils/formatters";
 
@@ -82,6 +87,14 @@ function validateField(field: string, value: unknown): string {
   }
 }
 
+// ─── Brand Logo Presets ────────────────────────────────────────────────────────
+const BRAND_LOGO_PRESETS = [
+  { label: "Sportswear", name: "Apex Athletics", url: "/brands/adidas.svg", hint: "Athletic & Performance" },
+  { label: "Streetwear", name: "Snitch Studio", url: "/brands/snitch.png", hint: "Fashion & Lifestyle" },
+  { label: "Nutrition", name: "The Whole Truth", url: "/brands/the-whole-truth.png", hint: "Clean Food & Wellness" },
+  { label: "Modern SaaS", name: "Linear Cloud", url: "/brands/linear.png", hint: "Developer Tools & Tech" },
+];
+
 // ─── Component ─────────────────────────────────────────────────────────────────
 export default function BrandRegisterPage() {
   const router = useRouter();
@@ -94,12 +107,15 @@ export default function BrandRegisterPage() {
   const [formErrors, setFormErrors]     = useState<Record<string, string>>({});
   const [touched, setTouched]           = useState<Record<string, boolean>>({});
 
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
   const [formData, setFormData] = useState({
     companyName:   "",
     contactName:   "",
     email:         "",
     password:      "",
     websiteUrl:    "",
+    logoUrl:       "",
     industry:      "Technology & AI",
     companySize:   "11-50",
     monthlyBudget: "$10,000 - $25,000",
@@ -130,18 +146,50 @@ export default function BrandRegisterPage() {
 
   const fieldError = (field: string) => (touched[field] ? formErrors[field] ?? "" : "");
 
+  const handleLogoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (file.size > 5 * 1024 * 1024) {
+      setFormErrors(prev => ({ ...prev, logoUrl: "Logo must be smaller than 5 MB." }));
+      setTouched(prev => ({ ...prev, logoUrl: true }));
+      return;
+    }
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      updateField("logoUrl", reader.result as string);
+      setFormErrors(prev => ({ ...prev, logoUrl: "" }));
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleRemoveLogo = () => {
+    updateField("logoUrl", "");
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  };
+
+  const companyInitials = (formData.companyName || "")
+    .trim()
+    .split(/\s+/)
+    .map(w => w[0])
+    .filter(Boolean)
+    .slice(0, 2)
+    .join("")
+    .toUpperCase() || "B";
+
   const handleFillDemo = () => {
     const s = Math.floor(1000 + Math.random() * 9000);
     setFormData({
       companyName: `Apex Athletics ${s}`, contactName: "Sarah Chen",
       email: `sarah.chen.${s}@apexathletics.com`, password: "Password123!",
-      websiteUrl: "https://apexathletics.com", industry: "Fitness & Wellness",
+      websiteUrl: "https://apexathletics.com",
+      logoUrl: "/brands/adidas.svg",
+      industry: "Fitness & Wellness",
       companySize: "11-50", monthlyBudget: "$10,000 - $25,000",
     });
     setFormErrors({});
     setTouched({});
     setGlobalError("");
-    addToast({ type: "info", title: "Sample Brand Loaded", message: "Form pre-filled with verified brand details. Ready to submit!" });
+    addToast({ type: "info", title: "Sample Brand Loaded", message: "Form pre-filled with verified brand details & logo. Ready to submit!" });
   };
 
   const pwChecks  = checkPassword(formData.password);
@@ -181,6 +229,7 @@ export default function BrandRegisterPage() {
     const compName = formData.companyName.trim();
     const contName = formData.contactName.trim();
     const emailVal = formData.email.trim();
+    const logoVal  = formData.logoUrl.trim();
     let webUrl     = formData.websiteUrl.trim();
     if (webUrl && !/^https?:\/\//i.test(webUrl)) webUrl = `https://${webUrl}`;
 
@@ -190,6 +239,8 @@ export default function BrandRegisterPage() {
         email: emailVal, password: formData.password, role: "brand",
         industry: formData.industry, websiteUrl: webUrl,
         companySize: formData.companySize, monthlyBudget: formData.monthlyBudget,
+        logoUrl: logoVal || undefined,
+        avatarUrl: logoVal || undefined,
       });
 
       if (res.user) {
@@ -259,6 +310,127 @@ export default function BrandRegisterPage() {
       )}
 
       <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+
+        {/* Brand Logo & Insignia */}
+        <div className={`p-4 rounded-2xl border space-y-3 transition-colors ${
+          formData.logoUrl
+            ? "bg-[#F8F8FC] dark:bg-[#181824] border-amber-400/60 dark:border-amber-400/40"
+            : "bg-[#F8F8FC] dark:bg-[#181824] border-black/8 dark:border-white/10"
+        }`}>
+          <div className="flex items-center justify-between flex-wrap gap-1">
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <span className="text-xs font-bold text-[#0A0A0E] dark:text-white flex items-center gap-1.5 font-sans">
+                <Building2 className="w-3.5 h-3.5 text-[#FFD21F]" />
+                Brand Logo &amp; Insignia
+              </span>
+              <span className="text-[11px] font-normal text-[#5A5A68] dark:text-[#8E8EA4]">(Recommended)</span>
+            </div>
+            {formData.logoUrl && (
+              <span className="text-[11px] font-mono font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1 shrink-0">
+                <Check className="w-3 h-3" /> Attached
+              </span>
+            )}
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            {/* Logo Preview */}
+            <div className="relative group shrink-0">
+              <div className={`w-20 h-20 rounded-2xl overflow-hidden border-2 transition-all flex items-center justify-center relative bg-white dark:bg-[#101018] ${
+                formData.logoUrl
+                  ? "border-[#FFD21F] shadow-[0_0_14px_rgba(255,210,31,0.25)]"
+                  : "border-dashed border-black/20 dark:border-white/20"
+              }`}>
+                {formData.logoUrl ? (
+                  <SafeImage
+                    src={formData.logoUrl}
+                    alt="Brand Logo Preview"
+                    fill
+                    className="object-contain p-2"
+                    fallbackType="brand"
+                    fallbackName={formData.companyName || "Brand"}
+                  />
+                ) : (
+                  <div className="flex flex-col items-center justify-center text-[#7A7A8A] dark:text-[#8E8EA4] p-1 text-center">
+                    {formData.companyName.trim() ? (
+                      <span className="font-mono font-black text-xl text-[#0A0A0E] dark:text-[#FFD21F] tracking-wider">
+                        {companyInitials}
+                      </span>
+                    ) : (
+                      <Building2 className="w-7 h-7 opacity-40 text-[#FFD21F]" />
+                    )}
+                    <span className="text-[9px] font-mono mt-0.5 opacity-60">Logo Preview</span>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Actions & Preset Buttons */}
+            <div className="flex-1 space-y-2 w-full">
+              <input
+                type="file"
+                ref={fileInputRef}
+                accept="image/jpeg,image/png,image/svg+xml,image/webp"
+                onChange={handleLogoUpload}
+                className="hidden"
+              />
+
+              <div className="flex items-center gap-2 flex-wrap">
+                <button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  className="px-3.5 py-2 rounded-xl text-xs font-bold bg-[#0A0A0E] text-white dark:bg-white dark:text-[#0A0A0E] hover:opacity-90 transition-opacity inline-flex items-center gap-1.5 shadow-xs font-sans"
+                >
+                  <Upload className="w-3.5 h-3.5" />
+                  <span>{formData.logoUrl ? "Change Logo" : "Upload Brand Logo"}</span>
+                </button>
+                {formData.logoUrl && (
+                  <button
+                    type="button"
+                    onClick={handleRemoveLogo}
+                    className="px-3 py-2 rounded-xl text-xs font-bold bg-red-500/10 text-red-600 dark:text-red-400 hover:bg-red-500/20 border border-red-500/20 transition-colors inline-flex items-center gap-1 font-sans"
+                  >
+                    <Trash2 className="w-3 h-3" />
+                    <span>Remove</span>
+                  </button>
+                )}
+              </div>
+
+              <p className="text-[11px] text-[#5A5A68] dark:text-[#8E8EA4]">
+                SVG, PNG, JPG, or WebP · Max 5 MB · Displayed across campaign briefs, creator feed &amp; escrow contracts
+              </p>
+
+              {/* Quick Brand Presets */}
+              <div className="flex items-center gap-1.5 pt-1 flex-wrap">
+                <span className="text-[10px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4]">Or preset:</span>
+                {BRAND_LOGO_PRESETS.map((preset) => {
+                  const isSelected = formData.logoUrl === preset.url;
+                  return (
+                    <button
+                      key={preset.label}
+                      type="button"
+                      onClick={() => {
+                        updateField("logoUrl", preset.url);
+                        if (!formData.companyName) updateField("companyName", preset.name);
+                        if (!formData.industry) updateField("industry", preset.hint);
+                      }}
+                      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-medium border transition-all ${
+                        isSelected
+                          ? "bg-amber-500/15 border-amber-500 text-[#0A0A0E] dark:text-white font-bold ring-1 ring-amber-500/50"
+                          : "bg-white dark:bg-[#12121A] border-black/10 dark:border-white/10 text-[#5A5A68] dark:text-[#8E8EA4] hover:border-black/20 dark:hover:border-white/20"
+                      }`}
+                      title={preset.hint}
+                    >
+                      <span className="w-3.5 h-3.5 relative overflow-hidden rounded shrink-0">
+                        <SafeImage src={preset.url} alt={preset.label} fill className="object-contain" fallbackType="brand" />
+                      </span>
+                      <span>{preset.label}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* Company + Contact */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

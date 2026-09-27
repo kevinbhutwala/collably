@@ -45,6 +45,7 @@ export interface RegisterParams {
   linkedinFollowers?: number;
   gender?: "male" | "female" | "other" | string;
   avatarUrl?: string;
+  logoUrl?: string;
 }
 
 export interface CreatorRegisterParams {
