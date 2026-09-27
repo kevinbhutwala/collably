@@ -85,13 +85,15 @@ export function Navbar() {
               <AbeyCollabLogo href="/" size="sm" />
             </div>
 
-            {/* Mobile Header Screen Title */}
-            <div className="flex lg:hidden items-center gap-1.5 min-w-0">
-              <span className="text-xs text-[#8A8A98] font-mono">•</span>
-              <p className="text-sm font-extrabold text-[#0A0A0E] dark:text-white font-display tracking-tight truncate">
-                {currentTitle}
-              </p>
-            </div>
+            {/* Mobile Header Screen Title (Subpages only) */}
+            {pathname !== "/" && currentTitle !== "AbeyCollab" && (
+              <div className="flex lg:hidden items-center gap-1.5 min-w-0">
+                <span className="text-xs text-[#8A8A98] font-mono">•</span>
+                <p className="text-sm font-extrabold text-[#0A0A0E] dark:text-white font-display tracking-tight truncate">
+                  {currentTitle}
+                </p>
+              </div>
+            )}
           </div>
 
           {/* Desktop Navigation Links (Visible on Large Screens >= 1024px) */}
@@ -169,7 +171,9 @@ export function Navbar() {
 
           {/* Mobile & Tablet Hamburger + Quick Sign up (< 1024px) */}
           <div className="flex lg:hidden items-center gap-2 shrink-0">
-            <CurrencySelector />
+            <div className="hidden sm:block">
+              <CurrencySelector />
+            </div>
             {isAuthenticated ? (
               <Link
                 href={user?.role === "brand" ? "/app/brand/campaigns" : "/app/dashboard"}
@@ -241,6 +245,10 @@ export function Navbar() {
                     </Link>
                   );
                 })}
+              </div>
+
+              <div className="sm:hidden px-1 pt-1 pb-2">
+                <CurrencySelector />
               </div>
 
               <div className="pt-3 border-t border-black/8 dark:border-white/10 flex flex-col sm:flex-row gap-2.5">

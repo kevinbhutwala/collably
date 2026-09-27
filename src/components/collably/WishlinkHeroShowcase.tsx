@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -9,99 +9,96 @@ import {
   CheckCircle2,
   Sparkles,
   Zap,
-  Users,
-  Lock,
+  Play,
+  Pause,
+  Volume2,
+  VolumeX,
+  Maximize2,
   Star,
-  DollarSign,
-  Briefcase,
+  Lock,
+  TrendingUp,
+  Send,
+  Layers,
+  ChevronRight,
+  Eye,
+  Award,
 } from "lucide-react";
-import { SafeImage } from "@/components/ui/SafeImage";
 import { Modal } from "@/components/ui/Modal";
-
-interface CreatorShowcase {
-  id: string;
-  name: string;
-  handle: string;
-  category: string;
-  reach: string;
-  image: string;
-  dealAmount: string;
-  brand: string;
-}
-
-const CREATOR_SHOWCASE: CreatorShowcase[] = [
-  {
-    id: "prarthana",
-    name: "Prarthana",
-    handle: "@prarthaana.04",
-    category: "Fashion & Lifestyle",
-    reach: "30K Reach",
-    image: "/creators/prarthana.jpg",
-    dealAmount: "₹45,000",
-    brand: "Snitch",
-  },
-  {
-    id: "vasudha",
-    name: "Vasudha Rai",
-    handle: "@vasudha.rai",
-    category: "Beauty & Skincare",
-    reach: "115K Reach",
-    image: "/creators/vasudha-rai.jpg",
-    dealAmount: "₹65,000",
-    brand: "Plum Goodness",
-  },
-  {
-    id: "kunal",
-    name: "Kunal Rajput",
-    handle: "@kunalrajputc",
-    category: "Athletics & Fitness",
-    reach: "85K Reach",
-    image: "/creators/kunal-rajput.jpg",
-    dealAmount: "₹50,000",
-    brand: "Boldfit",
-  },
-  {
-    id: "decoding",
-    name: "Decoding Tech",
-    handle: "@the.decoding.tech",
-    category: "Tech & Gadgets",
-    reach: "140K Reach",
-    image: "/creators/decoding-tech.jpg",
-    dealAmount: "₹85,000",
-    brand: "Nothing India",
-  },
-];
 
 export function WishlinkHeroShowcase() {
   const [activeTab, setActiveTab] = useState<"creator" | "brand">("creator");
-  const [selectedIdx, setSelectedIdx] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+  const [videoProgress, setVideoProgress] = useState(0);
+  const [isExpandedModal, setIsExpandedModal] = useState(false);
   const [roleModalOpen, setRoleModalOpen] = useState(false);
+  const [videoDuration, setVideoDuration] = useState(0);
 
-  const activeCreator = CREATOR_SHOWCASE[selectedIdx];
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const modalVideoRef = useRef<HTMLVideoElement>(null);
 
-  // Auto-cycle through talent smoothly
+  // Sync video play/pause
+  const togglePlay = () => {
+    if (!videoRef.current) return;
+    if (isPlaying) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      videoRef.current.play().catch(() => {});
+      setIsPlaying(true);
+    }
+  };
+
+  // Sync mute/unmute
+  const toggleMute = () => {
+    if (!videoRef.current) return;
+    const nextMute = !isMuted;
+    videoRef.current.muted = nextMute;
+    setIsMuted(nextMute);
+  };
+
+  // Track playback time
+  const handleTimeUpdate = () => {
+    if (!videoRef.current) return;
+    const current = videoRef.current.currentTime;
+    const duration = videoRef.current.duration || 10;
+    setVideoProgress((current / duration) * 100);
+  };
+
+  const handleLoadedMetadata = () => {
+    if (videoRef.current) {
+      setVideoDuration(videoRef.current.duration);
+    }
+  };
+
+  // When expanding to modal, sync time and mute
   useEffect(() => {
-    const timer = setInterval(() => {
-      setSelectedIdx((prev) => (prev + 1) % CREATOR_SHOWCASE.length);
-    }, 4500);
-    return () => clearInterval(timer);
-  }, []);
+    if (isExpandedModal && modalVideoRef.current && videoRef.current) {
+      modalVideoRef.current.currentTime = videoRef.current.currentTime;
+      modalVideoRef.current.muted = isMuted;
+      modalVideoRef.current.play().catch(() => {});
+    }
+  }, [isExpandedModal, isMuted]);
 
   return (
     <>
-      <section className="relative min-h-[92vh] bg-white text-[#0A0A0E] flex flex-col justify-center pt-28 sm:pt-36 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden font-sans select-none">
-        {/* Soft Ambient Background Aura */}
-        <div className="absolute top-12 left-1/2 -translate-x-1/2 w-[700px] sm:w-[1000px] h-[500px] bg-gradient-to-b from-[#FFD21F]/20 via-[#FFE052]/8 to-transparent rounded-full blur-[140px] pointer-events-none" />
+      <section className="relative bg-gradient-to-b from-[#FAFAF8] via-white to-white text-[#0A0A0E] flex flex-col justify-start pt-16 sm:pt-20 md:pt-24 pb-12 sm:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden font-sans select-none">
+        {/* Soft Ambient Dynamic Backlight / Aura */}
+        <div className="absolute top-6 left-1/2 -translate-x-1/2 w-[550px] sm:w-[850px] lg:w-[1100px] h-[400px] sm:h-[550px] bg-gradient-to-b from-[#FFD21F]/20 via-[#FFE052]/10 to-transparent rounded-full blur-[100px] sm:blur-[140px] pointer-events-none -z-0" />
+        <div className="absolute top-1/4 left-1/4 w-[300px] sm:w-[450px] h-[300px] bg-emerald-500/[0.04] rounded-full blur-[100px] pointer-events-none -z-0" />
+        <div className="absolute top-1/4 right-1/4 w-[300px] sm:w-[450px] h-[300px] bg-blue-500/[0.03] rounded-full blur-[100px] pointer-events-none -z-0" />
 
-        <div className="max-w-7xl mx-auto w-full relative z-10 flex-1 flex flex-col justify-center">
-          {/* Top Wishlink-Style Header Bar with Official Store Ratings & Partners */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 sm:mb-12 pb-6 border-b border-black/6">
-            {/* Left: Role Switcher */}
-            <div className="inline-flex p-1 rounded-full bg-[#F4F4F8] border border-black/8 shadow-2xs self-start">
+        <div className="max-w-5xl mx-auto w-full relative z-10 flex flex-col items-center text-center">
+          {/* ══════════════════════════════════════════════════════════════════
+              TOP BAR: ROLE SWITCHER & TRUST PILLS
+              ══════════════════════════════════════════════════════════════════ */}
+          <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-3 mb-6 sm:mb-8 pb-4 border-b border-black/6">
+            {/* Left: Role Toggle Pill */}
+            <div className="inline-flex p-1 rounded-full bg-[#F2F2F6] dark:bg-[#181822] border border-black/8 shadow-2xs">
               <button
                 type="button"
                 onClick={() => setActiveTab("creator")}
-                className={`px-5 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
+                className={`px-4 sm:px-5 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
                   activeTab === "creator"
                     ? "bg-[#0A0A0E] text-white shadow-xs"
                     : "text-[#5A5A68] hover:text-[#0A0A0E]"
@@ -112,7 +109,7 @@ export function WishlinkHeroShowcase() {
               <button
                 type="button"
                 onClick={() => setActiveTab("brand")}
-                className={`px-5 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
+                className={`px-4 sm:px-5 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
                   activeTab === "brand"
                     ? "bg-[#0A0A0E] text-white shadow-xs"
                     : "text-[#5A5A68] hover:text-[#0A0A0E]"
@@ -122,221 +119,365 @@ export function WishlinkHeroShowcase() {
               </button>
             </div>
 
-            {/* Right: Wishlink-Style App Store & Partner Badges */}
-            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
-              {/* Meta & Escrow Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF9F5] border border-black/8 shadow-2xs">
-                <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
-                <span className="text-[11px] font-mono font-extrabold text-[#0A0A0E]">
-                  RAZORPAY ESCROW &bull; META GRAPH PARTNER
+            {/* Right: Security & Partner Badges */}
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-black/8 shadow-2xs">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-[10px] sm:text-[11px] font-mono font-extrabold text-[#0A0A0E] tracking-tight">
+                  100% ESCROW PROTECTED
                 </span>
               </div>
 
-              {/* Play Store Rating */}
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-black/8 text-[#0A0A0E] text-[11px] font-mono font-bold shadow-2xs">
-                <Star className="w-3.5 h-3.5 fill-[#FFD21F] text-[#FFD21F]" />
-                <span>Play Store 4.8★</span>
+              <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white border border-black/8 text-[#0A0A0E] text-[10px] sm:text-[11px] font-mono font-bold shadow-2xs">
+                <Star className="w-3 h-3 fill-[#FFD21F] text-[#FFD21F]" />
+                <span>4.8/5 Rating</span>
               </div>
 
-              {/* App Store Rating */}
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-black/8 text-[#0A0A0E] text-[11px] font-mono font-bold shadow-2xs">
-                <Star className="w-3.5 h-3.5 fill-[#FFD21F] text-[#FFD21F]" />
-                <span>App Store 4.7★</span>
+              <div className="hidden md:inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white border border-black/8 text-[#0A0A0E] text-[10px] sm:text-[11px] font-mono font-bold shadow-2xs">
+                <Sparkles className="w-3 h-3 text-[#FFC700]" />
+                <span>Meta Partner</span>
               </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-            {/* ══════════════════════════════════════════════════════════════════
-                LEFT: WISHLINK-STYLE MINIMALIST, HIGH-IMPACT HEADLINE & CTAS
-                ══════════════════════════════════════════════════════════════════ */}
-            <div className="lg:col-span-6 space-y-6 text-left">
-              {/* Exact Wishlink-Style Punchy Headline (Less Text) */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black font-display tracking-tight text-[#0A0A0E] leading-[1.05]">
+          {/* ══════════════════════════════════════════════════════════════════
+              HEADLINE & VALUE PROPOSITION
+              ══════════════════════════════════════════════════════════════════ */}
+          <div className="max-w-3xl mx-auto space-y-3 sm:space-y-4">
+            <div className="space-y-3 sm:space-y-3.5 transition-opacity duration-200">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[11px] sm:text-xs font-mono font-bold text-[#8F6600]">
+                <Zap className="w-3 h-3 fill-[#FFD21F] text-[#8F6600]" />
+                <span>
+                  {activeTab === "creator"
+                    ? "Direct Brand Deals • Auto-DM Tech • 24h Payouts"
+                    : "Verified Roster • Zero Advance Risk • Milestone Escrow"}
+                </span>
+              </div>
+
+              <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[52px] font-black font-display tracking-tight text-[#0A0A0E] leading-[1.1] sm:leading-[1.08]">
                 {activeTab === "creator" ? (
                   <>
-                    Empowering creators to{" "}
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#0A0A0E] underline decoration-[#FFD21F] decoration-4 underline-offset-4">
-                      grow, collaborate
+                    Monetise your content with{" "}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#0A0A0E] underline decoration-[#FFD21F] decoration-4 sm:decoration-6 underline-offset-4 sm:underline-offset-6">
+                      guaranteed escrow
                     </span>{" "}
-                    and earn.
+                    payouts.
                   </>
                 ) : (
                   <>
-                    Scale your brand with{" "}
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#0A0A0E] underline decoration-[#FFD21F] decoration-4 underline-offset-4">
-                      top creators
+                    Scale high-ROI campaigns with{" "}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#0A0A0E] underline decoration-[#FFD21F] decoration-4 sm:decoration-6 underline-offset-4 sm:underline-offset-6">
+                      India’s top creators
                     </span>{" "}
                     and zero risk.
                   </>
                 )}
               </h1>
 
-              {/* Minimal 1-Sentence Description */}
-              <p className="text-base sm:text-lg text-[#5A5A68] max-w-xl font-sans leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg text-[#5A5A68] max-w-xl mx-auto font-sans leading-relaxed">
                 {activeTab === "creator"
-                  ? "Boost your social media engagement, collaborate with 250+ top brands and monetise 100% of your content with AbeyCollab."
-                  : "Launch milestone-protected campaigns with India's top 21+ audited creators. Funds stay safe in escrow until you approve."}
+                  ? "Connect with 250+ top brands, turn comments into sponsored sales with Meta Auto-DMs, and get 100% upfront locked payouts in under 24 hours."
+                  : "Discover audited creators across tech, fashion, lifestyle & fitness. Lock campaign budgets safely in Razorpay Escrow—funds are released only upon your approval."}
               </p>
+            </div>
 
-              {/* Primary Call to Action Buttons: "Sign up" */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
-                <Link
-                  href={activeTab === "creator" ? "/creator/register" : "/brand/register"}
-                  className="px-8 py-4 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-sm sm:text-base shadow-[0_4px_20px_rgba(255,210,31,0.5)] border border-black/10 transition-all flex items-center justify-center gap-2 active:scale-95 text-center font-sans"
-                >
-                  <span>Sign up as {activeTab === "creator" ? "Creator" : "Brand"}</span>
-                  <ArrowRight className="w-4 h-4 text-[#0A0A0E]" />
-                </Link>
+            {/* Primary & Secondary Call to Actions */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3.5 pt-1 w-full max-w-md mx-auto sm:max-w-none">
+              <Link
+                href={activeTab === "creator" ? "/creator/register" : "/brand/register"}
+                className="w-full sm:w-auto px-7 sm:px-8 py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-sm shadow-[0_4px_20px_rgba(255,210,31,0.45)] border border-black/10 transition-all flex items-center justify-center gap-2 active:scale-95 text-center cursor-pointer min-h-[46px]"
+              >
+                <span>{activeTab === "creator" ? "Join as Creator (Free)" : "Launch a Brand Campaign"}</span>
+                <ArrowRight className="w-4 h-4 text-[#0A0A0E]" />
+              </Link>
 
-                <Link
-                  href={activeTab === "creator" ? "/campaigns" : "/creators"}
-                  className="px-7 py-4 rounded-full bg-[#FAF9F5] hover:bg-[#F2F1EC] text-[#0A0A0E] font-bold text-sm sm:text-base border border-black/12 shadow-2xs transition-all flex items-center justify-center gap-2 active:scale-95 text-center"
-                >
-                  <span>{activeTab === "creator" ? "Explore Briefs" : "Browse Creator Roster"}</span>
-                </Link>
+              <Link
+                href={activeTab === "creator" ? "/campaigns" : "/creators"}
+                className="w-full sm:w-auto px-6 sm:px-7 py-3.5 rounded-full bg-white hover:bg-[#F6F6F9] text-[#0A0A0E] font-bold text-sm border border-black/12 shadow-xs transition-all flex items-center justify-center gap-2 active:scale-95 text-center cursor-pointer min-h-[46px]"
+              >
+                <span>{activeTab === "creator" ? "Explore Live Briefs" : "Browse Creator Roster"}</span>
+                <ChevronRight className="w-4 h-4 text-[#7A7A8A]" />
+              </Link>
+            </div>
+
+            {/* Micro Trust Indicators */}
+            <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-5 pt-2 text-[11px] sm:text-xs font-mono text-[#6A6A78]">
+              <span className="flex items-center gap-1.5 font-bold text-[#0A0A0E]">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                <span>100% Escrow Protection</span>
+              </span>
+              <span className="hidden sm:inline text-black/20">•</span>
+              <span className="flex items-center gap-1.5 font-bold text-[#0A0A0E]">
+                <Zap className="w-3.5 h-3.5 text-[#D97706]" />
+                <span>24h Approval Guarantee</span>
+              </span>
+              <span className="hidden sm:inline text-black/20">•</span>
+              <span className="flex items-center gap-1.5 font-bold text-[#0A0A0E]">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                <span>0% Chasing Invoices</span>
+              </span>
+            </div>
+          </div>
+
+          {/* ══════════════════════════════════════════════════════════════════
+              PRIMARY VISUAL ELEMENT: PREMIUM HERO VIDEO CHASSIS
+              ══════════════════════════════════════════════════════════════════ */}
+          <div className="w-full mt-6 sm:mt-9 lg:mt-10 relative">
+            {/* Ambient Multi-Layer Glow Beneath Video */}
+            <div className="absolute -inset-4 sm:-inset-6 bg-gradient-to-r from-[#FFD21F]/25 via-[#FFE052]/15 to-emerald-500/10 rounded-3xl sm:rounded-[36px] blur-2xl sm:blur-3xl opacity-75 -z-10 pointer-events-none" />
+
+            {/* The Main Video Browser Container */}
+            <div className="relative rounded-2xl sm:rounded-3xl border border-black/10 dark:border-white/10 bg-[#0E0E14] shadow-[0_20px_60px_rgba(0,0,0,0.14)] overflow-hidden transition-all duration-300">
+              {/* Sleek Browser / OS Header Bar */}
+              <div className="flex items-center justify-between px-3 sm:px-5 py-2.5 sm:py-3 bg-[#161622] border-b border-white/8 select-none">
+                {/* Window Traffic Light Buttons */}
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#FF5F56] border border-black/10" />
+                  <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#FFBD2E] border border-black/10" />
+                  <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#27C93F] border border-black/10" />
+                </div>
+
+                {/* Center Omnibar with Verified Lock */}
+                <div className="flex items-center gap-1.5 px-3 sm:px-4 py-1 rounded-full bg-black/40 border border-white/8 text-[10px] sm:text-xs font-mono text-[#A0A0B2] max-w-[220px] sm:max-w-xs truncate">
+                  <Lock className="w-3 h-3 text-emerald-400 shrink-0" />
+                  <span className="truncate">abeycollab.com/commerce-os</span>
+                  <span className="hidden sm:inline text-white/30">•</span>
+                  <span className="hidden sm:inline text-emerald-400 font-semibold">Live Engine</span>
+                </div>
+
+                {/* Right Status Badge */}
+                <div className="flex items-center gap-2">
+                  <span className="hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-[#FFD21F]/15 text-[#FFD21F] text-[10px] font-mono font-bold">
+                    4K ULTRA HD
+                  </span>
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" title="System Operational" />
+                </div>
               </div>
 
-              {/* Trust Micro-Metrics */}
-              <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-4 border-t border-black/8 text-xs font-mono text-[#5A5A68]">
-                <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E]">
-                  <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                  <span>100% Escrow Protection</span>
+              {/* Video Player Frame with Strict 16:9 Aspect Ratio */}
+              <div className="relative w-full aspect-[16/9] bg-black overflow-hidden group">
+                <video
+                  ref={videoRef}
+                  src="/reels/heroVideo.mp4"
+                  poster="/reels/heroVideo-poster.png"
+                  autoPlay
+                  loop
+                  muted={isMuted}
+                  playsInline
+                  preload="metadata"
+                  onTimeUpdate={handleTimeUpdate}
+                  onLoadedMetadata={handleLoadedMetadata}
+                  onClick={togglePlay}
+                  className="w-full h-full object-cover object-center cursor-pointer"
+                />
+
+                {/* Dynamic Subtle Vignette / Edge Shadow for cinematic depth */}
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/60 via-transparent to-black/20" />
+
+                {/* Center Click-To-Play Indicator (Visible on pause or brief hover) */}
+                {!isPlaying && (
+                  <button
+                    type="button"
+                    onClick={togglePlay}
+                    className="absolute inset-0 m-auto w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:scale-110 active:scale-95 transition-all shadow-2xl cursor-pointer z-20"
+                    aria-label="Play Video"
+                  >
+                    <Play className="w-7 h-7 sm:w-9 sm:h-9 text-[#FFD21F] fill-[#FFD21F] ml-1" />
+                  </button>
+                )}
+
+                {/* ── Top Floating Video Badges ── */}
+                <div className="absolute top-3 sm:top-4 left-3 sm:left-4 flex items-center gap-2 pointer-events-none z-10">
+                  <span className="px-2.5 sm:px-3 py-1 rounded-full text-[10px] sm:text-xs font-mono font-bold bg-black/70 backdrop-blur-md text-white border border-white/10 flex items-center gap-1.5 shadow-sm">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                    <span>CREATOR COMMERCE DEMO</span>
+                  </span>
                 </div>
-                <span>•</span>
-                <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E]">
-                  <Zap className="w-4 h-4 text-[#FFD21F]" />
-                  <span>24h Payout Guarantee</span>
-                </div>
-                <span>•</span>
-                <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E]">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                  <span>0% Chasing Invoices</span>
+
+                {/* ── Floating Controls Bar (Bottom) ── */}
+                <div className="absolute bottom-3 sm:bottom-4 left-3 right-3 sm:left-4 sm:right-4 flex items-center justify-between gap-3 z-20 pointer-events-auto">
+                  {/* Left: Interactive Controls Glass Pill */}
+                  <div className="inline-flex items-center gap-1 sm:gap-2 p-1 sm:p-1.5 rounded-full bg-black/75 backdrop-blur-md border border-white/15 shadow-xl text-white">
+                    <button
+                      type="button"
+                      onClick={togglePlay}
+                      className="p-1.5 sm:p-2 rounded-full hover:bg-white/20 transition-all text-white cursor-pointer"
+                      title={isPlaying ? "Pause video" : "Play video"}
+                      aria-label={isPlaying ? "Pause video" : "Play video"}
+                    >
+                      {isPlaying ? (
+                        <Pause className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFD21F]" />
+                      ) : (
+                        <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#FFD21F] text-[#FFD21F]" />
+                      )}
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={toggleMute}
+                      className="p-1.5 sm:p-2 rounded-full hover:bg-white/20 transition-all text-white cursor-pointer flex items-center gap-1.5 text-xs font-mono font-semibold"
+                      title={isMuted ? "Unmute audio" : "Mute audio"}
+                      aria-label={isMuted ? "Unmute audio" : "Mute audio"}
+                    >
+                      {isMuted ? (
+                        <>
+                          <VolumeX className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white/70" />
+                          <span className="hidden sm:inline text-[11px] text-white/70">Unmute</span>
+                        </>
+                      ) : (
+                        <>
+                          <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400" />
+                          <span className="hidden sm:inline text-[11px] text-emerald-400">Audio On</span>
+                        </>
+                      )}
+                    </button>
+
+                    <div className="hidden sm:block w-px h-3.5 bg-white/20" />
+
+                    <button
+                      type="button"
+                      onClick={() => setIsExpandedModal(true)}
+                      className="hidden sm:flex items-center gap-1 p-1.5 sm:p-2 rounded-full hover:bg-white/20 transition-all text-white/80 hover:text-white cursor-pointer text-xs font-mono"
+                      title="Enlarge Video"
+                      aria-label="Enlarge Video"
+                    >
+                      <Maximize2 className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+
+                  {/* Right: Live Tag & Interactive Scrub Bar Pill */}
+                  <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-black/75 backdrop-blur-md border border-white/15 shadow-xl text-white text-xs font-mono">
+                    <span className="hidden xs:inline text-[11px] text-white/70">10s Showcase</span>
+                    <div className="w-16 sm:w-24 h-1.5 bg-white/20 rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-gradient-to-r from-[#FFD21F] to-[#FFE052] transition-all duration-150"
+                        style={{ width: `${videoProgress}%` }}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* ══════════════════════════════════════════════════════════════════
-                RIGHT: WISHLINK-STYLE FLOATING INTERACTIVE CREATOR STAGE
+                RESPONSIVE FLOATING CONTEXTUAL BADGES
+                Desktop: Gracefully hover outside the chassis corners
+                Mobile/Tablet: Render neatly beneath the chassis in an aligned grid
                 ══════════════════════════════════════════════════════════════════ */}
-            <div className="lg:col-span-6 relative flex flex-col items-center justify-center w-full">
-              {/* Main Creator Showcase Container */}
-              <div className="relative w-full max-w-[380px] sm:max-w-[420px] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-[#FAF9F5]">
-                <SafeImage
-                  src={activeCreator.image}
-                  alt={activeCreator.name}
-                  fill
-                  className="object-cover transition-transform duration-700 hover:scale-105"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none" />
-
-                {/* Top Badge on image */}
-                <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
-                  <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-white/95 backdrop-blur-md text-[#0A0A0E] shadow-sm">
-                    {activeCreator.category}
-                  </span>
-                  <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#FFD21F] text-[#0A0A0E] shadow-sm flex items-center gap-1">
-                    <CheckCircle2 className="w-3.5 h-3.5" />
-                    <span>Verified</span>
-                  </span>
-                </div>
-
-                {/* Bottom Creator Info Bar on image */}
-                <div className="absolute bottom-4 left-4 right-4 text-white pointer-events-none">
-                  <div className="flex items-end justify-between">
-                    <div>
-                      <h3 className="text-xl sm:text-2xl font-black font-display leading-tight drop-shadow-sm">
-                        {activeCreator.name}
-                      </h3>
-                      <p className="text-xs font-mono text-white/80">{activeCreator.handle}</p>
-                    </div>
-                    <div className="text-right">
-                      <span className="text-[10px] font-mono uppercase text-[#FFD21F] block">Latest Collab</span>
-                      <span className="text-base font-extrabold font-mono text-white">
-                        {activeCreator.dealAmount}
-                      </span>
-                    </div>
-                  </div>
-                </div>
+            {/* Desktop Floating Badge 1: Escrow Protection (Top-Left) */}
+            <motion.div
+              animate={{ y: [0, -6, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="hidden lg:flex absolute -top-5 -left-6 xl:-left-10 p-3.5 rounded-2xl bg-white/95 backdrop-blur-md border border-black/10 shadow-[0_12px_30px_rgba(0,0,0,0.08)] items-center gap-3 z-30"
+            >
+              <div className="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-700 flex items-center justify-center font-bold text-base shrink-0">
+                💰
               </div>
+              <div className="text-left font-mono">
+                <p className="text-[10px] text-[#7A7A8A] font-bold uppercase tracking-wider">Escrow Vault</p>
+                <p className="text-xs font-black text-[#0A0A0E]">₹1,25,000 Upfront Locked</p>
+                <span className="text-[10px] font-sans text-emerald-600 font-semibold flex items-center gap-1">
+                  <CheckCircle2 className="w-3 h-3" /> Safe until approved
+                </span>
+              </div>
+            </motion.div>
 
-              {/* ── WISHLINK FLOATING REACTION STICKERS & BADGES ── */}
-              {/* Floating Sticker 1: Escrow Deposited (Top-Left) */}
-              <motion.div
-                animate={{ y: [0, -6, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-3 left-2 sm:-left-6 p-2.5 sm:p-3.5 rounded-2xl bg-white/95 backdrop-blur-md border border-black/10 shadow-xl flex items-center gap-2 sm:gap-2.5 z-20"
-              >
-                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-emerald-500/15 text-emerald-700 flex items-center justify-center font-bold text-xs sm:text-sm shrink-0">
-                  💰
-                </div>
-                <div className="text-left font-mono">
-                  <p className="text-[9px] sm:text-[10px] text-[#7A7A8A] font-semibold uppercase">Escrow Vault</p>
-                  <p className="text-[11px] sm:text-xs font-extrabold text-[#0A0A0E]">₹1,25,000 Locked</p>
-                </div>
-              </motion.div>
+            {/* Desktop Floating Badge 2: Growth Metrics (Bottom-Right) */}
+            <motion.div
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+              className="hidden lg:flex absolute -bottom-6 -right-6 xl:-right-10 p-3.5 rounded-2xl bg-white/95 backdrop-blur-md border border-black/10 shadow-[0_12px_30px_rgba(0,0,0,0.08)] items-center gap-3 z-30"
+            >
+              <div className="w-10 h-10 rounded-xl bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center font-black text-sm shrink-0">
+                <TrendingUp className="w-5 h-5 text-[#0A0A0E]" />
+              </div>
+              <div className="text-left font-mono">
+                <p className="text-[10px] text-[#7A7A8A] font-bold uppercase tracking-wider">Verified Conversions</p>
+                <p className="text-xs font-black text-[#0A0A0E]">+120% Engagement Lift</p>
+                <span className="text-[10px] font-sans text-[#D97706] font-semibold flex items-center gap-1">
+                  <Zap className="w-3 h-3" /> 50K direct link clicks
+                </span>
+              </div>
+            </motion.div>
 
-              {/* Floating Sticker 2: Brand Partner Deal (Top-Right) — hidden on tiny screens (< 640px) */}
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="hidden sm:flex absolute top-12 -right-2 sm:-right-8 p-3 rounded-2xl bg-white/95 backdrop-blur-md border border-black/10 shadow-xl items-center gap-2.5 z-20"
-              >
-                <div className="w-8 h-8 rounded-xl bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center font-bold text-xs shrink-0">
-                  ⚡️
-                </div>
-                <div className="text-left font-sans">
-                  <p className="text-[10px] font-mono text-[#7A7A8A]">Active Brief</p>
-                  <p className="text-xs font-extrabold text-[#0A0A0E]">{activeCreator.brand} Drop</p>
-                </div>
-              </motion.div>
+            {/* Desktop Floating Badge 3: Meta Auto-DM Speed (Top-Right) */}
+            <motion.div
+              animate={{ y: [0, -5, 0] }}
+              transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              className="hidden xl:flex absolute top-12 -right-8 p-3 rounded-2xl bg-white/95 backdrop-blur-md border border-black/10 shadow-[0_12px_30px_rgba(0,0,0,0.08)] items-center gap-2.5 z-30"
+            >
+              <div className="w-8 h-8 rounded-xl bg-blue-500/10 text-blue-600 flex items-center justify-center font-bold text-xs shrink-0">
+                <Send className="w-4 h-4 text-blue-600" />
+              </div>
+              <div className="text-left font-mono">
+                <p className="text-[9px] text-[#7A7A8A] font-bold uppercase">AbeyCollab Engage</p>
+                <p className="text-xs font-extrabold text-[#0A0A0E]">Auto-DM sent in 2.8s</p>
+              </div>
+            </motion.div>
+          </div>
 
-              {/* Floating Sticker 3: Instant 24h Release (Bottom-Left) — hidden on tiny screens (< 640px) */}
-              <motion.div
-                animate={{ y: [0, -6, 0] }}
-                transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="hidden sm:flex absolute bottom-14 -left-2 sm:-left-8 p-3 rounded-2xl bg-white/95 backdrop-blur-md border border-black/10 shadow-xl items-center gap-2.5 z-20"
-              >
-                <span className="text-xl">🚀</span>
-                <div className="text-left font-mono">
-                  <p className="text-[10px] text-[#7A7A8A] font-bold">24-Hour Payout</p>
-                  <p className="text-xs font-extrabold text-emerald-700">Funds Released</p>
-                </div>
-              </motion.div>
+          {/* ══════════════════════════════════════════════════════════════════
+              MOBILE & TABLET STAT STRIP
+              Gracefully displays the value props below the video on <= 1024px
+              ══════════════════════════════════════════════════════════════════ */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full mt-6 lg:hidden">
+            <div className="p-3.5 rounded-2xl bg-white border border-black/8 shadow-xs flex items-center gap-3 text-left">
+              <div className="w-9 h-9 rounded-xl bg-emerald-500/15 text-emerald-700 flex items-center justify-center text-sm font-bold shrink-0">
+                💰
+              </div>
+              <div className="font-mono">
+                <p className="text-[10px] text-[#7A7A8A] font-bold uppercase">Razorpay Escrow</p>
+                <p className="text-xs font-black text-[#0A0A0E]">100% Funds Locked</p>
+              </div>
+            </div>
 
-              {/* Floating Sticker 4: Emojis just like Wishlink */}
-              <motion.div
-                animate={{ scale: [1, 1.08, 1], rotate: [0, 4, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-3 right-3 sm:right-6 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-black/10 shadow-lg flex items-center gap-1.5 text-[11px] sm:text-xs font-mono font-bold z-20"
-              >
-                <span>🔥</span>
-                <span>Zero Chasing Invoices</span>
-              </motion.div>
+            <div className="p-3.5 rounded-2xl bg-white border border-black/8 shadow-xs flex items-center gap-3 text-left">
+              <div className="w-9 h-9 rounded-xl bg-[#FFD21F]/20 text-[#8F6600] flex items-center justify-center text-sm font-bold shrink-0">
+                <TrendingUp className="w-4 h-4 text-[#8F6600]" />
+              </div>
+              <div className="font-mono">
+                <p className="text-[10px] text-[#7A7A8A] font-bold uppercase">Real-Time Growth</p>
+                <p className="text-xs font-black text-[#0A0A0E]">+120% Sales Lift</p>
+              </div>
+            </div>
 
-              {/* Creator Selector Thumbnails below photo */}
-              <div className="flex items-center gap-1.5 sm:gap-2 mt-5 overflow-x-auto no-scrollbar max-w-full py-1">
-                {CREATOR_SHOWCASE.map((creator, i) => (
-                  <button
-                    key={creator.id}
-                    onClick={() => setSelectedIdx(i)}
-                    className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all shrink-0 cursor-pointer ${
-                      selectedIdx === i
-                        ? "bg-[#0A0A0E] text-white shadow-xs"
-                        : "bg-[#F4F4F8] text-[#5A5A68] hover:text-[#0A0A0E] border border-black/8"
-                    }`}
-                  >
-                    {creator.name}
-                  </button>
-                ))}
+            <div className="p-3.5 rounded-2xl bg-white border border-black/8 shadow-xs flex items-center gap-3 text-left">
+              <div className="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-600 flex items-center justify-center text-sm font-bold shrink-0">
+                <Send className="w-4 h-4 text-blue-600" />
+              </div>
+              <div className="font-mono">
+                <p className="text-[10px] text-[#7A7A8A] font-bold uppercase">Meta Graph Partner</p>
+                <p className="text-xs font-black text-[#0A0A0E]">Auto-DM in 2.8s</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Role Selection Modal */}
+      {/* ══════════════════════════════════════════════════════════════════
+          ENLARGED VIDEO MODAL (WHEN USER CLICKS MAXIMIZE)
+          ══════════════════════════════════════════════════════════════════ */}
+      <Modal
+        isOpen={isExpandedModal}
+        onClose={() => setIsExpandedModal(false)}
+        title="AbeyCollab Creator Commerce Showcase"
+        description="Full-resolution 4K demonstration of the AbeyCollab engine."
+        maxWidth="4xl"
+      >
+        <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-black mt-2">
+          <video
+            ref={modalVideoRef}
+            src="/reels/heroVideo.mp4"
+            poster="/reels/heroVideo-poster.png"
+            controls
+            autoPlay
+            playsInline
+            className="w-full h-full object-contain"
+          />
+        </div>
+      </Modal>
+
+      {/* Role Selection Modal for Custom Entry */}
       <Modal
         isOpen={roleModalOpen}
         onClose={() => setRoleModalOpen(false)}
@@ -348,30 +489,39 @@ export function WishlinkHeroShowcase() {
           <Link
             href="/creator/register"
             onClick={() => setRoleModalOpen(false)}
-            className="w-full text-left p-4 rounded-2xl bg-[#FFFDF5] border-2 border-[#FFD21F] hover:shadow-md transition-all group flex items-center justify-between block"
+            className="p-4 rounded-2xl bg-[#FAF9F5] hover:bg-[#F2F1EC] border border-black/10 transition-all flex items-center justify-between group cursor-pointer"
           >
-            <div>
-              <div className="flex items-center gap-2">
-                <h4 className="text-sm font-bold font-display">I am a Creator</h4>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] font-bold">
-                  RECOMMENDED
-                </span>
+            <div className="flex items-center gap-3.5">
+              <div className="w-10 h-10 rounded-xl bg-[#FFD21F] flex items-center justify-center font-bold text-sm">
+                🎨
               </div>
-              <p className="text-xs text-[#6A6A78]">Pitch briefs, claim audited media kit &amp; get paid in 24h</p>
+              <div>
+                <h4 className="text-sm font-bold text-[#0A0A0E] group-hover:text-[#D97706] transition-colors">
+                  I am a Creator
+                </h4>
+                <p className="text-xs text-[#5A5A68]">Build verified media kit & get 24h escrow payouts.</p>
+              </div>
             </div>
-            <ArrowRight className="w-4 h-4 text-[#08080C] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 text-[#7A7A8A] group-hover:text-[#0A0A0E] group-hover:translate-x-1 transition-all" />
           </Link>
 
           <Link
             href="/brand/register"
             onClick={() => setRoleModalOpen(false)}
-            className="w-full text-left p-4 rounded-2xl bg-[#FAFAFC] border border-black/10 hover:border-black/20 hover:bg-white hover:shadow-md transition-all group flex items-center justify-between block"
+            className="p-4 rounded-2xl bg-[#FAF9F5] hover:bg-[#F2F1EC] border border-black/10 transition-all flex items-center justify-between group cursor-pointer"
           >
-            <div>
-              <h4 className="text-sm font-bold font-display">I am a Brand / Business</h4>
-              <p className="text-xs text-[#6A6A78]">Post campaign briefs, hire creators &amp; escrow funds</p>
+            <div className="flex items-center gap-3.5">
+              <div className="w-10 h-10 rounded-xl bg-[#0A0A0E] text-white flex items-center justify-center font-bold text-sm">
+                🏢
+              </div>
+              <div>
+                <h4 className="text-sm font-bold text-[#0A0A0E] group-hover:text-[#D97706] transition-colors">
+                  I am a Brand
+                </h4>
+                <p className="text-xs text-[#5A5A68]">Hire verified creators with milestone protection.</p>
+              </div>
             </div>
-            <ArrowRight className="w-4 h-4 text-[#08080C] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 text-[#7A7A8A] group-hover:text-[#0A0A0E] group-hover:translate-x-1 transition-all" />
           </Link>
         </div>
       </Modal>
