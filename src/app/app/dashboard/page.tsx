@@ -249,10 +249,10 @@ function DashboardContent() {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4">
+          <div className="flex md:grid md:grid-cols-3 gap-3 pt-3 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-none">
             {role === "creator" ? (
               <>
-                <div className="p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-2">
+                <div className="min-w-[260px] sm:min-w-0 snap-start flex-1 p-3.5 sm:p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-1.5">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
                     <span className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-black shrink-0">1</span>
                     <span>Set Up Your Media Kit</span>
@@ -265,7 +265,7 @@ function DashboardContent() {
                   </Link>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-2">
+                <div className="min-w-[260px] sm:min-w-0 snap-start flex-1 p-3.5 sm:p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-1.5">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
                     <span className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-black shrink-0">2</span>
                     <span>Pitch to Paid Campaigns</span>
@@ -278,7 +278,7 @@ function DashboardContent() {
                   </Link>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-2">
+                <div className="min-w-[260px] sm:min-w-0 snap-start flex-1 p-3.5 sm:p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-1.5">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
                     <span className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-black shrink-0">3</span>
                     <span>Submit Work &amp; Get Paid</span>
@@ -293,7 +293,7 @@ function DashboardContent() {
               </>
             ) : (
               <>
-                <div className="p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-2">
+                <div className="min-w-[260px] sm:min-w-0 snap-start flex-1 p-3.5 sm:p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-1.5">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
                     <span className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-black shrink-0">1</span>
                     <span>Post a Campaign</span>
@@ -306,7 +306,7 @@ function DashboardContent() {
                   </Link>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-2">
+                <div className="min-w-[260px] sm:min-w-0 snap-start flex-1 p-3.5 sm:p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-1.5">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
                     <span className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-black shrink-0">2</span>
                     <span>Find &amp; Save Creators</span>
@@ -319,7 +319,7 @@ function DashboardContent() {
                   </Link>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-2">
+                <div className="min-w-[260px] sm:min-w-0 snap-start flex-1 p-3.5 sm:p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-1.5">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
                     <span className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-black shrink-0">3</span>
                     <span>Approve Content &amp; Pay</span>

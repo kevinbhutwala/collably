@@ -277,11 +277,11 @@ export default function AdminBrandsPage() {
               <span className="font-semibold uppercase tracking-wider font-mono">Corporate Accounts</span>
               <Building2 className="w-4 h-4 text-[#FFD21F]" />
             </div>
-            <div className="mt-1 flex items-baseline gap-2">
-              <span className="text-xl font-black text-[#0A0A0E] dark:text-white font-mono">
+            <div className="mt-1 flex items-baseline gap-2 flex-wrap">
+              <span className="text-base sm:text-xl font-black text-[#0A0A0E] dark:text-white font-mono truncate">
                 {stats.totalBrands}
               </span>
-              <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded-sm">
+              <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded-sm shrink-0">
                 {stats.verifiedPct}% Verified
               </span>
             </div>
@@ -296,11 +296,11 @@ export default function AdminBrandsPage() {
               <span className="font-semibold uppercase tracking-wider font-mono">Escrow Deployed</span>
               <DollarSign className="w-4 h-4 text-emerald-500" />
             </div>
-            <div className="mt-1 flex items-baseline gap-2">
-              <span className="text-xl font-black text-[#0A0A0E] dark:text-white font-mono">
+            <div className="mt-1 flex items-baseline gap-2 flex-wrap">
+              <span className="text-base sm:text-xl font-black text-[#0A0A0E] dark:text-white font-mono truncate">
                 {format(stats.totalCapital, "USD")}
               </span>
-              <span className="text-[10px] font-bold text-neutral-600 dark:text-neutral-400 bg-black/5 dark:bg-white/5 px-1.5 py-0.5 rounded-sm">
+              <span className="text-[10px] font-bold text-neutral-600 dark:text-neutral-400 bg-black/5 dark:bg-white/5 px-1.5 py-0.5 rounded-sm shrink-0">
                 GMV
               </span>
             </div>
@@ -315,11 +315,11 @@ export default function AdminBrandsPage() {
               <span className="font-semibold uppercase tracking-wider font-mono">Active Briefs</span>
               <Layers className="w-4 h-4 text-cyan-500" />
             </div>
-            <div className="mt-1 flex items-baseline gap-2">
-              <span className="text-xl font-black text-[#0A0A0E] dark:text-white font-mono">
+            <div className="mt-1 flex items-baseline gap-2 flex-wrap">
+              <span className="text-base sm:text-xl font-black text-[#0A0A0E] dark:text-white font-mono truncate">
                 {stats.activeCamps}
               </span>
-              <span className="text-[10px] font-bold text-cyan-600 dark:text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded-sm">
+              <span className="text-[10px] font-bold text-cyan-600 dark:text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded-sm shrink-0">
                 Live Now
               </span>
             </div>
@@ -334,11 +334,11 @@ export default function AdminBrandsPage() {
               <span className="font-semibold uppercase tracking-wider font-mono">Credit Solvency</span>
               <Lock className="w-4 h-4 text-purple-500" />
             </div>
-            <div className="mt-1 flex items-baseline gap-2">
-              <span className="text-xl font-black text-[#0A0A0E] dark:text-white font-mono">
+            <div className="mt-1 flex items-baseline gap-2 flex-wrap">
+              <span className="text-base sm:text-xl font-black text-[#0A0A0E] dark:text-white font-mono truncate">
                 100%
               </span>
-              <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded-sm">
+              <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded-sm shrink-0">
                 Tier-1
               </span>
             </div>
@@ -475,282 +475,489 @@ export default function AdminBrandsPage() {
         </div>
       ) : viewMode === "table" ? (
         /* TABLE VIEW */
-        <div className="rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
-              <thead>
-                <tr className="border-b border-black/8 dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02] text-[10px] uppercase font-bold text-[#5A5A68] dark:text-[#9A9AA6] font-mono">
-                  <th className="py-3 px-4">Brand & Company</th>
-                  <th className="py-3 px-4">Industry & HQ</th>
-                  <th className="py-3 px-4">Headcount</th>
-                  <th className="py-3 px-4">Campaigns</th>
-                  <th className="py-3 px-4">Capital Deployed</th>
-                  <th className="py-3 px-4">Risk Rating</th>
-                  <th className="py-3 px-4 text-center">Partner Status</th>
-                  <th className="py-3 px-4 text-right">Actions</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-black/5 dark:divide-white/5 font-sans">
-                {filteredBrands.map((b) => {
-                  const brandCamps = getBrandCampaigns(b.id, b.companyName);
-                  const isExpanded = expandedId === b.id;
+        <div className="space-y-3">
+          {/* Mobile-Native Card Layout (< md) */}
+          <div className="block md:hidden space-y-3">
+            {filteredBrands.map((b) => {
+              const brandCamps = getBrandCampaigns(b.id, b.companyName);
+              const isExpanded = expandedId === b.id;
 
-                  return (
-                    <React.Fragment key={b.id}>
-                      <tr
-                        onClick={() => setExpandedId(isExpanded ? null : b.id)}
-                        className={`hover:bg-[#F8F8FA] dark:hover:bg-[#181824] transition-colors cursor-pointer ${
-                          isExpanded ? "bg-[#FFFDF5] dark:bg-[#191924]" : ""
+              return (
+                <div
+                  key={b.id}
+                  className="rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs overflow-hidden"
+                >
+                  <div
+                    onClick={() => setExpandedId(isExpanded ? null : b.id)}
+                    className="p-4 space-y-3 cursor-pointer"
+                  >
+                    {/* Header: Logo, Name, Verified */}
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-3 min-w-0">
+                        <div className="w-10 h-10 rounded-xl overflow-hidden bg-white dark:bg-[#181824] border border-black/10 dark:border-white/10 shrink-0 flex items-center justify-center p-1 shadow-2xs">
+                          {b.logoUrl ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img
+                              src={b.logoUrl}
+                              alt={b.companyName}
+                              className="w-full h-full object-contain"
+                            />
+                          ) : (
+                            <Building2 className="w-5 h-5 text-neutral-400" />
+                          )}
+                        </div>
+                        <div className="min-w-0">
+                          <div className="flex items-center gap-1.5">
+                            <h3 className="font-bold text-sm text-[#0A0A0E] dark:text-white font-display truncate">
+                              {b.companyName}
+                            </h3>
+                            {b.verified && (
+                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                            )}
+                          </div>
+                          <span className="text-[11px] font-mono text-neutral-400 dark:text-neutral-500 block truncate">
+                            {b.websiteUrl?.replace(/^https?:\/\//, "") || b.id}
+                          </span>
+                        </div>
+                      </div>
+
+                      <span
+                        className={`px-2 py-0.5 rounded-full text-[10px] font-bold font-mono uppercase shrink-0 border ${
+                          b.verified
+                            ? "bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-500/30"
+                            : "bg-black/5 dark:bg-white/5 text-neutral-500 border-black/10 dark:border-white/10"
                         }`}
                       >
-                        {/* Company Logo & Name */}
-                        <td className={`${isCompact ? "py-2.5" : "py-3.5"} px-4`}>
-                          <div className="flex items-center gap-3">
-                            <div className="w-9 h-9 rounded-xl overflow-hidden bg-white dark:bg-[#181824] border border-black/10 dark:border-white/10 shrink-0 flex items-center justify-center p-1 shadow-2xs">
-                              {b.logoUrl ? (
-                                // eslint-disable-next-line @next/next/no-img-element
-                                <img
-                                  src={b.logoUrl}
-                                  alt={b.companyName}
-                                  className="w-full h-full object-contain"
-                                />
-                              ) : (
-                                <Building2 className="w-4 h-4 text-neutral-400" />
-                              )}
-                            </div>
-                            <div>
-                              <div className="flex items-center gap-1.5">
-                                <h3 className="font-bold text-xs text-[#0A0A0E] dark:text-white font-display">
-                                  {b.companyName}
-                                </h3>
-                                {b.verified && (
-                                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                                )}
-                              </div>
-                              <span className="text-[10px] font-mono text-neutral-400 dark:text-neutral-500 block truncate max-w-[180px]">
-                                {b.websiteUrl?.replace(/^https?:\/\//, "") || b.id}
+                        {b.verified ? "Verified" : "Standard"}
+                      </span>
+                    </div>
+
+                    {/* Meta row: Industry & Headcount */}
+                    <div className="flex items-center justify-between text-xs pt-1 border-t border-black/5 dark:border-white/5 text-[#5A5A68] dark:text-[#9A9AA6]">
+                      <div className="flex items-center gap-1 min-w-0">
+                        <span className="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-black/5 dark:bg-white/5 border border-black/8 dark:border-white/8 shrink-0">
+                          {b.industry}
+                        </span>
+                        <span className="text-[10px] truncate max-w-[130px]">• {b.location}</span>
+                      </div>
+                      <div className="flex items-center gap-1 font-mono text-[10px] shrink-0">
+                        <Users className="w-3 h-3 text-neutral-400 shrink-0" />
+                        <span>{b.companySize}</span>
+                      </div>
+                    </div>
+
+                    {/* Stats pills */}
+                    <div className="grid grid-cols-3 gap-2 pt-1 font-mono text-center">
+                      <div className="p-1.5 rounded-lg bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5">
+                        <div className="text-[9px] uppercase text-neutral-400">Deployed</div>
+                        <div className="text-xs font-black text-[#0A0A0E] dark:text-white truncate">
+                          {format(b.totalSpent || 50000, "USD")}
+                        </div>
+                      </div>
+                      <div className="p-1.5 rounded-lg bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5">
+                        <div className="text-[9px] uppercase text-neutral-400">Briefs</div>
+                        <div className="text-xs font-black text-[#0A0A0E] dark:text-white">
+                          {brandCamps.length} Active
+                        </div>
+                      </div>
+                      <div className="p-1.5 rounded-lg bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5">
+                        <div className="text-[9px] uppercase text-neutral-400">Rating</div>
+                        <div className="text-[10px] font-black text-emerald-600 dark:text-emerald-400">
+                          Tier-1
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Actions Row */}
+                    <div className="flex items-center justify-between gap-2 pt-2 border-t border-black/5 dark:border-white/5" onClick={(e) => e.stopPropagation()}>
+                      <button
+                        onClick={(e) => toggleVerify(b.id, !!b.verified, e)}
+                        disabled={updatingId === b.id}
+                        className={`flex-1 py-1.5 rounded-lg text-xs font-bold transition-all border cursor-pointer ${
+                          b.verified
+                            ? "bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0A0A0E] dark:text-white border-black/10 dark:border-white/10"
+                            : "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:brightness-105 text-[#0A0A0E] border-black/15 shadow-xs"
+                        }`}
+                      >
+                        {updatingId === b.id ? "Updating..." : b.verified ? "Revoke Partner" : "Approve Partner"}
+                      </button>
+
+                      <button
+                        onClick={() => setExpandedId(isExpanded ? null : b.id)}
+                        className="px-3 py-1.5 rounded-lg border border-black/10 dark:border-white/10 text-xs font-bold hover:bg-black/5 dark:hover:bg-white/10 text-neutral-600 dark:text-neutral-300 transition-colors cursor-pointer flex items-center gap-1 shrink-0"
+                      >
+                        <span>{isExpanded ? "Hide" : "Details"}</span>
+                        {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Mobile Expandable Drawer */}
+                  {isExpanded && (
+                    <div className="p-4 bg-[#FAF9F5] dark:bg-[#14141E] border-t border-black/8 dark:border-white/10 space-y-3">
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                          {b.companyName} File
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          {b.websiteUrl && (
+                            <a
+                              href={b.websiteUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="p-1 rounded-md bg-white dark:bg-[#1E1E2C] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white"
+                              title="Website"
+                            >
+                              <ExternalLink className="w-3.5 h-3.5" />
+                            </a>
+                          )}
+                          <Link
+                            href={`/brands/${b.id}`}
+                            className="px-2 py-1 rounded-md text-[10px] font-bold bg-[#FFD21F] text-[#0A0A0E] border border-black/15 flex items-center gap-1 shadow-xs"
+                          >
+                            <span>Profile</span>
+                            <ArrowUpRight className="w-3 h-3" />
+                          </Link>
+                        </div>
+                      </div>
+
+                      {/* Escrow Underwriting Standing */}
+                      <div className="p-3 rounded-xl bg-white dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-1.5 text-[11px] font-mono">
+                        <div className="flex items-center gap-1.5 text-xs font-bold font-display text-[#0A0A0E] dark:text-white pb-1">
+                          <Lock className="w-3.5 h-3.5 text-emerald-500" />
+                          <span>Escrow Solvency Standing</span>
+                        </div>
+                        <div className="flex justify-between text-neutral-500">
+                          <span>Collateral:</span>
+                          <span className="font-bold text-emerald-600 dark:text-emerald-400">100% Pre-funded</span>
+                        </div>
+                        <div className="flex justify-between text-neutral-500">
+                          <span>Disputes:</span>
+                          <span className="font-bold text-[#0A0A0E] dark:text-white">0.00%</span>
+                        </div>
+                        <div className="flex justify-between text-neutral-500">
+                          <span>SLA Approvals:</span>
+                          <span className="font-bold text-emerald-600 dark:text-emerald-400">99.4%</span>
+                        </div>
+                      </div>
+
+                      {/* Primary Contact */}
+                      <div className="p-3 rounded-xl bg-white dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-1 text-[11px] font-mono">
+                        <div className="flex items-center gap-1.5 text-xs font-bold font-display text-[#0A0A0E] dark:text-white pb-1">
+                          <Mail className="w-3.5 h-3.5 text-cyan-500" />
+                          <span>Primary Contact</span>
+                        </div>
+                        <div className="text-neutral-500 truncate">
+                          {b.email || (b.companyName === "Snitch" ? "influencer.reach@snitch.co.in" : "partnerships@thewholetruthfoods.com")}
+                        </div>
+                      </div>
+
+                      {/* Active Briefs list */}
+                      {brandCamps.length > 0 && (
+                        <div className="p-3 rounded-xl bg-white dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-1.5">
+                          <div className="text-xs font-bold font-display text-[#0A0A0E] dark:text-white flex items-center justify-between">
+                            <span>Live Briefs ({brandCamps.length})</span>
+                            <Link href="/admin/campaigns" className="text-[10px] text-[#FFD21F] font-mono hover:underline">
+                              All
+                            </Link>
+                          </div>
+                          {brandCamps.map((camp) => (
+                            <div key={camp.id} className="p-1.5 rounded-lg bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 flex items-center justify-between gap-2 text-[10px]">
+                              <span className="font-medium text-[#0A0A0E] dark:text-white truncate">
+                                {camp.title}
+                              </span>
+                              <span className="font-mono font-bold text-neutral-500 shrink-0">
+                                {format(camp.budget?.totalBudget || 0, camp.budget?.currency || "USD")}
                               </span>
                             </div>
-                          </div>
-                        </td>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
 
-                        {/* Industry & Location */}
-                        <td className={`${isCompact ? "py-2.5" : "py-3.5"} px-4`}>
-                          <div className="space-y-0.5">
-                            <span className="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-black/5 dark:bg-white/5 border border-black/8 dark:border-white/8 inline-block">
-                              {b.industry}
-                            </span>
-                            <div className="flex items-center gap-1 text-[10px] text-[#5A5A68] dark:text-[#9A9AA6]">
-                              <MapPin className="w-3 h-3 shrink-0" />
-                              <span className="truncate max-w-[150px]">{b.location}</span>
-                            </div>
-                          </div>
-                        </td>
+          {/* Desktop & Tablet Table (hidden md:block) */}
+          <div className="hidden md:block rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs">
+                <thead>
+                  <tr className="border-b border-black/8 dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02] text-[10px] uppercase font-bold text-[#5A5A68] dark:text-[#9A9AA6] font-mono">
+                    <th className="py-3 px-4">Brand & Company</th>
+                    <th className="py-3 px-4">Industry & HQ</th>
+                    <th className="py-3 px-4">Headcount</th>
+                    <th className="py-3 px-4">Campaigns</th>
+                    <th className="py-3 px-4">Capital Deployed</th>
+                    <th className="py-3 px-4">Risk Rating</th>
+                    <th className="py-3 px-4 text-center">Partner Status</th>
+                    <th className="py-3 px-4 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-black/5 dark:divide-white/5 font-sans">
+                  {filteredBrands.map((b) => {
+                    const brandCamps = getBrandCampaigns(b.id, b.companyName);
+                    const isExpanded = expandedId === b.id;
 
-                        {/* Headcount */}
-                        <td className={`${isCompact ? "py-2.5" : "py-3.5"} px-4 font-mono text-[11px] text-[#5A5A68] dark:text-[#9A9AA6]`}>
-                          <div className="flex items-center gap-1">
-                            <Users className="w-3 h-3 text-neutral-400 shrink-0" />
-                            <span>{b.companySize}</span>
-                          </div>
-                        </td>
-
-                        {/* Campaigns count */}
-                        <td className={`${isCompact ? "py-2.5" : "py-3.5"} px-4`}>
-                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-[#FFD21F]/15 text-[#0A0A0E] dark:text-[#FFD21F] border border-[#FFD21F]/30">
-                            <Layers className="w-3 h-3" />
-                            <span>{brandCamps.length} Briefs</span>
-                          </span>
-                        </td>
-
-                        {/* Capital Invested */}
-                        <td className={`${isCompact ? "py-2.5" : "py-3.5"} px-4 font-mono text-xs font-black text-[#0A0A0E] dark:text-white`}>
-                          {format(b.totalSpent || 50000, "USD")}
-                        </td>
-
-                        {/* Risk Rating */}
-                        <td className={`${isCompact ? "py-2.5" : "py-3.5"} px-4`}>
-                          <span className="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold uppercase bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
-                            Tier-1 • A+
-                          </span>
-                        </td>
-
-                        {/* Verification Status */}
-                        <td className={`${isCompact ? "py-2.5" : "py-3.5"} px-4 text-center`}>
-                          <span
-                            className={`px-2 py-0.5 rounded-full text-[10px] font-bold font-mono uppercase inline-flex items-center gap-1 border ${
-                              b.verified
-                                ? "bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-500/30"
-                                : "bg-black/5 dark:bg-white/5 text-neutral-500 border-black/10 dark:border-white/10"
-                            }`}
-                          >
-                            {b.verified ? "Verified Partner" : "Standard"}
-                          </span>
-                        </td>
-
-                        {/* Actions */}
-                        <td className={`${isCompact ? "py-2.5" : "py-3.5"} px-4 text-right`}>
-                          <div className="flex items-center justify-end gap-1.5" onClick={(e) => e.stopPropagation()}>
-                            <button
-                              onClick={(e) => toggleVerify(b.id, !!b.verified, e)}
-                              disabled={updatingId === b.id}
-                              className={`px-3 py-1 rounded-md text-[10px] font-bold transition-all border cursor-pointer ${
-                                b.verified
-                                  ? "bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0A0A0E] dark:text-white border-black/10 dark:border-white/10"
-                                  : "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:brightness-105 text-[#0A0A0E] border-black/15 shadow-xs"
-                              }`}
-                            >
-                              {updatingId === b.id ? "Updating..." : b.verified ? "Revoke Partner" : "Approve Partner"}
-                            </button>
-
-                            <button
-                              onClick={() => setExpandedId(isExpanded ? null : b.id)}
-                              className="p-1 rounded-md hover:bg-black/5 dark:hover:bg-white/10 text-neutral-500 transition-colors cursor-pointer"
-                              title="Toggle details"
-                            >
-                              {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-
-                      {/* Expandable Inline Details Drawer */}
-                      {isExpanded && (
-                        <tr className="bg-[#FAF9F5] dark:bg-[#14141E]">
-                          <td colSpan={8} className="p-4 sm:p-5 border-b border-black/8 dark:border-white/10">
-                            <div className="space-y-4">
-                              {/* Top Bar of Drawer */}
-                              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-black/5 dark:border-white/5">
-                                <div className="space-y-1">
-                                  <div className="flex items-center gap-2">
-                                    <h4 className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
-                                      {b.companyName} Enterprise File
-                                    </h4>
-                                    <span className="text-[10px] font-mono text-neutral-400">ID: {b.id}</span>
-                                    <button
-                                      onClick={(e) => handleCopy(b.id, e)}
-                                      className="text-neutral-400 hover:text-[#0A0A0E] dark:hover:text-white"
-                                      title="Copy ID"
-                                    >
-                                      {copiedId === b.id ? <Check className="w-3 h-3 text-emerald-500" /> : <Copy className="w-3 h-3" />}
-                                    </button>
-                                  </div>
-                                  <p className="text-[11px] text-[#5A5A68] dark:text-[#9A9AA6] max-w-2xl">
-                                    {b.headline || b.description || "Enterprise corporate partner on the AbeyCollab Creator Marketplace."}
-                                  </p>
-                                </div>
-
-                                <div className="flex items-center gap-2">
-                                  {b.websiteUrl && (
-                                    <a
-                                      href={b.websiteUrl}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="px-2.5 py-1 rounded-md text-[10px] font-bold bg-white dark:bg-[#1E1E2C] border border-black/10 dark:border-white/10 hover:border-[#FFD21F] flex items-center gap-1 text-[#0A0A0E] dark:text-white transition-all shadow-xs"
-                                    >
-                                      <span>Official Website</span>
-                                      <ExternalLink className="w-3 h-3" />
-                                    </a>
-                                  )}
-                                  <Link
-                                    href={`/brands/${b.id}`}
-                                    className="px-2.5 py-1 rounded-md text-[10px] font-bold bg-[#FFD21F] text-[#0A0A0E] border border-black/15 hover:brightness-105 flex items-center gap-1 transition-all shadow-xs"
-                                  >
-                                    <span>Public Profile</span>
-                                    <ArrowUpRight className="w-3 h-3" />
-                                  </Link>
-                                </div>
+                    return (
+                      <React.Fragment key={b.id}>
+                        <tr
+                          onClick={() => setExpandedId(isExpanded ? null : b.id)}
+                          className={`hover:bg-[#F8F8FA] dark:hover:bg-[#181824] transition-colors cursor-pointer ${
+                            isExpanded ? "bg-[#FFFDF5] dark:bg-[#191924]" : ""
+                          }`}
+                        >
+                          {/* Company Logo & Name */}
+                          <td className={`${isCompact ? "py-2.5" : "py-3.5"} px-4`}>
+                            <div className="flex items-center gap-3">
+                              <div className="w-9 h-9 rounded-xl overflow-hidden bg-white dark:bg-[#181824] border border-black/10 dark:border-white/10 shrink-0 flex items-center justify-center p-1 shadow-2xs">
+                                {b.logoUrl ? (
+                                  // eslint-disable-next-line @next/next/no-img-element
+                                  <img
+                                    src={b.logoUrl}
+                                    alt={b.companyName}
+                                    className="w-full h-full object-contain"
+                                  />
+                                ) : (
+                                  <Building2 className="w-4 h-4 text-neutral-400" />
+                                )}
                               </div>
-
-                              {/* Details Grid */}
-                              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                                {/* Underwriting & Solvency */}
-                                <div className="p-3 rounded-xl bg-white dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
-                                  <div className="flex items-center gap-1.5 text-xs font-bold font-display text-[#0A0A0E] dark:text-white">
-                                    <Lock className="w-3.5 h-3.5 text-emerald-500" />
-                                    <span>Escrow Underwriting Standing</span>
-                                  </div>
-                                  <div className="space-y-1.5 text-[11px] font-mono">
-                                    <div className="flex justify-between text-neutral-500">
-                                      <span>Escrow Collateral Ratio:</span>
-                                      <span className="font-bold text-emerald-600 dark:text-emerald-400">100% Pre-funded</span>
-                                    </div>
-                                    <div className="flex justify-between text-neutral-500">
-                                      <span>Dispute Rate:</span>
-                                      <span className="font-bold text-[#0A0A0E] dark:text-white">0.00%</span>
-                                    </div>
-                                    <div className="flex justify-between text-neutral-500">
-                                      <span>Review SLA Adherence:</span>
-                                      <span className="font-bold text-emerald-600 dark:text-emerald-400">99.4% (Fast Approver)</span>
-                                    </div>
-                                  </div>
-                                </div>
-
-                                {/* Contact & Workspace */}
-                                <div className="p-3 rounded-xl bg-white dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
-                                  <div className="flex items-center gap-1.5 text-xs font-bold font-display text-[#0A0A0E] dark:text-white">
-                                    <Mail className="w-3.5 h-3.5 text-cyan-500" />
-                                    <span>Primary Authorized Contact</span>
-                                  </div>
-                                  <div className="space-y-1.5 text-[11px] font-mono">
-                                    <div className="flex justify-between text-neutral-500">
-                                      <span>Partnerships Lead:</span>
-                                      <span className="font-bold text-[#0A0A0E] dark:text-white truncate max-w-[130px]">
-                                        {b.email || (b.companyName === "Snitch" ? "influencer.reach@snitch.co.in" : "partnerships@thewholetruthfoods.com")}
-                                      </span>
-                                    </div>
-                                    <div className="flex justify-between text-neutral-500">
-                                      <span>Headquarters:</span>
-                                      <span className="font-bold text-[#0A0A0E] dark:text-white">{b.location}</span>
-                                    </div>
-                                    <div className="flex justify-between text-neutral-500">
-                                      <span>Platform Joined:</span>
-                                      <span className="font-bold text-[#0A0A0E] dark:text-white">
-                                        {new Date(b.createdAt || "2026-01-01").toLocaleDateString()}
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-
-                                {/* Active Campaigns List */}
-                                <div className="p-3 rounded-xl bg-white dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
-                                  <div className="flex items-center justify-between text-xs font-bold font-display text-[#0A0A0E] dark:text-white">
-                                    <div className="flex items-center gap-1.5">
-                                      <Briefcase className="w-3.5 h-3.5 text-amber-500" />
-                                      <span>Live Sponsorship Briefs ({brandCamps.length})</span>
-                                    </div>
-                                    <Link href="/admin/campaigns" className="text-[10px] text-[#FFD21F] font-mono hover:underline">
-                                      All briefs
-                                    </Link>
-                                  </div>
-
-                                  {brandCamps.length === 0 ? (
-                                    <p className="text-[10px] font-mono text-neutral-400 py-1">No active campaigns running.</p>
-                                  ) : (
-                                    <div className="space-y-1.5 text-[11px] font-sans">
-                                      {brandCamps.map((camp) => (
-                                        <div key={camp.id} className="p-1.5 rounded-lg bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 flex items-center justify-between gap-2">
-                                          <span className="font-medium text-[#0A0A0E] dark:text-white truncate text-[10px] flex-1">
-                                            {camp.title}
-                                          </span>
-                                          <span className="font-mono text-[10px] font-bold text-neutral-500 shrink-0">
-                                            {format(camp.budget?.totalBudget || 0, camp.budget?.currency || "USD")}
-                                          </span>
-                                        </div>
-                                      ))}
-                                    </div>
+                              <div>
+                                <div className="flex items-center gap-1.5">
+                                  <h3 className="font-bold text-xs text-[#0A0A0E] dark:text-white font-display">
+                                    {b.companyName}
+                                  </h3>
+                                  {b.verified && (
+                                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                                   )}
                                 </div>
+                                <span className="text-[10px] font-mono text-neutral-400 dark:text-neutral-500 block truncate max-w-[180px]">
+                                  {b.websiteUrl?.replace(/^https?:\/\//, "") || b.id}
+                                </span>
                               </div>
                             </div>
                           </td>
+
+                          {/* Industry & Location */}
+                          <td className={`${isCompact ? "py-2.5" : "py-3.5"} px-4`}>
+                            <div className="space-y-0.5">
+                              <span className="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-black/5 dark:bg-white/5 border border-black/8 dark:border-white/8 inline-block">
+                                {b.industry}
+                              </span>
+                              <div className="flex items-center gap-1 text-[10px] text-[#5A5A68] dark:text-[#9A9AA6]">
+                                <MapPin className="w-3 h-3 shrink-0" />
+                                <span className="truncate max-w-[150px]">{b.location}</span>
+                              </div>
+                            </div>
+                          </td>
+
+                          {/* Headcount */}
+                          <td className={`${isCompact ? "py-2.5" : "py-3.5"} px-4 font-mono text-[11px] text-[#5A5A68] dark:text-[#9A9AA6]`}>
+                            <div className="flex items-center gap-1">
+                              <Users className="w-3 h-3 text-neutral-400 shrink-0" />
+                              <span>{b.companySize}</span>
+                            </div>
+                          </td>
+
+                          {/* Campaigns count */}
+                          <td className={`${isCompact ? "py-2.5" : "py-3.5"} px-4`}>
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-[#FFD21F]/15 text-[#0A0A0E] dark:text-[#FFD21F] border border-[#FFD21F]/30">
+                              <Layers className="w-3 h-3" />
+                              <span>{brandCamps.length} Briefs</span>
+                            </span>
+                          </td>
+
+                          {/* Capital Invested */}
+                          <td className={`${isCompact ? "py-2.5" : "py-3.5"} px-4 font-mono text-xs font-black text-[#0A0A0E] dark:text-white`}>
+                            {format(b.totalSpent || 50000, "USD")}
+                          </td>
+
+                          {/* Risk Rating */}
+                          <td className={`${isCompact ? "py-2.5" : "py-3.5"} px-4`}>
+                            <span className="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold uppercase bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
+                              Tier-1 • A+
+                            </span>
+                          </td>
+
+                          {/* Verification Status */}
+                          <td className={`${isCompact ? "py-2.5" : "py-3.5"} px-4 text-center`}>
+                            <span
+                              className={`px-2 py-0.5 rounded-full text-[10px] font-bold font-mono uppercase inline-flex items-center gap-1 border ${
+                                b.verified
+                                  ? "bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-500/30"
+                                  : "bg-black/5 dark:bg-white/5 text-neutral-500 border-black/10 dark:border-white/10"
+                              }`}
+                            >
+                              {b.verified ? "Verified Partner" : "Standard"}
+                            </span>
+                          </td>
+
+                          {/* Actions */}
+                          <td className={`${isCompact ? "py-2.5" : "py-3.5"} px-4 text-right`}>
+                            <div className="flex items-center justify-end gap-1.5" onClick={(e) => e.stopPropagation()}>
+                              <button
+                                onClick={(e) => toggleVerify(b.id, !!b.verified, e)}
+                                disabled={updatingId === b.id}
+                                className={`px-3 py-1 rounded-md text-[10px] font-bold transition-all border cursor-pointer ${
+                                  b.verified
+                                    ? "bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0A0A0E] dark:text-white border-black/10 dark:border-white/10"
+                                    : "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:brightness-105 text-[#0A0A0E] border-black/15 shadow-xs"
+                                }`}
+                              >
+                                {updatingId === b.id ? "Updating..." : b.verified ? "Revoke Partner" : "Approve Partner"}
+                              </button>
+
+                              <button
+                                onClick={() => setExpandedId(isExpanded ? null : b.id)}
+                                className="p-1 rounded-md hover:bg-black/5 dark:hover:bg-white/10 text-neutral-500 transition-colors cursor-pointer"
+                                title="Toggle details"
+                              >
+                                {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                              </button>
+                            </div>
+                          </td>
                         </tr>
-                      )}
-                    </React.Fragment>
-                  );
-                })}
-              </tbody>
-            </table>
+
+                        {/* Expandable Inline Details Drawer */}
+                        {isExpanded && (
+                          <tr className="bg-[#FAF9F5] dark:bg-[#14141E]">
+                            <td colSpan={8} className="p-4 sm:p-5 border-b border-black/8 dark:border-white/10">
+                              <div className="space-y-4">
+                                {/* Top Bar of Drawer */}
+                                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-black/5 dark:border-white/5">
+                                  <div className="space-y-1">
+                                    <div className="flex items-center gap-2">
+                                      <h4 className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                                        {b.companyName} Enterprise File
+                                      </h4>
+                                      <span className="text-[10px] font-mono text-neutral-400">ID: {b.id}</span>
+                                      <button
+                                        onClick={(e) => handleCopy(b.id, e)}
+                                        className="text-neutral-400 hover:text-[#0A0A0E] dark:hover:text-white"
+                                        title="Copy ID"
+                                      >
+                                        {copiedId === b.id ? <Check className="w-3 h-3 text-emerald-500" /> : <Copy className="w-3 h-3" />}
+                                      </button>
+                                    </div>
+                                    <p className="text-[11px] text-[#5A5A68] dark:text-[#9A9AA6] max-w-2xl">
+                                      {b.headline || b.description || "Enterprise corporate partner on the AbeyCollab Creator Marketplace."}
+                                    </p>
+                                  </div>
+
+                                  <div className="flex items-center gap-2">
+                                    {b.websiteUrl && (
+                                      <a
+                                        href={b.websiteUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="px-2.5 py-1 rounded-md text-[10px] font-bold bg-white dark:bg-[#1E1E2C] border border-black/10 dark:border-white/10 hover:border-[#FFD21F] flex items-center gap-1 text-[#0A0A0E] dark:text-white transition-all shadow-xs"
+                                      >
+                                        <span>Official Website</span>
+                                        <ExternalLink className="w-3 h-3" />
+                                      </a>
+                                    )}
+                                    <Link
+                                      href={`/brands/${b.id}`}
+                                      className="px-2.5 py-1 rounded-md text-[10px] font-bold bg-[#FFD21F] text-[#0A0A0E] border border-black/15 hover:brightness-105 flex items-center gap-1 transition-all shadow-xs"
+                                    >
+                                      <span>Public Profile</span>
+                                      <ArrowUpRight className="w-3 h-3" />
+                                    </Link>
+                                  </div>
+                                </div>
+
+                                {/* Details Grid */}
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                  {/* Underwriting & Solvency */}
+                                  <div className="p-3 rounded-xl bg-white dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
+                                    <div className="flex items-center gap-1.5 text-xs font-bold font-display text-[#0A0A0E] dark:text-white">
+                                      <Lock className="w-3.5 h-3.5 text-emerald-500" />
+                                      <span>Escrow Underwriting Standing</span>
+                                    </div>
+                                    <div className="space-y-1.5 text-[11px] font-mono">
+                                      <div className="flex justify-between text-neutral-500">
+                                        <span>Escrow Collateral Ratio:</span>
+                                        <span className="font-bold text-emerald-600 dark:text-emerald-400">100% Pre-funded</span>
+                                      </div>
+                                      <div className="flex justify-between text-neutral-500">
+                                        <span>Dispute Rate:</span>
+                                        <span className="font-bold text-[#0A0A0E] dark:text-white">0.00%</span>
+                                      </div>
+                                      <div className="flex justify-between text-neutral-500">
+                                        <span>Review SLA Adherence:</span>
+                                        <span className="font-bold text-emerald-600 dark:text-emerald-400">99.4% (Fast Approver)</span>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  {/* Contact & Workspace */}
+                                  <div className="p-3 rounded-xl bg-white dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
+                                    <div className="flex items-center gap-1.5 text-xs font-bold font-display text-[#0A0A0E] dark:text-white">
+                                      <Mail className="w-3.5 h-3.5 text-cyan-500" />
+                                      <span>Primary Authorized Contact</span>
+                                    </div>
+                                    <div className="space-y-1.5 text-[11px] font-mono">
+                                      <div className="flex justify-between text-neutral-500">
+                                        <span>Partnerships Lead:</span>
+                                        <span className="font-bold text-[#0A0A0E] dark:text-white truncate max-w-[130px]">
+                                          {b.email || (b.companyName === "Snitch" ? "influencer.reach@snitch.co.in" : "partnerships@thewholetruthfoods.com")}
+                                        </span>
+                                      </div>
+                                      <div className="flex justify-between text-neutral-500">
+                                        <span>Headquarters:</span>
+                                        <span className="font-bold text-[#0A0A0E] dark:text-white">{b.location}</span>
+                                      </div>
+                                      <div className="flex justify-between text-neutral-500">
+                                        <span>Platform Joined:</span>
+                                        <span className="font-bold text-[#0A0A0E] dark:text-white">
+                                          {new Date(b.createdAt || "2026-01-01").toLocaleDateString()}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  {/* Active Campaigns List */}
+                                  <div className="p-3 rounded-xl bg-white dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
+                                    <div className="flex items-center justify-between text-xs font-bold font-display text-[#0A0A0E] dark:text-white">
+                                      <div className="flex items-center gap-1.5">
+                                        <Briefcase className="w-3.5 h-3.5 text-amber-500" />
+                                        <span>Live Sponsorship Briefs ({brandCamps.length})</span>
+                                      </div>
+                                      <Link href="/admin/campaigns" className="text-[10px] text-[#FFD21F] font-mono hover:underline">
+                                        All briefs
+                                      </Link>
+                                    </div>
+
+                                    {brandCamps.length === 0 ? (
+                                      <p className="text-[10px] font-mono text-neutral-400 py-1">No active campaigns running.</p>
+                                    ) : (
+                                      <div className="space-y-1.5 text-[11px] font-sans">
+                                        {brandCamps.map((camp) => (
+                                          <div key={camp.id} className="p-1.5 rounded-lg bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 flex items-center justify-between gap-2">
+                                            <span className="font-medium text-[#0A0A0E] dark:text-white truncate text-[10px] flex-1">
+                                              {camp.title}
+                                            </span>
+                                            <span className="font-mono text-[10px] font-bold text-neutral-500 shrink-0">
+                                              {format(camp.budget?.totalBudget || 0, camp.budget?.currency || "USD")}
+                                            </span>
+                                          </div>
+                                        ))}
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                        )}
+                      </React.Fragment>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       ) : (
