@@ -15,7 +15,6 @@ import {
   EyeOff,
 } from "lucide-react";
 import { Input } from "@/components/ui/Input";
-import { SocialAuthButtons } from "@/components/auth/SocialAuthButtons";
 import { CreativeLoader } from "@/components/ui/CreativeLoader";
 
 function LoginForm() {
@@ -199,17 +198,6 @@ function LoginForm() {
             Admin
           </button>
         </div>
-      </div>
-
-      {/* Social Login Options (Google, Apple) */}
-      <div className="space-y-2">
-        <SocialAuthButtons mode="login" redirectUrl={redirect} />
-      </div>
-
-      <div className="relative flex py-1 items-center">
-        <div className="flex-grow border-t border-black/8 dark:border-white/10" />
-        <span className="flex-shrink mx-3 text-[10px] font-mono text-[#8A8A98] dark:text-[#7E7E94] uppercase">or with email</span>
-        <div className="flex-grow border-t border-black/8 dark:border-white/10" />
       </div>
 
       <form onSubmit={handleLogin} className="space-y-4">

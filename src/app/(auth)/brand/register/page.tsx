@@ -18,7 +18,6 @@ import {
   Loader2,
   ShieldCheck,
 } from "lucide-react";
-import { SocialAuthButtons } from "@/components/auth/SocialAuthButtons";
 import { formatCurrency } from "@/core/utils/formatters";
 
 export default function BrandRegisterPage() {
@@ -208,17 +207,7 @@ export default function BrandRegisterPage() {
         </div>
       )}
 
-      {/* 1-Click Social Sign-Up */}
-      <div className="space-y-2">
-        <SocialAuthButtons mode="register" role="brand" redirectUrl="/app/brand/campaigns" />
-      </div>
-
-      <div className="relative flex py-1 items-center">
-        <div className="flex-grow border-t border-black/8 dark:border-white/10" />
-        <span className="flex-shrink mx-3 text-[10px] font-mono text-[#8A8A98] dark:text-[#7E7E94] uppercase">or fill company details</span>
-        <div className="flex-grow border-t border-black/8 dark:border-white/10" />
-      </div>
-
+      {/* Registration Form (Social media sign-up deferred to Phase 2) */}
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Input
