@@ -59,31 +59,7 @@ export function getInitialSeedDatabase(): DatabaseState {
   const futureDate = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString();
 
   const initialUsers: UserEntity[] = [
-    // ── 1. Verified Creator Account ──
-    {
-      id: "user-creator",
-      name: "Creator Partner",
-      email: "creator@abeycollab.io",
-      passwordHash: creatorPasswordHash,
-      role: "creator",
-      avatarUrl: "/creators/prarthana.jpg",
-      verified: true,
-      createdAt: now,
-      updatedAt: now,
-    },
-    // ── 2. Verified Brand Account ──
-    {
-      id: "user-brand",
-      name: "Brand Partner",
-      email: "brand@abeycollab.io",
-      passwordHash: brandPasswordHash,
-      role: "brand",
-      avatarUrl: "/brands/linear.png",
-      verified: true,
-      createdAt: now,
-      updatedAt: now,
-    },
-    // ── 3. Kevin — Super Admin ──
+    // ── 1. Agency Super Admin ──
     {
       id: "user-owner",
       name: "Kevin Bhutwala",
@@ -95,11 +71,35 @@ export function getInitialSeedDatabase(): DatabaseState {
       createdAt: now,
       updatedAt: now,
     },
-    // ── 4. Kushi Hanamsagar ──
+    // ── 2. Verified Creator: Waseem Khan ──
+    {
+      id: "user-c-waseem",
+      name: "Waseem Khan",
+      email: "Bloggermaster786@gmail.com",
+      passwordHash: creatorPasswordHash,
+      role: "creator",
+      avatarUrl: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=800&auto=format&fit=crop&q=80",
+      verified: true,
+      createdAt: now,
+      updatedAt: now,
+    },
+    // ── 3. Verified Creator: Prarthana ──
+    {
+      id: "user-c-prarthana",
+      name: "Prarthana",
+      email: "prarthaana04@creators.collably.io",
+      passwordHash: creatorPasswordHash,
+      role: "creator",
+      avatarUrl: "/creators/prarthana.jpg",
+      verified: true,
+      createdAt: now,
+      updatedAt: now,
+    },
+    // ── 4. Verified Creator: Kushi Hanamsagar ──
     {
       id: "user-c-kushi",
       name: "Kushi Hanamsagar",
-      email: "kushihanamsagar9@abeycollab.io",
+      email: "kushihanamsagar9@creators.collably.io",
       passwordHash: creatorPasswordHash,
       role: "creator",
       avatarUrl: "/creators/kushi-hanamsagar.jpg",
@@ -107,15 +107,51 @@ export function getInitialSeedDatabase(): DatabaseState {
       createdAt: now,
       updatedAt: now,
     },
-    // ── 5. Alex Rivera ──
+    // ── 5. Verified Creator: Pooja Bera ──
     {
-      id: "user-c-alex",
-      name: "Alex Rivera",
-      email: "alex.rivera@abeycollab.io",
+      id: "user-c-pooja",
+      name: "Pooja Bera",
+      email: "berapooja1994@gmail.com",
       passwordHash: creatorPasswordHash,
       role: "creator",
-      avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
-      verified: false,
+      avatarUrl: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&auto=format&fit=crop&q=80",
+      verified: true,
+      createdAt: now,
+      updatedAt: now,
+    },
+    // ── 6. Verified Creator: Kunal Rajput ──
+    {
+      id: "user-c-kunal",
+      name: "Kunal Rajput",
+      email: "subtle.strength@abeycollab.io",
+      passwordHash: creatorPasswordHash,
+      role: "creator",
+      avatarUrl: "/creators/kunal-rajput.jpg",
+      verified: true,
+      createdAt: now,
+      updatedAt: now,
+    },
+    // ── 7. Verified Brand: The Whole Truth Foods ──
+    {
+      id: "user-brand-truth",
+      name: "The Whole Truth Foods",
+      email: "partnerships@thewholetruthfoods.com",
+      passwordHash: brandPasswordHash,
+      role: "brand",
+      avatarUrl: "/brands/the-whole-truth.png",
+      verified: true,
+      createdAt: now,
+      updatedAt: now,
+    },
+    // ── 8. Verified Brand: Snitch ──
+    {
+      id: "user-brand-snitch",
+      name: "Snitch",
+      email: "influencer.reach@snitch.co.in",
+      passwordHash: brandPasswordHash,
+      role: "brand",
+      avatarUrl: "/brands/snitch.png",
+      verified: true,
       createdAt: now,
       updatedAt: now,
     },

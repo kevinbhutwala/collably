@@ -808,10 +808,12 @@ export default function AdminUsersPanel() {
                       <div className="relative shrink-0">
                         <div className="w-10 h-10 rounded-xl overflow-hidden border border-black/10 dark:border-white/10 bg-black/5">
                           <SafeImage
-                            src={user.avatarUrl || `https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80`}
+                            src={user.avatarUrl || ""}
                             alt={user.name}
+                            fallbackType={user.role === "brand" ? "brand" : "creator"}
+                            fallbackName={user.name}
                             fill
-                            className="object-cover"
+                            className={user.role === "brand" ? "object-contain p-1" : "object-cover"}
                           />
                         </div>
                         {user.isOnline ? (
@@ -1003,10 +1005,12 @@ export default function AdminUsersPanel() {
                         <div className="relative shrink-0">
                           <div className="w-10 h-10 rounded-xl overflow-hidden border border-black/10 dark:border-white/10 bg-black/5">
                             <SafeImage
-                              src={user.avatarUrl || `https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80`}
+                              src={user.avatarUrl || ""}
                               alt={user.name}
+                              fallbackType={user.role === "brand" ? "brand" : "creator"}
+                              fallbackName={user.name}
                               fill
-                              className="object-cover"
+                              className={user.role === "brand" ? "object-contain p-1" : "object-cover"}
                             />
                           </div>
                           {user.isOnline ? (
@@ -1126,10 +1130,12 @@ export default function AdminUsersPanel() {
             <div className="text-center space-y-3">
               <div className="w-20 h-20 rounded-3xl mx-auto overflow-hidden border-2 border-[#FFD21F] relative shadow-md">
                 <SafeImage
-                  src={selectedUser.avatarUrl || `https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80`}
+                  src={selectedUser.avatarUrl || ""}
                   alt={selectedUser.name}
+                  fallbackType={selectedUser.role === "brand" ? "brand" : "creator"}
+                  fallbackName={selectedUser.name}
                   fill
-                  className="object-cover"
+                  className={selectedUser.role === "brand" ? "object-contain p-2" : "object-cover"}
                 />
               </div>
 
