@@ -376,9 +376,9 @@ export default function SettingsPage() {
                 <span className="text-[10px] font-mono uppercase text-[#6A6A78] dark:text-[#8E8EA4] font-bold block">
                   Amount Paid
                 </span>
-                <div className="flex items-center gap-1.5 font-display font-extrabold text-sm text-[#0A0A0E] dark:text-white">
-                  <CreditCard className="w-3.5 h-3.5 text-[#FFD21F]" />
-                  <span>
+                <div className="flex items-center gap-1.5 font-display font-extrabold text-xs sm:text-sm text-[#0A0A0E] dark:text-white flex-wrap">
+                  <CreditCard className="w-3.5 h-3.5 text-[#FFD21F] shrink-0" />
+                  <span className="break-words">
                     {(subscription?.amountPaid !== undefined ? subscription.amountPaid : subscription?.price || 0) > 0
                       ? `$${subscription?.amountPaid !== undefined ? subscription.amountPaid : subscription?.price}.00 USD (≈ ₹${Math.round((subscription?.amountPaid !== undefined ? subscription.amountPaid : subscription?.price || 0) * inrRate).toLocaleString("en-IN")} INR)`
                       : "$0.00 (Free Starter Tier)"}
@@ -629,7 +629,7 @@ export default function SettingsPage() {
                       <button
                         onClick={() => handlePlanChange(p)}
                         disabled={isCurrent || (isLoading && isProcessing)}
-                        className={`w-full py-3.5 rounded-full text-xs font-bold transition-all flex items-center justify-center gap-2 active:scale-98 shadow-sm ${
+                        className={`w-full py-3.5 px-3 rounded-full text-xs font-bold transition-all flex flex-wrap items-center justify-center gap-1.5 text-center leading-snug active:scale-98 shadow-sm ${
                           isCurrent
                             ? "bg-black/5 dark:bg-white/10 text-[#8A8A9A] dark:text-white/80 cursor-not-allowed border border-black/10 dark:border-white/20 font-bold"
                             : p.highlight
@@ -639,24 +639,24 @@ export default function SettingsPage() {
                       >
                         {isProcessing ? (
                           <>
-                            <Loader2 className="w-4 h-4 animate-spin text-current" />
+                            <Loader2 className="w-4 h-4 animate-spin text-current shrink-0" />
                             <span>Processing...</span>
                           </>
                         ) : isCurrent ? (
                           <span className="flex items-center gap-1.5">
-                            <Check className="w-3.5 h-3.5 text-emerald-500" />
+                            <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
                             Current Active Plan
                           </span>
                         ) : price > 0 ? (
                           <>
-                            <CreditCard className="w-3.5 h-3.5" />
+                            <CreditCard className="w-3.5 h-3.5 shrink-0" />
                             <span>Pay ${isAnnual ? price * 12 : price} (₹{Math.round((isAnnual ? price * 12 : price) * inrRate).toLocaleString("en-IN")}) &amp; Upgrade</span>
-                            <ArrowRight className="w-3.5 h-3.5" />
+                            <ArrowRight className="w-3.5 h-3.5 shrink-0" />
                           </>
                         ) : (
                           <>
                             <span>Switch to Free Starter</span>
-                            <ArrowRight className="w-3.5 h-3.5" />
+                            <ArrowRight className="w-3.5 h-3.5 shrink-0" />
                           </>
                         )}
                       </button>

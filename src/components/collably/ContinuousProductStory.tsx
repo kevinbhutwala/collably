@@ -355,15 +355,15 @@ export function ContinuousProductStory() {
                       </div>
 
                       <div className="space-y-2 font-mono text-[11px]">
-                        <div className="flex justify-between text-[#5A5A68] dark:text-[#8E8EA4]">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[#5A5A68] dark:text-[#8E8EA4]">
                           <span>Audience Category Overlap:</span>
                           <strong className="text-[#0A0A0E] dark:text-white">Developer &amp; Tech Focused</strong>
                         </div>
-                        <div className="flex justify-between text-[#5A5A68] dark:text-[#8E8EA4]">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[#5A5A68] dark:text-[#8E8EA4]">
                           <span>Engagement Quality:</span>
                           <strong className="text-emerald-600 dark:text-emerald-400">Above Category Average</strong>
                         </div>
-                        <div className="flex justify-between text-[#5A5A68] dark:text-[#8E8EA4]">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[#5A5A68] dark:text-[#8E8EA4]">
                           <span>Commercial Rights:</span>
                           <strong className="text-[#0A0A0E] dark:text-white">Full Perpetual Included</strong>
                         </div>
@@ -468,15 +468,15 @@ export function ContinuousProductStory() {
                       className="space-y-3"
                     >
                       <div className="p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#1A1A28] border border-[#FFD21F]/50 space-y-2">
-                        <div className="flex items-center justify-between text-xs font-mono">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs font-mono">
                           <span className="text-[#7A7A8A] dark:text-[#8E8EA4]">Gross Escrow Milestone</span>
                           <span className="font-bold text-[#0A0A0E] dark:text-white">$3,500.00</span>
                         </div>
-                        <div className="flex items-center justify-between text-xs font-mono">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs font-mono">
                           <span className="text-[#7A7A8A] dark:text-[#8E8EA4]">Platform QA &amp; Escrow Fee (10%)</span>
                           <span className="text-rose-600 font-bold">-$350.00</span>
                         </div>
-                        <div className="pt-2 border-t border-black/8 dark:border-white/10 flex items-center justify-between font-mono">
+                        <div className="pt-2 border-t border-black/8 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-1 font-mono">
                           <strong className="text-[#0A0A0E] dark:text-white font-display text-sm">Net Creator Payout</strong>
                           <strong className="text-emerald-600 dark:text-emerald-400 font-display text-lg">$3,150.00</strong>
                         </div>

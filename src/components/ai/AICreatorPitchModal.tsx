@@ -107,11 +107,11 @@ export function AICreatorPitchModal({
               {generatedPitch}
             </div>
 
-            <div className="flex gap-2">
-              <Button variant="outline" size="sm" onClick={() => navigator.clipboard.writeText(generatedPitch)} className="rounded-full">
+            <div className="flex flex-col sm:flex-row gap-2">
+              <Button variant="outline" size="sm" onClick={() => navigator.clipboard.writeText(generatedPitch)} className="rounded-full w-full sm:w-auto">
                 Copy Text
               </Button>
-              <Button variant="primary" size="sm" onClick={handleUsePitch} className="flex-1 rounded-full font-display font-bold">
+              <Button variant="primary" size="sm" onClick={handleUsePitch} className="flex-1 rounded-full font-display font-bold w-full sm:w-auto">
                 Insert into Application Form
               </Button>
             </div>

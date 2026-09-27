@@ -366,7 +366,7 @@ export function PlanUpgradeModal() {
                     <button
                       onClick={() => handleSelectPlan(p)}
                       disabled={isLoading && isProcessing}
-                      className={`w-full py-3 rounded-full text-xs font-bold transition-all flex items-center justify-center gap-2 active:scale-98 ${
+                      className={`w-full py-3 px-3 rounded-full text-xs font-bold transition-all flex flex-wrap items-center justify-center gap-1.5 text-center leading-snug active:scale-98 ${
                         p.highlight
                           ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] shadow-[0_4px_16px_rgba(255,210,31,0.4)] font-extrabold"
                           : "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] hover:bg-[#1A1A24] dark:hover:bg-[#FFE052] font-bold shadow-md"
@@ -374,19 +374,19 @@ export function PlanUpgradeModal() {
                     >
                       {isProcessing ? (
                         <>
-                          <Loader2 className="w-4 h-4 animate-spin text-current" />
+                          <Loader2 className="w-4 h-4 animate-spin text-current shrink-0" />
                           <span>Connecting to Gateway...</span>
                         </>
                       ) : price > 0 ? (
                         <>
-                          <CreditCard className="w-3.5 h-3.5" />
-                          <span>Pay ${isAnnual ? price * 12 : price} (₹{Math.round((isAnnual ? price * 12 : price) * 83.5).toLocaleString("en-IN")}) &amp; Activate</span>
-                          <ArrowRight className="w-3.5 h-3.5" />
+                          <CreditCard className="w-3.5 h-3.5 shrink-0" />
+                          <span>Pay ${isAnnual ? price * 12 : price} (₹{Math.round((isAnnual ? price * 12 : price) * inrRate).toLocaleString("en-IN")}) &amp; Activate</span>
+                          <ArrowRight className="w-3.5 h-3.5 shrink-0" />
                         </>
                       ) : (
                         <>
                           <span>Switch to Free Starter</span>
-                          <ArrowRight className="w-3.5 h-3.5" />
+                          <ArrowRight className="w-3.5 h-3.5 shrink-0" />
                         </>
                       )}
                     </button>

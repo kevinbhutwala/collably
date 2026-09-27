@@ -1075,11 +1075,11 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
             required
           />
 
-          <div className="flex gap-2.5 pt-2">
+          <div className="flex flex-col sm:flex-row gap-2.5 pt-2">
             <button
               type="button"
               onClick={() => selectedDel && handleRaiseDispute(selectedDel.id)}
-              className="px-4 py-2.5 rounded-full bg-red-50 dark:bg-red-950/40 hover:bg-red-100 dark:hover:bg-red-900/60 text-red-700 dark:text-red-300 font-bold text-xs border border-red-200 dark:border-red-800"
+              className="px-4 py-2.5 rounded-full bg-red-50 dark:bg-red-950/40 hover:bg-red-100 dark:hover:bg-red-900/60 text-red-700 dark:text-red-300 font-bold text-xs border border-red-200 dark:border-red-800 text-center"
             >
               Raise Formal Dispute
             </button>
@@ -1087,7 +1087,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
               type="button"
               disabled={Boolean(selectedDel && selectedDel.revisionCount >= selectedDel.maxRevisions)}
               onClick={() => selectedDel && handleRequestRevision(selectedDel.id)}
-              className="flex-1 py-2.5 rounded-full bg-black dark:bg-[#202030] text-white hover:bg-black/90 dark:hover:bg-[#2c2c40] font-bold text-xs transition-all disabled:opacity-40 disabled:cursor-not-allowed border border-transparent dark:border-white/10"
+              className="flex-1 py-2.5 rounded-full bg-black dark:bg-[#202030] text-white hover:bg-black/90 dark:hover:bg-[#2c2c40] font-bold text-xs transition-all disabled:opacity-40 disabled:cursor-not-allowed border border-transparent dark:border-white/10 text-center"
             >
               {selectedDel && selectedDel.revisionCount >= selectedDel.maxRevisions ? "Revision Limit Exceeded" : "Send Revision Request"}
             </button>

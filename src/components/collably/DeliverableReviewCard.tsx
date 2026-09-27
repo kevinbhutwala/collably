@@ -217,7 +217,7 @@ export function DeliverableReviewCard({
               href={assetUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-extrabold shadow-sm transition-all border border-black/10 shrink-0 group"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-extrabold shadow-sm transition-all border border-black/10 w-full sm:w-auto shrink-0 group"
             >
               <span>Open in {platformName} / New Tab</span>
               <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[#0A0A0E]" />
@@ -250,9 +250,9 @@ export function DeliverableReviewCard({
             <span>Protected payment of <strong className="text-[#0A0A0E] dark:text-white font-sans">{formatCurrency(payoutAmount, currency)}</strong> held safely until approved</span>
           </div>
 
-          <div className="flex items-center gap-3 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
             {status === "approved" ? (
-              <div className="flex flex-wrap items-center gap-2">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
                 <div className="px-4 py-2.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-600 text-emerald-800 dark:text-emerald-300 font-bold text-xs flex items-center justify-center gap-2 font-mono">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                   <span>Payment Released to Creator</span>
@@ -271,7 +271,7 @@ export function DeliverableReviewCard({
                 <button
                   type="button"
                   onClick={() => setIsRevisionModalOpen(true)}
-                  className="flex-1 sm:flex-none px-4 py-2.5 rounded-full bg-[#F8F8FC] hover:bg-[#EFEFF6] dark:bg-white/10 dark:hover:bg-white/15 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all border border-black/10 dark:border-white/10 flex items-center justify-center gap-1.5"
+                  className="w-full sm:w-auto px-4 py-2.5 rounded-full bg-[#F8F8FC] hover:bg-[#EFEFF6] dark:bg-white/10 dark:hover:bg-white/15 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all border border-black/10 dark:border-white/10 flex items-center justify-center gap-1.5"
                 >
                   <AlertCircle className="w-3.5 h-3.5 text-amber-600" />
                   <span>Request Edits</span>
@@ -280,7 +280,7 @@ export function DeliverableReviewCard({
                 <button
                   type="button"
                   onClick={handleApprove}
-                  className="flex-1 sm:flex-none px-6 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-black text-xs transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1.5"
+                  className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-black text-xs transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1.5"
                 >
                   <CheckCircle2 className="w-4 h-4 text-[#0A0A0E]" />
                   <span>Approve &amp; Send Payment</span>
@@ -307,20 +307,20 @@ export function DeliverableReviewCard({
             rows={4}
             required
           />
-          <div className="flex gap-2.5 pt-2">
+          <div className="flex flex-col sm:flex-row gap-2.5 pt-2">
             <button
               type="button"
               onClick={() => {
                 setIsRevisionModalOpen(false);
                 setIsDisputeModalOpen(true);
               }}
-              className="px-4 py-2.5 rounded-full bg-red-50 hover:bg-red-100 dark:bg-red-950/40 dark:hover:bg-red-900/50 text-red-700 dark:text-red-300 font-bold text-xs border border-red-200 dark:border-red-800"
+              className="px-4 py-2.5 rounded-full bg-red-50 hover:bg-red-100 dark:bg-red-950/40 dark:hover:bg-red-900/50 text-red-700 dark:text-red-300 font-bold text-xs border border-red-200 dark:border-red-800 text-center"
             >
               Escalate to Admin Dispute
             </button>
             <button
               type="submit"
-              className="flex-1 py-2.5 rounded-full bg-black text-white hover:bg-black/90 dark:bg-[#FFD21F] dark:text-[#0A0A0E] dark:hover:bg-[#FFE052] font-bold text-xs transition-all"
+              className="flex-1 py-2.5 rounded-full bg-black text-white hover:bg-black/90 dark:bg-[#FFD21F] dark:text-[#0A0A0E] dark:hover:bg-[#FFE052] font-bold text-xs transition-all text-center"
             >
               Send Revision Request to Creator
             </button>

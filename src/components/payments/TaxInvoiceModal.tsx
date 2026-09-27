@@ -53,7 +53,7 @@ export function TaxInvoiceModal({ isOpen, onClose, invoice }: TaxInvoiceModalPro
         {/* Printable Document Box */}
         <div className="p-6 sm:p-8 rounded-2xl bg-white dark:bg-[#151520] border border-black/10 dark:border-white/10 shadow-xs space-y-6 print:border-none print:p-0">
           {/* Header */}
-          <div className="flex items-start justify-between border-b border-black/10 dark:border-white/10 pb-6">
+          <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-black/10 dark:border-white/10 pb-6">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
                 <span className="font-extrabold text-xl font-display text-[#0A0A0E] dark:text-white">
@@ -71,7 +71,7 @@ export function TaxInvoiceModal({ isOpen, onClose, invoice }: TaxInvoiceModalPro
               </p>
             </div>
 
-            <div className="text-right space-y-1 font-mono text-xs">
+            <div className="text-left sm:text-right space-y-1 font-mono text-xs">
               <span className="text-[#7A7A8A] block text-[10px] uppercase">Invoice Number</span>
               <strong className="text-sm text-[#0A0A0E] dark:text-white font-bold block">
                 {invoice.invoiceNumber}
@@ -157,21 +157,21 @@ export function TaxInvoiceModal({ isOpen, onClose, invoice }: TaxInvoiceModalPro
         </div>
 
         {/* Modal Controls */}
-        <div className="flex items-center justify-end gap-2.5 pt-2 print:hidden">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-2.5 pt-2 print:hidden">
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 rounded-xl text-xs font-semibold hover:bg-black/5 dark:hover:bg-white/5 transition-all"
+            className="w-full sm:w-auto px-4 py-2 rounded-xl text-xs font-semibold hover:bg-black/5 dark:hover:bg-white/5 transition-all text-center"
           >
             Close
           </button>
           <button
             type="button"
             onClick={handlePrint}
-            className="px-5 py-2.5 rounded-xl bg-black dark:bg-white text-white dark:text-black text-xs font-semibold hover:opacity-90 transition-all flex items-center gap-1.5 shadow-xs"
+            className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-black dark:bg-white text-white dark:text-black text-xs font-semibold hover:opacity-90 transition-all flex items-center justify-center gap-1.5 shadow-xs"
           >
             <Printer className="w-3.5 h-3.5 text-[#FFD21F]" />
-            Print / Save as PDF
+            <span>Print / Save as PDF</span>
           </button>
         </div>
       </div>
