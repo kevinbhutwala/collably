@@ -43,7 +43,14 @@ export function StatsCard({
       </div>
 
       <div className="mt-2.5 sm:mt-3.5 flex flex-wrap items-baseline justify-between gap-1.5 sm:gap-2 relative z-10">
-        <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display numeric-tabular truncate max-w-full">
+        <h3
+          className={cn(
+            "font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display numeric-tabular truncate max-w-full",
+            typeof value === "string" && value.length > 9
+              ? "text-base sm:text-lg lg:text-xl"
+              : "text-xl sm:text-2xl lg:text-3xl"
+          )}
+        >
           {value}
         </h3>
 

@@ -185,7 +185,7 @@ function LoginForm() {
           </button>
           <button
             type="button"
-            onClick={() => handleQuickFill("brand@abeycollab.io", "Password123!")}
+            onClick={() => handleQuickFill("partnerships@thewholetruthfoods.com", "Password123!")}
             className="px-2 py-1.5 rounded-xl text-[11px] font-semibold bg-white dark:bg-[#1A1A24] border border-black/10 dark:border-white/10 hover:border-[#FFD21F] hover:bg-[#FFD21F]/10 dark:hover:bg-[#FFD21F]/10 transition-colors text-center text-[#0A0A0E] dark:text-white"
           >
             Brand
