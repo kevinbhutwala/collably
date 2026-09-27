@@ -181,33 +181,13 @@ export function getInitialSeedDatabase(): DatabaseState {
     },
   ];
 
-  // Functional demo profiles keep the published login credentials usable for
-  // real API flows rather than only for mock-driven screens.
+  // Curated brands and campaigns roster
+  const initialBrands: BrandProfile[] = [...MOCK_BRANDS];
+
+  // Curated creators roster from database state
   const initialCreators: CreatorProfile[] = [
     ELENA_ROSTOVA_PROFILE,
-    ...MOCK_CREATORS.filter((c) => c.userId !== "user-creator"),
-  ];
-
-  const initialBrands: BrandProfile[] = [
-    {
-      id: "brand-demo",
-      userId: "user-brand",
-      companyName: "Brand Partner",
-      industry: "Technology & AI",
-      headline: "Strategic Brand Partner Workspace",
-      description: "Verified brand workspace for commissioning creator campaigns and managing escrow deliverables.",
-      logoUrl: "/brands/linear.png",
-      coverImageUrl: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&auto=format&fit=crop&q=80",
-      websiteUrl: "https://linear.app",
-      location: "San Francisco, CA",
-      companySize: "51-200",
-      verified: true,
-      activeCampaignsCount: 1,
-      totalSpent: 45000,
-      socialHandles: { x: "linear" },
-      createdAt: now,
-    },
-    ...MOCK_BRANDS.filter((b) => b.id !== "brand-demo"),
+    ...MOCK_CREATORS.filter((c) => c.id !== "creator-demo").slice(0, 7),
   ];
 
   // Seed baseline platform metrics for trending calculation

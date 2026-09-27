@@ -137,11 +137,11 @@ export function CampaignsDirectoryClient() {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2.5">
                         <div className="w-9 h-9 rounded-2xl bg-[#0A0A0E] dark:bg-[#1E1E2C] text-white flex items-center justify-center font-mono font-extrabold text-xs shadow-xs border border-transparent dark:border-white/10">
-                          {camp.title.slice(0, 2).toUpperCase()}
+                          {(camp.brand?.companyName || camp.title).slice(0, 2).toUpperCase()}
                         </div>
                         <div>
-                          <span className="text-[10px] font-mono text-[#888898] dark:text-[#7A7A8A] uppercase block">
-                            Verified Brand
+                          <span className="text-[10px] font-mono text-[#888898] dark:text-[#7A7A8A] uppercase block font-semibold">
+                            {camp.brand?.companyName || "Verified Brand"}
                           </span>
                           <span className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
                             {camp.category}
