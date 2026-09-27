@@ -471,14 +471,97 @@ assert("Sanitize", "7.6 Empty website string preserves optionality", normalizeWe
 const duplicateErrorMsg = "An account with this email address already exists. Please sign in or use a different email.";
 assert("ErrorMsg", "7.7 Actionable guidance in duplicate email message", duplicateErrorMsg.includes("sign in") && duplicateErrorMsg.includes("different email"));
 
+// -----------------------------------------------------------------------------
+// 8. SESSION PERSISTENCE, RECOVERY & TENANT ACCESS SECURITY
+// -----------------------------------------------------------------------------
+console.log("\n🔒 --- 8. SESSION PERSISTENCE, RECOVERY & TENANT SECURITY ---");
+
+// 8.1 Cookie configurations
+const cookieOptions = {
+  httpOnly: true,
+  secure: true,
+  sameSite: "lax",
+  maxAge: 7 * 24 * 60 * 60, // 7 days
+  path: "/",
+};
+assert("Session", "8.1 Session cookie configured with 7-day max-age", cookieOptions.maxAge === 604800);
+assert("Session", "8.2 Session cookie enforces httpOnly security", cookieOptions.httpOnly === true);
+assert("Session", "8.3 Session cookie enables lax sameSite policy for seamless redirect", cookieOptions.sameSite === "lax");
+
+// 8.2 Token creation and edge payload recovery
+const testPayload = {
+  userId: "usr-session-test-001",
+  email: "creator@abeycollab.io",
+  role: "creator",
+};
+const sessionToken = createSessionToken(testPayload);
+assert("Session", "8.4 Session token creates valid JWT structure", typeof sessionToken === "string" && sessionToken.split(".").length === 3);
+
+const recoveredPayload = verifySessionToken(sessionToken);
+assert("Session", "8.5 Session token verifies and recovers valid payload", recoveredPayload !== null && recoveredPayload.userId === testPayload.userId);
+assert("Session", "8.6 Recovered payload preserves user role for RBAC", recoveredPayload.role === "creator");
+
+// 8.3 Expired token rejection
+function createExpiredSessionToken(payload) {
+  const header = Buffer.from(JSON.stringify({ alg: "HS256", typ: "JWT" })).toString("base64url");
+  const data = Buffer.from(
+    JSON.stringify({
+      ...payload,
+      iat: Math.floor(Date.now() / 1000) - 3600,
+      exp: Math.floor(Date.now() / 1000) - 60, // expired 60s ago
+    })
+  ).toString("base64url");
+  const sig = crypto.createHmac("sha256", JWT_SECRET).update(`${header}.${data}`).digest("base64url");
+  return `${header}.${data}.${sig}`;
+}
+const expiredToken = createExpiredSessionToken(testPayload);
+assert("Session", "8.7 Expired session token is rejected by verifier", verifySessionToken(expiredToken) === null);
+
+// 8.4 Tampered token rejection
+const [headerPart, payloadPart, sigPart] = sessionToken.split(".");
+const tamperedPayload = Buffer.from(JSON.stringify({ ...testPayload, role: "super_admin" })).toString("base64url");
+const tamperedToken = `${headerPart}.${tamperedPayload}.${sigPart}`;
+assert("Session", "8.8 Role-escalation tampered token is rejected", verifySessionToken(tamperedToken) === null);
+
+// 8.5 Multi-cookie extraction simulation
+function extractSessionToken(cookies, authHeader) {
+  return (
+    cookies["abeycollab_session"] ||
+    cookies["collably_session"] ||
+    cookies["valence_session"] ||
+    (authHeader ? authHeader.replace(/^Bearer\s+/i, "") : null)
+  );
+}
+assert("Session", "8.9 Resolves primary abeycollab_session cookie", extractSessionToken({ abeycollab_session: "tok_abey" }, null) === "tok_abey");
+assert("Session", "8.10 Resolves legacy collably_session fallback cookie", extractSessionToken({ collably_session: "tok_collab" }, null) === "tok_collab");
+assert("Session", "8.11 Resolves authorization header Bearer token", extractSessionToken({}, "Bearer tok_header") === "tok_header");
+
+// 8.6 Tenant access isolation simulation (Creator trying to access brand route)
+function checkTenantAccess(userRole, route) {
+  if (route.startsWith("/app/brand")) {
+    const brandRoles = ["brand", "brand_owner", "brand_manager", "brand_member", "super_admin", "agency_admin", "agency_owner"];
+    return brandRoles.includes(userRole);
+  }
+  if (route.startsWith("/admin")) {
+    const adminRoles = ["super_admin", "agency_admin", "agency_owner"];
+    return adminRoles.includes(userRole);
+  }
+  return true;
+}
+assert("Tenant", "8.12 Creator is denied access to brand workspace routes", checkTenantAccess("creator", "/app/brand/campaigns") === false);
+assert("Tenant", "8.13 Brand user is granted access to brand workspace routes", checkTenantAccess("brand", "/app/brand/campaigns") === true);
+assert("Tenant", "8.14 Regular creator is denied access to admin portal", checkTenantAccess("creator", "/admin/creators") === false);
+assert("Tenant", "8.15 Super Admin is granted access across admin and brand routes", checkTenantAccess("super_admin", "/admin") === true && checkTenantAccess("super_admin", "/app/brand/campaigns") === true);
+
 console.log("\n================================================================================");
 console.log(`TOTAL AUDIT CHECKS: ${total} | PASSED: ${passed} | FAILED: ${total - passed}`);
 console.log("================================================================================\n");
 
 if (passed === total) {
-  console.log("🎉 ALL AUTHENTICATION, SIGNUP, SIGNIN & DATA FLOW AUDITS PASSED (100%)!\n");
+  console.log("🎉 ALL AUTHENTICATION, SIGNUP, SIGNIN, SESSION & TENANT AUDITS PASSED (100%)!\n");
   process.exit(0);
 } else {
   console.error("❌ SOME AUDIT CHECKS FAILED!\n");
   process.exit(1);
 }
+

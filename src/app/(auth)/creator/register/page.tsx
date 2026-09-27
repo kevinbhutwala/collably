@@ -46,28 +46,58 @@ export default function CreatorRegisterPage() {
     primaryCategory: "Technology & AI" as CreatorCategory,
     startingPrice: 500,
     bio: "",
-    // Social Accounts
+    // Social Accounts - default to empty for accurate initial telemetry
     youtubeHandle: "",
-    youtubeSubscribers: 25000,
+    youtubeSubscribers: "" as unknown as number,
     instagramHandle: "",
-    instagramFollowers: 15000,
+    instagramFollowers: "" as unknown as number,
     tiktokHandle: "",
-    tiktokFollowers: 30000,
+    tiktokFollowers: "" as unknown as number,
     xHandle: "",
-    xFollowers: 10000,
+    xFollowers: "" as unknown as number,
     linkedinHandle: "",
-    linkedinFollowers: 5000,
+    linkedinFollowers: "" as unknown as number,
   });
 
-  // Calculate live total reach based on active inputs
+  // Calculate live total reach based on active platform inputs
   const calculateTotalReach = () => {
     let total = 0;
-    if (formData.youtubeSubscribers) total += Number(formData.youtubeSubscribers) || 0;
-    if (formData.instagramFollowers) total += Number(formData.instagramFollowers) || 0;
-    if (formData.tiktokFollowers) total += Number(formData.tiktokFollowers) || 0;
-    if (formData.xFollowers) total += Number(formData.xFollowers) || 0;
-    if (formData.linkedinFollowers) total += Number(formData.linkedinFollowers) || 0;
+    if (formData.youtubeHandle && formData.youtubeSubscribers) total += Number(formData.youtubeSubscribers) || 0;
+    if (formData.instagramHandle && formData.instagramFollowers) total += Number(formData.instagramFollowers) || 0;
+    if (formData.tiktokHandle && formData.tiktokFollowers) total += Number(formData.tiktokFollowers) || 0;
+    if (formData.xHandle && formData.xFollowers) total += Number(formData.xFollowers) || 0;
+    if (formData.linkedinHandle && formData.linkedinFollowers) total += Number(formData.linkedinFollowers) || 0;
     return total;
+  };
+
+  const handleFillDemo = () => {
+    const randomSuffix = Math.floor(1000 + Math.random() * 9000);
+    setFormData({
+      fullName: "Alex Rivera",
+      email: `alex.rivera.${randomSuffix}@example.com`,
+      password: "Password123!",
+      handle: `alexcreatives_${randomSuffix}`,
+      location: "United States",
+      primaryCategory: "Technology & AI" as CreatorCategory,
+      startingPrice: 450,
+      bio: "Tech creator reviewing next-gen gadgets, developer tools, and workflow productivity setups.",
+      youtubeHandle: "AlexRiveraTech",
+      youtubeSubscribers: 42000,
+      instagramHandle: "alex_rivera",
+      instagramFollowers: 28000,
+      tiktokHandle: "alexrivera.tech",
+      tiktokFollowers: 65000,
+      xHandle: "alexrivera_ai",
+      xFollowers: 14000,
+      linkedinHandle: "alex-rivera-tech",
+      linkedinFollowers: 6000,
+    });
+    setErrorMessage("");
+    addToast({
+      type: "info",
+      title: "Sample Creator Loaded",
+      message: "Form pre-filled with verified creator telemetry. Ready to submit!",
+    });
   };
 
   const totalReach = calculateTotalReach();
@@ -158,6 +188,11 @@ export default function CreatorRegisterPage() {
     }
   };
 
+  const updateField = (field: string, value: any) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    if (errorMessage) setErrorMessage("");
+  };
+
   return (
     <div className="w-full max-w-2xl mx-auto rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-6 sm:p-10 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.06)] relative z-10 text-[#0A0A0E] dark:text-[#F4F4F8] select-none">
       {/* Top Header */}
@@ -190,6 +225,26 @@ export default function CreatorRegisterPage() {
         </p>
       </div>
 
+      {/* 1-Click Fast Track Testing Pill */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-[#0A0A0E] dark:text-[#F4F4F8]">
+        <div className="space-y-0.5">
+          <p className="text-xs font-bold font-sans flex items-center gap-1.5 text-[#0A0A0E] dark:text-white">
+            <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+            Testing Creator Onboarding?
+          </p>
+          <p className="text-[11px] text-[#6A6A78] dark:text-[#8E8EA4]">
+            Autofill a complete, verified creator persona with realistic channels and metrics.
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={handleFillDemo}
+          className="px-3 py-1.5 rounded-xl text-xs font-bold bg-[#FFD21F] text-[#0A0A0E] hover:bg-[#FFE052] transition-colors shadow-sm shrink-0 font-sans"
+        >
+          ⚡ Fill Sample Creator
+        </button>
+      </div>
+
       {errorMessage && (
         <div className="p-3.5 rounded-2xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-300 text-xs flex items-center gap-2">
           <AlertCircle className="w-4 h-4 shrink-0" />
@@ -219,14 +274,14 @@ export default function CreatorRegisterPage() {
             <Input
               label="Full Name / Brand Name"
               value={formData.fullName}
-              onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+              onChange={(e) => updateField("fullName", e.target.value)}
               placeholder="e.g. Dipti Parihar"
               required
             />
             <Input
               label="Primary Handle (@)"
               value={formData.handle}
-              onChange={(e) => setFormData({ ...formData, handle: e.target.value })}
+              onChange={(e) => updateField("handle", e.target.value)}
               placeholder="diptiparihar"
               required
             />
@@ -237,7 +292,7 @@ export default function CreatorRegisterPage() {
               label="Email Address"
               type="email"
               value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              onChange={(e) => updateField("email", e.target.value)}
               placeholder="you@example.com"
               required
             />
@@ -245,7 +300,7 @@ export default function CreatorRegisterPage() {
               label="Password"
               type={showPassword ? "text" : "password"}
               value={formData.password}
-              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              onChange={(e) => updateField("password", e.target.value)}
               placeholder="••••••••••••"
               required
               rightElement={
@@ -266,7 +321,7 @@ export default function CreatorRegisterPage() {
               <select
                 value={formData.primaryCategory}
                 onChange={(e) =>
-                  setFormData({ ...formData, primaryCategory: e.target.value as CreatorCategory })
+                  updateField("primaryCategory", e.target.value as CreatorCategory)
                 }
                 className="w-full bg-[#F8F8FC] dark:bg-[#181824] border border-black/10 dark:border-white/10 rounded-2xl px-3.5 py-3 text-sm text-[#0A0A0E] dark:text-white focus:outline-none focus:border-[#FFD21F] transition-all font-sans"
               >
@@ -281,9 +336,9 @@ export default function CreatorRegisterPage() {
             <Input
               label={`Starting Sponsorship Rate (${currSymbol} ${currency})`}
               type="number"
-              value={formData.startingPrice}
+              value={formData.startingPrice || ""}
               onChange={(e) =>
-                setFormData({ ...formData, startingPrice: parseInt(e.target.value) || 0 })
+                updateField("startingPrice", parseInt(e.target.value) || 0)
               }
               required
             />
@@ -314,14 +369,14 @@ export default function CreatorRegisterPage() {
               <Input
                 placeholder="Channel handle (e.g. @decodingtech)"
                 value={formData.youtubeHandle}
-                onChange={(e) => setFormData({ ...formData, youtubeHandle: e.target.value })}
+                onChange={(e) => updateField("youtubeHandle", e.target.value)}
               />
               <Input
                 type="number"
                 placeholder="Subscribers (e.g. 45000)"
-                value={formData.youtubeSubscribers}
+                value={formData.youtubeSubscribers || ""}
                 onChange={(e) =>
-                  setFormData({ ...formData, youtubeSubscribers: parseInt(e.target.value) || 0 })
+                  updateField("youtubeSubscribers", parseInt(e.target.value) || 0)
                 }
               />
             </div>
@@ -339,14 +394,14 @@ export default function CreatorRegisterPage() {
               <Input
                 placeholder="Instagram handle (e.g. @prarthaana.04)"
                 value={formData.instagramHandle}
-                onChange={(e) => setFormData({ ...formData, instagramHandle: e.target.value })}
+                onChange={(e) => updateField("instagramHandle", e.target.value)}
               />
               <Input
                 type="number"
                 placeholder="Followers (e.g. 30000)"
-                value={formData.instagramFollowers}
+                value={formData.instagramFollowers || ""}
                 onChange={(e) =>
-                  setFormData({ ...formData, instagramFollowers: parseInt(e.target.value) || 0 })
+                  updateField("instagramFollowers", parseInt(e.target.value) || 0)
                 }
               />
             </div>
@@ -364,14 +419,14 @@ export default function CreatorRegisterPage() {
               <Input
                 placeholder="TikTok handle (e.g. @yourcreator)"
                 value={formData.tiktokHandle}
-                onChange={(e) => setFormData({ ...formData, tiktokHandle: e.target.value })}
+                onChange={(e) => updateField("tiktokHandle", e.target.value)}
               />
               <Input
                 type="number"
                 placeholder="Followers (e.g. 50000)"
-                value={formData.tiktokFollowers}
+                value={formData.tiktokFollowers || ""}
                 onChange={(e) =>
-                  setFormData({ ...formData, tiktokFollowers: parseInt(e.target.value) || 0 })
+                  updateField("tiktokFollowers", parseInt(e.target.value) || 0)
                 }
               />
             </div>
@@ -389,14 +444,14 @@ export default function CreatorRegisterPage() {
               <Input
                 placeholder="X handle (e.g. @caimarsalizi)"
                 value={formData.xHandle}
-                onChange={(e) => setFormData({ ...formData, xHandle: e.target.value })}
+                onChange={(e) => updateField("xHandle", e.target.value)}
               />
               <Input
                 type="number"
                 placeholder="Followers (e.g. 20000)"
-                value={formData.xFollowers}
+                value={formData.xFollowers || ""}
                 onChange={(e) =>
-                  setFormData({ ...formData, xFollowers: parseInt(e.target.value) || 0 })
+                  updateField("xFollowers", parseInt(e.target.value) || 0)
                 }
               />
             </div>

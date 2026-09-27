@@ -23,7 +23,8 @@ function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirect = searchParams.get("redirect") || "/app/dashboard";
-  const { login } = useAuthStore();
+  const errorParam = searchParams.get("error");
+  const { login, isAuthenticated, user, checkSession } = useAuthStore();
   const { addToast } = useUIStore();
 
   const [email, setEmail] = useState("");
@@ -32,8 +33,8 @@ function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  // Handle error messages from URL params
   useEffect(() => {
-    const errorParam = searchParams.get("error");
     if (errorParam === "session_expired") {
       setErrorMessage("Your session has expired. Please sign in again to continue.");
     } else if (errorParam === "auth_required") {
@@ -43,7 +44,47 @@ function LoginForm() {
     } else if (errorParam === "brand_access_denied") {
       setErrorMessage("Brand workspace access required. Please sign in with a brand account.");
     }
-  }, [searchParams]);
+  }, [errorParam]);
+
+  // Auto-redirect if already authenticated and no explicit error is set
+  useEffect(() => {
+    if (errorParam) return;
+
+    if (isAuthenticated && user) {
+      const isAdmin =
+        user.role === "agency_admin" ||
+        user.role === "agency_owner" ||
+        user.role === "super_admin" ||
+        (user.role as string) === "admin";
+      const targetDestination =
+        redirect !== "/app/dashboard"
+          ? redirect
+          : isAdmin
+          ? "/admin"
+          : "/app/dashboard";
+      router.replace(targetDestination);
+      return;
+    }
+
+    // Verify session in background in case token exists in cookie or localStorage
+    checkSession().then((isValid) => {
+      if (isValid) {
+        const activeUser = useAuthStore.getState().user;
+        const isAdmin =
+          activeUser?.role === "agency_admin" ||
+          activeUser?.role === "agency_owner" ||
+          activeUser?.role === "super_admin" ||
+          (activeUser?.role as string) === "admin";
+        const target =
+          redirect !== "/app/dashboard"
+            ? redirect
+            : isAdmin
+            ? "/admin"
+            : "/app/dashboard";
+        router.replace(target);
+      }
+    });
+  }, [isAuthenticated, user, errorParam, redirect, router, checkSession]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -90,6 +131,12 @@ function LoginForm() {
     }
   };
 
+  const handleQuickFill = (fillEmail: string, fillPass: string) => {
+    setEmail(fillEmail);
+    setPassword(fillPass);
+    setErrorMessage("");
+  };
+
   return (
     <div className="w-full max-w-md mx-auto rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-6 sm:p-8 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.06)] relative z-10 text-[#0A0A0E] dark:text-[#F4F4F8] select-none">
       {/* Top Header with Back to Home button */}
@@ -123,6 +170,37 @@ function LoginForm() {
         </div>
       )}
 
+      {/* 1-Click Fast Test Sign-In Pills */}
+      <div className="rounded-2xl p-3 bg-black/[0.03] dark:bg-white/[0.04] border border-black/8 dark:border-white/10 space-y-2">
+        <div className="flex items-center justify-between text-[11px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4]">
+          <span className="font-semibold uppercase tracking-wider">Fast Test Sign In:</span>
+          <span>1-click autofill</span>
+        </div>
+        <div className="grid grid-cols-3 gap-1.5">
+          <button
+            type="button"
+            onClick={() => handleQuickFill("creator@abeycollab.io", "Password123!")}
+            className="px-2 py-1.5 rounded-xl text-[11px] font-semibold bg-white dark:bg-[#1A1A24] border border-black/10 dark:border-white/10 hover:border-[#FFD21F] hover:bg-[#FFD21F]/10 dark:hover:bg-[#FFD21F]/10 transition-colors text-center text-[#0A0A0E] dark:text-white"
+          >
+            Creator
+          </button>
+          <button
+            type="button"
+            onClick={() => handleQuickFill("brand@abeycollab.io", "Password123!")}
+            className="px-2 py-1.5 rounded-xl text-[11px] font-semibold bg-white dark:bg-[#1A1A24] border border-black/10 dark:border-white/10 hover:border-[#FFD21F] hover:bg-[#FFD21F]/10 dark:hover:bg-[#FFD21F]/10 transition-colors text-center text-[#0A0A0E] dark:text-white"
+          >
+            Brand
+          </button>
+          <button
+            type="button"
+            onClick={() => handleQuickFill("kevinbhutwala417@gmail.com", "Password123!")}
+            className="px-2 py-1.5 rounded-xl text-[11px] font-semibold bg-white dark:bg-[#1A1A24] border border-black/10 dark:border-white/10 hover:border-[#FFD21F] hover:bg-[#FFD21F]/10 dark:hover:bg-[#FFD21F]/10 transition-colors text-center text-[#0A0A0E] dark:text-white"
+          >
+            Admin
+          </button>
+        </div>
+      </div>
+
       {/* Social Login Options (Google, Apple) */}
       <div className="space-y-2">
         <SocialAuthButtons mode="login" redirectUrl={redirect} />
@@ -141,7 +219,10 @@ function LoginForm() {
           required
           placeholder="name@example.com or @handle"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            if (errorMessage) setErrorMessage("");
+          }}
           icon={<Mail className="w-4 h-4 text-[#7A7A8A] dark:text-[#8E8EA4]" />}
         />
 
@@ -152,7 +233,10 @@ function LoginForm() {
             required
             placeholder="••••••••"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              if (errorMessage) setErrorMessage("");
+            }}
             icon={<Lock className="w-4 h-4 text-[#7A7A8A] dark:text-[#8E8EA4]" />}
             rightElement={
               <button

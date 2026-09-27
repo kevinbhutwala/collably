@@ -124,6 +124,31 @@ export default function BrandRegisterPage() {
     }
   };
 
+  const handleFillDemo = () => {
+    const randomSuffix = Math.floor(1000 + Math.random() * 9000);
+    setFormData({
+      companyName: `Apex Athletics ${randomSuffix}`,
+      contactName: "Sarah Chen",
+      email: `sarah.chen.${randomSuffix}@apexathletics.com`,
+      password: "Password123!",
+      websiteUrl: "https://apexathletics.com",
+      industry: "Fitness & Wellness",
+      companySize: "11-50",
+      monthlyBudget: "$10,000 - $25,000",
+    });
+    setErrorMessage("");
+    addToast({
+      type: "info",
+      title: "Sample Brand Loaded",
+      message: "Form pre-filled with verified brand enterprise details. Ready to submit!",
+    });
+  };
+
+  const updateField = (field: string, value: any) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    if (errorMessage) setErrorMessage("");
+  };
+
   return (
     <div className="w-full max-w-xl mx-auto rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-6 sm:p-10 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.06)] relative z-10 text-[#0A0A0E] dark:text-[#F4F4F8] select-none">
       {/* Top Header */}
@@ -156,6 +181,26 @@ export default function BrandRegisterPage() {
         </p>
       </div>
 
+      {/* 1-Click Fast Track Testing Pill */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-[#0A0A0E] dark:text-[#F4F4F8]">
+        <div className="space-y-0.5">
+          <p className="text-xs font-bold font-sans flex items-center gap-1.5 text-[#0A0A0E] dark:text-white">
+            <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+            Testing Brand Onboarding?
+          </p>
+          <p className="text-[11px] text-[#6A6A78] dark:text-[#8E8EA4]">
+            Autofill a complete, verified brand persona with industry and budget presets.
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={handleFillDemo}
+          className="px-3 py-1.5 rounded-xl text-xs font-bold bg-[#FFD21F] text-[#0A0A0E] hover:bg-[#FFE052] transition-colors shadow-sm shrink-0 font-sans"
+        >
+          ⚡ Fill Sample Brand
+        </button>
+      </div>
+
       {errorMessage && (
         <div className="p-3.5 rounded-2xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-300 text-xs flex items-center gap-2">
           <AlertCircle className="w-4 h-4 shrink-0" />
@@ -181,14 +226,14 @@ export default function BrandRegisterPage() {
             placeholder="Nike, Inc."
             required
             value={formData.companyName}
-            onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
+            onChange={(e) => updateField("companyName", e.target.value)}
           />
           <Input
             label="Marketing Lead Name"
             placeholder="Alex Rivera"
             required
             value={formData.contactName}
-            onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
+            onChange={(e) => updateField("contactName", e.target.value)}
           />
         </div>
 
@@ -199,7 +244,7 @@ export default function BrandRegisterPage() {
             placeholder="alex@nike.com"
             required
             value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            onChange={(e) => updateField("email", e.target.value)}
           />
           <Input
             label="Password"
@@ -207,7 +252,7 @@ export default function BrandRegisterPage() {
             placeholder="••••••••••••"
             required
             value={formData.password}
-            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+            onChange={(e) => updateField("password", e.target.value)}
             rightElement={
               <button
                 type="button"
@@ -225,7 +270,7 @@ export default function BrandRegisterPage() {
             <label className="block text-xs font-bold text-[#0A0A0E] dark:text-white">Industry / Category</label>
             <select
               value={formData.industry}
-              onChange={(e) => setFormData({ ...formData, industry: e.target.value })}
+              onChange={(e) => updateField("industry", e.target.value)}
               className="w-full bg-[#F8F8FC] dark:bg-[#181824] border border-black/10 dark:border-white/10 rounded-2xl px-3.5 py-3 text-sm text-[#0A0A0E] dark:text-white focus:outline-none focus:border-[#FFD21F] transition-all font-sans"
             >
               {industries.map((ind) => (
@@ -240,7 +285,7 @@ export default function BrandRegisterPage() {
             label="Company Website / Store (Optional)"
             placeholder="https://brand.com"
             value={formData.websiteUrl}
-            onChange={(e) => setFormData({ ...formData, websiteUrl: e.target.value })}
+            onChange={(e) => updateField("websiteUrl", e.target.value)}
           />
         </div>
 
@@ -249,7 +294,7 @@ export default function BrandRegisterPage() {
             <label className="block text-xs font-bold text-[#0A0A0E] dark:text-white">Company Size</label>
             <select
               value={formData.companySize}
-              onChange={(e) => setFormData({ ...formData, companySize: e.target.value })}
+              onChange={(e) => updateField("companySize", e.target.value)}
               className="w-full bg-[#F8F8FC] dark:bg-[#181824] border border-black/10 dark:border-white/10 rounded-2xl px-3.5 py-3 text-sm text-[#0A0A0E] dark:text-white focus:outline-none focus:border-[#FFD21F] transition-all font-sans"
             >
               <option value="1-10" className="bg-white dark:bg-[#181824] text-[#0A0A0E] dark:text-white">1-10 Employees (Startup / Boutique)</option>
@@ -263,7 +308,7 @@ export default function BrandRegisterPage() {
             <label className="block text-xs font-bold text-[#0A0A0E] dark:text-white">Est. Monthly Creator Budget</label>
             <select
               value={formData.monthlyBudget}
-              onChange={(e) => setFormData({ ...formData, monthlyBudget: e.target.value })}
+              onChange={(e) => updateField("monthlyBudget", e.target.value)}
               className="w-full bg-[#F8F8FC] dark:bg-[#181824] border border-black/10 dark:border-white/10 rounded-2xl px-3.5 py-3 text-sm text-[#0A0A0E] dark:text-white focus:outline-none focus:border-[#FFD21F] transition-all font-sans"
             >
               <option value="<$5,000" className="bg-white dark:bg-[#181824] text-[#0A0A0E] dark:text-white">&lt; {formatCurrency(5000)} / month</option>
