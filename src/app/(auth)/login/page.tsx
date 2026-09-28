@@ -17,6 +17,7 @@ import {
 import { Input } from "@/components/ui/Input";
 import { CreativeLoader } from "@/components/ui/CreativeLoader";
 import { GoogleSignInButton } from "@/components/auth/GoogleSignInButton";
+import { InstagramSignInButton } from "@/components/auth/InstagramSignInButton";
 
 function LoginForm() {
 
@@ -164,10 +165,11 @@ function LoginForm() {
         </div>
       )}
 
-      <div className="space-y-3">
+      <div className="space-y-2.5">
         <GoogleSignInButton mode="login" redirect={redirect} />
+        <InstagramSignInButton mode="login" redirect={redirect} />
         
-        <div className="relative flex items-center justify-center my-1">
+        <div className="relative flex items-center justify-center my-2">
           <div className="border-t border-black/10 dark:border-white/10 w-full" />
           <span className="bg-white dark:bg-[#12121A] px-3 text-[10px] text-[#7A7A8A] font-semibold uppercase tracking-wider">
             Or continue with email

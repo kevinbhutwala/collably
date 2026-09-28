@@ -7,6 +7,7 @@ import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
 import { Input, Textarea } from "@/components/ui/Input";
 import { GoogleSignInButton } from "@/components/auth/GoogleSignInButton";
+import { InstagramSignInButton } from "@/components/auth/InstagramSignInButton";
 import { SocialAccount, PlatformType } from "@/core/types";
 import {
   calculateTotalFollowers,
@@ -48,7 +49,7 @@ export default function ProfileEditPage() {
   const isBrand = role === "brand" || role === "brand_owner" || role === "brand_manager";
   const searchParams = useSearchParams();
 
-  // YouTube OAuth return notifications
+  // Social OAuth return notifications
   useEffect(() => {
     if (searchParams?.get("youtube_connected") === "true") {
       const channel = searchParams.get("channel") || "YouTube Channel";
@@ -65,6 +66,14 @@ export default function ProfileEditPage() {
         title: "YouTube Connection Error",
         message: searchParams.get("youtube_error") || "Could not connect YouTube channel.",
       });
+    } else if (searchParams?.get("instagram_connected") === "true") {
+      const acc = searchParams.get("account") || "Instagram Account";
+      addToast({
+        type: "success",
+        title: "Official Instagram Verified!",
+        message: `${acc} verified via Meta OAuth and badged on your profile.`,
+      });
+      useAuthStore.getState().checkSession();
     }
   }, [searchParams, addToast]);
 
@@ -579,8 +588,13 @@ export default function ProfileEditPage() {
             <div className="flex flex-wrap items-center gap-2">
               <GoogleSignInButton
                 mode="connect_youtube"
-                label="Connect Official YouTube"
-                className="!py-1.5 !px-3.5 !text-xs !bg-red-50 dark:!bg-red-950/40 !border-red-200 dark:!border-red-800/40 text-red-700 dark:text-red-300 hover:!bg-red-100 dark:hover:!bg-red-900/40"
+                label="Connect YouTube"
+                className="!py-1.5 !px-3 !text-xs !bg-red-50 dark:!bg-red-950/40 !border-red-200 dark:!border-red-800/40 text-red-700 dark:text-red-300 hover:!bg-red-100 dark:hover:!bg-red-900/40"
+              />
+              <InstagramSignInButton
+                mode="connect_instagram"
+                label="Connect Instagram"
+                className="!py-1.5 !px-3 !text-xs !bg-pink-50 dark:!bg-pink-950/40 !border-pink-200 dark:!border-pink-800/40 text-pink-700 dark:text-pink-300 hover:!bg-pink-100 dark:hover:!bg-pink-900/40"
               />
               <button
                 type="button"
@@ -588,7 +602,7 @@ export default function ProfileEditPage() {
                 className="px-3 py-1.5 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] hover:bg-[#20202B] dark:hover:bg-[#FFE052] text-white dark:text-[#0A0A0E] text-xs font-bold transition-all flex items-center gap-1.5"
               >
                 <Plus className="w-3.5 h-3.5" />
-                <span>Add Channel</span>
+                <span>Add Other</span>
               </button>
             </div>
           </div>
@@ -602,14 +616,19 @@ export default function ProfileEditPage() {
                 <div className="space-y-1">
                   <p className="text-sm font-bold text-[#0A0A0E] dark:text-white">No Connected Channels Yet</p>
                   <p className="text-xs text-[#6A6A78] dark:text-[#9A9AA8] max-w-sm mx-auto">
-                    Connect your YouTube, Instagram, TikTok, X, or LinkedIn account and verify ownership to unlock verified badges and brand deals.
+                    Connect your official YouTube or Instagram account via OAuth to instantly unlock verified badges and brand deals.
                   </p>
                 </div>
-                <div className="flex flex-wrap items-center justify-center gap-2.5 max-w-md mx-auto pt-1">
+                <div className="flex flex-wrap items-center justify-center gap-2.5 max-w-lg mx-auto pt-1">
                   <GoogleSignInButton
                     mode="connect_youtube"
-                    label="Connect Official YouTube Channel"
+                    label="Connect Official YouTube"
                     className="!py-2 !px-4 !text-xs !bg-red-50 dark:!bg-red-950/40 !border-red-200 dark:!border-red-800/40 text-red-700 dark:text-red-300 hover:!bg-red-100"
+                  />
+                  <InstagramSignInButton
+                    mode="connect_instagram"
+                    label="Connect Official Instagram"
+                    className="!py-2 !px-4 !text-xs !bg-pink-50 dark:!bg-pink-950/40 !border-pink-200 dark:!border-pink-800/40 text-pink-700 dark:text-pink-300 hover:!bg-pink-100"
                   />
                   <button
                     type="button"
@@ -710,25 +729,41 @@ export default function ProfileEditPage() {
               </p>
             </div>
 
-            {/* Instant Official YouTube Connect Banner */}
-            <div className="p-3.5 rounded-2xl bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800/30 space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-bold text-red-900 dark:text-red-300 flex items-center gap-1.5">
-                  <Youtube className="w-4 h-4 text-red-600" />
-                  <span>Official YouTube Verification (Real Stats)</span>
-                </span>
-                <span className="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300">
-                  RECOMMENDED
-                </span>
+            {/* Instant Official YouTube & Instagram Connect Banners */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <div className="p-3 rounded-2xl bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800/30 space-y-1.5 flex flex-col justify-between">
+                <div>
+                  <span className="text-[11px] font-bold text-red-900 dark:text-red-300 flex items-center gap-1.5">
+                    <Youtube className="w-3.5 h-3.5 text-red-600" />
+                    <span>Official YouTube</span>
+                  </span>
+                  <p className="text-[10px] text-red-900/80 dark:text-red-300/80 mt-1">
+                    Sync live subscriber count & verified badge via Google.
+                  </p>
+                </div>
+                <GoogleSignInButton
+                  mode="connect_youtube"
+                  label="Connect YouTube"
+                  className="!py-1.5 !text-xs !bg-white dark:!bg-[#181824] !text-red-600 hover:!bg-red-50"
+                />
               </div>
-              <p className="text-[11px] text-red-900/80 dark:text-red-300/80 leading-relaxed">
-                Connect via Google to automatically verify ownership and fetch your live subscriber count.
-              </p>
-              <GoogleSignInButton
-                mode="connect_youtube"
-                label="Verify & Connect with Google"
-                className="!py-2 !text-xs !bg-white dark:!bg-[#181824] !text-red-600 hover:!bg-red-50"
-              />
+
+              <div className="p-3 rounded-2xl bg-pink-50 dark:bg-pink-950/20 border border-pink-200 dark:border-pink-800/30 space-y-1.5 flex flex-col justify-between">
+                <div>
+                  <span className="text-[11px] font-bold text-pink-900 dark:text-pink-300 flex items-center gap-1.5">
+                    <Instagram className="w-3.5 h-3.5 text-pink-600" />
+                    <span>Official Instagram</span>
+                  </span>
+                  <p className="text-[10px] text-pink-900/80 dark:text-pink-300/80 mt-1">
+                    Verify account ownership via Meta OAuth handshake.
+                  </p>
+                </div>
+                <InstagramSignInButton
+                  mode="connect_instagram"
+                  label="Connect Instagram"
+                  className="!py-1.5 !text-xs !bg-white dark:!bg-[#181824] !text-pink-600 hover:!bg-pink-50"
+                />
+              </div>
             </div>
 
             <div className="relative flex items-center justify-center my-2">
