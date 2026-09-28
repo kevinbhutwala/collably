@@ -64,14 +64,19 @@ export function TrustIndicatorsBar({
   return (
     <div className={cn("flex flex-wrap items-center gap-2 select-none font-sans", className)}>
       {indicators.map((ind, idx) => {
-        const cleanText = ind.replace(/^[✓⚡🏆]\s*/, "");
+        let cleanText = ind.trim();
+        if (cleanText.startsWith("🏆")) cleanText = cleanText.slice("🏆".length);
+        else if (cleanText.startsWith("⚡")) cleanText = cleanText.slice("⚡".length);
+        else if (cleanText.startsWith("✓")) cleanText = cleanText.slice("✓".length);
+        cleanText = cleanText.trim();
+
         return (
           <div
             key={idx}
             className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1C1C28] border border-black/8 dark:border-white/10 shadow-2xs text-xs font-bold text-[#0A0A0E] dark:text-white transition-all hover:border-[#FFD21F]"
           >
             {getIcon(ind)}
-            <span className="font-mono text-[11px]">{cleanText}</span>
+            <span suppressHydrationWarning className="font-mono text-[11px]">{cleanText}</span>
           </div>
         );
       })}
