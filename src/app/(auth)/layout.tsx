@@ -34,23 +34,12 @@ export default function AuthLayout({
         {/* Center: Brand Logo */}
         <AbeyCollabLogo href="/" size="sm" variant="full" />
 
-        {/* Right: Quick Action Switcher */}
+        {/* Right: Security & Escrow Trust Badge */}
         <div className="flex items-center gap-2 text-xs font-sans">
-          {isLoginPage ? (
-            <Link
-              href="/register"
-              className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold transition-all shadow-[0_2px_10px_rgba(255,210,31,0.35)] border border-black/10 active:scale-95"
-            >
-              <span>Sign Up</span>
-            </Link>
-          ) : (
-            <Link
-              href="/login"
-              className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[#F4F4F8] dark:bg-[#181824] hover:bg-[#EAEAEF] dark:hover:bg-[#222234] text-[#0A0A0E] dark:text-[#F4F4F8] font-bold transition-all border border-black/8 dark:border-white/10 active:scale-95"
-            >
-              <span>Sign In</span>
-            </Link>
-          )}
+          <span className="text-[10px] sm:text-[11px] font-mono text-[#0A0A0E] dark:text-[#FFD21F] font-bold uppercase flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-pulse" />
+            <span>Escrow Protected</span>
+          </span>
         </div>
       </header>
 
