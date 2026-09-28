@@ -2,9 +2,11 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
 import { Input, Textarea } from "@/components/ui/Input";
+import { GoogleSignInButton } from "@/components/auth/GoogleSignInButton";
 import { SocialAccount, PlatformType } from "@/core/types";
 import {
   calculateTotalFollowers,
@@ -44,6 +46,27 @@ export default function ProfileEditPage() {
   const currencySymbol = getCurrencySymbol(creatorCurrency);
 
   const isBrand = role === "brand" || role === "brand_owner" || role === "brand_manager";
+  const searchParams = useSearchParams();
+
+  // YouTube OAuth return notifications
+  useEffect(() => {
+    if (searchParams?.get("youtube_connected") === "true") {
+      const channel = searchParams.get("channel") || "YouTube Channel";
+      const subscribers = searchParams.get("subscribers");
+      addToast({
+        type: "success",
+        title: "Official YouTube Channel Connected!",
+        message: `${channel} verified via Google OAuth with ${Number(subscribers || 0).toLocaleString()} real subscribers.`,
+      });
+      useAuthStore.getState().checkSession();
+    } else if (searchParams?.get("youtube_error")) {
+      addToast({
+        type: "error",
+        title: "YouTube Connection Error",
+        message: searchParams.get("youtube_error") || "Could not connect YouTube channel.",
+      });
+    }
+  }, [searchParams, addToast]);
 
   // Creator state
   const [headline, setHeadline] = useState(currentCreator?.headline || "");
@@ -553,19 +576,26 @@ export default function ProfileEditPage() {
                 Channels are audited for combined follower reach and tier status.
               </p>
             </div>
-            <button
-              type="button"
-              onClick={() => setShowAddModal(true)}
-              className="px-3 py-1.5 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] hover:bg-[#20202B] dark:hover:bg-[#FFE052] text-white dark:text-[#0A0A0E] text-xs font-bold transition-all flex items-center gap-1.5"
-            >
-              <Plus className="w-3.5 h-3.5" />
-              <span>Add Channel</span>
-            </button>
+            <div className="flex flex-wrap items-center gap-2">
+              <GoogleSignInButton
+                mode="connect_youtube"
+                label="Connect Official YouTube"
+                className="!py-1.5 !px-3.5 !text-xs !bg-red-50 dark:!bg-red-950/40 !border-red-200 dark:!border-red-800/40 text-red-700 dark:text-red-300 hover:!bg-red-100 dark:hover:!bg-red-900/40"
+              />
+              <button
+                type="button"
+                onClick={() => setShowAddModal(true)}
+                className="px-3 py-1.5 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] hover:bg-[#20202B] dark:hover:bg-[#FFE052] text-white dark:text-[#0A0A0E] text-xs font-bold transition-all flex items-center gap-1.5"
+              >
+                <Plus className="w-3.5 h-3.5" />
+                <span>Add Channel</span>
+              </button>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {socialAccounts.length === 0 ? (
-              <div className="sm:col-span-2 py-8 px-4 text-center rounded-2xl border-2 border-dashed border-black/10 dark:border-white/10 bg-[#FAFAFC] dark:bg-[#161622] space-y-3">
+              <div className="sm:col-span-2 py-8 px-4 text-center rounded-2xl border-2 border-dashed border-black/10 dark:border-white/10 bg-[#FAFAFC] dark:bg-[#161622] space-y-4">
                 <div className="w-12 h-12 mx-auto rounded-full bg-amber-50 dark:bg-amber-500/10 flex items-center justify-center text-amber-600 dark:text-amber-400">
                   <ShieldCheck className="w-6 h-6" />
                 </div>
@@ -575,14 +605,21 @@ export default function ProfileEditPage() {
                     Connect your YouTube, Instagram, TikTok, X, or LinkedIn account and verify ownership to unlock verified badges and brand deals.
                   </p>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => setShowAddModal(true)}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] text-xs font-bold hover:bg-[#20202B] dark:hover:bg-[#FFE052] transition-colors"
-                >
-                  <Plus className="w-3.5 h-3.5" />
-                  <span>Add Your Channel</span>
-                </button>
+                <div className="flex flex-wrap items-center justify-center gap-2.5 max-w-md mx-auto pt-1">
+                  <GoogleSignInButton
+                    mode="connect_youtube"
+                    label="Connect Official YouTube Channel"
+                    className="!py-2 !px-4 !text-xs !bg-red-50 dark:!bg-red-950/40 !border-red-200 dark:!border-red-800/40 text-red-700 dark:text-red-300 hover:!bg-red-100"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowAddModal(true)}
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] text-xs font-bold hover:bg-[#20202B] dark:hover:bg-[#FFE052] transition-colors"
+                  >
+                    <Plus className="w-3.5 h-3.5" />
+                    <span>Add Manually</span>
+                  </button>
+                </div>
               </div>
             ) : (
               socialAccounts.map((acc) => {
@@ -671,6 +708,34 @@ export default function ProfileEditPage() {
               <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] mt-0.5">
                 Connect your social media account to showcase your real reach to brands.
               </p>
+            </div>
+
+            {/* Instant Official YouTube Connect Banner */}
+            <div className="p-3.5 rounded-2xl bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800/30 space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-bold text-red-900 dark:text-red-300 flex items-center gap-1.5">
+                  <Youtube className="w-4 h-4 text-red-600" />
+                  <span>Official YouTube Verification (Real Stats)</span>
+                </span>
+                <span className="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300">
+                  RECOMMENDED
+                </span>
+              </div>
+              <p className="text-[11px] text-red-900/80 dark:text-red-300/80 leading-relaxed">
+                Connect via Google to automatically verify ownership and fetch your live subscriber count.
+              </p>
+              <GoogleSignInButton
+                mode="connect_youtube"
+                label="Verify & Connect with Google"
+                className="!py-2 !text-xs !bg-white dark:!bg-[#181824] !text-red-600 hover:!bg-red-50"
+              />
+            </div>
+
+            <div className="relative flex items-center justify-center my-2">
+              <div className="border-t border-black/10 dark:border-white/10 w-full" />
+              <span className="bg-white dark:bg-[#12121A] px-3 text-[10px] text-[#7A7A8A] font-semibold uppercase tracking-wider">
+                Or add manually
+              </span>
             </div>
 
             <div className="space-y-3">

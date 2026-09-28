@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { Input } from "@/components/ui/Input";
 import { CreativeLoader } from "@/components/ui/CreativeLoader";
+import { GoogleSignInButton } from "@/components/auth/GoogleSignInButton";
 
 function LoginForm() {
 
@@ -162,6 +163,17 @@ function LoginForm() {
           <span>{errorMessage}</span>
         </div>
       )}
+
+      <div className="space-y-3">
+        <GoogleSignInButton mode="login" redirect={redirect} />
+        
+        <div className="relative flex items-center justify-center my-1">
+          <div className="border-t border-black/10 dark:border-white/10 w-full" />
+          <span className="bg-white dark:bg-[#12121A] px-3 text-[10px] text-[#7A7A8A] font-semibold uppercase tracking-wider">
+            Or continue with email
+          </span>
+        </div>
+      </div>
 
       <form onSubmit={handleLogin} className="space-y-4">
         <Input
