@@ -46,7 +46,8 @@ export class MetaOAuthService {
 
     const redirectUri = this.getRedirectUri(params.requestHost);
 
-    const scopes = ["email", "public_profile"];
+    // public_profile is universally allowed by Meta without requiring separate permission approvals
+    const scopes = ["public_profile"];
 
     const statePayload = {
       mode: params.mode,
@@ -106,7 +107,7 @@ export class MetaOAuthService {
    */
   async getUserInfo(accessToken: string): Promise<MetaUserInfo> {
     const url = new URL("https://graph.facebook.com/v19.0/me");
-    url.searchParams.set("fields", "id,name,email,picture.width(400).height(400)");
+    url.searchParams.set("fields", "id,name,picture.width(400).height(400)");
     url.searchParams.set("access_token", accessToken);
 
     const response = await fetch(url.toString());
