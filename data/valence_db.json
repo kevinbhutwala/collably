@@ -9,7 +9,9 @@
       "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80",
       "verified": true,
       "createdAt": "2026-09-28T05:47:10.367Z",
-      "updatedAt": "2026-09-28T05:47:10.367Z"
+      "updatedAt": "2026-09-28T05:47:10.367Z",
+      "preferredCurrency": "USD",
+      "preferred_currency": "USD"
     },
     {
       "id": "user-brand-calm",
@@ -33,7 +35,7 @@
       "email": "kevinbhutwala417@gmail.com",
       "role": "agency_admin",
       "createdAt": "2024-01-01",
-      "passwordHash": "18b3d59d2ca060a8a4027fca06e17fa0:77fd04442336d4b62bf04a7c79ac2e9246257980d3e7b693c741e5db895303cc3f77c9d2f1d1aaefb5d337f5f8babfd5967d3c72d21c7b740196b362f173131d:210000",
+      "passwordHash": "1f5f9b00ec937366fbcff756079f0a3d:63c933601615071bb5d788b751f2381c42ec1c4c7f988d5650243f80b949353d1b106a501bbcad18d1a0e4c7f013a27199abb208e9a5a5646a10afe1fd8d8fcd:210000",
       "preferredCurrency": "INR",
       "preferred_currency": "INR",
       "lastActiveAt": "2026-09-27T22:18:18.135Z",
@@ -48,7 +50,7 @@
       "createdAt": "2024-02-15",
       "preferredCurrency": "INR",
       "preferred_currency": "INR",
-      "passwordHash": "6d0aa7ee6ef90dbd53c32686d3e3d21f:873e94ea02de7e1a8b58d80e7e10dcbdbad6ba66c35cf1613d81970844fd17d1b8f2874986169210ddeb154c6fff124865c8a834f6a17a01af421c7e90412260:210000",
+      "passwordHash": "e4ccf47ee9b4271e1f2c5253cb9c3c65:e1dc0bbc1e314032de15d4f96f71f26dedc7935906b297f07bd6bd8da7112c7269b08833a3ab7763a0adff02293b558107a3c756a7946e1ceadd18cee647a348:210000",
       "lastLoginAt": "2026-09-27T21:30:35.844Z",
       "lastActiveAt": "2026-09-27T21:30:51.132Z",
       "updatedAt": "2026-09-27T21:30:51.696Z"
@@ -61,7 +63,7 @@
       "createdAt": "2024-01-20",
       "preferredCurrency": "INR",
       "preferred_currency": "INR",
-      "passwordHash": "6d0aa7ee6ef90dbd53c32686d3e3d21f:873e94ea02de7e1a8b58d80e7e10dcbdbad6ba66c35cf1613d81970844fd17d1b8f2874986169210ddeb154c6fff124865c8a834f6a17a01af421c7e90412260:210000"
+      "passwordHash": "e4ccf47ee9b4271e1f2c5253cb9c3c65:e1dc0bbc1e314032de15d4f96f71f26dedc7935906b297f07bd6bd8da7112c7269b08833a3ab7763a0adff02293b558107a3c756a7946e1ceadd18cee647a348:210000"
     },
     {
       "id": "user-c-waseem",
@@ -73,7 +75,7 @@
       "verified": true,
       "preferredCurrency": "USD",
       "preferred_currency": "USD",
-      "passwordHash": "575e2ac8b09aa1c88f2476502ddb76c3:f07b7e700e8cb521523a5e816f8baab600284c1287a7e1e6b307af0bd708277c647b2042b0a62d732ec24ca904f1e381c1062df6e6814baa912196b3a7cfa67b:210000"
+      "passwordHash": "49495753f9597c448714513626b096f9:33d3964148ee9fba412ef1486e4409120390a77547893a0fa8eb1b8a7a72f393fb4cf1a23170b37f9044db0ee34304b5b2149191ee47b89a8966f7dbb4c81a83:210000"
     },
     {
       "id": "user-c-prarthana",
@@ -85,7 +87,7 @@
       "verified": true,
       "preferredCurrency": "USD",
       "preferred_currency": "USD",
-      "passwordHash": "575e2ac8b09aa1c88f2476502ddb76c3:f07b7e700e8cb521523a5e816f8baab600284c1287a7e1e6b307af0bd708277c647b2042b0a62d732ec24ca904f1e381c1062df6e6814baa912196b3a7cfa67b:210000"
+      "passwordHash": "49495753f9597c448714513626b096f9:33d3964148ee9fba412ef1486e4409120390a77547893a0fa8eb1b8a7a72f393fb4cf1a23170b37f9044db0ee34304b5b2149191ee47b89a8966f7dbb4c81a83:210000"
     },
     {
       "id": "user-c-pooja",
@@ -97,7 +99,7 @@
       "verified": true,
       "preferredCurrency": "USD",
       "preferred_currency": "USD",
-      "passwordHash": "575e2ac8b09aa1c88f2476502ddb76c3:f07b7e700e8cb521523a5e816f8baab600284c1287a7e1e6b307af0bd708277c647b2042b0a62d732ec24ca904f1e381c1062df6e6814baa912196b3a7cfa67b:210000"
+      "passwordHash": "49495753f9597c448714513626b096f9:33d3964148ee9fba412ef1486e4409120390a77547893a0fa8eb1b8a7a72f393fb4cf1a23170b37f9044db0ee34304b5b2149191ee47b89a8966f7dbb4c81a83:210000"
     },
     {
       "id": "user-c-kunal",
@@ -109,7 +111,7 @@
       "verified": true,
       "preferredCurrency": "USD",
       "preferred_currency": "USD",
-      "passwordHash": "575e2ac8b09aa1c88f2476502ddb76c3:f07b7e700e8cb521523a5e816f8baab600284c1287a7e1e6b307af0bd708277c647b2042b0a62d732ec24ca904f1e381c1062df6e6814baa912196b3a7cfa67b:210000"
+      "passwordHash": "49495753f9597c448714513626b096f9:33d3964148ee9fba412ef1486e4409120390a77547893a0fa8eb1b8a7a72f393fb4cf1a23170b37f9044db0ee34304b5b2149191ee47b89a8966f7dbb4c81a83:210000"
     },
     {
       "id": "user-c-kushi",
@@ -119,7 +121,7 @@
       "avatarUrl": "/creators/kushi-hanamsagar.jpg",
       "verified": true,
       "createdAt": "2024-03-10",
-      "passwordHash": "575e2ac8b09aa1c88f2476502ddb76c3:f07b7e700e8cb521523a5e816f8baab600284c1287a7e1e6b307af0bd708277c647b2042b0a62d732ec24ca904f1e381c1062df6e6814baa912196b3a7cfa67b:210000",
+      "passwordHash": "49495753f9597c448714513626b096f9:33d3964148ee9fba412ef1486e4409120390a77547893a0fa8eb1b8a7a72f393fb4cf1a23170b37f9044db0ee34304b5b2149191ee47b89a8966f7dbb4c81a83:210000",
       "preferredCurrency": "USD",
       "preferred_currency": "USD"
     },
