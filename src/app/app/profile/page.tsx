@@ -66,8 +66,31 @@ export default function ProfileEditPage() {
   const [showAddModal, setShowAddModal] = useState(false);
   const [newPlatform, setNewPlatform] = useState<PlatformType>("youtube");
   const [newHandle, setNewHandle] = useState("");
-  const [newFollowers, setNewFollowers] = useState(10000);
-  const [newEngagement, setNewEngagement] = useState(4.5);
+  const [newFollowers, setNewFollowers] = useState<number | "">("");
+  const [newEngagement, setNewEngagement] = useState<number | "">("");
+
+  const handleLinkChange = (value: string) => {
+    let cleanVal = value;
+    const trimmed = value.trim();
+    if (trimmed.includes("instagram.com")) {
+      setNewPlatform("instagram");
+      const match = trimmed.match(/instagram\.com\/(?:@)?([a-zA-Z0-9._]+)/i);
+      if (match && match[1]) cleanVal = match[1];
+    } else if (trimmed.includes("youtube.com") || trimmed.includes("youtu.be")) {
+      setNewPlatform("youtube");
+      const match = trimmed.match(/youtube\.com\/(?:@)?([a-zA-Z0-9._-]+)/i);
+      if (match && match[1]) cleanVal = match[1];
+    } else if (trimmed.includes("tiktok.com")) {
+      setNewPlatform("tiktok");
+      const match = trimmed.match(/tiktok\.com\/(?:@)?([a-zA-Z0-9._]+)/i);
+      if (match && match[1]) cleanVal = match[1];
+    } else if (trimmed.includes("x.com") || trimmed.includes("twitter.com")) {
+      setNewPlatform("x");
+      const match = trimmed.match(/(?:twitter|x)\.com\/([a-zA-Z0-9_]+)/i);
+      if (match && match[1]) cleanVal = match[1];
+    }
+    setNewHandle(cleanVal);
+  };
 
   // Social account ownership verification modal state
   const [showVerifyModal, setShowVerifyModal] = useState(false);
@@ -133,8 +156,8 @@ export default function ProfileEditPage() {
       platform: newPlatform,
       handle: cleanHandle,
       url,
-      followers: Number(newFollowers) || 10000,
-      engagementRate: Number(newEngagement) || 4.5,
+      followers: Number(newFollowers) || 1000,
+      engagementRate: Number(newEngagement) || 3.0,
       avgViews: 0,
       verifiedBadge: false,
       verificationStatus: "unverified",
@@ -144,6 +167,8 @@ export default function ProfileEditPage() {
     setSocialAccounts((prev) => [...prev, newAcc]);
     setShowAddModal(false);
     setNewHandle("");
+    setNewFollowers("");
+    setNewEngagement("");
 
     // Open verification modal immediately for the new account
     setSelectedVerifyAccount(newAcc);
@@ -364,6 +389,7 @@ export default function ProfileEditPage() {
                 label="Industry"
                 value={industry}
                 onChange={(e) => setIndustry(e.target.value)}
+                required
                 placeholder="e.g. Technology & AI, Consumer Tech"
               />
             </div>
@@ -388,6 +414,7 @@ export default function ProfileEditPage() {
                 label="Website URL"
                 value={websiteUrl}
                 onChange={(e) => setWebsiteUrl(e.target.value)}
+                required
                 placeholder="https://acme.com"
                 icon={<Globe className="w-3.5 h-3.5 text-[#8A8A9A]" />}
               />
@@ -621,22 +648,26 @@ export default function ProfileEditPage() {
                 label="Channel Handle or Profile Link"
                 placeholder="e.g. techcreator or https://instagram.com/techcreator"
                 value={newHandle}
-                onChange={(e) => setNewHandle(e.target.value)}
+                onChange={(e) => handleLinkChange(e.target.value)}
+                required
               />
 
               <Input
                 label="Followers / Subscribers"
                 type="number"
+                placeholder="e.g. 25000"
                 value={newFollowers}
-                onChange={(e) => setNewFollowers(Number(e.target.value))}
+                onChange={(e) => setNewFollowers(e.target.value === "" ? "" : Number(e.target.value))}
+                required
               />
 
               <Input
                 label="Average Engagement Rate (%)"
                 type="number"
                 step="0.1"
+                placeholder="e.g. 4.5"
                 value={newEngagement}
-                onChange={(e) => setNewEngagement(Number(e.target.value))}
+                onChange={(e) => setNewEngagement(e.target.value === "" ? "" : Number(e.target.value))}
               />
             </div>
 

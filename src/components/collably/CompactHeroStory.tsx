@@ -103,17 +103,19 @@ export function CompactHeroStory() {
 
             {/* Thumb-friendly CTAs */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
-              <Link href="/for-brands">
-                <button className="px-6 py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(255,210,31,0.5)] hover:shadow-[0_6px_24px_rgba(255,210,31,0.7)] flex items-center gap-2 group active:scale-[0.98] border border-black/10">
-                  <span>Start Campaign</span>
-                  <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-0.5 transition-transform" />
-                </button>
+              <Link
+                href="/for-brands"
+                className="px-6 py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(255,210,31,0.5)] hover:shadow-[0_6px_24px_rgba(255,210,31,0.7)] inline-flex items-center gap-2 group active:scale-[0.98] border border-black/10"
+              >
+                <span>Start Campaign</span>
+                <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-0.5 transition-transform" />
               </Link>
 
-              <Link href="/register?role=creator">
-                <button className="px-6 py-3.5 rounded-full bg-white hover:bg-[#F8F8FC] border border-black/10 text-[#0A0A0E] font-bold text-xs sm:text-sm transition-all shadow-[0_2px_8px_rgba(0,0,0,0.04)] active:scale-[0.98]">
-                  <span>Join Roster</span>
-                </button>
+              <Link
+                href="/register?role=creator"
+                className="px-6 py-3.5 rounded-full bg-white hover:bg-[#F8F8FC] border border-black/10 text-[#0A0A0E] font-bold text-xs sm:text-sm transition-all shadow-[0_2px_8px_rgba(0,0,0,0.04)] active:scale-[0.98] inline-flex items-center"
+              >
+                <span>Join Roster</span>
               </Link>
             </div>
 

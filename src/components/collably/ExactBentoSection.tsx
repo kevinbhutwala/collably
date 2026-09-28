@@ -105,11 +105,12 @@ export function ExactBentoSection() {
             </p>
 
             <div className="pt-2">
-              <Link href="/register?role=creator">
-                <button className="px-6 py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs sm:text-sm transition-all shadow-[0_4px_14px_rgba(255,210,31,0.4)] flex items-center gap-2 group border border-black/10">
-                  <span>Join as a Creator</span>
-                  <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-0.5 transition-transform" />
-                </button>
+              <Link
+                href="/register?role=creator"
+                className="px-6 py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs sm:text-sm transition-all shadow-[0_4px_14px_rgba(255,210,31,0.4)] inline-flex items-center gap-2 group border border-black/10"
+              >
+                <span>Join as a Creator</span>
+                <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-0.5 transition-transform" />
               </Link>
             </div>
           </div>
@@ -178,11 +179,12 @@ export function ExactBentoSection() {
             </p>
 
             <div className="pt-2">
-              <Link href="/for-brands">
-                <button className="px-6 py-3.5 rounded-full bg-white hover:bg-[#F8F8FC] border border-black/10 text-[#0A0A0E] font-bold text-xs sm:text-sm transition-all shadow-xs flex items-center gap-2 group">
-                  <span>Start a Campaign</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                </button>
+              <Link
+                href="/for-brands"
+                className="px-6 py-3.5 rounded-full bg-white hover:bg-[#F8F8FC] border border-black/10 text-[#0A0A0E] font-bold text-xs sm:text-sm transition-all shadow-xs inline-flex items-center gap-2 group"
+              >
+                <span>Start a Campaign</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </Link>
             </div>
           </div>

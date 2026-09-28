@@ -34,13 +34,13 @@ export function AIMatchingExperience() {
     setIsAnalyzing(true);
     setAnalyzingStep("Audience fit & demographics");
 
-    setTimeout(() => setAnalyzingStep("Engagement rate verification"), 350);
-    setTimeout(() => setAnalyzingStep("Budget & rate card matching"), 700);
-    setTimeout(() => setAnalyzingStep("Category relevance scoring"), 1050);
+    setTimeout(() => setAnalyzingStep("Engagement rate verification"), 180);
+    setTimeout(() => setAnalyzingStep("Budget & rate card matching"), 360);
+    setTimeout(() => setAnalyzingStep("Category relevance scoring"), 540);
     setTimeout(() => {
       setIsAnalyzing(false);
       setAnalyzingStep("");
-    }, 1400);
+    }, 720);
   };
 
   const handleSendInvite = () => {

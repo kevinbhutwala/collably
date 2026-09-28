@@ -707,7 +707,7 @@ export function CampaignWizard() {
               {/* Category Dropdown */}
               <div className="space-y-1.5 text-left font-sans">
                 <label className="text-xs font-semibold text-[#0A0A0E] dark:text-[#EAEAEF]">
-                  Industry Niche &amp; Category
+                  Industry Niche &amp; Category <span className="text-red-500 font-bold ml-1">*</span>
                 </label>
                 <select
                   value={formData.category}
@@ -1198,6 +1198,7 @@ export function CampaignWizard() {
                 type="number"
                 value={formData.totalBudget}
                 onChange={(e) => setFormData({ ...formData, totalBudget: parseInt(e.target.value) || 0 })}
+                required
               />
 
               <Input
@@ -1205,6 +1206,7 @@ export function CampaignWizard() {
                 type="number"
                 value={formData.perCreatorBudget}
                 onChange={(e) => setFormData({ ...formData, perCreatorBudget: parseInt(e.target.value) || 0 })}
+                required
               />
             </div>
 

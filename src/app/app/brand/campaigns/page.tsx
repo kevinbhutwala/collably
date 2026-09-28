@@ -90,11 +90,12 @@ export default function BrandCampaignsManagementPage() {
           </p>
         </div>
 
-        <Link href="/app/brand/campaigns/create">
-          <button className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-[0_2px_12px_rgba(255,210,31,0.35)] border border-black/10 flex items-center gap-2">
-            <PlusCircle className="w-4 h-4 text-[#0A0A0E]" />
-            <span>Post New Campaign</span>
-          </button>
+        <Link
+          href="/app/brand/campaigns/create"
+          className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-[0_2px_12px_rgba(255,210,31,0.35)] border border-black/10 flex items-center gap-2"
+        >
+          <PlusCircle className="w-4 h-4 text-[#0A0A0E]" />
+          <span>Post New Campaign</span>
         </Link>
       </div>
 

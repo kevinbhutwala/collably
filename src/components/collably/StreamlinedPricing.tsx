@@ -149,20 +149,17 @@ export function StreamlinedPricing() {
                   </div>
                 </div>
 
-                <div className="pt-6">
-                  <Link href={tier.ctaHref}>
-                    <button
-                      className={`w-full py-3.5 rounded-full text-xs font-bold transition-all flex items-center justify-center gap-1.5 active:scale-98 shadow-sm ${
-                        tier.popular
-                          ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] shadow-[0_4px_16px_rgba(255,210,31,0.4)]"
-                          : "bg-[#0A0A0E] dark:bg-[#FFD21F] hover:bg-[#1A1A24] dark:hover:bg-[#FFE052] text-white dark:text-[#0A0A0E] font-bold shadow-md"
-                      }`}
-                    >
-                      <span>{tier.ctaText}</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
+                  <Link
+                    href={tier.ctaHref}
+                    className={`mt-6 w-full py-3.5 rounded-full text-xs font-bold transition-all flex items-center justify-center gap-1.5 active:scale-98 shadow-sm ${
+                      tier.popular
+                        ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] shadow-[0_4px_16px_rgba(255,210,31,0.4)]"
+                        : "bg-[#0A0A0E] dark:bg-[#FFD21F] hover:bg-[#1A1A24] dark:hover:bg-[#FFE052] text-white dark:text-[#0A0A0E] font-bold shadow-md"
+                    }`}
+                  >
+                    <span>{tier.ctaText}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
-                </div>
             </InteractiveTiltCard>
           ))}
         </div>

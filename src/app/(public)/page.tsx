@@ -8,6 +8,7 @@ import { WishlinkCreatorStories } from '@/components/collably/WishlinkCreatorSto
 import { WishlinkLaunchpadCTA } from '@/components/collably/WishlinkLaunchpadCTA';
 import { WishlinkStickyCTA } from '@/components/collably/WishlinkStickyCTA';
 import { CompactFAQ } from '@/components/collably/CompactFAQ';
+import { StreamlinedPricing } from '@/components/collably/StreamlinedPricing';
 import { SITE_URL, absoluteUrl } from '@/lib/seo';
 
 export const metadata: Metadata = {
@@ -117,7 +118,12 @@ export default function AbeyCollabLandingPage() {
         {/* 05 — Editorial Creator Stories & Real Brand Partnerships ("Loved by Creators, trusted by Brands") */}
         <WishlinkCreatorStories />
 
-        {/* 06 — Wishlink Signature "Your launchpad to success!!" High-Conversion Closing Banner */}
+        {/* 06 — Subscription & Transparent Pricing Plans */}
+        <div id="pricing">
+          <StreamlinedPricing />
+        </div>
+
+        {/* 07 — Wishlink Signature "Your launchpad to success!!" High-Conversion Closing Banner */}
         <WishlinkLaunchpadCTA />
 
         {/* 07 — Clean, Spacious FAQ & Objection Handlers */}

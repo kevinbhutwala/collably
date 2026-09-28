@@ -31,7 +31,7 @@ export function CreativeLoader({
   useEffect(() => {
     const interval = setInterval(() => {
       setPhaseIndex((prev) => (prev + 1) % TELEMETRY_PHRASES.length);
-    }, 2200);
+    }, 1200);
     return () => clearInterval(interval);
   }, []);
 

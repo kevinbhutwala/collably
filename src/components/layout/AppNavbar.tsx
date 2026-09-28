@@ -214,21 +214,23 @@ export function AppNavbar() {
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           {/* Quick Action Button for Brand */}
           {role === "brand" && (
-            <Link href="/app/brand/campaigns/create">
-              <button className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs shadow-[0_2px_10px_rgba(255,210,31,0.3)] transition-all font-sans border border-black/10">
-                <Plus className="w-3.5 h-3.5 text-[#0A0A0E]" />
-                <span>Create Brief</span>
-              </button>
+            <Link
+              href="/app/brand/campaigns/create"
+              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs shadow-[0_2px_10px_rgba(255,210,31,0.3)] transition-all font-sans border border-black/10"
+            >
+              <Plus className="w-3.5 h-3.5 text-[#0A0A0E]" />
+              <span>Create Brief</span>
             </Link>
           )}
 
           {/* Quick Action Button for Creator */}
           {role === "creator" && (
-            <Link href="/campaigns">
-              <button className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs shadow-[0_2px_10px_rgba(255,210,31,0.3)] transition-all font-sans border border-black/10">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#0A0A0E]" />
-                <span>Explore Briefs</span>
-              </button>
+            <Link
+              href="/campaigns"
+              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs shadow-[0_2px_10px_rgba(255,210,31,0.3)] transition-all font-sans border border-black/10"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0A0A0E]" />
+              <span>Explore Briefs</span>
             </Link>
           )}
 
