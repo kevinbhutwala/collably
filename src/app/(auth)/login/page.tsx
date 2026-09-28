@@ -130,12 +130,6 @@ function LoginForm() {
     }
   };
 
-  const handleQuickFill = (fillEmail: string, fillPass: string) => {
-    setEmail(fillEmail);
-    setPassword(fillPass);
-    setErrorMessage("");
-  };
-
   return (
     <div className="w-full max-w-md mx-auto rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-8 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.06)] relative z-10 text-[#0A0A0E] dark:text-[#F4F4F8] select-none">
       {/* Top Header with Back to Home button */}
@@ -168,37 +162,6 @@ function LoginForm() {
           <span>{errorMessage}</span>
         </div>
       )}
-
-      {/* 1-Click Fast Test Sign-In Pills */}
-      <div className="rounded-2xl p-3 bg-black/[0.03] dark:bg-white/[0.04] border border-black/8 dark:border-white/10 space-y-2">
-        <div className="flex items-center justify-between text-[11px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4]">
-          <span className="font-semibold uppercase tracking-wider">Fast Test Sign In:</span>
-          <span>1-click autofill</span>
-        </div>
-        <div className="grid grid-cols-3 gap-1.5">
-          <button
-            type="button"
-            onClick={() => handleQuickFill("creator@abeycollab.io", "Password123!")}
-            className="px-2 py-1.5 rounded-xl text-[11px] font-semibold bg-white dark:bg-[#1A1A24] border border-black/10 dark:border-white/10 hover:border-[#FFD21F] hover:bg-[#FFD21F]/10 dark:hover:bg-[#FFD21F]/10 transition-colors text-center text-[#0A0A0E] dark:text-white"
-          >
-            Creator
-          </button>
-          <button
-            type="button"
-            onClick={() => handleQuickFill("partnerships@thewholetruthfoods.com", "Password123!")}
-            className="px-2 py-1.5 rounded-xl text-[11px] font-semibold bg-white dark:bg-[#1A1A24] border border-black/10 dark:border-white/10 hover:border-[#FFD21F] hover:bg-[#FFD21F]/10 dark:hover:bg-[#FFD21F]/10 transition-colors text-center text-[#0A0A0E] dark:text-white"
-          >
-            Brand
-          </button>
-          <button
-            type="button"
-            onClick={() => handleQuickFill("kevinbhutwala417@gmail.com", "Password123!")}
-            className="px-2 py-1.5 rounded-xl text-[11px] font-semibold bg-white dark:bg-[#1A1A24] border border-black/10 dark:border-white/10 hover:border-[#FFD21F] hover:bg-[#FFD21F]/10 dark:hover:bg-[#FFD21F]/10 transition-colors text-center text-[#0A0A0E] dark:text-white"
-          >
-            Admin
-          </button>
-        </div>
-      </div>
 
       <form onSubmit={handleLogin} className="space-y-4">
         <Input

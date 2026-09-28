@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, ShieldCheck } from "lucide-react";
-import { Modal } from "@/components/ui/Modal";
 import { SafeImage } from "@/components/ui/SafeImage";
 
 const AVATAR_STRIP = [
@@ -16,7 +15,6 @@ const AVATAR_STRIP = [
 ];
 
 export function StreamlinedVisualCTA() {
-  const [roleModalOpen, setRoleModalOpen] = useState(false);
 
   return (
     <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] select-none relative overflow-hidden border-t border-black/6 dark:border-white/10 font-sans">
@@ -81,15 +79,15 @@ export function StreamlinedVisualCTA() {
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-          <button
-            onClick={() => setRoleModalOpen(true)}
+          <Link
+            href="/register"
             className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(255,210,31,0.5)] flex items-center justify-center gap-2 group active:scale-[0.98] border border-black/10 font-sans hover-lift"
           >
             <span>Launch Campaign Brief</span>
             <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-1 transition-transform" />
-          </button>
+          </Link>
 
-          <Link href="/creator/register">
+          <Link href="/register">
             <button className="w-full sm:w-auto px-7 py-4 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#14141E] dark:hover:bg-[#1E1E2C] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs sm:text-sm transition-all shadow-xs active:scale-[0.98] flex items-center justify-center gap-2 hover-lift">
               <Sparkles className="w-4 h-4 text-[#8A7000] dark:text-[#FFD21F]" />
               <span>Join as a Creator</span>
@@ -97,41 +95,6 @@ export function StreamlinedVisualCTA() {
           </Link>
         </div>
       </motion.div>
-
-      {/* Role Selection Modal */}
-      <Modal
-        isOpen={roleModalOpen}
-        onClose={() => setRoleModalOpen(false)}
-        title="Join the Creative Network"
-        description="Select your pathway to post campaign briefs or showcase your verified creator media kit."
-        maxWidth="md"
-      >
-        <div className="space-y-3 pt-2 text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans">
-          <Link
-            href="/brand/register"
-            onClick={() => setRoleModalOpen(false)}
-            className="w-full text-left p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#1A1A28] border-2 border-[#FFD21F] hover:shadow-md transition-all group flex items-center justify-between block hover-lift"
-          >
-            <div>
-              <h4 className="text-sm font-bold font-display text-[#0A0A0E] dark:text-white">I am a Brand / Business</h4>
-              <p className="text-xs text-[#6A6A78] dark:text-[#8E8EA4]">Post campaign briefs, hire creators &amp; escrow funds</p>
-            </div>
-            <ArrowRight className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F] group-hover:translate-x-1 transition-transform" />
-          </Link>
-
-          <Link
-            href="/creator/register"
-            onClick={() => setRoleModalOpen(false)}
-            className="w-full text-left p-4 rounded-2xl bg-[#FAFAFC] dark:bg-[#14141E] border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 hover:bg-white dark:hover:bg-[#1C1C28] hover:shadow-md transition-all group flex items-center justify-between block hover-lift"
-          >
-            <div>
-              <h4 className="text-sm font-bold font-display text-[#0A0A0E] dark:text-white">I am a Content Creator</h4>
-              <p className="text-xs text-[#6A6A78] dark:text-[#8E8EA4]">Publish media kit, receive inbound deals &amp; get paid</p>
-            </div>
-            <ArrowRight className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F] group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
-      </Modal>
     </section>
   );
 }

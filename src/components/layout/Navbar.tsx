@@ -7,13 +7,11 @@ import { AbeyCollabLogo } from "@/components/ui/AbeyCollabLogo";
 import { Menu, X, ArrowRight, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuthStore } from "@/stores/auth.store";
-import { Modal } from "@/components/ui/Modal";
 import { motion, AnimatePresence } from "framer-motion";
 import { CurrencySelector } from "@/components/ui/CurrencySelector";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [roleModalOpen, setRoleModalOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const { isAuthenticated, user, checkSession } = useAuthStore();
@@ -158,13 +156,13 @@ export function Navbar() {
                   Sign In
                 </Link>
 
-                <button
-                  onClick={() => setRoleModalOpen(true)}
+                <Link
+                  href="/register"
                   className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-extrabold shadow-[0_2px_12px_rgba(255,210,31,0.35)] border border-black/10 transition-all active:scale-98 flex items-center gap-1.5 font-sans hover-lift"
                 >
                   <span>Sign up</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                </Link>
               </>
             )}
           </div>
@@ -183,12 +181,12 @@ export function Navbar() {
                 <ArrowRight className="w-3 h-3" />
               </Link>
             ) : (
-              <button
-                onClick={() => setRoleModalOpen(true)}
+              <Link
+                href="/register"
                 className="px-3.5 py-1.5 rounded-full text-xs font-extrabold text-[#0A0A0E] bg-gradient-to-r from-[#FFD21F] to-[#FFE052] shadow-xs font-sans border border-black/8 active:scale-95"
               >
                 Sign up
-              </button>
+              </Link>
             )}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -290,16 +288,14 @@ export function Navbar() {
                     >
                       Sign In
                     </Link>
-                    <button
-                      onClick={() => {
-                        setMobileMenuOpen(false);
-                        setRoleModalOpen(true);
-                      }}
+                    <Link
+                      href="/register"
+                      onClick={() => setMobileMenuOpen(false)}
                       className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] text-xs font-extrabold shadow-sm flex items-center justify-center gap-1.5"
                     >
                       <span>Sign up</span>
                       <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
+                    </Link>
                   </>
                 )}
               </div>
@@ -307,41 +303,6 @@ export function Navbar() {
           </>
         )}
       </AnimatePresence>
-
-      {/* Role Modal */}
-      <Modal
-        isOpen={roleModalOpen}
-        onClose={() => setRoleModalOpen(false)}
-        title="Join AbeyCollab"
-        description="Select your pathway to access tailored briefings and verified creator kits."
-        maxWidth="md"
-      >
-        <div className="space-y-3 pt-2 text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans">
-          <Link
-            href="/brand/register"
-            onClick={() => setRoleModalOpen(false)}
-            className="w-full text-left p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#1A1A28] border-2 border-[#FFD21F] hover:shadow-md transition-all group flex items-center justify-between block hover-lift"
-          >
-            <div>
-              <h4 className="text-sm font-bold font-display text-[#0A0A0E] dark:text-white">I am a Brand / Business</h4>
-              <p className="text-xs text-[#6A6A78] dark:text-[#A0A0B4]">Post campaign briefs, hire creators &amp; escrow funds</p>
-            </div>
-            <ArrowRight className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F] group-hover:translate-x-1 transition-transform" />
-          </Link>
-
-          <Link
-            href="/creator/register"
-            onClick={() => setRoleModalOpen(false)}
-            className="w-full text-left p-4 rounded-2xl bg-[#FAFAFC] dark:bg-[#14141E] border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 hover:bg-white dark:hover:bg-[#1C1C28] hover:shadow-md transition-all group flex items-center justify-between block hover-lift"
-          >
-            <div>
-              <h4 className="text-sm font-bold font-display text-[#0A0A0E] dark:text-white">I am a Creator</h4>
-              <p className="text-xs text-[#6A6A78] dark:text-[#A0A0B4]">Pitch briefs, share audited media kit &amp; get paid</p>
-            </div>
-            <ArrowRight className="w-4 h-4 text-[#08080C] dark:text-[#FFD21F] group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
-      </Modal>
     </>
   );
 }

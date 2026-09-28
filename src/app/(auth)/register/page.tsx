@@ -1,11 +1,167 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Link from "next/link";
-import { Sparkles, Building2, ArrowRight, ArrowLeft, Video, ShieldCheck, Check } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useAuthStore } from "@/stores/auth.store";
+import { useUIStore } from "@/stores/ui.store";
+import { authService } from "@/services/auth.service";
+import { Input } from "@/components/ui/Input";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Sparkles,
+  Building2,
+  Video,
+  Lock,
+  Mail,
+  User,
+  Loader2,
+  Eye,
+  EyeOff,
+  AlertCircle,
+  CheckCircle2,
+  AtSign,
+} from "lucide-react";
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const HANDLE_RE = /^[a-zA-Z0-9._-]+$/;
+
+function checkPassword(pw: string) {
+  return {
+    length: pw.length >= 8,
+    uppercase: /[A-Z]/.test(pw),
+    lowercase: /[a-z]/.test(pw),
+    number: /[0-9]/.test(pw),
+  };
+}
+
+function pwdScore(pw: string): number {
+  return Object.values(checkPassword(pw)).filter(Boolean).length;
+}
 
 export default function RegisterPage() {
+  const router = useRouter();
+  const { setAuthData } = useAuthStore();
+  const { addToast } = useUIStore();
+
+  const [role, setRole] = useState<"creator" | "brand">("creator");
+  const [fullName, setFullName] = useState("");
+  const [handle, setHandle] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
+
+  const pwStrength = pwdScore(password);
+  const pwChecks = checkPassword(password);
+  const strengthLabel = ["", "Weak", "Fair", "Good", "Strong"][pwStrength] ?? "";
+  const strengthColor =
+    ["", "bg-red-500", "bg-orange-500", "bg-yellow-500", "bg-green-500"][pwStrength] ?? "bg-gray-200";
+
+  const validate = () => {
+    const errs: Record<string, string> = {};
+
+    if (!fullName.trim()) {
+      errs.fullName = role === "brand" ? "Representative name is required" : "Full name is required";
+    } else if (fullName.trim().length < 2) {
+      errs.fullName = "Name must be at least 2 characters";
+    }
+
+    if (role === "creator") {
+      const cleanHandle = handle.trim().replace(/^@/, "");
+      if (!cleanHandle) {
+        errs.handle = "Creator handle is required";
+      } else if (!HANDLE_RE.test(cleanHandle)) {
+        errs.handle = "Letters, numbers, dots, underscores, and hyphens only";
+      }
+    } else {
+      if (!companyName.trim()) {
+        errs.companyName = "Company / Brand name is required";
+      }
+    }
+
+    if (!email.trim()) {
+      errs.email = "Email address is required";
+    } else if (!EMAIL_RE.test(email.trim())) {
+      errs.email = "Please enter a valid email address";
+    }
+
+    if (!password) {
+      errs.password = "Password is required";
+    } else if (password.length < 8) {
+      errs.password = "Password must be at least 8 characters";
+    }
+
+    setErrors(errs);
+    return Object.keys(errs).length === 0;
+  };
+
+  const handleBlur = (field: string) => {
+    setTouched((prev) => ({ ...prev, [field]: true }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setErrorMessage("");
+
+    setTouched({
+      fullName: true,
+      handle: true,
+      companyName: true,
+      email: true,
+      password: true,
+    });
+
+    if (!validate()) {
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const cleanHandle = handle.trim().replace(/^@/, "");
+      const res = await authService.register({
+        name: fullName.trim(),
+        email: email.trim(),
+        password,
+        role,
+        handle: role === "creator" ? `@${cleanHandle}` : undefined,
+        companyName: role === "brand" ? companyName.trim() : undefined,
+        contactName: role === "brand" ? fullName.trim() : undefined,
+      });
+
+      if (res.user) {
+        if (res.token) authService.saveToken(res.token);
+        setAuthData(res.user, res.creatorProfile, res.brandProfile);
+        addToast({
+          type: "success",
+          title: "Account Created Successfully",
+          message: `Welcome to AbeyCollab, ${fullName.trim()}!`,
+        });
+
+        if (role === "brand") {
+          router.push("/app/brand/campaigns");
+        } else {
+          router.push("/app/dashboard");
+        }
+      }
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Registration failed. Please try again.";
+      setErrorMessage(msg);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <div className="w-full max-w-2xl mx-auto rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-8 md:p-10 space-y-8 shadow-[0_16px_40px_rgba(0,0,0,0.06)] relative z-10 text-[#0A0A0E] dark:text-[#F4F4F8] select-none">
-      {/* Top Header with Back to Home button */}
+    <div className="w-full max-w-lg mx-auto rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-8 md:p-10 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.06)] relative z-10 text-[#0A0A0E] dark:text-[#F4F4F8] select-none">
+      {/* Top Header */}
       <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
         <Link
           href="/"
@@ -16,100 +172,213 @@ export default function RegisterPage() {
         </Link>
         <span className="text-[10px] font-mono text-[#0A0A0E] dark:text-[#FFD21F] font-bold uppercase flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40">
           <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-pulse" />
-          Choose Role
+          Direct Access
         </span>
       </div>
 
-      <div className="text-center space-y-2">
+      {/* Title */}
+      <div className="text-center space-y-1.5">
         <h1 className="text-2xl sm:text-3xl font-black text-[#0A0A0E] dark:text-white tracking-tight font-display">
-          Join the AbeyCollab Network
+          Join AbeyCollab
         </h1>
-        <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#8E8EA4] font-sans max-w-md mx-auto">
-          Select your account type to begin tailored onboarding with instant access.
+        <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#8E8EA4] font-sans">
+          One common platform for verified creators and brands with milestone escrow.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        {/* Creator Track */}
-        <div className="p-6 rounded-3xl bg-gradient-to-b from-[#FFFDF5] to-[#FAFAFC] dark:from-[#1A1A28] dark:to-[#12121C] border-2 border-[#FFD21F]/60 hover:border-[#FFD21F] transition-all flex flex-col justify-between space-y-5 group shadow-xs">
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <div className="w-11 h-11 rounded-2xl bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform font-bold">
-                <Video className="w-5 h-5" />
-              </div>
-              <span className="px-2.5 py-1 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-[10px] font-mono font-extrabold uppercase">
-                CREATOR
-              </span>
-            </div>
+      {/* Account Type Selector (Seamless Segmented Toggle) */}
+      <div className="space-y-1.5">
+        <label className="text-xs font-bold text-[#0A0A0E] dark:text-white font-sans">
+          I want to register as
+        </label>
+        <div className="grid grid-cols-2 gap-2 p-1.5 rounded-2xl bg-black/[0.04] dark:bg-white/[0.05] border border-black/8 dark:border-white/10">
+          <button
+            type="button"
+            onClick={() => {
+              setRole("creator");
+              setErrorMessage("");
+              setErrors({});
+            }}
+            className={`py-2.5 px-3 rounded-xl text-xs font-bold font-sans flex items-center justify-center gap-2 transition-all ${
+              role === "creator"
+                ? "bg-white dark:bg-[#1E1E2C] text-[#0A0A0E] dark:text-white shadow-sm border border-black/10 dark:border-white/15"
+                : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
+            }`}
+          >
+            <Video className={`w-3.5 h-3.5 ${role === "creator" ? "text-amber-500" : ""}`} />
+            <span>Creator</span>
+          </button>
 
-            <h2 className="text-lg font-bold text-[#0A0A0E] dark:text-white font-display">I am a Creator</h2>
-            <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] leading-relaxed font-sans">
-              Share your media kit, pitch to paid brand campaigns, and always get paid on time with guaranteed payment protection.
-            </p>
-
-            <div className="space-y-1.5 pt-1 text-xs text-[#4A4A58] dark:text-[#C8C8DC] font-sans">
-              <div className="flex items-center gap-2">
-                <Check className="w-3.5 h-3.5 text-[#087F5B]" />
-                <span>Guaranteed payment on approved work</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-3.5 h-3.5 text-[#087F5B]" />
-                <span>Ready-to-share Media Kit</span>
-              </div>
-            </div>
-          </div>
-
-          <Link href="/creator/register" className="w-full block pt-2">
-            <button className="w-full py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs transition-all shadow-[0_4px_14px_rgba(255,210,31,0.4)] border border-black/10 flex items-center justify-center gap-1.5 active:scale-98">
-              <span>Join as Creator</span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#0A0A0E]" />
-            </button>
-          </Link>
-        </div>
-
-        {/* Brand Track */}
-        <div className="p-6 rounded-3xl bg-[#FAFAFC] dark:bg-[#14141E] border border-black/8 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 transition-all flex flex-col justify-between space-y-5 group shadow-xs">
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <div className="w-11 h-11 rounded-2xl bg-[#0A0A0E] dark:bg-white text-white dark:text-[#0A0A0E] flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
-                <Building2 className="w-5 h-5" />
-              </div>
-              <span className="px-2.5 py-1 rounded-full bg-black/5 dark:bg-white/10 text-[#0A0A0E] dark:text-white text-[10px] font-mono font-bold uppercase">
-                BRAND
-              </span>
-            </div>
-
-            <h2 className="text-lg font-bold text-[#0A0A0E] dark:text-white font-display">I am a Brand / Business</h2>
-            <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] leading-relaxed font-sans">
-              Post project briefs, discover verified creators, review video drafts in one place, and pay only when satisfied.
-            </p>
-
-            <div className="space-y-1.5 pt-1 text-xs text-[#4A4A58] dark:text-[#C8C8DC] font-sans">
-              <div className="flex items-center gap-2">
-                <Check className="w-3.5 h-3.5 text-[#087F5B]" />
-                <span>Smart creator discovery</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-3.5 h-3.5 text-[#087F5B]" />
-                <span>Clear contracts &amp; tax invoices</span>
-              </div>
-            </div>
-          </div>
-
-          <Link href="/brand/register" className="w-full block pt-2">
-            <button className="w-full py-3 rounded-full bg-white dark:bg-[#1E1E2C] hover:bg-[#F0F0F8] dark:hover:bg-[#28283C] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs active:scale-98">
-              <span>Join as Brand</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </Link>
+          <button
+            type="button"
+            onClick={() => {
+              setRole("brand");
+              setErrorMessage("");
+              setErrors({});
+            }}
+            className={`py-2.5 px-3 rounded-xl text-xs font-bold font-sans flex items-center justify-center gap-2 transition-all ${
+              role === "brand"
+                ? "bg-white dark:bg-[#1E1E2C] text-[#0A0A0E] dark:text-white shadow-sm border border-black/10 dark:border-white/15"
+                : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
+            }`}
+          >
+            <Building2 className={`w-3.5 h-3.5 ${role === "brand" ? "text-amber-500" : ""}`} />
+            <span>Brand / Business</span>
+          </button>
         </div>
       </div>
 
-      <div className="pt-2 border-t border-black/8 dark:border-white/10 text-center text-xs text-[#7A7A8A] dark:text-[#8E8EA4] font-sans">
-        Already have an account?{" "}
-        <Link href="/login" className="text-[#0A0A0E] dark:text-[#FFD21F] hover:underline font-bold">
-          Sign In
-        </Link>
+      {/* Error alert */}
+      {errorMessage && (
+        <div className="p-3.5 rounded-2xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 text-xs flex items-center gap-2">
+          <AlertCircle className="w-4 h-4 shrink-0" />
+          <span>{errorMessage}</span>
+        </div>
+      )}
+
+      {/* Common Registration Form */}
+      <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+        {/* Full Name */}
+        <Input
+          label={role === "brand" ? "Contact / Representative Name" : "Full Name"}
+          type="text"
+          required
+          placeholder={role === "brand" ? "e.g. Sarah Chen" : "e.g. Alex Rivera"}
+          value={fullName}
+          onChange={(e) => {
+            setFullName(e.target.value);
+            if (errors.fullName) setErrors((prev) => ({ ...prev, fullName: "" }));
+          }}
+          onBlur={() => handleBlur("fullName")}
+          error={touched.fullName ? errors.fullName : undefined}
+          icon={<User className="w-4 h-4 text-[#7A7A8A] dark:text-[#8E8EA4]" />}
+        />
+
+        {/* Role Specific Field */}
+        {role === "creator" ? (
+          <Input
+            label="Creator Handle"
+            type="text"
+            required
+            placeholder="@yourhandle"
+            value={handle}
+            onChange={(e) => {
+              setHandle(e.target.value);
+              if (errors.handle) setErrors((prev) => ({ ...prev, handle: "" }));
+            }}
+            onBlur={() => handleBlur("handle")}
+            error={touched.handle ? errors.handle : undefined}
+            icon={<AtSign className="w-4 h-4 text-[#7A7A8A] dark:text-[#8E8EA4]" />}
+          />
+        ) : (
+          <Input
+            label="Company / Brand Name"
+            type="text"
+            required
+            placeholder="e.g. Whole Truth / Apex Athletics"
+            value={companyName}
+            onChange={(e) => {
+              setCompanyName(e.target.value);
+              if (errors.companyName) setErrors((prev) => ({ ...prev, companyName: "" }));
+            }}
+            onBlur={() => handleBlur("companyName")}
+            error={touched.companyName ? errors.companyName : undefined}
+            icon={<Building2 className="w-4 h-4 text-[#7A7A8A] dark:text-[#8E8EA4]" />}
+          />
+        )}
+
+        {/* Email Address */}
+        <Input
+          label={role === "brand" ? "Work Email" : "Email Address"}
+          type="email"
+          required
+          placeholder={role === "brand" ? "partnerships@company.com" : "you@example.com"}
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            if (errors.email) setErrors((prev) => ({ ...prev, email: "" }));
+          }}
+          onBlur={() => handleBlur("email")}
+          error={touched.email ? errors.email : undefined}
+          icon={<Mail className="w-4 h-4 text-[#7A7A8A] dark:text-[#8E8EA4]" />}
+        />
+
+        {/* Password */}
+        <div className="space-y-1.5">
+          <Input
+            label="Password"
+            type={showPassword ? "text" : "password"}
+            required
+            placeholder="Minimum 8 characters"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              if (errors.password) setErrors((prev) => ({ ...prev, password: "" }));
+            }}
+            onBlur={() => handleBlur("password")}
+            error={touched.password ? errors.password : undefined}
+            icon={<Lock className="w-4 h-4 text-[#7A7A8A] dark:text-[#8E8EA4]" />}
+            rightElement={
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="text-[#7A7A8A] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white transition-colors p-1"
+                aria-label={showPassword ? "Hide password" : "Show password"}
+              >
+                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+              </button>
+            }
+          />
+
+          {/* Password strength bar */}
+          {password && (
+            <div className="space-y-1 pt-1">
+              <div className="flex items-center justify-between text-[10px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4]">
+                <span>Security Strength:</span>
+                <span className="font-bold">{strengthLabel}</span>
+              </div>
+              <div className="h-1.5 w-full bg-black/5 dark:bg-white/10 rounded-full overflow-hidden flex gap-1">
+                {[1, 2, 3, 4].map((step) => (
+                  <div
+                    key={step}
+                    className={`h-full flex-1 rounded-full transition-colors ${
+                      pwStrength >= step ? strengthColor : "bg-black/5 dark:bg-white/10"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Submit Button */}
+        <button
+          type="submit"
+          disabled={isLoading}
+          className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_16px_rgba(255,210,31,0.4)] border border-black/10 flex items-center justify-center gap-2 disabled:opacity-50 active:scale-98 cursor-pointer mt-2"
+        >
+          {isLoading ? (
+            <>
+              <Loader2 className="w-4 h-4 animate-spin text-[#0A0A0E]" />
+              <span>Creating Your Account...</span>
+            </>
+          ) : (
+            <>
+              <span>Create {role === "brand" ? "Brand" : "Creator"} Account</span>
+              <ArrowRight className="w-4 h-4 text-[#0A0A0E]" />
+            </>
+          )}
+        </button>
+      </form>
+
+      {/* Footer Link */}
+      <div className="text-center pt-2 border-t border-black/8 dark:border-white/10">
+        <p className="text-xs text-[#6A6A78] dark:text-[#8E8EA4]">
+          Already have an account?{" "}
+          <Link href="/login" className="text-[#0A0A0E] dark:text-[#FFD21F] hover:underline font-bold">
+            Sign in
+          </Link>
+        </p>
       </div>
     </div>
   );

@@ -17,7 +17,6 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { InteractiveTiltCard } from "@/components/ui/InteractiveTiltCard";
-import { Modal } from "@/components/ui/Modal";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { TitleIcon } from "@/components/ui/TitleIconBadge";
 import { useGlobalCurrency } from "@/context/CurrencyContext";
@@ -120,7 +119,6 @@ export function HeroEditorialShowcase() {
   const [activeIdx, setActiveIdx] = useState(0);
   const [dealIdx, setDealIdx] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [roleModalOpen, setRoleModalOpen] = useState(false);
   const activeTalent = HERO_TALENT[activeIdx];
 
   // Auto-cycle creators every 5 seconds to showcase diversity
@@ -220,13 +218,13 @@ export function HeroEditorialShowcase() {
 
             {/* Action Buttons (Dominant Primary CTA + Clean Secondary) */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-3.5 pt-1 sm:pt-2">
-              <button
-                onClick={() => setRoleModalOpen(true)}
+              <Link
+                href="/register"
                 className="w-full sm:w-auto min-h-12 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-sm transition-all shadow-[0_4px_20px_rgba(255,210,31,0.5)] flex items-center justify-center gap-2 group active:scale-[0.98] border border-black/10 font-sans hover-lift"
               >
                 <span>Post a Campaign</span>
                 <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-1 transition-transform shrink-0" />
-              </button>
+              </Link>
 
               <Link
                 href="/creators"
@@ -449,41 +447,6 @@ export function HeroEditorialShowcase() {
           </motion.div>
         </div>
       </div>
-
-      {/* Role Selection Modal */}
-      <Modal
-        isOpen={roleModalOpen}
-        onClose={() => setRoleModalOpen(false)}
-        title="Get Started on AbeyCollab"
-        description="Choose how you want to use AbeyCollab today."
-        maxWidth="md"
-      >
-        <div className="space-y-3 pt-2 text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans">
-          <Link
-            href="/brand/register"
-            onClick={() => setRoleModalOpen(false)}
-            className="w-full text-left p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#1A1A28] border-2 border-[#FFD21F] hover:shadow-md transition-all group flex items-center justify-between block hover-lift"
-          >
-            <div>
-              <h4 className="text-sm font-bold font-display text-[#0A0A0E] dark:text-white">I am a Brand or Business</h4>
-              <p className="text-xs text-[#6A6A78] dark:text-[#A0A0B4]">Post a campaign, find creators, and pay safely</p>
-            </div>
-            <ArrowRight className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F] group-hover:translate-x-1 transition-transform" />
-          </Link>
-
-          <Link
-            href="/creator/register"
-            onClick={() => setRoleModalOpen(false)}
-            className="w-full text-left p-4 rounded-2xl bg-[#FAFAFC] dark:bg-[#14141E] border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 hover:bg-white dark:hover:bg-[#1C1C28] hover:shadow-md transition-all group flex items-center justify-between block hover-lift"
-          >
-            <div>
-              <h4 className="text-sm font-bold font-display text-[#0A0A0E] dark:text-white">I am a Creator</h4>
-              <p className="text-xs text-[#6A6A78] dark:text-[#A0A0B4]">Share your media kit, pitch campaigns, and get paid</p>
-            </div>
-            <ArrowRight className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F] group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
-      </Modal>
     </section>
   );
 }

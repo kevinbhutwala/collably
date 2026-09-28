@@ -131,9 +131,9 @@ export default function CreatorRegisterPage() {
     handle:             "",
     avatarUrl:          "",
     gender:             "" as "male" | "female" | "",
-    location:           "United States",
+    location:           "",
     primaryCategory:    "Technology & AI" as CreatorCategory,
-    startingPrice:      500,
+    startingPrice:      "" as unknown as number,
     bio:                "",
     youtubeHandle:      "",
     youtubeSubscribers: "" as unknown as number,
@@ -202,26 +202,6 @@ export default function CreatorRegisterPage() {
   const strength = pwdScore(formData.password);
   const strengthLabel = ["", "Weak", "Fair", "Good", "Strong"][strength] ?? "";
   const strengthColor = ["", "bg-red-500", "bg-orange-500", "bg-yellow-500", "bg-green-500"][strength] ?? "bg-gray-200";
-
-  const handleFillDemo = () => {
-    const s = Math.floor(1000 + Math.random() * 9000);
-    setFormData({
-      fullName: "Alex Rivera", email: `alex.rivera.${s}@example.com`, password: "Password123!",
-      handle: `alexcreatives_${s}`, avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
-      gender: "male", location: "United States", primaryCategory: "Technology & AI" as CreatorCategory,
-      startingPrice: 450, bio: "Tech creator reviewing next-gen gadgets, developer tools, and workflow productivity setups.",
-      youtubeHandle: "AlexRiveraTech", youtubeSubscribers: 42000,
-      instagramHandle: "alex_rivera",  instagramFollowers: 28000,
-      tiktokHandle: "alexrivera.tech", tiktokFollowers: 65000,
-      xHandle: "alexrivera_ai",        xFollowers: 14000,
-      linkedinHandle: "alex-rivera-tech", linkedinFollowers: 6000,
-    });
-    setFormErrors({});
-    setTouched({});
-    setGlobalError("");
-    addToast({ type: "info", title: "Sample Creator Loaded", message: "Form pre-filled with verified creator telemetry. Ready to submit!" });
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setGlobalError("");
@@ -306,23 +286,6 @@ export default function CreatorRegisterPage() {
         <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#8E8EA4] font-sans">
           Connect your channels to generate your verified rate card and audited telemetry.
         </p>
-      </div>
-
-      {/* Demo fill */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/20">
-        <div className="space-y-0.5">
-          <p className="text-xs font-bold font-sans flex items-center gap-1.5 text-[#0A0A0E] dark:text-white">
-            <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-            Testing Creator Onboarding?
-          </p>
-          <p className="text-[11px] text-[#6A6A78] dark:text-[#8E8EA4]">
-            Autofill a complete, verified creator persona with realistic channels and metrics.
-          </p>
-        </div>
-        <button type="button" onClick={handleFillDemo}
-          className="px-3 py-1.5 rounded-xl text-xs font-bold bg-[#FFD21F] text-[#0A0A0E] hover:bg-[#FFE052] transition-colors shadow-sm shrink-0 font-sans">
-          ⚡ Fill Sample Creator
-        </button>
       </div>
 
       {/* Global error */}

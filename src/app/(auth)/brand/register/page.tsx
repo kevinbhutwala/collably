@@ -176,22 +176,6 @@ export default function BrandRegisterPage() {
     .join("")
     .toUpperCase() || "B";
 
-  const handleFillDemo = () => {
-    const s = Math.floor(1000 + Math.random() * 9000);
-    setFormData({
-      companyName: `Apex Athletics ${s}`, contactName: "Sarah Chen",
-      email: `sarah.chen.${s}@apexathletics.com`, password: "Password123!",
-      websiteUrl: "https://apexathletics.com",
-      logoUrl: "/brands/adidas.svg",
-      industry: "Fitness & Wellness",
-      companySize: "11-50", monthlyBudget: "$10,000 - $25,000",
-    });
-    setFormErrors({});
-    setTouched({});
-    setGlobalError("");
-    addToast({ type: "info", title: "Sample Brand Loaded", message: "Form pre-filled with verified brand details & logo. Ready to submit!" });
-  };
-
   const pwChecks  = checkPassword(formData.password);
   const strength  = pwdScore(formData.password);
   const strengthLabel = ["", "Weak", "Fair", "Good", "Strong"][strength] ?? "";
@@ -282,23 +266,6 @@ export default function BrandRegisterPage() {
         <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#8E8EA4] font-sans">
           Post campaign briefs, match with 50K+ vetted creators, and escrow milestones.
         </p>
-      </div>
-
-      {/* Demo fill */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/20">
-        <div className="space-y-0.5">
-          <p className="text-xs font-bold font-sans flex items-center gap-1.5 text-[#0A0A0E] dark:text-white">
-            <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-            Testing Brand Onboarding?
-          </p>
-          <p className="text-[11px] text-[#6A6A78] dark:text-[#8E8EA4]">
-            Autofill a complete, verified brand persona with industry and budget presets.
-          </p>
-        </div>
-        <button type="button" onClick={handleFillDemo}
-          className="px-3 py-1.5 rounded-xl text-xs font-bold bg-[#FFD21F] text-[#0A0A0E] hover:bg-[#FFE052] transition-colors shadow-sm shrink-0 font-sans">
-          ⚡ Fill Sample Brand
-        </button>
       </div>
 
       {/* Global error */}
