@@ -578,7 +578,7 @@ export default function ProfileEditPage() {
 
         {/* Connected Channels & Social Accounts */}
         <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-5">
-          <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-black/8 dark:border-white/10">
             <div>
               <h2 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">Connected Social Channels</h2>
               <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4]">
@@ -589,17 +589,17 @@ export default function ProfileEditPage() {
               <GoogleSignInButton
                 mode="connect_youtube"
                 label="Connect YouTube"
-                className="!py-1.5 !px-3 !text-xs !bg-red-50 dark:!bg-red-950/40 !border-red-200 dark:!border-red-800/40 text-red-700 dark:text-red-300 hover:!bg-red-100 dark:hover:!bg-red-900/40"
+                className="!h-8 !py-0 !px-3 !text-xs !rounded-lg !bg-red-50 dark:!bg-red-950/40 !border-red-200 dark:!border-red-800/40 text-red-700 dark:text-red-300 hover:!bg-red-100 dark:hover:!bg-red-900/40"
               />
               <InstagramSignInButton
                 mode="connect_instagram"
                 label="Connect Instagram"
-                className="!py-1.5 !px-3 !text-xs !bg-pink-50 dark:!bg-pink-950/40 !border-pink-200 dark:!border-pink-800/40 text-pink-700 dark:text-pink-300 hover:!bg-pink-100 dark:hover:!bg-pink-900/40"
+                className="!h-8 !py-0 !px-3 !text-xs !rounded-lg !bg-pink-50 dark:!bg-pink-950/40 !border-pink-200 dark:!border-pink-800/40 text-pink-700 dark:text-pink-300 hover:!bg-pink-100 dark:hover:!bg-pink-900/40"
               />
               <button
                 type="button"
                 onClick={() => setShowAddModal(true)}
-                className="px-3 py-1.5 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] hover:bg-[#20202B] dark:hover:bg-[#FFE052] text-white dark:text-[#0A0A0E] text-xs font-bold transition-all flex items-center gap-1.5"
+                className="h-8 px-3 rounded-lg bg-[#0A0A0E] dark:bg-[#FFD21F] hover:bg-[#20202B] dark:hover:bg-[#FFE052] text-white dark:text-[#0A0A0E] text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span>Add Other</span>
@@ -623,17 +623,17 @@ export default function ProfileEditPage() {
                   <GoogleSignInButton
                     mode="connect_youtube"
                     label="Connect Official YouTube"
-                    className="!py-2 !px-4 !text-xs !bg-red-50 dark:!bg-red-950/40 !border-red-200 dark:!border-red-800/40 text-red-700 dark:text-red-300 hover:!bg-red-100"
+                    className="!h-9 !py-0 !px-4 !text-xs !rounded-xl !bg-red-50 dark:!bg-red-950/40 !border-red-200 dark:!border-red-800/40 text-red-700 dark:text-red-300 hover:!bg-red-100"
                   />
                   <InstagramSignInButton
                     mode="connect_instagram"
                     label="Connect Official Instagram"
-                    className="!py-2 !px-4 !text-xs !bg-pink-50 dark:!bg-pink-950/40 !border-pink-200 dark:!border-pink-800/40 text-pink-700 dark:text-pink-300 hover:!bg-pink-100"
+                    className="!h-9 !py-0 !px-4 !text-xs !rounded-xl !bg-pink-50 dark:!bg-pink-950/40 !border-pink-200 dark:!border-pink-800/40 text-pink-700 dark:text-pink-300 hover:!bg-pink-100"
                   />
                   <button
                     type="button"
                     onClick={() => setShowAddModal(true)}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] text-xs font-bold hover:bg-[#20202B] dark:hover:bg-[#FFE052] transition-colors"
+                    className="inline-flex items-center gap-1.5 h-9 px-4 rounded-xl bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] text-xs font-bold hover:bg-[#20202B] dark:hover:bg-[#FFE052] transition-colors cursor-pointer"
                   >
                     <Plus className="w-3.5 h-3.5" />
                     <span>Add Manually</span>
@@ -744,7 +744,7 @@ export default function ProfileEditPage() {
                 <GoogleSignInButton
                   mode="connect_youtube"
                   label="Connect YouTube"
-                  className="!py-1.5 !text-xs !bg-white dark:!bg-[#181824] !text-red-600 hover:!bg-red-50"
+                  className="!h-8 !py-0 !text-xs !rounded-lg !bg-white dark:!bg-[#181824] !text-red-600 hover:!bg-red-50 cursor-pointer"
                 />
               </div>
 
@@ -761,7 +761,7 @@ export default function ProfileEditPage() {
                 <InstagramSignInButton
                   mode="connect_instagram"
                   label="Connect Instagram"
-                  className="!py-1.5 !text-xs !bg-white dark:!bg-[#181824] !text-pink-600 hover:!bg-pink-50"
+                  className="!h-8 !py-0 !text-xs !rounded-lg !bg-white dark:!bg-[#181824] !text-pink-600 hover:!bg-pink-50 cursor-pointer"
                 />
               </div>
             </div>

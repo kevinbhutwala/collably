@@ -42,12 +42,12 @@ export function GoogleSignInButton({
       type="button"
       onClick={handleClick}
       disabled={isLoading}
-      className={`w-full py-3 px-4 rounded-full border border-black/10 dark:border-white/10 bg-white dark:bg-[#181824] hover:bg-black/5 dark:hover:bg-white/5 text-[#0A0A0E] dark:text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2.5 transition-all shadow-xs active:scale-98 disabled:opacity-50 ${className}`}
+      className={`w-full h-11 px-4 rounded-xl border border-black/10 dark:border-white/12 bg-white dark:bg-[#161622] hover:bg-neutral-50 dark:hover:bg-[#1C1C2A] hover:border-black/20 dark:hover:border-white/25 text-[#0A0A0E] dark:text-white font-medium text-xs sm:text-sm flex items-center justify-center gap-2.5 transition-all duration-150 shadow-xs hover:shadow-sm active:scale-[0.99] disabled:opacity-50 cursor-pointer ${className}`}
     >
       {isLoading ? (
-        <Loader2 className="w-4 h-4 animate-spin text-[#0A0A0E] dark:text-white" />
+        <Loader2 className="w-4 h-4 animate-spin text-[#0A0A0E] dark:text-white shrink-0" />
       ) : mode === "connect_youtube" ? (
-        <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none">
+        <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none">
           <path
             d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"
             fill="#FF0000"
@@ -74,7 +74,7 @@ export function GoogleSignInButton({
           />
         </svg>
       )}
-      <span>{label || defaultLabel}</span>
+      <span className="truncate">{label || defaultLabel}</span>
     </button>
   );
 }
