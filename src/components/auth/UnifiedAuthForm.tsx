@@ -8,7 +8,6 @@ import { useUIStore } from "@/stores/ui.store";
 import { authService } from "@/services/auth.service";
 import { Input } from "@/components/ui/Input";
 import { GoogleSignInButton } from "@/components/auth/GoogleSignInButton";
-import { InstagramSignInButton } from "@/components/auth/InstagramSignInButton";
 import {
   AlertCircle,
   Lock,
@@ -21,6 +20,10 @@ import {
   Video,
   Building2,
   Sparkles,
+  Instagram,
+  Youtube,
+  AtSign,
+  ShieldCheck,
 } from "lucide-react";
 
 interface UnifiedAuthFormProps {
@@ -53,6 +56,10 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+
+  // Optional Creator Social Media Links
+  const [instagramInput, setInstagramInput] = useState("");
+  const [youtubeInput, setYoutubeInput] = useState("");
 
   // UI state
   const [isLoading, setIsLoading] = useState(false);
@@ -147,7 +154,7 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
     }
 
     if (activeTab === "register" && !name.trim()) {
-      setErrorMessage("Please enter your name.");
+      setErrorMessage(role === "brand" ? "Please enter your company or brand name." : "Please enter your name.");
       setIsLoading(false);
       return;
     }
@@ -171,7 +178,7 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
             : "/app/dashboard";
         router.push(target);
       } else {
-        // Sign Up Flow
+        // Sign Up Flow (with optional Instagram and YouTube handles)
         const res = await authService.register({
           name: name.trim(),
           email: trimmedEmail,
@@ -179,6 +186,8 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
           role,
           companyName: role === "brand" ? name.trim() : undefined,
           contactName: role === "brand" ? name.trim() : undefined,
+          instagramHandle: role === "creator" && instagramInput.trim() ? instagramInput.trim() : undefined,
+          youtubeHandle: role === "creator" && youtubeInput.trim() ? youtubeInput.trim() : undefined,
         });
 
         if (res.user) {
@@ -208,19 +217,19 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
 
   return (
     <div className="w-full max-w-md mx-auto rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-7 space-y-5 shadow-[0_16px_40px_rgba(0,0,0,0.06)] relative z-10 text-[#0A0A0E] dark:text-[#F4F4F8] select-none transition-all">
-      {/* Header with Title & Live Badge */}
+      {/* Header with Title & Security Badge */}
       <div className="text-center space-y-1">
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/40 text-[#0A0A0E] dark:text-[#FFD21F] text-[10px] font-mono font-bold uppercase tracking-wider mb-1">
           <Sparkles className="w-3 h-3 text-[#FFD21F]" />
-          <span>AbeyCollab Portal</span>
+          <span>AbeyCollab Secure Portal</span>
         </div>
         <h1 className="text-2xl sm:text-3xl font-black text-[#0A0A0E] dark:text-white tracking-tight font-display">
           {activeTab === "signin" ? "Sign In" : "Create Account"}
         </h1>
         <p className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-sans">
           {activeTab === "signin"
-            ? "Sign in to manage your campaigns, deals, and payouts."
-            : "Join India's verified creator & brand collaboration network."}
+            ? "Sign in to manage your campaigns, deals, and escrow payouts."
+            : "Join India's verified creator & brand collaboration platform."}
         </p>
       </div>
 
@@ -261,7 +270,7 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
       {activeTab === "register" && (
         <div className="space-y-1.5 pt-0.5">
           <label className="text-[11px] font-bold text-[#5A5A68] dark:text-[#A0A0B4] font-sans">
-            I am joining as:
+            I am registering as:
           </label>
           <div className="grid grid-cols-2 gap-2">
             <button
@@ -269,7 +278,7 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
               onClick={() => setRole("creator")}
               className={`py-2 px-3 rounded-xl text-xs font-bold font-sans flex items-center justify-center gap-1.5 transition-all cursor-pointer border ${
                 role === "creator"
-                  ? "bg-[#FFD21F]/15 dark:bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] border-[#FFD21F]/60"
+                  ? "bg-[#FFD21F]/15 dark:bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] border-[#FFD21F]/60 shadow-xs"
                   : "bg-black/[0.02] dark:bg-white/[0.03] text-[#7A7A8A] dark:text-[#8E8EA4] border-black/8 dark:border-white/8 hover:text-[#0A0A0E] dark:hover:text-white"
               }`}
             >
@@ -282,7 +291,7 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
               onClick={() => setRole("brand")}
               className={`py-2 px-3 rounded-xl text-xs font-bold font-sans flex items-center justify-center gap-1.5 transition-all cursor-pointer border ${
                 role === "brand"
-                  ? "bg-[#FFD21F]/15 dark:bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] border-[#FFD21F]/60"
+                  ? "bg-[#FFD21F]/15 dark:bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] border-[#FFD21F]/60 shadow-xs"
                   : "bg-black/[0.02] dark:bg-white/[0.03] text-[#7A7A8A] dark:text-[#8E8EA4] border-black/8 dark:border-white/8 hover:text-[#0A0A0E] dark:hover:text-white"
               }`}
             >
@@ -301,8 +310,8 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
         </div>
       )}
 
-      {/* 1-Click Social Sign-In & Sign-Up (Works for BOTH existing and new users!) */}
-      <div className="space-y-2.5">
+      {/* 1-Click Social Sign-In & Sign-Up with Google ONLY (Frictionless, Best Option) */}
+      <div className="space-y-2">
         <GoogleSignInButton
           mode={activeTab === "register" ? "register" : "login"}
           role={role}
@@ -311,16 +320,6 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
             activeTab === "register"
               ? `Sign up as ${role === "brand" ? "Brand" : "Creator"} with Google`
               : "Continue with Google"
-          }
-        />
-        <InstagramSignInButton
-          mode={activeTab === "register" ? "register" : "login"}
-          role={role}
-          redirect={redirect}
-          label={
-            activeTab === "register"
-              ? `Sign up as ${role === "brand" ? "Brand" : "Creator"} with Instagram`
-              : "Continue with Instagram"
           }
         />
 
@@ -334,15 +333,15 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
         </div>
       </div>
 
-      {/* Streamlined Form */}
+      {/* Form Fields */}
       <form onSubmit={handleSubmit} className="space-y-3.5">
         {/* Full Name / Company Name (Only on register) */}
         {activeTab === "register" && (
           <Input
-            label={role === "brand" ? "Company / Brand Name" : "Your Name"}
+            label={role === "brand" ? "Company / Brand Name" : "Your Full Name"}
             type="text"
             required
-            placeholder={role === "brand" ? "e.g. Acme Studio" : "e.g. Alex Rivera"}
+            placeholder={role === "brand" ? "e.g. Acme Corp" : "e.g. Alex Rivera"}
             value={name}
             onChange={(e) => {
               setName(e.target.value);
@@ -401,6 +400,46 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
             </div>
           )}
         </div>
+
+        {/* Optional Social Media Links on Creator Sign Up */}
+        {activeTab === "register" && role === "creator" && (
+          <div className="p-3.5 rounded-2xl bg-black/[0.02] dark:bg-white/[0.03] border border-black/8 dark:border-white/8 space-y-3 mt-1">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-bold text-[#0A0A0E] dark:text-white flex items-center gap-1.5 font-sans">
+                <AtSign className="w-3.5 h-3.5 text-amber-500" />
+                <span>Social Handles</span>
+              </span>
+              <span className="text-[10px] font-mono font-semibold uppercase text-[#7A7A8A] dark:text-[#8E8EA4] px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5">
+                Optional
+              </span>
+            </div>
+
+            <Input
+              label="Instagram Profile / Handle"
+              type="text"
+              placeholder="@handle or instagram.com/username"
+              value={instagramInput}
+              onChange={(e) => setInstagramInput(e.target.value)}
+              icon={<Instagram className="w-4 h-4 text-pink-500" />}
+            />
+
+            <Input
+              label="YouTube Channel / Handle"
+              type="text"
+              placeholder="@channel or youtube.com/@channel"
+              value={youtubeInput}
+              onChange={(e) => setYoutubeInput(e.target.value)}
+              icon={<Youtube className="w-4 h-4 text-red-500" />}
+            />
+
+            <div className="flex items-start gap-1.5 pt-0.5 text-[11px] text-[#6A6A78] dark:text-[#9A9AA8] font-sans leading-tight">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
+              <span>
+                Not mandatory. Once signed up, you can 1-click verify channel ownership via OAuth in your profile to claim your <strong>Verified Creator Badge</strong> and live stats.
+              </span>
+            </div>
+          </div>
+        )}
 
         {/* Submit Button */}
         <button

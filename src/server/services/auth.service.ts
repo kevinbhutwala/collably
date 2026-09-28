@@ -68,6 +68,9 @@ export class AuthService {
     role: UserRole;
     companyName?: string;
     handle?: string;
+    instagramHandle?: string;
+    youtubeHandle?: string;
+    socialAccounts?: any[];
   }): Promise<{ user: User; token: string }> {
     const existing = await userRepo.findByEmail(params.email);
     if (existing) {
@@ -86,6 +89,40 @@ export class AuthService {
     // Create associated profile based on role
     if (params.role === "creator") {
       const handle = params.handle || params.name.toLowerCase().replace(/[^a-z0-9]/g, "");
+      const initialSocialAccounts: any[] = [];
+
+      if (params.instagramHandle) {
+        const cleanIg = params.instagramHandle.trim().replace(/^@/, "").replace(/^https?:\/\/(www\.)?instagram\.com\//i, "").replace(/\/$/, "");
+        if (cleanIg) {
+          initialSocialAccounts.push({
+            id: `sa_ig_${Date.now()}`,
+            platform: "instagram",
+            handle: `@${cleanIg}`,
+            followers: 0,
+            engagementRate: 0,
+            verifiedBadge: false,
+            verificationStatus: "unverified",
+            url: `https://instagram.com/${cleanIg}`,
+          });
+        }
+      }
+
+      if (params.youtubeHandle) {
+        const cleanYt = params.youtubeHandle.trim().replace(/^@/, "").replace(/^https?:\/\/(www\.)?youtube\.com\/(@|c\/)?/i, "").replace(/\/$/, "");
+        if (cleanYt) {
+          initialSocialAccounts.push({
+            id: `sa_yt_${Date.now() + 1}`,
+            platform: "youtube",
+            handle: `@${cleanYt}`,
+            followers: 0,
+            engagementRate: 0,
+            verifiedBadge: false,
+            verificationStatus: "unverified",
+            url: `https://youtube.com/@${cleanYt}`,
+          });
+        }
+      }
+
       await creatorRepo.createCreator({
         userId: userEntity.id,
         fullName: params.name,
@@ -107,7 +144,7 @@ export class AuthService {
         avgEngagementRate: 0,
         startingPrice: 500,
         availableForHire: true,
-        socialAccounts: [],
+        socialAccounts: initialSocialAccounts.length > 0 ? initialSocialAccounts : (params.socialAccounts || []),
         audience: {
           topCountries: [{ country: "United States", percentage: 45 }],
           ageDistribution: [{ range: "25-34", percentage: 55 }],
