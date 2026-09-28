@@ -59,35 +59,15 @@ export async function GET(req: NextRequest) {
         tier: "Nano",
         rating: 5.0,
         completedCampaignsCount: 0,
-        totalFollowers: 15000,
-        avgEngagementRate: 4.5,
-        startingPrice: user.country === "IN" ? 15000 : 500,
+        totalFollowers: 0,
+        avgEngagementRate: 0,
+        startingPrice: user.country === "IN" ? 5000 : 250,
         currency: user.country === "IN" ? "INR" : "USD",
         availableForHire: true,
-        profileCompleteness: 80,
-        qualityScore: 90,
-        socialAccounts: [
-          {
-            id: `sa-${user.id}-ig`,
-            platform: "instagram",
-            handle: cleanHandle,
-            followers: 15000,
-            engagementRate: 4.5,
-            verifiedBadge: false,
-          }
-        ],
-        rateCards: [
-          {
-            id: `rc-${user.id}-1`,
-            deliverableType: "Instagram Reel",
-            title: "Dedicated Video Showcase",
-            description: "Dedicated high-retention reel with product hook.",
-            basePrice: user.country === "IN" ? 15000 : 500,
-            currency: user.country === "IN" ? "INR" : "USD",
-            turnaroundDays: 4,
-            revisionsIncluded: 2,
-          }
-        ],
+        profileCompleteness: 50,
+        qualityScore: 80,
+        socialAccounts: [],
+        rateCards: [],
         audience: {
           topCountries: [
             { country: user.country === "IN" ? "India" : "United States", percentage: 75 },

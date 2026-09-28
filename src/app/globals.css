@@ -926,3 +926,12 @@ html.lenis, html.lenis body {
     word-break: normal;
   }
 }
+
+/* ── 13. PREVENT MOBILE / IOS SAFARI ZOOM ON INPUT FOCUS ── */
+@media screen and (max-width: 768px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}

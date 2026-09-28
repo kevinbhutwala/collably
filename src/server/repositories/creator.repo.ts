@@ -155,7 +155,16 @@ export class CreatorRepository {
   }
 
   getByUserId(userId: string): CreatorProfile | undefined {
-    return (db.getState().creators || []).find((c) => c.userId === userId);
+    if (!userId) return undefined;
+    const cleanId = userId.toLowerCase().trim();
+    return (db.getState().creators || []).find(
+      (c) =>
+        c.userId === userId ||
+        (c.userId && c.userId.toLowerCase() === cleanId) ||
+        c.id === userId ||
+        (c.id && c.id.toLowerCase() === cleanId) ||
+        (c.email && c.email.toLowerCase() === cleanId)
+    );
   }
 
   findByUserId(userId: string): CreatorProfile | null {
@@ -165,9 +174,9 @@ export class CreatorRepository {
   createOrUpdate(profile: CreatorProfile): CreatorProfile {
     db.updateState((state) => {
       state.creators = state.creators || [];
-      const index = state.creators.findIndex((c) => c.id === profile.id);
+      const index = state.creators.findIndex((c) => c.id === profile.id || (profile.userId && c.userId === profile.userId));
       if (index >= 0) {
-        state.creators[index] = profile;
+        state.creators[index] = { ...state.creators[index], ...profile };
       } else {
         state.creators.unshift(profile);
       }
@@ -190,7 +199,16 @@ export class CreatorRepository {
     let updated: CreatorProfile | null = null;
     db.updateState((state) => {
       state.creators = state.creators || [];
-      const index = state.creators.findIndex((c) => c.id === id);
+      const cleanId = id ? id.replace(/^@+/, "").toLowerCase() : "";
+      const index = state.creators.findIndex(
+        (c) =>
+          c.id === id ||
+          c.userId === id ||
+          (c.id && c.id.toLowerCase() === cleanId) ||
+          (c.userId && c.userId.toLowerCase() === cleanId) ||
+          (c.handle && c.handle.replace(/^@+/, "").toLowerCase() === cleanId) ||
+          (c.email && c.email.toLowerCase() === cleanId)
+      );
       if (index >= 0) {
         state.creators[index] = {
           ...state.creators[index],

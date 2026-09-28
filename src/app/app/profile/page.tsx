@@ -156,8 +156,8 @@ export default function ProfileEditPage() {
       platform: newPlatform,
       handle: cleanHandle,
       url,
-      followers: Number(newFollowers) || 1000,
-      engagementRate: Number(newEngagement) || 3.0,
+      followers: Number(newFollowers) || 0,
+      engagementRate: Number(newEngagement) || 0,
       avgViews: 0,
       verifiedBadge: false,
       verificationStatus: "unverified",
@@ -204,7 +204,10 @@ export default function ProfileEditPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          creatorId: currentCreator?.id,
+          creatorId: currentCreator?.id || user?.id,
+          userId: user?.id,
+          userName: user?.name,
+          userEmail: user?.email,
           accountId: acc.id,
           platform: acc.platform,
           handle: acc.handle,
@@ -232,10 +235,13 @@ export default function ProfileEditPage() {
             }
           : item
       );
-      setSocialAccounts(updatedAccounts);
+      const finalAccounts = data.creator?.socialAccounts || updatedAccounts;
+      setSocialAccounts(finalAccounts);
 
-      // Persist to creator profile if available
-      if (currentCreator) {
+      // Persist to creator profile in state & server
+      if (data.creator) {
+        useAuthStore.setState({ currentCreator: data.creator });
+      } else if (currentCreator) {
         await updateCreatorProfile({
           socialAccounts: updatedAccounts,
           totalFollowers: calculateTotalFollowers(updatedAccounts),
@@ -558,7 +564,28 @@ export default function ProfileEditPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {socialAccounts.map((acc) => {
+            {socialAccounts.length === 0 ? (
+              <div className="sm:col-span-2 py-8 px-4 text-center rounded-2xl border-2 border-dashed border-black/10 dark:border-white/10 bg-[#FAFAFC] dark:bg-[#161622] space-y-3">
+                <div className="w-12 h-12 mx-auto rounded-full bg-amber-50 dark:bg-amber-500/10 flex items-center justify-center text-amber-600 dark:text-amber-400">
+                  <ShieldCheck className="w-6 h-6" />
+                </div>
+                <div className="space-y-1">
+                  <p className="text-sm font-bold text-[#0A0A0E] dark:text-white">No Connected Channels Yet</p>
+                  <p className="text-xs text-[#6A6A78] dark:text-[#9A9AA8] max-w-sm mx-auto">
+                    Connect your YouTube, Instagram, TikTok, X, or LinkedIn account and verify ownership to unlock verified badges and brand deals.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setShowAddModal(true)}
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] text-xs font-bold hover:bg-[#20202B] dark:hover:bg-[#FFE052] transition-colors"
+                >
+                  <Plus className="w-3.5 h-3.5" />
+                  <span>Add Your Channel</span>
+                </button>
+              </div>
+            ) : (
+              socialAccounts.map((acc) => {
               const isAccountVerified = acc.verifiedBadge || acc.verificationStatus === "verified";
               return (
                 <div
@@ -630,7 +657,7 @@ export default function ProfileEditPage() {
                   </div>
                 </div>
               );
-            })}
+            }))}
           </div>
         </div>
       </form>

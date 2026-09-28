@@ -87,34 +87,23 @@ export async function POST(req: NextRequest) {
           instagramFollowers,
           tiktokHandle,
           tiktokFollowers,
-          xHandle: xHandle || cleanHandle,
+          xHandle: xHandle ? xHandle.replace("@", "") : undefined,
           xFollowers,
           linkedinHandle,
           linkedinFollowers,
         });
       }
 
-      // If no accounts were provided at all, fallback to a default account based on their handle
-      if (accounts.length === 0) {
-        accounts = [
-          {
-            id: `sa-${Date.now()}-x`,
-            platform: "x",
-            handle: cleanHandle,
-            url: `https://x.com/${cleanHandle}`,
-            followers: 15000,
-            engagementRate: 4.8,
-            avgViews: 8000,
-            verifiedBadge: false,
-          },
-        ];
-      }
-
+      // Real user accounts: only include what the creator explicitly provided
       const totalFollowers = calculateTotalFollowers(accounts);
-      const avgEngagementRate = calculateAvgEngagementRate(accounts);
+      const avgEngagementRate = accounts.length > 0 ? calculateAvgEngagementRate(accounts) : 0;
       const tier = getCreatorTier(totalFollowers);
-      const basePrice = startingPrice ? parseInt(startingPrice) : Math.max(500, Math.round(totalFollowers * 0.05));
       const creatorCurrency = (currency as any) || (location?.toLowerCase().includes("india") ? "INR" : "USD");
+      const basePrice = startingPrice
+        ? parseInt(startingPrice)
+        : creatorCurrency === "INR"
+        ? 5000
+        : 250;
 
       // Build rate cards based on connected platforms
       const rateCards: RateCardItem[] = [];
@@ -243,10 +232,10 @@ export async function POST(req: NextRequest) {
         description: `Verified enterprise brand on AbeyCollab sponsoring creator partnerships.`,
         logoUrl: logoUrl || newUser.avatarUrl || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
         coverImageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
-        websiteUrl: websiteUrl || "https://abeycollab.com",
+        websiteUrl: websiteUrl || "",
         location: location || "San Francisco, CA",
         companySize: companySize || "11-50",
-        verified: true,
+        verified: false,
         activeCampaignsCount: 0,
         totalSpent: 0,
         socialHandles: {},
