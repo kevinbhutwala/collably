@@ -289,11 +289,12 @@ function RegisterContent() {
           label={`Sign up as ${role === "brand" ? "Brand" : "Creator"} with Instagram`}
         />
         
-        <div className="relative flex items-center justify-center pt-3 pb-1">
-          <div className="border-t border-black/8 dark:border-white/10 w-full" />
-          <span className="bg-white dark:bg-[#12121A] px-3 text-[11px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4] font-medium uppercase tracking-wider">
-            Or fill details manually
+        <div className="flex items-center gap-3 py-1.5">
+          <div className="h-px bg-black/10 dark:bg-white/10 grow" />
+          <span className="text-[11px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4] font-semibold uppercase tracking-wider whitespace-nowrap">
+            or fill details manually
           </span>
+          <div className="h-px bg-black/10 dark:bg-white/10 grow" />
         </div>
       </div>
 

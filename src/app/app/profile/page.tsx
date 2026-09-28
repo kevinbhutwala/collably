@@ -766,11 +766,12 @@ export default function ProfileEditPage() {
               </div>
             </div>
 
-            <div className="relative flex items-center justify-center my-2">
-              <div className="border-t border-black/10 dark:border-white/10 w-full" />
-              <span className="bg-white dark:bg-[#12121A] px-3 text-[10px] text-[#7A7A8A] font-semibold uppercase tracking-wider">
-                Or add manually
+            <div className="flex items-center gap-3 py-1.5">
+              <div className="h-px bg-black/10 dark:bg-white/10 grow" />
+              <span className="text-[10px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4] font-semibold uppercase tracking-wider whitespace-nowrap">
+                or add manually
               </span>
+              <div className="h-px bg-black/10 dark:bg-white/10 grow" />
             </div>
 
             <div className="space-y-3">
