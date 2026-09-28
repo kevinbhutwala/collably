@@ -167,7 +167,7 @@ export default function AdminCollaborationsPage() {
         addToast({
           type: "success",
           title: "Collaboration Cancelled",
-          message: `Refund of $${data.refundAmountDollars || 0} issued to brand. Kill-fee of $${data.killFeeAmountDollars || 0} allocated.`,
+          message: `Refund of ${formatCurrency(data.refundAmountDollars || 0, data.currency || "INR")} issued to brand. Kill-fee of ${formatCurrency(data.killFeeAmountDollars || 0, data.currency || "INR")} allocated.`,
         });
         setIsCancelModalOpen(false);
         fetchCollabs();

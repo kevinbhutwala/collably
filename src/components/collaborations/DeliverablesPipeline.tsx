@@ -387,7 +387,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
       addToast({
         type: "info",
         title: "Collaboration Cancelled",
-        message: `Settlement: $${res.refundAmountDollars.toFixed(2)} refunded to brand, $${res.killFeeAmountDollars.toFixed(2)} kill-fee paid to creator.`,
+        message: `Settlement: ${formatCurrency(res.refundAmountDollars, collab.currency)} refunded to brand, ${formatCurrency(res.killFeeAmountDollars, collab.currency)} kill-fee paid to creator.`,
       });
     } catch (err: any) {
       addToast({

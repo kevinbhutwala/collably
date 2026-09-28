@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { collaborationProtectionService } from "@/server/services/collaboration-protection.service";
 import { SecurityService } from "@/server/services/security.service";
 import { collaborationRepo } from "@/server/repositories/collaboration.repo";
+import { creatorRepo } from "@/server/repositories/creator.repo";
+import { brandRepo } from "@/server/repositories/brand.repo";
 
 export async function POST(
   req: NextRequest,
@@ -18,8 +20,27 @@ export async function POST(
       return NextResponse.json({ error: "Collaboration not found" }, { status: 404 });
     }
 
-    const body = await req.json();
-    const reason = body.reason || "Mutual agreement / cancellation requested";
+    const adminRoles = ["super_admin", "agency_admin", "agency_owner", "moderator", "admin", "finance_manager"];
+    const isAdmin = adminRoles.includes(session.role);
+    const creator = creatorRepo.getByUserId(session.userId);
+    const brand = brandRepo.getByUserId(session.userId);
+
+    const isAuthorizedCreator =
+      Boolean(creator && (collab.creatorId === creator.id || collab.creator?.userId === session.userId)) ||
+      collab.creatorId === session.userId;
+    const isAuthorizedBrand =
+      Boolean(brand && (collab.brandId === brand.id || collab.brand?.userId === session.userId)) ||
+      collab.brandId === session.userId;
+
+    if (!isAdmin && !isAuthorizedCreator && !isAuthorizedBrand) {
+      return NextResponse.json(
+        { error: "Forbidden: You are not authorized to cancel this collaboration" },
+        { status: 403 }
+      );
+    }
+
+    const body = await req.json().catch(() => ({}));
+    const reason = body?.reason || "Administrative arbitration / cancellation requested";
 
     const result = await collaborationProtectionService.cancelCollaboration({
       collaborationId: params.id,
@@ -34,6 +55,7 @@ export async function POST(
       stage: result.stage,
       refundAmountDollars: result.refundAmountDollars,
       killFeeAmountDollars: result.killFeeAmountDollars,
+      currency: result.collaboration.currency || "INR",
       transactionId: result.transactionId,
       collaboration: result.collaboration,
     });

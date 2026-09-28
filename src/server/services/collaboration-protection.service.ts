@@ -338,8 +338,29 @@ export class CollaborationProtectionService {
     const collab = collaborationRepo.getById(params.collaborationId);
     if (!collab) throw new Error("Collaboration not found");
 
-    if (collab.status === "cancelled" || collab.status === "completed") {
-      throw new Error(`Cannot cancel collaboration in status "${collab.status}"`);
+    // Idempotency: If already cancelled, return existing details
+    if (collab.status === "cancelled") {
+      return {
+        success: true,
+        stage: (collab.cancellationDetails as any)?.stage || "cancelled",
+        refundAmountDollars: (collab.cancellationDetails as any)?.refundAmountDollars || 0,
+        killFeeAmountDollars: (collab.cancellationDetails as any)?.killFeeAmountDollars || 0,
+        transactionId: (collab.cancellationDetails as any)?.transactionId,
+        collaboration: collab,
+      };
+    }
+
+    const isAdmin = [
+      "super_admin",
+      "agency_admin",
+      "agency_owner",
+      "moderator",
+      "admin",
+      "finance_manager",
+    ].includes(params.actorRole);
+
+    if (collab.status === "completed" && !isAdmin) {
+      throw new Error(`Cannot cancel collaboration in status "${collab.status}". Please contact support to initiate arbitration.`);
     }
 
     const totalBudget = Number(collab.totalAgreedBudget) || 3500;
@@ -350,11 +371,32 @@ export class CollaborationProtectionService {
     let refundPercentToBrand = 100;
     let killFeePercentToCreator = 0;
 
+    const statusStr = String(currentStatus);
+    const escrowStr = String(collab.escrowStatus || "");
+
+    const isCompletedOrReleased =
+      collab.status === "completed" ||
+      statusStr === "posted" ||
+      statusStr === "approved" ||
+      statusStr === "released" ||
+      statusStr === "funds_released" ||
+      statusStr === "paid" ||
+      escrowStr === "released" ||
+      escrowStr === "fully_released";
+
     if (!collab.isFunded || currentStatus === "payment_pending") {
       // Unfunded: Nothing held in escrow
       stage = "before_acceptance";
       refundPercentToBrand = 0;
       killFeePercentToCreator = 0;
+    } else if (isCompletedOrReleased) {
+      if (!isAdmin) {
+        throw new Error("CANNOT_CANCEL: Deliverable is already approved/posted. Open a dispute if there is a contract breach.");
+      }
+      // Admin arbitration on completed or released deal
+      stage = "posted";
+      refundPercentToBrand = 0;
+      killFeePercentToCreator = 100;
     } else if (currentStatus === "payment_secured") {
       // Funded, but creator hasn't started production
       stage = "before_work";
@@ -375,8 +417,6 @@ export class CollaborationProtectionService {
       stage = "overdue";
       refundPercentToBrand = 100;
       killFeePercentToCreator = 0;
-    } else if (currentStatus === "posted" || currentStatus === "approved") {
-      throw new Error("CANNOT_CANCEL: Deliverable is already approved/posted. Open a dispute if there is a contract breach.");
     } else {
       stage = "before_work";
       refundPercentToBrand = 100;
@@ -386,10 +426,19 @@ export class CollaborationProtectionService {
     const refundAmountDollars = (totalBudget * refundPercentToBrand) / 100;
     const killFeeAmountDollars = (totalBudget * killFeePercentToCreator) / 100;
 
-    // 2. Execute Balanced Double-Entry Ledger Transaction if funds were in escrow
+    // 2. Execute Balanced Double-Entry Ledger Transaction only if active escrow is held
     let txId: string | undefined = undefined;
-    if (collab.isFunded && totalBudget > 0) {
-      const currency = collab.currency || "USD";
+    const hasActiveEscrow =
+      collab.isFunded &&
+      escrowStr !== "released" &&
+      escrowStr !== "fully_released" &&
+      statusStr !== "released" &&
+      statusStr !== "funds_released" &&
+      statusStr !== "paid" &&
+      totalBudget > 0;
+
+    if (hasActiveEscrow) {
+      const currency = collab.currency || "INR";
       const totalCents = dollarsToCents(totalBudget);
       const refundBrandCents = dollarsToCents(refundAmountDollars);
       const creatorGrossCents = dollarsToCents(killFeeAmountDollars);
@@ -468,6 +517,8 @@ export class CollaborationProtectionService {
         state.ledgerEntries = state.ledgerEntries || [];
         state.ledgerEntries.push(debitEscrow, creditBrand, creditCreator, creditPlatform);
       });
+    } else if (isAdmin) {
+      txId = `tx_arbitrated_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
     }
 
     // 3. Update Collaboration State
@@ -479,7 +530,7 @@ export class CollaborationProtectionService {
 
       c.status = "cancelled";
       c.paymentStatus = "cancelled";
-      c.escrowStatus = "refunded";
+      c.escrowStatus = hasActiveEscrow ? "refunded" : (c.escrowStatus || "refunded");
       c.cancellationDetails = {
         cancelledBy: params.actorUserId,
         cancelledByRole: params.actorRole,
@@ -488,9 +539,9 @@ export class CollaborationProtectionService {
         reason: params.reason,
         refundPercentToBrand,
         killFeePercentToCreator,
-        refundAmountDollars,
-        killFeeAmountDollars,
-        currency: collab.currency || "USD",
+        refundAmountDollars: hasActiveEscrow ? refundAmountDollars : 0,
+        killFeeAmountDollars: hasActiveEscrow ? killFeeAmountDollars : (totalBudget || 0),
+        currency: collab.currency || "INR",
         transactionId: txId,
       };
       c.updatedAt = now;
@@ -527,8 +578,8 @@ export class CollaborationProtectionService {
     return {
       success: true,
       stage,
-      refundAmountDollars,
-      killFeeAmountDollars,
+      refundAmountDollars: hasActiveEscrow ? refundAmountDollars : 0,
+      killFeeAmountDollars: hasActiveEscrow ? killFeeAmountDollars : (totalBudget || 0),
       transactionId: txId,
       collaboration: updatedCollab,
     };
