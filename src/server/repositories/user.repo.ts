@@ -117,12 +117,19 @@ export class UserRepository {
                 .maybeSingle();
 
               const targetId = existing?.id || supaId;
+              const targetRole =
+                newUser.role === "brand"
+                  ? "brand_owner"
+                  : newUser.role === "agency_admin" || newUser.role === "agency_owner"
+                  ? "agency_admin"
+                  : newUser.role || "creator";
+
               const { error } = await supabase.from("profiles").upsert({
                 id: targetId,
                 user_id: targetId,
                 email: newUser.email,
                 name: newUser.name,
-                role: newUser.role,
+                role: targetRole,
                 avatar_url: newUser.avatarUrl,
                 verified: newUser.verified,
                 status: "active",
