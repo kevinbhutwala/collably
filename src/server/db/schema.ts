@@ -43,6 +43,21 @@ export interface UserEntity {
   updatedAt: string;
 }
 
+/** Secure password-reset token record stored in the DB (only the SHA-256 hash is kept, never the raw token). */
+export interface PasswordResetTokenEntity {
+  /** SHA-256 hash of the raw token (the raw token is only ever in the signed URL). */
+  tokenHash: string;
+  userId: string;
+  email: string;
+  /** ISO 8601 expiry — 1 hour from creation. */
+  expiresAt: string;
+  /** Set when the token has been consumed. Cannot be reused. */
+  usedAt?: string;
+  createdAt: string;
+  /** Tracks how many reset emails have been sent to this email in the last hour for rate-limiting. */
+  requestCount?: number;
+}
+
 export interface PaymentEntity {
   id: string;
   organizationId?: string;
@@ -134,6 +149,7 @@ export interface DatabaseState {
   userBadges?: UserBadgeEntity[];
   suspiciousActivities?: SuspiciousActivityRecord[];
   featureFlags?: FeatureFlagConfig;
+  passwordResetTokens?: PasswordResetTokenEntity[];
 }
 
 
