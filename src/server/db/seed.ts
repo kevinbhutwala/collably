@@ -61,7 +61,7 @@ export function getInitialSeedDatabase(): DatabaseState {
   const initialUsers: UserEntity[] = [
     // ── 1. Agency Super Admin ──
     {
-      id: "user-owner",
+      id: "67fdd571-0111-48a1-a271-b08f1972fd36",
       name: "Kevin Bhutwala",
       email: "kevinbhutwala417@gmail.com",
       passwordHash: adminPasswordHash,
@@ -151,6 +151,30 @@ export function getInitialSeedDatabase(): DatabaseState {
       passwordHash: brandPasswordHash,
       role: "brand",
       avatarUrl: "/brands/snitch.png",
+      verified: true,
+      createdAt: now,
+      updatedAt: now,
+    },
+    // ── 9. Canonical Creator: creator@abeycollab.io ──
+    {
+      id: "user-creator",
+      name: "AbeyCollab Creator",
+      email: "creator@abeycollab.io",
+      passwordHash: creatorPasswordHash,
+      role: "creator",
+      avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+      verified: true,
+      createdAt: now,
+      updatedAt: now,
+    },
+    // ── 10. Canonical Brand: brand@abeycollab.io ──
+    {
+      id: "user-brand",
+      name: "AbeyCollab Brand Partner",
+      email: "brand@abeycollab.io",
+      passwordHash: brandPasswordHash,
+      role: "brand",
+      avatarUrl: "/brands/the-whole-truth.png",
       verified: true,
       createdAt: now,
       updatedAt: now,

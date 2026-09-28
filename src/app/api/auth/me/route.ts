@@ -24,7 +24,16 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ authenticated: false }, { status: 200 });
     }
 
-    const user = userRepo.findById(payload.userId);
+    let user = userRepo.findById(payload.userId);
+    if (!user && payload.email) {
+      user = userRepo.findByEmail(payload.email);
+    }
+    if (!user && payload.userId) {
+      user = await userRepo.findByIdAsync(payload.userId);
+    }
+    if (!user && payload.email) {
+      user = await userRepo.findByEmailAsync(payload.email);
+    }
     if (!user) {
       return NextResponse.json({ authenticated: false }, { status: 200 });
     }

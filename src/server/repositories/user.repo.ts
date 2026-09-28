@@ -97,7 +97,71 @@ export class UserRepository {
 
 
   findById(id: string): UserEntity | undefined {
-    return (db.getState().users || []).find((u) => u.id === id);
+    const users = db.getState().users || [];
+    const direct = users.find((u) => u.id === id);
+    if (direct) return direct;
+
+    // Cross-resolution for owner / admin ID aliases
+    if (id === "67fdd571-0111-48a1-a271-b08f1972fd36" || id === "user-owner") {
+      const admin = users.find(
+        (u) =>
+          u.email.toLowerCase() === "kevinbhutwala417@gmail.com" ||
+          u.id === "user-owner" ||
+          u.id === "67fdd571-0111-48a1-a271-b08f1972fd36"
+      );
+      if (admin) return admin;
+    }
+
+    return undefined;
+  }
+
+  async findByIdAsync(id: string): Promise<UserEntity | undefined> {
+    const direct = this.findById(id);
+    if (direct) return direct;
+
+    if (!isSupabaseConfigured) return undefined;
+
+    try {
+      const supabase = getSupabaseAdmin();
+      if (!supabase) return undefined;
+
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("*")
+        .or(`id.eq.${id},user_id.eq.${id}`)
+        .maybeSingle();
+
+      if (!profile) return undefined;
+
+      const role =
+        (profile.role === "brand_owner" ? "brand" : profile.role === "agency_admin" ? "agency_admin" : profile.role) || "creator";
+
+      const hydratedUser: UserEntity = {
+        id: profile.id || profile.user_id || id,
+        name: profile.name || "User",
+        email: profile.email,
+        passwordHash: "",
+        role: role as UserRole,
+        avatarUrl: profile.avatar_url,
+        verified: profile.verified ?? false,
+        createdAt: profile.created_at || new Date().toISOString(),
+        updatedAt: profile.updated_at || new Date().toISOString(),
+      };
+
+      db.updateState((state) => {
+        state.users = state.users || [];
+        const idx = state.users.findIndex((u) => u.id === id || u.email.toLowerCase() === profile.email.toLowerCase());
+        if (idx !== -1) {
+          state.users[idx] = { ...state.users[idx], ...hydratedUser };
+        } else {
+          state.users.push(hydratedUser);
+        }
+      });
+
+      return hydratedUser;
+    } catch {
+      return undefined;
+    }
   }
 
   getAll(): UserEntity[] {
