@@ -111,7 +111,7 @@ type SettingsTab =
 export default function AdminSettingsPage() {
   const { addToast } = useUIStore();
   const [platformFee, setPlatformFee] = useState(10);
-  const [minEscrow, setMinEscrow] = useState(500);
+  const [minEscrow, setMinEscrow] = useState(5000);
 
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -780,45 +780,45 @@ export default function AdminSettingsPage() {
               <div className="p-2.5 rounded-lg bg-white dark:bg-[#12121A] border border-black/5 dark:border-white/5 text-[10px] space-y-1">
                 <div className="flex justify-between text-neutral-500">
                   <span>Brand Gross Escrow:</span>
-                  <span className="font-mono font-bold text-[#0A0A0E] dark:text-white">$1,000.00</span>
+                  <span className="font-mono font-bold text-[#0A0A0E] dark:text-white">₹10,000.00</span>
                 </div>
                 <div className="flex justify-between text-emerald-600 dark:text-emerald-400">
                   <span>Platform Fee ({platformFee}%):</span>
-                  <span className="font-mono font-bold">${(1000 * platformFee) / 100}.00</span>
+                  <span className="font-mono font-bold">₹{((10000 * platformFee) / 100).toLocaleString("en-IN")}.00</span>
                 </div>
                 <div className="flex justify-between text-neutral-700 dark:text-neutral-300 font-bold border-t border-black/5 dark:border-white/5 pt-1">
                   <span>Creator Net Disbursement:</span>
-                  <span className="font-mono">${1000 - (1000 * platformFee) / 100}.00</span>
+                  <span className="font-mono">₹{(10000 - (10000 * platformFee) / 100).toLocaleString("en-IN")}.00</span>
                 </div>
               </div>
             </div>
 
-            {/* Min Escrow $ */}
+            {/* Min Escrow ₹ */}
             <div className="p-4 rounded-xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
                   Minimum Campaign Escrow Floor
                 </span>
                 <span className="font-mono text-sm font-black text-[#0A0A0E] dark:text-[#FFD21F] bg-[#FFD21F]/15 px-2 py-0.5 rounded-md">
-                  ${minEscrow} USD
+                  ₹{minEscrow.toLocaleString("en-IN")} INR
                 </span>
               </div>
               <input
                 type="range"
-                min="50"
-                max="2500"
-                step="50"
+                min="1000"
+                max="50000"
+                step="1000"
                 value={minEscrow}
                 onChange={(e) => setMinEscrow(parseInt(e.target.value) || 0)}
                 className="w-full accent-[#FFD21F] cursor-pointer"
               />
               <div className="flex justify-between text-[10px] font-mono text-neutral-400">
-                <span>$50</span>
-                <span>$500</span>
-                <span>$2,500</span>
+                <span>₹1,000</span>
+                <span>₹25,000</span>
+                <span>₹50,000</span>
               </div>
               <div className="flex items-center gap-1.5 pt-1">
-                {[100, 250, 500, 1000].map((preset) => (
+                {[2500, 5000, 10000, 25000].map((preset) => (
                   <button
                     key={preset}
                     onClick={() => setMinEscrow(preset)}
@@ -828,7 +828,7 @@ export default function AdminSettingsPage() {
                         : "bg-white dark:bg-[#12121A] text-neutral-600 dark:text-neutral-400 border-black/5 dark:border-white/5 hover:border-black/20"
                     }`}
                   >
-                    ${preset}
+                    ₹{preset.toLocaleString("en-IN")}
                   </button>
                 ))}
               </div>

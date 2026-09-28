@@ -36,8 +36,8 @@ export function ProtectedEscrowFlow() {
     setMounted(true);
   }, []);
 
-  const displayBudget = mounted ? format(3500, "USD") : "$3,500";
-  const displayPayout = mounted ? format(3150, "USD") : "$3,150";
+  const displayBudget = mounted ? format(75000, "INR") : "₹75,000";
+  const displayPayout = mounted ? format(67500, "INR") : "₹67,500";
 
   const escrowStages: EscrowStage[] = [
     {

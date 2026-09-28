@@ -29,8 +29,8 @@ const HERO_PORTRAITS: HeroPortrait[] = [
     name: "Dipti Parihar Sharma",
     niche: "Contemporary Fashion & Style",
     reach: "99.3K Reach",
-    rateNumber: 420,
-    rate: "$420",
+    rateNumber: 35000,
+    rate: "₹35,000",
     mainImage: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=80",
     overlappingFrame: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&auto=format&fit=crop&q=80",
     frameLabel: "Editorial Lookbook",
@@ -42,8 +42,8 @@ const HERO_PORTRAITS: HeroPortrait[] = [
     name: "Caimar Salizi",
     niche: "Desk Ergonomics & Creative Tech",
     reach: "97.6K Reach",
-    rateNumber: 480,
-    rate: "$480",
+    rateNumber: 40000,
+    rate: "₹40,000",
     mainImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80",
     overlappingFrame: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&auto=format&fit=crop&q=80",
     frameLabel: "Desk Setup Review",
@@ -55,8 +55,8 @@ const HERO_PORTRAITS: HeroPortrait[] = [
     name: "Daniel Titchener",
     niche: "Minimalist Architecture & Design",
     reach: "95K Reach",
-    rateNumber: 520,
-    rate: "$520",
+    rateNumber: 45000,
+    rate: "₹45,000",
     mainImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80",
     overlappingFrame: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&auto=format&fit=crop&q=80",
     frameLabel: "Studio Tour",
@@ -141,7 +141,7 @@ export function VisualHeroSection() {
             <div className="flex items-center gap-4 pt-3 border-t border-black/6 dark:border-white/10 text-xs font-mono text-[#5A5A68] dark:text-[#8E8EA4]">
               <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E] dark:text-white">
                 <ShieldCheck className="w-4 h-4 text-[#087F5B] dark:text-emerald-400" />
-                <span>$14.8M Escrow Vaults</span>
+                <span>₹12.5 Cr Escrow Vaults</span>
               </div>
               <span>•</span>
               <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E] dark:text-white">

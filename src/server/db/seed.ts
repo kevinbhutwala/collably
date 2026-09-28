@@ -193,8 +193,8 @@ export function getInitialSeedDatabase(): DatabaseState {
       currentPeriodStart: now,
       currentPeriodEnd: futureDate,
       cancelAtPeriodEnd: false,
-      price: 29,
-      currency: "USD",
+      price: 2499,
+      currency: "INR",
       features: { ...ALL_PLANS.creator_pro.features },
       usage: {
         activeCampaignsCount: 0,
@@ -217,8 +217,8 @@ export function getInitialSeedDatabase(): DatabaseState {
       currentPeriodStart: now,
       currentPeriodEnd: futureDate,
       cancelAtPeriodEnd: false,
-      price: 199,
-      currency: "USD",
+      price: 15999,
+      currency: "INR",
       features: { ...ALL_PLANS.brand_growth.features },
       usage: {
         activeCampaignsCount: 0,
@@ -242,7 +242,7 @@ export function getInitialSeedDatabase(): DatabaseState {
       currentPeriodEnd: futureDate,
       cancelAtPeriodEnd: false,
       price: 0,
-      currency: "USD",
+      currency: "INR",
       features: {
         ...ALL_PLANS.brand_enterprise.features,
         adminOverride: true,

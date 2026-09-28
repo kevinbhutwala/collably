@@ -181,7 +181,7 @@ export class LedgerService {
         throw new Error("Milestone escrow has already been disbursed");
       }
 
-      const currency = params.currency || "USD";
+      const currency = params.currency || "INR";
       const totalCents = dollarsToCents(params.amountDollars);
       const feeRate = params.feeRatePercent !== undefined ? params.feeRatePercent : 10;
       const { feeCents, netCents } = calculateFeeCents(totalCents, feeRate);
@@ -189,7 +189,7 @@ export class LedgerService {
       const txId = `tx_disburse_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
       const now = new Date().toISOString();
 
-      // 1. Debit Escrow Holding (-$3,500.00)
+      // 1. Debit Escrow Holding (-₹35,000.00)
       const debitEscrow: LedgerEntry = {
         id: `led_${Date.now()}_1`,
         transactionId: txId,
@@ -205,7 +205,7 @@ export class LedgerService {
         createdAt: now,
       };
 
-      // 2. Credit Creator Wallet (+$3,150.00)
+      // 2. Credit Creator Wallet (+₹31,500.00)
       const creditCreatorWallet: LedgerEntry = {
         id: `led_${Date.now()}_2`,
         transactionId: txId,
@@ -221,7 +221,7 @@ export class LedgerService {
         createdAt: now,
       };
 
-      // 3. Credit Platform Revenue (+$350.00)
+      // 3. Credit Platform Revenue (+₹3,500.00)
       const creditPlatformRevenue: LedgerEntry = {
         id: `led_${Date.now()}_3`,
         transactionId: txId,

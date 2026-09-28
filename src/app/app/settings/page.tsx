@@ -877,7 +877,7 @@ export default function SettingsPage() {
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-bold text-[#0A0A0E]">Milestone Brief</span>
                     <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E]">
-                      $3,500
+                      ₹75,000
                     </span>
                   </div>
                   <p className="text-[11px] text-[#7A7A8A]">Clean paper white background with crisp typography and sunlight yellow accents.</p>

@@ -386,7 +386,7 @@ export default function AdminBrandsPage() {
             }`}
           >
             <DollarSign className="w-3.5 h-3.5 text-[#FFD21F]" />
-            <span>High Volume (&gt;$200k)</span>
+            <span>High Volume (&gt;₹20L)</span>
           </button>
           <button
             onClick={() => setActiveTab("active_campaigns")}

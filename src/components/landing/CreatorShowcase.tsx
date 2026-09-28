@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { MOCK_CREATORS } from "@/mock/creators.mock";
-import { CreatorCategory } from "@/core/types";
+import { CreatorCategory, CreatorProfile } from "@/core/types";
 import { CATEGORIES } from "@/core/constants";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -14,12 +14,28 @@ import { cn } from "@/lib/utils";
 
 export function CreatorShowcase() {
   const [selectedCategory, setSelectedCategory] = useState<CreatorCategory | "all">("all");
+  const [creators, setCreators] = useState<CreatorProfile[]>(MOCK_CREATORS);
+
+  useEffect(() => {
+    let isMounted = true;
+    fetch("/api/creators")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (isMounted && data && Array.isArray(data) && data.length > 0) {
+          setCreators(data);
+        }
+      })
+      .catch(() => {});
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const filteredCreators =
     selectedCategory === "all"
-      ? MOCK_CREATORS
-      : MOCK_CREATORS.filter(
-          (c) => c.primaryCategory === selectedCategory || c.secondaryCategories.includes(selectedCategory)
+      ? creators
+      : creators.filter(
+          (c) => c.primaryCategory === selectedCategory || c.secondaryCategories?.includes(selectedCategory)
         );
 
   return (
@@ -33,10 +49,10 @@ export function CreatorShowcase() {
               <span>Real Creator Discovery</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-display">
-              Public Instagram creator media kits
+              Public creator media kits
             </h2>
             <p className="text-sm sm:text-base text-slate-300 font-sans">
-              Discover real Instagram creators with public metrics. Deliverables and rates are illustrative market estimates until claimed by the creator.
+              Discover real creators with verified channels, transparent audience reach, and real-time media kits.
             </p>
           </div>
 
@@ -166,7 +182,7 @@ export function CreatorShowcase() {
               {/* Action Footer */}
               <div className="pt-4 border-t border-white/10 flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] text-slate-400 uppercase block font-mono">Est. Rate (Demo)</span>
+                  <span className="text-[10px] text-slate-400 uppercase block font-mono">Starting Rate</span>
                   <span className="text-sm font-bold text-white font-mono">
                     {formatCurrency(creator.startingPrice)}
                   </span>

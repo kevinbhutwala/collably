@@ -9,7 +9,7 @@ import { formatCurrency } from "@/core/utils/formatters";
 
 const EXAMPLE_PROMPTS = [
   "Fitness creator from Mumbai with 50K-250K followers and ₹30K budget",
-  "Technology & AI YouTube creator with >5% engagement under $2500",
+  "Technology & AI YouTube creator with >5% engagement under ₹50,000",
   "Luxury Fashion & Style creator in London with high engagement",
   "Design & Creative specialist in San Francisco with verified reliability",
 ];

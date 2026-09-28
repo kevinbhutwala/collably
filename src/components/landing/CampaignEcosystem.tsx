@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { MOCK_CAMPAIGNS } from "@/mock/campaigns.mock";
+import { Campaign } from "@/core/types";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { SafeImage } from "@/components/ui/SafeImage";
@@ -10,6 +11,26 @@ import { formatCurrency } from "@/core/utils/formatters";
 import { ArrowUpRight, Users, Calendar, Sparkles } from "lucide-react";
 
 export function CampaignEcosystem() {
+  const [campaigns, setCampaigns] = useState<Campaign[]>(MOCK_CAMPAIGNS);
+
+  useEffect(() => {
+    let isMounted = true;
+    fetch("/api/campaigns")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (isMounted && data) {
+          const list = Array.isArray(data) ? data : data.campaigns || [];
+          if (list.length > 0) {
+            setCampaigns(list);
+          }
+        }
+      })
+      .catch(() => {});
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   return (
     <section className="py-24 bg-transparent border-b border-white/10 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -37,7 +58,7 @@ export function CampaignEcosystem() {
 
         {/* Campaign Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {MOCK_CAMPAIGNS.slice(0, 3).map((campaign) => (
+          {campaigns.slice(0, 3).map((campaign) => (
             <div
               key={campaign.id}
               className="group rounded-3xl bg-[#120c16] border border-white/10 hover:border-pink-500/40 overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"

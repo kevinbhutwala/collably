@@ -83,7 +83,7 @@ export function ExactBentoSection() {
                 </div>
                 <div>
                   <span className="text-[10px] text-[#7A7A8A] block">Starting At</span>
-                  <span className="text-xs font-bold text-[#0A0A0E]">$1,200</span>
+                  <span className="text-xs font-bold text-[#0A0A0E]">₹45,000</span>
                 </div>
               </div>
             </div>

@@ -52,7 +52,7 @@ export class MarketPulseService {
 
     const opportunityRationale =
       opportunityScore >= 85
-        ? `Your profile is performing in the top 15% for ${category}. Brand interest is surging with an average deal size of $2,450.`
+        ? `Your profile is performing in the top 15% for ${category}. Brand interest is surging with an average deal size of ₹50,000.`
         : `Your category demand is healthy. Adding verified social metrics and a video introduction can elevate your deal volume by 32%.`;
 
     // 2. Category Deliverable Benchmark Rates

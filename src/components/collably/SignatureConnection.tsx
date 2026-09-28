@@ -89,7 +89,7 @@ export function SignatureConnection() {
                 </div>
               </div>
               <span className="px-2 py-0.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-[hsl(327,100%,55%)] font-mono text-[10px] font-bold">
-                $28,500 Locked
+                ₹2,50,000 Locked
               </span>
             </div>
 

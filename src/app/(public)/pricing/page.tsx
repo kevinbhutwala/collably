@@ -63,7 +63,7 @@ const pricingStructuredData = [
         name: 'How much does it cost to get started as a creator?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'AbeyCollab Creator Starter is 100% free forever ($0/mo). Creators get a public media kit, rate card hosting, and up to 5 brand applications per month. Creator Pro ($29/mo) unlocks unlimited applications, AI pitch help, and fast 2-hour payouts.',
+          text: 'AbeyCollab Creator Starter is 100% free forever (₹0/mo). Creators get a public media kit, rate card hosting, and up to 5 brand applications per month. Creator Pro (₹2,499/mo) unlocks unlimited applications, AI pitch help, and fast 2-hour payouts.',
         },
       },
       {

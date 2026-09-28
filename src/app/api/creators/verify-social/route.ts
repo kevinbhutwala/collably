@@ -46,32 +46,35 @@ export async function POST(req: NextRequest) {
     const cleanHandle = validation.cleanHandle;
     const url = validation.url;
 
-    // 3. Resolve creator profile across multiple identifiers
-    let creator = creatorId
-      ? (creatorRepo.getById(creatorId) || creatorRepo.getByUserId(creatorId))
-      : undefined;
+    // 3. Resolve creator profile strictly for the authenticated session
+    let creator: any = undefined;
 
-    if (!creator && session.userId) {
+    if (session.userId) {
       creator = creatorRepo.getByUserId(session.userId) || creatorRepo.getById(session.userId);
     }
 
-    if (!creator && userId) {
-      creator = creatorRepo.getByUserId(userId) || creatorRepo.getById(userId);
-    }
-
     if (!creator && session.email) {
-      creator = creatorRepo.getById(session.email);
+      creator = creatorRepo.getByUserId(session.email) || creatorRepo.getById(session.email);
     }
 
-    if (!creator && cleanHandle) {
-      creator = creatorRepo.getById(cleanHandle);
+    if (!creator && creatorId) {
+      const candidate = creatorRepo.getById(creatorId) || creatorRepo.getByUserId(creatorId);
+      if (
+        candidate &&
+        (candidate.userId === session.userId ||
+          (candidate.email && candidate.email.toLowerCase() === session.email.toLowerCase()) ||
+          session.role === "agency_admin" ||
+          session.role === "super_admin")
+      ) {
+        creator = candidate;
+      }
     }
 
-    // Auto-heal / provision creator record if missing from serverless lambda memory
+    // Auto-heal / provision creator record if missing
     if (!creator) {
       const userRecord = userRepo.findById(session.userId) || userRepo.findByEmail(session.email);
       const name = userRecord?.name || userName || (session.email ? session.email.split("@")[0] : "Creator");
-      const userHandle = cleanHandle || name.toLowerCase().replace(/[^a-zA-Z0-9_]/g, "");
+      const userHandle = name.toLowerCase().replace(/[^a-zA-Z0-9_]/g, "") || `creator_${Date.now().toString(36)}`;
 
       creator = creatorRepo.createCreator({
         userId: session.userId,
@@ -82,7 +85,7 @@ export async function POST(req: NextRequest) {
         bio: "",
         avatarUrl: userRecord?.avatarUrl || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
         coverImageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
-        location: userRecord?.country === "IN" ? "India" : "United States",
+        location: "India",
         languages: ["English"],
         primaryCategory: "Lifestyle & Travel",
         secondaryCategories: [],
@@ -93,15 +96,15 @@ export async function POST(req: NextRequest) {
         completedCampaignsCount: 0,
         totalFollowers: 0,
         avgEngagementRate: 0,
-        startingPrice: userRecord?.country === "IN" ? 5000 : 200,
-        currency: userRecord?.country === "IN" ? "INR" : "USD",
+        startingPrice: 5000,
+        currency: "INR",
         availableForHire: true,
         profileCompleteness: 50,
         qualityScore: 80,
         socialAccounts: [],
         rateCards: [],
         audience: {
-          topCountries: [{ country: userRecord?.country === "IN" ? "India" : "United States", percentage: 70 }],
+          topCountries: [{ country: "India", percentage: 70 }],
           ageDistribution: [{ range: "25-34", percentage: 50 }],
           genderSplit: [{ gender: "Female", percentage: 50 }],
           interests: ["Lifestyle", "Tech"],
@@ -123,11 +126,14 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // 4. Duplicate Account Protection: Check if already verified by ANOTHER creator
+    // 4. Duplicate Account Protection: Check if already verified by ANOTHER real creator
     const allCreators = creatorRepo.getAll();
     const existingOther = allCreators.find(
       (c) =>
         c.id !== creator.id &&
+        c.userId !== session.userId &&
+        c.userId !== "user-creator" &&
+        !c.id.startsWith("creator-mock") &&
         c.socialAccounts?.some(
           (sa) =>
             sa.platform === platform &&

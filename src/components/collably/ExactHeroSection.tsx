@@ -196,7 +196,7 @@ export function ExactHeroSection() {
                   </span>
                 </div>
                 <p className="text-[10px] text-[#6A6A78] dark:text-[#8E8EA4]">Fashion Campaign</p>
-                <p className="text-xs font-bold text-[#0A0A0E] dark:text-white font-mono mt-0.5">$25,000</p>
+                <p className="text-xs font-bold text-[#0A0A0E] dark:text-white font-mono mt-0.5">₹2,50,000</p>
               </div>
             </motion.div>
 

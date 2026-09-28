@@ -386,7 +386,7 @@ export function ContinuousProductStory() {
                           <span className="text-[10px] uppercase font-mono text-[#7A7A8A] dark:text-[#8E8EA4] font-bold block">
                             PRE-FUNDED ESCROW VAULT
                           </span>
-                          <span className="text-2xl font-black font-display text-[#0A0A0E] dark:text-white">$3,500.00</span>
+                          <span className="text-2xl font-black font-display text-[#0A0A0E] dark:text-white">₹75,000.00</span>
                         </div>
                         <span className="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 text-xs font-mono font-bold flex items-center gap-1 border border-emerald-300 dark:border-emerald-800">
                           <Lock className="w-3.5 h-3.5" /> SECURED
@@ -470,15 +470,15 @@ export function ContinuousProductStory() {
                       <div className="p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#1A1A28] border border-[#FFD21F]/50 space-y-2">
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs font-mono">
                           <span className="text-[#7A7A8A] dark:text-[#8E8EA4]">Gross Escrow Milestone</span>
-                          <span className="font-bold text-[#0A0A0E] dark:text-white">$3,500.00</span>
+                          <span className="font-bold text-[#0A0A0E] dark:text-white">₹75,000.00</span>
                         </div>
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs font-mono">
                           <span className="text-[#7A7A8A] dark:text-[#8E8EA4]">Platform QA &amp; Escrow Fee (10%)</span>
-                          <span className="text-rose-600 font-bold">-$350.00</span>
+                          <span className="text-rose-600 font-bold">-₹7,500.00</span>
                         </div>
                         <div className="pt-2 border-t border-black/8 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-1 font-mono">
                           <strong className="text-[#0A0A0E] dark:text-white font-display text-sm">Net Creator Payout</strong>
-                          <strong className="text-emerald-600 dark:text-emerald-400 font-display text-lg">$3,150.00</strong>
+                          <strong className="text-emerald-600 dark:text-emerald-400 font-display text-lg">₹67,500.00</strong>
                         </div>
                       </div>
 

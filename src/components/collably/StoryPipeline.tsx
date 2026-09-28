@@ -59,7 +59,7 @@ export function StoryPipeline() {
         <div className="space-y-3 p-5 rounded-2xl bg-[#120c16] border border-white/10 text-xs font-mono text-white shadow-sm">
           <div className="flex items-center justify-between text-[11px] text-slate-400 pb-2 border-b border-white/10">
             <span className="font-bold text-white">Deliverables: 1x YouTube 60s + 1x Reel</span>
-            <span className="text-[hsl(327,100%,55%)] font-bold">$3,200</span>
+            <span className="text-[hsl(327,100%,55%)] font-bold">₹75,000</span>
           </div>
           <div className="p-2.5 rounded-xl bg-pink-500/15 border border-pink-500/30 text-pink-300 text-[11px] font-medium">
             ✓ 6-Month Paid Digital Ad Usage Rights Included
@@ -103,7 +103,7 @@ export function StoryPipeline() {
         <div className="space-y-3 p-5 rounded-2xl bg-[#120c16] border border-white/10 text-xs font-mono text-white shadow-sm">
           <div className="flex items-center justify-between text-[11px] text-slate-400 pb-2 border-b border-white/10">
             <span className="font-bold text-white">Milestone Vault #M-9021</span>
-            <span className="text-emerald-400 font-bold">$3,200 HELD</span>
+            <span className="text-emerald-400 font-bold">₹75,000 HELD</span>
           </div>
           <div className="p-2.5 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-[11px] font-medium">
             🔒 Funds guaranteed for creator upon deliverable approval
@@ -125,10 +125,10 @@ export function StoryPipeline() {
         <div className="space-y-3 p-5 rounded-2xl bg-[#120c16] border border-white/10 text-xs font-mono text-white shadow-sm">
           <div className="flex items-center justify-between text-[11px] text-slate-400 pb-2 border-b border-white/10">
             <span className="font-bold text-white">Payout Disbursed (Stripe Direct)</span>
-            <span className="text-emerald-400 font-bold">+$2,880.00</span>
+            <span className="text-emerald-400 font-bold">+₹67,500</span>
           </div>
           <div className="text-[10px] text-slate-400 flex items-center justify-between">
-            <span>AbeyCollab Fee (10%): $320</span>
+            <span>AbeyCollab Fee (10%): ₹7,500</span>
             <span className="text-emerald-400 font-bold">Status: PAID</span>
           </div>
         </div>

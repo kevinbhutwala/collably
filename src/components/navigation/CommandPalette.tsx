@@ -6,6 +6,7 @@ import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
 import { MOCK_CREATORS } from "@/mock/creators.mock";
 import { MOCK_CAMPAIGNS } from "@/mock/campaigns.mock";
+import { CreatorProfile, Campaign } from "@/core/types";
 import {
   Search,
   Layers,
@@ -18,6 +19,8 @@ import {
 export function CommandPalette() {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [creatorsList, setCreatorsList] = useState<CreatorProfile[]>(MOCK_CREATORS);
+  const [campaignsList, setCampaignsList] = useState<Campaign[]>(MOCK_CAMPAIGNS);
   const router = useRouter();
   const { role } = useAuthStore();
   const { addToast } = useUIStore();
@@ -37,6 +40,27 @@ export function CommandPalette() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  useEffect(() => {
+    if (isOpen) {
+      fetch("/api/creators")
+        .then((res) => (res.ok ? res.json() : null))
+        .then((data) => {
+          if (Array.isArray(data) && data.length > 0) setCreatorsList(data);
+        })
+        .catch(() => {});
+
+      fetch("/api/campaigns")
+        .then((res) => (res.ok ? res.json() : null))
+        .then((data) => {
+          if (data) {
+            const list = Array.isArray(data) ? data : data.campaigns || [];
+            if (list.length > 0) setCampaignsList(list);
+          }
+        })
+        .catch(() => {});
+    }
+  }, [isOpen]);
+
   const handleSelect = (action: () => void) => {
     action();
     setIsOpen(false);
@@ -45,13 +69,13 @@ export function CommandPalette() {
 
   if (!isOpen) return null;
 
-  const filteredCreators = MOCK_CREATORS.filter(
+  const filteredCreators = creatorsList.filter(
     (c) =>
       c.fullName.toLowerCase().includes(query.toLowerCase()) ||
       c.handle.toLowerCase().includes(query.toLowerCase())
   ).slice(0, 4);
 
-  const filteredCampaigns = MOCK_CAMPAIGNS.filter(
+  const filteredCampaigns = campaignsList.filter(
     (c) =>
       c.title.toLowerCase().includes(query.toLowerCase()) ||
       c.brand.companyName.toLowerCase().includes(query.toLowerCase())
