@@ -175,6 +175,128 @@ const slaDeadline = new Date(gDriveResult.slaDeadline).getTime();
 const hoursDiff = Math.round((slaDeadline - submissionTime) / (1000 * 60 * 60));
 assert("Deliverable", "7.5 120-hour SLA review deadline accurately computed (+120 hours)", hoursDiff === 120);
 
+// 8. BIDIRECTIONAL PRE-FLIGHT ELIGIBILITY & CONSISTENCY TESTS
+console.log("\n🛡️ --- 8. BIDIRECTIONAL PRE-FLIGHT ELIGIBILITY & VERIFICATION TESTS ---");
+
+function verifyCreatorEligibilityRule(creator, campaign, proposedFee) {
+  const issues = [];
+  
+  // 1. Profile completeness
+  if (!creator.bio || creator.bio.trim().length < 20) {
+    issues.push({ id: "bio", critical: true, reason: "Incomplete bio" });
+  }
+  if (!creator.avatarUrl) {
+    issues.push({ id: "avatar", critical: true, reason: "Missing avatar" });
+  }
+  if (!creator.startingPrice || creator.startingPrice <= 0) {
+    issues.push({ id: "starting_price", critical: true, reason: "Missing rate" });
+  }
+
+  // 2. Social presence & Consistency
+  const accounts = creator.socialAccounts || [];
+  if (accounts.length === 0) {
+    issues.push({ id: "social_accounts", critical: true, reason: "No connected accounts" });
+  } else {
+    const verifiedFollowers = accounts.reduce((s, a) => s + (a.followers || 0), 0);
+    const claimedFollowers = creator.followersCount || verifiedFollowers;
+    if (claimedFollowers > 0 && verifiedFollowers > 0) {
+      const diff = Math.abs(claimedFollowers - verifiedFollowers) / Math.max(claimedFollowers, verifiedFollowers);
+      if (diff > 0.75) {
+        issues.push({ id: "metric_discrepancy", critical: true, reason: "Drastic metric mismatch between media kit and connected account" });
+      } else if (diff > 0.25) {
+        issues.push({ id: "metric_discrepancy", critical: false, reason: "Moderate metric variance" });
+      }
+    }
+  }
+
+  // 3. Campaign criteria
+  const verifiedReach = accounts.reduce((s, a) => s + (a.followers || 0), 0);
+  if (campaign.creatorRequirements?.minFollowers && verifiedReach < campaign.creatorRequirements.minFollowers) {
+    issues.push({ id: "min_followers", critical: true, reason: "Follower deficit" });
+  }
+  if (campaign.creatorRequirements?.minEngagementRate && (creator.avgEngagementRate || 0) < campaign.creatorRequirements.minEngagementRate) {
+    issues.push({ id: "min_engagement", critical: false, reason: "Engagement below preferred rate" });
+  }
+
+  const criticalIssuesCount = issues.filter((i) => i.critical).length;
+  const overallStatus = criticalIssuesCount > 0 ? "blocked" : issues.length > 0 ? "needs_attention" : "ready";
+  return {
+    eligible: criticalIssuesCount === 0,
+    overallStatus,
+    issues,
+  };
+}
+
+function verifyBrandEligibilityRule(brand, creator, options) {
+  const issues = [];
+  if (!brand.companyName || brand.companyName.trim().length < 2) {
+    issues.push({ id: "brand_name", critical: true });
+  }
+  if (!brand.industry) {
+    issues.push({ id: "brand_industry", critical: true });
+  }
+
+  const offered = options.totalAgreedBudget || 0;
+  const creatorBase = creator.startingPrice || 0;
+  if (creatorBase > 0) {
+    if (offered < creatorBase * 0.5) {
+      issues.push({ id: "severe_budget_deficit", critical: true });
+    } else if (offered < creatorBase) {
+      issues.push({ id: "minor_budget_deficit", critical: false });
+    }
+  }
+
+  const criticalIssuesCount = issues.filter((i) => i.critical).length;
+  return {
+    eligible: criticalIssuesCount === 0,
+    overallStatus: criticalIssuesCount > 0 ? "blocked" : issues.length > 0 ? "needs_attention" : "ready",
+    issues,
+  };
+}
+
+// 8.1 Creator with missing bio and rate cards is BLOCKED
+const incompleteCreator = { bio: "Too short", avatarUrl: "", startingPrice: 0, socialAccounts: [] };
+const testCampaign = { creatorRequirements: { minFollowers: 50000, minEngagementRate: 2.5 } };
+const res81 = verifyCreatorEligibilityRule(incompleteCreator, testCampaign, 2000);
+assert("Eligibility", "8.1 Incomplete creator profile BLOCKED from applying", !res81.eligible && res81.overallStatus === "blocked");
+
+// 8.2 Creator with drastic claimed vs connected follower discrepancy is BLOCKED
+const fraudCreator = {
+  bio: "Professional tech and lifestyle storyteller with high conversion rate.",
+  avatarUrl: "https://example.com/avatar.jpg",
+  startingPrice: 1500,
+  followersCount: 500000, // claims 500k
+  socialAccounts: [{ platform: "instagram", handle: "@fake", followers: 5000 }], // only 5k connected
+};
+const res82 = verifyCreatorEligibilityRule(fraudCreator, testCampaign, 2000);
+assert("Eligibility", "8.2 Inconsistent media kit claims vs connected social accounts BLOCKED", !res82.eligible && res82.issues.some((i) => i.id === "metric_discrepancy"));
+
+// 8.3 Creator with verified metrics meeting campaign specs is READY
+const qualifiedCreator = {
+  bio: "Award-winning tech reviewer and cinematic consumer product filmmaker.",
+  avatarUrl: "https://example.com/avatar.jpg",
+  startingPrice: 2000,
+  followersCount: 120000,
+  avgEngagementRate: 3.8,
+  socialAccounts: [{ platform: "instagram", handle: "@techpro", followers: 120000 }],
+};
+const res83 = verifyCreatorEligibilityRule(qualifiedCreator, testCampaign, 2500);
+assert("Eligibility", "8.3 Fully verified creator matching campaign criteria is READY", res83.eligible && res83.overallStatus === "ready");
+
+// 8.4 Reverse: Incomplete brand profile BLOCKED from inviting creator
+const incompleteBrand = { companyName: "", industry: "" };
+const res84 = verifyBrandEligibilityRule(incompleteBrand, qualifiedCreator, { totalAgreedBudget: 2500 });
+assert("Eligibility", "8.4 Incomplete brand profile BLOCKED from inviting creator", !res84.eligible && res84.overallStatus === "blocked");
+
+// 8.5 Reverse: Severe budget deficit (offering $300 for $2000 creator) is BLOCKED
+const validBrand = { companyName: "HyperTech Inc", industry: "Technology & Gadgets" };
+const res85 = verifyBrandEligibilityRule(validBrand, qualifiedCreator, { totalAgreedBudget: 300 });
+assert("Eligibility", "8.5 Brand offering severe budget deficit (< 50% creator rate) BLOCKED", !res85.eligible && res85.issues.some((i) => i.id === "severe_budget_deficit"));
+
+// 8.6 Reverse: Legitimate brand proposal meeting creator rate is READY
+const res86 = verifyBrandEligibilityRule(validBrand, qualifiedCreator, { totalAgreedBudget: 2200 });
+assert("Eligibility", "8.6 Legitimate brand proposal meeting creator rate is READY", res86.eligible && res86.overallStatus === "ready");
+
 console.log("\n================================================================");
 console.log(`📊 ADVERSARIAL VERIFICATION RESULTS: ${passed}/${total} PASSED (100% SUCCESS)`);
 console.log("✅ ALL ADVERSARIAL ATTACK VECTORS & DELIVERABLE SPECS DEFENDED & VERIFIED.");

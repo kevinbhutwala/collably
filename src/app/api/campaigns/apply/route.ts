@@ -51,7 +51,32 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const parsed = applySchema.parse(body);
 
+    const campaign = await campaignRepo.findById(parsed.campaignId);
+    if (!campaign) {
+      return NextResponse.json({ error: "Campaign not found" }, { status: 404 });
+    }
+
     const creator = creatorRepo.getByUserId(session.userId) || creatorRepo.getById(parsed.creatorId || "");
+
+    // 4. Enforce Bidirectional Pre-flight Eligibility & Completeness Check
+    if (creator) {
+      const { eligibilityService } = await import("@/server/services/eligibility.service");
+      const eligibility = eligibilityService.verifyCreatorForCampaign(creator, campaign, {
+        proposedFee: parsed.proposedFee,
+      });
+
+      if (!eligibility.eligible) {
+        return NextResponse.json(
+          {
+            error: eligibility.headline,
+            message: eligibility.summary,
+            code: "PREFLIGHT_ELIGIBILITY_FAILED",
+            report: eligibility,
+          },
+          { status: 422 }
+        );
+      }
+    }
 
     const app = campaignRepo.createApplication({
       ...parsed,

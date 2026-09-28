@@ -24,7 +24,9 @@ import {
   Users,
   Sparkles,
   ArrowRight,
+  ShieldAlert,
 } from "lucide-react";
+import { PreflightEligibilityAudit } from "@/components/marketplace/PreflightEligibilityAudit";
 
 interface CampaignDetailClientProps {
   campaignId: string;
@@ -45,12 +47,47 @@ export function CampaignDetailClient({
   const [isAiPitchOpen, setIsAiPitchOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Pre-flight Eligibility Audit State
+  const [eligibilityReport, setEligibilityReport] = useState<any>(null);
+  const [isAuditing, setIsAuditing] = useState(false);
+
   // Application form
   const [proposedFee, setProposedFee] = useState<number>(
     initialCampaign?.budget?.perCreatorBudget || 3500
   );
   const [pitch, setPitch] = useState<string>("");
   const [sampleLink, setSampleLink] = useState<string>("");
+
+  const checkEligibility = async (overrideFee?: number) => {
+    if (!campaign) return;
+    setIsAuditing(true);
+    try {
+      const res = await fetch("/api/marketplace/verify-eligibility", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          direction: "creator_to_campaign",
+          campaignId: campaign.id,
+          creatorId: currentCreator?.id,
+          proposedFee: overrideFee !== undefined ? overrideFee : proposedFee,
+        }),
+      });
+      const data = await res.json();
+      if (data?.report) {
+        setEligibilityReport(data.report);
+      }
+    } catch (e) {
+      console.error("Eligibility check error:", e);
+    } finally {
+      setIsAuditing(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isApplyModalOpen && campaign) {
+      checkEligibility();
+    }
+  }, [isApplyModalOpen, campaign?.id]);
 
   useEffect(() => {
     if (!campaign) {
@@ -79,6 +116,16 @@ export function CampaignDetailClient({
   const handleApply = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!campaign) return;
+
+    if (eligibilityReport && !eligibilityReport.eligible) {
+      addToast({
+        type: "error",
+        title: "Requirements Not Met",
+        message: "Please resolve the critical blockers highlighted in your pre-flight audit.",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -118,10 +165,13 @@ export function CampaignDetailClient({
         message: "The sponsor brand has been notified with your creative pitch!",
       });
     } catch (err: any) {
+      if (err.report) {
+        setEligibilityReport(err.report);
+      }
       addToast({
         type: "error",
-        title: "Application Failed",
-        message: err.message || "Failed to submit proposal",
+        title: "Application Blocked",
+        message: err.message || "Failed to submit proposal due to eligibility requirements",
       });
     } finally {
       setIsSubmitting(false);
@@ -320,57 +370,85 @@ export function CampaignDetailClient({
         </div>
       </div>
 
-      {/* Application Pitch Modal */}
+      {/* Application Pitch Modal with Pre-Flight Verification */}
       <Modal
         isOpen={isApplyModalOpen}
         onClose={() => setIsApplyModalOpen(false)}
         title="Submit Campaign Proposal"
         description={`Pitch your angle to ${campaign.brand.companyName}`}
-        maxWidth="xl"
+        maxWidth="2xl"
       >
-        <form onSubmit={handleApply} className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
-          <div>
-            <Input
-              label={`Proposed Fee (${getCurrencySymbol(campaign.budget?.currency || "USD")} ${campaign.budget?.currency || "USD"})`}
-              type="number"
-              value={proposedFee}
-              onChange={(e) => setProposedFee(parseInt(e.target.value) || 0)}
+        <div className="space-y-6">
+          <PreflightEligibilityAudit
+            report={eligibilityReport}
+            isLoading={isAuditing}
+            onRefresh={() => checkEligibility()}
+          />
+
+          <form onSubmit={handleApply} className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8] pt-2 border-t border-black/8 dark:border-white/10">
+            <div>
+              <Input
+                label={`Proposed Fee (${getCurrencySymbol(campaign.budget?.currency || "USD")} ${campaign.budget?.currency || "USD"})`}
+                type="number"
+                value={proposedFee}
+                onChange={(e) => {
+                  const val = parseInt(e.target.value) || 0;
+                  setProposedFee(val);
+                }}
+                onBlur={() => checkEligibility(proposedFee)}
+                required
+              />
+              {campaign.budget?.currency && campaign.budget.currency.toUpperCase() !== displayCurrency.toUpperCase() && proposedFee > 0 && (
+                <p className="text-[11px] text-[#7A7A8A] dark:text-[#A0A0B4] font-mono mt-1">
+                  Display equivalent: {convertAndFormat(proposedFee, campaign.budget.currency)}
+                </p>
+              )}
+            </div>
+
+            <Textarea
+              label="Your Creative Angle & Pitch"
+              value={pitch}
+              onChange={(e) => setPitch(e.target.value)}
+              placeholder="Explain how you will showcase the product, your hook idea, and why your audience will convert..."
+              rows={4}
               required
             />
-            {campaign.budget?.currency && campaign.budget.currency.toUpperCase() !== displayCurrency.toUpperCase() && proposedFee > 0 && (
-              <p className="text-[11px] text-[#7A7A8A] dark:text-[#A0A0B4] font-mono mt-1">
-                Display equivalent: {convertAndFormat(proposedFee, campaign.budget.currency)}
-              </p>
-            )}
-          </div>
 
-          <Textarea
-            label="Your Creative Angle & Pitch"
-            value={pitch}
-            onChange={(e) => setPitch(e.target.value)}
-            placeholder="Explain how you will showcase the product, your hook idea, and why your audience will convert..."
-            rows={4}
-            required
-          />
+            <Input
+              label="Sample Work / Previous Sponsorship Link"
+              value={sampleLink}
+              onChange={(e) => setSampleLink(e.target.value)}
+              placeholder="e.g. https://youtube.com/watch?v=... or portfolio URL"
+              required
+            />
 
-          <Input
-            label="Sample Work / Previous Sponsorship Link"
-            value={sampleLink}
-            onChange={(e) => setSampleLink(e.target.value)}
-            placeholder="e.g. https://youtube.com/watch?v=... or portfolio URL"
-            required
-          />
-
-          <div className="pt-2">
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all shadow-[0_4px_14px_rgba(255,210,31,0.4)] border border-black/10 active:scale-98"
-            >
-              {isSubmitting ? "Submitting..." : "Submit Application"}
-            </button>
-          </div>
-        </form>
+            <div className="pt-2">
+              <button
+                type="submit"
+                disabled={isSubmitting || isAuditing || (eligibilityReport && !eligibilityReport.eligible)}
+                className={`w-full py-3.5 rounded-full font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 ${
+                  eligibilityReport && !eligibilityReport.eligible
+                    ? "bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 cursor-not-allowed"
+                    : "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] shadow-[0_4px_14px_rgba(255,210,31,0.4)] border border-black/10 active:scale-98 cursor-pointer"
+                }`}
+              >
+                {isSubmitting ? (
+                  "Submitting Application..."
+                ) : eligibilityReport && !eligibilityReport.eligible ? (
+                  <>
+                    <ShieldAlert className="w-4 h-4 text-rose-500" />
+                    <span>Complete Profile Requirements Above to Apply</span>
+                  </>
+                ) : (
+                  <>
+                    <Sparkles className="w-4 h-4 text-[#0A0A0E]" />
+                    <span>Submit Verified Application {eligibilityReport?.score ? `(${eligibilityReport.score}% Fit)` : ""}</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </form>
+        </div>
       </Modal>
     </div>
   );

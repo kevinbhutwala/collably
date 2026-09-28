@@ -12,6 +12,13 @@ import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
 import { TrustIndicatorsBar } from "@/components/marketplace/TrustIndicatorsBar";
 import { CategoryBadge, TitleIcon } from "@/components/ui/TitleIconBadge";
 import { SaveToShortlistButton } from "@/components/creators/SaveToShortlistButton";
+import { useRouter } from "next/navigation";
+import { useAuthStore } from "@/stores/auth.store";
+import { useUIStore } from "@/stores/ui.store";
+import { Modal } from "@/components/ui/Modal";
+import { Input, Textarea } from "@/components/ui/Input";
+import { PreflightEligibilityAudit } from "@/components/marketplace/PreflightEligibilityAudit";
+import { collaborationService } from "@/services/collaboration.service";
 import {
   CheckCircle2,
   ArrowRight,
@@ -24,6 +31,7 @@ import {
   Zap,
   Clock,
   Star,
+  ShieldAlert,
 } from "lucide-react";
 
 interface CreatorDetailClientProps {
@@ -49,9 +57,111 @@ export function CreatorDetailClient({
   creatorId,
   initialCreator = null,
 }: CreatorDetailClientProps) {
+  const router = useRouter();
   const { format } = useGlobalCurrency();
+  const { currentBrand } = useAuthStore();
+  const { addToast } = useUIStore();
+
   const [creator, setCreator] = useState<CreatorProfile | null>(initialCreator);
   const [loading, setLoading] = useState(!initialCreator);
+
+  // Direct Campaign Proposal & Reverse Verification Modal State
+  const [isInviteModalOpen, setIsInviteModalOpen] = useState(false);
+  const [campaignTitle, setCampaignTitle] = useState("Direct Sponsorship Collaboration");
+  const [deliverableType, setDeliverableType] = useState("Short-Form Video (Reels / Shorts)");
+  const [offeredBudget, setOfferedBudget] = useState<number>(initialCreator?.startingPrice || 2500);
+  const [briefNotes, setBriefNotes] = useState("");
+  const [isSubmittingProposal, setIsSubmittingProposal] = useState(false);
+
+  // Reverse Preflight Eligibility Audit State
+  const [brandEligibilityReport, setBrandEligibilityReport] = useState<any>(null);
+  const [isAuditingBrand, setIsAuditingBrand] = useState(false);
+
+  const checkBrandEligibility = async (customBudget?: number, customDeliv?: string) => {
+    if (!creator) return;
+    setIsAuditingBrand(true);
+    try {
+      const res = await fetch("/api/marketplace/verify-eligibility", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          direction: "brand_to_creator",
+          creatorId: creator.id,
+          brandId: currentBrand?.id,
+          totalAgreedBudget: customBudget !== undefined ? customBudget : offeredBudget,
+          deliverableType: customDeliv || deliverableType,
+          campaignTitle,
+        }),
+      });
+      const data = await res.json();
+      if (data?.report) {
+        setBrandEligibilityReport(data.report);
+      }
+    } catch (err) {
+      console.error("Brand eligibility audit error:", err);
+    } finally {
+      setIsAuditingBrand(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isInviteModalOpen && creator) {
+      if (creator.startingPrice && offeredBudget === 2500 && creator.startingPrice !== 2500) {
+        setOfferedBudget(creator.startingPrice);
+      }
+      checkBrandEligibility();
+    }
+  }, [isInviteModalOpen, creator?.id]);
+
+  const handleSendProposal = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!creator) return;
+
+    if (brandEligibilityReport && !brandEligibilityReport.eligible) {
+      addToast({
+        type: "error",
+        title: "Requirements Not Met",
+        message: "Please address the critical compatibility requirements highlighted above.",
+      });
+      return;
+    }
+
+    setIsSubmittingProposal(true);
+    try {
+      const res = await collaborationService.createCollaboration({
+        creatorId: creator.id,
+        brandId: currentBrand?.id,
+        campaignTitle,
+        totalAgreedBudget: offeredBudget,
+        deliverableType,
+        notes: briefNotes,
+      });
+
+      addToast({
+        type: "success",
+        title: "Proposal Sent & Escrow Initialized",
+        message: `Your campaign brief has been routed to ${creator.fullName}!`,
+      });
+      setIsInviteModalOpen(false);
+
+      if (res?.collaboration?.id) {
+        router.push(`/app/collaborations/${res.collaboration.id}`);
+      } else {
+        router.push("/app/collaborations");
+      }
+    } catch (err: any) {
+      if (err.report) {
+        setBrandEligibilityReport(err.report);
+      }
+      addToast({
+        type: "error",
+        title: "Proposal Blocked",
+        message: err.message || "Failed to submit proposal due to eligibility requirements",
+      });
+    } finally {
+      setIsSubmittingProposal(false);
+    }
+  };
 
   useEffect(() => {
     let isMounted = true;
@@ -321,12 +431,13 @@ export function CreatorDetailClient({
 
                 {/* CTAs */}
                 <div className="space-y-2.5 pt-1">
-                  <Link href="/app/brand/campaigns/create" className="block">
-                    <button className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-sm transition-all shadow-[0_4px_20px_rgba(255,210,31,0.35)] flex items-center justify-center gap-2 cursor-pointer">
-                      <span>Send Campaign Brief</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
-                  </Link>
+                  <button
+                    onClick={() => setIsInviteModalOpen(true)}
+                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-sm transition-all shadow-[0_4px_20px_rgba(255,210,31,0.35)] flex items-center justify-center gap-2 cursor-pointer active:scale-98"
+                  >
+                    <span>Send Campaign Brief</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
 
                   <Link
                     href={`/app/messages?recipientId=${creator.userId || creator.id}&recipientName=${encodeURIComponent(creator.fullName)}`}
@@ -473,6 +584,113 @@ export function CreatorDetailClient({
         </div>
 
       </div>
+
+      {/* Reverse Pre-Flight Verification & Direct Proposal Modal */}
+      <Modal
+        isOpen={isInviteModalOpen}
+        onClose={() => setIsInviteModalOpen(false)}
+        title={`Send Campaign Proposal to ${creator.fullName}`}
+        description="Verify brand-creator compatibility, deliverable requirements, and escrow funding terms."
+        maxWidth="2xl"
+      >
+        <div className="space-y-6">
+          <PreflightEligibilityAudit
+            report={brandEligibilityReport}
+            isLoading={isAuditingBrand}
+            onRefresh={() => checkBrandEligibility()}
+            actionLabel="Send Brief"
+          />
+
+          <form onSubmit={handleSendProposal} className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8] pt-2 border-t border-black/8 dark:border-white/10">
+            <div>
+              <Input
+                label="Campaign / Project Title"
+                value={campaignTitle}
+                onChange={(e) => setCampaignTitle(e.target.value)}
+                placeholder="e.g. Summer Launch Campaign & Reel Showcase"
+                required
+              />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-mono font-bold text-[#5A5A68] dark:text-[#A0A0B0] uppercase mb-1.5">
+                  Deliverable Format
+                </label>
+                <select
+                  value={deliverableType}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    setDeliverableType(val);
+                    checkBrandEligibility(offeredBudget, val);
+                  }}
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#14141E] border border-black/10 dark:border-white/10 text-xs font-mono font-medium text-[#0A0A0E] dark:text-white focus:outline-hidden focus:border-[#FFD21F]"
+                >
+                  <option value="Short-Form Video (Reels / Shorts)">Short-Form Video (Reels / Shorts)</option>
+                  <option value="Dedicated YouTube Video">Dedicated YouTube Video</option>
+                  <option value="Instagram Carousel & Story Set">Instagram Carousel &amp; Story Set</option>
+                  <option value="TikTok Series">TikTok Series</option>
+                  <option value="UGC Video Package">UGC Video Package</option>
+                </select>
+              </div>
+
+              <div>
+                <Input
+                  label="Agreed Budget (USD)"
+                  type="number"
+                  value={offeredBudget}
+                  onChange={(e) => {
+                    const val = parseInt(e.target.value) || 0;
+                    setOfferedBudget(val);
+                  }}
+                  onBlur={() => checkBrandEligibility(offeredBudget, deliverableType)}
+                  required
+                />
+                {creator.startingPrice && offeredBudget < creator.startingPrice && (
+                  <p className="text-[11px] text-amber-500 font-mono mt-1">
+                    Note: Creator base benchmark is ${creator.startingPrice.toLocaleString()}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <Textarea
+              label="Deliverable Guidelines & Talking Points"
+              value={briefNotes}
+              onChange={(e) => setBriefNotes(e.target.value)}
+              placeholder="Outline specific objectives, messaging requirements, dos & don'ts, and shipping details..."
+              rows={4}
+              required
+            />
+
+            <div className="pt-2">
+              <button
+                type="submit"
+                disabled={isSubmittingProposal || isAuditingBrand || (brandEligibilityReport && !brandEligibilityReport.eligible)}
+                className={`w-full py-3.5 rounded-full font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 ${
+                  brandEligibilityReport && !brandEligibilityReport.eligible
+                    ? "bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 cursor-not-allowed"
+                    : "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] shadow-[0_4px_14px_rgba(255,210,31,0.4)] border border-black/10 active:scale-98 cursor-pointer"
+                }`}
+              >
+                {isSubmittingProposal ? (
+                  "Sending Proposal & Creating Escrow..."
+                ) : brandEligibilityReport && !brandEligibilityReport.eligible ? (
+                  <>
+                    <ShieldAlert className="w-4 h-4 text-rose-500" />
+                    <span>Resolve Requirements Above to Send Brief</span>
+                  </>
+                ) : (
+                  <>
+                    <Sparkles className="w-4 h-4 text-[#0A0A0E]" />
+                    <span>Confirm &amp; Send Campaign Brief {brandEligibilityReport?.score ? `(${brandEligibilityReport.score}% Fit)` : ""}</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </form>
+        </div>
+      </Modal>
     </div>
   );
 }

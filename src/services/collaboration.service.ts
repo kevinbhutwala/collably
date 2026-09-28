@@ -146,11 +146,35 @@ class CollaborationService {
         feedback,
       }),
     });
-    const json = await res.json();
+    const json = await res.json().catch(() => ({}));
     if (!res.ok) {
       throw new Error(json.error || "Failed to request revision");
     }
     return true;
+  }
+
+  async createCollaboration(data: {
+    creatorId: string;
+    brandId?: string;
+    campaignTitle: string;
+    totalAgreedBudget: number;
+    deliverableType?: string;
+    notes?: string;
+  }): Promise<{ success: boolean; collaboration?: Collaboration; error?: string; report?: any }> {
+    const res = await fetch("/api/collaborations", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    const json = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      const err: any = new Error(json.message || json.error || "Failed to create collaboration");
+      err.data = json;
+      err.report = json.report;
+      err.code = json.code;
+      throw err;
+    }
+    return json;
   }
 }
 

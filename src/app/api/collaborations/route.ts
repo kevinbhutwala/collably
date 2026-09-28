@@ -57,6 +57,26 @@ export async function POST(req: NextRequest) {
 
     const brand = (brandId && state.brands.find((b) => b.id === brandId)) || state.brands[0];
     const budgetNum = Number(totalAgreedBudget) || 2000;
+
+    // Enforce Bidirectional Brand-to-Creator Eligibility
+    const { eligibilityService } = await import("@/server/services/eligibility.service");
+    const brandEligibility = eligibilityService.verifyBrandForCreator(brand, creator, {
+      totalAgreedBudget: budgetNum,
+      deliverableType,
+      campaignTitle,
+    });
+    if (!brandEligibility.eligible) {
+      return NextResponse.json(
+        {
+          error: brandEligibility.headline,
+          message: brandEligibility.summary,
+          code: "BRAND_ELIGIBILITY_FAILED",
+          report: brandEligibility,
+        },
+        { status: 422 }
+      );
+    }
+
     const now = new Date();
     const deadline = new Date(now.getTime() + 14 * 86400000);
 

@@ -41,7 +41,11 @@ class ApplicationService {
 
     if (!res.ok) {
       const err = await res.json().catch(() => ({}));
-      throw new Error(err.error || "Failed to submit application");
+      const error: any = new Error(err.message || err.error || "Failed to submit application");
+      error.code = err.code;
+      error.report = err.report;
+      error.data = err;
+      throw error;
     }
 
     return res.json();
