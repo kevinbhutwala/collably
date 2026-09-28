@@ -155,7 +155,7 @@ export function RazorpayCheckoutButton({
         currency: orderData.currency,
         name: name,
         description: description,
-        image: "/favicon.svg",
+        image: "/logo.jpg",
         order_id: orderData.order_id,
         prefill: {
           name: prefill.name || "AbeyCollab Client",

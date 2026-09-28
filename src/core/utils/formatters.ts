@@ -16,11 +16,11 @@ export { formatGlobalCurrency, convertAndFormat };
 
 export function formatCurrency(
   amount: number | string | null | undefined,
-  currency: string = "USD",
+  currency: string = "INR",
   options?: { compact?: boolean; maximumFractionDigits?: number; minimumFractionDigits?: number }
 ): string {
   const num = typeof amount === "number" ? amount : parseFloat(String(amount ?? 0)) || 0;
-  const targetCurrency = (currency || "USD") as SupportedCurrency;
+  const targetCurrency = (currency || "INR") as SupportedCurrency;
   return formatGlobalCurrency(num, targetCurrency, options);
 }
 

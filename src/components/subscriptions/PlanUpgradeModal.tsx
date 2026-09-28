@@ -7,9 +7,7 @@ import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
 import { CREATOR_PLANS, BRAND_PLANS } from "@/core/constants";
 import { SubscriptionPlan, SubscriptionPlanId } from "@/core/types";
-import { Check, Sparkles, Zap, ShieldCheck, Crown, Loader2, ArrowRight, CreditCard, Lock, RefreshCw } from "lucide-react";
-import { useGlobalCurrency } from "@/context/CurrencyContext";
-import { getExchangeRateToUSD } from "@/core/utils/currency";
+import { Check, Sparkles, Zap, ShieldCheck, Crown, Loader2, ArrowRight, CreditCard, Lock } from "lucide-react";
 
 export function PlanUpgradeModal() {
   const {
@@ -22,33 +20,8 @@ export function PlanUpgradeModal() {
   } = useSubscriptionStore();
   const { role } = useAuthStore();
   const { addToast } = useUIStore();
-  const { rates, rateTimestamp } = useGlobalCurrency();
-  const [isRefreshingRates, setIsRefreshingRates] = useState(false);
-
   const [isAnnual, setIsAnnual] = useState(true);
   const [processingPlanId, setProcessingPlanId] = useState<string | null>(null);
-
-  const inrRate = getExchangeRateToUSD("INR");
-
-  const handleRefreshRates = async () => {
-    setIsRefreshingRates(true);
-    try {
-      await useUIStore.getState().fetchLiveRates(true);
-      addToast({
-        type: "success",
-        title: "Exchange Rates Updated",
-        message: `Live exchange rates refreshed (1 USD = ₹${getExchangeRateToUSD("INR").toFixed(2)} INR).`,
-      });
-    } catch {
-      addToast({
-        type: "info",
-        title: "Rates Current",
-        message: "Using verified fallback and cached exchange rate data.",
-      });
-    } finally {
-      setIsRefreshingRates(false);
-    }
-  };
 
   const isBrand = role === "brand" || role === "brand_owner" || role === "brand_manager";
   const plans = isBrand ? Object.values(BRAND_PLANS) : Object.values(CREATOR_PLANS);
@@ -97,12 +70,10 @@ export function PlanUpgradeModal() {
         throw new Error("Unable to connect to Razorpay payment gateway.");
       }
 
-      // Convert USD pricing to INR paise (min 100 paise) using live or cached exchange rate
-      const annualTotalUSD = plan.annualPrice * 12;
-      const billingTotalUSD = isAnnual ? annualTotalUSD : plan.monthlyPrice;
-      const currentRate = inrRate || 83.5;
-      const amountInINR = Math.round(billingTotalUSD * currentRate);
-      const amountInPaise = Math.max(amountInINR * 100, 100);
+      // Direct INR pricing in paise (min 100 paise)
+      const annualTotalINR = plan.annualPrice * 12;
+      const billingTotalINR = isAnnual ? annualTotalINR : plan.monthlyPrice;
+      const amountInPaise = Math.max(billingTotalINR * 100, 100);
 
       const orderRes = await fetch("/api/create-order", {
         method: "POST",
@@ -114,7 +85,6 @@ export function PlanUpgradeModal() {
           notes: {
             planId: plan.id,
             interval: isAnnual ? "annual" : "monthly",
-            exchangeRate: currentRate,
           },
         }),
       });
@@ -135,7 +105,7 @@ export function PlanUpgradeModal() {
         currency: orderData.currency,
         name: "AbeyCollab Subscriptions",
         description: `${plan.name} (${isAnnual ? "Annual Billing" : "Monthly Billing"})`,
-        image: "/favicon.svg",
+        image: "/logo.jpg",
         order_id: orderData.isTest ? undefined : orderData.order_id,
         prefill: {
           name: "AbeyCollab Workspace",
@@ -169,10 +139,8 @@ export function PlanUpgradeModal() {
                 order_id: response.razorpay_order_id,
                 payment_id: response.razorpay_payment_id,
                 signature: response.razorpay_signature,
-                amount: amountInINR,
+                amount: billingTotalINR,
                 currency: "INR",
-                usdAmount: billingTotalUSD,
-                exchangeRate: currentRate,
               }),
             });
 
@@ -259,15 +227,10 @@ export function PlanUpgradeModal() {
               </button>
             </div>
 
-            <button
-              onClick={handleRefreshRates}
-              disabled={isRefreshingRates}
-              title="Refresh live exchange rate from financial feeds"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-mono font-bold bg-[#F4F4F8] dark:bg-[#14141E] border border-black/8 dark:border-white/10 text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-white transition-all shadow-xs"
-            >
-              <RefreshCw className={`w-3 h-3 text-[#FFD21F] ${isRefreshingRates ? "animate-spin" : ""}`} />
-              <span>$1 = ₹{inrRate.toFixed(2)}</span>
-            </button>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-mono font-bold bg-[#F4F4F8] dark:bg-[#14141E] border border-black/8 dark:border-white/10 text-[#0A0A0E] dark:text-white shadow-xs">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Direct INR (₹) Checkout</span>
+            </div>
           </div>
         </div>
 
@@ -323,20 +286,15 @@ export function PlanUpgradeModal() {
                   <div className="pt-1 font-mono">
                     <div className="flex items-baseline gap-1">
                       <span className="text-3xl font-black text-[#0A0A0E] dark:text-white font-display">
-                        ${price}
+                        ₹{price.toLocaleString("en-IN")}
                       </span>
                       <span className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-sans">
                         {price === 0 ? "forever" : isAnnual ? "/mo (annual)" : "/month"}
                       </span>
                     </div>
-                    {price > 0 && (
-                      <p className="text-[11px] text-[#6A6A78] dark:text-[#A0A0B4] font-mono mt-1 font-semibold">
-                        ≈ ₹{Math.round((isAnnual ? price * 12 : price) * inrRate).toLocaleString("en-IN")} INR ($1 = ₹{inrRate.toFixed(2)})
-                      </p>
-                    )}
                     {isAnnual && price > 0 && (
                       <p className="text-[10px] text-emerald-600 dark:text-emerald-400 font-sans mt-0.5 font-bold">
-                        Billed annually (${price * 12}/yr)
+                        Billed annually (₹{(price * 12).toLocaleString("en-IN")}/yr)
                       </p>
                     )}
                   </div>
@@ -380,7 +338,7 @@ export function PlanUpgradeModal() {
                       ) : price > 0 ? (
                         <>
                           <CreditCard className="w-3.5 h-3.5 shrink-0" />
-                          <span>Pay ${isAnnual ? price * 12 : price} (₹{Math.round((isAnnual ? price * 12 : price) * inrRate).toLocaleString("en-IN")}) &amp; Activate</span>
+                          <span>Pay ₹{(isAnnual ? price * 12 : price).toLocaleString("en-IN")} &amp; Activate</span>
                           <ArrowRight className="w-3.5 h-3.5 shrink-0" />
                         </>
                       ) : (

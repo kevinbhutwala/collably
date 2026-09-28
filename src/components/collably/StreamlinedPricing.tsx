@@ -14,7 +14,7 @@ export function StreamlinedPricing() {
     {
       name: "Creator Starter",
       badge: "FREE FOREVER",
-      price: format(0, "USD"),
+      price: "₹0",
       period: "forever",
       desc: "For creators building their media kit and pitching brands.",
       features: [
@@ -30,7 +30,7 @@ export function StreamlinedPricing() {
     {
       name: "Creator Pro",
       badge: "MOST POPULAR",
-      price: isAnnual ? format(24, "USD") : format(29, "USD"),
+      price: isAnnual ? "₹1,999" : "₹2,499",
       period: "/month",
       desc: "For full-time creators scaling brand partnerships.",
       features: [
@@ -47,7 +47,7 @@ export function StreamlinedPricing() {
     {
       name: "Brand Growth",
       badge: "FOR BRANDS",
-      price: isAnnual ? format(159, "USD") : format(199, "USD"),
+      price: isAnnual ? "₹12,999" : "₹15,999",
       period: "/month",
       desc: "For marketing teams running multi-creator campaigns.",
       features: [

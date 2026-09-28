@@ -40,7 +40,7 @@ export const useUIStore = create<UIState>((set, get) => ({
   activeModal: null,
   modalProps: {},
   toasts: [],
-  selectedCurrency: "USD",
+  selectedCurrency: "INR",
   rates: DEFAULT_RATES,
   rateTimestamp: new Date().toISOString(),
 

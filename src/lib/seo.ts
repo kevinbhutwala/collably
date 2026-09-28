@@ -74,12 +74,12 @@ export const globalStructuredData = [
     url: SITE_URL,
     logo: {
       '@type': 'ImageObject',
-      url: `${SITE_URL}/branding/abeycollab-icon-square.png`,
-      width: '512',
-      height: '512',
+      url: `${SITE_URL}/logo.jpg`,
+      width: '1024',
+      height: '576',
       caption: 'AbeyCollab Official Logo',
     },
-    image: `${SITE_URL}/og-image.png`,
+    image: `${SITE_URL}/logo.jpg`,
     description: DEFAULT_DESCRIPTION,
     foundingDate: '2024',
     sameAs: [

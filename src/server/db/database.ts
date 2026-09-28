@@ -183,49 +183,31 @@ class DatabaseClient {
 
         // Idempotent multi-currency migration backfill
         for (const u of this.state!.users) {
-          if (!u.preferredCurrency && !u.preferred_currency) {
-            const isIndia = u.country === "IN" || (u.email && u.email.endsWith(".in"));
-            const defCurrency = isIndia ? "INR" : "USD";
-            u.preferredCurrency = defCurrency;
-            u.preferred_currency = defCurrency;
-          } else {
-            if (!u.preferredCurrency) u.preferredCurrency = u.preferred_currency;
-            if (!u.preferred_currency) u.preferred_currency = u.preferredCurrency;
-          }
+          u.preferredCurrency = "INR";
+          u.preferred_currency = "INR";
         }
 
         for (const c of this.state!.campaigns || []) {
-          if (c.budget && !c.budget.currency) {
-            c.budget.currency = "USD";
+          if (c.budget) {
+            c.budget.currency = "INR";
           }
         }
 
         for (const col of this.state!.collaborations || []) {
-          if (!col.currency) {
-            col.currency = "USD";
-          }
+          col.currency = "INR";
           for (const del of col.deliverables || []) {
-            if (!del.currency) {
-              del.currency = col.currency;
-            }
+            del.currency = "INR";
           }
         }
 
         for (const p of this.state!.payouts || []) {
-          if (!p.currency) {
-            p.currency = "USD";
-          }
+          p.currency = "INR";
         }
 
         for (const cr of this.state!.creators || []) {
-          if (!cr.currency) {
-            const isIndia = cr.location && cr.location.toLowerCase().includes("india");
-            cr.currency = isIndia ? "INR" : "USD";
-          }
+          cr.currency = "INR";
           for (const rc of cr.rateCards || []) {
-            if (!rc.currency) {
-              rc.currency = cr.currency;
-            }
+            rc.currency = "INR";
           }
         }
 

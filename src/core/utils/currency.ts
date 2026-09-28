@@ -43,9 +43,9 @@ export const SUPPORTED_CURRENCIES: Record<SupportedCurrency, CurrencyConfig> = {
 };
 
 /**
- * Supported active currencies: INR, USD, AED, GBP
+ * Supported active currencies: INR (Indian Rupee) only
  */
-export const ACTIVE_CURRENCIES = ["INR", "USD", "AED", "GBP"] as const;
+export const ACTIVE_CURRENCIES = ["INR"] as const;
 export type ActiveCurrency = (typeof ACTIVE_CURRENCIES)[number];
 
 export const ACTIVE_CURRENCY_LIST: CurrencyConfig[] = ACTIVE_CURRENCIES.map(
@@ -53,9 +53,9 @@ export const ACTIVE_CURRENCY_LIST: CurrencyConfig[] = ACTIVE_CURRENCIES.map(
 );
 
 /**
- * Supported global focus currencies: USD, INR, GBP, AED
+ * Primary platform currency: INR only
  */
-export const PRIMARY_CURRENCIES = ["USD", "INR", "GBP", "AED"] as const;
+export const PRIMARY_CURRENCIES = ["INR"] as const;
 export type PrimaryCurrency = (typeof PRIMARY_CURRENCIES)[number];
 export const PRIMARY_CURRENCY_LIST: CurrencyConfig[] = PRIMARY_CURRENCIES.map(
   (code) => SUPPORTED_CURRENCIES[code]
@@ -65,10 +65,13 @@ export const EXTENSIBLE_CURRENCIES = PRIMARY_CURRENCIES;
 export type ExtensibleCurrency = PrimaryCurrency;
 export const EXTENSIBLE_CURRENCY_LIST = PRIMARY_CURRENCY_LIST;
 
-export const SUPPORTED_CURRENCY_LIST: CurrencyConfig[] = Object.values(SUPPORTED_CURRENCIES);
+export const SUPPORTED_CURRENCY_LIST: CurrencyConfig[] = [SUPPORTED_CURRENCIES.INR];
 
 // Global in-memory dynamic exchange rates cache for client-side evaluation
-let runtimeExchangeRates: Record<string, number> = {};
+let runtimeExchangeRates: Record<string, number> = {
+  INR: 1.0,
+  USD: 1 / 83.5,
+};
 
 export function updateRuntimeExchangeRates(rates: Record<string, number>) {
   if (rates && typeof rates === "object") {
@@ -80,84 +83,45 @@ export function getRuntimeExchangeRates(): Record<string, number> {
   return { ...runtimeExchangeRates };
 }
 
-export function getExchangeRateToUSD(currency: SupportedCurrency | string = "USD"): number {
-  const code = (currency || "USD").toUpperCase();
+export function getExchangeRateToUSD(currency: SupportedCurrency | string = "INR"): number {
+  const code = (currency || "INR").toUpperCase();
   return (
     runtimeExchangeRates[code] ??
-    (SUPPORTED_CURRENCIES[code as SupportedCurrency]?.exchangeRateToUSD ?? 1.0)
+    (SUPPORTED_CURRENCIES[code as SupportedCurrency]?.exchangeRateToUSD ?? 83.5)
   );
 }
 
 export function isValidCurrency(currency: any): currency is ActiveCurrency {
-  return typeof currency === "string" && ["INR", "USD", "AED", "GBP"].includes(currency.toUpperCase());
+  return typeof currency === "string" && currency.toUpperCase() === "INR";
 }
 
 export function isExtensibleCurrency(currency: any): currency is ExtensibleCurrency {
-  return typeof currency === "string" && ["INR", "USD", "GBP", "AED"].includes(currency.toUpperCase());
+  return typeof currency === "string" && currency.toUpperCase() === "INR";
 }
 
 /**
- * Detect default currency based on user country:
- * India -> INR
- * US -> USD
- * UAE -> AED
- * UK -> GBP
- * Fallback -> USD
+ * Platform currency is Indian Rupee (INR - ₹)
  */
 export function getDefaultCurrencyForCountry(country?: string): SupportedCurrency {
-  if (!country) return "USD";
-  const normalized = country.trim().toUpperCase();
-  if (
-    normalized === "IN" ||
-    normalized === "IND" ||
-    normalized === "INDIA" ||
-    normalized.includes("INDIA") ||
-    normalized === "+91"
-  ) {
-    return "INR";
-  }
-  if (
-    normalized === "AE" ||
-    normalized === "ARE" ||
-    normalized === "UAE" ||
-    normalized === "DUBAI" ||
-    normalized.includes("EMIRATES") ||
-    normalized === "+971"
-  ) {
-    return "AED";
-  }
-  if (
-    normalized === "GB" ||
-    normalized === "GBR" ||
-    normalized === "UK" ||
-    normalized.includes("UNITED KINGDOM") ||
-    normalized.includes("ENGLAND") ||
-    normalized.includes("BRITAIN") ||
-    normalized === "+44"
-  ) {
-    return "GBP";
-  }
-  return "USD";
+  return "INR";
 }
 
-export function getCurrencySymbol(currency: SupportedCurrency | string = "USD"): string {
-  const curr = (currency || "USD").toUpperCase();
+export function getCurrencySymbol(currency: SupportedCurrency | string = "INR"): string {
+  const curr = (currency || "INR").toUpperCase();
   if (curr === "INR") return "₹";
   if (curr === "USD") return "$";
   if (curr === "GBP") return "£";
   if (curr === "AED") return "AED";
   if (curr === "EUR") return "€";
-  return SUPPORTED_CURRENCIES[curr as SupportedCurrency]?.symbol || "$";
+  return "₹";
 }
 
-export function getCurrencyFlag(currency: SupportedCurrency | string = "USD"): string {
-  const curr = (currency || "USD").toUpperCase();
-  return SUPPORTED_CURRENCIES[curr as SupportedCurrency]?.flag || "🌐";
+export function getCurrencyFlag(currency: SupportedCurrency | string = "INR"): string {
+  return "🇮🇳";
 }
 
-export function getCurrencyName(currency: SupportedCurrency | string = "USD"): string {
-  const curr = (currency || "USD").toUpperCase();
-  return SUPPORTED_CURRENCIES[curr as SupportedCurrency]?.name || curr;
+export function getCurrencyName(currency: SupportedCurrency | string = "INR"): string {
+  return "Indian Rupee (INR)";
 }
 
 /**
@@ -165,29 +129,36 @@ export function getCurrencyName(currency: SupportedCurrency | string = "USD"): s
  */
 export function convertCurrency(
   amount: number,
-  from: SupportedCurrency | string = "USD",
-  to: SupportedCurrency | string = "USD"
+  from: SupportedCurrency | string = "INR",
+  to: SupportedCurrency | string = "INR"
 ): number {
-  const fromCurr = (from || "USD").toUpperCase();
-  const toCurr = (to || "USD").toUpperCase();
+  const fromCurr = (from || "INR").toUpperCase();
+  const toCurr = (to || "INR").toUpperCase();
   if (fromCurr === toCurr || !amount) return amount;
+
+  // Convert USD amounts to INR if legacy USD data is encountered
+  if (fromCurr === "USD" && toCurr === "INR") {
+    return Math.round(amount * 83.5);
+  }
+  if (fromCurr === "INR" && toCurr === "USD") {
+    return Math.round((amount / 83.5) * 100) / 100;
+  }
 
   const fromRate = runtimeExchangeRates[fromCurr] ?? (SUPPORTED_CURRENCIES[fromCurr as SupportedCurrency]?.exchangeRateToUSD ?? 1.0);
   const toRate = runtimeExchangeRates[toCurr] ?? (SUPPORTED_CURRENCIES[toCurr as SupportedCurrency]?.exchangeRateToUSD ?? 1.0);
 
-  // Convert from -> USD -> to
   const inUSD = amount / fromRate;
   const converted = inUSD * toRate;
   return toCurr === "JPY" ? Math.round(converted) : Math.round(converted * 100) / 100;
 }
 
 /**
- * Convert and format with explicit approximate prefix (≈) when currencies differ
+ * Convert and format as INR
  */
 export function convertAndFormat(
   amount: number | string | null | undefined,
-  fromCurrency: string = "USD",
-  displayCurrency: string = "USD",
+  fromCurrency: string = "INR",
+  displayCurrency: string = "INR",
   options?: {
     compact?: boolean;
     maximumFractionDigits?: number;
@@ -196,16 +167,15 @@ export function convertAndFormat(
   }
 ): string {
   const num = typeof amount === "number" ? amount : parseFloat(String(amount ?? 0)) || 0;
-  const from = (fromCurrency || "USD").toUpperCase();
-  const target = (displayCurrency || "USD").toUpperCase();
+  const from = (fromCurrency || "INR").toUpperCase();
+  const target = (displayCurrency || "INR").toUpperCase();
 
   if (from === target) {
     return formatCurrency(num, target, options);
   }
 
   const converted = convertCurrency(num, from, target);
-  const formatted = formatCurrency(converted, target, options);
-  return options?.showApprox !== false ? `≈ ${formatted}` : formatted;
+  return formatCurrency(converted, target, options);
 }
 
 export interface FeeBreakdown {
@@ -217,15 +187,14 @@ export interface FeeBreakdown {
 }
 
 /**
- * Format a number as currency with proper symbols and locale
+ * Format a number as Indian Rupees (INR) with ₹ symbol and en-IN locale
  * e.g.
- * formatCurrency(10000, "INR") => "₹10,000"
- * formatCurrency(500, "USD") => "$500"
- * formatCurrency(500.5, "USD") => "$500.50"
+ * formatCurrency(10000) => "₹10,000"
+ * formatCurrency(150000) => "₹1,50,000"
  */
 export function formatCurrency(
   amount: number | string | null | undefined,
-  currency: SupportedCurrency | string = "USD",
+  currency: SupportedCurrency | string = "INR",
   options?: {
     compact?: boolean;
     maximumFractionDigits?: number;
@@ -233,10 +202,7 @@ export function formatCurrency(
   }
 ): string {
   const num = typeof amount === "number" ? amount : parseFloat(String(amount ?? 0)) || 0;
-  const currKey = (currency || "USD").toUpperCase();
-  const config =
-    SUPPORTED_CURRENCIES[currKey as SupportedCurrency] ||
-    (currKey === "INR" ? SUPPORTED_CURRENCIES.INR : SUPPORTED_CURRENCIES.USD);
+  const config = SUPPORTED_CURRENCIES.INR;
 
   const hasFractions = num % 1 !== 0;
   const digits =
@@ -247,22 +213,13 @@ export function formatCurrency(
       : 0;
 
   if (options?.compact && Math.abs(num) >= 1000) {
-    if (Math.abs(num) >= 1_000_000) {
-      return (
-        new Intl.NumberFormat(config.locale, {
-          style: "currency",
-          currency: config.code,
-          maximumFractionDigits: 1,
-        }).format(num / 1_000_000) + "M"
-      );
+    if (Math.abs(num) >= 10_000_000) {
+      return `₹${(num / 10_000_000).toFixed(1)}Cr`;
     }
-    return (
-      new Intl.NumberFormat(config.locale, {
-        style: "currency",
-        currency: config.code,
-        maximumFractionDigits: 1,
-      }).format(num / 1_000) + "K"
-    );
+    if (Math.abs(num) >= 100_000) {
+      return `₹${(num / 100_000).toFixed(1)}L`;
+    }
+    return `₹${(num / 1_000).toFixed(1)}K`;
   }
 
   return new Intl.NumberFormat(config.locale, {
@@ -282,7 +239,7 @@ export function formatCurrency(
 export function calculateMilestoneFeeBreakdown(
   grossBudget: number,
   feeRate: number = 0.1,
-  currency: string = "USD"
+  currency: string = "INR"
 ): FeeBreakdown {
   const platformFeeAmount = Math.round(grossBudget * feeRate);
   const creatorNetAmount = grossBudget - platformFeeAmount;
@@ -312,18 +269,21 @@ export function formatCompactCount(num: number): string {
 /**
  * Currency Subunits (Paise / Cents) Arithmetic & Rounding
  * - INR: 1 Rupee = 100 paise
- * - USD: 1 Dollar = 100 cents
  */
-export function toSubunits(amount: number, _currency: string = "USD"): number {
+export function toSubunits(amount: number, _currency: string = "INR"): number {
   return Math.round(Number(amount) * 100);
 }
 
-export function fromSubunits(subunits: number, _currency: string = "USD"): number {
+export function fromSubunits(subunits: number, _currency: string = "INR"): number {
   return Number((Number(subunits) / 100).toFixed(2));
 }
 
+export function rupeesToPaise(rupees: number): number {
+  return toSubunits(rupees, "INR");
+}
+
 export function dollarsToCents(dollars: number): number {
-  return toSubunits(dollars);
+  return toSubunits(dollars, "INR");
 }
 
 export function centsToDollars(cents: number): number {
