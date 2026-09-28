@@ -59,13 +59,17 @@ export class GoogleOAuthService {
 
     const redirectUri = this.getRedirectUri(params.requestHost);
 
-    // YouTube readonly scope enables live subscriber/view fetch
-    const scopes = [
-      "openid",
-      "email",
-      "profile",
-      "https://www.googleapis.com/auth/youtube.readonly",
-    ];
+    // Basic non-sensitive scopes for instant, frictionless 1-click login/signup (No Google verification hurdles)
+    // Only request youtube.readonly when user explicitly clicks "Connect YouTube" in profile
+    const scopes =
+      params.mode === "connect_youtube"
+        ? [
+            "openid",
+            "email",
+            "profile",
+            "https://www.googleapis.com/auth/youtube.readonly",
+          ]
+        : ["openid", "email", "profile"];
 
     const statePayload = {
       mode: params.mode,
