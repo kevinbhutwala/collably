@@ -21,6 +21,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             className="block text-xs font-bold text-[#27272F] dark:text-[#EAEAEF] tracking-tight"
           >
             {label}
+            {props.required && <span className="text-red-500 font-bold ml-1">*</span>}
           </label>
         )}
 
@@ -80,6 +81,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
             className="block text-xs font-bold text-[#27272F] dark:text-[#EAEAEF] tracking-tight"
           >
             {label}
+            {props.required && <span className="text-red-500 font-bold ml-1">*</span>}
           </label>
         )}
 
