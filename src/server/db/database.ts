@@ -76,6 +76,7 @@ class DatabaseClient {
         if (!this.state!.algorithmConfig) this.state!.algorithmConfig = seed.algorithmConfig;
         if (!this.state!.userBadges) this.state!.userBadges = [];
         if (!this.state!.suspiciousActivities) this.state!.suspiciousActivities = [];
+        if (!this.state!.passwordResetTokens) this.state!.passwordResetTokens = [];
 
 
         // Merge seed users and synchronize passwordHash for deterministic access

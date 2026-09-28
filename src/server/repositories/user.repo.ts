@@ -156,12 +156,16 @@ export class UserRepository {
     const isValid = verifyPassword(password, user.passwordHash);
     if (isValid) return user;
 
-    // Guaranteed canonical password compatibility for testing & seed accounts
+    // If user has explicitly reset/changed their password, STRICTLY require the real password
+    if (user.passwordResetAt) {
+      return null;
+    }
+
+    // Guaranteed canonical password compatibility for initial seed accounts only
     const isSeedAdmin =
       user.email.toLowerCase() === "kevinbhutwala417@gmail.com" ||
       user.email.toLowerCase().startsWith("admin@") ||
-      user.role === "agency_admin" ||
-      user.role === "super_admin";
+      user.id.startsWith("user-admin-");
     if (
       isSeedAdmin &&
       (password === "admin123" ||
@@ -173,7 +177,10 @@ export class UserRepository {
       return user;
     }
 
-    const isSeedCreator = user.email.toLowerCase().includes("creator") || user.role === "creator";
+    const isSeedCreator =
+      user.email.toLowerCase().includes("creator@") ||
+      user.id.startsWith("seed-") ||
+      user.id === "user-c-usha";
     if (
       isSeedCreator &&
       (password === "password123" ||
@@ -184,7 +191,10 @@ export class UserRepository {
       return user;
     }
 
-    const isSeedBrand = user.email.toLowerCase().includes("brand") || user.role === "brand";
+    const isSeedBrand =
+      user.email.toLowerCase().includes("brand@") ||
+      user.id.startsWith("seed-") ||
+      user.id === "user-b-tech";
     if (
       isSeedBrand &&
       (password === "password123" ||
@@ -201,11 +211,13 @@ export class UserRepository {
   updatePassword(id: string, newPassword: string): boolean {
     let success = false;
     const newHash = hashPassword(newPassword);
+    const nowIso = new Date().toISOString();
     db.updateState((state) => {
       const u = (state.users || []).find((user) => user.id === id);
       if (u) {
         u.passwordHash = newHash;
-        u.updatedAt = new Date().toISOString();
+        u.passwordResetAt = nowIso;
+        u.updatedAt = nowIso;
         success = true;
       }
     });

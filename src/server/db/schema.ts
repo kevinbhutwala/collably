@@ -39,6 +39,7 @@ export interface UserEntity {
   gender?: "male" | "female" | "other" | string;
   lastLoginAt?: string;
   lastActiveAt?: string;
+  passwordResetAt?: string;
   createdAt: string;
   updatedAt: string;
 }

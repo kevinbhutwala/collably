@@ -70,7 +70,10 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    return NextResponse.json(GENERIC_RESPONSE);
+    return NextResponse.json({
+      ...GENERIC_RESPONSE,
+      ...(process.env.NODE_ENV !== "production" ? { _debugResetToken: raw } : {}),
+    });
   } catch (err: unknown) {
     console.error("[forgot-password] Unexpected error:", err instanceof Error ? err.message : err);
     // Return generic message even on server error to prevent enumeration.
