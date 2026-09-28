@@ -9,11 +9,11 @@
       "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80",
       "verified": true,
       "createdAt": "2026-09-28T05:47:10.367Z",
-      "updatedAt": "2026-09-28T06:42:28.211Z",
+      "updatedAt": "2026-09-28T06:54:32.765Z",
       "preferredCurrency": "USD",
       "preferred_currency": "USD",
-      "lastLoginAt": "2026-09-28T06:42:27.984Z",
-      "lastActiveAt": "2026-09-28T06:42:28.211Z"
+      "lastLoginAt": "2026-09-28T06:54:32.678Z",
+      "lastActiveAt": "2026-09-28T06:54:32.765Z"
     },
     {
       "id": "user-brand-calm",
@@ -37,12 +37,14 @@
       "email": "kevinbhutwala417@gmail.com",
       "role": "agency_admin",
       "createdAt": "2024-01-01",
-      "passwordHash": "1f5f9b00ec937366fbcff756079f0a3d:63c933601615071bb5d788b751f2381c42ec1c4c7f988d5650243f80b949353d1b106a501bbcad18d1a0e4c7f013a27199abb208e9a5a5646a10afe1fd8d8fcd:210000",
+      "passwordHash": "19f926efc54212381bce6dc5eca0d5b5:51079a3f62508665f4518da76f9e5d655d61021a361978a4ed5c13ca16b91d2064764b42921ef400d20bda8150bd1af6498a995a15c1419bc39a562b47dd0fff:210000",
       "preferredCurrency": "INR",
       "preferred_currency": "INR",
       "lastActiveAt": "2026-09-27T22:18:18.135Z",
       "updatedAt": "2026-09-27T22:18:18.135Z",
-      "lastLoginAt": "2026-09-27T22:06:26.387Z"
+      "lastLoginAt": "2026-09-27T22:06:26.387Z",
+      "avatarUrl": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&auto=format&fit=crop&q=80",
+      "verified": true
     },
     {
       "id": "user-brand-truth",
@@ -52,7 +54,7 @@
       "createdAt": "2024-02-15",
       "preferredCurrency": "INR",
       "preferred_currency": "INR",
-      "passwordHash": "e4ccf47ee9b4271e1f2c5253cb9c3c65:e1dc0bbc1e314032de15d4f96f71f26dedc7935906b297f07bd6bd8da7112c7269b08833a3ab7763a0adff02293b558107a3c756a7946e1ceadd18cee647a348:210000",
+      "passwordHash": "34a6290582bcd8ce380f364b71379567:27cdaf10fffd6280559b0c85549c40b72cf3cad549e80b5209b0b6a1350110335b3456ae6d967dfc8289f08c347561b5faaafa09010a657b0d6406179b0ad50d:210000",
       "lastLoginAt": "2026-09-27T21:30:35.844Z",
       "lastActiveAt": "2026-09-27T21:30:51.132Z",
       "updatedAt": "2026-09-27T21:30:51.696Z"
@@ -65,7 +67,7 @@
       "createdAt": "2024-01-20",
       "preferredCurrency": "INR",
       "preferred_currency": "INR",
-      "passwordHash": "e4ccf47ee9b4271e1f2c5253cb9c3c65:e1dc0bbc1e314032de15d4f96f71f26dedc7935906b297f07bd6bd8da7112c7269b08833a3ab7763a0adff02293b558107a3c756a7946e1ceadd18cee647a348:210000"
+      "passwordHash": "34a6290582bcd8ce380f364b71379567:27cdaf10fffd6280559b0c85549c40b72cf3cad549e80b5209b0b6a1350110335b3456ae6d967dfc8289f08c347561b5faaafa09010a657b0d6406179b0ad50d:210000"
     },
     {
       "id": "user-c-waseem",
@@ -77,7 +79,7 @@
       "verified": true,
       "preferredCurrency": "USD",
       "preferred_currency": "USD",
-      "passwordHash": "49495753f9597c448714513626b096f9:33d3964148ee9fba412ef1486e4409120390a77547893a0fa8eb1b8a7a72f393fb4cf1a23170b37f9044db0ee34304b5b2149191ee47b89a8966f7dbb4c81a83:210000"
+      "passwordHash": "2df0633023b93b701a64460bbacfd344:519684c371f3513ddd7965b80e8bf07a60e37c49b26ded81d3e613f937ae63f3fedf88726a6613d9f2b2849ca2910e3b5acefbf93fd9266111b2880f9ec31e31:210000"
     },
     {
       "id": "user-c-prarthana",
@@ -89,7 +91,7 @@
       "verified": true,
       "preferredCurrency": "USD",
       "preferred_currency": "USD",
-      "passwordHash": "49495753f9597c448714513626b096f9:33d3964148ee9fba412ef1486e4409120390a77547893a0fa8eb1b8a7a72f393fb4cf1a23170b37f9044db0ee34304b5b2149191ee47b89a8966f7dbb4c81a83:210000"
+      "passwordHash": "2df0633023b93b701a64460bbacfd344:519684c371f3513ddd7965b80e8bf07a60e37c49b26ded81d3e613f937ae63f3fedf88726a6613d9f2b2849ca2910e3b5acefbf93fd9266111b2880f9ec31e31:210000"
     },
     {
       "id": "user-c-pooja",
@@ -101,7 +103,7 @@
       "verified": true,
       "preferredCurrency": "USD",
       "preferred_currency": "USD",
-      "passwordHash": "49495753f9597c448714513626b096f9:33d3964148ee9fba412ef1486e4409120390a77547893a0fa8eb1b8a7a72f393fb4cf1a23170b37f9044db0ee34304b5b2149191ee47b89a8966f7dbb4c81a83:210000"
+      "passwordHash": "2df0633023b93b701a64460bbacfd344:519684c371f3513ddd7965b80e8bf07a60e37c49b26ded81d3e613f937ae63f3fedf88726a6613d9f2b2849ca2910e3b5acefbf93fd9266111b2880f9ec31e31:210000"
     },
     {
       "id": "user-c-kunal",
@@ -113,7 +115,7 @@
       "verified": true,
       "preferredCurrency": "USD",
       "preferred_currency": "USD",
-      "passwordHash": "49495753f9597c448714513626b096f9:33d3964148ee9fba412ef1486e4409120390a77547893a0fa8eb1b8a7a72f393fb4cf1a23170b37f9044db0ee34304b5b2149191ee47b89a8966f7dbb4c81a83:210000"
+      "passwordHash": "2df0633023b93b701a64460bbacfd344:519684c371f3513ddd7965b80e8bf07a60e37c49b26ded81d3e613f937ae63f3fedf88726a6613d9f2b2849ca2910e3b5acefbf93fd9266111b2880f9ec31e31:210000"
     },
     {
       "id": "user-c-kushi",
@@ -123,7 +125,7 @@
       "avatarUrl": "/creators/kushi-hanamsagar.jpg",
       "verified": true,
       "createdAt": "2024-03-10",
-      "passwordHash": "49495753f9597c448714513626b096f9:33d3964148ee9fba412ef1486e4409120390a77547893a0fa8eb1b8a7a72f393fb4cf1a23170b37f9044db0ee34304b5b2149191ee47b89a8966f7dbb4c81a83:210000",
+      "passwordHash": "2df0633023b93b701a64460bbacfd344:519684c371f3513ddd7965b80e8bf07a60e37c49b26ded81d3e613f937ae63f3fedf88726a6613d9f2b2849ca2910e3b5acefbf93fd9266111b2880f9ec31e31:210000",
       "preferredCurrency": "USD",
       "preferred_currency": "USD"
     },
@@ -227,6 +229,128 @@
     }
   ],
   "creators": [
+    {
+      "id": "creator-kevin",
+      "userId": "user-owner",
+      "fullName": "Kevin Bhutwala",
+      "handle": "kevinbhutwala",
+      "email": "kevinbhutwala417@gmail.com",
+      "headline": "Product Lead & Tech Storyteller",
+      "bio": "Full-stack creator technologist building high-performance creator commerce tools, AI collaboration pipelines, and premium tech showcases.",
+      "avatarUrl": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&auto=format&fit=crop&q=80",
+      "coverImageUrl": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200&auto=format&fit=crop&q=80",
+      "location": "Mumbai, India",
+      "languages": [
+        "English",
+        "Hindi"
+      ],
+      "primaryCategory": "Technology & AI",
+      "secondaryCategories": [
+        "Productivity",
+        "Lifestyle"
+      ],
+      "verified": true,
+      "featured": true,
+      "tier": "Micro",
+      "rating": 4.98,
+      "completedCampaignsCount": 12,
+      "totalFollowers": 45000,
+      "avgEngagementRate": 5.8,
+      "startingPrice": 25000,
+      "currency": "INR",
+      "availableForHire": true,
+      "profileCompleteness": 100,
+      "qualityScore": 98,
+      "isAbeyCollabVerified": true,
+      "socialAccounts": [
+        {
+          "id": "sa-kevin-ig",
+          "platform": "instagram",
+          "handle": "kevinbhutwala",
+          "followers": 45000,
+          "engagementRate": 5.8,
+          "verifiedBadge": true
+        },
+        {
+          "id": "sa-kevin-yt",
+          "platform": "youtube",
+          "handle": "Kevin Bhutwala",
+          "followers": 32000,
+          "engagementRate": 6.2,
+          "verifiedBadge": true
+        }
+      ],
+      "rateCards": [
+        {
+          "id": "rc-kevin-1",
+          "deliverableType": "Instagram Reel",
+          "title": "Dedicated Product Showcase Reel",
+          "description": "High retention 9:16 vertical showcase with interactive product highlights and story link set.",
+          "basePrice": 25000,
+          "currency": "INR",
+          "turnaroundDays": 4,
+          "revisionsIncluded": 2
+        },
+        {
+          "id": "rc-kevin-2",
+          "deliverableType": "YouTube 60s Integration",
+          "title": "Dedicated Tech Deep-Dive Segment",
+          "description": "Full mid-roll segment with hands-on workflow demo and pinned comment link.",
+          "basePrice": 35000,
+          "currency": "INR",
+          "turnaroundDays": 5,
+          "revisionsIncluded": 2
+        }
+      ],
+      "audience": {
+        "topCountries": [
+          {
+            "country": "India",
+            "percentage": 80
+          },
+          {
+            "country": "United States",
+            "percentage": 15
+          },
+          {
+            "country": "United Kingdom",
+            "percentage": 5
+          }
+        ],
+        "ageDistribution": [
+          {
+            "range": "18-24",
+            "percentage": 42
+          },
+          {
+            "range": "25-34",
+            "percentage": 50
+          },
+          {
+            "range": "35-44",
+            "percentage": 8
+          }
+        ],
+        "genderSplit": [
+          {
+            "gender": "Male",
+            "percentage": 76
+          },
+          {
+            "gender": "Female",
+            "percentage": 24
+          }
+        ],
+        "interests": [
+          "AI & Software",
+          "Consumer Tech",
+          "Gadgets",
+          "Productivity"
+        ]
+      },
+      "createdAt": "2026-09-28T06:55:58.266Z",
+      "updatedAt": "2026-09-28T06:55:58.268Z"
+    },
     {
       "id": "creator-usha",
       "userId": "user-c-usha",

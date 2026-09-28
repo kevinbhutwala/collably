@@ -7,7 +7,14 @@ export const dynamic = "force-dynamic";
 
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
   try {
-    const creator = creatorRepo.getById(params.id) || creatorRepo.getByUserId(params.id);
+    const rawId = params.id;
+    const decodedId = decodeURIComponent(rawId);
+    const creator =
+      creatorRepo.getById(decodedId) ||
+      creatorRepo.getById(rawId) ||
+      creatorRepo.getByUserId(decodedId) ||
+      creatorRepo.getByUserId(rawId);
+
     if (!creator) {
       return NextResponse.json({ error: "Creator not found" }, { status: 404 });
     }

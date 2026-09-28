@@ -34,7 +34,80 @@ export async function GET(req: NextRequest) {
       lastActiveAt: nowIso,
     });
 
-    const creatorProfile = user.role === "creator" ? creatorRepo.getByUserId(user.id) : null;
+    let creatorProfile =
+      user.role === "creator" || user.role === "agency_admin" || user.role === "super_admin"
+        ? (creatorRepo.getByUserId(user.id) || creatorRepo.getById(user.id))
+        : null;
+
+    if (user.role === "creator" && !creatorProfile) {
+      const cleanHandle = (user.name || "creator").toLowerCase().replace(/[^a-zA-Z0-9_]/g, "");
+      creatorProfile = creatorRepo.createCreator({
+        userId: user.id,
+        email: user.email,
+        fullName: user.name || "Content Creator",
+        handle: cleanHandle,
+        headline: "Digital Storyteller & Content Creator",
+        bio: "Curating high-impact branded storytelling and authentic content partnerships.",
+        avatarUrl: user.avatarUrl || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80",
+        coverImageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+        location: user.country === "IN" ? "Mumbai, India" : "New York, USA",
+        languages: ["English"],
+        primaryCategory: "Lifestyle & Travel",
+        secondaryCategories: ["Technology & AI"],
+        verified: false,
+        featured: false,
+        tier: "Nano",
+        rating: 5.0,
+        completedCampaignsCount: 0,
+        totalFollowers: 15000,
+        avgEngagementRate: 4.5,
+        startingPrice: user.country === "IN" ? 15000 : 500,
+        currency: user.country === "IN" ? "INR" : "USD",
+        availableForHire: true,
+        profileCompleteness: 80,
+        qualityScore: 90,
+        socialAccounts: [
+          {
+            id: `sa-${user.id}-ig`,
+            platform: "instagram",
+            handle: cleanHandle,
+            followers: 15000,
+            engagementRate: 4.5,
+            verifiedBadge: false,
+          }
+        ],
+        rateCards: [
+          {
+            id: `rc-${user.id}-1`,
+            deliverableType: "Instagram Reel",
+            title: "Dedicated Video Showcase",
+            description: "Dedicated high-retention reel with product hook.",
+            basePrice: user.country === "IN" ? 15000 : 500,
+            currency: user.country === "IN" ? "INR" : "USD",
+            turnaroundDays: 4,
+            revisionsIncluded: 2,
+          }
+        ],
+        audience: {
+          topCountries: [
+            { country: user.country === "IN" ? "India" : "United States", percentage: 75 },
+            { country: "United Kingdom", percentage: 15 },
+            { country: "Canada", percentage: 10 },
+          ],
+          ageDistribution: [
+            { range: "18-24", percentage: 40 },
+            { range: "25-34", percentage: 50 },
+            { range: "35-44", percentage: 10 },
+          ],
+          genderSplit: [
+            { gender: "Female", percentage: 50 },
+            { gender: "Male", percentage: 50 },
+          ],
+          interests: ["Lifestyle", "Technology", "Fashion", "Wellness"],
+        },
+      });
+    }
+
     const brandProfile = user.role === "brand" ? brandRepo.getByUserId(user.id) : null;
     const subscription = await subscriptionService.getUserSubscription(user.id, user.role);
 

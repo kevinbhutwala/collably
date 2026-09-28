@@ -306,6 +306,24 @@ export default function ProfileEditPage() {
             avgEngagementRate: avgEngagement,
             tier,
           });
+        } else if (user?.id) {
+          const res = await fetch(`/api/creators/${user.id}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              headline,
+              bio,
+              startingPrice: Number(startingPrice) || 500,
+              socialAccounts,
+              totalFollowers,
+              avgEngagementRate: avgEngagement,
+              tier,
+            }),
+          });
+          if (res.ok) {
+            const data = await res.json();
+            useAuthStore.setState({ currentCreator: data });
+          }
         }
         addToast({
           type: "success",
@@ -464,9 +482,9 @@ export default function ProfileEditPage() {
         </div>
 
         <div className="flex items-center gap-2.5 self-start sm:self-center">
-          {(currentCreator?.id || user?.id) && (
+          {Boolean(currentCreator?.handle || currentCreator?.id || user?.id) && (
             <Link
-              href={`/creators/${currentCreator?.id || user?.id}`}
+              href={`/creators/${currentCreator?.handle || currentCreator?.id || user?.id}`}
               target="_blank"
               className="px-4 py-2.5 rounded-full bg-white dark:bg-[#181824] hover:bg-[#F8F8FC] dark:hover:bg-[#202030] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-xs"
             >

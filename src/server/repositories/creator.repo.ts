@@ -126,15 +126,28 @@ export class CreatorRepository {
   }
 
   getById(id: string): CreatorProfile | undefined {
-    const cleanId = id.replace(/^@/, "").toLowerCase();
-    return (db.getState().creators || []).find(
-      (c) =>
+    if (!id) return undefined;
+    const decoded = decodeURIComponent(id).trim();
+    const cleanId = decoded.replace(/^@+/, "").toLowerCase();
+
+    return (db.getState().creators || []).find((c) => {
+      const cId = (c.id || "").toLowerCase();
+      const cUserId = (c.userId || "").toLowerCase();
+      const cHandle = (c.handle || "").replace(/^@+/, "").toLowerCase();
+      const cSlug = ((c as any).slug || "").toLowerCase();
+      const cEmail = (c.email || "").toLowerCase();
+
+      return (
         c.id === id ||
-        c.id.toLowerCase() === cleanId ||
-        c.handle.toLowerCase() === cleanId ||
-        (c as any).slug?.toLowerCase() === cleanId ||
-        (cleanId === "kushi" && (c.id === "kushihanamsagar" || c.handle.toLowerCase().includes("kushi")))
-    );
+        cId === cleanId ||
+        c.userId === id ||
+        cUserId === cleanId ||
+        cHandle === cleanId ||
+        (cSlug && cSlug === cleanId) ||
+        (cEmail && cEmail === cleanId) ||
+        (cleanId === "kushi" && (c.id === "kushihanamsagar" || cHandle.includes("kushi")))
+      );
+    });
   }
 
   findById(id: string): CreatorProfile | null {
