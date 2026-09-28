@@ -110,7 +110,7 @@ export function CompactHeroStory() {
                 </button>
               </Link>
 
-              <Link href="/creator/register">
+              <Link href="/register?role=creator">
                 <button className="px-6 py-3.5 rounded-full bg-white hover:bg-[#F8F8FC] border border-black/10 text-[#0A0A0E] font-bold text-xs sm:text-sm transition-all shadow-[0_2px_8px_rgba(0,0,0,0.04)] active:scale-[0.98]">
                   <span>Join Roster</span>
                 </button>

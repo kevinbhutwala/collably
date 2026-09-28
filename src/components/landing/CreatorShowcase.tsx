@@ -178,7 +178,7 @@ export function CreatorShowcase() {
                       View Media Kit
                     </Button>
                   </Link>
-                  <Link href="/creator/register">
+                  <Link href="/register?role=creator">
                     <Button variant="accent" size="sm">
                       Claim Profile
                     </Button>

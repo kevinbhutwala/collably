@@ -23,7 +23,7 @@ export function PricingComparisonModule() {
         "Direct chat with brand marketers",
       ],
       ctaText: "Get Started Free",
-      ctaHref: "/creator/register",
+      ctaHref: "/register?role=creator",
       popular: false,
     },
     {
@@ -41,7 +41,7 @@ export function PricingComparisonModule() {
         "Custom domain for Media Kit",
       ],
       ctaText: "Upgrade to Pro",
-      ctaHref: "/creator/register",
+      ctaHref: "/register?role=creator",
       popular: true,
     },
     {
@@ -59,7 +59,7 @@ export function PricingComparisonModule() {
         "Custom SLA & phone support",
       ],
       ctaText: "Start Growth Plan",
-      ctaHref: "/brand/register",
+      ctaHref: "/register?role=brand",
       popular: false,
     },
   ];

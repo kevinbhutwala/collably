@@ -197,7 +197,7 @@ export function WishlinkCreatorStories() {
               {/* CTA */}
               <div className="pt-2">
                 <Link
-                  href="/creator/register"
+                  href="/register?role=creator"
                   className="inline-flex items-center gap-2 text-sm font-bold text-[#0A0A0E] hover:text-[#D97706] transition-colors"
                 >
                   <span>Sign up to monetize your content</span>

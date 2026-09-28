@@ -24,7 +24,7 @@ export function StreamlinedPricing() {
         "4K Video review player",
       ],
       ctaText: "Get Started Free",
-      ctaHref: "/creator/register",
+      ctaHref: "/register?role=creator",
       popular: false,
     },
     {
@@ -41,7 +41,7 @@ export function StreamlinedPricing() {
       ],
 
       ctaText: "Upgrade to Pro",
-      ctaHref: "/creator/register",
+      ctaHref: "/register?role=creator",
       popular: true,
     },
     {
@@ -57,7 +57,7 @@ export function StreamlinedPricing() {
         "Multi-seat team CRM workspace",
       ],
       ctaText: "Launch Campaigns",
-      ctaHref: "/brand/register",
+      ctaHref: "/register?role=brand",
       popular: false,
     },
   ];

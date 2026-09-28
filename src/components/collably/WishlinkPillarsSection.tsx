@@ -42,7 +42,7 @@ export function WishlinkPillarsSection() {
 
             <div className="pt-6 border-t border-black/6 mt-6">
               <Link
-                href="/creator/register"
+                href="/register?role=creator"
                 className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0A0A0E] group-hover:text-[#D97706] transition-colors"
               >
                 <span>Sign up as Creator</span>

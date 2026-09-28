@@ -111,7 +111,7 @@ export function WishlinkHeroShowcase() {
         {/* Magnetic Hero CTA Actions + Sound Toggle */}
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-9 w-full sm:w-auto">
           <Link
-            href={activeTab === 'creator' ? '/creator/register' : '/brand/register'}
+            href={activeTab === 'creator' ? '/register?role=creator' : '/register?role=brand'}
             className="group relative px-6 sm:px-7 py-3 sm:py-3.5 bg-[#FFD21F] text-[#0A0A0E] hover:bg-[#FFE052] font-sans font-bold text-xs tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-2.5 rounded-full shadow-[0_10px_30px_rgba(255,210,31,0.25)] hover:shadow-[0_15px_40px_rgba(255,210,31,0.4)] hover:scale-105 active:scale-95 cursor-pointer"
           >
             <Play className="w-3.5 h-3.5 fill-current transition-transform duration-300 group-hover:scale-110" />

@@ -33,7 +33,7 @@ export function WishlinkLaunchpadCTA() {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
               <Link
-                href="/creator/register"
+                href="/register?role=creator"
                 className="w-full sm:w-auto px-9 py-4 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-base shadow-[0_4px_25px_rgba(255,210,31,0.5)] border border-black/10 transition-all flex items-center justify-center gap-2 active:scale-95"
               >
                 <span>Sign up as Creator</span>
@@ -41,7 +41,7 @@ export function WishlinkLaunchpadCTA() {
               </Link>
 
               <Link
-                href="/brand/register"
+                href="/register?role=brand"
                 className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 hover:bg-white/15 text-white font-bold text-base border border-white/20 transition-all flex items-center justify-center gap-2 active:scale-95"
               >
                 <span>Sign up as Brand</span>

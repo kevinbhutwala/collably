@@ -387,7 +387,7 @@ export function CreatorDetailClient({
                   <p className="text-xs font-bold text-amber-900 dark:text-amber-300 font-mono">Public Discovery Profile — Unclaimed</p>
                   <p className="text-xs text-amber-800 dark:text-amber-400 leading-relaxed">
                     Are you @{igHandle}?{" "}
-                    <Link href="/creator/register" className="font-bold underline hover:opacity-80">
+                    <Link href="/register?role=creator" className="font-bold underline hover:opacity-80">
                       Claim this profile
                     </Link>{" "}
                     to connect your verified account and set your own rate cards.
@@ -579,7 +579,7 @@ export function CreatorDetailClient({
           <SocialIcon platform="instagram" colored={true} size={16} />
           <p className="text-xs text-[#7A7A8A] dark:text-[#8E8EA4] leading-relaxed font-sans">
             Instagram usernames (@{igHandle}), photographs, follower statistics, and bios are sourced from publicly available Instagram accounts for discovery purposes. All creative works remain the property of their respective creators.
-            {" "}<Link href="/creator/register" className="text-[#0A0A0E] dark:text-[#FFD21F] font-bold underline hover:opacity-80">Claim this profile</Link> to manage your listing.
+            {" "}<Link href="/register?role=creator" className="text-[#0A0A0E] dark:text-[#FFD21F] font-bold underline hover:opacity-80">Claim this profile</Link> to manage your listing.
           </p>
         </div>
 

@@ -50,8 +50,8 @@ export function Navbar() {
     if (path === "/contact") return "Contact Sales";
     if (path === "/login") return "Sign In";
     if (path === "/register") return "Get Started";
-    if (path === "/creator/register") return "Creator Sign Up";
-    if (path === "/brand/register") return "Brand Sign Up";
+    if (path === "/register?role=creator") return "Creator Sign Up";
+    if (path === "/register?role=brand") return "Brand Sign Up";
     if (path.startsWith("/campaigns/")) return "Campaign Brief";
     if (path.startsWith("/creators/")) return "Creator Profile";
     return "AbeyCollab";

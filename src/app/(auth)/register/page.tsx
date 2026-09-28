@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useAuthStore } from "@/stores/auth.store";
 import { useUIStore } from "@/stores/ui.store";
 import { authService } from "@/services/auth.service";
@@ -10,7 +10,6 @@ import { Input } from "@/components/ui/Input";
 import {
   ArrowLeft,
   ArrowRight,
-  Sparkles,
   Building2,
   Video,
   Lock,
@@ -20,7 +19,6 @@ import {
   Eye,
   EyeOff,
   AlertCircle,
-  CheckCircle2,
   AtSign,
 } from "lucide-react";
 
@@ -40,12 +38,24 @@ function pwdScore(pw: string): number {
   return Object.values(checkPassword(pw)).filter(Boolean).length;
 }
 
-export default function RegisterPage() {
+function RegisterContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { setAuthData } = useAuthStore();
   const { addToast } = useUIStore();
 
-  const [role, setRole] = useState<"creator" | "brand">("creator");
+  const urlRole = searchParams.get("role");
+  const [role, setRole] = useState<"creator" | "brand">(
+    urlRole === "brand" ? "brand" : "creator"
+  );
+
+  useEffect(() => {
+    const qRole = searchParams.get("role");
+    if (qRole === "brand" || qRole === "creator") {
+      setRole(qRole);
+    }
+  }, [searchParams]);
+
   const [fullName, setFullName] = useState("");
   const [handle, setHandle] = useState("");
   const [companyName, setCompanyName] = useState("");
@@ -59,7 +69,6 @@ export default function RegisterPage() {
   const [touched, setTouched] = useState<Record<string, boolean>>({});
 
   const pwStrength = pwdScore(password);
-  const pwChecks = checkPassword(password);
   const strengthLabel = ["", "Weak", "Fair", "Good", "Strong"][pwStrength] ?? "";
   const strengthColor =
     ["", "bg-red-500", "bg-orange-500", "bg-yellow-500", "bg-green-500"][pwStrength] ?? "bg-gray-200";
@@ -73,16 +82,10 @@ export default function RegisterPage() {
       errs.fullName = "Name must be at least 2 characters";
     }
 
-    if (role === "creator") {
+    if (role === "creator" && handle.trim()) {
       const cleanHandle = handle.trim().replace(/^@/, "");
-      if (!cleanHandle) {
-        errs.handle = "Creator handle is required";
-      } else if (!HANDLE_RE.test(cleanHandle)) {
+      if (!HANDLE_RE.test(cleanHandle)) {
         errs.handle = "Letters, numbers, dots, underscores, and hyphens only";
-      }
-    } else {
-      if (!companyName.trim()) {
-        errs.companyName = "Company / Brand name is required";
       }
     }
 
@@ -125,14 +128,18 @@ export default function RegisterPage() {
     setIsLoading(true);
 
     try {
-      const cleanHandle = handle.trim().replace(/^@/, "");
+      const cleanHandle =
+        handle.trim().replace(/^@/, "") ||
+        fullName.trim().toLowerCase().replace(/[^a-z0-9]/g, "");
+      const finalCompanyName = companyName.trim() || fullName.trim();
+
       const res = await authService.register({
         name: fullName.trim(),
         email: email.trim(),
         password,
         role,
         handle: role === "creator" ? `@${cleanHandle}` : undefined,
-        companyName: role === "brand" ? companyName.trim() : undefined,
+        companyName: role === "brand" ? finalCompanyName : undefined,
         contactName: role === "brand" ? fullName.trim() : undefined,
       });
 
@@ -182,14 +189,14 @@ export default function RegisterPage() {
           Join AbeyCollab
         </h1>
         <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#8E8EA4] font-sans">
-          One common platform for verified creators and brands with milestone escrow.
+          One common registration for creators, brands, and sponsors.
         </p>
       </div>
 
-      {/* Account Type Selector (Seamless Segmented Toggle) */}
+      {/* Account Type Selector (Clean Segmented Selector) */}
       <div className="space-y-1.5">
         <label className="text-xs font-bold text-[#0A0A0E] dark:text-white font-sans">
-          I want to register as
+          I am registering as:
         </label>
         <div className="grid grid-cols-2 gap-2 p-1.5 rounded-2xl bg-black/[0.04] dark:bg-white/[0.05] border border-black/8 dark:border-white/10">
           <button
@@ -199,14 +206,14 @@ export default function RegisterPage() {
               setErrorMessage("");
               setErrors({});
             }}
-            className={`py-2.5 px-3 rounded-xl text-xs font-bold font-sans flex items-center justify-center gap-2 transition-all ${
+            className={`py-2.5 px-3 rounded-xl text-xs font-bold font-sans flex items-center justify-center gap-2 transition-all cursor-pointer ${
               role === "creator"
                 ? "bg-white dark:bg-[#1E1E2C] text-[#0A0A0E] dark:text-white shadow-sm border border-black/10 dark:border-white/15"
                 : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
             }`}
           >
             <Video className={`w-3.5 h-3.5 ${role === "creator" ? "text-amber-500" : ""}`} />
-            <span>Creator</span>
+            <span>Creator / Influencer</span>
           </button>
 
           <button
@@ -216,14 +223,14 @@ export default function RegisterPage() {
               setErrorMessage("");
               setErrors({});
             }}
-            className={`py-2.5 px-3 rounded-xl text-xs font-bold font-sans flex items-center justify-center gap-2 transition-all ${
+            className={`py-2.5 px-3 rounded-xl text-xs font-bold font-sans flex items-center justify-center gap-2 transition-all cursor-pointer ${
               role === "brand"
                 ? "bg-white dark:bg-[#1E1E2C] text-[#0A0A0E] dark:text-white shadow-sm border border-black/10 dark:border-white/15"
                 : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
             }`}
           >
             <Building2 className={`w-3.5 h-3.5 ${role === "brand" ? "text-amber-500" : ""}`} />
-            <span>Brand / Business</span>
+            <span>Brand / Sponsor</span>
           </button>
         </div>
       </div>
@@ -254,37 +261,39 @@ export default function RegisterPage() {
           icon={<User className="w-4 h-4 text-[#7A7A8A] dark:text-[#8E8EA4]" />}
         />
 
-        {/* Role Specific Field */}
+        {/* Optional Role Specific Field */}
         {role === "creator" ? (
-          <Input
-            label="Creator Handle"
-            type="text"
-            required
-            placeholder="@yourhandle"
-            value={handle}
-            onChange={(e) => {
-              setHandle(e.target.value);
-              if (errors.handle) setErrors((prev) => ({ ...prev, handle: "" }));
-            }}
-            onBlur={() => handleBlur("handle")}
-            error={touched.handle ? errors.handle : undefined}
-            icon={<AtSign className="w-4 h-4 text-[#7A7A8A] dark:text-[#8E8EA4]" />}
-          />
+          <div>
+            <Input
+              label="Creator Handle (Optional)"
+              type="text"
+              placeholder="@yourhandle (auto-generated from name if empty)"
+              value={handle}
+              onChange={(e) => {
+                setHandle(e.target.value);
+                if (errors.handle) setErrors((prev) => ({ ...prev, handle: "" }));
+              }}
+              onBlur={() => handleBlur("handle")}
+              error={touched.handle ? errors.handle : undefined}
+              icon={<AtSign className="w-4 h-4 text-[#7A7A8A] dark:text-[#8E8EA4]" />}
+            />
+          </div>
         ) : (
-          <Input
-            label="Company / Brand Name"
-            type="text"
-            required
-            placeholder="e.g. Whole Truth / Apex Athletics"
-            value={companyName}
-            onChange={(e) => {
-              setCompanyName(e.target.value);
-              if (errors.companyName) setErrors((prev) => ({ ...prev, companyName: "" }));
-            }}
-            onBlur={() => handleBlur("companyName")}
-            error={touched.companyName ? errors.companyName : undefined}
-            icon={<Building2 className="w-4 h-4 text-[#7A7A8A] dark:text-[#8E8EA4]" />}
-          />
+          <div>
+            <Input
+              label="Company / Brand Name (Optional)"
+              type="text"
+              placeholder="e.g. Acme Corp (defaults to your name if empty)"
+              value={companyName}
+              onChange={(e) => {
+                setCompanyName(e.target.value);
+                if (errors.companyName) setErrors((prev) => ({ ...prev, companyName: "" }));
+              }}
+              onBlur={() => handleBlur("companyName")}
+              error={touched.companyName ? errors.companyName : undefined}
+              icon={<Building2 className="w-4 h-4 text-[#7A7A8A] dark:text-[#8E8EA4]" />}
+            />
+          </div>
         )}
 
         {/* Email Address */}
@@ -381,5 +390,19 @@ export default function RegisterPage() {
         </p>
       </div>
     </div>
+  );
+}
+
+export default function RegisterPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center py-20">
+          <Loader2 className="w-8 h-8 animate-spin text-[#FFD21F]" />
+        </div>
+      }
+    >
+      <RegisterContent />
+    </Suspense>
   );
 }

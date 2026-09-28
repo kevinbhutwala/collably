@@ -92,7 +92,7 @@ export function CinematicNavbar() {
                 Log in
               </Link>
 
-              <Link href="/creator/register">
+              <Link href="/register?role=creator">
                 <button className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs sm:text-[13px] font-bold transition-all shadow-[0_0_20px_rgba(255,210,31,0.4)] border border-white/40 active:scale-95">
                   <span>Get Started</span>
                 </button>
@@ -139,7 +139,7 @@ export function CinematicNavbar() {
               Log in
             </Link>
             <Link
-              href="/creator/register"
+              href="/register?role=creator"
               onClick={() => setMobileMenuOpen(false)}
               className="w-full py-2.5 rounded-full bg-[#2A5CFF] text-white font-semibold text-center text-xs shadow-lg"
             >

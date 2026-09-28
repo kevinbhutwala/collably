@@ -47,7 +47,7 @@ export function EditorialCTA() {
           </Link>
 
           <Link
-            href="/creator/register"
+            href="/register?role=creator"
             className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#FFFFFF] dark:bg-[#14141E] hover:bg-[#F4F4F0] dark:hover:bg-[#1C1C28] border border-[#E7E7E4] dark:border-white/10 text-[#101010] dark:text-white font-bold shadow-xs transition-all flex items-center justify-center gap-2 tracking-tight"
           >
             <span>Join as a Creator</span>

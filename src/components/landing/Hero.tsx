@@ -66,7 +66,7 @@ export function Hero() {
             className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-4"
           >
             <Link
-              href="/creator/register"
+              href="/register?role=creator"
               className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-[hsl(327,100%,50%)] to-[hsl(300,100%,42%)] text-white font-bold text-sm sm:text-base shadow-xl shadow-pink-500/25 hover:shadow-pink-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 group font-display"
             >
               <span>Apply to Join Founding Cohort</span>

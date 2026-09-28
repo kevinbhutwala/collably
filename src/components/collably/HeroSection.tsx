@@ -105,7 +105,7 @@ export function HeroSection() {
           </Link>
 
           <Link
-            href="/creator/register"
+            href="/register?role=creator"
             className="w-full sm:w-auto px-7 py-3.5 rounded-[9px] bg-[#FFFFFF] hover:bg-[#F4F6F3] border border-[#E2E6E1] text-[#101310] font-semibold text-sm shadow-xs transition-all flex items-center justify-center gap-2 font-sans"
           >
             <span>Join as a Creator</span>

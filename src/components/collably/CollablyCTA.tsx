@@ -35,7 +35,7 @@ export function AbeyCollabCTA() {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2">
           <Link
-            href="/creator/register"
+            href="/register?role=creator"
             className="w-full sm:w-auto px-8 py-3.5 rounded-[9px] bg-[#087F5B] hover:bg-[#075E45] active:bg-[#064B39] text-white font-semibold text-sm shadow-xs transition-all flex items-center justify-center gap-2 font-sans"
           >
             <span>Apply as a Creator</span>

@@ -51,7 +51,7 @@ export function CTASection() {
             </div>
 
             <div className="pt-4 space-y-3">
-              <Link href="/creator/register" className="w-full block">
+              <Link href="/register?role=creator" className="w-full block">
                 <Button variant="primary" size="lg" className="w-full rounded-full font-display font-bold" rightIcon={<ArrowUpRight className="w-4 h-4" />}>
                   Apply to Join Roster
                 </Button>

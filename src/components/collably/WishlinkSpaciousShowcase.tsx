@@ -55,7 +55,7 @@ const FEATURES: FeatureItem[] = [
       "Zero platform commission cuts on verified creator rates",
     ],
     ctaText: "Sign up to Monetize",
-    ctaLink: "/creator/register",
+    ctaLink: "/register?role=creator",
     visualType: "escrow",
   },
   {
@@ -75,7 +75,7 @@ const FEATURES: FeatureItem[] = [
       "Zero ghosting guarantee with 48h brand response SLA",
     ],
     ctaText: "Sign up to Partner",
-    ctaLink: "/creator/register",
+    ctaLink: "/register?role=creator",
     visualType: "brands",
   },
   {
@@ -95,7 +95,7 @@ const FEATURES: FeatureItem[] = [
       "100% compliant with Instagram Meta Graph API guidelines",
     ],
     ctaText: "Sign up for Auto-DM",
-    ctaLink: "/creator/register",
+    ctaLink: "/register?role=creator",
     visualType: "dm",
   },
   {
@@ -115,7 +115,7 @@ const FEATURES: FeatureItem[] = [
       "Showcase previous 4K video deliveries and brand testimonials",
     ],
     ctaText: "Sign up for Your Media Kit",
-    ctaLink: "/creator/register",
+    ctaLink: "/register?role=creator",
     visualType: "mediakit",
   },
   {
@@ -135,7 +135,7 @@ const FEATURES: FeatureItem[] = [
       "Instant tax invoices and GST-compliant payout statements",
     ],
     ctaText: "Sign up to View Dashboard",
-    ctaLink: "/creator/register",
+    ctaLink: "/register?role=creator",
     visualType: "analytics",
   },
   {
@@ -155,7 +155,7 @@ const FEATURES: FeatureItem[] = [
       "Private Discord and WhatsApp VIP creator channels",
     ],
     ctaText: "Sign up to Join Community",
-    ctaLink: "/creator/register",
+    ctaLink: "/register?role=creator",
     visualType: "community",
   },
 ];

@@ -99,7 +99,7 @@ export function HeroEditorialCollage() {
             </Link>
 
             <Link
-              href="/creator/register"
+              href="/register?role=creator"
               className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#FFFFFF] hover:bg-[#F4F4F0] border border-[#E7E7E4] text-[#101010] shadow-xs transition-all flex items-center justify-center gap-2 tracking-tight font-bold"
             >
               <span>Join as a Creator</span>
