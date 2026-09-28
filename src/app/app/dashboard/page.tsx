@@ -14,6 +14,7 @@ import { StatsCard } from "@/components/ui/StatsCard";
 import { BrandIcon } from "@/components/ui/BrandLogos";
 import { AnimatedEmptyState } from "@/components/ui/AnimatedEmptyState";
 import { ProfileCompletenessCard } from "@/components/creators/ProfileCompletenessCard";
+import { ProfileCompletionBanner } from "@/components/dashboard/ProfileCompletionBanner";
 import { SubscriptionUsageCard } from "@/components/subscriptions/SubscriptionUsageCard";
 import { CreatorMarketPulseWidget } from "@/components/marketplace/CreatorMarketPulseWidget";
 import { BrandMarketIntelligenceWidget } from "@/components/marketplace/BrandMarketIntelligenceWidget";
@@ -224,6 +225,11 @@ function DashboardContent() {
           )}
         </div>
       </div>
+
+      {/* ── Creator Profile Incomplete Warning Banner ── */}
+      {role === "creator" && (
+        <ProfileCompletionBanner creator={currentCreator || undefined} />
+      )}
 
       {/* ── Quick Start: How AbeyCollab Works ── */}
       {showQuickStart && (
@@ -680,7 +686,7 @@ function DashboardContent() {
         {/* Right Column: Profile & Financial Ledger */}
         <div className="lg:col-span-4 space-y-6">
           {role === "creator" ? (
-            <ProfileCompletenessCard />
+            <ProfileCompletenessCard creator={currentCreator || undefined} />
           ) : (
             <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-4">
               <div className="flex items-center justify-between pb-2.5 border-b border-black/8 dark:border-white/10">

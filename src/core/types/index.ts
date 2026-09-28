@@ -41,7 +41,8 @@ export type CreatorCategory =
   | 'Travel & Lifestyle'
   | 'Food & Culinary'
   | 'Food & Beverage'
-  | 'Education & Science';
+  | 'Education & Science'
+  | 'Content Creator';
 
 export type PlatformType = 'youtube' | 'instagram' | 'tiktok' | 'x' | 'linkedin' | 'threads';
 

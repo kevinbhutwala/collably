@@ -25,6 +25,8 @@ import {
   Sparkles,
   ArrowRight,
   ShieldAlert,
+  Lock,
+  AlertTriangle,
 } from "lucide-react";
 import { PreflightEligibilityAudit } from "@/components/marketplace/PreflightEligibilityAudit";
 
@@ -38,8 +40,15 @@ export function CampaignDetailClient({
   initialCampaign = null,
 }: CampaignDetailClientProps) {
   const { currency: displayCurrency, convertAndFormat } = useGlobalCurrency();
-  const { currentCreator } = useAuthStore();
+  const { currentCreator, role } = useAuthStore();
   const { addToast } = useUIStore();
+
+  const isProfileIncomplete = role === "creator" && (
+    !currentCreator?.bio || currentCreator.bio.trim().length < 15 ||
+    !currentCreator?.headline || currentCreator.headline.trim().length < 3 ||
+    ((!currentCreator?.startingPrice || currentCreator.startingPrice <= 0) && (!currentCreator?.rateCards || currentCreator.rateCards.length === 0)) ||
+    (!currentCreator?.socialAccounts || currentCreator.socialAccounts.length === 0)
+  );
 
   const [campaign, setCampaign] = useState<Campaign | null>(initialCampaign);
   const [loading, setLoading] = useState(!initialCampaign);
@@ -116,6 +125,15 @@ export function CampaignDetailClient({
   const handleApply = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!campaign) return;
+
+    if (isProfileIncomplete) {
+      addToast({
+        type: "error",
+        title: "Profile Incomplete",
+        message: "Please complete your creator bio, rates, and connected channels in your profile before applying.",
+      });
+      return;
+    }
 
     if (eligibilityReport && !eligibilityReport.eligible) {
       addToast({
@@ -270,6 +288,25 @@ export function CampaignDetailClient({
             </div>
           </div>
 
+          {/* Incomplete Profile Alert for Creators */}
+          {isProfileIncomplete && (
+            <div className="bg-amber-500/10 border-b border-amber-500/25 px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+              <div className="flex items-center gap-2.5">
+                <AlertTriangle className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
+                <span className="text-amber-900 dark:text-amber-200 font-sans">
+                  <strong>Profile Incomplete:</strong> Complete your creator profile (bio, rates, and connected channel) to unlock campaign applications.
+                </span>
+              </div>
+              <Link
+                href="/app/profile"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-500/20 hover:bg-amber-500/30 text-amber-900 dark:text-amber-200 font-bold text-xs transition-colors shrink-0 font-mono"
+              >
+                <span>Complete Profile</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          )}
+
           {/* Quick Action Bar */}
           <div className="p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-black/8 dark:border-white/10 bg-white dark:bg-[#12121A]">
             <div className="flex items-center gap-6 text-xs text-[#6A6A78] dark:text-[#9A9AA8] font-mono">
@@ -285,13 +322,26 @@ export function CampaignDetailClient({
               </div>
             </div>
 
-            <button
-              onClick={() => setIsApplyModalOpen(true)}
-              className="px-6 py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs sm:text-sm transition-all shadow-[0_4px_14px_rgba(255,210,31,0.4)] border border-black/10 flex items-center gap-2 cursor-pointer"
-            >
-              <span>Pitch Creative Angle &amp; Apply</span>
-              <ArrowRight className="w-4 h-4 text-[#0A0A0E]" />
-            </button>
+            {isProfileIncomplete ? (
+              <Link href="/app/profile">
+                <button
+                  type="button"
+                  className="px-6 py-3.5 rounded-full bg-amber-500/20 hover:bg-amber-500/30 text-amber-900 dark:text-amber-300 border border-amber-500/30 font-bold text-xs sm:text-sm transition-all flex items-center gap-2 cursor-pointer shadow-xs"
+                >
+                  <Lock className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                  <span>Complete Profile to Apply</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </Link>
+            ) : (
+              <button
+                onClick={() => setIsApplyModalOpen(true)}
+                className="px-6 py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs sm:text-sm transition-all shadow-[0_4px_14px_rgba(255,210,31,0.4)] border border-black/10 flex items-center gap-2 cursor-pointer"
+              >
+                <span>Pitch Creative Angle &amp; Apply</span>
+                <ArrowRight className="w-4 h-4 text-[#0A0A0E]" />
+              </button>
+            )}
           </div>
         </div>
 

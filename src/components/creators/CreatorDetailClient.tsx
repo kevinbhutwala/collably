@@ -279,9 +279,11 @@ export function CreatorDetailClient({
                 </div>
 
                 {/* Pull quote */}
-                <p className="text-white/80 font-serif italic text-lg sm:text-xl max-w-xl leading-snug">
-                  &ldquo;{creator.headline}&rdquo;
-                </p>
+                {creator.headline ? (
+                  <p className="text-white/80 font-serif italic text-lg sm:text-xl max-w-xl leading-snug">
+                    &ldquo;{creator.headline}&rdquo;
+                  </p>
+                ) : null}
               </div>
             </div>
 
@@ -324,9 +326,15 @@ export function CreatorDetailClient({
                   Creator Bio
                 </span>
               </div>
-              <p className="text-sm text-[#3A3A48] dark:text-[#C0C0D0] leading-relaxed font-sans">
-                {creator.bio}
-              </p>
+              {creator.bio ? (
+                <p className="text-sm text-[#3A3A48] dark:text-[#C0C0D0] leading-relaxed font-sans whitespace-pre-line">
+                  {creator.bio}
+                </p>
+              ) : (
+                <p className="text-sm text-[#8A8A9A] dark:text-[#6A6A78] italic font-sans">
+                  This creator has not written an editorial bio yet.
+                </p>
+              )}
 
               {/* Trust bar */}
               <TrustIndicatorsBar type="creator" id={creator.id} />

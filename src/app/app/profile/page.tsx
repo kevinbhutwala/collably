@@ -80,7 +80,7 @@ export default function ProfileEditPage() {
   // Creator state
   const [headline, setHeadline] = useState(currentCreator?.headline || "");
   const [bio, setBio] = useState(currentCreator?.bio || "");
-  const [startingPrice, setStartingPrice] = useState(currentCreator?.startingPrice || 500);
+  const [startingPrice, setStartingPrice] = useState(currentCreator?.startingPrice || 0);
   const [socialAccounts, setSocialAccounts] = useState<SocialAccount[]>(currentCreator?.socialAccounts || []);
 
   // Brand state
@@ -90,7 +90,7 @@ export default function ProfileEditPage() {
   const [brandDescription, setBrandDescription] = useState(currentBrand?.description || "");
   const [websiteUrl, setWebsiteUrl] = useState(currentBrand?.websiteUrl || "");
   const [location, setLocation] = useState(currentBrand?.location || "");
-  const [companySize, setCompanySize] = useState(currentBrand?.companySize || "11-50");
+  const [companySize, setCompanySize] = useState(currentBrand?.companySize || "");
 
   const [isSaving, setIsSaving] = useState(false);
 
@@ -134,7 +134,7 @@ export default function ProfileEditPage() {
     if (currentCreator) {
       setHeadline(currentCreator.headline || "");
       setBio(currentCreator.bio || "");
-      setStartingPrice(currentCreator.startingPrice || 500);
+      setStartingPrice(currentCreator.startingPrice || 0);
       setSocialAccounts(currentCreator.socialAccounts || []);
     }
   }, [currentCreator]);
@@ -147,7 +147,7 @@ export default function ProfileEditPage() {
       setBrandDescription(currentBrand.description || "");
       setWebsiteUrl(currentBrand.websiteUrl || "");
       setLocation(currentBrand.location || "");
-      setCompanySize(currentBrand.companySize || "11-50");
+      setCompanySize(currentBrand.companySize || "");
     }
   }, [currentBrand]);
 
@@ -567,10 +567,11 @@ export default function ProfileEditPage() {
             <Input
               label={`Starting Rate (${currencySymbol} ${creatorCurrency})`}
               type="number"
-              min={100}
-              step={50}
-              value={startingPrice}
-              onChange={(e) => setStartingPrice(Number(e.target.value))}
+              min={0}
+              step={10}
+              placeholder="e.g. 500"
+              value={startingPrice === 0 ? "" : startingPrice}
+              onChange={(e) => setStartingPrice(Number(e.target.value) || 0)}
               required
             />
           </div>

@@ -138,23 +138,26 @@ export class EligibilityService {
 
     // Rate Card Deliverables check
     const rateCards = creator.rateCards || [];
-    if (rateCards.length === 0) {
+    const hasRates = rateCards.length > 0 || (Number(creator.startingPrice) > 0);
+    if (!hasRates) {
       checks.push({
         id: "media_kit_ratecard",
         category: "media_kit",
-        title: "Rate Card Deliverables",
-        description: "Media kit has no defined commercial deliverables or rates.",
+        title: "Commercial Rates & Deliverables",
+        description: "Media kit has no defined commercial deliverables or starting rate.",
         status: "failed",
         critical: true,
-        details: "Configure at least one standard deliverable (e.g. Reel, Video, Post) with turnaround days.",
+        details: "Configure your starting collaboration rate or at least one rate card item in your profile.",
         fixAction: { label: "Build Rate Card", url: "/app/profile" },
       });
     } else {
       checks.push({
         id: "media_kit_ratecard",
         category: "media_kit",
-        title: "Rate Card Deliverables",
-        description: `${rateCards.length} verified commercial rate card deliverable(s) published.`,
+        title: "Commercial Rates & Deliverables",
+        description: rateCards.length > 0
+          ? `${rateCards.length} verified commercial rate card deliverable(s) published.`
+          : `Starting collaboration rate set ($${creator.startingPrice}).`,
         status: "passed",
         critical: true,
       });

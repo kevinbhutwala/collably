@@ -6,19 +6,22 @@ import { CreatorProfile } from "@/core/types";
 import { calculateProfileCompleteness } from "@/core/utils/scoring";
 import { Sparkles, CheckCircle2, AlertCircle, ArrowRight, ShieldCheck, Zap } from "lucide-react";
 
+import { useAuthStore } from "@/stores/auth.store";
+
 export function ProfileCompletenessCard({ creator }: { creator?: CreatorProfile | null }) {
-  const defaultCreator: CreatorProfile = creator || {
+  const storeCreator = useAuthStore((state) => state.currentCreator);
+  const activeCreator: CreatorProfile = creator || storeCreator || {
     id: "temp",
     userId: "temp",
     fullName: "Creator",
     handle: "@creator",
     headline: "",
     bio: "",
-    avatarUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop&q=80",
-    coverImageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
-    location: "Global",
+    avatarUrl: "",
+    coverImageUrl: "",
+    location: "",
     languages: ["English"],
-    primaryCategory: "Technology & AI",
+    primaryCategory: "Content Creator",
     secondaryCategories: [],
     verified: false,
     featured: false,
@@ -27,7 +30,7 @@ export function ProfileCompletenessCard({ creator }: { creator?: CreatorProfile 
     completedCampaignsCount: 0,
     totalFollowers: 0,
     avgEngagementRate: 0,
-    startingPrice: 500,
+    startingPrice: 0,
     availableForHire: true,
     socialAccounts: [],
     rateCards: [],
@@ -39,7 +42,7 @@ export function ProfileCompletenessCard({ creator }: { creator?: CreatorProfile 
       interests: [],
     },
   };
-  const breakdown = calculateProfileCompleteness(defaultCreator);
+  const breakdown = calculateProfileCompleteness(activeCreator);
   const score = breakdown.totalScore ?? 0;
 
   // SVG circle calculations for radial gauge
