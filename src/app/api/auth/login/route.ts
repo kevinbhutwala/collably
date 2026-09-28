@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const user = userRepo.verifyCredentials(email, password);
+    const user = await userRepo.verifyCredentialsAsync(email, password);
     if (!user) {
       return NextResponse.json(
         { error: "Invalid email or password" },

@@ -60,7 +60,7 @@ export async function POST(req: NextRequest) {
 
     const resolvedAvatar = role === "brand" ? (logoUrl || avatarUrl) : avatarUrl;
 
-    const newUser = userRepo.createUser({
+    const newUser = await userRepo.createUserAsync({
       name: credentials.name,
       email: credentials.email,
       password: credentials.password,

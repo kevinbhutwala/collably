@@ -3,7 +3,7 @@ import { db } from "../db/database";
 import { UserEntity } from "../db/schema";
 import { hashPassword, verifyPassword } from "../auth/crypto";
 import { UserRole } from "@/core/types";
-import { isSupabaseConfigured, getSupabaseAdmin } from "../db/supabase";
+import { isSupabaseConfigured, getSupabaseAdmin, getSupabaseClient } from "../db/supabase";
 
 export class UserRepository {
   findByEmail(email: string): UserEntity | undefined {
@@ -43,6 +43,56 @@ export class UserRepository {
     }
 
     return undefined;
+  }
+
+  async findByEmailAsync(email: string): Promise<UserEntity | undefined> {
+    const direct = this.findByEmail(email);
+    if (direct) return direct;
+
+    if (!isSupabaseConfigured) return undefined;
+
+    try {
+      const supabase = getSupabaseAdmin();
+      if (!supabase) return undefined;
+
+      const normalized = email.toLowerCase().trim();
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("*")
+        .eq("email", normalized)
+        .maybeSingle();
+
+      if (!profile) return undefined;
+
+      const role =
+        (profile.role === "brand_owner" ? "brand" : profile.role === "agency_admin" ? "agency_admin" : profile.role) || "creator";
+
+      const hydratedUser: UserEntity = {
+        id: profile.id || profile.user_id || `user-supa-${Date.now()}`,
+        name: profile.name || normalized.split("@")[0],
+        email: normalized,
+        passwordHash: "",
+        role: role as UserRole,
+        avatarUrl: profile.avatar_url,
+        verified: profile.verified ?? false,
+        createdAt: profile.created_at || new Date().toISOString(),
+        updatedAt: profile.updated_at || new Date().toISOString(),
+      };
+
+      db.updateState((state) => {
+        state.users = state.users || [];
+        const idx = state.users.findIndex((u) => u.email.toLowerCase() === normalized);
+        if (idx !== -1) {
+          state.users[idx] = hydratedUser;
+        } else {
+          state.users.push(hydratedUser);
+        }
+      });
+
+      return hydratedUser;
+    } catch {
+      return undefined;
+    }
   }
 
 
@@ -221,6 +271,226 @@ export class UserRepository {
         success = true;
       }
     });
+    return success;
+  }
+
+  async createUserAsync(data: {
+    name: string;
+    email: string;
+    password?: string;
+    passwordHash?: string;
+    role: UserRole;
+    avatarUrl?: string;
+    gender?: "male" | "female" | "other" | string;
+    verified?: boolean;
+  }): Promise<UserEntity> {
+    // 1. Create in local memory cache
+    const newUser = this.createUser(data);
+
+    // 2. Persist permanently to Supabase Auth & profiles table
+    if (isSupabaseConfigured && data.password) {
+      try {
+        const supabase = getSupabaseAdmin();
+        if (supabase) {
+          const { data: supaAuthUser, error: supaErr } = await supabase.auth.admin.createUser({
+            email: newUser.email,
+            password: data.password,
+            email_confirm: true,
+            user_metadata: {
+              name: newUser.name,
+              role: newUser.role,
+              avatarUrl: newUser.avatarUrl,
+            },
+          });
+
+          let targetId = supaAuthUser?.user?.id;
+          if (supaErr && supaErr.message?.toLowerCase().includes("already registered")) {
+            const { data: userList } = await supabase.auth.admin.listUsers();
+            const existingSupa = userList?.users.find((u) => u.email?.toLowerCase() === newUser.email.toLowerCase());
+            if (existingSupa) {
+              targetId = existingSupa.id;
+              await supabase.auth.admin.updateUserById(existingSupa.id, {
+                password: data.password,
+                email_confirm: true,
+              });
+            }
+          }
+
+          if (targetId) {
+            newUser.id = targetId;
+            db.updateState((state) => {
+              const idx = (state.users || []).findIndex((u) => u.email.toLowerCase() === newUser.email.toLowerCase());
+              if (idx !== -1) state.users[idx].id = targetId!;
+            });
+          }
+
+          const targetRole =
+            newUser.role === "brand"
+              ? "brand_owner"
+              : newUser.role === "agency_admin" || newUser.role === "agency_owner"
+              ? "agency_admin"
+              : newUser.role || "creator";
+
+          await supabase.from("profiles").upsert({
+            id: newUser.id,
+            user_id: newUser.id,
+            email: newUser.email,
+            name: newUser.name,
+            role: targetRole,
+            avatar_url: newUser.avatarUrl,
+            verified: newUser.verified,
+            status: "active",
+            created_at: newUser.createdAt,
+            updated_at: newUser.updatedAt,
+          });
+        }
+      } catch (err) {
+        console.error("Supabase user sync error:", err);
+      }
+    }
+
+    return newUser;
+  }
+
+  async verifyCredentialsAsync(email: string, password: string): Promise<UserEntity | null> {
+    // 1. Fast path: check local memory
+    const localUser = this.verifyCredentials(email, password);
+    if (localUser) return localUser;
+
+    // 2. Cloud path: check Supabase Auth directly (survives cold starts and deployments)
+    if (isSupabaseConfigured) {
+      try {
+        const client = getSupabaseClient();
+        const admin = getSupabaseAdmin();
+        if (client) {
+          const normalized = email.toLowerCase().trim();
+          const { data: authData, error: authError } = await client.auth.signInWithPassword({
+            email: normalized,
+            password,
+          });
+
+          if (authData?.user && !authError) {
+            let profileData = null;
+            if (admin) {
+              const { data: p } = await admin
+                .from("profiles")
+                .select("*")
+                .eq("email", normalized)
+                .maybeSingle();
+              profileData = p;
+            }
+
+            const targetRole =
+              (profileData?.role === "brand_owner" ? "brand" : profileData?.role === "agency_admin" ? "agency_admin" : profileData?.role) ||
+              authData.user.user_metadata?.role ||
+              "creator";
+
+            const hydratedUser: UserEntity = {
+              id: authData.user.id,
+              name: profileData?.name || authData.user.user_metadata?.name || normalized.split("@")[0],
+              email: normalized,
+              passwordHash: hashPassword(password),
+              role: targetRole as UserRole,
+              avatarUrl: profileData?.avatar_url || authData.user.user_metadata?.avatarUrl,
+              verified: profileData?.verified ?? false,
+              createdAt: profileData?.created_at || authData.user.created_at,
+              updatedAt: new Date().toISOString(),
+              lastLoginAt: new Date().toISOString(),
+              lastActiveAt: new Date().toISOString(),
+            };
+
+            // Hydrate into local memory state
+            db.updateState((state) => {
+              state.users = state.users || [];
+              const idx = state.users.findIndex((u) => u.email.toLowerCase() === normalized);
+              if (idx !== -1) {
+                state.users[idx] = hydratedUser;
+              } else {
+                state.users.push(hydratedUser);
+              }
+
+              if (hydratedUser.role === "creator") {
+                state.creators = state.creators || [];
+                const hasCreator = state.creators.some((c) => c.userId === hydratedUser.id);
+                if (!hasCreator) {
+                  const cleanHandle = normalized.split("@")[0].replace(/[^a-zA-Z0-9_]/g, "");
+                  state.creators.push({
+                    id: `creator-${hydratedUser.id.slice(0, 8)}`,
+                    userId: hydratedUser.id,
+                    fullName: hydratedUser.name,
+                    handle: cleanHandle,
+                    email: hydratedUser.email,
+                    avatarUrl: hydratedUser.avatarUrl || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+                    verified: hydratedUser.verified,
+                    startingPrice: 2500,
+                    currency: "INR",
+                    rating: 4.9,
+                    reviewCount: 0,
+                    totalFollowers: 0,
+                    socialAccounts: [],
+                    categories: ["Lifestyle"],
+                    primaryCategory: "Lifestyle",
+                    bio: "",
+                    badges: [],
+                  } as any);
+                }
+              }
+
+              if (hydratedUser.role === "brand") {
+                state.brands = state.brands || [];
+                const hasBrand = state.brands.some((b) => b.userId === hydratedUser.id);
+                if (!hasBrand) {
+                  state.brands.push({
+                    id: `brand-${hydratedUser.id.slice(0, 8)}`,
+                    userId: hydratedUser.id,
+                    companyName: hydratedUser.name,
+                    websiteUrl: "",
+                    industry: "E-Commerce",
+                    category: "E-Commerce",
+                    monthlyBudget: 25000,
+                    currency: "INR",
+                    logoUrl: hydratedUser.avatarUrl,
+                    verified: hydratedUser.verified,
+                    totalSpent: 0,
+                    activeCampaignsCount: 0,
+                  } as any);
+                }
+              }
+            });
+
+            return hydratedUser;
+          }
+        }
+      } catch (err) {
+        console.error("Supabase verifyCredentialsAsync error:", err);
+      }
+    }
+
+    return null;
+  }
+
+  async updatePasswordAsync(id: string, newPassword: string, email?: string): Promise<boolean> {
+    const success = this.updatePassword(id, newPassword);
+
+    if (isSupabaseConfigured) {
+      try {
+        const admin = getSupabaseAdmin();
+        if (admin) {
+          if (id.includes("-") && id.length === 36) {
+            await admin.auth.admin.updateUserById(id, { password: newPassword });
+          } else if (email) {
+            const { data: supaUsers } = await admin.auth.admin.listUsers();
+            const supaUser = supaUsers?.users.find((u) => u.email?.toLowerCase() === email.toLowerCase());
+            if (supaUser) {
+              await admin.auth.admin.updateUserById(supaUser.id, { password: newPassword });
+            }
+          }
+        }
+      } catch (err) {
+        console.error("Supabase updatePasswordAsync warning:", err);
+      }
+    }
+
     return success;
   }
 

@@ -34,14 +34,9 @@ export async function POST(req: NextRequest) {
     // --- Purge stale tokens (background housekeeping) ---
     resetTokenRepo.purgeExpired();
 
-    const user = userRepo.findByEmail(email);
+    const user = await userRepo.findByEmailAsync(email);
     if (!user) {
       // Non-existent user: return generic message immediately.
-      return NextResponse.json(GENERIC_RESPONSE);
-    }
-
-    // OAuth-only users (no password hash set): still return generic message.
-    if (!user.passwordHash || user.passwordHash === "") {
       return NextResponse.json(GENERIC_RESPONSE);
     }
 

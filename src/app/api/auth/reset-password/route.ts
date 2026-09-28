@@ -68,7 +68,7 @@ export async function POST(req: NextRequest) {
     }
 
     // --- Update the password ---
-    const updated = userRepo.updatePassword(user.id, password);
+    const updated = await userRepo.updatePasswordAsync(user.id, password, user.email);
     if (!updated) {
       return NextResponse.json({ error: "Failed to update password. Please try again." }, { status: 500 });
     }

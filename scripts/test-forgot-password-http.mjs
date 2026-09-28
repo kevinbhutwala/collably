@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3001";
+const BASE_URL = "http://localhost:3000";
 
 console.log("================================================================================");
 console.log("🔒 ABEYCOLLAB COMPLETE FORGOT & RESET PASSWORD FLOW VERIFICATION");
