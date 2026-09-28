@@ -20,6 +20,7 @@ import {
   EyeOff,
   AlertCircle,
   AtSign,
+  Sparkles,
 } from "lucide-react";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -36,6 +37,33 @@ function checkPassword(pw: string) {
 
 function pwdScore(pw: string): number {
   return Object.values(checkPassword(pw)).filter(Boolean).length;
+}
+
+function parseSocialLinkOrHandle(input: string): { handle: string; cleanHandle: string; platform?: string } {
+  const trimmed = input.trim();
+  if (!trimmed) return { handle: "", cleanHandle: "" };
+
+  // Match Instagram URL
+  const igMatch = trimmed.match(/(?:instagram\.com\/)([a-zA-Z0-9._]+)/i);
+  if (igMatch && igMatch[1]) {
+    return { handle: `@${igMatch[1]}`, cleanHandle: igMatch[1], platform: "Instagram" };
+  }
+
+  // Match YouTube URL
+  const ytMatch = trimmed.match(/(?:youtube\.com\/(?:@|c\/|user\/)?)([a-zA-Z0-9._-]+)/i);
+  if (ytMatch && ytMatch[1]) {
+    return { handle: `@${ytMatch[1]}`, cleanHandle: ytMatch[1], platform: "YouTube" };
+  }
+
+  // Match TikTok URL
+  const ttMatch = trimmed.match(/(?:tiktok\.com\/@?)([a-zA-Z0-9._]+)/i);
+  if (ttMatch && ttMatch[1]) {
+    return { handle: `@${ttMatch[1]}`, cleanHandle: ttMatch[1], platform: "TikTok" };
+  }
+
+  // Clean raw handle
+  const clean = trimmed.replace(/^@/, "");
+  return { handle: `@${clean}`, cleanHandle: clean };
 }
 
 function RegisterContent() {
@@ -57,7 +85,7 @@ function RegisterContent() {
   }, [searchParams]);
 
   const [fullName, setFullName] = useState("");
-  const [handle, setHandle] = useState("");
+  const [handleInput, setHandleInput] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -67,6 +95,8 @@ function RegisterContent() {
   const [errorMessage, setErrorMessage] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [touched, setTouched] = useState<Record<string, boolean>>({});
+
+  const detectedSocial = role === "creator" && handleInput.trim() ? parseSocialLinkOrHandle(handleInput) : null;
 
   const pwStrength = pwdScore(password);
   const strengthLabel = ["", "Weak", "Fair", "Good", "Strong"][pwStrength] ?? "";
@@ -82,10 +112,10 @@ function RegisterContent() {
       errs.fullName = "Name must be at least 2 characters";
     }
 
-    if (role === "creator" && handle.trim()) {
-      const cleanHandle = handle.trim().replace(/^@/, "");
-      if (!HANDLE_RE.test(cleanHandle)) {
-        errs.handle = "Letters, numbers, dots, underscores, and hyphens only";
+    if (role === "creator" && handleInput.trim()) {
+      const parsed = parseSocialLinkOrHandle(handleInput);
+      if (!HANDLE_RE.test(parsed.cleanHandle)) {
+        errs.handle = "Valid social profile link or handle required (letters, numbers, dots)";
       }
     }
 
@@ -128,8 +158,9 @@ function RegisterContent() {
     setIsLoading(true);
 
     try {
+      const parsed = parseSocialLinkOrHandle(handleInput);
       const cleanHandle =
-        handle.trim().replace(/^@/, "") ||
+        parsed.cleanHandle ||
         fullName.trim().toLowerCase().replace(/[^a-z0-9]/g, "");
       const finalCompanyName = companyName.trim() || fullName.trim();
 
@@ -263,20 +294,32 @@ function RegisterContent() {
 
         {/* Optional Role Specific Field */}
         {role === "creator" ? (
-          <div>
+          <div className="space-y-1.5">
             <Input
-              label="Creator Handle (Optional)"
+              label="Social Profile Link or Handle (Optional)"
               type="text"
-              placeholder="@yourhandle (auto-generated from name if empty)"
-              value={handle}
+              placeholder="Paste Instagram/YouTube link or @handle"
+              value={handleInput}
               onChange={(e) => {
-                setHandle(e.target.value);
+                setHandleInput(e.target.value);
                 if (errors.handle) setErrors((prev) => ({ ...prev, handle: "" }));
               }}
               onBlur={() => handleBlur("handle")}
               error={touched.handle ? errors.handle : undefined}
               icon={<AtSign className="w-4 h-4 text-[#7A7A8A] dark:text-[#8E8EA4]" />}
             />
+            {detectedSocial && detectedSocial.cleanHandle && (
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/25 text-[11px] font-mono text-amber-700 dark:text-amber-300">
+                <Sparkles className="w-3.5 h-3.5 shrink-0" />
+                <span>
+                  {detectedSocial.platform ? `Detected ${detectedSocial.platform}: ` : "Auto-extracted: "}
+                  <strong>{detectedSocial.handle}</strong>
+                </span>
+              </div>
+            )}
+            <p className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] font-sans">
+              Leave blank to auto-create from your name. You can also connect channels later in your profile.
+            </p>
           </div>
         ) : (
           <div>
