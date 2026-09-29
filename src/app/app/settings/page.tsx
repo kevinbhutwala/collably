@@ -67,7 +67,6 @@ export default function SettingsPage() {
 
   const { rates } = useGlobalCurrency();
   const [isRefreshingRates, setIsRefreshingRates] = useState(false);
-  const inrRate = getExchangeRateToUSD("INR");
 
   const handleRefreshRates = async () => {
     setIsRefreshingRates(true);
@@ -542,7 +541,7 @@ export default function SettingsPage() {
                     }`}
                   >
                     <span>Annual</span>
-                    <span className="px-1.5 py-0.5 rounded-full bg-[#0A0A0E] text-white text-[10px] font-mono font-extrabold">
+                    <span className="px-1.5 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-mono font-extrabold">
                       Save 20%
                     </span>
                   </button>
@@ -629,7 +628,7 @@ export default function SettingsPage() {
                             ? "bg-black/5 dark:bg-white/10 text-[#8A8A9A] dark:text-white/80 cursor-not-allowed border border-black/10 dark:border-white/20 font-bold"
                             : p.highlight
                             ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] shadow-[0_4px_16px_rgba(255,210,31,0.4)] font-extrabold"
-                            : "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] hover:bg-[#1A1A24] dark:hover:bg-[#FFE052] font-bold shadow-md"
+                            : "bg-[#F4F4F8] hover:bg-[#EAEAF0] text-[#0A0A0E] border border-black/12 hover:border-black/25 font-bold shadow-xs"
                         }`}
                       >
                         {isProcessing ? (
@@ -645,7 +644,7 @@ export default function SettingsPage() {
                         ) : price > 0 ? (
                           <>
                             <CreditCard className="w-3.5 h-3.5 shrink-0" />
-                            <span>Pay ${isAnnual ? price * 12 : price} (₹{Math.round((isAnnual ? price * 12 : price) * inrRate).toLocaleString("en-IN")}) &amp; Upgrade</span>
+                            <span>Pay ₹{(isAnnual ? price * 12 : price).toLocaleString("en-IN")} &amp; Upgrade</span>
                             <ArrowRight className="w-3.5 h-3.5 shrink-0" />
                           </>
                         ) : (
