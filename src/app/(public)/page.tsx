@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import React from 'react';
 import { WishlinkHeroShowcase } from '@/components/collably/WishlinkHeroShowcase';
 import { WishlinkFlipMarquee } from '@/components/collably/WishlinkFlipMarquee';
-import { WishlinkPillarsSection } from '@/components/collably/WishlinkPillarsSection';
-import { WishlinkSpaciousShowcase } from '@/components/collably/WishlinkSpaciousShowcase';
-import { WishlinkCreatorStories } from '@/components/collably/WishlinkCreatorStories';
+import { WishlinkSignpostShowcase } from '@/components/collably/WishlinkSignpostShowcase';
+import { WishlinkEngageBanner } from '@/components/collably/WishlinkEngageBanner';
+import { WishlinkTicketStories } from '@/components/collably/WishlinkTicketStories';
 import { WishlinkLaunchpadCTA } from '@/components/collably/WishlinkLaunchpadCTA';
 import { WishlinkStickyCTA } from '@/components/collably/WishlinkStickyCTA';
 import { CompactFAQ } from '@/components/collably/CompactFAQ';
@@ -109,14 +109,14 @@ export default function AbeyCollabLandingPage() {
         {/* 02 — Signature Wishlink Dual-Track 3D Flip Card Marquee ("We have The Best With Us") */}
         <WishlinkFlipMarquee />
 
-        {/* 03 — 3 Core Pillars (Monetise with Escrow, Turn Comments into Deals, Direct Brand Collabs) */}
-        <WishlinkPillarsSection />
+        {/* 03 — 3D Directional Brand Signpost & Interactive Carousel (Matching Sample Image 1) */}
+        <WishlinkSignpostShowcase />
 
-        {/* 04 — Spacious Wishlink Essentials Visual Showcase with Large Imagery & Breathing Room */}
-        <WishlinkSpaciousShowcase />
+        {/* 04 — Endless Possibilities Feature Banner with Overlapping Creator (Matching Sample Image 3) */}
+        <WishlinkEngageBanner />
 
-        {/* 05 — Editorial Creator Stories & Real Brand Partnerships ("Loved by Creators, trusted by Brands") */}
-        <WishlinkCreatorStories />
+        {/* 05 — Perforated VIP Ticket Pass Creator Testimonials (Matching Sample Image 2) */}
+        <WishlinkTicketStories />
 
         {/* 06 — Subscription & Transparent Pricing Plans */}
         <div id="pricing">
