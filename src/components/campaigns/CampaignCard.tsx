@@ -20,9 +20,9 @@ export function CampaignCard({ campaign }: { campaign: Campaign }) {
   const progressPercent = Math.min(100, Math.round((acceptedCount / maxCreators) * 100));
 
   return (
-    <div className="group rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 hover:border-[#FFD21F] dark:hover:border-[#FFD21F] overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between relative text-[#0A0A0E] dark:text-[#F4F4F8] select-none">
+    <div className="group rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 hover:border-[#FFD21F] dark:hover:border-[#FFD21F] overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between relative text-[#0A0A0E] dark:text-[#F4F4F8] select-none">
       {/* Cover Image Stage */}
-      <div className="relative h-52 w-full bg-[#F5F5F9] dark:bg-[#1A1A26] overflow-hidden border-b border-black/5 dark:border-white/5">
+      <div className="relative h-44 sm:h-52 w-full bg-[#F5F5F9] dark:bg-[#1A1A26] overflow-hidden border-b border-black/5 dark:border-white/5">
         <SafeImage
           src={campaign.coverImage}
           alt={campaign.title}
@@ -35,7 +35,7 @@ export function CampaignCard({ campaign }: { campaign: Campaign }) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
         {/* Top Floating Badges */}
-        <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
+        <div className="absolute top-3 sm:top-4 left-3 sm:left-4 right-3 sm:right-4 flex items-center justify-between z-10">
           <CategoryBadge category={campaign.category} size="xs" showIcon={true} />
           <span
             className="px-2.5 py-1 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-[11px] font-mono font-extrabold flex items-center gap-1 shadow-sm"
@@ -54,16 +54,16 @@ export function CampaignCard({ campaign }: { campaign: Campaign }) {
         </div>
 
         {/* Brand Details Bar */}
-        <div className="absolute bottom-3.5 left-4 right-4 flex items-center justify-between z-10">
-          <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-white/90 dark:bg-[#161622]/90 border border-white dark:border-white/20 backdrop-blur-md flex items-center justify-center shrink-0 shadow-xs">
-              <BrandIcon name={campaign.brand?.companyName || "Brand"} size={20} className="text-[#0A0A0E] dark:text-white" />
+        <div className="absolute bottom-3 sm:bottom-3.5 left-3 sm:left-4 right-3 sm:right-4 flex items-center justify-between z-10">
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white/90 dark:bg-[#161622]/90 border border-white dark:border-white/20 backdrop-blur-md flex items-center justify-center shrink-0 shadow-xs">
+              <BrandIcon name={campaign.brand?.companyName || "Brand"} size={18} className="text-[#0A0A0E] dark:text-white" />
             </div>
             <div className="overflow-hidden">
               <p className="text-xs font-bold text-white leading-tight font-display truncate drop-shadow-xs">
                 {campaign.brand?.companyName || "Verified Sponsor"}
               </p>
-              <span className="text-[10px] text-[#FFD21F] font-mono font-bold flex items-center gap-1 uppercase tracking-wider drop-shadow-xs">
+              <span className="text-[9.5px] sm:text-[10px] text-[#FFD21F] font-mono font-bold flex items-center gap-1 uppercase tracking-wider drop-shadow-xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F]" />
                 Escrow Pre-Funded
               </span>
@@ -73,13 +73,13 @@ export function CampaignCard({ campaign }: { campaign: Campaign }) {
       </div>
 
       {/* Body Content */}
-      <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-        <div className="space-y-2">
+      <div className="p-4 sm:p-6 flex-1 flex flex-col justify-between space-y-3.5 sm:space-y-4">
+        <div className="space-y-1.5 sm:space-y-2">
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 rounded-lg bg-[#F5F5F9] dark:bg-[#1A1A26] border border-black/8 dark:border-white/10 flex items-center justify-center shrink-0 text-[#0A0A0E] dark:text-[#F4F4F8] group-hover:bg-[#FFD21F] group-hover:border-[#FFD21F] dark:group-hover:text-[#0A0A0E] transition-all shadow-2xs">
               <TitleIcon title={campaign.title} category={campaign.category} className="w-3.5 h-3.5" />
             </div>
-            <h3 className="font-bold text-base text-[#0A0A0E] dark:text-[#F4F4F8] group-hover:text-amber-600 dark:group-hover:text-[#FFE052] transition-colors line-clamp-1 font-display">
+            <h3 className="font-bold text-sm sm:text-base text-[#0A0A0E] dark:text-[#F4F4F8] group-hover:text-amber-600 dark:group-hover:text-[#FFE052] transition-colors line-clamp-1 font-display">
               {campaign.title}
             </h3>
           </div>

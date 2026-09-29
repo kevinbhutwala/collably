@@ -223,12 +223,12 @@ export function CampaignDetailClient({
   }
 
   return (
-    <div className="py-12 sm:py-16 bg-[#FAFAFC] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <div className="py-6 sm:py-12 lg:py-16 bg-[#FAFAFC] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] min-h-screen">
+      <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
         {/* Campaign Master Card */}
-        <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 overflow-hidden shadow-xs">
+        <div className="rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 overflow-hidden shadow-xs">
           {/* Banner Hero */}
-          <div className="relative h-64 sm:h-80 w-full bg-[#F5F5F9] dark:bg-[#181824]">
+          <div className="relative min-h-[300px] sm:h-80 w-full bg-[#F5F5F9] dark:bg-[#181824] flex flex-col justify-between">
             <SafeImage
               src={campaign.coverImage}
               alt={campaign.title}
@@ -237,9 +237,9 @@ export function CampaignDetailClient({
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
 
-            <div className="absolute top-6 left-6 right-6 flex items-center justify-between">
+            <div className="relative z-10 p-4 sm:p-6 flex items-center justify-between">
               <CategoryBadge category={campaign.category} size="sm" showIcon={true} />
 
               <div className="flex items-center gap-2">
@@ -247,8 +247,8 @@ export function CampaignDetailClient({
               </div>
             </div>
 
-            <div className="absolute bottom-6 left-6 right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-              <div className="flex items-center gap-3.5">
+            <div className="relative z-10 p-4 sm:p-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+              <div className="flex items-center gap-3 sm:gap-3.5">
                 <div className="relative w-14 h-14 rounded-2xl overflow-hidden bg-white/90 dark:bg-[#181824]/90 border border-white dark:border-white/20 shrink-0 shadow-xs backdrop-blur-md">
                   <SafeImage
                     src={campaign.brand.logoUrl}
@@ -323,8 +323,8 @@ export function CampaignDetailClient({
           )}
 
           {/* Quick Action Bar */}
-          <div className="p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-black/8 dark:border-white/10 bg-white dark:bg-[#12121A]">
-            <div className="flex items-center gap-6 text-xs text-[#6A6A78] dark:text-[#9A9AA8] font-mono">
+          <div className="p-4 sm:p-6 lg:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-black/8 dark:border-white/10 bg-white dark:bg-[#12121A]">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-6 text-xs text-[#6A6A78] dark:text-[#9A9AA8] font-mono">
               <div className="flex items-center gap-1.5">
                 <Users className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />
                 <span>
@@ -338,10 +338,10 @@ export function CampaignDetailClient({
             </div>
 
             {cannotApplyDueToProfile ? (
-              <Link href="/app/profile">
+              <Link href="/app/profile" className="w-full sm:w-auto">
                 <button
                   type="button"
-                  className="px-6 py-3.5 rounded-full bg-gradient-to-r from-amber-500 via-amber-600 to-amber-500 hover:from-amber-600 hover:to-amber-700 text-white font-bold text-xs sm:text-sm transition-all flex items-center gap-2 cursor-pointer shadow-xs active:scale-98"
+                  className="w-full sm:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-amber-500 via-amber-600 to-amber-500 hover:from-amber-600 hover:to-amber-700 text-white font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs active:scale-98"
                 >
                   <Lock className="w-4 h-4" />
                   <span>First: Complete Profile to Apply</span>
@@ -351,7 +351,7 @@ export function CampaignDetailClient({
             ) : (
               <button
                 onClick={() => setIsApplyModalOpen(true)}
-                className="px-6 py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs sm:text-sm transition-all shadow-[0_4px_14px_rgba(255,210,31,0.4)] border border-black/10 flex items-center gap-2 cursor-pointer"
+                className="w-full sm:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs sm:text-sm transition-all shadow-[0_4px_14px_rgba(255,210,31,0.4)] border border-black/10 flex items-center justify-center gap-2 cursor-pointer"
               >
                 <span>Pitch Creative Angle &amp; Apply</span>
                 <ArrowRight className="w-4 h-4 text-[#0A0A0E]" />
@@ -361,12 +361,12 @@ export function CampaignDetailClient({
         </div>
 
         {/* 2-Column Section: Brief Description & Deliverables */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
           {/* Left: Brief Narrative */}
           <div className="lg:col-span-8 space-y-6">
-            <div className="p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
-              <h2 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">Campaign Brief &amp; Direction</h2>
-              <p className="text-sm text-[#5A5A68] dark:text-[#9A9AA8] leading-relaxed whitespace-pre-line font-sans font-medium">
+            <div className="p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
+              <h2 className="text-lg sm:text-xl font-bold text-[#0A0A0E] dark:text-white font-display">Campaign Brief &amp; Direction</h2>
+              <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#9A9AA8] leading-relaxed whitespace-pre-line font-sans font-medium">
                 {campaign.description}
               </p>
 
@@ -376,7 +376,7 @@ export function CampaignDetailClient({
                   {campaign.deliverables.map((del) => (
                     <div
                       key={del.id}
-                      className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 space-y-1.5"
+                      className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 space-y-1.5"
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
@@ -398,8 +398,8 @@ export function CampaignDetailClient({
           </div>
 
           {/* Right: Requirements & Escrow terms */}
-          <div className="lg:col-span-4 space-y-6">
-            <div className="p-6 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4">
+          <div className="lg:col-span-4 space-y-4 sm:space-y-6">
+            <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4">
               <h3 className="text-xs font-bold text-[#0A0A0E] dark:text-white uppercase tracking-wider font-mono">
                 Creator Criteria
               </h3>
@@ -422,7 +422,7 @@ export function CampaignDetailClient({
               </div>
             </div>
 
-            <div className="p-6 rounded-3xl bg-[#F8F8FC] dark:bg-[#14141E] border border-black/8 dark:border-white/10 flex items-start gap-3">
+            <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#F8F8FC] dark:bg-[#14141E] border border-black/8 dark:border-white/10 flex items-start gap-3">
               <ShieldCheck className="w-5 h-5 text-[#0A0A0E] dark:text-[#FFD21F] shrink-0 mt-0.5" />
               <div>
                 <h4 className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">Pre-Funded Escrow Pool</h4>

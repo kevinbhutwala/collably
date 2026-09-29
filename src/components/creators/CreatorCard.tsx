@@ -34,12 +34,12 @@ export function CreatorCard({ creator }: { creator: CreatorProfile }) {
   };
 
   return (
-    <div className="group rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 hover:border-[#FFD21F] dark:hover:border-[#FFD21F] p-5 sm:p-6 shadow-xs hover:shadow-md transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between text-[#0A0A0E] dark:text-[#F4F4F8] relative overflow-hidden select-none font-sans">
+    <div className="group rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 hover:border-[#FFD21F] dark:hover:border-[#FFD21F] p-4 sm:p-6 shadow-xs hover:shadow-md transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between text-[#0A0A0E] dark:text-[#F4F4F8] relative overflow-hidden select-none font-sans">
       <div>
         {/* Top Header Row */}
-        <div className="flex items-start justify-between gap-3 mb-4">
-          <div className="flex items-center gap-3 min-w-0">
-            <div className="relative w-14 h-14 rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 bg-[#F5F5F9] dark:bg-[#181824] shrink-0 shadow-xs">
+        <div className="flex items-start justify-between gap-2.5 mb-3.5">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
+            <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 bg-[#F5F5F9] dark:bg-[#181824] shrink-0 shadow-xs">
               <SafeImage
                 src={creator.avatarUrl}
                 alt={creator.fullName}
@@ -49,7 +49,7 @@ export function CreatorCard({ creator }: { creator: CreatorProfile }) {
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
               />
             </div>
-            <div className="min-w-0">
+            <div className="min-w-0 flex-1">
               <div className="flex items-center gap-1.5 flex-wrap">
                 <h3 className="font-extrabold text-sm sm:text-base text-[#0A0A0E] dark:text-white group-hover:text-amber-600 dark:group-hover:text-[#FFD21F] transition-colors font-display truncate">
                   {creator.fullName}
@@ -80,8 +80,8 @@ export function CreatorCard({ creator }: { creator: CreatorProfile }) {
           </div>
 
           {/* Category Tag & Save Bookmark */}
-          <div className="flex items-center gap-1.5 shrink-0">
-            <span className="px-2.5 py-1 rounded-full bg-[#F4F4F8] dark:bg-white/10 border border-black/5 dark:border-white/10 text-[#0A0A0E] dark:text-[#EAEAEF] font-sans text-[10px] font-extrabold uppercase tracking-wider">
+          <div className="flex items-center gap-1.5 shrink-0 ml-1">
+            <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-[#F4F4F8] dark:bg-white/10 border border-black/5 dark:border-white/10 text-[#0A0A0E] dark:text-[#EAEAEF] font-sans text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider max-w-[90px] sm:max-w-none truncate">
               {creator.primaryCategory}
             </span>
             <button

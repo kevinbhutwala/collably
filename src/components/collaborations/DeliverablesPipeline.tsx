@@ -433,7 +433,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
   const approvedCount = deliverables.filter((d) => d.status === "approved").length;
 
   return (
-    <div className="p-5 sm:p-7 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] transition-all">
+    <div className="p-4 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] transition-all">
       {/* ── Top Executive Deal Header ── */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-black/8 dark:border-white/10">
         <div className="space-y-2 min-w-0">

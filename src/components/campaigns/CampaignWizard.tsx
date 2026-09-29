@@ -589,7 +589,7 @@ export function CampaignWizard() {
       </div>
 
       {/* ── 3. Main Form Canvas ── */}
-      <div className="p-5 sm:p-7 md:p-8 rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8]">
+      <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8]">
         {/* STEP 1: BASICS & CREATIVE BRIEF */}
         {step === 1 && (
           <div className="space-y-6">

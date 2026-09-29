@@ -894,70 +894,73 @@ export default function ProfileEditPage() {
         </div>
 
         {/* Action Controls & Readiness */}
-        <div className="flex flex-wrap items-center gap-3 self-start md:self-center">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 w-full md:w-auto justify-between md:justify-start">
           {/* Readiness Pill */}
-          <div className="flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-[#FAF9F5] dark:bg-[#181826] border border-black/8 dark:border-white/10 text-xs font-mono">
+          <div className="flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl sm:rounded-2xl bg-[#FAF9F5] dark:bg-[#181826] border border-black/8 dark:border-white/10 text-[11px] sm:text-xs font-mono">
             {completeness.isConfirmed ? (
               <>
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 <span className="font-bold text-emerald-800 dark:text-emerald-400">
-                  Profile Confirmed (100%)
+                  Confirmed (100%)
                 </span>
               </>
             ) : completeness.hasUnverifiedSocials ? (
               <>
                 <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
                 <span className="font-bold text-amber-800 dark:text-amber-400">
-                  Unconfirmed • {completeness.unverifiedSocials.length} Channel(s) Unverified
+                  {completeness.unverifiedSocials.length} Unverified
                 </span>
               </>
             ) : (
               <>
                 <span className="w-2 h-2 rounded-full bg-black/30 dark:bg-white/30" />
                 <span className="font-bold text-[#0A0A0E] dark:text-white">
-                  {completeness.score}% Setup • Incomplete
+                  {completeness.score}% Setup
                 </span>
               </>
             )}
           </div>
 
-          {Boolean(currentCreator?.handle || currentCreator?.id || user?.id) && (
-            <Link
-              href={`/creators/${
-                currentCreator?.handle || currentCreator?.id || user?.id
-              }`}
-              target="_blank"
-              className="px-4 py-2.5 rounded-full bg-white dark:bg-[#181824] hover:bg-[#F8F8FC] dark:hover:bg-[#202030] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-2xs cursor-pointer"
-            >
-              <ExternalLink className="w-3.5 h-3.5" />
-              <span>Public View</span>
-            </Link>
-          )}
-
-          <button
-            type="button"
-            onClick={() => handleSaveProfile()}
-            disabled={isSaving}
-            className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs transition-all shadow-[0_4px_16px_rgba(255,210,31,0.35)] border border-black/10 flex items-center gap-1.5 active:scale-98 disabled:opacity-50 cursor-pointer"
-          >
-            {isSaving ? (
-              <>
-                <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                <span>Saving...</span>
-              </>
-            ) : (
-              <>
-                <Save className="w-3.5 h-3.5" />
-                <span>Save Changes</span>
-              </>
+          <div className="flex items-center gap-2 shrink-0">
+            {Boolean(currentCreator?.handle || currentCreator?.id || user?.id) && (
+              <Link
+                href={`/creators/${
+                  currentCreator?.handle || currentCreator?.id || user?.id
+                }`}
+                target="_blank"
+                className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-white dark:bg-[#181824] hover:bg-[#F8F8FC] dark:hover:bg-[#202030] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-2xs cursor-pointer"
+              >
+                <ExternalLink className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">Public View</span>
+                <span className="sm:hidden">Preview</span>
+              </Link>
             )}
-          </button>
+
+            <button
+              type="button"
+              onClick={() => handleSaveProfile()}
+              disabled={isSaving}
+              className="px-4 sm:px-6 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs transition-all shadow-[0_4px_16px_rgba(255,210,31,0.35)] border border-black/10 flex items-center gap-1.5 active:scale-98 disabled:opacity-50 cursor-pointer"
+            >
+              {isSaving ? (
+                <>
+                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                  <span>Saving...</span>
+                </>
+              ) : (
+                <>
+                  <Save className="w-3.5 h-3.5" />
+                  <span>Save</span>
+                </>
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
       {/* ── PROFILE COMPLETENESS & CAMPAIGN PITCHING STATUS ── */}
       <div
-        className={`p-6 sm:p-7 rounded-3xl border transition-all ${
+        className={`p-4 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl border transition-all ${
           completeness.isConfirmed
             ? "bg-gradient-to-r from-emerald-500/10 via-emerald-500/5 to-transparent border-emerald-500/30"
             : "bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border-amber-500/30 shadow-xs"
@@ -1067,9 +1070,9 @@ export default function ProfileEditPage() {
       </div>
 
       {/* ── BENTO GRID STUDIO CANVAS ── */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5">
         {/* ── BENTO CARD 1: STORY & POSITIONING (8 Cols) ── */}
-        <div className="lg:col-span-8 p-6 sm:p-7 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-5">
+        <div className="lg:col-span-8 p-4 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-5">
           <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
             <h2 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-[#FFD21F]" />
@@ -1152,7 +1155,7 @@ export default function ProfileEditPage() {
         </div>
 
         {/* ── BENTO CARD 2: COMMERCIAL PRICING (4 Cols) ── */}
-        <div className="lg:col-span-4 p-6 sm:p-7 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-5 flex flex-col justify-between">
+        <div className="lg:col-span-4 p-4 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-5 flex flex-col justify-between">
           <div className="space-y-5">
             <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
               <h2 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">
@@ -1238,7 +1241,7 @@ export default function ProfileEditPage() {
         </div>
 
         {/* ── BENTO CARD 3: VERIFIED SOCIAL CHANNELS (7 Cols) ── */}
-        <div className="lg:col-span-7 p-6 sm:p-7 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-5">
+        <div className="lg:col-span-7 p-4 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-5">
           <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
             <div>
               <h2 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">
@@ -1324,7 +1327,7 @@ export default function ProfileEditPage() {
                 return (
                   <div
                     key={acc.id}
-                    className={`p-3.5 rounded-2xl border transition-all flex items-center justify-between gap-3 ${
+                    className={`p-3.5 rounded-2xl border transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${
                       isVerified
                         ? "bg-[#FAF9F5] dark:bg-[#181824] border-black/6 dark:border-white/10"
                         : "bg-amber-500/5 dark:bg-amber-500/10 border-amber-500/30"
@@ -1371,7 +1374,7 @@ export default function ProfileEditPage() {
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2 shrink-0">
+                    <div className="flex items-center justify-between sm:justify-end gap-2 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-black/6 dark:border-white/10">
                       {!isVerified && (
                         <button
                           type="button"
@@ -1388,7 +1391,8 @@ export default function ProfileEditPage() {
                       <button
                         type="button"
                         onClick={() => handleRemoveSocial(acc.id)}
-                        className="text-[#8A8A9A] hover:text-red-500 p-1 transition-colors"
+                        className="text-[#8A8A9A] hover:text-red-500 p-1 transition-colors ml-auto sm:ml-0"
+                        title="Remove channel"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>
@@ -1401,7 +1405,7 @@ export default function ProfileEditPage() {
         </div>
 
         {/* ── BENTO CARD 4: TERRITORY & AUDIENCE (5 Cols) ── */}
-        <div className="lg:col-span-5 p-6 sm:p-7 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-5">
+        <div className="lg:col-span-5 p-4 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-5">
           <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
             <h2 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">
               <Globe className="w-4 h-4 text-[#FFD21F]" />
@@ -1434,7 +1438,7 @@ export default function ProfileEditPage() {
                 <ShieldCheck className="w-4 h-4 text-emerald-500" />
                 <span>Escrow Guarantee</span>
               </span>
-              <p className="text-[11px] text-[#6A6A78] dark:text-[#8E8EA4] leading-relaxed">
+              <p className="text-[11px] text-[#5A5A68] dark:text-[#8E8EA4] leading-relaxed">
                 All collaborations booked through AbeyCollab are backed by 100% upfront brand escrow protection.
               </p>
             </div>
@@ -1442,7 +1446,7 @@ export default function ProfileEditPage() {
         </div>
 
         {/* ── BENTO CARD 5: DELIVERABLE PACKAGES & TURNAROUND (12 Cols) ── */}
-        <div className="lg:col-span-12 p-6 sm:p-7 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-5">
+        <div className="lg:col-span-12 p-4 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-5">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-black/8 dark:border-white/10">
             <div>
               <h2 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">

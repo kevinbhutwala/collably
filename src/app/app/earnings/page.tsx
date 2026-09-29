@@ -211,7 +211,7 @@ export default function EarningsAndEscrowPage() {
       </div>
 
       {/* Razorpay Standard Web Checkout Integration Card */}
-      <div className="p-5 sm:p-6 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="space-y-1">
           <div className="flex items-center gap-2">
             <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-[10px] font-mono font-extrabold uppercase">
@@ -258,7 +258,7 @@ export default function EarningsAndEscrowPage() {
       </div>
 
       {/* Transaction History */}
-      <div className="p-5 sm:p-7 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
+      <div className="p-4 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
         <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
           <div>
             <h3 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">Payout History</h3>
