@@ -154,7 +154,7 @@ export function CampaignDetailClient({
         brandName: campaign.brand?.companyName || "Brand Partner",
         creatorId: currentCreator?.id || "creator-partner",
         proposedFee,
-        currency: campaign.budget?.currency || "USD",
+        currency: campaign.budget?.currency || "INR",
         pitch,
         portfolioSamples: sampleLink ? [sampleLink] : [],
       };
@@ -438,7 +438,7 @@ export function CampaignDetailClient({
           <form onSubmit={handleApply} className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8] pt-2 border-t border-black/8 dark:border-white/10">
             <div>
               <Input
-                label={`Proposed Fee (${getCurrencySymbol(campaign.budget?.currency || "USD")} ${campaign.budget?.currency || "USD"})`}
+                label={`Proposed Fee (${getCurrencySymbol(campaign.budget?.currency || "INR")} ${campaign.budget?.currency || "INR"})`}
                 type="number"
                 value={proposedFee}
                 onChange={(e) => {

@@ -187,7 +187,7 @@ export function AIMatchingExperience() {
                   </div>
                   <div>
                     <span className="text-[10px] text-[#626862] block">EST. RATE</span>
-                    <span className="text-xs font-bold text-[#101310]">{formatCurrency(creator.startingPrice || 18500, (creator as any).currency || "USD")}</span>
+                    <span className="text-xs font-bold text-[#101310]">{formatCurrency(creator.startingPrice || 18500, (creator as any).currency || "INR")}</span>
                   </div>
                 </div>
 

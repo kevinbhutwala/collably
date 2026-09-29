@@ -413,7 +413,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
   // Calculate cancellation preview math
   const getCancellationPreview = () => {
     const total = collab.totalAgreedBudget || 3500;
-    const currency = collab.currency || "USD";
+    const currency = collab.currency || "INR";
     if (!isFunded) {
       return { refund: 0, killFee: 0, desc: "Unfunded: No funds have been deposited yet." };
     }

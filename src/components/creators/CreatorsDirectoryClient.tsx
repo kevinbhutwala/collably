@@ -171,7 +171,7 @@ export function CreatorsDirectoryClient() {
         : undefined,
       engagementRate: c.avgEngagementRate,
       startingPrice: c.startingPrice || c.rateCards?.[0]?.basePrice,
-      currency: (c as any).currency || (c as any).rateCards?.[0]?.currency || "USD",
+      currency: (c as any).currency || (c as any).rateCards?.[0]?.currency || "INR",
       matchScore: c.qualityScore,
       bio: c.bio,
       tags: [

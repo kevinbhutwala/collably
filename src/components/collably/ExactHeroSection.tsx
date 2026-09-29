@@ -178,7 +178,7 @@ export function ExactHeroSection() {
               </div>
             </motion.div>
 
-            {/* 4. Floating Glass Card: Nike Fashion Campaign $25,000 Live */}
+            {/* 4. Floating Glass Card: Nike Fashion Campaign ₹2,50,000 Live */}
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}

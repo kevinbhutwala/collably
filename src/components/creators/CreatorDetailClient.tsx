@@ -416,7 +416,7 @@ export function CreatorDetailClient({
                 <div>
                   <p className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] font-mono uppercase tracking-wider">Base Sponsorship</p>
                   <p className="text-3xl font-black text-[#0A0A0E] dark:text-white font-mono mt-0.5">
-                    {format(creator.startingPrice, (creator as any).currency || "USD")}
+                    {format(creator.startingPrice, (creator as any).currency || "INR")}
                   </p>
                 </div>
 
@@ -504,7 +504,7 @@ export function CreatorDetailClient({
                     <div className="text-right shrink-0 sm:pl-4 pt-3 sm:pt-0 border-t sm:border-0 border-black/5 dark:border-white/5">
                       <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] font-mono block">Est. rate</span>
                       <span className="text-lg font-black text-[#0A0A0E] dark:text-white font-mono">
-                        {format(rate.basePrice || (rate as any).price || 500, (rate as any).currency || (creator as any).currency || "USD")}
+                        {format(rate.basePrice || (rate as any).price || 500, (rate as any).currency || (creator as any).currency || "INR")}
                       </span>
                       <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] font-mono">per deliverable</span>
                     </div>
@@ -644,7 +644,7 @@ export function CreatorDetailClient({
 
               <div>
                 <Input
-                  label="Agreed Budget (USD)"
+                  label="Agreed Budget (₹ INR)"
                   type="number"
                   value={offeredBudget}
                   onChange={(e) => {
@@ -656,7 +656,7 @@ export function CreatorDetailClient({
                 />
                 {creator.startingPrice && offeredBudget < creator.startingPrice && (
                   <p className="text-[11px] text-amber-500 font-mono mt-1">
-                    Note: Creator base benchmark is ${creator.startingPrice.toLocaleString()}
+                    Note: Creator base benchmark is ₹{creator.startingPrice.toLocaleString("en-IN")}
                   </p>
                 )}
               </div>

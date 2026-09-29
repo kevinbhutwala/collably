@@ -142,7 +142,7 @@ export function VideoReviewDemo() {
             </div>
             <span className="px-2.5 py-0.5 rounded-full bg-[#EAF8F2] border border-[#C3EBDA] text-[#087F5B] font-bold flex items-center gap-1.5">
               <ShieldCheck className="w-3.5 h-3.5" />
-              <span>{format(300, "USD")} PROTECTED</span>
+              <span>{format(25000, "INR")} PROTECTED</span>
             </span>
           </div>
 
@@ -236,7 +236,7 @@ export function VideoReviewDemo() {
             {approved ? (
               <div className="p-4 rounded-xl bg-[#EAF8F2] border border-[#C3EBDA] text-[#075E45] text-xs font-mono flex items-center justify-between">
                 <span className="font-bold flex items-center gap-2 font-sans">
-                  <CheckCircle2 className="w-4 h-4 text-[#087F5B]" /> ✓ Deliverable approved • Milestone ready for payment ({format(270, "USD")} Creator Net Disbursed)
+                  <CheckCircle2 className="w-4 h-4 text-[#087F5B]" /> ✓ Deliverable approved • Milestone ready for payment ({format(22500, "INR")} Creator Net Disbursed)
                 </span>
                 <span className="font-extrabold text-[10px] text-[#087F5B]">READY</span>
               </div>
@@ -266,15 +266,15 @@ export function VideoReviewDemo() {
           <div className="p-4 rounded-xl bg-[#FCFCFA] border border-[#E2E6E1] space-y-1.5 font-mono">
             <div className="flex justify-between">
               <span className="text-[#626862]">Campaign Milestone:</span>
-              <span className="text-[#101310] font-bold">{format(300, "USD")}</span>
+              <span className="text-[#101310] font-bold">{format(25000, "INR")}</span>
             </div>
             <div className="flex justify-between text-[#087F5B]">
               <span>Creator Payout (90%):</span>
-              <span className="font-bold">{format(270, "USD")}</span>
+              <span className="font-bold">{format(22500, "INR")}</span>
             </div>
             <div className="flex justify-between text-[#626862] text-[11px]">
               <span>Platform Fee (10%):</span>
-              <span>{format(30, "USD")}</span>
+              <span>{format(2500, "INR")}</span>
             </div>
           </div>
 

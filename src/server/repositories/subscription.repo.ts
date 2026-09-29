@@ -74,7 +74,7 @@ export class SubscriptionRepository {
       currentPeriodEnd: periodEnd.toISOString(),
       cancelAtPeriodEnd: false,
       price,
-      currency: "USD",
+      currency: "INR",
       features: { ...plan.features },
       usage: initialUsage,
       createdAt: now.toISOString(),

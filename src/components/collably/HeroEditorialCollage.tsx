@@ -228,14 +228,14 @@ export function HeroEditorialCollage() {
             </div>
             <div className="flex items-baseline justify-between font-display">
               <span className="text-xl sm:text-2xl font-black font-mono text-[#101010] numeric-tabular">
-                {format(220, "USD")}
+                {format(22000, "INR")}
               </span>
               <span className="text-xs font-mono text-[#626262] font-bold">
                 Direct to Bank
               </span>
             </div>
             <p className="text-[10px] text-[#626262] mt-1 font-sans font-medium">
-              Milestone Sign-Off via Stripe Connect
+              Milestone Sign-Off via UPI / IMPS Direct
             </p>
           </motion.div>
 
@@ -254,7 +254,7 @@ export function HeroEditorialCollage() {
                 <span className="font-display font-bold text-[#101010]">TECH LAUNCH</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-ping" />
               </div>
-              <p className="text-[10px] text-[#626262] font-sans">12 Creators • <strong className="text-[#101010] numeric-tabular">{format(3000, "USD")}</strong> LIVE</p>
+              <p className="text-[10px] text-[#626262] font-sans">12 Creators • <strong className="text-[#101010] numeric-tabular">{format(250000, "INR")}</strong> LIVE</p>
             </div>
           </motion.div>
         </div>

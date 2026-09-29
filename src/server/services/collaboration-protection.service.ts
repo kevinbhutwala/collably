@@ -43,7 +43,7 @@ export class CollaborationProtectionService {
       collaborationId: collab.id,
       brandId: collab.brandId || collab.brand?.companyName || "brand",
       amountDollars: totalBudget,
-      currency: collab.currency || "USD",
+      currency: collab.currency || "INR",
     });
 
     // 2. Advance state machine to PAYMENT_SECURED
@@ -100,7 +100,7 @@ export class CollaborationProtectionService {
     await notificationRepo.createNotification({
       userId: collab.creator?.userId || collab.creatorId,
       title: "Escrow Secured: You may now start work!",
-      message: `The escrow vault for "${collab.campaignTitle}" (${formatCurrency(totalBudget, collab.currency || "USD")}) has been fully secured. You are safe to start production.`,
+      message: `The escrow vault for "${collab.campaignTitle}" (${formatCurrency(totalBudget, collab.currency || "INR")}) has been fully secured. You are safe to start production.`,
       type: "payment",
       entityType: "Collaboration",
       entityId: collab.id,

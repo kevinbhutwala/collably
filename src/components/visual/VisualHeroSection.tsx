@@ -258,7 +258,7 @@ export function VisualHeroSection() {
                   <div className="text-right font-mono">
                     <span className="text-[10px] text-[#888898] dark:text-[#7A7A8A] block uppercase">Starts at</span>
                     <span className="text-xs font-extrabold text-[#0A0A0E] dark:text-white">
-                      {format(activePortrait.rateNumber || 3500, "USD")}
+                      {format(activePortrait.rateNumber || 35000, "INR")}
                     </span>
                   </div>
                 </div>

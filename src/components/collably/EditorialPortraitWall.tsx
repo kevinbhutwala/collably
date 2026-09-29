@@ -82,7 +82,7 @@ export function EditorialPortraitWall() {
 
                     <div className="text-right font-mono">
                       <span className="text-[9px] text-[#626262] block">STARTING AT</span>
-                      <span className="text-sm font-extrabold text-[#101010] font-display numeric-tabular">{format(portrait.verifiedRateAmount || 350, "USD")}</span>
+                      <span className="text-sm font-extrabold text-[#101010] font-display numeric-tabular">{format(portrait.verifiedRateAmount ? portrait.verifiedRateAmount * 80 : 28000, "INR")}</span>
                     </div>
                   </div>
 

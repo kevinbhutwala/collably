@@ -41,8 +41,8 @@ export interface DeliverableReviewCardProps {
 export function DeliverableReviewCard({
   title = "Editorial Fashion & Styling Reel (60s)",
   deliverableType = "Instagram Reel",
-  payoutAmount = 420,
-  currency = "USD",
+  payoutAmount = 35000,
+  currency = "INR",
   creatorName = "Dipti Parihar Sharma",
   creatorHandle = "diptipariharsharma",
   creatorAvatar = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=80",

@@ -138,7 +138,7 @@ export class CollaborationService {
     if (!updatedCollab) throw new Error("Failed to approve deliverable");
 
     // Create / release Payout record for the creator
-    const currency = collab.currency || deliverable.currency || "USD";
+    const currency = collab.currency || deliverable.currency || "INR";
     const grossAmount = deliverable.payoutAmount;
     const agencyFee = Math.round(grossAmount * 0.1); // 10% standard agency fee
     const netAmount = grossAmount - agencyFee;

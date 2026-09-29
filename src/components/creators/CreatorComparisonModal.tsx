@@ -89,7 +89,7 @@ export function CreatorComparisonModal({
                   </div>
                   <div className="flex justify-between">
                     <span className="text-[#6A6A78] dark:text-slate-400">Starting Price:</span>
-                    <span className="font-bold text-[#D7A900] dark:text-[#FFD21F]">{format(c.startingPrice, (c as any).currency || "USD")}</span>
+                    <span className="font-bold text-[#D7A900] dark:text-[#FFD21F]">{format(c.startingPrice, (c as any).currency || "INR")}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-[#6A6A78] dark:text-slate-400">Completed:</span>

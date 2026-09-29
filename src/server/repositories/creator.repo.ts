@@ -72,10 +72,10 @@ export class CreatorRepository {
 
     // Currency-Normalized Rate Filtering
     if (filters.minRate !== undefined || filters.maxRate !== undefined) {
-      const targetCurrency = filters.filterCurrency || "USD";
+      const targetCurrency = filters.filterCurrency || "INR";
       result = result.filter((c) => {
         const creatorRate = c.startingPrice || 0;
-        const creatorCurrency = (c as any).currency || "USD";
+        const creatorCurrency = (c as any).currency || "INR";
         const normalizedRate = exchangeRateService.convertCurrencySync(
           creatorRate,
           creatorCurrency,
@@ -98,13 +98,13 @@ export class CreatorRepository {
         if (filters.sortBy === "rate_asc" || filters.sortBy === "rate_desc") {
           const rateA = exchangeRateService.convertCurrencySync(
             a.startingPrice || 0,
-            (a as any).currency || "USD",
-            "USD"
+            (a as any).currency || "INR",
+            "INR"
           );
           const rateB = exchangeRateService.convertCurrencySync(
             b.startingPrice || 0,
-            (b as any).currency || "USD",
-            "USD"
+            (b as any).currency || "INR",
+            "INR"
           );
           return filters.sortBy === "rate_asc" ? rateA - rateB : rateB - rateA;
         }

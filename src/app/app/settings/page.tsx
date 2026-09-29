@@ -380,8 +380,8 @@ export default function SettingsPage() {
                   <CreditCard className="w-3.5 h-3.5 text-[#FFD21F] shrink-0" />
                   <span className="break-words">
                     {(subscription?.amountPaid !== undefined ? subscription.amountPaid : subscription?.price || 0) > 0
-                      ? `$${subscription?.amountPaid !== undefined ? subscription.amountPaid : subscription?.price}.00 USD (≈ ₹${Math.round((subscription?.amountPaid !== undefined ? subscription.amountPaid : subscription?.price || 0) * inrRate).toLocaleString("en-IN")} INR)`
-                      : "$0.00 (Free Starter Tier)"}
+                      ? `₹${(subscription?.amountPaid !== undefined ? subscription.amountPaid : subscription?.price || 0).toLocaleString("en-IN")} INR`
+                      : "₹0 (Free Starter Tier)"}
                   </span>
                 </div>
               </div>
@@ -490,8 +490,8 @@ export default function SettingsPage() {
                     </td>
                     <td className="py-3 font-mono font-extrabold text-[#0A0A0E] dark:text-white">
                       {(subscription?.amountPaid !== undefined ? subscription.amountPaid : subscription?.price || 0) > 0
-                        ? `$${subscription?.amountPaid !== undefined ? subscription.amountPaid : subscription?.price}.00 USD (≈ ₹${Math.round((subscription?.amountPaid !== undefined ? subscription.amountPaid : subscription?.price || 0) * inrRate).toLocaleString("en-IN")} INR)`
-                        : "$0.00 (Free)"}
+                        ? `₹${(subscription?.amountPaid !== undefined ? subscription.amountPaid : subscription?.price || 0).toLocaleString("en-IN")}`
+                        : "₹0 (Free)"}
                     </td>
                     <td className="py-3 font-mono text-[10px] text-[#6A6A78] dark:text-[#8E8EA4]">
                       {subscription?.lastPaymentId || (subscription?.price && subscription.price > 0 ? "pay_rzp_live" : "STARTER_TIER")}
@@ -548,15 +548,10 @@ export default function SettingsPage() {
                   </button>
                 </div>
 
-                <button
-                  onClick={handleRefreshRates}
-                  disabled={isRefreshingRates}
-                  title="Refresh live exchange rates"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-mono font-bold bg-[#F4F4F8] dark:bg-[#14141E] border border-black/8 dark:border-white/10 text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-white transition-all shadow-xs"
-                >
-                  <RefreshCw className={`w-3 h-3 text-[#FFD21F] ${isRefreshingRates ? "animate-spin" : ""}`} />
-                  <span>$1 = ₹{inrRate.toFixed(2)}</span>
-                </button>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-mono font-bold bg-[#F4F4F8] dark:bg-[#14141E] border border-black/8 dark:border-white/10 text-[#0A0A0E] dark:text-white shadow-xs">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>Direct INR (₹) Checkout</span>
+                </div>
               </div>
             </div>
 
@@ -601,15 +596,15 @@ export default function SettingsPage() {
 
                       <div className="flex items-baseline gap-1 font-mono pt-2">
                         <span className="text-3xl font-black text-[#0A0A0E] dark:text-white font-display">
-                          ${price}
+                          ₹{price.toLocaleString("en-IN")}
                         </span>
                         <span className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-sans">
-                          {price === 0 ? "forever" : isAnnual ? "/mo (billed annually)" : "/month"}
+                          {price === 0 ? "forever" : isAnnual ? "/mo (annual)" : "/month"}
                         </span>
                       </div>
-                      {price > 0 && (
-                        <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] font-mono mt-0.5 font-semibold">
-                          ≈ ₹{Math.round((isAnnual ? price * 12 : price) * inrRate).toLocaleString("en-IN")} INR ($1 = ₹{inrRate.toFixed(2)})
+                      {isAnnual && price > 0 && (
+                        <p className="text-[10px] text-emerald-600 dark:text-emerald-400 font-sans mt-0.5 font-bold">
+                          Billed annually (₹{(price * 12).toLocaleString("en-IN")}/yr)
                         </p>
                       )}
 
@@ -821,28 +816,28 @@ export default function SettingsPage() {
             <div className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#161622] border border-black/5 dark:border-white/5 space-y-2.5">
               <div className="flex items-center justify-between">
                 <span className="text-[11px] font-bold uppercase tracking-wider text-[#7A7A8A] dark:text-[#8E8EA4]">
-                  Benchmark Value Comparison ($1,000 USD Base)
+                  Platform Currency Standards (₹50,000 INR Base)
                 </span>
                 <span className="text-[10px] font-mono font-bold text-[#8A7000] dark:text-[#FFD21F] bg-[#FFD21F]/15 px-2 py-0.5 rounded-full">
-                  Real-Time Benchmarked
+                  INR Native Standard
                 </span>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
                 <div className="p-3 rounded-xl bg-white dark:bg-[#1A1A28] border border-black/5 dark:border-white/10 space-y-1">
-                  <span className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] block">🇺🇸 USD (US Dollar)</span>
-                  <span className="font-mono font-extrabold text-sm text-[#0A0A0E] dark:text-white">{formatCurrency(1000, "USD")}</span>
+                  <span className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] block">🇮🇳 INR (Active Platform)</span>
+                  <span className="font-mono font-extrabold text-sm text-[#0A0A0E] dark:text-white">{formatCurrency(50000, "INR")}</span>
                 </div>
                 <div className="p-3 rounded-xl bg-white dark:bg-[#1A1A28] border border-black/5 dark:border-white/10 space-y-1">
-                  <span className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] block">🇮🇳 INR (Indian Rupee)</span>
-                  <span className="font-mono font-extrabold text-sm text-[#0A0A0E] dark:text-white">{formatCurrency(convertCurrency(1000, "USD", "INR"), "INR")}</span>
+                  <span className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] block">🇺🇸 USD (Phase 2 Preview)</span>
+                  <span className="font-mono font-extrabold text-sm text-[#0A0A0E] dark:text-white">{formatCurrency(convertCurrency(50000, "INR", "USD"), "USD")}</span>
                 </div>
                 <div className="p-3 rounded-xl bg-white dark:bg-[#1A1A28] border border-black/5 dark:border-white/10 space-y-1">
-                  <span className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] block">🇬🇧 GBP (British Pound)</span>
-                  <span className="font-mono font-extrabold text-sm text-[#0A0A0E] dark:text-white">{formatCurrency(convertCurrency(1000, "USD", "GBP"), "GBP")}</span>
+                  <span className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] block">🇬🇧 GBP (Phase 2 Preview)</span>
+                  <span className="font-mono font-extrabold text-sm text-[#0A0A0E] dark:text-white">{formatCurrency(convertCurrency(50000, "INR", "GBP"), "GBP")}</span>
                 </div>
                 <div className="p-3 rounded-xl bg-white dark:bg-[#1A1A28] border border-black/5 dark:border-white/10 space-y-1">
-                  <span className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] block">🇦🇪 AED (UAE Dirham)</span>
-                  <span className="font-mono font-extrabold text-sm text-[#0A0A0E] dark:text-white">{formatCurrency(convertCurrency(1000, "USD", "AED"), "AED")}</span>
+                  <span className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] block">🇦🇪 AED (Phase 2 Preview)</span>
+                  <span className="font-mono font-extrabold text-sm text-[#0A0A0E] dark:text-white">{formatCurrency(convertCurrency(50000, "INR", "AED"), "AED")}</span>
                 </div>
               </div>
             </div>

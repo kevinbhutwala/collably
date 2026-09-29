@@ -38,7 +38,7 @@ export function HorizontalScrollStory() {
         metrics: [
           { label: "VERIFIED REACH", value: "24.5M+" },
           { label: "AVG ENGAGEMENT", value: "6.8%" },
-          { label: "BASE REEL RATE", value: format(2200, "USD") },
+          { label: "BASE REEL RATE", value: format(25000, "INR") },
         ],
       },
     },
@@ -72,11 +72,11 @@ export function HorizontalScrollStory() {
       gradient: "from-amber-400 via-pink-500 to-[hsl(327,100%,50%)]",
       accentBg: "bg-amber-500/15 text-amber-300 border-amber-500/30",
       preview: {
-        headline: "Stripe Escrow Custody",
-        meta: `${format(28500, "USD")} Locked in Sovereign Vault`,
+        headline: "Razorpay Escrow Custody",
+        meta: `${format(250000, "INR")} Locked in Segregated Vault`,
         highlight: "100% Pre-Funded Guarantee",
         metrics: [
-          { label: "LOCKED CAPITAL", value: format(28500, "USD") },
+          { label: "LOCKED CAPITAL", value: format(250000, "INR") },
           { label: "CREATOR POOL", value: "10 Roster" },
           { label: "COMMISSION", value: "10% Net" },
         ],
@@ -133,8 +133,8 @@ export function HorizontalScrollStory() {
       accentBg: "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
       preview: {
         headline: "Automated Disbursement",
-        meta: `${format(25650, "USD")} Net Disbursed to Creator`,
-        highlight: "Direct Stripe Bank Transfer",
+        meta: `${format(225000, "INR")} Net Disbursed to Creator`,
+        highlight: "Direct UPI / IMPS Bank Transfer",
         metrics: [
           { label: "NET PAYOUT", value: "90% Exact" },
           { label: "PAYOUT SPEED", value: "< 24 Hours" },
@@ -153,7 +153,7 @@ export function HorizontalScrollStory() {
       accentBg: "bg-pink-500/15 text-pink-300 border-pink-500/30",
       preview: {
         headline: "Campaign Attribution Matrix",
-        meta: `4.8× Verified Revenue ROI on ${format(28500, "USD")} Spend`,
+        meta: `4.8× Verified Revenue ROI on ${format(250000, "INR")} Spend`,
         highlight: "14,820 Tracked Promo Conversions",
         metrics: [
           { label: "TOTAL VIEWS", value: "2.4M+" },

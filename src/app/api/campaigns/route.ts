@@ -14,7 +14,7 @@ const createCampaignSchema = z.object({
   budget: z.object({
     totalBudget: z.number().positive("Total budget must be positive"),
     perCreatorBudget: z.number().positive("Milestone budget must be positive"),
-    currency: z.enum(["INR", "USD", "AED", "GBP"]).or(z.string()).default("USD"),
+    currency: z.enum(["INR", "USD", "AED", "GBP"]).or(z.string()).default("INR"),
     paymentTerms: z.string().default("100_escrow_on_approval"),
   }).optional(),
   deliverables: z.array(z.any()).min(1, "Campaign must contain at least one deliverable milestone").optional(),

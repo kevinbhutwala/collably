@@ -150,7 +150,7 @@ export function CampaignsDirectoryClient() {
                       </div>
 
                       {(() => {
-                        const originalCurrency = (camp.budget?.currency || "USD").toUpperCase();
+                        const originalCurrency = (camp.budget?.currency || "INR").toUpperCase();
                         const isDifferentCurrency = originalCurrency !== displayCurrency.toUpperCase();
                         return (
                           <span

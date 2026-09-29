@@ -121,7 +121,7 @@ export function FeatureBentoGrid() {
               {/* Action Bar */}
               <div className="flex items-center justify-between pt-2 border-t border-white/10 text-xs">
                 <span className="text-[11px] font-mono text-white/60">
-                  Milestone Escrow: <strong className="text-white">{format(420, "USD")} Locked</strong>
+                  Milestone Escrow: <strong className="text-white">{format(35000, "INR")} Locked</strong>
                 </span>
                 <button
                   onClick={() => setIsApproved(!isApproved)}

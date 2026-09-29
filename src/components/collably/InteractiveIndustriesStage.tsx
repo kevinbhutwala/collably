@@ -141,7 +141,7 @@ export function InteractiveIndustriesStage() {
                         </div>
                       </div>
                       <span className="text-xs font-bold text-[#087F5B] font-mono shrink-0">
-                        {format(parseInt(c.rate.replace(/[^0-9]/g, '')) || 2400, "USD")}
+                        {format(parseInt(c.rate.replace(/[^0-9]/g, '')) || 25000, "INR")}
                       </span>
                     </div>
                   ))}

@@ -72,7 +72,7 @@ export function EditorialBigTextSection() {
               <div className="font-mono text-xs pr-2">
                 <span className="font-display font-bold text-[#101010] block">{malePortrait.name}</span>
                 <span className="text-[#101010] font-bold text-[10px] bg-[#FFD21F] px-1.5 py-0.5 rounded numeric-tabular">
-                  {format(malePortrait.verifiedRateAmount || 230, "USD")}
+                  {format(22000, "INR")}
                 </span>
               </div>
             </div>

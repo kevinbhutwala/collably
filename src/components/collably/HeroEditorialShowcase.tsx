@@ -428,7 +428,7 @@ export function HeroEditorialShowcase() {
                   </div>
                   <div className="text-right font-mono shrink-0">
                     <span className="text-[8px] sm:text-[10px] text-[#888898] dark:text-[#8E8EA4] block uppercase">Starts at</span>
-                    <span suppressHydrationWarning className="text-xs sm:text-sm font-extrabold text-[#0A0A0E] dark:text-white">{format(activeTalent.startingPriceAmount, "USD")}</span>
+                    <span suppressHydrationWarning className="text-xs sm:text-sm font-extrabold text-[#0A0A0E] dark:text-white">{format(activeTalent.startingPriceAmount, "INR")}</span>
                   </div>
                 </div>
 

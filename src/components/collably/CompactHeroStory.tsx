@@ -219,7 +219,7 @@ export function CompactHeroStory() {
                   </div>
                   <div className="text-right font-mono">
                     <span className="text-[10px] text-[#888898] block uppercase">Starts at</span>
-                    <span className="text-xs font-extrabold text-[#0A0A0E]">{format(activeCreator.rateAmount, "USD")}</span>
+                    <span className="text-xs font-extrabold text-[#0A0A0E]">{format(activeCreator.rateAmount || 25000, "INR")}</span>
                   </div>
                 </div>
 

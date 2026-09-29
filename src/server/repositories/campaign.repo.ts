@@ -29,10 +29,10 @@ export class CampaignRepository {
 
     // Currency-Normalized Budget Filtering
     if (filters.minBudget !== undefined || filters.maxBudget !== undefined) {
-      const targetCurrency = filters.filterCurrency || "USD";
+      const targetCurrency = filters.filterCurrency || "INR";
       result = result.filter((c) => {
         const campBudget = c.budget?.totalBudget || 0;
-        const campCurrency = c.budget?.currency || "USD";
+        const campCurrency = c.budget?.currency || "INR";
         const normalizedBudget = exchangeRateService.convertCurrencySync(
           campBudget,
           campCurrency,
@@ -55,13 +55,13 @@ export class CampaignRepository {
         if (filters.sortBy === "budget_asc" || filters.sortBy === "budget_desc") {
           const budgetA = exchangeRateService.convertCurrencySync(
             a.budget?.totalBudget || 0,
-            a.budget?.currency || "USD",
-            "USD"
+            a.budget?.currency || "INR",
+            "INR"
           );
           const budgetB = exchangeRateService.convertCurrencySync(
             b.budget?.totalBudget || 0,
-            b.budget?.currency || "USD",
-            "USD"
+            b.budget?.currency || "INR",
+            "INR"
           );
           return filters.sortBy === "budget_asc" ? budgetA - budgetB : budgetB - budgetA;
         }
@@ -142,7 +142,7 @@ export class CampaignRepository {
       budget: data.budget || {
         totalBudget: data.totalBudget || 15000,
         perCreatorBudget: data.perCreatorBudget || 2500,
-        currency: "USD",
+        currency: "INR",
         paymentTerms: "50_50_escrow",
       },
       timeline: data.timeline || {
@@ -247,7 +247,7 @@ export class CampaignRepository {
       creator: (creator || { id: app.creatorId, fullName: "Creator Talent" }) as any,
       pitch: app.pitch,
       proposedFee: app.proposedFee,
-      currency: (app as any).currency || campaign?.budget?.currency || "USD",
+      currency: (app as any).currency || campaign?.budget?.currency || "INR",
       estimatedReach: app.estimatedReach || creator?.totalFollowers || 100000,
       status: app.status || "pending",
       sampleLinks: app.sampleLinks || (app as any).portfolioSamples || [],

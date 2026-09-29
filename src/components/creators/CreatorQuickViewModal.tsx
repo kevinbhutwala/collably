@@ -202,7 +202,7 @@ export function CreatorQuickViewModal({
                 </span>
                 <span className="text-base sm:text-lg font-black text-[#0A0A0E] dark:text-white font-display" title="Estimated benchmark">
                   <span className="text-xs font-normal text-[#7A7A8A] mr-0.5">Est.</span>
-                  {typeof creator.startingPrice === "number" ? format(creator.startingPrice, creator.currency || "USD") : creator.startingPrice}
+                  {typeof creator.startingPrice === "number" ? format(creator.startingPrice, creator.currency || "INR") : creator.startingPrice}
                 </span>
               </div>
             </div>

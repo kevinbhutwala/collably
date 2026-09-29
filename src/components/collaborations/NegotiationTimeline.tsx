@@ -183,7 +183,7 @@ export function NegotiationTimeline({
           <h4 className="text-sm font-bold text-[#0A0A0E] font-display">Draft Structured Counter Offer</h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input
-              label="Proposed Fee ($ USD)"
+              label="Proposed Fee (₹ INR)"
               type="number"
               value={counterAmount}
               onChange={(e) => setCounterAmount(parseInt(e.target.value) || 0)}

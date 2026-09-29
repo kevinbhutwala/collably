@@ -23,7 +23,7 @@ export function BrandCreatorNetwork() {
       brandNiche: "Developer Workflows & AI",
       creator: maleCreator,
       deliverable: "1x 4K Dedicated Review + Whitelisting",
-      budgetAmountUSD: 3500,
+      budgetAmountINR: 35000,
       status: "Pre-Funded Escrow",
     },
     {
@@ -32,7 +32,7 @@ export function BrandCreatorNetwork() {
       brandNiche: "Mac Productivity Ecosystem",
       creator: femaleCreator,
       deliverable: "2x 60s Reels + Story Bundle",
-      budgetAmountUSD: 2800,
+      budgetAmountINR: 28000,
       status: "Deliverable Approved",
     },
     {
@@ -41,7 +41,7 @@ export function BrandCreatorNetwork() {
       brandNiche: "Connected Workspace & AI",
       creator: beautyCreator,
       deliverable: "1x Integrated YouTube Spotlight",
-      budgetAmountUSD: 3200,
+      budgetAmountINR: 32000,
       status: "Payout Disbursed",
     },
   ];
@@ -124,7 +124,7 @@ export function BrandCreatorNetwork() {
 
                 <div className="flex items-center justify-between">
                   <span className="text-[#626262] text-[10px] uppercase tracking-wider">ESCROW BUDGET:</span>
-                  <span className="font-extrabold text-[#101010] text-sm font-mono numeric-tabular">{format(deal.budgetAmountUSD, "USD")}</span>
+                  <span className="font-extrabold text-[#101010] text-sm font-mono numeric-tabular">{format(deal.budgetAmountINR, "INR")}</span>
                 </div>
 
                 <div className="flex items-center gap-1.5 text-[10px] text-[#101010] font-bold pt-1 font-sans">

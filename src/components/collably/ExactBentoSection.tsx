@@ -135,7 +135,7 @@ export function ExactBentoSection() {
                     <div>
                       <h4 className="font-bold text-[#0A0A0E] font-display">{c.brand}</h4>
                       <p className="text-[11px] text-[#6A6A78] font-mono">
-                        {format(c.budgetAmount, "USD")} • {c.title}
+                        {format(c.budgetAmount, "INR")} • {c.title}
                       </p>
                     </div>
                   </div>

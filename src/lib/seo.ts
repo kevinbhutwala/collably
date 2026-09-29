@@ -128,7 +128,7 @@ export const globalStructuredData = [
     offers: {
       '@type': 'Offer',
       price: '0.00',
-      priceCurrency: 'USD',
+      priceCurrency: 'INR',
       availability: 'https://schema.org/InStock',
     },
   },

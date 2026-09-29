@@ -177,7 +177,7 @@ export function AnimatedCreatorDeck() {
                   <div className="p-4 flex items-center justify-between border-t border-black/6 text-xs">
                     <div>
                       <span className="text-[10px] font-mono text-[#7A7A8A] block uppercase">Starts at</span>
-                      <span className="font-mono font-extrabold text-[#0A0A0E] text-sm">{format(creator.rateAmount, "USD")}</span>
+                      <span className="font-mono font-extrabold text-[#0A0A0E] text-sm">{format(creator.rateAmount, "INR")}</span>
                     </div>
 
                     <Link

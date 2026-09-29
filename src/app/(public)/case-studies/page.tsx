@@ -8,7 +8,7 @@ const BASE_URL = SITE_URL;
 export const metadata: Metadata = {
   title: 'Creator Campaign Case Studies & Brand ROI Results',
   description:
-    'Discover how high-growth tech brands and consumer apps achieved 4.8x average ROAS, millions of organic impressions, and sub-$0.02 CPV using AbeyCollab milestone-protected creator campaigns.',
+    'Discover how high-growth tech brands and consumer apps achieved 4.8x average ROAS, millions of organic impressions, and sub-₹0.15 CPV using AbeyCollab milestone-protected creator campaigns.',
   keywords: [
     'creator marketing case studies',
     'influencer campaign roi',

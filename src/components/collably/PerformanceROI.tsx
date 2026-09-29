@@ -25,7 +25,7 @@ export function PerformanceROI() {
       label: "Tracked Conversions / Signups",
       value: "3,840",
       subtext: "Via dedicated UTM & coupons",
-      trend: "$0.91 CAC",
+      trend: "₹75 CAC",
       icon: Target,
     },
     {

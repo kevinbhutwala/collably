@@ -50,7 +50,7 @@ export function EditorialCreatorCard({
 
   const startingPriceDisplay =
     typeof creator.startingPrice === "number"
-      ? format(creator.startingPrice, (creator as any).currency || "USD")
+      ? format(creator.startingPrice, (creator as any).currency || "INR")
       : creator.startingPrice;
 
   const cleanHandle = (creator.handle || "").replace(/^@/, "");

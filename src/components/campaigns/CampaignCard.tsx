@@ -13,7 +13,7 @@ import { CategoryBadge, TitleIcon } from "@/components/ui/TitleIconBadge";
 export function CampaignCard({ campaign }: { campaign: Campaign }) {
   const { currency: displayCurrency, convertAndFormat } = useGlobalCurrency();
   const budgetAmount = campaign.budget?.perCreatorBudget || (campaign.budget as any) || 2500;
-  const originalCurrency = (campaign.budget?.currency || "USD").toUpperCase();
+  const originalCurrency = (campaign.budget?.currency || "INR").toUpperCase();
   const isDifferentCurrency = originalCurrency !== displayCurrency.toUpperCase();
   const maxCreators = campaign.maxCreators || 10;
   const acceptedCount = campaign.acceptedCount || 0;

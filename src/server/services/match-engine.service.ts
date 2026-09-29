@@ -292,7 +292,7 @@ export class MatchEngineService {
     // 4. Detect Budget (e.g. ₹30k or $2500 or under 40000)
     let minBudget: number | undefined;
     let maxBudget: number | undefined;
-    let currency = "USD";
+    let currency = "INR";
 
     if (text.includes("₹") || q.includes("inr") || q.includes("rupees")) currency = "INR";
     if (text.includes("€") || q.includes("eur")) currency = "EUR";
@@ -374,9 +374,9 @@ export class MatchEngineService {
       },
       deliverables: [],
       budget: {
-        totalBudget: (parsed.maxBudget || 2500) * 3,
-        perCreatorBudget: parsed.maxBudget || 2500,
-        currency: (parsed.currency as any) || "USD",
+        totalBudget: (parsed.maxBudget || 25000) * 3,
+        perCreatorBudget: parsed.maxBudget || 25000,
+        currency: (parsed.currency as any) || "INR",
         paymentTerms: "50_50_escrow",
 
       },

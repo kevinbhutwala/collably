@@ -16,8 +16,8 @@ export function VisualEscrowMotion() {
       title: "Funds Secured",
       badge: "100% Pre-Funded",
       icon: Lock,
-      desc: "Campaign budget pre-funded in segregated custody via Stripe Connect.",
-      amount: `${format(300, "USD")} Secured`,
+      desc: "Campaign budget pre-funded in segregated custody via Razorpay Escrow.",
+      amount: `${format(25000, "INR")} Secured`,
     },
     {
       num: "02",
@@ -40,8 +40,8 @@ export function VisualEscrowMotion() {
       title: "Direct Payout",
       badge: "<24h Transfer",
       icon: Wallet,
-      desc: "Automated disbursement direct to creator bank account in <24h.",
-      amount: `${format(270, "USD")} Net Paid`,
+      desc: "Automated disbursement direct to creator bank account via UPI/IMPS.",
+      amount: `${format(22500, "INR")} Net Paid`,
     },
   ];
 
@@ -135,7 +135,7 @@ export function VisualEscrowMotion() {
           <div>
             <span className="text-xs font-mono text-[#8A908B] block font-semibold uppercase">Automated Escrow Settlement</span>
             <span className="text-sm font-bold text-[#101310] font-sans">
-              {released ? `✓ ${format(270, "USD")} Disbursed to Creator (Stripe Connect)` : "Instant milestone payment release:"}
+              {released ? `✓ ${format(22500, "INR")} Disbursed to Creator (Razorpay / UPI)` : "Instant milestone payment release:"}
             </span>
           </div>
 

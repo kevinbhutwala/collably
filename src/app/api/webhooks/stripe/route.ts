@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
         collaborationId,
         brandId,
         amountDollars,
-        currency: paymentIntent.currency?.toUpperCase() || "USD",
+        currency: paymentIntent.currency?.toUpperCase() || "INR",
       });
 
       // Update milestone status to FUNDED

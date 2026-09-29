@@ -17,7 +17,7 @@ export function CreatorReelsMarquee() {
       tag: "Editorial Style Reel",
       title: "Contemporary Drape & Capsule Wardrobe",
       views: "68K Views",
-      payoutUSD: 420,
+      payoutINR: 35000,
     },
     {
       id: "reel-2",
@@ -26,7 +26,7 @@ export function CreatorReelsMarquee() {
       tag: "Studio Ergonomics",
       title: "Tactile Creative Desk Setup Redesign",
       views: "62K Views",
-      payoutUSD: 480,
+      payoutINR: 40000,
     },
     {
       id: "reel-3",
@@ -35,7 +35,7 @@ export function CreatorReelsMarquee() {
       tag: "Hardware Review",
       title: "Wireless Audiophile Headphone Benchmark",
       views: "52K Views",
-      payoutUSD: 380,
+      payoutINR: 32000,
     },
     {
       id: "reel-4",
@@ -44,7 +44,7 @@ export function CreatorReelsMarquee() {
       tag: "Minimalist Space",
       title: "Architectural Studio Tour & Lighting",
       views: "58K Views",
-      payoutUSD: 520,
+      payoutINR: 45000,
     },
     {
       id: "reel-5",
@@ -53,7 +53,7 @@ export function CreatorReelsMarquee() {
       tag: "Clinical Skin Science",
       title: "Active Ingredient & Barrier Repair Guide",
       views: "48K Views",
-      payoutUSD: 500,
+      payoutINR: 42000,
     },
   ];
 
@@ -116,7 +116,7 @@ export function CreatorReelsMarquee() {
                 <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-xs font-mono">
                   <span className="text-white font-bold text-[11px]">{item.views}</span>
                   <span className="px-2 py-0.5 rounded-md bg-[#EAF8F2] text-[#087F5B] text-[10px] font-bold">
-                    {format(item.payoutUSD, "USD")} Paid
+                    {format(item.payoutINR, "INR")} Paid
                   </span>
                 </div>
               </div>

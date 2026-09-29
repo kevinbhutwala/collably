@@ -85,8 +85,8 @@ export class MarketPulseService {
       opportunityRationale,
       categoryTrends: {
         name: category,
-        avgBudget: Math.round(2400 * baseMult),
-        currency: "USD",
+        avgBudget: Math.round(180000 * baseMult),
+        currency: "INR",
         dealsVolume30d: 48 + catCampaigns.length * 6,
         growthMoM: Number((14.2 + catCampaigns.length * 1.5).toFixed(1)),
         competitionLevel: catCampaigns.length > 5 ? "High" : "Moderate",

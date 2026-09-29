@@ -74,7 +74,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
         totalFollowers: 0,
         avgEngagementRate: 0,
         startingPrice: 0,
-        currency: userRecord?.country === "IN" ? "INR" : "USD",
+        currency: "INR",
         availableForHire: true,
         profileCompleteness: 10,
         qualityScore: 50,

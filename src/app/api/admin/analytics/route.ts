@@ -35,19 +35,19 @@ export async function GET(req: NextRequest) {
     const successfulCollabs = collabs.filter((c) => c.status === "completed" || c.paymentStatus === "paid").length;
     const activeCollabs = collabs.filter((c) => c.status === "active" || c.status === "in_review").length;
 
-    const targetCurrency = (req.nextUrl.searchParams.get("currency") || "USD").toUpperCase();
+    const targetCurrency = (req.nextUrl.searchParams.get("currency") || "INR").toUpperCase();
     const { exchangeRateService } = await import("@/server/services/exchange-rate.service");
 
     // GMV / Total Escrow Volume normalized to targetCurrency
     const gmvCampaigns = campaigns.reduce((acc, c) => {
       const budget = c.budget?.totalBudget || 0;
-      const curr = c.budget?.currency || "USD";
+      const curr = c.budget?.currency || "INR";
       return acc + exchangeRateService.convertCurrencySync(budget, curr, targetCurrency);
     }, 0);
 
     const gmvCollabs = collabs.reduce((acc, c) => {
       const budget = c.totalAgreedBudget || 0;
-      const curr = c.currency || "USD";
+      const curr = c.currency || "INR";
       return acc + exchangeRateService.convertCurrencySync(budget, curr, targetCurrency);
     }, 0);
 
@@ -57,9 +57,9 @@ export async function GET(req: NextRequest) {
     const totalPayoutsDisbursed = Math.round(
       payouts.reduce((acc, p) => {
         const net = p.netAmount || 0;
-        const curr = (p as any).currency || "USD";
+        const curr = (p as any).currency || "INR";
         return acc + exchangeRateService.convertCurrencySync(net, curr, targetCurrency);
-      }, 0) || exchangeRateService.convertCurrencySync(12450, "USD", targetCurrency)
+      }, 0) || exchangeRateService.convertCurrencySync(1000000, "INR", targetCurrency)
     );
 
     // Refunds and Disputes normalized to targetCurrency
@@ -70,7 +70,7 @@ export async function GET(req: NextRequest) {
         .filter((d) => (d as any).resolutionOutcome === "FULL_BRAND_REFUND" || d.status === "Resolved")
         .reduce((acc, d) => {
           const amt = d.amountInDispute || 0;
-          const curr = d.currency || "USD";
+          const curr = d.currency || "INR";
           return acc + exchangeRateService.convertCurrencySync(amt, curr, targetCurrency);
         }, 0)
     );

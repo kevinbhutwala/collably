@@ -24,9 +24,8 @@ import { formatCurrency, calculateMilestoneFeeBreakdown } from "@/core/utils/cur
 export function HeroSection() {
   const [activeTab, setActiveTab] = useState<"overview" | "creators" | "content" | "payments">("overview");
   const [isApproved, setIsApproved] = useState(false);
-  const [currencyMode, setCurrencyMode] = useState<"INR" | "USD">("INR");
-
-  const amount = currencyMode === "INR" ? 18500 : 3500;
+  const currencyMode = "INR";
+  const amount = 18500;
   const feeBreakdown = calculateMilestoneFeeBreakdown(amount, 0.1, currencyMode);
   const topCreators = CENTRAL_CREATORS.slice(0, 3);
 
@@ -127,13 +126,9 @@ export function HeroSection() {
               Protected Settlement Pipeline
             </span>
             <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => setCurrencyMode(currencyMode === "INR" ? "USD" : "INR")}
-                className="px-2 py-0.5 rounded bg-[#F1F2EE] hover:bg-[#E2E6E1] text-[11px] font-bold text-[#101310] transition-colors"
-              >
-                {currencyMode === "INR" ? "Switch to USD ($)" : "Switch to INR (₹)"}
-              </button>
+              <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/15 text-[#0A0A0E] font-bold text-[11px] border border-[#FFD21F]/30">
+                INR (₹) Native Settlement
+              </span>
               <span className="px-2.5 py-0.5 rounded-full bg-[#EAF8F2] text-[#087F5B] font-bold text-[11px] border border-[#C3EBDA]">
                 Milestone Protected
               </span>

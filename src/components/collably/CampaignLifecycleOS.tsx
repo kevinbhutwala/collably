@@ -26,7 +26,7 @@ export function CampaignLifecycleOS() {
       id: "brief",
       label: "BRIEF CREATED",
       title: "Brand locks deliverables & budget",
-      detail: `${format(28500, "USD")} contract terms and NDA automatically generated and escrow-funded.`,
+      detail: `${format(250000, "INR")} contract terms and NDA automatically generated and escrow-funded.`,
       icon: FileText,
       badge: "Pre-Funded Escrow",
     },
