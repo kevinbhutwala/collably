@@ -106,7 +106,7 @@ export function CampaignCard({ campaign }: { campaign: Campaign }) {
           {/* Slot Progress Bar */}
           <div className="w-full h-1.5 rounded-full bg-black/5 dark:bg-white/10 overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-primary via-[#9333EA] to-accent rounded-full transition-all duration-300"
+              className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-300"
               style={{ width: `${progressPercent}%` }}
             />
           </div>

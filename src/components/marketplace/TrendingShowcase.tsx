@@ -176,7 +176,7 @@ export function TrendingShowcase() {
                 </span>
                 <Link
                   href={`/campaigns`}
-                  className="rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary px-4 py-1.5 text-xs font-extrabold text-white shadow-2xs border border-black/10 transition-all"
+                  className="rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary px-4 py-1.5 text-xs font-extrabold text-white shadow-2xs border border-black/10 transition-all"
                 >
                   View Brief →
                 </Link>
@@ -275,7 +275,7 @@ export function TrendingShowcase() {
                   </div>
                   <Link
                     href={`/creators/${creator.id}`}
-                    className="rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary px-4 py-1.5 text-xs font-extrabold text-white shadow-2xs border border-black/10 transition-all"
+                    className="rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary px-4 py-1.5 text-xs font-extrabold text-white shadow-2xs border border-black/10 transition-all"
                   >
                     View Talent →
                   </Link>

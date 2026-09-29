@@ -54,13 +54,14 @@ export function AppSidebar() {
 
   const creatorNavItems: NavItem[] = [
     { href: "/app/dashboard", label: "Dashboard", icon: LayoutDashboard },
+    { href: "/app/profile", label: "Creator Profile", icon: Sparkles },
+    { href: "/app/campaigns", label: "Campaigns", icon: Compass, badge: "8 live" },
+    { href: "/app/applications", label: "Applications", icon: Briefcase },
+    { href: "/app/earnings", label: "Earnings", icon: Wallet },
+    { href: "/app/collaborations", label: "Projects & Deals", icon: FileCheck2, badge: "3 active" },
     { href: "/app/trending", label: "Trending Creators", icon: Flame, badge: "🔥" },
     { href: "/app/growth", label: "Market Insights", icon: TrendingUp, badge: "Rates" },
-    { href: "/app/campaigns", label: "Find Campaigns", icon: Compass, badge: "8 live" },
-    { href: "/app/applications", label: "My Applications", icon: Briefcase },
-    { href: "/app/collaborations", label: "Projects & Deals", icon: FileCheck2, badge: "3 active" },
     { href: "/app/messages", label: "Messages", icon: MessageSquare, badge: "1" },
-    { href: "/app/earnings", label: "Earnings & Payouts", icon: Wallet },
     {
       href: "/app/analytics",
       label: "Audience Insights",
@@ -68,17 +69,16 @@ export function AppSidebar() {
       badge: isProCreator ? undefined : "PRO",
       featureGate: "advancedAnalytics",
     },
-    { href: "/app/profile", label: "Media Kit & Profile", icon: Sparkles },
     { href: "/app/support", label: "Help & Support", icon: HelpCircle },
     { href: "/app/settings", label: "Account Settings", icon: Settings },
   ];
 
   const brandNavItems: NavItem[] = [
     { href: "/app/dashboard", label: "Dashboard", icon: LayoutDashboard },
-    { href: "/app/trending", label: "Trending Creators", icon: Flame, badge: "🔥" },
     { href: "/app/brand/campaigns/create", label: "Post a Campaign", icon: PlusCircle, highlight: true },
-    { href: "/app/brand/campaigns", label: "My Campaigns", icon: Briefcase, badge: "3" },
-    { href: "/app/brand/creators", label: "Find Creators", icon: Users },
+    { href: "/app/brand/campaigns", label: "Campaigns", icon: Briefcase, badge: "3" },
+    { href: "/app/brand/creators", label: "Discover Creators", icon: Users },
+    { href: "/app/brand/analytics", label: "Analytics", icon: BarChart3 },
     {
       href: "/app/brand/crm",
       label: "Saved Contacts",
@@ -88,8 +88,8 @@ export function AppSidebar() {
     },
     { href: "/app/brand/shortlists", label: "Shortlisted Creators", icon: Layers },
     { href: "/app/collaborations", label: "Projects & Payments", icon: FileCheck2, badge: "3" },
+    { href: "/app/trending", label: "Trending Creators", icon: Flame, badge: "🔥" },
     { href: "/app/messages", label: "Messages", icon: MessageSquare },
-    { href: "/app/brand/analytics", label: "Campaign Results", icon: BarChart3 },
     { href: "/app/support", label: "Help & Support", icon: HelpCircle },
     { href: "/app/settings", label: "Account Settings", icon: Settings },
   ];
@@ -128,7 +128,7 @@ export function AppSidebar() {
               className={cn(
                 "flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-medium transition-all select-none",
                 isActive
-                  ? "bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white font-bold shadow-[0_2px_12px_rgba(var(--theme-primary-rgb),0.35)] border border-white/10"
+                  ? "bg-gradient-to-r from-primary to-accent text-white font-bold shadow-[0_2px_12px_rgba(var(--theme-primary-rgb),0.35)] border border-white/10"
                   : item.highlight
                   ? "bg-primary/15 dark:bg-primary/10 text-primary dark:text-accent hover:bg-primary/25 dark:hover:bg-primary/20 border border-primary/30 font-bold"
                   : "text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-white hover:bg-[#F4F4F8] dark:hover:bg-white/5"
@@ -188,7 +188,7 @@ export function AppSidebar() {
             </p>
             <button
               onClick={() => openUpgradeModal()}
-              className="w-full py-2 rounded-xl bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-[0_2px_12px_rgba(var(--theme-primary-rgb),0.35)] border border-white/20 active:scale-98"
+              className="w-full py-2 rounded-xl bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-[0_2px_12px_rgba(var(--theme-primary-rgb),0.35)] border border-white/20 active:scale-98"
             >
               Upgrade Plan
             </button>

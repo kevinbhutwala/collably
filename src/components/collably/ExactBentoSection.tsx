@@ -107,7 +107,7 @@ export function ExactBentoSection() {
             <div className="pt-2">
               <Link
                 href="/register?role=creator"
-                className="px-6 py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-bold text-xs sm:text-sm transition-all shadow-[0_4px_14px_rgba(var(--theme-primary-rgb),0.4)] inline-flex items-center gap-2 group border border-black/10"
+                className="px-6 py-3.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-bold text-xs sm:text-sm transition-all shadow-[0_4px_14px_rgba(var(--theme-primary-rgb),0.4)] inline-flex items-center gap-2 group border border-black/10"
               >
                 <span>Join as a Creator</span>
                 <ArrowRight className="w-4 h-4 text-[#0B0A14] group-hover:translate-x-0.5 transition-transform" />

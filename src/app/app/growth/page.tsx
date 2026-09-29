@@ -170,7 +170,7 @@ export default function CreatorGrowthCenterPage() {
         </div>
 
         <Link href="/app/profile">
-          <button className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs transition-all shadow-xs flex items-center gap-1.5 border border-black/10 cursor-pointer">
+          <button className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs transition-all shadow-xs flex items-center gap-1.5 border border-black/10 cursor-pointer">
             <span>Edit Profile & Media Kit</span>
             <ArrowRight className="w-3.5 h-3.5 text-[#0B0A14]" />
           </button>
@@ -194,7 +194,7 @@ export default function CreatorGrowthCenterPage() {
           </div>
           <div className="h-2 w-full rounded-full bg-black/5 dark:bg-white/10 overflow-hidden mt-2">
             <div
-              className="h-full bg-gradient-to-r from-primary via-[#9333EA] to-accent rounded-full transition-all duration-500"
+              className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-500"
               style={{ width: `${completenessPercent}%` }}
             />
           </div>
@@ -282,7 +282,7 @@ export default function CreatorGrowthCenterPage() {
                   </span>
                   {!item.done && (
                     <Link href="/app/profile">
-                      <span className="px-2.5 py-1 rounded-lg bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white text-[10px] font-extrabold shadow-2xs border border-black/10">
+                      <span className="px-2.5 py-1 rounded-lg bg-gradient-to-r from-primary to-accent text-white text-[10px] font-extrabold shadow-2xs border border-black/10">
                         Fix →
                       </span>
                     </Link>

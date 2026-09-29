@@ -329,7 +329,7 @@ export default function BrandCreatorDiscoveryPage() {
               <p className="text-xs text-[#6A6A78] dark:text-[#8E8EA4]">Try loosening your filters or clearing search keywords.</p>
               <button
                 onClick={resetCreatorFilters}
-                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold shadow-xs transition-all border border-black/10 cursor-pointer"
+                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white text-xs font-bold shadow-xs transition-all border border-black/10 cursor-pointer"
               >
                 Reset All Filters
               </button>

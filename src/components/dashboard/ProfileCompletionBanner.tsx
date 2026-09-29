@@ -76,7 +76,7 @@ export function ProfileCompletionBanner({ creator: customCreator }: { creator?: 
         {/* Progress Bar */}
         <div className="w-full h-1.5 bg-black/[0.06] dark:bg-white/10 rounded-full overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-primary via-[#9333EA] to-accent rounded-full transition-all duration-500"
+            className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-500"
             style={{ width: `${Math.max(status.score, 10)}%` }}
           />
         </div>

@@ -176,7 +176,7 @@ export function TransactionLifecycleStepper({
       {role === "creator" ? (
         <div className="p-3.5 sm:p-4 rounded-2xl bg-primary/5 dark:bg-[#1A1A28] border border-primary/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
           <div className="flex items-start gap-3">
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white flex items-center justify-center font-bold shrink-0 shadow-2xs border border-black/10">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-r from-primary to-accent text-white flex items-center justify-center font-bold shrink-0 shadow-2xs border border-black/10">
               <DollarSign className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
             <div>

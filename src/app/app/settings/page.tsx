@@ -239,7 +239,7 @@ export default function SettingsPage() {
 
         <button
           onClick={handleSavePreferences}
-          className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5 self-start sm:self-center"
+          className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5 self-start sm:self-center"
         >
           <Save className="w-3.5 h-3.5 text-[#0B0A14]" />
           <span>Save Settings</span>
@@ -427,7 +427,7 @@ export default function SettingsPage() {
                     </span>
                     <button
                       onClick={handleResumeSubscription}
-                      className="px-4 py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-bold transition-all shadow-xs border border-black/10"
+                      className="px-4 py-2 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-bold transition-all shadow-xs border border-black/10"
                     >
                       Resume Subscription
                     </button>
@@ -654,7 +654,7 @@ export default function SettingsPage() {
                           isCurrent
                             ? "bg-black/5 dark:bg-white/10 text-[#8A8A9A] dark:text-white/80 cursor-not-allowed border border-black/10 dark:border-white/20 font-bold"
                             : p.highlight
-                            ? "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] font-extrabold"
+                            ? "bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] font-extrabold"
                             : "bg-[#F4F4F8] hover:bg-[#EAEAF0] text-[#0B0A14] border border-black/12 hover:border-black/25 font-bold shadow-xs"
                         }`}
                       >
@@ -741,7 +741,7 @@ export default function SettingsPage() {
             <div className="pt-2">
               <button
                 onClick={handleSavePreferences}
-                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-xs border border-black/10"
+                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-xs border border-black/10"
               >
                 Save Payout Details
               </button>
@@ -791,7 +791,7 @@ export default function SettingsPage() {
               <button
                 type="submit"
                 disabled={isChangingPassword}
-                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all disabled:opacity-50 flex items-center gap-2 shadow-xs border border-black/10"
+                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all disabled:opacity-50 flex items-center gap-2 shadow-xs border border-black/10"
               >
                 {isChangingPassword ? (
                   <>

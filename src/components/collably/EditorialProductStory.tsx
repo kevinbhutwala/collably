@@ -267,7 +267,7 @@ export function EditorialProductStory() {
                 <button
                   type="button"
                   onClick={() => setConfirmModalOpen(true)}
-                  className="w-full py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-bold text-sm shadow-xs flex items-center justify-center gap-2 transition-all font-sans cursor-pointer group border border-black/10"
+                  className="w-full py-3.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-bold text-sm shadow-xs flex items-center justify-center gap-2 transition-all font-sans cursor-pointer group border border-black/10"
                 >
                   <CheckCircle2 className="w-4 h-4 text-[#0B0A14]" />
                   <span>Approve Deliverable &amp; Disburse Milestone</span>
@@ -316,7 +316,7 @@ export function EditorialProductStory() {
             <button
               type="button"
               onClick={handleConfirmApprove}
-              className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white font-bold flex items-center gap-1.5 shadow-xs transition-all border border-black/10"
+              className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent text-white font-bold flex items-center gap-1.5 shadow-xs transition-all border border-black/10"
             >
               <Check className="w-3.5 h-3.5 text-[#0B0A14]" />
               <span>Confirm &amp; Disburse</span>

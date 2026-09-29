@@ -4,6 +4,7 @@ import { AppSidebar } from "@/components/layout/AppSidebar";
 import { MobileBottomDock } from "@/components/layout/MobileBottomDock";
 import { AuthGuard } from "@/components/auth/AuthGuard";
 import { PlanUpgradeModal } from "@/components/subscriptions/PlanUpgradeModal";
+import { RoleThemeProvider } from "@/components/providers/RoleThemeProvider";
 
 export default function AuthenticatedAppLayout({
   children,
@@ -12,12 +13,13 @@ export default function AuthenticatedAppLayout({
 }) {
   return (
     <AuthGuard>
-      <div className="h-screen flex flex-col bg-[#F8F8FB] dark:bg-[#07070B] text-white dark:text-[#F4F4F8] selection:bg-primary selection:text-white relative overflow-hidden">
-        {/* Soft Warm Ambient Glow */}
-        <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[900px] h-96 bg-primary/10 dark:bg-primary/5 blur-[140px] rounded-full pointer-events-none z-0" />
+      <RoleThemeProvider>
+        <div className="h-screen flex flex-col bg-background dark:bg-[#07070B] text-[#0B0A14] dark:text-[#F4F4F8] selection:bg-primary selection:text-white relative overflow-hidden transition-colors duration-300">
+          {/* Soft Dynamic Ambient Glow */}
+          <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[900px] h-96 bg-primary/10 dark:bg-primary/5 blur-[140px] rounded-full pointer-events-none z-0" />
 
-        <AppNavbar />
-        
+          <AppNavbar />
+          
           {/* Main Body: Fixed Static Sidebar on Left, Independent Scrollable Main Screen on Right */}
           <div className="flex flex-1 overflow-hidden relative z-10">
             <AppSidebar />
@@ -28,9 +30,10 @@ export default function AuthenticatedAppLayout({
             </main>
           </div>
 
-        <MobileBottomDock />
-        <PlanUpgradeModal />
-      </div>
+          <MobileBottomDock />
+          <PlanUpgradeModal />
+        </div>
+      </RoleThemeProvider>
     </AuthGuard>
   );
 }

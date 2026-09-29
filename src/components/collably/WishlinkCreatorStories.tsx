@@ -104,7 +104,7 @@ export function WishlinkCreatorStories() {
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0B0A14] font-display tracking-tight leading-[1.1]">
               Loved by Creators,{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7C3AED] via-[#9333EA] to-[#C084FC] underline decoration-[#C084FC] decoration-4 underline-offset-4">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7C3AED] to-[#C084FC] underline decoration-[#C084FC] decoration-4 underline-offset-4">
                 trusted by Brands
               </span>
             </h2>

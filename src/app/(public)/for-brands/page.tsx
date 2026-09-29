@@ -108,7 +108,7 @@ export default function ForBrandsPage() {
 
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.02] text-[#0B0A14] dark:text-white font-display">
                 Hire Vetted Creators with{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-[#9333EA] to-accent">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
                   100% Milestone Escrow.
                 </span>
               </h1>
@@ -119,7 +119,7 @@ export default function ForBrandsPage() {
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-4 font-sans text-sm">
                 <Link href="/app/brand/campaigns/create">
-                  <button className="px-8 py-4 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.5)] border border-black/10 flex items-center gap-2 hover-lift cursor-pointer">
+                  <button className="px-8 py-4 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.5)] border border-black/10 flex items-center gap-2 hover-lift cursor-pointer">
                     <span>Create a Campaign Brief</span>
                     <ArrowRight className="w-4 h-4 text-[#0B0A14]" />
                   </button>

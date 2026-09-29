@@ -105,7 +105,7 @@ export function LockedFeatureCard({
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
           <button
             onClick={() => openUpgradeModal(requiredPlanId)}
-            className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-extrabold text-sm transition-all flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.45)] border border-black/10 active:scale-98"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-extrabold text-sm transition-all flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.45)] border border-black/10 active:scale-98"
           >
             <Sparkles className="w-4 h-4 fill-[#0B0A14] text-[#0B0A14]" />
             <span>Upgrade to {plan?.name || "Unlock Now"}</span>

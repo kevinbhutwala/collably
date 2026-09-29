@@ -129,7 +129,7 @@ export function WishlinkSpaciousShowcase() {
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0B0A14] font-display tracking-tight leading-[1.1]">
             Unlock your reach and{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7C3AED] via-[#9333EA] to-[#C084FC] underline decoration-[#C084FC] decoration-4 underline-offset-4">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7C3AED] to-[#C084FC] underline decoration-[#C084FC] decoration-4 underline-offset-4">
               maximize earnings
             </span>
           </h2>
@@ -210,7 +210,7 @@ export function WishlinkSpaciousShowcase() {
                 <div className="pt-2">
                   <Link
                     href={activeFeature.ctaLink}
-                    className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 rounded-full bg-gradient-to-r from-[#7C3AED] via-[#9333EA] to-[#C084FC] hover:from-[#6D28D9] hover:to-[#A855F7] text-white font-extrabold text-xs sm:text-sm transition-all shadow-[0_6px_25px_rgba(124,58,237,0.35)] border border-white/10 active:scale-95 cursor-pointer"
+                    className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 rounded-full bg-gradient-to-r from-[#7C3AED] to-[#C084FC] hover:from-[#6D28D9] hover:to-[#A855F7] text-white font-extrabold text-xs sm:text-sm transition-all shadow-[0_6px_25px_rgba(124,58,237,0.35)] border border-white/10 active:scale-95 cursor-pointer"
                   >
                     <span>{activeFeature.ctaText}</span>
                     <ArrowRight className="w-3.5 h-3.5 text-white" />
@@ -263,7 +263,7 @@ export function WishlinkSpaciousShowcase() {
                   <div className="w-full max-w-full sm:max-w-[440px] p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#F8FAFC] border border-black/[0.08] shadow-lg space-y-4">
                     <div className="flex items-center justify-between pb-3 border-b border-black/[0.06]">
                       <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#7C3AED] via-[#9333EA] to-[#C084FC] text-white flex items-center justify-center font-bold text-xs">
+                        <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#7C3AED] to-[#C084FC] text-white flex items-center justify-center font-bold text-xs">
                           IG
                         </div>
                         <div>

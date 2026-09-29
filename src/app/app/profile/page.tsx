@@ -710,7 +710,7 @@ export default function ProfileEditPage() {
             <button
               onClick={() => handleSaveProfile()}
               disabled={isSaving}
-              className="px-6 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs transition-all shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10 flex items-center gap-1.5 active:scale-98 disabled:opacity-50 cursor-pointer"
+              className="px-6 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs transition-all shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10 flex items-center gap-1.5 active:scale-98 disabled:opacity-50 cursor-pointer"
             >
               {isSaving ? (
                 <>
@@ -940,7 +940,7 @@ export default function ProfileEditPage() {
               type="button"
               onClick={() => handleSaveProfile()}
               disabled={isSaving}
-              className="px-4 sm:px-6 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs transition-all shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 flex items-center gap-1.5 active:scale-98 disabled:opacity-50 cursor-pointer"
+              className="px-4 sm:px-6 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs transition-all shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 flex items-center gap-1.5 active:scale-98 disabled:opacity-50 cursor-pointer"
             >
               {isSaving ? (
                 <>
@@ -1011,7 +1011,7 @@ export default function ProfileEditPage() {
               <Link href="/app/campaigns">
                 <button
                   type="button"
-                  className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-bold text-xs transition-all shadow-xs flex items-center gap-1.5 border border-black/10 cursor-pointer"
+                  className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-bold text-xs transition-all shadow-xs flex items-center gap-1.5 border border-black/10 cursor-pointer"
                 >
                   <Sparkles className="w-3.5 h-3.5" />
                   <span>Browse &amp; Apply to Briefs</span>

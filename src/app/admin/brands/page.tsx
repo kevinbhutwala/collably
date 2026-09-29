@@ -576,7 +576,7 @@ export default function AdminBrandsPage() {
                         className={`flex-1 py-1.5 rounded-lg text-xs font-bold transition-all border cursor-pointer ${
                           b.verified
                             ? "bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0B0A14] dark:text-white border-black/10 dark:border-white/10"
-                            : "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:brightness-105 text-white border-black/15 shadow-xs"
+                            : "bg-gradient-to-r from-primary to-accent hover:brightness-105 text-white border-black/15 shadow-xs"
                         }`}
                       >
                         {updatingId === b.id ? "Updating..." : b.verified ? "Revoke Partner" : "Approve Partner"}
@@ -803,7 +803,7 @@ export default function AdminBrandsPage() {
                                 className={`px-3 py-1 rounded-md text-[10px] font-bold transition-all border cursor-pointer ${
                                   b.verified
                                     ? "bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0B0A14] dark:text-white border-black/10 dark:border-white/10"
-                                    : "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:brightness-105 text-white border-black/15 shadow-xs"
+                                    : "bg-gradient-to-r from-primary to-accent hover:brightness-105 text-white border-black/15 shadow-xs"
                                 }`}
                               >
                                 {updatingId === b.id ? "Updating..." : b.verified ? "Revoke Partner" : "Approve Partner"}

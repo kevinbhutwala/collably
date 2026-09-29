@@ -383,7 +383,7 @@ export default function BrandShortlistsPage() {
           />
           <button
             type="submit"
-            className="w-full py-3 rounded-2xl bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white text-xs font-bold shadow-xs border border-black/10 flex items-center justify-center gap-1.5"
+            className="w-full py-3 rounded-2xl bg-gradient-to-r from-primary to-accent text-white text-xs font-bold shadow-xs border border-black/10 flex items-center justify-center gap-1.5"
           >
             <ListChecks className="w-3.5 h-3.5" />
             Create Shortlist

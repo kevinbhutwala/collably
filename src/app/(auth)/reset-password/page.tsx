@@ -174,7 +174,7 @@ function ResetPasswordForm() {
       <div className="space-y-3">
         <button
           onClick={() => router.push("/login")}
-          className="w-full py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white font-extrabold text-sm transition-all shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10 hover:opacity-90 active:scale-[0.98]"
+          className="w-full py-3.5 rounded-full bg-gradient-to-r from-primary to-accent text-white font-extrabold text-sm transition-all shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10 hover:opacity-90 active:scale-[0.98]"
         >
           Back to Login
         </button>
@@ -327,7 +327,7 @@ function ResetPasswordForm() {
             <button
               type="submit"
               disabled={isLoading || strength.score < 2 || password !== confirmPassword}
-              className="w-full py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10 flex items-center justify-center gap-2 disabled:opacity-50 active:scale-[0.98]"
+              className="w-full py-3.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10 flex items-center justify-center gap-2 disabled:opacity-50 active:scale-[0.98]"
             >
               {isLoading ? (
                 <>

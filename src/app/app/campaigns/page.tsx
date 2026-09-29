@@ -84,7 +84,7 @@ export default function AppCampaignsPage() {
             </div>
           </div>
           <Link href="/app/profile" className="shrink-0">
-            <button className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs flex items-center justify-center gap-1.5 shadow-md border border-white/10 transition-all cursor-pointer">
+            <button className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs flex items-center justify-center gap-1.5 shadow-md border border-white/10 transition-all cursor-pointer">
               <span>Complete Profile Details</span>
               <ArrowRight className="w-3.5 h-3.5 text-white" />
             </button>

@@ -562,7 +562,7 @@ export function CaseStudiesClient() {
                   Close
                 </button>
                 <Link href="/app/brand/campaigns/create" className="flex-1 sm:flex-initial">
-                  <button className="w-full px-6 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1.5 cursor-pointer">
+                  <button className="w-full px-6 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1.5 cursor-pointer">
                     <span>Launch Similar Campaign</span>
                     <ArrowRight className="w-3.5 h-3.5 text-[#0B0A14]" />
                   </button>

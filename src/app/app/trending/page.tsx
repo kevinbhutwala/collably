@@ -306,7 +306,7 @@ export default function DedicatedTrendingPage() {
                     {camp.category}
                   </span>
                   <Link href={`/campaigns/${camp.id}`}>
-                    <button className="px-4 py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-extrabold transition-all flex items-center gap-1.5 shadow-2xs">
+                    <button className="px-4 py-2 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white text-xs font-extrabold transition-all flex items-center gap-1.5 shadow-2xs">
                       <span>View Brief</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </button>
@@ -478,7 +478,7 @@ export default function DedicatedTrendingPage() {
                   {(role === "brand" || role === "brand_owner" || role === "brand_manager" || role === "agency_admin" || role === "super_admin") ? (
                     <button
                       onClick={() => handleOpenInvite(creator)}
-                      className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-extrabold transition-all flex items-center justify-center gap-1 shadow-2xs border border-black/10 cursor-pointer"
+                      className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white text-xs font-extrabold transition-all flex items-center justify-center gap-1 shadow-2xs border border-black/10 cursor-pointer"
                     >
                       <span>Invite</span>
                       <Send className="w-3 h-3" />

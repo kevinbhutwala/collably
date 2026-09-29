@@ -393,7 +393,7 @@ export default function AdminUsersPanel() {
           <button
             type="button"
             onClick={exportUsersCSV}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white font-bold text-xs shadow-xs hover:brightness-105 active:scale-95 transition-all border border-black/10"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-primary to-accent text-white font-bold text-xs shadow-xs hover:brightness-105 active:scale-95 transition-all border border-black/10"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Export CSV</span>

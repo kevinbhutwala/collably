@@ -92,7 +92,7 @@ export default function BrandCampaignsManagementPage() {
 
         <Link
           href="/app/brand/campaigns/create"
-          className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-[0_2px_12px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 flex items-center gap-2"
+          className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-[0_2px_12px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 flex items-center gap-2"
         >
           <PlusCircle className="w-4 h-4 text-[#0B0A14]" />
           <span>Post New Campaign</span>
@@ -285,7 +285,7 @@ export default function BrandCampaignsManagementPage() {
                   </Link>
 
                   <Link href="/app/applications" className="flex-1">
-                    <button className="w-full py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-extrabold transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1">
+                    <button className="w-full py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white text-xs font-extrabold transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1">
                       <span>Proposals ({c.applicantsCount})</span>
                       <ArrowRight className="w-3 h-3" />
                     </button>

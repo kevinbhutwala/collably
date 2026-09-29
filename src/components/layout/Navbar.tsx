@@ -158,7 +158,7 @@ export function Navbar() {
 
                 <Link
                   href="/register"
-                  className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#7C3AED] via-[#9333EA] to-[#C084FC] hover:from-[#6D28D9] hover:to-[#A855F7] text-white text-xs font-extrabold shadow-[0_2px_14px_rgba(124,58,237,0.35)] border border-white/10 transition-all active:scale-98 flex items-center gap-1.5 font-sans hover-lift"
+                  className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#7C3AED] to-[#C084FC] hover:from-[#6D28D9] hover:to-[#A855F7] text-white text-xs font-extrabold shadow-[0_2px_14px_rgba(124,58,237,0.35)] border border-white/10 transition-all active:scale-98 flex items-center gap-1.5 font-sans hover-lift"
                 >
                   <span>Sign up</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -291,7 +291,7 @@ export function Navbar() {
                     <Link
                       href="/register"
                       onClick={() => setMobileMenuOpen(false)}
-                      className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-[#7C3AED] via-[#9333EA] to-[#C084FC] text-white text-xs font-extrabold shadow-sm flex items-center justify-center gap-1.5"
+                      className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-[#7C3AED] to-[#C084FC] text-white text-xs font-extrabold shadow-sm flex items-center justify-center gap-1.5"
                     >
                       <span>Sign up</span>
                       <ArrowRight className="w-3.5 h-3.5" />

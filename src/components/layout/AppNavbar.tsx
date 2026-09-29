@@ -216,7 +216,7 @@ export function AppNavbar() {
           {role === "brand" && (
             <Link
               href="/app/brand/campaigns/create"
-              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-bold text-xs shadow-[0_2px_10px_rgba(var(--theme-primary-rgb),0.3)] transition-all font-sans border border-white/10"
+              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-bold text-xs shadow-[0_2px_10px_rgba(var(--theme-primary-rgb),0.3)] transition-all font-sans border border-white/10"
             >
               <Plus className="w-3.5 h-3.5 text-white" />
               <span>Create Brief</span>
@@ -227,7 +227,7 @@ export function AppNavbar() {
           {role === "creator" && (
             <Link
               href="/campaigns"
-              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-bold text-xs shadow-[0_2px_10px_rgba(var(--theme-primary-rgb),0.3)] transition-all font-sans border border-white/10"
+              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-bold text-xs shadow-[0_2px_10px_rgba(var(--theme-primary-rgb),0.3)] transition-all font-sans border border-white/10"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
               <span>Explore Briefs</span>

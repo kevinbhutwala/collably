@@ -217,7 +217,7 @@ export function DeliverableReviewCard({
               href={assetUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-extrabold shadow-sm transition-all border border-black/10 w-full sm:w-auto shrink-0 group"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white text-xs font-extrabold shadow-sm transition-all border border-black/10 w-full sm:w-auto shrink-0 group"
             >
               <span>Open in {platformName} / New Tab</span>
               <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[#0B0A14]" />
@@ -280,7 +280,7 @@ export function DeliverableReviewCard({
                 <button
                   type="button"
                   onClick={handleApprove}
-                  className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-black text-xs transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1.5"
+                  className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-black text-xs transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1.5"
                 >
                   <CheckCircle2 className="w-4 h-4 text-[#0B0A14]" />
                   <span>Approve &amp; Send Payment</span>

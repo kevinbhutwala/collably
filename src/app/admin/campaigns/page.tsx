@@ -118,7 +118,7 @@ export default function AdminCampaignsQueuePage() {
                   {c.status !== "active" ? (
                     <button
                       onClick={() => handleUpdateStatus(c.id, "active")}
-                      className="px-4 py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-xs border border-black/10"
+                      className="px-4 py-2 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-xs border border-black/10"
                     >
                       Approve Brief
                     </button>

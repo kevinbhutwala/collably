@@ -307,7 +307,7 @@ export function CreatorQuickViewModal({
               <Link
                 href="/app/brand/campaigns/create"
                 onClick={onClose}
-                className="py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs transition-all text-center flex items-center justify-center gap-1.5 shadow-[0_2px_12px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 cursor-pointer"
+                className="py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs transition-all text-center flex items-center justify-center gap-1.5 shadow-[0_2px_12px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 cursor-pointer"
               >
                 <span>Book Escrow (5d)</span>
                 <ArrowRight className="w-3.5 h-3.5 text-[#0B0A14]" />

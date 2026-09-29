@@ -108,7 +108,7 @@ export function VisualHeroSection() {
             {/* Headline */}
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black font-display tracking-tight text-[#0B0A14] dark:text-white leading-[1.02]">
               WHERE VISIONARY BRANDS MEET{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-[#9333EA] to-accent">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
                 CINEMATIC
               </span>{" "}
               CREATORS.
@@ -123,7 +123,7 @@ export function VisualHeroSection() {
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <Link
                 href="/register"
-                className="px-7 py-4 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.5)] flex items-center gap-2 group active:scale-[0.98] border border-black/10 font-sans hover-lift cursor-pointer"
+                className="px-7 py-4 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.5)] flex items-center gap-2 group active:scale-[0.98] border border-black/10 font-sans hover-lift cursor-pointer"
               >
                 <span>Launch Campaign Brief</span>
                 <ArrowRight className="w-4 h-4 text-[#0B0A14] group-hover:translate-x-1 transition-transform" />

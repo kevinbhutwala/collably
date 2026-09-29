@@ -795,7 +795,7 @@ export function ChatWorkspace() {
               {/* Action: New Conversation */}
               <button
                 onClick={() => setIsNewChatModalOpen(true)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-bold text-xs shadow-2xs border border-black/10 transition-all hover-lift active:scale-95"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-bold text-xs shadow-2xs border border-black/10 transition-all hover-lift active:scale-95"
                 title="Start a new message thread"
               >
                 <Plus className="w-3.5 h-3.5" />
@@ -1528,7 +1528,7 @@ export function ChatWorkspace() {
           <button
             type="submit"
             disabled={!selectedRecipient || isCreatingChat}
-            className="w-full py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white font-extrabold text-xs shadow-xs border border-black/10 disabled:opacity-40 transition-all flex items-center justify-center gap-2"
+            className="w-full py-3 rounded-full bg-gradient-to-r from-primary to-accent text-white font-extrabold text-xs shadow-xs border border-black/10 disabled:opacity-40 transition-all flex items-center justify-center gap-2"
           >
             {isCreatingChat ? (
               <div className="w-4 h-4 rounded-full border-2 border-black border-t-transparent animate-spin" />

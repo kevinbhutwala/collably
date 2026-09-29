@@ -117,7 +117,7 @@ export function CreatorMarketPulseWidget({ creatorId }: { creatorId?: string }) 
                 </div>
                 <div className="h-2 w-full rounded-full bg-black/5 dark:bg-white/10 overflow-hidden">
                   <div
-                    className="h-full bg-gradient-to-r from-primary via-[#9333EA] to-accent rounded-full"
+                    className="h-full bg-gradient-to-r from-primary to-accent rounded-full"
                     style={{ width: `${d.demandPercent}%` }}
                   />
                 </div>

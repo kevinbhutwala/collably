@@ -280,7 +280,7 @@ export default function AdminDisputesArbitrationPage() {
                             handleOutcomeChange("FULL_CREATOR_PAYOUT");
                             setIsResolveModalOpen(true);
                           }}
-                          className="w-full px-4 py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1.5"
+                          className="w-full px-4 py-2 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1.5"
                         >
                           <Scale className="w-3.5 h-3.5 text-[#0B0A14]" />
                           <span>Issue Ruling</span>
@@ -349,7 +349,7 @@ export default function AdminDisputesArbitrationPage() {
           <button
             type="submit"
             disabled={isSubmitting || !resolutionNotes.trim()}
-            className="w-full py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-black transition-all shadow-xs border border-black/10 disabled:opacity-50"
+            className="w-full py-3.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white text-xs font-black transition-all shadow-xs border border-black/10 disabled:opacity-50"
           >
             {isSubmitting ? "Executing Settlement..." : "Sign Ruling & Execute Ledger Settlement"}
           </button>

@@ -95,7 +95,7 @@ export function CollablyNavbar() {
 
                 <Link
                   href="/register"
-                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-xs font-extrabold text-white bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary border border-black/10 shadow-[0_2px_12px_rgba(var(--theme-primary-rgb),0.4)] active:scale-[0.98] transition-all font-sans"
+                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-xs font-extrabold text-white bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary border border-black/10 shadow-[0_2px_12px_rgba(var(--theme-primary-rgb),0.4)] active:scale-[0.98] transition-all font-sans"
                 >
                   <span>Sign up</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -184,7 +184,7 @@ export function CollablyNavbar() {
                   <Link
                     href={user?.role === "brand" ? "/app/brand/campaigns" : "/app/dashboard"}
                     onClick={() => setMobileOpen(false)}
-                    className="w-full py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white text-xs font-extrabold text-center flex items-center justify-center gap-1.5"
+                    className="w-full py-3 rounded-full bg-gradient-to-r from-primary to-accent text-white text-xs font-extrabold text-center flex items-center justify-center gap-1.5"
                   >
                     <span>Go to Dashboard</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -195,7 +195,7 @@ export function CollablyNavbar() {
                   <Link
                     href="/register"
                     onClick={() => setMobileOpen(false)}
-                    className="w-full py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white text-xs font-extrabold text-center block"
+                    className="w-full py-3 rounded-full bg-gradient-to-r from-primary to-accent text-white text-xs font-extrabold text-center block"
                   >
                     Sign up
                   </Link>

@@ -353,7 +353,7 @@ export function PlanUpgradeModal() {
                       disabled={isLoading && isProcessing}
                       className={`w-full py-3 px-3 rounded-full text-xs font-bold transition-all flex flex-wrap items-center justify-center gap-1.5 text-center leading-snug active:scale-98 ${
                         p.highlight
-                          ? "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] font-extrabold"
+                          ? "bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] font-extrabold"
                           : "bg-[#F4F4F8] hover:bg-[#EAEAF0] text-[#0B0A14] border border-black/12 hover:border-black/25 font-bold shadow-xs"
                       }`}
                     >

@@ -409,7 +409,7 @@ export function CreatorDetailClient({
           <div className="lg:col-span-4">
             <div className="sticky top-24 rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 overflow-hidden shadow-lg">
               {/* Top accent bar */}
-              <div className="h-1.5 bg-gradient-to-r from-primary via-[#9333EA] to-accent" />
+              <div className="h-1.5 bg-gradient-to-r from-primary to-accent" />
 
               <div className="p-6 space-y-5">
                 {/* Price */}
@@ -441,7 +441,7 @@ export function CreatorDetailClient({
                 <div className="space-y-2.5 pt-1">
                   <button
                     onClick={() => setIsInviteModalOpen(true)}
-                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-bold text-sm transition-all shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.35)] flex items-center justify-center gap-2 cursor-pointer active:scale-98"
+                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-bold text-sm transition-all shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.35)] flex items-center justify-center gap-2 cursor-pointer active:scale-98"
                   >
                     <span>Send Campaign Brief</span>
                     <ArrowRight className="w-4 h-4" />
@@ -678,7 +678,7 @@ export function CreatorDetailClient({
                 className={`w-full py-3.5 rounded-full font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 ${
                   brandEligibilityReport && !brandEligibilityReport.eligible
                     ? "bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 cursor-not-allowed"
-                    : "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white shadow-[0_4px_14px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10 active:scale-98 cursor-pointer"
+                    : "bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white shadow-[0_4px_14px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10 active:scale-98 cursor-pointer"
                 }`}
               >
                 {isSubmittingProposal ? (

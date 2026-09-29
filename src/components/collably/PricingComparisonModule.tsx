@@ -135,7 +135,7 @@ export function PricingComparisonModule() {
                 )}
               >
                 {plan.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white text-[10px] font-mono font-extrabold tracking-wider uppercase shadow-[0_0_15px_rgba(var(--theme-primary-rgb),0.5)] border border-black/10">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-gradient-to-r from-primary to-accent text-white text-[10px] font-mono font-extrabold tracking-wider uppercase shadow-[0_0_15px_rgba(var(--theme-primary-rgb),0.5)] border border-black/10">
                     ★ MOST POPULAR
                   </div>
                 )}
@@ -183,7 +183,7 @@ export function PricingComparisonModule() {
                       className={cn(
                         "w-full py-3.5 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 active:scale-98 shadow-sm",
                         plan.popular
-                          ? "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10"
+                          ? "bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10"
                           : "bg-[#F4F4F8] hover:bg-[#EAEAF0] text-[#0B0A14] border border-black/10 hover:border-black/20 font-bold shadow-2xs"
                       )}
                     >

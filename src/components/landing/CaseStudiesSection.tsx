@@ -136,7 +136,7 @@ export function CaseStudiesSection() {
             <div className="pt-6 border-t border-black/8 dark:border-white/10 flex items-center justify-between relative z-10">
               <span className="text-xs text-[#7A7A8A] dark:text-[#8E8EA4] font-mono">Keep 90% of verified earnings</span>
               <Link href="/register?role=creator">
-                <button className="px-6 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all flex items-center gap-1.5 shadow-[0_2px_10px_rgba(var(--theme-primary-rgb),0.3)] border border-black/10 hover-lift">
+                <button className="px-6 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all flex items-center gap-1.5 shadow-[0_2px_10px_rgba(var(--theme-primary-rgb),0.3)] border border-black/10 hover-lift">
                   <span>Join Roster</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>

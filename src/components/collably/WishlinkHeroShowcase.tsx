@@ -78,24 +78,26 @@ export function WishlinkHeroShowcase() {
           <button
             type="button"
             onClick={() => setActiveTab('creator')}
-            className={`px-5 sm:px-6 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
+            className={`px-5 sm:px-6 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${
               activeTab === 'creator'
-                ? 'bg-[#7C3AED] text-white shadow-sm'
+                ? 'bg-[#7C3AED] text-white shadow-[0_2px_12px_rgba(124,58,237,0.45)]'
                 : 'text-white/60 hover:text-white'
             }`}
           >
-            For Creators
+            <span>🟣</span>
+            <span>For Creators</span>
           </button>
           <button
             type="button"
             onClick={() => setActiveTab('brand')}
-            className={`px-5 sm:px-6 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
+            className={`px-5 sm:px-6 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${
               activeTab === 'brand'
-                ? 'bg-[#7C3AED] text-white shadow-sm'
+                ? 'bg-[#0F766E] text-white shadow-[0_2px_12px_rgba(15,118,110,0.45)]'
                 : 'text-white/60 hover:text-white'
             }`}
           >
-            For Brands
+            <span>🟢</span>
+            <span>For Brands</span>
           </button>
         </motion.div>
 
@@ -146,7 +148,11 @@ export function WishlinkHeroShowcase() {
         >
           <Link
             href={activeTab === 'creator' ? '/register?role=creator' : '/register?role=brand'}
-            className="group relative w-full sm:w-auto px-6 sm:px-7 py-3.5 sm:py-3.5 bg-gradient-to-r from-[#7C3AED] via-[#9333EA] to-[#C084FC] text-white hover:from-[#6D28D9] hover:to-[#A855F7] font-sans font-bold text-xs tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-2 rounded-full shadow-[0_10px_30px_rgba(124,58,237,0.35)] hover:shadow-[0_15px_40px_rgba(124,58,237,0.5)] hover:scale-105 active:scale-95 cursor-pointer text-center"
+            className={`group relative w-full sm:w-auto px-6 sm:px-7 py-3.5 sm:py-3.5 text-white font-sans font-bold text-xs tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-2 rounded-full cursor-pointer text-center ${
+              activeTab === 'creator'
+                ? 'bg-gradient-to-r from-[#7C3AED] to-[#C084FC] hover:from-[#6D28D9] hover:to-[#A855F7] shadow-[0_10px_30px_rgba(124,58,237,0.35)] hover:shadow-[0_15px_40px_rgba(124,58,237,0.5)]'
+                : 'bg-gradient-to-r from-[#0F766E] to-[#34D399] hover:from-[#0D9488] hover:to-[#059669] shadow-[0_10px_30px_rgba(15,118,110,0.35)] hover:shadow-[0_15px_40px_rgba(15,118,110,0.5)]'
+            }`}
           >
             <Play className="w-3.5 h-3.5 fill-current transition-transform duration-300 group-hover:scale-110 shrink-0" />
             <span className="whitespace-nowrap">{activeTab === 'creator' ? 'Join as Creator (Free)' : 'Launch Campaign'}</span>
@@ -154,7 +160,11 @@ export function WishlinkHeroShowcase() {
 
           <Link
             href={activeTab === 'creator' ? '/campaigns' : '/creators'}
-            className="w-full sm:w-auto px-6 sm:px-7 py-3.5 sm:py-3.5 border border-white/20 hover:border-[#C084FC]/60 text-white hover:text-[#C084FC] font-sans font-medium text-xs tracking-wider uppercase transition-all duration-300 bg-white/[0.05] hover:bg-white/[0.1] backdrop-blur-xl rounded-full shadow-lg hover:scale-105 active:scale-95 cursor-pointer flex items-center justify-center text-center whitespace-nowrap"
+            className={`w-full sm:w-auto px-6 sm:px-7 py-3.5 sm:py-3.5 border font-sans font-medium text-xs tracking-wider uppercase transition-all duration-300 bg-white/[0.05] hover:bg-white/[0.1] backdrop-blur-xl rounded-full shadow-lg hover:scale-105 active:scale-95 cursor-pointer flex items-center justify-center text-center whitespace-nowrap text-white ${
+              activeTab === 'creator'
+                ? 'border-white/20 hover:border-[#C084FC]/60 hover:text-[#C084FC]'
+                : 'border-white/20 hover:border-[#34D399]/60 hover:text-[#34D399]'
+            }`}
           >
             {activeTab === 'creator' ? 'Explore Briefs' : 'Browse Creators'}
           </Link>
@@ -171,11 +181,11 @@ export function WishlinkHeroShowcase() {
               <VolumeX className="w-4 h-4 text-neutral-400 group-hover:text-white" />
             ) : (
               <div className="flex items-center gap-1.5">
-                <Volume2 className="w-4 h-4 text-[#C084FC]" />
+                <Volume2 className={`w-4 h-4 ${activeTab === 'creator' ? 'text-[#C084FC]' : 'text-[#34D399]'}`} />
                 <span className="flex items-center gap-0.5 h-3">
-                  <span className="w-0.5 h-2 bg-[#C084FC] animate-pulse" />
-                  <span className="w-0.5 h-3 bg-[#C084FC] animate-pulse delay-75" />
-                  <span className="w-0.5 h-1.5 bg-[#C084FC] animate-pulse delay-150" />
+                  <span className={`w-0.5 h-2 ${activeTab === 'creator' ? 'bg-[#C084FC]' : 'bg-[#34D399]'} animate-pulse`} />
+                  <span className={`w-0.5 h-3 ${activeTab === 'creator' ? 'bg-[#C084FC]' : 'bg-[#34D399]'} animate-pulse delay-75`} />
+                  <span className={`w-0.5 h-1.5 ${activeTab === 'creator' ? 'bg-[#C084FC]' : 'bg-[#34D399]'} animate-pulse delay-150`} />
                 </span>
               </div>
             )}

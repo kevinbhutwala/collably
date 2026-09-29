@@ -27,7 +27,7 @@ export function WishlinkLaunchpadCTA() {
 
             <h2 className="text-2xl min-[400px]:text-3xl sm:text-5xl lg:text-6xl font-black font-display tracking-tight text-[#0B0A14] leading-[1.08]">
               Your launchpad to{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7C3AED] via-[#9333EA] to-[#C084FC] underline decoration-[#C084FC] decoration-4 underline-offset-8">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7C3AED] to-[#C084FC] underline decoration-[#C084FC] decoration-4 underline-offset-8">
                 success!!
               </span>
             </h2>
@@ -41,7 +41,7 @@ export function WishlinkLaunchpadCTA() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-3">
               <Link
                 href="/register?role=creator"
-                className="w-full sm:w-auto px-8 py-3.5 sm:py-4 rounded-full bg-gradient-to-r from-[#7C3AED] via-[#9333EA] to-[#C084FC] hover:from-[#6D28D9] hover:to-[#A855F7] text-white font-extrabold text-sm sm:text-base shadow-[0_8px_30px_rgba(124,58,237,0.4)] border border-white/10 transition-all flex items-center justify-center gap-2 active:scale-95"
+                className="w-full sm:w-auto px-8 py-3.5 sm:py-4 rounded-full bg-gradient-to-r from-[#7C3AED] to-[#C084FC] hover:from-[#6D28D9] hover:to-[#A855F7] text-white font-extrabold text-sm sm:text-base shadow-[0_8px_30px_rgba(124,58,237,0.4)] border border-white/10 transition-all flex items-center justify-center gap-2 active:scale-95"
               >
                 <span>Sign up as Creator</span>
                 <ArrowRight className="w-4 h-4 text-white" />

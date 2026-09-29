@@ -167,7 +167,7 @@ export function StreamlinedPricing() {
                   href={tier.ctaHref}
                   className={`mt-6 w-full py-3.5 rounded-full text-xs font-bold transition-all flex items-center justify-center gap-1.5 active:scale-98 shadow-sm ${
                     tier.popular
-                      ? "bg-gradient-to-r from-[#7C3AED] via-[#9333EA] to-[#C084FC] hover:from-[#6D28D9] hover:to-[#A855F7] text-white shadow-[0_4px_20px_rgba(124,58,237,0.4)]"
+                      ? "bg-gradient-to-r from-[#7C3AED] to-[#C084FC] hover:from-[#6D28D9] hover:to-[#A855F7] text-white shadow-[0_4px_20px_rgba(124,58,237,0.4)]"
                       : "bg-[#F1F5F9] hover:bg-[#E2E8F0] dark:bg-[#1A172E] dark:hover:bg-[#252042] text-[#0B0A14] dark:text-white border border-black/10 dark:border-white/10 font-bold shadow-2xs hover:border-black/20"
                   }`}
                 >

@@ -314,7 +314,7 @@ export function CampaignDetailClient({
               </div>
               <Link
                 href="/app/profile"
-                className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs transition-colors shrink-0 shadow-xs border border-black/10 cursor-pointer"
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs transition-colors shrink-0 shadow-xs border border-black/10 cursor-pointer"
               >
                 <span>Complete Profile First</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -351,7 +351,7 @@ export function CampaignDetailClient({
             ) : (
               <button
                 onClick={() => setIsApplyModalOpen(true)}
-                className="w-full sm:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-bold text-xs sm:text-sm transition-all shadow-[0_4px_14px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10 flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full sm:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-bold text-xs sm:text-sm transition-all shadow-[0_4px_14px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10 flex items-center justify-center gap-2 cursor-pointer"
               >
                 <span>Pitch Creative Angle &amp; Apply</span>
                 <ArrowRight className="w-4 h-4 text-[#0B0A14]" />
@@ -520,7 +520,7 @@ export function CampaignDetailClient({
                     ? "bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/30 cursor-not-allowed"
                     : eligibilityReport && !eligibilityReport.eligible
                     ? "bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 cursor-not-allowed"
-                    : "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white shadow-[0_4px_14px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10 active:scale-98 cursor-pointer"
+                    : "bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white shadow-[0_4px_14px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10 active:scale-98 cursor-pointer"
                 }`}
               >
                 {isSubmitting ? (

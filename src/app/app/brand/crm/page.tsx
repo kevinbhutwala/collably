@@ -327,7 +327,7 @@ export default function BrandCRMPage() {
                     href={`/app/messages?recipientId=${c.creator.userId || c.creator.id}&recipientName=${encodeURIComponent(c.creator.fullName)}`}
                     className="flex-1"
                   >
-                    <button className="w-full py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-xs cursor-pointer">
+                    <button className="w-full py-2 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-xs cursor-pointer">
                       Message
                     </button>
                   </Link>
@@ -356,7 +356,7 @@ export default function BrandCRMPage() {
             />
             <button
               type="submit"
-              className="w-full py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white text-xs font-bold shadow-xs border border-black/10 cursor-pointer"
+              className="w-full py-3 rounded-full bg-gradient-to-r from-primary to-accent text-white text-xs font-bold shadow-xs border border-black/10 cursor-pointer"
             >
               Save Internal Note
             </button>

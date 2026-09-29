@@ -231,7 +231,7 @@ export default function AgencyAdminCommandCenter() {
                     className={`px-4 py-2 rounded-full text-xs font-semibold font-mono transition-all border flex items-center gap-1.5 ${
                       creator.verified
                         ? "bg-black/5 dark:bg-white/10 text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-white border-black/10 dark:border-white/10"
-                        : "bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white font-bold shadow-xs border-black/10"
+                        : "bg-gradient-to-r from-primary to-accent text-white font-bold shadow-xs border-black/10"
                     }`}
                   >
                     {verifyingId === creator.id ? (

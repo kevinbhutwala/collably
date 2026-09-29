@@ -162,14 +162,14 @@ export default function CollaborationsWorkspacePage() {
         <div className="flex items-center gap-2.5 self-start sm:self-center">
           {role === "creator" ? (
             <Link href="/app/campaigns">
-              <button className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-[0_4px_14px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 active:scale-98">
+              <button className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-[0_4px_14px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 active:scale-98">
                 <Compass className="w-3.5 h-3.5" />
                 <span>Find Campaigns</span>
               </button>
             </Link>
           ) : (
             <Link href="/app/brand/campaigns/create">
-              <button className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-[0_4px_14px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 active:scale-98">
+              <button className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-[0_4px_14px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 active:scale-98">
                 <Plus className="w-3.5 h-3.5" />
                 <span>Post a Campaign</span>
               </button>

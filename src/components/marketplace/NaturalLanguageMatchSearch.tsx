@@ -87,7 +87,7 @@ export function NaturalLanguageMatchSearch() {
         <button
           onClick={() => handleSearch()}
           disabled={loading}
-          className="flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary px-6 py-3.5 text-sm font-extrabold text-white shadow-xs border border-black/10 disabled:opacity-50 transition-all cursor-pointer"
+          className="flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary px-6 py-3.5 text-sm font-extrabold text-white shadow-xs border border-black/10 disabled:opacity-50 transition-all cursor-pointer"
         >
           {loading ? (
             <span className="h-4 w-4 animate-spin rounded-full border-2 border-[#0B0A14] border-t-transparent" />
@@ -220,7 +220,7 @@ export function NaturalLanguageMatchSearch() {
 
                       <Link
                         href={`/creators/${creator.id}`}
-                        className="rounded-xl bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary px-4 py-2 text-xs font-extrabold text-white shadow-2xs border border-black/10 transition-all"
+                        className="rounded-xl bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary px-4 py-2 text-xs font-extrabold text-white shadow-2xs border border-black/10 transition-all"
                       >
                         Invite to Campaign →
                       </Link>
@@ -283,7 +283,7 @@ export function NaturalLanguageMatchSearch() {
                               </div>
                               <div className="mt-1.5 h-1.5 w-full rounded-full bg-black/5 dark:bg-white/10 overflow-hidden">
                                 <div
-                                  className="h-full bg-gradient-to-r from-primary via-[#9333EA] to-accent rounded-full"
+                                  className="h-full bg-gradient-to-r from-primary to-accent rounded-full"
                                   style={{ width: `${f.score}%` }}
                                 />
                               </div>

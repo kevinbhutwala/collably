@@ -504,7 +504,7 @@ export function CampaignWizard() {
           {/* Progress track */}
           <div className="h-1.5 w-full bg-black/5 dark:bg-white/10 rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-primary via-[#9333EA] to-accent rounded-full transition-all duration-300"
+              className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-300"
               style={{ width: `${(step / 7) * 100}%` }}
             />
           </div>
@@ -1450,7 +1450,7 @@ export function CampaignWizard() {
               onClick={handlePublish}
               isLoading={isPublishing}
               rightIcon={<CheckCircle2 className="w-5 h-5 text-[#0B0A14]" />}
-              className="rounded-full w-full sm:w-auto font-black cursor-pointer shadow-md bg-gradient-to-r from-primary via-[#9333EA] to-accent"
+              className="rounded-full w-full sm:w-auto font-black cursor-pointer shadow-md bg-gradient-to-r from-primary to-accent"
             >
               Publish Campaign Brief &amp; Deploy Escrow
             </Button>

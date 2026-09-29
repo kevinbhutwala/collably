@@ -403,7 +403,7 @@ export default function AdminSettingsPage() {
           <button
             onClick={handleSaveAll}
             disabled={saving}
-            className="px-4 py-1.5 rounded-lg bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:brightness-105 active:scale-95 text-white text-[11px] font-black transition-all shadow-xs border border-black/15 flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+            className="px-4 py-1.5 rounded-lg bg-gradient-to-r from-primary to-accent hover:brightness-105 active:scale-95 text-white text-[11px] font-black transition-all shadow-xs border border-black/15 flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
           >
             <Save className="w-3.5 h-3.5 text-[#0B0A14]" />
             <span>{saving ? "Saving..." : "Save Configuration"}</span>

@@ -37,7 +37,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variantStyles = {
       primary:
-        "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:-translate-y-0.5 hover:from-accent hover:to-primary text-white font-bold shadow-[0_5px_16px_rgba(var(--theme-primary-rgb),0.32)] hover:shadow-[0_9px_24px_rgba(var(--theme-primary-rgb),0.42)] border border-black/10",
+        "bg-gradient-to-r from-primary to-accent hover:-translate-y-0.5 hover:from-accent hover:to-primary text-white font-bold shadow-[0_5px_16px_rgba(var(--theme-primary-rgb),0.32)] hover:shadow-[0_9px_24px_rgba(var(--theme-primary-rgb),0.42)] border border-black/10",
       secondary:
         "bg-gradient-to-r from-[#1E1E28] to-[#12121A] hover:from-[#282836] hover:to-[#1A1A24] text-white border border-primary/30 shadow-md",
       outline:

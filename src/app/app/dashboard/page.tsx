@@ -235,7 +235,7 @@ function DashboardContent() {
             profileStatus.canApplyToCampaigns ? (
               <>
                 <Link href="/app/campaigns" className="w-full sm:w-auto">
-                  <button className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs border border-black/10 cursor-pointer">
+                  <button className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs border border-black/10 cursor-pointer">
                     <Compass className="w-3.5 h-3.5 text-[#0B0A14] shrink-0" />
                     <span className="truncate">Find Campaigns</span>
                   </button>
@@ -250,7 +250,7 @@ function DashboardContent() {
             ) : (
               <>
                 <Link href="/app/campaigns" className="w-full sm:w-auto">
-                  <button className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs border border-black/10 cursor-pointer">
+                  <button className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs border border-black/10 cursor-pointer">
                     <Compass className="w-3.5 h-3.5 text-[#0B0A14] shrink-0" />
                     <span className="truncate">Browse Briefs</span>
                   </button>
@@ -266,7 +266,7 @@ function DashboardContent() {
           ) : (
             <>
               <Link href="/app/brand/campaigns/create" className="w-full sm:w-auto">
-                <button className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs border border-black/10">
+                <button className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs border border-black/10">
                   <FolderPlus className="w-3.5 h-3.5 text-[#0B0A14] shrink-0" />
                   <span className="truncate">Post Campaign</span>
                 </button>

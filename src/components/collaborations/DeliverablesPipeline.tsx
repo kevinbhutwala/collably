@@ -518,7 +518,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
               type="button"
               onClick={handleFundEscrow}
               disabled={isFunding}
-              className="px-4 py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs shadow-xs border border-black/10 transition-all flex items-center gap-1.5 disabled:opacity-50"
+              className="px-4 py-2 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs shadow-xs border border-black/10 transition-all flex items-center gap-1.5 disabled:opacity-50"
             >
               <Lock className="w-3 h-3" />
               <span>{isFunding ? "Funding..." : "Fund Escrow Vault"}</span>
@@ -570,7 +570,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
                   <button
                     onClick={handleFundEscrow}
                     disabled={isFunding}
-                    className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs shadow-xs border border-black/10 transition-all flex items-center gap-2 disabled:opacity-50"
+                    className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs shadow-xs border border-black/10 transition-all flex items-center gap-2 disabled:opacity-50"
                   >
                     <Lock className="w-3.5 h-3.5" />
                     <span>{isFunding ? "Funding Vault..." : `Fund Escrow Vault (${formatCurrency(collab.totalAgreedBudget, collab.currency)})`}</span>
@@ -779,7 +779,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
                         disabled={!isFunded}
                         className={`px-4 py-2 rounded-full font-bold text-xs transition-all shadow-xs border flex items-center gap-1.5 ${
                           isFunded
-                            ? "bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white border-black/10 hover:shadow-sm"
+                            ? "bg-gradient-to-r from-primary to-accent text-white border-black/10 hover:shadow-sm"
                             : "bg-black/5 dark:bg-white/10 text-[#8A8A9A] dark:text-[#6A6A7E] border-black/5 dark:border-white/10 cursor-not-allowed"
                         }`}
                       >
@@ -794,7 +794,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
                           setSelectedDel(del);
                           setIsReviewModalOpen(true);
                         }}
-                        className="px-4 py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white font-bold text-xs transition-all shadow-xs border border-black/10 flex items-center gap-1.5"
+                        className="px-4 py-2 rounded-full bg-gradient-to-r from-primary to-accent text-white font-bold text-xs transition-all shadow-xs border border-black/10 flex items-center gap-1.5"
                       >
                         <FileCheck2 className="w-3.5 h-3.5 text-[#0B0A14]" />
                         <span>Review &amp; Approve</span>
@@ -973,7 +973,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-black text-xs transition-all shadow-xs border border-black/10 disabled:opacity-50 flex items-center justify-center gap-2"
+              className="w-full py-3.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-black text-xs transition-all shadow-xs border border-black/10 disabled:opacity-50 flex items-center justify-center gap-2"
             >
               <Send className="w-4 h-4 text-[#0B0A14]" />
               <span>{isSubmitting ? "Submitting..." : "Submit Deliverable & Start 120h SLA"}</span>
@@ -1037,7 +1037,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
             </button>
             <button
               type="button"
-              className="flex-1 py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-black transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1.5"
+              className="flex-1 py-3 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white text-xs font-black transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1.5"
               onClick={() => selectedDel && handleApproveDeliverable(selectedDel.id)}
             >
               <CheckCircle2 className="w-4 h-4 text-[#0B0A14]" />

@@ -152,6 +152,101 @@
     --destructive: #FF3B30;
     --destructive-foreground: #FFFFFF;
   }
+
+  /* ══════════════════════════════════════════════════════════════════════════
+     CREATORS → VIOLET 🟣 THEME
+     Feels creative, expressive, social and personal.
+     Canvas: #F8FAFC • Primary: #7C3AED • Accent: #C084FC • Midnight: #0B0A14
+     ══════════════════════════════════════════════════════════════════════════ */
+  [data-role="creator"],
+  .theme-creator {
+    --theme-midnight: #0B0A14;
+    --theme-midnight-rgb: 11 10 20;
+
+    --theme-primary: #7C3AED;
+    --theme-primary-hover: #6D28D9;
+    --theme-primary-active: #5B21B6;
+    --theme-primary-rgb: 124 58 237;
+    --theme-primary-hover-rgb: 109 40 217;
+
+    --theme-accent: #C084FC;
+    --theme-accent-hover: #D8B4FE;
+    --theme-accent-rgb: 192 132 252;
+    --theme-accent-hover-rgb: 216 180 254;
+
+    --theme-canvas: #F8FAFC;
+    --theme-canvas-rgb: 248 250 252;
+
+    --theme-glow: 0 4px 20px rgba(124, 58, 237, 0.35);
+    --theme-glow-lg: 0 8px 32px rgba(124, 58, 237, 0.50);
+
+    --primary: var(--theme-primary);
+    --accent: var(--theme-accent);
+    --ring: var(--theme-primary);
+  }
+
+  /* ══════════════════════════════════════════════════════════════════════════
+     BRANDS → EMERALD 🟢 THEME
+     Feels professional, growth-oriented, trustworthy and business-focused.
+     Emerald + White — Premium & trustworthy
+     #F8FAF9 → #0F766E → #34D399 → #0F172A
+     ══════════════════════════════════════════════════════════════════════════ */
+  [data-role="brand"],
+  .theme-brand {
+    --theme-midnight: #0F172A;
+    --theme-midnight-rgb: 15 23 42;
+
+    --theme-primary: #0F766E;
+    --theme-primary-hover: #0D9488;
+    --theme-primary-active: #115E59;
+    --theme-primary-rgb: 15 118 110;
+    --theme-primary-hover-rgb: 13 148 136;
+
+    --theme-accent: #34D399;
+    --theme-accent-hover: #6EE7B7;
+    --theme-accent-rgb: 52 211 153;
+    --theme-accent-hover-rgb: 110 231 183;
+
+    --theme-canvas: #F8FAF9;
+    --theme-canvas-rgb: 248 250 249;
+
+    --theme-glow: 0 4px 20px rgba(15, 118, 110, 0.35);
+    --theme-glow-lg: 0 8px 32px rgba(15, 118, 110, 0.50);
+
+    /* Central mapped tokens */
+    --color-text-primary: var(--theme-midnight);
+    --color-theme: var(--theme-primary);
+    --color-theme-hover: var(--theme-primary-hover);
+    --color-theme-active: var(--theme-primary-active);
+    --color-theme-lilac: var(--theme-accent);
+    --color-theme-midnight: var(--theme-midnight);
+    --color-theme-ink: var(--theme-midnight);
+
+    --background: var(--theme-canvas);
+    --foreground: var(--theme-midnight);
+    --card-foreground: var(--theme-midnight);
+    --ring: var(--theme-primary);
+
+    --primary: var(--theme-primary);
+    --primary-foreground: #FFFFFF;
+    --accent: var(--theme-accent);
+    --accent-foreground: var(--theme-midnight);
+    --micro-accent: var(--theme-primary);
+    --micro-accent-text: #FFFFFF;
+  }
+
+  [data-role="brand"].dark,
+  .dark[data-role="brand"],
+  .dark .theme-brand,
+  [data-role="brand"] .dark {
+    --theme-midnight: #0F172A;
+    --background: #0F172A !important;
+    --foreground: #F8FAF9 !important;
+    --card: #132238 !important;
+    --card-foreground: #F8FAF9 !important;
+    --color-theme-ink: #F8FAF9 !important;
+    --ring: var(--theme-accent);
+  }
 }
 
 @layer base {

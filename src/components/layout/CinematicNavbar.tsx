@@ -93,7 +93,7 @@ export function CinematicNavbar() {
               </Link>
 
               <Link href="/register?role=creator">
-                <button className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs sm:text-[13px] font-bold transition-all shadow-[0_0_20px_rgba(var(--theme-primary-rgb),0.4)] border border-white/40 active:scale-95">
+                <button className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white text-xs sm:text-[13px] font-bold transition-all shadow-[0_0_20px_rgba(var(--theme-primary-rgb),0.4)] border border-white/40 active:scale-95">
                   <span>Get Started</span>
                 </button>
               </Link>

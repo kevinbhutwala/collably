@@ -208,7 +208,7 @@ export default function ApplicationsManagementPage() {
                     </button>
                     <button
                       onClick={() => handleStatusUpdate(app.id, "accepted")}
-                      className="px-4 py-1.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-extrabold transition-all shadow-xs border border-black/10"
+                      className="px-4 py-1.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white text-xs font-extrabold transition-all shadow-xs border border-black/10"
                     >
                       Accept Proposal
                     </button>

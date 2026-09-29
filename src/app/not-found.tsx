@@ -23,7 +23,7 @@ export default function NotFound() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
           <Link
             href="/"
-            className="w-full sm:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold shadow-xs border border-black/10 transition-all flex items-center justify-center gap-2 cursor-pointer"
+            className="w-full sm:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white text-xs font-bold shadow-xs border border-black/10 transition-all flex items-center justify-center gap-2 cursor-pointer"
           >
             <Home className="w-3.5 h-3.5" />
             <span>Return to Workspace</span>

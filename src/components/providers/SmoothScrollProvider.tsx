@@ -60,7 +60,7 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
     <>
       {/* Top Scroll Progress Indicator */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-[#7C3AED] via-[#9333EA] to-[#C084FC] origin-left z-[100] pointer-events-none shadow-[0_0_12px_rgba(124,58,237,0.8)]"
+        className="fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-[#7C3AED] to-[#C084FC] origin-left z-[100] pointer-events-none shadow-[0_0_12px_rgba(124,58,237,0.8)]"
         style={{ scaleX }}
       />
       {children}

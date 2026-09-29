@@ -146,7 +146,7 @@ export default function EarningsAndEscrowPage() {
           {role === "creator" && (
             <button
               onClick={handleWithdraw}
-              className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5"
+              className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5"
             >
               <span>Withdraw Balance</span>
               <ArrowRight className="w-3.5 h-3.5 text-[#0B0A14]" />

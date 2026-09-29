@@ -162,7 +162,7 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
                 </div>
                 <div className="h-2 w-full rounded-full bg-black/5 dark:bg-white/10 overflow-hidden">
                   <div
-                    className="h-full bg-gradient-to-r from-primary via-[#9333EA] to-accent rounded-full"
+                    className="h-full bg-gradient-to-r from-primary to-accent rounded-full"
                     style={{ width: `${fmt.sharePercent}%` }}
                   />
                 </div>
@@ -260,7 +260,7 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
                   <span className="text-emerald-600 dark:text-emerald-400 font-bold">92% Match</span>
                   <Link
                     href={`/creators/${creator.id}`}
-                    className="px-3 py-1 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white text-[10px] font-extrabold hover:brightness-105 transition-all shadow-2xs border border-black/10"
+                    className="px-3 py-1 rounded-full bg-gradient-to-r from-primary to-accent text-white text-[10px] font-extrabold hover:brightness-105 transition-all shadow-2xs border border-black/10"
                   >
                     View & Invite
                   </Link>
