@@ -295,12 +295,12 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
               onClick={() => setRole("creator")}
               className={`py-2 px-3 rounded-xl text-xs font-bold font-sans flex items-center justify-center gap-1.5 transition-all cursor-pointer border disabled:opacity-50 disabled:cursor-not-allowed ${
                 role === "creator"
-                  ? "bg-primary/15 dark:bg-primary/20 text-primary dark:text-accent dark:text-accent border-primary/60 shadow-xs"
+                  ? "bg-[#7C3AED]/15 dark:bg-[#7C3AED]/25 text-[#7C3AED] dark:text-[#C084FC] border-[#7C3AED]/60 shadow-xs"
                   : "bg-black/[0.02] dark:bg-white/[0.03] text-[#7A7A8A] dark:text-[#8E8EA4] border-black/8 dark:border-white/8 hover:text-[#0B0A14] dark:hover:text-white"
               }`}
             >
-              <Video className="w-3.5 h-3.5 text-amber-500" />
-              <span>Creator / Influencer</span>
+              <Video className={`w-3.5 h-3.5 ${role === "creator" ? "text-[#7C3AED] dark:text-[#C084FC]" : "text-[#7A7A8A]"}`} />
+              <span>🟣 Creator / Influencer</span>
             </button>
 
             <button
@@ -309,12 +309,12 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
               onClick={() => setRole("brand")}
               className={`py-2 px-3 rounded-xl text-xs font-bold font-sans flex items-center justify-center gap-1.5 transition-all cursor-pointer border disabled:opacity-50 disabled:cursor-not-allowed ${
                 role === "brand"
-                  ? "bg-primary/15 dark:bg-primary/20 text-primary dark:text-accent dark:text-accent border-primary/60 shadow-xs"
+                  ? "bg-[#0F766E]/15 dark:bg-[#0F766E]/25 text-[#0F766E] dark:text-[#34D399] border-[#0F766E]/60 shadow-xs"
                   : "bg-black/[0.02] dark:bg-white/[0.03] text-[#7A7A8A] dark:text-[#8E8EA4] border-black/8 dark:border-white/8 hover:text-[#0B0A14] dark:hover:text-white"
               }`}
             >
-              <Building2 className="w-3.5 h-3.5 text-amber-500" />
-              <span>Brand / Business</span>
+              <Building2 className={`w-3.5 h-3.5 ${role === "brand" ? "text-[#0F766E] dark:text-[#34D399]" : "text-[#7A7A8A]"}`} />
+              <span>🟢 Brand / Business</span>
             </button>
           </div>
         </div>
@@ -463,11 +463,15 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full py-3.5 rounded-full bg-gradient-to-r from-primary via-[#FFCA18] to-[#FFBF00] hover:from-[#FFCA18] hover:to-[#FFAE00] text-white font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 flex items-center justify-center gap-2 disabled:opacity-85 disabled:cursor-wait active:scale-98 cursor-pointer mt-1"
+          className={`w-full py-3.5 rounded-full text-white font-extrabold text-xs sm:text-sm transition-all shadow-md border border-white/10 flex items-center justify-center gap-2 disabled:opacity-85 disabled:cursor-wait active:scale-98 cursor-pointer mt-1 ${
+            role === "brand"
+              ? "bg-gradient-to-r from-[#0F766E] to-[#34D399] hover:from-[#0D9488] hover:to-[#059669] shadow-[0_4px_20px_rgba(15,118,110,0.35)]"
+              : "bg-gradient-to-r from-[#7C3AED] to-[#C084FC] hover:from-[#6D28D9] hover:to-[#A855F7] shadow-[0_4px_20px_rgba(124,58,237,0.35)]"
+          }`}
         >
           {isLoading ? (
             <div className="flex items-center gap-2">
-              <Loader2 className="w-4 h-4 animate-spin text-[#0B0A14]" />
+              <Loader2 className="w-4 h-4 animate-spin text-white" />
               <span>
                 {loadingPhase === "redirecting"
                   ? activeTab === "signin"
@@ -481,7 +485,7 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
           ) : (
             <>
               <span>{activeTab === "signin" ? "Sign In" : `Create ${role === "brand" ? "Brand" : "Creator"} Account`}</span>
-              <ArrowRight className="w-4 h-4 text-[#0B0A14]" />
+              <ArrowRight className="w-4 h-4 text-white" />
             </>
           )}
         </button>

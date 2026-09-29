@@ -27,7 +27,7 @@ export function Badge({
     glow: "bg-primary/20 text-primary dark:text-accent dark:text-accent border border-primary/40 shadow-[0_0_12px_rgba(var(--theme-primary-rgb),0.35)]",
     gold: "bg-primary text-white font-bold border border-black/10 dark:border-white/40 shadow-[0_0_10px_rgba(var(--theme-primary-rgb),0.3)]",
     blue: "bg-primary/15 text-primary dark:text-accent dark:text-accent border border-primary/30",
-    micro: "bg-primary text-white font-bold border border-[#FFE052]",
+    micro: "bg-primary text-white font-bold border border-accent",
     carbon: "bg-[#0B0A14] text-white dark:bg-white dark:text-[#0B0A14] border border-black/10 dark:border-white font-bold",
     warning: "bg-amber-500/10 dark:bg-amber-500/15 text-amber-800 dark:text-amber-400 border border-amber-500/25 dark:border-amber-500/30",
     danger: "bg-red-500/10 dark:bg-red-500/15 text-red-700 dark:text-red-400 border border-red-500/25 dark:border-red-500/30",

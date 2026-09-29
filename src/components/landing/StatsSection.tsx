@@ -55,7 +55,7 @@ export function StatsSection() {
                 <div
                   className={`w-12 h-12 rounded-2xl flex items-center justify-center mx-auto shadow-xs ${
                     s.highlight
-                      ? "bg-gradient-to-br from-primary to-[#FFAE00] text-white"
+                      ? "bg-gradient-to-br from-primary to-accent text-white"
                       : "bg-[#F8F8FC] dark:bg-[#181824] border border-black/6 dark:border-white/10 text-[#0B0A14] dark:text-accent"
                   }`}
                 >

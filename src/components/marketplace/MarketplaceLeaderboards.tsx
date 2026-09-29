@@ -307,7 +307,7 @@ export function MarketplaceLeaderboards() {
             {top1 && (
               <div className="relative group -mt-4 sm:-mt-6">
                 {/* Ambient Golden Halo Glow */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-primary via-accent to-[#FFB800] rounded-3xl blur-md opacity-35 group-hover:opacity-75 transition duration-500 group-hover:duration-200 animate-pulse pointer-events-none" />
+                <div className="absolute -inset-1 bg-gradient-to-r from-primary via-accent to-accent rounded-3xl blur-md opacity-35 group-hover:opacity-75 transition duration-500 group-hover:duration-200 animate-pulse pointer-events-none" />
 
                 <Link
                   href={`/creators/${top1.creator.id}`}

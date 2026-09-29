@@ -206,7 +206,7 @@ export function HeroEditorialShowcase() {
             {/* Confident Large Headline */}
             <h1 className="max-w-xl lg:max-w-2xl text-[clamp(2.15rem,5.2vw,4.5rem)] font-black font-display tracking-tight text-[#0B0A14] dark:text-white leading-[1.08] sm:leading-[1.04]">
               Where visionary brands meet{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-[#FFB800] dark:from-primary dark:via-[#FFE575] dark:to-accent">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-accent dark:from-primary dark:via-accent dark:to-accent">
                 cinematic creators.
               </span>
             </h1>

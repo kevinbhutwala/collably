@@ -279,7 +279,7 @@ export function CaseStudiesClient() {
 
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-[#0B0A14] dark:text-white tracking-tight font-display max-w-4xl mx-auto">
             The full campaign<br />
-            <span className="text-white dark:text-white bg-gradient-to-r from-primary via-[#FFAE00] to-primary bg-clip-text text-transparent underline decoration-primary/40 underline-offset-8">
+            <span className="text-white dark:text-white bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent underline decoration-primary/40 underline-offset-8">
               workflow, end-to-end.
             </span>
           </h1>

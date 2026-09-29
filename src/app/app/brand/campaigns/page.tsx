@@ -258,7 +258,7 @@ export default function BrandCampaignsManagementPage() {
                     {/* Progress Bar */}
                     <div className="w-full h-1.5 rounded-full bg-[#EAEAEF] dark:bg-[#20202E] overflow-hidden">
                       <div
-                        className="h-full rounded-full bg-gradient-to-r from-primary to-[#FFAE00]"
+                        className="h-full rounded-full bg-gradient-to-r from-primary to-accent"
                         style={{ width: `${Math.min(100, Math.max(10, cohortPercentage))}%` }}
                       />
                     </div>

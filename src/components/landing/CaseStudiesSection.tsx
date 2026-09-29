@@ -99,7 +99,7 @@ export function CaseStudiesSection() {
 
             <div className="space-y-6 relative z-10">
               <div className="flex items-center justify-between">
-                <div className="p-3.5 rounded-2xl bg-gradient-to-br from-primary to-[#FFAE00] text-white shadow-[0_2px_10px_rgba(var(--theme-primary-rgb),0.3)]">
+                <div className="p-3.5 rounded-2xl bg-gradient-to-br from-primary to-accent text-white shadow-[0_2px_10px_rgba(var(--theme-primary-rgb),0.3)]">
                   <Zap className="w-6 h-6 fill-[#0B0A14] text-[#0B0A14]" />
                 </div>
                 <span className="px-3 py-1 rounded-full bg-primary/20 border border-primary/40 text-primary dark:text-accent dark:text-accent text-xs font-mono font-bold uppercase">

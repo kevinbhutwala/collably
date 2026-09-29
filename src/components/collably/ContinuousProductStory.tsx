@@ -171,7 +171,7 @@ export function ContinuousProductStory() {
 
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#0B0A14] dark:text-white tracking-tight font-display">
             How Top Brands &amp; Creators{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-[#FFAE00] to-primary">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary">
               Collaborate.
             </span>
           </h2>

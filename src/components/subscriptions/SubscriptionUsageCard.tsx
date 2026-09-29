@@ -79,7 +79,7 @@ export function SubscriptionUsageCard() {
                   ? "bg-rose-500"
                   : quota.percent >= 70
                   ? "bg-amber-500"
-                  : "bg-gradient-to-r from-primary to-[#FFAE00]"
+                  : "bg-gradient-to-r from-primary to-accent"
               }`}
               style={{ width: `${Math.min(100, quota.percent)}%` }}
             />

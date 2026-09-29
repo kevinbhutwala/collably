@@ -66,7 +66,7 @@ export function LockedFeatureCard({
 
       <div className="relative z-10 max-w-2xl mx-auto text-center space-y-6">
         {/* Lock Icon */}
-        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-[#FFAE00] border border-black/10 mx-auto flex items-center justify-center text-white shadow-[0_8px_24px_rgba(var(--theme-primary-rgb),0.4)]">
+        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent border border-black/10 mx-auto flex items-center justify-center text-white shadow-[0_8px_24px_rgba(var(--theme-primary-rgb),0.4)]">
           <Lock className="w-8 h-8 text-[#0B0A14]" />
         </div>
 

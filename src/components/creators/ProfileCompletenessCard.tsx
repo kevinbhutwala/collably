@@ -99,7 +99,7 @@ export function ProfileCompletenessCard({ creator }: { creator?: CreatorProfile 
               <linearGradient id="goldGaugeGradientLight" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor="#7C3AED" />
                 <stop offset="60%" stopColor="#C084FC" />
-                <stop offset="100%" stopColor="#FFC700" />
+                <stop offset="100%" stopColor="#C084FC" />
               </linearGradient>
             </defs>
           </svg>
