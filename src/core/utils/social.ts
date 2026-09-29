@@ -139,76 +139,81 @@ export function buildSocialAccountsFromInput(params: {
 
   if (params.youtubeHandle && params.youtubeHandle.trim()) {
     const handle = cleanPlatformHandle(params.youtubeHandle);
-    const subs = params.youtubeSubscribers || 25000;
+    const subs = params.youtubeSubscribers || 0;
     accounts.push({
       id: `sa-${now}-yt`,
       platform: "youtube",
       handle,
       url: formatPlatformUrl("youtube", handle),
       followers: subs,
-      engagementRate: 5.8,
-      avgViews: Math.round(subs * 0.35),
-      verifiedBadge: subs >= 100000,
+      engagementRate: 0,
+      avgViews: 0,
+      verifiedBadge: false,
+      verificationStatus: "unverified",
     });
   }
 
   if (params.instagramHandle && params.instagramHandle.trim()) {
     const handle = cleanPlatformHandle(params.instagramHandle);
-    const followers = params.instagramFollowers || 20000;
+    const followers = params.instagramFollowers || 0;
     accounts.push({
       id: `sa-${now}-ig`,
       platform: "instagram",
       handle,
       url: formatPlatformUrl("instagram", handle),
       followers,
-      engagementRate: 4.6,
-      avgViews: Math.round(followers * 0.25),
-      verifiedBadge: followers >= 50000,
+      engagementRate: 0,
+      avgViews: 0,
+      verifiedBadge: false,
+      verificationStatus: "unverified",
     });
   }
 
   if (params.tiktokHandle && params.tiktokHandle.trim()) {
     const handle = cleanPlatformHandle(params.tiktokHandle);
-    const followers = params.tiktokFollowers || 35000;
+    const followers = params.tiktokFollowers || 0;
     accounts.push({
       id: `sa-${now}-tt`,
       platform: "tiktok",
       handle,
       url: formatPlatformUrl("tiktok", handle),
       followers,
-      engagementRate: 7.2,
-      avgViews: Math.round(followers * 0.8),
-      verifiedBadge: followers >= 100000,
+      engagementRate: 0,
+      avgViews: 0,
+      verifiedBadge: false,
+      verificationStatus: "unverified",
     });
   }
 
   if (params.xHandle && params.xHandle.trim()) {
     const handle = cleanPlatformHandle(params.xHandle);
-    const followers = params.xFollowers || 15000;
+    const followers = params.xFollowers || 0;
     accounts.push({
       id: `sa-${now}-x`,
       platform: "x",
       handle,
       url: formatPlatformUrl("x", handle),
       followers,
-      engagementRate: 3.8,
-      avgViews: Math.round(followers * 0.5),
-      verifiedBadge: followers >= 25000,
+      engagementRate: 0,
+      avgViews: 0,
+      verifiedBadge: false,
+      verificationStatus: "unverified",
     });
   }
 
   if (params.linkedinHandle && params.linkedinHandle.trim()) {
     const handle = cleanPlatformHandle(params.linkedinHandle);
-    const followers = params.linkedinFollowers || 8000;
+    const followers = params.linkedinFollowers || 0;
     accounts.push({
       id: `sa-${now}-li`,
       platform: "linkedin",
       handle,
       url: formatPlatformUrl("linkedin", handle),
       followers,
-      engagementRate: 4.2,
-      avgViews: Math.round(followers * 0.3),
+      engagementRate: 0,
+      avgViews: 0,
       verifiedBadge: false,
+      verificationStatus: "unverified",
     });
   }
 

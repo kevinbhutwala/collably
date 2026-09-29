@@ -98,77 +98,11 @@ export async function POST(req: NextRequest) {
       const totalFollowers = calculateTotalFollowers(accounts);
       const avgEngagementRate = accounts.length > 0 ? calculateAvgEngagementRate(accounts) : 0;
       const tier = getCreatorTier(totalFollowers);
-      const creatorCurrency = (currency as any) || (location?.toLowerCase().includes("india") ? "INR" : "USD");
-      const basePrice = startingPrice
-        ? parseInt(startingPrice)
-        : creatorCurrency === "INR"
-        ? 5000
-        : 250;
+      const creatorCurrency = "INR";
+      const basePrice = startingPrice ? parseInt(startingPrice) : 0;
 
-      // Build rate cards based on connected platforms
+      // Rate cards are empty unless the creator explicitly defines packages
       const rateCards: RateCardItem[] = [];
-      const now = Date.now();
-
-      accounts.forEach((acc, idx) => {
-        if (acc.platform === "youtube") {
-          rateCards.push({
-            id: `rc-${now}-${idx}`,
-            deliverableType: "YouTube 60s Integration",
-            title: "Dedicated 60s YouTube Integration / Segment",
-            description: "High-retention 60-second mid-roll sponsor integration with clickable link in top pinned comment.",
-            basePrice: Math.round(basePrice * 1.5),
-            currency: creatorCurrency,
-            turnaroundDays: 7,
-            revisionsIncluded: 2,
-          });
-        } else if (acc.platform === "instagram") {
-          rateCards.push({
-            id: `rc-${now}-${idx}`,
-            deliverableType: "Instagram Reel",
-            title: "Dedicated Reel & Story Link Set",
-            description: "High-aesthetic 9:16 vertical Reel plus 3-frame story sequence with direct swipe link.",
-            basePrice: basePrice,
-            currency: creatorCurrency,
-            turnaroundDays: 5,
-            revisionsIncluded: 2,
-          });
-        } else if (acc.platform === "tiktok") {
-          rateCards.push({
-            id: `rc-${now}-${idx}`,
-            deliverableType: "TikTok Video",
-            title: "Native TikTok Brand Storytelling",
-            description: "Viral format UGC-style TikTok video optimized for high watch time and comment engagement.",
-            basePrice: Math.round(basePrice * 0.9),
-            currency: creatorCurrency,
-            turnaroundDays: 4,
-            revisionsIncluded: 2,
-          });
-        } else if (acc.platform === "x") {
-          rateCards.push({
-            id: `rc-${now}-${idx}`,
-            deliverableType: "X (Twitter) Thread",
-            title: "Deep-Dive Sponsored X Thread",
-            description: "Analytical 5-post thread with trackable link and brand quote reposts.",
-            basePrice: Math.round(basePrice * 0.6),
-            currency: creatorCurrency,
-            turnaroundDays: 3,
-            revisionsIncluded: 1,
-          });
-        }
-      });
-
-      if (rateCards.length === 0) {
-        rateCards.push({
-          id: `rc-${now}-default`,
-          deliverableType: "YouTube Dedicated Video",
-          title: "Dedicated Sponsored Partnership",
-          description: "High-impact sponsored content with guaranteed delivery.",
-          basePrice: basePrice,
-          currency: creatorCurrency,
-          turnaroundDays: 5,
-          revisionsIncluded: 2,
-        });
-      }
 
       creatorProfile = {
         id: `creator-${Date.now()}`,
@@ -182,8 +116,8 @@ export async function POST(req: NextRequest) {
         avatarUrl: newUser.avatarUrl || "",
         coverImageUrl: "",
         location: location || "",
-        languages: ["English"],
-        primaryCategory: category || "Content Creator",
+        languages: [],
+        primaryCategory: category || "",
         secondaryCategories: [],
         verified: false,
         featured: false,
@@ -192,10 +126,10 @@ export async function POST(req: NextRequest) {
         completedCampaignsCount: 0,
         totalFollowers,
         avgEngagementRate,
-        startingPrice: basePrice || 0,
+        startingPrice: basePrice,
         currency: creatorCurrency,
         availableForHire: true,
-        profileCompleteness: Math.min(100, (bio ? 20 : 0) + (newUser.avatarUrl ? 20 : 0) + accounts.length * 20),
+        profileCompleteness: 0,
         qualityScore: 80,
         socialAccounts: accounts,
         audience: {

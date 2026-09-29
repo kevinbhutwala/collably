@@ -117,12 +117,12 @@ export default function ProfileEditPage() {
   const [avatarUrl, setAvatarUrl] = useState(
     currentCreator?.avatarUrl || user?.avatarUrl || (user as any)?.image || ""
   );
-  const [primaryCategory, setPrimaryCategory] = useState<CreatorCategory>(
-    currentCreator?.primaryCategory || "Technology & AI"
+  const [primaryCategory, setPrimaryCategory] = useState<CreatorCategory | "">(
+    currentCreator?.primaryCategory || ""
   );
   const [location, setLocation] = useState(currentCreator?.location || "");
   const [languages, setLanguages] = useState<string>(
-    (currentCreator?.languages || ["English"]).join(", ")
+    (currentCreator?.languages || []).join(", ")
   );
   const [availableForHire, setAvailableForHire] = useState<boolean>(
     currentCreator?.availableForHire ?? true
@@ -220,9 +220,9 @@ export default function ProfileEditPage() {
       setAvatarUrl(
         currentCreator.avatarUrl || user?.avatarUrl || (user as any)?.image || ""
       );
-      setPrimaryCategory(currentCreator.primaryCategory || "Technology & AI");
+      setPrimaryCategory(currentCreator.primaryCategory || "");
       setLocation(currentCreator.location || "");
-      setLanguages((currentCreator.languages || ["English"]).join(", "));
+      setLanguages((currentCreator.languages || []).join(", "));
       setAvailableForHire(currentCreator.availableForHire ?? true);
       setStartingPrice(currentCreator.startingPrice || 0);
       setSocialAccounts(currentCreator.socialAccounts || []);
@@ -312,6 +312,11 @@ export default function ProfileEditPage() {
         done: Boolean(bio && bio.trim().length >= 20),
       },
       {
+        id: "category",
+        label: "Niche Category",
+        done: Boolean(primaryCategory && primaryCategory.trim().length > 0),
+      },
+      {
         id: "rates",
         label: "Starting Rate",
         done: Boolean(startingPrice && startingPrice > 0),
@@ -347,7 +352,7 @@ export default function ProfileEditPage() {
       hasUnverifiedSocials: unverifiedSocials.length > 0,
       unverifiedSocials,
     };
-  }, [headline, bio, startingPrice, socialAccounts, avatarUrl]);
+  }, [headline, bio, primaryCategory, startingPrice, socialAccounts, avatarUrl]);
 
   // Social account management
   const handleAddSocialAccount = () => {
@@ -605,9 +610,9 @@ export default function ProfileEditPage() {
           headline: headline.trim(),
           bio: bio.trim(),
           avatarUrl: avatarUrl.trim(),
-          primaryCategory,
+          primaryCategory: (primaryCategory as CreatorCategory) || "Content Creator",
           location: location.trim(),
-          languages: langArray.length > 0 ? langArray : ["English"],
+          languages: langArray,
           availableForHire,
           startingPrice: Number(startingPrice) || 0,
           currency: creatorCurrency,
@@ -847,7 +852,13 @@ export default function ProfileEditPage() {
             </div>
 
             <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4] line-clamp-1 max-w-lg font-medium">
-              {headline || "Set your creator headline to attract brand sponsorships"}
+              {headline ? (
+                headline
+              ) : (
+                <span className="italic text-[#8A8A9A]">
+                  No headline set yet. Add an editorial headline to attract brands.
+                </span>
+              )}
             </p>
 
             {/* Quick Metrics Badges */}
@@ -863,7 +874,7 @@ export default function ProfileEditPage() {
               <span className="flex items-center gap-1">
                 <Zap className="w-3.5 h-3.5 text-[#FFD21F]" />
                 <strong className="text-[#0A0A0E] dark:text-white">
-                  {avgEngagement.toFixed(1)}%
+                  {avgEngagement > 0 ? `${avgEngagement.toFixed(1)}%` : "0%"}
                 </strong>{" "}
                 eng
               </span>
@@ -995,9 +1006,16 @@ export default function ProfileEditPage() {
 
           {/* Niche Categories Pill Cloud */}
           <div className="space-y-2 pt-1">
-            <label className="text-xs font-bold text-[#0A0A0E] dark:text-[#EAEAEF] block font-display">
-              Primary Niche Category
-            </label>
+            <div className="flex items-center justify-between">
+              <label className="text-xs font-bold text-[#0A0A0E] dark:text-[#EAEAEF] block font-display">
+                Primary Niche Category
+              </label>
+              {!primaryCategory && (
+                <span className="text-[11px] font-mono text-amber-600 dark:text-amber-400">
+                  Select your content niche
+                </span>
+              )}
+            </div>
             <div className="flex flex-wrap gap-2">
               {AVAILABLE_CATEGORIES.map((cat) => {
                 const isSelected = primaryCategory === cat;
