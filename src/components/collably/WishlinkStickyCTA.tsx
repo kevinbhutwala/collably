@@ -23,7 +23,10 @@ export function WishlinkStickyCTA() {
 
   return (
     <>
-      <div className="fixed bottom-3 sm:bottom-6 inset-x-0 z-40 px-3 sm:px-4 pointer-events-none transition-all duration-300 animate-in fade-in slide-in-from-bottom-5">
+      <div
+        className="fixed inset-x-0 z-40 px-3 sm:px-4 pointer-events-none transition-all duration-300 animate-in fade-in slide-in-from-bottom-5"
+        style={{ bottom: "calc(0.75rem + env(safe-area-inset-bottom, 0px))" }}
+      >
         <div className="pointer-events-auto max-w-xl mx-auto rounded-full bg-white/95 backdrop-blur-xl border border-black/10 shadow-[0_12px_36px_rgba(0,0,0,0.12)] p-1.5 sm:p-2.5 flex items-center justify-between gap-2 sm:gap-3 select-none">
           {/* Left: Avatar Stack & Text */}
           <div className="flex items-center gap-2 sm:gap-2.5 pl-1.5 min-w-0">

@@ -81,15 +81,15 @@ export function MobileBottomDock() {
             <Link
               key={item.href}
               href={item.href}
-              className="relative flex flex-col items-center justify-center gap-1 flex-1 py-1 rounded-2xl transition-colors"
+              className="relative flex flex-col items-center justify-center gap-1 flex-1 py-1 rounded-2xl transition-colors active:scale-95 touch-manipulation select-none"
               aria-label={item.label}
             >
               {/* Active indicator pill */}
               {isActive && (
                 <motion.div
                   layoutId="mobile-dock-active"
-                  className="absolute inset-0 rounded-2xl bg-[#FFD21F]/20 border border-[#FFD21F]/40"
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  className="absolute inset-0 rounded-2xl bg-[#FFD21F]/20 border border-[#FFD21F]/40 shadow-xs"
+                  transition={{ type: "spring", stiffness: 420, damping: 32 }}
                 />
               )}
 
@@ -97,20 +97,21 @@ export function MobileBottomDock() {
               <div className="relative flex items-center justify-center w-6 h-6">
                 <motion.div
                   animate={isActive ? { scale: 1.1 } : { scale: 1 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                  whileTap={{ scale: 0.88 }}
+                  transition={{ type: "spring", stiffness: 450, damping: 25 }}
                 >
                   <Icon
                     className={cn(
                       "w-5 h-5 transition-colors duration-200",
                       isActive ? "text-[#0A0A0E] dark:text-[#FFD21F]" : "text-[#7A7A8A] dark:text-[#8E8EA4]"
                     )}
-                    strokeWidth={isActive ? 2.2 : 1.8}
+                    strokeWidth={isActive ? 2.3 : 1.8}
                   />
                 </motion.div>
 
                 {/* Gold indicator dot under active icon */}
                 {isActive && (
-                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#FFD21F] shadow-[0_0_6px_1px_rgba(255,210,31,0.8)]" />
+                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#FFD21F] shadow-[0_0_8px_1px_rgba(255,210,31,0.9)]" />
                 )}
               </div>
 

@@ -19,6 +19,7 @@ import { SubscriptionUsageCard } from "@/components/subscriptions/SubscriptionUs
 import { CreatorMarketPulseWidget } from "@/components/marketplace/CreatorMarketPulseWidget";
 import { BrandMarketIntelligenceWidget } from "@/components/marketplace/BrandMarketIntelligenceWidget";
 import { CreativeLoader } from "@/components/ui/CreativeLoader";
+import { DashboardSkeleton } from "@/components/skeletons";
 import { formatCurrency } from "@/core/utils/formatters";
 import { useGlobalCurrency } from "@/core/hooks/useGlobalCurrency";
 
@@ -841,7 +842,7 @@ function DashboardContent() {
 
 export default function DashboardPage() {
   return (
-    <Suspense fallback={<CreativeLoader size="lg" label="Loading Workspace" />}>
+    <Suspense fallback={<DashboardSkeleton />}>
       <DashboardContent />
     </Suspense>
   );

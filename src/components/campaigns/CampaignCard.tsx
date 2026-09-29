@@ -20,7 +20,10 @@ export function CampaignCard({ campaign }: { campaign: Campaign }) {
   const progressPercent = Math.min(100, Math.round((acceptedCount / maxCreators) * 100));
 
   return (
-    <div className="group rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 hover:border-[#FFD21F] dark:hover:border-[#FFD21F] overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between relative text-[#0A0A0E] dark:text-[#F4F4F8] select-none">
+    <Link
+      href={`/campaigns/${campaign.id}`}
+      className="group rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 hover:border-[#FFD21F] dark:hover:border-[#FFD21F] overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 hover:-translate-y-1 active:scale-[0.99] touch-manipulation flex flex-col justify-between relative text-[#0A0A0E] dark:text-[#F4F4F8] select-none cursor-pointer"
+    >
       {/* Cover Image Stage */}
       <div className="relative h-44 sm:h-52 w-full bg-[#F5F5F9] dark:bg-[#1A1A26] overflow-hidden border-b border-black/5 dark:border-white/5">
         <SafeImage
@@ -116,14 +119,12 @@ export function CampaignCard({ campaign }: { campaign: Campaign }) {
             <span>3 days left</span>
           </span>
 
-          <Link href={`/campaigns/${campaign.id}`}>
-            <button className="px-4 py-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-gradient-to-r hover:from-[#FFD21F] hover:to-[#FFC700] hover:text-[#0A0A0E] dark:hover:text-[#0A0A0E] text-[#0A0A0E] dark:text-[#F4F4F8] font-bold text-xs transition-all flex items-center gap-1.5 border border-black/5 dark:border-white/10">
-              <span>View Brief</span>
-              <ArrowRight className="w-3 h-3" />
-            </button>
-          </Link>
+          <span className="px-4 py-2 rounded-full bg-black/5 dark:bg-white/10 group-hover:bg-gradient-to-r group-hover:from-[#FFD21F] group-hover:to-[#FFC700] group-hover:text-[#0A0A0E] dark:group-hover:text-[#0A0A0E] text-[#0A0A0E] dark:text-[#F4F4F8] font-bold text-xs transition-all flex items-center gap-1.5 border border-black/5 dark:border-white/10">
+            <span>View Brief</span>
+            <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+          </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

@@ -375,6 +375,22 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+button, a, input, select, textarea {
+  touch-action: manipulation;
+}
+
+.pb-safe {
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom, 0px));
+}
+
+.pt-safe {
+  padding-top: max(0.5rem, env(safe-area-inset-top, 0px));
+}
+
+.touch-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   html:not(.lenis) {
     scroll-behavior: smooth;

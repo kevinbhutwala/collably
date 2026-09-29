@@ -320,7 +320,7 @@ export function AppNavbar() {
             </button>
 
             {showProfileMenu && (
-              <div className="absolute right-0 mt-2 w-60 rounded-2xl bg-white dark:bg-[#12121A] border border-black/10 dark:border-white/10 shadow-2xl p-2 z-50 animate-in fade-in zoom-in-95 duration-100 text-[#0A0A0E] dark:text-[#F4F4F8]">
+              <div className="absolute right-0 mt-2 w-60 max-w-[calc(100vw-1.5rem)] rounded-2xl bg-white dark:bg-[#12121A] border border-black/10 dark:border-white/10 shadow-2xl p-2 z-50 animate-in fade-in zoom-in-95 duration-100 text-[#0A0A0E] dark:text-[#F4F4F8]">
                 <div className="px-3 py-2 border-b border-black/8 dark:border-white/10 mb-1">
                   <p className="text-xs font-bold text-[#0A0A0E] dark:text-white truncate">{user?.name}</p>
                   <p className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] truncate">{user?.email}</p>

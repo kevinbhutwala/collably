@@ -21,7 +21,7 @@ export default function AuthenticatedAppLayout({
           {/* Main Body: Fixed Static Sidebar on Left, Independent Scrollable Main Screen on Right */}
           <div className="flex flex-1 overflow-hidden relative z-10">
             <AppSidebar />
-            <main className="flex-1 h-full overflow-y-auto overflow-x-hidden px-3 sm:px-6 lg:px-8 py-3.5 sm:py-6 lg:py-8 pb-24 lg:pb-10 w-full">
+            <main className="flex-1 h-full overflow-y-auto overflow-x-hidden px-3 sm:px-6 lg:px-8 py-3.5 sm:py-6 lg:py-8 pb-32 sm:pb-36 lg:pb-10 w-full scroll-smooth">
               <div className="max-w-7xl mx-auto w-full">
                 {children}
               </div>
