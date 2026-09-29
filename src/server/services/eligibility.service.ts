@@ -67,6 +67,29 @@ export class EligibilityService {
     // ─────────────────────────────────────────────────────────────
     // 1. Profile & Media Kit Completeness
     // ─────────────────────────────────────────────────────────────
+    const headlineText = (creator.headline || "").trim();
+    if (!headlineText || headlineText.length < 5) {
+      checks.push({
+        id: "profile_headline",
+        category: "profile_completeness",
+        title: "Creator Headline & Role",
+        description: "Headline is missing or too brief to declare creator focus.",
+        status: "failed",
+        critical: true,
+        details: "Provide a headline of at least 5 characters (e.g. 'UGC Creator & Fashion Storyteller').",
+        fixAction: { label: "Add Headline", url: "/app/profile" },
+      });
+    } else {
+      checks.push({
+        id: "profile_headline",
+        category: "profile_completeness",
+        title: "Creator Headline & Role",
+        description: `Professional headline declared: "${creator.headline}".`,
+        status: "passed",
+        critical: true,
+      });
+    }
+
     const bioText = (creator.bio || "").trim();
     if (!bioText || bioText.length < 20) {
       checks.push({
@@ -157,7 +180,7 @@ export class EligibilityService {
         title: "Commercial Rates & Deliverables",
         description: rateCards.length > 0
           ? `${rateCards.length} verified commercial rate card deliverable(s) published.`
-          : `Starting collaboration rate set ($${creator.startingPrice}).`,
+          : `Starting collaboration rate set (₹${Number(creator.startingPrice).toLocaleString("en-IN")}).`,
         status: "passed",
         critical: true,
       });

@@ -57,25 +57,50 @@ export async function POST(req: NextRequest) {
     }
 
     const creator = creatorRepo.getByUserId(session.userId) || creatorRepo.getById(parsed.creatorId || "");
+    if (!creator) {
+      return NextResponse.json(
+        {
+          error: "PROFILE_REQUIRED",
+          message: "You must create your creator profile before applying to campaigns.",
+          code: "CREATOR_PROFILE_NOT_FOUND",
+        },
+        { status: 422 }
+      );
+    }
 
-    // 4. Enforce Bidirectional Pre-flight Eligibility & Completeness Check
-    if (creator) {
-      const { eligibilityService } = await import("@/server/services/eligibility.service");
-      const eligibility = eligibilityService.verifyCreatorForCampaign(creator, campaign, {
-        proposedFee: parsed.proposedFee,
-      });
+    // 4. Enforce Strict Profile Completeness & Social Channel Verification
+    const { checkCreatorProfileStatus } = await import("@/core/utils/profileCompleteness");
+    const profileStatus = checkCreatorProfileStatus(creator);
+    if (!profileStatus.canApplyToCampaigns) {
+      return NextResponse.json(
+        {
+          error: "PROFILE_INCOMPLETE",
+          headline: profileStatus.headline,
+          message: profileStatus.summary,
+          missingRequirements: profileStatus.missingRequirements,
+          unverifiedSocials: profileStatus.unverifiedSocials,
+          code: "PROFILE_INCOMPLETE_OR_UNVERIFIED",
+        },
+        { status: 422 }
+      );
+    }
 
-      if (!eligibility.eligible) {
-        return NextResponse.json(
-          {
-            error: eligibility.headline,
-            message: eligibility.summary,
-            code: "PREFLIGHT_ELIGIBILITY_FAILED",
-            report: eligibility,
-          },
-          { status: 422 }
-        );
-      }
+    // 5. Enforce Bidirectional Pre-flight Eligibility Check
+    const { eligibilityService } = await import("@/server/services/eligibility.service");
+    const eligibility = eligibilityService.verifyCreatorForCampaign(creator, campaign, {
+      proposedFee: parsed.proposedFee,
+    });
+
+    if (!eligibility.eligible) {
+      return NextResponse.json(
+        {
+          error: eligibility.headline,
+          message: eligibility.summary,
+          code: "PREFLIGHT_ELIGIBILITY_FAILED",
+          report: eligibility,
+        },
+        { status: 422 }
+      );
     }
 
     const app = campaignRepo.createApplication({

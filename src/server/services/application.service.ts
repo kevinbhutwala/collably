@@ -26,7 +26,15 @@ export class ApplicationService {
 
     const creator = await creatorRepo.findById(data.creatorId);
     if (!creator) {
-      throw new Error("Creator profile not found");
+      throw new Error("Creator profile not found. Please set up your creator profile before applying.");
+    }
+
+    const { checkCreatorProfileStatus } = await import("@/core/utils/profileCompleteness");
+    const profileStatus = checkCreatorProfileStatus(creator);
+    if (!profileStatus.canApplyToCampaigns) {
+      throw new Error(
+        `Cannot apply: your creator profile is incomplete (${profileStatus.missingRequirements.join("; ")}). Please complete your profile details and verify connected channels first.`
+      );
     }
 
     const existingApplications = await campaignRepo.findApplicationsByCampaign(data.campaignId);

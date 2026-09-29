@@ -30,6 +30,8 @@ import {
 } from "lucide-react";
 import { PreflightEligibilityAudit } from "@/components/marketplace/PreflightEligibilityAudit";
 
+import { checkCreatorProfileStatus } from "@/core/utils/profileCompleteness";
+
 interface CampaignDetailClientProps {
   campaignId: string;
   initialCampaign?: Campaign | null;
@@ -43,12 +45,9 @@ export function CampaignDetailClient({
   const { currentCreator, role } = useAuthStore();
   const { addToast } = useUIStore();
 
-  const isProfileIncomplete = role === "creator" && (
-    !currentCreator?.bio || currentCreator.bio.trim().length < 15 ||
-    !currentCreator?.headline || currentCreator.headline.trim().length < 3 ||
-    ((!currentCreator?.startingPrice || currentCreator.startingPrice <= 0) && (!currentCreator?.rateCards || currentCreator.rateCards.length === 0)) ||
-    (!currentCreator?.socialAccounts || currentCreator.socialAccounts.length === 0)
-  );
+  const profileStatus = checkCreatorProfileStatus(currentCreator);
+  const cannotApplyDueToProfile = role === "creator" && !profileStatus.canApplyToCampaigns;
+  const isProfileIncomplete = cannotApplyDueToProfile;
 
   const [campaign, setCampaign] = useState<Campaign | null>(initialCampaign);
   const [loading, setLoading] = useState(!initialCampaign);
@@ -126,11 +125,13 @@ export function CampaignDetailClient({
     e.preventDefault();
     if (!campaign) return;
 
-    if (isProfileIncomplete) {
+    if (cannotApplyDueToProfile) {
       addToast({
         type: "error",
-        title: "Profile Incomplete",
-        message: "Please complete your creator bio, rates, and connected channels in your profile before applying.",
+        title: "Profile Incomplete & Unconfirmed",
+        message:
+          profileStatus.summary ||
+          "Please complete your creator details and verify connected social channels in your profile before applying.",
       });
       return;
     }
@@ -289,19 +290,33 @@ export function CampaignDetailClient({
           </div>
 
           {/* Incomplete Profile Alert for Creators */}
-          {isProfileIncomplete && (
-            <div className="bg-amber-500/10 border-b border-amber-500/25 px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-              <div className="flex items-center gap-2.5">
-                <AlertTriangle className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
-                <span className="text-amber-900 dark:text-amber-200 font-sans">
-                  <strong>Profile Incomplete:</strong> Complete your creator profile (bio, rates, and connected channel) to unlock campaign applications.
-                </span>
+          {cannotApplyDueToProfile && (
+            <div className="bg-gradient-to-r from-amber-500/15 via-amber-500/10 to-transparent border-b border-amber-500/30 px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs">
+              <div className="flex items-start sm:items-center gap-3">
+                <div className="w-9 h-9 rounded-2xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center shrink-0">
+                  <Lock className="w-4 h-4 text-amber-700 dark:text-amber-400" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="font-bold text-amber-900 dark:text-amber-200 font-display">
+                      {profileStatus.headline} ({profileStatus.score}% Complete)
+                    </span>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-800 dark:text-amber-300 font-bold uppercase">
+                      Pitching Locked
+                    </span>
+                  </div>
+                  <p className="text-amber-800/80 dark:text-amber-300/80 mt-0.5 font-sans leading-relaxed">
+                    {profileStatus.unverifiedSocials.length > 0
+                      ? `Your connected channels (${profileStatus.unverifiedSocials.map((s) => `${s.platform.toUpperCase()} @${s.handle}`).join(", ")}) must be verified before you can apply to campaigns.`
+                      : "You cannot apply to campaigns until your profile details (bio, rates, category, avatar) are completed and channels are connected."}
+                  </p>
+                </div>
               </div>
               <Link
                 href="/app/profile"
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-500/20 hover:bg-amber-500/30 text-amber-900 dark:text-amber-200 font-bold text-xs transition-colors shrink-0 font-mono"
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs transition-colors shrink-0 shadow-xs border border-black/10 cursor-pointer"
               >
-                <span>Complete Profile</span>
+                <span>Complete Profile First</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
@@ -322,14 +337,14 @@ export function CampaignDetailClient({
               </div>
             </div>
 
-            {isProfileIncomplete ? (
+            {cannotApplyDueToProfile ? (
               <Link href="/app/profile">
                 <button
                   type="button"
-                  className="px-6 py-3.5 rounded-full bg-amber-500/20 hover:bg-amber-500/30 text-amber-900 dark:text-amber-300 border border-amber-500/30 font-bold text-xs sm:text-sm transition-all flex items-center gap-2 cursor-pointer shadow-xs"
+                  className="px-6 py-3.5 rounded-full bg-gradient-to-r from-amber-500 via-amber-600 to-amber-500 hover:from-amber-600 hover:to-amber-700 text-white font-bold text-xs sm:text-sm transition-all flex items-center gap-2 cursor-pointer shadow-xs active:scale-98"
                 >
-                  <Lock className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-                  <span>Complete Profile to Apply</span>
+                  <Lock className="w-4 h-4" />
+                  <span>First: Complete Profile to Apply</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </Link>
@@ -429,6 +444,27 @@ export function CampaignDetailClient({
         maxWidth="2xl"
       >
         <div className="space-y-6">
+          {cannotApplyDueToProfile && (
+            <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-start gap-3">
+              <Lock className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+              <div className="space-y-1">
+                <h4 className="text-xs font-bold text-amber-900 dark:text-amber-200 font-display">
+                  Profile Details Required Before Pitching
+                </h4>
+                <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
+                  {profileStatus.summary} Until all required fields are filled and added social accounts are authenticated, you cannot apply to campaigns.
+                </p>
+                <Link
+                  href="/app/profile"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-800 dark:text-amber-300 hover:underline pt-1"
+                >
+                  <span>Complete Profile &amp; Verify Channels</span>
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
+              </div>
+            </div>
+          )}
+
           <PreflightEligibilityAudit
             report={eligibilityReport}
             isLoading={isAuditing}
@@ -447,6 +483,7 @@ export function CampaignDetailClient({
                 }}
                 onBlur={() => checkEligibility(proposedFee)}
                 required
+                disabled={cannotApplyDueToProfile}
               />
               {campaign.budget?.currency && campaign.budget.currency.toUpperCase() !== displayCurrency.toUpperCase() && proposedFee > 0 && (
                 <p className="text-[11px] text-[#7A7A8A] dark:text-[#A0A0B4] font-mono mt-1">
@@ -462,6 +499,7 @@ export function CampaignDetailClient({
               placeholder="Explain how you will showcase the product, your hook idea, and why your audience will convert..."
               rows={4}
               required
+              disabled={cannotApplyDueToProfile}
             />
 
             <Input
@@ -470,20 +508,28 @@ export function CampaignDetailClient({
               onChange={(e) => setSampleLink(e.target.value)}
               placeholder="e.g. https://youtube.com/watch?v=... or portfolio URL"
               required
+              disabled={cannotApplyDueToProfile}
             />
 
             <div className="pt-2">
               <button
                 type="submit"
-                disabled={isSubmitting || isAuditing || (eligibilityReport && !eligibilityReport.eligible)}
+                disabled={isSubmitting || isAuditing || cannotApplyDueToProfile || (eligibilityReport && !eligibilityReport.eligible)}
                 className={`w-full py-3.5 rounded-full font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 ${
-                  eligibilityReport && !eligibilityReport.eligible
+                  cannotApplyDueToProfile
+                    ? "bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/30 cursor-not-allowed"
+                    : eligibilityReport && !eligibilityReport.eligible
                     ? "bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 cursor-not-allowed"
                     : "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] shadow-[0_4px_14px_rgba(255,210,31,0.4)] border border-black/10 active:scale-98 cursor-pointer"
                 }`}
               >
                 {isSubmitting ? (
                   "Submitting Application..."
+                ) : cannotApplyDueToProfile ? (
+                  <>
+                    <Lock className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                    <span>First Complete Profile to Unlock Pitching</span>
+                  </>
                 ) : eligibilityReport && !eligibilityReport.eligible ? (
                   <>
                     <ShieldAlert className="w-4 h-4 text-rose-500" />

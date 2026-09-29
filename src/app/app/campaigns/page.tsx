@@ -6,8 +6,11 @@ import { Campaign, CreatorCategory } from "@/core/types";
 import { CATEGORIES } from "@/core/constants";
 import { CampaignCard } from "@/components/campaigns/CampaignCard";
 import { CreativeLoader } from "@/components/ui/CreativeLoader";
-import { Search, Compass, Sparkles, Filter } from "lucide-react";
+import { Search, Compass, Sparkles, Filter, Lock, AlertTriangle, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { useAuthStore } from "@/stores/auth.store";
+import { checkCreatorProfileStatus } from "@/core/utils/profileCompleteness";
 
 export default function AppCampaignsPage() {
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
@@ -27,6 +30,10 @@ export default function AppCampaignsPage() {
     };
     fetchCampaigns();
   }, [selectedCategory, searchQuery]);
+
+  const { role, currentCreator } = useAuthStore();
+  const profileStatus = checkCreatorProfileStatus(currentCreator);
+  const isCreatorBlocked = role === "creator" && !profileStatus.canApplyToCampaigns;
 
   return (
     <div className="space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans">
@@ -51,6 +58,38 @@ export default function AppCampaignsPage() {
           </p>
         </div>
       </div>
+
+      {/* Profile Incomplete Application Lock Notice */}
+      {isCreatorBlocked && (
+        <div className="rounded-3xl bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border border-amber-500/30 p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
+          <div className="flex items-start sm:items-center gap-3.5">
+            <div className="w-10 h-10 rounded-2xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center shrink-0">
+              <Lock className="w-5 h-5 text-amber-700 dark:text-amber-400" />
+            </div>
+            <div className="space-y-0.5">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-xs font-bold text-amber-900 dark:text-amber-200 font-display">
+                  Campaign Applications Locked ({profileStatus.score}% Complete)
+                </span>
+                <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-800 dark:text-amber-300">
+                  Profile Details Required
+                </span>
+              </div>
+              <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
+                {profileStatus.unverifiedSocials.length > 0
+                  ? `You have ${profileStatus.unverifiedSocials.length} connected channel(s) pending verification. Until all channels are verified, you cannot apply to campaigns.`
+                  : "You must complete your creator profile (bio, rates, category, and connected channels) before you can apply to brand briefs."}
+              </p>
+            </div>
+          </div>
+          <Link href="/app/profile" className="shrink-0">
+            <button className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs flex items-center justify-center gap-1.5 shadow-xs border border-black/10 transition-all cursor-pointer">
+              <span>Complete Profile Details</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </Link>
+        </div>
+      )}
 
       {/* Redesigned Clean Segmented Category Tabs & Search */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">

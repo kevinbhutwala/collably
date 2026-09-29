@@ -46,7 +46,10 @@ import {
   Send,
   FileCheck2,
   Clapperboard,
+  Lock,
+  AlertTriangle,
 } from "lucide-react";
+import { checkCreatorProfileStatus } from "@/core/utils/profileCompleteness";
 
 function DashboardContent() {
   const { format, currency: userCurrency, convert } = useGlobalCurrency();
@@ -163,6 +166,8 @@ function DashboardContent() {
     0
   ) || convert(currentBrand?.totalSpent || 350000, "USD");
 
+  const profileStatus = checkCreatorProfileStatus(currentCreator);
+
   return (
     <div className="space-y-8 text-[#0A0A0E] dark:text-[#F4F4F8] font-sans select-none">
       {/* ── Welcome Banner ── */}
@@ -178,6 +183,35 @@ function DashboardContent() {
             <span className="px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10 border border-black/8 dark:border-white/10 text-[#0A0A0E] dark:text-[#F4F4F8] text-[10px] font-mono font-bold uppercase">
               {role.replace(/_/g, " ")}
             </span>
+
+            {/* Profile Confirmation & Status Pill */}
+            {role === "creator" && (
+              <Link
+                href="/app/profile"
+                className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold transition-all border ${
+                  profileStatus.canApplyToCampaigns
+                    ? "bg-emerald-500/15 border-emerald-500/30 text-emerald-800 dark:text-emerald-300 hover:bg-emerald-500/25"
+                    : "bg-amber-500/15 border-amber-500/35 text-amber-800 dark:text-amber-300 hover:bg-amber-500/25"
+                }`}
+                title={
+                  profileStatus.canApplyToCampaigns
+                    ? "Profile is confirmed and verified. You can apply for open campaigns."
+                    : "Profile is incomplete or unverified. Fill details to unlock campaign pitches."
+                }
+              >
+                {profileStatus.canApplyToCampaigns ? (
+                  <>
+                    <CheckCircle2 className="w-3 h-3 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                    <span>Profile Confirmed (100%) • Ready to Apply</span>
+                  </>
+                ) : (
+                  <>
+                    <Lock className="w-3 h-3 text-amber-600 dark:text-amber-400 shrink-0" />
+                    <span>Profile Incomplete ({profileStatus.score}%) • Applications Locked</span>
+                  </>
+                )}
+              </Link>
+            )}
           </div>
 
           <h1 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
@@ -185,7 +219,9 @@ function DashboardContent() {
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4]">
             {role === "creator"
-              ? "Here is your hub for active projects, earnings, and open campaigns."
+              ? profileStatus.canApplyToCampaigns
+                ? "Here is your hub for active projects, earnings, and open campaigns."
+                : "Complete and verify your creator profile first to unlock campaign pitches and brand collaborations."
               : "Here is your hub for campaigns, creator discovery, and escrow payments."}
           </p>
         </div>
@@ -193,20 +229,37 @@ function DashboardContent() {
         {/* Quick Action CTAs */}
         <div className="flex flex-wrap items-center gap-2.5 relative z-10 w-full sm:w-auto">
           {role === "creator" ? (
-            <>
-              <Link href="/app/campaigns" className="flex-1 sm:flex-initial">
-                <button className="w-full sm:w-auto px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs border border-black/10">
-                  <Compass className="w-3.5 h-3.5 text-[#0A0A0E]" />
-                  <span>Find Campaigns</span>
-                </button>
-              </Link>
-              <Link href="/app/profile" className="flex-1 sm:flex-initial">
-                <button className="w-full sm:w-auto px-4 py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#1C1C28] dark:hover:bg-[#252535] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs">
-                  <Sparkles className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F]" />
-                  <span>My Media Kit</span>
-                </button>
-              </Link>
-            </>
+            profileStatus.canApplyToCampaigns ? (
+              <>
+                <Link href="/app/campaigns" className="flex-1 sm:flex-initial">
+                  <button className="w-full sm:w-auto px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs border border-black/10 cursor-pointer">
+                    <Compass className="w-3.5 h-3.5 text-[#0A0A0E]" />
+                    <span>Find Campaigns</span>
+                  </button>
+                </Link>
+                <Link href="/app/profile" className="flex-1 sm:flex-initial">
+                  <button className="w-full sm:w-auto px-4 py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#1C1C28] dark:hover:bg-[#252535] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs cursor-pointer">
+                    <Sparkles className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F]" />
+                    <span>My Media Kit</span>
+                  </button>
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link href="/app/profile" className="flex-1 sm:flex-initial">
+                  <button className="w-full sm:w-auto px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs border border-black/10 cursor-pointer">
+                    <Sparkles className="w-3.5 h-3.5 text-[#0A0A0E]" />
+                    <span>First: Complete Profile</span>
+                  </button>
+                </Link>
+                <Link href="/app/campaigns" className="flex-1 sm:flex-initial">
+                  <button className="w-full sm:w-auto px-4 py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#1C1C28] dark:hover:bg-[#252535] border border-black/10 dark:border-white/10 text-[#6A6A78] dark:text-[#A0A0B4] font-medium text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs cursor-pointer">
+                    <Lock className="w-3.5 h-3.5 text-amber-500" />
+                    <span>Browse Briefs (View Only)</span>
+                  </button>
+                </Link>
+              </>
+            )
           ) : (
             <>
               <Link href="/app/brand/campaigns/create" className="flex-1 sm:flex-initial">
