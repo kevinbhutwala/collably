@@ -94,7 +94,7 @@ export default function AgencyAdminCommandCenter() {
               Agency Master Operations
             </span>
             <span className="text-[#8A8A9A] dark:text-[#6A6A7E]">•</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-primary dark:text-accent dark:text-yellow-400 font-mono text-[10px] font-bold">
+            <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-[#0F766E] dark:text-[#34D399] font-mono text-[10px] font-bold">
               Live Data
             </span>
           </div>
@@ -110,13 +110,13 @@ export default function AgencyAdminCommandCenter() {
             href="/admin/collaborations"
             className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-black dark:bg-white text-white dark:text-black text-xs font-bold hover:opacity-90 transition-all shadow-xs border border-black/10 shrink-0"
           >
-            <Lock className="w-3.5 h-3.5 text-primary" />
+            <Lock className="w-3.5 h-3.5 text-emerald-400" />
             <span>Active Escrows &amp; SLA</span>
           </Link>
 
           <Link
             href="/admin/users"
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary text-white text-xs font-bold hover:brightness-105 transition-all shadow-xs border border-black/10 shrink-0"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#0F766E] hover:bg-[#0D9488] text-white text-xs font-bold transition-all shadow-xs border border-black/10 shrink-0"
           >
             <Users className="w-3.5 h-3.5" />
             <span>User Directory &amp; Cohorts</span>
@@ -134,22 +134,22 @@ export default function AgencyAdminCommandCenter() {
       </div>
 
       {/* Global System Telemetry — computed from live data */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 font-mono">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 font-mono">
         <StatsCard
-          title="Gross Escrow Volume (GMV)"
+          title="Gross Escrow GMV"
           value={isLoading ? "…" : formatCurrency(totalEscrowGMV)}
           change="Live platform data"
           trend="up"
           subtitle="Pre-funded across campaigns"
-          icon={<Wallet className="w-5 h-5 text-primary" />}
+          icon={<Wallet className="w-5 h-5 text-[#0F766E] dark:text-[#34D399]" />}
         />
         <StatsCard
-          title="Net Platform Take-Rate (10%)"
+          title="Net Platform Take-Rate"
           value={isLoading ? "…" : formatCurrency(totalEscrowGMV * 0.1)}
           change="10% commission rate"
           trend="up"
           subtitle="Realized transaction fees"
-          icon={<Sparkles className="w-5 h-5 text-primary" />}
+          icon={<Sparkles className="w-5 h-5 text-[#0F766E] dark:text-[#34D399]" />}
         />
         <StatsCard
           title="Verified Creator Roster"
@@ -157,7 +157,7 @@ export default function AgencyAdminCommandCenter() {
           change={isLoading ? "…" : `${creators.length} total registered`}
           trend="up"
           subtitle="Audited demographics"
-          icon={<Users className="w-5 h-5 text-[#0B0A14] dark:text-accent" />}
+          icon={<Users className="w-5 h-5 text-[#0F766E] dark:text-[#34D399]" />}
         />
         <StatsCard
           title="Active Campaigns"
@@ -165,7 +165,7 @@ export default function AgencyAdminCommandCenter() {
           change={isLoading ? "…" : `${campaigns.length} total campaigns`}
           trend="up"
           subtitle="Open for applications"
-          icon={<Building2 className="w-5 h-5 text-[#0B0A14] dark:text-accent" />}
+          icon={<Building2 className="w-5 h-5 text-[#0F766E] dark:text-[#34D399]" />}
         />
       </div>
 
