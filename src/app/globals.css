@@ -786,29 +786,39 @@ html.lenis, html.lenis body {
   color: var(--theme-accent) !important;
 }
 
-/* ── 2. THEME PRIMARY & PURPLE ACCENT BUTTON / BADGE TEXT CONTRAST (LIGHT & DARK) ──
+/* ── 2. THEME PRIMARY & ACCENT BUTTON / BADGE TEXT CONTRAST (LIGHT & DARK) ──
    Buttons, badges, and links with solid primary theme background or primary gradient
-   MUST ALWAYS have crisp pure white text (#FFFFFF) for perfect AAA contrast! */
-button[class*="bg-primary"]:not([class*="bg-primary/"]),
-button[class*="from-primary"],
-button[class*="bg-theme"],
-a[class*="bg-primary"]:not([class*="bg-primary/"]),
-a[class*="from-primary"],
-a.bg-theme,
-span[class*="bg-primary"]:not([class*="bg-primary/"]),
-span[class*="from-primary"],
-div[class*="bg-primary"]:not([class*="bg-primary/"]) {
+   MUST ALWAYS have crisp pure white text (#FFFFFF) for perfect AAA contrast!
+   EXCEPTION: Elements with bg-clip-text or text-transparent must ALWAYS keep gradient text! */
+
+[class*="bg-clip-text"],
+[class*="text-transparent"],
+.bg-clip-text,
+.text-transparent {
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+button[class*="bg-primary"]:not([class*="bg-primary/"]):not([class*="bg-clip-text"]),
+button[class*="from-primary"]:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+button[class*="bg-theme"]:not([class*="bg-clip-text"]),
+a[class*="bg-primary"]:not([class*="bg-primary/"]):not([class*="bg-clip-text"]),
+a[class*="from-primary"]:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+a.bg-theme:not([class*="bg-clip-text"]),
+span[class*="bg-primary"]:not([class*="bg-primary/"]):not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+span[class*="from-primary"]:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+div[class*="bg-primary"]:not([class*="bg-primary/"]):not([class*="bg-clip-text"]):not([class*="text-transparent"]) {
   color: #FFFFFF !important;
 }
 
-button[class*="bg-primary"]:not([class*="bg-primary/"]) *:not([class*="text-"]),
-button[class*="from-primary"] *:not([class*="text-"]),
-button[class*="bg-theme"] *:not([class*="text-"]),
-a[class*="bg-primary"]:not([class*="bg-primary/"]) *:not([class*="text-"]),
-a[class*="from-primary"] *:not([class*="text-"]),
-a.bg-theme *:not([class*="text-"]),
-span[class*="bg-primary"]:not([class*="bg-primary/"]) *:not([class*="text-"]),
-span[class*="from-primary"] *:not([class*="text-"]) {
+button[class*="bg-primary"]:not([class*="bg-primary/"]) *:not([class*="text-"]):not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+button[class*="from-primary"] *:not([class*="text-"]):not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+button[class*="bg-theme"] *:not([class*="text-"]):not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+a[class*="bg-primary"]:not([class*="bg-primary/"]) *:not([class*="text-"]):not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+a[class*="from-primary"] *:not([class*="text-"]):not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+a.bg-theme *:not([class*="text-"]):not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+span[class*="bg-primary"]:not([class*="bg-primary/"]) *:not([class*="text-"]):not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+span[class*="from-primary"] *:not([class*="text-"]):not([class*="bg-clip-text"]):not([class*="text-transparent"]) {
   color: #FFFFFF !important;
 }
 
@@ -817,7 +827,7 @@ button[class*="from-primary"] svg,
 a[class*="bg-primary"] svg,
 a[class*="from-primary"] svg,
 span[class*="bg-primary"]:not([class*="bg-primary/"]) svg,
-span[class*="from-primary"] svg {
+span[class*="from-primary"]:not([class*="bg-clip-text"]) svg {
   color: #FFFFFF !important;
   stroke: currentColor;
 }

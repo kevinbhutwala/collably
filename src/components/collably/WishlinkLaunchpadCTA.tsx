@@ -27,7 +27,7 @@ export function WishlinkLaunchpadCTA() {
 
             <h2 className="text-2xl min-[400px]:text-3xl sm:text-5xl lg:text-6xl font-black font-display tracking-tight text-[#0B0A14] leading-[1.08]">
               Your launchpad to{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent underline decoration-accent decoration-4 underline-offset-8">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0F766E] via-[#0D9488] to-[#047857] underline decoration-[#0F766E]/50 decoration-4 underline-offset-8">
                 success!!
               </span>
             </h2>
