@@ -209,7 +209,7 @@ export function PlanUpgradeModal() {
                 onClick={() => setIsAnnual(false)}
                 className={`px-4 py-1.5 rounded-full transition-all font-bold ${
                   !isAnnual
-                    ? "bg-primary text-[#0B0A14] shadow-xs"
+                    ? "bg-primary text-white shadow-xs"
                     : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
                 }`}
               >
@@ -219,7 +219,7 @@ export function PlanUpgradeModal() {
                 onClick={() => setIsAnnual(true)}
                 className={`px-4 py-1.5 rounded-full transition-all font-bold flex items-center gap-1.5 ${
                   isAnnual
-                    ? "bg-primary text-[#0B0A14] shadow-xs"
+                    ? "bg-primary text-white shadow-xs"
                     : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
                 }`}
               >
@@ -294,7 +294,7 @@ export function PlanUpgradeModal() {
                     )}
 
                     {p.highlight && (
-                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary text-[#0B0A14] font-mono font-extrabold text-[10px] tracking-wider uppercase shadow-xs">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary text-white font-mono font-extrabold text-[10px] tracking-wider uppercase shadow-xs">
                         <Sparkles className="w-3 h-3 text-[#0B0A14]" />
                         Popular
                       </span>
@@ -329,7 +329,7 @@ export function PlanUpgradeModal() {
                   <div className="pt-3 border-t border-black/6 dark:border-white/10 space-y-2">
                     {p.featureBullets.map((bullet, idx) => (
                       <div key={idx} className="flex items-start gap-2 text-xs text-[#3A3A48] dark:text-[#C8C8DC]">
-                        <div className="w-4 h-4 rounded-full bg-primary/25 dark:bg-primary/20 text-[#0B0A14] dark:text-accent flex items-center justify-center shrink-0 mt-0.5">
+                        <div className="w-4 h-4 rounded-full bg-primary/25 dark:bg-primary/20 text-primary dark:text-accent dark:text-accent flex items-center justify-center shrink-0 mt-0.5">
                           <Check className="w-3 h-3 text-[#0B0A14] dark:text-accent" />
                         </div>
                         <span className="leading-tight">{bullet}</span>
@@ -353,7 +353,7 @@ export function PlanUpgradeModal() {
                       disabled={isLoading && isProcessing}
                       className={`w-full py-3 px-3 rounded-full text-xs font-bold transition-all flex flex-wrap items-center justify-center gap-1.5 text-center leading-snug active:scale-98 ${
                         p.highlight
-                          ? "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] font-extrabold"
+                          ? "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] font-extrabold"
                           : "bg-[#F4F4F8] hover:bg-[#EAEAF0] text-[#0B0A14] border border-black/12 hover:border-black/25 font-bold shadow-xs"
                       }`}
                     >

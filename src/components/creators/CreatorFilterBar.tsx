@@ -110,7 +110,7 @@ export function CreatorFilterBar() {
               className={cn(
                 "px-3.5 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center gap-2 border shadow-2xs",
                 creatorCategory !== "all"
-                  ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] border-black dark:border-primary"
+                  ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-white border-black dark:border-primary"
                   : openDropdown === "category"
                   ? "bg-white dark:bg-[#181824] border-primary text-[#0B0A14] dark:text-white ring-2 ring-primary/20"
                   : "bg-[#F8F8FC] dark:bg-[#181824] border-black/8 dark:border-white/10 text-[#4A4A58] dark:text-[#B0B0C4] hover:bg-black/5 dark:hover:bg-white/10 hover:text-[#0B0A14] dark:hover:text-white"
@@ -139,7 +139,7 @@ export function CreatorFilterBar() {
                   className={cn(
                     "w-full px-3 py-2.5 rounded-xl text-xs text-left transition-colors flex items-center justify-between font-semibold",
                     creatorCategory === "all"
-                      ? "bg-primary/5 dark:bg-primary/15 text-[#0B0A14] dark:text-accent font-bold border border-primary/40"
+                      ? "bg-primary/5 dark:bg-primary/15 text-primary dark:text-accent dark:text-accent font-bold border border-primary/40"
                       : "hover:bg-black/5 dark:hover:bg-white/10 text-[#5A5A68] dark:text-[#B0B0C4]"
                   )}
                 >
@@ -160,7 +160,7 @@ export function CreatorFilterBar() {
                     className={cn(
                       "w-full px-3 py-2 rounded-xl text-xs text-left transition-colors flex items-center justify-between",
                       creatorCategory === cat
-                        ? "bg-primary/5 dark:bg-primary/15 text-[#0B0A14] dark:text-accent font-bold border border-primary/40"
+                        ? "bg-primary/5 dark:bg-primary/15 text-primary dark:text-accent dark:text-accent font-bold border border-primary/40"
                         : "hover:bg-black/5 dark:hover:bg-white/10 text-[#4A4A58] dark:text-[#B0B0C4]"
                     )}
                   >
@@ -180,7 +180,7 @@ export function CreatorFilterBar() {
               className={cn(
                 "px-3.5 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center gap-2 border shadow-2xs",
                 creatorPlatform !== "all"
-                  ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] border-black dark:border-primary"
+                  ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-white border-black dark:border-primary"
                   : openDropdown === "platform"
                   ? "bg-white dark:bg-[#181824] border-primary text-[#0B0A14] dark:text-white ring-2 ring-primary/20"
                   : "bg-[#F8F8FC] dark:bg-[#181824] border-black/8 dark:border-white/10 text-[#4A4A58] dark:text-[#B0B0C4] hover:bg-black/5 dark:hover:bg-white/10 hover:text-[#0B0A14] dark:hover:text-white"
@@ -213,7 +213,7 @@ export function CreatorFilterBar() {
                   className={cn(
                     "w-full px-3 py-2.5 rounded-xl text-xs text-left transition-colors flex items-center justify-between font-semibold",
                     creatorPlatform === "all"
-                      ? "bg-primary/5 dark:bg-primary/15 text-[#0B0A14] dark:text-accent font-bold border border-primary/40"
+                      ? "bg-primary/5 dark:bg-primary/15 text-primary dark:text-accent dark:text-accent font-bold border border-primary/40"
                       : "hover:bg-black/5 dark:hover:bg-white/10 text-[#5A5A68] dark:text-[#B0B0C4]"
                   )}
                 >
@@ -234,7 +234,7 @@ export function CreatorFilterBar() {
                     className={cn(
                       "w-full px-3 py-2 rounded-xl text-xs text-left transition-colors flex items-center justify-between gap-2",
                       creatorPlatform === plat.id
-                        ? "bg-primary/5 dark:bg-primary/15 text-[#0B0A14] dark:text-accent font-bold border border-primary/40"
+                        ? "bg-primary/5 dark:bg-primary/15 text-primary dark:text-accent dark:text-accent font-bold border border-primary/40"
                         : "hover:bg-black/5 dark:hover:bg-white/10 text-[#4A4A58] dark:text-[#B0B0C4]"
                     )}
                   >
@@ -259,7 +259,7 @@ export function CreatorFilterBar() {
               className={cn(
                 "px-3.5 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center gap-2 border shadow-2xs font-mono",
                 creatorMinFollowers > 0
-                  ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] border-black dark:border-primary"
+                  ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-white border-black dark:border-primary"
                   : openDropdown === "reach"
                   ? "bg-white dark:bg-[#181824] border-primary text-[#0B0A14] dark:text-white ring-2 ring-primary/20"
                   : "bg-[#F8F8FC] dark:bg-[#181824] border-black/8 dark:border-white/10 text-[#4A4A58] dark:text-[#B0B0C4] hover:bg-black/5 dark:hover:bg-white/10 hover:text-[#0B0A14] dark:hover:text-white"
@@ -290,7 +290,7 @@ export function CreatorFilterBar() {
                     className={cn(
                       "w-full px-3 py-2.5 rounded-xl text-left transition-colors flex items-center justify-between gap-2",
                       creatorMinFollowers === tier.val
-                        ? "bg-primary/5 dark:bg-primary/15 text-[#0B0A14] dark:text-accent font-bold border border-primary/40"
+                        ? "bg-primary/5 dark:bg-primary/15 text-primary dark:text-accent dark:text-accent font-bold border border-primary/40"
                         : "hover:bg-black/5 dark:hover:bg-white/10 text-[#4A4A58] dark:text-[#B0B0C4]"
                     )}
                   >
@@ -313,7 +313,7 @@ export function CreatorFilterBar() {
               className={cn(
                 "px-3.5 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center gap-2 border shadow-2xs font-mono",
                 creatorMinEngagement > 0
-                  ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] border-black dark:border-primary"
+                  ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-white border-black dark:border-primary"
                   : openDropdown === "engagement"
                   ? "bg-white dark:bg-[#181824] border-primary text-[#0B0A14] dark:text-white ring-2 ring-primary/20"
                   : "bg-[#F8F8FC] dark:bg-[#181824] border-black/8 dark:border-white/10 text-[#4A4A58] dark:text-[#B0B0C4] hover:bg-black/5 dark:hover:bg-white/10 hover:text-[#0B0A14] dark:hover:text-white"
@@ -344,7 +344,7 @@ export function CreatorFilterBar() {
                     className={cn(
                       "w-full px-3 py-2.5 rounded-xl text-left transition-colors flex items-center justify-between gap-2",
                       creatorMinEngagement === tier.val
-                        ? "bg-primary/5 dark:bg-primary/15 text-[#0B0A14] dark:text-accent font-bold border border-primary/40"
+                        ? "bg-primary/5 dark:bg-primary/15 text-primary dark:text-accent dark:text-accent font-bold border border-primary/40"
                         : "hover:bg-black/5 dark:hover:bg-white/10 text-[#4A4A58] dark:text-[#B0B0C4]"
                     )}
                   >
@@ -367,7 +367,7 @@ export function CreatorFilterBar() {
               className={cn(
                 "px-3.5 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center gap-2 border shadow-2xs",
                 creatorLocation !== "all" && creatorLocation && creatorLocation !== "Worldwide"
-                  ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] border-black dark:border-primary"
+                  ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-white border-black dark:border-primary"
                   : openDropdown === "location"
                   ? "bg-white dark:bg-[#181824] border-primary text-[#0B0A14] dark:text-white ring-2 ring-primary/20"
                   : "bg-[#F8F8FC] dark:bg-[#181824] border-black/8 dark:border-white/10 text-[#4A4A58] dark:text-[#B0B0C4] hover:bg-black/5 dark:hover:bg-white/10 hover:text-[#0B0A14] dark:hover:text-white"
@@ -396,7 +396,7 @@ export function CreatorFilterBar() {
                   className={cn(
                     "w-full px-3 py-2.5 rounded-xl text-xs text-left transition-colors flex items-center justify-between font-semibold",
                     creatorLocation === "all" || !creatorLocation
-                      ? "bg-primary/5 dark:bg-primary/15 text-[#0B0A14] dark:text-accent font-bold border border-primary/40"
+                      ? "bg-primary/5 dark:bg-primary/15 text-primary dark:text-accent dark:text-accent font-bold border border-primary/40"
                       : "hover:bg-black/5 dark:hover:bg-white/10 text-[#5A5A68] dark:text-[#B0B0C4]"
                   )}
                 >
@@ -417,7 +417,7 @@ export function CreatorFilterBar() {
                     className={cn(
                       "w-full px-3 py-2 rounded-xl text-xs text-left transition-colors flex items-center justify-between",
                       creatorLocation === hub
-                        ? "bg-primary/5 dark:bg-primary/15 text-[#0B0A14] dark:text-accent font-bold border border-primary/40"
+                        ? "bg-primary/5 dark:bg-primary/15 text-primary dark:text-accent dark:text-accent font-bold border border-primary/40"
                         : "hover:bg-black/5 dark:hover:bg-white/10 text-[#4A4A58] dark:text-[#B0B0C4]"
                     )}
                   >

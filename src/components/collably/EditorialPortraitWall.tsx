@@ -115,7 +115,7 @@ export function EditorialPortraitWall() {
 
           <Link
             href="/creators"
-            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] text-xs font-sans font-bold shadow-xs transition-all flex items-center gap-2 group border border-black/10"
+            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white text-xs font-sans font-bold shadow-xs transition-all flex items-center gap-2 group border border-black/10"
           >
             <span>Explore Full Creator Roster</span>
             <ArrowRight className="w-3.5 h-3.5 text-[#0B0A14]" />

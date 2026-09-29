@@ -47,7 +47,7 @@ export default function AppCampaignsPage() {
               Campaign Marketplace
             </span>
             <span className="text-[#8A8A9A] dark:text-[#6A6A7E]">•</span>
-            <span className="px-2 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-[#0B0A14] dark:text-yellow-400 font-mono text-[10px] font-bold">
+            <span className="px-2 py-0.5 rounded-full bg-primary/15 border border-primary/30 text-primary dark:text-accent font-mono text-[10px] font-bold">
               Protected Brand Payments
             </span>
           </div>
@@ -62,17 +62,17 @@ export default function AppCampaignsPage() {
 
       {/* Profile Incomplete Application Lock Notice */}
       {isCreatorBlocked && (
-        <div className="rounded-3xl bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border border-amber-500/30 p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
+        <div className="rounded-3xl bg-gradient-to-r from-primary/10 via-primary/5 to-transparent border border-primary/25 p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
           <div className="flex items-start sm:items-center gap-3.5">
-            <div className="w-10 h-10 rounded-2xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center shrink-0">
-              <Lock className="w-5 h-5 text-amber-700 dark:text-amber-400" />
+            <div className="w-10 h-10 rounded-2xl bg-primary/15 border border-primary/30 flex items-center justify-center shrink-0">
+              <Lock className="w-5 h-5 text-primary dark:text-accent" />
             </div>
             <div className="space-y-0.5">
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-xs font-bold text-amber-900 dark:text-amber-200 font-display">
+                <span className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
                   Campaign Applications Locked ({profileStatus.score}% Complete)
                 </span>
-                <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-800 dark:text-amber-300">
+                <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded-full bg-primary/15 text-primary dark:text-accent border border-primary/25">
                   Profile Details Required
                 </span>
               </div>
@@ -84,9 +84,9 @@ export default function AppCampaignsPage() {
             </div>
           </div>
           <Link href="/app/profile" className="shrink-0">
-            <button className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-xs flex items-center justify-center gap-1.5 shadow-xs border border-black/10 transition-all cursor-pointer">
+            <button className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs flex items-center justify-center gap-1.5 shadow-md border border-white/10 transition-all cursor-pointer">
               <span>Complete Profile Details</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight className="w-3.5 h-3.5 text-white" />
             </button>
           </Link>
         </div>
@@ -118,7 +118,7 @@ export default function AppCampaignsPage() {
                 className={cn(
                   "px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all whitespace-nowrap shrink-0 flex items-center gap-1.5",
                   isSelected
-                    ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] font-bold shadow-xs"
+                    ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-white font-bold shadow-xs"
                     : "text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5"
                 )}
               >

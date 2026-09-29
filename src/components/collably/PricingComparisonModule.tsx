@@ -72,7 +72,7 @@ export function PricingComparisonModule() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 relative z-10">
         {/* Header */}
         <div className="text-center space-y-4 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-[#0B0A14] text-[10px] font-mono font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-primary dark:text-accent text-[10px] font-mono font-bold uppercase tracking-wider">
             <span>TRANSPARENT VALUE ARCHITECTURE</span>
           </div>
 
@@ -94,7 +94,7 @@ export function PricingComparisonModule() {
                 className={cn(
                   "px-4 py-1.5 rounded-full transition-all font-bold",
                   billingCycle === "monthly"
-                    ? "bg-primary text-[#0B0A14] shadow-xs"
+                    ? "bg-primary text-white shadow-xs"
                     : "text-[#5A5A66] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
                 )}
               >
@@ -106,7 +106,7 @@ export function PricingComparisonModule() {
                 className={cn(
                   "px-4 py-1.5 rounded-full transition-all font-bold flex items-center gap-1.5",
                   billingCycle === "annual"
-                    ? "bg-primary text-[#0B0A14] shadow-xs"
+                    ? "bg-primary text-white shadow-xs"
                     : "text-[#5A5A66] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
                 )}
               >
@@ -135,7 +135,7 @@ export function PricingComparisonModule() {
                 )}
               >
                 {plan.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] text-[10px] font-mono font-extrabold tracking-wider uppercase shadow-[0_0_15px_rgba(var(--theme-primary-rgb),0.5)] border border-black/10">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white text-[10px] font-mono font-extrabold tracking-wider uppercase shadow-[0_0_15px_rgba(var(--theme-primary-rgb),0.5)] border border-black/10">
                     ★ MOST POPULAR
                   </div>
                 )}
@@ -183,7 +183,7 @@ export function PricingComparisonModule() {
                       className={cn(
                         "w-full py-3.5 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 active:scale-98 shadow-sm",
                         plan.popular
-                          ? "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10"
+                          ? "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10"
                           : "bg-[#F4F4F8] hover:bg-[#EAEAF0] text-[#0B0A14] border border-black/10 hover:border-black/20 font-bold shadow-2xs"
                       )}
                     >

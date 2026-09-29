@@ -36,7 +36,7 @@ export function SaveToShortlistButton({
       className={cn(
         "w-full py-2.5 rounded-full border text-xs font-bold transition-all flex items-center justify-center gap-2 select-none",
         saved
-          ? "bg-primary text-[#0B0A14] border-black/10 shadow-xs"
+          ? "bg-primary text-white border-black/10 shadow-xs"
           : "bg-white text-[#5A5A68] hover:text-[#0B0A14] border-black/10 hover:bg-[#F5F5F9]",
         className
       )}

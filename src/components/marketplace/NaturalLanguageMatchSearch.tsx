@@ -53,7 +53,7 @@ export function NaturalLanguageMatchSearch() {
     <div className="w-full rounded-3xl border border-black/8 dark:border-white/10 bg-white dark:bg-[#12121A] p-6 sm:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-2xl text-[#0B0A14] dark:text-[#F4F4F8] select-none font-sans">
       {/* Header */}
       <div className="flex flex-col gap-2">
-        <div className="inline-flex items-center gap-2 self-start rounded-full border border-primary/40 bg-primary/15 px-3 py-1 text-xs font-semibold text-[#0B0A14] dark:text-accent">
+        <div className="inline-flex items-center gap-2 self-start rounded-full border border-primary/40 bg-primary/15 px-3 py-1 text-xs font-semibold text-primary dark:text-accent dark:text-accent">
           <span>🎯</span> Explainable 6-Factor Compatibility Engine
         </div>
         <h2 className="text-xl sm:text-2xl font-bold text-[#0B0A14] dark:text-white font-display">
@@ -87,7 +87,7 @@ export function NaturalLanguageMatchSearch() {
         <button
           onClick={() => handleSearch()}
           disabled={loading}
-          className="flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary px-6 py-3.5 text-sm font-extrabold text-[#0B0A14] shadow-xs border border-black/10 disabled:opacity-50 transition-all cursor-pointer"
+          className="flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary px-6 py-3.5 text-sm font-extrabold text-white shadow-xs border border-black/10 disabled:opacity-50 transition-all cursor-pointer"
         >
           {loading ? (
             <span className="h-4 w-4 animate-spin rounded-full border-2 border-[#0B0A14] border-t-transparent" />
@@ -124,7 +124,7 @@ export function NaturalLanguageMatchSearch() {
           </div>
           <div className="mt-3 flex flex-wrap gap-2">
             {parsedBrief.category && (
-              <span className="inline-flex items-center gap-1 rounded-lg border border-primary/40 bg-primary/15 px-2.5 py-1 text-xs font-bold text-[#0B0A14] dark:text-accent">
+              <span className="inline-flex items-center gap-1 rounded-lg border border-primary/40 bg-primary/15 px-2.5 py-1 text-xs font-bold text-primary dark:text-accent dark:text-accent">
                 <span>📁</span> {parsedBrief.category}
               </span>
             )}
@@ -139,7 +139,7 @@ export function NaturalLanguageMatchSearch() {
               </span>
             )}
             {parsedBrief.maxBudget !== undefined && (
-              <span className="inline-flex items-center gap-1 rounded-lg border border-primary/40 bg-primary/15 px-2.5 py-1 text-xs font-bold text-[#0B0A14] dark:text-accent">
+              <span className="inline-flex items-center gap-1 rounded-lg border border-primary/40 bg-primary/15 px-2.5 py-1 text-xs font-bold text-primary dark:text-accent dark:text-accent">
                 <span>💰</span> Max {formatCurrency(parsedBrief.maxBudget, parsedBrief.currency)}
               </span>
             )}
@@ -220,7 +220,7 @@ export function NaturalLanguageMatchSearch() {
 
                       <Link
                         href={`/creators/${creator.id}`}
-                        className="rounded-xl bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary px-4 py-2 text-xs font-extrabold text-[#0B0A14] shadow-2xs border border-black/10 transition-all"
+                        className="rounded-xl bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary px-4 py-2 text-xs font-extrabold text-white shadow-2xs border border-black/10 transition-all"
                       >
                         Invite to Campaign →
                       </Link>

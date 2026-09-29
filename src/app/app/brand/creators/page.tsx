@@ -178,7 +178,7 @@ export default function BrandCreatorDiscoveryPage() {
               Talent Discovery
             </span>
             <span className="text-[#8A8A9A]">•</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-primary/15 border border-primary/30 text-[#0B0A14] dark:text-accent font-mono text-[10px] font-bold">
+            <span className="px-2.5 py-0.5 rounded-full bg-primary/15 border border-primary/30 text-primary dark:text-accent dark:text-accent font-mono text-[10px] font-bold">
               Verified Creators
             </span>
           </div>
@@ -204,7 +204,7 @@ export default function BrandCreatorDiscoveryPage() {
           className={cn(
             "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shrink-0",
             tabMode === "directory"
-              ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-sm"
+              ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-white shadow-sm"
               : "bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/6 dark:border-white/8"
           )}
         >
@@ -215,7 +215,7 @@ export default function BrandCreatorDiscoveryPage() {
           className={cn(
             "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shrink-0",
             tabMode === "match"
-              ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-sm"
+              ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-white shadow-sm"
               : "bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/6 dark:border-white/8"
           )}
         >
@@ -226,7 +226,7 @@ export default function BrandCreatorDiscoveryPage() {
           className={cn(
             "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shrink-0",
             tabMode === "trending"
-              ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-sm"
+              ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-white shadow-sm"
               : "bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/6 dark:border-white/8"
           )}
         >
@@ -254,7 +254,7 @@ export default function BrandCreatorDiscoveryPage() {
                 className={cn(
                   "px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1",
                   creatorTrendingOnly
-                    ? "bg-primary text-[#0B0A14] border border-black/10 shadow-xs"
+                    ? "bg-primary text-white border border-black/10 shadow-xs"
                     : "bg-[#F5F5F9] dark:bg-[#1C1C2A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/5 dark:border-white/5"
                 )}
               >
@@ -280,7 +280,7 @@ export default function BrandCreatorDiscoveryPage() {
                 className={cn(
                   "px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1",
                   creatorLocation === "Worldwide"
-                    ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-xs"
+                    ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-white shadow-xs"
                     : "bg-[#F5F5F9] dark:bg-[#1C1C2A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/5 dark:border-white/5"
                 )}
               >
@@ -293,7 +293,7 @@ export default function BrandCreatorDiscoveryPage() {
                 className={cn(
                   "px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1",
                   creatorMaxBudget === 3000
-                    ? "bg-primary text-[#0B0A14] border border-black/10 shadow-xs"
+                    ? "bg-primary text-white border border-black/10 shadow-xs"
                     : "bg-[#F5F5F9] dark:bg-[#1C1C2A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/5 dark:border-white/5"
                 )}
               >
@@ -329,7 +329,7 @@ export default function BrandCreatorDiscoveryPage() {
               <p className="text-xs text-[#6A6A78] dark:text-[#8E8EA4]">Try loosening your filters or clearing search keywords.</p>
               <button
                 onClick={resetCreatorFilters}
-                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold shadow-xs transition-all border border-black/10 cursor-pointer"
+                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold shadow-xs transition-all border border-black/10 cursor-pointer"
               >
                 Reset All Filters
               </button>

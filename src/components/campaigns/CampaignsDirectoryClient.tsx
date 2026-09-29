@@ -40,7 +40,7 @@ export function CampaignsDirectoryClient() {
       {/* Top Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         <div className="space-y-4 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-xs font-mono font-bold text-[#0B0A14] dark:text-accent">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-xs font-mono font-bold text-primary dark:text-accent dark:text-accent">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
             <span>PRE-FUNDED ESCROW BRIEFS</span>
           </div>
@@ -60,7 +60,7 @@ export function CampaignsDirectoryClient() {
               className={cn(
                 "px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap shrink-0 flex items-center gap-1.5 cursor-pointer",
                 selectedCategory === "all"
-                  ? "bg-primary text-[#0B0A14] dark:text-[#0B0A14] shadow-xs font-bold border border-black/10"
+                  ? "bg-primary text-white dark:text-white shadow-xs font-bold border border-black/10"
                   : "bg-white dark:bg-[#14141E] text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/8 dark:border-white/10"
               )}
             >
@@ -77,7 +77,7 @@ export function CampaignsDirectoryClient() {
                   className={cn(
                     "px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all select-none whitespace-nowrap shrink-0 flex items-center gap-1.5 cursor-pointer",
                     selectedCategory === cat
-                      ? "bg-primary text-[#0B0A14] dark:text-[#0B0A14] shadow-xs font-bold border border-black/10"
+                      ? "bg-primary text-white dark:text-white shadow-xs font-bold border border-black/10"
                       : "bg-white dark:bg-[#14141E] text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/8 dark:border-white/10"
                   )}
                 >
@@ -154,7 +154,7 @@ export function CampaignsDirectoryClient() {
                         const isDifferentCurrency = originalCurrency !== displayCurrency.toUpperCase();
                         return (
                           <span
-                            className="px-3 py-1 rounded-full bg-primary text-[#0B0A14] text-xs font-mono font-extrabold shadow-2xs flex items-center gap-1"
+                            className="px-3 py-1 rounded-full bg-primary text-white text-xs font-mono font-extrabold shadow-2xs flex items-center gap-1"
                             title={isDifferentCurrency ? `Authoritative brief budget: ${formatCurrency(budgetVal, originalCurrency)}` : undefined}
                           >
                             <span>{formatCurrency(budgetVal, originalCurrency)}</span>
@@ -196,7 +196,7 @@ export function CampaignsDirectoryClient() {
                   <div className="pt-4 mt-2">
                     <Link
                       href={`/campaigns/${camp.id}`}
-                      className="w-full py-2.5 rounded-full bg-[#FAF9F5] dark:bg-[#181824] hover:bg-primary dark:hover:bg-primary text-[#0B0A14] dark:text-white dark:hover:text-[#0B0A14] font-sans font-bold text-xs transition-colors flex items-center justify-center gap-1.5 border border-black/8 dark:border-white/10 shadow-2xs hover-lift"
+                      className="w-full py-2.5 rounded-full bg-[#FAF9F5] dark:bg-[#181824] hover:bg-primary dark:hover:bg-primary text-white dark:text-white dark:hover:text-[#0B0A14] font-sans font-bold text-xs transition-colors flex items-center justify-center gap-1.5 border border-black/8 dark:border-white/10 shadow-2xs hover-lift"
                     >
                       <span>View Brief &amp; Pitch</span>
                       <ArrowRight className="w-3.5 h-3.5" />

@@ -154,7 +154,7 @@ export function ProfileCompletenessCard({ creator }: { creator?: CreatorProfile 
 
       {/* CTA Button */}
       <Link href="/app/profile" className="block pt-0.5">
-        <button className="w-full py-2.5 px-4 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-bold text-xs transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1.5">
+        <button className="w-full py-2.5 px-4 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-bold text-xs transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1.5">
           <Zap className="w-3.5 h-3.5 text-[#0B0A14] fill-[#0B0A14]" />
           <span>Update Profile</span>
           <ArrowRight className="w-3 h-3" />

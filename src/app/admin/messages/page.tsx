@@ -192,7 +192,7 @@ export default function AdminCommunicationsPage() {
             onClick={() => setActiveTab("all")}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
               activeTab === "all"
-                ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14]"
+                ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-white"
                 : "bg-black/5 dark:bg-white/5 text-[#6A6A78] dark:text-[#A0A0B0] hover:text-[#0B0A14] dark:hover:text-white"
             }`}
           >
@@ -202,7 +202,7 @@ export default function AdminCommunicationsPage() {
             onClick={() => setActiveTab("flagged")}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
               activeTab === "flagged"
-                ? "bg-primary text-[#0B0A14] dark:text-[#0B0A14] font-extrabold"
+                ? "bg-primary text-white dark:text-white font-extrabold"
                 : "bg-black/5 dark:bg-white/5 text-[#6A6A78] dark:text-[#A0A0B0] hover:text-[#0B0A14] dark:hover:text-white"
             }`}
           >
@@ -290,7 +290,7 @@ export default function AdminCommunicationsPage() {
                       <td className="px-5 py-4 text-right">
                         <button
                           onClick={() => handleInspectConversation(conv)}
-                          className="px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/10 hover:bg-primary hover:text-[#0B0A14] text-xs font-bold transition-all cursor-pointer"
+                          className="px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/10 hover:bg-primary hover:text-white text-xs font-bold transition-all cursor-pointer"
                         >
                           Inspect Thread
                         </button>
@@ -383,7 +383,7 @@ export default function AdminCommunicationsPage() {
                 <button
                   type="submit"
                   disabled={isSendingNotice || !adminNoticeText.trim()}
-                  className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-primary to-accent hover:brightness-105 text-[#0B0A14] font-bold text-xs transition-all shadow-xs flex items-center gap-1.5 disabled:opacity-50 cursor-pointer"
+                  className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-primary to-accent hover:brightness-105 text-white font-bold text-xs transition-all shadow-xs flex items-center gap-1.5 disabled:opacity-50 cursor-pointer"
                 >
                   <Send className="w-3.5 h-3.5" />
                   <span>Send Notice</span>

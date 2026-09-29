@@ -41,7 +41,7 @@ export function ProfileCompletionBanner({ creator: customCreator }: { creator?: 
         {/* Top Header Row: Badge, Progress & Dismiss */}
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-lg bg-primary/20 text-[#0B0A14] dark:text-accent flex items-center justify-center shrink-0">
+            <div className="w-6 h-6 rounded-lg bg-primary/20 text-primary dark:text-accent dark:text-accent flex items-center justify-center shrink-0">
               <Sparkles className="w-3.5 h-3.5" />
             </div>
             <span className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
@@ -99,7 +99,7 @@ export function ProfileCompletionBanner({ creator: customCreator }: { creator?: 
           <Link href={nextIncompleteCheck?.href || "/app/profile"} className="shrink-0">
             <button
               type="button"
-              className="w-full sm:w-auto px-4 py-1.5 rounded-full bg-primary hover:bg-accent text-[#0B0A14] text-xs font-bold transition-all shadow-xs flex items-center justify-center gap-1.5 cursor-pointer active:scale-95"
+              className="w-full sm:w-auto px-4 py-1.5 rounded-full bg-primary hover:bg-accent text-white text-xs font-bold transition-all shadow-xs flex items-center justify-center gap-1.5 cursor-pointer active:scale-95"
             >
               <span>{isBlockedByUnverified ? "Verify Channel" : "Complete Step"}</span>
               <ArrowRight className="w-3 h-3 text-[#0B0A14]" />

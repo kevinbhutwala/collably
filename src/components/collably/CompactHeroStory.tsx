@@ -105,7 +105,7 @@ export function CompactHeroStory() {
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <Link
                 href="/for-brands"
-                className="px-6 py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.5)] hover:shadow-[0_6px_24px_rgba(var(--theme-primary-rgb),0.7)] inline-flex items-center gap-2 group active:scale-[0.98] border border-black/10"
+                className="px-6 py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.5)] hover:shadow-[0_6px_24px_rgba(var(--theme-primary-rgb),0.7)] inline-flex items-center gap-2 group active:scale-[0.98] border border-black/10"
               >
                 <span>Start Campaign</span>
                 <ArrowRight className="w-4 h-4 text-[#0B0A14] group-hover:translate-x-0.5 transition-transform" />

@@ -441,7 +441,7 @@ export function CreatorDetailClient({
                 <div className="space-y-2.5 pt-1">
                   <button
                     onClick={() => setIsInviteModalOpen(true)}
-                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-bold text-sm transition-all shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.35)] flex items-center justify-center gap-2 cursor-pointer active:scale-98"
+                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-bold text-sm transition-all shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.35)] flex items-center justify-center gap-2 cursor-pointer active:scale-98"
                   >
                     <span>Send Campaign Brief</span>
                     <ArrowRight className="w-4 h-4" />
@@ -477,7 +477,7 @@ export function CreatorDetailClient({
                     Final quotes confirmed on campaign brief review.
                   </p>
                 </div>
-                <span className="px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-[#0B0A14] dark:text-accent text-[10px] font-mono font-bold">
+                <span className="px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-primary dark:text-accent dark:text-accent text-[10px] font-mono font-bold">
                   {creator.isSignedTalent ? "✓ Verified Rate Card" : "Market Benchmark"}
                 </span>
               </div>
@@ -489,7 +489,7 @@ export function CreatorDetailClient({
                     className="group flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl bg-[#F8F8FC] dark:bg-[#181826] hover:bg-[#F2F2F8] dark:hover:bg-[#1E1E2E] border border-transparent hover:border-primary/20 transition-all"
                   >
                     <div className="flex items-start gap-3.5">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/25 flex items-center justify-center text-[#0B0A14] dark:text-accent shrink-0">
+                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/25 flex items-center justify-center text-white dark:text-accent shrink-0">
                         <TitleIcon title={rate.title || rate.deliverableType} category={creator.primaryCategory} className="w-5 h-5" />
                       </div>
                       <div className="min-w-0">
@@ -678,7 +678,7 @@ export function CreatorDetailClient({
                 className={`w-full py-3.5 rounded-full font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 ${
                   brandEligibilityReport && !brandEligibilityReport.eligible
                     ? "bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 cursor-not-allowed"
-                    : "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] shadow-[0_4px_14px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10 active:scale-98 cursor-pointer"
+                    : "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white shadow-[0_4px_14px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10 active:scale-98 cursor-pointer"
                 }`}
               >
                 {isSubmittingProposal ? (

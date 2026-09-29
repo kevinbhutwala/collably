@@ -478,7 +478,7 @@ export function CampaignWizard() {
           </div>
           <button
             onClick={() => openUpgradeModal("brand_growth")}
-            className="px-4 py-2 rounded-full bg-primary hover:bg-accent text-[#0B0A14] text-xs font-bold font-mono transition-all shadow-xs shrink-0 self-start sm:self-center cursor-pointer"
+            className="px-4 py-2 rounded-full bg-primary hover:bg-accent text-white text-xs font-bold font-mono transition-all shadow-xs shrink-0 self-start sm:self-center cursor-pointer"
           >
             Upgrade Plan
           </button>
@@ -491,7 +491,7 @@ export function CampaignWizard() {
         <div className="block sm:hidden space-y-2">
           <div className="flex items-center justify-between text-xs">
             <span className="font-bold text-[#0B0A14] dark:text-white font-display flex items-center gap-1.5">
-              <span className="w-5 h-5 rounded-full bg-primary text-[#0B0A14] flex items-center justify-center text-[11px] font-black font-mono">
+              <span className="w-5 h-5 rounded-full bg-primary text-white flex items-center justify-center text-[11px] font-black font-mono">
                 {step}
               </span>
               <span>Step {step} of 7: {stepsMeta[step - 1].title}</span>
@@ -521,7 +521,7 @@ export function CampaignWizard() {
                   onClick={() => setStep(s.num)}
                   className={`px-2.5 py-1 rounded-lg text-[10px] font-bold font-mono shrink-0 transition-all flex items-center gap-1 cursor-pointer ${
                     isCurrent
-                      ? "bg-primary text-[#0B0A14] shadow-2xs font-black"
+                      ? "bg-primary text-white shadow-2xs font-black"
                       : isCompleted
                       ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20"
                       : "bg-black/5 dark:bg-white/5 text-neutral-400"
@@ -558,7 +558,7 @@ export function CampaignWizard() {
                       isCompleted
                         ? "bg-emerald-500 text-white shadow-2xs"
                         : isCurrent
-                        ? "bg-primary text-[#0B0A14] shadow-xs font-black ring-2 ring-primary/30"
+                        ? "bg-primary text-white shadow-xs font-black ring-2 ring-primary/30"
                         : "bg-black/5 dark:bg-white/10 text-neutral-400 group-hover:text-neutral-600"
                     }`}
                   >
@@ -610,13 +610,13 @@ export function CampaignWizard() {
             <div className="rounded-2xl bg-gradient-to-br from-primary/5 via-white to-[#FFFBE8] dark:from-[#181824] dark:via-[#161622] dark:to-[#1A1828] border border-primary/40 p-4 sm:p-5 shadow-xs space-y-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-lg bg-primary text-[#0B0A14] flex items-center justify-center shrink-0">
+                  <div className="w-7 h-7 rounded-lg bg-primary text-white flex items-center justify-center shrink-0">
                     <Wand2 className="w-4 h-4" />
                   </div>
                   <div>
                     <h3 className="text-xs font-bold text-[#0B0A14] dark:text-white font-display flex items-center gap-1.5">
                       <span>AI Brief Co-Pilot</span>
-                      <span className="text-[10px] font-mono uppercase bg-primary/20 text-[#0B0A14] dark:text-accent px-1.5 py-0.2 rounded font-extrabold">
+                      <span className="text-[10px] font-mono uppercase bg-primary/20 text-primary dark:text-accent dark:text-accent px-1.5 py-0.2 rounded font-extrabold">
                         Instant Draft
                       </span>
                     </h3>
@@ -759,7 +759,7 @@ export function CampaignWizard() {
                           </span>
                         </div>
                         {isSelected && (
-                          <div className="absolute top-1 right-1 w-4 h-4 rounded-full bg-primary text-[#0B0A14] flex items-center justify-center">
+                          <div className="absolute top-1 right-1 w-4 h-4 rounded-full bg-primary text-white flex items-center justify-center">
                             <Check className="w-2.5 h-2.5" />
                           </div>
                         )}
@@ -833,7 +833,7 @@ export function CampaignWizard() {
                         }}
                         className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all border cursor-pointer ${
                           isSelected
-                            ? "bg-primary text-[#0B0A14] border-black/15 shadow-2xs font-bold"
+                            ? "bg-primary text-white border-black/15 shadow-2xs font-bold"
                             : "bg-black/5 dark:bg-white/5 text-neutral-600 dark:text-neutral-400 border-black/8 dark:border-white/10 hover:border-black/20"
                         }`}
                       >
@@ -952,7 +952,7 @@ export function CampaignWizard() {
                       onClick={() => setFormData({ ...formData, minFollowers: tier.val })}
                       className={`px-3 py-2 rounded-xl text-xs font-mono font-bold transition-all border cursor-pointer ${
                         formData.minFollowers === tier.val
-                          ? "bg-primary text-[#0B0A14] border-black/15 shadow-2xs"
+                          ? "bg-primary text-white border-black/15 shadow-2xs"
                           : "bg-black/5 dark:bg-white/5 text-neutral-600 dark:text-neutral-400 border-black/8 dark:border-white/10"
                       }`}
                     >
@@ -1011,7 +1011,7 @@ export function CampaignWizard() {
                     }
                   }}
                   defaultValue=""
-                  className="px-3 py-2 rounded-xl bg-primary text-[#0B0A14] text-xs font-bold font-mono border border-black/15 shadow-xs cursor-pointer focus:outline-none"
+                  className="px-3 py-2 rounded-xl bg-primary text-white text-xs font-bold font-mono border border-black/15 shadow-xs cursor-pointer focus:outline-none"
                 >
                   <option value="" disabled>+ Add Deliverable</option>
                   {DELIVERABLE_TYPE_OPTIONS.map((opt) => (
@@ -1038,7 +1038,7 @@ export function CampaignWizard() {
                       <span className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
                         {del.type}
                       </span>
-                      <span className="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold bg-primary/15 text-[#0B0A14] dark:text-accent">
+                      <span className="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold bg-primary/15 text-primary dark:text-accent dark:text-accent">
                         {del.count}x Assets
                       </span>
                     </div>
@@ -1182,7 +1182,7 @@ export function CampaignWizard() {
                     onClick={() => setFormData({ ...formData, totalBudget: amt })}
                     className={`px-3 py-2 rounded-xl text-xs font-mono font-bold transition-all border cursor-pointer ${
                       formData.totalBudget === amt
-                        ? "bg-primary text-[#0B0A14] border-black/15 shadow-2xs"
+                        ? "bg-primary text-white border-black/15 shadow-2xs"
                         : "bg-black/5 dark:bg-white/5 text-neutral-600 dark:text-neutral-400 border-black/8 dark:border-white/10"
                     }`}
                   >

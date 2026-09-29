@@ -446,7 +446,7 @@ export default function AdminBrandsPage() {
             onClick={() => setIsCompact(!isCompact)}
             className={`px-2.5 py-1.5 rounded-lg border text-[11px] font-semibold transition-all flex items-center gap-1 cursor-pointer ${
               isCompact
-                ? "bg-primary/15 text-[#0B0A14] dark:text-accent border-primary/40"
+                ? "bg-primary/15 text-primary dark:text-accent dark:text-accent border-primary/40"
                 : "bg-black/5 dark:bg-white/5 text-neutral-600 dark:text-neutral-400 border-black/10 dark:border-white/10"
             }`}
             title="Toggle compact row spacing"
@@ -576,7 +576,7 @@ export default function AdminBrandsPage() {
                         className={`flex-1 py-1.5 rounded-lg text-xs font-bold transition-all border cursor-pointer ${
                           b.verified
                             ? "bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0B0A14] dark:text-white border-black/10 dark:border-white/10"
-                            : "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:brightness-105 text-[#0B0A14] border-black/15 shadow-xs"
+                            : "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:brightness-105 text-white border-black/15 shadow-xs"
                         }`}
                       >
                         {updatingId === b.id ? "Updating..." : b.verified ? "Revoke Partner" : "Approve Partner"}
@@ -613,7 +613,7 @@ export default function AdminBrandsPage() {
                           )}
                           <Link
                             href={`/brands/${b.id}`}
-                            className="px-2 py-1 rounded-md text-[10px] font-bold bg-primary text-[#0B0A14] border border-black/15 flex items-center gap-1 shadow-xs"
+                            className="px-2 py-1 rounded-md text-[10px] font-bold bg-primary text-white border border-black/15 flex items-center gap-1 shadow-xs"
                           >
                             <span>Profile</span>
                             <ArrowUpRight className="w-3 h-3" />
@@ -763,7 +763,7 @@ export default function AdminBrandsPage() {
 
                           {/* Campaigns count */}
                           <td className={`${isCompact ? "py-2.5" : "py-3.5"} px-4`}>
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-primary/15 text-[#0B0A14] dark:text-accent border border-primary/30">
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-primary/15 text-primary dark:text-accent dark:text-accent border border-primary/30">
                               <Layers className="w-3 h-3" />
                               <span>{brandCamps.length} Briefs</span>
                             </span>
@@ -803,7 +803,7 @@ export default function AdminBrandsPage() {
                                 className={`px-3 py-1 rounded-md text-[10px] font-bold transition-all border cursor-pointer ${
                                   b.verified
                                     ? "bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0B0A14] dark:text-white border-black/10 dark:border-white/10"
-                                    : "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:brightness-105 text-[#0B0A14] border-black/15 shadow-xs"
+                                    : "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:brightness-105 text-white border-black/15 shadow-xs"
                                 }`}
                               >
                                 {updatingId === b.id ? "Updating..." : b.verified ? "Revoke Partner" : "Approve Partner"}
@@ -860,7 +860,7 @@ export default function AdminBrandsPage() {
                                     )}
                                     <Link
                                       href={`/brands/${b.id}`}
-                                      className="px-2.5 py-1 rounded-md text-[10px] font-bold bg-primary text-[#0B0A14] border border-black/15 hover:brightness-105 flex items-center gap-1 transition-all shadow-xs"
+                                      className="px-2.5 py-1 rounded-md text-[10px] font-bold bg-primary text-white border border-black/15 hover:brightness-105 flex items-center gap-1 transition-all shadow-xs"
                                     >
                                       <span>Public Profile</span>
                                       <ArrowUpRight className="w-3 h-3" />
@@ -1058,7 +1058,7 @@ export default function AdminBrandsPage() {
                       className={`px-3 py-1 rounded-md text-[11px] font-bold transition-all border cursor-pointer ${
                         b.verified
                           ? "bg-rose-500/10 hover:bg-rose-500/20 text-rose-700 dark:text-rose-400 border-rose-500/20"
-                          : "bg-primary hover:brightness-105 text-[#0B0A14] border-black/15 shadow-xs"
+                          : "bg-primary hover:brightness-105 text-white border-black/15 shadow-xs"
                       }`}
                     >
                       {updatingId === b.id ? "Updating..." : b.verified ? "Revoke" : "Approve Partner"}

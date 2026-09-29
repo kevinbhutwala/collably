@@ -18,7 +18,7 @@ export default function Error({
   return (
     <div className="min-h-[70vh] flex flex-col items-center justify-center p-6 text-center select-none bg-[#FAFAF8] text-[#0B0A14]">
       <div className="max-w-md w-full p-8 rounded-3xl bg-white border border-black/8 shadow-xl space-y-6">
-        <div className="w-14 h-14 rounded-2xl bg-primary/20 border border-primary/40 flex items-center justify-center mx-auto text-[#0B0A14]">
+        <div className="w-14 h-14 rounded-2xl bg-primary/20 border border-primary/40 flex items-center justify-center mx-auto text-primary dark:text-accent">
           <AlertTriangle className="w-7 h-7" />
         </div>
 
@@ -37,7 +37,7 @@ export default function Error({
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
           <button
             onClick={() => reset()}
-            className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold shadow-xs border border-black/10 transition-all flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold shadow-xs border border-black/10 transition-all flex items-center justify-center gap-2"
           >
             <RefreshCw className="w-3.5 h-3.5" />
             <span>Try Again</span>

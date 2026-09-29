@@ -120,7 +120,7 @@ export function TransactionLifecycleStepper({
                   className={cn(
                     "w-8 h-8 rounded-full flex items-center justify-center text-xs font-mono font-black z-10 transition-all shadow-2xs",
                     isCurrent
-                      ? "bg-gradient-to-r from-primary to-accent text-[#0B0A14] ring-4 ring-primary/20 scale-105"
+                      ? "bg-gradient-to-r from-primary to-accent text-white ring-4 ring-primary/20 scale-105"
                       : isCompleted
                       ? "bg-emerald-500 text-white"
                       : "bg-[#F4F4F8] dark:bg-white/5 text-[#8A8A9A] dark:text-[#6A6A78] border border-black/8 dark:border-white/8"
@@ -176,7 +176,7 @@ export function TransactionLifecycleStepper({
       {role === "creator" ? (
         <div className="p-3.5 sm:p-4 rounded-2xl bg-primary/5 dark:bg-[#1A1A28] border border-primary/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
           <div className="flex items-start gap-3">
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] flex items-center justify-center font-bold shrink-0 shadow-2xs border border-black/10">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white flex items-center justify-center font-bold shrink-0 shadow-2xs border border-black/10">
               <DollarSign className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
             <div>
@@ -198,7 +198,7 @@ export function TransactionLifecycleStepper({
       ) : (
         <div className="p-3.5 sm:p-4 rounded-2xl bg-primary/5 dark:bg-[#1A1A28] border border-primary/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
           <div className="flex items-start gap-3">
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] flex items-center justify-center font-bold shrink-0 shadow-2xs">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#0B0A14] dark:bg-primary text-white dark:text-white flex items-center justify-center font-bold shrink-0 shadow-2xs">
               <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
             <div>

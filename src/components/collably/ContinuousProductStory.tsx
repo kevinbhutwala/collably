@@ -189,13 +189,13 @@ export function ContinuousProductStory() {
               onClick={() => setActiveStepIdx(idx)}
               className={`px-3.5 py-2 rounded-2xl text-xs font-mono font-bold transition-all shrink-0 flex items-center gap-2 border ${
                 activeStepIdx === idx
-                  ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] border-[#0B0A14] dark:border-primary shadow-xs"
+                  ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-white border-[#0B0A14] dark:border-primary shadow-xs"
                   : "bg-white dark:bg-[#14141E] border-black/8 dark:border-white/10 text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white hover:border-black/20 dark:hover:border-white/20"
               }`}
             >
               <span
                 className={`w-5 h-5 rounded-lg flex items-center justify-center text-[10px] ${
-                  activeStepIdx === idx ? "bg-primary text-[#0B0A14]" : "bg-[#F4F4F8] dark:bg-[#1C1C28] text-[#6A6A78] dark:text-[#8E8EA4]"
+                  activeStepIdx === idx ? "bg-primary text-white" : "bg-[#F4F4F8] dark:bg-[#1C1C28] text-[#6A6A78] dark:text-[#8E8EA4]"
                 }`}
               >
                 <step.icon className="w-3 h-3" />
@@ -210,11 +210,11 @@ export function ContinuousProductStory() {
           {/* Left Narrative Card */}
           <div className="lg:col-span-5 space-y-6">
             <div className="space-y-3">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/20 text-[#0B0A14] dark:text-accent text-[11px] font-mono font-extrabold uppercase">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/20 text-primary dark:text-accent dark:text-accent text-[11px] font-mono font-extrabold uppercase">
                 <span>{activeStep.stepNum} • {activeStep.category}</span>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-primary text-[#0B0A14] flex items-center justify-center shrink-0 shadow-xs border border-black/10">
+                <div className="w-10 h-10 rounded-2xl bg-primary text-white flex items-center justify-center shrink-0 shadow-xs border border-black/10">
                   <activeStep.icon className="w-5 h-5" />
                 </div>
                 <h3 className="text-2xl sm:text-4xl font-extrabold text-[#0B0A14] dark:text-white font-display tracking-tight">
@@ -233,7 +233,7 @@ export function ContinuousProductStory() {
             <div className="space-y-2.5 pt-2">
               {activeStep.keyBenefits.map((benefit, i) => (
                 <div key={i} className="flex items-start gap-2.5 text-xs text-[#2A2A38] dark:text-[#C8C8DC]">
-                  <div className="w-4 h-4 rounded-full bg-primary/30 dark:bg-primary/20 text-[#0B0A14] dark:text-accent flex items-center justify-center shrink-0 mt-0.5">
+                  <div className="w-4 h-4 rounded-full bg-primary/30 dark:bg-primary/20 text-primary dark:text-accent dark:text-accent flex items-center justify-center shrink-0 mt-0.5">
                     <Check className="w-3 h-3 text-[#0B0A14] dark:text-accent" />
                   </div>
                   <span className="leading-tight">{benefit}</span>
@@ -245,7 +245,7 @@ export function ContinuousProductStory() {
             <div className="pt-4 flex flex-wrap items-center gap-3">
               <button
                 onClick={() => setActiveStepIdx((prev) => (prev + 1) % WORKFLOW_STEPS.length)}
-                className="px-6 py-3 rounded-full bg-[#0B0A14] hover:bg-[#20202B] dark:bg-primary dark:hover:bg-accent text-white dark:text-[#0B0A14] text-xs font-bold transition-all flex items-center gap-2 shadow-xs hover-lift"
+                className="px-6 py-3 rounded-full bg-[#0B0A14] hover:bg-[#20202B] dark:bg-primary dark:hover:bg-accent text-white dark:text-white text-xs font-bold transition-all flex items-center gap-2 shadow-xs hover-lift"
               >
                 <span>
                   {activeStepIdx === WORKFLOW_STEPS.length - 1 ? "Replay OS Flow" : "Next Step"}
@@ -275,7 +275,7 @@ export function ContinuousProductStory() {
                     AbeyCollab Workspace
                   </span>
                 </div>
-                <span className="px-2.5 py-0.5 rounded-full bg-primary/20 text-[#0B0A14] dark:text-accent font-mono text-[9px] sm:text-[10px] font-bold">
+                <span className="px-2.5 py-0.5 rounded-full bg-primary/20 text-primary dark:text-accent dark:text-accent font-mono text-[9px] sm:text-[10px] font-bold">
                   PRODUCT PREVIEW
                 </span>
               </div>
@@ -309,7 +309,7 @@ export function ContinuousProductStory() {
                         <div className="p-3.5 rounded-2xl bg-primary/5 dark:bg-[#1A1A28] border border-primary/40 space-y-2">
                           <div className="flex items-center justify-between">
                             <span className="text-xs font-bold font-display text-[#0B0A14] dark:text-white">Caimar Salizi</span>
-                            <span className="text-[10px] font-mono font-extrabold text-[#0B0A14] bg-primary px-1.5 py-0.5 rounded">
+                            <span className="text-[10px] font-mono font-extrabold text-white bg-primary px-1.5 py-0.5 rounded">
                               Verified
                             </span>
                           </div>
@@ -343,7 +343,7 @@ export function ContinuousProductStory() {
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <div className="w-8 h-8 rounded-full bg-primary text-[#0B0A14] flex items-center justify-center text-xs font-bold shadow-xs">
+                          <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold shadow-xs">
                             <CheckCircle2 className="w-4 h-4 text-[#0B0A14]" />
                           </div>
                           <div>
@@ -515,7 +515,7 @@ export function ContinuousProductStory() {
 
                       <div className="p-3 rounded-xl bg-white dark:bg-[#181826] border border-black/8 dark:border-white/10 flex items-center justify-between text-xs">
                         <span className="font-bold text-[#0B0A14] dark:text-white">Re-book for Next Quarter</span>
-                        <button className="px-3 py-1 rounded-full bg-primary text-[#0B0A14] font-bold text-[11px]">
+                        <button className="px-3 py-1 rounded-full bg-primary text-white font-bold text-[11px]">
                           1-Click Rehire
                         </button>
                       </div>

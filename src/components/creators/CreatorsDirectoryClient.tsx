@@ -206,7 +206,7 @@ export function CreatorsDirectoryClient() {
       {/* Top Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         <div className="space-y-3.5 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-xs font-mono font-bold text-[#0B0A14] dark:text-accent">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-xs font-mono font-bold text-primary dark:text-accent dark:text-accent">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
             <span>FOUNDING CREATOR COHORT &bull; PRE-LAUNCH TALENT</span>
           </div>
@@ -225,7 +225,7 @@ export function CreatorsDirectoryClient() {
             className={cn(
               "px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 shrink-0 cursor-pointer",
               viewMode === "directory"
-                ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-xs"
+                ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-white shadow-xs"
                 : "text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white"
             )}
           >
@@ -236,7 +236,7 @@ export function CreatorsDirectoryClient() {
             className={cn(
               "px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 shrink-0 cursor-pointer",
               viewMode === "trending"
-                ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-xs"
+                ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-white shadow-xs"
                 : "text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white"
             )}
           >
@@ -247,7 +247,7 @@ export function CreatorsDirectoryClient() {
             className={cn(
               "px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 shrink-0 cursor-pointer",
               viewMode === "match"
-                ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-xs"
+                ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-white shadow-xs"
                 : "text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white"
             )}
           >
@@ -293,7 +293,7 @@ export function CreatorsDirectoryClient() {
                   className={cn(
                     "px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer",
                     talentRosterFilter === "all"
-                      ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-xs"
+                      ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-white shadow-xs"
                       : "bg-white dark:bg-[#181824] text-[#5A5A68] dark:text-[#A0A0B4] border border-black/8 dark:border-white/10"
                   )}
                 >
@@ -354,7 +354,7 @@ export function CreatorsDirectoryClient() {
                 className={cn(
                   "px-4 py-2 rounded-full text-xs font-bold transition-all shrink-0 cursor-pointer",
                   creatorCategory === "all"
-                    ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-xs"
+                    ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-white shadow-xs"
                     : "bg-white dark:bg-[#14141E] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/8 dark:border-white/10"
                 )}
               >
@@ -371,7 +371,7 @@ export function CreatorsDirectoryClient() {
                     className={cn(
                       "px-3.5 py-1.5 rounded-full text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 cursor-pointer",
                       isSelected
-                        ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-xs"
+                        ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-white shadow-xs"
                         : "bg-white dark:bg-[#14141E] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/8 dark:border-white/10"
                     )}
                   >
@@ -405,7 +405,7 @@ export function CreatorsDirectoryClient() {
                 setCreatorSearchQuery("");
                 setTalentRosterFilter("cohort");
               }}
-              className="px-4 py-2 rounded-full bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] text-xs font-bold cursor-pointer"
+              className="px-4 py-2 rounded-full bg-[#0B0A14] dark:bg-primary text-white dark:text-white text-xs font-bold cursor-pointer"
             >
               Reset Filters
             </button>

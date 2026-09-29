@@ -659,35 +659,54 @@ html.lenis, html.lenis body {
   color: var(--theme-accent) !important;
 }
 
-/* ── 2. THEME ACCENT BUTTON & BADGE TEXT CONTRAST ──
-   Buttons with primary theme background have crisp white text */
-.dark button[class*="bg-primary"],
-.dark button[class*="bg-primary"] *,
-.dark button[class*="bg-primary"] svg,
-.dark a[class*="bg-primary"],
-.dark a[class*="bg-primary"] *,
-.dark a[class*="bg-primary"] svg,
-.dark button[class*="from-primary"],
-.dark button[class*="from-primary"] *,
-.dark button[class*="from-primary"] svg,
-.dark a[class*="from-primary"],
-.dark a[class*="from-primary"] *,
-.dark a[class*="from-primary"] svg,
-.dark button[class*="bg-theme"],
-.dark button[class*="bg-theme"] *,
-.dark button[class*="bg-theme"] svg,
-.dark a.bg-theme,
-.dark a.bg-theme *,
-.dark a.bg-theme svg,
-.dark button[class*="bg-[#FFD21F]"],
-.dark button[class*="bg-[#FFD21F]"] *,
-.dark a[class*="bg-[#FFD21F]"],
-.dark a[class*="bg-[#FFD21F]"] *,
-.dark button[class*="from-[#FFD21F]"],
-.dark button[class*="from-[#FFD21F]"] *,
-.dark a[class*="from-[#FFD21F]"],
-.dark a[class*="from-[#FFD21F]"] * {
+/* ── 2. THEME PRIMARY & PURPLE ACCENT BUTTON / BADGE TEXT CONTRAST (LIGHT & DARK) ──
+   Buttons, badges, and links with solid primary theme background or primary gradient
+   MUST ALWAYS have crisp pure white text (#FFFFFF) for perfect AAA contrast! */
+button[class*="bg-primary"]:not([class*="bg-primary/"]),
+button[class*="from-primary"],
+button[class*="bg-theme"],
+a[class*="bg-primary"]:not([class*="bg-primary/"]),
+a[class*="from-primary"],
+a.bg-theme,
+span[class*="bg-primary"]:not([class*="bg-primary/"]),
+span[class*="from-primary"],
+div[class*="bg-primary"]:not([class*="bg-primary/"]) {
   color: #FFFFFF !important;
+}
+
+button[class*="bg-primary"]:not([class*="bg-primary/"]) *:not([class*="text-"]),
+button[class*="from-primary"] *:not([class*="text-"]),
+button[class*="bg-theme"] *:not([class*="text-"]),
+a[class*="bg-primary"]:not([class*="bg-primary/"]) *:not([class*="text-"]),
+a[class*="from-primary"] *:not([class*="text-"]),
+a.bg-theme *:not([class*="text-"]),
+span[class*="bg-primary"]:not([class*="bg-primary/"]) *:not([class*="text-"]),
+span[class*="from-primary"] *:not([class*="text-"]) {
+  color: #FFFFFF !important;
+}
+
+button[class*="bg-primary"] svg,
+button[class*="from-primary"] svg,
+a[class*="bg-primary"] svg,
+a[class*="from-primary"] svg,
+span[class*="bg-primary"]:not([class*="bg-primary/"]) svg,
+span[class*="from-primary"] svg {
+  color: #FFFFFF !important;
+  stroke: currentColor;
+}
+
+/* Translucent primary badges (bg-primary/10, bg-primary/15, bg-primary/20) should have violet/lilac text */
+span[class*="bg-primary/10"],
+span[class*="bg-primary/15"],
+span[class*="bg-primary/20"],
+span[class*="bg-primary/25"] {
+  color: var(--theme-primary) !important;
+}
+.dark span[class*="bg-primary/10"],
+.dark span[class*="bg-primary/15"],
+.dark span[class*="bg-primary/20"],
+.dark span[class*="bg-primary/25"] {
+  color: var(--theme-accent) !important;
 }
 
 /* ── 2B. TEXT GRADIENTS & TRANSPARENT HEADLINES ── */

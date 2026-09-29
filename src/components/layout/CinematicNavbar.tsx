@@ -54,7 +54,7 @@ export function CinematicNavbar() {
                 className={cn(
                   "text-xs sm:text-[13px] font-sans transition-colors tracking-tight",
                   isActive
-                    ? "bg-primary text-[#0B0A14] font-bold px-3 py-1 rounded-full shadow-xs"
+                    ? "bg-primary text-white font-bold px-3 py-1 rounded-full shadow-xs"
                     : "text-white/70 hover:text-white font-normal px-2 py-1"
                 )}
               >
@@ -93,7 +93,7 @@ export function CinematicNavbar() {
               </Link>
 
               <Link href="/register?role=creator">
-                <button className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs sm:text-[13px] font-bold transition-all shadow-[0_0_20px_rgba(var(--theme-primary-rgb),0.4)] border border-white/40 active:scale-95">
+                <button className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs sm:text-[13px] font-bold transition-all shadow-[0_0_20px_rgba(var(--theme-primary-rgb),0.4)] border border-white/40 active:scale-95">
                   <span>Get Started</span>
                 </button>
               </Link>
@@ -122,7 +122,7 @@ export function CinematicNavbar() {
               className={cn(
                 "px-3 py-2 rounded-xl text-sm transition-colors font-sans font-medium",
                 pathname === link.href
-                  ? "bg-primary text-[#0B0A14] font-bold shadow-xs"
+                  ? "bg-primary text-white font-bold shadow-xs"
                   : "text-white/70 hover:text-white hover:bg-white/5"
               )}
             >

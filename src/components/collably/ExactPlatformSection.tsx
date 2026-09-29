@@ -137,7 +137,7 @@ export function ExactPlatformSection() {
                     <div
                       className={cn(
                         "w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-colors",
-                        isActive ? "bg-primary text-[#0B0A14] font-bold shadow-sm" : "bg-[#EFEFEF] text-[#101010] group-hover:bg-[#E2E2E2]"
+                        isActive ? "bg-primary text-white font-bold shadow-sm" : "bg-[#EFEFEF] text-[#101010] group-hover:bg-[#E2E2E2]"
                       )}
                     >
                       <Icon className="w-4 h-4" />

@@ -139,7 +139,7 @@ export function AbeyCollabLogo({
             </span>
           </span>
           {showTag && (
-            <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-primary text-[#0B0A14] font-extrabold tracking-wider leading-none shadow-[0_0_10px_rgba(var(--theme-primary-rgb),0.4)]">
+            <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-primary text-white font-extrabold tracking-wider leading-none shadow-[0_0_10px_rgba(var(--theme-primary-rgb),0.4)]">
               PRO
             </span>
           )}

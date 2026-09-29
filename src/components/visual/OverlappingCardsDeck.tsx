@@ -132,7 +132,7 @@ export function OverlappingCardsDeck() {
                 onClick={() => setActiveTab(cat.id)}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-sans font-bold transition-all ${
                   activeTab === cat.id
-                    ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-sm"
+                    ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-white shadow-sm"
                     : "text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
                 }`}
               >
@@ -178,7 +178,7 @@ export function OverlappingCardsDeck() {
                           <Star className="w-3 h-3 text-primary fill-primary" />
                           <span>{creator.rating.toFixed(1)}</span>
                         </span>
-                        <span className="px-2.5 py-1 rounded-full bg-primary text-[#0B0A14] text-[10px] font-mono font-extrabold shadow-sm">
+                        <span className="px-2.5 py-1 rounded-full bg-primary text-white text-[10px] font-mono font-extrabold shadow-sm">
                           {creator.rateNumber ? formatCurrency(creator.rateNumber) : creator.rate}
                         </span>
                       </div>
@@ -222,7 +222,7 @@ export function OverlappingCardsDeck() {
                             key={tag}
                             className={`px-2 py-0.5 rounded-md border text-[10px] transition-colors ${
                               isMatch
-                                ? "bg-primary/15 dark:bg-primary/20 border-primary/30 dark:border-primary/40 text-[#0B0A14] dark:text-accent font-bold"
+                                ? "bg-primary/15 dark:bg-primary/20 border-primary/30 dark:border-primary/40 text-primary dark:text-accent dark:text-accent font-bold"
                                 : "bg-[#F4F4F8] dark:bg-[#181824] border-black/5 dark:border-white/10 text-[#4A4A58] dark:text-[#C0C0D4]"
                             }`}
                           >
@@ -238,7 +238,7 @@ export function OverlappingCardsDeck() {
                     <span className="font-mono text-[11px] text-[#6A6A78] dark:text-[#8E8EA4]">{creator.reach} Reach</span>
                     <Link
                       href="/creators"
-                      className="px-3.5 py-1.5 rounded-full bg-[#FAF9F5] dark:bg-primary hover:bg-primary dark:hover:bg-accent text-[#0B0A14] font-sans font-bold text-xs transition-colors flex items-center gap-1 border border-black/8 dark:border-transparent hover-lift"
+                      className="px-3.5 py-1.5 rounded-full bg-[#FAF9F5] dark:bg-primary hover:bg-primary dark:hover:bg-accent text-white font-sans font-bold text-xs transition-colors flex items-center gap-1 border border-black/8 dark:border-transparent hover-lift"
                     >
                       <span>Book</span>
                       <ArrowRight className="w-3 h-3" />

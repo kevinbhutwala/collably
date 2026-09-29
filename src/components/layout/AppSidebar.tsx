@@ -128,9 +128,9 @@ export function AppSidebar() {
               className={cn(
                 "flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-medium transition-all select-none",
                 isActive
-                  ? "bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] font-bold shadow-[0_2px_10px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10"
+                  ? "bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white font-bold shadow-[0_2px_12px_rgba(var(--theme-primary-rgb),0.35)] border border-white/10"
                   : item.highlight
-                  ? "bg-primary/15 dark:bg-primary/10 text-[#0B0A14] dark:text-accent hover:bg-primary/25 dark:hover:bg-primary/20 border border-primary/30 font-bold"
+                  ? "bg-primary/15 dark:bg-primary/10 text-primary dark:text-accent hover:bg-primary/25 dark:hover:bg-primary/20 border border-primary/30 font-bold"
                   : "text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-white hover:bg-[#F4F4F8] dark:hover:bg-white/5"
               )}
             >
@@ -139,13 +139,13 @@ export function AppSidebar() {
                   className={cn(
                     "w-4 h-4 transition-colors",
                     isActive
-                      ? "text-[#0B0A14]"
+                      ? "text-white"
                       : item.highlight
-                      ? "text-[#0B0A14] dark:text-accent"
+                      ? "text-primary dark:text-accent"
                       : "text-[#7A7A8A] dark:text-[#8E8EA4]"
                   )}
                 />
-                <span>{item.label}</span>
+                <span className={isActive ? "text-white font-bold" : undefined}>{item.label}</span>
               </div>
 
               {item.badge && (
@@ -153,9 +153,9 @@ export function AppSidebar() {
                   className={cn(
                     "text-[9px] px-2 py-0.5 rounded-full font-mono font-bold flex items-center gap-1",
                     isGated
-                      ? "bg-primary/20 text-[#0B0A14] dark:text-accent border border-primary/40"
+                      ? "bg-primary/20 text-primary dark:text-accent border border-primary/40"
                       : isActive
-                      ? "bg-black/15 text-[#0B0A14] border border-black/20"
+                      ? "bg-white/20 text-white border border-white/30 backdrop-blur-xs"
                       : "bg-black/5 dark:bg-white/10 text-[#5A5A68] dark:text-[#A0A0B4] border border-black/8 dark:border-white/10"
                   )}
                 >
@@ -171,13 +171,13 @@ export function AppSidebar() {
       {/* ── Upgrade CTA — pinned permanently at bottom ── */}
       {role !== "agency_admin" && role !== "super_admin" && (
         <div className="shrink-0 p-3 border-t border-black/8 dark:border-white/10">
-          <div className="p-3.5 rounded-2xl bg-gradient-to-br from-primary/5 via-accent/10 to-accent/15 dark:from-[#181826] dark:via-[#161622] dark:to-[#1C1C2A] border border-primary/40 space-y-2 shadow-xs text-[#0B0A14] dark:text-white">
+          <div className="p-3.5 rounded-2xl bg-gradient-to-br from-primary/10 via-primary/5 to-accent/10 dark:from-[#181826] dark:via-[#161622] dark:to-[#1C1C2A] border border-primary/30 space-y-2 shadow-xs text-white dark:text-white">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-1.5 text-xs font-bold text-[#0B0A14] dark:text-white">
-                <Zap className="w-3.5 h-3.5 text-[#0B0A14] dark:text-accent fill-primary" />
+                <Zap className="w-3.5 h-3.5 text-primary dark:text-accent fill-primary" />
                 <span>{role === "creator" ? "Creator Pro" : "Brand Growth"}</span>
               </div>
-              <span className="text-[9px] font-mono px-1.5 py-0.5 rounded-full bg-primary text-[#0B0A14] font-bold border border-black/10">
+              <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-primary text-white font-black border border-white/15 shadow-xs">
                 UPGRADE
               </span>
             </div>
@@ -188,7 +188,7 @@ export function AppSidebar() {
             </p>
             <button
               onClick={() => openUpgradeModal()}
-              className="w-full py-2 rounded-xl bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold transition-all shadow-[0_2px_12px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 active:scale-98"
+              className="w-full py-2 rounded-xl bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-[0_2px_12px_rgba(var(--theme-primary-rgb),0.35)] border border-white/20 active:scale-98"
             >
               Upgrade Plan
             </button>

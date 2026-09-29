@@ -128,7 +128,7 @@ export function FeatureBentoGrid() {
                   className={`px-4 py-2 rounded-lg font-mono text-xs font-bold transition-all flex items-center gap-1.5 ${
                     isApproved
                       ? "bg-primary text-[#101010]"
-                      : "bg-primary text-[#0B0A14] hover:brightness-105"
+                      : "bg-primary text-white hover:brightness-105"
                   }`}
                 >
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#0B0A14]" />

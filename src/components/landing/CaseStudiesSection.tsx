@@ -17,7 +17,7 @@ export function CaseStudiesSection() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16 space-y-4"
         >
-          <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-[#0B0A14] dark:text-accent text-xs font-semibold font-mono shadow-xs">
+          <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-primary dark:text-accent dark:text-accent text-xs font-semibold font-mono shadow-xs">
             <ShieldCheck className="w-3.5 h-3.5 text-[#0B0A14] dark:text-accent" />
             <span>The AbeyCollab Trust &amp; Escrow Guarantee</span>
           </div>
@@ -79,7 +79,7 @@ export function CaseStudiesSection() {
             <div className="pt-6 border-t border-black/8 dark:border-white/10 flex items-center justify-between relative z-10">
               <span className="text-xs text-[#7A7A8A] dark:text-[#8E8EA4] font-mono">10% flat transparent fee</span>
               <Link href="/app/brand/campaigns/create">
-                <button className="px-6 py-2.5 rounded-full bg-[#0B0A14] hover:bg-[#20202B] dark:bg-primary dark:hover:bg-accent text-white dark:text-[#0B0A14] text-xs font-bold transition-all flex items-center gap-1.5 shadow-xs hover-lift">
+                <button className="px-6 py-2.5 rounded-full bg-[#0B0A14] hover:bg-[#20202B] dark:bg-primary dark:hover:bg-accent text-white dark:text-white text-xs font-bold transition-all flex items-center gap-1.5 shadow-xs hover-lift">
                   <span>Post a Brief</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
@@ -99,10 +99,10 @@ export function CaseStudiesSection() {
 
             <div className="space-y-6 relative z-10">
               <div className="flex items-center justify-between">
-                <div className="p-3.5 rounded-2xl bg-gradient-to-br from-primary to-[#FFAE00] text-[#0B0A14] shadow-[0_2px_10px_rgba(var(--theme-primary-rgb),0.3)]">
+                <div className="p-3.5 rounded-2xl bg-gradient-to-br from-primary to-[#FFAE00] text-white shadow-[0_2px_10px_rgba(var(--theme-primary-rgb),0.3)]">
                   <Zap className="w-6 h-6 fill-[#0B0A14] text-[#0B0A14]" />
                 </div>
-                <span className="px-3 py-1 rounded-full bg-primary/20 border border-primary/40 text-[#0B0A14] dark:text-accent text-xs font-mono font-bold uppercase">
+                <span className="px-3 py-1 rounded-full bg-primary/20 border border-primary/40 text-primary dark:text-accent dark:text-accent text-xs font-mono font-bold uppercase">
                   Creator Protection
                 </span>
               </div>
@@ -136,7 +136,7 @@ export function CaseStudiesSection() {
             <div className="pt-6 border-t border-black/8 dark:border-white/10 flex items-center justify-between relative z-10">
               <span className="text-xs text-[#7A7A8A] dark:text-[#8E8EA4] font-mono">Keep 90% of verified earnings</span>
               <Link href="/register?role=creator">
-                <button className="px-6 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold transition-all flex items-center gap-1.5 shadow-[0_2px_10px_rgba(var(--theme-primary-rgb),0.3)] border border-black/10 hover-lift">
+                <button className="px-6 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all flex items-center gap-1.5 shadow-[0_2px_10px_rgba(var(--theme-primary-rgb),0.3)] border border-black/10 hover-lift">
                   <span>Join Roster</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>

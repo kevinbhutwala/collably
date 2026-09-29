@@ -279,7 +279,7 @@ export function CaseStudiesClient() {
 
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-[#0B0A14] dark:text-white tracking-tight font-display max-w-4xl mx-auto">
             The full campaign<br />
-            <span className="text-[#0B0A14] dark:text-white bg-gradient-to-r from-primary via-[#FFAE00] to-primary bg-clip-text text-transparent underline decoration-primary/40 underline-offset-8">
+            <span className="text-white dark:text-white bg-gradient-to-r from-primary via-[#FFAE00] to-primary bg-clip-text text-transparent underline decoration-primary/40 underline-offset-8">
               workflow, end-to-end.
             </span>
           </h1>
@@ -334,7 +334,7 @@ export function CaseStudiesClient() {
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-4 py-2 rounded-full text-xs font-bold transition-all shrink-0 capitalize cursor-pointer ${
                   selectedCategory === cat
-                    ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-xs"
+                    ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-white shadow-xs"
                     : "bg-white dark:bg-[#14141E] border border-black/8 dark:border-white/10 text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white hover:border-black/20"
                 }`}
               >
@@ -381,7 +381,7 @@ export function CaseStudiesClient() {
                           {cs.brandName}
                         </span>
                       </div>
-                      <span className="px-2.5 py-1 rounded-full bg-primary text-[#0B0A14] font-mono font-extrabold text-xs shadow-xs">
+                      <span className="px-2.5 py-1 rounded-full bg-primary text-white font-mono font-extrabold text-xs shadow-xs">
                         {cs.roas}
                       </span>
                     </div>
@@ -390,7 +390,7 @@ export function CaseStudiesClient() {
                   {/* Content Section */}
                   <div className="p-6 sm:p-7 space-y-4">
                     <div className="flex items-start gap-2.5">
-                      <div className="w-7 h-7 rounded-xl bg-primary/5 dark:bg-[#181824] border border-primary/40 text-[#0B0A14] dark:text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs group-hover:bg-primary transition-all">
+                      <div className="w-7 h-7 rounded-xl bg-primary/5 dark:bg-[#181824] border border-primary/40 text-white dark:text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs group-hover:bg-primary transition-all">
                         <TitleIcon title={cs.title} category={cs.category} className="w-4 h-4" />
                       </div>
                       <h3 className="text-xl font-extrabold text-[#0B0A14] dark:text-white font-display group-hover:text-amber-600 dark:group-hover:text-accent transition-colors leading-tight">
@@ -472,7 +472,7 @@ export function CaseStudiesClient() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 text-white space-y-1">
-                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-primary text-[#0B0A14] uppercase">
+                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-primary text-white uppercase">
                   {activeModalStudy.category}
                 </span>
                 <h3 className="text-xl sm:text-2xl font-black font-display text-white">
@@ -524,7 +524,7 @@ export function CaseStudiesClient() {
               <div className="space-y-2">
                 {activeModalStudy.keyTakeaways.map((point, idx) => (
                   <div key={idx} className="flex items-start gap-2.5 text-xs text-[#3A3A48] dark:text-[#D0D0E0]">
-                    <div className="w-4 h-4 rounded-full bg-primary text-[#0B0A14] flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">
+                    <div className="w-4 h-4 rounded-full bg-primary text-white flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">
                       ✓
                     </div>
                     <span>{point}</span>
@@ -562,7 +562,7 @@ export function CaseStudiesClient() {
                   Close
                 </button>
                 <Link href="/app/brand/campaigns/create" className="flex-1 sm:flex-initial">
-                  <button className="w-full px-6 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1.5 cursor-pointer">
+                  <button className="w-full px-6 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1.5 cursor-pointer">
                     <span>Launch Similar Campaign</span>
                     <ArrowRight className="w-3.5 h-3.5 text-[#0B0A14]" />
                   </button>

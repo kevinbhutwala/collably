@@ -13,7 +13,7 @@ export function VisualStorySection() {
       title: "AI-Powered Matching",
       description: "Post a campaign brief or search 50,000+ vetted creators. Get matched by audience data, engagement, and verified rates in under 60 seconds.",
       icon: Sparkles,
-      accent: "bg-primary/20 text-[#0B0A14] border-primary/40",
+      accent: "bg-primary/20 text-primary dark:text-accent border-primary/40",
       image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
     },
     {

@@ -262,7 +262,7 @@ export default function AdminReportsPage() {
                   Derived from live platform database contracts and Stripe custody ledger.
                 </p>
               </div>
-              <span className="px-3 py-1 rounded-full bg-primary/15 text-[#0B0A14] dark:text-accent text-[10px] font-mono font-bold border border-primary/30">
+              <span className="px-3 py-1 rounded-full bg-primary/15 text-primary dark:text-accent dark:text-accent text-[10px] font-mono font-bold border border-primary/30">
                 100% Real Database State
               </span>
             </div>

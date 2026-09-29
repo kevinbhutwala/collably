@@ -94,7 +94,7 @@ export default function AgencyAdminCommandCenter() {
               Agency Master Operations
             </span>
             <span className="text-[#8A8A9A] dark:text-[#6A6A7E]">•</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-[#0B0A14] dark:text-yellow-400 font-mono text-[10px] font-bold">
+            <span className="px-2.5 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-primary dark:text-accent dark:text-yellow-400 font-mono text-[10px] font-bold">
               Live Data
             </span>
           </div>
@@ -116,7 +116,7 @@ export default function AgencyAdminCommandCenter() {
 
           <Link
             href="/admin/users"
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary text-[#0B0A14] text-xs font-bold hover:brightness-105 transition-all shadow-xs border border-black/10 shrink-0"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary text-white text-xs font-bold hover:brightness-105 transition-all shadow-xs border border-black/10 shrink-0"
           >
             <Users className="w-3.5 h-3.5" />
             <span>User Directory &amp; Cohorts</span>
@@ -231,7 +231,7 @@ export default function AgencyAdminCommandCenter() {
                     className={`px-4 py-2 rounded-full text-xs font-semibold font-mono transition-all border flex items-center gap-1.5 ${
                       creator.verified
                         ? "bg-black/5 dark:bg-white/10 text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-white border-black/10 dark:border-white/10"
-                        : "bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] font-bold shadow-xs border-black/10"
+                        : "bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white font-bold shadow-xs border-black/10"
                     }`}
                   >
                     {verifyingId === creator.id ? (
@@ -260,7 +260,7 @@ export default function AgencyAdminCommandCenter() {
               >
                 Open Escrow Vault ➔
               </Link>
-              <span className="px-2.5 py-0.5 rounded-full bg-primary/20 text-[#0B0A14] dark:text-yellow-400 border border-primary/40 text-xs font-mono font-bold">
+              <span className="px-2.5 py-0.5 rounded-full bg-primary/20 text-primary dark:text-accent dark:text-yellow-400 border border-primary/40 text-xs font-mono font-bold">
                 {activeCampaignsCount} Active
               </span>
             </div>

@@ -302,7 +302,7 @@ export default function CreatorOnboardingWizardPage() {
                     onClick={() => setFormData({ ...formData, availability: av })}
                     className={`p-3.5 sm:p-4 rounded-xl border text-center font-bold transition-all ${
                       formData.availability === av
-                        ? "bg-primary text-[#0B0A14] border-black/10 shadow-xs"
+                        ? "bg-primary text-white border-black/10 shadow-xs"
                         : "bg-[#F8F8FC] dark:bg-[#181824] text-[#6A6A78] dark:text-[#8E8EA4] border-black/5 dark:border-white/10 hover:text-[#0B0A14] dark:hover:text-white"
                     }`}
                   >
@@ -318,14 +318,14 @@ export default function CreatorOnboardingWizardPage() {
             <div className="space-y-6">
               <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
                 <h3 className="text-xl font-bold text-[#0B0A14] dark:text-white font-display">Step 9: Final Media Kit Preview</h3>
-                <span className="px-2.5 py-0.5 rounded-full bg-primary/20 text-[#0B0A14] dark:text-accent border border-primary/40 text-[10px] font-mono font-bold">
+                <span className="px-2.5 py-0.5 rounded-full bg-primary/20 text-primary dark:text-accent dark:text-accent border border-primary/40 text-[10px] font-mono font-bold">
                   Ready to Publish
                 </span>
               </div>
 
               <div className="p-5 sm:p-6 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 space-y-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-primary text-[#0B0A14] flex items-center justify-center font-bold text-base font-mono shadow-xs border border-black/10 shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center font-bold text-base font-mono shadow-xs border border-black/10 shrink-0">
                     {formData.fullName.slice(0, 2).toUpperCase()}
                   </div>
                   <div>

@@ -42,7 +42,7 @@ export function CreatorMarketPulseWidget({ creatorId }: { creatorId?: string }) 
       {/* Top Banner */}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between pb-4 sm:pb-5 border-b border-black/8 dark:border-white/10">
         <div>
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/15 px-2.5 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-semibold text-[#0B0A14] dark:text-accent">
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/15 px-2.5 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-semibold text-primary dark:text-accent dark:text-accent">
             <span>⚡</span> Sponsorship Demand &amp; Opportunities
           </div>
           <h3 className="mt-1.5 sm:mt-2 text-lg sm:text-xl font-bold text-[#0B0A14] dark:text-white font-display">
@@ -63,7 +63,7 @@ export function CreatorMarketPulseWidget({ creatorId }: { creatorId?: string }) 
               {pulse.opportunityTier}
             </span>
           </div>
-          <div className="relative flex h-11 sm:h-14 px-3 sm:px-3.5 items-center justify-center rounded-xl sm:rounded-2xl border-2 border-primary bg-primary/15 font-black text-[#0B0A14] dark:text-white text-base sm:text-lg font-mono shadow-2xs">
+          <div className="relative flex h-11 sm:h-14 px-3 sm:px-3.5 items-center justify-center rounded-xl sm:rounded-2xl border-2 border-primary bg-primary/15 font-black text-primary dark:text-accent dark:text-white text-base sm:text-lg font-mono shadow-2xs">
             {pulse.opportunityScore}<span className="text-xs text-[#7A7A8A] dark:text-neutral-400">/100</span>
           </div>
         </div>
@@ -144,7 +144,7 @@ export function CreatorMarketPulseWidget({ creatorId }: { creatorId?: string }) 
                       {ins.action}
                     </span>
                   </div>
-                  <span className="shrink-0 rounded-full bg-primary/15 border border-primary/30 px-2.5 py-0.5 text-[10px] font-mono font-bold text-[#0B0A14] dark:text-accent">
+                  <span className="shrink-0 rounded-full bg-primary/15 border border-primary/30 px-2.5 py-0.5 text-[10px] font-mono font-bold text-primary dark:text-accent dark:text-accent">
                     {ins.estimatedEarningBoost}
                   </span>
                 </div>

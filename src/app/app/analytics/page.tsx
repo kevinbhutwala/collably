@@ -22,7 +22,7 @@ export default function CreatorAnalyticsPage() {
               Audience Intel
             </span>
             <span className="text-[#8A8A9A]">•</span>
-            <span className="px-2 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-[#0B0A14] dark:text-accent font-mono text-[10px] font-bold">
+            <span className="px-2 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-primary dark:text-accent dark:text-accent font-mono text-[10px] font-bold">
               Synced
             </span>
           </div>
@@ -74,7 +74,7 @@ export default function CreatorAnalyticsPage() {
             <h3 className="text-base font-bold text-[#0B0A14] dark:text-white font-display">
               30-Day Impression Activity
             </h3>
-            <span className="px-2 py-0.5 rounded-full bg-primary/20 text-[#0B0A14] dark:text-accent border border-primary/40 text-[10px] font-mono font-bold">
+            <span className="px-2 py-0.5 rounded-full bg-primary/20 text-primary dark:text-accent dark:text-accent border border-primary/40 text-[10px] font-mono font-bold">
               LIVE
             </span>
           </div>

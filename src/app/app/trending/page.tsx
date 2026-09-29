@@ -172,7 +172,7 @@ export default function DedicatedTrendingPage() {
               className={cn(
                 "px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer",
                 timeframe === tf
-                  ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-2xs"
+                  ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-white shadow-2xs"
                   : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
               )}
             >
@@ -189,7 +189,7 @@ export default function DedicatedTrendingPage() {
           className={cn(
             "px-4 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer shrink-0",
             activeTab === "trending_now"
-              ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-sm"
+              ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-white shadow-sm"
               : "bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/6 dark:border-white/8"
           )}
         >
@@ -202,7 +202,7 @@ export default function DedicatedTrendingPage() {
           className={cn(
             "px-4 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer shrink-0",
             activeTab === "rising"
-              ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-sm"
+              ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-white shadow-sm"
               : "bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/6 dark:border-white/8"
           )}
         >
@@ -215,7 +215,7 @@ export default function DedicatedTrendingPage() {
           className={cn(
             "px-4 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer shrink-0",
             activeTab === "top_performing"
-              ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-sm"
+              ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-white shadow-sm"
               : "bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/6 dark:border-white/8"
           )}
         >
@@ -228,7 +228,7 @@ export default function DedicatedTrendingPage() {
           className={cn(
             "px-4 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer shrink-0",
             activeTab === "campaigns"
-              ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-sm"
+              ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-white shadow-sm"
               : "bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/6 dark:border-white/8"
           )}
         >
@@ -241,7 +241,7 @@ export default function DedicatedTrendingPage() {
           className={cn(
             "px-4 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer shrink-0",
             activeTab === "categories"
-              ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-sm"
+              ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-white shadow-sm"
               : "bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/6 dark:border-white/8"
           )}
         >
@@ -270,7 +270,7 @@ export default function DedicatedTrendingPage() {
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-[#0B0A14] dark:text-accent font-mono text-[10px] font-bold">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-primary dark:text-accent dark:text-accent font-mono text-[10px] font-bold">
                       🚀 Brief #{index + 1}
                     </span>
                     <span className="text-xs font-mono font-black text-[#0B0A14] dark:text-white">
@@ -306,7 +306,7 @@ export default function DedicatedTrendingPage() {
                     {camp.category}
                   </span>
                   <Link href={`/campaigns/${camp.id}`}>
-                    <button className="px-4 py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-extrabold transition-all flex items-center gap-1.5 shadow-2xs">
+                    <button className="px-4 py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-extrabold transition-all flex items-center gap-1.5 shadow-2xs">
                       <span>View Brief</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </button>
@@ -325,7 +325,7 @@ export default function DedicatedTrendingPage() {
               className="rounded-3xl bg-white dark:bg-[#14141E] border border-black/8 dark:border-white/10 p-6 shadow-xs space-y-4"
             >
               <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-[#0B0A14] dark:text-accent font-mono text-[10px] font-bold">
+                <span className="px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-primary dark:text-accent dark:text-accent font-mono text-[10px] font-bold">
                   Rank #{index + 1}
                 </span>
                 <span className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400">
@@ -380,7 +380,7 @@ export default function DedicatedTrendingPage() {
                 <div>
                   {/* Card Header: Rank Banner */}
                   <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-[#0B0A14] dark:text-accent font-mono text-[11px] font-bold">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-primary dark:text-accent dark:text-accent font-mono text-[11px] font-bold">
                       {rankLabel}
                     </span>
                     <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 font-mono text-[10px] font-bold">
@@ -478,7 +478,7 @@ export default function DedicatedTrendingPage() {
                   {(role === "brand" || role === "brand_owner" || role === "brand_manager" || role === "agency_admin" || role === "super_admin") ? (
                     <button
                       onClick={() => handleOpenInvite(creator)}
-                      className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-extrabold transition-all flex items-center justify-center gap-1 shadow-2xs border border-black/10 cursor-pointer"
+                      className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-extrabold transition-all flex items-center justify-center gap-1 shadow-2xs border border-black/10 cursor-pointer"
                     >
                       <span>Invite</span>
                       <Send className="w-3 h-3" />
@@ -489,7 +489,7 @@ export default function DedicatedTrendingPage() {
                       href={`/app/messages?recipientId=${encodeURIComponent(creator.id)}&recipientName=${encodeURIComponent(creator.fullName)}`}
                       className="flex-1"
                     >
-                      <button className="w-full py-2.5 rounded-xl bg-[#0B0A14] dark:bg-primary hover:bg-[#1A1A24] dark:hover:bg-accent text-white dark:text-[#0B0A14] text-xs font-bold transition-all flex items-center justify-center gap-1 shadow-2xs border border-black/10 cursor-pointer">
+                      <button className="w-full py-2.5 rounded-xl bg-[#0B0A14] dark:bg-primary hover:bg-[#1A1A24] dark:hover:bg-accent text-white dark:text-white text-xs font-bold transition-all flex items-center justify-center gap-1 shadow-2xs border border-black/10 cursor-pointer">
                         <span>Message</span>
                         <MessageSquare className="w-3 h-3" />
                       </button>
@@ -560,7 +560,7 @@ export default function DedicatedTrendingPage() {
                 />
               </div>
 
-              <div className="p-3 rounded-2xl bg-primary/10 border border-primary/30 flex items-start gap-2.5 text-xs text-[#0B0A14] dark:text-white">
+              <div className="p-3 rounded-2xl bg-primary/10 border border-primary/30 flex items-start gap-2.5 text-xs text-primary dark:text-accent dark:text-white">
                 <ShieldCheck className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                 <p className="text-[11px] leading-relaxed">
                   <strong>Milestone Escrow Guarantee:</strong> Once accepted, your payment will be held securely in Stripe escrow custody until deliverable approval.
@@ -580,7 +580,7 @@ export default function DedicatedTrendingPage() {
                 type="button"
                 onClick={handleSendInvite}
                 disabled={isSendingInvite}
-                className="px-6 py-2.5 rounded-xl bg-primary hover:bg-accent text-[#0B0A14] font-bold text-xs shadow-xs transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+                className="px-6 py-2.5 rounded-xl bg-primary hover:bg-accent text-white font-bold text-xs shadow-xs transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
               >
                 {isSendingInvite ? "Sending..." : "Send Direct Invitation 🚀"}
               </button>

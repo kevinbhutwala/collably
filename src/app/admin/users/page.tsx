@@ -367,7 +367,7 @@ export default function AdminUsersPanel() {
       {/* Top Banner / Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-black/8 dark:border-white/10 pb-6">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-xs font-mono font-bold text-[#0B0A14] dark:text-accent mb-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-xs font-mono font-bold text-primary dark:text-accent dark:text-accent mb-2">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
             <span>Master User Control Center</span>
           </div>
@@ -393,7 +393,7 @@ export default function AdminUsersPanel() {
           <button
             type="button"
             onClick={exportUsersCSV}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] font-bold text-xs shadow-xs hover:brightness-105 active:scale-95 transition-all border border-black/10"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white font-bold text-xs shadow-xs hover:brightness-105 active:scale-95 transition-all border border-black/10"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Export CSV</span>
@@ -566,7 +566,7 @@ export default function AdminUsersPanel() {
             }}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
               activeTab === "creator"
-                ? "bg-primary text-[#0B0A14] shadow-xs"
+                ? "bg-primary text-white shadow-xs"
                 : "bg-white dark:bg-[#12121A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/8 dark:border-white/10"
             }`}
           >
@@ -616,7 +616,7 @@ export default function AdminUsersPanel() {
               onClick={() => setSelectedCategory("all")}
               className={`px-3 py-1 rounded-lg text-xs font-medium shrink-0 transition-all ${
                 selectedCategory === "all"
-                  ? "bg-primary text-[#0B0A14] font-bold shadow-2xs"
+                  ? "bg-primary text-white font-bold shadow-2xs"
                   : "bg-white dark:bg-[#14141E] text-[#5A5A68] dark:text-[#8E8EA4] border border-black/8 dark:border-white/10 hover:border-black/20"
               }`}
             >
@@ -629,7 +629,7 @@ export default function AdminUsersPanel() {
                 onClick={() => setSelectedCategory(cat.name)}
                 className={`px-3 py-1 rounded-lg text-xs font-medium shrink-0 transition-all ${
                   selectedCategory.toLowerCase() === cat.name.toLowerCase()
-                    ? "bg-primary text-[#0B0A14] font-bold shadow-2xs"
+                    ? "bg-primary text-white font-bold shadow-2xs"
                     : "bg-white dark:bg-[#14141E] text-[#5A5A68] dark:text-[#8E8EA4] border border-black/8 dark:border-white/10 hover:border-black/20"
                 }`}
               >
@@ -782,7 +782,7 @@ export default function AdminUsersPanel() {
               <button
                 type="button"
                 onClick={resetAllFilters}
-                className="mt-4 px-4 py-2 rounded-xl text-xs font-bold bg-primary text-[#0B0A14] hover:bg-accent transition-colors shadow-xs"
+                className="mt-4 px-4 py-2 rounded-xl text-xs font-bold bg-primary text-white hover:bg-accent transition-colors shadow-xs"
               >
                 Reset All Filters
               </button>
@@ -1353,7 +1353,7 @@ export default function AdminUsersPanel() {
                 <Link
                   href={`/creators/${selectedUser.profileId}`}
                   target="_blank"
-                  className="w-full py-2.5 rounded-xl text-xs font-bold bg-primary/15 text-[#0B0A14] dark:text-accent border border-primary/30 hover:bg-primary/25 inline-flex items-center justify-center gap-2 transition-all"
+                  className="w-full py-2.5 rounded-xl text-xs font-bold bg-primary/15 text-primary dark:text-accent dark:text-accent border border-primary/30 hover:bg-primary/25 inline-flex items-center justify-center gap-2 transition-all"
                 >
                   <ExternalLink className="w-3.5 h-3.5" /> View Public Media Kit
                 </Link>

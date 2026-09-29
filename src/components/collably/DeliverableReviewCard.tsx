@@ -132,7 +132,7 @@ export function DeliverableReviewCard({
       {/* Top Banner with Escrow Guarantee & Status */}
       <div className="bg-[#FAF9F5] dark:bg-[#181824] px-6 py-4 border-b border-black/8 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="flex items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/20 border border-primary/50 text-xs font-mono font-bold text-[#0B0A14] dark:text-accent">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/20 border border-primary/50 text-xs font-mono font-bold text-primary dark:text-accent dark:text-accent">
             <ShieldCheck className="w-4 h-4 text-[#0B0A14] dark:text-accent" />
             100% Pre-Funded Escrow
           </span>
@@ -155,7 +155,7 @@ export function DeliverableReviewCard({
               REVISION REQUESTED
             </span>
           ) : (
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/20 border border-primary/60 text-[#0B0A14] dark:text-accent text-xs font-mono font-bold animate-pulse">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/20 border border-primary/60 text-primary dark:text-accent dark:text-accent text-xs font-mono font-bold animate-pulse">
               <Clock className="w-3.5 h-3.5" />
               SUBMITTED FOR REVIEW
             </span>
@@ -217,7 +217,7 @@ export function DeliverableReviewCard({
               href={assetUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-extrabold shadow-sm transition-all border border-black/10 w-full sm:w-auto shrink-0 group"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-extrabold shadow-sm transition-all border border-black/10 w-full sm:w-auto shrink-0 group"
             >
               <span>Open in {platformName} / New Tab</span>
               <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[#0B0A14]" />
@@ -280,7 +280,7 @@ export function DeliverableReviewCard({
                 <button
                   type="button"
                   onClick={handleApprove}
-                  className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-black text-xs transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1.5"
+                  className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-black text-xs transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1.5"
                 >
                   <CheckCircle2 className="w-4 h-4 text-[#0B0A14]" />
                   <span>Approve &amp; Send Payment</span>
@@ -320,7 +320,7 @@ export function DeliverableReviewCard({
             </button>
             <button
               type="submit"
-              className="flex-1 py-2.5 rounded-full bg-black text-white hover:bg-black/90 dark:bg-primary dark:text-[#0B0A14] dark:hover:bg-accent font-bold text-xs transition-all text-center"
+              className="flex-1 py-2.5 rounded-full bg-black text-white hover:bg-black/90 dark:bg-primary dark:text-white dark:hover:bg-accent font-bold text-xs transition-all text-center"
             >
               Send Revision Request to Creator
             </button>

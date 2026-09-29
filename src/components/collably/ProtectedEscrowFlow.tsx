@@ -140,7 +140,7 @@ export function ProtectedEscrowFlow() {
                 onClick={() => setActiveStageIdx(idx)}
                 className={`p-3.5 rounded-2xl border text-left transition-all font-mono space-y-1 shrink-0 min-w-[140px] sm:min-w-0 ${
                   activeStageIdx === idx
-                    ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] border-[#0B0A14] dark:border-primary shadow-sm"
+                    ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-white border-[#0B0A14] dark:border-primary shadow-sm"
                     : "bg-[#F8F8FC] dark:bg-[#181824] border-black/6 dark:border-white/10 text-[#5A5A68] dark:text-[#8E8EA4] hover:bg-white dark:hover:bg-[#202030] hover:text-[#0B0A14] dark:hover:text-white"
                 }`}
               >
@@ -167,7 +167,7 @@ export function ProtectedEscrowFlow() {
                   {activeStage.title}
                 </h3>
               </div>
-              <span className="px-3 py-1 rounded-full bg-primary text-[#0B0A14] text-xs font-mono font-extrabold shadow-2xs self-start sm:self-center">
+              <span className="px-3 py-1 rounded-full bg-primary text-white text-xs font-mono font-extrabold shadow-2xs self-start sm:self-center">
                 {activeStage.badge}
               </span>
             </div>

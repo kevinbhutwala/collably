@@ -151,7 +151,7 @@ export default function CreatorGrowthCenterPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-black/8 dark:border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-[10px] font-mono font-bold text-[#0B0A14] dark:text-accent">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-[10px] font-mono font-bold text-primary dark:text-accent dark:text-accent">
               <Sparkles className="w-3 h-3 text-[#0B0A14] dark:text-accent" />
               Creator Career Operating System
             </span>
@@ -170,7 +170,7 @@ export default function CreatorGrowthCenterPage() {
         </div>
 
         <Link href="/app/profile">
-          <button className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-xs transition-all shadow-xs flex items-center gap-1.5 border border-black/10 cursor-pointer">
+          <button className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs transition-all shadow-xs flex items-center gap-1.5 border border-black/10 cursor-pointer">
             <span>Edit Profile & Media Kit</span>
             <ArrowRight className="w-3.5 h-3.5 text-[#0B0A14]" />
           </button>
@@ -250,7 +250,7 @@ export default function CreatorGrowthCenterPage() {
                 Complete missing fields to boost algorithm match score by up to 35%.
               </p>
             </div>
-            <span className="px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-xs font-mono font-bold text-[#0B0A14] dark:text-accent">
+            <span className="px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-xs font-mono font-bold text-primary dark:text-accent dark:text-accent">
               {completedCount}/{checklist.length} Complete
             </span>
           </div>
@@ -282,7 +282,7 @@ export default function CreatorGrowthCenterPage() {
                   </span>
                   {!item.done && (
                     <Link href="/app/profile">
-                      <span className="px-2.5 py-1 rounded-lg bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] text-[10px] font-extrabold shadow-2xs border border-black/10">
+                      <span className="px-2.5 py-1 rounded-lg bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white text-[10px] font-extrabold shadow-2xs border border-black/10">
                         Fix →
                       </span>
                     </Link>
@@ -313,7 +313,7 @@ export default function CreatorGrowthCenterPage() {
                 key={milestone.step}
                 className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#1A1A28] border border-black/6 dark:border-white/6 hover:border-primary transition-all flex items-start gap-3.5"
               >
-                <div className="w-8 h-8 rounded-xl bg-gradient-to-r from-primary to-accent text-[#0B0A14] font-black text-xs flex items-center justify-center shrink-0 shadow-2xs border border-black/10">
+                <div className="w-8 h-8 rounded-xl bg-gradient-to-r from-primary to-accent text-white font-black text-xs flex items-center justify-center shrink-0 shadow-2xs border border-black/10">
                   {milestone.step}
                 </div>
                 <div className="flex-1 min-w-0">

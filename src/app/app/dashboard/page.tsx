@@ -177,7 +177,7 @@ function DashboardContent() {
 
         <div className="space-y-1.5 relative z-10 max-w-xl">
           <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-[10px] font-mono font-bold text-[#0B0A14] dark:text-accent">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-[10px] font-mono font-bold text-primary dark:text-accent dark:text-accent">
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
               Live
             </span>
@@ -235,7 +235,7 @@ function DashboardContent() {
             profileStatus.canApplyToCampaigns ? (
               <>
                 <Link href="/app/campaigns" className="w-full sm:w-auto">
-                  <button className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs border border-black/10 cursor-pointer">
+                  <button className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs border border-black/10 cursor-pointer">
                     <Compass className="w-3.5 h-3.5 text-[#0B0A14] shrink-0" />
                     <span className="truncate">Find Campaigns</span>
                   </button>
@@ -250,7 +250,7 @@ function DashboardContent() {
             ) : (
               <>
                 <Link href="/app/campaigns" className="w-full sm:w-auto">
-                  <button className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs border border-black/10 cursor-pointer">
+                  <button className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs border border-black/10 cursor-pointer">
                     <Compass className="w-3.5 h-3.5 text-[#0B0A14] shrink-0" />
                     <span className="truncate">Browse Briefs</span>
                   </button>
@@ -266,7 +266,7 @@ function DashboardContent() {
           ) : (
             <>
               <Link href="/app/brand/campaigns/create" className="w-full sm:w-auto">
-                <button className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs border border-black/10">
+                <button className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs border border-black/10">
                   <FolderPlus className="w-3.5 h-3.5 text-[#0B0A14] shrink-0" />
                   <span className="truncate">Post Campaign</span>
                 </button>
@@ -391,7 +391,7 @@ function DashboardContent() {
               <>
                 <div className="min-w-[240px] sm:min-w-0 snap-center flex-1 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/[0.07] dark:border-white/10 space-y-1.5">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0B0A14] dark:text-white font-display">
-                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary text-[#0B0A14] flex items-center justify-center text-[11px] sm:text-xs font-black shrink-0">1</span>
+                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary text-white flex items-center justify-center text-[11px] sm:text-xs font-black shrink-0">1</span>
                     <span>Set Up Your Media Kit</span>
                   </div>
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
@@ -404,7 +404,7 @@ function DashboardContent() {
 
                 <div className="min-w-[240px] sm:min-w-0 snap-center flex-1 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/[0.07] dark:border-white/10 space-y-1.5">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0B0A14] dark:text-white font-display">
-                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary text-[#0B0A14] flex items-center justify-center text-[11px] sm:text-xs font-black shrink-0">2</span>
+                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary text-white flex items-center justify-center text-[11px] sm:text-xs font-black shrink-0">2</span>
                     <span>Pitch to Paid Campaigns</span>
                   </div>
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
@@ -417,7 +417,7 @@ function DashboardContent() {
 
                 <div className="min-w-[240px] sm:min-w-0 snap-center flex-1 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/[0.07] dark:border-white/10 space-y-1.5">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0B0A14] dark:text-white font-display">
-                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary text-[#0B0A14] flex items-center justify-center text-[11px] sm:text-xs font-black shrink-0">3</span>
+                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary text-white flex items-center justify-center text-[11px] sm:text-xs font-black shrink-0">3</span>
                     <span>Submit Work &amp; Get Paid</span>
                   </div>
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
@@ -432,7 +432,7 @@ function DashboardContent() {
               <>
                 <div className="min-w-[240px] sm:min-w-0 snap-center flex-1 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/[0.07] dark:border-white/10 space-y-1.5">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0B0A14] dark:text-white font-display">
-                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary text-[#0B0A14] flex items-center justify-center text-[11px] sm:text-xs font-black shrink-0">1</span>
+                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary text-white flex items-center justify-center text-[11px] sm:text-xs font-black shrink-0">1</span>
                     <span>Post a Campaign</span>
                   </div>
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
@@ -445,7 +445,7 @@ function DashboardContent() {
 
                 <div className="min-w-[240px] sm:min-w-0 snap-center flex-1 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/[0.07] dark:border-white/10 space-y-1.5">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0B0A14] dark:text-white font-display">
-                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary text-[#0B0A14] flex items-center justify-center text-[11px] sm:text-xs font-black shrink-0">2</span>
+                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary text-white flex items-center justify-center text-[11px] sm:text-xs font-black shrink-0">2</span>
                     <span>Find &amp; Save Creators</span>
                   </div>
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
@@ -458,7 +458,7 @@ function DashboardContent() {
 
                 <div className="min-w-[240px] sm:min-w-0 snap-center flex-1 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/[0.07] dark:border-white/10 space-y-1.5">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0B0A14] dark:text-white font-display">
-                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary text-[#0B0A14] flex items-center justify-center text-[11px] sm:text-xs font-black shrink-0">3</span>
+                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary text-white flex items-center justify-center text-[11px] sm:text-xs font-black shrink-0">3</span>
                     <span>Approve &amp; Release Pay</span>
                   </div>
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
@@ -590,7 +590,7 @@ function DashboardContent() {
                         </div>
                       </div>
 
-                      <span className="px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-mono font-bold uppercase shrink-0 bg-primary/20 text-[#0B0A14] dark:text-accent border border-primary/40">
+                      <span className="px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-mono font-bold uppercase shrink-0 bg-primary/20 text-primary dark:text-accent dark:text-accent border border-primary/40">
                         {collab.status.replace(/_/g, " ")}
                       </span>
                     </div>
@@ -646,7 +646,7 @@ function DashboardContent() {
                   >
                     <div>
                       <div className="flex items-center justify-between mb-1.5 gap-2">
-                        <span className="px-2 py-0.5 rounded-full bg-primary/20 text-[#0B0A14] dark:text-accent text-[9.5px] sm:text-[10px] font-mono font-bold uppercase border border-primary/30 truncate">
+                        <span className="px-2 py-0.5 rounded-full bg-primary/20 text-primary dark:text-accent dark:text-accent text-[9.5px] sm:text-[10px] font-mono font-bold uppercase border border-primary/30 truncate">
                           {c.category}
                         </span>
                         <span className="text-[11px] font-mono text-[#0B0A14] dark:text-white font-bold shrink-0">
@@ -702,7 +702,7 @@ function DashboardContent() {
                   >
                     <div>
                       <div className="flex items-center justify-between mb-2 gap-2">
-                        <span className="px-2 py-0.5 rounded-full bg-primary/20 text-[#0B0A14] dark:text-accent text-[9.5px] sm:text-[10px] font-mono font-bold uppercase border border-primary/30 truncate">
+                        <span className="px-2 py-0.5 rounded-full bg-primary/20 text-primary dark:text-accent dark:text-accent text-[9.5px] sm:text-[10px] font-mono font-bold uppercase border border-primary/30 truncate">
                           {creator.primaryCategory}
                         </span>
                         <span className="text-[11px] font-mono text-[#0B0A14] dark:text-white font-bold shrink-0">
@@ -757,7 +757,7 @@ function DashboardContent() {
                     Shortcuts to manage campaigns
                   </p>
                 </div>
-                <span className="px-2 py-0.5 rounded-full bg-primary/20 text-[#0B0A14] dark:text-accent text-[10px] font-mono font-bold shrink-0 truncate max-w-[120px]">
+                <span className="px-2 py-0.5 rounded-full bg-primary/20 text-primary dark:text-accent dark:text-accent text-[10px] font-mono font-bold shrink-0 truncate max-w-[120px]">
                   {currentBrand?.companyName || "Brand"}
                 </span>
               </div>

@@ -73,7 +73,7 @@ export function AnimatedEmptyState({
           {actionText && actionHref && (
             <Link
               href={actionHref}
-              className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-bold text-xs sm:text-sm shadow-xs transition-all flex items-center justify-center gap-2 font-display border border-black/10 hover-lift"
+              className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-bold text-xs sm:text-sm shadow-xs transition-all flex items-center justify-center gap-2 font-display border border-black/10 hover-lift"
             >
               <span>{actionText}</span>
               <ArrowRight className="w-4 h-4 text-[#0B0A14]" />
@@ -83,7 +83,7 @@ export function AnimatedEmptyState({
           {actionText && onActionClick && !actionHref && (
             <button
               onClick={onActionClick}
-              className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-bold text-xs sm:text-sm shadow-xs transition-all flex items-center justify-center gap-2 font-display border border-black/10 hover-lift"
+              className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-bold text-xs sm:text-sm shadow-xs transition-all flex items-center justify-center gap-2 font-display border border-black/10 hover-lift"
             >
               <span>{actionText}</span>
               <ArrowRight className="w-4 h-4 text-[#0B0A14]" />

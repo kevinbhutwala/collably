@@ -272,7 +272,7 @@ export function PreflightEligibilityAudit({
                 <button
                   type="button"
                   onClick={onProceed}
-                  className="w-full sm:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-xs transition-all shadow-[0_2px_14px_rgba(var(--theme-primary-rgb),0.4)] flex items-center justify-center gap-2 cursor-pointer active:scale-98"
+                  className="w-full sm:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs transition-all shadow-[0_2px_14px_rgba(var(--theme-primary-rgb),0.4)] flex items-center justify-center gap-2 cursor-pointer active:scale-98"
                 >
                   <span>{actionLabel}</span>
                   <ArrowRight className="w-3.5 h-3.5" />

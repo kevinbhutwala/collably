@@ -116,7 +116,7 @@ export function AnimatedCreatorDeck() {
                 onClick={() => setActiveTab(cat.id)}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-sans font-bold transition-all ${
                   activeTab === cat.id
-                    ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] shadow-sm"
+                    ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-white shadow-sm"
                     : "bg-[#F4F4F8] dark:bg-[#1E1E2C] text-[#5A5A68] dark:text-[#8E8EA4] hover:bg-[#EAEAEF] dark:hover:bg-[#282838] dark:hover:text-white"
                 }`}
               >
@@ -182,7 +182,7 @@ export function AnimatedCreatorDeck() {
 
                     <Link
                       href={`/creators`}
-                      className="px-3.5 py-1.5 rounded-full bg-[#F4F4F8] hover:bg-primary text-[#0B0A14] font-sans font-bold text-xs transition-colors flex items-center gap-1"
+                      className="px-3.5 py-1.5 rounded-full bg-[#F4F4F8] hover:bg-primary text-white font-sans font-bold text-xs transition-colors flex items-center gap-1"
                     >
                       <span>View</span>
                       <ArrowRight className="w-3 h-3" />

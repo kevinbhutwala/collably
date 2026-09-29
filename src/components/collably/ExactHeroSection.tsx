@@ -75,7 +75,7 @@ export function ExactHeroSection() {
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-3.5 pt-2">
               <Link href="/for-brands">
-                <button className="px-6 py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.45)] hover:shadow-[0_6px_22px_rgba(var(--theme-primary-rgb),0.6)] flex items-center gap-2 group active:scale-[0.98] border border-black/10">
+                <button className="px-6 py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.45)] hover:shadow-[0_6px_22px_rgba(var(--theme-primary-rgb),0.6)] flex items-center gap-2 group active:scale-[0.98] border border-black/10">
                   <span>Start a Campaign</span>
                   <ArrowRight className="w-4 h-4 text-[#0B0A14] group-hover:translate-x-0.5 transition-transform" />
                 </button>
@@ -185,7 +185,7 @@ export function ExactHeroSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="absolute -top-4 right-6 sm:right-16 z-30 px-4 py-3 rounded-2xl bg-white/95 dark:bg-[#14141E]/95 backdrop-blur-xl border border-black/8 dark:border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.08)] flex items-center gap-3 min-w-[200px]"
             >
-              <div className="w-8 h-8 rounded-lg bg-[#0B0A14] dark:bg-primary flex items-center justify-center text-white dark:text-[#0B0A14] font-black text-xs shrink-0">
+              <div className="w-8 h-8 rounded-lg bg-[#0B0A14] dark:bg-primary flex items-center justify-center text-white dark:text-white font-black text-xs shrink-0">
                 <span>✓</span>
               </div>
               <div className="flex-1 min-w-0 font-sans">

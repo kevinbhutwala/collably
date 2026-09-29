@@ -294,7 +294,7 @@ export function EditorialCreatorGrid() {
                 onClick={() => setActiveTab(cat.id)}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-sans font-bold transition-all shrink-0 ${
                   activeTab === cat.id
-                    ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] shadow-xs"
+                    ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-white shadow-xs"
                     : "text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
                 }`}
               >

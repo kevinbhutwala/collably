@@ -69,7 +69,7 @@ export function ExactSuccessStoriesSection() {
               onClick={() => setIsPlaying(!isPlaying)}
               className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-xl border border-white/30 text-white font-sans text-xs font-bold transition-all shrink-0 active:scale-95 shadow-xl"
             >
-              <div className="w-6 h-6 rounded-full bg-primary text-[#0B0A14] flex items-center justify-center font-bold">
+              <div className="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center font-bold">
                 <Play className="w-3 h-3 fill-[#0B0A14] ml-0.5" />
               </div>
               <span>Watch Story 2:48</span>

@@ -105,7 +105,7 @@ export function VisualShowcaseSlider() {
                 <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md text-[10px] font-mono font-bold text-white border border-white/10">
                   {work.brand}
                 </span>
-                <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-primary text-[#0B0A14] text-[10px] font-mono font-extrabold shadow-sm">
+                <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-primary text-white text-[10px] font-mono font-extrabold shadow-sm">
                   {work.roas}
                 </span>
 

@@ -225,7 +225,7 @@ export default function ServicesPage() {
                     <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/20 text-[9px] font-mono font-bold uppercase tracking-wider">
                       {s.tag}
                     </span>
-                    <div className="w-8 h-8 rounded-full bg-primary text-[#0B0A14] flex items-center justify-center shadow-sm">
+                    <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center shadow-sm">
                       <Icon className="w-4 h-4" />
                     </div>
                   </div>

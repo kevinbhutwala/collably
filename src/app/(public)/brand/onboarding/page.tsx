@@ -151,7 +151,7 @@ export default function BrandOnboardingWizardPage() {
                     onClick={() => setFormData({ ...formData, budgetTier: tier.id })}
                     className={`p-4 rounded-xl border text-center font-bold transition-all ${
                       formData.budgetTier === tier.id
-                        ? "bg-primary text-[#0B0A14] border-black/10 shadow-xs"
+                        ? "bg-primary text-white border-black/10 shadow-xs"
                         : "bg-[#F8F8FC] dark:bg-[#181824] text-[#6A6A78] dark:text-[#A0A0B4] border-black/5 dark:border-white/10 hover:text-[#0B0A14] dark:hover:text-white"
                     }`}
                   >

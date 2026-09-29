@@ -261,7 +261,7 @@ export function RazorpayCheckoutButton({
       disabled={disabled || loading}
       className={
         className ||
-        "px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-xs shadow-xs border border-black/10 transition-all flex items-center justify-center gap-2 disabled:opacity-50 active:scale-98"
+        "px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs shadow-xs border border-black/10 transition-all flex items-center justify-center gap-2 disabled:opacity-50 active:scale-98"
       }
     >
       {loading ? (

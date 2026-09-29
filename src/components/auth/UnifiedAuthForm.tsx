@@ -233,7 +233,7 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
       )}
       {/* Header with Title & Security Badge */}
       <div className="text-center space-y-1">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 border border-primary/40 text-[#0B0A14] dark:text-accent text-[10px] font-mono font-bold uppercase tracking-wider mb-1">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 border border-primary/40 text-primary dark:text-accent dark:text-accent text-[10px] font-mono font-bold uppercase tracking-wider mb-1">
           <Sparkles className="w-3 h-3 text-primary" />
           <span>AbeyCollab Secure Portal</span>
         </div>
@@ -295,7 +295,7 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
               onClick={() => setRole("creator")}
               className={`py-2 px-3 rounded-xl text-xs font-bold font-sans flex items-center justify-center gap-1.5 transition-all cursor-pointer border disabled:opacity-50 disabled:cursor-not-allowed ${
                 role === "creator"
-                  ? "bg-primary/15 dark:bg-primary/20 text-[#0B0A14] dark:text-accent border-primary/60 shadow-xs"
+                  ? "bg-primary/15 dark:bg-primary/20 text-primary dark:text-accent dark:text-accent border-primary/60 shadow-xs"
                   : "bg-black/[0.02] dark:bg-white/[0.03] text-[#7A7A8A] dark:text-[#8E8EA4] border-black/8 dark:border-white/8 hover:text-[#0B0A14] dark:hover:text-white"
               }`}
             >
@@ -309,7 +309,7 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
               onClick={() => setRole("brand")}
               className={`py-2 px-3 rounded-xl text-xs font-bold font-sans flex items-center justify-center gap-1.5 transition-all cursor-pointer border disabled:opacity-50 disabled:cursor-not-allowed ${
                 role === "brand"
-                  ? "bg-primary/15 dark:bg-primary/20 text-[#0B0A14] dark:text-accent border-primary/60 shadow-xs"
+                  ? "bg-primary/15 dark:bg-primary/20 text-primary dark:text-accent dark:text-accent border-primary/60 shadow-xs"
                   : "bg-black/[0.02] dark:bg-white/[0.03] text-[#7A7A8A] dark:text-[#8E8EA4] border-black/8 dark:border-white/8 hover:text-[#0B0A14] dark:hover:text-white"
               }`}
             >
@@ -463,7 +463,7 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full py-3.5 rounded-full bg-gradient-to-r from-primary via-[#FFCA18] to-[#FFBF00] hover:from-[#FFCA18] hover:to-[#FFAE00] text-[#0B0A14] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 flex items-center justify-center gap-2 disabled:opacity-85 disabled:cursor-wait active:scale-98 cursor-pointer mt-1"
+          className="w-full py-3.5 rounded-full bg-gradient-to-r from-primary via-[#FFCA18] to-[#FFBF00] hover:from-[#FFCA18] hover:to-[#FFAE00] text-white font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 flex items-center justify-center gap-2 disabled:opacity-85 disabled:cursor-wait active:scale-98 cursor-pointer mt-1"
         >
           {isLoading ? (
             <div className="flex items-center gap-2">

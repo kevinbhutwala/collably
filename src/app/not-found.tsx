@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <div className="min-h-[75vh] flex flex-col items-center justify-center p-6 text-center select-none bg-[#FAFAF8] dark:bg-[#07070B] text-[#0B0A14] dark:text-[#F4F4F8]">
       <div className="max-w-lg w-full p-8 sm:p-12 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xl space-y-6">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 border border-primary/40 text-xs font-mono font-bold text-[#0B0A14] dark:text-accent">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 border border-primary/40 text-xs font-mono font-bold text-primary dark:text-accent dark:text-accent">
           <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
           <span>404 • PAGE NOT FOUND</span>
         </div>
@@ -23,7 +23,7 @@ export default function NotFound() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
           <Link
             href="/"
-            className="w-full sm:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold shadow-xs border border-black/10 transition-all flex items-center justify-center gap-2 cursor-pointer"
+            className="w-full sm:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold shadow-xs border border-black/10 transition-all flex items-center justify-center gap-2 cursor-pointer"
           >
             <Home className="w-3.5 h-3.5" />
             <span>Return to Workspace</span>

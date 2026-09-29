@@ -40,7 +40,7 @@ export function EditorialCTA() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-3 font-sans font-semibold text-sm">
           <Link
             href="/for-brands"
-            className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-bold shadow-xs transition-all flex items-center justify-center gap-2 group tracking-tight border border-black/10"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-bold shadow-xs transition-all flex items-center justify-center gap-2 group tracking-tight border border-black/10"
           >
             <span>Start a Campaign</span>
             <ArrowRight className="w-4 h-4 text-[#0B0A14] group-hover:translate-x-0.5 transition-transform" />

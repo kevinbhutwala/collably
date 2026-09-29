@@ -11,7 +11,7 @@ export default function AdminLayout({
 }) {
   return (
     <AuthGuard requiredRole={["agency_admin", "super_admin", "agency_owner"]}>
-      <div className="h-screen flex flex-col bg-[#F8F8FB] dark:bg-[#07070B] text-[#0B0A14] dark:text-[#F4F4F8] selection:bg-primary selection:text-[#0B0A14] relative overflow-hidden transition-colors duration-200">
+      <div className="h-screen flex flex-col bg-[#F8F8FB] dark:bg-[#07070B] text-white dark:text-[#F4F4F8] selection:bg-primary selection:text-white relative overflow-hidden transition-colors duration-200">
         {/* Soft Warm Ambient Glow */}
         <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[900px] h-96 bg-primary/10 blur-[140px] rounded-full pointer-events-none z-0" />
 

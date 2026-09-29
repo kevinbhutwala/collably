@@ -78,7 +78,7 @@ export default function BrandCampaignsManagementPage() {
               Campaigns
             </span>
             <span className="text-[#8A8A9A] dark:text-[#6A6A7E]">•</span>
-            <span className="px-2 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-[#0B0A14] dark:text-yellow-400 font-mono text-[10px] font-bold">
+            <span className="px-2 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-primary dark:text-accent dark:text-yellow-400 font-mono text-[10px] font-bold">
               Active Campaigns
             </span>
           </div>
@@ -92,7 +92,7 @@ export default function BrandCampaignsManagementPage() {
 
         <Link
           href="/app/brand/campaigns/create"
-          className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold transition-all shadow-[0_2px_12px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 flex items-center gap-2"
+          className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-[0_2px_12px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 flex items-center gap-2"
         >
           <PlusCircle className="w-4 h-4 text-[#0B0A14]" />
           <span>Post New Campaign</span>
@@ -153,7 +153,7 @@ export default function BrandCampaignsManagementPage() {
                 <span
                   className={cn(
                     "px-1.5 py-0.5 rounded-full text-[10px] font-mono font-bold",
-                    isActive ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14]" : "bg-black/5 dark:bg-white/10 text-[#5A5A68] dark:text-[#A0A0B4]"
+                    isActive ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-white" : "bg-black/5 dark:bg-white/10 text-[#5A5A68] dark:text-[#A0A0B4]"
                   )}
                 >
                   {tab.count}
@@ -285,7 +285,7 @@ export default function BrandCampaignsManagementPage() {
                   </Link>
 
                   <Link href="/app/applications" className="flex-1">
-                    <button className="w-full py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-extrabold transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1">
+                    <button className="w-full py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-extrabold transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1">
                       <span>Proposals ({c.applicantsCount})</span>
                       <ArrowRight className="w-3 h-3" />
                     </button>

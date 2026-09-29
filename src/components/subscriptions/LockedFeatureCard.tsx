@@ -34,13 +34,13 @@ export function LockedFeatureCard({
     return (
       <div className="rounded-2xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#12121A] text-[#0B0A14] dark:text-[#F4F4F8] p-4 sm:p-5 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 select-none">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-primary/20 border border-primary/40 flex items-center justify-center text-[#0B0A14] dark:text-accent shrink-0">
+          <div className="w-10 h-10 rounded-xl bg-primary/20 border border-primary/40 flex items-center justify-center text-primary dark:text-accent dark:text-accent shrink-0">
             <Lock className="w-5 h-5 text-[#0B0A14] dark:text-accent" />
           </div>
           <div>
             <div className="flex items-center gap-2">
               <h4 className="text-sm font-bold text-[#0B0A14] dark:text-white font-display">{title}</h4>
-              <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded-full bg-primary text-[#0B0A14] uppercase">
+              <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded-full bg-primary text-white uppercase">
                 {plan?.name || "Pro Required"}
               </span>
             </div>
@@ -50,7 +50,7 @@ export function LockedFeatureCard({
 
         <button
           onClick={() => openUpgradeModal(requiredPlanId)}
-          className="px-4 py-2 rounded-full bg-primary hover:bg-accent text-[#0B0A14] text-xs font-extrabold transition-all flex items-center gap-1.5 shadow-xs border border-black/10 shrink-0 self-end sm:self-center active:scale-98"
+          className="px-4 py-2 rounded-full bg-primary hover:bg-accent text-white text-xs font-extrabold transition-all flex items-center gap-1.5 shadow-xs border border-black/10 shrink-0 self-end sm:self-center active:scale-98"
         >
           <Sparkles className="w-3.5 h-3.5 fill-[#0B0A14] text-[#0B0A14]" />
           <span>Upgrade to {plan?.name || "Unlock"}</span>
@@ -66,13 +66,13 @@ export function LockedFeatureCard({
 
       <div className="relative z-10 max-w-2xl mx-auto text-center space-y-6">
         {/* Lock Icon */}
-        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-[#FFAE00] border border-black/10 mx-auto flex items-center justify-center text-[#0B0A14] shadow-[0_8px_24px_rgba(var(--theme-primary-rgb),0.4)]">
+        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-[#FFAE00] border border-black/10 mx-auto flex items-center justify-center text-white shadow-[0_8px_24px_rgba(var(--theme-primary-rgb),0.4)]">
           <Lock className="w-8 h-8 text-[#0B0A14]" />
         </div>
 
         {/* Title & Description */}
         <div className="space-y-2">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/20 border border-primary/40 text-xs font-mono font-bold text-[#0B0A14] dark:text-accent">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/20 border border-primary/40 text-xs font-mono font-bold text-primary dark:text-accent dark:text-accent">
             <ShieldAlert className="w-3.5 h-3.5 text-[#0B0A14] dark:text-accent" />
             <span>REQUIRES {plan?.name?.toUpperCase() || "HIGHER TIER"}</span>
           </div>
@@ -92,7 +92,7 @@ export function LockedFeatureCard({
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             {benefits.slice(0, 4).map((b, i) => (
               <div key={i} className="flex items-center gap-2 text-xs text-[#2A2A38] dark:text-[#D0D0E0]">
-                <div className="w-4 h-4 rounded-full bg-primary/25 dark:bg-primary/20 text-[#0B0A14] dark:text-accent flex items-center justify-center shrink-0">
+                <div className="w-4 h-4 rounded-full bg-primary/25 dark:bg-primary/20 text-primary dark:text-accent dark:text-accent flex items-center justify-center shrink-0">
                   <Check className="w-3 h-3 text-[#0B0A14] dark:text-accent" />
                 </div>
                 <span>{b}</span>
@@ -105,7 +105,7 @@ export function LockedFeatureCard({
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
           <button
             onClick={() => openUpgradeModal(requiredPlanId)}
-            className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-sm transition-all flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.45)] border border-black/10 active:scale-98"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-extrabold text-sm transition-all flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.45)] border border-black/10 active:scale-98"
           >
             <Sparkles className="w-4 h-4 fill-[#0B0A14] text-[#0B0A14]" />
             <span>Upgrade to {plan?.name || "Unlock Now"}</span>

@@ -91,7 +91,7 @@ export function CreatorCard({ creator }: { creator: CreatorProfile }) {
               className={cn(
                 "p-1.5 rounded-xl border transition-colors",
                 saved
-                  ? "bg-primary text-[#0B0A14] border-black/10 dark:border-transparent shadow-xs"
+                  ? "bg-primary text-white border-black/10 dark:border-transparent shadow-xs"
                   : "bg-white dark:bg-[#181824] text-[#7A7A8A] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border-black/8 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/10"
               )}
             >
@@ -195,7 +195,7 @@ export function CreatorCard({ creator }: { creator: CreatorProfile }) {
 
         <Link
           href={`/creators/${creator.id}`}
-          className="px-4 py-2 rounded-full bg-primary hover:bg-accent dark:bg-primary dark:hover:bg-accent border border-black/10 text-xs font-bold text-[#0B0A14] dark:text-[#0B0A14] transition-all flex items-center gap-1 shadow-xs hover-lift"
+          className="px-4 py-2 rounded-full bg-primary hover:bg-accent dark:bg-primary dark:hover:bg-accent border border-black/10 text-xs font-bold text-white dark:text-white transition-all flex items-center gap-1 shadow-xs hover-lift"
         >
           <span className="text-[#0B0A14] dark:text-[#0B0A14] font-bold">Media Kit</span>
           <ArrowRight className="w-3 h-3 text-[#0B0A14] dark:text-[#0B0A14]" />

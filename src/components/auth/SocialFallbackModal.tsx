@@ -113,7 +113,7 @@ export function SocialFallbackModal({
                   {role === "brand" ? "brand.partner@gmail.com" : "creator.partner@gmail.com"}
                 </p>
               </div>
-              <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-primary/20 text-[#0B0A14]">
+              <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-primary/20 text-primary dark:text-accent">
                 {role.toUpperCase()}
               </span>
             </button>
@@ -167,7 +167,7 @@ export function SocialFallbackModal({
           <button
             type="submit"
             disabled={isSubmitting || !email}
-            className="w-full py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10 flex items-center justify-center gap-2 disabled:opacity-50 active:scale-98"
+            className="w-full py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10 flex items-center justify-center gap-2 disabled:opacity-50 active:scale-98"
           >
             {isSubmitting ? (
               <>

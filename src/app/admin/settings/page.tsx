@@ -403,7 +403,7 @@ export default function AdminSettingsPage() {
           <button
             onClick={handleSaveAll}
             disabled={saving}
-            className="px-4 py-1.5 rounded-lg bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:brightness-105 active:scale-95 text-[#0B0A14] text-[11px] font-black transition-all shadow-xs border border-black/15 flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+            className="px-4 py-1.5 rounded-lg bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:brightness-105 active:scale-95 text-white text-[11px] font-black transition-all shadow-xs border border-black/15 flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
           >
             <Save className="w-3.5 h-3.5 text-[#0B0A14]" />
             <span>{saving ? "Saving..." : "Save Configuration"}</span>
@@ -611,7 +611,7 @@ export default function AdminSettingsPage() {
             onClick={() => setIsCompact(!isCompact)}
             className={`px-2.5 py-1.5 rounded-lg border text-[11px] font-semibold transition-all flex items-center gap-1 cursor-pointer ${
               isCompact
-                ? "bg-primary/15 text-[#0B0A14] dark:text-accent border-primary/40"
+                ? "bg-primary/15 text-primary dark:text-accent dark:text-accent border-primary/40"
                 : "bg-black/5 dark:bg-white/5 text-neutral-600 dark:text-neutral-400 border-black/10 dark:border-white/10"
             }`}
             title="Toggle compact card spacing"
@@ -627,7 +627,7 @@ export default function AdminSettingsPage() {
         <div className="rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs overflow-hidden">
           <div className="px-5 py-4 border-b border-black/8 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-black/[0.01] dark:bg-white/[0.01]">
             <div className="flex items-center gap-2.5">
-              <div className="p-2 rounded-lg bg-primary/15 border border-primary/30 text-[#0B0A14] dark:text-accent">
+              <div className="p-2 rounded-lg bg-primary/15 border border-primary/30 text-primary dark:text-accent dark:text-accent">
                 <Layers className="w-4 h-4" />
               </div>
               <div>
@@ -676,7 +676,7 @@ export default function AdminSettingsPage() {
                       <div
                         className={`p-2 rounded-lg border shrink-0 transition-colors ${
                           isEnabled
-                            ? "bg-primary/15 border-primary/30 text-[#0B0A14] dark:text-accent"
+                            ? "bg-primary/15 border-primary/30 text-primary dark:text-accent dark:text-accent"
                             : "bg-black/5 dark:bg-white/5 border-black/10 dark:border-white/10 text-neutral-400"
                         }`}
                       >
@@ -824,7 +824,7 @@ export default function AdminSettingsPage() {
                     onClick={() => setMinEscrow(preset)}
                     className={`flex-1 py-1 text-[10px] font-mono font-bold rounded-md border transition-all cursor-pointer ${
                       minEscrow === preset
-                        ? "bg-primary text-[#0B0A14] border-black/20"
+                        ? "bg-primary text-white border-black/20"
                         : "bg-white dark:bg-[#12121A] text-neutral-600 dark:text-neutral-400 border-black/5 dark:border-white/5 hover:border-black/20"
                     }`}
                   >

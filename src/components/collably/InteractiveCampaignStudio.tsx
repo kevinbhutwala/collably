@@ -157,7 +157,7 @@ export function InteractiveCampaignStudio() {
                       onClick={() => setBudget(val)}
                       className={`py-2 px-2 rounded-xl text-xs font-mono font-bold transition-all text-center border ${
                         budget === val
-                          ? "bg-primary text-[#0B0A14] border-primary shadow-sm"
+                          ? "bg-primary text-white border-primary shadow-sm"
                           : "bg-white text-[#4A4A58] border-black/10 hover:border-black/20"
                       }`}
                     >
@@ -249,7 +249,7 @@ export function InteractiveCampaignStudio() {
                 {/* Launch Action */}
                 <div className="pt-2 relative z-10">
                   <Link href="/for-brands">
-                    <button className="w-full py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-black text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.5)] flex items-center justify-center gap-2 group active:scale-[0.98]">
+                    <button className="w-full py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-black text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.5)] flex items-center justify-center gap-2 group active:scale-[0.98]">
                       <span>Lock In Campaign Brief (${budget.toLocaleString()})</span>
                       <ArrowRight className="w-4 h-4 text-[#0B0A14] group-hover:translate-x-1 transition-transform" />
                     </button>

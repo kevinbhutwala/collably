@@ -81,7 +81,7 @@ export function StreamlinedVisualCTA() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
           <Link
             href="/register"
-            className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.5)] flex items-center justify-center gap-2 group active:scale-[0.98] border border-black/10 font-sans hover-lift"
+            className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.5)] flex items-center justify-center gap-2 group active:scale-[0.98] border border-black/10 font-sans hover-lift"
           >
             <span>Launch Campaign Brief</span>
             <ArrowRight className="w-4 h-4 text-[#0B0A14] group-hover:translate-x-1 transition-transform" />

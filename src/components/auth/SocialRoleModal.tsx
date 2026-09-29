@@ -33,7 +33,7 @@ export function SocialRoleModal({
           className="w-full text-left p-4 rounded-2xl bg-gradient-to-r from-primary/5 to-white dark:from-[#181826] dark:to-[#12121A] border-2 border-primary hover:shadow-md transition-all group flex items-center justify-between"
         >
           <div className="flex items-center gap-3.5">
-            <div className="w-11 h-11 rounded-2xl bg-primary text-[#0B0A14] flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
+            <div className="w-11 h-11 rounded-2xl bg-primary text-white flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
               <Video className="w-5 h-5" />
             </div>
             <div>

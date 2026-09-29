@@ -239,7 +239,7 @@ export default function SettingsPage() {
 
         <button
           onClick={handleSavePreferences}
-          className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5 self-start sm:self-center"
+          className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5 self-start sm:self-center"
         >
           <Save className="w-3.5 h-3.5 text-[#0B0A14]" />
           <span>Save Settings</span>
@@ -427,7 +427,7 @@ export default function SettingsPage() {
                     </span>
                     <button
                       onClick={handleResumeSubscription}
-                      className="px-4 py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-bold transition-all shadow-xs border border-black/10"
+                      className="px-4 py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-bold transition-all shadow-xs border border-black/10"
                     >
                       Resume Subscription
                     </button>
@@ -529,7 +529,7 @@ export default function SettingsPage() {
                     onClick={() => setIsAnnual(false)}
                     className={`px-3.5 py-1.5 rounded-full transition-all font-bold ${
                       !isAnnual
-                        ? "bg-primary text-[#0B0A14] shadow-xs"
+                        ? "bg-primary text-white shadow-xs"
                         : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
                     }`}
                   >
@@ -539,7 +539,7 @@ export default function SettingsPage() {
                     onClick={() => setIsAnnual(true)}
                     className={`px-3.5 py-1.5 rounded-full transition-all font-bold flex items-center gap-1.5 ${
                       isAnnual
-                        ? "bg-primary text-[#0B0A14] shadow-xs"
+                        ? "bg-primary text-white shadow-xs"
                         : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
                     }`}
                   >
@@ -600,14 +600,14 @@ export default function SettingsPage() {
                     }`}
                   >
                     {p.highlight && (
-                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-primary text-[#0B0A14] font-mono font-extrabold text-[10px] tracking-wider uppercase shadow-xs flex items-center gap-1 z-20">
+                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-primary text-white font-mono font-extrabold text-[10px] tracking-wider uppercase shadow-xs flex items-center gap-1 z-20">
                         <Sparkles className="w-3 h-3" />
                         <span>RECOMMENDED</span>
                       </div>
                     )}
 
                     {isCurrent && !p.highlight && (
-                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-black/10 dark:bg-primary/20 border border-black/20 dark:border-primary/40 text-[#0B0A14] dark:text-accent font-mono font-extrabold text-[10px] tracking-wider uppercase shadow-xs z-20">
+                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-black/10 dark:bg-primary/20 border border-black/20 dark:border-primary/40 text-primary dark:text-accent dark:text-accent font-mono font-extrabold text-[10px] tracking-wider uppercase shadow-xs z-20">
                         ACTIVE PLAN
                       </div>
                     )}
@@ -637,7 +637,7 @@ export default function SettingsPage() {
                       <div className="pt-3 border-t border-black/6 dark:border-white/10 space-y-2.5">
                         {p.featureBullets.map((bullet, idx) => (
                           <div key={idx} className="flex items-start gap-2 text-xs text-[#3A3A48] dark:text-[#C8C8DC]">
-                            <div className="w-4 h-4 rounded-full bg-primary/25 dark:bg-primary/20 text-[#0B0A14] dark:text-accent flex items-center justify-center shrink-0 mt-0.5">
+                            <div className="w-4 h-4 rounded-full bg-primary/25 dark:bg-primary/20 text-primary dark:text-accent dark:text-accent flex items-center justify-center shrink-0 mt-0.5">
                               <Check className="w-3 h-3 text-[#0B0A14] dark:text-accent" />
                             </div>
                             <span className="leading-tight">{bullet}</span>
@@ -654,7 +654,7 @@ export default function SettingsPage() {
                           isCurrent
                             ? "bg-black/5 dark:bg-white/10 text-[#8A8A9A] dark:text-white/80 cursor-not-allowed border border-black/10 dark:border-white/20 font-bold"
                             : p.highlight
-                            ? "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] font-extrabold"
+                            ? "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] font-extrabold"
                             : "bg-[#F4F4F8] hover:bg-[#EAEAF0] text-[#0B0A14] border border-black/12 hover:border-black/25 font-bold shadow-xs"
                         }`}
                       >
@@ -741,7 +741,7 @@ export default function SettingsPage() {
             <div className="pt-2">
               <button
                 onClick={handleSavePreferences}
-                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold transition-all shadow-xs border border-black/10"
+                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-xs border border-black/10"
               >
                 Save Payout Details
               </button>
@@ -791,7 +791,7 @@ export default function SettingsPage() {
               <button
                 type="submit"
                 disabled={isChangingPassword}
-                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold transition-all disabled:opacity-50 flex items-center gap-2 shadow-xs border border-black/10"
+                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all disabled:opacity-50 flex items-center gap-2 shadow-xs border border-black/10"
               >
                 {isChangingPassword ? (
                   <>
@@ -888,7 +888,7 @@ export default function SettingsPage() {
                     <Sun className="w-5 h-5 text-amber-500" />
                     <span className="text-sm font-extrabold text-[#0B0A14] font-display">Pure White &amp; Solar</span>
                   </div>
-                  <span className="px-2.5 py-0.5 rounded-full bg-primary text-[#0B0A14] text-[10px] font-mono font-bold flex items-center gap-1">
+                  <span className="px-2.5 py-0.5 rounded-full bg-primary text-white text-[10px] font-mono font-bold flex items-center gap-1">
                     <Check className="w-3 h-3" />
                     <span>Active Standard</span>
                   </span>
@@ -897,7 +897,7 @@ export default function SettingsPage() {
                 <div className="p-3 rounded-xl bg-white border border-black/8 space-y-2">
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-bold text-[#0B0A14]">Milestone Brief</span>
-                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-primary text-[#0B0A14]">
+                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-primary text-white">
                       ₹75,000
                     </span>
                   </div>

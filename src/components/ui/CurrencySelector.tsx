@@ -29,7 +29,7 @@ export function CurrencySelector({
                 <span className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4]">Indian Rupee (Phase 1 Platform Currency)</span>
               </div>
             </div>
-            <span className="px-2 py-0.5 rounded-full bg-primary text-[#0B0A14] text-[10px] font-bold flex items-center gap-1">
+            <span className="px-2 py-0.5 rounded-full bg-primary text-white text-[10px] font-bold flex items-center gap-1">
               <Check className="w-3 h-3" />
               <span>Active</span>
             </span>

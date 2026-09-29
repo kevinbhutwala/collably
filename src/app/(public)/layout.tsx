@@ -10,7 +10,7 @@ export default function PublicLayout({
 }) {
   return (
     <SmoothScrollProvider>
-      <div className="flex flex-col min-h-screen bg-white dark:bg-[#0B0A14] text-[#0B0A14] dark:text-[#F4F4F8] selection:bg-primary selection:text-[#0B0A14] relative overflow-x-hidden transition-colors duration-200">
+      <div className="flex flex-col min-h-screen bg-white dark:bg-[#0B0A14] text-white dark:text-[#F4F4F8] selection:bg-primary selection:text-white relative overflow-x-hidden transition-colors duration-200">
         {/* Mobile: warm gold radial glow at top — gives depth on small screens */}
         <div className="md:hidden fixed top-0 left-1/2 -translate-x-1/2 w-[350px] h-[250px] bg-primary/8 blur-[80px] rounded-full pointer-events-none z-0" />
         <Navbar />

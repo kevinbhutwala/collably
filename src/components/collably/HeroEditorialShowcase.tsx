@@ -220,7 +220,7 @@ export function HeroEditorialShowcase() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-3.5 pt-1 sm:pt-2">
               <Link
                 href="/register"
-                className="w-full sm:w-auto min-h-12 px-8 py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-sm transition-all shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.5)] flex items-center justify-center gap-2 group active:scale-[0.98] border border-black/10 font-sans hover-lift"
+                className="w-full sm:w-auto min-h-12 px-8 py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-extrabold text-sm transition-all shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.5)] flex items-center justify-center gap-2 group active:scale-[0.98] border border-black/10 font-sans hover-lift"
               >
                 <span>Post a Campaign</span>
                 <ArrowRight className="w-4 h-4 text-[#0B0A14] group-hover:translate-x-1 transition-transform shrink-0" />
@@ -420,7 +420,7 @@ export function HeroEditorialShowcase() {
                       <CheckCircle2 className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#087F5B] shrink-0" />
                     </div>
                     <div className="flex items-center gap-1.5 mt-0.5">
-                      <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-md bg-primary/20 flex items-center justify-center text-[#0B0A14] dark:text-accent shrink-0">
+                      <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-md bg-primary/20 flex items-center justify-center text-primary dark:text-accent dark:text-accent shrink-0">
                         <TitleIcon title={activeTalent.niche} category={activeTalent.verifiedSponsor} className="w-2 sm:w-2.5 h-2 sm:h-2.5" />
                       </div>
                       <p className="text-[9px] sm:text-[11px] text-[#6A6A78] dark:text-[#A0A0B4] font-sans truncate">{activeTalent.niche}</p>

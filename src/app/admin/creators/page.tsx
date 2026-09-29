@@ -128,7 +128,7 @@ export default function AdminCreatorsPage() {
                   className={`px-4 py-2 rounded-full text-xs font-bold transition-all border shrink-0 ${
                     c.verified
                       ? "bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0B0A14] dark:text-white border-black/10 dark:border-white/10"
-                      : "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] border-black/10 shadow-xs"
+                      : "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white border-black/10 shadow-xs"
                   }`}
                 >
                   {c.verified ? "Revoke Badge" : "Grant Verified Badge"}

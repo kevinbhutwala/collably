@@ -216,7 +216,7 @@ export function MultiSelectDropdown({
                   <button
                     type="button"
                     onClick={handleAddCustom}
-                    className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-primary text-[#0B0A14] text-xs font-bold shadow-xs hover:bg-accent"
+                    className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-primary text-white text-xs font-bold shadow-xs hover:bg-accent"
                   >
                     <Plus className="w-3 h-3" />
                     <span>Add &ldquo;{search.trim()}&rdquo;</span>
@@ -246,7 +246,7 @@ export function MultiSelectDropdown({
                         className={cn(
                           "w-4 h-4 rounded-md border flex items-center justify-center shrink-0 transition-colors",
                           isSelected
-                            ? "bg-primary border-black/20 text-[#0B0A14]"
+                            ? "bg-primary border-black/20 text-white"
                             : "border-black/20 bg-white"
                         )}
                       >

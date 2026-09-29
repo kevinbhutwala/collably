@@ -151,7 +151,7 @@ export default function BrandCRMPage() {
                 Talent Operations
               </span>
               <span className="text-[#8A8A9A] dark:text-[#6A6A7E]">•</span>
-              <span className="px-2 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-[#0B0A14] dark:text-yellow-400 font-mono text-[10px] font-bold">
+              <span className="px-2 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-primary dark:text-accent dark:text-yellow-400 font-mono text-[10px] font-bold">
                 Pipeline CRM
               </span>
             </div>
@@ -165,7 +165,7 @@ export default function BrandCRMPage() {
 
           <button
             onClick={() => setIsAddModalOpen(true)}
-            className="shrink-0 px-4 py-2.5 rounded-2xl bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] text-xs font-bold transition-all flex items-center gap-1.5 hover:bg-[#1A1A28] dark:hover:bg-accent shadow-sm"
+            className="shrink-0 px-4 py-2.5 rounded-2xl bg-[#0B0A14] dark:bg-primary text-white dark:text-white text-xs font-bold transition-all flex items-center gap-1.5 hover:bg-[#1A1A28] dark:hover:bg-accent shadow-sm"
           >
             <UserPlus className="w-3.5 h-3.5" />
             Add Creator to Pipeline
@@ -178,7 +178,7 @@ export default function BrandCRMPage() {
             onClick={() => setSelectedStage("all")}
             className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-bold transition-all shrink-0 ${
               selectedStage === "all"
-                ? "bg-primary text-[#0B0A14] shadow-xs border border-black/10"
+                ? "bg-primary text-white shadow-xs border border-black/10"
                 : "bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-white"
             }`}
           >
@@ -192,7 +192,7 @@ export default function BrandCRMPage() {
                 onClick={() => setSelectedStage(st.key)}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-bold transition-all shrink-0 flex items-center gap-1.5 ${
                   selectedStage === st.key
-                    ? "bg-primary text-[#0B0A14] shadow-xs border border-black/10"
+                    ? "bg-primary text-white shadow-xs border border-black/10"
                     : "bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-white"
                 }`}
               >
@@ -218,7 +218,7 @@ export default function BrandCRMPage() {
             <div className="flex items-center justify-center gap-3 pt-2">
               <button
                 onClick={() => setIsAddModalOpen(true)}
-                className="px-4 py-2 rounded-xl bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] text-xs font-bold transition-all hover:bg-black/80 dark:hover:bg-accent"
+                className="px-4 py-2 rounded-xl bg-[#0B0A14] dark:bg-primary text-white dark:text-white text-xs font-bold transition-all hover:bg-black/80 dark:hover:bg-accent"
               >
                 Add Creator Now
               </button>
@@ -256,7 +256,7 @@ export default function BrandCRMPage() {
                     </div>
 
                     <div className="flex items-center gap-1.5">
-                      <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-primary/20 text-[#0B0A14] dark:text-yellow-400 border border-primary/40 uppercase">
+                      <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-primary/20 text-primary dark:text-accent dark:text-yellow-400 border border-primary/40 uppercase">
                         {c.stage.replace(/_/g, " ")}
                       </span>
                       <button
@@ -327,7 +327,7 @@ export default function BrandCRMPage() {
                     href={`/app/messages?recipientId=${c.creator.userId || c.creator.id}&recipientName=${encodeURIComponent(c.creator.fullName)}`}
                     className="flex-1"
                   >
-                    <button className="w-full py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold transition-all shadow-xs cursor-pointer">
+                    <button className="w-full py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-xs cursor-pointer">
                       Message
                     </button>
                   </Link>
@@ -356,7 +356,7 @@ export default function BrandCRMPage() {
             />
             <button
               type="submit"
-              className="w-full py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] text-xs font-bold shadow-xs border border-black/10 cursor-pointer"
+              className="w-full py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white text-xs font-bold shadow-xs border border-black/10 cursor-pointer"
             >
               Save Internal Note
             </button>
@@ -413,7 +413,7 @@ export default function BrandCRMPage() {
 
             <button
               type="submit"
-              className="w-full py-3 rounded-full bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] text-xs font-bold shadow-xs hover:bg-[#1A1A28] dark:hover:bg-accent cursor-pointer"
+              className="w-full py-3 rounded-full bg-[#0B0A14] dark:bg-primary text-white dark:text-white text-xs font-bold shadow-xs hover:bg-[#1A1A28] dark:hover:bg-accent cursor-pointer"
             >
               Add to Pipeline
             </button>

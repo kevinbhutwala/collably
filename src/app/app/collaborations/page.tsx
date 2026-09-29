@@ -147,7 +147,7 @@ export default function CollaborationsWorkspacePage() {
               Active Projects
             </span>
             <span className="text-[#8A8A9A]">•</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-[#0B0A14] dark:text-accent font-mono text-[10px] font-bold">
+            <span className="px-2.5 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-primary dark:text-accent dark:text-accent font-mono text-[10px] font-bold">
               Protected Payments
             </span>
           </div>
@@ -162,14 +162,14 @@ export default function CollaborationsWorkspacePage() {
         <div className="flex items-center gap-2.5 self-start sm:self-center">
           {role === "creator" ? (
             <Link href="/app/campaigns">
-              <button className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-bold text-xs transition-all flex items-center gap-1.5 shadow-[0_4px_14px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 active:scale-98">
+              <button className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-[0_4px_14px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 active:scale-98">
                 <Compass className="w-3.5 h-3.5" />
                 <span>Find Campaigns</span>
               </button>
             </Link>
           ) : (
             <Link href="/app/brand/campaigns/create">
-              <button className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-bold text-xs transition-all flex items-center gap-1.5 shadow-[0_4px_14px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 active:scale-98">
+              <button className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-[0_4px_14px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 active:scale-98">
                 <Plus className="w-3.5 h-3.5" />
                 <span>Post a Campaign</span>
               </button>
@@ -254,7 +254,7 @@ export default function CollaborationsWorkspacePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
             <div className="flex items-start gap-2.5">
-              <div className="w-6 h-6 rounded-full bg-primary text-[#0B0A14] text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
+              <div className="w-6 h-6 rounded-full bg-primary text-white text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
                 1
               </div>
               <div className="space-y-0.5">
@@ -266,7 +266,7 @@ export default function CollaborationsWorkspacePage() {
             </div>
 
             <div className="flex items-start gap-2.5">
-              <div className="w-6 h-6 rounded-full bg-primary text-[#0B0A14] text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
+              <div className="w-6 h-6 rounded-full bg-primary text-white text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
                 2
               </div>
               <div className="space-y-0.5">
@@ -278,7 +278,7 @@ export default function CollaborationsWorkspacePage() {
             </div>
 
             <div className="flex items-start gap-2.5">
-              <div className="w-6 h-6 rounded-full bg-primary text-[#0B0A14] text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
+              <div className="w-6 h-6 rounded-full bg-primary text-white text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
                 3
               </div>
               <div className="space-y-0.5">
@@ -300,7 +300,7 @@ export default function CollaborationsWorkspacePage() {
             onClick={() => setActiveFilter("all")}
             className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all shrink-0 ${
               activeFilter === "all"
-                ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] shadow-xs"
+                ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-white shadow-xs"
                 : "bg-white dark:bg-[#181824] text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-[#F4F4F8] border border-black/8 dark:border-white/10"
             }`}
           >
@@ -321,7 +321,7 @@ export default function CollaborationsWorkspacePage() {
             onClick={() => setActiveFilter("in_progress")}
             className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all shrink-0 ${
               activeFilter === "in_progress"
-                ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] shadow-xs"
+                ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-white shadow-xs"
                 : "bg-white dark:bg-[#181824] text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-[#F4F4F8] border border-black/8 dark:border-white/10"
             }`}
           >
@@ -331,7 +331,7 @@ export default function CollaborationsWorkspacePage() {
             onClick={() => setActiveFilter("completed")}
             className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all shrink-0 ${
               activeFilter === "completed"
-                ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] shadow-xs"
+                ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-white shadow-xs"
                 : "bg-white dark:bg-[#181824] text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-[#F4F4F8] border border-black/8 dark:border-white/10"
             }`}
           >
@@ -396,7 +396,7 @@ export default function CollaborationsWorkspacePage() {
               setSearchQuery("");
               setActiveFilter("all");
             }}
-            className="px-4 py-2 rounded-full bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] text-xs font-bold transition-all shadow-xs"
+            className="px-4 py-2 rounded-full bg-[#0B0A14] dark:bg-primary text-white dark:text-white text-xs font-bold transition-all shadow-xs"
           >
             Show All Deals
           </button>

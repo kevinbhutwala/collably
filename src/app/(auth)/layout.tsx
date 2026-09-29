@@ -15,7 +15,7 @@ export default function AuthLayout({
   const isLoginPage = pathname === "/login";
 
   return (
-    <div className="min-h-screen bg-[#FAFAFC] dark:bg-[#09090D] text-[#0B0A14] dark:text-[#F4F4F8] flex flex-col justify-between selection:bg-primary selection:text-[#0B0A14] relative overflow-x-hidden select-none transition-colors duration-200">
+    <div className="min-h-screen bg-[#FAFAFC] dark:bg-[#09090D] text-white dark:text-[#F4F4F8] flex flex-col justify-between selection:bg-primary selection:text-white relative overflow-x-hidden select-none transition-colors duration-200">
       {/* Background ambient lighting */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] sm:w-[900px] h-[400px] sm:h-[550px] bg-primary/12 rounded-full blur-[150px] pointer-events-none" />
 

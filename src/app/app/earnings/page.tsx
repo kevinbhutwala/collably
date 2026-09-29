@@ -117,7 +117,7 @@ export default function EarningsAndEscrowPage() {
               Payments &amp; Earnings
             </span>
             <span className="text-[#8A8A9A] dark:text-[#6A6A7E]">•</span>
-            <span className="px-2 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-[#0B0A14] dark:text-yellow-400 font-mono text-[10px] font-bold">
+            <span className="px-2 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-primary dark:text-accent dark:text-yellow-400 font-mono text-[10px] font-bold">
               Protected Payments ({config.flag} {currency})
             </span>
           </div>
@@ -146,7 +146,7 @@ export default function EarningsAndEscrowPage() {
           {role === "creator" && (
             <button
               onClick={handleWithdraw}
-              className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5"
+              className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5"
             >
               <span>Withdraw Balance</span>
               <ArrowRight className="w-3.5 h-3.5 text-[#0B0A14]" />
@@ -180,7 +180,7 @@ export default function EarningsAndEscrowPage() {
       {/* Worldwide Banking & Payout Infrastructure Dock */}
       <div className="p-4 sm:p-5 rounded-2xl bg-[#FAFAFC] dark:bg-[#151520] border border-black/8 dark:border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center text-[#0B0A14] dark:text-accent shrink-0">
+          <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center text-primary dark:text-accent dark:text-accent shrink-0">
             <Globe className="w-5 h-5" />
           </div>
           <div>

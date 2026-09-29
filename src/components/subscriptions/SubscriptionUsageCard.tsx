@@ -46,7 +46,7 @@ export function SubscriptionUsageCard() {
 
         <button
           onClick={() => openUpgradeModal()}
-          className="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5 shrink-0 self-start sm:self-center hover-lift cursor-pointer"
+          className="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5 shrink-0 self-start sm:self-center hover-lift cursor-pointer"
         >
           <Sparkles className="w-3 h-3 text-[#0B0A14]" />
           <span>Manage Plan</span>

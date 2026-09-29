@@ -94,7 +94,7 @@ export default function ApplicationsManagementPage() {
               Applications
             </span>
             <span className="text-[#8A8A9A]">•</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-[#0B0A14] dark:text-accent font-mono text-[10px] font-bold">
+            <span className="px-2.5 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-primary dark:text-accent dark:text-accent font-mono text-[10px] font-bold">
               Secured Payments
             </span>
           </div>
@@ -131,7 +131,7 @@ export default function ApplicationsManagementPage() {
                 className={cn(
                   "px-1.5 py-0.5 rounded-full text-[10px] font-mono font-bold",
                   isActive
-                    ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14]"
+                    ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-white"
                     : "bg-black/5 dark:bg-white/10 text-[#5A5A68] dark:text-[#A0A0B4]"
                 )}
               >
@@ -208,7 +208,7 @@ export default function ApplicationsManagementPage() {
                     </button>
                     <button
                       onClick={() => handleStatusUpdate(app.id, "accepted")}
-                      className="px-4 py-1.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-extrabold transition-all shadow-xs border border-black/10"
+                      className="px-4 py-1.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-extrabold transition-all shadow-xs border border-black/10"
                     >
                       Accept Proposal
                     </button>
@@ -217,7 +217,7 @@ export default function ApplicationsManagementPage() {
 
                 {app.status === "accepted" && (
                   <Link href="/app/collaborations">
-                    <button className="px-4 py-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-primary dark:hover:bg-primary text-[#0B0A14] dark:text-[#F4F4F8] dark:hover:text-[#0B0A14] font-extrabold text-xs transition-all flex items-center gap-1.5 border border-black/10 dark:border-white/10">
+                    <button className="px-4 py-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-primary dark:hover:bg-primary text-white dark:text-[#F4F4F8] dark:hover:text-[#0B0A14] font-extrabold text-xs transition-all flex items-center gap-1.5 border border-black/10 dark:border-white/10">
                       <span>Open Workspace</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </button>

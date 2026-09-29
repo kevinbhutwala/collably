@@ -54,7 +54,7 @@ export function CreatorFilterPanel() {
       {/* Panel Header */}
       <div className="flex items-center justify-between pb-4 border-b border-black/8 dark:border-white/10">
         <div className="flex items-center gap-2.5">
-          <div className="w-7 h-7 rounded-xl bg-primary/20 flex items-center justify-center text-[#0B0A14] dark:text-accent">
+          <div className="w-7 h-7 rounded-xl bg-primary/20 flex items-center justify-center text-primary dark:text-accent dark:text-accent">
             <SlidersHorizontal className="w-3.5 h-3.5 text-[#0B0A14] dark:text-accent" />
           </div>
           <div>
@@ -86,7 +86,7 @@ export function CreatorFilterPanel() {
       {activeFilterCount > 0 && (
         <div className="flex flex-wrap gap-1.5 pt-1 pb-2 border-b border-black/5 dark:border-white/10">
           {creatorCategory !== "all" && (
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-primary border border-black/10 text-[11px] font-bold text-[#0B0A14] dark:text-[#0B0A14] shadow-2xs">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-primary border border-black/10 text-[11px] font-bold text-white dark:text-white shadow-2xs">
               <span>{creatorCategory}</span>
               <button onClick={() => setCreatorCategory("all")} className="text-[#0B0A14]/70 hover:text-red-600 dark:hover:text-red-700">
                 <X className="w-3 h-3" />
@@ -95,7 +95,7 @@ export function CreatorFilterPanel() {
           )}
 
           {creatorPlatform !== "all" && (
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-primary border border-black/10 text-[11px] font-bold text-[#0B0A14] dark:text-[#0B0A14] capitalize shadow-2xs">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-primary border border-black/10 text-[11px] font-bold text-white dark:text-white capitalize shadow-2xs">
               <span>{creatorPlatform}</span>
               <button onClick={() => setCreatorPlatform("all")} className="text-[#0B0A14]/70 hover:text-red-600 dark:hover:text-red-700">
                 <X className="w-3 h-3" />
@@ -104,7 +104,7 @@ export function CreatorFilterPanel() {
           )}
 
           {creatorMinFollowers > 0 && (
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-primary border border-black/10 text-[11px] font-bold text-[#0B0A14] dark:text-[#0B0A14] shadow-2xs">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-primary border border-black/10 text-[11px] font-bold text-white dark:text-white shadow-2xs">
               <span>{creatorMinFollowers / 1000}K+ Reach</span>
               <button onClick={() => setCreatorMinFollowers(0)} className="text-[#0B0A14]/70 hover:text-red-600 dark:hover:text-red-700">
                 <X className="w-3 h-3" />
@@ -113,7 +113,7 @@ export function CreatorFilterPanel() {
           )}
 
           {creatorMinEngagement > 0 && (
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-primary border border-black/10 text-[11px] font-bold text-[#0B0A14] dark:text-[#0B0A14] shadow-2xs">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-primary border border-black/10 text-[11px] font-bold text-white dark:text-white shadow-2xs">
               <span>{creatorMinEngagement}%+ ER</span>
               <button onClick={() => setCreatorMinEngagement(0)} className="text-[#0B0A14]/70 hover:text-red-600 dark:hover:text-red-700">
                 <X className="w-3 h-3" />
@@ -122,7 +122,7 @@ export function CreatorFilterPanel() {
           )}
 
           {creatorVerifiedOnly && (
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-primary border border-black/10 text-[11px] font-bold text-[#0B0A14] dark:text-[#0B0A14] shadow-2xs">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-primary border border-black/10 text-[11px] font-bold text-white dark:text-white shadow-2xs">
               <span>Verified Only</span>
               <button onClick={() => setCreatorVerifiedOnly(false)} className="text-[#0B0A14]/70 hover:text-red-600 dark:hover:text-red-700">
                 <X className="w-3 h-3" />
@@ -187,7 +187,7 @@ export function CreatorFilterPanel() {
                 className={cn(
                   "py-2 px-3 rounded-xl border text-xs font-bold transition-all flex items-center justify-between gap-1.5",
                   isSelected
-                    ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] border-black dark:border-primary shadow-xs"
+                    ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-white border-black dark:border-primary shadow-xs"
                     : "bg-[#F8F8FC] dark:bg-[#181824] border-black/6 dark:border-white/10 text-[#5A5A68] dark:text-[#B0B0C4] hover:bg-black/5 dark:hover:bg-white/10 hover:text-[#0B0A14] dark:hover:text-white"
                 )}
               >
@@ -222,7 +222,7 @@ export function CreatorFilterPanel() {
                 className={cn(
                   "py-2 px-2 rounded-xl border text-[11px] font-mono font-bold transition-all text-center",
                   isSelected
-                    ? "bg-primary text-[#0B0A14] border-black/10 dark:border-primary shadow-xs font-black"
+                    ? "bg-primary text-white border-black/10 dark:border-primary shadow-xs font-black"
                     : "bg-[#F8F8FC] dark:bg-[#181824] border-black/5 dark:border-white/10 text-[#5A5A68] dark:text-[#B0B0C4] hover:bg-black/5 dark:hover:bg-white/10 hover:text-[#0B0A14] dark:hover:text-white"
                 )}
               >
@@ -256,7 +256,7 @@ export function CreatorFilterPanel() {
                 className={cn(
                   "py-2 px-2.5 rounded-xl border text-[11px] font-mono font-bold transition-all text-center",
                   isSelected
-                    ? "bg-primary text-[#0B0A14] border-black/10 dark:border-primary shadow-xs font-black"
+                    ? "bg-primary text-white border-black/10 dark:border-primary shadow-xs font-black"
                     : "bg-[#F8F8FC] dark:bg-[#181824] border-black/5 dark:border-white/10 text-[#5A5A68] dark:text-[#B0B0C4] hover:bg-black/5 dark:hover:bg-white/10 hover:text-[#0B0A14] dark:hover:text-white"
                 )}
               >

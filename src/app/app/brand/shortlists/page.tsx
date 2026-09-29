@@ -99,7 +99,7 @@ export default function BrandShortlistsPage() {
               Saved Creators
             </span>
             <span className="text-[#C5C5D0] dark:text-[#5A5A68]">·</span>
-            <span className="px-2 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-[#0B0A14] dark:text-yellow-400 font-mono text-[10px] font-bold">
+            <span className="px-2 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-primary dark:text-accent dark:text-yellow-400 font-mono text-[10px] font-bold">
               Shortlisted Talent
             </span>
           </div>
@@ -108,7 +108,7 @@ export default function BrandShortlistsPage() {
         </div>
         <button
           onClick={() => setIsCreateModalOpen(true)}
-          className="shrink-0 px-4 py-2.5 rounded-2xl bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] text-xs font-bold transition-all flex items-center gap-1.5 hover:bg-[#1A1A28] dark:hover:bg-accent shadow-sm"
+          className="shrink-0 px-4 py-2.5 rounded-2xl bg-[#0B0A14] dark:bg-primary text-white dark:text-white text-xs font-bold transition-all flex items-center gap-1.5 hover:bg-[#1A1A28] dark:hover:bg-accent shadow-sm"
         >
           <Plus className="w-3.5 h-3.5" />
           New Shortlist
@@ -129,7 +129,7 @@ export default function BrandShortlistsPage() {
           </div>
           <button
             onClick={() => setIsCreateModalOpen(true)}
-            className="mx-auto px-5 py-2.5 rounded-2xl bg-gradient-to-r from-primary to-accent text-[#0B0A14] text-xs font-bold border border-black/10 inline-flex items-center gap-1.5 shadow-xs"
+            className="mx-auto px-5 py-2.5 rounded-2xl bg-gradient-to-r from-primary to-accent text-white text-xs font-bold border border-black/10 inline-flex items-center gap-1.5 shadow-xs"
           >
             <Plus className="w-3.5 h-3.5" />
             Create First Shortlist
@@ -170,7 +170,7 @@ export default function BrandShortlistsPage() {
                     </p>
                   </div>
                   {/* Count pill */}
-                  <span className={`text-[10px] font-mono font-bold px-1.5 py-0.5 rounded-full shrink-0 ${isActive ? "bg-primary dark:bg-[#0B0A14] text-[#0B0A14] dark:text-accent" : "bg-black/6 dark:bg-white/10 text-[#5A5A68] dark:text-[#A0A0B4]"}`}>
+                  <span className={`text-[10px] font-mono font-bold px-1.5 py-0.5 rounded-full shrink-0 ${isActive ? "bg-primary dark:bg-[#0B0A14] text-white dark:text-accent" : "bg-black/6 dark:bg-white/10 text-[#5A5A68] dark:text-[#A0A0B4]"}`}>
                     {s.creators.length}
                   </span>
                 </button>
@@ -334,7 +334,7 @@ export default function BrandShortlistsPage() {
                             </button>
                           </Link>
                           <Link href="/app/brand/campaigns/create">
-                            <button className="px-3 py-1.5 rounded-xl bg-primary hover:bg-accent border border-black/10 text-[#0B0A14] text-[11px] font-bold transition-all flex items-center gap-1 shadow-xs">
+                            <button className="px-3 py-1.5 rounded-xl bg-primary hover:bg-accent border border-black/10 text-white text-[11px] font-bold transition-all flex items-center gap-1 shadow-xs">
                               <Send className="w-3 h-3" />
                               Invite
                             </button>
@@ -383,7 +383,7 @@ export default function BrandShortlistsPage() {
           />
           <button
             type="submit"
-            className="w-full py-3 rounded-2xl bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] text-xs font-bold shadow-xs border border-black/10 flex items-center justify-center gap-1.5"
+            className="w-full py-3 rounded-2xl bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white text-xs font-bold shadow-xs border border-black/10 flex items-center justify-center gap-1.5"
           >
             <ListChecks className="w-3.5 h-3.5" />
             Create Shortlist

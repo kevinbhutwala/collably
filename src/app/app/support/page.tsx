@@ -102,7 +102,7 @@ export default function SupportAndDisputePage() {
               Help Desk
             </span>
             <span className="text-[#8A8A9A] dark:text-[#6A6A7E]">•</span>
-            <span className="px-2 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-[#0B0A14] dark:text-yellow-400 font-mono text-[10px] font-bold">
+            <span className="px-2 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-primary dark:text-accent dark:text-yellow-400 font-mono text-[10px] font-bold">
               Help &amp; Support
             </span>
           </div>
@@ -125,7 +125,7 @@ export default function SupportAndDisputePage() {
 
           <button
             onClick={() => setIsTicketModalOpen(true)}
-            className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5"
+            className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5"
           >
             <Plus className="w-3.5 h-3.5 text-[#0B0A14]" />
             <span>Contact Support</span>
@@ -264,7 +264,7 @@ export default function SupportAndDisputePage() {
             rows={4}
             required
           />
-          <button type="submit" className="w-full py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] text-xs font-bold shadow-xs border border-black/10">
+          <button type="submit" className="w-full py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white text-xs font-bold shadow-xs border border-black/10">
             Submit Ticket
           </button>
         </form>
@@ -321,7 +321,7 @@ export default function SupportAndDisputePage() {
             onChange={(e) => setDisputeEvidence(e.target.value)}
             required
           />
-          <button type="submit" className="w-full py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] text-xs font-bold shadow-xs border border-black/10">
+          <button type="submit" className="w-full py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white text-xs font-bold shadow-xs border border-black/10">
             Submit Dispute &amp; Request Mediation
           </button>
         </form>

@@ -137,7 +137,7 @@ export function CreatorQuickViewModal({
                 onClick={() => onBookmarkToggle(creator.id)}
                 className={`p-2 rounded-full backdrop-blur-md border transition-colors ${
                   isBookmarked
-                    ? "bg-primary text-[#0B0A14] border-primary"
+                    ? "bg-primary text-white border-primary"
                     : "bg-black/50 text-white border-white/20 hover:bg-white/20"
                 }`}
               >
@@ -149,7 +149,7 @@ export function CreatorQuickViewModal({
           {/* Bottom Portrait Info */}
           <div className="relative z-10 space-y-2 pt-24">
             <div className="flex items-center gap-1.5 flex-wrap">
-              <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary text-[#0B0A14] text-[10px] font-mono font-extrabold uppercase">
+              <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary text-white text-[10px] font-mono font-extrabold uppercase">
                 {creator.category}
               </div>
               {creator.location && (
@@ -307,7 +307,7 @@ export function CreatorQuickViewModal({
               <Link
                 href="/app/brand/campaigns/create"
                 onClick={onClose}
-                className="py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-xs transition-all text-center flex items-center justify-center gap-1.5 shadow-[0_2px_12px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 cursor-pointer"
+                className="py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-extrabold text-xs transition-all text-center flex items-center justify-center gap-1.5 shadow-[0_2px_12px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 cursor-pointer"
               >
                 <span>Book Escrow (5d)</span>
                 <ArrowRight className="w-3.5 h-3.5 text-[#0B0A14]" />

@@ -66,7 +66,7 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-black/8 dark:border-white/10">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/15 px-3 py-1 text-xs font-semibold text-[#0B0A14] dark:text-accent">
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/15 px-3 py-1 text-xs font-semibold text-primary dark:text-accent dark:text-accent">
             <span>📊</span> Market Insights &amp; Pricing Guide
           </div>
           <h3 className="mt-2 text-lg font-bold text-[#0B0A14] dark:text-white font-display">
@@ -260,7 +260,7 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
                   <span className="text-emerald-600 dark:text-emerald-400 font-bold">92% Match</span>
                   <Link
                     href={`/creators/${creator.id}`}
-                    className="px-3 py-1 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] text-[10px] font-extrabold hover:brightness-105 transition-all shadow-2xs border border-black/10"
+                    className="px-3 py-1 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white text-[10px] font-extrabold hover:brightness-105 transition-all shadow-2xs border border-black/10"
                   >
                     View & Invite
                   </Link>

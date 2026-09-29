@@ -105,7 +105,7 @@ export function EditorialCreatorCard({
                   aria-label="Save Creator"
                   className={`p-1.5 rounded-full backdrop-blur-md border transition-all ${
                     localBookmarked
-                      ? "bg-primary text-[#0B0A14] border-primary shadow-sm"
+                      ? "bg-primary text-white border-primary shadow-sm"
                       : "bg-black/50 text-white/90 border-white/20 hover:bg-white/20 hover:text-white"
                   }`}
                 >
@@ -116,7 +116,7 @@ export function EditorialCreatorCard({
               <span
                 className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-extrabold shadow-sm flex items-center gap-1 ${
                   creator.isSignedTalent
-                    ? "bg-primary text-[#0B0A14]"
+                    ? "bg-primary text-white"
                     : "bg-black/60 text-white border border-white/20"
                 }`}
                 title={creator.isSignedTalent ? "Verified Fixed Deliverable Rate" : "Market Rate Benchmark"}
@@ -220,7 +220,7 @@ export function EditorialCreatorCard({
                     key={tag}
                     className={`px-2 py-0.5 rounded-md border text-[10px] flex items-center gap-1 transition-colors ${
                       isSpecial
-                        ? "bg-primary/15 dark:bg-primary/20 border-primary/30 dark:border-primary/40 text-[#0B0A14] dark:text-accent font-bold"
+                        ? "bg-primary/15 dark:bg-primary/20 border-primary/30 dark:border-primary/40 text-primary dark:text-accent dark:text-accent font-bold"
                         : "bg-[#F4F4F8] dark:bg-[#181824] border-black/5 dark:border-white/10 text-[#4A4A58] dark:text-[#C0C0D4]"
                     }`}
                   >
@@ -246,7 +246,7 @@ export function EditorialCreatorCard({
 
         <Link
           href={`/creators/${creator.id}`}
-          className="px-3.5 py-1.5 rounded-full bg-primary hover:bg-accent dark:bg-primary dark:hover:bg-accent text-[#0B0A14] dark:text-[#0B0A14] font-sans font-bold text-xs transition-colors flex items-center gap-1 border border-black/10 shadow-xs hover-lift"
+          className="px-3.5 py-1.5 rounded-full bg-primary hover:bg-accent dark:bg-primary dark:hover:bg-accent text-white dark:text-white font-sans font-bold text-xs transition-colors flex items-center gap-1 border border-black/10 shadow-xs hover-lift"
         >
           <span className="text-[#0B0A14] dark:text-[#0B0A14] font-bold">Media Kit</span>
           <ArrowRight className="w-3 h-3 text-[#0B0A14] dark:text-[#0B0A14]" />

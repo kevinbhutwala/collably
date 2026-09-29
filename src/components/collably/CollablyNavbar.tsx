@@ -42,7 +42,7 @@ export function CollablyNavbar() {
                   className={cn(
                     "px-3.5 py-1.5 rounded-full transition-all",
                     isActive
-                      ? "bg-primary text-[#0B0A14] font-bold shadow-xs border border-black/10"
+                      ? "bg-primary text-white font-bold shadow-xs border border-black/10"
                       : "hover:text-[#0B0A14] hover:bg-black/5"
                   )}
                 >
@@ -63,7 +63,7 @@ export function CollablyNavbar() {
                   className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#F5F5F9] dark:bg-[#181824] border border-black/5 dark:border-white/10 hover:border-black/15 transition-all text-xs group"
                 >
                   <div className="relative">
-                    <div className="w-6 h-6 rounded-full bg-primary text-[#0B0A14] font-black text-[11px] flex items-center justify-center font-mono">
+                    <div className="w-6 h-6 rounded-full bg-primary text-white font-black text-[11px] flex items-center justify-center font-mono">
                       {user?.name?.charAt(0) || "U"}
                     </div>
                     <span className="w-2 h-2 rounded-full bg-emerald-500 absolute -bottom-0.5 -right-0.5 ring-2 ring-white dark:ring-[#181824]" />
@@ -78,7 +78,7 @@ export function CollablyNavbar() {
 
                 <Link
                   href={user?.role === "brand" ? "/app/brand/campaigns" : "/app/dashboard"}
-                  className="px-4 py-2 rounded-full bg-primary hover:bg-accent text-[#0B0A14] text-xs font-bold transition-all flex items-center gap-1.5 shadow-[0_2px_10px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 active:scale-95"
+                  className="px-4 py-2 rounded-full bg-primary hover:bg-accent text-white text-xs font-bold transition-all flex items-center gap-1.5 shadow-[0_2px_10px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 active:scale-95"
                 >
                   <span>Dashboard</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -95,7 +95,7 @@ export function CollablyNavbar() {
 
                 <Link
                   href="/register"
-                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-xs font-extrabold text-[#0B0A14] bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary border border-black/10 shadow-[0_2px_12px_rgba(var(--theme-primary-rgb),0.4)] active:scale-[0.98] transition-all font-sans"
+                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-xs font-extrabold text-white bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary border border-black/10 shadow-[0_2px_12px_rgba(var(--theme-primary-rgb),0.4)] active:scale-[0.98] transition-all font-sans"
                 >
                   <span>Sign up</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -109,7 +109,7 @@ export function CollablyNavbar() {
             {isAuthenticated ? (
               <Link
                 href={user?.role === "brand" ? "/app/brand/campaigns" : "/app/dashboard"}
-                className="px-3.5 py-1.5 rounded-full text-xs font-bold text-[#0B0A14] bg-primary shadow-xs font-sans border border-black/8 active:scale-95 inline-flex items-center gap-1"
+                className="px-3.5 py-1.5 rounded-full text-xs font-bold text-white bg-primary shadow-xs font-sans border border-black/8 active:scale-95 inline-flex items-center gap-1"
               >
                 <span>Dashboard</span>
                 <ArrowRight className="w-3 h-3" />
@@ -117,7 +117,7 @@ export function CollablyNavbar() {
             ) : (
               <Link
                 href="/register"
-                className="px-3.5 py-1.5 rounded-full text-xs font-bold text-[#0B0A14] bg-primary shadow-xs font-sans"
+                className="px-3.5 py-1.5 rounded-full text-xs font-bold text-white bg-primary shadow-xs font-sans"
               >
                 Sign up
               </Link>
@@ -166,7 +166,7 @@ export function CollablyNavbar() {
                   <div className="flex items-center justify-between p-3 rounded-2xl bg-black/4 dark:bg-white/5 border border-black/5 dark:border-white/10">
                     <div className="flex items-center gap-2.5 min-w-0">
                       <div className="relative shrink-0">
-                        <div className="w-8 h-8 rounded-full bg-primary text-[#0B0A14] font-black text-xs flex items-center justify-center font-mono">
+                        <div className="w-8 h-8 rounded-full bg-primary text-white font-black text-xs flex items-center justify-center font-mono">
                           {user?.name?.charAt(0) || "U"}
                         </div>
                         <span className="w-2 h-2 rounded-full bg-emerald-500 absolute bottom-0 right-0 ring-2 ring-white dark:ring-[#0E0E16]" />
@@ -184,7 +184,7 @@ export function CollablyNavbar() {
                   <Link
                     href={user?.role === "brand" ? "/app/brand/campaigns" : "/app/dashboard"}
                     onClick={() => setMobileOpen(false)}
-                    className="w-full py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] text-xs font-extrabold text-center flex items-center justify-center gap-1.5"
+                    className="w-full py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white text-xs font-extrabold text-center flex items-center justify-center gap-1.5"
                   >
                     <span>Go to Dashboard</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -195,7 +195,7 @@ export function CollablyNavbar() {
                   <Link
                     href="/register"
                     onClick={() => setMobileOpen(false)}
-                    className="w-full py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] text-xs font-extrabold text-center block"
+                    className="w-full py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white text-xs font-extrabold text-center block"
                   >
                     Sign up
                   </Link>

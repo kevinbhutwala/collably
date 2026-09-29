@@ -216,9 +216,9 @@ export function AppNavbar() {
           {role === "brand" && (
             <Link
               href="/app/brand/campaigns/create"
-              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-bold text-xs shadow-[0_2px_10px_rgba(var(--theme-primary-rgb),0.3)] transition-all font-sans border border-black/10"
+              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-bold text-xs shadow-[0_2px_10px_rgba(var(--theme-primary-rgb),0.3)] transition-all font-sans border border-white/10"
             >
-              <Plus className="w-3.5 h-3.5 text-[#0B0A14]" />
+              <Plus className="w-3.5 h-3.5 text-white" />
               <span>Create Brief</span>
             </Link>
           )}
@@ -227,9 +227,9 @@ export function AppNavbar() {
           {role === "creator" && (
             <Link
               href="/campaigns"
-              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-bold text-xs shadow-[0_2px_10px_rgba(var(--theme-primary-rgb),0.3)] transition-all font-sans border border-black/10"
+              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-white font-bold text-xs shadow-[0_2px_10px_rgba(var(--theme-primary-rgb),0.3)] transition-all font-sans border border-white/10"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0B0A14]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
               <span>Explore Briefs</span>
             </Link>
           )}
@@ -256,7 +256,7 @@ export function AppNavbar() {
                   <div className="flex items-center gap-2">
                     <h4 className="text-xs font-bold text-[#0B0A14] dark:text-white">Notifications</h4>
                     {unreadCount > 0 && (
-                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-primary text-[#0B0A14]">
+                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-primary text-white">
                         {unreadCount} new
                       </span>
                     )}
@@ -335,13 +335,13 @@ export function AppNavbar() {
                       setShowProfileMenu(false);
                       useSubscriptionStore.getState().openUpgradeModal();
                     }}
-                    className="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-primary/20 hover:bg-primary/30 text-[#0B0A14] dark:text-accent font-bold transition-colors text-left"
+                    className="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-primary/20 hover:bg-primary/30 text-primary dark:text-accent dark:text-accent font-bold transition-colors text-left"
                   >
                     <div className="flex items-center gap-2">
                       <Sparkles className="w-3.5 h-3.5 text-[#0B0A14] dark:text-accent" />
                       <span>Upgrade Plan</span>
                     </div>
-                    <span className="text-[9px] font-mono font-extrabold uppercase px-1.5 py-0.5 rounded-full bg-primary text-[#0B0A14]">
+                    <span className="text-[9px] font-mono font-extrabold uppercase px-1.5 py-0.5 rounded-full bg-primary text-white">
                       PRO
                     </span>
                   </button>
@@ -436,7 +436,7 @@ export function AppNavbar() {
                         className={cn(
                           "flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all select-none",
                           isActive
-                            ? "bg-primary text-[#0B0A14] dark:text-[#0B0A14] font-bold shadow-xs border border-black/10"
+                            ? "bg-primary text-white dark:text-white font-bold shadow-xs border border-black/10"
                             : "text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white hover:bg-[#F4F4F8] dark:hover:bg-white/10"
                         )}
                       >

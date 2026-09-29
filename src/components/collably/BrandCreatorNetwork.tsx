@@ -140,7 +140,7 @@ export function BrandCreatorNetwork() {
         <div className="text-center pt-4">
           <Link
             href="/for-brands"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] text-xs font-bold shadow-xs transition-all font-sans group border border-black/10"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-white text-xs font-bold shadow-xs transition-all font-sans group border border-black/10"
           >
             <span>Launch a Brand Collaboration</span>
             <ArrowRight className="w-4 h-4 text-[#0B0A14]" />

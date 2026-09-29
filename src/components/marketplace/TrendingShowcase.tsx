@@ -61,7 +61,7 @@ export function TrendingShowcase() {
       {/* Header & Controls */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-8 pb-6 border-b border-black/8 dark:border-white/10">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/15 px-3 py-1 text-xs font-semibold text-[#0B0A14] dark:text-accent">
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/15 px-3 py-1 text-xs font-semibold text-primary dark:text-accent dark:text-accent">
             <span>🔥</span> Real-Time Algorithmic Activity
           </div>
           <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0B0A14] dark:text-white font-display">
@@ -80,7 +80,7 @@ export function TrendingShowcase() {
               onClick={() => setTimeframe(tf)}
               className={`rounded-xl px-3 py-1.5 text-xs font-bold transition-all cursor-pointer ${
                 timeframe === tf
-                  ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-2xs"
+                  ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-white shadow-2xs"
                   : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
               }`}
             >
@@ -98,7 +98,7 @@ export function TrendingShowcase() {
             onClick={() => setActiveTab(tab.id)}
             className={`flex items-center gap-2 whitespace-nowrap rounded-xl px-4 py-2 text-xs font-bold transition-all cursor-pointer ${
               activeTab === tab.id
-                ? "border border-primary bg-primary dark:bg-primary text-[#0B0A14] dark:text-[#0B0A14] shadow-xs font-bold"
+                ? "border border-primary bg-primary dark:bg-primary text-white dark:text-white shadow-xs font-bold"
                 : "border border-black/6 dark:border-white/8 bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
             }`}
           >
@@ -131,7 +131,7 @@ export function TrendingShowcase() {
               <div>
                 <div className="flex items-start justify-between gap-3">
                   <CategoryBadge category={item.campaign.category} size="xs" showIcon={true} />
-                  <div className="flex items-center gap-1 rounded-full border border-primary/40 bg-primary/15 px-2.5 py-0.5 text-xs font-bold text-[#0B0A14] dark:text-accent font-mono">
+                  <div className="flex items-center gap-1 rounded-full border border-primary/40 bg-primary/15 px-2.5 py-0.5 text-xs font-bold text-primary dark:text-accent dark:text-accent font-mono">
                     <span>🔥</span> {item.overallScore} Score
                   </div>
                 </div>
@@ -176,7 +176,7 @@ export function TrendingShowcase() {
                 </span>
                 <Link
                   href={`/campaigns`}
-                  className="rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary px-4 py-1.5 text-xs font-extrabold text-[#0B0A14] shadow-2xs border border-black/10 transition-all"
+                  className="rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary px-4 py-1.5 text-xs font-extrabold text-white shadow-2xs border border-black/10 transition-all"
                 >
                   View Brief →
                 </Link>
@@ -200,7 +200,7 @@ export function TrendingShowcase() {
                   {/* Top Badge & Score */}
                   <div className="flex items-start justify-between gap-2">
                     <CategoryBadge category={creator.primaryCategory} size="xs" showIcon={true} />
-                    <div className="flex items-center gap-1 rounded-full border border-primary/40 bg-primary/15 px-2.5 py-0.5 text-[11px] font-bold text-[#0B0A14] dark:text-accent font-mono">
+                    <div className="flex items-center gap-1 rounded-full border border-primary/40 bg-primary/15 px-2.5 py-0.5 text-[11px] font-bold text-primary dark:text-accent dark:text-accent font-mono">
                       <span>🔥</span> {item.overallScore}
                     </div>
                   </div>
@@ -275,7 +275,7 @@ export function TrendingShowcase() {
                   </div>
                   <Link
                     href={`/creators/${creator.id}`}
-                    className="rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary px-4 py-1.5 text-xs font-extrabold text-[#0B0A14] shadow-2xs border border-black/10 transition-all"
+                    className="rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary px-4 py-1.5 text-xs font-extrabold text-white shadow-2xs border border-black/10 transition-all"
                   >
                     View Talent →
                   </Link>

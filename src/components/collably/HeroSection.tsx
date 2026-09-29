@@ -126,7 +126,7 @@ export function HeroSection() {
               Protected Settlement Pipeline
             </span>
             <div className="flex items-center gap-2">
-              <span className="px-2.5 py-0.5 rounded-full bg-primary/15 text-[#0B0A14] font-bold text-[11px] border border-primary/30">
+              <span className="px-2.5 py-0.5 rounded-full bg-primary/15 text-primary dark:text-accent font-bold text-[11px] border border-primary/30">
                 INR (₹) Native Settlement
               </span>
               <span className="px-2.5 py-0.5 rounded-full bg-[#EAF8F2] text-[#087F5B] font-bold text-[11px] border border-[#C3EBDA]">
