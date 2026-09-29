@@ -37,7 +37,6 @@ import {
   MapPin,
   Users,
   CheckCircle2,
-  Circle,
   ShieldCheck,
   Copy,
   Check,
@@ -52,7 +51,6 @@ import {
   X,
   Languages,
   BadgeCheck,
-  Lock,
   AlertTriangle,
 } from "lucide-react";
 import { useGlobalCurrency } from "@/context/CurrencyContext";
@@ -955,117 +953,6 @@ export default function ProfileEditPage() {
               )}
             </button>
           </div>
-        </div>
-      </div>
-
-      {/* ── PROFILE COMPLETENESS & CAMPAIGN PITCHING STATUS ── */}
-      <div
-        className={`p-4 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl border transition-all ${
-          completeness.isConfirmed
-            ? "bg-gradient-to-r from-emerald-500/10 via-emerald-500/5 to-transparent border-emerald-500/30"
-            : "bg-gradient-to-r from-primary/10 via-primary/5 to-transparent border-primary/30 shadow-xs"
-        }`}
-      >
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 pb-5 border-b border-black/8 dark:border-white/10">
-          <div className="space-y-1.5">
-            <div className="flex items-center gap-2 flex-wrap">
-              <span
-                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider ${
-                  completeness.isConfirmed
-                    ? "bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 border border-emerald-500/30"
-                    : "bg-primary/20 text-primary dark:text-accent border border-primary/30"
-                }`}
-              >
-                {completeness.isConfirmed ? (
-                  <>
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                    <span>Profile Confirmed • Ready to Apply</span>
-                  </>
-                ) : (
-                  <>
-                    <Lock className="w-3.5 h-3.5 text-primary dark:text-accent" />
-                    <span>Campaign Pitching Locked • Complete Profile to Apply</span>
-                  </>
-                )}
-              </span>
-
-              <span className="text-xs font-mono font-bold text-[#0B0A14] dark:text-white">
-                {completeness.score}% Completed
-              </span>
-            </div>
-
-            <h3 className="text-base sm:text-lg font-bold text-[#0B0A14] dark:text-white font-display">
-              {completeness.isConfirmed
-                ? "Your creator profile is confirmed & eligible for campaign pitches"
-                : "You cannot apply for brand campaigns until your profile details are complete & channels are verified"}
-            </h3>
-            <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed max-w-3xl">
-              {completeness.isConfirmed
-                ? "All required details and channel ownership verifications are satisfied. You can submit proposals, set custom milestones, and accept escrow brand briefs."
-                : "First complete all 7 requirements below. Until all details are added and all connected social accounts (Instagram, YouTube, etc.) are verified, your profile remains unconfirmed and you cannot apply for campaigns."}
-            </p>
-          </div>
-
-          <div className="shrink-0 flex items-center gap-2">
-            {completeness.isConfirmed ? (
-              <Link href="/app/campaigns">
-                <button
-                  type="button"
-                  className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-bold text-xs transition-all shadow-xs flex items-center gap-1.5 border border-black/10 cursor-pointer"
-                >
-                  <Sparkles className="w-3.5 h-3.5" />
-                  <span>Browse &amp; Apply to Briefs</span>
-                </button>
-              </Link>
-            ) : (
-              <div className="px-4 py-2 rounded-2xl bg-primary/15 border border-primary/25 text-primary dark:text-accent text-xs font-mono font-bold flex items-center gap-2">
-                <Lock className="w-3.5 h-3.5 text-primary dark:text-accent" />
-                <span>{completeness.checks.filter((c) => !c.done).length} Requirement(s) Remaining</span>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* 7-Step Interactive Verification Progress Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-5">
-          {completeness.checks.map((check) => (
-            <div
-              key={check.id}
-              className={`p-3.5 rounded-2xl border transition-all flex items-start gap-3 ${
-                check.done
-                  ? "bg-emerald-500/5 dark:bg-emerald-500/10 border-emerald-500/30"
-                  : "bg-white dark:bg-[#161622] border-black/8 dark:border-white/10"
-              }`}
-            >
-              <div className="mt-0.5 shrink-0">
-                {check.done ? (
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                ) : (
-                  <Circle className="w-4 h-4 text-primary dark:text-accent" />
-                )}
-              </div>
-              <div className="min-w-0 flex-1">
-                <p
-                  className={`text-xs font-bold leading-tight ${
-                    check.done
-                      ? "text-emerald-950 dark:text-emerald-300"
-                      : "text-[#0B0A14] dark:text-white"
-                  }`}
-                >
-                  {check.label}
-                </p>
-                <span
-                  className={`text-[10px] font-mono block mt-0.5 ${
-                    check.done
-                      ? "text-emerald-700 dark:text-emerald-400 font-semibold"
-                      : "text-[#7A7A8A] dark:text-[#A0A0B4]"
-                  }`}
-                >
-                  {check.done ? "Completed" : "Required to Apply"}
-                </span>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
 
