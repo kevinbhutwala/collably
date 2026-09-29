@@ -489,7 +489,7 @@ export function CreatorDetailClient({
                     className="group flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl bg-[#F8F8FC] dark:bg-[#181826] hover:bg-[#F2F2F8] dark:hover:bg-[#1E1E2E] border border-transparent hover:border-[#FFD21F]/20 transition-all"
                   >
                     <div className="flex items-start gap-3.5">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#FFD21F]/20 to-[#FFD21F]/5 border border-[#FFD21F]/25 flex items-center justify-center text-[#A37F00] dark:text-[#FFD21F] shrink-0">
+                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#FFD21F]/20 to-[#FFD21F]/5 border border-[#FFD21F]/25 flex items-center justify-center text-[#0A0A0E] dark:text-[#FFD21F] shrink-0">
                         <TitleIcon title={rate.title || rate.deliverableType} category={creator.primaryCategory} className="w-5 h-5" />
                       </div>
                       <div className="min-w-0">

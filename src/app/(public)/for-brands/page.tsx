@@ -127,7 +127,7 @@ export default function ForBrandsPage() {
 
                 <Link href="/creators">
                   <button className="px-7 py-4 rounded-full bg-white dark:bg-[#14141E] hover:bg-[#F8F8FC] dark:hover:bg-[#1C1C28] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs sm:text-sm transition-all flex items-center gap-2 shadow-xs hover-lift cursor-pointer">
-                    <Search className="w-4 h-4 text-[#8A7000] dark:text-[#FFD21F]" />
+                    <Search className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />
                     <span>Browse Creator Roster</span>
                   </button>
                 </Link>
@@ -198,7 +198,7 @@ export default function ForBrandsPage() {
             >
               <div className="space-y-4">
                 <div className="w-12 h-12 rounded-2xl bg-[#FAF9F5] dark:bg-[#1E1E2C] border border-black/10 dark:border-white/10 flex items-center justify-center text-[#0A0A0E] dark:text-[#FFD21F]">
-                  <Sparkles className="w-6 h-6 text-[#8A7000] dark:text-[#FFD21F]" />
+                  <Sparkles className="w-6 h-6 text-[#0A0A0E] dark:text-[#FFD21F]" />
                 </div>
                 <h3 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">AI Audience Telemetry Matching</h3>
                 <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] font-sans leading-relaxed">

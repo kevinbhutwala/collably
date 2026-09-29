@@ -102,7 +102,7 @@ export default function AdminReportsPage() {
               change="Verified"
               trend="up"
               subtitle="Registered sponsors"
-              icon={<Building2 className="w-4 h-4 text-[#8A7000] dark:text-[#FFD21F]" />}
+              icon={<Building2 className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />}
             />
             <StatsCard
               title="Total Escrow GMV"
@@ -118,7 +118,7 @@ export default function AdminReportsPage() {
               change="Disbursed"
               trend="up"
               subtitle="Released to creators"
-              icon={<DollarSign className="w-4 h-4 text-[#8A7000] dark:text-[#FFD21F]" />}
+              icon={<DollarSign className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />}
             />
           </div>
 
@@ -241,11 +241,11 @@ export default function AdminReportsPage() {
                 <span className="text-xl font-black font-display text-[#0A0A0E] dark:text-white">
                   {data.trendingActivityEvents} Events
                 </span>
-                <span className="text-[11px] font-mono text-[#8A6500] dark:text-[#FFD21F] font-bold block">
+                <span className="text-[11px] font-mono text-amber-700 dark:text-[#FFD21F] font-bold block">
                   Anti-gaming verified views &amp; saves
                 </span>
               </div>
-              <div className="w-10 h-10 rounded-2xl bg-[#FFFDF5] dark:bg-[#201D14] border border-[#FFD21F]/30 text-[#8A6500] dark:text-[#FFD21F] flex items-center justify-center">
+              <div className="w-10 h-10 rounded-2xl bg-[#FFFDF5] dark:bg-[#201D14] border border-[#FFD21F]/30 text-[#0A0A0E] dark:text-[#FFD21F] flex items-center justify-center">
                 <Zap className="w-5 h-5" />
               </div>
             </div>

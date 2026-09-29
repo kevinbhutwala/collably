@@ -308,7 +308,7 @@ export function CaseStudiesClient() {
             <div className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#12121A] border border-black/6 dark:border-white/10">
               <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-bold block">Support SLA</span>
               <span className="text-2xl font-black text-[#0A0A0E] dark:text-white font-display">&lt; 4 Hrs</span>
-              <span className="text-[10px] text-[#A37F00] dark:text-[#FFD21F] font-bold block mt-0.5">Human Arbitration</span>
+              <span className="text-[10px] text-amber-700 dark:text-[#FFD21F] font-bold block mt-0.5">Human Arbitration</span>
             </div>
           </div>
         </div>
@@ -393,7 +393,7 @@ export function CaseStudiesClient() {
                       <div className="w-7 h-7 rounded-xl bg-[#FFFDF5] dark:bg-[#181824] border border-[#FFD21F]/40 text-[#0A0A0E] dark:text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs group-hover:bg-[#FFD21F] transition-all">
                         <TitleIcon title={cs.title} category={cs.category} className="w-4 h-4" />
                       </div>
-                      <h3 className="text-xl font-extrabold text-[#0A0A0E] dark:text-white font-display group-hover:text-[#A37F00] dark:group-hover:text-[#FFD21F] transition-colors leading-tight">
+                      <h3 className="text-xl font-extrabold text-[#0A0A0E] dark:text-white font-display group-hover:text-amber-600 dark:group-hover:text-[#FFD21F] transition-colors leading-tight">
                         {cs.title}
                       </h3>
                     </div>

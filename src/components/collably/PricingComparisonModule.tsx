@@ -30,8 +30,8 @@ export function PricingComparisonModule() {
       name: "Creator Pro",
       badge: "RECOMMENDED",
       description: "Advanced analytics, priority pitch indexation, and instantaneous 2-hour escrow release.",
-      priceMonthly: 29,
-      priceAnnual: 24,
+      priceMonthly: 2499,
+      priceAnnual: 1999,
       features: [
         "Everything in Creator Starter",
         "Instant 2-hour payout release",
@@ -48,8 +48,8 @@ export function PricingComparisonModule() {
       name: "Brand Enterprise",
       badge: "FOR GROWTH TEAMS",
       description: "Dedicated campaign manager, multi-creator milestone batching, and automated 1099 compliance.",
-      priceMonthly: 199,
-      priceAnnual: 159,
+      priceMonthly: 15999,
+      priceAnnual: 12999,
       features: [
         "Unlimited live campaign briefs",
         "Custom creator contract templates",
@@ -87,29 +87,31 @@ export function PricingComparisonModule() {
 
           {/* Billing Cycle Toggle */}
           <div className="pt-4 flex items-center justify-center gap-3">
-            <div className="inline-flex items-center p-1 rounded-full bg-black/[0.05] dark:bg-[#14141E] border border-black/10 dark:border-white/10 text-xs font-sans">
+            <div className="inline-flex items-center p-1 rounded-full bg-[#F0EFF4] dark:bg-[#14141E] border border-black/8 dark:border-white/10 text-xs font-sans shadow-2xs">
               <button
+                type="button"
                 onClick={() => setBillingCycle("monthly")}
                 className={cn(
-                  "px-4 py-1.5 rounded-full transition-all font-semibold",
+                  "px-4 py-1.5 rounded-full transition-all font-bold",
                   billingCycle === "monthly"
-                    ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] shadow-xs font-bold"
+                    ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs"
                     : "text-[#5A5A66] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
                 )}
               >
                 Monthly Billing
               </button>
               <button
+                type="button"
                 onClick={() => setBillingCycle("annual")}
                 className={cn(
-                  "px-4 py-1.5 rounded-full transition-all font-semibold flex items-center gap-1.5",
+                  "px-4 py-1.5 rounded-full transition-all font-bold flex items-center gap-1.5",
                   billingCycle === "annual"
-                    ? "bg-[#FFD21F] text-[#0A0A0E] font-bold shadow-xs border border-black/15"
+                    ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs"
                     : "text-[#5A5A66] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
                 )}
               >
                 <span>Annual</span>
-                <span className="text-[10px] font-mono px-1.5 py-0.2 rounded-full bg-[#0A0A0E] text-white font-bold">
+                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-emerald-600 text-white font-extrabold">
                   SAVE 20%
                 </span>
               </button>
@@ -148,7 +150,7 @@ export function PricingComparisonModule() {
 
                   <div className="flex items-baseline gap-1 font-display">
                     <span className="text-4xl sm:text-5xl font-black text-[#0A0A0E] dark:text-white numeric-tabular">
-                      ${price}
+                      ₹{price.toLocaleString("en-IN")}
                     </span>
                     <span className="text-xs text-[#5A5A66] dark:text-[#8E8EA4] font-sans">
                       {price === 0 ? "forever" : "/ month billed annually"}
@@ -177,11 +179,12 @@ export function PricingComparisonModule() {
                 <div className="pt-4">
                   <Link href={plan.ctaHref} className="w-full block">
                     <button
+                      type="button"
                       className={cn(
-                        "w-full py-3.5 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 shadow-md",
+                        "w-full py-3.5 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 active:scale-98 shadow-sm",
                         plan.popular
-                          ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] shadow-[0_0_20px_rgba(255,210,31,0.4)] border border-black/10"
-                          : "bg-[#0A0A0E] dark:bg-[#FFD21F] hover:bg-[#1A1A22] dark:hover:bg-[#FFE052] text-white dark:text-[#0A0A0E] font-bold shadow-xs"
+                          ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] shadow-[0_4px_16px_rgba(255,210,31,0.4)] border border-black/10"
+                          : "bg-[#F4F4F8] hover:bg-[#EAEAF0] text-[#0A0A0E] border border-black/10 hover:border-black/20 font-bold shadow-2xs"
                       )}
                     >
                       <span>{plan.ctaText}</span>

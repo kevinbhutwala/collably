@@ -221,7 +221,7 @@ export function ContinuousProductStory() {
                   {activeStep.title}
                 </h3>
               </div>
-              <p className="text-sm font-semibold text-[#8A7000] dark:text-[#FFD21F] font-sans">
+              <p className="text-sm font-semibold text-amber-700 dark:text-[#FFD21F] font-sans">
                 {activeStep.tagline}
               </p>
               <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#8E8EA4] leading-relaxed font-sans">
@@ -255,7 +255,7 @@ export function ContinuousProductStory() {
 
               <Link
                 href="/app/brand/campaigns/create"
-                className="text-xs font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-white transition-colors font-mono"
+                className="text-xs font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-amber-600 dark:hover:text-white transition-colors font-mono"
               >
                 Try this in Workspace →
               </Link>

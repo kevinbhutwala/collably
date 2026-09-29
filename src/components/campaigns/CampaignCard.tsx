@@ -79,7 +79,7 @@ export function CampaignCard({ campaign }: { campaign: Campaign }) {
             <div className="w-6 h-6 rounded-lg bg-[#F5F5F9] dark:bg-[#1A1A26] border border-black/8 dark:border-white/10 flex items-center justify-center shrink-0 text-[#0A0A0E] dark:text-[#F4F4F8] group-hover:bg-[#FFD21F] group-hover:border-[#FFD21F] dark:group-hover:text-[#0A0A0E] transition-all shadow-2xs">
               <TitleIcon title={campaign.title} category={campaign.category} className="w-3.5 h-3.5" />
             </div>
-            <h3 className="font-bold text-base text-[#0A0A0E] dark:text-[#F4F4F8] group-hover:text-[#A37F00] dark:group-hover:text-[#FFE052] transition-colors line-clamp-1 font-display">
+            <h3 className="font-bold text-base text-[#0A0A0E] dark:text-[#F4F4F8] group-hover:text-amber-600 dark:group-hover:text-[#FFE052] transition-colors line-clamp-1 font-display">
               {campaign.title}
             </h3>
           </div>

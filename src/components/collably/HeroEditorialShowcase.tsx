@@ -230,7 +230,7 @@ export function HeroEditorialShowcase() {
                 href="/creators"
                 className="w-full sm:w-auto min-h-12 px-7 py-3.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#14141E] dark:hover:bg-[#1E1E2C] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-sm transition-all shadow-xs active:scale-[0.98] flex items-center justify-center gap-2 hover-lift"
               >
-                <Users className="w-4 h-4 text-[#8A7000] dark:text-[#FFD21F] shrink-0" />
+                <Users className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F] shrink-0" />
                 <span>Browse 40+ Creators</span>
               </Link>
             </div>
@@ -420,7 +420,7 @@ export function HeroEditorialShowcase() {
                       <CheckCircle2 className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#087F5B] shrink-0" />
                     </div>
                     <div className="flex items-center gap-1.5 mt-0.5">
-                      <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-md bg-[#FFD21F]/20 flex items-center justify-center text-[#A37F00] dark:text-[#FFD21F] shrink-0">
+                      <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-md bg-[#FFD21F]/20 flex items-center justify-center text-[#0A0A0E] dark:text-[#FFD21F] shrink-0">
                         <TitleIcon title={activeTalent.niche} category={activeTalent.verifiedSponsor} className="w-2 sm:w-2.5 h-2 sm:h-2.5" />
                       </div>
                       <p className="text-[9px] sm:text-[11px] text-[#6A6A78] dark:text-[#A0A0B4] font-sans truncate">{activeTalent.niche}</p>
@@ -436,7 +436,7 @@ export function HeroEditorialShowcase() {
                   <span className="text-[#5A5A68] dark:text-[#8E8EA4] truncate max-w-[130px] sm:max-w-[180px]">{activeTalent.specs}</span>
                   <Link
                     href={`/creators/${activeTalent.id}`}
-                    className="text-[10px] sm:text-xs font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-white flex items-center gap-0.5 shrink-0 transition-colors"
+                    className="text-[10px] sm:text-xs font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-amber-600 dark:hover:text-white flex items-center gap-0.5 shrink-0 transition-colors"
                   >
                     <span>View Deck</span>
                     <ArrowRight className="w-3 h-3" />

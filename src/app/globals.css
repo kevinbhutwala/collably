@@ -212,7 +212,7 @@
 
 /* Gradient Text */
 .text-gradient-gold {
-  background: linear-gradient(135deg, #0A0A0E 0%, #A37F00 50%, #FFD21F 100%);
+  background: linear-gradient(135deg, #0A0A0E 0%, #D97706 50%, #FFD21F 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

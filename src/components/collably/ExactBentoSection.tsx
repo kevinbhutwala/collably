@@ -210,7 +210,7 @@ export function ExactBentoSection() {
                   <p className="text-[10px] text-[#6A6A78] truncate font-sans">{c.niche}</p>
                   <div className="flex items-center justify-between text-[10px] font-mono text-[#0A0A0E] pt-1 font-bold">
                     <span>{c.followers}</span>
-                    <span className="text-[#A37F00]">{c.engagement}</span>
+                    <span className="text-amber-700 font-extrabold">{c.engagement}</span>
                   </div>
                 </div>
               </div>

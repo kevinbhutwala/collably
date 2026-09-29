@@ -95,7 +95,7 @@ export function InteractiveCampaignStudio() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/6">
           <div className="space-y-2">
-            <span className="text-xs font-mono font-bold tracking-tight text-[#8A7000] uppercase flex items-center gap-1.5">
+            <span className="text-xs font-mono font-bold tracking-tight text-[#0A0A0E] uppercase flex items-center gap-1.5">
               <Sliders className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
               INTERACTIVE CAMPAIGN STUDIO
             </span>

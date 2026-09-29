@@ -407,7 +407,7 @@ export default function DedicatedTrendingPage() {
 
                     <div className="min-w-0">
                       <div className="flex items-center gap-1.5">
-                        <h3 className="font-extrabold text-sm sm:text-base text-[#0A0A0E] dark:text-white truncate font-display group-hover:text-[#A37F00] dark:group-hover:text-[#FFD21F] transition-colors">
+                        <h3 className="font-extrabold text-sm sm:text-base text-[#0A0A0E] dark:text-white truncate font-display group-hover:text-amber-600 dark:group-hover:text-[#FFD21F] transition-colors">
                           {creator.fullName}
                         </h3>
                         {creator.verified && (

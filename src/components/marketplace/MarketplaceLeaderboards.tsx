@@ -338,7 +338,7 @@ export function MarketplaceLeaderboards() {
                   </div>
                   <div className="mt-2.5 w-full truncate">
                     <div className="flex items-center justify-center gap-1">
-                      <h4 className="text-xs sm:text-base font-extrabold text-[#0A0A0E] dark:text-white truncate group-hover:text-[#A37F00] dark:group-hover:text-[#FFD21F] transition-colors">
+                      <h4 className="text-xs sm:text-base font-extrabold text-[#0A0A0E] dark:text-white truncate group-hover:text-amber-600 dark:group-hover:text-[#FFD21F] transition-colors">
                         {top1.creator.fullName}
                       </h4>
                       <CheckCircle2 className="w-3.5 h-3.5 text-[#087F5B] shrink-0" />

@@ -53,7 +53,7 @@ export function TrustIndicatorsBar({
       return <Zap className="w-3.5 h-3.5 text-amber-500 shrink-0" />;
     }
     if (text.includes("🏆") || text.includes("Successful")) {
-      return <Trophy className="w-3.5 h-3.5 text-[#A37F00] dark:text-[#FFD21F] shrink-0" />;
+      return <Trophy className="w-3.5 h-3.5 text-amber-600 dark:text-[#FFD21F] shrink-0" />;
     }
     if (text.includes("Payment") || text.includes("Completion")) {
       return <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />;

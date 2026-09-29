@@ -160,7 +160,7 @@ export function ProtectedEscrowFlow() {
           <div className="p-6 sm:p-8 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/8 dark:border-white/10 space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-black/6 dark:border-white/10">
               <div>
-                <span className="text-xs font-mono font-bold text-[#8A7000] dark:text-[#FFD21F] block uppercase">
+                <span className="text-xs font-mono font-bold text-amber-700 dark:text-[#FFD21F] block uppercase">
                   {activeStage.phase} • {activeStage.badge}
                 </span>
                 <h3 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] dark:text-white font-display">

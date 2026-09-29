@@ -51,7 +51,7 @@ export function CreatorCard({ creator }: { creator: CreatorProfile }) {
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-1.5 flex-wrap">
-                <h3 className="font-extrabold text-sm sm:text-base text-[#0A0A0E] dark:text-white group-hover:text-[#A37F00] dark:group-hover:text-[#FFD21F] transition-colors font-display truncate">
+                <h3 className="font-extrabold text-sm sm:text-base text-[#0A0A0E] dark:text-white group-hover:text-amber-600 dark:group-hover:text-[#FFD21F] transition-colors font-display truncate">
                   {creator.fullName}
                 </h3>
                 {creator.isInstagramVerified && (

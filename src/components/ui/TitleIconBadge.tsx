@@ -79,7 +79,7 @@ export function DeliverableBadge({ type, className }: DeliverableBadgeProps) {
         className
       )}
     >
-      <Icon className="w-3.5 h-3.5 text-[#A37F00] dark:text-[#FFD21F] shrink-0" />
+      <Icon className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F] shrink-0" />
       <span className="truncate">{type}</span>
     </span>
   );
