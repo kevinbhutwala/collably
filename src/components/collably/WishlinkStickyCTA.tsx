@@ -56,7 +56,7 @@ export function WishlinkStickyCTA() {
           {isAuthenticated ? (
             <Link
               href={user?.role === "brand" ? "/app/brand/campaigns" : "/app/dashboard"}
-              className="px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-xs sm:text-sm font-extrabold shadow-sm flex items-center gap-1.5 shrink-0 transition-transform active:scale-95"
+              className="px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-primary hover:opacity-90 text-white text-xs sm:text-sm font-extrabold shadow-sm flex items-center gap-1.5 shrink-0 transition-transform active:scale-95"
             >
               <span>Dashboard</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -64,7 +64,7 @@ export function WishlinkStickyCTA() {
           ) : (
             <Link
               href="/register"
-              className="px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#7C3AED] to-[#C084FC] hover:from-[#6D28D9] hover:to-[#A855F7] text-white text-xs sm:text-sm font-extrabold shadow-[0_4px_16px_rgba(124,58,237,0.4)] flex items-center gap-1.5 shrink-0 transition-transform active:scale-95 border border-white/10"
+              className="px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:opacity-95 text-white text-xs sm:text-sm font-extrabold shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.35)] flex items-center gap-1.5 shrink-0 transition-transform active:scale-95 border border-white/10"
             >
               <span>Sign up</span>
               <ArrowRight className="w-3.5 h-3.5 text-white" />

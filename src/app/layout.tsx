@@ -5,6 +5,7 @@ import { ToastContainer } from '@/components/ui/ToastContainer';
 import { CommandPalette } from '@/components/navigation/CommandPalette';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { RoleThemeProvider } from '@/components/providers/RoleThemeProvider';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -156,16 +157,18 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           dangerouslySetInnerHTML={{ __html: JSON.stringify(globalStructuredData) }}
         />
       </head>
-      <body className="min-h-screen bg-white text-white antialiased font-sans selection:bg-primary selection:text-white">
-        {children}
-        {process.env.NODE_ENV === "production" && (
-          <>
-            <Analytics />
-            <SpeedInsights />
-          </>
-        )}
-        <CommandPalette />
-        <ToastContainer />
+      <body className="min-h-screen bg-background text-foreground antialiased font-sans selection:bg-primary selection:text-white">
+        <RoleThemeProvider>
+          {children}
+          {process.env.NODE_ENV === "production" && (
+            <>
+              <Analytics />
+              <SpeedInsights />
+            </>
+          )}
+          <CommandPalette />
+          <ToastContainer />
+        </RoleThemeProvider>
       </body>
     </html>
   );

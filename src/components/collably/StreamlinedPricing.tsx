@@ -87,7 +87,7 @@ export function StreamlinedPricing() {
                 onClick={() => setIsAnnual(false)}
                 className={`px-4 py-1.5 rounded-full transition-all font-bold ${
                   !isAnnual
-                    ? "bg-[#7C3AED] text-white shadow-xs"
+                    ? "bg-primary text-white shadow-xs"
                     : "text-[#64748B] dark:text-[#94A3B8] hover:text-[#0B0A14] dark:hover:text-white"
                 }`}
               >
@@ -98,7 +98,7 @@ export function StreamlinedPricing() {
                 onClick={() => setIsAnnual(true)}
                 className={`px-4 py-1.5 rounded-full transition-all font-bold flex items-center gap-1.5 ${
                   isAnnual
-                    ? "bg-[#7C3AED] text-white shadow-xs"
+                    ? "bg-primary text-white shadow-xs"
                     : "text-[#64748B] dark:text-[#94A3B8] hover:text-[#0B0A14] dark:hover:text-white"
                 }`}
               >
@@ -124,15 +124,15 @@ export function StreamlinedPricing() {
             >
               <InteractiveTiltCard
                 maxTilt={6}
-                glowColor="rgba(124, 58, 237, 0.25)"
+                glowColor="rgba(var(--theme-primary-rgb), 0.25)"
                 className={`rounded-3xl p-6 sm:p-8 flex flex-col justify-between w-full transition-all relative ${
                   tier.popular
-                    ? "bg-white dark:bg-[#121020] border-2 border-[#7C3AED] shadow-[0_16px_48px_rgba(124,58,237,0.22)]"
-                    : "bg-white dark:bg-[#121020] border border-black/[0.08] dark:border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_14px_36px_rgba(0,0,0,0.07)] hover:border-black/15"
+                    ? "bg-white dark:bg-[#132238] border-2 border-primary shadow-[0_16px_48px_rgba(var(--theme-primary-rgb),0.2)]"
+                    : "bg-white dark:bg-[#132238] border border-black/[0.08] dark:border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_14px_36px_rgba(0,0,0,0.07)] hover:border-black/15"
                 }`}
               >
                 {tier.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[#7C3AED] text-white font-mono font-extrabold text-[10px] tracking-wider uppercase shadow-xs flex items-center gap-1 z-30">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-primary text-white font-mono font-extrabold text-[10px] tracking-wider uppercase shadow-xs flex items-center gap-1 z-30">
                     <Sparkles className="w-3 h-3" />
                     <span>RECOMMENDED</span>
                   </div>
@@ -154,8 +154,8 @@ export function StreamlinedPricing() {
                   <div className="pt-3 border-t border-black/[0.06] dark:border-white/10 space-y-2.5">
                     {tier.features.map((f, i) => (
                       <div key={i} className="flex items-center gap-2.5 text-xs text-[#474554] dark:text-[#CBD5E1] font-sans">
-                        <div className="w-4 h-4 rounded-full bg-[#7C3AED]/15 text-[#7C3AED] dark:text-[#C084FC] flex items-center justify-center shrink-0">
-                          <Check className="w-3 h-3 text-[#7C3AED] dark:text-[#C084FC]" />
+                        <div className="w-4 h-4 rounded-full bg-primary/15 text-primary flex items-center justify-center shrink-0">
+                          <Check className="w-3 h-3 text-primary" />
                         </div>
                         <span>{f}</span>
                       </div>
@@ -167,8 +167,8 @@ export function StreamlinedPricing() {
                   href={tier.ctaHref}
                   className={`mt-6 w-full py-3.5 rounded-full text-xs font-bold transition-all flex items-center justify-center gap-1.5 active:scale-98 shadow-sm ${
                     tier.popular
-                      ? "bg-gradient-to-r from-[#7C3AED] to-[#C084FC] hover:from-[#6D28D9] hover:to-[#A855F7] text-white shadow-[0_4px_20px_rgba(124,58,237,0.4)]"
-                      : "bg-[#F1F5F9] hover:bg-[#E2E8F0] dark:bg-[#1A172E] dark:hover:bg-[#252042] text-[#0B0A14] dark:text-white border border-black/10 dark:border-white/10 font-bold shadow-2xs hover:border-black/20"
+                      ? "bg-gradient-to-r from-primary to-accent hover:opacity-95 text-white shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.35)]"
+                      : "bg-[#F1F5F9] hover:bg-[#E2E8F0] dark:bg-[#1E293B] dark:hover:bg-[#334155] text-[#0B0A14] dark:text-white border border-black/10 dark:border-white/10 font-bold shadow-2xs hover:border-black/20"
                   }`}
                 >
                   <span>{tier.ctaText}</span>

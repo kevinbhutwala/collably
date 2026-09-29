@@ -463,11 +463,7 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
         <button
           type="submit"
           disabled={isLoading}
-          className={`w-full py-3.5 rounded-full text-white font-extrabold text-xs sm:text-sm transition-all shadow-md border border-white/10 flex items-center justify-center gap-2 disabled:opacity-85 disabled:cursor-wait active:scale-98 cursor-pointer mt-1 ${
-            role === "brand"
-              ? "bg-gradient-to-r from-[#0F766E] to-[#34D399] hover:from-[#0D9488] hover:to-[#059669] shadow-[0_4px_20px_rgba(15,118,110,0.35)]"
-              : "bg-gradient-to-r from-[#7C3AED] to-[#C084FC] hover:from-[#6D28D9] hover:to-[#A855F7] shadow-[0_4px_20px_rgba(124,58,237,0.35)]"
-          }`}
+          className="w-full py-3.5 rounded-full text-white font-extrabold text-xs sm:text-sm transition-all shadow-md border border-white/10 flex items-center justify-center gap-2 disabled:opacity-85 disabled:cursor-wait active:scale-98 cursor-pointer mt-1 bg-gradient-to-r from-[#0F766E] to-[#34D399] hover:from-[#0D9488] hover:to-[#059669] shadow-[0_4px_20px_rgba(15,118,110,0.35)]"
         >
           {isLoading ? (
             <div className="flex items-center gap-2">
@@ -504,7 +500,7 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
                   setActiveTab("register");
                   setErrorMessage("");
                 }}
-                className="text-[#0B0A14] dark:text-accent hover:underline font-bold cursor-pointer disabled:opacity-50 disabled:pointer-events-none"
+                className="text-[#0F766E] dark:text-[#34D399] hover:underline font-bold cursor-pointer disabled:opacity-50 disabled:pointer-events-none"
               >
                 Create an Account
               </button>
@@ -519,7 +515,7 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
                   setActiveTab("signin");
                   setErrorMessage("");
                 }}
-                className="text-[#0B0A14] dark:text-accent hover:underline font-bold cursor-pointer disabled:opacity-50 disabled:pointer-events-none"
+                className="text-[#0F766E] dark:text-[#34D399] hover:underline font-bold cursor-pointer disabled:opacity-50 disabled:pointer-events-none"
               >
                 Sign In
               </button>

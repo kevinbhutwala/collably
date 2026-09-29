@@ -66,7 +66,7 @@ export function CompactFAQ() {
                   <span className="text-xs sm:text-sm font-bold text-[#0B0A14] dark:text-white font-sans">
                     {faq.q}
                   </span>
-                  <div className="w-7 h-7 rounded-full bg-[#F1F5F9] dark:bg-[#1A172E] flex items-center justify-center shrink-0 text-[#0B0A14] dark:text-[#C084FC]">
+                  <div className="w-7 h-7 rounded-full bg-[#F1F5F9] dark:bg-card flex items-center justify-center shrink-0 text-foreground dark:text-accent">
                     {isOpen ? <Minus className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
                   </div>
                 </button>

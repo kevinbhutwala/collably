@@ -9,28 +9,29 @@
   :root {
     /* ══════════════════════════════════════════════════════════════════════════
        ABEYCOLLAB — MASTER PRODUCT THEME VARIABLES
-       👉 CHANGE ANY COLOR HERE TO INSTANTLY UPDATE THE ENTIRE PRODUCT 👈
+       👉 DEFAULT THEME: EMERALD 🟢 FOR MAIN PAGES, LOGIN, SIGNUP, BRANDS 👈
+       Canvas: #F8FAF9 • Primary: #0F766E • Accent: #34D399 • Midnight: #0F172A
        ══════════════════════════════════════════════════════════════════════════ */
-    --theme-midnight: #0B0A14;
-    --theme-midnight-rgb: 11 10 20;
+    --theme-midnight: #0F172A;
+    --theme-midnight-rgb: 15 23 42;
 
-    --theme-primary: #7C3AED;
-    --theme-primary-hover: #6D28D9;
-    --theme-primary-active: #5B21B6;
-    --theme-primary-rgb: 124 58 237;
-    --theme-primary-hover-rgb: 109 40 217;
+    --theme-primary: #0F766E;
+    --theme-primary-hover: #0D9488;
+    --theme-primary-active: #115E59;
+    --theme-primary-rgb: 15 118 110;
+    --theme-primary-hover-rgb: 13 148 136;
 
-    --theme-accent: #C084FC;
-    --theme-accent-hover: #D8B4FE;
-    --theme-accent-rgb: 192 132 252;
-    --theme-accent-hover-rgb: 216 180 254;
+    --theme-accent: #34D399;
+    --theme-accent-hover: #6EE7B7;
+    --theme-accent-rgb: 52 211 153;
+    --theme-accent-hover-rgb: 110 231 183;
 
-    --theme-canvas: #F8FAFC;
-    --theme-canvas-rgb: 248 250 252;
+    --theme-canvas: #F8FAF9;
+    --theme-canvas-rgb: 248 250 249;
 
     /* Theme Dynamic Effects */
-    --theme-glow: 0 4px 20px rgba(124, 58, 237, 0.35);
-    --theme-glow-lg: 0 8px 32px rgba(124, 58, 237, 0.50);
+    --theme-glow: 0 4px 20px rgba(15, 118, 110, 0.35);
+    --theme-glow-lg: 0 8px 32px rgba(15, 118, 110, 0.50);
 
     /* Typography Tokens */
     --font-display: var(--font-jakarta, 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
@@ -40,8 +41,8 @@
 
     /* Typographic & Palette Colors */
     --color-text-primary: var(--theme-midnight);
-    --color-text-secondary: #474554;
-    --color-text-muted: #79768F;
+    --color-text-secondary: #475569;
+    --color-text-muted: #64748B;
     --color-theme: var(--theme-primary);
     --color-theme-hover: var(--theme-primary-hover);
     --color-theme-active: var(--theme-primary-active);
@@ -62,7 +63,7 @@
     --background: var(--theme-canvas);
     --background-alt: #FFFFFF;
     --foreground: var(--theme-midnight);
-    --foreground-muted: #626075;
+    --foreground-muted: #64748B;
     
     /* Surfaces */
     --card: #FFFFFF;
@@ -97,7 +98,7 @@
 
   .dark {
     /* ══════════════════════════════════════════════════════════════════════════
-       ABEYCOLLAB — MIDNIGHT PURPLE DEEP VOID
+       ABEYCOLLAB — EMERALD MIDNIGHT VOID
        ══════════════════════════════════════════════════════════════════════════ */
     --color-text-primary: var(--theme-canvas);
     --color-text-secondary: #CBD5E1;
@@ -120,15 +121,15 @@
 
     /* Core Canvas & Surfaces */
     --background: var(--theme-midnight);
-    --background-alt: #121020;
+    --background-alt: #132238;
     --foreground: var(--theme-canvas);
     --foreground-muted: #94A3B8;
     
     /* Surfaces */
-    --card: #121020;
+    --card: #132238;
     --card-foreground: var(--theme-canvas);
-    --surface-secondary: #1A172E;
-    --surface-chrome: #252042;
+    --surface-secondary: #1E293B;
+    --surface-chrome: #334155;
     
     /* Borders & Hairlines */
     --border: rgba(255, 255, 255, 0.10);
@@ -145,16 +146,16 @@
     /* Semantic Compatibility */
     --primary: var(--theme-primary);
     --primary-foreground: #FFFFFF;
-    --secondary: #1A172E;
+    --secondary: #1E293B;
     --secondary-foreground: var(--theme-canvas);
-    --muted: #121020;
+    --muted: #132238;
     --muted-foreground: #94A3B8;
     --destructive: #FF3B30;
     --destructive-foreground: #FFFFFF;
   }
 
   /* ══════════════════════════════════════════════════════════════════════════
-     CREATORS → VIOLET 🟣 THEME
+     CREATORS → VIOLET 🟣 THEME (ONLY CREATORS SIDE AFTER LOGIN)
      Feels creative, expressive, social and personal.
      Canvas: #F8FAFC • Primary: #7C3AED • Accent: #C084FC • Midnight: #0B0A14
      ══════════════════════════════════════════════════════════════════════════ */
@@ -180,8 +181,38 @@
     --theme-glow: 0 4px 20px rgba(124, 58, 237, 0.35);
     --theme-glow-lg: 0 8px 32px rgba(124, 58, 237, 0.50);
 
+    --color-text-primary: var(--theme-midnight);
+    --color-theme: var(--theme-primary);
+    --color-theme-hover: var(--theme-primary-hover);
+    --color-theme-active: var(--theme-primary-active);
+    --color-theme-lilac: var(--theme-accent);
+    --color-theme-midnight: var(--theme-midnight);
+    --color-theme-ink: var(--theme-midnight);
+
+    --background: var(--theme-canvas);
+    --foreground: var(--theme-midnight);
+    --card: #FFFFFF;
+    --card-foreground: var(--theme-midnight);
+    --ring: var(--theme-primary);
+
     --primary: var(--theme-primary);
+    --primary-foreground: #FFFFFF;
     --accent: var(--theme-accent);
+    --accent-foreground: var(--theme-midnight);
+    --micro-accent: var(--theme-primary);
+    --micro-accent-text: #FFFFFF;
+  }
+
+  [data-role="creator"].dark,
+  .dark[data-role="creator"],
+  .dark .theme-creator,
+  [data-role="creator"] .dark {
+    --theme-midnight: #0B0A14;
+    --background: #0B0A14 !important;
+    --foreground: #F8FAFC !important;
+    --card: #121020 !important;
+    --card-foreground: #F8FAFC !important;
+    --color-theme-ink: #F8FAFC !important;
     --ring: var(--theme-primary);
   }
 
@@ -224,6 +255,7 @@
 
     --background: var(--theme-canvas);
     --foreground: var(--theme-midnight);
+    --card: #FFFFFF;
     --card-foreground: var(--theme-midnight);
     --ring: var(--theme-primary);
 

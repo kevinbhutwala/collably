@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 
 export function WishlinkHeroShowcase() {
-  const [activeTab, setActiveTab] = useState<'creator' | 'brand'>('creator');
+  const [activeTab, setActiveTab] = useState<'creator' | 'brand'>('brand');
   const [isVideoMuted, setIsVideoMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -28,7 +28,7 @@ export function WishlinkHeroShowcase() {
   return (
     <section
       id="hero"
-      className="relative min-h-[90vh] sm:min-h-[94vh] w-full flex items-center justify-center overflow-hidden bg-[#0B0A14] pt-20 sm:pt-28 pb-20 sm:pb-24 select-none"
+      className="relative min-h-[90vh] sm:min-h-[94vh] w-full flex items-center justify-center overflow-hidden bg-[#0F172A] pt-20 sm:pt-28 pb-20 sm:pb-24 select-none"
     >
       {/* ── Background Cinematic Video Loop ── */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -43,12 +43,12 @@ export function WishlinkHeroShowcase() {
           className="w-full h-full object-cover opacity-85 transition-opacity duration-1000"
         />
         {/* Balanced Vignette */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0A14] via-[#0B0A14]/65 to-[#0B0A14]/50 pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(11,10,20,0.4)_0%,rgba(11,10,20,0.94)_85%)] opacity-85 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/65 to-[#0F172A]/50 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(15,23,42,0.4)_0%,rgba(15,23,42,0.94)_85%)] opacity-85 pointer-events-none" />
       </div>
 
       {/* ── Seamless Bottom Gradient Blend into Canvas ── */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-[#0B0A14]/70 to-[#F8FAFC] pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-[#0F172A]/70 to-[var(--theme-canvas)] pointer-events-none z-10" />
 
       {/* ── Main Hero Content ── */}
       <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center">
@@ -121,10 +121,10 @@ export function WishlinkHeroShowcase() {
           className="mt-3 sm:mt-5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 sm:gap-3 text-xs sm:text-base md:text-xl font-display font-semibold tracking-wide uppercase text-neutral-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] max-w-xl mx-auto"
         >
           <span className="whitespace-nowrap">{activeTab === 'creator' ? 'Direct Brand Deals' : 'Audited Creators'}</span>
-          <span className="text-[#C084FC] font-light hidden min-[360px]:inline">/</span>
+          <span className={`${activeTab === 'creator' ? 'text-[#C084FC]' : 'text-[#34D399]'} font-light hidden min-[360px]:inline`}>/</span>
           <span className="text-white whitespace-nowrap">Meta Auto-DMs</span>
-          <span className="text-[#C084FC] font-light hidden min-[360px]:inline">/</span>
-          <span className="text-[#C084FC] whitespace-nowrap font-bold">24h Escrow Payouts</span>
+          <span className={`${activeTab === 'creator' ? 'text-[#C084FC]' : 'text-[#34D399]'} font-light hidden min-[360px]:inline`}>/</span>
+          <span className={`${activeTab === 'creator' ? 'text-[#C084FC]' : 'text-[#34D399]'} whitespace-nowrap font-bold`}>24h Escrow Payouts</span>
         </motion.div>
 
         {/* Punchy Concise Tagline */}
@@ -208,7 +208,7 @@ export function WishlinkHeroShowcase() {
           </span>
           <span className="hidden sm:inline text-white/30">•</span>
           <span className="flex items-center gap-1.5 font-bold text-neutral-100">
-            <Zap className="w-3.5 h-3.5 text-[#C084FC]" />
+            <Zap className={`w-3.5 h-3.5 ${activeTab === 'creator' ? 'text-[#C084FC]' : 'text-[#34D399]'}`} />
             <span>24h Approval Guarantee</span>
           </span>
           <span className="hidden sm:inline text-white/30">•</span>

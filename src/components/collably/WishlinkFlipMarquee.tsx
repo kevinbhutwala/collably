@@ -211,7 +211,7 @@ function FlipCard({ item, autoFlipped }: { item: FlipItem; autoFlipped: boolean 
 
         {/* BACK: Brand Collaboration & Escrow Deal */}
         <div
-          className="absolute inset-0 w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden p-4 sm:p-5 flex flex-col justify-between text-left border-2 border-[#7C3AED] bg-white shadow-md"
+          className="absolute inset-0 w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden p-4 sm:p-5 flex flex-col justify-between text-left border-2 border-primary bg-white shadow-md"
           style={{
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
@@ -221,7 +221,7 @@ function FlipCard({ item, autoFlipped }: { item: FlipItem; autoFlipped: boolean 
           {/* Header */}
           <div className="space-y-1">
             <div className="flex items-center justify-between">
-              <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-extrabold uppercase tracking-wider bg-[#7C3AED] text-white">
+              <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-extrabold uppercase tracking-wider bg-primary text-white">
                 VERIFIED DEAL
               </span>
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />

@@ -104,7 +104,7 @@ export function WishlinkCreatorStories() {
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0B0A14] font-display tracking-tight leading-[1.1]">
               Loved by Creators,{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7C3AED] to-[#C084FC] underline decoration-[#C084FC] decoration-4 underline-offset-4">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent underline decoration-accent decoration-4 underline-offset-4">
                 trusted by Brands
               </span>
             </h2>
@@ -118,7 +118,7 @@ export function WishlinkCreatorStories() {
             <button
               type="button"
               onClick={prevStory}
-              className="w-11 h-11 rounded-full border border-black/[0.1] hover:border-[#7C3AED] bg-white hover:bg-[#F1F5F9] flex items-center justify-center text-[#0B0A14] transition-all cursor-pointer shadow-xs active:scale-95"
+              className="w-11 h-11 rounded-full border border-black/[0.1] hover:border-primary bg-white hover:bg-[#F1F5F9] flex items-center justify-center text-[#0B0A14] transition-all cursor-pointer shadow-xs active:scale-95"
               aria-label="Previous story"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -126,7 +126,7 @@ export function WishlinkCreatorStories() {
             <button
               type="button"
               onClick={nextStory}
-              className="w-11 h-11 rounded-full border border-black/[0.1] hover:border-[#7C3AED] bg-white hover:bg-[#F1F5F9] flex items-center justify-center text-[#0B0A14] transition-all cursor-pointer shadow-xs active:scale-95"
+              className="w-11 h-11 rounded-full border border-black/[0.1] hover:border-primary bg-white hover:bg-[#F1F5F9] flex items-center justify-center text-[#0B0A14] transition-all cursor-pointer shadow-xs active:scale-95"
               aria-label="Next story"
             >
               <ChevronRight className="w-5 h-5" />
@@ -143,7 +143,7 @@ export function WishlinkCreatorStories() {
           className="p-5 sm:p-10 lg:p-12 rounded-2xl sm:rounded-3xl bg-white border border-black/[0.07] shadow-[0_4px_30px_rgba(0,0,0,0.03)] relative overflow-hidden"
         >
           {/* Subtle Ambient Radial Highlight */}
-          <div className="absolute top-0 right-0 w-80 h-80 bg-[#7C3AED]/12 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-0 w-80 h-80 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
 
           <AnimatePresence mode="wait">
             <motion.div
@@ -169,7 +169,7 @@ export function WishlinkCreatorStories() {
                   <div className="absolute bottom-4 left-4 right-4 text-white">
                     <p className="text-base font-extrabold font-display leading-tight">{active.name}</p>
                     <p className="text-xs font-mono text-white/80">{active.handle}</p>
-                    <span className="inline-block mt-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-[#7C3AED] text-white">
+                    <span className="inline-block mt-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-primary text-white">
                       {active.followers}
                     </span>
                   </div>
@@ -178,7 +178,7 @@ export function WishlinkCreatorStories() {
 
               {/* Story Narrative & Proof */}
               <div className="lg:col-span-7 space-y-6 text-left">
-                <Quote className="w-10 h-10 text-[#C084FC] fill-[#C084FC]/25" />
+                <Quote className="w-10 h-10 text-accent fill-accent/25" />
 
                 <blockquote className="text-base sm:text-xl lg:text-2xl font-bold font-display text-[#0B0A14] leading-relaxed sm:leading-snug">
                   &ldquo;{active.quote}&rdquo;
@@ -213,7 +213,7 @@ export function WishlinkCreatorStories() {
 
                   <Link
                     href="/register?role=creator"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0B0A14] hover:text-[#7C3AED] transition-colors self-start sm:self-auto"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0B0A14] hover:text-primary transition-colors self-start sm:self-auto"
                   >
                     <span>Join Roster</span>
                     <ArrowRight className="w-3.5 h-3.5" />

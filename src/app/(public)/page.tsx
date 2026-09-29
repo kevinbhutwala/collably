@@ -102,7 +102,7 @@ export default function AbeyCollabLandingPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqJsonLd) }}
       />
-      <div className="relative min-h-screen bg-[#F8FAFC] text-[#0B0A14] font-sans selection:bg-[#7C3AED] selection:text-white overflow-x-hidden scroll-smooth">
+      <div className="relative min-h-screen bg-background text-foreground font-sans selection:bg-primary selection:text-white overflow-x-hidden scroll-smooth">
         {/* 01 — Wishlink-Style Minimalist, Spacious Hero with Floating 3D Stickers */}
         <WishlinkHeroShowcase />
 
