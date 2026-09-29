@@ -191,25 +191,25 @@ function DashboardContent() {
                 className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold transition-all border ${
                   profileStatus.canApplyToCampaigns
                     ? "bg-emerald-500/15 border-emerald-500/30 text-emerald-800 dark:text-emerald-300 hover:bg-emerald-500/25"
-                    : "bg-amber-500/15 border-amber-500/35 text-amber-800 dark:text-amber-300 hover:bg-amber-500/25"
+                    : "bg-amber-500/12 border-amber-500/30 text-amber-900 dark:text-amber-200 hover:bg-amber-500/20"
                 }`}
                 title={
                   profileStatus.canApplyToCampaigns
                     ? "Profile is confirmed and verified. You can apply for open campaigns."
-                    : "Profile is incomplete or unverified. Fill details to unlock campaign pitches."
+                    : "Profile setup in progress. Complete details to unlock 1-click pitches."
                 }
               >
                 {profileStatus.canApplyToCampaigns ? (
                   <>
                     <CheckCircle2 className="w-3 h-3 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                    <span className="hidden sm:inline">Profile Confirmed (100%) • Ready to Apply</span>
-                    <span className="sm:hidden">Confirmed (100%) • Ready</span>
+                    <span className="hidden sm:inline">Profile Verified (100%) • Ready to Pitch</span>
+                    <span className="sm:hidden">Verified (100%)</span>
                   </>
                 ) : (
                   <>
-                    <Lock className="w-3 h-3 text-amber-600 dark:text-amber-400 shrink-0" />
-                    <span className="hidden sm:inline">Profile Incomplete ({profileStatus.score}%) • Applications Locked</span>
-                    <span className="sm:hidden">Incomplete ({profileStatus.score}%) • Locked</span>
+                    <Sparkles className="w-3 h-3 text-amber-500 dark:text-amber-300 shrink-0" />
+                    <span className="hidden sm:inline">{profileStatus.score}% Setup • Unlock 1-Click Pitches</span>
+                    <span className="sm:hidden">{profileStatus.score}% Setup • Tap to Finish</span>
                   </>
                 )}
               </Link>
@@ -223,7 +223,7 @@ function DashboardContent() {
             {role === "creator"
               ? profileStatus.canApplyToCampaigns
                 ? "Here is your hub for active projects, earnings, and open campaigns."
-                : "Complete and verify your creator profile to unlock brand campaigns."
+                : "Explore open brand briefs and complete verification to pitch directly."
               : "Here is your hub for campaigns, creator discovery, and escrow payments."}
           </p>
         </div>
@@ -248,16 +248,16 @@ function DashboardContent() {
               </>
             ) : (
               <>
-                <Link href="/app/profile" className="w-full sm:w-auto">
+                <Link href="/app/campaigns" className="w-full sm:w-auto">
                   <button className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs border border-black/10 cursor-pointer">
-                    <Sparkles className="w-3.5 h-3.5 text-[#0A0A0E] shrink-0" />
-                    <span className="truncate">Complete Profile</span>
+                    <Compass className="w-3.5 h-3.5 text-[#0A0A0E] shrink-0" />
+                    <span className="truncate">Browse Briefs</span>
                   </button>
                 </Link>
-                <Link href="/app/campaigns" className="w-full sm:w-auto">
-                  <button className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#1C1C28] dark:hover:bg-[#252535] border border-black/10 dark:border-white/10 text-[#6A6A78] dark:text-[#A0A0B4] font-medium text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs cursor-pointer">
-                    <Lock className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-                    <span className="truncate">Browse Briefs</span>
+                <Link href="/app/profile" className="w-full sm:w-auto">
+                  <button className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#1C1C28] dark:hover:bg-[#252535] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs cursor-pointer">
+                    <Sparkles className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F] shrink-0" />
+                    <span className="truncate">Finish Setup ({profileStatus.score}%)</span>
                   </button>
                 </Link>
               </>
@@ -285,6 +285,81 @@ function DashboardContent() {
       {role === "creator" && (
         <ProfileCompletionBanner creator={currentCreator || undefined} />
       )}
+
+      {/* ── Stats Grid ── */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
+        {role === "creator" ? (
+          <>
+            <StatsCard
+              title="Secured Payments"
+              value={format(totalEscrowInTransit, "INR")}
+              change={totalEscrowInTransit > 0 ? "Secured" : "—"}
+              trend="up"
+              subtitle="Held safely in escrow"
+              icon={<ShieldCheck className="w-4 h-4 text-emerald-600" />}
+            />
+            <StatsCard
+              title="Active Projects"
+              value={String(activeCollabsCount)}
+              change={activeCollabsCount > 0 ? "Active" : "—"}
+              trend="up"
+              subtitle="Content in progress"
+              icon={<FileCheck2 className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />}
+            />
+            <StatsCard
+              title="Engagement Rate"
+              value={currentCreator?.avgEngagementRate ? `${currentCreator.avgEngagementRate}%` : "—"}
+              change={currentCreator?.avgEngagementRate ? "Audited" : "No data"}
+              trend="up"
+              subtitle="Audience score"
+              icon={<TrendingUp className="w-4 h-4 text-amber-600" />}
+            />
+            <StatsCard
+              title="Total Earned"
+              value={format(lifetimeEarned, "INR")}
+              change={lifetimeEarned > 0 ? "Paid out" : "—"}
+              trend="up"
+              subtitle="Paid out to date"
+              icon={<Wallet className="w-4 h-4 text-[#0A0A0E] dark:text-white" />}
+            />
+          </>
+        ) : (
+          <>
+            <StatsCard
+              title="Protected Escrow"
+              value={format(brandTotalBudget, "INR")}
+              change={brandTotalBudget > 0 ? "100% Funded" : "—"}
+              trend="up"
+              subtitle="Locked safely in vault"
+              icon={<ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />}
+            />
+            <StatsCard
+              title="Creators in Roster"
+              value={String(featuredCreators.length)}
+              change={featuredCreators.length > 0 ? "Audited" : "—"}
+              trend="up"
+              subtitle="Verified talent ready"
+              icon={<Users className="w-4 h-4 text-[#0A0A0E] dark:text-white" />}
+            />
+            <StatsCard
+              title="Active Campaigns"
+              value={String(brandCampaigns.length > 0 ? brandCampaigns.length : 2)}
+              change="Live Briefs"
+              trend="up"
+              subtitle="Sponsorship campaigns"
+              icon={<Building2 className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />}
+            />
+            <StatsCard
+              title="Active Deals"
+              value={String(activeCollabsCount > 0 ? activeCollabsCount : 1)}
+              change="In Production"
+              trend="up"
+              subtitle="Deliverables in flight"
+              icon={<TrendingUp className="w-4 h-4 text-[#0A0A0E] dark:text-white" />}
+            />
+          </>
+        )}
+      </div>
 
       {/* ── Quick Start: How AbeyCollab Works ── */}
       {showQuickStart && (
@@ -397,81 +472,6 @@ function DashboardContent() {
           </div>
         </div>
       )}
-
-      {/* ── Stats Grid ── */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
-        {role === "creator" ? (
-          <>
-            <StatsCard
-              title="Secured Payments"
-              value={format(totalEscrowInTransit, "INR")}
-              change={totalEscrowInTransit > 0 ? "Secured" : "—"}
-              trend="up"
-              subtitle="Held safely in escrow"
-              icon={<ShieldCheck className="w-4 h-4 text-emerald-600" />}
-            />
-            <StatsCard
-              title="Active Projects"
-              value={String(activeCollabsCount)}
-              change={activeCollabsCount > 0 ? "Active" : "—"}
-              trend="up"
-              subtitle="Content in progress"
-              icon={<FileCheck2 className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />}
-            />
-            <StatsCard
-              title="Engagement Rate"
-              value={currentCreator?.avgEngagementRate ? `${currentCreator.avgEngagementRate}%` : "—"}
-              change={currentCreator?.avgEngagementRate ? "Audited" : "No data"}
-              trend="up"
-              subtitle="Audience score"
-              icon={<TrendingUp className="w-4 h-4 text-amber-600" />}
-            />
-            <StatsCard
-              title="Total Earned"
-              value={format(lifetimeEarned, "INR")}
-              change={lifetimeEarned > 0 ? "Paid out" : "—"}
-              trend="up"
-              subtitle="Paid out to date"
-              icon={<Wallet className="w-4 h-4 text-[#0A0A0E] dark:text-white" />}
-            />
-          </>
-        ) : (
-          <>
-            <StatsCard
-              title="Protected Escrow"
-              value={format(brandTotalBudget, "INR")}
-              change={brandTotalBudget > 0 ? "100% Funded" : "—"}
-              trend="up"
-              subtitle="Locked safely in vault"
-              icon={<ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />}
-            />
-            <StatsCard
-              title="Creators in Roster"
-              value={String(featuredCreators.length)}
-              change={featuredCreators.length > 0 ? "Audited" : "—"}
-              trend="up"
-              subtitle="Verified talent ready"
-              icon={<Users className="w-4 h-4 text-[#0A0A0E] dark:text-white" />}
-            />
-            <StatsCard
-              title="Active Campaigns"
-              value={String(brandCampaigns.length > 0 ? brandCampaigns.length : 2)}
-              change="Live Briefs"
-              trend="up"
-              subtitle="Sponsorship campaigns"
-              icon={<Building2 className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />}
-            />
-            <StatsCard
-              title="Active Deals"
-              value={String(activeCollabsCount > 0 ? activeCollabsCount : 1)}
-              change="In Production"
-              trend="up"
-              subtitle="Deliverables in flight"
-              icon={<TrendingUp className="w-4 h-4 text-[#0A0A0E] dark:text-white" />}
-            />
-          </>
-        )}
-      </div>
 
       {/* ── Role-Specific Market Pulse & Pricing Intelligence ── */}
       {role === "creator" ? (

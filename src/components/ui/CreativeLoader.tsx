@@ -142,7 +142,7 @@ export function CreativeLoader({
           {/* Top Specular Sheen */}
           <div className="absolute inset-x-0 top-0 h-1/2 rounded-t-xl bg-gradient-to-b from-white/20 to-transparent pointer-events-none" />
 
-          {/* Clean Small Abey Nexus SVG */}
+          {/* Clean Small AbeyCollab SVG */}
           <svg
             viewBox="0 0 48 48"
             fill="none"
