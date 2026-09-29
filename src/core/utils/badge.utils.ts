@@ -75,7 +75,7 @@ export function getClientCreatorBadges(creator: CreatorProfile): ReputationBadge
       colorTheme: {
         bg: "bg-yellow-500/10",
         border: "border-yellow-500/20",
-        text: "text-yellow-700 dark:text-[#FFD21F]",
+        text: "text-yellow-700 dark:text-accent",
       },
     });
   }

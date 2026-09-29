@@ -216,16 +216,16 @@ export default function AdminBrandsPage() {
   }, [brands, activeTab, searchQuery, campaigns]);
 
   return (
-    <div className="space-y-6 max-w-7xl text-[#0A0A0E] dark:text-[#F4F4F8] pb-16">
+    <div className="space-y-6 max-w-7xl text-[#0B0A14] dark:text-[#F4F4F8] pb-16">
       {/* 1. Executive Header Command Strip */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-black/8 dark:border-white/10">
         <div>
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 px-2.5 py-0.5 text-[10px] font-bold text-[#0A0A0E] dark:text-[#F4F4F8] uppercase tracking-wider font-mono">
-            <Building2 className="w-3 h-3 text-[#FFD21F]" />
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 px-2.5 py-0.5 text-[10px] font-bold text-[#0B0A14] dark:text-[#F4F4F8] uppercase tracking-wider font-mono">
+            <Building2 className="w-3 h-3 text-primary" />
             <span>AbeyCollab Enterprise Directory</span>
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse ml-0.5" />
           </div>
-          <h1 className="text-xl sm:text-2xl font-black text-[#0A0A0E] dark:text-white tracking-tight font-display mt-1.5 flex items-center gap-2">
+          <h1 className="text-xl sm:text-2xl font-black text-[#0B0A14] dark:text-white tracking-tight font-display mt-1.5 flex items-center gap-2">
             <span>Brand Accounts & Enterprise Compliance</span>
           </h1>
           <p className="text-xs text-[#5A5A68] dark:text-[#9A9AA6] mt-0.5 font-sans max-w-2xl">
@@ -237,7 +237,7 @@ export default function AdminBrandsPage() {
           {/* Toggle KPIs */}
           <button
             onClick={() => setShowKpis(!showKpis)}
-            className="px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-[#F4F4F8] text-[11px] font-semibold transition-all flex items-center gap-1.5 cursor-pointer"
+            className="px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/10 dark:border-white/10 text-[#0B0A14] dark:text-[#F4F4F8] text-[11px] font-semibold transition-all flex items-center gap-1.5 cursor-pointer"
             title="Toggle Executive KPI Strip"
           >
             <ShieldCheck className="w-3.5 h-3.5 text-neutral-600 dark:text-neutral-400" />
@@ -248,7 +248,7 @@ export default function AdminBrandsPage() {
           {/* Export JSON */}
           <button
             onClick={handleExportJSON}
-            className="px-3 py-1.5 rounded-lg bg-white dark:bg-[#181824] border border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/5 text-[#0A0A0E] dark:text-[#F4F4F8] text-[11px] font-semibold transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
+            className="px-3 py-1.5 rounded-lg bg-white dark:bg-[#181824] border border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/5 text-[#0B0A14] dark:text-[#F4F4F8] text-[11px] font-semibold transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
             title="Export enterprise brand directory"
           >
             <FileDown className="w-3.5 h-3.5 text-neutral-600 dark:text-[#9A9AA6]" />
@@ -259,7 +259,7 @@ export default function AdminBrandsPage() {
           <button
             onClick={fetchData}
             disabled={loading}
-            className="px-3 py-1.5 rounded-lg bg-white dark:bg-[#181824] border border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/5 text-[#0A0A0E] dark:text-[#F4F4F8] text-[11px] font-semibold transition-all flex items-center gap-1.5 cursor-pointer shadow-xs disabled:opacity-50"
+            className="px-3 py-1.5 rounded-lg bg-white dark:bg-[#181824] border border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/5 text-[#0B0A14] dark:text-[#F4F4F8] text-[11px] font-semibold transition-all flex items-center gap-1.5 cursor-pointer shadow-xs disabled:opacity-50"
             title="Refresh brand accounts"
           >
             <RefreshCw className={`w-3.5 h-3.5 text-neutral-600 dark:text-[#9A9AA6] ${loading ? "animate-spin" : ""}`} />
@@ -275,10 +275,10 @@ export default function AdminBrandsPage() {
           <div className="p-3.5 rounded-xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs relative overflow-hidden group">
             <div className="flex items-center justify-between text-[#5A5A68] dark:text-[#9A9AA6] text-[11px]">
               <span className="font-semibold uppercase tracking-wider font-mono">Corporate Accounts</span>
-              <Building2 className="w-4 h-4 text-[#FFD21F]" />
+              <Building2 className="w-4 h-4 text-primary" />
             </div>
             <div className="mt-1 flex items-baseline gap-2 flex-wrap">
-              <span className="text-base sm:text-xl font-black text-[#0A0A0E] dark:text-white font-mono truncate">
+              <span className="text-base sm:text-xl font-black text-[#0B0A14] dark:text-white font-mono truncate">
                 {stats.totalBrands}
               </span>
               <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded-sm shrink-0">
@@ -297,7 +297,7 @@ export default function AdminBrandsPage() {
               <DollarSign className="w-4 h-4 text-emerald-500" />
             </div>
             <div className="mt-1 flex items-baseline gap-2 flex-wrap">
-              <span className="text-base sm:text-xl font-black text-[#0A0A0E] dark:text-white font-mono truncate">
+              <span className="text-base sm:text-xl font-black text-[#0B0A14] dark:text-white font-mono truncate">
                 {format(stats.totalCapital, "USD")}
               </span>
               <span className="text-[10px] font-bold text-neutral-600 dark:text-neutral-400 bg-black/5 dark:bg-white/5 px-1.5 py-0.5 rounded-sm shrink-0">
@@ -316,7 +316,7 @@ export default function AdminBrandsPage() {
               <Layers className="w-4 h-4 text-cyan-500" />
             </div>
             <div className="mt-1 flex items-baseline gap-2 flex-wrap">
-              <span className="text-base sm:text-xl font-black text-[#0A0A0E] dark:text-white font-mono truncate">
+              <span className="text-base sm:text-xl font-black text-[#0B0A14] dark:text-white font-mono truncate">
                 {stats.activeCamps}
               </span>
               <span className="text-[10px] font-bold text-cyan-600 dark:text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded-sm shrink-0">
@@ -335,7 +335,7 @@ export default function AdminBrandsPage() {
               <Lock className="w-4 h-4 text-purple-500" />
             </div>
             <div className="mt-1 flex items-baseline gap-2 flex-wrap">
-              <span className="text-base sm:text-xl font-black text-[#0A0A0E] dark:text-white font-mono truncate">
+              <span className="text-base sm:text-xl font-black text-[#0B0A14] dark:text-white font-mono truncate">
                 100%
               </span>
               <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded-sm shrink-0">
@@ -357,7 +357,7 @@ export default function AdminBrandsPage() {
             onClick={() => setActiveTab("all")}
             className={`px-3 py-1.5 rounded-lg font-bold text-[11px] whitespace-nowrap transition-all cursor-pointer ${
               activeTab === "all"
-                ? "bg-[#0A0A0E] text-white dark:bg-white dark:text-[#0A0A0E] shadow-xs"
+                ? "bg-[#0B0A14] text-white dark:bg-white dark:text-[#0B0A14] shadow-xs"
                 : "text-[#5A5A68] dark:text-[#9A9AA6] hover:bg-black/5 dark:hover:bg-white/5"
             }`}
           >
@@ -367,7 +367,7 @@ export default function AdminBrandsPage() {
             onClick={() => setActiveTab("verified")}
             className={`px-3 py-1.5 rounded-lg font-bold text-[11px] whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer ${
               activeTab === "verified"
-                ? "bg-[#0A0A0E] text-white dark:bg-white dark:text-[#0A0A0E] shadow-xs"
+                ? "bg-[#0B0A14] text-white dark:bg-white dark:text-[#0B0A14] shadow-xs"
                 : "text-[#5A5A68] dark:text-[#9A9AA6] hover:bg-black/5 dark:hover:bg-white/5"
             }`}
           >
@@ -381,18 +381,18 @@ export default function AdminBrandsPage() {
             onClick={() => setActiveTab("high_volume")}
             className={`px-3 py-1.5 rounded-lg font-bold text-[11px] whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer ${
               activeTab === "high_volume"
-                ? "bg-[#0A0A0E] text-white dark:bg-white dark:text-[#0A0A0E] shadow-xs"
+                ? "bg-[#0B0A14] text-white dark:bg-white dark:text-[#0B0A14] shadow-xs"
                 : "text-[#5A5A68] dark:text-[#9A9AA6] hover:bg-black/5 dark:hover:bg-white/5"
             }`}
           >
-            <DollarSign className="w-3.5 h-3.5 text-[#FFD21F]" />
+            <DollarSign className="w-3.5 h-3.5 text-primary" />
             <span>High Volume (&gt;₹20L)</span>
           </button>
           <button
             onClick={() => setActiveTab("active_campaigns")}
             className={`px-3 py-1.5 rounded-lg font-bold text-[11px] whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer ${
               activeTab === "active_campaigns"
-                ? "bg-[#0A0A0E] text-white dark:bg-white dark:text-[#0A0A0E] shadow-xs"
+                ? "bg-[#0B0A14] text-white dark:bg-white dark:text-[#0B0A14] shadow-xs"
                 : "text-[#5A5A68] dark:text-[#9A9AA6] hover:bg-black/5 dark:hover:bg-white/5"
             }`}
           >
@@ -411,7 +411,7 @@ export default function AdminBrandsPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search brand, city, or industry..."
-              className="w-full pl-8 pr-3 py-1.5 text-xs rounded-lg bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 focus:outline-hidden focus:ring-1 focus:ring-[#FFD21F] text-[#0A0A0E] dark:text-white placeholder:text-neutral-400"
+              className="w-full pl-8 pr-3 py-1.5 text-xs rounded-lg bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 focus:outline-hidden focus:ring-1 focus:ring-primary text-[#0B0A14] dark:text-white placeholder:text-neutral-400"
             />
           </div>
 
@@ -421,8 +421,8 @@ export default function AdminBrandsPage() {
               onClick={() => setViewMode("table")}
               className={`p-1.5 rounded-md transition-all cursor-pointer ${
                 viewMode === "table"
-                  ? "bg-white dark:bg-[#1C1C28] text-[#0A0A0E] dark:text-white shadow-xs"
-                  : "text-neutral-500 hover:text-[#0A0A0E] dark:hover:text-white"
+                  ? "bg-white dark:bg-[#1C1C28] text-[#0B0A14] dark:text-white shadow-xs"
+                  : "text-neutral-500 hover:text-[#0B0A14] dark:hover:text-white"
               }`}
               title="Table View"
             >
@@ -432,8 +432,8 @@ export default function AdminBrandsPage() {
               onClick={() => setViewMode("grid")}
               className={`p-1.5 rounded-md transition-all cursor-pointer ${
                 viewMode === "grid"
-                  ? "bg-white dark:bg-[#1C1C28] text-[#0A0A0E] dark:text-white shadow-xs"
-                  : "text-neutral-500 hover:text-[#0A0A0E] dark:hover:text-white"
+                  ? "bg-white dark:bg-[#1C1C28] text-[#0B0A14] dark:text-white shadow-xs"
+                  : "text-neutral-500 hover:text-[#0B0A14] dark:hover:text-white"
               }`}
               title="Grid View"
             >
@@ -446,7 +446,7 @@ export default function AdminBrandsPage() {
             onClick={() => setIsCompact(!isCompact)}
             className={`px-2.5 py-1.5 rounded-lg border text-[11px] font-semibold transition-all flex items-center gap-1 cursor-pointer ${
               isCompact
-                ? "bg-[#FFD21F]/15 text-[#0A0A0E] dark:text-[#FFD21F] border-[#FFD21F]/40"
+                ? "bg-primary/15 text-[#0B0A14] dark:text-accent border-primary/40"
                 : "bg-black/5 dark:bg-white/5 text-neutral-600 dark:text-neutral-400 border-black/10 dark:border-white/10"
             }`}
             title="Toggle compact row spacing"
@@ -460,7 +460,7 @@ export default function AdminBrandsPage() {
       {/* 4. Main Brands List / Grid */}
       {loading ? (
         <div className="rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-12 text-center shadow-xs">
-          <div className="w-8 h-8 rounded-full border-2 border-[#FFD21F] border-t-transparent animate-spin mx-auto mb-3" />
+          <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin mx-auto mb-3" />
           <p className="text-xs font-mono text-[#5A5A68] dark:text-[#9A9AA6]">Loading corporate brand directory...</p>
         </div>
       ) : filteredBrands.length === 0 ? (
@@ -468,7 +468,7 @@ export default function AdminBrandsPage() {
           <div className="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-neutral-400 flex items-center justify-center mx-auto">
             <Building2 className="w-5 h-5" />
           </div>
-          <h3 className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">No Brands Match Criteria</h3>
+          <h3 className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">No Brands Match Criteria</h3>
           <p className="text-[11px] text-[#5A5A68] dark:text-[#9A9AA6] max-w-sm mx-auto">
             Try adjusting your search query or switching to &ldquo;All Accounts&rdquo;.
           </p>
@@ -508,7 +508,7 @@ export default function AdminBrandsPage() {
                         </div>
                         <div className="min-w-0">
                           <div className="flex items-center gap-1.5">
-                            <h3 className="font-bold text-sm text-[#0A0A0E] dark:text-white font-display truncate">
+                            <h3 className="font-bold text-sm text-[#0B0A14] dark:text-white font-display truncate">
                               {b.companyName}
                             </h3>
                             {b.verified && (
@@ -550,13 +550,13 @@ export default function AdminBrandsPage() {
                     <div className="grid grid-cols-3 gap-2 pt-1 font-mono text-center">
                       <div className="p-1.5 rounded-lg bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5">
                         <div className="text-[9px] uppercase text-neutral-400">Deployed</div>
-                        <div className="text-xs font-black text-[#0A0A0E] dark:text-white truncate">
+                        <div className="text-xs font-black text-[#0B0A14] dark:text-white truncate">
                           {format(b.totalSpent || 50000, "USD")}
                         </div>
                       </div>
                       <div className="p-1.5 rounded-lg bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5">
                         <div className="text-[9px] uppercase text-neutral-400">Briefs</div>
-                        <div className="text-xs font-black text-[#0A0A0E] dark:text-white">
+                        <div className="text-xs font-black text-[#0B0A14] dark:text-white">
                           {brandCamps.length} Active
                         </div>
                       </div>
@@ -575,8 +575,8 @@ export default function AdminBrandsPage() {
                         disabled={updatingId === b.id}
                         className={`flex-1 py-1.5 rounded-lg text-xs font-bold transition-all border cursor-pointer ${
                           b.verified
-                            ? "bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0A0A0E] dark:text-white border-black/10 dark:border-white/10"
-                            : "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:brightness-105 text-[#0A0A0E] border-black/15 shadow-xs"
+                            ? "bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0B0A14] dark:text-white border-black/10 dark:border-white/10"
+                            : "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:brightness-105 text-[#0B0A14] border-black/15 shadow-xs"
                         }`}
                       >
                         {updatingId === b.id ? "Updating..." : b.verified ? "Revoke Partner" : "Approve Partner"}
@@ -596,7 +596,7 @@ export default function AdminBrandsPage() {
                   {isExpanded && (
                     <div className="p-4 bg-[#FAF9F5] dark:bg-[#14141E] border-t border-black/8 dark:border-white/10 space-y-3">
                       <div className="flex items-center justify-between gap-2">
-                        <div className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                        <div className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
                           {b.companyName} File
                         </div>
                         <div className="flex items-center gap-1.5">
@@ -605,7 +605,7 @@ export default function AdminBrandsPage() {
                               href={b.websiteUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="p-1 rounded-md bg-white dark:bg-[#1E1E2C] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white"
+                              className="p-1 rounded-md bg-white dark:bg-[#1E1E2C] border border-black/10 dark:border-white/10 text-[#0B0A14] dark:text-white"
                               title="Website"
                             >
                               <ExternalLink className="w-3.5 h-3.5" />
@@ -613,7 +613,7 @@ export default function AdminBrandsPage() {
                           )}
                           <Link
                             href={`/brands/${b.id}`}
-                            className="px-2 py-1 rounded-md text-[10px] font-bold bg-[#FFD21F] text-[#0A0A0E] border border-black/15 flex items-center gap-1 shadow-xs"
+                            className="px-2 py-1 rounded-md text-[10px] font-bold bg-primary text-[#0B0A14] border border-black/15 flex items-center gap-1 shadow-xs"
                           >
                             <span>Profile</span>
                             <ArrowUpRight className="w-3 h-3" />
@@ -623,7 +623,7 @@ export default function AdminBrandsPage() {
 
                       {/* Escrow Underwriting Standing */}
                       <div className="p-3 rounded-xl bg-white dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-1.5 text-[11px] font-mono">
-                        <div className="flex items-center gap-1.5 text-xs font-bold font-display text-[#0A0A0E] dark:text-white pb-1">
+                        <div className="flex items-center gap-1.5 text-xs font-bold font-display text-[#0B0A14] dark:text-white pb-1">
                           <Lock className="w-3.5 h-3.5 text-emerald-500" />
                           <span>Escrow Solvency Standing</span>
                         </div>
@@ -633,7 +633,7 @@ export default function AdminBrandsPage() {
                         </div>
                         <div className="flex justify-between text-neutral-500">
                           <span>Disputes:</span>
-                          <span className="font-bold text-[#0A0A0E] dark:text-white">0.00%</span>
+                          <span className="font-bold text-[#0B0A14] dark:text-white">0.00%</span>
                         </div>
                         <div className="flex justify-between text-neutral-500">
                           <span>SLA Approvals:</span>
@@ -643,7 +643,7 @@ export default function AdminBrandsPage() {
 
                       {/* Primary Contact */}
                       <div className="p-3 rounded-xl bg-white dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-1 text-[11px] font-mono">
-                        <div className="flex items-center gap-1.5 text-xs font-bold font-display text-[#0A0A0E] dark:text-white pb-1">
+                        <div className="flex items-center gap-1.5 text-xs font-bold font-display text-[#0B0A14] dark:text-white pb-1">
                           <Mail className="w-3.5 h-3.5 text-cyan-500" />
                           <span>Primary Contact</span>
                         </div>
@@ -655,15 +655,15 @@ export default function AdminBrandsPage() {
                       {/* Active Briefs list */}
                       {brandCamps.length > 0 && (
                         <div className="p-3 rounded-xl bg-white dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-1.5">
-                          <div className="text-xs font-bold font-display text-[#0A0A0E] dark:text-white flex items-center justify-between">
+                          <div className="text-xs font-bold font-display text-[#0B0A14] dark:text-white flex items-center justify-between">
                             <span>Live Briefs ({brandCamps.length})</span>
-                            <Link href="/admin/campaigns" className="text-[10px] text-[#FFD21F] font-mono hover:underline">
+                            <Link href="/admin/campaigns" className="text-[10px] text-primary font-mono hover:underline">
                               All
                             </Link>
                           </div>
                           {brandCamps.map((camp) => (
                             <div key={camp.id} className="p-1.5 rounded-lg bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 flex items-center justify-between gap-2 text-[10px]">
-                              <span className="font-medium text-[#0A0A0E] dark:text-white truncate">
+                              <span className="font-medium text-[#0B0A14] dark:text-white truncate">
                                 {camp.title}
                               </span>
                               <span className="font-mono font-bold text-neutral-500 shrink-0">
@@ -706,7 +706,7 @@ export default function AdminBrandsPage() {
                         <tr
                           onClick={() => setExpandedId(isExpanded ? null : b.id)}
                           className={`hover:bg-[#F8F8FA] dark:hover:bg-[#181824] transition-colors cursor-pointer ${
-                            isExpanded ? "bg-[#FFFDF5] dark:bg-[#191924]" : ""
+                            isExpanded ? "bg-primary/5 dark:bg-[#191924]" : ""
                           }`}
                         >
                           {/* Company Logo & Name */}
@@ -726,7 +726,7 @@ export default function AdminBrandsPage() {
                               </div>
                               <div>
                                 <div className="flex items-center gap-1.5">
-                                  <h3 className="font-bold text-xs text-[#0A0A0E] dark:text-white font-display">
+                                  <h3 className="font-bold text-xs text-[#0B0A14] dark:text-white font-display">
                                     {b.companyName}
                                   </h3>
                                   {b.verified && (
@@ -763,14 +763,14 @@ export default function AdminBrandsPage() {
 
                           {/* Campaigns count */}
                           <td className={`${isCompact ? "py-2.5" : "py-3.5"} px-4`}>
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-[#FFD21F]/15 text-[#0A0A0E] dark:text-[#FFD21F] border border-[#FFD21F]/30">
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-primary/15 text-[#0B0A14] dark:text-accent border border-primary/30">
                               <Layers className="w-3 h-3" />
                               <span>{brandCamps.length} Briefs</span>
                             </span>
                           </td>
 
                           {/* Capital Invested */}
-                          <td className={`${isCompact ? "py-2.5" : "py-3.5"} px-4 font-mono text-xs font-black text-[#0A0A0E] dark:text-white`}>
+                          <td className={`${isCompact ? "py-2.5" : "py-3.5"} px-4 font-mono text-xs font-black text-[#0B0A14] dark:text-white`}>
                             {format(b.totalSpent || 50000, "USD")}
                           </td>
 
@@ -802,8 +802,8 @@ export default function AdminBrandsPage() {
                                 disabled={updatingId === b.id}
                                 className={`px-3 py-1 rounded-md text-[10px] font-bold transition-all border cursor-pointer ${
                                   b.verified
-                                    ? "bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0A0A0E] dark:text-white border-black/10 dark:border-white/10"
-                                    : "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:brightness-105 text-[#0A0A0E] border-black/15 shadow-xs"
+                                    ? "bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0B0A14] dark:text-white border-black/10 dark:border-white/10"
+                                    : "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:brightness-105 text-[#0B0A14] border-black/15 shadow-xs"
                                 }`}
                               >
                                 {updatingId === b.id ? "Updating..." : b.verified ? "Revoke Partner" : "Approve Partner"}
@@ -829,13 +829,13 @@ export default function AdminBrandsPage() {
                                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-black/5 dark:border-white/5">
                                   <div className="space-y-1">
                                     <div className="flex items-center gap-2">
-                                      <h4 className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                                      <h4 className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
                                         {b.companyName} Enterprise File
                                       </h4>
                                       <span className="text-[10px] font-mono text-neutral-400">ID: {b.id}</span>
                                       <button
                                         onClick={(e) => handleCopy(b.id, e)}
-                                        className="text-neutral-400 hover:text-[#0A0A0E] dark:hover:text-white"
+                                        className="text-neutral-400 hover:text-[#0B0A14] dark:hover:text-white"
                                         title="Copy ID"
                                       >
                                         {copiedId === b.id ? <Check className="w-3 h-3 text-emerald-500" /> : <Copy className="w-3 h-3" />}
@@ -852,7 +852,7 @@ export default function AdminBrandsPage() {
                                         href={b.websiteUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="px-2.5 py-1 rounded-md text-[10px] font-bold bg-white dark:bg-[#1E1E2C] border border-black/10 dark:border-white/10 hover:border-[#FFD21F] flex items-center gap-1 text-[#0A0A0E] dark:text-white transition-all shadow-xs"
+                                        className="px-2.5 py-1 rounded-md text-[10px] font-bold bg-white dark:bg-[#1E1E2C] border border-black/10 dark:border-white/10 hover:border-primary flex items-center gap-1 text-[#0B0A14] dark:text-white transition-all shadow-xs"
                                       >
                                         <span>Official Website</span>
                                         <ExternalLink className="w-3 h-3" />
@@ -860,7 +860,7 @@ export default function AdminBrandsPage() {
                                     )}
                                     <Link
                                       href={`/brands/${b.id}`}
-                                      className="px-2.5 py-1 rounded-md text-[10px] font-bold bg-[#FFD21F] text-[#0A0A0E] border border-black/15 hover:brightness-105 flex items-center gap-1 transition-all shadow-xs"
+                                      className="px-2.5 py-1 rounded-md text-[10px] font-bold bg-primary text-[#0B0A14] border border-black/15 hover:brightness-105 flex items-center gap-1 transition-all shadow-xs"
                                     >
                                       <span>Public Profile</span>
                                       <ArrowUpRight className="w-3 h-3" />
@@ -872,7 +872,7 @@ export default function AdminBrandsPage() {
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                                   {/* Underwriting & Solvency */}
                                   <div className="p-3 rounded-xl bg-white dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
-                                    <div className="flex items-center gap-1.5 text-xs font-bold font-display text-[#0A0A0E] dark:text-white">
+                                    <div className="flex items-center gap-1.5 text-xs font-bold font-display text-[#0B0A14] dark:text-white">
                                       <Lock className="w-3.5 h-3.5 text-emerald-500" />
                                       <span>Escrow Underwriting Standing</span>
                                     </div>
@@ -883,7 +883,7 @@ export default function AdminBrandsPage() {
                                       </div>
                                       <div className="flex justify-between text-neutral-500">
                                         <span>Dispute Rate:</span>
-                                        <span className="font-bold text-[#0A0A0E] dark:text-white">0.00%</span>
+                                        <span className="font-bold text-[#0B0A14] dark:text-white">0.00%</span>
                                       </div>
                                       <div className="flex justify-between text-neutral-500">
                                         <span>Review SLA Adherence:</span>
@@ -894,24 +894,24 @@ export default function AdminBrandsPage() {
 
                                   {/* Contact & Workspace */}
                                   <div className="p-3 rounded-xl bg-white dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
-                                    <div className="flex items-center gap-1.5 text-xs font-bold font-display text-[#0A0A0E] dark:text-white">
+                                    <div className="flex items-center gap-1.5 text-xs font-bold font-display text-[#0B0A14] dark:text-white">
                                       <Mail className="w-3.5 h-3.5 text-cyan-500" />
                                       <span>Primary Authorized Contact</span>
                                     </div>
                                     <div className="space-y-1.5 text-[11px] font-mono">
                                       <div className="flex justify-between text-neutral-500">
                                         <span>Partnerships Lead:</span>
-                                        <span className="font-bold text-[#0A0A0E] dark:text-white truncate max-w-[130px]">
+                                        <span className="font-bold text-[#0B0A14] dark:text-white truncate max-w-[130px]">
                                           {b.email || (b.companyName === "Snitch" ? "influencer.reach@snitch.co.in" : "partnerships@thewholetruthfoods.com")}
                                         </span>
                                       </div>
                                       <div className="flex justify-between text-neutral-500">
                                         <span>Headquarters:</span>
-                                        <span className="font-bold text-[#0A0A0E] dark:text-white">{b.location}</span>
+                                        <span className="font-bold text-[#0B0A14] dark:text-white">{b.location}</span>
                                       </div>
                                       <div className="flex justify-between text-neutral-500">
                                         <span>Platform Joined:</span>
-                                        <span className="font-bold text-[#0A0A0E] dark:text-white">
+                                        <span className="font-bold text-[#0B0A14] dark:text-white">
                                           {new Date(b.createdAt || "2026-01-01").toLocaleDateString()}
                                         </span>
                                       </div>
@@ -920,12 +920,12 @@ export default function AdminBrandsPage() {
 
                                   {/* Active Campaigns List */}
                                   <div className="p-3 rounded-xl bg-white dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
-                                    <div className="flex items-center justify-between text-xs font-bold font-display text-[#0A0A0E] dark:text-white">
+                                    <div className="flex items-center justify-between text-xs font-bold font-display text-[#0B0A14] dark:text-white">
                                       <div className="flex items-center gap-1.5">
                                         <Briefcase className="w-3.5 h-3.5 text-amber-500" />
                                         <span>Live Sponsorship Briefs ({brandCamps.length})</span>
                                       </div>
-                                      <Link href="/admin/campaigns" className="text-[10px] text-[#FFD21F] font-mono hover:underline">
+                                      <Link href="/admin/campaigns" className="text-[10px] text-primary font-mono hover:underline">
                                         All briefs
                                       </Link>
                                     </div>
@@ -936,7 +936,7 @@ export default function AdminBrandsPage() {
                                       <div className="space-y-1.5 text-[11px] font-sans">
                                         {brandCamps.map((camp) => (
                                           <div key={camp.id} className="p-1.5 rounded-lg bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 flex items-center justify-between gap-2">
-                                            <span className="font-medium text-[#0A0A0E] dark:text-white truncate text-[10px] flex-1">
+                                            <span className="font-medium text-[#0B0A14] dark:text-white truncate text-[10px] flex-1">
                                               {camp.title}
                                             </span>
                                             <span className="font-mono text-[10px] font-bold text-neutral-500 shrink-0">
@@ -969,7 +969,7 @@ export default function AdminBrandsPage() {
             return (
               <div
                 key={b.id}
-                className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs hover:border-[#FFD21F]/60 transition-all flex flex-col justify-between space-y-4"
+                className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs hover:border-primary/60 transition-all flex flex-col justify-between space-y-4"
               >
                 <div>
                   {/* Card Header */}
@@ -989,7 +989,7 @@ export default function AdminBrandsPage() {
                       </div>
                       <div>
                         <div className="flex items-center gap-1.5">
-                          <h3 className="font-black text-sm text-[#0A0A0E] dark:text-white font-display">
+                          <h3 className="font-black text-sm text-[#0B0A14] dark:text-white font-display">
                             {b.companyName}
                           </h3>
                           {b.verified && <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />}
@@ -1019,7 +1019,7 @@ export default function AdminBrandsPage() {
                   <div className="grid grid-cols-3 gap-2 mt-4 p-2.5 rounded-xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 text-center font-mono">
                     <div>
                       <span className="text-[9px] uppercase tracking-wider text-neutral-400 block">Invested</span>
-                      <span className="text-xs font-black text-[#0A0A0E] dark:text-white">
+                      <span className="text-xs font-black text-[#0B0A14] dark:text-white">
                         {format(b.totalSpent || 50000, "USD")}
                       </span>
                     </div>
@@ -1048,7 +1048,7 @@ export default function AdminBrandsPage() {
                   <div className="flex items-center gap-2">
                     <Link
                       href={`/brands/${b.id}`}
-                      className="px-2.5 py-1 text-[11px] font-bold rounded-md bg-black/5 dark:bg-white/10 hover:bg-black/10 text-[#0A0A0E] dark:text-white transition-all"
+                      className="px-2.5 py-1 text-[11px] font-bold rounded-md bg-black/5 dark:bg-white/10 hover:bg-black/10 text-[#0B0A14] dark:text-white transition-all"
                     >
                       Profile
                     </Link>
@@ -1058,7 +1058,7 @@ export default function AdminBrandsPage() {
                       className={`px-3 py-1 rounded-md text-[11px] font-bold transition-all border cursor-pointer ${
                         b.verified
                           ? "bg-rose-500/10 hover:bg-rose-500/20 text-rose-700 dark:text-rose-400 border-rose-500/20"
-                          : "bg-[#FFD21F] hover:brightness-105 text-[#0A0A0E] border-black/15 shadow-xs"
+                          : "bg-primary hover:brightness-105 text-[#0B0A14] border-black/15 shadow-xs"
                       }`}
                     >
                       {updatingId === b.id ? "Updating..." : b.verified ? "Revoke" : "Approve Partner"}

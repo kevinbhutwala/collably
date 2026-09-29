@@ -46,13 +46,13 @@ export function CreativeLoader({
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 1.2, repeat: Infinity, ease: "linear" }}
-            className="w-full h-full rounded-full border-2 border-[#FFD21F]/80 border-t-transparent"
+            className="w-full h-full rounded-full border-2 border-primary/80 border-t-transparent"
           />
           {/* Center Deal Node */}
-          <span className="w-1 h-1 rounded-full bg-[#FFD21F] shadow-[0_0_4px_#FFD21F]" />
+          <span className="w-1 h-1 rounded-full bg-primary shadow-[0_0_4px_#7C3AED]" />
         </div>
         {label && (
-          <span className="text-xs font-mono font-medium text-[#0A0A0E] dark:text-[#F4F4F8] tracking-tight">
+          <span className="text-xs font-mono font-medium text-[#0B0A14] dark:text-[#F4F4F8] tracking-tight">
             {label}
           </span>
         )}
@@ -89,7 +89,7 @@ export function CreativeLoader({
               repeat: Infinity,
               ease: [0.65, 0, 0.35, 1],
             }}
-            className="w-1/3 h-full bg-gradient-to-r from-transparent via-[#FFD21F] to-transparent shadow-[0_0_8px_#FFD21F]"
+            className="w-1/3 h-full bg-gradient-to-r from-transparent via-primary to-transparent shadow-[0_0_8px_#7C3AED]"
           />
         </div>
       )}
@@ -107,17 +107,17 @@ export function CreativeLoader({
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute w-28 h-28 rounded-full bg-gradient-to-tr from-[#FFD21F]/25 to-transparent blur-xl pointer-events-none"
+          className="absolute w-28 h-28 rounded-full bg-gradient-to-tr from-primary/25 to-transparent blur-xl pointer-events-none"
         />
 
         {/* Delicate thin orbit ring */}
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-          className="absolute -inset-2 rounded-full border border-dashed border-[#FFD21F]/40 pointer-events-none"
+          className="absolute -inset-2 rounded-full border border-dashed border-primary/40 pointer-events-none"
         >
           {/* Micro satellite dot */}
-          <div className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] shadow-[0_0_6px_#FFD21F] absolute -top-0.5 left-1/2 -translate-x-1/2" />
+          <div className="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_6px_#7C3AED] absolute -top-0.5 left-1/2 -translate-x-1/2" />
         </motion.div>
 
         {/* Compact Small Obsidian Emblem Tile (44px) */}
@@ -125,9 +125,9 @@ export function CreativeLoader({
           animate={{
             scale: [1, 1.04, 1],
             boxShadow: [
-              "0 4px 14px -2px rgba(255, 210, 31, 0.25)",
-              "0 6px 20px -2px rgba(255, 210, 31, 0.45)",
-              "0 4px 14px -2px rgba(255, 210, 31, 0.25)",
+              "0 4px 14px -2px rgba(var(--theme-primary-rgb), 0.25)",
+              "0 6px 20px -2px rgba(var(--theme-primary-rgb), 0.45)",
+              "0 4px 14px -2px rgba(var(--theme-primary-rgb), 0.25)",
             ],
           }}
           transition={{
@@ -135,7 +135,7 @@ export function CreativeLoader({
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className={`relative z-10 flex items-center justify-center bg-gradient-to-b from-[#181824] via-[#101018] to-[#0A0A0E] border border-[#FFD21F]/50 shadow-lg ${
+          className={`relative z-10 flex items-center justify-center bg-gradient-to-b from-[#181824] via-[#101018] to-[#0B0A14] border border-primary/50 shadow-lg ${
             iconDimensions[size] || iconDimensions.md
           }`}
         >
@@ -152,7 +152,7 @@ export function CreativeLoader({
             <defs>
               <linearGradient id="creativeLoaderGoldSm" x1="12" y1="10" x2="36" y2="38" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stopColor="#FFF275" />
-                <stop offset="50%" stopColor="#FFD21F" />
+                <stop offset="50%" stopColor="#7C3AED" />
                 <stop offset="100%" stopColor="#FF9800" />
               </linearGradient>
 
@@ -163,7 +163,7 @@ export function CreativeLoader({
 
               <radialGradient id="creativeCorePulseSm" cx="50%" cy="50%" r="50%">
                 <stop offset="0%" stopColor="#FFE066" />
-                <stop offset="60%" stopColor="#FFD21F" />
+                <stop offset="60%" stopColor="#7C3AED" />
                 <stop offset="100%" stopColor="#E6A800" />
               </radialGradient>
             </defs>
@@ -215,9 +215,9 @@ export function CreativeLoader({
               animate={{
                 scale: [1, 1.3, 1],
                 filter: [
-                  "drop-shadow(0 0 2px #FFD21F)",
-                  "drop-shadow(0 0 5px #FFD21F)",
-                  "drop-shadow(0 0 2px #FFD21F)",
+                  "drop-shadow(0 0 2px #7C3AED)",
+                  "drop-shadow(0 0 5px #7C3AED)",
+                  "drop-shadow(0 0 2px #7C3AED)",
                 ],
               }}
               transition={{
@@ -226,7 +226,7 @@ export function CreativeLoader({
                 ease: "easeInOut",
               }}
             />
-            <circle cx="24.5" cy="27.5" r="1.4" fill="#0A0A0E" />
+            <circle cx="24.5" cy="27.5" r="1.4" fill="#0B0A14" />
           </svg>
         </motion.div>
       </div>
@@ -247,12 +247,12 @@ export function CreativeLoader({
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="w-0.5 rounded-full bg-[#FFD21F]"
+                className="w-0.5 rounded-full bg-primary"
               />
             ))}
           </div>
 
-          <span className="text-[10px] font-mono font-bold tracking-wider uppercase text-[#0A0A0E] dark:text-white">
+          <span className="text-[10px] font-mono font-bold tracking-wider uppercase text-[#0B0A14] dark:text-white">
             {label || "ABEYCOLLAB"}
           </span>
         </div>
@@ -285,7 +285,7 @@ export function CreativeLoader({
                 repeat: Infinity,
                 ease: [0.4, 0, 0.2, 1],
               }}
-              className="w-1/2 h-full rounded-full bg-gradient-to-r from-transparent via-[#FFD21F] to-transparent shadow-[0_0_6px_#FFD21F]"
+              className="w-1/2 h-full rounded-full bg-gradient-to-r from-transparent via-primary to-transparent shadow-[0_0_6px_#7C3AED]"
             />
           </div>
         )}

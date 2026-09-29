@@ -97,7 +97,7 @@ export function DeliverableReviewCard({
       particleCount: 70,
       spread: 60,
       origin: { y: 0.6 },
-      colors: ["#FFD21F", "#0A0A0E", "#087F5B", "#FFE052"],
+      colors: ["#7C3AED", "#0B0A14", "#087F5B", "#C084FC"],
     });
   };
 
@@ -128,17 +128,17 @@ export function DeliverableReviewCard({
   const platformName = getPlatformLabel(assetUrl);
 
   return (
-    <div className="w-full max-w-4xl mx-auto rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.06)] overflow-hidden text-[#0A0A0E] dark:text-[#F4F4F8]">
+    <div className="w-full max-w-4xl mx-auto rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.06)] overflow-hidden text-[#0B0A14] dark:text-[#F4F4F8]">
       {/* Top Banner with Escrow Guarantee & Status */}
       <div className="bg-[#FAF9F5] dark:bg-[#181824] px-6 py-4 border-b border-black/8 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="flex items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/50 text-xs font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F]">
-            <ShieldCheck className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/20 border border-primary/50 text-xs font-mono font-bold text-[#0B0A14] dark:text-accent">
+            <ShieldCheck className="w-4 h-4 text-[#0B0A14] dark:text-accent" />
             100% Pre-Funded Escrow
           </span>
           <span className="text-[#8A8A9A]">•</span>
           <span className="text-xs font-mono text-[#6A6A78] dark:text-[#A0A0B4]">
-            Payout: <strong className="text-[#0A0A0E] dark:text-white font-sans">{formatCurrency(payoutAmount, currency)}</strong>
+            Payout: <strong className="text-[#0B0A14] dark:text-white font-sans">{formatCurrency(payoutAmount, currency)}</strong>
           </span>
         </div>
 
@@ -155,7 +155,7 @@ export function DeliverableReviewCard({
               REVISION REQUESTED
             </span>
           ) : (
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/60 text-[#0A0A0E] dark:text-[#FFD21F] text-xs font-mono font-bold animate-pulse">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/20 border border-primary/60 text-[#0B0A14] dark:text-accent text-xs font-mono font-bold animate-pulse">
               <Clock className="w-3.5 h-3.5" />
               SUBMITTED FOR REVIEW
             </span>
@@ -172,11 +172,11 @@ export function DeliverableReviewCard({
                 {deliverableType}
               </span>
             </div>
-            <h3 className="text-xl sm:text-2xl font-black text-[#0A0A0E] dark:text-white font-display tracking-tight">
+            <h3 className="text-xl sm:text-2xl font-black text-[#0B0A14] dark:text-white font-display tracking-tight">
               {title}
             </h3>
             <p className="text-xs text-[#5A5A68] dark:text-[#9A9AB0] flex items-center gap-2 pt-1">
-              <span>Submitted by <strong className="text-[#0A0A0E] dark:text-white">{creatorName}</strong> (@{creatorHandle})</span>
+              <span>Submitted by <strong className="text-[#0B0A14] dark:text-white">{creatorName}</strong> (@{creatorHandle})</span>
               <span className="text-[#8A8A9A]">•</span>
               <span>{submittedAt ? new Date(submittedAt).toLocaleDateString() : "Draft v1"}</span>
             </p>
@@ -189,7 +189,7 @@ export function DeliverableReviewCard({
                 <Clock className="w-4 h-4 animate-spin-slow" />
                 <span>120h Review SLA</span>
               </div>
-              <div className="text-lg font-black font-mono text-[#0A0A0E] dark:text-white">
+              <div className="text-lg font-black font-mono text-[#0B0A14] dark:text-white">
                 {timeLeft.hours}h {timeLeft.minutes.toString().padStart(2, "0")}m {timeLeft.seconds.toString().padStart(2, "0")}s
               </div>
               <p className="text-[10px] text-[#6A6A78] dark:text-[#9A9AB0]">
@@ -204,10 +204,10 @@ export function DeliverableReviewCard({
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="space-y-1">
               <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-[#6A6A78] dark:text-[#A0A0B4] flex items-center gap-1.5">
-                <FileCheck2 className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F]" />
+                <FileCheck2 className="w-3.5 h-3.5 text-[#0B0A14] dark:text-accent" />
                 Deliverable External Source ({platformName})
               </span>
-              <p className="text-xs text-[#0A0A0E] dark:text-white font-mono break-all font-semibold">
+              <p className="text-xs text-[#0B0A14] dark:text-white font-mono break-all font-semibold">
                 {assetUrl}
               </p>
             </div>
@@ -217,15 +217,15 @@ export function DeliverableReviewCard({
               href={assetUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-extrabold shadow-sm transition-all border border-black/10 w-full sm:w-auto shrink-0 group"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-extrabold shadow-sm transition-all border border-black/10 w-full sm:w-auto shrink-0 group"
             >
               <span>Open in {platformName} / New Tab</span>
-              <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[#0A0A0E]" />
+              <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[#0B0A14]" />
             </a>
           </div>
 
           <div className="flex items-center gap-2 text-[11px] text-[#6A6A78] dark:text-[#8E8EA4] bg-white dark:bg-[#12121A] p-3 rounded-xl border border-black/5 dark:border-white/5">
-            <Info className="w-4 h-4 shrink-0 text-[#FFD21F]" />
+            <Info className="w-4 h-4 shrink-0 text-primary" />
             <span>Link sharing verified: &quot;Anyone with the link can view&quot; active. Inspect footage, high-res masters, or project timeline directly.</span>
           </div>
         </div>
@@ -234,7 +234,7 @@ export function DeliverableReviewCard({
         {notes && (
           <div className="space-y-2">
             <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#6A6A78] dark:text-[#A0A0B4] flex items-center gap-1.5">
-              <MessageSquare className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F]" />
+              <MessageSquare className="w-3.5 h-3.5 text-[#0B0A14] dark:text-accent" />
               Creator Notes &amp; Revision Details
             </h4>
             <div className="p-4 rounded-2xl bg-white dark:bg-[#181826] border border-black/8 dark:border-white/10 text-xs sm:text-sm text-[#2A2A38] dark:text-[#D4D4E0] leading-relaxed font-sans">
@@ -247,7 +247,7 @@ export function DeliverableReviewCard({
         <div className="pt-3 border-t border-black/8 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-xs text-[#6A6A78] dark:text-[#9A9AB0] flex items-center gap-2">
             <FolderLock className="w-4 h-4 text-emerald-600" />
-            <span>Protected payment of <strong className="text-[#0A0A0E] dark:text-white font-sans">{formatCurrency(payoutAmount, currency)}</strong> held safely until approved</span>
+            <span>Protected payment of <strong className="text-[#0B0A14] dark:text-white font-sans">{formatCurrency(payoutAmount, currency)}</strong> held safely until approved</span>
           </div>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
@@ -262,7 +262,7 @@ export function DeliverableReviewCard({
                   onClick={() => setIsCertificateModalOpen(true)}
                   className="px-4 py-2.5 rounded-full bg-black dark:bg-white text-white dark:text-black font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs"
                 >
-                  <FileCheck2 className="w-3.5 h-3.5 text-[#FFD21F]" />
+                  <FileCheck2 className="w-3.5 h-3.5 text-primary" />
                   <span>View Usage Agreement</span>
                 </button>
               </div>
@@ -271,7 +271,7 @@ export function DeliverableReviewCard({
                 <button
                   type="button"
                   onClick={() => setIsRevisionModalOpen(true)}
-                  className="w-full sm:w-auto px-4 py-2.5 rounded-full bg-[#F8F8FC] hover:bg-[#EFEFF6] dark:bg-white/10 dark:hover:bg-white/15 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all border border-black/10 dark:border-white/10 flex items-center justify-center gap-1.5"
+                  className="w-full sm:w-auto px-4 py-2.5 rounded-full bg-[#F8F8FC] hover:bg-[#EFEFF6] dark:bg-white/10 dark:hover:bg-white/15 text-[#0B0A14] dark:text-white font-bold text-xs transition-all border border-black/10 dark:border-white/10 flex items-center justify-center gap-1.5"
                 >
                   <AlertCircle className="w-3.5 h-3.5 text-amber-600" />
                   <span>Request Edits</span>
@@ -280,9 +280,9 @@ export function DeliverableReviewCard({
                 <button
                   type="button"
                   onClick={handleApprove}
-                  className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-black text-xs transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1.5"
+                  className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-black text-xs transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1.5"
                 >
-                  <CheckCircle2 className="w-4 h-4 text-[#0A0A0E]" />
+                  <CheckCircle2 className="w-4 h-4 text-[#0B0A14]" />
                   <span>Approve &amp; Send Payment</span>
                 </button>
               </>
@@ -298,7 +298,7 @@ export function DeliverableReviewCard({
         title="Request Deliverable Revision"
         description="Detail what changes are requested before milestone release."
       >
-        <form onSubmit={handleConfirmRevision} className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
+        <form onSubmit={handleConfirmRevision} className="space-y-4 text-[#0B0A14] dark:text-[#F4F4F8]">
           <Textarea
             label="Specific Edits or Revision Notes"
             placeholder="e.g. Please increase volume on vocal hook and emphasize the CTA link clearly..."
@@ -320,7 +320,7 @@ export function DeliverableReviewCard({
             </button>
             <button
               type="submit"
-              className="flex-1 py-2.5 rounded-full bg-black text-white hover:bg-black/90 dark:bg-[#FFD21F] dark:text-[#0A0A0E] dark:hover:bg-[#FFE052] font-bold text-xs transition-all text-center"
+              className="flex-1 py-2.5 rounded-full bg-black text-white hover:bg-black/90 dark:bg-primary dark:text-[#0B0A14] dark:hover:bg-accent font-bold text-xs transition-all text-center"
             >
               Send Revision Request to Creator
             </button>
@@ -335,7 +335,7 @@ export function DeliverableReviewCard({
         title="Raise Milestone Dispute"
         description="Freeze escrow tranche and submit case to AbeyCollab arbitration desk."
       >
-        <form onSubmit={handleConfirmDispute} className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
+        <form onSubmit={handleConfirmDispute} className="space-y-4 text-[#0B0A14] dark:text-[#F4F4F8]">
           <Textarea
             label="Reason for Formal Dispute"
             placeholder="Explain contract terms breach or unresolved deliverable failure..."
@@ -361,11 +361,11 @@ export function DeliverableReviewCard({
         title="Commercial License & Rights Assignment Certificate"
         description="Official legally-binding certificate of content ownership and commercial usage assignment."
       >
-        <div className="space-y-5 text-[#0A0A0E] dark:text-[#F4F4F8] font-sans">
+        <div className="space-y-5 text-[#0B0A14] dark:text-[#F4F4F8] font-sans">
           <div className="p-5 rounded-2xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/8 dark:border-white/10 space-y-3 font-mono text-xs">
             <div className="flex items-center justify-between pb-2 border-b border-black/10 dark:border-white/10">
               <span className="text-[#6A6A78] uppercase text-[10px]">Certificate ID</span>
-              <span className="font-bold text-[#0A0A0E] dark:text-white">CERT-ABEY-{Date.now().toString().slice(-8)}</span>
+              <span className="font-bold text-[#0B0A14] dark:text-white">CERT-ABEY-{Date.now().toString().slice(-8)}</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-[#6A6A78]">Licensed Deliverable</span>
@@ -404,7 +404,7 @@ export function DeliverableReviewCard({
               onClick={() => window.print()}
               className="px-4 py-2 rounded-xl bg-black dark:bg-white text-white dark:text-black text-xs font-semibold hover:opacity-90 transition-all flex items-center gap-1.5 shadow-xs"
             >
-              <FileCheck2 className="w-3.5 h-3.5 text-[#FFD21F]" />
+              <FileCheck2 className="w-3.5 h-3.5 text-primary" />
               Print / Save Certificate
             </button>
           </div>

@@ -116,7 +116,7 @@ export function PlanUpgradeModal() {
           contact: "9999999999",
         },
         theme: {
-          color: "#FFD21F",
+          color: "#7C3AED",
         },
         modal: {
           ondismiss: function () {
@@ -196,7 +196,7 @@ export function PlanUpgradeModal() {
       title="Choose Your Workspace Plan"
       maxWidth="5xl"
     >
-      <div className="space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] select-none p-1">
+      <div className="space-y-6 text-[#0B0A14] dark:text-[#F4F4F8] select-none p-1">
         {/* Header & Annual Toggle */}
         <div className="text-center space-y-3 max-w-xl mx-auto">
           <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4] font-sans">
@@ -209,8 +209,8 @@ export function PlanUpgradeModal() {
                 onClick={() => setIsAnnual(false)}
                 className={`px-4 py-1.5 rounded-full transition-all font-bold ${
                   !isAnnual
-                    ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs"
-                    : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
+                    ? "bg-primary text-[#0B0A14] shadow-xs"
+                    : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
                 }`}
               >
                 Monthly Billing
@@ -219,8 +219,8 @@ export function PlanUpgradeModal() {
                 onClick={() => setIsAnnual(true)}
                 className={`px-4 py-1.5 rounded-full transition-all font-bold flex items-center gap-1.5 ${
                   isAnnual
-                    ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs"
-                    : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
+                    ? "bg-primary text-[#0B0A14] shadow-xs"
+                    : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
                 }`}
               >
                 <span>Annual Billing</span>
@@ -230,7 +230,7 @@ export function PlanUpgradeModal() {
               </button>
             </div>
 
-            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-mono font-bold bg-[#F4F4F8] dark:bg-[#14141E] border border-black/8 dark:border-white/10 text-[#0A0A0E] dark:text-white shadow-xs">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-mono font-bold bg-[#F4F4F8] dark:bg-[#14141E] border border-black/8 dark:border-white/10 text-[#0B0A14] dark:text-white shadow-xs">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span>Direct INR (₹) Checkout</span>
             </div>
@@ -248,8 +248,8 @@ export function PlanUpgradeModal() {
                 onClick={() => setSelectedMobilePlan(p.id)}
                 className={`flex-1 py-2 px-1.5 rounded-xl text-xs font-bold transition-all text-center flex items-center justify-center gap-1 ${
                   isSelected
-                    ? "bg-white dark:bg-[#242436] text-[#0A0A0E] dark:text-white shadow-xs font-extrabold"
-                    : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E]"
+                    ? "bg-white dark:bg-[#242436] text-[#0B0A14] dark:text-white shadow-xs font-extrabold"
+                    : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14]"
                 }`}
               >
                 <span className="truncate">{p.name.replace("Creator ", "").replace("Brand ", "")}</span>
@@ -275,7 +275,7 @@ export function PlanUpgradeModal() {
                   isCurrent
                     ? "bg-white dark:bg-[#151522] border-2 border-emerald-500/60 dark:border-emerald-500/50 shadow-md ring-1 ring-emerald-500/20"
                     : p.highlight
-                    ? "bg-gradient-to-b from-[#FFFDF5] to-white dark:from-[#1A1A28] dark:to-[#12121C] border-2 border-[#FFD21F] shadow-[0_8px_30px_rgba(255,210,31,0.22)]"
+                    ? "bg-gradient-to-b from-primary/5 to-white dark:from-[#1A1A28] dark:to-[#12121C] border-2 border-primary shadow-[0_8px_30px_rgba(var(--theme-primary-rgb),0.22)]"
                     : "bg-white dark:bg-[#14141E] border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 shadow-xs"
                 }`}
               >
@@ -294,15 +294,15 @@ export function PlanUpgradeModal() {
                     )}
 
                     {p.highlight && (
-                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] font-mono font-extrabold text-[10px] tracking-wider uppercase shadow-xs">
-                        <Sparkles className="w-3 h-3 text-[#0A0A0E]" />
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary text-[#0B0A14] font-mono font-extrabold text-[10px] tracking-wider uppercase shadow-xs">
+                        <Sparkles className="w-3 h-3 text-[#0B0A14]" />
                         Popular
                       </span>
                     )}
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-bold font-display text-[#0A0A0E] dark:text-white">
+                    <h3 className="text-lg font-bold font-display text-[#0B0A14] dark:text-white">
                       {p.name}
                     </h3>
                     <p className="text-xs text-[#6A6A78] dark:text-[#9A9AA8] mt-1 font-sans leading-relaxed min-h-[36px]">
@@ -312,7 +312,7 @@ export function PlanUpgradeModal() {
 
                   <div className="pt-1 font-mono">
                     <div className="flex items-baseline gap-1">
-                      <span className="text-3xl font-black text-[#0A0A0E] dark:text-white font-display">
+                      <span className="text-3xl font-black text-[#0B0A14] dark:text-white font-display">
                         ₹{price.toLocaleString("en-IN")}
                       </span>
                       <span className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-sans">
@@ -329,8 +329,8 @@ export function PlanUpgradeModal() {
                   <div className="pt-3 border-t border-black/6 dark:border-white/10 space-y-2">
                     {p.featureBullets.map((bullet, idx) => (
                       <div key={idx} className="flex items-start gap-2 text-xs text-[#3A3A48] dark:text-[#C8C8DC]">
-                        <div className="w-4 h-4 rounded-full bg-[#FFD21F]/25 dark:bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] flex items-center justify-center shrink-0 mt-0.5">
-                          <Check className="w-3 h-3 text-[#0A0A0E] dark:text-[#FFD21F]" />
+                        <div className="w-4 h-4 rounded-full bg-primary/25 dark:bg-primary/20 text-[#0B0A14] dark:text-accent flex items-center justify-center shrink-0 mt-0.5">
+                          <Check className="w-3 h-3 text-[#0B0A14] dark:text-accent" />
                         </div>
                         <span className="leading-tight">{bullet}</span>
                       </div>
@@ -353,8 +353,8 @@ export function PlanUpgradeModal() {
                       disabled={isLoading && isProcessing}
                       className={`w-full py-3 px-3 rounded-full text-xs font-bold transition-all flex flex-wrap items-center justify-center gap-1.5 text-center leading-snug active:scale-98 ${
                         p.highlight
-                          ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] shadow-[0_4px_16px_rgba(255,210,31,0.4)] font-extrabold"
-                          : "bg-[#F4F4F8] hover:bg-[#EAEAF0] text-[#0A0A0E] border border-black/12 hover:border-black/25 font-bold shadow-xs"
+                          ? "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] font-extrabold"
+                          : "bg-[#F4F4F8] hover:bg-[#EAEAF0] text-[#0B0A14] border border-black/12 hover:border-black/25 font-bold shadow-xs"
                       }`}
                     >
                       {isProcessing ? (

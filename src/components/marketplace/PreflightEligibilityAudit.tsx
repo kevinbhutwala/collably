@@ -43,7 +43,7 @@ export function PreflightEligibilityAudit({
           <ShieldCheck className="w-6 h-6 animate-spin" />
         </div>
         <div className="space-y-1">
-          <h3 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">
+          <h3 className="text-base font-bold text-[#0B0A14] dark:text-white font-display">
             Running Pre-Flight Compatibility Audit...
           </h3>
           <p className="text-xs text-[#7A7A8A] dark:text-[#8E8EA4]">
@@ -79,7 +79,7 @@ export function PreflightEligibilityAudit({
   }[report.overallStatus];
 
   return (
-    <div className="w-full rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 overflow-hidden shadow-2xl font-sans select-none text-[#0A0A0E] dark:text-[#F4F4F8]">
+    <div className="w-full rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 overflow-hidden shadow-2xl font-sans select-none text-[#0B0A14] dark:text-[#F4F4F8]">
       {/* Top Status Accent Bar */}
       <div className={`h-1.5 w-full ${statusColors.accentBar}`} />
 
@@ -104,14 +104,14 @@ export function PreflightEligibilityAudit({
                   type="button"
                   onClick={onRefresh}
                   title="Re-run verification audit"
-                  className="p-1 rounded-lg text-[#7A7A8A] hover:text-[#0A0A0E] dark:hover:text-white transition-colors"
+                  className="p-1 rounded-lg text-[#7A7A8A] hover:text-[#0B0A14] dark:hover:text-white transition-colors"
                 >
                   <RefreshCw className="w-3.5 h-3.5" />
                 </button>
               )}
             </div>
 
-            <h3 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] dark:text-white font-display tracking-tight">
+            <h3 className="text-xl sm:text-2xl font-extrabold text-[#0B0A14] dark:text-white font-display tracking-tight">
               {report.headline}
             </h3>
             <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#8E8EA4] max-w-xl leading-relaxed">
@@ -125,7 +125,7 @@ export function PreflightEligibilityAudit({
               Fit Score
             </span>
             <div className="flex items-baseline gap-1">
-              <span className="text-2xl sm:text-3xl font-black font-mono text-[#0A0A0E] dark:text-white">
+              <span className="text-2xl sm:text-3xl font-black font-mono text-[#0B0A14] dark:text-white">
                 {report.score}
               </span>
               <span className="text-xs font-mono text-[#7A7A8A] dark:text-[#8E8EA4]">/100</span>
@@ -179,7 +179,7 @@ export function PreflightEligibilityAudit({
                       {statusIcon}
                       <div className="min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <h4 className="text-xs sm:text-sm font-bold text-[#0A0A0E] dark:text-white truncate">
+                          <h4 className="text-xs sm:text-sm font-bold text-[#0B0A14] dark:text-white truncate">
                             {check.title}
                           </h4>
                           {check.critical && check.status === "failed" && (
@@ -208,7 +208,7 @@ export function PreflightEligibilityAudit({
                       <button
                         type="button"
                         aria-label="Toggle check details"
-                        className="p-1 text-[#7A7A8A] hover:text-[#0A0A0E] dark:hover:text-white transition-colors"
+                        className="p-1 text-[#7A7A8A] hover:text-[#0B0A14] dark:hover:text-white transition-colors"
                       >
                         {isExpanded ? (
                           <ChevronUp className="w-4 h-4" />
@@ -229,7 +229,7 @@ export function PreflightEligibilityAudit({
                           {check.fixAction && (
                             <Link
                               href={check.fixAction.url}
-                              className="inline-flex items-center gap-1 font-bold text-amber-600 dark:text-[#FFD21F] hover:underline pt-0.5"
+                              className="inline-flex items-center gap-1 font-bold text-amber-600 dark:text-accent hover:underline pt-0.5"
                             >
                               <span>{check.fixAction.label}</span>
                               <ArrowRight className="w-3 h-3" />
@@ -272,7 +272,7 @@ export function PreflightEligibilityAudit({
                 <button
                   type="button"
                   onClick={onProceed}
-                  className="w-full sm:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs transition-all shadow-[0_2px_14px_rgba(255,210,31,0.4)] flex items-center justify-center gap-2 cursor-pointer active:scale-98"
+                  className="w-full sm:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-xs transition-all shadow-[0_2px_14px_rgba(var(--theme-primary-rgb),0.4)] flex items-center justify-center gap-2 cursor-pointer active:scale-98"
                 >
                   <span>{actionLabel}</span>
                   <ArrowRight className="w-3.5 h-3.5" />

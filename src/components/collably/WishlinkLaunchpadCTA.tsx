@@ -63,13 +63,13 @@ export function WishlinkLaunchpadCTA() {
               </div>
               <span className="hidden sm:inline text-black/20">•</span>
               <div className="flex items-center gap-1.5">
-                <Star className="w-4 h-4 fill-[#FFD21F] text-[#FFD21F]" />
-                <span className="font-bold text-[#0A0A0E]">4.7★ App Store</span>
+                <Star className="w-4 h-4 fill-primary text-primary" />
+                <span className="font-bold text-[#0B0A14]">4.7★ App Store</span>
               </div>
               <span className="hidden sm:inline text-black/20">•</span>
               <div className="flex items-center gap-1.5">
                 <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                <span className="font-bold text-[#0A0A0E]">₹1.4 Cr+ Paid Out</span>
+                <span className="font-bold text-[#0B0A14]">₹1.4 Cr+ Paid Out</span>
               </div>
             </div>
           </div>

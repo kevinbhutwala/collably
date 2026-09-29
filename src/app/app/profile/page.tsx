@@ -671,23 +671,23 @@ export default function ProfileEditPage() {
   // ─────────────────────────────────────────────────────────────
   if (isBrand) {
     return (
-      <div className="space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans max-w-6xl mx-auto pb-16">
+      <div className="space-y-6 text-[#0B0A14] dark:text-[#F4F4F8] select-none font-sans max-w-6xl mx-auto pb-16">
         {/* Compact Clean Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-black/8 dark:border-white/10">
           <div className="flex items-center gap-3.5">
-            <div className="w-14 h-14 rounded-2xl bg-white dark:bg-[#181826] border border-black/10 dark:border-white/10 flex items-center justify-center font-bold text-lg text-[#0A0A0E] dark:text-white shadow-xs shrink-0 overflow-hidden relative">
+            <div className="w-14 h-14 rounded-2xl bg-white dark:bg-[#181826] border border-black/10 dark:border-white/10 flex items-center justify-center font-bold text-lg text-[#0B0A14] dark:text-white shadow-xs shrink-0 overflow-hidden relative">
               {brandLogoUrl ? (
                 <SafeImage src={brandLogoUrl} alt={companyName} fill className="object-cover" />
               ) : (
-                <Building2 className="w-6 h-6 text-[#FFD21F]" />
+                <Building2 className="w-6 h-6 text-primary" />
               )}
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-xl sm:text-2xl font-black text-[#0A0A0E] dark:text-white font-display tracking-tight">
+                <h1 className="text-xl sm:text-2xl font-black text-[#0B0A14] dark:text-white font-display tracking-tight">
                   {companyName || "Your Brand"}
                 </h1>
-                <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] dark:text-yellow-400 font-mono text-[10px] font-bold">
+                <span className="px-2 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-[#0B0A14] dark:text-yellow-400 font-mono text-[10px] font-bold">
                   Verified Sponsor
                 </span>
               </div>
@@ -701,7 +701,7 @@ export default function ProfileEditPage() {
             <Link
               href="/brands"
               target="_blank"
-              className="px-4 py-2 rounded-full bg-white dark:bg-[#181824] hover:bg-[#F8F8FC] dark:hover:bg-[#202030] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-2xs"
+              className="px-4 py-2 rounded-full bg-white dark:bg-[#181824] hover:bg-[#F8F8FC] dark:hover:bg-[#202030] border border-black/10 dark:border-white/10 text-[#0B0A14] dark:text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-2xs"
             >
               <ExternalLink className="w-3.5 h-3.5" />
               <span>Browse Directory</span>
@@ -710,7 +710,7 @@ export default function ProfileEditPage() {
             <button
               onClick={() => handleSaveProfile()}
               disabled={isSaving}
-              className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs transition-all shadow-[0_4px_16px_rgba(255,210,31,0.4)] border border-black/10 flex items-center gap-1.5 active:scale-98 disabled:opacity-50 cursor-pointer"
+              className="px-6 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-xs transition-all shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10 flex items-center gap-1.5 active:scale-98 disabled:opacity-50 cursor-pointer"
             >
               {isSaving ? (
                 <>
@@ -730,8 +730,8 @@ export default function ProfileEditPage() {
         {/* Brand Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="p-6 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4">
-            <h2 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">
-              <Building2 className="w-4 h-4 text-[#FFD21F]" />
+            <h2 className="text-sm font-bold text-[#0B0A14] dark:text-white font-display flex items-center gap-2">
+              <Building2 className="w-4 h-4 text-primary" />
               <span>Company Information</span>
             </h2>
             <div className="space-y-3">
@@ -759,8 +759,8 @@ export default function ProfileEditPage() {
           </div>
 
           <div className="p-6 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4">
-            <h2 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">
-              <Globe className="w-4 h-4 text-[#FFD21F]" />
+            <h2 className="text-sm font-bold text-[#0B0A14] dark:text-white font-display flex items-center gap-2">
+              <Globe className="w-4 h-4 text-primary" />
               <span>Operations &amp; Presence</span>
             </h2>
             <div className="space-y-3">
@@ -806,13 +806,13 @@ export default function ProfileEditPage() {
   // CREATOR VIEW: Bento Grid Studio (Modern, Minimal & High-End)
   // ─────────────────────────────────────────────────────────────
   return (
-    <div className="space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans max-w-7xl mx-auto pb-20">
+    <div className="space-y-6 text-[#0B0A14] dark:text-[#F4F4F8] select-none font-sans max-w-7xl mx-auto pb-20">
       {/* ── TOP COMPACT HEADER (Clean, Minimal, High-Status) ── */}
       <div className="p-5 sm:p-6 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.03)] flex flex-col md:flex-row md:items-center justify-between gap-5">
         {/* Creator Info */}
         <div className="flex items-center gap-4">
           <div className="relative group shrink-0">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#FAF9F5] dark:bg-[#1A1A24] ring-4 ring-black/5 dark:ring-white/10 shadow-sm overflow-hidden relative flex items-center justify-center text-xl font-black text-[#0A0A0E] dark:text-white isolate">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#FAF9F5] dark:bg-[#1A1A24] ring-4 ring-black/5 dark:ring-white/10 shadow-sm overflow-hidden relative flex items-center justify-center text-xl font-black text-[#0B0A14] dark:text-white isolate">
               {avatarUrl ? (
                 <SafeImage
                   src={avatarUrl}
@@ -827,22 +827,22 @@ export default function ProfileEditPage() {
             <button
               type="button"
               onClick={() => setShowPhotoModal(true)}
-              className="absolute -bottom-1 -right-1 p-2 rounded-full bg-[#FFD21F] hover:bg-[#FFE052] text-[#0A0A0E] shadow-sm border-2 border-white dark:border-[#12121A] transition-all cursor-pointer group-hover:scale-110 active:scale-95 z-10"
+              className="absolute -bottom-1 -right-1 p-2 rounded-full bg-primary hover:bg-accent text-[#0B0A14] shadow-sm border-2 border-white dark:border-[#12121A] transition-all cursor-pointer group-hover:scale-110 active:scale-95 z-10"
               title="Change profile avatar"
             >
-              <Camera className="w-3.5 h-3.5 text-[#0A0A0E]" />
+              <Camera className="w-3.5 h-3.5 text-[#0B0A14]" />
             </button>
           </div>
 
           <div className="space-y-1">
             <div className="flex flex-wrap items-center gap-2">
-              <h1 className="text-xl sm:text-2xl font-black text-[#0A0A0E] dark:text-white font-display tracking-tight">
+              <h1 className="text-xl sm:text-2xl font-black text-[#0B0A14] dark:text-white font-display tracking-tight">
                 {fullName || "Creator"}
               </h1>
               <span className="text-xs font-mono font-bold text-[#6A6A78] dark:text-[#8E8EA4]">
                 @{handle || "handle"}
               </span>
-              <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] font-mono text-[10px] font-black uppercase tracking-wider shadow-2xs">
+              <span className="px-2.5 py-0.5 rounded-full bg-primary text-[#0B0A14] font-mono text-[10px] font-black uppercase tracking-wider shadow-2xs">
                 {tier} Tier
               </span>
               {socialAccounts.some((s) => s.verifiedBadge) && (
@@ -866,16 +866,16 @@ export default function ProfileEditPage() {
             {/* Quick Metrics Badges */}
             <div className="flex flex-wrap items-center gap-3 text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4] pt-0.5">
               <span className="flex items-center gap-1">
-                <Users className="w-3.5 h-3.5 text-[#FFD21F]" />
-                <strong className="text-[#0A0A0E] dark:text-white">
+                <Users className="w-3.5 h-3.5 text-primary" />
+                <strong className="text-[#0B0A14] dark:text-white">
                   {(totalFollowers || 0).toLocaleString()}
                 </strong>{" "}
                 reach
               </span>
               <span>•</span>
               <span className="flex items-center gap-1">
-                <Zap className="w-3.5 h-3.5 text-[#FFD21F]" />
-                <strong className="text-[#0A0A0E] dark:text-white">
+                <Zap className="w-3.5 h-3.5 text-primary" />
+                <strong className="text-[#0B0A14] dark:text-white">
                   {avgEngagement > 0 ? `${avgEngagement.toFixed(1)}%` : "0%"}
                 </strong>{" "}
                 eng
@@ -883,7 +883,7 @@ export default function ProfileEditPage() {
               <span>•</span>
               <span className="flex items-center gap-1">
                 <Coins className="w-3.5 h-3.5 text-amber-500" />
-                <strong className="text-[#0A0A0E] dark:text-white">
+                <strong className="text-[#0B0A14] dark:text-white">
                   {startingPrice > 0
                     ? `${currencySymbol}${startingPrice.toLocaleString()}`
                     : "Unset"}
@@ -914,7 +914,7 @@ export default function ProfileEditPage() {
             ) : (
               <>
                 <span className="w-2 h-2 rounded-full bg-black/30 dark:bg-white/30" />
-                <span className="font-bold text-[#0A0A0E] dark:text-white">
+                <span className="font-bold text-[#0B0A14] dark:text-white">
                   {completeness.score}% Setup
                 </span>
               </>
@@ -928,7 +928,7 @@ export default function ProfileEditPage() {
                   currentCreator?.handle || currentCreator?.id || user?.id
                 }`}
                 target="_blank"
-                className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-white dark:bg-[#181824] hover:bg-[#F8F8FC] dark:hover:bg-[#202030] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-2xs cursor-pointer"
+                className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-white dark:bg-[#181824] hover:bg-[#F8F8FC] dark:hover:bg-[#202030] border border-black/10 dark:border-white/10 text-[#0B0A14] dark:text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-2xs cursor-pointer"
               >
                 <ExternalLink className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline">Public View</span>
@@ -940,7 +940,7 @@ export default function ProfileEditPage() {
               type="button"
               onClick={() => handleSaveProfile()}
               disabled={isSaving}
-              className="px-4 sm:px-6 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs transition-all shadow-[0_4px_16px_rgba(255,210,31,0.35)] border border-black/10 flex items-center gap-1.5 active:scale-98 disabled:opacity-50 cursor-pointer"
+              className="px-4 sm:px-6 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-xs transition-all shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 flex items-center gap-1.5 active:scale-98 disabled:opacity-50 cursor-pointer"
             >
               {isSaving ? (
                 <>
@@ -989,12 +989,12 @@ export default function ProfileEditPage() {
                 )}
               </span>
 
-              <span className="text-xs font-mono font-bold text-[#0A0A0E] dark:text-white">
+              <span className="text-xs font-mono font-bold text-[#0B0A14] dark:text-white">
                 {completeness.score}% Completed
               </span>
             </div>
 
-            <h3 className="text-base sm:text-lg font-bold text-[#0A0A0E] dark:text-white font-display">
+            <h3 className="text-base sm:text-lg font-bold text-[#0B0A14] dark:text-white font-display">
               {completeness.isConfirmed
                 ? "Your creator profile is confirmed & eligible for campaign pitches"
                 : "You cannot apply for brand campaigns until your profile details are complete & channels are verified"}
@@ -1011,7 +1011,7 @@ export default function ProfileEditPage() {
               <Link href="/app/campaigns">
                 <button
                   type="button"
-                  className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all shadow-xs flex items-center gap-1.5 border border-black/10 cursor-pointer"
+                  className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-bold text-xs transition-all shadow-xs flex items-center gap-1.5 border border-black/10 cursor-pointer"
                 >
                   <Sparkles className="w-3.5 h-3.5" />
                   <span>Browse &amp; Apply to Briefs</span>
@@ -1049,7 +1049,7 @@ export default function ProfileEditPage() {
                   className={`text-xs font-bold leading-tight ${
                     check.done
                       ? "text-emerald-950 dark:text-emerald-300"
-                      : "text-[#0A0A0E] dark:text-white"
+                      : "text-[#0B0A14] dark:text-white"
                   }`}
                 >
                   {check.label}
@@ -1074,8 +1074,8 @@ export default function ProfileEditPage() {
         {/* ── BENTO CARD 1: STORY & POSITIONING (8 Cols) ── */}
         <div className="lg:col-span-8 p-4 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-5">
           <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
-            <h2 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-[#FFD21F]" />
+            <h2 className="text-sm font-bold text-[#0B0A14] dark:text-white font-display flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-primary" />
               <span>Identity &amp; Editorial Positioning</span>
             </h2>
             <span className="text-[10px] font-mono text-[#8A8A9A] dark:text-[#6A6A7E] uppercase font-bold">
@@ -1123,7 +1123,7 @@ export default function ProfileEditPage() {
           {/* Niche Categories Pill Cloud */}
           <div className="space-y-2 pt-1">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-bold text-[#0A0A0E] dark:text-[#EAEAEF] block font-display">
+              <label className="text-xs font-bold text-[#0B0A14] dark:text-[#EAEAEF] block font-display">
                 Primary Niche Category
               </label>
               {!primaryCategory && (
@@ -1142,7 +1142,7 @@ export default function ProfileEditPage() {
                     onClick={() => setPrimaryCategory(cat)}
                     className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all border cursor-pointer ${
                       isSelected
-                        ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] border-[#0A0A0E] dark:border-[#FFD21F] font-bold shadow-2xs"
+                        ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] border-[#0B0A14] dark:border-primary font-bold shadow-2xs"
                         : "bg-[#F8F8FC] dark:bg-[#181824] hover:bg-[#EFEFF8] dark:hover:bg-[#202030] text-[#5A5A68] dark:text-[#A0A0B4] border-black/6 dark:border-white/10"
                     }`}
                   >
@@ -1158,7 +1158,7 @@ export default function ProfileEditPage() {
         <div className="lg:col-span-4 p-4 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-5 flex flex-col justify-between">
           <div className="space-y-5">
             <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
-              <h2 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">
+              <h2 className="text-sm font-bold text-[#0B0A14] dark:text-white font-display flex items-center gap-2">
                 <Coins className="w-4 h-4 text-amber-500" />
                 <span>Commercial Pricing</span>
               </h2>
@@ -1183,13 +1183,13 @@ export default function ProfileEditPage() {
 
               {/* Settlement Currency Rail */}
               <div>
-                <label className="text-xs font-bold text-[#0A0A0E] dark:text-[#EAEAEF] block mb-1.5 font-display">
+                <label className="text-xs font-bold text-[#0B0A14] dark:text-[#EAEAEF] block mb-1.5 font-display">
                   Settlement Currency
                 </label>
                 <div className="w-full px-3.5 py-2.5 rounded-xl border border-black/10 dark:border-white/10 bg-[#F8F8FC] dark:bg-[#181824] flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <span className="text-base" role="img" aria-label="India Flag">🇮🇳</span>
-                    <span className="text-xs font-mono font-extrabold text-[#0A0A0E] dark:text-white">
+                    <span className="text-xs font-mono font-extrabold text-[#0B0A14] dark:text-white">
                       INR (₹)
                     </span>
                     <span className="text-[11px] text-[#6A6A78] dark:text-[#8E8EA4]">
@@ -1208,7 +1208,7 @@ export default function ProfileEditPage() {
               {/* Availability Toggle */}
               <div className="pt-2 flex items-center justify-between p-3.5 rounded-2xl bg-[#FAF9F5] dark:bg-[#181824] border border-black/6 dark:border-white/10">
                 <div>
-                  <span className="text-xs font-bold text-[#0A0A0E] dark:text-white block">
+                  <span className="text-xs font-bold text-[#0B0A14] dark:text-white block">
                     Available for Sponsorships
                   </span>
                   <span className="text-[11px] text-[#6A6A78] dark:text-[#8E8EA4]">
@@ -1235,7 +1235,7 @@ export default function ProfileEditPage() {
           <div className="pt-3 border-t border-black/6 dark:border-white/10">
             <div className="flex items-center justify-between text-xs font-mono">
               <span className="text-[#6A6A78] dark:text-[#8E8EA4]">Active Packages:</span>
-              <strong className="text-[#0A0A0E] dark:text-white">{rateCards.length} defined</strong>
+              <strong className="text-[#0B0A14] dark:text-white">{rateCards.length} defined</strong>
             </div>
           </div>
         </div>
@@ -1244,8 +1244,8 @@ export default function ProfileEditPage() {
         <div className="lg:col-span-7 p-4 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-5">
           <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
             <div>
-              <h2 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">
-                <Zap className="w-4 h-4 text-[#FFD21F]" />
+              <h2 className="text-sm font-bold text-[#0B0A14] dark:text-white font-display flex items-center gap-2">
+                <Zap className="w-4 h-4 text-primary" />
                 <span>Audience Reach &amp; Connected Channels</span>
               </h2>
               <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] mt-0.5">
@@ -1256,7 +1256,7 @@ export default function ProfileEditPage() {
             <button
               type="button"
               onClick={() => setShowAddSocialModal(true)}
-              className="px-3.5 py-1.5 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] hover:bg-[#20202B] dark:hover:bg-[#FFE052] text-white dark:text-[#0A0A0E] text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs"
+              className="px-3.5 py-1.5 rounded-full bg-[#0B0A14] dark:bg-primary hover:bg-[#20202B] dark:hover:bg-accent text-white dark:text-[#0B0A14] text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs"
             >
               <Plus className="w-3.5 h-3.5" />
               <span>Connect</span>
@@ -1299,7 +1299,7 @@ export default function ProfileEditPage() {
             <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-start gap-3 text-xs text-amber-950 dark:text-amber-300">
               <ShieldAlert className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
               <div className="space-y-1">
-                <p className="font-extrabold text-sm text-[#0A0A0E] dark:text-white">
+                <p className="font-extrabold text-sm text-[#0B0A14] dark:text-white">
                   Channel Ownership Verification Required
                 </p>
                 <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
@@ -1313,7 +1313,7 @@ export default function ProfileEditPage() {
           <div className="space-y-2 pt-1">
             {socialAccounts.length === 0 ? (
               <div className="p-6 text-center rounded-2xl border-2 border-dashed border-black/10 dark:border-white/10 bg-[#FAF9F5] dark:bg-[#161622] space-y-2">
-                <p className="text-xs font-bold text-[#0A0A0E] dark:text-white">
+                <p className="text-xs font-bold text-[#0B0A14] dark:text-white">
                   No Connected Channels Yet
                 </p>
                 <p className="text-[11px] text-[#6A6A78] dark:text-[#9A9AA8] max-w-sm mx-auto">
@@ -1334,7 +1334,7 @@ export default function ProfileEditPage() {
                     }`}
                   >
                     <div className="flex items-center gap-3 min-w-0">
-                      <div className="w-8 h-8 rounded-xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 flex items-center justify-center text-[#0A0A0E] dark:text-white shrink-0">
+                      <div className="w-8 h-8 rounded-xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 flex items-center justify-center text-[#0B0A14] dark:text-white shrink-0">
                         {acc.platform === "youtube" && (
                           <Youtube className="w-4 h-4 text-red-600" />
                         )}
@@ -1342,18 +1342,18 @@ export default function ProfileEditPage() {
                           <Instagram className="w-4 h-4 text-pink-600" />
                         )}
                         {acc.platform === "x" && (
-                          <Twitter className="w-4 h-4 text-[#0A0A0E] dark:text-white" />
+                          <Twitter className="w-4 h-4 text-[#0B0A14] dark:text-white" />
                         )}
                         {acc.platform === "linkedin" && (
                           <Linkedin className="w-4 h-4 text-blue-600" />
                         )}
                         {acc.platform === "tiktok" && (
-                          <Video className="w-4 h-4 text-[#0A0A0E] dark:text-white" />
+                          <Video className="w-4 h-4 text-[#0B0A14] dark:text-white" />
                         )}
                       </div>
                       <div className="min-w-0">
                         <div className="flex flex-wrap items-center gap-2">
-                          <span className="font-bold text-xs text-[#0A0A0E] dark:text-white truncate">
+                          <span className="font-bold text-xs text-[#0B0A14] dark:text-white truncate">
                             @{acc.handle}
                           </span>
                           {isVerified ? (
@@ -1382,7 +1382,7 @@ export default function ProfileEditPage() {
                             setSelectedVerifyAccount(acc);
                             setShowVerifyModal(true);
                           }}
-                          className="px-3 py-1.5 rounded-full bg-gradient-to-r from-[#FFD21F] to-[#FFE052] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-[11px] font-bold font-mono cursor-pointer shadow-xs transition-all active:scale-95 flex items-center gap-1"
+                          className="px-3 py-1.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-[11px] font-bold font-mono cursor-pointer shadow-xs transition-all active:scale-95 flex items-center gap-1"
                         >
                           <ShieldCheck className="w-3.5 h-3.5" />
                           <span>Verify Ownership</span>
@@ -1407,8 +1407,8 @@ export default function ProfileEditPage() {
         {/* ── BENTO CARD 4: TERRITORY & AUDIENCE (5 Cols) ── */}
         <div className="lg:col-span-5 p-4 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-5">
           <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
-            <h2 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">
-              <Globe className="w-4 h-4 text-[#FFD21F]" />
+            <h2 className="text-sm font-bold text-[#0B0A14] dark:text-white font-display flex items-center gap-2">
+              <Globe className="w-4 h-4 text-primary" />
               <span>Territory &amp; Content Language</span>
             </h2>
             <span className="text-[10px] font-mono text-[#8A8A9A] dark:text-[#6A6A7E] uppercase font-bold">
@@ -1434,7 +1434,7 @@ export default function ProfileEditPage() {
             />
 
             <div className="p-4 rounded-2xl bg-[#FAF9F5] dark:bg-[#181824] border border-black/6 dark:border-white/10 text-xs space-y-1.5">
-              <span className="font-bold text-[#0A0A0E] dark:text-white flex items-center gap-1.5">
+              <span className="font-bold text-[#0B0A14] dark:text-white flex items-center gap-1.5">
                 <ShieldCheck className="w-4 h-4 text-emerald-500" />
                 <span>Escrow Guarantee</span>
               </span>
@@ -1449,8 +1449,8 @@ export default function ProfileEditPage() {
         <div className="lg:col-span-12 p-4 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-5">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-black/8 dark:border-white/10">
             <div>
-              <h2 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">
-                <Layers className="w-4 h-4 text-[#FFD21F]" />
+              <h2 className="text-sm font-bold text-[#0B0A14] dark:text-white font-display flex items-center gap-2">
+                <Layers className="w-4 h-4 text-primary" />
                 <span>Custom Deliverable Packages &amp; Turnaround Times</span>
               </h2>
               <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] mt-0.5">
@@ -1461,7 +1461,7 @@ export default function ProfileEditPage() {
             <button
               type="button"
               onClick={() => setShowAddRateCardModal(true)}
-              className="px-4 py-2 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] hover:bg-[#20202B] dark:hover:bg-[#FFE052] text-white dark:text-[#0A0A0E] text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs self-start sm:self-auto"
+              className="px-4 py-2 rounded-full bg-[#0B0A14] dark:bg-primary hover:bg-[#20202B] dark:hover:bg-accent text-white dark:text-[#0B0A14] text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs self-start sm:self-auto"
             >
               <Plus className="w-3.5 h-3.5" />
               <span>Add Package</span>
@@ -1476,7 +1476,7 @@ export default function ProfileEditPage() {
               <button
                 type="button"
                 onClick={() => setShowAddRateCardModal(true)}
-                className="px-4 py-1.5 rounded-full border border-black/10 dark:border-white/10 hover:border-[#FFD21F] text-xs font-bold transition-colors cursor-pointer"
+                className="px-4 py-1.5 rounded-full border border-black/10 dark:border-white/10 hover:border-primary text-xs font-bold transition-colors cursor-pointer"
               >
                 + Create First Package
               </button>
@@ -1490,7 +1490,7 @@ export default function ProfileEditPage() {
                 >
                   <div className="space-y-1">
                     <div className="flex items-center justify-between">
-                      <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] font-mono text-[10px] font-bold">
+                      <span className="px-2 py-0.5 rounded-full bg-primary/20 text-[#0B0A14] dark:text-accent font-mono text-[10px] font-bold">
                         {rc.deliverableType}
                       </span>
                       <button
@@ -1501,7 +1501,7 @@ export default function ProfileEditPage() {
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>
                     </div>
-                    <h4 className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                    <h4 className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
                       {rc.title}
                     </h4>
                     {rc.description && (
@@ -1516,7 +1516,7 @@ export default function ProfileEditPage() {
                       <Clock className="w-3 h-3" />
                       {rc.turnaroundDays}d turnaround
                     </span>
-                    <span className="font-bold text-[#0A0A0E] dark:text-white">
+                    <span className="font-bold text-[#0B0A14] dark:text-white">
                       {currencySymbol}
                       {rc.basePrice.toLocaleString()}
                     </span>
@@ -1535,13 +1535,13 @@ export default function ProfileEditPage() {
         <div className="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center z-50 p-4">
           <div className="bg-white dark:bg-[#12121A] rounded-3xl p-6 sm:p-8 max-w-md w-full border border-black/10 dark:border-white/10 shadow-2xl space-y-5 animate-in fade-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
-              <h3 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">
+              <h3 className="text-base font-bold text-[#0B0A14] dark:text-white font-display">
                 Profile Avatar
               </h3>
               <button
                 type="button"
                 onClick={() => setShowPhotoModal(false)}
-                className="text-[#8A8A9A] hover:text-[#0A0A0E] dark:hover:text-white p-1"
+                className="text-[#8A8A9A] hover:text-[#0B0A14] dark:hover:text-white p-1"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -1561,7 +1561,7 @@ export default function ProfileEditPage() {
                   onClick={() =>
                     setAvatarUrl(user?.avatarUrl || (user as any)?.image || "")
                   }
-                  className="text-xs font-mono text-[#0055D6] dark:text-[#FFD21F] hover:underline flex items-center gap-1"
+                  className="text-xs font-mono text-[#0055D6] dark:text-accent hover:underline flex items-center gap-1"
                 >
                   <span>Use Connected Account Avatar</span>
                 </button>
@@ -1572,7 +1572,7 @@ export default function ProfileEditPage() {
               <button
                 type="button"
                 onClick={() => setShowPhotoModal(false)}
-                className="px-5 py-2.5 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] text-xs font-bold cursor-pointer"
+                className="px-5 py-2.5 rounded-full bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] text-xs font-bold cursor-pointer"
               >
                 Done
               </button>
@@ -1586,13 +1586,13 @@ export default function ProfileEditPage() {
         <div className="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center z-50 p-4">
           <div className="bg-white dark:bg-[#12121A] rounded-3xl p-6 sm:p-8 max-w-md w-full border border-black/10 dark:border-white/10 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
-              <h3 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">
+              <h3 className="text-base font-bold text-[#0B0A14] dark:text-white font-display">
                 Add Social Channel
               </h3>
               <button
                 type="button"
                 onClick={() => setShowAddSocialModal(false)}
-                className="text-[#8A8A9A] hover:text-[#0A0A0E] dark:hover:text-white"
+                className="text-[#8A8A9A] hover:text-[#0B0A14] dark:hover:text-white"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -1600,13 +1600,13 @@ export default function ProfileEditPage() {
 
             <div className="space-y-3">
               <div>
-                <label className="text-xs font-bold text-[#0A0A0E] dark:text-[#EAEAEF] block mb-1">
+                <label className="text-xs font-bold text-[#0B0A14] dark:text-[#EAEAEF] block mb-1">
                   Platform
                 </label>
                 <select
                   value={newPlatform}
                   onChange={(e) => setNewPlatform(e.target.value as PlatformType)}
-                  className="w-full px-3 py-2.5 rounded-xl border border-black/10 dark:border-white/10 text-xs font-sans bg-[#F8F8FC] dark:bg-[#181824] text-[#0A0A0E] dark:text-white font-medium cursor-pointer"
+                  className="w-full px-3 py-2.5 rounded-xl border border-black/10 dark:border-white/10 text-xs font-sans bg-[#F8F8FC] dark:bg-[#181824] text-[#0B0A14] dark:text-white font-medium cursor-pointer"
                 >
                   <option value="youtube">YouTube</option>
                   <option value="instagram">Instagram</option>
@@ -1662,7 +1662,7 @@ export default function ProfileEditPage() {
               <button
                 type="button"
                 onClick={handleAddSocialAccount}
-                className="px-5 py-2 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] text-xs font-bold transition-all cursor-pointer"
+                className="px-5 py-2 rounded-full bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] text-xs font-bold transition-all cursor-pointer"
               >
                 Add Channel
               </button>
@@ -1676,13 +1676,13 @@ export default function ProfileEditPage() {
         <div className="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center z-50 p-4">
           <div className="bg-white dark:bg-[#12121A] rounded-3xl p-6 sm:p-8 max-w-md w-full border border-black/10 dark:border-white/10 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
-              <h3 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">
+              <h3 className="text-base font-bold text-[#0B0A14] dark:text-white font-display">
                 Add Deliverable Package
               </h3>
               <button
                 type="button"
                 onClick={() => setShowAddRateCardModal(false)}
-                className="text-[#8A8A9A] hover:text-[#0A0A0E] dark:hover:text-white"
+                className="text-[#8A8A9A] hover:text-[#0B0A14] dark:hover:text-white"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -1690,7 +1690,7 @@ export default function ProfileEditPage() {
 
             <div className="space-y-3">
               <div>
-                <label className="text-xs font-bold text-[#0A0A0E] dark:text-[#EAEAEF] block mb-1">
+                <label className="text-xs font-bold text-[#0B0A14] dark:text-[#EAEAEF] block mb-1">
                   Deliverable Format
                 </label>
                 <select
@@ -1698,7 +1698,7 @@ export default function ProfileEditPage() {
                   onChange={(e) =>
                     setNewRateType(e.target.value as DeliverableType)
                   }
-                  className="w-full px-3 py-2.5 rounded-xl border border-black/10 dark:border-white/10 text-xs font-sans bg-[#F8F8FC] dark:bg-[#181824] text-[#0A0A0E] dark:text-white font-medium cursor-pointer"
+                  className="w-full px-3 py-2.5 rounded-xl border border-black/10 dark:border-white/10 text-xs font-sans bg-[#F8F8FC] dark:bg-[#181824] text-[#0B0A14] dark:text-white font-medium cursor-pointer"
                 >
                   {DELIVERABLE_OPTIONS.map((opt) => (
                     <option key={opt} value={opt}>
@@ -1761,7 +1761,7 @@ export default function ProfileEditPage() {
               <button
                 type="button"
                 onClick={handleAddRateCard}
-                className="px-5 py-2 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] text-xs font-bold transition-all cursor-pointer"
+                className="px-5 py-2 rounded-full bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] text-xs font-bold transition-all cursor-pointer"
               >
                 Create Package
               </button>
@@ -1780,7 +1780,7 @@ export default function ProfileEditPage() {
                   <ShieldCheck className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">
+                  <h3 className="text-base font-bold text-[#0B0A14] dark:text-white font-display">
                     Verify Channel Ownership
                   </h3>
                   <span className="text-xs text-[#5A5A68] dark:text-[#A0A0B4]">
@@ -1794,7 +1794,7 @@ export default function ProfileEditPage() {
                   setShowVerifyModal(false);
                   setSelectedVerifyAccount(null);
                 }}
-                className="text-[#8A8A9A] hover:text-[#0A0A0E] dark:hover:text-white"
+                className="text-[#8A8A9A] hover:text-[#0B0A14] dark:hover:text-white"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -1805,19 +1805,19 @@ export default function ProfileEditPage() {
                 <span className="text-xs text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-bold font-mono">
                   Account
                 </span>
-                <span className="px-2 py-0.5 rounded-full bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 text-[11px] font-mono font-bold capitalize text-[#0A0A0E] dark:text-white">
+                <span className="px-2 py-0.5 rounded-full bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 text-[11px] font-mono font-bold capitalize text-[#0B0A14] dark:text-white">
                   {selectedVerifyAccount.platform}
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm font-bold text-[#0A0A0E] dark:text-white">
+                <span className="text-sm font-bold text-[#0B0A14] dark:text-white">
                   @{selectedVerifyAccount.handle}
                 </span>
                 <a
                   href={selectedVerifyAccount.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs font-bold text-[#0055D6] dark:text-[#FFD21F] hover:underline flex items-center gap-1 font-mono"
+                  className="text-xs font-bold text-[#0055D6] dark:text-accent hover:underline flex items-center gap-1 font-mono"
                 >
                   <span>Open Profile</span>
                   <ExternalLink className="w-3 h-3" />
@@ -1831,9 +1831,9 @@ export default function ProfileEditPage() {
               </p>
 
               {selectedVerifyAccount.verificationCode && (
-                <div className="p-3.5 rounded-2xl bg-[#FFFDF0] dark:bg-[#1C1808] border border-[#FFD21F]/40 dark:border-[#FFD21F]/30 space-y-2">
+                <div className="p-3.5 rounded-2xl bg-[#FFFDF0] dark:bg-[#1C1808] border border-primary/40 dark:border-primary/30 space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-bold text-[#0A0A0E] dark:text-[#F4F4F8]">
+                    <span className="text-[11px] font-bold text-[#0B0A14] dark:text-[#F4F4F8]">
                       Your Verification Code
                     </span>
                     <button
@@ -1843,7 +1843,7 @@ export default function ProfileEditPage() {
                           selectedVerifyAccount.verificationCode || ""
                         )
                       }
-                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white dark:bg-[#12121A] border border-black/10 dark:border-white/10 text-xs font-mono font-bold text-[#0A0A0E] dark:text-white transition-all shadow-2xs"
+                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white dark:bg-[#12121A] border border-black/10 dark:border-white/10 text-xs font-mono font-bold text-[#0B0A14] dark:text-white transition-all shadow-2xs"
                     >
                       {hasCopiedCode ? (
                         <>
@@ -1860,7 +1860,7 @@ export default function ProfileEditPage() {
                       )}
                     </button>
                   </div>
-                  <div className="p-2 bg-white dark:bg-[#12121A] rounded-xl border border-black/6 dark:border-white/10 font-mono text-center font-black text-sm tracking-wider text-[#0A0A0E] dark:text-[#FFD21F]">
+                  <div className="p-2 bg-white dark:bg-[#12121A] rounded-xl border border-black/6 dark:border-white/10 font-mono text-center font-black text-sm tracking-wider text-[#0B0A14] dark:text-accent">
                     {selectedVerifyAccount.verificationCode}
                   </div>
                   <p className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] leading-tight">

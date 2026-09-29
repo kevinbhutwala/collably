@@ -217,19 +217,19 @@ export default function SettingsPage() {
     : "Next month";
 
   return (
-    <div className="space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] select-none">
+    <div className="space-y-6 text-[#0B0A14] dark:text-[#F4F4F8] select-none">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 sm:pb-5 border-b border-black/8 dark:border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] dark:text-[#FFD21F] flex items-center gap-1.5">
+            <span className="text-[10px] font-mono font-bold uppercase text-[#0B0A14] dark:text-accent flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               Workspace Controls
             </span>
             <span className="text-[#8A8A9A] dark:text-[#8E8EA4]">•</span>
             <SubscriptionBadge planId={subscription?.planId} role={role} size="sm" />
           </div>
-          <h1 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
+          <h1 className="text-xl sm:text-2xl font-extrabold text-[#0B0A14] dark:text-white tracking-tight font-display">
             Settings &amp; Billing
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#8E8EA4]">
@@ -239,9 +239,9 @@ export default function SettingsPage() {
 
         <button
           onClick={handleSavePreferences}
-          className="px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5 self-start sm:self-center"
+          className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5 self-start sm:self-center"
         >
-          <Save className="w-3.5 h-3.5 text-[#0A0A0E]" />
+          <Save className="w-3.5 h-3.5 text-[#0B0A14]" />
           <span>Save Settings</span>
         </button>
       </div>
@@ -252,11 +252,11 @@ export default function SettingsPage() {
           onClick={() => setActiveTab("billing")}
           className={`px-4 py-2.5 rounded-t-2xl font-bold text-xs transition-all flex items-center gap-2 border-b-2 shrink-0 ${
             activeTab === "billing"
-              ? "border-[#0A0A0E] dark:border-[#FFD21F] text-[#0A0A0E] dark:text-[#FFD21F] bg-white dark:bg-[#161622] shadow-xs"
-              : "border-transparent text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
+              ? "border-[#0B0A14] dark:border-primary text-[#0B0A14] dark:text-accent bg-white dark:bg-[#161622] shadow-xs"
+              : "border-transparent text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
           }`}
         >
-          <CreditCard className="w-4 h-4 text-[#FFD21F]" />
+          <CreditCard className="w-4 h-4 text-primary" />
           <span>Plans &amp; Billing</span>
         </button>
 
@@ -264,11 +264,11 @@ export default function SettingsPage() {
           onClick={() => setActiveTab("payout")}
           className={`px-4 py-2.5 rounded-t-2xl font-bold text-xs transition-all flex items-center gap-2 border-b-2 shrink-0 ${
             activeTab === "payout"
-              ? "border-[#0A0A0E] dark:border-[#FFD21F] text-[#0A0A0E] dark:text-[#FFD21F] bg-white dark:bg-[#161622] shadow-xs"
-              : "border-transparent text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
+              ? "border-[#0B0A14] dark:border-primary text-[#0B0A14] dark:text-accent bg-white dark:bg-[#161622] shadow-xs"
+              : "border-transparent text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
           }`}
         >
-          <Wallet className="w-4 h-4 text-[#FFD21F]" />
+          <Wallet className="w-4 h-4 text-primary" />
           <span>Bank &amp; Payouts</span>
         </button>
 
@@ -276,11 +276,11 @@ export default function SettingsPage() {
           onClick={() => setActiveTab("security")}
           className={`px-4 py-2.5 rounded-t-2xl font-bold text-xs transition-all flex items-center gap-2 border-b-2 shrink-0 ${
             activeTab === "security"
-              ? "border-[#0A0A0E] dark:border-[#FFD21F] text-[#0A0A0E] dark:text-[#FFD21F] bg-white dark:bg-[#161622] shadow-xs"
-              : "border-transparent text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
+              ? "border-[#0B0A14] dark:border-primary text-[#0B0A14] dark:text-accent bg-white dark:bg-[#161622] shadow-xs"
+              : "border-transparent text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
           }`}
         >
-          <Smartphone className="w-4 h-4 text-[#FFD21F]" />
+          <Smartphone className="w-4 h-4 text-primary" />
           <span>Security &amp; Password</span>
         </button>
 
@@ -288,11 +288,11 @@ export default function SettingsPage() {
           onClick={() => setActiveTab("appearance")}
           className={`px-4 py-2.5 rounded-t-2xl font-bold text-xs transition-all flex items-center gap-2 border-b-2 shrink-0 ${
             activeTab === "appearance"
-              ? "border-[#0A0A0E] dark:border-[#FFD21F] text-[#0A0A0E] dark:text-[#FFD21F] bg-white dark:bg-[#161622] shadow-xs"
-              : "border-transparent text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
+              ? "border-[#0B0A14] dark:border-primary text-[#0B0A14] dark:text-accent bg-white dark:bg-[#161622] shadow-xs"
+              : "border-transparent text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
           }`}
         >
-          <Globe className="w-4 h-4 text-[#FFD21F]" />
+          <Globe className="w-4 h-4 text-primary" />
           <span>Currency &amp; Theme</span>
         </button>
       </div>
@@ -301,8 +301,8 @@ export default function SettingsPage() {
       {activeTab === "billing" && (
         <div className="space-y-8">
           {/* Active Plan Hero Card */}
-          <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-6 sm:p-8 shadow-xs space-y-6 relative overflow-hidden text-[#0A0A0E] dark:text-[#F4F4F8]">
-            <div className="absolute top-0 right-0 w-80 h-80 bg-[#FFD21F]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-6 sm:p-8 shadow-xs space-y-6 relative overflow-hidden text-[#0B0A14] dark:text-[#F4F4F8]">
+            <div className="absolute top-0 right-0 w-80 h-80 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
 
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-black/6 dark:border-white/10 relative z-10">
               <div className="space-y-2">
@@ -312,7 +312,7 @@ export default function SettingsPage() {
                   </span>
                   <SubscriptionBadge planId={subscription?.planId} role={role} size="md" />
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-black font-display text-[#0A0A0E] dark:text-white">
+                <h2 className="text-2xl sm:text-3xl font-black font-display text-[#0B0A14] dark:text-white">
                   {currentPlan?.name || "Active Subscription"}
                 </h2>
                 <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4]">
@@ -321,14 +321,14 @@ export default function SettingsPage() {
               </div>
 
               <div className="flex flex-col items-start md:items-end gap-2 shrink-0">
-                <div className="text-2xl sm:text-3xl font-black font-display text-[#0A0A0E] dark:text-white">
+                <div className="text-2xl sm:text-3xl font-black font-display text-[#0B0A14] dark:text-white">
                   ${subscription?.price !== undefined ? subscription.price : currentPlan?.monthlyPrice}
                   <span className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-normal font-sans ml-1">
                     {subscription?.interval === "annual" ? "/year" : "/month"}
                   </span>
                 </div>
                 <div className="flex items-center gap-1.5 text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
-                  <Calendar className="w-3.5 h-3.5 text-[#FFD21F]" />
+                  <Calendar className="w-3.5 h-3.5 text-primary" />
                   <span>
                     {subscription?.cancelAtPeriodEnd
                       ? `Access ends on ${periodEndFormatted}`
@@ -341,8 +341,8 @@ export default function SettingsPage() {
             {/* Quota Progress Meter */}
             <div className="space-y-2 pt-2 relative z-10">
               <div className="flex items-center justify-between text-xs font-mono">
-                <span className="font-bold text-[#0A0A0E] dark:text-white flex items-center gap-1.5">
-                  <Zap className="w-3.5 h-3.5 text-[#FFD21F]" />
+                <span className="font-bold text-[#0B0A14] dark:text-white flex items-center gap-1.5">
+                  <Zap className="w-3.5 h-3.5 text-primary" />
                   <span>{quotaLabel} Quota</span>
                 </span>
                 <span className="text-[#5A5A68] dark:text-[#8E8EA4]">
@@ -350,7 +350,7 @@ export default function SettingsPage() {
                     <span className="font-bold text-emerald-600 dark:text-emerald-400">UNLIMITED</span>
                   ) : (
                     <span>
-                      <strong className="text-[#0A0A0E] dark:text-white">{quota.current}</strong> / {quota.limit} used ({quota.percent}%)
+                      <strong className="text-[#0B0A14] dark:text-white">{quota.current}</strong> / {quota.limit} used ({quota.percent}%)
                     </span>
                   )}
                 </span>
@@ -364,7 +364,7 @@ export default function SettingsPage() {
                         ? "bg-rose-500"
                         : quota.percent >= 70
                         ? "bg-amber-500"
-                        : "bg-gradient-to-r from-[#FFD21F] to-[#FFAE00]"
+                        : "bg-gradient-to-r from-primary to-[#FFAE00]"
                     }`}
                     style={{ width: `${Math.min(100, quota.percent)}%` }}
                   />
@@ -378,8 +378,8 @@ export default function SettingsPage() {
                 <span className="text-[10px] font-mono uppercase text-[#6A6A78] dark:text-[#8E8EA4] font-bold block">
                   Amount Paid
                 </span>
-                <div className="flex items-center gap-1.5 font-display font-extrabold text-xs sm:text-sm text-[#0A0A0E] dark:text-white flex-wrap">
-                  <CreditCard className="w-3.5 h-3.5 text-[#FFD21F] shrink-0" />
+                <div className="flex items-center gap-1.5 font-display font-extrabold text-xs sm:text-sm text-[#0B0A14] dark:text-white flex-wrap">
+                  <CreditCard className="w-3.5 h-3.5 text-primary shrink-0" />
                   <span className="break-words">
                     {(subscription?.amountPaid !== undefined ? subscription.amountPaid : subscription?.price || 0) > 0
                       ? `₹${(subscription?.amountPaid !== undefined ? subscription.amountPaid : subscription?.price || 0).toLocaleString("en-IN")} INR`
@@ -411,7 +411,7 @@ export default function SettingsPage() {
                 <span className="text-[10px] font-mono uppercase text-[#6A6A78] dark:text-[#8E8EA4] font-bold block">
                   Transaction / Payment ID
                 </span>
-                <div className="font-mono text-xs text-[#0A0A0E] dark:text-white truncate">
+                <div className="font-mono text-xs text-[#0B0A14] dark:text-white truncate">
                   {subscription?.lastPaymentId || (subscription?.price && subscription.price > 0 ? "rzp_verified_live" : "STARTER_FREE_TIER")}
                 </div>
               </div>
@@ -427,7 +427,7 @@ export default function SettingsPage() {
                     </span>
                     <button
                       onClick={handleResumeSubscription}
-                      className="px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold transition-all shadow-xs border border-black/10"
+                      className="px-4 py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-bold transition-all shadow-xs border border-black/10"
                     >
                       Resume Subscription
                     </button>
@@ -450,11 +450,11 @@ export default function SettingsPage() {
           </div>
 
           {/* Payment & Invoice Ledger */}
-          <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-6 sm:p-7 shadow-xs space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
+          <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-6 sm:p-7 shadow-xs space-y-4 text-[#0B0A14] dark:text-[#F4F4F8]">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-black/6 dark:border-white/10">
               <div className="flex items-center gap-2">
-                <Receipt className="w-4 h-4 text-[#FFD21F]" />
-                <h4 className="text-sm font-extrabold text-[#0A0A0E] dark:text-white font-display">
+                <Receipt className="w-4 h-4 text-primary" />
+                <h4 className="text-sm font-extrabold text-[#0B0A14] dark:text-white font-display">
                   Subscription Invoices &amp; Payment History
                 </h4>
               </div>
@@ -484,13 +484,13 @@ export default function SettingsPage() {
                         ? format(new Date(subscription.currentPeriodStart), "MMM dd, yyyy")
                         : "Active Period"}
                     </td>
-                    <td className="py-3 font-bold text-[#0A0A0E] dark:text-white">
+                    <td className="py-3 font-bold text-[#0B0A14] dark:text-white">
                       {currentPlan?.name || "Active Tier"}
                     </td>
                     <td className="py-3 capitalize text-[#6A6A78] dark:text-[#8E8EA4]">
                       {subscription?.interval || "monthly"}
                     </td>
-                    <td className="py-3 font-mono font-extrabold text-[#0A0A0E] dark:text-white">
+                    <td className="py-3 font-mono font-extrabold text-[#0B0A14] dark:text-white">
                       {(subscription?.amountPaid !== undefined ? subscription.amountPaid : subscription?.price || 0) > 0
                         ? `₹${(subscription?.amountPaid !== undefined ? subscription.amountPaid : subscription?.price || 0).toLocaleString("en-IN")}`
                         : "₹0 (Free)"}
@@ -514,7 +514,7 @@ export default function SettingsPage() {
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <h3 className="text-xl font-extrabold text-[#0A0A0E] dark:text-white font-display">
+                <h3 className="text-xl font-extrabold text-[#0B0A14] dark:text-white font-display">
                   Available {isBrand ? "Brand" : "Creator"} Plans
                 </h3>
                 <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4]">
@@ -529,8 +529,8 @@ export default function SettingsPage() {
                     onClick={() => setIsAnnual(false)}
                     className={`px-3.5 py-1.5 rounded-full transition-all font-bold ${
                       !isAnnual
-                        ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs"
-                        : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
+                        ? "bg-primary text-[#0B0A14] shadow-xs"
+                        : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
                     }`}
                   >
                     Monthly
@@ -539,8 +539,8 @@ export default function SettingsPage() {
                     onClick={() => setIsAnnual(true)}
                     className={`px-3.5 py-1.5 rounded-full transition-all font-bold flex items-center gap-1.5 ${
                       isAnnual
-                        ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs"
-                        : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
+                        ? "bg-primary text-[#0B0A14] shadow-xs"
+                        : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
                     }`}
                   >
                     <span>Annual</span>
@@ -550,7 +550,7 @@ export default function SettingsPage() {
                   </button>
                 </div>
 
-                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-mono font-bold bg-[#F4F4F8] dark:bg-[#14141E] border border-black/8 dark:border-white/10 text-[#0A0A0E] dark:text-white shadow-xs">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-mono font-bold bg-[#F4F4F8] dark:bg-[#14141E] border border-black/8 dark:border-white/10 text-[#0B0A14] dark:text-white shadow-xs">
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                   <span>Direct INR (₹) Checkout</span>
                 </div>
@@ -568,8 +568,8 @@ export default function SettingsPage() {
                     onClick={() => setSelectedMobilePlan(p.id)}
                     className={`flex-1 py-2 px-1.5 rounded-xl text-xs font-bold transition-all text-center flex items-center justify-center gap-1 ${
                       isSelected
-                        ? "bg-white dark:bg-[#242436] text-[#0A0A0E] dark:text-white shadow-xs font-extrabold"
-                        : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E]"
+                        ? "bg-white dark:bg-[#242436] text-[#0B0A14] dark:text-white shadow-xs font-extrabold"
+                        : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14]"
                     }`}
                   >
                     <span className="truncate">{p.name.replace("Creator ", "").replace("Brand ", "")}</span>
@@ -593,35 +593,35 @@ export default function SettingsPage() {
                       selectedMobilePlan === p.id ? "flex" : "hidden md:flex"
                     } ${
                       p.highlight
-                        ? "bg-gradient-to-b from-[#FFFDF5] to-white dark:from-[#1A1A28] dark:to-[#12121C] border-2 border-[#FFD21F] shadow-[0_8px_30px_rgba(255,210,31,0.15)]"
+                        ? "bg-gradient-to-b from-primary/5 to-white dark:from-[#1A1A28] dark:to-[#12121C] border-2 border-primary shadow-[0_8px_30px_rgba(var(--theme-primary-rgb),0.15)]"
                         : isCurrent
-                        ? "bg-white dark:bg-[#181824] border-2 border-black/20 dark:border-[#FFD21F]/60 shadow-xs"
+                        ? "bg-white dark:bg-[#181824] border-2 border-black/20 dark:border-primary/60 shadow-xs"
                         : "bg-white dark:bg-[#12121A] border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 shadow-xs"
                     }`}
                   >
                     {p.highlight && (
-                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[#FFD21F] text-[#0A0A0E] font-mono font-extrabold text-[10px] tracking-wider uppercase shadow-xs flex items-center gap-1 z-20">
+                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-primary text-[#0B0A14] font-mono font-extrabold text-[10px] tracking-wider uppercase shadow-xs flex items-center gap-1 z-20">
                         <Sparkles className="w-3 h-3" />
                         <span>RECOMMENDED</span>
                       </div>
                     )}
 
                     {isCurrent && !p.highlight && (
-                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-black/10 dark:bg-[#FFD21F]/20 border border-black/20 dark:border-[#FFD21F]/40 text-[#0A0A0E] dark:text-[#FFD21F] font-mono font-extrabold text-[10px] tracking-wider uppercase shadow-xs z-20">
+                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-black/10 dark:bg-primary/20 border border-black/20 dark:border-primary/40 text-[#0B0A14] dark:text-accent font-mono font-extrabold text-[10px] tracking-wider uppercase shadow-xs z-20">
                         ACTIVE PLAN
                       </div>
                     )}
 
                     <div className="space-y-4">
                       <div>
-                        <h4 className="text-lg font-bold font-display text-[#0A0A0E] dark:text-white">{p.name}</h4>
+                        <h4 className="text-lg font-bold font-display text-[#0B0A14] dark:text-white">{p.name}</h4>
                         <p className="text-xs text-[#6A6A78] dark:text-[#9A9AA8] mt-1 font-sans leading-relaxed">
                           {p.description}
                         </p>
                       </div>
 
                       <div className="flex items-baseline gap-1 font-mono pt-2">
-                        <span className="text-3xl font-black text-[#0A0A0E] dark:text-white font-display">
+                        <span className="text-3xl font-black text-[#0B0A14] dark:text-white font-display">
                           ₹{price.toLocaleString("en-IN")}
                         </span>
                         <span className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-sans">
@@ -637,8 +637,8 @@ export default function SettingsPage() {
                       <div className="pt-3 border-t border-black/6 dark:border-white/10 space-y-2.5">
                         {p.featureBullets.map((bullet, idx) => (
                           <div key={idx} className="flex items-start gap-2 text-xs text-[#3A3A48] dark:text-[#C8C8DC]">
-                            <div className="w-4 h-4 rounded-full bg-[#FFD21F]/25 dark:bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] flex items-center justify-center shrink-0 mt-0.5">
-                              <Check className="w-3 h-3 text-[#0A0A0E] dark:text-[#FFD21F]" />
+                            <div className="w-4 h-4 rounded-full bg-primary/25 dark:bg-primary/20 text-[#0B0A14] dark:text-accent flex items-center justify-center shrink-0 mt-0.5">
+                              <Check className="w-3 h-3 text-[#0B0A14] dark:text-accent" />
                             </div>
                             <span className="leading-tight">{bullet}</span>
                           </div>
@@ -654,8 +654,8 @@ export default function SettingsPage() {
                           isCurrent
                             ? "bg-black/5 dark:bg-white/10 text-[#8A8A9A] dark:text-white/80 cursor-not-allowed border border-black/10 dark:border-white/20 font-bold"
                             : p.highlight
-                            ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] shadow-[0_4px_16px_rgba(255,210,31,0.4)] font-extrabold"
-                            : "bg-[#F4F4F8] hover:bg-[#EAEAF0] text-[#0A0A0E] border border-black/12 hover:border-black/25 font-bold shadow-xs"
+                            ? "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] font-extrabold"
+                            : "bg-[#F4F4F8] hover:bg-[#EAEAF0] text-[#0B0A14] border border-black/12 hover:border-black/25 font-bold shadow-xs"
                         }`}
                       >
                         {isProcessing ? (
@@ -700,9 +700,9 @@ export default function SettingsPage() {
       {/* ── TAB 2: PAYOUT & BANKING ── */}
       {activeTab === "payout" && (
         <div className="space-y-6">
-          <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
-            <div className="flex items-center gap-2 text-[#0A0A0E] dark:text-white font-bold text-sm font-display">
-              <Wallet className="w-4 h-4 text-[#FFD21F]" />
+          <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4 text-[#0B0A14] dark:text-[#F4F4F8]">
+            <div className="flex items-center gap-2 text-[#0B0A14] dark:text-white font-bold text-sm font-display">
+              <Wallet className="w-4 h-4 text-primary" />
               <span>Payout Method &amp; Bank Account</span>
             </div>
             <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] leading-relaxed">
@@ -728,7 +728,7 @@ export default function SettingsPage() {
             {/* Preferred Settlement Currency */}
             <div className="pt-2 border-t border-black/5 dark:border-white/5 space-y-3">
               <div>
-                <label className="text-xs font-bold text-[#0A0A0E] dark:text-white block">
+                <label className="text-xs font-bold text-[#0B0A14] dark:text-white block">
                   Settlement &amp; Escrow Currency
                 </label>
                 <p className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] mt-0.5">
@@ -741,7 +741,7 @@ export default function SettingsPage() {
             <div className="pt-2">
               <button
                 onClick={handleSavePreferences}
-                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10"
+                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold transition-all shadow-xs border border-black/10"
               >
                 Save Payout Details
               </button>
@@ -754,9 +754,9 @@ export default function SettingsPage() {
       {activeTab === "security" && (
         <div className="space-y-6">
           {/* Password Change Form */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
-            <div className="flex items-center gap-2 text-[#0A0A0E] dark:text-white font-bold text-sm font-display">
-              <ShieldCheck className="w-4 h-4 text-[#FFD21F]" />
+          <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4 text-[#0B0A14] dark:text-[#F4F4F8]">
+            <div className="flex items-center gap-2 text-[#0B0A14] dark:text-white font-bold text-sm font-display">
+              <ShieldCheck className="w-4 h-4 text-primary" />
               <span>Change Password</span>
             </div>
             <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] leading-relaxed">
@@ -791,7 +791,7 @@ export default function SettingsPage() {
               <button
                 type="submit"
                 disabled={isChangingPassword}
-                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all disabled:opacity-50 flex items-center gap-2 shadow-xs border border-black/10"
+                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold transition-all disabled:opacity-50 flex items-center gap-2 shadow-xs border border-black/10"
               >
                 {isChangingPassword ? (
                   <>
@@ -805,16 +805,16 @@ export default function SettingsPage() {
             </form>
           </div>
 
-          <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
-            <div className="flex items-center gap-2 text-[#0A0A0E] dark:text-white font-bold text-sm font-display">
-              <Smartphone className="w-4 h-4 text-[#FFD21F]" />
+          <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4 text-[#0B0A14] dark:text-[#F4F4F8]">
+            <div className="flex items-center gap-2 text-[#0B0A14] dark:text-white font-bold text-sm font-display">
+              <Smartphone className="w-4 h-4 text-primary" />
               <span>Workspace Sync &amp; Security</span>
             </div>
             <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] leading-relaxed font-sans">
               Your account, projects, and messages stay automatically in sync across your phone and computer.
             </p>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-mono text-[10px] font-bold">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-pulse" />
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-[#0B0A14] dark:text-white font-mono text-[10px] font-bold">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
               Connected &amp; Secure
             </span>
           </div>
@@ -827,8 +827,8 @@ export default function SettingsPage() {
           {/* Global Currency & Localization */}
           <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
             <div>
-              <h2 className="text-base sm:text-lg font-black text-[#0A0A0E] dark:text-white tracking-tight font-display flex items-center gap-2">
-                <Globe className="w-5 h-5 text-[#FFD21F]" />
+              <h2 className="text-base sm:text-lg font-black text-[#0B0A14] dark:text-white tracking-tight font-display flex items-center gap-2">
+                <Globe className="w-5 h-5 text-primary" />
                 <span>Global Currency &amp; Regional Localization</span>
               </h2>
               <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#8E8EA4] mt-1 font-sans">
@@ -844,35 +844,35 @@ export default function SettingsPage() {
                 <span className="text-[11px] font-bold uppercase tracking-wider text-[#7A7A8A] dark:text-[#8E8EA4]">
                   Platform Currency Standards (₹50,000 INR Base)
                 </span>
-                <span className="text-[10px] font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F] bg-[#FFD21F]/15 px-2 py-0.5 rounded-full">
+                <span className="text-[10px] font-mono font-bold text-[#0B0A14] dark:text-accent bg-primary/15 px-2 py-0.5 rounded-full">
                   INR Native Standard
                 </span>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
                 <div className="p-3 rounded-xl bg-white dark:bg-[#1A1A28] border border-black/5 dark:border-white/10 space-y-1">
                   <span className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] block">🇮🇳 INR (Active Platform)</span>
-                  <span className="font-mono font-extrabold text-sm text-[#0A0A0E] dark:text-white">{formatCurrency(50000, "INR")}</span>
+                  <span className="font-mono font-extrabold text-sm text-[#0B0A14] dark:text-white">{formatCurrency(50000, "INR")}</span>
                 </div>
                 <div className="p-3 rounded-xl bg-white dark:bg-[#1A1A28] border border-black/5 dark:border-white/10 space-y-1">
                   <span className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] block">🇺🇸 USD (Phase 2 Preview)</span>
-                  <span className="font-mono font-extrabold text-sm text-[#0A0A0E] dark:text-white">{formatCurrency(convertCurrency(50000, "INR", "USD"), "USD")}</span>
+                  <span className="font-mono font-extrabold text-sm text-[#0B0A14] dark:text-white">{formatCurrency(convertCurrency(50000, "INR", "USD"), "USD")}</span>
                 </div>
                 <div className="p-3 rounded-xl bg-white dark:bg-[#1A1A28] border border-black/5 dark:border-white/10 space-y-1">
                   <span className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] block">🇬🇧 GBP (Phase 2 Preview)</span>
-                  <span className="font-mono font-extrabold text-sm text-[#0A0A0E] dark:text-white">{formatCurrency(convertCurrency(50000, "INR", "GBP"), "GBP")}</span>
+                  <span className="font-mono font-extrabold text-sm text-[#0B0A14] dark:text-white">{formatCurrency(convertCurrency(50000, "INR", "GBP"), "GBP")}</span>
                 </div>
                 <div className="p-3 rounded-xl bg-white dark:bg-[#1A1A28] border border-black/5 dark:border-white/10 space-y-1">
                   <span className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] block">🇦🇪 AED (Phase 2 Preview)</span>
-                  <span className="font-mono font-extrabold text-sm text-[#0A0A0E] dark:text-white">{formatCurrency(convertCurrency(50000, "INR", "AED"), "AED")}</span>
+                  <span className="font-mono font-extrabold text-sm text-[#0B0A14] dark:text-white">{formatCurrency(convertCurrency(50000, "INR", "AED"), "AED")}</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6 text-[#0A0A0E]">
+          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6 text-[#0B0A14]">
             <div>
-              <h2 className="text-base sm:text-lg font-black text-[#0A0A0E] tracking-tight font-display flex items-center gap-2">
-                <Sun className="w-5 h-5 text-[#FFD21F]" />
+              <h2 className="text-base sm:text-lg font-black text-[#0B0A14] tracking-tight font-display flex items-center gap-2">
+                <Sun className="w-5 h-5 text-primary" />
                 <span>Interface Theme &amp; Visual Design</span>
               </h2>
               <p className="text-xs sm:text-sm text-[#5A5A68] mt-1 font-sans">
@@ -882,13 +882,13 @@ export default function SettingsPage() {
 
             <div className="max-w-md pt-2">
               {/* Active Light Mode Card */}
-              <div className="p-5 rounded-2xl border-2 border-[#FFD21F] bg-[#FFFDF5] shadow-xs space-y-3 relative">
+              <div className="p-5 rounded-2xl border-2 border-primary bg-primary/5 shadow-xs space-y-3 relative">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Sun className="w-5 h-5 text-amber-500" />
-                    <span className="text-sm font-extrabold text-[#0A0A0E] font-display">Pure White &amp; Solar</span>
+                    <span className="text-sm font-extrabold text-[#0B0A14] font-display">Pure White &amp; Solar</span>
                   </div>
-                  <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-[10px] font-mono font-bold flex items-center gap-1">
+                  <span className="px-2.5 py-0.5 rounded-full bg-primary text-[#0B0A14] text-[10px] font-mono font-bold flex items-center gap-1">
                     <Check className="w-3 h-3" />
                     <span>Active Standard</span>
                   </span>
@@ -896,8 +896,8 @@ export default function SettingsPage() {
 
                 <div className="p-3 rounded-xl bg-white border border-black/8 space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-[#0A0A0E]">Milestone Brief</span>
-                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E]">
+                    <span className="text-xs font-bold text-[#0B0A14]">Milestone Brief</span>
+                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-primary text-[#0B0A14]">
                       ₹75,000
                     </span>
                   </div>

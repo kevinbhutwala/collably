@@ -12,7 +12,7 @@ export function EditorialCTA() {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[950px] h-[450px] pointer-events-none opacity-60"
         style={{
           background: `
-            radial-gradient(circle at 30% 30%, rgba(255, 210, 31, 0.15) 0%, transparent 40%),
+            radial-gradient(circle at 30% 30%, rgba(var(--theme-primary-rgb), 0.15) 0%, transparent 40%),
             radial-gradient(circle at 70% 70%, rgba(217, 217, 214, 0.4) 0%, transparent 40%)
           `,
         }}
@@ -20,12 +20,12 @@ export function EditorialCTA() {
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 relative z-10">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] dark:bg-[#12121A] border border-[#E7E7E4] dark:border-white/10 text-[11px] font-sans font-semibold uppercase tracking-[0.1em] text-[#101010] dark:text-white shadow-xs">
-          <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
           <span>FOUNDING CREATOR COHORT &amp; BRAND BETA OPEN</span>
         </div>
 
         <div className="space-y-4">
-          <h2 className="section-headline text-center uppercase tracking-tight text-[#0A0A0E] dark:text-white">
+          <h2 className="section-headline text-center uppercase tracking-tight text-[#0B0A14] dark:text-white">
             Create great content. <br />
             <span className="font-serif italic font-normal text-[#626262] dark:text-[#A0A0B4] normal-case text-[clamp(3.25rem,7.5vw,7.5rem)]">
               Never chase an invoice.
@@ -40,10 +40,10 @@ export function EditorialCTA() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-3 font-sans font-semibold text-sm">
           <Link
             href="/for-brands"
-            className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold shadow-xs transition-all flex items-center justify-center gap-2 group tracking-tight border border-black/10"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-bold shadow-xs transition-all flex items-center justify-center gap-2 group tracking-tight border border-black/10"
           >
             <span>Start a Campaign</span>
-            <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-0.5 transition-transform" />
+            <ArrowRight className="w-4 h-4 text-[#0B0A14] group-hover:translate-x-0.5 transition-transform" />
           </Link>
 
           <Link
@@ -58,11 +58,11 @@ export function EditorialCTA() {
         {/* Verified Trust Strip */}
         <div className="pt-8 sm:pt-10 flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-xs font-sans text-[#626262] dark:text-[#8E8EA4] border-t border-[#E7E7E4] dark:border-white/10 max-w-2xl mx-auto">
           <div className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
+            <span className="w-2 h-2 rounded-full bg-primary" />
             <span className="text-[#101010] dark:text-white font-semibold">100% Milestone Protection</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <Zap className="w-4 h-4 text-[#101010] dark:text-[#FFD21F]" />
+            <Zap className="w-4 h-4 text-[#101010] dark:text-accent" />
             <span className="text-[#101010] dark:text-white font-semibold">&lt; 24h Creator Payouts</span>
           </div>
           <div className="flex items-center gap-1.5">

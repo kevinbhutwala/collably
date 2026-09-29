@@ -360,16 +360,16 @@ export default function AdminSettingsPage() {
   }, [suspicious, searchQuery]);
 
   return (
-    <div className="space-y-6 max-w-7xl text-[#0A0A0E] dark:text-[#F4F4F8] pb-16">
+    <div className="space-y-6 max-w-7xl text-[#0B0A14] dark:text-[#F4F4F8] pb-16">
       {/* 1. Header Command Strip */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-black/8 dark:border-white/10">
         <div>
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 px-2.5 py-0.5 text-[10px] font-bold text-[#0A0A0E] dark:text-[#F4F4F8] uppercase tracking-wider font-mono">
-            <Sparkles className="w-3 h-3 text-[#FFD21F]" />
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 px-2.5 py-0.5 text-[10px] font-bold text-[#0B0A14] dark:text-[#F4F4F8] uppercase tracking-wider font-mono">
+            <Sparkles className="w-3 h-3 text-primary" />
             <span>AbeyCollab Admin Command Center</span>
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse ml-0.5" />
           </div>
-          <h1 className="text-xl sm:text-2xl font-black text-[#0A0A0E] dark:text-white tracking-tight font-display mt-1.5 flex items-center gap-2">
+          <h1 className="text-xl sm:text-2xl font-black text-[#0B0A14] dark:text-white tracking-tight font-display mt-1.5 flex items-center gap-2">
             <span>Platform Settings & Marketplace Engine</span>
           </h1>
           <p className="text-xs text-[#5A5A68] dark:text-[#9A9AA6] mt-0.5 font-sans max-w-2xl">
@@ -381,7 +381,7 @@ export default function AdminSettingsPage() {
           {/* Toggle KPIs */}
           <button
             onClick={() => setShowKpis(!showKpis)}
-            className="px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-[#F4F4F8] text-[11px] font-semibold transition-all flex items-center gap-1.5 cursor-pointer"
+            className="px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/10 dark:border-white/10 text-[#0B0A14] dark:text-[#F4F4F8] text-[11px] font-semibold transition-all flex items-center gap-1.5 cursor-pointer"
             title="Toggle Executive KPI Strip"
           >
             <Activity className="w-3.5 h-3.5 text-neutral-600 dark:text-neutral-400" />
@@ -392,7 +392,7 @@ export default function AdminSettingsPage() {
           {/* Reset Defaults */}
           <button
             onClick={handleResetDefaults}
-            className="px-3 py-1.5 rounded-lg bg-white dark:bg-[#181824] border border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/5 text-[#0A0A0E] dark:text-[#F4F4F8] text-[11px] font-semibold transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
+            className="px-3 py-1.5 rounded-lg bg-white dark:bg-[#181824] border border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/5 text-[#0B0A14] dark:text-[#F4F4F8] text-[11px] font-semibold transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
             title="Reset algorithm weights & limits to factory default"
           >
             <RefreshCw className="w-3.5 h-3.5 text-neutral-600 dark:text-[#9A9AA6]" />
@@ -403,9 +403,9 @@ export default function AdminSettingsPage() {
           <button
             onClick={handleSaveAll}
             disabled={saving}
-            className="px-4 py-1.5 rounded-lg bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:brightness-105 active:scale-95 text-[#0A0A0E] text-[11px] font-black transition-all shadow-xs border border-black/15 flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+            className="px-4 py-1.5 rounded-lg bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:brightness-105 active:scale-95 text-[#0B0A14] text-[11px] font-black transition-all shadow-xs border border-black/15 flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
           >
-            <Save className="w-3.5 h-3.5 text-[#0A0A0E]" />
+            <Save className="w-3.5 h-3.5 text-[#0B0A14]" />
             <span>{saving ? "Saving..." : "Save Configuration"}</span>
           </button>
         </div>
@@ -421,7 +421,7 @@ export default function AdminSettingsPage() {
               <Layers className="w-4 h-4 text-emerald-500" />
             </div>
             <div className="mt-1 flex items-baseline gap-2">
-              <span className="text-xl font-black text-[#0A0A0E] dark:text-white font-mono">
+              <span className="text-xl font-black text-[#0B0A14] dark:text-white font-mono">
                 {activeFlagsCount}/{totalFlagsCount}
               </span>
               <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded-sm">
@@ -437,10 +437,10 @@ export default function AdminSettingsPage() {
           <div className="p-3.5 rounded-xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs relative overflow-hidden group">
             <div className="flex items-center justify-between text-[#5A5A68] dark:text-[#9A9AA6] text-[11px]">
               <span className="font-semibold uppercase tracking-wider font-mono">Commission & Escrow</span>
-              <DollarSign className="w-4 h-4 text-[#FFD21F]" />
+              <DollarSign className="w-4 h-4 text-primary" />
             </div>
             <div className="mt-1 flex items-baseline gap-2">
-              <span className="text-xl font-black text-[#0A0A0E] dark:text-white font-mono">
+              <span className="text-xl font-black text-[#0B0A14] dark:text-white font-mono">
                 {platformFee}%
               </span>
               <span className="text-[10px] font-bold text-neutral-600 dark:text-neutral-400 bg-black/5 dark:bg-white/5 px-1.5 py-0.5 rounded-sm">
@@ -459,7 +459,7 @@ export default function AdminSettingsPage() {
               <Sliders className="w-4 h-4 text-cyan-500" />
             </div>
             <div className="mt-1 flex items-baseline gap-2">
-              <span className="text-xl font-black text-[#0A0A0E] dark:text-white font-mono">
+              <span className="text-xl font-black text-[#0B0A14] dark:text-white font-mono">
                 {creatorWeightSum}% / {campaignWeightSum}%
               </span>
               <span
@@ -484,7 +484,7 @@ export default function AdminSettingsPage() {
               <ShieldAlert className="w-4 h-4 text-rose-500" />
             </div>
             <div className="mt-1 flex items-baseline gap-2">
-              <span className="text-xl font-black text-[#0A0A0E] dark:text-white font-mono">
+              <span className="text-xl font-black text-[#0B0A14] dark:text-white font-mono">
                 {suspicious.length}
               </span>
               <span className="text-[10px] font-bold text-rose-600 dark:text-rose-400 bg-rose-500/10 px-1.5 py-0.5 rounded-sm">
@@ -506,7 +506,7 @@ export default function AdminSettingsPage() {
             onClick={() => setActiveTab("all")}
             className={`px-3 py-1.5 rounded-lg font-bold text-[11px] whitespace-nowrap transition-all cursor-pointer ${
               activeTab === "all"
-                ? "bg-[#0A0A0E] text-white dark:bg-white dark:text-[#0A0A0E] shadow-xs"
+                ? "bg-[#0B0A14] text-white dark:bg-white dark:text-[#0B0A14] shadow-xs"
                 : "text-[#5A5A68] dark:text-[#9A9AA6] hover:bg-black/5 dark:hover:bg-white/5"
             }`}
           >
@@ -516,11 +516,11 @@ export default function AdminSettingsPage() {
             onClick={() => setActiveTab("flags")}
             className={`px-3 py-1.5 rounded-lg font-bold text-[11px] whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer ${
               activeTab === "flags"
-                ? "bg-[#0A0A0E] text-white dark:bg-white dark:text-[#0A0A0E] shadow-xs"
+                ? "bg-[#0B0A14] text-white dark:bg-white dark:text-[#0B0A14] shadow-xs"
                 : "text-[#5A5A68] dark:text-[#9A9AA6] hover:bg-black/5 dark:hover:bg-white/5"
             }`}
           >
-            <Layers className="w-3.5 h-3.5 text-[#FFD21F]" />
+            <Layers className="w-3.5 h-3.5 text-primary" />
             <span>Feature Flags</span>
             <span className="px-1.5 py-0.2 rounded-full text-[9px] bg-black/10 dark:bg-white/10 font-mono">
               {activeFlagsCount}/{totalFlagsCount}
@@ -530,7 +530,7 @@ export default function AdminSettingsPage() {
             onClick={() => setActiveTab("financial")}
             className={`px-3 py-1.5 rounded-lg font-bold text-[11px] whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer ${
               activeTab === "financial"
-                ? "bg-[#0A0A0E] text-white dark:bg-white dark:text-[#0A0A0E] shadow-xs"
+                ? "bg-[#0B0A14] text-white dark:bg-white dark:text-[#0B0A14] shadow-xs"
                 : "text-[#5A5A68] dark:text-[#9A9AA6] hover:bg-black/5 dark:hover:bg-white/5"
             }`}
           >
@@ -541,7 +541,7 @@ export default function AdminSettingsPage() {
             onClick={() => setActiveTab("creator_weights")}
             className={`px-3 py-1.5 rounded-lg font-bold text-[11px] whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer ${
               activeTab === "creator_weights"
-                ? "bg-[#0A0A0E] text-white dark:bg-white dark:text-[#0A0A0E] shadow-xs"
+                ? "bg-[#0B0A14] text-white dark:bg-white dark:text-[#0B0A14] shadow-xs"
                 : "text-[#5A5A68] dark:text-[#9A9AA6] hover:bg-black/5 dark:hover:bg-white/5"
             }`}
           >
@@ -555,7 +555,7 @@ export default function AdminSettingsPage() {
             onClick={() => setActiveTab("campaign_weights")}
             className={`px-3 py-1.5 rounded-lg font-bold text-[11px] whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer ${
               activeTab === "campaign_weights"
-                ? "bg-[#0A0A0E] text-white dark:bg-white dark:text-[#0A0A0E] shadow-xs"
+                ? "bg-[#0B0A14] text-white dark:bg-white dark:text-[#0B0A14] shadow-xs"
                 : "text-[#5A5A68] dark:text-[#9A9AA6] hover:bg-black/5 dark:hover:bg-white/5"
             }`}
           >
@@ -569,7 +569,7 @@ export default function AdminSettingsPage() {
             onClick={() => setActiveTab("badges")}
             className={`px-3 py-1.5 rounded-lg font-bold text-[11px] whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer ${
               activeTab === "badges"
-                ? "bg-[#0A0A0E] text-white dark:bg-white dark:text-[#0A0A0E] shadow-xs"
+                ? "bg-[#0B0A14] text-white dark:bg-white dark:text-[#0B0A14] shadow-xs"
                 : "text-[#5A5A68] dark:text-[#9A9AA6] hover:bg-black/5 dark:hover:bg-white/5"
             }`}
           >
@@ -580,7 +580,7 @@ export default function AdminSettingsPage() {
             onClick={() => setActiveTab("antigaming")}
             className={`px-3 py-1.5 rounded-lg font-bold text-[11px] whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer ${
               activeTab === "antigaming"
-                ? "bg-[#0A0A0E] text-white dark:bg-white dark:text-[#0A0A0E] shadow-xs"
+                ? "bg-[#0B0A14] text-white dark:bg-white dark:text-[#0B0A14] shadow-xs"
                 : "text-[#5A5A68] dark:text-[#9A9AA6] hover:bg-black/5 dark:hover:bg-white/5"
             }`}
           >
@@ -603,7 +603,7 @@ export default function AdminSettingsPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search setting or weight..."
-              className="w-full pl-8 pr-3 py-1.5 text-xs rounded-lg bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 focus:outline-hidden focus:ring-1 focus:ring-[#FFD21F] text-[#0A0A0E] dark:text-white placeholder:text-neutral-400"
+              className="w-full pl-8 pr-3 py-1.5 text-xs rounded-lg bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 focus:outline-hidden focus:ring-1 focus:ring-primary text-[#0B0A14] dark:text-white placeholder:text-neutral-400"
             />
           </div>
 
@@ -611,7 +611,7 @@ export default function AdminSettingsPage() {
             onClick={() => setIsCompact(!isCompact)}
             className={`px-2.5 py-1.5 rounded-lg border text-[11px] font-semibold transition-all flex items-center gap-1 cursor-pointer ${
               isCompact
-                ? "bg-[#FFD21F]/15 text-[#0A0A0E] dark:text-[#FFD21F] border-[#FFD21F]/40"
+                ? "bg-primary/15 text-[#0B0A14] dark:text-accent border-primary/40"
                 : "bg-black/5 dark:bg-white/5 text-neutral-600 dark:text-neutral-400 border-black/10 dark:border-white/10"
             }`}
             title="Toggle compact card spacing"
@@ -627,11 +627,11 @@ export default function AdminSettingsPage() {
         <div className="rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs overflow-hidden">
           <div className="px-5 py-4 border-b border-black/8 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-black/[0.01] dark:bg-white/[0.01]">
             <div className="flex items-center gap-2.5">
-              <div className="p-2 rounded-lg bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#0A0A0E] dark:text-[#FFD21F]">
+              <div className="p-2 rounded-lg bg-primary/15 border border-primary/30 text-[#0B0A14] dark:text-accent">
                 <Layers className="w-4 h-4" />
               </div>
               <div>
-                <h2 className="text-sm font-black text-[#0A0A0E] dark:text-white font-display">
+                <h2 className="text-sm font-black text-[#0B0A14] dark:text-white font-display">
                   Global Feature Flags & Architectural Modules
                 </h2>
                 <p className="text-[11px] text-[#5A5A68] dark:text-[#9A9AA6]">
@@ -676,7 +676,7 @@ export default function AdminSettingsPage() {
                       <div
                         className={`p-2 rounded-lg border shrink-0 transition-colors ${
                           isEnabled
-                            ? "bg-[#FFD21F]/15 border-[#FFD21F]/30 text-[#0A0A0E] dark:text-[#FFD21F]"
+                            ? "bg-primary/15 border-primary/30 text-[#0B0A14] dark:text-accent"
                             : "bg-black/5 dark:bg-white/5 border-black/10 dark:border-white/10 text-neutral-400"
                         }`}
                       >
@@ -684,7 +684,7 @@ export default function AdminSettingsPage() {
                       </div>
                       <div>
                         <div className="flex items-center gap-1.5 flex-wrap">
-                          <h3 className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                          <h3 className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
                             {meta.name}
                           </h3>
                         </div>
@@ -700,12 +700,12 @@ export default function AdminSettingsPage() {
                       aria-checked={isEnabled}
                       onClick={() => handleToggleFlag(key)}
                       className={`relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-hidden ${
-                        isEnabled ? "bg-[#FFD21F]" : "bg-black/20 dark:bg-white/20"
+                        isEnabled ? "bg-primary" : "bg-black/20 dark:bg-white/20"
                       }`}
                     >
                       <span
                         aria-hidden="true"
-                        className={`pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white dark:bg-[#0A0A0E] shadow-sm ring-0 transition duration-200 ease-in-out ${
+                        className={`pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white dark:bg-[#0B0A14] shadow-sm ring-0 transition duration-200 ease-in-out ${
                           isEnabled ? "translate-x-4" : "translate-x-0"
                         }`}
                       />
@@ -743,7 +743,7 @@ export default function AdminSettingsPage() {
               <Sliders className="w-4 h-4" />
             </div>
             <div>
-              <h2 className="text-sm font-black text-[#0A0A0E] dark:text-white font-display">
+              <h2 className="text-sm font-black text-[#0B0A14] dark:text-white font-display">
                 Financial Parameters & Escrow Vault Safeguards
               </h2>
               <p className="text-[11px] text-[#5A5A68] dark:text-[#9A9AA6]">
@@ -756,7 +756,7 @@ export default function AdminSettingsPage() {
             {/* Take-Rate % */}
             <div className="p-4 rounded-xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                <span className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
                   Platform Take-Rate (Commission)
                 </span>
                 <span className="font-mono text-sm font-black text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md">
@@ -780,7 +780,7 @@ export default function AdminSettingsPage() {
               <div className="p-2.5 rounded-lg bg-white dark:bg-[#12121A] border border-black/5 dark:border-white/5 text-[10px] space-y-1">
                 <div className="flex justify-between text-neutral-500">
                   <span>Brand Gross Escrow:</span>
-                  <span className="font-mono font-bold text-[#0A0A0E] dark:text-white">₹10,000.00</span>
+                  <span className="font-mono font-bold text-[#0B0A14] dark:text-white">₹10,000.00</span>
                 </div>
                 <div className="flex justify-between text-emerald-600 dark:text-emerald-400">
                   <span>Platform Fee ({platformFee}%):</span>
@@ -796,10 +796,10 @@ export default function AdminSettingsPage() {
             {/* Min Escrow ₹ */}
             <div className="p-4 rounded-xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                <span className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
                   Minimum Campaign Escrow Floor
                 </span>
-                <span className="font-mono text-sm font-black text-[#0A0A0E] dark:text-[#FFD21F] bg-[#FFD21F]/15 px-2 py-0.5 rounded-md">
+                <span className="font-mono text-sm font-black text-[#0B0A14] dark:text-accent bg-primary/15 px-2 py-0.5 rounded-md">
                   ₹{minEscrow.toLocaleString("en-IN")} INR
                 </span>
               </div>
@@ -810,7 +810,7 @@ export default function AdminSettingsPage() {
                 step="1000"
                 value={minEscrow}
                 onChange={(e) => setMinEscrow(parseInt(e.target.value) || 0)}
-                className="w-full accent-[#FFD21F] cursor-pointer"
+                className="w-full accent-primary cursor-pointer"
               />
               <div className="flex justify-between text-[10px] font-mono text-neutral-400">
                 <span>₹1,000</span>
@@ -824,7 +824,7 @@ export default function AdminSettingsPage() {
                     onClick={() => setMinEscrow(preset)}
                     className={`flex-1 py-1 text-[10px] font-mono font-bold rounded-md border transition-all cursor-pointer ${
                       minEscrow === preset
-                        ? "bg-[#FFD21F] text-[#0A0A0E] border-black/20"
+                        ? "bg-primary text-[#0B0A14] border-black/20"
                         : "bg-white dark:bg-[#12121A] text-neutral-600 dark:text-neutral-400 border-black/5 dark:border-white/5 hover:border-black/20"
                     }`}
                   >
@@ -839,7 +839,7 @@ export default function AdminSettingsPage() {
 
             {/* SLA Policies & Windows */}
             <div className="p-4 rounded-xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2.5">
-              <span className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display block">
+              <span className="text-xs font-bold text-[#0B0A14] dark:text-white font-display block">
                 Disbursement & Arbitration SLAs
               </span>
 
@@ -849,7 +849,7 @@ export default function AdminSettingsPage() {
                     <Clock className="w-3.5 h-3.5 text-cyan-500" />
                     <span className="text-[11px] font-medium">Deliverable Review SLA</span>
                   </div>
-                  <span className="font-mono text-[11px] font-bold text-[#0A0A0E] dark:text-white">
+                  <span className="font-mono text-[11px] font-bold text-[#0B0A14] dark:text-white">
                     120 Hours (5d)
                   </span>
                 </div>
@@ -859,7 +859,7 @@ export default function AdminSettingsPage() {
                     <Scale className="w-3.5 h-3.5 text-purple-500" />
                     <span className="text-[11px] font-medium">Arbitration Hold Period</span>
                   </div>
-                  <span className="font-mono text-[11px] font-bold text-[#0A0A0E] dark:text-white">
+                  <span className="font-mono text-[11px] font-bold text-[#0B0A14] dark:text-white">
                     7 Days
                   </span>
                 </div>
@@ -888,7 +888,7 @@ export default function AdminSettingsPage() {
                 <Flame className="w-4 h-4" />
               </div>
               <div>
-                <h2 className="text-sm font-black text-[#0A0A0E] dark:text-white font-display">
+                <h2 className="text-sm font-black text-[#0B0A14] dark:text-white font-display">
                   Creator Trending Algorithm Formula (Sum = 100%)
                 </h2>
                 <p className="text-[11px] text-[#5A5A68] dark:text-[#9A9AA6]">
@@ -921,7 +921,7 @@ export default function AdminSettingsPage() {
             <div className="h-2 rounded-full overflow-hidden flex bg-black/5 dark:bg-white/5">
               <div
                 style={{ width: `${Math.round(config.creatorWeights.engagementRate * 100)}%` }}
-                className="bg-[#FFD21F] h-full"
+                className="bg-primary h-full"
                 title={`Engagement Rate: ${Math.round(config.creatorWeights.engagementRate * 100)}%`}
               />
               <div
@@ -971,10 +971,10 @@ export default function AdminSettingsPage() {
             {/* 1. Engagement Rate */}
             <div className="p-3.5 rounded-xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
               <div className="flex justify-between items-center">
-                <span className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                <span className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
                   Engagement Rate
                 </span>
-                <span className="font-mono text-xs font-black text-[#0A0A0E] dark:text-[#FFD21F] bg-[#FFD21F]/15 px-2 py-0.5 rounded-md">
+                <span className="font-mono text-xs font-black text-[#0B0A14] dark:text-accent bg-primary/15 px-2 py-0.5 rounded-md">
                   {Math.round(config.creatorWeights.engagementRate * 100)}%
                 </span>
               </div>
@@ -990,7 +990,7 @@ export default function AdminSettingsPage() {
                     creatorWeights: { ...config.creatorWeights, engagementRate: parseFloat(e.target.value) },
                   })
                 }
-                className="w-full accent-[#FFD21F] cursor-pointer"
+                className="w-full accent-primary cursor-pointer"
               />
               <p className="text-[10px] text-[#5A5A68] dark:text-[#9A9AA6]">Weight for organic audience engagement %</p>
             </div>
@@ -998,7 +998,7 @@ export default function AdminSettingsPage() {
             {/* 2. Engagement Growth */}
             <div className="p-3.5 rounded-xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
               <div className="flex justify-between items-center">
-                <span className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                <span className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
                   Engagement Growth Velocity
                 </span>
                 <span className="font-mono text-xs font-black text-amber-600 dark:text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-md">
@@ -1025,7 +1025,7 @@ export default function AdminSettingsPage() {
             {/* 3. Profile Views */}
             <div className="p-3.5 rounded-xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
               <div className="flex justify-between items-center">
-                <span className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                <span className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
                   Profile Views & Searches
                 </span>
                 <span className="font-mono text-xs font-black text-cyan-600 dark:text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded-md">
@@ -1052,7 +1052,7 @@ export default function AdminSettingsPage() {
             {/* 4. Profile Saves */}
             <div className="p-3.5 rounded-xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
               <div className="flex justify-between items-center">
-                <span className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                <span className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
                   Profile Bookmarks & Saves
                 </span>
                 <span className="font-mono text-xs font-black text-purple-600 dark:text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded-md">
@@ -1079,7 +1079,7 @@ export default function AdminSettingsPage() {
             {/* 5. Successful Collabs */}
             <div className="p-3.5 rounded-xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
               <div className="flex justify-between items-center">
-                <span className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                <span className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
                   Completed Escrow Deals
                 </span>
                 <span className="font-mono text-xs font-black text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md">
@@ -1106,7 +1106,7 @@ export default function AdminSettingsPage() {
             {/* 6. Completion Rate */}
             <div className="p-3.5 rounded-xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
               <div className="flex justify-between items-center">
-                <span className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                <span className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
                   Escrow Completion Rate %
                 </span>
                 <span className="font-mono text-xs font-black text-blue-600 dark:text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md">
@@ -1133,7 +1133,7 @@ export default function AdminSettingsPage() {
             {/* 7. Reviews & Ratings */}
             <div className="p-3.5 rounded-xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
               <div className="flex justify-between items-center">
-                <span className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                <span className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
                   Brand Review Scores
                 </span>
                 <span className="font-mono text-xs font-black text-rose-600 dark:text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded-md">
@@ -1160,7 +1160,7 @@ export default function AdminSettingsPage() {
             {/* 8. Response Rate */}
             <div className="p-3.5 rounded-xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
               <div className="flex justify-between items-center">
-                <span className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                <span className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
                   Inquiry Response Speed
                 </span>
                 <span className="font-mono text-xs font-black text-teal-600 dark:text-teal-400 bg-teal-500/10 px-2 py-0.5 rounded-md">
@@ -1187,7 +1187,7 @@ export default function AdminSettingsPage() {
             {/* 9. Campaign Applications */}
             <div className="p-3.5 rounded-xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
               <div className="flex justify-between items-center">
-                <span className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                <span className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
                   Campaign Applications Active
                 </span>
                 <span className="font-mono text-xs font-black text-indigo-600 dark:text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded-md">
@@ -1223,7 +1223,7 @@ export default function AdminSettingsPage() {
                 <Target className="w-4 h-4" />
               </div>
               <div>
-                <h2 className="text-sm font-black text-[#0A0A0E] dark:text-white font-display">
+                <h2 className="text-sm font-black text-[#0B0A14] dark:text-white font-display">
                   Campaign Trending & Demand Formula (Sum = 100%)
                 </h2>
                 <p className="text-[11px] text-[#5A5A68] dark:text-[#9A9AA6]">
@@ -1261,7 +1261,7 @@ export default function AdminSettingsPage() {
               />
               <div
                 style={{ width: `${Math.round(config.campaignWeights.applications * 100)}%` }}
-                className="bg-[#FFD21F] h-full"
+                className="bg-primary h-full"
                 title={`Applications: ${Math.round(config.campaignWeights.applications * 100)}%`}
               />
               <div
@@ -1286,7 +1286,7 @@ export default function AdminSettingsPage() {
             {/* Views */}
             <div className="p-3.5 rounded-xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
               <div className="flex justify-between items-center">
-                <span className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                <span className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
                   Impressions & Views
                 </span>
                 <span className="font-mono text-xs font-black text-cyan-600 dark:text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded-md">
@@ -1313,10 +1313,10 @@ export default function AdminSettingsPage() {
             {/* Applications */}
             <div className="p-3.5 rounded-xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
               <div className="flex justify-between items-center">
-                <span className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                <span className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
                   Applications Volume
                 </span>
-                <span className="font-mono text-xs font-black text-[#0A0A0E] dark:text-[#FFD21F] bg-[#FFD21F]/15 px-2 py-0.5 rounded-md">
+                <span className="font-mono text-xs font-black text-[#0B0A14] dark:text-accent bg-primary/15 px-2 py-0.5 rounded-md">
                   {Math.round(config.campaignWeights.applications * 100)}%
                 </span>
               </div>
@@ -1332,7 +1332,7 @@ export default function AdminSettingsPage() {
                     campaignWeights: { ...config.campaignWeights, applications: parseFloat(e.target.value) },
                   })
                 }
-                className="w-full accent-[#FFD21F] cursor-pointer"
+                className="w-full accent-primary cursor-pointer"
               />
               <p className="text-[10px] text-[#5A5A68] dark:text-[#9A9AA6]">Total creator pitches submitted</p>
             </div>
@@ -1340,7 +1340,7 @@ export default function AdminSettingsPage() {
             {/* Velocity */}
             <div className="p-3.5 rounded-xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
               <div className="flex justify-between items-center">
-                <span className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                <span className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
                   Application Velocity (Daily)
                 </span>
                 <span className="font-mono text-xs font-black text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md">
@@ -1367,7 +1367,7 @@ export default function AdminSettingsPage() {
             {/* Category Demand */}
             <div className="p-3.5 rounded-xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
               <div className="flex justify-between items-center">
-                <span className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                <span className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
                   Category Demand Index
                 </span>
                 <span className="font-mono text-xs font-black text-purple-600 dark:text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded-md">
@@ -1394,7 +1394,7 @@ export default function AdminSettingsPage() {
             {/* Days Remaining Urgency */}
             <div className="p-3.5 rounded-xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
               <div className="flex justify-between items-center">
-                <span className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                <span className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
                   Urgency / Days Remaining
                 </span>
                 <span className="font-mono text-xs font-black text-rose-600 dark:text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded-md">
@@ -1429,7 +1429,7 @@ export default function AdminSettingsPage() {
               <Award className="w-4 h-4" />
             </div>
             <div>
-              <h2 className="text-sm font-black text-[#0A0A0E] dark:text-white font-display">
+              <h2 className="text-sm font-black text-[#0B0A14] dark:text-white font-display">
                 Rising Talent Criteria & Reputation Badge Thresholds
               </h2>
               <p className="text-[11px] text-[#5A5A68] dark:text-[#9A9AA6]">
@@ -1619,10 +1619,10 @@ export default function AdminSettingsPage() {
                 <div className="p-3.5 rounded-xl bg-[#F8F8FA] dark:bg-[#181824] border border-black/5 dark:border-white/5 space-y-2">
                   <div className="flex justify-between items-center font-semibold text-xs">
                     <span className="flex items-center gap-1.5">
-                      <Sparkles className="w-3.5 h-3.5 text-[#FFD21F]" />
+                      <Sparkles className="w-3.5 h-3.5 text-primary" />
                       <span>⭐ Top Rated</span>
                     </span>
-                    <span className="font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F] bg-[#FFD21F]/15 px-2 py-0.5 rounded-md">
+                    <span className="font-mono font-bold text-[#0B0A14] dark:text-accent bg-primary/15 px-2 py-0.5 rounded-md">
                       &ge; {config.badgeThresholds.topRatedMinRating} / 5.0
                     </span>
                   </div>
@@ -1638,7 +1638,7 @@ export default function AdminSettingsPage() {
                         badgeThresholds: { ...config.badgeThresholds, topRatedMinRating: parseFloat(e.target.value) },
                       })
                     }
-                    className="w-full accent-[#FFD21F] cursor-pointer"
+                    className="w-full accent-primary cursor-pointer"
                   />
                   <p className="text-[10px] text-[#5A5A68] dark:text-[#9A9AA6]">
                     Requires &ge; {config.badgeThresholds.topRatedMinReviewsCount} verified brand reviews
@@ -1715,7 +1715,7 @@ export default function AdminSettingsPage() {
                 <ShieldAlert className="w-4 h-4" />
               </div>
               <div>
-                <h2 className="text-sm font-black text-[#0A0A0E] dark:text-white font-display">
+                <h2 className="text-sm font-black text-[#0B0A14] dark:text-white font-display">
                   Anti-Gaming Security & Interaction Throttling Log
                 </h2>
                 <p className="text-[11px] text-[#5A5A68] dark:text-[#9A9AA6]">
@@ -1734,7 +1734,7 @@ export default function AdminSettingsPage() {
               <div className="w-10 h-10 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto">
                 <ShieldCheck className="w-5 h-5" />
               </div>
-              <h3 className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+              <h3 className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
                 No Malicious Gaming Patterns Detected
               </h3>
               <p className="text-[11px] text-[#5A5A68] dark:text-[#9A9AA6] max-w-md mx-auto">
@@ -1763,7 +1763,7 @@ export default function AdminSettingsPage() {
                       <td className="py-3 px-4">
                         <button
                           onClick={(e) => handleCopyActor(item.actorId || "anon", e)}
-                          className="font-bold text-[#0A0A0E] dark:text-[#F4F4F8] hover:text-[#FFD21F] flex items-center gap-1.5 cursor-pointer group"
+                          className="font-bold text-[#0B0A14] dark:text-[#F4F4F8] hover:text-primary flex items-center gap-1.5 cursor-pointer group"
                         >
                           <span>{item.actorId || "Anonymous Session"}</span>
                           {copiedActorId === item.actorId ? (

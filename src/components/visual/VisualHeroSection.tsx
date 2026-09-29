@@ -71,7 +71,7 @@ export function VisualHeroSection() {
   const activePortrait = HERO_PORTRAITS[activeIdx];
 
   return (
-    <section className="relative min-h-[90vh] sm:min-h-screen bg-white dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] flex flex-col justify-between pt-20 sm:pt-24 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden select-none font-sans">
+    <section className="relative min-h-[90vh] sm:min-h-screen bg-white dark:bg-[#07070B] text-[#0B0A14] dark:text-[#F4F4F8] flex flex-col justify-between pt-20 sm:pt-24 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden select-none font-sans">
       {/* Background Solar Ambience with gentle breathing animation */}
       <motion.div
         animate={{
@@ -83,7 +83,7 @@ export function VisualHeroSection() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] sm:w-[900px] h-[380px] bg-gradient-to-b from-[#FFD21F]/25 via-[#FFD21F]/8 to-transparent rounded-full blur-[130px] pointer-events-none"
+        className="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] sm:w-[900px] h-[380px] bg-gradient-to-b from-primary/25 via-primary/8 to-transparent rounded-full blur-[130px] pointer-events-none"
       />
 
       <div className="max-w-7xl mx-auto w-full flex-1 flex flex-col justify-center my-auto relative z-10">
@@ -99,16 +99,16 @@ export function VisualHeroSection() {
           >
             {/* Live Platform Pill */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF9F5] dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-2xs">
-              <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
-              <span className="text-xs font-mono font-bold tracking-tight text-[#0A0A0E] dark:text-[#FFD21F]">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              <span className="text-xs font-mono font-bold tracking-tight text-[#0B0A14] dark:text-accent">
                 ABEYCOLLAB • CREATOR COMMERCE PLATFORM
               </span>
             </div>
 
             {/* Headline */}
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black font-display tracking-tight text-[#0A0A0E] dark:text-white leading-[1.02]">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black font-display tracking-tight text-[#0B0A14] dark:text-white leading-[1.02]">
               WHERE VISIONARY BRANDS MEET{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-[#9333EA] to-accent">
                 CINEMATIC
               </span>{" "}
               CREATORS.
@@ -123,15 +123,15 @@ export function VisualHeroSection() {
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <Link
                 href="/register"
-                className="px-7 py-4 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(255,210,31,0.5)] flex items-center gap-2 group active:scale-[0.98] border border-black/10 font-sans hover-lift cursor-pointer"
+                className="px-7 py-4 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.5)] flex items-center gap-2 group active:scale-[0.98] border border-black/10 font-sans hover-lift cursor-pointer"
               >
                 <span>Launch Campaign Brief</span>
-                <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 text-[#0B0A14] group-hover:translate-x-1 transition-transform" />
               </Link>
 
               <Link href="/creators">
-                <button className="px-6 py-4 rounded-full bg-white dark:bg-[#14141E] hover:bg-[#F8F8FC] dark:hover:bg-[#1C1C28] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs sm:text-sm transition-all shadow-xs active:scale-[0.98] flex items-center gap-2 hover-lift cursor-pointer">
-                  <Users className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />
+                <button className="px-6 py-4 rounded-full bg-white dark:bg-[#14141E] hover:bg-[#F8F8FC] dark:hover:bg-[#1C1C28] border border-black/10 dark:border-white/10 text-[#0B0A14] dark:text-white font-bold text-xs sm:text-sm transition-all shadow-xs active:scale-[0.98] flex items-center gap-2 hover-lift cursor-pointer">
+                  <Users className="w-4 h-4 text-[#0B0A14] dark:text-accent" />
                   <span>Explore Roster</span>
                 </button>
               </Link>
@@ -139,13 +139,13 @@ export function VisualHeroSection() {
 
             {/* Proof Micro Bar */}
             <div className="flex items-center gap-4 pt-3 border-t border-black/6 dark:border-white/10 text-xs font-mono text-[#5A5A68] dark:text-[#8E8EA4]">
-              <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E] dark:text-white">
+              <div className="flex items-center gap-1.5 font-bold text-[#0B0A14] dark:text-white">
                 <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                 <span>₹12.5 Cr Escrow Vaults</span>
               </div>
               <span>•</span>
-              <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E] dark:text-white">
-                <Zap className="w-4 h-4 text-[#FFD21F]" />
+              <div className="flex items-center gap-1.5 font-bold text-[#0B0A14] dark:text-white">
+                <Zap className="w-4 h-4 text-primary" />
                 <span>&lt; 2h Instant Payout SLA</span>
               </div>
             </div>
@@ -168,13 +168,13 @@ export function VisualHeroSection() {
                   onClick={() => setActiveIdx(i)}
                   className={`px-3.5 py-1.5 rounded-full text-xs font-sans font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
                     activeIdx === i
-                      ? "bg-white dark:bg-[#1F1F2E] text-[#0A0A0E] dark:text-white shadow-sm border border-black/8 dark:border-white/10"
-                      : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
+                      ? "bg-white dark:bg-[#1F1F2E] text-[#0B0A14] dark:text-white shadow-sm border border-black/8 dark:border-white/10"
+                      : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
                   }`}
                 >
                   <span
                     className={`w-2 h-2 rounded-full ${
-                      activeIdx === i ? "bg-[#FFD21F]" : "bg-black/20 dark:bg-white/20"
+                      activeIdx === i ? "bg-primary" : "bg-black/20 dark:bg-white/20"
                     }`}
                   />
                   <span>{p.name.split(" ")[0]}</span>
@@ -185,8 +185,8 @@ export function VisualHeroSection() {
             {/* Main Interactive Overlapping Portrait Card with 3D Tilt */}
             <InteractiveTiltCard
               maxTilt={10}
-              glowColor="rgba(255, 210, 31, 0.3)"
-              className="relative w-full max-w-[360px] sm:max-w-[420px] aspect-[4/5] rounded-3xl overflow-hidden border-2 border-white shadow-[0_20px_60px_rgba(0,0,0,0.14)] bg-[#0A0A0E] group"
+              glowColor="rgba(var(--theme-primary-rgb), 0.3)"
+              className="relative w-full max-w-[360px] sm:max-w-[420px] aspect-[4/5] rounded-3xl overflow-hidden border-2 border-white shadow-[0_20px_60px_rgba(0,0,0,0.14)] bg-[#0B0A14] group"
             >
               {/* Primary Background Portrait */}
               <AnimatePresence mode="wait">
@@ -213,15 +213,15 @@ export function VisualHeroSection() {
               <motion.div
                 initial={{ y: -10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="absolute top-4 left-4 z-20 px-3 py-1.5 rounded-full bg-white/95 dark:bg-[#14141E]/95 backdrop-blur-md border border-white/40 dark:border-white/20 shadow-lg flex items-center gap-1.5 text-xs font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F]"
+                className="absolute top-4 left-4 z-20 px-3 py-1.5 rounded-full bg-white/95 dark:bg-[#14141E]/95 backdrop-blur-md border border-white/40 dark:border-white/20 shadow-lg flex items-center gap-1.5 text-xs font-mono font-bold text-[#0B0A14] dark:text-accent"
               >
-                <Sparkles className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
-                <span className="text-[#0A0A0E] dark:text-white">{activePortrait.matchScore}</span>
+                <Sparkles className="w-3.5 h-3.5 text-primary fill-primary" />
+                <span className="text-[#0B0A14] dark:text-white">{activePortrait.matchScore}</span>
               </motion.div>
 
               {/* Top Right Live Reel Badge */}
               <div className="absolute top-4 right-4 z-20 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-[10px] font-mono font-semibold text-white flex items-center gap-1">
-                <Flame className="w-3 h-3 text-[#FFD21F]" />
+                <Flame className="w-3 h-3 text-primary" />
                 <span>{activePortrait.reach}</span>
               </div>
 
@@ -246,18 +246,18 @@ export function VisualHeroSection() {
               </motion.div>
 
               {/* Bottom Glass Identity Bar */}
-              <div className="absolute bottom-4 inset-x-4 z-20 p-4 rounded-2xl bg-white/95 dark:bg-[#101018]/95 backdrop-blur-xl border border-black/8 dark:border-white/10 shadow-xl space-y-2 text-[#0A0A0E] dark:text-[#F4F4F8]">
+              <div className="absolute bottom-4 inset-x-4 z-20 p-4 rounded-2xl bg-white/95 dark:bg-[#101018]/95 backdrop-blur-xl border border-black/8 dark:border-white/10 shadow-xl space-y-2 text-[#0B0A14] dark:text-[#F4F4F8]">
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="flex items-center gap-1.5">
-                      <h3 className="text-sm font-bold font-display text-[#0A0A0E] dark:text-white">{activePortrait.name}</h3>
+                      <h3 className="text-sm font-bold font-display text-[#0B0A14] dark:text-white">{activePortrait.name}</h3>
                       <CheckCircle2 className="w-3.5 h-3.5 text-[#087F5B] dark:text-emerald-400" />
                     </div>
                     <p className="text-[11px] text-[#6A6A78] dark:text-[#8E8EA4] font-sans">{activePortrait.niche}</p>
                   </div>
                   <div className="text-right font-mono">
                     <span className="text-[10px] text-[#888898] dark:text-[#7A7A8A] block uppercase">Starts at</span>
-                    <span className="text-xs font-extrabold text-[#0A0A0E] dark:text-white">
+                    <span className="text-xs font-extrabold text-[#0B0A14] dark:text-white">
                       {format(activePortrait.rateNumber || 35000, "INR")}
                     </span>
                   </div>
@@ -267,7 +267,7 @@ export function VisualHeroSection() {
                   <span className="text-[#5A5A68] dark:text-[#8E8EA4] truncate max-w-[180px]">{activePortrait.specs}</span>
                   <Link
                     href={`/creators`}
-                    className="text-xs font-bold text-[#0A0A0E] dark:text-white hover:text-amber-600 dark:hover:text-[#FFD21F] flex items-center gap-0.5 shrink-0 transition-colors"
+                    className="text-xs font-bold text-[#0B0A14] dark:text-white hover:text-amber-600 dark:hover:text-accent flex items-center gap-0.5 shrink-0 transition-colors"
                   >
                     <span>View Deck</span>
                     <ArrowRight className="w-3 h-3" />

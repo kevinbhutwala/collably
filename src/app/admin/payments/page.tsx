@@ -250,16 +250,16 @@ export default function AdminPaymentsVaultPage() {
   }, [rawVaults, data]);
 
   return (
-    <div className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans max-w-[1600px] mx-auto pb-10">
+    <div className="space-y-4 text-[#0B0A14] dark:text-[#F4F4F8] select-none font-sans max-w-[1600px] mx-auto pb-10">
       {/* ── Compact Header & Action Bar ── */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-black/8 dark:border-white/10">
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-xl bg-black dark:bg-white text-white dark:text-black flex items-center justify-center shrink-0 shadow-xs">
-            <Lock className="w-4 h-4 text-[#FFD21F]" />
+            <Lock className="w-4 h-4 text-primary" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-xl sm:text-2xl font-black text-[#0A0A0E] dark:text-white tracking-tight font-display">
+              <h1 className="text-xl sm:text-2xl font-black text-[#0B0A14] dark:text-white tracking-tight font-display">
                 Payment &amp; Escrow Vaults
               </h1>
               <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 text-[10px] font-mono font-bold">
@@ -293,7 +293,7 @@ export default function AdminPaymentsVaultPage() {
             disabled={isRunningWatchdog}
             className="px-3.5 py-1.5 rounded-xl bg-black dark:bg-white text-white dark:text-black text-xs font-bold hover:opacity-90 transition-all flex items-center gap-1.5 shadow-2xs"
           >
-            <Zap className={`w-3.5 h-3.5 text-[#FFD21F] ${isRunningWatchdog ? "animate-bounce" : ""}`} />
+            <Zap className={`w-3.5 h-3.5 text-primary ${isRunningWatchdog ? "animate-bounce" : ""}`} />
             {isRunningWatchdog ? "Auditing Ledger..." : "Audit Solvency"}
           </button>
         </div>
@@ -307,7 +307,7 @@ export default function AdminPaymentsVaultPage() {
               <span className="text-[10px] font-mono font-bold text-[#7A7A8A] uppercase tracking-wider block">
                 Total Locked Escrow
               </span>
-              <span className="text-lg sm:text-xl font-black text-[#0A0A0E] dark:text-white font-display">
+              <span className="text-lg sm:text-xl font-black text-[#0B0A14] dark:text-white font-display">
                 {formatCurrency(summary.totalHeld, "INR")}
               </span>
               <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-mono block">
@@ -324,7 +324,7 @@ export default function AdminPaymentsVaultPage() {
               <span className="text-[10px] font-mono font-bold text-[#7A7A8A] uppercase tracking-wider block">
                 Monitored Vaults
               </span>
-              <span className="text-lg sm:text-xl font-black text-[#0A0A0E] dark:text-white font-display">
+              <span className="text-lg sm:text-xl font-black text-[#0B0A14] dark:text-white font-display">
                 {summary.monitoredVaultsCount}{" "}
                 <span className="text-xs font-semibold text-[#8E8EA4]">Contracts</span>
               </span>
@@ -332,7 +332,7 @@ export default function AdminPaymentsVaultPage() {
                 Razorpay Custody Rail
               </span>
             </div>
-            <div className="w-8 h-8 rounded-xl bg-[#FFD21F]/20 text-[#D97706] dark:text-[#FFD21F] flex items-center justify-center shrink-0">
+            <div className="w-8 h-8 rounded-xl bg-primary/20 text-[#D97706] dark:text-accent flex items-center justify-center shrink-0">
               <Layers className="w-4 h-4" />
             </div>
           </div>
@@ -342,7 +342,7 @@ export default function AdminPaymentsVaultPage() {
               <span className="text-[10px] font-mono font-bold text-[#7A7A8A] uppercase tracking-wider block">
                 Settled Payouts (90%)
               </span>
-              <span className="text-lg sm:text-xl font-black text-[#0A0A0E] dark:text-white font-display">
+              <span className="text-lg sm:text-xl font-black text-[#0B0A14] dark:text-white font-display">
                 {formatCurrency(summary.totalReleased, "INR")}
               </span>
               <span className="text-[10px] text-indigo-600 dark:text-indigo-400 font-mono block">
@@ -382,7 +382,7 @@ export default function AdminPaymentsVaultPage() {
             className={`px-3 py-1 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
               filter === "all"
                 ? "bg-black dark:bg-white text-white dark:text-black shadow-2xs"
-                : "bg-black/5 dark:bg-white/5 text-[#5A5A68] dark:text-[#9A9AA6] hover:text-[#0A0A0E] dark:hover:text-white"
+                : "bg-black/5 dark:bg-white/5 text-[#5A5A68] dark:text-[#9A9AA6] hover:text-[#0B0A14] dark:hover:text-white"
             }`}
           >
             All Vaults ({rawVaults.length})
@@ -392,7 +392,7 @@ export default function AdminPaymentsVaultPage() {
             className={`px-3 py-1 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
               filter === "held"
                 ? "bg-emerald-600 text-white shadow-2xs"
-                : "bg-black/5 dark:bg-white/5 text-[#5A5A68] dark:text-[#9A9AA6] hover:text-[#0A0A0E] dark:hover:text-white"
+                : "bg-black/5 dark:bg-white/5 text-[#5A5A68] dark:text-[#9A9AA6] hover:text-[#0B0A14] dark:hover:text-white"
             }`}
           >
             Locked in Escrow ({rawVaults.filter((v: any) => v.status !== "completed" && v.paymentStatus !== "paid").length})
@@ -402,7 +402,7 @@ export default function AdminPaymentsVaultPage() {
             className={`px-3 py-1 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
               filter === "review"
                 ? "bg-amber-500 text-black shadow-2xs"
-                : "bg-black/5 dark:bg-white/5 text-[#5A5A68] dark:text-[#9A9AA6] hover:text-[#0A0A0E] dark:hover:text-white"
+                : "bg-black/5 dark:bg-white/5 text-[#5A5A68] dark:text-[#9A9AA6] hover:text-[#0B0A14] dark:hover:text-white"
             }`}
           >
             120h Review ({rawVaults.filter((v: any) => v.status === "in_review" || v.status === "review_pending" || v.paymentStatus === "submitted_for_review").length})
@@ -412,7 +412,7 @@ export default function AdminPaymentsVaultPage() {
             className={`px-3 py-1 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
               filter === "released"
                 ? "bg-indigo-600 text-white shadow-2xs"
-                : "bg-black/5 dark:bg-white/5 text-[#5A5A68] dark:text-[#9A9AA6] hover:text-[#0A0A0E] dark:hover:text-white"
+                : "bg-black/5 dark:bg-white/5 text-[#5A5A68] dark:text-[#9A9AA6] hover:text-[#0B0A14] dark:hover:text-white"
             }`}
           >
             Settled ({rawVaults.filter((v: any) => v.status === "completed" || v.paymentStatus === "paid").length})
@@ -428,14 +428,14 @@ export default function AdminPaymentsVaultPage() {
               placeholder="Search vaults..."
               value={searchQuery}
               onChange={(e) => { setSearchQuery(e.target.value); setCurrentPage(1); }}
-              className="w-full pl-8 pr-2.5 py-1 text-xs rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-[#0A0A0E] dark:text-white placeholder-[#8A8A9A] focus:outline-hidden focus:border-[#FFD21F]"
+              className="w-full pl-8 pr-2.5 py-1 text-xs rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-[#0B0A14] dark:text-white placeholder-[#8A8A9A] focus:outline-hidden focus:border-primary"
             />
           </div>
 
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as any)}
-            className="px-2.5 py-1 text-xs font-mono rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-[#0A0A0E] dark:text-white focus:outline-hidden"
+            className="px-2.5 py-1 text-xs font-mono rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-[#0B0A14] dark:text-white focus:outline-hidden"
           >
             <option value="highest">Highest Balance</option>
             <option value="newest">Newest First</option>
@@ -447,7 +447,7 @@ export default function AdminPaymentsVaultPage() {
             title={isCompact ? "Switch to Comfortable Spacing" : "Switch to Compact Density"}
             className={`px-2.5 py-1 text-xs font-mono rounded-xl border transition-all flex items-center gap-1 ${
               isCompact
-                ? "bg-black/5 dark:bg-white/5 border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white"
+                ? "bg-black/5 dark:bg-white/5 border-black/10 dark:border-white/10 text-[#0B0A14] dark:text-white"
                 : "border-black/5 dark:border-white/5 text-[#7A7A8A]"
             }`}
           >
@@ -489,7 +489,7 @@ export default function AdminPaymentsVaultPage() {
           {paginatedVaults.length === 0 ? (
             <div className="p-12 text-center">
               <Lock className="w-8 h-8 text-[#A0A0B0] mx-auto mb-2 opacity-50" />
-              <h3 className="font-bold text-sm text-[#0A0A0E] dark:text-white font-display">No escrow vaults found</h3>
+              <h3 className="font-bold text-sm text-[#0B0A14] dark:text-white font-display">No escrow vaults found</h3>
               <p className="text-xs text-[#7A7A8A] mt-0.5">Try adjusting your filter or search query.</p>
             </div>
           ) : (
@@ -549,7 +549,7 @@ export default function AdminPaymentsVaultPage() {
                                 />
                               </div>
                               <div className="min-w-0">
-                                <div className="font-bold text-[#0A0A0E] dark:text-white truncate max-w-[130px] sm:max-w-[170px]">
+                                <div className="font-bold text-[#0B0A14] dark:text-white truncate max-w-[130px] sm:max-w-[170px]">
                                   {brandName}
                                 </div>
                                 <span className="text-[10px] text-[#7A7A8A] font-mono block">
@@ -572,7 +572,7 @@ export default function AdminPaymentsVaultPage() {
                                 />
                               </div>
                               <div className="min-w-0">
-                                <div className="font-bold text-[#0A0A0E] dark:text-white truncate max-w-[120px] sm:max-w-[160px]">
+                                <div className="font-bold text-[#0B0A14] dark:text-white truncate max-w-[120px] sm:max-w-[160px]">
                                   {creatorName}
                                 </div>
                                 <span className="text-[10px] text-[#7A7A8A] font-mono block">
@@ -585,7 +585,7 @@ export default function AdminPaymentsVaultPage() {
                           {/* Campaign Brief */}
                           <td className={rowPadding}>
                             <div className="min-w-0 max-w-[200px] lg:max-w-[280px]">
-                              <div className="font-semibold text-[#0A0A0E] dark:text-white truncate">
+                              <div className="font-semibold text-[#0B0A14] dark:text-white truncate">
                                 {v.campaignTitle}
                               </div>
                               <div className="flex items-center gap-1.5 mt-0.5">
@@ -602,7 +602,7 @@ export default function AdminPaymentsVaultPage() {
                           {/* Vault Capital */}
                           <td className={rowPadding}>
                             <div className="font-mono">
-                              <div className="font-bold text-sm text-[#0A0A0E] dark:text-white">
+                              <div className="font-bold text-sm text-[#0B0A14] dark:text-white">
                                 {formatCurrency(budget, currency)}
                               </div>
                               <span className="text-[10px] text-emerald-600 dark:text-emerald-400 block">
@@ -640,14 +640,14 @@ export default function AdminPaymentsVaultPage() {
                                   setOverrideAmount(v.escrowBalanceDollars || budget);
                                   setIsModalOpen(true);
                                 }}
-                                className="px-2.5 py-1 rounded-lg bg-[#F8F8FC] dark:bg-[#181824] hover:bg-black/5 dark:hover:bg-white/10 text-[#0A0A0E] dark:text-white font-mono text-[11px] font-bold border border-black/10 dark:border-white/10 shadow-2xs transition-all whitespace-nowrap"
+                                className="px-2.5 py-1 rounded-lg bg-[#F8F8FC] dark:bg-[#181824] hover:bg-black/5 dark:hover:bg-white/10 text-[#0B0A14] dark:text-white font-mono text-[11px] font-bold border border-black/10 dark:border-white/10 shadow-2xs transition-all whitespace-nowrap"
                               >
                                 Manual Override
                               </button>
                               <button
                                 onClick={() => toggleRow(v.collaborationId)}
                                 title={isExpanded ? "Collapse Details" : "Expand Details"}
-                                className="p-1 rounded-lg text-[#7A7A8A] hover:text-[#0A0A0E] dark:hover:text-white transition-all"
+                                className="p-1 rounded-lg text-[#7A7A8A] hover:text-[#0B0A14] dark:hover:text-white transition-all"
                               >
                                 {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
                               </button>
@@ -663,7 +663,7 @@ export default function AdminPaymentsVaultPage() {
                                 {/* Pipeline Stepper */}
                                 <div className="space-y-1.5">
                                   <div className="flex items-center justify-between text-[11px] font-mono">
-                                    <span className="font-bold text-[#0A0A0E] dark:text-white">
+                                    <span className="font-bold text-[#0B0A14] dark:text-white">
                                       Escrow Vault Lifecycle
                                     </span>
                                     <span className="text-[#7A7A8A]">
@@ -704,7 +704,7 @@ export default function AdminPaymentsVaultPage() {
                                             key={del.id}
                                             className="p-2 rounded-lg bg-[#FAFAFC] dark:bg-[#12121A] border border-black/5 dark:border-white/5 flex items-center justify-between text-xs"
                                           >
-                                            <span className="font-semibold text-[#0A0A0E] dark:text-white truncate">
+                                            <span className="font-semibold text-[#0B0A14] dark:text-white truncate">
                                               {del.title}
                                             </span>
                                             <span
@@ -738,13 +738,13 @@ export default function AdminPaymentsVaultPage() {
                                         <span>Creator Share (90%):</span>
                                         <strong>{formatCurrency(budget * 0.9, currency)}</strong>
                                       </div>
-                                      <div className="flex justify-between text-[#D97706] dark:text-[#FFD21F]">
+                                      <div className="flex justify-between text-[#D97706] dark:text-accent">
                                         <span>Platform Commission (10%):</span>
                                         <strong>{formatCurrency(budget * 0.1, currency)}</strong>
                                       </div>
                                       <div className="flex justify-between pt-1 border-t border-black/5 dark:border-white/5 text-[11px]">
                                         <span className="text-[#8E8EA4]">Custody Account:</span>
-                                        <span className="text-[#0A0A0E] dark:text-white">RAZORPAY_ESCROW_VAULT</span>
+                                        <span className="text-[#0B0A14] dark:text-white">RAZORPAY_ESCROW_VAULT</span>
                                       </div>
                                     </div>
                                     <div className="pt-2 flex items-center justify-end gap-2">
@@ -779,7 +779,7 @@ export default function AdminPaymentsVaultPage() {
           {paginatedVaults.length === 0 ? (
             <div className="col-span-full p-12 text-center rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10">
               <Lock className="w-8 h-8 text-[#A0A0B0] mx-auto mb-2 opacity-50" />
-              <h3 className="font-bold text-sm text-[#0A0A0E] dark:text-white font-display">No vaults found</h3>
+              <h3 className="font-bold text-sm text-[#0B0A14] dark:text-white font-display">No vaults found</h3>
               <p className="text-xs text-[#7A7A8A] mt-0.5">Try adjusting your filter or search query.</p>
             </div>
           ) : (
@@ -800,7 +800,7 @@ export default function AdminPaymentsVaultPage() {
               return (
                 <div
                   key={v.collaborationId}
-                  className="p-4 rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 hover:border-[#FFD21F] shadow-2xs space-y-3 flex flex-col justify-between"
+                  className="p-4 rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 hover:border-primary shadow-2xs space-y-3 flex flex-col justify-between"
                 >
                   <div className="space-y-2.5">
                     {/* Brand & Creator Header */}
@@ -822,7 +822,7 @@ export default function AdminPaymentsVaultPage() {
 
                     {/* Campaign brief & Escrow capital */}
                     <div className="p-2.5 rounded-xl bg-[#FAFAFC] dark:bg-[#161622] border border-black/5 dark:border-white/5 space-y-1">
-                      <h5 className="font-semibold text-xs truncate text-[#0A0A0E] dark:text-white">
+                      <h5 className="font-semibold text-xs truncate text-[#0B0A14] dark:text-white">
                         {v.campaignTitle}
                       </h5>
                       <div className="flex items-center justify-between font-mono text-xs">
@@ -862,7 +862,7 @@ export default function AdminPaymentsVaultPage() {
                         setOverrideAmount(v.escrowBalanceDollars || budget);
                         setIsModalOpen(true);
                       }}
-                      className="px-3 py-1 rounded-lg bg-[#F8F8FC] dark:bg-[#181824] hover:bg-black/5 dark:hover:bg-white/10 text-[#0A0A0E] dark:text-white font-mono text-[11px] font-bold border border-black/10 dark:border-white/10 shadow-2xs transition-all w-full text-center"
+                      className="px-3 py-1 rounded-lg bg-[#F8F8FC] dark:bg-[#181824] hover:bg-black/5 dark:hover:bg-white/10 text-[#0B0A14] dark:text-white font-mono text-[11px] font-bold border border-black/10 dark:border-white/10 shadow-2xs transition-all w-full text-center"
                     >
                       Manual Override
                     </button>
@@ -890,7 +890,7 @@ export default function AdminPaymentsVaultPage() {
                 setPageSize(Number(e.target.value));
                 setCurrentPage(1);
               }}
-              className="bg-transparent border-b border-black/20 dark:border-white/20 text-[#0A0A0E] dark:text-white font-bold focus:outline-hidden"
+              className="bg-transparent border-b border-black/20 dark:border-white/20 text-[#0B0A14] dark:text-white font-bold focus:outline-hidden"
             >
               <option value={10}>10</option>
               <option value={25}>25</option>
@@ -909,7 +909,7 @@ export default function AdminPaymentsVaultPage() {
             >
               Prev
             </button>
-            <span className="px-2 text-[#0A0A0E] dark:text-white font-bold">
+            <span className="px-2 text-[#0B0A14] dark:text-white font-bold">
               {currentPage} / {totalPages}
             </span>
             <button
@@ -929,7 +929,7 @@ export default function AdminPaymentsVaultPage() {
         onClose={() => setIsModalOpen(false)}
         title="Admin Escrow Manual Override"
       >
-        <div className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8] font-sans">
+        <div className="space-y-4 text-[#0B0A14] dark:text-[#F4F4F8] font-sans">
           <p className="text-sm text-[#5A5A68] dark:text-[#9A9AA6]">
             Pessimistic override executes an atomic double-entry ledger settlement with immutable audit logging.
           </p>
@@ -964,7 +964,7 @@ export default function AdminPaymentsVaultPage() {
             <select
               value={overrideAction}
               onChange={(e: any) => setOverrideAction(e.target.value)}
-              className="w-full px-3.5 py-2 rounded-xl bg-[#FAFAFC] dark:bg-[#181824] border border-black/15 dark:border-white/15 text-xs font-sans text-[#0A0A0E] dark:text-white focus:outline-hidden"
+              className="w-full px-3.5 py-2 rounded-xl bg-[#FAFAFC] dark:bg-[#181824] border border-black/15 dark:border-white/15 text-xs font-sans text-[#0B0A14] dark:text-white focus:outline-hidden"
             >
               <option value="emergency_release_to_creator">Release 100% Escrow to Creator</option>
               <option value="emergency_refund_to_brand">Refund 100% Escrow to Brand Partner</option>

@@ -14,7 +14,7 @@ export function InteractiveTiltCard({
   children,
   className = "",
   maxTilt = 8,
-  glowColor = "rgba(255, 210, 31, 0.2)",
+  glowColor = "rgba(var(--theme-primary-rgb), 0.2)",
 }: InteractiveTiltCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });

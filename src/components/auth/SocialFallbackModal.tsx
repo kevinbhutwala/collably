@@ -88,7 +88,7 @@ export function SocialFallbackModal({
       description={`Authenticate your ${providerName} account to access your AbeyCollab workspace.`}
       maxWidth="md"
     >
-      <div className="space-y-4 pt-1 text-[#0A0A0E] select-none font-sans">
+      <div className="space-y-4 pt-1 text-[#0B0A14] select-none font-sans">
         {/* Quick select verified account pills */}
         <div className="space-y-1.5">
           <span className="text-[11px] font-bold text-[#6A6A78] uppercase font-mono tracking-wider">
@@ -103,17 +103,17 @@ export function SocialFallbackModal({
                   role === "brand" ? "Brand Partner" : "Creator Partner"
                 )
               }
-              className="p-2.5 rounded-2xl bg-[#F8F8FC] hover:bg-[#FFFDF5] border border-black/8 hover:border-[#FFD21F] text-left transition-all flex items-center justify-between"
+              className="p-2.5 rounded-2xl bg-[#F8F8FC] hover:bg-primary/5 border border-black/8 hover:border-primary text-left transition-all flex items-center justify-between"
             >
               <div>
-                <p className="font-bold text-[#0A0A0E]">
+                <p className="font-bold text-[#0B0A14]">
                   {role === "brand" ? "Brand Partner" : "Creator Partner"}
                 </p>
                 <p className="text-[11px] text-[#7A7A8A]">
                   {role === "brand" ? "brand.partner@gmail.com" : "creator.partner@gmail.com"}
                 </p>
               </div>
-              <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E]">
+              <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-primary/20 text-[#0B0A14]">
                 {role.toUpperCase()}
               </span>
             </button>
@@ -126,10 +126,10 @@ export function SocialFallbackModal({
                   "New Partner"
                 )
               }
-              className="p-2.5 rounded-2xl bg-[#F8F8FC] hover:bg-[#FFFDF5] border border-black/8 hover:border-[#FFD21F] text-left transition-all flex items-center justify-between"
+              className="p-2.5 rounded-2xl bg-[#F8F8FC] hover:bg-primary/5 border border-black/8 hover:border-primary text-left transition-all flex items-center justify-between"
             >
               <div>
-                <p className="font-bold text-[#0A0A0E]">Generate Fresh Account</p>
+                <p className="font-bold text-[#0B0A14]">Generate Fresh Account</p>
                 <p className="text-[11px] text-[#7A7A8A]">New {providerName} user</p>
               </div>
               <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">
@@ -167,17 +167,17 @@ export function SocialFallbackModal({
           <button
             type="submit"
             disabled={isSubmitting || !email}
-            className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_16px_rgba(255,210,31,0.4)] border border-black/10 flex items-center justify-center gap-2 disabled:opacity-50 active:scale-98"
+            className="w-full py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10 flex items-center justify-center gap-2 disabled:opacity-50 active:scale-98"
           >
             {isSubmitting ? (
               <>
-                <Loader2 className="w-4 h-4 animate-spin text-[#0A0A0E]" />
+                <Loader2 className="w-4 h-4 animate-spin text-[#0B0A14]" />
                 <span>Verifying {providerName} Session...</span>
               </>
             ) : (
               <>
                 <span>Authorize with {providerName}</span>
-                <ArrowRight className="w-4 h-4 text-[#0A0A0E]" />
+                <ArrowRight className="w-4 h-4 text-[#0B0A14]" />
               </>
             )}
           </button>
@@ -188,7 +188,7 @@ export function SocialFallbackModal({
           <button
             type="button"
             onClick={() => setShowHelp(!showHelp)}
-            className="text-[11px] text-[#7A7A8A] hover:text-[#0A0A0E] flex items-center gap-1.5 transition-colors font-mono"
+            className="text-[11px] text-[#7A7A8A] hover:text-[#0B0A14] flex items-center gap-1.5 transition-colors font-mono"
           >
             <HelpCircle className="w-3.5 h-3.5" />
             <span>How to enable live native {providerName} OAuth popup in Supabase?</span>
@@ -196,7 +196,7 @@ export function SocialFallbackModal({
 
           {showHelp && (
             <div className="mt-2.5 p-3 rounded-2xl bg-[#F8F8FC] border border-black/8 text-[11px] text-[#5A5A68] space-y-1.5 font-sans leading-relaxed">
-              <p className="font-bold text-[#0A0A0E]">To enable native Google/Apple Cloud OAuth:</p>
+              <p className="font-bold text-[#0B0A14]">To enable native Google/Apple Cloud OAuth:</p>
               <ol className="list-decimal pl-4 space-y-1">
                 <li>
                   Open your{" "}
@@ -204,7 +204,7 @@ export function SocialFallbackModal({
                     href="https://supabase.com/dashboard/project/ldahukqddddeyaavhvss/auth/providers"
                     target="_blank"
                     rel="noreferrer"
-                    className="text-[#0A0A0E] underline font-bold inline-flex items-center gap-0.5"
+                    className="text-[#0B0A14] underline font-bold inline-flex items-center gap-0.5"
                   >
                     Supabase Auth Providers Dashboard <ExternalLink className="w-2.5 h-2.5" />
                   </a>

@@ -213,7 +213,7 @@ export function TimecodedReviewPlayer({
       {/* Top Header & Tool Tabs */}
       <div className="px-6 py-4 bg-[#FAFAF8] dark:bg-[#0E0E16] border-b border-[#E7E7E4] dark:border-white/10 flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-[#111111] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] flex items-center justify-center font-bold text-sm shadow-xs">
+          <div className="w-9 h-9 rounded-xl bg-[#111111] dark:bg-primary text-white dark:text-[#0B0A14] flex items-center justify-center font-bold text-sm shadow-xs">
             <FileVideo className="w-4 h-4" />
           </div>
           <div>
@@ -235,7 +235,7 @@ export function TimecodedReviewPlayer({
             onClick={() => setActiveTab("review")}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
               activeTab === "review"
-                ? "bg-[#111111] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E] shadow-xs"
+                ? "bg-[#111111] text-white dark:bg-primary dark:text-[#0B0A14] shadow-xs"
                 : "text-[#6B6B6B] dark:text-[#8E8EA4] hover:text-[#111111] dark:hover:text-white"
             }`}
           >
@@ -246,7 +246,7 @@ export function TimecodedReviewPlayer({
             onClick={() => setActiveTab("assets")}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
               activeTab === "assets"
-                ? "bg-[#111111] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E] shadow-xs"
+                ? "bg-[#111111] text-white dark:bg-primary dark:text-[#0B0A14] shadow-xs"
                 : "text-[#6B6B6B] dark:text-[#8E8EA4] hover:text-[#111111] dark:hover:text-white"
             }`}
           >
@@ -279,7 +279,7 @@ export function TimecodedReviewPlayer({
                     }}
                     className={`px-2.5 py-1 rounded-md text-[11px] font-mono font-bold transition-all ${
                       activeVersion === "v1"
-                        ? "bg-[#111111] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E]"
+                        ? "bg-[#111111] text-white dark:bg-primary dark:text-[#0B0A14]"
                         : "text-[#6B6B6B] dark:text-[#8E8EA4] hover:text-[#111111] dark:hover:text-white"
                     }`}
                   >
@@ -292,7 +292,7 @@ export function TimecodedReviewPlayer({
                     }}
                     className={`px-2.5 py-1 rounded-md text-[11px] font-mono font-bold transition-all flex items-center gap-1 ${
                       activeVersion === "v2"
-                        ? "bg-[#111111] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E]"
+                        ? "bg-[#111111] text-white dark:bg-primary dark:text-[#0B0A14]"
                         : "text-[#6B6B6B] dark:text-[#8E8EA4] hover:text-[#111111] dark:hover:text-white"
                     }`}
                   >
@@ -379,7 +379,7 @@ export function TimecodedReviewPlayer({
                   max={duration}
                   value={currentTime}
                   onChange={(e) => handleSeek(parseInt(e.target.value))}
-                  className="w-full h-2 bg-[#E7E7E4] dark:bg-[#202030] rounded-lg appearance-none cursor-pointer accent-[#111111] dark:accent-[#FFD21F]"
+                  className="w-full h-2 bg-[#E7E7E4] dark:bg-[#202030] rounded-lg appearance-none cursor-pointer accent-[#111111] dark:accent-primary"
                 />
               </div>
 
@@ -511,7 +511,7 @@ export function TimecodedReviewPlayer({
                       onClick={() => setSelectedCategory(cat)}
                       className={`px-2 py-0.5 rounded-md text-[10px] font-mono font-bold uppercase transition-all ${
                         selectedCategory === cat
-                          ? "bg-[#111111] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E]"
+                          ? "bg-[#111111] text-white dark:bg-primary dark:text-[#0B0A14]"
                           : "bg-[#FAFAF8] dark:bg-[#181824] text-[#6B6B6B] dark:text-[#8E8EA4] border border-[#E7E7E4] dark:border-white/10 hover:text-[#111111] dark:hover:text-white"
                       }`}
                     >
@@ -527,7 +527,7 @@ export function TimecodedReviewPlayer({
                   value={newComment}
                   onChange={(e) => setNewComment(e.target.value)}
                   placeholder={`Add ${selectedCategory} note at ${formatSeconds(currentTime)}...`}
-                  className="flex-1 bg-[#FAFAF8] dark:bg-[#181824] border border-[#E7E7E4] dark:border-white/10 rounded-lg px-3.5 py-2 text-xs text-[#111111] dark:text-white placeholder:text-[#6B6B6B] dark:placeholder:text-[#8E8EA4] focus:outline-none focus:border-[#111111] dark:focus:border-[#FFD21F] shadow-xs"
+                  className="flex-1 bg-[#FAFAF8] dark:bg-[#181824] border border-[#E7E7E4] dark:border-white/10 rounded-lg px-3.5 py-2 text-xs text-[#111111] dark:text-white placeholder:text-[#6B6B6B] dark:placeholder:text-[#8E8EA4] focus:outline-none focus:border-[#111111] dark:focus:border-primary shadow-xs"
                 />
                 <Button variant="primary" size="sm" type="submit" className="rounded-lg">
                   <Send className="w-3.5 h-3.5" />
@@ -582,7 +582,7 @@ export function TimecodedReviewPlayer({
               size="sm"
               disabled={downloadingBundle}
               onClick={handleDownloadBundle}
-              className="rounded-xl flex items-center gap-2 bg-[#111111] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E]"
+              className="rounded-xl flex items-center gap-2 bg-[#111111] text-white dark:bg-primary dark:text-[#0B0A14]"
             >
               <Download className="w-4 h-4" />
               <span>
@@ -597,7 +597,7 @@ export function TimecodedReviewPlayer({
             {/* 4K ProRes Master */}
             <div className="p-4 rounded-xl border border-[#E7E7E4] dark:border-white/10 bg-[#FAFAF8] dark:bg-[#181824] space-y-3">
               <div className="flex items-start justify-between">
-                <div className="w-8 h-8 rounded-lg bg-[#111111] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] flex items-center justify-center font-bold">
+                <div className="w-8 h-8 rounded-lg bg-[#111111] dark:bg-primary text-white dark:text-[#0B0A14] flex items-center justify-center font-bold">
                   <FileVideo className="w-4 h-4" />
                 </div>
                 <span className="px-2 py-0.5 rounded bg-white dark:bg-[#12121A] border border-[#E7E7E4] dark:border-white/10 text-[10px] font-mono font-bold text-[#111111] dark:text-[#F4F4F8]">
@@ -616,7 +616,7 @@ export function TimecodedReviewPlayer({
                   href={videoSources.v2}
                   target="_blank"
                   rel="noreferrer"
-                  className="font-bold text-[#111111] dark:text-[#FFD21F] hover:underline flex items-center gap-1"
+                  className="font-bold text-[#111111] dark:text-accent hover:underline flex items-center gap-1"
                 >
                   Download <ExternalLink className="w-3 h-3" />
                 </a>
@@ -626,7 +626,7 @@ export function TimecodedReviewPlayer({
             {/* 9:16 Vertical Reel Cut */}
             <div className="p-4 rounded-xl border border-[#E7E7E4] dark:border-white/10 bg-[#FAFAF8] dark:bg-[#181824] space-y-3">
               <div className="flex items-start justify-between">
-                <div className="w-8 h-8 rounded-lg bg-[#111111] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] flex items-center justify-center font-bold">
+                <div className="w-8 h-8 rounded-lg bg-[#111111] dark:bg-primary text-white dark:text-[#0B0A14] flex items-center justify-center font-bold">
                   <Layers className="w-4 h-4" />
                 </div>
                 <span className="px-2 py-0.5 rounded bg-white dark:bg-[#12121A] border border-[#E7E7E4] dark:border-white/10 text-[10px] font-mono font-bold text-[#111111] dark:text-[#F4F4F8]">
@@ -645,7 +645,7 @@ export function TimecodedReviewPlayer({
                   href={videoSources.v1}
                   target="_blank"
                   rel="noreferrer"
-                  className="font-bold text-[#111111] dark:text-[#FFD21F] hover:underline flex items-center gap-1"
+                  className="font-bold text-[#111111] dark:text-accent hover:underline flex items-center gap-1"
                 >
                   Download <ExternalLink className="w-3 h-3" />
                 </a>
@@ -655,7 +655,7 @@ export function TimecodedReviewPlayer({
             {/* Clean B-Roll Pack */}
             <div className="p-4 rounded-xl border border-[#E7E7E4] dark:border-white/10 bg-[#FAFAF8] dark:bg-[#181824] space-y-3">
               <div className="flex items-start justify-between">
-                <div className="w-8 h-8 rounded-lg bg-[#111111] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] flex items-center justify-center font-bold">
+                <div className="w-8 h-8 rounded-lg bg-[#111111] dark:bg-primary text-white dark:text-[#0B0A14] flex items-center justify-center font-bold">
                   <FileVideo className="w-4 h-4" />
                 </div>
                 <span className="px-2 py-0.5 rounded bg-white dark:bg-[#12121A] border border-[#E7E7E4] dark:border-white/10 text-[10px] font-mono font-bold text-[#111111] dark:text-[#F4F4F8]">
@@ -672,7 +672,7 @@ export function TimecodedReviewPlayer({
                 <span>12 Individual Clips</span>
                 <button
                   onClick={handleDownloadBundle}
-                  className="font-bold text-[#111111] dark:text-[#FFD21F] hover:underline flex items-center gap-1 cursor-pointer"
+                  className="font-bold text-[#111111] dark:text-accent hover:underline flex items-center gap-1 cursor-pointer"
                 >
                   Download <Download className="w-3 h-3" />
                 </button>
@@ -682,7 +682,7 @@ export function TimecodedReviewPlayer({
             {/* Layered Thumbnail PSD */}
             <div className="p-4 rounded-xl border border-[#E7E7E4] dark:border-white/10 bg-[#FAFAF8] dark:bg-[#181824] space-y-3">
               <div className="flex items-start justify-between">
-                <div className="w-8 h-8 rounded-lg bg-[#111111] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] flex items-center justify-center font-bold">
+                <div className="w-8 h-8 rounded-lg bg-[#111111] dark:bg-primary text-white dark:text-[#0B0A14] flex items-center justify-center font-bold">
                   <FileText className="w-4 h-4" />
                 </div>
                 <span className="px-2 py-0.5 rounded bg-white dark:bg-[#12121A] border border-[#E7E7E4] dark:border-white/10 text-[10px] font-mono font-bold text-[#111111] dark:text-[#F4F4F8]">
@@ -699,7 +699,7 @@ export function TimecodedReviewPlayer({
                 <span>3840x2160 PSD</span>
                 <button
                   onClick={handleDownloadBundle}
-                  className="font-bold text-[#111111] dark:text-[#FFD21F] hover:underline flex items-center gap-1 cursor-pointer"
+                  className="font-bold text-[#111111] dark:text-accent hover:underline flex items-center gap-1 cursor-pointer"
                 >
                   Download <Download className="w-3 h-3" />
                 </button>
@@ -709,7 +709,7 @@ export function TimecodedReviewPlayer({
             {/* Subtitle Sync */}
             <div className="p-4 rounded-xl border border-[#E7E7E4] dark:border-white/10 bg-[#FAFAF8] dark:bg-[#181824] space-y-3">
               <div className="flex items-start justify-between">
-                <div className="w-8 h-8 rounded-lg bg-[#111111] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] flex items-center justify-center font-bold">
+                <div className="w-8 h-8 rounded-lg bg-[#111111] dark:bg-primary text-white dark:text-[#0B0A14] flex items-center justify-center font-bold">
                   <FileText className="w-4 h-4" />
                 </div>
                 <span className="px-2 py-0.5 rounded bg-white dark:bg-[#12121A] border border-[#E7E7E4] dark:border-white/10 text-[10px] font-mono font-bold text-[#111111] dark:text-[#F4F4F8]">
@@ -726,7 +726,7 @@ export function TimecodedReviewPlayer({
                 <span>Auto-caption verified</span>
                 <button
                   onClick={handleDownloadBundle}
-                  className="font-bold text-[#111111] dark:text-[#FFD21F] hover:underline flex items-center gap-1 cursor-pointer"
+                  className="font-bold text-[#111111] dark:text-accent hover:underline flex items-center gap-1 cursor-pointer"
                 >
                   Download <Download className="w-3 h-3" />
                 </button>

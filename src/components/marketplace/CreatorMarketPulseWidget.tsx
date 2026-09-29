@@ -38,14 +38,14 @@ export function CreatorMarketPulseWidget({ creatorId }: { creatorId?: string }) 
   if (!pulse) return null;
 
   return (
-    <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-black/8 dark:border-white/10 bg-white dark:bg-[#12121A] p-4 sm:p-6 lg:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-2xl text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans">
+    <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-black/8 dark:border-white/10 bg-white dark:bg-[#12121A] p-4 sm:p-6 lg:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-2xl text-[#0B0A14] dark:text-[#F4F4F8] select-none font-sans">
       {/* Top Banner */}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between pb-4 sm:pb-5 border-b border-black/8 dark:border-white/10">
         <div>
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-[#FFD21F]/40 bg-[#FFD21F]/15 px-2.5 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-semibold text-[#0A0A0E] dark:text-[#FFD21F]">
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/15 px-2.5 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-semibold text-[#0B0A14] dark:text-accent">
             <span>⚡</span> Sponsorship Demand &amp; Opportunities
           </div>
-          <h3 className="mt-1.5 sm:mt-2 text-lg sm:text-xl font-bold text-[#0A0A0E] dark:text-white font-display">
+          <h3 className="mt-1.5 sm:mt-2 text-lg sm:text-xl font-bold text-[#0B0A14] dark:text-white font-display">
             Top Sponsorship Opportunities for You
           </h3>
           <p className="text-[11px] sm:text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
@@ -56,14 +56,14 @@ export function CreatorMarketPulseWidget({ creatorId }: { creatorId?: string }) 
         {/* Opportunity Score Gauge */}
         <div className="flex items-center justify-between sm:justify-start gap-3 w-full sm:w-auto rounded-2xl border border-black/8 dark:border-white/10 bg-[#F8F8FC] dark:bg-white/5 px-3.5 py-2 sm:px-4 sm:py-2.5 shadow-2xs">
           <div className="flex flex-col sm:items-end">
-            <span className="text-[10.5px] sm:text-[11px] font-bold text-[#0A0A0E] dark:text-white">
+            <span className="text-[10.5px] sm:text-[11px] font-bold text-[#0B0A14] dark:text-white">
               Market Demand Score
             </span>
-            <span className="text-xs font-bold text-amber-700 dark:text-[#FFD21F]">
+            <span className="text-xs font-bold text-amber-700 dark:text-accent">
               {pulse.opportunityTier}
             </span>
           </div>
-          <div className="relative flex h-11 sm:h-14 px-3 sm:px-3.5 items-center justify-center rounded-xl sm:rounded-2xl border-2 border-[#FFD21F] bg-[#FFD21F]/15 font-black text-[#0A0A0E] dark:text-white text-base sm:text-lg font-mono shadow-2xs">
+          <div className="relative flex h-11 sm:h-14 px-3 sm:px-3.5 items-center justify-center rounded-xl sm:rounded-2xl border-2 border-primary bg-primary/15 font-black text-[#0B0A14] dark:text-white text-base sm:text-lg font-mono shadow-2xs">
             {pulse.opportunityScore}<span className="text-xs text-[#7A7A8A] dark:text-neutral-400">/100</span>
           </div>
         </div>
@@ -71,7 +71,7 @@ export function CreatorMarketPulseWidget({ creatorId }: { creatorId?: string }) 
 
       {/* Rationale Notice */}
       <div className="mt-3 sm:mt-4 rounded-xl sm:rounded-2xl border border-black/6 dark:border-white/5 bg-[#FAF9F5] dark:bg-white/[0.02] p-3 sm:p-3.5 text-xs text-[#4A4A58] dark:text-neutral-300 leading-relaxed font-sans">
-        <span className="font-bold text-[#0A0A0E] dark:text-white">Industry Insight:</span> {pulse.opportunityRationale}
+        <span className="font-bold text-[#0B0A14] dark:text-white">Industry Insight:</span> {pulse.opportunityRationale}
       </div>
 
       {/* 2-Column Grid: Category Benchmark & Format Demand */}
@@ -84,7 +84,7 @@ export function CreatorMarketPulseWidget({ creatorId }: { creatorId?: string }) 
           <div className="mt-3 grid grid-cols-3 gap-1.5 sm:gap-2.5 text-center font-mono">
             <div className="rounded-xl bg-white dark:bg-[#1C1C2A] border border-black/4 dark:border-white/5 p-2 sm:p-3 shadow-2xs">
               <div className="text-[9px] sm:text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-bold truncate">Avg Deal</div>
-              <div className="mt-0.5 text-xs sm:text-sm font-extrabold text-[#0A0A0E] dark:text-white truncate">
+              <div className="mt-0.5 text-xs sm:text-sm font-extrabold text-[#0B0A14] dark:text-white truncate">
                 {formatCurrency(pulse.categoryTrends.avgBudget)}
               </div>
             </div>
@@ -111,13 +111,13 @@ export function CreatorMarketPulseWidget({ creatorId }: { creatorId?: string }) 
                 <div className="flex items-center justify-between text-xs">
                   <span className="text-[#4A4A58] dark:text-neutral-300 font-medium">{d.deliverableType}</span>
                   <div className="flex items-center gap-2 font-mono">
-                    <span className="font-bold text-[#0A0A0E] dark:text-white">{formatCurrency(d.suggestedRate)}</span>
+                    <span className="font-bold text-[#0B0A14] dark:text-white">{formatCurrency(d.suggestedRate)}</span>
                     <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold">({d.momentum})</span>
                   </div>
                 </div>
                 <div className="h-2 w-full rounded-full bg-black/5 dark:bg-white/10 overflow-hidden">
                   <div
-                    className="h-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] rounded-full"
+                    className="h-full bg-gradient-to-r from-primary via-[#9333EA] to-accent rounded-full"
                     style={{ width: `${d.demandPercent}%` }}
                   />
                 </div>
@@ -136,7 +136,7 @@ export function CreatorMarketPulseWidget({ creatorId }: { creatorId?: string }) 
               {pulse.actionableInsights.map((ins, idx) => (
                 <div
                   key={idx}
-                  className="flex items-start justify-between gap-3 rounded-xl border border-black/6 dark:border-white/5 bg-white dark:bg-[#1C1C2A] p-3 shadow-2xs transition-colors hover:border-[#FFD21F]/40"
+                  className="flex items-start justify-between gap-3 rounded-xl border border-black/6 dark:border-white/5 bg-white dark:bg-[#1C1C2A] p-3 shadow-2xs transition-colors hover:border-primary/40"
                 >
                   <div className="flex items-start gap-2.5">
                     <span className="text-emerald-600 dark:text-emerald-400 text-sm font-bold">✓</span>
@@ -144,7 +144,7 @@ export function CreatorMarketPulseWidget({ creatorId }: { creatorId?: string }) 
                       {ins.action}
                     </span>
                   </div>
-                  <span className="shrink-0 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 px-2.5 py-0.5 text-[10px] font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F]">
+                  <span className="shrink-0 rounded-full bg-primary/15 border border-primary/30 px-2.5 py-0.5 text-[10px] font-mono font-bold text-[#0B0A14] dark:text-accent">
                     {ins.estimatedEarningBoost}
                   </span>
                 </div>
@@ -154,7 +154,7 @@ export function CreatorMarketPulseWidget({ creatorId }: { creatorId?: string }) 
 
           <div className="mt-5 pt-3 border-t border-black/6 dark:border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] font-mono">
             <span>Based on verified platform deals</span>
-            <span className="text-[#0A0A0E] dark:text-[#FFD21F] font-bold">Real-time marketplace data</span>
+            <span className="text-[#0B0A14] dark:text-accent font-bold">Real-time marketplace data</span>
           </div>
         </div>
       </div>

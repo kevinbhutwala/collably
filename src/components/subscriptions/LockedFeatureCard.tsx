@@ -32,15 +32,15 @@ export function LockedFeatureCard({
 
   if (compact) {
     return (
-      <div className="rounded-2xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#12121A] text-[#0A0A0E] dark:text-[#F4F4F8] p-4 sm:p-5 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 select-none">
+      <div className="rounded-2xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#12121A] text-[#0B0A14] dark:text-[#F4F4F8] p-4 sm:p-5 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 select-none">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-[#FFD21F]/20 border border-[#FFD21F]/40 flex items-center justify-center text-[#0A0A0E] dark:text-[#FFD21F] shrink-0">
-            <Lock className="w-5 h-5 text-[#0A0A0E] dark:text-[#FFD21F]" />
+          <div className="w-10 h-10 rounded-xl bg-primary/20 border border-primary/40 flex items-center justify-center text-[#0B0A14] dark:text-accent shrink-0">
+            <Lock className="w-5 h-5 text-[#0B0A14] dark:text-accent" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h4 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display">{title}</h4>
-              <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] uppercase">
+              <h4 className="text-sm font-bold text-[#0B0A14] dark:text-white font-display">{title}</h4>
+              <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded-full bg-primary text-[#0B0A14] uppercase">
                 {plan?.name || "Pro Required"}
               </span>
             </div>
@@ -50,9 +50,9 @@ export function LockedFeatureCard({
 
         <button
           onClick={() => openUpgradeModal(requiredPlanId)}
-          className="px-4 py-2 rounded-full bg-[#FFD21F] hover:bg-[#FFE052] text-[#0A0A0E] text-xs font-extrabold transition-all flex items-center gap-1.5 shadow-xs border border-black/10 shrink-0 self-end sm:self-center active:scale-98"
+          className="px-4 py-2 rounded-full bg-primary hover:bg-accent text-[#0B0A14] text-xs font-extrabold transition-all flex items-center gap-1.5 shadow-xs border border-black/10 shrink-0 self-end sm:self-center active:scale-98"
         >
-          <Sparkles className="w-3.5 h-3.5 fill-[#0A0A0E] text-[#0A0A0E]" />
+          <Sparkles className="w-3.5 h-3.5 fill-[#0B0A14] text-[#0B0A14]" />
           <span>Upgrade to {plan?.name || "Unlock"}</span>
         </button>
       </div>
@@ -60,23 +60,23 @@ export function LockedFeatureCard({
   }
 
   return (
-    <div className="rounded-3xl bg-gradient-to-b from-white to-[#FAF8F2] dark:from-[#181826] dark:to-[#101018] border-2 border-[#FFD21F]/40 p-8 sm:p-12 shadow-[0_12px_40px_rgba(255,210,31,0.12)] relative overflow-hidden select-none text-[#0A0A0E] dark:text-white">
+    <div className="rounded-3xl bg-gradient-to-b from-white to-[#FAF8F2] dark:from-[#181826] dark:to-[#101018] border-2 border-primary/40 p-8 sm:p-12 shadow-[0_12px_40px_rgba(var(--theme-primary-rgb),0.12)] relative overflow-hidden select-none text-[#0B0A14] dark:text-white">
       {/* Background flare */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#FFD21F]/15 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/15 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
 
       <div className="relative z-10 max-w-2xl mx-auto text-center space-y-6">
         {/* Lock Icon */}
-        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#FFD21F] to-[#FFAE00] border border-black/10 mx-auto flex items-center justify-center text-[#0A0A0E] shadow-[0_8px_24px_rgba(255,210,31,0.4)]">
-          <Lock className="w-8 h-8 text-[#0A0A0E]" />
+        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-[#FFAE00] border border-black/10 mx-auto flex items-center justify-center text-[#0B0A14] shadow-[0_8px_24px_rgba(var(--theme-primary-rgb),0.4)]">
+          <Lock className="w-8 h-8 text-[#0B0A14]" />
         </div>
 
         {/* Title & Description */}
         <div className="space-y-2">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-xs font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F]">
-            <ShieldAlert className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F]" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/20 border border-primary/40 text-xs font-mono font-bold text-[#0B0A14] dark:text-accent">
+            <ShieldAlert className="w-3.5 h-3.5 text-[#0B0A14] dark:text-accent" />
             <span>REQUIRES {plan?.name?.toUpperCase() || "HIGHER TIER"}</span>
           </div>
-          <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
+          <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0B0A14] dark:text-white tracking-tight font-display">
             {title}
           </h3>
           <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed max-w-lg mx-auto font-sans">
@@ -92,8 +92,8 @@ export function LockedFeatureCard({
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             {benefits.slice(0, 4).map((b, i) => (
               <div key={i} className="flex items-center gap-2 text-xs text-[#2A2A38] dark:text-[#D0D0E0]">
-                <div className="w-4 h-4 rounded-full bg-[#FFD21F]/25 dark:bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] flex items-center justify-center shrink-0">
-                  <Check className="w-3 h-3 text-[#0A0A0E] dark:text-[#FFD21F]" />
+                <div className="w-4 h-4 rounded-full bg-primary/25 dark:bg-primary/20 text-[#0B0A14] dark:text-accent flex items-center justify-center shrink-0">
+                  <Check className="w-3 h-3 text-[#0B0A14] dark:text-accent" />
                 </div>
                 <span>{b}</span>
               </div>
@@ -105,11 +105,11 @@ export function LockedFeatureCard({
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
           <button
             onClick={() => openUpgradeModal(requiredPlanId)}
-            className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-sm transition-all flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(255,210,31,0.45)] border border-black/10 active:scale-98"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-sm transition-all flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.45)] border border-black/10 active:scale-98"
           >
-            <Sparkles className="w-4 h-4 fill-[#0A0A0E] text-[#0A0A0E]" />
+            <Sparkles className="w-4 h-4 fill-[#0B0A14] text-[#0B0A14]" />
             <span>Upgrade to {plan?.name || "Unlock Now"}</span>
-            <ArrowRight className="w-4 h-4 text-[#0A0A0E]" />
+            <ArrowRight className="w-4 h-4 text-[#0B0A14]" />
           </button>
         </div>
       </div>

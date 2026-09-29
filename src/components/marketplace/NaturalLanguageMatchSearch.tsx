@@ -50,13 +50,13 @@ export function NaturalLanguageMatchSearch() {
   };
 
   return (
-    <div className="w-full rounded-3xl border border-black/8 dark:border-white/10 bg-white dark:bg-[#12121A] p-6 sm:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-2xl text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans">
+    <div className="w-full rounded-3xl border border-black/8 dark:border-white/10 bg-white dark:bg-[#12121A] p-6 sm:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-2xl text-[#0B0A14] dark:text-[#F4F4F8] select-none font-sans">
       {/* Header */}
       <div className="flex flex-col gap-2">
-        <div className="inline-flex items-center gap-2 self-start rounded-full border border-[#FFD21F]/40 bg-[#FFD21F]/15 px-3 py-1 text-xs font-semibold text-[#0A0A0E] dark:text-[#FFD21F]">
+        <div className="inline-flex items-center gap-2 self-start rounded-full border border-primary/40 bg-primary/15 px-3 py-1 text-xs font-semibold text-[#0B0A14] dark:text-accent">
           <span>🎯</span> Explainable 6-Factor Compatibility Engine
         </div>
-        <h2 className="text-xl sm:text-2xl font-bold text-[#0A0A0E] dark:text-white font-display">
+        <h2 className="text-xl sm:text-2xl font-bold text-[#0B0A14] dark:text-white font-display">
           Natural Language Creator Search & Compatibility Match
         </h2>
         <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#8E8EA4]">
@@ -73,12 +73,12 @@ export function NaturalLanguageMatchSearch() {
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleSearch()}
             placeholder="e.g. Fitness creator from Mumbai with 50K-250K followers and ₹30K budget..."
-            className="w-full rounded-2xl border border-black/10 dark:border-white/15 bg-[#F8F8FC] dark:bg-white/5 px-4 py-3.5 text-sm text-[#0A0A0E] dark:text-white placeholder-[#7A7A8A] dark:placeholder-[#8E8EA4] focus:border-[#FFD21F] focus:outline-none focus:ring-1 focus:ring-[#FFD21F] transition-all font-sans"
+            className="w-full rounded-2xl border border-black/10 dark:border-white/15 bg-[#F8F8FC] dark:bg-white/5 px-4 py-3.5 text-sm text-[#0B0A14] dark:text-white placeholder-[#7A7A8A] dark:placeholder-[#8E8EA4] focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-all font-sans"
           />
           {query && (
             <button
               onClick={() => { setQuery(""); setParsedBrief(null); setResults([]); }}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-[#7A7A8A] hover:text-[#0A0A0E] dark:hover:text-white text-sm cursor-pointer"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-[#7A7A8A] hover:text-[#0B0A14] dark:hover:text-white text-sm cursor-pointer"
             >
               ✕
             </button>
@@ -87,10 +87,10 @@ export function NaturalLanguageMatchSearch() {
         <button
           onClick={() => handleSearch()}
           disabled={loading}
-          className="flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] px-6 py-3.5 text-sm font-extrabold text-[#0A0A0E] shadow-xs border border-black/10 disabled:opacity-50 transition-all cursor-pointer"
+          className="flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary px-6 py-3.5 text-sm font-extrabold text-[#0B0A14] shadow-xs border border-black/10 disabled:opacity-50 transition-all cursor-pointer"
         >
           {loading ? (
-            <span className="h-4 w-4 animate-spin rounded-full border-2 border-[#0A0A0E] border-t-transparent" />
+            <span className="h-4 w-4 animate-spin rounded-full border-2 border-[#0B0A14] border-t-transparent" />
           ) : (
             <span>Find Matches ⚡</span>
           )}
@@ -104,7 +104,7 @@ export function NaturalLanguageMatchSearch() {
           <button
             key={idx}
             onClick={() => applyExample(prompt)}
-            className="rounded-xl border border-black/6 dark:border-white/10 bg-[#FAFAFC] dark:bg-white/[0.03] px-3 py-1 text-[11px] text-[#5A5A68] dark:text-neutral-300 hover:border-[#FFD21F] hover:text-[#0A0A0E] dark:hover:text-white transition-all text-left cursor-pointer"
+            className="rounded-xl border border-black/6 dark:border-white/10 bg-[#FAFAFC] dark:bg-white/[0.03] px-3 py-1 text-[11px] text-[#5A5A68] dark:text-neutral-300 hover:border-primary hover:text-[#0B0A14] dark:hover:text-white transition-all text-left cursor-pointer"
           >
             &ldquo;{prompt}&rdquo;
           </button>
@@ -115,21 +115,21 @@ export function NaturalLanguageMatchSearch() {
       {parsedBrief && (
         <div className="mt-6 rounded-2xl border border-black/8 dark:border-white/10 bg-[#FAFAFC] dark:bg-[#161622] p-4">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-[#0A0A0E] dark:text-neutral-300">
+            <span className="text-xs font-bold text-[#0B0A14] dark:text-neutral-300">
               Extracted Campaign Parameters:
             </span>
-            <span className="text-[11px] text-[#0A0A0E] dark:text-[#FFD21F] font-mono font-bold">
+            <span className="text-[11px] text-[#0B0A14] dark:text-accent font-mono font-bold">
               Deterministic 6-Factor Parser
             </span>
           </div>
           <div className="mt-3 flex flex-wrap gap-2">
             {parsedBrief.category && (
-              <span className="inline-flex items-center gap-1 rounded-lg border border-[#FFD21F]/40 bg-[#FFD21F]/15 px-2.5 py-1 text-xs font-bold text-[#0A0A0E] dark:text-[#FFD21F]">
+              <span className="inline-flex items-center gap-1 rounded-lg border border-primary/40 bg-primary/15 px-2.5 py-1 text-xs font-bold text-[#0B0A14] dark:text-accent">
                 <span>📁</span> {parsedBrief.category}
               </span>
             )}
             {parsedBrief.location && (
-              <span className="inline-flex items-center gap-1 rounded-lg border border-black/8 dark:border-white/10 bg-white dark:bg-white/5 px-2.5 py-1 text-xs font-bold text-[#0A0A0E] dark:text-white">
+              <span className="inline-flex items-center gap-1 rounded-lg border border-black/8 dark:border-white/10 bg-white dark:bg-white/5 px-2.5 py-1 text-xs font-bold text-[#0B0A14] dark:text-white">
                 <span>📍</span> {parsedBrief.location}
               </span>
             )}
@@ -139,7 +139,7 @@ export function NaturalLanguageMatchSearch() {
               </span>
             )}
             {parsedBrief.maxBudget !== undefined && (
-              <span className="inline-flex items-center gap-1 rounded-lg border border-[#FFD21F]/40 bg-[#FFD21F]/15 px-2.5 py-1 text-xs font-bold text-[#0A0A0E] dark:text-[#FFD21F]">
+              <span className="inline-flex items-center gap-1 rounded-lg border border-primary/40 bg-primary/15 px-2.5 py-1 text-xs font-bold text-[#0B0A14] dark:text-accent">
                 <span>💰</span> Max {formatCurrency(parsedBrief.maxBudget, parsedBrief.currency)}
               </span>
             )}
@@ -165,7 +165,7 @@ export function NaturalLanguageMatchSearch() {
               return (
                 <div
                   key={creator.id}
-                  className="rounded-2xl border border-black/8 dark:border-white/10 bg-white dark:bg-[#161622] p-5 shadow-2xs hover:border-[#FFD21F]/50 transition-all"
+                  className="rounded-2xl border border-black/8 dark:border-white/10 bg-white dark:bg-[#161622] p-5 shadow-2xs hover:border-primary/50 transition-all"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     {/* Creator Identity */}
@@ -179,17 +179,17 @@ export function NaturalLanguageMatchSearch() {
                             className="object-cover"
                           />
                         ) : (
-                          <div className="flex h-full w-full items-center justify-center font-bold text-[#0A0A0E] dark:text-white text-sm">
+                          <div className="flex h-full w-full items-center justify-center font-bold text-[#0B0A14] dark:text-white text-sm">
                             {creator.fullName.charAt(0)}
                           </div>
                         )}
                       </div>
                       <div className="min-w-0">
                         <div className="flex items-center gap-2">
-                          <h4 className="font-extrabold text-[#0A0A0E] dark:text-white text-sm sm:text-base truncate font-display">
+                          <h4 className="font-extrabold text-[#0B0A14] dark:text-white text-sm sm:text-base truncate font-display">
                             {creator.fullName}
                           </h4>
-                          {creator.verified && <span className="text-[#FFD21F] text-xs">✓</span>}
+                          {creator.verified && <span className="text-primary text-xs">✓</span>}
                           <span className="rounded-full bg-[#F4F4F8] dark:bg-white/5 border border-black/6 dark:border-white/10 px-2 py-0.5 text-[10px] font-mono text-[#6A6A78] dark:text-[#8E8EA4]">
                             {creator.primaryCategory}
                           </span>
@@ -213,14 +213,14 @@ export function NaturalLanguageMatchSearch() {
 
                       <button
                         onClick={() => setExpandedId(isExpanded ? null : creator.id)}
-                        className="rounded-xl border border-black/10 dark:border-white/10 bg-[#F4F4F8] dark:bg-white/5 px-3 py-2 text-xs font-bold text-[#0A0A0E] dark:text-neutral-300 hover:text-black dark:hover:text-white transition-all cursor-pointer"
+                        className="rounded-xl border border-black/10 dark:border-white/10 bg-[#F4F4F8] dark:bg-white/5 px-3 py-2 text-xs font-bold text-[#0B0A14] dark:text-neutral-300 hover:text-black dark:hover:text-white transition-all cursor-pointer"
                       >
                         {isExpanded ? "Hide Breakdown ▲" : "Explain Why ▼"}
                       </button>
 
                       <Link
                         href={`/creators/${creator.id}`}
-                        className="rounded-xl bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] px-4 py-2 text-xs font-extrabold text-[#0A0A0E] shadow-2xs border border-black/10 transition-all"
+                        className="rounded-xl bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary px-4 py-2 text-xs font-extrabold text-[#0B0A14] shadow-2xs border border-black/10 transition-all"
                       >
                         Invite to Campaign →
                       </Link>
@@ -253,8 +253,8 @@ export function NaturalLanguageMatchSearch() {
                       </div>
 
                       {/* Why this creator? Data-Derived Callout */}
-                      <div className="p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#1E1C14] border border-[#FFD21F]/30 text-xs">
-                        <h5 className="font-extrabold text-[#0A0A0E] dark:text-[#FFD21F] flex items-center gap-1.5 font-display text-xs">
+                      <div className="p-4 rounded-2xl bg-primary/5 dark:bg-[#1E1C14] border border-primary/30 text-xs">
+                        <h5 className="font-extrabold text-[#0B0A14] dark:text-accent flex items-center gap-1.5 font-display text-xs">
                           <span>💡</span> Why this creator?
                         </h5>
                         <p className="text-[#3A3A48] dark:text-neutral-200 mt-1 leading-relaxed">
@@ -279,11 +279,11 @@ export function NaturalLanguageMatchSearch() {
                             >
                               <div className="flex items-center justify-between text-[11px]">
                                 <span className="text-[#6A6A78] dark:text-[#8E8EA4] font-sans font-medium">{labels[key]}</span>
-                                <span className="font-extrabold text-[#0A0A0E] dark:text-white">{f.score}%</span>
+                                <span className="font-extrabold text-[#0B0A14] dark:text-white">{f.score}%</span>
                               </div>
                               <div className="mt-1.5 h-1.5 w-full rounded-full bg-black/5 dark:bg-white/10 overflow-hidden">
                                 <div
-                                  className="h-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] rounded-full"
+                                  className="h-full bg-gradient-to-r from-primary via-[#9333EA] to-accent rounded-full"
                                   style={{ width: `${f.score}%` }}
                                 />
                               </div>

@@ -54,7 +54,7 @@ export function ReputationBadgeBar({
                 {badge.description}
               </p>
               {badge.qualificationProof && (
-                <div className="mt-1.5 rounded-md bg-white/5 px-2 py-1 text-[10px] font-mono text-[#FFD21F]">
+                <div className="mt-1.5 rounded-md bg-white/5 px-2 py-1 text-[10px] font-mono text-primary">
                   Proof: {badge.qualificationProof}
                 </div>
               )}

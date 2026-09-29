@@ -24,12 +24,12 @@ export function StatsCard({
   return (
     <div
       className={cn(
-        "p-3.5 sm:p-5 lg:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 hover:border-[#FFD21F] dark:hover:border-[#FFD21F] shadow-[0_4px_20px_rgba(0,0,0,0.03)] transition-all duration-300 relative group overflow-hidden text-[#0A0A0E] dark:text-[#F4F4F8] flex flex-col justify-between",
+        "p-3.5 sm:p-5 lg:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 hover:border-primary dark:hover:border-primary shadow-[0_4px_20px_rgba(0,0,0,0.03)] transition-all duration-300 relative group overflow-hidden text-[#0B0A14] dark:text-[#F4F4F8] flex flex-col justify-between",
         className
       )}
     >
       {/* Subtle inner warm glow on hover */}
-      <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#FFD21F]/0 to-[#FFD21F]/0 group-hover:from-[#FFD21F]/5 group-hover:to-transparent transition-all duration-500 pointer-events-none" />
+      <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-500 pointer-events-none" />
 
       <div>
         <div className="flex items-center justify-between relative z-10 gap-1.5 sm:gap-2">
@@ -46,7 +46,7 @@ export function StatsCard({
         <div className="mt-2 sm:mt-3 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-2 relative z-10">
           <h3
             className={cn(
-              "font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display numeric-tabular truncate max-w-full",
+              "font-extrabold text-[#0B0A14] dark:text-white tracking-tight font-display numeric-tabular truncate max-w-full",
               typeof value === "string" && value.length > 9
                 ? "text-base sm:text-lg lg:text-xl"
                 : "text-lg sm:text-2xl lg:text-3xl"

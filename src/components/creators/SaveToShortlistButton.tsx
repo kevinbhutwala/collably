@@ -36,12 +36,12 @@ export function SaveToShortlistButton({
       className={cn(
         "w-full py-2.5 rounded-full border text-xs font-bold transition-all flex items-center justify-center gap-2 select-none",
         saved
-          ? "bg-[#FFD21F] text-[#0A0A0E] border-black/10 shadow-xs"
-          : "bg-white text-[#5A5A68] hover:text-[#0A0A0E] border-black/10 hover:bg-[#F5F5F9]",
+          ? "bg-primary text-[#0B0A14] border-black/10 shadow-xs"
+          : "bg-white text-[#5A5A68] hover:text-[#0B0A14] border-black/10 hover:bg-[#F5F5F9]",
         className
       )}
     >
-      <Bookmark className={cn("w-3.5 h-3.5", saved ? "fill-[#0A0A0E]" : "")} />
+      <Bookmark className={cn("w-3.5 h-3.5", saved ? "fill-[#0B0A14]" : "")} />
       <span>{saved ? "Saved to Shortlist" : "Save to Shortlist"}</span>
     </button>
   );

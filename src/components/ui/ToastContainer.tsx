@@ -12,14 +12,14 @@ export function ToastContainer() {
   const iconMap = {
     success: <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />,
     error: <AlertCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />,
-    info: <Info className="w-4 h-4 text-[#FFD21F] shrink-0 mt-0.5" />,
+    info: <Info className="w-4 h-4 text-primary shrink-0 mt-0.5" />,
     warning: <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />,
   };
 
   const borderMap = {
     success: "border-emerald-500/30 bg-[#0E1015]/95 text-white shadow-[0_12px_32px_rgba(16,185,129,0.14)]",
     error: "border-red-500/30 bg-[#160D12]/95 text-white shadow-[0_12px_32px_rgba(239,68,68,0.14)]",
-    info: "border-[#FFD21F]/30 bg-[#0E1015]/95 text-white shadow-[0_12px_32px_rgba(255,210,31,0.14)]",
+    info: "border-primary/30 bg-[#0E1015]/95 text-white shadow-[0_12px_32px_rgba(var(--theme-primary-rgb),0.14)]",
     warning: "border-amber-500/30 bg-[#16120D]/95 text-white shadow-[0_12px_32px_rgba(245,158,11,0.14)]",
   };
 

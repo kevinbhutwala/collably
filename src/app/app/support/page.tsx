@@ -92,21 +92,21 @@ export default function SupportAndDisputePage() {
   };
 
   return (
-    <div className="space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] select-none">
+    <div className="space-y-6 text-[#0B0A14] dark:text-[#F4F4F8] select-none">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 sm:pb-5 border-b border-black/8 dark:border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] dark:text-[#EAEAEF] flex items-center gap-1.5">
+            <span className="text-[10px] font-mono font-bold uppercase text-[#0B0A14] dark:text-[#EAEAEF] flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               Help Desk
             </span>
             <span className="text-[#8A8A9A] dark:text-[#6A6A7E]">•</span>
-            <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] dark:text-yellow-400 font-mono text-[10px] font-bold">
+            <span className="px-2 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-[#0B0A14] dark:text-yellow-400 font-mono text-[10px] font-bold">
               Help &amp; Support
             </span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
+          <h1 className="text-xl sm:text-2xl font-extrabold text-[#0B0A14] dark:text-white tracking-tight font-display">
             Help &amp; Support
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4]">
@@ -117,17 +117,17 @@ export default function SupportAndDisputePage() {
         <div className="flex items-center gap-2.5">
           <button
             onClick={() => setIsDisputeModalOpen(true)}
-            className="px-3.5 py-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0A0A0E] dark:text-white text-xs font-bold transition-all flex items-center gap-1.5 border border-black/10 dark:border-white/10 shadow-xs"
+            className="px-3.5 py-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0B0A14] dark:text-white text-xs font-bold transition-all flex items-center gap-1.5 border border-black/10 dark:border-white/10 shadow-xs"
           >
-            <ShieldAlert className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F]" />
+            <ShieldAlert className="w-3.5 h-3.5 text-[#0B0A14] dark:text-accent" />
             <span>Report an Issue</span>
           </button>
 
           <button
             onClick={() => setIsTicketModalOpen(true)}
-            className="px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5"
+            className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5"
           >
-            <Plus className="w-3.5 h-3.5 text-[#0A0A0E]" />
+            <Plus className="w-3.5 h-3.5 text-[#0B0A14]" />
             <span>Contact Support</span>
           </button>
         </div>
@@ -138,11 +138,11 @@ export default function SupportAndDisputePage() {
         {/* Left: Active Support Tickets */}
         <div className="lg:col-span-6 p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
           <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
-            <h3 className="text-base font-bold text-[#0A0A0E] dark:text-white flex items-center gap-2 font-display">
-              <HelpCircle className="w-5 h-5 text-[#0A0A0E] dark:text-[#FFD21F]" />
+            <h3 className="text-base font-bold text-[#0B0A14] dark:text-white flex items-center gap-2 font-display">
+              <HelpCircle className="w-5 h-5 text-[#0B0A14] dark:text-accent" />
               <span>My Support Inquiries ({tickets.length})</span>
             </h3>
-            <span className="px-2.5 py-0.5 rounded-full bg-black/5 dark:bg-white/10 text-[#0A0A0E] dark:text-[#EAEAEF] text-[10px] font-mono font-bold">
+            <span className="px-2.5 py-0.5 rounded-full bg-black/5 dark:bg-white/10 text-[#0B0A14] dark:text-[#EAEAEF] text-[10px] font-mono font-bold">
               Active Desk
             </span>
           </div>
@@ -151,7 +151,7 @@ export default function SupportAndDisputePage() {
             {tickets.map((t) => (
               <div key={t.id} className="pt-3 space-y-2">
                 <div className="flex items-center justify-between">
-                  <h4 className="font-bold text-sm text-[#0A0A0E] dark:text-white font-sans">{t.subject}</h4>
+                  <h4 className="font-bold text-sm text-[#0B0A14] dark:text-white font-sans">{t.subject}</h4>
                   <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase ${
                     t.status === "Resolved"
                       ? "bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30"
@@ -178,7 +178,7 @@ export default function SupportAndDisputePage() {
         {/* Right: Active Disputes & Escrow Mediation */}
         <div className="lg:col-span-6 p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
           <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
-            <h3 className="text-base font-bold text-[#0A0A0E] dark:text-white flex items-center gap-2 font-display">
+            <h3 className="text-base font-bold text-[#0B0A14] dark:text-white flex items-center gap-2 font-display">
               <ShieldAlert className="w-5 h-5 text-amber-500" />
               <span>Milestone Arbitration Queue ({disputes.length})</span>
             </h3>
@@ -191,19 +191,19 @@ export default function SupportAndDisputePage() {
             {disputes.map((d) => (
               <div key={d.id} className="p-5 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 space-y-2.5">
                 <div className="flex justify-between items-center">
-                  <h4 className="font-bold text-sm text-[#0A0A0E] dark:text-white font-sans">{d.campaignTitle}</h4>
+                  <h4 className="font-bold text-sm text-[#0B0A14] dark:text-white font-sans">{d.campaignTitle}</h4>
                   <span className="px-2.5 py-0.5 rounded-full bg-amber-50 dark:bg-amber-500/15 text-amber-800 dark:text-amber-400 border border-amber-200 dark:border-amber-500/30 text-[10px] font-mono font-bold">
                     {d.status.replace(/_/g, " ")}
                   </span>
                 </div>
                 <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] font-sans leading-relaxed">{d.description}</p>
                 {d.adminArbitrationNotes && (
-                  <div className="p-3 rounded-xl bg-amber-50/50 dark:bg-amber-500/10 border border-amber-200/60 dark:border-amber-500/20 text-[#0A0A0E] dark:text-[#F4F4F8] text-[11px] font-sans shadow-2xs">
-                    <strong className="text-[#0A0A0E] dark:text-amber-400">Admin Arbitration Note:</strong> {d.adminArbitrationNotes}
+                  <div className="p-3 rounded-xl bg-amber-50/50 dark:bg-amber-500/10 border border-amber-200/60 dark:border-amber-500/20 text-[#0B0A14] dark:text-[#F4F4F8] text-[11px] font-sans shadow-2xs">
+                    <strong className="text-[#0B0A14] dark:text-amber-400">Admin Arbitration Note:</strong> {d.adminArbitrationNotes}
                   </div>
                 )}
                 <div className="flex justify-between text-[#6A6A78] dark:text-[#8E8EA4] pt-2 border-t border-black/5 dark:border-white/5">
-                  <span>Disputed Amount: <strong className="text-[#0A0A0E] dark:text-white">{formatCurrency(d.amountInDispute, (d as any).currency)}</strong></span>
+                  <span>Disputed Amount: <strong className="text-[#0B0A14] dark:text-white">{formatCurrency(d.amountInDispute, (d as any).currency)}</strong></span>
                   <span>Reason: {d.reason.replace(/_/g, " ")}</span>
                 </div>
               </div>
@@ -220,7 +220,7 @@ export default function SupportAndDisputePage() {
         description="Our dedicated agency partner operations team will assist with billing, technical, or campaign questions."
         maxWidth="md"
       >
-        <form onSubmit={handleCreateTicket} className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
+        <form onSubmit={handleCreateTicket} className="space-y-4 text-[#0B0A14] dark:text-[#F4F4F8]">
           <Input
             label="Inquiry Subject"
             value={ticketSubject}
@@ -230,11 +230,11 @@ export default function SupportAndDisputePage() {
           />
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1.5 text-left font-sans">
-              <label className="text-xs font-semibold text-[#0A0A0E] dark:text-[#EAEAEF]">Category</label>
+              <label className="text-xs font-semibold text-[#0B0A14] dark:text-[#EAEAEF]">Category</label>
               <select
                 value={ticketCategory}
                 onChange={(e) => setTicketCategory(e.target.value as any)}
-                className="w-full bg-[#F8F8FC] dark:bg-[#181824] border border-black/10 dark:border-white/10 rounded-xl px-3 py-2 text-xs text-[#0A0A0E] dark:text-white focus:outline-none"
+                className="w-full bg-[#F8F8FC] dark:bg-[#181824] border border-black/10 dark:border-white/10 rounded-xl px-3 py-2 text-xs text-[#0B0A14] dark:text-white focus:outline-none"
               >
                 <option value="Billing">Billing &amp; Payouts</option>
                 <option value="Campaign_Help">Campaign Brief Help</option>
@@ -243,11 +243,11 @@ export default function SupportAndDisputePage() {
               </select>
             </div>
             <div className="space-y-1.5 text-left font-sans">
-              <label className="text-xs font-semibold text-[#0A0A0E] dark:text-[#EAEAEF]">Priority</label>
+              <label className="text-xs font-semibold text-[#0B0A14] dark:text-[#EAEAEF]">Priority</label>
               <select
                 value={ticketPriority}
                 onChange={(e) => setTicketPriority(e.target.value as any)}
-                className="w-full bg-[#F8F8FC] dark:bg-[#181824] border border-black/10 dark:border-white/10 rounded-xl px-3 py-2 text-xs text-[#0A0A0E] dark:text-white focus:outline-none"
+                className="w-full bg-[#F8F8FC] dark:bg-[#181824] border border-black/10 dark:border-white/10 rounded-xl px-3 py-2 text-xs text-[#0B0A14] dark:text-white focus:outline-none"
               >
                 <option value="Low">Low</option>
                 <option value="Medium">Medium</option>
@@ -264,7 +264,7 @@ export default function SupportAndDisputePage() {
             rows={4}
             required
           />
-          <button type="submit" className="w-full py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] text-xs font-bold shadow-xs border border-black/10">
+          <button type="submit" className="w-full py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] text-xs font-bold shadow-xs border border-black/10">
             Submit Ticket
           </button>
         </form>
@@ -278,7 +278,7 @@ export default function SupportAndDisputePage() {
         description="Formal arbitration freezes escrow release and assigns an agency supervisor to mediate evidence."
         maxWidth="lg"
       >
-        <form onSubmit={handleFileDispute} className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
+        <form onSubmit={handleFileDispute} className="space-y-4 text-[#0B0A14] dark:text-[#F4F4F8]">
           <Input
             label="Campaign Brief Title"
             value={disputeCampaign}
@@ -287,11 +287,11 @@ export default function SupportAndDisputePage() {
           />
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1.5 text-left font-sans">
-              <label className="text-xs font-semibold text-[#0A0A0E] dark:text-[#EAEAEF]">Dispute Reason</label>
+              <label className="text-xs font-semibold text-[#0B0A14] dark:text-[#EAEAEF]">Dispute Reason</label>
               <select
                 value={disputeReason}
                 onChange={(e) => setDisputeReason(e.target.value as any)}
-                className="w-full bg-[#F8F8FC] dark:bg-[#181824] border border-black/10 dark:border-white/10 rounded-xl px-3 py-2 text-xs text-[#0A0A0E] dark:text-white focus:outline-none"
+                className="w-full bg-[#F8F8FC] dark:bg-[#181824] border border-black/10 dark:border-white/10 rounded-xl px-3 py-2 text-xs text-[#0B0A14] dark:text-white focus:outline-none"
               >
                 <option value="Scope_Mismatch">Scope &amp; Guidelines Mismatch</option>
                 <option value="Quality_Standards">Quality Standards Violation</option>
@@ -321,7 +321,7 @@ export default function SupportAndDisputePage() {
             onChange={(e) => setDisputeEvidence(e.target.value)}
             required
           />
-          <button type="submit" className="w-full py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] text-xs font-bold shadow-xs border border-black/10">
+          <button type="submit" className="w-full py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] text-xs font-bold shadow-xs border border-black/10">
             Submit Dispute &amp; Request Mediation
           </button>
         </form>

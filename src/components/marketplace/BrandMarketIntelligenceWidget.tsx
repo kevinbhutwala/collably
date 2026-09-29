@@ -62,14 +62,14 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
   if (!data) return null;
 
   return (
-    <div className="rounded-3xl border border-black/8 dark:border-white/10 bg-white dark:bg-[#12121A] p-6 sm:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-2xl space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans">
+    <div className="rounded-3xl border border-black/8 dark:border-white/10 bg-white dark:bg-[#12121A] p-6 sm:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-2xl space-y-6 text-[#0B0A14] dark:text-[#F4F4F8] select-none font-sans">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-black/8 dark:border-white/10">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#FFD21F]/40 bg-[#FFD21F]/15 px-3 py-1 text-xs font-semibold text-[#0A0A0E] dark:text-[#FFD21F]">
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/15 px-3 py-1 text-xs font-semibold text-[#0B0A14] dark:text-accent">
             <span>📊</span> Market Insights &amp; Pricing Guide
           </div>
-          <h3 className="mt-2 text-lg font-bold text-[#0A0A0E] dark:text-white font-display">
+          <h3 className="mt-2 text-lg font-bold text-[#0B0A14] dark:text-white font-display">
             Creator Rates &amp; Industry Trends
           </h3>
           <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
@@ -85,10 +85,10 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="rounded-xl border border-black/10 dark:border-white/10 bg-[#F4F4F8] dark:bg-white/5 px-3 py-1.5 text-xs font-semibold text-[#0A0A0E] dark:text-white focus:border-[#FFD21F] focus:outline-none cursor-pointer transition-all shadow-2xs"
+            className="rounded-xl border border-black/10 dark:border-white/10 bg-[#F4F4F8] dark:bg-white/5 px-3 py-1.5 text-xs font-semibold text-[#0B0A14] dark:text-white focus:border-primary focus:outline-none cursor-pointer transition-all shadow-2xs"
           >
             {CATEGORY_OPTIONS.map((cat) => (
-              <option key={cat} value={cat} className="bg-white dark:bg-[#12121A] text-[#0A0A0E] dark:text-white">
+              <option key={cat} value={cat} className="bg-white dark:bg-[#12121A] text-[#0B0A14] dark:text-white">
                 {cat}
               </option>
             ))}
@@ -104,11 +104,11 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
         </div>
         <div>
           <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] block uppercase font-bold">Average Budget</span>
-          <span className="text-sm font-bold text-[#0A0A0E] dark:text-white">{formatCurrency(2850)}</span>
+          <span className="text-sm font-bold text-[#0B0A14] dark:text-white">{formatCurrency(2850)}</span>
         </div>
         <div>
           <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] block uppercase font-bold">Most Popular Format</span>
-          <span className="text-sm font-bold text-[#0A0A0E] dark:text-white">Short-form video</span>
+          <span className="text-sm font-bold text-[#0B0A14] dark:text-white">Short-form video</span>
         </div>
         <div>
           <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] block uppercase font-bold">Average Engagement</span>
@@ -134,13 +134,13 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
                 className="flex items-center justify-between rounded-xl bg-white dark:bg-[#1C1C2A] border border-black/4 dark:border-white/5 px-3 py-2.5 text-xs shadow-2xs"
               >
                 <div>
-                  <div className="font-bold text-[#0A0A0E] dark:text-white">{tier.tier}</div>
+                  <div className="font-bold text-[#0B0A14] dark:text-white">{tier.tier}</div>
                   <div className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4]">
                     Range: {formatCurrency(tier.rateRange[0])} - {formatCurrency(tier.rateRange[1])}
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="font-extrabold text-[#0A0A0E] dark:text-[#FFD21F] font-mono">{formatCurrency(tier.avgRate)}</div>
+                  <div className="font-extrabold text-[#0B0A14] dark:text-accent font-mono">{formatCurrency(tier.avgRate)}</div>
                   <div className="text-[10px] text-[#8A8A9A]">Median</div>
                 </div>
               </div>
@@ -158,11 +158,11 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
               <div key={idx} className="space-y-1">
                 <div className="flex items-center justify-between text-xs">
                   <span className="text-[#4A4A58] dark:text-neutral-300 font-medium truncate">{fmt.format}</span>
-                  <span className="font-bold text-[#0A0A0E] dark:text-white font-mono">{fmt.sharePercent}%</span>
+                  <span className="font-bold text-[#0B0A14] dark:text-white font-mono">{fmt.sharePercent}%</span>
                 </div>
                 <div className="h-2 w-full rounded-full bg-black/5 dark:bg-white/10 overflow-hidden">
                   <div
-                    className="h-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] rounded-full"
+                    className="h-full bg-gradient-to-r from-primary via-[#9333EA] to-accent rounded-full"
                     style={{ width: `${fmt.sharePercent}%` }}
                   />
                 </div>
@@ -187,7 +187,7 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
                   key={idx}
                   className="flex items-center justify-between rounded-xl bg-white dark:bg-[#1C1C2A] border border-black/4 dark:border-white/5 px-3 py-2 text-xs shadow-2xs"
                 >
-                  <span className="font-bold text-[#0A0A0E] dark:text-white">{cat.category}</span>
+                  <span className="font-bold text-[#0B0A14] dark:text-white">{cat.category}</span>
                   <div className="flex items-center gap-2 font-mono">
                     <span className="rounded-lg bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 text-[10px] font-bold text-emerald-600 dark:text-emerald-400">
                       ROI {cat.roiIndex}x
@@ -212,7 +212,7 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
         <div className="pt-5 border-t border-black/8 dark:border-white/10 space-y-3.5">
           <div className="flex items-center justify-between">
             <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-[#0A0A0E] dark:text-white font-display">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#0B0A14] dark:text-white font-display">
                 Recommended Creators for Your Campaigns
               </h4>
               <p className="text-[11px] text-[#5A5A68] dark:text-[#8E8EA4]">
@@ -221,7 +221,7 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
             </div>
             <Link
               href="/app/brand/creators"
-              className="text-xs font-mono text-[#0A0A0E] dark:text-[#FFD21F] hover:underline font-bold"
+              className="text-xs font-mono text-[#0B0A14] dark:text-accent hover:underline font-bold"
             >
               View all creators →
             </Link>
@@ -231,7 +231,7 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
             {recommendedCreators.map((creator) => (
               <div
                 key={creator.id}
-                className="p-4 rounded-2xl bg-white dark:bg-[#181826] border border-black/8 dark:border-white/10 hover:border-[#FFD21F]/60 dark:hover:border-[#FFD21F] shadow-2xs hover:shadow-xs transition-all flex flex-col justify-between space-y-3"
+                className="p-4 rounded-2xl bg-white dark:bg-[#181826] border border-black/8 dark:border-white/10 hover:border-primary/60 dark:hover:border-primary shadow-2xs hover:shadow-xs transition-all flex flex-col justify-between space-y-3"
               >
                 <div className="flex items-center gap-3">
                   <div className="relative w-11 h-11 rounded-xl overflow-hidden bg-[#F5F5F9] dark:bg-neutral-800 shrink-0 border border-black/10 dark:border-white/10">
@@ -243,13 +243,13 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
                         className="object-cover"
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center font-bold text-[#0A0A0E] dark:text-white text-xs">
+                      <div className="w-full h-full flex items-center justify-center font-bold text-[#0B0A14] dark:text-white text-xs">
                         {creator.fullName.charAt(0)}
                       </div>
                     )}
                   </div>
                   <div className="min-w-0">
-                    <h5 className="text-xs font-bold text-[#0A0A0E] dark:text-white truncate">{creator.fullName}</h5>
+                    <h5 className="text-xs font-bold text-[#0B0A14] dark:text-white truncate">{creator.fullName}</h5>
                     <p className="text-[10px] text-[#6A6A78] dark:text-[#8E8EA4] font-mono truncate">
                       {creator.primaryCategory} • {creator.avgEngagementRate}% ER
                     </p>
@@ -260,7 +260,7 @@ export function BrandMarketIntelligenceWidget({ initialCategory }: { initialCate
                   <span className="text-emerald-600 dark:text-emerald-400 font-bold">92% Match</span>
                   <Link
                     href={`/creators/${creator.id}`}
-                    className="px-3 py-1 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] text-[10px] font-extrabold hover:brightness-105 transition-all shadow-2xs border border-black/10"
+                    className="px-3 py-1 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] text-[10px] font-extrabold hover:brightness-105 transition-all shadow-2xs border border-black/10"
                   >
                     View & Invite
                   </Link>

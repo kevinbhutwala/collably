@@ -264,22 +264,22 @@ export function CaseStudiesClient() {
       : CASE_STUDIES.filter((cs) => cs.category === selectedCategory);
 
   return (
-    <div className="bg-[#FAFAFC] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] min-h-screen select-none font-sans">
-      {/* ── Page Hero Stage with #FFD21F & Bright Pure White Aesthetic ── */}
+    <div className="bg-[#FAFAFC] dark:bg-[#07070B] text-[#0B0A14] dark:text-[#F4F4F8] min-h-screen select-none font-sans">
+      {/* ── Page Hero Stage with #7C3AED & Bright Pure White Aesthetic ── */}
       <section className="pt-24 pb-16 border-b border-black/8 dark:border-white/10 relative overflow-hidden bg-white dark:bg-[#07070B]">
         {/* Subtle Gold Flare Background Accent */}
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#FFD21F]/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-10 left-10 w-80 h-80 bg-[#FFD21F]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-primary/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-10 left-10 w-80 h-80 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFFDF5] dark:bg-[#12121A] border border-[#FFD21F]/50 text-[#0A0A0E] dark:text-white text-xs font-mono font-bold shadow-xs">
-            <Sparkles className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 dark:bg-[#12121A] border border-primary/50 text-[#0B0A14] dark:text-white text-xs font-mono font-bold shadow-xs">
+            <Sparkles className="w-3.5 h-3.5 text-primary fill-primary" />
             <span>HOW ABEYCOLLAB CAMPAIGNS WORK</span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-[#0A0A0E] dark:text-white tracking-tight font-display max-w-4xl mx-auto">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-[#0B0A14] dark:text-white tracking-tight font-display max-w-4xl mx-auto">
             The full campaign<br />
-            <span className="text-[#0A0A0E] dark:text-white bg-gradient-to-r from-[#FFD21F] via-[#FFAE00] to-[#FFD21F] bg-clip-text text-transparent underline decoration-[#FFD21F]/40 underline-offset-8">
+            <span className="text-[#0B0A14] dark:text-white bg-gradient-to-r from-primary via-[#FFAE00] to-primary bg-clip-text text-transparent underline decoration-primary/40 underline-offset-8">
               workflow, end-to-end.
             </span>
           </h1>
@@ -292,23 +292,23 @@ export function CaseStudiesClient() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-6 text-left font-mono">
             <div className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#12121A] border border-black/6 dark:border-white/10">
               <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-bold block">Escrow Protection</span>
-              <span className="text-2xl font-black text-[#0A0A0E] dark:text-white font-display">100%</span>
+              <span className="text-2xl font-black text-[#0B0A14] dark:text-white font-display">100%</span>
               <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold block mt-0.5">Pre-funded Guarantee</span>
             </div>
             <div className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#12121A] border border-black/6 dark:border-white/10">
               <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-bold block">Platform Fee</span>
-              <span className="text-2xl font-black text-[#0A0A0E] dark:text-white font-display">10%</span>
+              <span className="text-2xl font-black text-[#0B0A14] dark:text-white font-display">10%</span>
               <span className="text-[10px] text-[#5A5A68] dark:text-[#8E8EA4] block mt-0.5">Flat &amp; Transparent</span>
             </div>
             <div className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#12121A] border border-black/6 dark:border-white/10">
               <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-bold block">Payout Speed</span>
-              <span className="text-2xl font-black text-[#0A0A0E] dark:text-white font-display">Instant</span>
+              <span className="text-2xl font-black text-[#0B0A14] dark:text-white font-display">Instant</span>
               <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold block mt-0.5">On QA Sign-off</span>
             </div>
             <div className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#12121A] border border-black/6 dark:border-white/10">
               <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-bold block">Support SLA</span>
-              <span className="text-2xl font-black text-[#0A0A0E] dark:text-white font-display">&lt; 4 Hrs</span>
-              <span className="text-[10px] text-amber-700 dark:text-[#FFD21F] font-bold block mt-0.5">Human Arbitration</span>
+              <span className="text-2xl font-black text-[#0B0A14] dark:text-white font-display">&lt; 4 Hrs</span>
+              <span className="text-[10px] text-amber-700 dark:text-accent font-bold block mt-0.5">Human Arbitration</span>
             </div>
           </div>
         </div>
@@ -319,7 +319,7 @@ export function CaseStudiesClient() {
         {/* Filter Tabs */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-black/8 dark:border-white/10 pb-6">
           <div>
-            <h2 className="text-2xl font-extrabold text-[#0A0A0E] dark:text-white font-display">
+            <h2 className="text-2xl font-extrabold text-[#0B0A14] dark:text-white font-display">
               Workflow Examples
             </h2>
             <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
@@ -334,8 +334,8 @@ export function CaseStudiesClient() {
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-4 py-2 rounded-full text-xs font-bold transition-all shrink-0 capitalize cursor-pointer ${
                   selectedCategory === cat
-                    ? "bg-[#0A0A0E] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E] shadow-xs"
-                    : "bg-white dark:bg-[#14141E] border border-black/8 dark:border-white/10 text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white hover:border-black/20"
+                    ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-xs"
+                    : "bg-white dark:bg-[#14141E] border border-black/8 dark:border-white/10 text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white hover:border-black/20"
                 }`}
               >
                 {cat === "all" ? "All Case Studies" : cat}
@@ -356,7 +356,7 @@ export function CaseStudiesClient() {
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
                 onClick={() => setActiveModalStudy(cs)}
-                className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 overflow-hidden shadow-sm hover:border-[#FFD21F] dark:hover:border-[#FFD21F] hover:shadow-[0_12px_40px_rgba(255,210,31,0.18)] transition-all cursor-pointer flex flex-col justify-between group hover-lift"
+                className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 overflow-hidden shadow-sm hover:border-primary dark:hover:border-primary hover:shadow-[0_12px_40px_rgba(var(--theme-primary-rgb),0.18)] transition-all cursor-pointer flex flex-col justify-between group hover-lift"
               >
                 {/* Card Header & Preview Image */}
                 <div className="space-y-4">
@@ -381,7 +381,7 @@ export function CaseStudiesClient() {
                           {cs.brandName}
                         </span>
                       </div>
-                      <span className="px-2.5 py-1 rounded-full bg-[#FFD21F] text-[#0A0A0E] font-mono font-extrabold text-xs shadow-xs">
+                      <span className="px-2.5 py-1 rounded-full bg-primary text-[#0B0A14] font-mono font-extrabold text-xs shadow-xs">
                         {cs.roas}
                       </span>
                     </div>
@@ -390,10 +390,10 @@ export function CaseStudiesClient() {
                   {/* Content Section */}
                   <div className="p-6 sm:p-7 space-y-4">
                     <div className="flex items-start gap-2.5">
-                      <div className="w-7 h-7 rounded-xl bg-[#FFFDF5] dark:bg-[#181824] border border-[#FFD21F]/40 text-[#0A0A0E] dark:text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs group-hover:bg-[#FFD21F] transition-all">
+                      <div className="w-7 h-7 rounded-xl bg-primary/5 dark:bg-[#181824] border border-primary/40 text-[#0B0A14] dark:text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs group-hover:bg-primary transition-all">
                         <TitleIcon title={cs.title} category={cs.category} className="w-4 h-4" />
                       </div>
-                      <h3 className="text-xl font-extrabold text-[#0A0A0E] dark:text-white font-display group-hover:text-amber-600 dark:group-hover:text-[#FFD21F] transition-colors leading-tight">
+                      <h3 className="text-xl font-extrabold text-[#0B0A14] dark:text-white font-display group-hover:text-amber-600 dark:group-hover:text-accent transition-colors leading-tight">
                         {cs.title}
                       </h3>
                     </div>
@@ -405,21 +405,21 @@ export function CaseStudiesClient() {
                     <div className="grid grid-cols-3 gap-2 p-3 rounded-2xl bg-[#F8F8FC] dark:bg-[#161622] border border-black/6 dark:border-white/10 text-xs font-mono">
                       <div>
                         <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] block uppercase font-bold">Impressions</span>
-                        <span className="font-bold text-[#0A0A0E] dark:text-white text-sm">{cs.impressions}</span>
+                        <span className="font-bold text-[#0B0A14] dark:text-white text-sm">{cs.impressions}</span>
                       </div>
                       <div>
                         <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] block uppercase font-bold">Conversions</span>
-                        <span className="font-bold text-[#0A0A0E] dark:text-white text-sm">{cs.conversions}</span>
+                        <span className="font-bold text-[#0B0A14] dark:text-white text-sm">{cs.conversions}</span>
                       </div>
                       <div>
                         <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] block uppercase font-bold">Unit Cost</span>
-                        <span className="font-bold text-[#0A0A0E] dark:text-white text-sm">{cs.cpv}</span>
+                        <span className="font-bold text-[#0B0A14] dark:text-white text-sm">{cs.cpv}</span>
                       </div>
                     </div>
 
                     {/* Client Quote Preview */}
-                    <div className="p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#16151E] border border-[#FFD21F]/30 dark:border-[#FFD21F]/20 space-y-2">
-                      <div className="flex items-center gap-1 text-[#FFD21F]">
+                    <div className="p-4 rounded-2xl bg-primary/5 dark:bg-[#16151E] border border-primary/30 dark:border-primary/20 space-y-2">
+                      <div className="flex items-center gap-1 text-primary">
                         {[...Array(5)].map((_, i) => (
                           <Star key={i} className="w-3.5 h-3.5 fill-current" />
                         ))}
@@ -427,7 +427,7 @@ export function CaseStudiesClient() {
                       <p className="text-xs text-[#3A3A48] dark:text-[#C0C0D4] italic font-sans line-clamp-2">
                         &ldquo;{cs.clientQuote.quote}&rdquo;
                       </p>
-                      <span className="text-[11px] font-mono font-bold text-[#0A0A0E] dark:text-white block">
+                      <span className="text-[11px] font-mono font-bold text-[#0B0A14] dark:text-white block">
                         — {cs.clientQuote.author}, {cs.clientQuote.role}
                       </span>
                     </div>
@@ -437,12 +437,12 @@ export function CaseStudiesClient() {
                 {/* Card Footer CTA */}
                 <div className="px-6 py-4 sm:px-7 sm:py-5 border-t border-black/8 dark:border-white/10 bg-[#FAFAFC] dark:bg-[#101018] flex items-center justify-between">
                   <div className="flex items-center gap-2 text-xs font-mono text-[#5A5A68] dark:text-[#8E8EA4]">
-                    <Lock className="w-3.5 h-3.5 text-[#FFD21F]" />
+                    <Lock className="w-3.5 h-3.5 text-primary" />
                     <span>Escrow Vault: {formatCurrency(cs.escrowAmount)}</span>
                   </div>
-                  <span className="text-xs font-bold text-[#0A0A0E] dark:text-white flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                  <span className="text-xs font-bold text-[#0B0A14] dark:text-white flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                     <span>Inspect Case Study</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-white" />
+                    <ArrowRight className="w-3.5 h-3.5 text-[#0B0A14] dark:text-white" />
                   </span>
                 </div>
               </motion.div>
@@ -460,7 +460,7 @@ export function CaseStudiesClient() {
           title={`Case Study: ${activeModalStudy.brandName}`}
           maxWidth="3xl"
         >
-          <div className="space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] select-none p-1 font-sans">
+          <div className="space-y-6 text-[#0B0A14] dark:text-[#F4F4F8] select-none p-1 font-sans">
             {/* Modal Hero Banner */}
             <div className="relative h-48 sm:h-64 rounded-2xl overflow-hidden bg-[#F4F4F8] dark:bg-[#181824]">
               <SafeImage
@@ -472,7 +472,7 @@ export function CaseStudiesClient() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 text-white space-y-1">
-                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] uppercase">
+                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-primary text-[#0B0A14] uppercase">
                   {activeModalStudy.category}
                 </span>
                 <h3 className="text-xl sm:text-2xl font-black font-display text-white">
@@ -489,21 +489,21 @@ export function CaseStudiesClient() {
               </div>
               <div className="p-3.5 rounded-2xl bg-[#F8F8FC] dark:bg-[#161622] border border-black/6 dark:border-white/10">
                 <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] block uppercase font-bold">Audited Reach</span>
-                <span className="text-xl font-black text-[#0A0A0E] dark:text-white font-display">{activeModalStudy.impressions}</span>
+                <span className="text-xl font-black text-[#0B0A14] dark:text-white font-display">{activeModalStudy.impressions}</span>
               </div>
               <div className="p-3.5 rounded-2xl bg-[#F8F8FC] dark:bg-[#161622] border border-black/6 dark:border-white/10">
                 <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] block uppercase font-bold">Sign-ups / Sales</span>
-                <span className="text-xl font-black text-[#0A0A0E] dark:text-white font-display">{activeModalStudy.conversions}</span>
+                <span className="text-xl font-black text-[#0B0A14] dark:text-white font-display">{activeModalStudy.conversions}</span>
               </div>
               <div className="p-3.5 rounded-2xl bg-[#F8F8FC] dark:bg-[#161622] border border-black/6 dark:border-white/10">
                 <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] block uppercase font-bold">Pre-Funded Escrow</span>
-                <span className="text-xl font-black text-[#0A0A0E] dark:text-white font-display">{formatCurrency(activeModalStudy.escrowAmount)}</span>
+                <span className="text-xl font-black text-[#0B0A14] dark:text-white font-display">{formatCurrency(activeModalStudy.escrowAmount)}</span>
               </div>
             </div>
 
             {/* Campaign Deliverables & Breakdown */}
             <div className="space-y-3">
-              <h4 className="text-sm font-bold font-display text-[#0A0A0E] dark:text-white uppercase tracking-wider font-mono">
+              <h4 className="text-sm font-bold font-display text-[#0B0A14] dark:text-white uppercase tracking-wider font-mono">
                 Executed Deliverable Package
               </h4>
               <div className="space-y-2">
@@ -518,13 +518,13 @@ export function CaseStudiesClient() {
 
             {/* Strategy & Key Outcomes */}
             <div className="space-y-3">
-              <h4 className="text-sm font-bold font-display text-[#0A0A0E] dark:text-white uppercase tracking-wider font-mono">
+              <h4 className="text-sm font-bold font-display text-[#0B0A14] dark:text-white uppercase tracking-wider font-mono">
                 Key Strategic Takeaways
               </h4>
               <div className="space-y-2">
                 {activeModalStudy.keyTakeaways.map((point, idx) => (
                   <div key={idx} className="flex items-start gap-2.5 text-xs text-[#3A3A48] dark:text-[#D0D0E0]">
-                    <div className="w-4 h-4 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">
+                    <div className="w-4 h-4 rounded-full bg-primary text-[#0B0A14] flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">
                       ✓
                     </div>
                     <span>{point}</span>
@@ -534,8 +534,8 @@ export function CaseStudiesClient() {
             </div>
 
             {/* Sponsor Review Quote */}
-            <div className="p-5 rounded-2xl bg-[#FFFDF5] dark:bg-[#16151E] border border-[#FFD21F]/40 dark:border-[#FFD21F]/20 space-y-3">
-              <div className="flex items-center gap-1 text-[#FFD21F]">
+            <div className="p-5 rounded-2xl bg-primary/5 dark:bg-[#16151E] border border-primary/40 dark:border-primary/20 space-y-3">
+              <div className="flex items-center gap-1 text-primary">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-3.5 h-3.5 fill-current" />
                 ))}
@@ -544,7 +544,7 @@ export function CaseStudiesClient() {
                 &ldquo;{activeModalStudy.clientQuote.quote}&rdquo;
               </p>
               <div className="pt-1 border-t border-black/6 dark:border-white/10">
-                <span className="font-bold text-xs text-[#0A0A0E] dark:text-white block">{activeModalStudy.clientQuote.author}</span>
+                <span className="font-bold text-xs text-[#0B0A14] dark:text-white block">{activeModalStudy.clientQuote.author}</span>
                 <span className="text-[11px] text-[#6A6A78] dark:text-[#8E8EA4]">{activeModalStudy.clientQuote.role}</span>
               </div>
             </div>
@@ -557,14 +557,14 @@ export function CaseStudiesClient() {
               <div className="flex items-center gap-2 w-full sm:w-auto">
                 <button
                   onClick={() => setActiveModalStudy(null)}
-                  className="px-5 py-2.5 rounded-full border border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/5 text-xs font-bold transition-all text-[#0A0A0E] dark:text-white cursor-pointer"
+                  className="px-5 py-2.5 rounded-full border border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/5 text-xs font-bold transition-all text-[#0B0A14] dark:text-white cursor-pointer"
                 >
                   Close
                 </button>
                 <Link href="/app/brand/campaigns/create" className="flex-1 sm:flex-initial">
-                  <button className="w-full px-6 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1.5 cursor-pointer">
+                  <button className="w-full px-6 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1.5 cursor-pointer">
                     <span>Launch Similar Campaign</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#0A0A0E]" />
+                    <ArrowRight className="w-3.5 h-3.5 text-[#0B0A14]" />
                   </button>
                 </Link>
               </div>

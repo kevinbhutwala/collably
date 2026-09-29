@@ -42,10 +42,10 @@ export function GoogleSignInButton({
       type="button"
       onClick={handleClick}
       disabled={isLoading}
-      className={`w-full h-11 px-4 rounded-xl border border-black/10 dark:border-white/12 bg-white dark:bg-[#161622] hover:bg-neutral-50 dark:hover:bg-[#1C1C2A] hover:border-black/20 dark:hover:border-white/25 text-[#0A0A0E] dark:text-white font-medium text-xs sm:text-sm flex items-center justify-center gap-2.5 transition-all duration-150 shadow-xs hover:shadow-sm active:scale-[0.99] disabled:opacity-50 cursor-pointer ${className}`}
+      className={`w-full h-11 px-4 rounded-xl border border-black/10 dark:border-white/12 bg-white dark:bg-[#161622] hover:bg-neutral-50 dark:hover:bg-[#1C1C2A] hover:border-black/20 dark:hover:border-white/25 text-[#0B0A14] dark:text-white font-medium text-xs sm:text-sm flex items-center justify-center gap-2.5 transition-all duration-150 shadow-xs hover:shadow-sm active:scale-[0.99] disabled:opacity-50 cursor-pointer ${className}`}
     >
       {isLoading ? (
-        <Loader2 className="w-4 h-4 animate-spin text-[#0A0A0E] dark:text-white shrink-0" />
+        <Loader2 className="w-4 h-4 animate-spin text-[#0B0A14] dark:text-white shrink-0" />
       ) : mode === "connect_youtube" ? (
         <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none">
           <path

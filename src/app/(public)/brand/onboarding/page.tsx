@@ -52,14 +52,14 @@ export default function BrandOnboardingWizardPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAFAFC] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] py-12 px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center">
+    <div className="min-h-screen bg-[#FAFAFC] dark:bg-[#07070B] text-[#0B0A14] dark:text-[#F4F4F8] py-12 px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center">
       <div className="w-full max-w-3xl space-y-8">
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 text-xs font-mono font-bold text-[#0A0A0E] dark:text-white shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 text-xs font-mono font-bold text-[#0B0A14] dark:text-white shadow-xs">
+            <span className="w-2 h-2 rounded-full bg-primary" />
             <span>Brand Enterprise Onboarding • Step {step} of {totalSteps}</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0B0A14] dark:text-white tracking-tight font-display">
             Configure Your Brand Workspace
           </h1>
           <p className="text-sm text-[#5A5A68] dark:text-[#8E8EA4] font-sans font-medium">
@@ -68,17 +68,17 @@ export default function BrandOnboardingWizardPage() {
 
           <div className="w-full h-2 rounded-full bg-black/5 dark:bg-white/10 overflow-hidden mt-4">
             <div
-              className="h-full bg-[#FFD21F] transition-all duration-300 rounded-full"
+              className="h-full bg-primary transition-all duration-300 rounded-full"
               style={{ width: `${(step / totalSteps) * 100}%` }}
             />
           </div>
         </div>
 
-        <div className="p-5 sm:p-8 md:p-12 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8]">
+        <div className="p-5 sm:p-8 md:p-12 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6 text-[#0B0A14] dark:text-[#F4F4F8]">
           {/* Step 1: Company Profile */}
           {step === 1 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">Step 1: Company Identity</h3>
+              <h3 className="text-xl font-bold text-[#0B0A14] dark:text-white font-display">Step 1: Company Identity</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
                   label="Company / Organization Name"
@@ -117,7 +117,7 @@ export default function BrandOnboardingWizardPage() {
           {/* Step 2: Value Proposition & Narrative */}
           {step === 2 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">Step 2: Brand Tagline &amp; Mission</h3>
+              <h3 className="text-xl font-bold text-[#0B0A14] dark:text-white font-display">Step 2: Brand Tagline &amp; Mission</h3>
               <Input
                 label="Headline Value Proposition"
                 value={formData.headline}
@@ -137,7 +137,7 @@ export default function BrandOnboardingWizardPage() {
           {/* Step 3: Campaign Budget Tiers */}
           {step === 3 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">Step 3: Estimated Monthly Campaign Budget</h3>
+              <h3 className="text-xl font-bold text-[#0B0A14] dark:text-white font-display">Step 3: Estimated Monthly Campaign Budget</h3>
               <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] font-sans font-medium">Helps match you with creator cohorts within your target budget tier.</p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
                 {[
@@ -151,8 +151,8 @@ export default function BrandOnboardingWizardPage() {
                     onClick={() => setFormData({ ...formData, budgetTier: tier.id })}
                     className={`p-4 rounded-xl border text-center font-bold transition-all ${
                       formData.budgetTier === tier.id
-                        ? "bg-[#FFD21F] text-[#0A0A0E] border-black/10 shadow-xs"
-                        : "bg-[#F8F8FC] dark:bg-[#181824] text-[#6A6A78] dark:text-[#A0A0B4] border-black/5 dark:border-white/10 hover:text-[#0A0A0E] dark:hover:text-white"
+                        ? "bg-primary text-[#0B0A14] border-black/10 shadow-xs"
+                        : "bg-[#F8F8FC] dark:bg-[#181824] text-[#6A6A78] dark:text-[#A0A0B4] border-black/5 dark:border-white/10 hover:text-[#0B0A14] dark:hover:text-white"
                     }`}
                   >
                     {tier.label}
@@ -165,7 +165,7 @@ export default function BrandOnboardingWizardPage() {
           {/* Step 4: Marketing Objectives */}
           {step === 4 && (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">Step 4: Primary Campaign Objectives</h3>
+              <h3 className="text-xl font-bold text-[#0B0A14] dark:text-white font-display">Step 4: Primary Campaign Objectives</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                 {[
                   "Developer Awareness",
@@ -175,7 +175,7 @@ export default function BrandOnboardingWizardPage() {
                   "App Installs & Downloads",
                   "SEO & Thought Leadership",
                 ].map((obj) => (
-                  <label key={obj} className="p-3.5 rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 flex items-center gap-2.5 cursor-pointer hover:border-[#FFD21F] dark:hover:border-[#FFD21F]">
+                  <label key={obj} className="p-3.5 rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 flex items-center gap-2.5 cursor-pointer hover:border-primary dark:hover:border-primary">
                     <input
                       type="checkbox"
                       checked={formData.targetGoals.includes(obj)}
@@ -183,9 +183,9 @@ export default function BrandOnboardingWizardPage() {
                         if (e.target.checked) setFormData({ ...formData, targetGoals: [...formData.targetGoals, obj] });
                         else setFormData({ ...formData, targetGoals: formData.targetGoals.filter((g) => g !== obj) });
                       }}
-                      className="rounded text-[#FFD21F] focus:ring-[#FFD21F]"
+                      className="rounded text-primary focus:ring-primary"
                     />
-                    <span className="font-medium text-[#0A0A0E] dark:text-white font-sans">{obj}</span>
+                    <span className="font-medium text-[#0B0A14] dark:text-white font-sans">{obj}</span>
                   </label>
                 ))}
               </div>
@@ -195,7 +195,7 @@ export default function BrandOnboardingWizardPage() {
           {/* Step 5: Team Seats & Escrow Confirmation */}
           {step === 5 && (
             <div className="space-y-6">
-              <h3 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">Step 5: Team Access &amp; Escrow Protection</h3>
+              <h3 className="text-xl font-bold text-[#0B0A14] dark:text-white font-display">Step 5: Team Access &amp; Escrow Protection</h3>
               <Input
                 label="Invite Teammate Emails"
                 placeholder="colleague@brand.com, manager@agency.com"
@@ -204,9 +204,9 @@ export default function BrandOnboardingWizardPage() {
                 onChange={(e) => setFormData({ ...formData, teamMembers: e.target.value })}
               />
               <div className="p-5 sm:p-6 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 flex items-start gap-3">
-                <ShieldCheck className="w-5 h-5 text-[#0A0A0E] dark:text-[#FFD21F] shrink-0 mt-0.5" />
+                <ShieldCheck className="w-5 h-5 text-[#0B0A14] dark:text-accent shrink-0 mt-0.5" />
                 <div className="space-y-1">
-                  <h4 className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">100% Escrow Milestone Protection</h4>
+                  <h4 className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">100% Escrow Milestone Protection</h4>
                   <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] leading-relaxed font-sans font-medium">
                     Your campaign funds remain secured in the AbeyCollab escrow vault until your marketing team reviews and signs off on deliverables.
                   </p>
@@ -232,7 +232,7 @@ export default function BrandOnboardingWizardPage() {
               variant="primary"
               size="md"
               onClick={handleNext}
-              rightIcon={<ArrowRight className="w-4 h-4 text-[#0A0A0E]" />}
+              rightIcon={<ArrowRight className="w-4 h-4 text-[#0B0A14]" />}
               className="rounded-full w-full sm:w-auto"
             >
               {step === totalSteps ? "Launch Brand Workspace" : "Continue"}

@@ -19,17 +19,17 @@ export function CurrencySelector({
       <div className={`grid grid-cols-1 sm:grid-cols-2 gap-3 ${className}`}>
         <div
           data-testid="currency-card-INR"
-          className="p-4 rounded-2xl border-2 border-[#FFD21F] bg-[#FFFDF5] dark:bg-[#1A1A28] shadow-sm ring-2 ring-[#FFD21F]/20 flex flex-col justify-between gap-3 text-left"
+          className="p-4 rounded-2xl border-2 border-primary bg-primary/5 dark:bg-[#1A1A28] shadow-sm ring-2 ring-primary/20 flex flex-col justify-between gap-3 text-left"
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <span className="text-2xl" role="img" aria-label="Indian Rupee">🇮🇳</span>
               <div>
-                <span className="font-extrabold text-sm text-[#0A0A0E] dark:text-white block">INR (₹)</span>
+                <span className="font-extrabold text-sm text-[#0B0A14] dark:text-white block">INR (₹)</span>
                 <span className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4]">Indian Rupee (Phase 1 Platform Currency)</span>
               </div>
             </div>
-            <span className="px-2 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-[10px] font-bold flex items-center gap-1">
+            <span className="px-2 py-0.5 rounded-full bg-primary text-[#0B0A14] text-[10px] font-bold flex items-center gap-1">
               <Check className="w-3 h-3" />
               <span>Active</span>
             </span>
@@ -37,7 +37,7 @@ export function CurrencySelector({
 
           <div className="pt-2 border-t border-black/5 dark:border-white/5 flex items-center justify-between text-xs">
             <span className="text-[#7A7A8A] dark:text-[#8E8EA4]">Settlement Rails</span>
-            <span className="font-mono font-extrabold text-[#0A0A0E] dark:text-white bg-black/5 dark:bg-white/10 px-2 py-0.5 rounded-md">
+            <span className="font-mono font-extrabold text-[#0B0A14] dark:text-white bg-black/5 dark:bg-white/10 px-2 py-0.5 rounded-md">
               UPI • Netbanking • IMPS (₹)
             </span>
           </div>
@@ -50,7 +50,7 @@ export function CurrencySelector({
             <div className="flex items-center gap-2.5">
               <span className="text-2xl" role="img" aria-label="Global Currencies">🌐</span>
               <div>
-                <span className="font-extrabold text-sm text-[#0A0A0E] dark:text-white block">USD, EUR, GBP</span>
+                <span className="font-extrabold text-sm text-[#0B0A14] dark:text-white block">USD, EUR, GBP</span>
                 <span className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4]">Global Multi-Currency Escrow</span>
               </div>
             </div>
@@ -75,12 +75,12 @@ export function CurrencySelector({
     <div className={`relative inline-flex items-center ${className}`}>
       <div
         data-testid="currency-selector-button"
-        className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-black/5 dark:bg-white/5 text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8] border border-black/8 dark:border-white/10 shadow-2xs select-none"
+        className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-black/5 dark:bg-white/5 text-xs font-bold text-[#0B0A14] dark:text-[#F4F4F8] border border-black/8 dark:border-white/10 shadow-2xs select-none"
         title="AbeyCollab operates in Indian Rupees (INR / ₹) with direct UPI & IMPS bank settlements"
       >
         <span className="text-sm">🇮🇳</span>
-        <span className="font-mono text-[11px] font-extrabold text-[#0A0A0E] dark:text-white">INR</span>
-        <span className="font-mono text-[11px] text-[#0A0A0E] dark:text-[#FFD21F] font-black">(₹)</span>
+        <span className="font-mono text-[11px] font-extrabold text-[#0B0A14] dark:text-white">INR</span>
+        <span className="font-mono text-[11px] text-[#0B0A14] dark:text-accent font-black">(₹)</span>
       </div>
     </div>
   );

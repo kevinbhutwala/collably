@@ -22,15 +22,15 @@ export function SubscriptionUsageCard() {
     : "Next month";
 
   return (
-    <div className="rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-4 sm:p-6 lg:p-7 shadow-xs space-y-5 text-[#0A0A0E] dark:text-[#F4F4F8] select-none relative overflow-hidden">
+    <div className="rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-4 sm:p-6 lg:p-7 shadow-xs space-y-5 text-[#0B0A14] dark:text-[#F4F4F8] select-none relative overflow-hidden">
       {/* Background flare */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFD21F]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-black/6 dark:border-white/10">
         <div className="space-y-0.5">
           <div className="flex items-center gap-2">
-            <h3 className="text-base font-bold font-display text-[#0A0A0E] dark:text-white">
+            <h3 className="text-base font-bold font-display text-[#0B0A14] dark:text-white">
               Plan &amp; Quota
             </h3>
             <SubscriptionBadge
@@ -46,9 +46,9 @@ export function SubscriptionUsageCard() {
 
         <button
           onClick={() => openUpgradeModal()}
-          className="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5 shrink-0 self-start sm:self-center hover-lift cursor-pointer"
+          className="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5 shrink-0 self-start sm:self-center hover-lift cursor-pointer"
         >
-          <Sparkles className="w-3 h-3 text-[#0A0A0E]" />
+          <Sparkles className="w-3 h-3 text-[#0B0A14]" />
           <span>Manage Plan</span>
         </button>
       </div>
@@ -56,8 +56,8 @@ export function SubscriptionUsageCard() {
       {/* Quota Progress Meter */}
       <div className="space-y-1.5">
         <div className="flex items-center justify-between text-xs font-mono">
-          <span className="font-bold text-[#0A0A0E] dark:text-white flex items-center gap-1.5 text-xs">
-            <Zap className="w-3.5 h-3.5 text-[#FFD21F]" />
+          <span className="font-bold text-[#0B0A14] dark:text-white flex items-center gap-1.5 text-xs">
+            <Zap className="w-3.5 h-3.5 text-primary" />
             <span>{quotaLabel}</span>
           </span>
           <span className="text-[#5A5A68] dark:text-[#8E8EA4] text-xs">
@@ -65,7 +65,7 @@ export function SubscriptionUsageCard() {
               <span className="font-bold text-emerald-600 dark:text-emerald-400">UNLIMITED</span>
             ) : (
               <span>
-                <strong className="text-[#0A0A0E] dark:text-white">{quota.current}</strong> / {quota.limit} {quotaUnit} ({quota.percent}%)
+                <strong className="text-[#0B0A14] dark:text-white">{quota.current}</strong> / {quota.limit} {quotaUnit} ({quota.percent}%)
               </span>
             )}
           </span>
@@ -79,7 +79,7 @@ export function SubscriptionUsageCard() {
                   ? "bg-rose-500"
                   : quota.percent >= 70
                   ? "bg-amber-500"
-                  : "bg-gradient-to-r from-[#FFD21F] to-[#FFAE00]"
+                  : "bg-gradient-to-r from-primary to-[#FFAE00]"
               }`}
               style={{ width: `${Math.min(100, quota.percent)}%` }}
             />
@@ -102,8 +102,8 @@ export function SubscriptionUsageCard() {
           <span className="text-[10px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-bold block">
             Billing
           </span>
-          <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white">
-            <Calendar className="w-3.5 h-3.5 text-[#FFD21F]" />
+          <div className="flex items-center gap-2 text-xs font-bold text-[#0B0A14] dark:text-white">
+            <Calendar className="w-3.5 h-3.5 text-primary" />
             <span className="capitalize">{subscription?.interval || "Monthly"}</span>
             <span className="text-[#8A8A9A]">•</span>
             <span className="font-normal text-[#5A5A68] dark:text-[#8E8EA4]">Renews {periodEndFormatted}</span>
@@ -114,7 +114,7 @@ export function SubscriptionUsageCard() {
           <span className="text-[10px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-bold block">
             Status
           </span>
-          <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white">
+          <div className="flex items-center gap-2 text-xs font-bold text-[#0B0A14] dark:text-white">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             <span className="uppercase font-mono text-[11px] text-emerald-600 dark:text-emerald-400">
               {subscription?.status || "Active"}

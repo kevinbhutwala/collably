@@ -140,13 +140,13 @@ export default function DedicatedTrendingPage() {
   };
 
   return (
-    <div className="space-y-8 text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans">
+    <div className="space-y-8 text-[#0B0A14] dark:text-[#F4F4F8] select-none font-sans">
       {/* ── Page Header ── */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-black/8 dark:border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-gradient-to-r from-amber-500/20 to-[#FFD21F]/20 border border-[#FFD21F]/40 text-[10px] font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-pulse" />
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-gradient-to-r from-amber-500/20 to-primary/20 border border-primary/40 text-[10px] font-mono font-bold text-[#0B0A14] dark:text-accent">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
               Market Trends
             </span>
             <span className="text-[#8A8A9A]">•</span>
@@ -154,7 +154,7 @@ export default function DedicatedTrendingPage() {
               Updated Hourly
             </span>
           </div>
-          <h1 className="text-2xl sm:text-4xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display flex items-center gap-2.5">
+          <h1 className="text-2xl sm:text-4xl font-extrabold text-[#0B0A14] dark:text-white tracking-tight font-display flex items-center gap-2.5">
             <span>Trending Creators &amp; Campaigns</span>
             <span className="text-xl">🔥</span>
           </h1>
@@ -172,8 +172,8 @@ export default function DedicatedTrendingPage() {
               className={cn(
                 "px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer",
                 timeframe === tf
-                  ? "bg-[#0A0A0E] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E] shadow-2xs"
-                  : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
+                  ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-2xs"
+                  : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
               )}
             >
               {tf === "7d" ? "7 Days" : tf === "30d" ? "30 Days" : "90 Days"}
@@ -189,8 +189,8 @@ export default function DedicatedTrendingPage() {
           className={cn(
             "px-4 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer shrink-0",
             activeTab === "trending_now"
-              ? "bg-[#0A0A0E] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E] shadow-sm"
-              : "bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/6 dark:border-white/8"
+              ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-sm"
+              : "bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/6 dark:border-white/8"
           )}
         >
           <Flame className="w-3.5 h-3.5 text-amber-500" />
@@ -202,8 +202,8 @@ export default function DedicatedTrendingPage() {
           className={cn(
             "px-4 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer shrink-0",
             activeTab === "rising"
-              ? "bg-[#0A0A0E] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E] shadow-sm"
-              : "bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/6 dark:border-white/8"
+              ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-sm"
+              : "bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/6 dark:border-white/8"
           )}
         >
           <TrendingUp className="w-3.5 h-3.5 text-emerald-500" />
@@ -215,8 +215,8 @@ export default function DedicatedTrendingPage() {
           className={cn(
             "px-4 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer shrink-0",
             activeTab === "top_performing"
-              ? "bg-[#0A0A0E] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E] shadow-sm"
-              : "bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/6 dark:border-white/8"
+              ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-sm"
+              : "bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/6 dark:border-white/8"
           )}
         >
           <Award className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
@@ -228,8 +228,8 @@ export default function DedicatedTrendingPage() {
           className={cn(
             "px-4 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer shrink-0",
             activeTab === "campaigns"
-              ? "bg-[#0A0A0E] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E] shadow-sm"
-              : "bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/6 dark:border-white/8"
+              ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-sm"
+              : "bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/6 dark:border-white/8"
           )}
         >
           <Building2 className="w-3.5 h-3.5 text-blue-500" />
@@ -241,8 +241,8 @@ export default function DedicatedTrendingPage() {
           className={cn(
             "px-4 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer shrink-0",
             activeTab === "categories"
-              ? "bg-[#0A0A0E] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E] shadow-sm"
-              : "bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/6 dark:border-white/8"
+              ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-sm"
+              : "bg-white dark:bg-[#161622] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/6 dark:border-white/8"
           )}
         >
           <Compass className="w-3.5 h-3.5 text-amber-500" />
@@ -253,7 +253,7 @@ export default function DedicatedTrendingPage() {
       {/* ── Content Stage ── */}
       {loading ? (
         <div className="py-24 text-center">
-          <div className="w-10 h-10 mx-auto rounded-full border-2 border-[#FFD21F] border-t-transparent animate-spin mb-3" />
+          <div className="w-10 h-10 mx-auto rounded-full border-2 border-primary border-t-transparent animate-spin mb-3" />
           <p className="text-xs font-mono text-[#7A7A8A] dark:text-[#8E8EA4]">
             Evaluating multi-factor momentum telemetry...
           </p>
@@ -270,15 +270,15 @@ export default function DedicatedTrendingPage() {
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#0A0A0E] dark:text-[#FFD21F] font-mono text-[10px] font-bold">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-[#0B0A14] dark:text-accent font-mono text-[10px] font-bold">
                       🚀 Brief #{index + 1}
                     </span>
-                    <span className="text-xs font-mono font-black text-[#0A0A0E] dark:text-white">
+                    <span className="text-xs font-mono font-black text-[#0B0A14] dark:text-white">
                       Score: {campItem.overallScore}/100
                     </span>
                   </div>
 
-                  <h3 className="font-extrabold text-base text-[#0A0A0E] dark:text-white font-display line-clamp-1">
+                  <h3 className="font-extrabold text-base text-[#0B0A14] dark:text-white font-display line-clamp-1">
                     {camp.title}
                   </h3>
                   <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] line-clamp-2 mt-1">
@@ -288,7 +288,7 @@ export default function DedicatedTrendingPage() {
                   <div className="mt-4 grid grid-cols-2 gap-2 p-3 rounded-2xl bg-[#F8F8FC] dark:bg-[#1A1A28] border border-black/6 dark:border-white/6 font-mono text-xs">
                     <div>
                       <span className="text-[10px] text-[#7A7A8A] block uppercase font-bold">Total Budget</span>
-                      <span className="font-bold text-[#0A0A0E] dark:text-white">
+                      <span className="font-bold text-[#0B0A14] dark:text-white">
                         {format(camp.budget?.totalBudget || 0, camp.budget?.currency || "USD")}
                       </span>
                     </div>
@@ -306,7 +306,7 @@ export default function DedicatedTrendingPage() {
                     {camp.category}
                   </span>
                   <Link href={`/campaigns/${camp.id}`}>
-                    <button className="px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-extrabold transition-all flex items-center gap-1.5 shadow-2xs">
+                    <button className="px-4 py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-extrabold transition-all flex items-center gap-1.5 shadow-2xs">
                       <span>View Brief</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </button>
@@ -325,7 +325,7 @@ export default function DedicatedTrendingPage() {
               className="rounded-3xl bg-white dark:bg-[#14141E] border border-black/8 dark:border-white/10 p-6 shadow-xs space-y-4"
             >
               <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#0A0A0E] dark:text-[#FFD21F] font-mono text-[10px] font-bold">
+                <span className="px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-[#0B0A14] dark:text-accent font-mono text-[10px] font-bold">
                   Rank #{index + 1}
                 </span>
                 <span className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400">
@@ -334,7 +334,7 @@ export default function DedicatedTrendingPage() {
               </div>
 
               <div>
-                <h3 className="text-lg font-bold text-[#0A0A0E] dark:text-white font-display">
+                <h3 className="text-lg font-bold text-[#0B0A14] dark:text-white font-display">
                   {cat.name}
                 </h3>
                 <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] mt-1 font-mono">
@@ -344,7 +344,7 @@ export default function DedicatedTrendingPage() {
 
               <div className="pt-3 border-t border-black/6 dark:border-white/10 flex items-center justify-between text-xs font-mono">
                 <span className="text-[#7A7A8A]">Avg Deal Budget</span>
-                <span className="font-extrabold text-[#0A0A0E] dark:text-white text-sm">
+                <span className="font-extrabold text-[#0B0A14] dark:text-white text-sm">
                   {format(cat.avgBudget, "USD")}
                 </span>
               </div>
@@ -375,12 +375,12 @@ export default function DedicatedTrendingPage() {
             return (
               <div
                 key={creator.id}
-                className="group rounded-3xl bg-white dark:bg-[#14141E] border border-black/8 dark:border-white/10 hover:border-[#FFD21F] dark:hover:border-[#FFD21F] p-5 sm:p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between space-y-4"
+                className="group rounded-3xl bg-white dark:bg-[#14141E] border border-black/8 dark:border-white/10 hover:border-primary dark:hover:border-primary p-5 sm:p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between space-y-4"
               >
                 <div>
                   {/* Card Header: Rank Banner */}
                   <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#0A0A0E] dark:text-[#FFD21F] font-mono text-[11px] font-bold">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-[#0B0A14] dark:text-accent font-mono text-[11px] font-bold">
                       {rankLabel}
                     </span>
                     <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 font-mono text-[10px] font-bold">
@@ -399,7 +399,7 @@ export default function DedicatedTrendingPage() {
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       ) : (
-                        <div className="w-full h-full flex items-center justify-center font-bold text-base text-[#0A0A0E] dark:text-white">
+                        <div className="w-full h-full flex items-center justify-center font-bold text-base text-[#0B0A14] dark:text-white">
                           {creator.fullName.charAt(0)}
                         </div>
                       )}
@@ -407,11 +407,11 @@ export default function DedicatedTrendingPage() {
 
                     <div className="min-w-0">
                       <div className="flex items-center gap-1.5">
-                        <h3 className="font-extrabold text-sm sm:text-base text-[#0A0A0E] dark:text-white truncate font-display group-hover:text-amber-600 dark:group-hover:text-[#FFD21F] transition-colors">
+                        <h3 className="font-extrabold text-sm sm:text-base text-[#0B0A14] dark:text-white truncate font-display group-hover:text-amber-600 dark:group-hover:text-accent transition-colors">
                           {creator.fullName}
                         </h3>
                         {creator.verified && (
-                          <CheckCircle2 className="w-4 h-4 text-[#FFD21F] shrink-0 fill-[#0A0A0E]" />
+                          <CheckCircle2 className="w-4 h-4 text-primary shrink-0 fill-[#0B0A14]" />
                         )}
                       </div>
                       <p className="text-xs font-mono text-[#6A6A78] dark:text-[#8E8EA4] truncate">
@@ -433,7 +433,7 @@ export default function DedicatedTrendingPage() {
                       <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-bold block">
                         Followers
                       </span>
-                      <span className="font-extrabold text-sm font-mono text-[#0A0A0E] dark:text-white">
+                      <span className="font-extrabold text-sm font-mono text-[#0B0A14] dark:text-white">
                         {formatNumber(creator.totalFollowers)}
                       </span>
                     </div>
@@ -458,7 +458,7 @@ export default function DedicatedTrendingPage() {
                     </div>
                     <div className="flex items-center justify-between text-[11px] text-[#7A7A8A]">
                       <span>Starting rate:</span>
-                      <strong className="text-[#0A0A0E] dark:text-white">
+                      <strong className="text-[#0B0A14] dark:text-white">
                         {format(creator.startingPrice || 1500, (creator as any).currency || "USD")}
                       </strong>
                     </div>
@@ -468,7 +468,7 @@ export default function DedicatedTrendingPage() {
                 {/* Footer Action Buttons */}
                 <div className="pt-3 border-t border-black/6 dark:border-white/10 flex items-center gap-2">
                   <Link href={`/creators/${creator.id}`} className="flex-1">
-                    <button className="w-full py-2.5 rounded-xl bg-white dark:bg-[#202030] hover:bg-[#F5F5F9] dark:hover:bg-[#28283C] border border-black/10 dark:border-white/10 text-xs font-bold text-[#0A0A0E] dark:text-white transition-all flex items-center justify-center gap-1">
+                    <button className="w-full py-2.5 rounded-xl bg-white dark:bg-[#202030] hover:bg-[#F5F5F9] dark:hover:bg-[#28283C] border border-black/10 dark:border-white/10 text-xs font-bold text-[#0B0A14] dark:text-white transition-all flex items-center justify-center gap-1">
                       <span>View Profile</span>
                       <ArrowRight className="w-3 h-3" />
                     </button>
@@ -478,7 +478,7 @@ export default function DedicatedTrendingPage() {
                   {(role === "brand" || role === "brand_owner" || role === "brand_manager" || role === "agency_admin" || role === "super_admin") ? (
                     <button
                       onClick={() => handleOpenInvite(creator)}
-                      className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-extrabold transition-all flex items-center justify-center gap-1 shadow-2xs border border-black/10 cursor-pointer"
+                      className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-extrabold transition-all flex items-center justify-center gap-1 shadow-2xs border border-black/10 cursor-pointer"
                     >
                       <span>Invite</span>
                       <Send className="w-3 h-3" />
@@ -489,7 +489,7 @@ export default function DedicatedTrendingPage() {
                       href={`/app/messages?recipientId=${encodeURIComponent(creator.id)}&recipientName=${encodeURIComponent(creator.fullName)}`}
                       className="flex-1"
                     >
-                      <button className="w-full py-2.5 rounded-xl bg-[#0A0A0E] dark:bg-[#FFD21F] hover:bg-[#1A1A24] dark:hover:bg-[#FFE052] text-white dark:text-[#0A0A0E] text-xs font-bold transition-all flex items-center justify-center gap-1 shadow-2xs border border-black/10 cursor-pointer">
+                      <button className="w-full py-2.5 rounded-xl bg-[#0B0A14] dark:bg-primary hover:bg-[#1A1A24] dark:hover:bg-accent text-white dark:text-[#0B0A14] text-xs font-bold transition-all flex items-center justify-center gap-1 shadow-2xs border border-black/10 cursor-pointer">
                         <span>Message</span>
                         <MessageSquare className="w-3 h-3" />
                       </button>
@@ -519,7 +519,7 @@ export default function DedicatedTrendingPage() {
                   )}
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">
+                  <h3 className="text-base font-bold text-[#0B0A14] dark:text-white font-display">
                     Invite {selectedCreator.fullName}
                   </h3>
                   <p className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-mono">
@@ -529,7 +529,7 @@ export default function DedicatedTrendingPage() {
               </div>
               <button
                 onClick={() => setIsInviteModalOpen(false)}
-                className="text-xs font-mono text-[#7A7A8A] hover:text-[#0A0A0E] dark:hover:text-white"
+                className="text-xs font-mono text-[#7A7A8A] hover:text-[#0B0A14] dark:hover:text-white"
               >
                 ✕
               </button>
@@ -537,31 +537,31 @@ export default function DedicatedTrendingPage() {
 
             <div className="space-y-4">
               <div>
-                <label className="block text-xs font-bold text-[#0A0A0E] dark:text-white mb-1">
+                <label className="block text-xs font-bold text-[#0B0A14] dark:text-white mb-1">
                   Offered Milestone Budget (USD)
                 </label>
                 <input
                   type="number"
                   value={inviteBudget}
                   onChange={(e) => setInviteBudget(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-xl border border-black/10 dark:border-white/15 bg-[#F8F8FC] dark:bg-[#1C1C28] text-sm text-[#0A0A0E] dark:text-white font-mono focus:outline-none focus:border-[#FFD21F]"
+                  className="w-full px-4 py-2.5 rounded-xl border border-black/10 dark:border-white/15 bg-[#F8F8FC] dark:bg-[#1C1C28] text-sm text-[#0B0A14] dark:text-white font-mono focus:outline-none focus:border-primary"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-[#0A0A0E] dark:text-white mb-1">
+                <label className="block text-xs font-bold text-[#0B0A14] dark:text-white mb-1">
                   Brief Pitch / Message
                 </label>
                 <textarea
                   rows={3}
                   value={inviteMessage}
                   onChange={(e) => setInviteMessage(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-xl border border-black/10 dark:border-white/15 bg-[#F8F8FC] dark:bg-[#1C1C28] text-xs text-[#0A0A0E] dark:text-white font-sans focus:outline-none focus:border-[#FFD21F]"
+                  className="w-full px-4 py-2.5 rounded-xl border border-black/10 dark:border-white/15 bg-[#F8F8FC] dark:bg-[#1C1C28] text-xs text-[#0B0A14] dark:text-white font-sans focus:outline-none focus:border-primary"
                 />
               </div>
 
-              <div className="p-3 rounded-2xl bg-[#FFD21F]/10 border border-[#FFD21F]/30 flex items-start gap-2.5 text-xs text-[#0A0A0E] dark:text-white">
-                <ShieldCheck className="w-4 h-4 text-[#FFD21F] shrink-0 mt-0.5" />
+              <div className="p-3 rounded-2xl bg-primary/10 border border-primary/30 flex items-start gap-2.5 text-xs text-[#0B0A14] dark:text-white">
+                <ShieldCheck className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                 <p className="text-[11px] leading-relaxed">
                   <strong>Milestone Escrow Guarantee:</strong> Once accepted, your payment will be held securely in Stripe escrow custody until deliverable approval.
                 </p>
@@ -572,7 +572,7 @@ export default function DedicatedTrendingPage() {
               <button
                 type="button"
                 onClick={() => setIsInviteModalOpen(false)}
-                className="px-4 py-2.5 rounded-xl text-xs font-bold text-[#6A6A78] hover:text-[#0A0A0E] dark:hover:text-white"
+                className="px-4 py-2.5 rounded-xl text-xs font-bold text-[#6A6A78] hover:text-[#0B0A14] dark:hover:text-white"
               >
                 Cancel
               </button>
@@ -580,7 +580,7 @@ export default function DedicatedTrendingPage() {
                 type="button"
                 onClick={handleSendInvite}
                 disabled={isSendingInvite}
-                className="px-6 py-2.5 rounded-xl bg-[#FFD21F] hover:bg-[#FFE052] text-[#0A0A0E] font-bold text-xs shadow-xs transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+                className="px-6 py-2.5 rounded-xl bg-primary hover:bg-accent text-[#0B0A14] font-bold text-xs shadow-xs transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
               >
                 {isSendingInvite ? "Sending..." : "Send Direct Invitation 🚀"}
               </button>

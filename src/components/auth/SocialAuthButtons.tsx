@@ -69,10 +69,10 @@ export function SocialAuthButtons({
           type="button"
           onClick={() => handleSocialAuth("google")}
           disabled={loadingProvider !== null}
-          className="w-full py-3 px-4 rounded-2xl bg-white dark:bg-[#181824] hover:bg-[#F8F8FC] dark:hover:bg-[#202030] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white text-xs font-bold font-sans transition-all flex items-center justify-center gap-3 shadow-2xs active:scale-[0.98] disabled:opacity-50"
+          className="w-full py-3 px-4 rounded-2xl bg-white dark:bg-[#181824] hover:bg-[#F8F8FC] dark:hover:bg-[#202030] border border-black/10 dark:border-white/10 text-[#0B0A14] dark:text-white text-xs font-bold font-sans transition-all flex items-center justify-center gap-3 shadow-2xs active:scale-[0.98] disabled:opacity-50"
         >
           {loadingProvider === "google" ? (
-            <Loader2 className="w-4 h-4 animate-spin text-[#0A0A0E] dark:text-white" />
+            <Loader2 className="w-4 h-4 animate-spin text-[#0B0A14] dark:text-white" />
           ) : (
             <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
               <path
@@ -101,7 +101,7 @@ export function SocialAuthButtons({
           type="button"
           onClick={() => handleSocialAuth("apple")}
           disabled={loadingProvider !== null}
-          className="w-full py-3 px-4 rounded-2xl bg-[#0A0A0E] dark:bg-white/10 hover:bg-[#1C1C24] dark:hover:bg-white/20 text-white text-xs font-bold font-sans transition-all flex items-center justify-center gap-3 shadow-2xs active:scale-[0.98] disabled:opacity-50 border border-transparent dark:border-white/10"
+          className="w-full py-3 px-4 rounded-2xl bg-[#0B0A14] dark:bg-white/10 hover:bg-[#1C1C24] dark:hover:bg-white/20 text-white text-xs font-bold font-sans transition-all flex items-center justify-center gap-3 shadow-2xs active:scale-[0.98] disabled:opacity-50 border border-transparent dark:border-white/10"
         >
           {loadingProvider === "apple" ? (
             <Loader2 className="w-4 h-4 animate-spin text-white" />

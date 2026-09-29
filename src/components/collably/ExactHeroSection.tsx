@@ -7,10 +7,10 @@ import { ArrowRight, Play, Sparkles, CheckCircle2, ChevronRight } from "lucide-r
 
 export function ExactHeroSection() {
   return (
-    <section className="relative min-h-[92vh] lg:min-h-[96vh] bg-texture-paper-white text-[#0A0A0E] dark:text-white overflow-hidden pt-8 pb-16 sm:pb-20 select-none">
+    <section className="relative min-h-[92vh] lg:min-h-[96vh] bg-texture-paper-white text-[#0B0A14] dark:text-white overflow-hidden pt-8 pb-16 sm:pb-20 select-none">
       {/* Background Ambient Glows */}
-      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#FFD21F]/15 rounded-full blur-[140px] pointer-events-none -z-0" />
-      <div className="absolute top-1/3 right-10 w-[400px] h-[400px] bg-[#FFD21F]/10 rounded-full blur-[130px] pointer-events-none -z-0" />
+      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-primary/15 rounded-full blur-[140px] pointer-events-none -z-0" />
+      <div className="absolute top-1/3 right-10 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[130px] pointer-events-none -z-0" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 items-center min-h-[75vh]">
@@ -27,14 +27,14 @@ export function ExactHeroSection() {
 
             {/* Giant 3-Line Headline */}
             <div className="space-y-1 sm:space-y-2">
-              <h1 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight uppercase leading-[0.95] text-[#0A0A0E] font-display">
+              <h1 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight uppercase leading-[0.95] text-[#0B0A14] font-display">
                 CREATE <span className="sr-only">CINEMATIC &amp; VISIONARY PARTNERSHIPS</span>
               </h1>
               <h2 className="text-5xl sm:text-7xl md:text-8xl font-normal tracking-tight leading-[0.95] text-[#22222E] font-serif italic">
                 COLLABORATE
               </h2>
               <div className="relative inline-block">
-                <h1 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight uppercase leading-[0.95] text-[#0A0A0E] font-display">
+                <h1 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight uppercase leading-[0.95] text-[#0B0A14] font-display">
                   GET PAID.
                 </h1>
                 {/* Electric Gold Brush Swoosh Underline */}
@@ -46,10 +46,10 @@ export function ExactHeroSection() {
                 >
                   <path
                     d="M 5,14 Q 90,6 170,10 Q 240,14 295,6"
-                    stroke="#FFD21F"
+                    stroke="#7C3AED"
                     strokeWidth="6"
                     strokeLinecap="round"
-                    className="drop-shadow-[0_2px_8px_rgba(255,210,31,0.6)]"
+                    className="drop-shadow-[0_2px_8px_rgba(var(--theme-primary-rgb),0.6)]"
                   />
                 </svg>
               </div>
@@ -59,11 +59,11 @@ export function ExactHeroSection() {
             <div className="flex flex-wrap items-center gap-2 pt-1 text-xs font-semibold text-[#5A5A68]">
               <div className="inline-flex items-center gap-1.5 bg-[#F4F4F8] px-3 py-1 rounded-full border border-black/5 shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                <span className="font-mono text-[11px] font-bold text-[#0A0A0E]">100% Pre-funded Escrow</span>
+                <span className="font-mono text-[11px] font-bold text-[#0B0A14]">100% Pre-funded Escrow</span>
               </div>
               <div className="inline-flex items-center gap-1.5 bg-[#F4F4F8] px-3 py-1 rounded-full border border-black/5 shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-amber-500"></span>
-                <span className="font-mono text-[11px] font-bold text-[#0A0A0E]">Instant Payout on Approval</span>
+                <span className="font-mono text-[11px] font-bold text-[#0B0A14]">Instant Payout on Approval</span>
               </div>
             </div>
 
@@ -75,14 +75,14 @@ export function ExactHeroSection() {
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-3.5 pt-2">
               <Link href="/for-brands">
-                <button className="px-6 py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_16px_rgba(255,210,31,0.45)] hover:shadow-[0_6px_22px_rgba(255,210,31,0.6)] flex items-center gap-2 group active:scale-[0.98] border border-black/10">
+                <button className="px-6 py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.45)] hover:shadow-[0_6px_22px_rgba(var(--theme-primary-rgb),0.6)] flex items-center gap-2 group active:scale-[0.98] border border-black/10">
                   <span>Start a Campaign</span>
-                  <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-0.5 transition-transform" />
+                  <ArrowRight className="w-4 h-4 text-[#0B0A14] group-hover:translate-x-0.5 transition-transform" />
                 </button>
               </Link>
 
               <Link href="/register?role=creator">
-                <button className="px-6 py-3.5 rounded-full bg-white hover:bg-[#F8F8FC] border border-black/10 text-[#0A0A0E] font-bold text-xs sm:text-sm transition-all shadow-[0_2px_8px_rgba(0,0,0,0.04)] active:scale-[0.98]">
+                <button className="px-6 py-3.5 rounded-full bg-white hover:bg-[#F8F8FC] border border-black/10 text-[#0B0A14] font-bold text-xs sm:text-sm transition-all shadow-[0_2px_8px_rgba(0,0,0,0.04)] active:scale-[0.98]">
                   <span>Join as a Creator</span>
                 </button>
               </Link>
@@ -108,7 +108,7 @@ export function ExactHeroSection() {
                 />
               </div>
               <div>
-                <p className="text-xs font-bold text-[#0A0A0E] font-sans">50,000+</p>
+                <p className="text-xs font-bold text-[#0B0A14] font-sans">50,000+</p>
                 <p className="text-[11px] text-[#6A6A78] font-sans">Verified Creators</p>
               </div>
             </div>
@@ -120,7 +120,7 @@ export function ExactHeroSection() {
           <div className="lg:col-span-6 relative min-h-[460px] sm:min-h-[580px] flex items-center justify-center">
             {/* Chrome Ring Halo Graphic Background */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[480px] h-[340px] sm:h-[480px] rounded-full border border-black/5 pointer-events-none -z-0" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[400px] h-[280px] sm:h-[400px] rounded-full border border-[#FFD21F]/30 pointer-events-none -z-0" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[400px] h-[280px] sm:h-[400px] rounded-full border border-primary/30 pointer-events-none -z-0" />
 
             {/* 1. Main Female Portrait with Sunglasses */}
             <motion.div
@@ -167,14 +167,14 @@ export function ExactHeroSection() {
                   alt="Creator Reel"
                   className="w-full h-full object-cover filter contrast-110"
                 />
-                <div className="absolute bottom-2 right-2 w-7 h-7 rounded-full bg-[#0A0A0E]/80 backdrop-blur-md flex items-center justify-center text-white">
+                <div className="absolute bottom-2 right-2 w-7 h-7 rounded-full bg-[#0B0A14]/80 backdrop-blur-md flex items-center justify-center text-white">
                   <Play className="w-3 h-3 fill-white" />
                 </div>
               </div>
               <div className="px-1 text-[9px] font-sans text-[#4A4A58] leading-tight">
                 <p>Real people.</p>
                 <p>Real content.</p>
-                <p className="text-[#0A0A0E] font-bold">Real results.</p>
+                <p className="text-[#0B0A14] font-bold">Real results.</p>
               </div>
             </motion.div>
 
@@ -185,18 +185,18 @@ export function ExactHeroSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="absolute -top-4 right-6 sm:right-16 z-30 px-4 py-3 rounded-2xl bg-white/95 dark:bg-[#14141E]/95 backdrop-blur-xl border border-black/8 dark:border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.08)] flex items-center gap-3 min-w-[200px]"
             >
-              <div className="w-8 h-8 rounded-lg bg-[#0A0A0E] dark:bg-[#FFD21F] flex items-center justify-center text-white dark:text-[#0A0A0E] font-black text-xs shrink-0">
+              <div className="w-8 h-8 rounded-lg bg-[#0B0A14] dark:bg-primary flex items-center justify-center text-white dark:text-[#0B0A14] font-black text-xs shrink-0">
                 <span>✓</span>
               </div>
               <div className="flex-1 min-w-0 font-sans">
                 <div className="flex items-center justify-between gap-2">
-                  <h4 className="text-xs font-bold text-[#0A0A0E] dark:text-white truncate">Nike</h4>
+                  <h4 className="text-xs font-bold text-[#0B0A14] dark:text-white truncate">Nike</h4>
                   <span className="px-1.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-[9px] font-mono font-bold">
                     Live
                   </span>
                 </div>
                 <p className="text-[10px] text-[#6A6A78] dark:text-[#8E8EA4]">Fashion Campaign</p>
-                <p className="text-xs font-bold text-[#0A0A0E] dark:text-white font-mono mt-0.5">₹2,50,000</p>
+                <p className="text-xs font-bold text-[#0B0A14] dark:text-white font-mono mt-0.5">₹2,50,000</p>
               </div>
             </motion.div>
 
@@ -222,10 +222,10 @@ export function ExactHeroSection() {
                       className="w-5 h-5 rounded-full border border-white dark:border-white/20 object-cover"
                     />
                   </div>
-                  <span className="text-sm font-bold text-[#0A0A0E] dark:text-white font-mono">98%</span>
+                  <span className="text-sm font-bold text-[#0B0A14] dark:text-white font-mono">98%</span>
                 </div>
               </div>
-              <div className="w-6 h-6 rounded-full bg-black/5 dark:bg-white/10 flex items-center justify-center text-[#0A0A0E] dark:text-white">
+              <div className="w-6 h-6 rounded-full bg-black/5 dark:bg-white/10 flex items-center justify-center text-[#0B0A14] dark:text-white">
                 <ChevronRight className="w-3.5 h-3.5" />
               </div>
             </motion.div>
@@ -236,7 +236,7 @@ export function ExactHeroSection() {
             BOTTOM BRAND LOGOS MARQUEE BAR
             ══════════════════════════════════════════════════════════════════════ */}
         <div className="mt-12 pt-8 border-t border-black/8 flex flex-wrap items-center justify-between gap-6 text-xs text-[#6A6A78] font-mono">
-          <div className="flex flex-wrap items-center gap-6 sm:gap-10 text-[#0A0A0E] font-display font-bold text-sm tracking-wider opacity-80">
+          <div className="flex flex-wrap items-center gap-6 sm:gap-10 text-[#0B0A14] font-display font-bold text-sm tracking-wider opacity-80">
             <span>NIKE</span>
             <span>ADIDAS</span>
             <span>SPOTIFY</span>
@@ -247,7 +247,7 @@ export function ExactHeroSection() {
             <span>COCA-COLA</span>
           </div>
 
-          <Link href="/for-brands" className="text-[#5A5A68] hover:text-[#0A0A0E] transition-colors flex items-center gap-1 font-sans text-xs font-semibold">
+          <Link href="/for-brands" className="text-[#5A5A68] hover:text-[#0B0A14] transition-colors flex items-center gap-1 font-sans text-xs font-semibold">
             <span>TRUSTED BY GLOBAL BRANDS</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>

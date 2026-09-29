@@ -137,21 +137,21 @@ export default function CollaborationsWorkspacePage() {
   }, [collaborations, activeFilter, searchQuery, role]);
 
   return (
-    <div className="space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans">
+    <div className="space-y-6 text-[#0B0A14] dark:text-[#F4F4F8] select-none font-sans">
       {/* ── Page Header ── */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-black/8 dark:border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] dark:text-[#F4F4F8] flex items-center gap-1.5">
+            <span className="text-[10px] font-mono font-bold uppercase text-[#0B0A14] dark:text-[#F4F4F8] flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               Active Projects
             </span>
             <span className="text-[#8A8A9A]">•</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] dark:text-[#FFD21F] font-mono text-[10px] font-bold">
+            <span className="px-2.5 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-[#0B0A14] dark:text-accent font-mono text-[10px] font-bold">
               Protected Payments
             </span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-black text-[#0A0A0E] dark:text-white tracking-tight font-display">
+          <h1 className="text-xl sm:text-2xl font-black text-[#0B0A14] dark:text-white tracking-tight font-display">
             Active Projects &amp; Deals
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4]">
@@ -162,14 +162,14 @@ export default function CollaborationsWorkspacePage() {
         <div className="flex items-center gap-2.5 self-start sm:self-center">
           {role === "creator" ? (
             <Link href="/app/campaigns">
-              <button className="px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all flex items-center gap-1.5 shadow-[0_4px_14px_rgba(255,210,31,0.35)] border border-black/10 active:scale-98">
+              <button className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-bold text-xs transition-all flex items-center gap-1.5 shadow-[0_4px_14px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 active:scale-98">
                 <Compass className="w-3.5 h-3.5" />
                 <span>Find Campaigns</span>
               </button>
             </Link>
           ) : (
             <Link href="/app/brand/campaigns/create">
-              <button className="px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all flex items-center gap-1.5 shadow-[0_4px_14px_rgba(255,210,31,0.35)] border border-black/10 active:scale-98">
+              <button className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-bold text-xs transition-all flex items-center gap-1.5 shadow-[0_4px_14px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 active:scale-98">
                 <Plus className="w-3.5 h-3.5" />
                 <span>Post a Campaign</span>
               </button>
@@ -183,9 +183,9 @@ export default function CollaborationsWorkspacePage() {
         <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-1">
           <div className="flex items-center justify-between text-xs text-[#6A6A78] dark:text-[#8E8EA4]">
             <span className="font-medium">Active Projects</span>
-            <FileCheck2 className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />
+            <FileCheck2 className="w-4 h-4 text-[#0B0A14] dark:text-accent" />
           </div>
-          <span className="text-2xl font-black text-[#0A0A0E] dark:text-white font-display block">
+          <span className="text-2xl font-black text-[#0B0A14] dark:text-white font-display block">
             {stats.activeCount}
           </span>
           <span className="text-[11px] font-mono text-[#8A8A9A] dark:text-[#707080] block">
@@ -222,9 +222,9 @@ export default function CollaborationsWorkspacePage() {
         <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-1">
           <div className="flex items-center justify-between text-xs text-[#6A6A78] dark:text-[#8E8EA4]">
             <span className="font-medium">Completed</span>
-            <CheckCircle2 className="w-4 h-4 text-[#FFD21F]" />
+            <CheckCircle2 className="w-4 h-4 text-primary" />
           </div>
-          <span className="text-2xl font-black text-[#0A0A0E] dark:text-white font-display block">
+          <span className="text-2xl font-black text-[#0B0A14] dark:text-white font-display block">
             {stats.completedCount}
           </span>
           <span className="text-[11px] font-mono text-[#8A8A9A] dark:text-[#707080] block">
@@ -235,17 +235,17 @@ export default function CollaborationsWorkspacePage() {
 
       {/* ── How It Works Quick Explainer ── */}
       {showHowItWorks && (
-        <div className="p-5 rounded-3xl bg-[#FFFDF5] dark:bg-[#181824] border border-[#FFD21F]/40 dark:border-[#FFD21F]/30 shadow-xs relative space-y-3">
+        <div className="p-5 rounded-3xl bg-primary/5 dark:bg-[#181824] border border-primary/40 dark:border-primary/30 shadow-xs relative space-y-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
-              <h3 className="text-xs font-bold uppercase tracking-wider text-[#0A0A0E] dark:text-[#F4F4F8] font-mono">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              <h3 className="text-xs font-bold uppercase tracking-wider text-[#0B0A14] dark:text-[#F4F4F8] font-mono">
                 How Projects &amp; Safe Payments Work
               </h3>
             </div>
             <button
               onClick={() => setShowHowItWorks(false)}
-              className="text-[#8A8A9A] hover:text-[#0A0A0E] dark:hover:text-[#F4F4F8] text-xs font-bold p-1"
+              className="text-[#8A8A9A] hover:text-[#0B0A14] dark:hover:text-[#F4F4F8] text-xs font-bold p-1"
               title="Dismiss"
             >
               ✕
@@ -254,11 +254,11 @@ export default function CollaborationsWorkspacePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
             <div className="flex items-start gap-2.5">
-              <div className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
+              <div className="w-6 h-6 rounded-full bg-primary text-[#0B0A14] text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
                 1
               </div>
               <div className="space-y-0.5">
-                <span className="text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8] block">Payment Held Safely</span>
+                <span className="text-xs font-bold text-[#0B0A14] dark:text-[#F4F4F8] block">Payment Held Safely</span>
                 <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
                   The brand sets aside the project fee upfront. The money is locked safely with AbeyCollab before you begin.
                 </p>
@@ -266,11 +266,11 @@ export default function CollaborationsWorkspacePage() {
             </div>
 
             <div className="flex items-start gap-2.5">
-              <div className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
+              <div className="w-6 h-6 rounded-full bg-primary text-[#0B0A14] text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
                 2
               </div>
               <div className="space-y-0.5">
-                <span className="text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8] block">Review Drafts &amp; Share Notes</span>
+                <span className="text-xs font-bold text-[#0B0A14] dark:text-[#F4F4F8] block">Review Drafts &amp; Share Notes</span>
                 <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
                   The creator shares a preview link. The brand has 5 days to review, give feedback, or request small edits.
                 </p>
@@ -278,11 +278,11 @@ export default function CollaborationsWorkspacePage() {
             </div>
 
             <div className="flex items-start gap-2.5">
-              <div className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
+              <div className="w-6 h-6 rounded-full bg-primary text-[#0B0A14] text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
                 3
               </div>
               <div className="space-y-0.5">
-                <span className="text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8] block">Automatic Fast Payout</span>
+                <span className="text-xs font-bold text-[#0B0A14] dark:text-[#F4F4F8] block">Automatic Fast Payout</span>
                 <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
                   When the work is approved and posted, payment is released right away to the creator’s bank account.
                 </p>
@@ -300,8 +300,8 @@ export default function CollaborationsWorkspacePage() {
             onClick={() => setActiveFilter("all")}
             className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all shrink-0 ${
               activeFilter === "all"
-                ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] shadow-xs"
-                : "bg-white dark:bg-[#181824] text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-[#F4F4F8] border border-black/8 dark:border-white/10"
+                ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] shadow-xs"
+                : "bg-white dark:bg-[#181824] text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-[#F4F4F8] border border-black/8 dark:border-white/10"
             }`}
           >
             All Deals ({collaborations.length})
@@ -310,7 +310,7 @@ export default function CollaborationsWorkspacePage() {
             onClick={() => setActiveFilter("needs_action")}
             className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 ${
               activeFilter === "needs_action"
-                ? "bg-amber-600 dark:bg-amber-500 text-white dark:text-[#0A0A0E] shadow-xs"
+                ? "bg-amber-600 dark:bg-amber-500 text-white dark:text-[#0B0A14] shadow-xs"
                 : "bg-white dark:bg-[#181824] text-[#5A5A68] dark:text-[#A0A0B4] hover:text-amber-800 dark:hover:text-amber-400 border border-black/8 dark:border-white/10"
             }`}
           >
@@ -321,8 +321,8 @@ export default function CollaborationsWorkspacePage() {
             onClick={() => setActiveFilter("in_progress")}
             className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all shrink-0 ${
               activeFilter === "in_progress"
-                ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] shadow-xs"
-                : "bg-white dark:bg-[#181824] text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-[#F4F4F8] border border-black/8 dark:border-white/10"
+                ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] shadow-xs"
+                : "bg-white dark:bg-[#181824] text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-[#F4F4F8] border border-black/8 dark:border-white/10"
             }`}
           >
             In Progress ({stats.activeCount})
@@ -331,8 +331,8 @@ export default function CollaborationsWorkspacePage() {
             onClick={() => setActiveFilter("completed")}
             className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all shrink-0 ${
               activeFilter === "completed"
-                ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] shadow-xs"
-                : "bg-white dark:bg-[#181824] text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-[#F4F4F8] border border-black/8 dark:border-white/10"
+                ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] shadow-xs"
+                : "bg-white dark:bg-[#181824] text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-[#F4F4F8] border border-black/8 dark:border-white/10"
             }`}
           >
             Completed ({stats.completedCount})
@@ -347,12 +347,12 @@ export default function CollaborationsWorkspacePage() {
             placeholder="Search projects or partners..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-8 py-1.5 rounded-full bg-white dark:bg-[#181824] border border-black/10 dark:border-white/10 text-xs font-sans text-[#0A0A0E] dark:text-[#F4F4F8] placeholder:text-[#8A8A9A] dark:placeholder:text-[#7A7A8E] focus:outline-none focus:border-black/30 dark:focus:border-white/30 transition-all shadow-2xs"
+            className="w-full pl-9 pr-8 py-1.5 rounded-full bg-white dark:bg-[#181824] border border-black/10 dark:border-white/10 text-xs font-sans text-[#0B0A14] dark:text-[#F4F4F8] placeholder:text-[#8A8A9A] dark:placeholder:text-[#7A7A8E] focus:outline-none focus:border-black/30 dark:focus:border-white/30 transition-all shadow-2xs"
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery("")}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#8A8A9A] hover:text-[#0A0A0E] dark:hover:text-[#F4F4F8] text-xs"
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#8A8A9A] hover:text-[#0B0A14] dark:hover:text-[#F4F4F8] text-xs"
             >
               ✕
             </button>
@@ -362,7 +362,7 @@ export default function CollaborationsWorkspacePage() {
 
       {/* ── Main Projects List ── */}
       {loading ? (
-        <div className="py-16 text-center rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-6 text-[#0A0A0E] dark:text-[#F4F4F8] shadow-xs">
+        <div className="py-16 text-center rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-6 text-[#0B0A14] dark:text-[#F4F4F8] shadow-xs">
           <CreativeLoader
             size="md"
             label="Loading Deals &amp; Projects"
@@ -371,7 +371,7 @@ export default function CollaborationsWorkspacePage() {
         </div>
       ) : collaborations.length === 0 ? (
         <AnimatedEmptyState
-          icon={<FolderGit2 className="w-7 h-7 text-[#0A0A0E] dark:text-[#F4F4F8]" />}
+          icon={<FolderGit2 className="w-7 h-7 text-[#0B0A14] dark:text-[#F4F4F8]" />}
           badgeText="Projects"
           title="No Active Deals Yet"
           description={
@@ -385,9 +385,9 @@ export default function CollaborationsWorkspacePage() {
           secondaryHref="/app/dashboard"
         />
       ) : filteredCollaborations.length === 0 ? (
-        <div className="py-16 text-center rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-8 text-[#0A0A0E] dark:text-[#F4F4F8] shadow-xs space-y-3">
+        <div className="py-16 text-center rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-8 text-[#0B0A14] dark:text-[#F4F4F8] shadow-xs space-y-3">
           <Filter className="w-8 h-8 text-[#8A8A9A] dark:text-[#707080] mx-auto opacity-50" />
-          <h3 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">No Deals Found</h3>
+          <h3 className="text-base font-bold text-[#0B0A14] dark:text-white font-display">No Deals Found</h3>
           <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] max-w-sm mx-auto">
             No projects matched your current search or filter. Try clearing the filter to see all your deals.
           </p>
@@ -396,7 +396,7 @@ export default function CollaborationsWorkspacePage() {
               setSearchQuery("");
               setActiveFilter("all");
             }}
-            className="px-4 py-2 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] text-xs font-bold transition-all shadow-xs"
+            className="px-4 py-2 rounded-full bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] text-xs font-bold transition-all shadow-xs"
           >
             Show All Deals
           </button>

@@ -53,7 +53,7 @@ export function TrustIndicatorsBar({
       return <Zap className="w-3.5 h-3.5 text-amber-500 shrink-0" />;
     }
     if (text.includes("🏆") || text.includes("Successful")) {
-      return <Trophy className="w-3.5 h-3.5 text-amber-600 dark:text-[#FFD21F] shrink-0" />;
+      return <Trophy className="w-3.5 h-3.5 text-amber-600 dark:text-accent shrink-0" />;
     }
     if (text.includes("Payment") || text.includes("Completion")) {
       return <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />;
@@ -73,7 +73,7 @@ export function TrustIndicatorsBar({
         return (
           <div
             key={idx}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1C1C28] border border-black/8 dark:border-white/10 shadow-2xs text-xs font-bold text-[#0A0A0E] dark:text-white transition-all hover:border-[#FFD21F]"
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1C1C28] border border-black/8 dark:border-white/10 shadow-2xs text-xs font-bold text-[#0B0A14] dark:text-white transition-all hover:border-primary"
           >
             {getIcon(ind)}
             <span suppressHydrationWarning className="font-mono text-[11px]">{cleanText}</span>

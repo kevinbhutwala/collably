@@ -25,7 +25,7 @@ export function CollablyFooter() {
             </p>
           </div>
           <div className="flex items-center gap-2 text-xs text-[#101010] dark:text-white font-sans pt-1 font-semibold">
-            <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
+            <span className="w-2 h-2 rounded-full bg-primary" />
             <span>Milestone-Protected Payments via Stripe Connect &amp; Razorpay</span>
           </div>
         </div>
@@ -65,7 +65,7 @@ export function CollablyFooter() {
             <li><Link href="/terms" className="hover:text-[#101010] dark:hover:text-white transition-colors">Terms of Service</Link></li>
             <li><Link href="/dpa" className="hover:text-[#101010] dark:hover:text-white transition-colors">Data Processing (DPA)</Link></li>
             <li><Link href="/refund-policy" className="hover:text-[#101010] dark:hover:text-white transition-colors">Milestone Refund Policy</Link></li>
-            <li><Link href="/login" className="hover:text-[#101010] dark:hover:text-white transition-colors font-bold flex items-center gap-1 text-[#101010] dark:text-[#FFD21F]">Sign In <span className="text-[#FFD21F]">→</span></Link></li>
+            <li><Link href="/login" className="hover:text-[#101010] dark:hover:text-white transition-colors font-bold flex items-center gap-1 text-[#101010] dark:text-accent">Sign In <span className="text-primary">→</span></Link></li>
           </ul>
         </div>
       </div>
@@ -73,7 +73,7 @@ export function CollablyFooter() {
       <div className="border-t border-[#E7E7E4] dark:border-white/10 py-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#626262] dark:text-[#8E8EA4]">
         <p>© {new Date().getFullYear()} AbeyCollab Inc. All rights reserved.</p>
         <p className="font-mono text-[11px] text-[#626262] dark:text-[#8E8EA4] flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F]" />
+          <span className="w-1.5 h-1.5 rounded-full bg-primary" />
           <span>Creator Commerce &amp; Milestone Payment Workspace</span>
         </p>
       </div>

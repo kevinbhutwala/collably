@@ -15,16 +15,16 @@ export default function AuthLayout({
   const isLoginPage = pathname === "/login";
 
   return (
-    <div className="min-h-screen bg-[#FAFAFC] dark:bg-[#09090D] text-[#0A0A0E] dark:text-[#F4F4F8] flex flex-col justify-between selection:bg-[#FFD21F] selection:text-[#0A0A0E] relative overflow-x-hidden select-none transition-colors duration-200">
+    <div className="min-h-screen bg-[#FAFAFC] dark:bg-[#09090D] text-[#0B0A14] dark:text-[#F4F4F8] flex flex-col justify-between selection:bg-primary selection:text-[#0B0A14] relative overflow-x-hidden select-none transition-colors duration-200">
       {/* Background ambient lighting */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] sm:w-[900px] h-[400px] sm:h-[550px] bg-[#FFD21F]/12 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] sm:w-[900px] h-[400px] sm:h-[550px] bg-primary/12 rounded-full blur-[150px] pointer-events-none" />
 
       {/* Top Floating Navigation Header */}
       <header className="sticky top-0 z-50 w-full bg-white/90 dark:bg-[#0E0E14]/90 backdrop-blur-xl border-b border-black/8 dark:border-white/10 px-3.5 sm:px-8 py-3 flex items-center justify-between gap-2">
         {/* Left: Back to Home Button */}
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[#F4F4F8] dark:bg-[#181824] hover:bg-[#EAEAEF] dark:hover:bg-[#222234] text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-[#F4F4F8] font-sans text-xs font-bold transition-all group border border-black/6 dark:border-white/10"
+          className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[#F4F4F8] dark:bg-[#181824] hover:bg-[#EAEAEF] dark:hover:bg-[#222234] text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-[#F4F4F8] font-sans text-xs font-bold transition-all group border border-black/6 dark:border-white/10"
         >
           <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" />
           <span className="hidden sm:inline">Back to Home</span>
@@ -36,8 +36,8 @@ export default function AuthLayout({
 
         {/* Right: Security & Escrow Trust Badge */}
         <div className="flex items-center gap-2 text-xs font-sans">
-          <span className="text-[10px] sm:text-[11px] font-mono text-[#0A0A0E] dark:text-[#FFD21F] font-bold uppercase flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-pulse" />
+          <span className="text-[10px] sm:text-[11px] font-mono text-[#0B0A14] dark:text-accent font-bold uppercase flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/15 border border-primary/30">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
             <span>Escrow Protected</span>
           </span>
         </div>

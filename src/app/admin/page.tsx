@@ -84,21 +84,21 @@ export default function AgencyAdminCommandCenter() {
   ).length;
 
   return (
-    <div className="space-y-8 text-[#0A0A0E] dark:text-[#F4F4F8] select-none">
+    <div className="space-y-8 text-[#0B0A14] dark:text-[#F4F4F8] select-none">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-black/8 dark:border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono font-bold uppercase text-[#0A0A0E] dark:text-[#EAEAEF] flex items-center gap-1.5">
+            <span className="text-xs font-mono font-bold uppercase text-[#0B0A14] dark:text-[#EAEAEF] flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               Agency Master Operations
             </span>
             <span className="text-[#8A8A9A] dark:text-[#6A6A7E]">•</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] dark:text-yellow-400 font-mono text-[10px] font-bold">
+            <span className="px-2.5 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-[#0B0A14] dark:text-yellow-400 font-mono text-[10px] font-bold">
               Live Data
             </span>
           </div>
-          <h1 className="text-xl sm:text-3xl lg:text-4xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
+          <h1 className="text-xl sm:text-3xl lg:text-4xl font-extrabold text-[#0B0A14] dark:text-white tracking-tight font-display">
             Agency Admin Command Center
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4] mt-0.5 font-sans">
@@ -110,13 +110,13 @@ export default function AgencyAdminCommandCenter() {
             href="/admin/collaborations"
             className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-black dark:bg-white text-white dark:text-black text-xs font-bold hover:opacity-90 transition-all shadow-xs border border-black/10 shrink-0"
           >
-            <Lock className="w-3.5 h-3.5 text-[#FFD21F]" />
+            <Lock className="w-3.5 h-3.5 text-primary" />
             <span>Active Escrows &amp; SLA</span>
           </Link>
 
           <Link
             href="/admin/users"
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-xs font-bold hover:brightness-105 transition-all shadow-xs border border-black/10 shrink-0"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary text-[#0B0A14] text-xs font-bold hover:brightness-105 transition-all shadow-xs border border-black/10 shrink-0"
           >
             <Users className="w-3.5 h-3.5" />
             <span>User Directory &amp; Cohorts</span>
@@ -125,7 +125,7 @@ export default function AgencyAdminCommandCenter() {
           <button
             onClick={fetchData}
             disabled={isLoading}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 border border-black/8 dark:border-white/10 text-xs font-bold text-[#0A0A0E] dark:text-white transition-all disabled:opacity-50 shrink-0"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 border border-black/8 dark:border-white/10 text-xs font-bold text-[#0B0A14] dark:text-white transition-all disabled:opacity-50 shrink-0"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? "animate-spin" : ""}`} />
             <span>Refresh</span>
@@ -141,7 +141,7 @@ export default function AgencyAdminCommandCenter() {
           change="Live platform data"
           trend="up"
           subtitle="Pre-funded across campaigns"
-          icon={<Wallet className="w-5 h-5 text-[#FFD21F]" />}
+          icon={<Wallet className="w-5 h-5 text-primary" />}
         />
         <StatsCard
           title="Net Platform Take-Rate (10%)"
@@ -149,7 +149,7 @@ export default function AgencyAdminCommandCenter() {
           change="10% commission rate"
           trend="up"
           subtitle="Realized transaction fees"
-          icon={<Sparkles className="w-5 h-5 text-[#FFD21F]" />}
+          icon={<Sparkles className="w-5 h-5 text-primary" />}
         />
         <StatsCard
           title="Verified Creator Roster"
@@ -157,7 +157,7 @@ export default function AgencyAdminCommandCenter() {
           change={isLoading ? "…" : `${creators.length} total registered`}
           trend="up"
           subtitle="Audited demographics"
-          icon={<Users className="w-5 h-5 text-[#0A0A0E] dark:text-[#FFD21F]" />}
+          icon={<Users className="w-5 h-5 text-[#0B0A14] dark:text-accent" />}
         />
         <StatsCard
           title="Active Campaigns"
@@ -165,7 +165,7 @@ export default function AgencyAdminCommandCenter() {
           change={isLoading ? "…" : `${campaigns.length} total campaigns`}
           trend="up"
           subtitle="Open for applications"
-          icon={<Building2 className="w-5 h-5 text-[#0A0A0E] dark:text-[#FFD21F]" />}
+          icon={<Building2 className="w-5 h-5 text-[#0B0A14] dark:text-accent" />}
         />
       </div>
 
@@ -175,7 +175,7 @@ export default function AgencyAdminCommandCenter() {
         <div className="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
           <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
             <div>
-              <h3 className="text-lg font-bold text-[#0A0A0E] dark:text-white font-display">Creator Verification &amp; Badge Control</h3>
+              <h3 className="text-lg font-bold text-[#0B0A14] dark:text-white font-display">Creator Verification &amp; Badge Control</h3>
               <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] font-sans">Toggle verified checkmarks for algorithmic spotlight ranking.</p>
             </div>
             <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30 text-xs font-mono font-bold">
@@ -189,7 +189,7 @@ export default function AgencyAdminCommandCenter() {
             </div>
           ) : creators.length === 0 ? (
             <AnimatedEmptyState
-              icon={<Users className="w-7 h-7 text-[#0A0A0E] dark:text-[#FFD21F]" />}
+              icon={<Users className="w-7 h-7 text-[#0B0A14] dark:text-accent" />}
               badgeText="Creators"
               title="No creators yet"
               description="Creator profiles will appear here once users register."
@@ -214,7 +214,7 @@ export default function AgencyAdminCommandCenter() {
                     </div>
                     <div>
                       <div className="flex items-center gap-1.5">
-                        <h4 className="font-bold text-sm text-[#0A0A0E] dark:text-white font-display">{creator.fullName}</h4>
+                        <h4 className="font-bold text-sm text-[#0B0A14] dark:text-white font-display">{creator.fullName}</h4>
                         {creator.verified && (
                           <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
                         )}
@@ -230,8 +230,8 @@ export default function AgencyAdminCommandCenter() {
                     disabled={verifyingId === creator.id}
                     className={`px-4 py-2 rounded-full text-xs font-semibold font-mono transition-all border flex items-center gap-1.5 ${
                       creator.verified
-                        ? "bg-black/5 dark:bg-white/10 text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-white border-black/10 dark:border-white/10"
-                        : "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] font-bold shadow-xs border-black/10"
+                        ? "bg-black/5 dark:bg-white/10 text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-white border-black/10 dark:border-white/10"
+                        : "bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] font-bold shadow-xs border-black/10"
                     }`}
                   >
                     {verifyingId === creator.id ? (
@@ -250,17 +250,17 @@ export default function AgencyAdminCommandCenter() {
         <div className="lg:col-span-5 p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
           <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
             <div>
-              <h3 className="text-lg font-bold text-[#0A0A0E] dark:text-white font-display">Active Campaign Escrows</h3>
+              <h3 className="text-lg font-bold text-[#0B0A14] dark:text-white font-display">Active Campaign Escrows</h3>
               <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] font-sans">Milestone custody status across deals.</p>
             </div>
             <div className="flex items-center gap-2">
               <Link
                 href="/admin/collaborations"
-                className="text-xs font-mono font-bold text-[#D97706] dark:text-[#FFD21F] hover:underline"
+                className="text-xs font-mono font-bold text-[#D97706] dark:text-accent hover:underline"
               >
                 Open Escrow Vault ➔
               </Link>
-              <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-yellow-400 border border-[#FFD21F]/40 text-xs font-mono font-bold">
+              <span className="px-2.5 py-0.5 rounded-full bg-primary/20 text-[#0B0A14] dark:text-yellow-400 border border-primary/40 text-xs font-mono font-bold">
                 {activeCampaignsCount} Active
               </span>
             </div>
@@ -272,7 +272,7 @@ export default function AgencyAdminCommandCenter() {
             </div>
           ) : campaigns.length === 0 ? (
             <AnimatedEmptyState
-              icon={<Building2 className="w-7 h-7 text-[#0A0A0E] dark:text-[#FFD21F]" />}
+              icon={<Building2 className="w-7 h-7 text-[#0B0A14] dark:text-accent" />}
               badgeText="Campaigns"
               title="No campaigns yet"
               description="Campaign escrows will appear here once brands create briefs."
@@ -285,22 +285,22 @@ export default function AgencyAdminCommandCenter() {
                   className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 space-y-2"
                 >
                   <div className="flex justify-between items-start">
-                    <h4 className="font-bold text-sm text-[#0A0A0E] dark:text-white font-sans truncate max-w-[200px]">
+                    <h4 className="font-bold text-sm text-[#0B0A14] dark:text-white font-sans truncate max-w-[200px]">
                       {camp.title}
                     </h4>
-                    <span className="text-[#0A0A0E] dark:text-white font-extrabold text-sm">
+                    <span className="text-[#0B0A14] dark:text-white font-extrabold text-sm">
                       {formatCurrency(camp.budget?.totalBudget ?? 0)}
                     </span>
                   </div>
                   <div className="flex justify-between text-[#6A6A78] dark:text-[#8E8EA4] text-[11px]">
                     <span>Sponsor: {camp.brand?.companyName ?? "—"}</span>
-                    <span className="text-[#0A0A0E] dark:text-white font-bold">
+                    <span className="text-[#0B0A14] dark:text-white font-bold">
                       {camp.acceptedCount ?? 0}/{camp.maxCreators} Creators
                     </span>
                   </div>
                   <div className="w-full h-1.5 rounded-full bg-black/10 dark:bg-white/10 overflow-hidden">
                     <div
-                      className="h-full bg-[#FFD21F] rounded-full"
+                      className="h-full bg-primary rounded-full"
                       style={{
                         width: `${Math.min(100, ((camp.acceptedCount ?? 0) / Math.max(1, camp.maxCreators)) * 100)}%`,
                       }}

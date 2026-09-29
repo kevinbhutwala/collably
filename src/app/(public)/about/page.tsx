@@ -79,7 +79,7 @@ export default function AboutPage() {
       />
       <div className="pt-24 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] dark:bg-[#12121A] border border-[#E7E7E4] dark:border-white/10 text-xs font-mono font-bold text-[#111111] dark:text-white shadow-xs">
-          <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
+          <span className="w-2 h-2 rounded-full bg-primary" />
           <span>Our Vision &amp; Philosophy</span>
         </div>
         <h1 className="text-4xl sm:text-6xl font-extrabold text-[#111111] dark:text-white tracking-tight font-display">
@@ -104,8 +104,8 @@ export default function AboutPage() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-          <div className="p-8 rounded-2xl bg-[#FFFFFF] dark:bg-[#12121A] border border-[#E7E7E4] dark:border-white/10 hover:border-[#FFD21F] dark:hover:border-[#FFD21F] shadow-xs space-y-3 transition-all">
-            <div className="w-10 h-10 rounded-xl bg-[#FAFAF8] dark:bg-[#181824] border border-[#E7E7E4] dark:border-white/10 text-[#111111] dark:text-[#FFD21F] flex items-center justify-center mx-auto shadow-xs">
+          <div className="p-8 rounded-2xl bg-[#FFFFFF] dark:bg-[#12121A] border border-[#E7E7E4] dark:border-white/10 hover:border-primary dark:hover:border-primary shadow-xs space-y-3 transition-all">
+            <div className="w-10 h-10 rounded-xl bg-[#FAFAF8] dark:bg-[#181824] border border-[#E7E7E4] dark:border-white/10 text-[#111111] dark:text-accent flex items-center justify-center mx-auto shadow-xs">
               <Zap className="w-5 h-5" />
             </div>
             <h3 className="text-lg font-bold text-[#111111] dark:text-white font-display">Radical Speed</h3>
@@ -114,8 +114,8 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="p-8 rounded-2xl bg-[#FFFFFF] dark:bg-[#12121A] border border-[#E7E7E4] dark:border-white/10 hover:border-[#FFD21F] dark:hover:border-[#FFD21F] shadow-xs space-y-3 transition-all">
-            <div className="w-10 h-10 rounded-xl bg-[#FAFAF8] dark:bg-[#181824] border border-[#E7E7E4] dark:border-white/10 text-[#111111] dark:text-[#FFD21F] flex items-center justify-center mx-auto shadow-xs">
+          <div className="p-8 rounded-2xl bg-[#FFFFFF] dark:bg-[#12121A] border border-[#E7E7E4] dark:border-white/10 hover:border-primary dark:hover:border-primary shadow-xs space-y-3 transition-all">
+            <div className="w-10 h-10 rounded-xl bg-[#FAFAF8] dark:bg-[#181824] border border-[#E7E7E4] dark:border-white/10 text-[#111111] dark:text-accent flex items-center justify-center mx-auto shadow-xs">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <h3 className="text-lg font-bold text-[#111111] dark:text-white font-display">100% Guaranteed Escrow</h3>
@@ -124,8 +124,8 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="p-8 rounded-2xl bg-[#FFFFFF] dark:bg-[#12121A] border border-[#E7E7E4] dark:border-white/10 hover:border-[#FFD21F] dark:hover:border-[#FFD21F] shadow-xs space-y-3 transition-all">
-            <div className="w-10 h-10 rounded-xl bg-[#FAFAF8] dark:bg-[#181824] border border-[#E7E7E4] dark:border-white/10 text-[#111111] dark:text-[#FFD21F] flex items-center justify-center mx-auto shadow-xs">
+          <div className="p-8 rounded-2xl bg-[#FFFFFF] dark:bg-[#12121A] border border-[#E7E7E4] dark:border-white/10 hover:border-primary dark:hover:border-primary shadow-xs space-y-3 transition-all">
+            <div className="w-10 h-10 rounded-xl bg-[#FAFAF8] dark:bg-[#181824] border border-[#E7E7E4] dark:border-white/10 text-[#111111] dark:text-accent flex items-center justify-center mx-auto shadow-xs">
               <Globe className="w-5 h-5" />
             </div>
             <h3 className="text-lg font-bold text-[#111111] dark:text-white font-display">Vetted Audience Quality</h3>

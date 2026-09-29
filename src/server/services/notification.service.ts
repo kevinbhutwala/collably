@@ -125,8 +125,8 @@ export class NotificationService {
   }
 
   private renderEmailTemplate(template: string, vars: Record<string, any>): string {
-    const brandColor = "#FFD21F";
-    const darkBg = "#0A0A0E";
+    const brandColor = "#7C3AED";
+    const darkBg = "#0B0A14";
 
     let title = "AbeyCollab Platform Update";
     let bodyContent = `<p style="font-size: 15px; color: #475569;">${vars.message || "You have a new update regarding your campaign collaboration."}</p>`;
@@ -140,7 +140,7 @@ export class NotificationService {
             Your AbeyCollab workspace is active. Connect your social channels, browse high-converting brand briefs, and access 100% escrow-backed deals.
           </p>
           <div style="background-color: #F8F8FC; border-radius: 8px; padding: 16px; margin: 16px 0; border: 1px solid #E2E8F0;">
-            <p style="margin: 0; font-size: 14px; font-weight: 600; color: #0A0A0E;">Next Recommended Steps:</p>
+            <p style="margin: 0; font-size: 14px; font-weight: 600; color: #0B0A14;">Next Recommended Steps:</p>
             <ul style="margin: 8px 0 0 0; padding-left: 20px; font-size: 13px; color: #475569;">
               <li>Complete your profile &amp; link social handles</li>
               <li>Browse open campaign briefs or create a new brief</li>

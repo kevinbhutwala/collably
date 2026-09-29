@@ -17,7 +17,7 @@ const AVATAR_STRIP = [
 export function StreamlinedVisualCTA() {
 
   return (
-    <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] select-none relative overflow-hidden border-t border-black/6 dark:border-white/10 font-sans">
+    <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#07070B] text-[#0B0A14] dark:text-[#F4F4F8] select-none relative overflow-hidden border-t border-black/6 dark:border-white/10 font-sans">
       {/* Ambient Pulsing Gold Glow */}
       <motion.div
         animate={{
@@ -29,7 +29,7 @@ export function StreamlinedVisualCTA() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] sm:w-[750px] h-[350px] bg-[#FFD21F]/20 rounded-full blur-[120px] pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] sm:w-[750px] h-[350px] bg-primary/20 rounded-full blur-[120px] pointer-events-none"
       />
 
       <motion.div
@@ -40,16 +40,16 @@ export function StreamlinedVisualCTA() {
         className="max-w-5xl mx-auto text-center space-y-8 relative z-10"
       >
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FAF9F5] dark:bg-[#14141E] border border-black/8 dark:border-white/10 shadow-2xs">
-          <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
-          <span className="text-xs font-mono font-bold tracking-tight text-[#0A0A0E] dark:text-white uppercase">
+          <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+          <span className="text-xs font-mono font-bold tracking-tight text-[#0B0A14] dark:text-white uppercase">
             SCALE YOUR CAMPAIGN
           </span>
         </div>
 
         {/* Clean Headline */}
-        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black font-display uppercase tracking-tight text-[#0A0A0E] dark:text-white">
+        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black font-display uppercase tracking-tight text-[#0B0A14] dark:text-white">
           Ready to scale your next{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700]">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-[#9333EA] to-accent">
             creator drop?
           </span>
         </h2>
@@ -81,15 +81,15 @@ export function StreamlinedVisualCTA() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
           <Link
             href="/register"
-            className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(255,210,31,0.5)] flex items-center justify-center gap-2 group active:scale-[0.98] border border-black/10 font-sans hover-lift"
+            className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.5)] flex items-center justify-center gap-2 group active:scale-[0.98] border border-black/10 font-sans hover-lift"
           >
             <span>Launch Campaign Brief</span>
-            <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 text-[#0B0A14] group-hover:translate-x-1 transition-transform" />
           </Link>
 
           <Link href="/register">
-            <button className="w-full sm:w-auto px-7 py-4 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#14141E] dark:hover:bg-[#1E1E2C] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs sm:text-sm transition-all shadow-xs active:scale-[0.98] flex items-center justify-center gap-2 hover-lift">
-              <Sparkles className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />
+            <button className="w-full sm:w-auto px-7 py-4 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#14141E] dark:hover:bg-[#1E1E2C] border border-black/10 dark:border-white/10 text-[#0B0A14] dark:text-white font-bold text-xs sm:text-sm transition-all shadow-xs active:scale-[0.98] flex items-center justify-center gap-2 hover-lift">
+              <Sparkles className="w-4 h-4 text-[#0B0A14] dark:text-accent" />
               <span>Join as a Creator</span>
             </button>
           </Link>

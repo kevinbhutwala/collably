@@ -65,18 +65,18 @@ export function PricingComparisonModule() {
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-texture-paper-white border-y border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white select-none relative overflow-hidden">
+    <section className="py-20 sm:py-28 bg-texture-paper-white border-y border-black/10 dark:border-white/10 text-[#0B0A14] dark:text-white select-none relative overflow-hidden">
       {/* Background ambient solar flare on light canvas */}
-      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-[#FFD21F]/15 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-primary/15 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 relative z-10">
         {/* Header */}
         <div className="text-center space-y-4 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] text-[10px] font-mono font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-[#0B0A14] text-[10px] font-mono font-bold uppercase tracking-wider">
             <span>TRANSPARENT VALUE ARCHITECTURE</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#0A0A0E] tracking-tight leading-[1.05] font-display">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#0B0A14] tracking-tight leading-[1.05] font-display">
             Simple, honest pricing for <br />
             <span className="font-serif italic font-normal text-[#5A5A66]">creators &amp; brands.</span>
           </h2>
@@ -94,8 +94,8 @@ export function PricingComparisonModule() {
                 className={cn(
                   "px-4 py-1.5 rounded-full transition-all font-bold",
                   billingCycle === "monthly"
-                    ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs"
-                    : "text-[#5A5A66] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
+                    ? "bg-primary text-[#0B0A14] shadow-xs"
+                    : "text-[#5A5A66] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
                 )}
               >
                 Monthly Billing
@@ -106,8 +106,8 @@ export function PricingComparisonModule() {
                 className={cn(
                   "px-4 py-1.5 rounded-full transition-all font-bold flex items-center gap-1.5",
                   billingCycle === "annual"
-                    ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs"
-                    : "text-[#5A5A66] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
+                    ? "bg-primary text-[#0B0A14] shadow-xs"
+                    : "text-[#5A5A66] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
                 )}
               >
                 <span>Annual</span>
@@ -130,26 +130,26 @@ export function PricingComparisonModule() {
                 className={cn(
                   "rounded-3xl p-8 flex flex-col justify-between space-y-8 relative backdrop-blur-2xl transition-all duration-300",
                   plan.popular
-                    ? "bg-[#FFFFFF] dark:bg-[#1A1A28] border-2 border-[#FFD21F] shadow-[0_20px_50px_rgba(255,210,31,0.25),0_10px_30px_rgba(0,0,0,0.08)] lg:-translate-y-2"
+                    ? "bg-[#FFFFFF] dark:bg-[#1A1A28] border-2 border-primary shadow-[0_20px_50px_rgba(var(--theme-primary-rgb),0.25),0_10px_30px_rgba(0,0,0,0.08)] lg:-translate-y-2"
                     : "bg-[#FFFFFF] dark:bg-[#14141E] border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 shadow-[0_10px_30px_rgba(0,0,0,0.05)]"
                 )}
               >
                 {plan.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] text-[10px] font-mono font-extrabold tracking-wider uppercase shadow-[0_0_15px_rgba(255,210,31,0.5)] border border-black/10">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] text-[10px] font-mono font-extrabold tracking-wider uppercase shadow-[0_0_15px_rgba(var(--theme-primary-rgb),0.5)] border border-black/10">
                     ★ MOST POPULAR
                   </div>
                 )}
 
                 <div className="space-y-6">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">{plan.name}</h3>
-                    <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-black/[0.05] dark:bg-white/10 text-[#0A0A0E] dark:text-[#F4F4F8] border border-black/10 dark:border-white/10 font-bold uppercase">
+                    <h3 className="text-xl font-bold text-[#0B0A14] dark:text-white font-display">{plan.name}</h3>
+                    <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-black/[0.05] dark:bg-white/10 text-[#0B0A14] dark:text-[#F4F4F8] border border-black/10 dark:border-white/10 font-bold uppercase">
                       {plan.badge}
                     </span>
                   </div>
 
                   <div className="flex items-baseline gap-1 font-display">
-                    <span className="text-4xl sm:text-5xl font-black text-[#0A0A0E] dark:text-white numeric-tabular">
+                    <span className="text-4xl sm:text-5xl font-black text-[#0B0A14] dark:text-white numeric-tabular">
                       ₹{price.toLocaleString("en-IN")}
                     </span>
                     <span className="text-xs text-[#5A5A66] dark:text-[#8E8EA4] font-sans">
@@ -162,13 +162,13 @@ export function PricingComparisonModule() {
                   </p>
 
                   <div className="pt-4 border-t border-black/10 dark:border-white/10 space-y-3">
-                    <span className="text-[11px] font-mono uppercase text-[#0A0A0E]/60 dark:text-white/60 font-bold block">
+                    <span className="text-[11px] font-mono uppercase text-[#0B0A14]/60 dark:text-white/60 font-bold block">
                       INCLUDED CAPABILITIES:
                     </span>
-                    <ul className="space-y-2.5 text-xs text-[#0A0A0E] dark:text-[#F4F4F8] font-sans font-medium">
+                    <ul className="space-y-2.5 text-xs text-[#0B0A14] dark:text-[#F4F4F8] font-sans font-medium">
                       {plan.features.map((feat, fIdx) => (
                         <li key={fIdx} className="flex items-start gap-2.5">
-                          <Check className="w-4 h-4 text-[#FFD21F] shrink-0 mt-0.5" />
+                          <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                           <span>{feat}</span>
                         </li>
                       ))}
@@ -183,8 +183,8 @@ export function PricingComparisonModule() {
                       className={cn(
                         "w-full py-3.5 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 active:scale-98 shadow-sm",
                         plan.popular
-                          ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] shadow-[0_4px_16px_rgba(255,210,31,0.4)] border border-black/10"
-                          : "bg-[#F4F4F8] hover:bg-[#EAEAF0] text-[#0A0A0E] border border-black/10 hover:border-black/20 font-bold shadow-2xs"
+                          ? "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10"
+                          : "bg-[#F4F4F8] hover:bg-[#EAEAF0] text-[#0B0A14] border border-black/10 hover:border-black/20 font-bold shadow-2xs"
                       )}
                     >
                       <span>{plan.ctaText}</span>

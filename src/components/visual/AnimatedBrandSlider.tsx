@@ -35,7 +35,7 @@ export function AnimatedBrandSlider({
       <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#FAF9F5] dark:from-[#0A0A10] to-transparent z-10" />
 
       <motion.div
-        className="flex items-center gap-10 sm:gap-14 whitespace-nowrap w-fit font-display font-black text-sm sm:text-lg tracking-widest text-[#0A0A0E]/70 dark:text-white/70"
+        className="flex items-center gap-10 sm:gap-14 whitespace-nowrap w-fit font-display font-black text-sm sm:text-lg tracking-widest text-[#0B0A14]/70 dark:text-white/70"
         animate={{
           x: xTranslation,
         }}
@@ -47,13 +47,13 @@ export function AnimatedBrandSlider({
       >
         {[...BRANDS, ...BRANDS, ...BRANDS, ...BRANDS].map((brand, idx) => (
           <div key={idx} className="flex items-center gap-4 shrink-0 group cursor-default">
-            <span className="text-[#0A0A0E] dark:text-[#F4F4F8] group-hover:text-[#FFD21F] transition-colors font-mono tracking-widest">
+            <span className="text-[#0B0A14] dark:text-[#F4F4F8] group-hover:text-primary transition-colors font-mono tracking-widest">
               {brand.name}
             </span>
             <span className="px-2 py-0.5 rounded-full bg-white dark:bg-[#161622] border border-black/8 dark:border-white/10 text-[10px] font-mono font-bold text-[#6A6A78] dark:text-[#A0A0B4] tracking-normal">
               {brand.badge}
             </span>
-            <span className="text-[#FFD21F] font-black text-xs">•</span>
+            <span className="text-primary font-black text-xs">•</span>
           </div>
         ))}
       </motion.div>

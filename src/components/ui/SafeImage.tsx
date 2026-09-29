@@ -65,7 +65,7 @@ export function SafeImage({
               {initials}
             </span>
           ) : (
-            <Building2 className="w-5 h-5 text-[#FFD21F]" />
+            <Building2 className="w-5 h-5 text-primary" />
           )}
         </div>
       );
@@ -79,9 +79,9 @@ export function SafeImage({
             fallbackClassName || className
           )}
         >
-          <Sparkles className="w-8 h-8 text-[#0A0A0E] mb-2" />
+          <Sparkles className="w-8 h-8 text-[#0B0A14] mb-2" />
           {fallbackName && (
-            <span className="font-bold text-xs text-[#0A0A0E] line-clamp-1">{fallbackName}</span>
+            <span className="font-bold text-xs text-[#0B0A14] line-clamp-1">{fallbackName}</span>
           )}
           <span className="text-[10px] text-slate-500 font-mono">AbeyCollab Campaign Asset</span>
         </div>

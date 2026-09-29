@@ -52,7 +52,7 @@ export function BrandCreatorNetwork() {
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAFAF8] border border-[#E7E7E4] text-xs font-mono font-bold text-[#101010]">
-            <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
+            <span className="w-2 h-2 rounded-full bg-primary" />
             <span>03 / CREATIVE NETWORK</span>
           </div>
 
@@ -80,7 +80,7 @@ export function BrandCreatorNetwork() {
                       {deal.brand}
                     </span>
                   </div>
-                  <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded-md bg-[#101010] text-[#FFD21F]">
+                  <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded-md bg-[#101010] text-primary">
                     BRAND
                   </span>
                 </div>
@@ -128,7 +128,7 @@ export function BrandCreatorNetwork() {
                 </div>
 
                 <div className="flex items-center gap-1.5 text-[10px] text-[#101010] font-bold pt-1 font-sans">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                   <span>{deal.status}</span>
                 </div>
               </div>
@@ -140,10 +140,10 @@ export function BrandCreatorNetwork() {
         <div className="text-center pt-4">
           <Link
             href="/for-brands"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] text-xs font-bold shadow-xs transition-all font-sans group border border-black/10"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] text-xs font-bold shadow-xs transition-all font-sans group border border-black/10"
           >
             <span>Launch a Brand Collaboration</span>
-            <ArrowRight className="w-4 h-4 text-[#0A0A0E]" />
+            <ArrowRight className="w-4 h-4 text-[#0B0A14]" />
           </Link>
         </div>
       </div>

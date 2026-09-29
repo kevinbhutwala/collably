@@ -266,16 +266,16 @@ export function EditorialCreatorGrid() {
       : FEATURED_TALENT.filter((c) => c.category === activeTab);
 
   return (
-    <section className="py-20 sm:py-24 bg-texture-paper-white text-[#0A0A0E] dark:text-white border-b border-black/8 dark:border-white/10 transition-colors">
+    <section className="py-20 sm:py-24 bg-texture-paper-white text-[#0B0A14] dark:text-white border-b border-black/8 dark:border-white/10 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-2 max-w-xl">
-            <span className="text-xs font-mono font-bold tracking-tight text-[#0A0A0E] dark:text-[#FFD21F] uppercase flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
+            <span className="text-xs font-mono font-bold tracking-tight text-[#0B0A14] dark:text-accent uppercase flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-primary fill-primary" />
               CURATED TALENT DIRECTORY
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-display tracking-tight text-[#0A0A0E] dark:text-white">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-display tracking-tight text-[#0B0A14] dark:text-white">
               Vetted Cinematic Creators.
             </h2>
             <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#8E8EA4] leading-relaxed">
@@ -294,8 +294,8 @@ export function EditorialCreatorGrid() {
                 onClick={() => setActiveTab(cat.id)}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-sans font-bold transition-all shrink-0 ${
                   activeTab === cat.id
-                    ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] shadow-xs"
-                    : "text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
+                    ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] shadow-xs"
+                    : "text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
                 }`}
               >
                 {cat.label}
@@ -350,11 +350,11 @@ export function EditorialCreatorGrid() {
         >
           <Link
             href="/creators"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#FAF9F5] hover:bg-white dark:bg-[#14141E] dark:hover:bg-[#1E1E2C] border border-black/10 dark:border-white/10 text-xs sm:text-sm font-bold text-[#0A0A0E] dark:text-white transition-all shadow-xs hover-lift"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#FAF9F5] hover:bg-white dark:bg-[#14141E] dark:hover:bg-[#1E1E2C] border border-black/10 dark:border-white/10 text-xs sm:text-sm font-bold text-[#0B0A14] dark:text-white transition-all shadow-xs hover-lift"
           >
             <span>Explore the Full Creator Roster</span>
 
-            <ArrowRight className="w-4 h-4 text-[#FFD21F]" />
+            <ArrowRight className="w-4 h-4 text-primary" />
           </Link>
         </motion.div>
       </div>

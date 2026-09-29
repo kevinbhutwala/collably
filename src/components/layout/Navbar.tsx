@@ -76,7 +76,7 @@ export function Navbar() {
             : "border-b border-black/5 dark:border-white/10 bg-white/80 dark:bg-[#0A0A0F]/80 backdrop-blur-md"
         }`}
       >
-        <div className="h-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 text-[#0A0A0E] dark:text-[#F4F4F8]">
+        <div className="h-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 text-[#0B0A14] dark:text-[#F4F4F8]">
           {/* Brand Logo / Mobile Screen Title */}
           <div className="flex items-center gap-2.5 min-w-0">
             <div className="shrink-0">
@@ -87,7 +87,7 @@ export function Navbar() {
             {pathname !== "/" && currentTitle !== "AbeyCollab" && (
               <div className="flex lg:hidden items-center gap-1.5 min-w-0">
                 <span className="text-xs text-[#8A8A98] font-mono">•</span>
-                <p className="text-sm font-extrabold text-[#0A0A0E] dark:text-white font-display tracking-tight truncate">
+                <p className="text-sm font-extrabold text-[#0B0A14] dark:text-white font-display tracking-tight truncate">
                   {currentTitle}
                 </p>
               </div>
@@ -190,7 +190,7 @@ export function Navbar() {
             )}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-xl bg-[#F4F4F8] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-[#0A0A0E] dark:text-white hover:bg-[#EAEAEF] dark:hover:bg-[#222232] transition-colors active:scale-95 touch-manipulation"
+              className="p-2.5 rounded-xl bg-[#F4F4F8] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-[#0B0A14] dark:text-white hover:bg-[#EAEAEF] dark:hover:bg-[#222232] transition-colors active:scale-95 touch-manipulation"
               aria-label="Toggle Menu"
               aria-expanded={mobileMenuOpen}
               aria-controls="public-navigation"
@@ -222,7 +222,7 @@ export function Navbar() {
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
               id="public-navigation"
-              className="fixed inset-x-0 top-16 z-40 p-5 sm:p-6 bg-white dark:bg-[#0E0E16] border-b border-black/10 dark:border-white/10 shadow-2xl flex flex-col gap-4 lg:hidden text-[#0A0A0E] dark:text-[#F4F4F8] max-h-[calc(100vh-4rem)] overflow-y-auto"
+              className="fixed inset-x-0 top-16 z-40 p-5 sm:p-6 bg-white dark:bg-[#0E0E16] border-b border-black/10 dark:border-white/10 shadow-2xl flex flex-col gap-4 lg:hidden text-[#0B0A14] dark:text-[#F4F4F8] max-h-[calc(100vh-4rem)] overflow-y-auto"
             >
               <div className="space-y-1">
                 {navLinks.map((link) => {

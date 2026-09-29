@@ -141,21 +141,21 @@ export default function BrandCRMPage() {
       title="Creator CRM Pipeline"
       description="Track talent pipelines across discovery, outreach, and escrow stages with private team notes."
     >
-      <div className="space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] select-none">
+      <div className="space-y-6 text-[#0B0A14] dark:text-[#F4F4F8] select-none">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-black/8 dark:border-white/10">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] dark:text-[#EAEAEF] flex items-center gap-1.5">
+              <span className="text-[10px] font-mono font-bold uppercase text-[#0B0A14] dark:text-[#EAEAEF] flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 Talent Operations
               </span>
               <span className="text-[#8A8A9A] dark:text-[#6A6A7E]">•</span>
-              <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] dark:text-yellow-400 font-mono text-[10px] font-bold">
+              <span className="px-2 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-[#0B0A14] dark:text-yellow-400 font-mono text-[10px] font-bold">
                 Pipeline CRM
               </span>
             </div>
-            <h1 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
+            <h1 className="text-xl sm:text-2xl font-extrabold text-[#0B0A14] dark:text-white tracking-tight font-display">
               Creator CRM
             </h1>
             <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4]">
@@ -165,7 +165,7 @@ export default function BrandCRMPage() {
 
           <button
             onClick={() => setIsAddModalOpen(true)}
-            className="shrink-0 px-4 py-2.5 rounded-2xl bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] text-xs font-bold transition-all flex items-center gap-1.5 hover:bg-[#1A1A28] dark:hover:bg-[#FFE052] shadow-sm"
+            className="shrink-0 px-4 py-2.5 rounded-2xl bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] text-xs font-bold transition-all flex items-center gap-1.5 hover:bg-[#1A1A28] dark:hover:bg-accent shadow-sm"
           >
             <UserPlus className="w-3.5 h-3.5" />
             Add Creator to Pipeline
@@ -178,8 +178,8 @@ export default function BrandCRMPage() {
             onClick={() => setSelectedStage("all")}
             className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-bold transition-all shrink-0 ${
               selectedStage === "all"
-                ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs border border-black/10"
-                : "bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-white"
+                ? "bg-primary text-[#0B0A14] shadow-xs border border-black/10"
+                : "bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-white"
             }`}
           >
             All ({contacts.length})
@@ -192,8 +192,8 @@ export default function BrandCRMPage() {
                 onClick={() => setSelectedStage(st.key)}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-bold transition-all shrink-0 flex items-center gap-1.5 ${
                   selectedStage === st.key
-                    ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs border border-black/10"
-                    : "bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-white"
+                    ? "bg-primary text-[#0B0A14] shadow-xs border border-black/10"
+                    : "bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-white"
                 }`}
               >
                 <span>{st.label}</span>
@@ -210,7 +210,7 @@ export default function BrandCRMPage() {
               <Users className="w-6 h-6" />
             </div>
             <div className="space-y-1">
-              <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white">No creators in this pipeline stage</h3>
+              <h3 className="text-sm font-bold text-[#0B0A14] dark:text-white">No creators in this pipeline stage</h3>
               <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4]">
                 Add talent from the creator directory or import directly into your CRM.
               </p>
@@ -218,12 +218,12 @@ export default function BrandCRMPage() {
             <div className="flex items-center justify-center gap-3 pt-2">
               <button
                 onClick={() => setIsAddModalOpen(true)}
-                className="px-4 py-2 rounded-xl bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] text-xs font-bold transition-all hover:bg-black/80 dark:hover:bg-[#FFE052]"
+                className="px-4 py-2 rounded-xl bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] text-xs font-bold transition-all hover:bg-black/80 dark:hover:bg-accent"
               >
                 Add Creator Now
               </button>
               <Link href="/app/brand/creators">
-                <button className="px-4 py-2 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#181824] text-[#0A0A0E] dark:text-white text-xs font-bold hover:bg-black/5 dark:hover:bg-white/5">
+                <button className="px-4 py-2 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#181824] text-[#0B0A14] dark:text-white text-xs font-bold hover:bg-black/5 dark:hover:bg-white/5">
                   Browse Creators
                 </button>
               </Link>
@@ -235,7 +235,7 @@ export default function BrandCRMPage() {
             {filtered.map((c) => (
               <div
                 key={c.id}
-                className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-6 shadow-xs space-y-4 flex flex-col justify-between hover:border-black/15 dark:hover:border-white/20 transition-all text-[#0A0A0E] dark:text-[#F4F4F8]"
+                className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-6 shadow-xs space-y-4 flex flex-col justify-between hover:border-black/15 dark:hover:border-white/20 transition-all text-[#0B0A14] dark:text-[#F4F4F8]"
               >
                 <div className="space-y-3">
                   <div className="flex items-start justify-between gap-3">
@@ -248,7 +248,7 @@ export default function BrandCRMPage() {
                         className="w-12 h-12 rounded-2xl object-cover border border-black/10 dark:border-white/10"
                       />
                       <div>
-                        <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display">
+                        <h3 className="text-sm font-bold text-[#0B0A14] dark:text-white font-display">
                           {c.creator?.fullName}
                         </h3>
                         <p className="text-xs text-[#7A7A8A] dark:text-[#8E8EA4] font-mono">{c.creator?.handle}</p>
@@ -256,7 +256,7 @@ export default function BrandCRMPage() {
                     </div>
 
                     <div className="flex items-center gap-1.5">
-                      <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-yellow-400 border border-[#FFD21F]/40 uppercase">
+                      <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-primary/20 text-[#0B0A14] dark:text-yellow-400 border border-primary/40 uppercase">
                         {c.stage.replace(/_/g, " ")}
                       </span>
                       <button
@@ -272,11 +272,11 @@ export default function BrandCRMPage() {
                   <div className="grid grid-cols-2 gap-2 text-xs font-mono pt-2 border-t border-black/5 dark:border-white/5">
                     <div>
                       <span className="text-[#8A8A9A] dark:text-[#8E8EA4] text-[10px] block">Starting Rate</span>
-                      <span className="font-bold text-[#0A0A0E] dark:text-white">{format(c.creator?.startingPrice || 1500, (c.creator as any)?.currency || "USD")}</span>
+                      <span className="font-bold text-[#0B0A14] dark:text-white">{format(c.creator?.startingPrice || 1500, (c.creator as any)?.currency || "USD")}</span>
                     </div>
                     <div>
                       <span className="text-[#8A8A9A] dark:text-[#8E8EA4] text-[10px] block">Audience Reach</span>
-                      <span className="font-bold text-[#0A0A0E] dark:text-white">{formatNumber(c.creator?.totalFollowers || 100000)}</span>
+                      <span className="font-bold text-[#0B0A14] dark:text-white">{formatNumber(c.creator?.totalFollowers || 100000)}</span>
                     </div>
                   </div>
 
@@ -288,7 +288,7 @@ export default function BrandCRMPage() {
                     <select
                       value={c.stage}
                       onChange={(e) => handleStageChange(c.id, e.target.value as CRMStage)}
-                      className="w-full text-xs font-sans rounded-xl border border-black/10 dark:border-white/10 px-3 py-2 bg-[#F8F8FC] dark:bg-[#181824] text-[#0A0A0E] dark:text-white focus:outline-none focus:border-[#FFD21F] cursor-pointer"
+                      className="w-full text-xs font-sans rounded-xl border border-black/10 dark:border-white/10 px-3 py-2 bg-[#F8F8FC] dark:bg-[#181824] text-[#0B0A14] dark:text-white focus:outline-none focus:border-primary cursor-pointer"
                     >
                       {stages.map((st) => (
                         <option key={st.key} value={st.key}>
@@ -302,7 +302,7 @@ export default function BrandCRMPage() {
                   {c.privateNotes && c.privateNotes.length > 0 && (
                     <div className="p-3 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 space-y-1">
                       <div className="flex items-center gap-1.5 text-[10px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4] font-bold uppercase">
-                        <FileText className="w-3 h-3 text-[#FFD21F]" />
+                        <FileText className="w-3 h-3 text-primary" />
                         <span>Latest Private Note</span>
                       </div>
                       <p className="text-xs text-[#4A4A58] dark:text-[#A0A0B4] italic line-clamp-2">
@@ -318,7 +318,7 @@ export default function BrandCRMPage() {
                       setSelectedContact(c);
                       setIsNoteModalOpen(true);
                     }}
-                    className="flex-1 py-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0A0A0E] dark:text-white text-xs font-semibold transition-all flex items-center justify-center gap-1.5 border border-black/5 dark:border-white/10 cursor-pointer"
+                    className="flex-1 py-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0B0A14] dark:text-white text-xs font-semibold transition-all flex items-center justify-center gap-1.5 border border-black/5 dark:border-white/10 cursor-pointer"
                   >
                     <Plus className="w-3.5 h-3.5" />
                     <span>Add Note</span>
@@ -327,7 +327,7 @@ export default function BrandCRMPage() {
                     href={`/app/messages?recipientId=${c.creator.userId || c.creator.id}&recipientName=${encodeURIComponent(c.creator.fullName)}`}
                     className="flex-1"
                   >
-                    <button className="w-full py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs cursor-pointer">
+                    <button className="w-full py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold transition-all shadow-xs cursor-pointer">
                       Message
                     </button>
                   </Link>
@@ -345,7 +345,7 @@ export default function BrandCRMPage() {
           description="Private notes visible only to your team and account executives."
           maxWidth="md"
         >
-          <form onSubmit={handleAddNote} className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
+          <form onSubmit={handleAddNote} className="space-y-4 text-[#0B0A14] dark:text-[#F4F4F8]">
             <Textarea
               label="Note Content"
               value={newNote}
@@ -356,7 +356,7 @@ export default function BrandCRMPage() {
             />
             <button
               type="submit"
-              className="w-full py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] text-xs font-bold shadow-xs border border-black/10 cursor-pointer"
+              className="w-full py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] text-xs font-bold shadow-xs border border-black/10 cursor-pointer"
             >
               Save Internal Note
             </button>
@@ -371,13 +371,13 @@ export default function BrandCRMPage() {
           description="Track promising creators and organize them into operational stages."
           maxWidth="md"
         >
-          <form onSubmit={handleCreateContact} className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
+          <form onSubmit={handleCreateContact} className="space-y-4 text-[#0B0A14] dark:text-[#F4F4F8]">
             <div className="space-y-1">
-              <label className="text-xs font-bold text-[#0A0A0E] dark:text-[#EAEAEF]">Select Creator</label>
+              <label className="text-xs font-bold text-[#0B0A14] dark:text-[#EAEAEF]">Select Creator</label>
               <select
                 value={selectedCreatorId}
                 onChange={(e) => setSelectedCreatorId(e.target.value)}
-                className="w-full text-xs font-sans rounded-xl border border-black/10 dark:border-white/10 px-3 py-2.5 bg-[#F8F8FC] dark:bg-[#181824] text-[#0A0A0E] dark:text-white focus:outline-none focus:border-[#FFD21F] cursor-pointer"
+                className="w-full text-xs font-sans rounded-xl border border-black/10 dark:border-white/10 px-3 py-2.5 bg-[#F8F8FC] dark:bg-[#181824] text-[#0B0A14] dark:text-white focus:outline-none focus:border-primary cursor-pointer"
                 required
               >
                 {allCreators.map((cr) => (
@@ -389,11 +389,11 @@ export default function BrandCRMPage() {
             </div>
 
             <div className="space-y-1">
-              <label className="text-xs font-bold text-[#0A0A0E] dark:text-[#EAEAEF]">Initial Pipeline Stage</label>
+              <label className="text-xs font-bold text-[#0B0A14] dark:text-[#EAEAEF]">Initial Pipeline Stage</label>
               <select
                 value={newContactStage}
                 onChange={(e) => setNewContactStage(e.target.value as CRMStage)}
-                className="w-full text-xs font-sans rounded-xl border border-black/10 dark:border-white/10 px-3 py-2.5 bg-[#F8F8FC] dark:bg-[#181824] text-[#0A0A0E] dark:text-white focus:outline-none focus:border-[#FFD21F] cursor-pointer"
+                className="w-full text-xs font-sans rounded-xl border border-black/10 dark:border-white/10 px-3 py-2.5 bg-[#F8F8FC] dark:bg-[#181824] text-[#0B0A14] dark:text-white focus:outline-none focus:border-primary cursor-pointer"
               >
                 {stages.map((st) => (
                   <option key={st.key} value={st.key}>
@@ -413,7 +413,7 @@ export default function BrandCRMPage() {
 
             <button
               type="submit"
-              className="w-full py-3 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] text-xs font-bold shadow-xs hover:bg-[#1A1A28] dark:hover:bg-[#FFE052] cursor-pointer"
+              className="w-full py-3 rounded-full bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] text-xs font-bold shadow-xs hover:bg-[#1A1A28] dark:hover:bg-accent cursor-pointer"
             >
               Add to Pipeline
             </button>

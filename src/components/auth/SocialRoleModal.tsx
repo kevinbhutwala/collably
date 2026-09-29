@@ -25,25 +25,25 @@ export function SocialRoleModal({
       description={`Welcome ${userName}! Select your role on AbeyCollab to personalize your workspace.`}
       maxWidth="md"
     >
-      <div className="space-y-3 pt-2 text-[#0A0A0E] select-none">
+      <div className="space-y-3 pt-2 text-[#0B0A14] select-none">
         {/* Creator Option */}
         <button
           type="button"
           onClick={() => onSelectRole("creator")}
-          className="w-full text-left p-4 rounded-2xl bg-gradient-to-r from-[#FFFDF5] to-white dark:from-[#181826] dark:to-[#12121A] border-2 border-[#FFD21F] hover:shadow-md transition-all group flex items-center justify-between"
+          className="w-full text-left p-4 rounded-2xl bg-gradient-to-r from-primary/5 to-white dark:from-[#181826] dark:to-[#12121A] border-2 border-primary hover:shadow-md transition-all group flex items-center justify-between"
         >
           <div className="flex items-center gap-3.5">
-            <div className="w-11 h-11 rounded-2xl bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
+            <div className="w-11 h-11 rounded-2xl bg-primary text-[#0B0A14] flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
               <Video className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-sm font-bold font-display text-[#0A0A0E] dark:text-white">I am a Creator</h4>
+              <h4 className="text-sm font-bold font-display text-[#0B0A14] dark:text-white">I am a Creator</h4>
               <p className="text-xs text-[#6A6A78] dark:text-[#9A9AA8] font-sans">
                 Pitch brand campaigns, share media kit &amp; get paid
               </p>
             </div>
           </div>
-          <ArrowRight className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F] group-hover:translate-x-1 transition-transform" />
+          <ArrowRight className="w-4 h-4 text-[#0B0A14] dark:text-accent group-hover:translate-x-1 transition-transform" />
         </button>
 
         {/* Brand Option */}
@@ -53,7 +53,7 @@ export function SocialRoleModal({
           className="w-full text-left p-4 rounded-2xl bg-[#FAFAFC] dark:bg-[#14141E] border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 hover:bg-white dark:hover:bg-[#1A1A26] hover:shadow-md transition-all group flex items-center justify-between"
         >
           <div className="flex items-center gap-3.5">
-            <div className="w-11 h-11 rounded-2xl bg-[#0A0A0E] text-white flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
+            <div className="w-11 h-11 rounded-2xl bg-[#0B0A14] text-white flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
               <Building2 className="w-5 h-5" />
             </div>
             <div>
@@ -63,7 +63,7 @@ export function SocialRoleModal({
               </p>
             </div>
           </div>
-          <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-1 transition-transform" />
+          <ArrowRight className="w-4 h-4 text-[#0B0A14] group-hover:translate-x-1 transition-transform" />
         </button>
       </div>
     </Modal>

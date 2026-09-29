@@ -80,9 +80,9 @@ export function TransactionLifecycleStepper({
           <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7A7A8A] dark:text-[#8E8EA4] block">
             Project Milestone Tracker
           </span>
-          <h4 className="text-sm font-bold text-[#0A0A0E] dark:text-white flex items-center gap-2">
+          <h4 className="text-sm font-bold text-[#0B0A14] dark:text-white flex items-center gap-2">
             <span>Current Stage:</span>
-            <span className="text-[#0A0A0E] dark:text-[#FFD21F] font-mono font-bold">
+            <span className="text-[#0B0A14] dark:text-accent font-mono font-bold">
               {currentStep.label} ({currentPhase + 1} of {CORE_PHASES.length})
             </span>
           </h4>
@@ -120,7 +120,7 @@ export function TransactionLifecycleStepper({
                   className={cn(
                     "w-8 h-8 rounded-full flex items-center justify-center text-xs font-mono font-black z-10 transition-all shadow-2xs",
                     isCurrent
-                      ? "bg-gradient-to-r from-[#FFD21F] to-[#FFE052] text-[#0A0A0E] ring-4 ring-[#FFD21F]/20 scale-105"
+                      ? "bg-gradient-to-r from-primary to-accent text-[#0B0A14] ring-4 ring-primary/20 scale-105"
                       : isCompleted
                       ? "bg-emerald-500 text-white"
                       : "bg-[#F4F4F8] dark:bg-white/5 text-[#8A8A9A] dark:text-[#6A6A78] border border-black/8 dark:border-white/8"
@@ -135,7 +135,7 @@ export function TransactionLifecycleStepper({
                     className={cn(
                       "text-xs font-bold block leading-tight",
                       isCurrent
-                        ? "text-[#0A0A0E] dark:text-white"
+                        ? "text-[#0B0A14] dark:text-white"
                         : isCompleted
                         ? "text-emerald-700 dark:text-emerald-400"
                         : "text-[#8A8A9A] dark:text-[#6A6A78]"
@@ -156,14 +156,14 @@ export function TransactionLifecycleStepper({
       {/* ── Mobile View: Compact Progress Bar (Shown only on Mobile <640px) ── */}
       <div className="block sm:hidden space-y-2">
         <div className="flex items-center justify-between text-xs font-mono">
-          <span className="font-bold text-[#0A0A0E] dark:text-white">
+          <span className="font-bold text-[#0B0A14] dark:text-white">
             Step {currentPhase + 1} of 5: {currentStep.label}
           </span>
           <span className="text-emerald-700 dark:text-emerald-400 font-bold">{progressPercent}%</span>
         </div>
         <div className="w-full h-2 rounded-full bg-black/6 dark:bg-white/10 overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-[#FFD21F] to-emerald-500 rounded-full transition-all duration-300"
+            className="h-full bg-gradient-to-r from-primary to-emerald-500 rounded-full transition-all duration-300"
             style={{ width: `${progressPercent}%` }}
           />
         </div>
@@ -174,17 +174,17 @@ export function TransactionLifecycleStepper({
 
       {/* ── Distinct Role Status Clarity Callouts ── */}
       {role === "creator" ? (
-        <div className="p-3.5 sm:p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#1A1A28] border border-[#FFD21F]/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-primary/5 dark:bg-[#1A1A28] border border-primary/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
           <div className="flex items-start gap-3">
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] flex items-center justify-center font-bold shrink-0 shadow-2xs border border-black/10">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] flex items-center justify-center font-bold shrink-0 shadow-2xs border border-black/10">
               <DollarSign className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
             <div>
-              <h5 className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+              <h5 className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
                 When will I get paid?
               </h5>
               <p className="text-xs text-[#5A5A68] dark:text-[#C8C8DC] mt-0.5 leading-relaxed font-sans">
-                Your payment of <strong className="text-[#0A0A0E] dark:text-white">{formatCurrency(collaboration.totalAgreedBudget)}</strong> is pre-funded in platform escrow custody. Once the brand reviews and approves your submission and live post is verified, funds release automatically to your account within 24 hours.
+                Your payment of <strong className="text-[#0B0A14] dark:text-white">{formatCurrency(collaboration.totalAgreedBudget)}</strong> is pre-funded in platform escrow custody. Once the brand reviews and approves your submission and live post is verified, funds release automatically to your account within 24 hours.
               </p>
             </div>
           </div>
@@ -196,13 +196,13 @@ export function TransactionLifecycleStepper({
           </div>
         </div>
       ) : (
-        <div className="p-3.5 sm:p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#1A1A28] border border-[#FFD21F]/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-primary/5 dark:bg-[#1A1A28] border border-primary/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
           <div className="flex items-start gap-3">
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] flex items-center justify-center font-bold shrink-0 shadow-2xs">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] flex items-center justify-center font-bold shrink-0 shadow-2xs">
               <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
             <div>
-              <h5 className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+              <h5 className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
                 What happens next?
               </h5>
               <p className="text-xs text-[#5A5A68] dark:text-[#C8C8DC] mt-0.5 leading-relaxed font-sans">
@@ -218,7 +218,7 @@ export function TransactionLifecycleStepper({
           </div>
           <div className="shrink-0 text-left sm:text-right sm:self-center font-mono pt-1 sm:pt-0 border-t sm:border-t-0 border-black/6">
             <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] block uppercase font-bold">Next Action</span>
-            <span className="text-xs font-bold text-amber-700 dark:text-[#FFD21F]">
+            <span className="text-xs font-bold text-amber-700 dark:text-accent">
               {currentPhase <= 1 ? "Fund Escrow" : currentPhase === 2 ? "Awaiting Draft" : currentPhase === 3 ? "Review Draft" : "Verify Live"}
             </span>
           </div>

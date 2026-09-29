@@ -37,8 +37,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             type={type}
             ref={ref}
             className={cn(
-              "w-full rounded-xl bg-[#FAFAFC] dark:bg-[#161622] border border-black/10 dark:border-white/12 px-3.5 py-3 text-base sm:text-sm text-[#0A0A0E] dark:text-white placeholder:text-[#9292A0] dark:placeholder:text-[#6A6A7A] transition-[background-color,border-color,box-shadow] duration-200",
-              "focus:outline-none focus:border-[#D7A900] focus:ring-4 focus:ring-[#FFD21F]/20 focus:bg-white dark:focus:bg-[#1A1A28] shadow-[0_1px_2px_rgba(10,10,14,0.03)]",
+              "w-full rounded-xl bg-[#FAFAFC] dark:bg-[#161622] border border-black/10 dark:border-white/12 px-3.5 py-3 text-base sm:text-sm text-[#0B0A14] dark:text-white placeholder:text-[#9292A0] dark:placeholder:text-[#6A6A7A] transition-[background-color,border-color,box-shadow] duration-200",
+              "focus:outline-none focus:border-[#D7A900] focus:ring-4 focus:ring-primary/20 focus:bg-white dark:focus:bg-[#1A1A28] shadow-[0_1px_2px_rgba(10,10,14,0.03)]",
               "disabled:opacity-50 disabled:cursor-not-allowed",
               icon ? "pl-10" : "",
               rightElement ? "pr-10" : "",
@@ -89,8 +89,8 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           id={textareaId}
           ref={ref}
           className={cn(
-            "w-full rounded-xl bg-[#FAFAFC] dark:bg-[#161622] border border-black/10 dark:border-white/12 px-3.5 py-3 text-base sm:text-sm text-[#0A0A0E] dark:text-white placeholder:text-[#9292A0] dark:placeholder:text-[#6A6A7A] transition-[background-color,border-color,box-shadow] duration-200",
-            "focus:outline-none focus:border-[#D7A900] focus:ring-4 focus:ring-[#FFD21F]/20 focus:bg-white dark:focus:bg-[#1A1A28] shadow-[0_1px_2px_rgba(10,10,14,0.03)]",
+            "w-full rounded-xl bg-[#FAFAFC] dark:bg-[#161622] border border-black/10 dark:border-white/12 px-3.5 py-3 text-base sm:text-sm text-[#0B0A14] dark:text-white placeholder:text-[#9292A0] dark:placeholder:text-[#6A6A7A] transition-[background-color,border-color,box-shadow] duration-200",
+            "focus:outline-none focus:border-[#D7A900] focus:ring-4 focus:ring-primary/20 focus:bg-white dark:focus:bg-[#1A1A28] shadow-[0_1px_2px_rgba(10,10,14,0.03)]",
             "disabled:opacity-50 disabled:cursor-not-allowed resize-y",
             error ? "border-red-500 focus:border-red-500 focus:ring-red-500/20 bg-red-50/30 dark:bg-red-900/20" : "",
             className

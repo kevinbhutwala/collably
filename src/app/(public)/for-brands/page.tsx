@@ -95,20 +95,20 @@ export default function ForBrandsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(brandServiceJsonLd) }}
       />
-      <div className="bg-[#FAFAFC] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] min-h-screen select-none space-y-12 pb-16 font-sans">
+      <div className="bg-[#FAFAFC] dark:bg-[#07070B] text-[#0B0A14] dark:text-[#F4F4F8] min-h-screen select-none space-y-12 pb-16 font-sans">
         {/* Brand Hero */}
         <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden border-b border-black/8 dark:border-white/10 bg-white dark:bg-[#07070B]">
-          <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#FFD21F]/15 rounded-full blur-[140px] pointer-events-none" />
+          <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-primary/15 rounded-full blur-[140px] pointer-events-none" />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center max-w-4xl mx-auto space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] dark:text-[#FFD21F] text-[11px] font-mono font-bold uppercase tracking-wider">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-[#0B0A14] dark:text-accent text-[11px] font-mono font-bold uppercase tracking-wider">
                 <span>FOR GROWTH MARKETERS &amp; BRAND LEADERS</span>
               </div>
 
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.02] text-[#0A0A0E] dark:text-white font-display">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.02] text-[#0B0A14] dark:text-white font-display">
                 Hire Vetted Creators with{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-[#9333EA] to-accent">
                   100% Milestone Escrow.
                 </span>
               </h1>
@@ -119,15 +119,15 @@ export default function ForBrandsPage() {
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-4 font-sans text-sm">
                 <Link href="/app/brand/campaigns/create">
-                  <button className="px-8 py-4 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(255,210,31,0.5)] border border-black/10 flex items-center gap-2 hover-lift cursor-pointer">
+                  <button className="px-8 py-4 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.5)] border border-black/10 flex items-center gap-2 hover-lift cursor-pointer">
                     <span>Create a Campaign Brief</span>
-                    <ArrowRight className="w-4 h-4 text-[#0A0A0E]" />
+                    <ArrowRight className="w-4 h-4 text-[#0B0A14]" />
                   </button>
                 </Link>
 
                 <Link href="/creators">
-                  <button className="px-7 py-4 rounded-full bg-white dark:bg-[#14141E] hover:bg-[#F8F8FC] dark:hover:bg-[#1C1C28] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs sm:text-sm transition-all flex items-center gap-2 shadow-xs hover-lift cursor-pointer">
-                    <Search className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />
+                  <button className="px-7 py-4 rounded-full bg-white dark:bg-[#14141E] hover:bg-[#F8F8FC] dark:hover:bg-[#1C1C28] border border-black/10 dark:border-white/10 text-[#0B0A14] dark:text-white font-bold text-xs sm:text-sm transition-all flex items-center gap-2 shadow-xs hover-lift cursor-pointer">
+                    <Search className="w-4 h-4 text-[#0B0A14] dark:text-accent" />
                     <span>Browse Creator Roster</span>
                   </button>
                 </Link>
@@ -142,7 +142,7 @@ export default function ForBrandsPage() {
         {/* 3 Pillars Bento with 3D Tilt */}
         <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center space-y-2 max-w-2xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-extrabold font-display text-[#0A0A0E] dark:text-white">
+            <h2 className="text-3xl sm:text-4xl font-extrabold font-display text-[#0B0A14] dark:text-white">
               Engineered for High-ROAS Creator Drops
             </h2>
             <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#8E8EA4] font-sans">
@@ -153,14 +153,14 @@ export default function ForBrandsPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <InteractiveTiltCard
               maxTilt={7}
-              glowColor="rgba(255, 210, 31, 0.25)"
+              glowColor="rgba(var(--theme-primary-rgb), 0.25)"
               className="p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4 flex flex-col justify-between hover-lift"
             >
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-2xl bg-[#FFD21F]/20 border border-[#FFD21F]/40 flex items-center justify-center text-[#0A0A0E] dark:text-[#FFD21F]">
+                <div className="w-12 h-12 rounded-2xl bg-primary/20 border border-primary/40 flex items-center justify-center text-[#0B0A14] dark:text-accent">
                   <ShieldCheck className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">FDIC-Insured Escrow Custody</h3>
+                <h3 className="text-xl font-bold text-[#0B0A14] dark:text-white font-display">FDIC-Insured Escrow Custody</h3>
                 <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] font-sans leading-relaxed">
                   Your budget remains safely in escrow custody until you inspect and approve the deliverable. If a creator fails to meet requirements, your escrow is fully refundable.
                 </p>
@@ -173,34 +173,34 @@ export default function ForBrandsPage() {
 
             <InteractiveTiltCard
               maxTilt={7}
-              glowColor="rgba(255, 210, 31, 0.25)"
+              glowColor="rgba(var(--theme-primary-rgb), 0.25)"
               className="p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4 flex flex-col justify-between hover-lift"
             >
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-2xl bg-[#0A0A0E] dark:bg-[#1E1E2C] text-white flex items-center justify-center shadow-xs border border-transparent dark:border-white/10">
-                  <Video className="w-6 h-6 text-white dark:text-[#FFD21F]" />
+                <div className="w-12 h-12 rounded-2xl bg-[#0B0A14] dark:bg-[#1E1E2C] text-white flex items-center justify-center shadow-xs border border-transparent dark:border-white/10">
+                  <Video className="w-6 h-6 text-white dark:text-accent" />
                 </div>
-                <h3 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">4K Timecoded Video Player</h3>
+                <h3 className="text-xl font-bold text-[#0B0A14] dark:text-white font-display">4K Timecoded Video Player</h3>
                 <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] font-sans leading-relaxed">
                   Leave frame-by-frame annotations directly on ProRes video cuts. Eliminate messy email chains and align your creative vision with exact precision.
                 </p>
               </div>
-              <div className="pt-4 border-t border-black/6 dark:border-white/10 text-xs font-mono font-bold text-[#0A0A0E] dark:text-white flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#FFD21F]" />
+              <div className="pt-4 border-t border-black/6 dark:border-white/10 text-xs font-mono font-bold text-[#0B0A14] dark:text-white flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-primary" />
                 <span>SMPTE Accurate</span>
               </div>
             </InteractiveTiltCard>
 
             <InteractiveTiltCard
               maxTilt={7}
-              glowColor="rgba(255, 210, 31, 0.25)"
+              glowColor="rgba(var(--theme-primary-rgb), 0.25)"
               className="p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4 flex flex-col justify-between hover-lift"
             >
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-2xl bg-[#FAF9F5] dark:bg-[#1E1E2C] border border-black/10 dark:border-white/10 flex items-center justify-center text-[#0A0A0E] dark:text-[#FFD21F]">
-                  <Sparkles className="w-6 h-6 text-[#0A0A0E] dark:text-[#FFD21F]" />
+                <div className="w-12 h-12 rounded-2xl bg-[#FAF9F5] dark:bg-[#1E1E2C] border border-black/10 dark:border-white/10 flex items-center justify-center text-[#0B0A14] dark:text-accent">
+                  <Sparkles className="w-6 h-6 text-[#0B0A14] dark:text-accent" />
                 </div>
-                <h3 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">AI Audience Telemetry Matching</h3>
+                <h3 className="text-xl font-bold text-[#0B0A14] dark:text-white font-display">AI Audience Telemetry Matching</h3>
                 <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] font-sans leading-relaxed">
                   Filter by verified follower demographics, average engagement rate, and past brand ROAS to eliminate ghost followers and maximize campaign ROI.
                 </p>

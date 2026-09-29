@@ -68,21 +68,21 @@ export default function BrandCampaignsManagementPage() {
   ];
 
   return (
-    <div className="space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans">
+    <div className="space-y-6 text-[#0B0A14] dark:text-[#F4F4F8] select-none font-sans">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-black/8 dark:border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] dark:text-[#EAEAEF] flex items-center gap-1.5">
+            <span className="text-[10px] font-mono font-bold uppercase text-[#0B0A14] dark:text-[#EAEAEF] flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               Campaigns
             </span>
             <span className="text-[#8A8A9A] dark:text-[#6A6A7E]">•</span>
-            <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] dark:text-yellow-400 font-mono text-[10px] font-bold">
+            <span className="px-2 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-[#0B0A14] dark:text-yellow-400 font-mono text-[10px] font-bold">
               Active Campaigns
             </span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-black text-[#0A0A0E] dark:text-white font-display tracking-tight">
+          <h1 className="text-xl sm:text-2xl font-black text-[#0B0A14] dark:text-white font-display tracking-tight">
             My Campaigns
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4]">
@@ -92,9 +92,9 @@ export default function BrandCampaignsManagementPage() {
 
         <Link
           href="/app/brand/campaigns/create"
-          className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-[0_2px_12px_rgba(255,210,31,0.35)] border border-black/10 flex items-center gap-2"
+          className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold transition-all shadow-[0_2px_12px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 flex items-center gap-2"
         >
-          <PlusCircle className="w-4 h-4 text-[#0A0A0E]" />
+          <PlusCircle className="w-4 h-4 text-[#0B0A14]" />
           <span>Post New Campaign</span>
         </Link>
       </div>
@@ -103,7 +103,7 @@ export default function BrandCampaignsManagementPage() {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5">
         <div className="p-4 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-1">
           <span className="text-[10px] font-bold text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-mono">Active Campaigns</span>
-          <p className="text-xl sm:text-2xl font-black text-[#0A0A0E] dark:text-white font-display">{campaigns.length}</p>
+          <p className="text-xl sm:text-2xl font-black text-[#0B0A14] dark:text-white font-display">{campaigns.length}</p>
           <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1">
             <CheckCircle2 className="w-3 h-3" /> Live in marketplace
           </span>
@@ -111,21 +111,21 @@ export default function BrandCampaignsManagementPage() {
 
         <div className="p-4 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-1">
           <span className="text-[10px] font-bold text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-mono">Secured Budget</span>
-          <p className="text-xl sm:text-2xl font-black text-[#0A0A0E] dark:text-white font-mono">{formatCurrency(totalEscrowPool, displayCurrency)}</p>
+          <p className="text-xl sm:text-2xl font-black text-[#0B0A14] dark:text-white font-mono">{formatCurrency(totalEscrowPool, displayCurrency)}</p>
           <span className="text-[11px] text-[#5A5A68] dark:text-[#8E8EA4] font-medium flex items-center gap-1">
-            <ShieldCheck className="w-3 h-3 text-[#FFD21F]" /> 100% Protected in Escrow
+            <ShieldCheck className="w-3 h-3 text-primary" /> 100% Protected in Escrow
           </span>
         </div>
 
         <div className="p-4 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-1">
           <span className="text-[10px] font-bold text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-mono">Creator Applications</span>
-          <p className="text-xl sm:text-2xl font-black text-[#0A0A0E] dark:text-white font-display">{totalApplicants}</p>
+          <p className="text-xl sm:text-2xl font-black text-[#0B0A14] dark:text-white font-display">{totalApplicants}</p>
           <span className="text-[11px] text-[#5A5A68] dark:text-[#8E8EA4] font-medium">Ready for review</span>
         </div>
 
         <div className="p-4 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-1">
           <span className="text-[10px] font-bold text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-mono">On-Time Rate</span>
-          <p className="text-xl sm:text-2xl font-black text-[#0A0A0E] dark:text-white font-mono">98.4%</p>
+          <p className="text-xl sm:text-2xl font-black text-[#0B0A14] dark:text-white font-mono">98.4%</p>
           <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">On-time delivery</span>
         </div>
       </div>
@@ -144,16 +144,16 @@ export default function BrandCampaignsManagementPage() {
                 className={cn(
                   "px-3.5 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap shrink-0 flex items-center gap-2",
                   isActive
-                    ? "bg-white dark:bg-[#1E1E2C] text-[#0A0A0E] dark:text-white shadow-[0_2px_8px_rgba(0,0,0,0.06)] border border-black/8 dark:border-white/10"
-                    : "text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5"
+                    ? "bg-white dark:bg-[#1E1E2C] text-[#0B0A14] dark:text-white shadow-[0_2px_8px_rgba(0,0,0,0.06)] border border-black/8 dark:border-white/10"
+                    : "text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5"
                 )}
               >
-                <Icon className={cn("w-3.5 h-3.5", isActive ? "text-[#0A0A0E] dark:text-[#FFD21F]" : "text-[#7A7A8A] dark:text-[#8E8EA4]")} />
+                <Icon className={cn("w-3.5 h-3.5", isActive ? "text-[#0B0A14] dark:text-accent" : "text-[#7A7A8A] dark:text-[#8E8EA4]")} />
                 <span>{tab.label}</span>
                 <span
                   className={cn(
                     "px-1.5 py-0.5 rounded-full text-[10px] font-mono font-bold",
-                    isActive ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E]" : "bg-black/5 dark:bg-white/10 text-[#5A5A68] dark:text-[#A0A0B4]"
+                    isActive ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14]" : "bg-black/5 dark:bg-white/10 text-[#5A5A68] dark:text-[#A0A0B4]"
                   )}
                 >
                   {tab.count}
@@ -171,7 +171,7 @@ export default function BrandCampaignsManagementPage() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search campaigns, tags..."
-            className="w-full bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 rounded-2xl pl-9 pr-3 py-2 text-xs font-medium text-[#0A0A0E] dark:text-white placeholder:text-[#8A8A9A] dark:placeholder:text-[#6A6A7E] focus:outline-none focus:border-[#FFD21F] focus:ring-2 focus:ring-[#FFD21F]/20 shadow-xs transition-all"
+            className="w-full bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 rounded-2xl pl-9 pr-3 py-2 text-xs font-medium text-[#0B0A14] dark:text-white placeholder:text-[#8A8A9A] dark:placeholder:text-[#6A6A7E] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 shadow-xs transition-all"
           />
         </div>
       </div>
@@ -180,7 +180,7 @@ export default function BrandCampaignsManagementPage() {
       {filteredCampaigns.length === 0 ? (
         <div className="py-16 text-center rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-8 space-y-3 shadow-xs">
           <Briefcase className="w-8 h-8 text-[#8A8A9A] dark:text-[#8E8EA4] mx-auto" />
-          <p className="text-sm font-bold text-[#0A0A0E] dark:text-white">No campaigns found</p>
+          <p className="text-sm font-bold text-[#0B0A14] dark:text-white">No campaigns found</p>
           <p className="text-xs text-[#6A6A78] dark:text-[#A0A0B4]">Try clearing filters or create a new campaign brief.</p>
         </div>
       ) : (
@@ -192,7 +192,7 @@ export default function BrandCampaignsManagementPage() {
             return (
               <div
                 key={c.id}
-                className="group rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 hover:border-[#FFD21F] dark:hover:border-[#FFD21F] hover:shadow-md transition-all duration-300 p-5 flex flex-col justify-between shadow-xs relative overflow-hidden text-[#0A0A0E] dark:text-[#F4F4F8]"
+                className="group rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 hover:border-primary dark:hover:border-primary hover:shadow-md transition-all duration-300 p-5 flex flex-col justify-between shadow-xs relative overflow-hidden text-[#0B0A14] dark:text-[#F4F4F8]"
               >
                 <div className="space-y-4">
                   {/* Card Cover Banner & Badge */}
@@ -207,11 +207,11 @@ export default function BrandCampaignsManagementPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
                     <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-                      <span className="px-2.5 py-1 rounded-full bg-white/90 dark:bg-[#12121A]/90 backdrop-blur-md border border-white/40 dark:border-white/20 text-[#0A0A0E] dark:text-white text-[10px] font-sans font-extrabold uppercase tracking-wider shadow-xs">
+                      <span className="px-2.5 py-1 rounded-full bg-white/90 dark:bg-[#12121A]/90 backdrop-blur-md border border-white/40 dark:border-white/20 text-[#0B0A14] dark:text-white text-[10px] font-sans font-extrabold uppercase tracking-wider shadow-xs">
                         {c.category}
                       </span>
                       <span
-                        className="px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md text-[#FFD21F] text-xs font-mono font-black border border-[#FFD21F]/30 flex items-center gap-1"
+                        className="px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md text-primary text-xs font-mono font-black border border-primary/30 flex items-center gap-1"
                         title={isDifferentCurrency ? `Authoritative brief budget: ${formatCurrency(c.budget.totalBudget, originalCurrency)}` : undefined}
                       >
                         <span>{formatCurrency(c.budget.totalBudget, originalCurrency)}</span>
@@ -238,14 +238,14 @@ export default function BrandCampaignsManagementPage() {
                   <div className="p-3.5 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 space-y-2.5 text-xs">
                     <div className="flex justify-between items-center text-[#5A5A68] dark:text-[#8E8EA4]">
                       <span className="font-semibold">Creator Roster</span>
-                      <span className="font-black text-[#0A0A0E] dark:text-white font-mono">
+                      <span className="font-black text-[#0B0A14] dark:text-white font-mono">
                         {c.acceptedCount || 0} / {c.maxCreators} accepted
                       </span>
                     </div>
 
                     <div className="flex justify-between items-center text-[#5A5A68] dark:text-[#8E8EA4]">
                       <span className="font-semibold">Per Creator Budget</span>
-                      <span className="font-bold text-[#0A0A0E] dark:text-white font-mono">
+                      <span className="font-bold text-[#0B0A14] dark:text-white font-mono">
                         {formatCurrency(c.budget?.perCreatorBudget || 0, originalCurrency)}
                         {isDifferentCurrency && (
                           <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] font-normal ml-1">
@@ -258,7 +258,7 @@ export default function BrandCampaignsManagementPage() {
                     {/* Progress Bar */}
                     <div className="w-full h-1.5 rounded-full bg-[#EAEAEF] dark:bg-[#20202E] overflow-hidden">
                       <div
-                        className="h-full rounded-full bg-gradient-to-r from-[#FFD21F] to-[#FFAE00]"
+                        className="h-full rounded-full bg-gradient-to-r from-primary to-[#FFAE00]"
                         style={{ width: `${Math.min(100, Math.max(10, cohortPercentage))}%` }}
                       />
                     </div>
@@ -266,7 +266,7 @@ export default function BrandCampaignsManagementPage() {
                     <div className="pt-1 flex items-center justify-between text-[11px] text-[#6A6A78] dark:text-[#8E8EA4] font-sans border-t border-black/5 dark:border-white/5">
                       <span className="flex items-center gap-1">
                         <Users className="w-3 h-3 text-[#7A7A8A] dark:text-[#8E8EA4]" />
-                        <strong className="text-[#0A0A0E] dark:text-white">{c.applicantsCount}</strong> proposals
+                        <strong className="text-[#0B0A14] dark:text-white">{c.applicantsCount}</strong> proposals
                       </span>
                       <span className="flex items-center gap-1">
                         <Calendar className="w-3 h-3 text-[#7A7A8A] dark:text-[#8E8EA4]" />
@@ -279,13 +279,13 @@ export default function BrandCampaignsManagementPage() {
                 {/* Footer Action Buttons */}
                 <div className="pt-4 flex items-center gap-2">
                   <Link href={`/campaigns/${c.id}`} className="flex-1">
-                    <button className="w-full py-2.5 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0A0A0E] dark:text-white text-xs font-bold transition-all border border-black/8 dark:border-white/10">
+                    <button className="w-full py-2.5 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0B0A14] dark:text-white text-xs font-bold transition-all border border-black/8 dark:border-white/10">
                       Public Brief
                     </button>
                   </Link>
 
                   <Link href="/app/applications" className="flex-1">
-                    <button className="w-full py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-extrabold transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1">
+                    <button className="w-full py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-extrabold transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1">
                       <span>Proposals ({c.applicantsCount})</span>
                       <ArrowRight className="w-3 h-3" />
                     </button>

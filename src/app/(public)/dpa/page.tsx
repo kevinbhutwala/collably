@@ -64,7 +64,7 @@ const dpaJsonLd = [
 
 export default function DPAPage() {
   return (
-    <div className="py-16 sm:py-24 bg-[#FAFAFC] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] min-h-screen">
+    <div className="py-16 sm:py-24 bg-[#FAFAFC] dark:bg-[#07070B] text-[#0B0A14] dark:text-[#F4F4F8] min-h-screen">
       <script
         id="dpa-schema"
         type="application/ld+json"
@@ -72,15 +72,15 @@ export default function DPAPage() {
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="space-y-4">
-          <Link href="/" className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[#7A7A8A] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white transition-colors">
+          <Link href="/" className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[#7A7A8A] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white transition-colors">
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Back to Home</span>
           </Link>
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 text-[#0A0A0E] dark:text-white text-xs font-mono font-bold shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 text-[#0B0A14] dark:text-white text-xs font-mono font-bold shadow-xs">
+            <span className="w-2 h-2 rounded-full bg-primary" />
             <span>Enterprise Compliance</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0B0A14] dark:text-white tracking-tight font-display">
             Data Processing Agreement (DPA)
           </h1>
           <p className="text-sm text-[#7A7A8A] dark:text-[#8E8EA4] font-mono">
@@ -108,7 +108,7 @@ export default function DPAPage() {
             <h2 className="text-xl font-bold text-[#111111] dark:text-white font-display">3. Technical &amp; Organizational Security Measures</h2>
             <p>AbeyCollab implements rigorous technical controls to safeguard all campaign assets and personal information:</p>
             <ul className="list-disc pl-5 space-y-1.5 text-[#6B6B6B] dark:text-[#8E8EA4]">
-              <li><strong className="text-[#111111] dark:text-white">Cryptographic Protection:</strong> User passwords hashed with PBKDF2 (100,000 rounds) + unique salt; session cookies signed with HMAC-SHA256 and configured with <code className="bg-black/5 dark:bg-white/10 px-1 py-0.5 rounded text-[11px] text-[#0A0A0E] dark:text-white">HttpOnly; Secure; SameSite=Lax</code>.</li>
+              <li><strong className="text-[#111111] dark:text-white">Cryptographic Protection:</strong> User passwords hashed with PBKDF2 (100,000 rounds) + unique salt; session cookies signed with HMAC-SHA256 and configured with <code className="bg-black/5 dark:bg-white/10 px-1 py-0.5 rounded text-[11px] text-[#0B0A14] dark:text-white">HttpOnly; Secure; SameSite=Lax</code>.</li>
               <li><strong className="text-[#111111] dark:text-white">Transport &amp; Storage Encryption:</strong> TLS 1.3 in transit across all endpoints; AES-256 at rest for media storage and database logs.</li>
               <li><strong className="text-[#111111] dark:text-white">Webhook Verification:</strong> HMAC signature validation on all incoming payment events (Stripe / Razorpay).</li>
             </ul>

@@ -98,10 +98,10 @@ export function NegotiationTimeline({
   };
 
   return (
-    <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6 text-[#0A0A0E]">
+    <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6 text-[#0B0A14]">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-black/8">
         <div>
-          <h3 className="text-lg font-bold text-[#0A0A0E] font-display">Structured Terms &amp; Negotiation History</h3>
+          <h3 className="text-lg font-bold text-[#0B0A14] font-display">Structured Terms &amp; Negotiation History</h3>
           <p className="text-xs text-[#5A5A68] font-sans">
             Immutable audit record of proposals, counter-offers, and agreed deliverable scope.
           </p>
@@ -111,7 +111,7 @@ export function NegotiationTimeline({
           variant="secondary"
           size="sm"
           onClick={() => setShowCounterForm(!showCounterForm)}
-          leftIcon={<Plus className="w-3.5 h-3.5 text-[#0A0A0E]" />}
+          leftIcon={<Plus className="w-3.5 h-3.5 text-[#0B0A14]" />}
           className="rounded-full"
         >
           {showCounterForm ? "Cancel Counter" : "Submit Counter Offer"}
@@ -133,15 +133,15 @@ export function NegotiationTimeline({
             >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2 font-mono text-xs">
                 <div className="flex items-center gap-2">
-                  <span className="px-2 py-0.5 rounded bg-white border border-black/8 text-[#0A0A0E] text-[10px] font-bold">
+                  <span className="px-2 py-0.5 rounded bg-white border border-black/8 text-[#0B0A14] text-[10px] font-bold">
                     {off.senderRole.toUpperCase()}
                   </span>
-                  <strong className="font-sans text-sm text-[#0A0A0E]">{off.senderName}</strong>
+                  <strong className="font-sans text-sm text-[#0B0A14]">{off.senderName}</strong>
                   <span className="text-[#6A6A78]">• {off.createdAt}</span>
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <span className="text-base font-extrabold text-[#0A0A0E] font-mono">
+                  <span className="text-base font-extrabold text-[#0B0A14] font-mono">
                     {formatCurrency(off.amount)}
                   </span>
                   <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold ${
@@ -152,7 +152,7 @@ export function NegotiationTimeline({
                 </div>
               </div>
 
-              <p className="text-xs text-[#0A0A0E] font-semibold mb-1 font-sans">
+              <p className="text-xs text-[#0B0A14] font-semibold mb-1 font-sans">
                 Scope: {off.deliverableTerms}
               </p>
               <p className="text-xs text-[#5A5A68] font-sans leading-relaxed">
@@ -165,7 +165,7 @@ export function NegotiationTimeline({
                     variant="primary"
                     size="sm"
                     onClick={() => handleAccept(off.id, off.amount)}
-                    leftIcon={<CheckCircle2 className="w-3.5 h-3.5 text-[#0A0A0E]" />}
+                    leftIcon={<CheckCircle2 className="w-3.5 h-3.5 text-[#0B0A14]" />}
                     className="rounded-full"
                   >
                     Accept Offer
@@ -180,7 +180,7 @@ export function NegotiationTimeline({
       {/* Counter Form Drawer */}
       {showCounterForm && (
         <form onSubmit={handleSendCounter} className="p-6 rounded-2xl bg-[#F8F8FC] border border-black/8 space-y-4">
-          <h4 className="text-sm font-bold text-[#0A0A0E] font-display">Draft Structured Counter Offer</h4>
+          <h4 className="text-sm font-bold text-[#0B0A14] font-display">Draft Structured Counter Offer</h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input
               label="Proposed Fee (₹ INR)"

@@ -141,7 +141,7 @@ function ResetPasswordForm() {
         <XCircle className="w-7 h-7 text-red-500 dark:text-red-400" />
       </div>
       <div className="space-y-2">
-        <h2 className="text-xl font-black text-[#0A0A0E] dark:text-white font-display">
+        <h2 className="text-xl font-black text-[#0B0A14] dark:text-white font-display">
           {tokenState === "expired" ? "Link Expired" : tokenState === "used" ? "Link Already Used" : "Invalid Link"}
         </h2>
         <p className="text-sm text-[#6A6A78] dark:text-[#8E8EA4] font-sans leading-relaxed">
@@ -150,7 +150,7 @@ function ResetPasswordForm() {
       </div>
       <Link
         href="/forgot-password"
-        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#FFD21F] to-[#FFC700] text-[#0A0A0E] font-extrabold text-sm transition-all shadow-[0_4px_16px_rgba(255,210,31,0.4)] border border-black/10 hover:opacity-90 active:scale-[0.98]"
+        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-primary to-accent text-[#0B0A14] font-extrabold text-sm transition-all shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10 hover:opacity-90 active:scale-[0.98]"
       >
         Request a New Reset Link
       </Link>
@@ -164,7 +164,7 @@ function ResetPasswordForm() {
         <ShieldCheck className="w-7 h-7 text-emerald-600 dark:text-emerald-400" />
       </div>
       <div className="space-y-2">
-        <h2 className="text-xl font-black text-[#0A0A0E] dark:text-white font-display">
+        <h2 className="text-xl font-black text-[#0B0A14] dark:text-white font-display">
           Password Updated
         </h2>
         <p className="text-sm text-[#6A6A78] dark:text-[#8E8EA4] font-sans leading-relaxed">
@@ -174,7 +174,7 @@ function ResetPasswordForm() {
       <div className="space-y-3">
         <button
           onClick={() => router.push("/login")}
-          className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] font-extrabold text-sm transition-all shadow-[0_4px_16px_rgba(255,210,31,0.4)] border border-black/10 hover:opacity-90 active:scale-[0.98]"
+          className="w-full py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] font-extrabold text-sm transition-all shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10 hover:opacity-90 active:scale-[0.98]"
         >
           Back to Login
         </button>
@@ -192,18 +192,18 @@ function ResetPasswordForm() {
   }
 
   return (
-    <div className="w-full max-w-md mx-auto rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-6 sm:p-8 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.06)] relative z-10 text-[#0A0A0E] dark:text-[#F4F4F8] select-none">
+    <div className="w-full max-w-md mx-auto rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-6 sm:p-8 space-y-6 shadow-[0_16px_40px_rgba(0,0,0,0.06)] relative z-10 text-[#0B0A14] dark:text-[#F4F4F8] select-none">
       {/* Header */}
       <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
         <Link
           href="/login"
-          className="inline-flex items-center gap-1.5 text-xs font-sans font-semibold text-[#7A7A8A] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white transition-colors group"
+          className="inline-flex items-center gap-1.5 text-xs font-sans font-semibold text-[#7A7A8A] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white transition-colors group"
         >
           <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
           Back to Sign In
         </Link>
-        <span className="text-[10px] font-mono text-[#0A0A0E] dark:text-[#FFD21F] font-bold uppercase flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40">
-          <KeyRound className="w-3 h-3 text-[#0A0A0E] dark:text-[#FFD21F]" />
+        <span className="text-[10px] font-mono text-[#0B0A14] dark:text-accent font-bold uppercase flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/20 border border-primary/40">
+          <KeyRound className="w-3 h-3 text-[#0B0A14] dark:text-accent" />
           Reset
         </span>
       </div>
@@ -215,7 +215,7 @@ function ResetPasswordForm() {
       {tokenState === "valid" && !success && (
         <>
           <div className="text-center space-y-1.5">
-            <h1 className="text-2xl sm:text-3xl font-black text-[#0A0A0E] dark:text-white tracking-tight font-display">
+            <h1 className="text-2xl sm:text-3xl font-black text-[#0B0A14] dark:text-white tracking-tight font-display">
               Set New Password
             </h1>
             <p className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-sans">
@@ -245,7 +245,7 @@ function ResetPasswordForm() {
                   <button
                     type="button"
                     onClick={() => setShowPassword((v) => !v)}
-                    className="text-[#7A7A8A] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white transition-colors p-1"
+                    className="text-[#7A7A8A] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white transition-colors p-1"
                     aria-label={showPassword ? "Hide password" : "Show password"}
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -327,7 +327,7 @@ function ResetPasswordForm() {
             <button
               type="submit"
               disabled={isLoading || strength.score < 2 || password !== confirmPassword}
-              className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_16px_rgba(255,210,31,0.4)] border border-black/10 flex items-center justify-center gap-2 disabled:opacity-50 active:scale-[0.98]"
+              className="w-full py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10 flex items-center justify-center gap-2 disabled:opacity-50 active:scale-[0.98]"
             >
               {isLoading ? (
                 <>

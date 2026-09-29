@@ -42,12 +42,12 @@ export default function AdminReportsPage() {
   }, []);
 
   return (
-    <div className="space-y-8 text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans">
+    <div className="space-y-8 text-[#0B0A14] dark:text-[#F4F4F8] select-none font-sans">
       {/* ── Header ── */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-black/8 dark:border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono font-bold uppercase text-[#0A0A0E] dark:text-[#F4F4F8] flex items-center gap-1.5">
+            <span className="text-xs font-mono font-bold uppercase text-[#0B0A14] dark:text-[#F4F4F8] flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               Live Telemetry Analytics
             </span>
@@ -56,7 +56,7 @@ export default function AdminReportsPage() {
               Direct Database Aggregates
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0B0A14] dark:text-white tracking-tight font-display">
             Agency Analytics & GMV Platform Telemetry
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4] mt-0.5 font-sans">
@@ -67,13 +67,13 @@ export default function AdminReportsPage() {
         <div className="flex items-center gap-2.5">
           <button
             onClick={fetchAnalytics}
-            className="p-2.5 rounded-full bg-white dark:bg-[#161622] hover:bg-black/5 dark:hover:bg-white/5 border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white transition-all cursor-pointer"
+            className="p-2.5 rounded-full bg-white dark:bg-[#161622] hover:bg-black/5 dark:hover:bg-white/5 border border-black/10 dark:border-white/10 text-[#0B0A14] dark:text-white transition-all cursor-pointer"
             title="Refresh Real Analytics"
           >
-            <RefreshCw className="w-4 h-4 text-[#0A0A0E] dark:text-white" />
+            <RefreshCw className="w-4 h-4 text-[#0B0A14] dark:text-white" />
           </button>
-          <button className="px-5 py-2.5 rounded-full bg-[#F4F4F8] dark:bg-white/5 hover:bg-black/5 dark:hover:bg-white/10 text-[#0A0A0E] dark:text-white text-xs font-bold transition-all flex items-center gap-1.5 border border-black/10 dark:border-white/10 cursor-pointer">
-            <Download className="w-4 h-4 text-[#0A0A0E] dark:text-white" />
+          <button className="px-5 py-2.5 rounded-full bg-[#F4F4F8] dark:bg-white/5 hover:bg-black/5 dark:hover:bg-white/10 text-[#0B0A14] dark:text-white text-xs font-bold transition-all flex items-center gap-1.5 border border-black/10 dark:border-white/10 cursor-pointer">
+            <Download className="w-4 h-4 text-[#0B0A14] dark:text-white" />
             <span>Export Financial Audit</span>
           </button>
         </div>
@@ -81,7 +81,7 @@ export default function AdminReportsPage() {
 
       {loading || !data ? (
         <div className="py-20 text-center">
-          <div className="w-8 h-8 mx-auto rounded-full border-2 border-[#FFD21F] border-t-transparent animate-spin mb-3" />
+          <div className="w-8 h-8 mx-auto rounded-full border-2 border-primary border-t-transparent animate-spin mb-3" />
           <p className="text-xs font-mono text-[#7A7A8A] dark:text-[#8E8EA4]">Aggregating platform database records...</p>
         </div>
       ) : (
@@ -94,7 +94,7 @@ export default function AdminReportsPage() {
               change="Verified"
               trend="up"
               subtitle="Active roster"
-              icon={<Users className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />}
+              icon={<Users className="w-4 h-4 text-[#0B0A14] dark:text-accent" />}
             />
             <StatsCard
               title="Active Brands"
@@ -102,7 +102,7 @@ export default function AdminReportsPage() {
               change="Verified"
               trend="up"
               subtitle="Registered sponsors"
-              icon={<Building2 className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />}
+              icon={<Building2 className="w-4 h-4 text-[#0B0A14] dark:text-accent" />}
             />
             <StatsCard
               title="Total Escrow GMV"
@@ -110,7 +110,7 @@ export default function AdminReportsPage() {
               change="Secured"
               trend="up"
               subtitle="Escrow custody"
-              icon={<ShieldCheck className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />}
+              icon={<ShieldCheck className="w-4 h-4 text-[#0B0A14] dark:text-accent" />}
             />
             <StatsCard
               title="Creator Payouts"
@@ -118,7 +118,7 @@ export default function AdminReportsPage() {
               change="Disbursed"
               trend="up"
               subtitle="Released to creators"
-              icon={<DollarSign className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />}
+              icon={<DollarSign className="w-4 h-4 text-[#0B0A14] dark:text-accent" />}
             />
           </div>
 
@@ -128,7 +128,7 @@ export default function AdminReportsPage() {
               <span className="text-[10px] font-mono font-bold text-[#7A7A8A] dark:text-[#8E8EA4] uppercase block">
                 Total Campaigns
               </span>
-              <span className="text-lg font-black font-display text-[#0A0A0E] dark:text-white">
+              <span className="text-lg font-black font-display text-[#0B0A14] dark:text-white">
                 {data.totalCampaigns}
               </span>
               <span className="text-[10px] font-mono text-emerald-700 dark:text-emerald-400 font-bold block mt-0.5">
@@ -140,7 +140,7 @@ export default function AdminReportsPage() {
               <span className="text-[10px] font-mono font-bold text-[#7A7A8A] dark:text-[#8E8EA4] uppercase block">
                 Applications
               </span>
-              <span className="text-lg font-black font-display text-[#0A0A0E] dark:text-white">
+              <span className="text-lg font-black font-display text-[#0B0A14] dark:text-white">
                 {data.totalApplications}
               </span>
               <span className="text-[10px] font-mono text-[#5A5A68] dark:text-[#8E8EA4] block mt-0.5">
@@ -164,7 +164,7 @@ export default function AdminReportsPage() {
               <span className="text-[10px] font-mono font-bold text-[#7A7A8A] dark:text-[#8E8EA4] uppercase block">
                 Conversion Rate
               </span>
-              <span className="text-lg font-black font-display text-[#0A0A0E] dark:text-white">
+              <span className="text-lg font-black font-display text-[#0B0A14] dark:text-white">
                 {data.conversionRate}%
               </span>
               <span className="text-[10px] font-mono text-emerald-700 dark:text-emerald-400 font-bold block mt-0.5">
@@ -176,7 +176,7 @@ export default function AdminReportsPage() {
               <span className="text-[10px] font-mono font-bold text-[#7A7A8A] dark:text-[#8E8EA4] uppercase block">
                 Match Success Rate
               </span>
-              <span className="text-lg font-black font-display text-[#0A0A0E] dark:text-white">
+              <span className="text-lg font-black font-display text-[#0B0A14] dark:text-white">
                 {data.matchSuccessRate}%
               </span>
               <span className="text-[10px] font-mono text-emerald-700 dark:text-emerald-400 font-bold block mt-0.5">
@@ -204,14 +204,14 @@ export default function AdminReportsPage() {
                 <span className="text-[10px] font-mono font-bold text-[#7A7A8A] dark:text-[#8E8EA4] uppercase block">
                   Disputes Filed / Resolved
                 </span>
-                <span className="text-xl font-black font-display text-[#0A0A0E] dark:text-white">
+                <span className="text-xl font-black font-display text-[#0B0A14] dark:text-white">
                   {data.totalDisputes} / {data.resolvedDisputes}
                 </span>
                 <span className="text-[11px] font-mono text-emerald-700 dark:text-emerald-400 font-bold block">
                   {data.totalDisputes === 0 ? "Zero unresolved disputes" : "Arbitration desk active"}
                 </span>
               </div>
-              <div className="w-10 h-10 rounded-2xl bg-black/5 dark:bg-white/10 flex items-center justify-center text-[#0A0A0E] dark:text-white">
+              <div className="w-10 h-10 rounded-2xl bg-black/5 dark:bg-white/10 flex items-center justify-center text-[#0B0A14] dark:text-white">
                 <Scale className="w-5 h-5" />
               </div>
             </div>
@@ -221,7 +221,7 @@ export default function AdminReportsPage() {
                 <span className="text-[10px] font-mono font-bold text-[#7A7A8A] dark:text-[#8E8EA4] uppercase block">
                   Dispute Refunds Issued
                 </span>
-                <span className="text-xl font-black font-display text-[#0A0A0E] dark:text-white">
+                <span className="text-xl font-black font-display text-[#0B0A14] dark:text-white">
                   {formatCurrency(data.totalRefunds)}
                 </span>
                 <span className="text-[11px] font-mono text-[#5A5A68] dark:text-[#8E8EA4] block">
@@ -238,14 +238,14 @@ export default function AdminReportsPage() {
                 <span className="text-[10px] font-mono font-bold text-[#7A7A8A] dark:text-[#8E8EA4] uppercase block">
                   Trending Activity Telemetry
                 </span>
-                <span className="text-xl font-black font-display text-[#0A0A0E] dark:text-white">
+                <span className="text-xl font-black font-display text-[#0B0A14] dark:text-white">
                   {data.trendingActivityEvents} Events
                 </span>
-                <span className="text-[11px] font-mono text-amber-700 dark:text-[#FFD21F] font-bold block">
+                <span className="text-[11px] font-mono text-amber-700 dark:text-accent font-bold block">
                   Anti-gaming verified views &amp; saves
                 </span>
               </div>
-              <div className="w-10 h-10 rounded-2xl bg-[#FFFDF5] dark:bg-[#201D14] border border-[#FFD21F]/30 text-[#0A0A0E] dark:text-[#FFD21F] flex items-center justify-center">
+              <div className="w-10 h-10 rounded-2xl bg-primary/5 dark:bg-[#201D14] border border-primary/30 text-[#0B0A14] dark:text-accent flex items-center justify-center">
                 <Zap className="w-5 h-5" />
               </div>
             </div>
@@ -255,14 +255,14 @@ export default function AdminReportsPage() {
           <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#14141E] border border-black/8 dark:border-white/10 shadow-xs space-y-5">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">
+                <h3 className="text-base font-bold text-[#0B0A14] dark:text-white font-display">
                   Monthly Platform GMV &amp; Payout Release Pacing
                 </h3>
                 <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
                   Derived from live platform database contracts and Stripe custody ledger.
                 </p>
               </div>
-              <span className="px-3 py-1 rounded-full bg-[#FFD21F]/15 text-[#0A0A0E] dark:text-[#FFD21F] text-[10px] font-mono font-bold border border-[#FFD21F]/30">
+              <span className="px-3 py-1 rounded-full bg-primary/15 text-[#0B0A14] dark:text-accent text-[10px] font-mono font-bold border border-primary/30">
                 100% Real Database State
               </span>
             </div>
@@ -271,7 +271,7 @@ export default function AdminReportsPage() {
               {data.monthlyData?.map((m: any) => (
                 <div key={m.month} className="py-3.5 flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <span className="font-bold text-[#0A0A0E] dark:text-white font-sans text-sm w-20">
+                    <span className="font-bold text-[#0B0A14] dark:text-white font-sans text-sm w-20">
                       {m.month} 2026
                     </span>
                     <span className="px-2 py-0.5 rounded-md bg-black/5 dark:bg-white/10 text-[#5A5A68] dark:text-[#8E8EA4] text-[10px]">
@@ -281,7 +281,7 @@ export default function AdminReportsPage() {
                   <div className="flex items-center gap-8">
                     <div>
                       <span className="text-[#7A7A8A] dark:text-[#8E8EA4] block text-[10px]">Gross Escrow GMV</span>
-                      <span className="text-[#0A0A0E] dark:text-white font-bold text-sm">
+                      <span className="text-[#0B0A14] dark:text-white font-bold text-sm">
                         {formatCurrency(m.gmv)}
                       </span>
                     </div>

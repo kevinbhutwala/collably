@@ -48,7 +48,7 @@ function AvatarFallback({ name, className }: { name: string; className?: string 
   return (
     <div
       className={cn(
-        "flex items-center justify-center bg-[#FFD21F] text-[#0A0A0E] font-bold text-xs rounded-2xl shrink-0 select-none",
+        "flex items-center justify-center bg-primary text-[#0B0A14] font-bold text-xs rounded-2xl shrink-0 select-none",
         className
       )}
     >
@@ -755,16 +755,16 @@ export function ChatWorkspace() {
   // Loading Skeleton
   if (isLoading) {
     return (
-      <div className="h-full flex flex-col items-center justify-center rounded-3xl bg-white border border-black/8 text-[#0A0A0E] shadow-xs space-y-3">
-        <div className="w-8 h-8 rounded-full border-3 border-[#FFD21F] border-t-transparent animate-spin" />
-        <p className="text-xs font-bold text-[#0A0A0E] font-display">Syncing Live Message Channels...</p>
+      <div className="h-full flex flex-col items-center justify-center rounded-3xl bg-white border border-black/8 text-[#0B0A14] shadow-xs space-y-3">
+        <div className="w-8 h-8 rounded-full border-3 border-primary border-t-transparent animate-spin" />
+        <p className="text-xs font-bold text-[#0B0A14] font-display">Syncing Live Message Channels...</p>
         <p className="text-[11px] text-[#7A7A8A]">Connecting to encrypted collaboration threads...</p>
       </div>
     );
   }
 
   return (
-    <div className="relative rounded-3xl bg-white dark:bg-[#0E0E14] border border-black/8 dark:border-white/10 shadow-xs overflow-hidden h-full w-full text-[#0A0A0E] dark:text-[#F4F4F8] flex flex-col select-none">
+    <div className="relative rounded-3xl bg-white dark:bg-[#0E0E14] border border-black/8 dark:border-white/10 shadow-xs overflow-hidden h-full w-full text-[#0B0A14] dark:text-[#F4F4F8] flex flex-col select-none">
       <div className="grid grid-cols-1 md:grid-cols-12 flex-1 overflow-hidden h-full">
 
         {/* ══════════════════════════════════════════════════════════════════════
@@ -779,11 +779,11 @@ export function ChatWorkspace() {
           <div className="p-4 border-b border-black/8 dark:border-white/10 space-y-3 bg-white dark:bg-[#12121A] shrink-0">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-xl bg-[#FFD21F] flex items-center justify-center shadow-2xs">
-                  <MessageSquare className="w-4 h-4 text-[#0A0A0E]" />
+                <div className="w-7 h-7 rounded-xl bg-primary flex items-center justify-center shadow-2xs">
+                  <MessageSquare className="w-4 h-4 text-[#0B0A14]" />
                 </div>
                 <div>
-                  <h2 className="font-extrabold text-sm text-[#0A0A0E] dark:text-white font-display tracking-tight leading-none">
+                  <h2 className="font-extrabold text-sm text-[#0B0A14] dark:text-white font-display tracking-tight leading-none">
                     Messages
                   </h2>
                   <span className="text-[10px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4]">
@@ -795,7 +795,7 @@ export function ChatWorkspace() {
               {/* Action: New Conversation */}
               <button
                 onClick={() => setIsNewChatModalOpen(true)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs shadow-2xs border border-black/10 transition-all hover-lift active:scale-95"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-bold text-xs shadow-2xs border border-black/10 transition-all hover-lift active:scale-95"
                 title="Start a new message thread"
               >
                 <Plus className="w-3.5 h-3.5" />
@@ -811,12 +811,12 @@ export function ChatWorkspace() {
                 placeholder="Search messages, creators, briefs..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-8 py-2 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-xs font-medium text-[#0A0A0E] dark:text-[#F4F4F8] placeholder:text-[#8A8A9A] dark:placeholder:text-[#7A7A8E] focus:outline-none focus:border-[#FFD21F] focus:ring-2 focus:ring-[#FFD21F]/20 transition-all shadow-2xs"
+                className="w-full pl-9 pr-8 py-2 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-xs font-medium text-[#0B0A14] dark:text-[#F4F4F8] placeholder:text-[#8A8A9A] dark:placeholder:text-[#7A7A8E] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all shadow-2xs"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-[#7A7A8A] hover:text-[#0A0A0E]"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-[#7A7A8A] hover:text-[#0B0A14]"
                 >
                   <X className="w-3.5 h-3.5" />
                 </button>
@@ -837,7 +837,7 @@ export function ChatWorkspace() {
                   className={cn(
                     "px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold transition-all shrink-0 select-none",
                     activeTab === tab.id
-                      ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] border border-transparent dark:border-[#FFD21F] shadow-2xs font-bold"
+                      ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] border border-transparent dark:border-primary shadow-2xs font-bold"
                       : "bg-[#F0F0F4] dark:bg-[#14141E] hover:bg-[#EAEAEF] dark:hover:bg-[#1E1E2C] text-[#6A6A78] dark:text-[#8E8EA4]"
                   )}
                 >
@@ -853,14 +853,14 @@ export function ChatWorkspace() {
               <div className="p-8 text-center space-y-3 text-[#7A7A8A]">
                 <Inbox className="w-8 h-8 mx-auto text-[#C0C0CC]" />
                 <div>
-                  <p className="text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8]">No conversations yet</p>
+                  <p className="text-xs font-bold text-[#0B0A14] dark:text-[#F4F4F8]">No conversations yet</p>
                   <p className="text-[11px] mt-1 leading-relaxed text-[#7A7A8A]">
                     Click &ldquo;New Chat&rdquo; to start messaging any creator, brand, or platform support.
                   </p>
                 </div>
                 <button
                   onClick={() => setIsNewChatModalOpen(true)}
-                  className="px-4 py-2 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] text-xs font-bold shadow-2xs"
+                  className="px-4 py-2 rounded-full bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] text-xs font-bold shadow-2xs"
                 >
                   Start Conversation
                 </button>
@@ -873,7 +873,7 @@ export function ChatWorkspace() {
                     setSearchQuery("");
                     setActiveTab("all");
                   }}
-                  className="text-xs text-[#0A0A0E] dark:text-[#FFD21F] underline font-bold"
+                  className="text-xs text-[#0B0A14] dark:text-accent underline font-bold"
                 >
                   Reset filters
                 </button>
@@ -899,7 +899,7 @@ export function ChatWorkspace() {
                     className={cn(
                       "w-full p-4 text-left flex items-start gap-3 transition-all cursor-pointer group relative",
                       isActive
-                        ? "bg-white dark:bg-[#1C1C2C] border-l-3 border-[#FFD21F] shadow-xs"
+                        ? "bg-white dark:bg-[#1C1C2C] border-l-3 border-primary shadow-xs"
                         : "hover:bg-white/70 dark:hover:bg-white/5"
                     )}
                   >
@@ -918,7 +918,7 @@ export function ChatWorkspace() {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-1 mb-0.5">
                         <div className="flex items-center gap-1.5 min-w-0">
-                          <span className="font-bold text-xs text-[#0A0A0E] dark:text-[#F4F4F8] truncate font-display">{pName}</span>
+                          <span className="font-bold text-xs text-[#0B0A14] dark:text-[#F4F4F8] truncate font-display">{pName}</span>
                           <span
                             className={cn(
                               "text-[8px] font-mono font-bold px-1.5 py-0.5 rounded-full uppercase shrink-0",
@@ -934,7 +934,7 @@ export function ChatWorkspace() {
                         </div>
                         <div className="flex items-center gap-1.5 shrink-0">
                           {isPinned && (
-                            <Pin className="w-3 h-3 text-[#FFD21F] fill-[#FFD21F] shrink-0 rotate-45" />
+                            <Pin className="w-3 h-3 text-primary fill-primary shrink-0 rotate-45" />
                           )}
                           {isMuted && (
                             <VolumeX className="w-3 h-3 text-[#8A8A9A] shrink-0" />
@@ -961,7 +961,7 @@ export function ChatWorkspace() {
 
                         <div className="flex items-center gap-1 shrink-0">
                           {conv.unreadCount > 0 && (
-                            <span className="px-1.5 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-[10px] font-extrabold font-mono shadow-2xs">
+                            <span className="px-1.5 py-0.5 rounded-full bg-primary text-[#0B0A14] text-[10px] font-extrabold font-mono shadow-2xs">
                               {conv.unreadCount}
                             </span>
                           )}
@@ -970,14 +970,14 @@ export function ChatWorkspace() {
                           <div className="opacity-0 group-hover:opacity-100 flex items-center gap-1 transition-opacity">
                             <button
                               onClick={(e) => handleTogglePin(conv.id, e)}
-                              className="p-1 hover:bg-black/5 dark:hover:bg-white/10 rounded-md text-[#A0A0B0] hover:text-[#FFD21F] transition-colors"
+                              className="p-1 hover:bg-black/5 dark:hover:bg-white/10 rounded-md text-[#A0A0B0] hover:text-primary transition-colors"
                               title={isPinned ? "Unpin thread" : "Pin thread to top"}
                             >
-                              <Pin className={`w-3 h-3 ${isPinned ? "fill-current text-[#FFD21F]" : ""}`} />
+                              <Pin className={`w-3 h-3 ${isPinned ? "fill-current text-primary" : ""}`} />
                             </button>
                             <button
                               onClick={(e) => handleToggleMute(conv.id, e)}
-                              className="p-1 hover:bg-black/5 dark:hover:bg-white/10 rounded-md text-[#A0A0B0] hover:text-[#0A0A0E] dark:hover:text-white transition-colors"
+                              className="p-1 hover:bg-black/5 dark:hover:bg-white/10 rounded-md text-[#A0A0B0] hover:text-[#0B0A14] dark:hover:text-white transition-colors"
                               title={isMuted ? "Unmute alerts" : "Mute alerts"}
                             >
                               {isMuted ? <Volume2 className="w-3 h-3" /> : <VolumeX className="w-3 h-3" />}
@@ -1015,7 +1015,7 @@ export function ChatWorkspace() {
                 <div className="flex items-center gap-3 min-w-0">
                   <button
                     onClick={() => setMobileView("list")}
-                    className="md:hidden p-2 rounded-xl bg-white dark:bg-[#181824] border border-black/8 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/10 text-[#0A0A0E] dark:text-[#F4F4F8]"
+                    className="md:hidden p-2 rounded-xl bg-white dark:bg-[#181824] border border-black/8 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/10 text-[#0B0A14] dark:text-[#F4F4F8]"
                   >
                     <ArrowLeft className="w-4 h-4" />
                   </button>
@@ -1032,7 +1032,7 @@ export function ChatWorkspace() {
 
                   <div className="min-w-0">
                     <div className="flex items-center gap-2">
-                      <h3 className="font-extrabold text-sm text-[#0A0A0E] dark:text-white truncate font-display">{partnerName}</h3>
+                      <h3 className="font-extrabold text-sm text-[#0B0A14] dark:text-white truncate font-display">{partnerName}</h3>
                       <span
                         className={cn(
                           "text-[9px] font-mono font-bold px-1.5 py-0.5 rounded-full uppercase shrink-0",
@@ -1064,8 +1064,8 @@ export function ChatWorkspace() {
                     className={cn(
                       "p-2 rounded-full border border-black/8 dark:border-white/10 text-xs transition-colors cursor-pointer",
                       isInChatSearchOpen
-                        ? "bg-[#FFD21F] text-[#0A0A0E]"
-                        : "bg-white dark:bg-[#181824] text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-white"
+                        ? "bg-primary text-[#0B0A14]"
+                        : "bg-white dark:bg-[#181824] text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-white"
                     )}
                     title="Search in messages"
                   >
@@ -1077,8 +1077,8 @@ export function ChatWorkspace() {
                     className={cn(
                       "p-2 rounded-full border border-black/8 dark:border-white/10 text-xs transition-colors cursor-pointer",
                       activeConversation.pinnedBy?.includes(user?.id || "")
-                        ? "bg-[#FFD21F] text-[#0A0A0E]"
-                        : "bg-white dark:bg-[#181824] text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-white"
+                        ? "bg-primary text-[#0B0A14]"
+                        : "bg-white dark:bg-[#181824] text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-white"
                     )}
                     title={activeConversation.pinnedBy?.includes(user?.id || "") ? "Unpin thread" : "Pin thread to top"}
                   >
@@ -1091,7 +1091,7 @@ export function ChatWorkspace() {
                       "p-2 rounded-full border border-black/8 dark:border-white/10 text-xs transition-colors cursor-pointer",
                       activeConversation.mutedBy?.includes(user?.id || "")
                         ? "bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300"
-                        : "bg-white dark:bg-[#181824] text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-white"
+                        : "bg-white dark:bg-[#181824] text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-white"
                     )}
                     title={activeConversation.mutedBy?.includes(user?.id || "") ? "Unmute alerts" : "Mute alerts"}
                   >
@@ -1107,7 +1107,7 @@ export function ChatWorkspace() {
                       onClick={() => {
                         window.open(`/campaigns/${activeConversation.campaignId}`, "_blank");
                       }}
-                      className="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white dark:bg-[#181824] hover:bg-[#F4F4F8] dark:hover:bg-[#202030] border border-black/8 dark:border-white/10 text-xs font-semibold text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-[#F4F4F8] transition-colors"
+                      className="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white dark:bg-[#181824] hover:bg-[#F4F4F8] dark:hover:bg-[#202030] border border-black/8 dark:border-white/10 text-xs font-semibold text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-[#F4F4F8] transition-colors"
                     >
                       <span>Brief</span>
                       <ExternalLink className="w-3 h-3" />
@@ -1125,10 +1125,10 @@ export function ChatWorkspace() {
                     placeholder="Search messages in this thread..."
                     value={inChatSearchQuery}
                     onChange={(e) => setInChatSearchQuery(e.target.value)}
-                    className="flex-1 bg-transparent text-xs text-[#0A0A0E] dark:text-white focus:outline-hidden"
+                    className="flex-1 bg-transparent text-xs text-[#0B0A14] dark:text-white focus:outline-hidden"
                   />
                   {inChatSearchQuery && (
-                    <button onClick={() => setInChatSearchQuery("")} className="text-[#8A8A9A] hover:text-[#0A0A0E]">
+                    <button onClick={() => setInChatSearchQuery("")} className="text-[#8A8A9A] hover:text-[#0B0A14]">
                       <X className="w-3.5 h-3.5" />
                     </button>
                   )}
@@ -1137,7 +1137,7 @@ export function ChatWorkspace() {
                       setIsInChatSearchOpen(false);
                       setInChatSearchQuery("");
                     }}
-                    className="text-xs text-[#8A8A9A] hover:text-[#0A0A0E] font-medium"
+                    className="text-xs text-[#8A8A9A] hover:text-[#0B0A14] font-medium"
                   >
                     Close
                   </button>
@@ -1155,9 +1155,9 @@ export function ChatWorkspace() {
                 ).length === 0 ? (
                   <div className="h-full flex flex-col items-center justify-center text-center space-y-2 text-[#9A9AA8]">
                     <div className="w-12 h-12 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 flex items-center justify-center">
-                      <Sparkles className="w-6 h-6 text-[#FFD21F]" />
+                      <Sparkles className="w-6 h-6 text-primary" />
                     </div>
-                    <p className="text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8]">
+                    <p className="text-xs font-bold text-[#0B0A14] dark:text-[#F4F4F8]">
                       {inChatSearchQuery ? "No messages match your search" : "Conversation Initiated"}
                     </p>
                     <p className="text-[11px] max-w-xs text-[#7A7A8A] dark:text-[#8E8EA4]">
@@ -1217,8 +1217,8 @@ export function ChatWorkspace() {
                             className={cn(
                               "px-4 py-3 rounded-2xl text-sm leading-relaxed shadow-xs transition-all",
                               isMine
-                                ? "bg-gradient-to-r from-[#FFD21F] to-[#FFE052] text-[#0A0A0E] font-medium border border-black/10 rounded-tr-sm"
-                                : "bg-[#F5F5F9] dark:bg-[#181824] border border-black/6 dark:border-white/10 text-[#0A0A0E] dark:text-[#F4F4F8] rounded-tl-sm"
+                                ? "bg-gradient-to-r from-primary to-accent text-[#0B0A14] font-medium border border-black/10 rounded-tr-sm"
+                                : "bg-[#F5F5F9] dark:bg-[#181824] border border-black/6 dark:border-white/10 text-[#0B0A14] dark:text-[#F4F4F8] rounded-tl-sm"
                             )}
                           >
                             <p className="whitespace-pre-wrap break-words">{m.content}</p>
@@ -1251,7 +1251,7 @@ export function ChatWorkspace() {
                                           <FileText className="w-3.5 h-3.5" />
                                         </div>
                                       )}
-                                      <span className="font-bold text-[#0A0A0E] dark:text-[#F4F4F8] truncate">{att.name}</span>
+                                      <span className="font-bold text-[#0B0A14] dark:text-[#F4F4F8] truncate">{att.name}</span>
                                       {att.size && <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4]">({att.size})</span>}
                                     </div>
 
@@ -1260,7 +1260,7 @@ export function ChatWorkspace() {
                                       download={att.name}
                                       target="_blank"
                                       rel="noreferrer"
-                                      className="p-1.5 rounded-lg hover:bg-black/10 dark:hover:bg-white/10 text-[#0A0A0E] dark:text-[#F4F4F8] shrink-0"
+                                      className="p-1.5 rounded-lg hover:bg-black/10 dark:hover:bg-white/10 text-[#0B0A14] dark:text-[#F4F4F8] shrink-0"
                                       title="Download attachment"
                                     >
                                       <Download className="w-3.5 h-3.5" />
@@ -1272,9 +1272,9 @@ export function ChatWorkspace() {
 
                             {/* Read Receipt */}
                             {isMine && (
-                              <div className="flex justify-end items-center gap-1 mt-1 text-[10px] font-mono text-[#0A0A0E]/50">
+                              <div className="flex justify-end items-center gap-1 mt-1 text-[10px] font-mono text-[#0B0A14]/50">
                                 <span>Sent</span>
-                                <CheckCheck className="w-3.5 h-3.5 text-[#0A0A0E]/70" />
+                                <CheckCheck className="w-3.5 h-3.5 text-[#0B0A14]/70" />
                               </div>
                             )}
                           </div>
@@ -1292,7 +1292,7 @@ export function ChatWorkspace() {
                                   className={cn(
                                     "px-2 py-0.5 rounded-full text-xs font-mono font-bold flex items-center gap-1 border transition-all shadow-2xs",
                                     userReacted
-                                      ? "bg-[#FFD21F]/30 border-[#FFD21F] text-[#0A0A0E] dark:text-[#FFD21F]"
+                                      ? "bg-primary/30 border-primary text-[#0B0A14] dark:text-accent"
                                       : "bg-white dark:bg-[#181824] border-black/8 dark:border-white/10 text-[#5A5A68] dark:text-[#A0A0B4] hover:bg-[#F8F8FC] dark:hover:bg-[#202030]"
                                   )}
                                 >
@@ -1315,7 +1315,7 @@ export function ChatWorkspace() {
                       <span className="w-1.5 h-1.5 rounded-full bg-[#8A8A9A] animate-bounce" />
                       <span className="w-1.5 h-1.5 rounded-full bg-[#8A8A9A] animate-bounce [animation-delay:0.2s]" />
                       <span className="w-1.5 h-1.5 rounded-full bg-[#8A8A9A] animate-bounce [animation-delay:0.4s]" />
-                      <span className="text-[11px] font-bold text-[#0A0A0E] dark:text-[#F4F4F8] ml-1.5 font-display">{partnerName} is typing...</span>
+                      <span className="text-[11px] font-bold text-[#0B0A14] dark:text-[#F4F4F8] ml-1.5 font-display">{partnerName} is typing...</span>
                     </div>
                   </div>
                 )}
@@ -1325,7 +1325,7 @@ export function ChatWorkspace() {
               <div className="border-t border-black/8 dark:border-white/10 bg-white dark:bg-[#12121A] p-3 sm:p-4 shrink-0 space-y-2">
                 {/* Staged Attachment Preview Pill */}
                 {stagedAttachment && (
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#FAF9F5] dark:bg-[#1A1A26] border border-[#FFD21F]/60 text-xs font-mono shadow-2xs animate-fadeIn">
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#FAF9F5] dark:bg-[#1A1A26] border border-primary/60 text-xs font-mono shadow-2xs animate-fadeIn">
                     {stagedAttachment.type === "video" ? (
                       <Play className="w-3.5 h-3.5 text-red-600" />
                     ) : stagedAttachment.type === "image" ? (
@@ -1334,7 +1334,7 @@ export function ChatWorkspace() {
                     ) : (
                       <FileText className="w-3.5 h-3.5 text-blue-600" />
                     )}
-                    <span className="font-bold text-[#0A0A0E] dark:text-[#F4F4F8] max-w-xs truncate">{stagedAttachment.name}</span>
+                    <span className="font-bold text-[#0B0A14] dark:text-[#F4F4F8] max-w-xs truncate">{stagedAttachment.name}</span>
                     <span className="text-[#888898]">({stagedAttachment.size})</span>
                     <button
                       type="button"
@@ -1357,7 +1357,7 @@ export function ChatWorkspace() {
                   <button
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
-                    className="p-2.5 rounded-full hover:bg-[#F4F4F8] dark:hover:bg-[#1E1E2C] text-[#6A6A78] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-[#F4F4F8] transition-colors shrink-0"
+                    className="p-2.5 rounded-full hover:bg-[#F4F4F8] dark:hover:bg-[#1E1E2C] text-[#6A6A78] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-[#F4F4F8] transition-colors shrink-0"
                     title="Attach image, video or deliverable"
                   >
                     <Paperclip className="w-4 h-4" />
@@ -1371,13 +1371,13 @@ export function ChatWorkspace() {
                       setInputText(e.target.value);
                       notifyTyping(user?.name || "User", true);
                     }}
-                    className="flex-1 bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 rounded-full px-4 py-2.5 text-sm font-medium text-[#0A0A0E] dark:text-[#F4F4F8] placeholder:text-[#9A9AA8] dark:placeholder:text-[#7A7A8E] focus:outline-none focus:border-[#FFD21F] focus:ring-2 focus:ring-[#FFD21F]/20 transition-all shadow-2xs"
+                    className="flex-1 bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 rounded-full px-4 py-2.5 text-sm font-medium text-[#0B0A14] dark:text-[#F4F4F8] placeholder:text-[#9A9AA8] dark:placeholder:text-[#7A7A8E] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all shadow-2xs"
                   />
 
                   <button
                     type="submit"
                     disabled={!inputText.trim() && !stagedAttachment}
-                    className="p-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] to-[#FFE052] hover:from-[#FFE052] hover:to-[#FFD21F] border border-black/10 text-[#0A0A0E] transition-all disabled:opacity-30 shrink-0 shadow-xs hover-lift active:scale-95"
+                    className="p-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary border border-black/10 text-[#0B0A14] transition-all disabled:opacity-30 shrink-0 shadow-xs hover-lift active:scale-95"
                     title="Send message"
                   >
                     <Send className="w-4 h-4" />
@@ -1388,11 +1388,11 @@ export function ChatWorkspace() {
           ) : (
             /* Blank state when no conversation is selected */
             <div className="h-full flex flex-col items-center justify-center text-center p-8 space-y-4 text-[#8A8A9A]">
-              <div className="w-14 h-14 rounded-3xl bg-[#FAF9F5] dark:bg-[#181824] border border-[#FFD21F]/40 flex items-center justify-center shadow-xs">
-                <MessageSquare className="w-7 h-7 text-[#FFD21F]" />
+              <div className="w-14 h-14 rounded-3xl bg-[#FAF9F5] dark:bg-[#181824] border border-primary/40 flex items-center justify-center shadow-xs">
+                <MessageSquare className="w-7 h-7 text-primary" />
               </div>
               <div className="space-y-1">
-                <h3 className="font-extrabold text-base text-[#0A0A0E] dark:text-white font-display">
+                <h3 className="font-extrabold text-base text-[#0B0A14] dark:text-white font-display">
                   {conversations.length === 0 ? "No Active Channels" : "Select a Channel"}
                 </h3>
                 <p className="text-xs max-w-sm leading-relaxed text-[#6A6A78] dark:text-[#8E8EA4]">
@@ -1403,7 +1403,7 @@ export function ChatWorkspace() {
               </div>
               <button
                 onClick={() => setIsNewChatModalOpen(true)}
-                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] to-[#FFE052] text-[#0A0A0E] font-bold text-xs shadow-xs border border-black/10 flex items-center gap-1.5"
+                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent text-[#0B0A14] font-bold text-xs shadow-xs border border-black/10 flex items-center gap-1.5"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span>Start New Conversation</span>
@@ -1426,7 +1426,7 @@ export function ChatWorkspace() {
         description="Initiate a direct messaging thread with verified creators or brand partners."
         maxWidth="md"
       >
-        <form onSubmit={handleCreateNewConversation} className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
+        <form onSubmit={handleCreateNewConversation} className="space-y-4 text-[#0B0A14] dark:text-[#F4F4F8]">
           {/* Recipient Search & Selector */}
           <div className="space-y-2">
             <label className="text-xs font-bold font-mono uppercase text-[#5A5A68] dark:text-[#A0A0B4]">
@@ -1440,7 +1440,7 @@ export function ChatWorkspace() {
                 placeholder="Search by creator name, niche, or brand..."
                 value={recipientSearch}
                 onChange={(e) => setRecipientSearch(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-xs font-medium text-[#0A0A0E] dark:text-[#F4F4F8] placeholder:text-[#8A8A9A] dark:placeholder:text-[#7A7A8E] focus:outline-none focus:border-[#FFD21F]"
+                className="w-full pl-9 pr-4 py-2 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-xs font-medium text-[#0B0A14] dark:text-[#F4F4F8] placeholder:text-[#8A8A9A] dark:placeholder:text-[#7A7A8E] focus:outline-none focus:border-primary"
               />
             </div>
 
@@ -1461,7 +1461,7 @@ export function ChatWorkspace() {
                       className={cn(
                         "p-2.5 rounded-xl border flex items-center justify-between cursor-pointer transition-all",
                         isSelected
-                          ? "bg-[#FFD21F]/20 border-[#FFD21F] shadow-2xs font-bold"
+                          ? "bg-primary/20 border-primary shadow-2xs font-bold"
                           : "bg-white dark:bg-[#181824] border-black/5 dark:border-white/10 hover:border-black/15 dark:hover:border-white/20"
                       )}
                     >
@@ -1473,7 +1473,7 @@ export function ChatWorkspace() {
                           <AvatarFallback name={rec.name} className="w-8 h-8" />
                         )}
                         <div className="min-w-0">
-                          <p className="text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8] truncate">{rec.name}</p>
+                          <p className="text-xs font-bold text-[#0B0A14] dark:text-[#F4F4F8] truncate">{rec.name}</p>
                           <p className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] truncate">{rec.subtitle}</p>
                         </div>
                       </div>
@@ -1506,7 +1506,7 @@ export function ChatWorkspace() {
               placeholder="e.g. 4K Product Showcase Reel Integration"
               value={newChatTopic}
               onChange={(e) => setNewChatTopic(e.target.value)}
-              className="w-full px-3.5 py-2 rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-xs font-medium text-[#0A0A0E] dark:text-[#F4F4F8] placeholder:text-[#8A8A9A] dark:placeholder:text-[#7A7A8E] focus:outline-none focus:border-[#FFD21F]"
+              className="w-full px-3.5 py-2 rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-xs font-medium text-[#0B0A14] dark:text-[#F4F4F8] placeholder:text-[#8A8A9A] dark:placeholder:text-[#7A7A8E] focus:outline-none focus:border-primary"
             />
           </div>
 
@@ -1520,7 +1520,7 @@ export function ChatWorkspace() {
               placeholder="Type your introductory note or collaboration inquiry..."
               value={newChatInitialMessage}
               onChange={(e) => setNewChatInitialMessage(e.target.value)}
-              className="w-full px-3.5 py-2 rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-xs font-medium text-[#0A0A0E] dark:text-[#F4F4F8] placeholder:text-[#8A8A9A] dark:placeholder:text-[#7A7A8E] focus:outline-none focus:border-[#FFD21F] resize-none"
+              className="w-full px-3.5 py-2 rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-xs font-medium text-[#0B0A14] dark:text-[#F4F4F8] placeholder:text-[#8A8A9A] dark:placeholder:text-[#7A7A8E] focus:outline-none focus:border-primary resize-none"
             />
           </div>
 
@@ -1528,7 +1528,7 @@ export function ChatWorkspace() {
           <button
             type="submit"
             disabled={!selectedRecipient || isCreatingChat}
-            className="w-full py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] font-extrabold text-xs shadow-xs border border-black/10 disabled:opacity-40 transition-all flex items-center justify-center gap-2"
+            className="w-full py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] font-extrabold text-xs shadow-xs border border-black/10 disabled:opacity-40 transition-all flex items-center justify-center gap-2"
           >
             {isCreatingChat ? (
               <div className="w-4 h-4 rounded-full border-2 border-black border-t-transparent animate-spin" />
@@ -1584,7 +1584,7 @@ export function ChatWorkspace() {
                 download={previewMedia.name}
                 target="_blank"
                 rel="noreferrer"
-                className="px-3 py-1.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] font-bold flex items-center gap-1.5"
+                className="px-3 py-1.5 rounded-full bg-primary text-[#0B0A14] font-bold flex items-center gap-1.5"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Download</span>

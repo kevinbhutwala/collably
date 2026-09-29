@@ -223,20 +223,20 @@ export default function AdminAuditLogsPage() {
     if (act.includes("UPDATED") || act.includes("FEATURE") || ent.includes("SETTINGS")) {
       return "bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border-indigo-500/20";
     }
-    return "bg-black/5 dark:bg-white/10 text-[#0A0A0E] dark:text-[#EAEAEF] border-black/10 dark:border-white/10";
+    return "bg-black/5 dark:bg-white/10 text-[#0B0A14] dark:text-[#EAEAEF] border-black/10 dark:border-white/10";
   };
 
   return (
-    <div className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans max-w-[1600px] mx-auto pb-10">
+    <div className="space-y-4 text-[#0B0A14] dark:text-[#F4F4F8] select-none font-sans max-w-[1600px] mx-auto pb-10">
       {/* ── Compact Header & Action Bar ── */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-black/8 dark:border-white/10">
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-xl bg-black dark:bg-white text-white dark:text-black flex items-center justify-center shrink-0 shadow-xs">
-            <Database className="w-4 h-4 text-[#FFD21F]" />
+            <Database className="w-4 h-4 text-primary" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-xl sm:text-2xl font-black text-[#0A0A0E] dark:text-white tracking-tight font-display">
+              <h1 className="text-xl sm:text-2xl font-black text-[#0B0A14] dark:text-white tracking-tight font-display">
                 System Security &amp; Audit Logs
               </h1>
               <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 text-[10px] font-mono font-bold flex items-center gap-1">
@@ -278,7 +278,7 @@ export default function AdminAuditLogsPage() {
             disabled={isVerifyingHashes}
             className="px-3.5 py-1.5 rounded-xl bg-black dark:bg-white text-white dark:text-black text-xs font-bold hover:opacity-90 transition-all flex items-center gap-1.5 shadow-2xs"
           >
-            <ShieldCheck className={`w-3.5 h-3.5 text-[#FFD21F] ${isVerifyingHashes ? "animate-spin" : ""}`} />
+            <ShieldCheck className={`w-3.5 h-3.5 text-primary ${isVerifyingHashes ? "animate-spin" : ""}`} />
             {isVerifyingHashes ? "Auditing SHA-256..." : "Verify Hashes"}
           </button>
         </div>
@@ -292,7 +292,7 @@ export default function AdminAuditLogsPage() {
               <span className="text-[10px] font-mono font-bold text-[#7A7A8A] uppercase tracking-wider block">
                 Total Audit Entries
               </span>
-              <span className="text-lg sm:text-xl font-black text-[#0A0A0E] dark:text-white font-display">
+              <span className="text-lg sm:text-xl font-black text-[#0B0A14] dark:text-white font-display">
                 {stats.total}{" "}
                 <span className="text-xs font-semibold text-[#8E8EA4]">Records</span>
               </span>
@@ -310,7 +310,7 @@ export default function AdminAuditLogsPage() {
               <span className="text-[10px] font-mono font-bold text-[#7A7A8A] uppercase tracking-wider block">
                 Escrow &amp; Payouts
               </span>
-              <span className="text-lg sm:text-xl font-black text-[#0A0A0E] dark:text-white font-display">
+              <span className="text-lg sm:text-xl font-black text-[#0B0A14] dark:text-white font-display">
                 {stats.escrowCount}{" "}
                 <span className="text-xs font-semibold text-[#8E8EA4]">Events</span>
               </span>
@@ -318,7 +318,7 @@ export default function AdminAuditLogsPage() {
                 Razorpay Custody Vault
               </span>
             </div>
-            <div className="w-8 h-8 rounded-xl bg-[#FFD21F]/20 text-[#D97706] dark:text-[#FFD21F] flex items-center justify-center shrink-0">
+            <div className="w-8 h-8 rounded-xl bg-primary/20 text-[#D97706] dark:text-accent flex items-center justify-center shrink-0">
               <Lock className="w-4 h-4" />
             </div>
           </div>
@@ -328,7 +328,7 @@ export default function AdminAuditLogsPage() {
               <span className="text-[10px] font-mono font-bold text-[#7A7A8A] uppercase tracking-wider block">
                 Disputes &amp; Legal
               </span>
-              <span className="text-lg sm:text-xl font-black text-[#0A0A0E] dark:text-white font-display">
+              <span className="text-lg sm:text-xl font-black text-[#0B0A14] dark:text-white font-display">
                 {stats.disputeCount}{" "}
                 <span className="text-xs font-semibold text-[#8E8EA4]">Arbitrations</span>
               </span>
@@ -346,7 +346,7 @@ export default function AdminAuditLogsPage() {
               <span className="text-[10px] font-mono font-bold text-[#7A7A8A] uppercase tracking-wider block">
                 Platform Configs
               </span>
-              <span className="text-lg sm:text-xl font-black text-[#0A0A0E] dark:text-white font-display">
+              <span className="text-lg sm:text-xl font-black text-[#0B0A14] dark:text-white font-display">
                 {stats.settingsCount}{" "}
                 <span className="text-xs font-semibold text-[#8E8EA4]">Changes</span>
               </span>
@@ -370,7 +370,7 @@ export default function AdminAuditLogsPage() {
             className={`px-3 py-1 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
               filter === "all"
                 ? "bg-black dark:bg-white text-white dark:text-black shadow-2xs"
-                : "bg-black/5 dark:bg-white/5 text-[#5A5A68] dark:text-[#9A9AA6] hover:text-[#0A0A0E] dark:hover:text-white"
+                : "bg-black/5 dark:bg-white/5 text-[#5A5A68] dark:text-[#9A9AA6] hover:text-[#0B0A14] dark:hover:text-white"
             }`}
           >
             All Logs ({events.length})
@@ -380,7 +380,7 @@ export default function AdminAuditLogsPage() {
             className={`px-3 py-1 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
               filter === "escrow"
                 ? "bg-emerald-600 text-white shadow-2xs"
-                : "bg-black/5 dark:bg-white/5 text-[#5A5A68] dark:text-[#9A9AA6] hover:text-[#0A0A0E] dark:hover:text-white"
+                : "bg-black/5 dark:bg-white/5 text-[#5A5A68] dark:text-[#9A9AA6] hover:text-[#0B0A14] dark:hover:text-white"
             }`}
           >
             Escrow &amp; Vaults ({stats.escrowCount})
@@ -390,7 +390,7 @@ export default function AdminAuditLogsPage() {
             className={`px-3 py-1 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
               filter === "deliverable"
                 ? "bg-indigo-600 text-white shadow-2xs"
-                : "bg-black/5 dark:bg-white/5 text-[#5A5A68] dark:text-[#9A9AA6] hover:text-[#0A0A0E] dark:hover:text-white"
+                : "bg-black/5 dark:bg-white/5 text-[#5A5A68] dark:text-[#9A9AA6] hover:text-[#0B0A14] dark:hover:text-white"
             }`}
           >
             Deliverables ({stats.deliverableCount})
@@ -400,7 +400,7 @@ export default function AdminAuditLogsPage() {
             className={`px-3 py-1 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
               filter === "dispute"
                 ? "bg-amber-500 text-black shadow-2xs"
-                : "bg-black/5 dark:bg-white/5 text-[#5A5A68] dark:text-[#9A9AA6] hover:text-[#0A0A0E] dark:hover:text-white"
+                : "bg-black/5 dark:bg-white/5 text-[#5A5A68] dark:text-[#9A9AA6] hover:text-[#0B0A14] dark:hover:text-white"
             }`}
           >
             Disputes ({stats.disputeCount})
@@ -410,7 +410,7 @@ export default function AdminAuditLogsPage() {
             className={`px-3 py-1 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
               filter === "settings"
                 ? "bg-purple-600 text-white shadow-2xs"
-                : "bg-black/5 dark:bg-white/5 text-[#5A5A68] dark:text-[#9A9AA6] hover:text-[#0A0A0E] dark:hover:text-white"
+                : "bg-black/5 dark:bg-white/5 text-[#5A5A68] dark:text-[#9A9AA6] hover:text-[#0B0A14] dark:hover:text-white"
             }`}
           >
             Settings ({stats.settingsCount})
@@ -426,14 +426,14 @@ export default function AdminAuditLogsPage() {
               placeholder="Search logs by ID, action, actor..."
               value={searchQuery}
               onChange={(e) => { setSearchQuery(e.target.value); setCurrentPage(1); }}
-              className="w-full pl-8 pr-2.5 py-1 text-xs rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-[#0A0A0E] dark:text-white placeholder-[#8A8A9A] focus:outline-hidden focus:border-[#FFD21F]"
+              className="w-full pl-8 pr-2.5 py-1 text-xs rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-[#0B0A14] dark:text-white placeholder-[#8A8A9A] focus:outline-hidden focus:border-primary"
             />
           </div>
 
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as any)}
-            className="px-2.5 py-1 text-xs font-mono rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-[#0A0A0E] dark:text-white focus:outline-hidden"
+            className="px-2.5 py-1 text-xs font-mono rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-[#0B0A14] dark:text-white focus:outline-hidden"
           >
             <option value="newest">Newest First</option>
             <option value="oldest">Oldest First</option>
@@ -445,7 +445,7 @@ export default function AdminAuditLogsPage() {
             title={isCompact ? "Switch to Comfortable Spacing" : "Switch to Compact Density"}
             className={`px-2.5 py-1 text-xs font-mono rounded-xl border transition-all flex items-center gap-1 ${
               isCompact
-                ? "bg-black/5 dark:bg-white/5 border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white"
+                ? "bg-black/5 dark:bg-white/5 border-black/10 dark:border-white/10 text-[#0B0A14] dark:text-white"
                 : "border-black/5 dark:border-white/5 text-[#7A7A8A]"
             }`}
           >
@@ -498,7 +498,7 @@ export default function AdminAuditLogsPage() {
           {paginatedEvents.length === 0 ? (
             <div className="p-12 text-center">
               <Database className="w-8 h-8 text-[#A0A0B0] mx-auto mb-2 opacity-50" />
-              <h3 className="font-bold text-sm text-[#0A0A0E] dark:text-white font-display">No audit logs found</h3>
+              <h3 className="font-bold text-sm text-[#0B0A14] dark:text-white font-display">No audit logs found</h3>
               <p className="text-xs text-[#7A7A8A] mt-0.5">Try adjusting your filter or search query.</p>
             </div>
           ) : (
@@ -533,7 +533,7 @@ export default function AdminAuditLogsPage() {
                           {/* Timestamp & Event ID */}
                           <td className={rowPadding}>
                             <div className="font-mono">
-                              <span className="font-bold text-xs text-[#0A0A0E] dark:text-white block whitespace-nowrap">
+                              <span className="font-bold text-xs text-[#0B0A14] dark:text-white block whitespace-nowrap">
                                 {formatDate(ev.createdAt)}
                               </span>
                               <span className="text-[10px] text-[#7A7A8A] block">
@@ -545,11 +545,11 @@ export default function AdminAuditLogsPage() {
                           {/* Authorized Actor */}
                           <td className={rowPadding}>
                             <div className="flex items-center gap-2">
-                              <div className="w-7 h-7 rounded-lg bg-black/5 dark:bg-white/10 flex items-center justify-center shrink-0 text-[#0A0A0E] dark:text-white">
+                              <div className="w-7 h-7 rounded-lg bg-black/5 dark:bg-white/10 flex items-center justify-center shrink-0 text-[#0B0A14] dark:text-white">
                                 <User className="w-3.5 h-3.5" />
                               </div>
                               <div className="min-w-0">
-                                <span className="font-bold text-xs text-[#0A0A0E] dark:text-white truncate block max-w-[130px]">
+                                <span className="font-bold text-xs text-[#0B0A14] dark:text-white truncate block max-w-[130px]">
                                   {ev.actorName || "System Worker"}
                                 </span>
                                 <span className="text-[10px] text-[#7A7A8A] font-mono block">
@@ -562,7 +562,7 @@ export default function AdminAuditLogsPage() {
                           {/* Target Entity */}
                           <td className={rowPadding}>
                             <div className="min-w-0 max-w-[180px] lg:max-w-[240px]">
-                              <span className="font-semibold text-xs text-[#0A0A0E] dark:text-white truncate block">
+                              <span className="font-semibold text-xs text-[#0B0A14] dark:text-white truncate block">
                                 {ev.entityName || ev.entityId}
                               </span>
                               <span className="text-[10px] text-[#7A7A8A] font-mono block">
@@ -592,14 +592,14 @@ export default function AdminAuditLogsPage() {
                               <button
                                 onClick={(e) => handleCopyJSON(ev, e)}
                                 title="Copy Event JSON"
-                                className="p-1 rounded-lg text-[#7A7A8A] hover:text-[#0A0A0E] dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-all"
+                                className="p-1 rounded-lg text-[#7A7A8A] hover:text-[#0B0A14] dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-all"
                               >
                                 {copiedId === ev.id ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
                               </button>
                               <button
                                 onClick={() => toggleRow(ev.id)}
                                 title={isExpanded ? "Collapse Details" : "Expand Details"}
-                                className="p-1 rounded-lg text-[#7A7A8A] hover:text-[#0A0A0E] dark:hover:text-white transition-all"
+                                className="p-1 rounded-lg text-[#7A7A8A] hover:text-[#0B0A14] dark:hover:text-white transition-all"
                               >
                                 {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
                               </button>
@@ -614,7 +614,7 @@ export default function AdminAuditLogsPage() {
                               <div className="space-y-3 font-mono text-xs">
                                 <div className="flex items-center justify-between pb-2 border-b border-black/5 dark:border-white/5">
                                   <div className="flex items-center gap-2">
-                                    <span className="font-bold text-[#0A0A0E] dark:text-white">
+                                    <span className="font-bold text-[#0B0A14] dark:text-white">
                                       Immutable Audit Record: {ev.id}
                                     </span>
                                     <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 font-bold">
@@ -685,12 +685,12 @@ export default function AdminAuditLogsPage() {
                                       </span>
                                       <button
                                         onClick={(e) => handleCopyJSON(ev, e)}
-                                        className="text-[10px] text-[#FFD21F] hover:underline"
+                                        className="text-[10px] text-primary hover:underline"
                                       >
                                         Copy JSON
                                       </button>
                                     </div>
-                                    <pre className="p-2 rounded-lg bg-[#FAFAFC] dark:bg-[#12121A] text-[11px] overflow-x-auto text-[#0A0A0E] dark:text-[#A0A0B4] border border-black/5 dark:border-white/5 max-h-28">
+                                    <pre className="p-2 rounded-lg bg-[#FAFAFC] dark:bg-[#12121A] text-[11px] overflow-x-auto text-[#0B0A14] dark:text-[#A0A0B4] border border-black/5 dark:border-white/5 max-h-28">
                                       {JSON.stringify(ev.metadata || { status: "logged", verified: true }, null, 2)}
                                     </pre>
                                   </div>
@@ -742,7 +742,7 @@ export default function AdminAuditLogsPage() {
           {paginatedEvents.length === 0 ? (
             <div className="col-span-full p-12 text-center rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10">
               <Database className="w-8 h-8 text-[#A0A0B0] mx-auto mb-2 opacity-50" />
-              <h3 className="font-bold text-sm text-[#0A0A0E] dark:text-white font-display">No events found</h3>
+              <h3 className="font-bold text-sm text-[#0B0A14] dark:text-white font-display">No events found</h3>
               <p className="text-xs text-[#7A7A8A] mt-0.5">Try adjusting your filter or search query.</p>
             </div>
           ) : (
@@ -751,7 +751,7 @@ export default function AdminAuditLogsPage() {
               return (
                 <div
                   key={ev.id}
-                  className="p-4 rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 hover:border-[#FFD21F] shadow-2xs space-y-3 flex flex-col justify-between"
+                  className="p-4 rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 hover:border-primary shadow-2xs space-y-3 flex flex-col justify-between"
                 >
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-xs font-mono">
@@ -765,7 +765,7 @@ export default function AdminAuditLogsPage() {
                       <span className={`inline-flex items-center px-2 py-0.5 rounded-full font-mono text-[10px] font-bold border ${badgeClass}`}>
                         {ev.action}
                       </span>
-                      <h4 className="font-bold text-xs text-[#0A0A0E] dark:text-white truncate">
+                      <h4 className="font-bold text-xs text-[#0B0A14] dark:text-white truncate">
                         {ev.entityName}
                       </h4>
                       <p className="text-[11px] text-[#7A7A8A] font-mono">
@@ -778,7 +778,7 @@ export default function AdminAuditLogsPage() {
                     <span className="text-[#8E8EA4]">{ev.id}</span>
                     <button
                       onClick={(e) => handleCopyJSON(ev, e)}
-                      className="text-[#FFD21F] hover:underline"
+                      className="text-primary hover:underline"
                     >
                       Copy JSON
                     </button>
@@ -806,7 +806,7 @@ export default function AdminAuditLogsPage() {
                 setPageSize(Number(e.target.value));
                 setCurrentPage(1);
               }}
-              className="bg-transparent border-b border-black/20 dark:border-white/20 text-[#0A0A0E] dark:text-white font-bold focus:outline-hidden"
+              className="bg-transparent border-b border-black/20 dark:border-white/20 text-[#0B0A14] dark:text-white font-bold focus:outline-hidden"
             >
               <option value={10}>10</option>
               <option value={25}>25</option>
@@ -825,7 +825,7 @@ export default function AdminAuditLogsPage() {
             >
               Prev
             </button>
-            <span className="px-2 text-[#0A0A0E] dark:text-white font-bold">
+            <span className="px-2 text-[#0B0A14] dark:text-white font-bold">
               {currentPage} / {totalPages}
             </span>
             <button

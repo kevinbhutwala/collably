@@ -64,7 +64,7 @@ const privacyJsonLd = [
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="py-16 sm:py-24 bg-[#FAFAFC] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] min-h-screen">
+    <div className="py-16 sm:py-24 bg-[#FAFAFC] dark:bg-[#07070B] text-[#0B0A14] dark:text-[#F4F4F8] min-h-screen">
       <script
         id="privacy-schema"
         type="application/ld+json"
@@ -72,15 +72,15 @@ export default function PrivacyPolicyPage() {
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="space-y-4">
-          <Link href="/" className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[#7A7A8A] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white transition-colors">
+          <Link href="/" className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[#7A7A8A] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white transition-colors">
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Back to Home</span>
           </Link>
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 text-xs font-mono font-bold text-[#0A0A0E] dark:text-white shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 text-xs font-mono font-bold text-[#0B0A14] dark:text-white shadow-xs">
+            <span className="w-2 h-2 rounded-full bg-primary" />
             <span>Privacy &amp; Data Protection</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0B0A14] dark:text-white tracking-tight font-display">
             Privacy Policy
           </h1>
           <p className="text-sm text-[#7A7A8A] dark:text-[#8E8EA4] font-mono">

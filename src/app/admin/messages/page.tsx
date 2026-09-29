@@ -128,7 +128,7 @@ export default function AdminCommunicationsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-2.5">
-            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight font-display text-[#0A0A0E] dark:text-white">
+            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight font-display text-[#0B0A14] dark:text-white">
               Platform Communications Supervision
             </h1>
             <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-mono font-bold border border-emerald-500/20">
@@ -142,7 +142,7 @@ export default function AdminCommunicationsPage() {
 
         <button
           onClick={fetchCommunications}
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/10 text-xs font-bold transition-all text-[#0A0A0E] dark:text-white cursor-pointer"
+          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/10 text-xs font-bold transition-all text-[#0B0A14] dark:text-white cursor-pointer"
         >
           <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? "animate-spin" : ""}`} />
           <span>Refresh Telemetry</span>
@@ -154,9 +154,9 @@ export default function AdminCommunicationsPage() {
         <div className="p-5 rounded-2xl bg-white dark:bg-[#0E0E14] border border-black/8 dark:border-white/10 shadow-xs">
           <div className="flex items-center justify-between">
             <span className="text-xs font-mono text-[#6A6A78] dark:text-[#A0A0B0]">Total Conversations</span>
-            <MessageSquare className="w-4 h-4 text-[#FFD21F]" />
+            <MessageSquare className="w-4 h-4 text-primary" />
           </div>
-          <p className="text-3xl font-black mt-2 text-[#0A0A0E] dark:text-white font-mono">
+          <p className="text-3xl font-black mt-2 text-[#0B0A14] dark:text-white font-mono">
             {stats.totalConversations}
           </p>
           <p className="text-[11px] text-[#8A8A9A] mt-1">Across all brand and creator channels</p>
@@ -167,7 +167,7 @@ export default function AdminCommunicationsPage() {
             <span className="text-xs font-mono text-[#6A6A78] dark:text-[#A0A0B0]">Total Messages Logged</span>
             <Users className="w-4 h-4 text-blue-500" />
           </div>
-          <p className="text-3xl font-black mt-2 text-[#0A0A0E] dark:text-white font-mono">
+          <p className="text-3xl font-black mt-2 text-[#0B0A14] dark:text-white font-mono">
             {stats.totalMessages}
           </p>
           <p className="text-[11px] text-[#8A8A9A] mt-1">Historical messages stored in platform ledger</p>
@@ -192,8 +192,8 @@ export default function AdminCommunicationsPage() {
             onClick={() => setActiveTab("all")}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
               activeTab === "all"
-                ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E]"
-                : "bg-black/5 dark:bg-white/5 text-[#6A6A78] dark:text-[#A0A0B0] hover:text-[#0A0A0E] dark:hover:text-white"
+                ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14]"
+                : "bg-black/5 dark:bg-white/5 text-[#6A6A78] dark:text-[#A0A0B0] hover:text-[#0B0A14] dark:hover:text-white"
             }`}
           >
             All Threads ({conversations.length})
@@ -202,8 +202,8 @@ export default function AdminCommunicationsPage() {
             onClick={() => setActiveTab("flagged")}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
               activeTab === "flagged"
-                ? "bg-[#FFD21F] text-[#0A0A0E] dark:text-[#0A0A0E] font-extrabold"
-                : "bg-black/5 dark:bg-white/5 text-[#6A6A78] dark:text-[#A0A0B0] hover:text-[#0A0A0E] dark:hover:text-white"
+                ? "bg-primary text-[#0B0A14] dark:text-[#0B0A14] font-extrabold"
+                : "bg-black/5 dark:bg-white/5 text-[#6A6A78] dark:text-[#A0A0B0] hover:text-[#0B0A14] dark:hover:text-white"
             }`}
           >
             <AlertTriangle className="w-3.5 h-3.5" />
@@ -218,7 +218,7 @@ export default function AdminCommunicationsPage() {
             placeholder="Search by participant or campaign..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 rounded-xl bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 text-xs text-[#0A0A0E] dark:text-white focus:outline-hidden focus:border-[#FFD21F]"
+            className="w-full pl-9 pr-4 py-2 rounded-xl bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 text-xs text-[#0B0A14] dark:text-white focus:outline-hidden focus:border-primary"
           />
         </div>
       </div>
@@ -249,7 +249,7 @@ export default function AdminCommunicationsPage() {
                   return (
                     <tr key={conv.id} className="hover:bg-black/2 dark:hover:bg-white/2 transition-colors">
                       <td className="px-5 py-4">
-                        <div className="font-bold text-[#0A0A0E] dark:text-white font-display">
+                        <div className="font-bold text-[#0B0A14] dark:text-white font-display">
                           {conv.campaignTitle || "Direct Negotiation"}
                         </div>
                         <div className="text-[11px] text-[#8A8A9A] font-mono mt-0.5">ID: {conv.id}</div>
@@ -259,7 +259,7 @@ export default function AdminCommunicationsPage() {
                           {conv.participants?.map((p, idx) => (
                             <span
                               key={idx}
-                              className="px-2 py-0.5 rounded-md bg-black/5 dark:bg-white/5 text-[11px] font-medium text-[#0A0A0E] dark:text-white"
+                              className="px-2 py-0.5 rounded-md bg-black/5 dark:bg-white/5 text-[11px] font-medium text-[#0B0A14] dark:text-white"
                             >
                               {typeof p === "string" ? p : p.name}
                             </span>
@@ -267,7 +267,7 @@ export default function AdminCommunicationsPage() {
                         </div>
                       </td>
                       <td className="px-5 py-4">
-                        <div className="text-[#0A0A0E] dark:text-[#E0E0E0] truncate max-w-xs">
+                        <div className="text-[#0B0A14] dark:text-[#E0E0E0] truncate max-w-xs">
                           {conv.lastMessage?.content || "No messages"}
                         </div>
                         <div className="text-[10px] text-[#8A8A9A] font-mono mt-0.5">
@@ -290,7 +290,7 @@ export default function AdminCommunicationsPage() {
                       <td className="px-5 py-4 text-right">
                         <button
                           onClick={() => handleInspectConversation(conv)}
-                          className="px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/10 hover:bg-[#FFD21F] hover:text-[#0A0A0E] text-xs font-bold transition-all cursor-pointer"
+                          className="px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/10 hover:bg-primary hover:text-[#0B0A14] text-xs font-bold transition-all cursor-pointer"
                         >
                           Inspect Thread
                         </button>
@@ -318,9 +318,9 @@ export default function AdminCommunicationsPage() {
             <div className="p-3 rounded-xl bg-black/5 dark:bg-white/5 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Users className="w-4 h-4 text-[#8A8A9A]" />
-                <span className="font-semibold text-[#0A0A0E] dark:text-white">Participants:</span>
+                <span className="font-semibold text-[#0B0A14] dark:text-white">Participants:</span>
                 {selectedConv.participants?.map((p, idx) => (
-                  <span key={idx} className="font-mono text-[#0A0A0E] dark:text-[#E0E0E0]">
+                  <span key={idx} className="font-mono text-[#0B0A14] dark:text-[#E0E0E0]">
                     {typeof p === "string" ? p : `${p.name} (${p.role})`}
                     {idx < selectedConv.participants.length - 1 ? "," : ""}
                   </span>
@@ -342,7 +342,7 @@ export default function AdminCommunicationsPage() {
                       className={`p-3 rounded-xl border ${
                         isOfficial
                           ? "bg-amber-500/10 border-amber-500/30 text-amber-900 dark:text-amber-200"
-                          : "bg-white dark:bg-[#121218] border-black/8 dark:border-white/8 text-[#0A0A0E] dark:text-white"
+                          : "bg-white dark:bg-[#121218] border-black/8 dark:border-white/8 text-[#0B0A14] dark:text-white"
                       }`}
                     >
                       <div className="flex items-center justify-between mb-1">
@@ -368,7 +368,7 @@ export default function AdminCommunicationsPage() {
 
             {/* Official Platform Advisory Tool */}
             <form onSubmit={handleSendAdminNotice} className="pt-2 space-y-2">
-              <label className="text-[11px] font-bold text-[#0A0A0E] dark:text-white flex items-center gap-1.5">
+              <label className="text-[11px] font-bold text-[#0B0A14] dark:text-white flex items-center gap-1.5">
                 <Lock className="w-3.5 h-3.5 text-amber-500" />
                 <span>Issue Official Platform Compliance Advisory</span>
               </label>
@@ -378,12 +378,12 @@ export default function AdminCommunicationsPage() {
                   value={adminNoticeText}
                   onChange={(e) => setAdminNoticeText(e.target.value)}
                   placeholder="e.g. Warning: Off-platform payment negotiations violate Terms of Service..."
-                  className="flex-1 px-3.5 py-2.5 rounded-xl bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 text-xs text-[#0A0A0E] dark:text-white focus:outline-hidden focus:border-[#FFD21F]"
+                  className="flex-1 px-3.5 py-2.5 rounded-xl bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 text-xs text-[#0B0A14] dark:text-white focus:outline-hidden focus:border-primary"
                 />
                 <button
                   type="submit"
                   disabled={isSendingNotice || !adminNoticeText.trim()}
-                  className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#FFD21F] to-[#FFC700] hover:brightness-105 text-[#0A0A0E] font-bold text-xs transition-all shadow-xs flex items-center gap-1.5 disabled:opacity-50 cursor-pointer"
+                  className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-primary to-accent hover:brightness-105 text-[#0B0A14] font-bold text-xs transition-all shadow-xs flex items-center gap-1.5 disabled:opacity-50 cursor-pointer"
                 >
                   <Send className="w-3.5 h-3.5" />
                   <span>Send Notice</span>

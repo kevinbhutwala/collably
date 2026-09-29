@@ -75,11 +75,11 @@ export function DeliverableBadge({ type, className }: DeliverableBadgeProps) {
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/5 dark:bg-white/10 text-[#0A0A0E] dark:text-white font-mono text-[11px] font-semibold border border-black/5 dark:border-white/10",
+        "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/5 dark:bg-white/10 text-[#0B0A14] dark:text-white font-mono text-[11px] font-semibold border border-black/5 dark:border-white/10",
         className
       )}
     >
-      <Icon className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F] shrink-0" />
+      <Icon className="w-3.5 h-3.5 text-[#0B0A14] dark:text-accent shrink-0" />
       <span className="truncate">{type}</span>
     </span>
   );

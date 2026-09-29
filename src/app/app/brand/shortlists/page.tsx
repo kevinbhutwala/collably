@@ -88,7 +88,7 @@ export default function BrandShortlistsPage() {
       : 0;
 
   return (
-    <div className="space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] select-none">
+    <div className="space-y-6 text-[#0B0A14] dark:text-[#F4F4F8] select-none">
 
       {/* ── PAGE HEADER ── */}
       <div className="flex items-center justify-between gap-4 pb-5 border-b border-black/8 dark:border-white/10">
@@ -99,16 +99,16 @@ export default function BrandShortlistsPage() {
               Saved Creators
             </span>
             <span className="text-[#C5C5D0] dark:text-[#5A5A68]">·</span>
-            <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] dark:text-yellow-400 font-mono text-[10px] font-bold">
+            <span className="px-2 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-[#0B0A14] dark:text-yellow-400 font-mono text-[10px] font-bold">
               Shortlisted Talent
             </span>
           </div>
-          <h1 className="text-2xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">Creator Shortlists &amp; Saved Talent</h1>
+          <h1 className="text-2xl font-extrabold text-[#0B0A14] dark:text-white tracking-tight font-display">Creator Shortlists &amp; Saved Talent</h1>
           <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4]">Save your favorite creators into custom lists and compare their metrics side-by-side.</p>
         </div>
         <button
           onClick={() => setIsCreateModalOpen(true)}
-          className="shrink-0 px-4 py-2.5 rounded-2xl bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] text-xs font-bold transition-all flex items-center gap-1.5 hover:bg-[#1A1A28] dark:hover:bg-[#FFE052] shadow-sm"
+          className="shrink-0 px-4 py-2.5 rounded-2xl bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] text-xs font-bold transition-all flex items-center gap-1.5 hover:bg-[#1A1A28] dark:hover:bg-accent shadow-sm"
         >
           <Plus className="w-3.5 h-3.5" />
           New Shortlist
@@ -122,14 +122,14 @@ export default function BrandShortlistsPage() {
             <Bookmark className="w-6 h-6 text-[#7A7A8A] dark:text-[#8E8EA4]" />
           </div>
           <div className="space-y-1.5">
-            <h3 className="text-base font-bold text-[#0A0A0E] dark:text-white">No saved creators yet</h3>
+            <h3 className="text-base font-bold text-[#0B0A14] dark:text-white">No saved creators yet</h3>
             <p className="text-xs text-[#7A7A8A] dark:text-[#8E8EA4] max-w-xs mx-auto leading-relaxed">
               Create a list to save creators you like and compare their stats side-by-side.
             </p>
           </div>
           <button
             onClick={() => setIsCreateModalOpen(true)}
-            className="mx-auto px-5 py-2.5 rounded-2xl bg-gradient-to-r from-[#FFD21F] to-[#FFC700] text-[#0A0A0E] text-xs font-bold border border-black/10 inline-flex items-center gap-1.5 shadow-xs"
+            className="mx-auto px-5 py-2.5 rounded-2xl bg-gradient-to-r from-primary to-accent text-[#0B0A14] text-xs font-bold border border-black/10 inline-flex items-center gap-1.5 shadow-xs"
           >
             <Plus className="w-3.5 h-3.5" />
             Create First Shortlist
@@ -152,17 +152,17 @@ export default function BrandShortlistsPage() {
                   onClick={() => setActiveShortlistId(s.id)}
                   className={`w-full text-left px-3.5 py-3 rounded-2xl border transition-all flex items-center gap-3 group ${
                     isActive
-                      ? "bg-[#0A0A0E] dark:bg-[#FFD21F] border-[#0A0A0E] dark:border-[#FFD21F] shadow-sm"
+                      ? "bg-[#0B0A14] dark:bg-primary border-[#0B0A14] dark:border-primary shadow-sm"
                       : "bg-white dark:bg-[#12121A] border-black/8 dark:border-white/10 hover:border-black/18 dark:hover:border-white/20 hover:bg-[#FAFAFA] dark:hover:bg-[#181824]"
                   }`}
                 >
                   {/* Icon */}
                   <div className={`w-7 h-7 rounded-xl flex items-center justify-center shrink-0 ${isActive ? "bg-white/12 dark:bg-black/10" : "bg-[#F5F5F9] dark:bg-[#181824]"}`}>
-                    <ListChecks className={`w-3.5 h-3.5 ${isActive ? "text-[#FFD21F] dark:text-[#0A0A0E]" : "text-[#7A7A8A] dark:text-[#8E8EA4]"}`} />
+                    <ListChecks className={`w-3.5 h-3.5 ${isActive ? "text-primary dark:text-[#0B0A14]" : "text-[#7A7A8A] dark:text-[#8E8EA4]"}`} />
                   </div>
                   {/* Label */}
                   <div className="flex-1 min-w-0">
-                    <p className={`text-xs font-bold truncate ${isActive ? "text-white dark:text-[#0A0A0E]" : "text-[#0A0A0E] dark:text-white"}`}>
+                    <p className={`text-xs font-bold truncate ${isActive ? "text-white dark:text-[#0B0A14]" : "text-[#0B0A14] dark:text-white"}`}>
                       {s.name}
                     </p>
                     <p className={`text-[10px] font-mono mt-0.5 ${isActive ? "text-white/50 dark:text-black/60" : "text-[#7A7A8A] dark:text-[#8E8EA4]"}`}>
@@ -170,7 +170,7 @@ export default function BrandShortlistsPage() {
                     </p>
                   </div>
                   {/* Count pill */}
-                  <span className={`text-[10px] font-mono font-bold px-1.5 py-0.5 rounded-full shrink-0 ${isActive ? "bg-[#FFD21F] dark:bg-[#0A0A0E] text-[#0A0A0E] dark:text-[#FFD21F]" : "bg-black/6 dark:bg-white/10 text-[#5A5A68] dark:text-[#A0A0B4]"}`}>
+                  <span className={`text-[10px] font-mono font-bold px-1.5 py-0.5 rounded-full shrink-0 ${isActive ? "bg-primary dark:bg-[#0B0A14] text-[#0B0A14] dark:text-accent" : "bg-black/6 dark:bg-white/10 text-[#5A5A68] dark:text-[#A0A0B4]"}`}>
                     {s.creators.length}
                   </span>
                 </button>
@@ -180,7 +180,7 @@ export default function BrandShortlistsPage() {
             {/* Add new */}
             <button
               onClick={() => setIsCreateModalOpen(true)}
-              className="w-full px-3.5 py-3 rounded-2xl border border-dashed border-black/15 dark:border-white/15 text-[#7A7A8A] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white hover:border-black/25 dark:hover:border-white/30 hover:bg-black/2 dark:hover:bg-white/5 transition-all flex items-center gap-2.5 text-xs font-semibold"
+              className="w-full px-3.5 py-3 rounded-2xl border border-dashed border-black/15 dark:border-white/15 text-[#7A7A8A] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white hover:border-black/25 dark:hover:border-white/30 hover:bg-black/2 dark:hover:bg-white/5 transition-all flex items-center gap-2.5 text-xs font-semibold"
             >
               <Plus className="w-3.5 h-3.5" />
               New Shortlist
@@ -196,7 +196,7 @@ export default function BrandShortlistsPage() {
                 <div className="flex items-start justify-between gap-4 mb-4">
                   <div className="space-y-0.5">
                     <div className="flex items-center gap-2.5">
-                      <h2 className="text-base font-extrabold text-[#0A0A0E] dark:text-white">{activeShortlist.name}</h2>
+                      <h2 className="text-base font-extrabold text-[#0B0A14] dark:text-white">{activeShortlist.name}</h2>
                       <span className="px-2 py-0.5 rounded-full bg-[#F5F5F9] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-[10px] font-mono font-bold text-[#5A5A68] dark:text-[#A0A0B4]">
                         {activeShortlist.creators.length} creators
                       </span>
@@ -208,7 +208,7 @@ export default function BrandShortlistsPage() {
                   {activeShortlist.creators.length > 1 && (
                     <button
                       onClick={() => setIsCompareOpen(true)}
-                      className="shrink-0 px-3.5 py-2 rounded-2xl bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 border border-black/8 dark:border-white/10 text-[#0A0A0E] dark:text-white text-xs font-bold flex items-center gap-1.5 transition-all"
+                      className="shrink-0 px-3.5 py-2 rounded-2xl bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 border border-black/8 dark:border-white/10 text-[#0B0A14] dark:text-white text-xs font-bold flex items-center gap-1.5 transition-all"
                     >
                       <Scale className="w-3.5 h-3.5" />
                       Compare
@@ -220,9 +220,9 @@ export default function BrandShortlistsPage() {
                 {activeShortlist.creators.length > 0 && (
                   <div className="grid grid-cols-3 gap-px bg-black/6 dark:bg-white/10 rounded-2xl overflow-hidden border border-black/6 dark:border-white/10">
                     {[
-                      { label: "Combined Reach", value: formatNumber(totalReach), color: "text-[#0A0A0E] dark:text-white" },
+                      { label: "Combined Reach", value: formatNumber(totalReach), color: "text-[#0B0A14] dark:text-white" },
                       { label: "Avg. Engagement", value: `${avgER}%`, color: "text-emerald-600 dark:text-emerald-400" },
-                      { label: "Avg. Base Rate", value: avgRate > 0 ? format(avgRate, "USD") : "—", color: "text-[#0A0A0E] dark:text-white" },
+                      { label: "Avg. Base Rate", value: avgRate > 0 ? format(avgRate, "USD") : "—", color: "text-[#0B0A14] dark:text-white" },
                     ].map((m) => (
                       <div key={m.label} className="bg-[#FAFAFA] dark:bg-[#181824] px-5 py-3.5 text-center">
                         <p className="text-[10px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4] uppercase tracking-wider">{m.label}</p>
@@ -238,12 +238,12 @@ export default function BrandShortlistsPage() {
                 <div className="py-20 text-center rounded-3xl bg-white dark:bg-[#12121A] border border-dashed border-black/12 dark:border-white/12 space-y-4">
                   <Users className="w-8 h-8 text-[#7A7A8A] dark:text-[#8E8EA4] mx-auto" />
                   <div className="space-y-1">
-                    <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white">This shortlist is empty</h3>
+                    <h3 className="text-sm font-bold text-[#0B0A14] dark:text-white">This shortlist is empty</h3>
                     <p className="text-xs text-[#7A7A8A] dark:text-[#8E8EA4]">Browse the creator directory and bookmark talent here.</p>
                   </div>
                   <Link href="/app/brand/creators">
-                    <button className="mx-auto px-4 py-2 rounded-2xl bg-[#F5F5F9] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-[#0A0A0E] dark:text-white text-xs font-bold inline-flex items-center gap-1.5 hover:bg-black/5 dark:hover:bg-white/5 transition-all">
-                      <Sparkles className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F]" />
+                    <button className="mx-auto px-4 py-2 rounded-2xl bg-[#F5F5F9] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-[#0B0A14] dark:text-white text-xs font-bold inline-flex items-center gap-1.5 hover:bg-black/5 dark:hover:bg-white/5 transition-all">
+                      <Sparkles className="w-3.5 h-3.5 text-[#0B0A14] dark:text-accent" />
                       Discover Creators
                     </button>
                   </Link>
@@ -287,7 +287,7 @@ export default function BrandShortlistsPage() {
                           {/* Name + handle + tags */}
                           <div className="min-w-0">
                             <div className="flex items-center gap-1.5">
-                              <span className="text-sm font-bold text-[#0A0A0E] dark:text-white truncate">{c.fullName}</span>
+                              <span className="text-sm font-bold text-[#0B0A14] dark:text-white truncate">{c.fullName}</span>
                               {c.verified && (
                                 <BadgeCheck className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
                               )}
@@ -299,8 +299,8 @@ export default function BrandShortlistsPage() {
                               </span>
                             </div>
                             <div className="flex items-center gap-1.5 mt-1">
-                              <Star className="w-2.5 h-2.5 fill-[#FFD21F] text-[#FFD21F]" />
-                              <span className="text-[10px] font-bold text-[#0A0A0E] dark:text-white">{c.rating}</span>
+                              <Star className="w-2.5 h-2.5 fill-primary text-primary" />
+                              <span className="text-[10px] font-bold text-[#0B0A14] dark:text-white">{c.rating}</span>
                               <span className="text-[#D0D0DA] dark:text-[#5A5A68]">·</span>
                               <TrendingUp className="w-2.5 h-2.5 text-[#7A7A8A] dark:text-[#8E8EA4]" />
                               <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4]">{c.completedCampaignsCount} campaigns</span>
@@ -310,31 +310,31 @@ export default function BrandShortlistsPage() {
 
                         {/* Reach */}
                         <div className="text-right">
-                          <span className="text-sm font-extrabold text-[#0A0A0E] dark:text-white">{formatNumber(c.totalFollowers)}</span>
+                          <span className="text-sm font-extrabold text-[#0B0A14] dark:text-white">{formatNumber(c.totalFollowers)}</span>
                         </div>
 
                         {/* Engagement rate */}
                         <div className="text-right">
-                          <span className={`text-sm font-extrabold ${c.avgEngagementRate >= 4 ? "text-emerald-600 dark:text-emerald-400" : c.avgEngagementRate >= 2 ? "text-amber-600 dark:text-amber-400" : "text-[#0A0A0E] dark:text-white"}`}>
+                          <span className={`text-sm font-extrabold ${c.avgEngagementRate >= 4 ? "text-emerald-600 dark:text-emerald-400" : c.avgEngagementRate >= 2 ? "text-amber-600 dark:text-amber-400" : "text-[#0B0A14] dark:text-white"}`}>
                             {c.avgEngagementRate}%
                           </span>
                         </div>
 
                         {/* Base rate */}
                         <div className="text-right">
-                          <span className="text-sm font-bold text-[#0A0A0E] dark:text-white">{format(c.startingPrice, (c as any).currency || "USD")}</span>
+                          <span className="text-sm font-bold text-[#0B0A14] dark:text-white">{format(c.startingPrice, (c as any).currency || "USD")}</span>
                         </div>
 
                         {/* Actions */}
                         <div className="flex items-center gap-2 shrink-0">
                           <Link href={`/creators/${c.id}`}>
-                            <button className="px-3 py-1.5 rounded-xl bg-[#F5F5F9] dark:bg-[#1E1E2C] hover:bg-black/8 dark:hover:bg-white/10 border border-black/8 dark:border-white/10 text-[#0A0A0E] dark:text-white text-[11px] font-bold transition-all flex items-center gap-1">
+                            <button className="px-3 py-1.5 rounded-xl bg-[#F5F5F9] dark:bg-[#1E1E2C] hover:bg-black/8 dark:hover:bg-white/10 border border-black/8 dark:border-white/10 text-[#0B0A14] dark:text-white text-[11px] font-bold transition-all flex items-center gap-1">
                               <ExternalLink className="w-3 h-3" />
                               Kit
                             </button>
                           </Link>
                           <Link href="/app/brand/campaigns/create">
-                            <button className="px-3 py-1.5 rounded-xl bg-[#FFD21F] hover:bg-[#FFE052] border border-black/10 text-[#0A0A0E] text-[11px] font-bold transition-all flex items-center gap-1 shadow-xs">
+                            <button className="px-3 py-1.5 rounded-xl bg-primary hover:bg-accent border border-black/10 text-[#0B0A14] text-[11px] font-bold transition-all flex items-center gap-1 shadow-xs">
                               <Send className="w-3 h-3" />
                               Invite
                             </button>
@@ -366,7 +366,7 @@ export default function BrandShortlistsPage() {
         description="Organize creators into campaign cohorts for internal review."
         maxWidth="md"
       >
-        <form onSubmit={handleCreate} className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
+        <form onSubmit={handleCreate} className="space-y-4 text-[#0B0A14] dark:text-[#F4F4F8]">
           <Input
             label="Shortlist Name"
             value={newTitle}
@@ -383,7 +383,7 @@ export default function BrandShortlistsPage() {
           />
           <button
             type="submit"
-            className="w-full py-3 rounded-2xl bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] text-xs font-bold shadow-xs border border-black/10 flex items-center justify-center gap-1.5"
+            className="w-full py-3 rounded-2xl bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] text-xs font-bold shadow-xs border border-black/10 flex items-center justify-center gap-1.5"
           >
             <ListChecks className="w-3.5 h-3.5" />
             Create Shortlist

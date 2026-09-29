@@ -160,18 +160,18 @@ export function ContinuousProductStory() {
   const activeStep = WORKFLOW_STEPS[activeStepIdx];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#FAFAFC] dark:bg-[#08080C] text-[#0A0A0E] dark:text-white select-none border-t border-black/8 dark:border-white/10 relative overflow-hidden font-sans">
+    <section className="py-20 sm:py-28 bg-[#FAFAFC] dark:bg-[#08080C] text-[#0B0A14] dark:text-white select-none border-t border-black/8 dark:border-white/10 relative overflow-hidden font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFFDF5] dark:bg-[#14141E] border border-[#FFD21F]/50 text-xs font-mono font-bold text-[#0A0A0E] dark:text-white shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 dark:bg-[#14141E] border border-primary/50 text-xs font-mono font-bold text-[#0B0A14] dark:text-white shadow-2xs">
+            <Sparkles className="w-3.5 h-3.5 text-primary fill-primary" />
             <span>THE ABEYCOLLAB END-TO-END OPERATING SYSTEM</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#0A0A0E] dark:text-white tracking-tight font-display">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#0B0A14] dark:text-white tracking-tight font-display">
             How Top Brands &amp; Creators{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD21F] via-[#FFAE00] to-[#FFD21F]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-[#FFAE00] to-primary">
               Collaborate.
             </span>
           </h2>
@@ -189,13 +189,13 @@ export function ContinuousProductStory() {
               onClick={() => setActiveStepIdx(idx)}
               className={`px-3.5 py-2 rounded-2xl text-xs font-mono font-bold transition-all shrink-0 flex items-center gap-2 border ${
                 activeStepIdx === idx
-                  ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] border-[#0A0A0E] dark:border-[#FFD21F] shadow-xs"
-                  : "bg-white dark:bg-[#14141E] border-black/8 dark:border-white/10 text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white hover:border-black/20 dark:hover:border-white/20"
+                  ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] border-[#0B0A14] dark:border-primary shadow-xs"
+                  : "bg-white dark:bg-[#14141E] border-black/8 dark:border-white/10 text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white hover:border-black/20 dark:hover:border-white/20"
               }`}
             >
               <span
                 className={`w-5 h-5 rounded-lg flex items-center justify-center text-[10px] ${
-                  activeStepIdx === idx ? "bg-[#FFD21F] text-[#0A0A0E]" : "bg-[#F4F4F8] dark:bg-[#1C1C28] text-[#6A6A78] dark:text-[#8E8EA4]"
+                  activeStepIdx === idx ? "bg-primary text-[#0B0A14]" : "bg-[#F4F4F8] dark:bg-[#1C1C28] text-[#6A6A78] dark:text-[#8E8EA4]"
                 }`}
               >
                 <step.icon className="w-3 h-3" />
@@ -210,18 +210,18 @@ export function ContinuousProductStory() {
           {/* Left Narrative Card */}
           <div className="lg:col-span-5 space-y-6">
             <div className="space-y-3">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] text-[11px] font-mono font-extrabold uppercase">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/20 text-[#0B0A14] dark:text-accent text-[11px] font-mono font-extrabold uppercase">
                 <span>{activeStep.stepNum} • {activeStep.category}</span>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center shrink-0 shadow-xs border border-black/10">
+                <div className="w-10 h-10 rounded-2xl bg-primary text-[#0B0A14] flex items-center justify-center shrink-0 shadow-xs border border-black/10">
                   <activeStep.icon className="w-5 h-5" />
                 </div>
-                <h3 className="text-2xl sm:text-4xl font-extrabold text-[#0A0A0E] dark:text-white font-display tracking-tight">
+                <h3 className="text-2xl sm:text-4xl font-extrabold text-[#0B0A14] dark:text-white font-display tracking-tight">
                   {activeStep.title}
                 </h3>
               </div>
-              <p className="text-sm font-semibold text-amber-700 dark:text-[#FFD21F] font-sans">
+              <p className="text-sm font-semibold text-amber-700 dark:text-accent font-sans">
                 {activeStep.tagline}
               </p>
               <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#8E8EA4] leading-relaxed font-sans">
@@ -233,8 +233,8 @@ export function ContinuousProductStory() {
             <div className="space-y-2.5 pt-2">
               {activeStep.keyBenefits.map((benefit, i) => (
                 <div key={i} className="flex items-start gap-2.5 text-xs text-[#2A2A38] dark:text-[#C8C8DC]">
-                  <div className="w-4 h-4 rounded-full bg-[#FFD21F]/30 dark:bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] flex items-center justify-center shrink-0 mt-0.5">
-                    <Check className="w-3 h-3 text-[#0A0A0E] dark:text-[#FFD21F]" />
+                  <div className="w-4 h-4 rounded-full bg-primary/30 dark:bg-primary/20 text-[#0B0A14] dark:text-accent flex items-center justify-center shrink-0 mt-0.5">
+                    <Check className="w-3 h-3 text-[#0B0A14] dark:text-accent" />
                   </div>
                   <span className="leading-tight">{benefit}</span>
                 </div>
@@ -245,7 +245,7 @@ export function ContinuousProductStory() {
             <div className="pt-4 flex flex-wrap items-center gap-3">
               <button
                 onClick={() => setActiveStepIdx((prev) => (prev + 1) % WORKFLOW_STEPS.length)}
-                className="px-6 py-3 rounded-full bg-[#0A0A0E] hover:bg-[#20202B] dark:bg-[#FFD21F] dark:hover:bg-[#FFE052] text-white dark:text-[#0A0A0E] text-xs font-bold transition-all flex items-center gap-2 shadow-xs hover-lift"
+                className="px-6 py-3 rounded-full bg-[#0B0A14] hover:bg-[#20202B] dark:bg-primary dark:hover:bg-accent text-white dark:text-[#0B0A14] text-xs font-bold transition-all flex items-center gap-2 shadow-xs hover-lift"
               >
                 <span>
                   {activeStepIdx === WORKFLOW_STEPS.length - 1 ? "Replay OS Flow" : "Next Step"}
@@ -255,7 +255,7 @@ export function ContinuousProductStory() {
 
               <Link
                 href="/app/brand/campaigns/create"
-                className="text-xs font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-amber-600 dark:hover:text-white transition-colors font-mono"
+                className="text-xs font-bold text-[#0B0A14] dark:text-accent hover:text-amber-600 dark:hover:text-white transition-colors font-mono"
               >
                 Try this in Workspace →
               </Link>
@@ -275,7 +275,7 @@ export function ContinuousProductStory() {
                     AbeyCollab Workspace
                   </span>
                 </div>
-                <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] font-mono text-[9px] sm:text-[10px] font-bold">
+                <span className="px-2.5 py-0.5 rounded-full bg-primary/20 text-[#0B0A14] dark:text-accent font-mono text-[9px] sm:text-[10px] font-bold">
                   PRODUCT PREVIEW
                 </span>
               </div>
@@ -296,7 +296,7 @@ export function ContinuousProductStory() {
                       <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-2 p-3 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/6 dark:border-white/10">
                         <div className="flex items-center gap-2">
                           <Search className="w-4 h-4 text-[#7A7A8A] dark:text-[#8E8EA4] shrink-0" />
-                          <span className="text-xs font-medium text-[#0A0A0E] dark:text-white truncate">
+                          <span className="text-xs font-medium text-[#0B0A14] dark:text-white truncate">
                             &ldquo;Tech gear, 4K Cinema, Tier-1 Audience&rdquo;
                           </span>
                         </div>
@@ -306,10 +306,10 @@ export function ContinuousProductStory() {
                       </div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div className="p-3.5 rounded-2xl bg-[#FFFDF5] dark:bg-[#1A1A28] border border-[#FFD21F]/40 space-y-2">
+                        <div className="p-3.5 rounded-2xl bg-primary/5 dark:bg-[#1A1A28] border border-primary/40 space-y-2">
                           <div className="flex items-center justify-between">
-                            <span className="text-xs font-bold font-display text-[#0A0A0E] dark:text-white">Caimar Salizi</span>
-                            <span className="text-[10px] font-mono font-extrabold text-[#0A0A0E] bg-[#FFD21F] px-1.5 py-0.5 rounded">
+                            <span className="text-xs font-bold font-display text-[#0B0A14] dark:text-white">Caimar Salizi</span>
+                            <span className="text-[10px] font-mono font-extrabold text-[#0B0A14] bg-primary px-1.5 py-0.5 rounded">
                               Verified
                             </span>
                           </div>
@@ -319,8 +319,8 @@ export function ContinuousProductStory() {
 
                         <div className="p-3.5 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/6 dark:border-white/10 space-y-2">
                           <div className="flex items-center justify-between">
-                            <span className="text-xs font-bold font-display text-[#0A0A0E] dark:text-white">Daniel Titchener</span>
-                            <span className="text-[10px] font-mono font-extrabold text-[#0A0A0E] dark:text-white bg-black/10 dark:bg-white/10 px-1.5 py-0.5 rounded">
+                            <span className="text-xs font-bold font-display text-[#0B0A14] dark:text-white">Daniel Titchener</span>
+                            <span className="text-[10px] font-mono font-extrabold text-[#0B0A14] dark:text-white bg-black/10 dark:bg-white/10 px-1.5 py-0.5 rounded">
                               Verified
                             </span>
                           </div>
@@ -339,25 +339,25 @@ export function ContinuousProductStory() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="p-5 rounded-2xl bg-[#FFFDF5] dark:bg-[#1A1A28] border-2 border-[#FFD21F] space-y-4 shadow-sm"
+                      className="p-5 rounded-2xl bg-primary/5 dark:bg-[#1A1A28] border-2 border-primary space-y-4 shadow-sm"
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <div className="w-8 h-8 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-bold shadow-xs">
-                            <CheckCircle2 className="w-4 h-4 text-[#0A0A0E]" />
+                          <div className="w-8 h-8 rounded-full bg-primary text-[#0B0A14] flex items-center justify-center text-xs font-bold shadow-xs">
+                            <CheckCircle2 className="w-4 h-4 text-[#0B0A14]" />
                           </div>
                           <div>
-                            <h4 className="text-xs font-bold text-[#0A0A0E] dark:text-white">Audience &amp; Deliverable Fit</h4>
+                            <h4 className="text-xs font-bold text-[#0B0A14] dark:text-white">Audience &amp; Deliverable Fit</h4>
                             <p className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4]">Campaign Alignment × Caimar Salizi</p>
                           </div>
                         </div>
-                        <span className="text-sm font-black font-display text-[#0A0A0E] dark:text-[#FFD21F]">Strong Match</span>
+                        <span className="text-sm font-black font-display text-[#0B0A14] dark:text-accent">Strong Match</span>
                       </div>
 
                       <div className="space-y-2 font-mono text-[11px]">
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[#5A5A68] dark:text-[#8E8EA4]">
                           <span>Audience Category Overlap:</span>
-                          <strong className="text-[#0A0A0E] dark:text-white">Developer &amp; Tech Focused</strong>
+                          <strong className="text-[#0B0A14] dark:text-white">Developer &amp; Tech Focused</strong>
                         </div>
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[#5A5A68] dark:text-[#8E8EA4]">
                           <span>Engagement Quality:</span>
@@ -365,7 +365,7 @@ export function ContinuousProductStory() {
                         </div>
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[#5A5A68] dark:text-[#8E8EA4]">
                           <span>Commercial Rights:</span>
-                          <strong className="text-[#0A0A0E] dark:text-white">Full Perpetual Included</strong>
+                          <strong className="text-[#0B0A14] dark:text-white">Full Perpetual Included</strong>
                         </div>
                       </div>
                     </motion.div>
@@ -386,7 +386,7 @@ export function ContinuousProductStory() {
                           <span className="text-[10px] uppercase font-mono text-[#7A7A8A] dark:text-[#8E8EA4] font-bold block">
                             PRE-FUNDED ESCROW VAULT
                           </span>
-                          <span className="text-2xl font-black font-display text-[#0A0A0E] dark:text-white">₹75,000.00</span>
+                          <span className="text-2xl font-black font-display text-[#0B0A14] dark:text-white">₹75,000.00</span>
                         </div>
                         <span className="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 text-xs font-mono font-bold flex items-center gap-1 border border-emerald-300 dark:border-emerald-800">
                           <Lock className="w-3.5 h-3.5" /> SECURED
@@ -394,7 +394,7 @@ export function ContinuousProductStory() {
                       </div>
 
                       <div className="p-3 rounded-xl bg-white dark:bg-[#181826] border border-black/8 dark:border-white/10 space-y-1.5 text-xs">
-                        <div className="flex items-center justify-between font-bold text-[#0A0A0E] dark:text-white">
+                        <div className="flex items-center justify-between font-bold text-[#0B0A14] dark:text-white">
                           <span>Milestone 1: 4K Master Video Integration</span>
                           <span className="text-emerald-600 dark:text-emerald-400">Active Stage</span>
                         </div>
@@ -425,11 +425,11 @@ export function ContinuousProductStory() {
                             <Play className="w-3.5 h-3.5 fill-white" />
                             <span>00:14 / 01:00</span>
                           </div>
-                          <span className="text-[#FFD21F] font-bold">Annotation at 00:14</span>
+                          <span className="text-primary font-bold">Annotation at 00:14</span>
                         </div>
                       </div>
 
-                      <div className="p-2.5 rounded-xl bg-[#FFFDF5] dark:bg-[#1A1A28] border border-[#FFD21F]/40 text-xs flex items-center justify-between">
+                      <div className="p-2.5 rounded-xl bg-primary/5 dark:bg-[#1A1A28] border border-primary/40 text-xs flex items-center justify-between">
                         <span className="text-[#3A3A48] dark:text-[#D0D0E0]">&ldquo;Move brand title 20px higher in frame.&rdquo;</span>
                         <span className="font-mono text-[10px] text-amber-700 dark:text-amber-400 font-bold">Revision Logged</span>
                       </div>
@@ -467,17 +467,17 @@ export function ContinuousProductStory() {
                       exit={{ opacity: 0, y: -10 }}
                       className="space-y-3"
                     >
-                      <div className="p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#1A1A28] border border-[#FFD21F]/50 space-y-2">
+                      <div className="p-4 rounded-2xl bg-primary/5 dark:bg-[#1A1A28] border border-primary/50 space-y-2">
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs font-mono">
                           <span className="text-[#7A7A8A] dark:text-[#8E8EA4]">Gross Escrow Milestone</span>
-                          <span className="font-bold text-[#0A0A0E] dark:text-white">₹75,000.00</span>
+                          <span className="font-bold text-[#0B0A14] dark:text-white">₹75,000.00</span>
                         </div>
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs font-mono">
                           <span className="text-[#7A7A8A] dark:text-[#8E8EA4]">Platform QA &amp; Escrow Fee (10%)</span>
                           <span className="text-rose-600 font-bold">-₹7,500.00</span>
                         </div>
                         <div className="pt-2 border-t border-black/8 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-1 font-mono">
-                          <strong className="text-[#0A0A0E] dark:text-white font-display text-sm">Net Creator Payout</strong>
+                          <strong className="text-[#0B0A14] dark:text-white font-display text-sm">Net Creator Payout</strong>
                           <strong className="text-emerald-600 dark:text-emerald-400 font-display text-lg">₹67,500.00</strong>
                         </div>
                       </div>
@@ -501,21 +501,21 @@ export function ContinuousProductStory() {
                       <div className="grid grid-cols-3 gap-2 text-center font-mono">
                         <div className="p-3 rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/6 dark:border-white/10">
                           <span className="text-[9px] uppercase text-[#7A7A8A] dark:text-[#8E8EA4] block">Reach</span>
-                          <span className="text-sm font-black text-[#0A0A0E] dark:text-white">Growing</span>
+                          <span className="text-sm font-black text-[#0B0A14] dark:text-white">Growing</span>
                         </div>
                         <div className="p-3 rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/6 dark:border-white/10">
                           <span className="text-[9px] uppercase text-[#7A7A8A] dark:text-[#8E8EA4] block">Conversions</span>
                           <span className="text-sm font-black text-emerald-600 dark:text-emerald-400">Tracked</span>
                         </div>
-                        <div className="p-3 rounded-xl bg-[#FFFDF5] dark:bg-[#1A1A28] border border-[#FFD21F]/40">
+                        <div className="p-3 rounded-xl bg-primary/5 dark:bg-[#1A1A28] border border-primary/40">
                           <span className="text-[9px] uppercase text-[#7A7A8A] dark:text-[#8E8EA4] block">Campaign ROI</span>
-                          <span className="text-sm font-black text-[#0A0A0E] dark:text-white">Measured</span>
+                          <span className="text-sm font-black text-[#0B0A14] dark:text-white">Measured</span>
                         </div>
                       </div>
 
                       <div className="p-3 rounded-xl bg-white dark:bg-[#181826] border border-black/8 dark:border-white/10 flex items-center justify-between text-xs">
-                        <span className="font-bold text-[#0A0A0E] dark:text-white">Re-book for Next Quarter</span>
-                        <button className="px-3 py-1 rounded-full bg-[#FFD21F] text-[#0A0A0E] font-bold text-[11px]">
+                        <span className="font-bold text-[#0B0A14] dark:text-white">Re-book for Next Quarter</span>
+                        <button className="px-3 py-1 rounded-full bg-primary text-[#0B0A14] font-bold text-[11px]">
                           1-Click Rehire
                         </button>
                       </div>
@@ -528,7 +528,7 @@ export function ContinuousProductStory() {
               {/* Bottom Telemetry Proof Strip */}
               <div className="pt-4 border-t border-black/6 dark:border-white/10 flex items-center justify-between text-xs font-mono text-[#6A6A78] dark:text-[#8E8EA4]">
                 <span>Automated SLA Enforced</span>
-                <span className="text-[#0A0A0E] dark:text-white font-bold">100% Guaranteed</span>
+                <span className="text-[#0B0A14] dark:text-white font-bold">100% Guaranteed</span>
               </div>
             </div>
           </div>

@@ -164,7 +164,7 @@ export function RazorpayCheckoutButton({
         },
         notes: notes,
         theme: {
-          color: "#FFD21F", // Solar Yellow branding
+          color: "#7C3AED", // Solar Yellow branding
         },
         modal: {
           ondismiss: function () {
@@ -261,19 +261,19 @@ export function RazorpayCheckoutButton({
       disabled={disabled || loading}
       className={
         className ||
-        "px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs shadow-xs border border-black/10 transition-all flex items-center justify-center gap-2 disabled:opacity-50 active:scale-98"
+        "px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-xs shadow-xs border border-black/10 transition-all flex items-center justify-center gap-2 disabled:opacity-50 active:scale-98"
       }
     >
       {loading ? (
         <>
-          <Loader2 className="w-4 h-4 animate-spin text-[#0A0A0E]" />
+          <Loader2 className="w-4 h-4 animate-spin text-[#0B0A14]" />
           <span>Opening Gateway...</span>
         </>
       ) : children ? (
         children
       ) : (
         <>
-          <ShieldCheck className="w-4 h-4 text-[#0A0A0E]" />
+          <ShieldCheck className="w-4 h-4 text-[#0B0A14]" />
           <span>Pay with Razorpay ({formatCurrency(amount, (currency || "INR") as SupportedCurrency)})</span>
         </>
       )}

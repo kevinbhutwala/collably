@@ -90,18 +90,18 @@ export function ProtectedEscrowFlow() {
   const activeStage = escrowStages[activeStageIdx];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#FAFAFC] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] select-none border-t border-black/8 dark:border-white/10 relative overflow-hidden font-sans">
+    <section className="py-20 sm:py-28 bg-[#FAFAFC] dark:bg-[#07070B] text-[#0B0A14] dark:text-[#F4F4F8] select-none border-t border-black/8 dark:border-white/10 relative overflow-hidden font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFFDF5] dark:bg-[#14141E] border border-[#FFD21F]/50 text-xs font-mono font-bold text-[#0A0A0E] dark:text-white shadow-2xs">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F]" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 dark:bg-[#14141E] border border-primary/50 text-xs font-mono font-bold text-[#0B0A14] dark:text-white shadow-2xs">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#0B0A14] dark:text-accent" />
             <span>SAFE PAYMENTS FOR BOTH SIDES</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#0A0A0E] dark:text-white tracking-tight font-display">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#0B0A14] dark:text-white tracking-tight font-display">
             Safe, Guaranteed Payments. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD21F] via-[#FFAE00] to-[#FFD21F]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-[#FFAE00] to-primary">
               Fair for Everyone.
             </span>
           </h2>
@@ -114,13 +114,13 @@ export function ProtectedEscrowFlow() {
         {/* Interactive Escrow Journey Canvas */}
         <div className="max-w-5xl mx-auto rounded-3xl bg-white dark:bg-[#12121A] border-2 border-black/8 dark:border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.06)] p-6 sm:p-10 space-y-8 relative overflow-hidden">
           {/* Top Live Escrow Proof Bar */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-[#FFFDF5] dark:bg-[#1A1A28] border border-[#FFD21F]/40 shadow-2xs">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-primary/5 dark:bg-[#1A1A28] border border-primary/40 shadow-2xs">
             <div className="space-y-1 font-mono">
               <span className="text-[10px] uppercase text-[#7A7A8A] dark:text-[#8E8EA4] font-bold block">
                 VERIFIED ESCROW ALLOCATION
               </span>
               <div className="flex items-baseline gap-2">
-                <span suppressHydrationWarning className="text-3xl sm:text-4xl font-black text-[#0A0A0E] dark:text-white font-display">{displayBudget}</span>
+                <span suppressHydrationWarning className="text-3xl sm:text-4xl font-black text-[#0B0A14] dark:text-white font-display">{displayBudget}</span>
                 <span className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-sans font-medium">Held in Stripe Connect Custody</span>
               </div>
             </div>
@@ -140,13 +140,13 @@ export function ProtectedEscrowFlow() {
                 onClick={() => setActiveStageIdx(idx)}
                 className={`p-3.5 rounded-2xl border text-left transition-all font-mono space-y-1 shrink-0 min-w-[140px] sm:min-w-0 ${
                   activeStageIdx === idx
-                    ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] border-[#0A0A0E] dark:border-[#FFD21F] shadow-sm"
-                    : "bg-[#F8F8FC] dark:bg-[#181824] border-black/6 dark:border-white/10 text-[#5A5A68] dark:text-[#8E8EA4] hover:bg-white dark:hover:bg-[#202030] hover:text-[#0A0A0E] dark:hover:text-white"
+                    ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] border-[#0B0A14] dark:border-primary shadow-sm"
+                    : "bg-[#F8F8FC] dark:bg-[#181824] border-black/6 dark:border-white/10 text-[#5A5A68] dark:text-[#8E8EA4] hover:bg-white dark:hover:bg-[#202030] hover:text-[#0B0A14] dark:hover:text-white"
                 }`}
               >
                 <span
                   className={`text-[9px] block uppercase font-bold ${
-                    activeStageIdx === idx ? "text-[#FFD21F] dark:text-[#0A0A0E]" : "text-[#7A7A8A] dark:text-[#8E8EA4]"
+                    activeStageIdx === idx ? "text-primary dark:text-[#0B0A14]" : "text-[#7A7A8A] dark:text-[#8E8EA4]"
                   }`}
                 >
                   {st.phase}
@@ -160,14 +160,14 @@ export function ProtectedEscrowFlow() {
           <div className="p-6 sm:p-8 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/8 dark:border-white/10 space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-black/6 dark:border-white/10">
               <div>
-                <span className="text-xs font-mono font-bold text-amber-700 dark:text-[#FFD21F] block uppercase">
+                <span className="text-xs font-mono font-bold text-amber-700 dark:text-accent block uppercase">
                   {activeStage.phase} • {activeStage.badge}
                 </span>
-                <h3 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] dark:text-white font-display">
+                <h3 className="text-xl sm:text-2xl font-extrabold text-[#0B0A14] dark:text-white font-display">
                   {activeStage.title}
                 </h3>
               </div>
-              <span className="px-3 py-1 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-xs font-mono font-extrabold shadow-2xs self-start sm:self-center">
+              <span className="px-3 py-1 rounded-full bg-primary text-[#0B0A14] text-xs font-mono font-extrabold shadow-2xs self-start sm:self-center">
                 {activeStage.badge}
               </span>
             </div>
@@ -179,8 +179,8 @@ export function ProtectedEscrowFlow() {
             {/* Dual Brand vs Creator Protection Split */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
               <div className="p-4 rounded-xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 space-y-2">
-                <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white">
-                  <Building2 className="w-4 h-4 text-[#FFD21F]" />
+                <div className="flex items-center gap-2 text-xs font-bold text-[#0B0A14] dark:text-white">
+                  <Building2 className="w-4 h-4 text-primary" />
                   <span>For Brands: Zero Upfront Risk</span>
                 </div>
                 <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] leading-relaxed font-sans">
@@ -189,7 +189,7 @@ export function ProtectedEscrowFlow() {
               </div>
 
               <div className="p-4 rounded-xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 space-y-2">
-                <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white">
+                <div className="flex items-center gap-2 text-xs font-bold text-[#0B0A14] dark:text-white">
                   <Users className="w-4 h-4 text-[#087F5B]" />
                   <span>For Creators: Guaranteed Payout</span>
                 </div>
@@ -203,7 +203,7 @@ export function ProtectedEscrowFlow() {
           {/* Bottom Financial Transparency Strip */}
           <div className="p-4 rounded-2xl bg-[#FAF9F5] dark:bg-[#14141E] border border-black/8 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
             <div className="flex items-center gap-3 text-[#5A5A68] dark:text-[#8E8EA4]">
-              <span className="font-bold text-[#0A0A0E] dark:text-white">10% Flat Fee:</span>
+              <span className="font-bold text-[#0B0A14] dark:text-white">10% Flat Fee:</span>
               <span>Keep 90% net • Zero hidden credit card markups • Direct ACH / Wire</span>
             </div>
             <span className="text-[#087F5B] font-bold flex items-center gap-1">

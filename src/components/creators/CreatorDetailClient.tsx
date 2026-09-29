@@ -187,9 +187,9 @@ export function CreatorDetailClient({
   if (!creator) {
     return (
       <div className="py-32 text-center space-y-4 min-h-screen bg-[#FAFAFC] dark:bg-[#07070B]">
-        <h2 className="text-2xl font-bold text-[#0A0A0E] dark:text-white">Creator not found</h2>
+        <h2 className="text-2xl font-bold text-[#0B0A14] dark:text-white">Creator not found</h2>
         <Link href="/creators">
-          <button className="px-6 py-2.5 rounded-full bg-white dark:bg-[#14141E] border border-black/10 dark:border-white/10 text-xs font-bold text-[#0A0A0E] dark:text-white hover:opacity-80 cursor-pointer">
+          <button className="px-6 py-2.5 rounded-full bg-white dark:bg-[#14141E] border border-black/10 dark:border-white/10 text-xs font-bold text-[#0B0A14] dark:text-white hover:opacity-80 cursor-pointer">
             ← Back to Directory
           </button>
         </Link>
@@ -205,17 +205,17 @@ export function CreatorDetailClient({
   const avgEngagement = creator.avgEngagementRate || 0;
 
   return (
-    <div className="min-h-screen bg-[#F7F7FA] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8]">
+    <div className="min-h-screen bg-[#F7F7FA] dark:bg-[#07070B] text-[#0B0A14] dark:text-[#F4F4F8]">
 
       {/* ── CINEMATIC HERO BAND ── */}
-      <div className="relative overflow-hidden bg-[#0A0A0E] dark:bg-[#050508]">
+      <div className="relative overflow-hidden bg-[#0B0A14] dark:bg-[#050508]">
         {/* Background grain + gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A2E] via-[#0A0A0E] to-[#0F0F1A]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A2E] via-[#0B0A14] to-[#0F0F1A]" />
         <div className="absolute inset-0 opacity-30"
           style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E\")", backgroundSize: "200px" }} />
         {/* Yellow accent glow */}
-        <div className="absolute -top-32 -right-32 w-96 h-96 bg-[#FFD21F]/10 rounded-full blur-3xl" />
-        <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-[#FFD21F]/5 rounded-full blur-3xl" />
+        <div className="absolute -top-32 -right-32 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
           <div className="flex flex-col lg:flex-row lg:items-end gap-8 lg:gap-12">
@@ -224,7 +224,7 @@ export function CreatorDetailClient({
             <div className="flex flex-col sm:flex-row items-start sm:items-end gap-6 flex-1">
               {/* Avatar */}
               <div className="relative shrink-0">
-                <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden ring-2 ring-[#FFD21F]/40 shadow-2xl">
+                <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden ring-2 ring-primary/40 shadow-2xl">
                   <SafeImage
                     src={creator.avatarUrl}
                     alt={creator.fullName}
@@ -235,8 +235,8 @@ export function CreatorDetailClient({
                   />
                 </div>
                 {creator.verified && (
-                  <span className="absolute -bottom-2 -right-2 w-8 h-8 bg-[#FFD21F] rounded-full flex items-center justify-center shadow-lg ring-2 ring-[#0A0A0E]">
-                    <CheckCircle2 className="w-4 h-4 text-[#0A0A0E]" />
+                  <span className="absolute -bottom-2 -right-2 w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-lg ring-2 ring-[#0B0A14]">
+                    <CheckCircle2 className="w-4 h-4 text-[#0B0A14]" />
                   </span>
                 )}
               </div>
@@ -295,8 +295,8 @@ export function CreatorDetailClient({
                 { icon: Star, label: "Campaigns Done", value: `${creator.completedCampaignsCount}` },
               ].map(({ icon: Icon, label, value }) => (
                 <div key={label} className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/8 border border-white/12 backdrop-blur-sm min-w-[140px]">
-                  <div className="w-8 h-8 rounded-lg bg-[#FFD21F]/15 border border-[#FFD21F]/25 flex items-center justify-center shrink-0">
-                    <Icon className="w-4 h-4 text-[#FFD21F]" />
+                  <div className="w-8 h-8 rounded-lg bg-primary/15 border border-primary/25 flex items-center justify-center shrink-0">
+                    <Icon className="w-4 h-4 text-primary" />
                   </div>
                   <div>
                     <p className="text-[10px] text-white/50 font-mono uppercase tracking-wider">{label}</p>
@@ -321,7 +321,7 @@ export function CreatorDetailClient({
             {/* Bio card */}
             <div className="rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-6 space-y-4">
               <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-[#FFD21F]" />
+                <Sparkles className="w-4 h-4 text-primary" />
                 <span className="text-[10px] uppercase font-mono tracking-wider text-[#7A7A8A] dark:text-[#A0A0B0] font-bold">
                   Creator Bio
                 </span>
@@ -344,7 +344,7 @@ export function CreatorDetailClient({
             {(creator.socialAccounts || []).length > 0 && (
               <div className="rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-6 space-y-4">
                 <div className="flex items-center gap-2">
-                  <Zap className="w-4 h-4 text-[#FFD21F]" />
+                  <Zap className="w-4 h-4 text-primary" />
                   <span className="text-[10px] uppercase font-mono tracking-wider text-[#7A7A8A] dark:text-[#A0A0B0] font-bold">
                     Connected Channels
                   </span>
@@ -367,7 +367,7 @@ export function CreatorDetailClient({
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-1.5">
-                            <span className="text-xs font-bold text-[#0A0A0E] dark:text-white font-mono truncate">
+                            <span className="text-xs font-bold text-[#0B0A14] dark:text-white font-mono truncate">
                               @{cleanHandle}
                             </span>
                             {isVerified && (
@@ -379,7 +379,7 @@ export function CreatorDetailClient({
                             {sa.engagementRate ? ` · ${sa.engagementRate.toFixed(1)}% ER` : ""}
                           </p>
                         </div>
-                        <ExternalLink className="w-3.5 h-3.5 text-[#C0C0CC] group-hover:text-[#0A0A0E] dark:group-hover:text-white transition-colors shrink-0" />
+                        <ExternalLink className="w-3.5 h-3.5 text-[#C0C0CC] group-hover:text-[#0B0A14] dark:group-hover:text-white transition-colors shrink-0" />
                       </a>
                     );
                   })}
@@ -409,13 +409,13 @@ export function CreatorDetailClient({
           <div className="lg:col-span-4">
             <div className="sticky top-24 rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 overflow-hidden shadow-lg">
               {/* Top accent bar */}
-              <div className="h-1.5 bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700]" />
+              <div className="h-1.5 bg-gradient-to-r from-primary via-[#9333EA] to-accent" />
 
               <div className="p-6 space-y-5">
                 {/* Price */}
                 <div>
                   <p className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] font-mono uppercase tracking-wider">Base Sponsorship</p>
-                  <p className="text-3xl font-black text-[#0A0A0E] dark:text-white font-mono mt-0.5">
+                  <p className="text-3xl font-black text-[#0B0A14] dark:text-white font-mono mt-0.5">
                     {format(creator.startingPrice, (creator as any).currency || "INR")}
                   </p>
                 </div>
@@ -424,8 +424,8 @@ export function CreatorDetailClient({
                 <div className="grid grid-cols-1 gap-2.5">
                   {[
                     { icon: Zap, label: "Status", value: "Available for Hire", color: "text-emerald-600 dark:text-emerald-400" },
-                    { icon: Clock, label: "Avg Turnaround", value: "4–7 Business Days", color: "text-[#0A0A0E] dark:text-white" },
-                    { icon: Star, label: "Past Campaigns", value: `${creator.completedCampaignsCount} Completed`, color: "text-[#0A0A0E] dark:text-white" },
+                    { icon: Clock, label: "Avg Turnaround", value: "4–7 Business Days", color: "text-[#0B0A14] dark:text-white" },
+                    { icon: Star, label: "Past Campaigns", value: `${creator.completedCampaignsCount} Completed`, color: "text-[#0B0A14] dark:text-white" },
                   ].map(({ icon: Icon, label, value, color }) => (
                     <div key={label} className="flex items-center justify-between p-3 rounded-xl bg-[#F8F8FC] dark:bg-[#181826]">
                       <div className="flex items-center gap-2 text-[#7A7A8A] dark:text-[#8E8EA4]">
@@ -441,7 +441,7 @@ export function CreatorDetailClient({
                 <div className="space-y-2.5 pt-1">
                   <button
                     onClick={() => setIsInviteModalOpen(true)}
-                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-sm transition-all shadow-[0_4px_20px_rgba(255,210,31,0.35)] flex items-center justify-center gap-2 cursor-pointer active:scale-98"
+                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-bold text-sm transition-all shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.35)] flex items-center justify-center gap-2 cursor-pointer active:scale-98"
                   >
                     <span>Send Campaign Brief</span>
                     <ArrowRight className="w-4 h-4" />
@@ -451,7 +451,7 @@ export function CreatorDetailClient({
                     href={`/app/messages?recipientId=${creator.userId || creator.id}&recipientName=${encodeURIComponent(creator.fullName)}`}
                     className="block"
                   >
-                    <button className="w-full py-3 rounded-xl bg-[#F8F8FC] dark:bg-white/5 hover:bg-[#EEEEF4] dark:hover:bg-white/10 border border-black/8 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-sm transition-all flex items-center justify-center gap-2 cursor-pointer">
+                    <button className="w-full py-3 rounded-xl bg-[#F8F8FC] dark:bg-white/5 hover:bg-[#EEEEF4] dark:hover:bg-white/10 border border-black/8 dark:border-white/10 text-[#0B0A14] dark:text-white font-bold text-sm transition-all flex items-center justify-center gap-2 cursor-pointer">
                       <MessageSquare className="w-4 h-4" />
                       <span>Direct Message</span>
                     </button>
@@ -472,12 +472,12 @@ export function CreatorDetailClient({
             <div className="rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 overflow-hidden">
               <div className="px-6 pt-6 pb-4 border-b border-black/6 dark:border-white/8 flex items-center justify-between flex-wrap gap-3">
                 <div>
-                  <h2 className="text-lg font-bold text-[#0A0A0E] dark:text-white font-display">Deliverables & Rate Benchmarks</h2>
+                  <h2 className="text-lg font-bold text-[#0B0A14] dark:text-white font-display">Deliverables & Rate Benchmarks</h2>
                   <p className="text-xs text-[#7A7A8A] dark:text-[#8E8EA4] font-sans mt-0.5">
                     Final quotes confirmed on campaign brief review.
                   </p>
                 </div>
-                <span className="px-3 py-1 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#0A0A0E] dark:text-[#FFD21F] text-[10px] font-mono font-bold">
+                <span className="px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-[#0B0A14] dark:text-accent text-[10px] font-mono font-bold">
                   {creator.isSignedTalent ? "✓ Verified Rate Card" : "Market Benchmark"}
                 </span>
               </div>
@@ -486,14 +486,14 @@ export function CreatorDetailClient({
                 {(creator.rateCards || []).map((rate, i) => (
                   <div
                     key={rate.id}
-                    className="group flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl bg-[#F8F8FC] dark:bg-[#181826] hover:bg-[#F2F2F8] dark:hover:bg-[#1E1E2E] border border-transparent hover:border-[#FFD21F]/20 transition-all"
+                    className="group flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl bg-[#F8F8FC] dark:bg-[#181826] hover:bg-[#F2F2F8] dark:hover:bg-[#1E1E2E] border border-transparent hover:border-primary/20 transition-all"
                   >
                     <div className="flex items-start gap-3.5">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#FFD21F]/20 to-[#FFD21F]/5 border border-[#FFD21F]/25 flex items-center justify-center text-[#0A0A0E] dark:text-[#FFD21F] shrink-0">
+                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/25 flex items-center justify-center text-[#0B0A14] dark:text-accent shrink-0">
                         <TitleIcon title={rate.title || rate.deliverableType} category={creator.primaryCategory} className="w-5 h-5" />
                       </div>
                       <div className="min-w-0">
-                        <h3 className="font-bold text-sm text-[#0A0A0E] dark:text-white">{rate.title || rate.deliverableType}</h3>
+                        <h3 className="font-bold text-sm text-[#0B0A14] dark:text-white">{rate.title || rate.deliverableType}</h3>
                         <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B0] mt-0.5">{rate.description}</p>
                         <span className="text-[10px] font-mono text-[#7A7A8A] dark:text-[#8E8EA4] block mt-1">
                           {rate.turnaroundDays}d delivery · {rate.revisionsIncluded || 2} revisions
@@ -503,7 +503,7 @@ export function CreatorDetailClient({
 
                     <div className="text-right shrink-0 sm:pl-4 pt-3 sm:pt-0 border-t sm:border-0 border-black/5 dark:border-white/5">
                       <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] font-mono block">Est. rate</span>
-                      <span className="text-lg font-black text-[#0A0A0E] dark:text-white font-mono">
+                      <span className="text-lg font-black text-[#0B0A14] dark:text-white font-mono">
                         {format(rate.basePrice || (rate as any).price || 500, (rate as any).currency || (creator as any).currency || "INR")}
                       </span>
                       <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] font-mono">per deliverable</span>
@@ -518,7 +518,7 @@ export function CreatorDetailClient({
           <div className="lg:col-span-5">
             <div className="rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 overflow-hidden h-full">
               <div className="px-6 pt-6 pb-4 border-b border-black/6 dark:border-white/8">
-                <h2 className="text-lg font-bold text-[#0A0A0E] dark:text-white font-display">Audience Telemetry</h2>
+                <h2 className="text-lg font-bold text-[#0B0A14] dark:text-white font-display">Audience Telemetry</h2>
                 <p className="text-xs text-[#7A7A8A] dark:text-[#8E8EA4] mt-0.5">Geo distribution & demographics</p>
               </div>
 
@@ -529,12 +529,12 @@ export function CreatorDetailClient({
                   {(creator.audience?.topCountries || []).map((geo) => (
                     <div key={geo.country} className="space-y-1.5">
                       <div className="flex justify-between text-xs font-mono">
-                        <span className="text-[#0A0A0E] dark:text-white font-bold">{geo.country}</span>
+                        <span className="text-[#0B0A14] dark:text-white font-bold">{geo.country}</span>
                         <span className="text-[#7A7A8A] dark:text-[#8E8EA4]">{geo.percentage}%</span>
                       </div>
                       <div className="w-full h-2 rounded-full bg-black/5 dark:bg-white/8 overflow-hidden">
                         <div
-                          className="h-full rounded-full bg-gradient-to-r from-[#FFD21F] to-[#FFC700] transition-all"
+                          className="h-full rounded-full bg-gradient-to-r from-primary to-accent transition-all"
                           style={{ width: `${geo.percentage}%` }}
                         />
                       </div>
@@ -550,7 +550,7 @@ export function CreatorDetailClient({
                       {(creator.audience?.genderSplit || []).map((g) => (
                         <div key={g.gender} className="p-4 rounded-xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/5 dark:border-white/5 text-center">
                           <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-mono block">{g.gender}</span>
-                          <span className="text-2xl font-black text-[#0A0A0E] dark:text-white mt-1 block">{g.percentage}%</span>
+                          <span className="text-2xl font-black text-[#0B0A14] dark:text-white mt-1 block">{g.percentage}%</span>
                         </div>
                       ))}
                     </div>
@@ -564,7 +564,7 @@ export function CreatorDetailClient({
                     {(creator.audience?.ageDistribution || []).map((a) => (
                       <div key={a.range} className="space-y-1">
                         <div className="flex justify-between text-xs font-mono">
-                          <span className="text-[#0A0A0E] dark:text-white">{a.range}</span>
+                          <span className="text-[#0B0A14] dark:text-white">{a.range}</span>
                           <span className="text-[#7A7A8A] dark:text-[#8E8EA4]">{a.percentage}%</span>
                         </div>
                         <div className="w-full h-1.5 rounded-full bg-black/5 dark:bg-white/8 overflow-hidden">
@@ -587,7 +587,7 @@ export function CreatorDetailClient({
           <SocialIcon platform="instagram" colored={true} size={16} />
           <p className="text-xs text-[#7A7A8A] dark:text-[#8E8EA4] leading-relaxed font-sans">
             Instagram usernames (@{igHandle}), photographs, follower statistics, and bios are sourced from publicly available Instagram accounts for discovery purposes. All creative works remain the property of their respective creators.
-            {" "}<Link href="/register?role=creator" className="text-[#0A0A0E] dark:text-[#FFD21F] font-bold underline hover:opacity-80">Claim this profile</Link> to manage your listing.
+            {" "}<Link href="/register?role=creator" className="text-[#0B0A14] dark:text-accent font-bold underline hover:opacity-80">Claim this profile</Link> to manage your listing.
           </p>
         </div>
 
@@ -609,7 +609,7 @@ export function CreatorDetailClient({
             actionLabel="Send Brief"
           />
 
-          <form onSubmit={handleSendProposal} className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8] pt-2 border-t border-black/8 dark:border-white/10">
+          <form onSubmit={handleSendProposal} className="space-y-4 text-[#0B0A14] dark:text-[#F4F4F8] pt-2 border-t border-black/8 dark:border-white/10">
             <div>
               <Input
                 label="Campaign / Project Title"
@@ -632,7 +632,7 @@ export function CreatorDetailClient({
                     setDeliverableType(val);
                     checkBrandEligibility(offeredBudget, val);
                   }}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#14141E] border border-black/10 dark:border-white/10 text-xs font-mono font-medium text-[#0A0A0E] dark:text-white focus:outline-hidden focus:border-[#FFD21F]"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#14141E] border border-black/10 dark:border-white/10 text-xs font-mono font-medium text-[#0B0A14] dark:text-white focus:outline-hidden focus:border-primary"
                 >
                   <option value="Short-Form Video (Reels / Shorts)">Short-Form Video (Reels / Shorts)</option>
                   <option value="Dedicated YouTube Video">Dedicated YouTube Video</option>
@@ -678,7 +678,7 @@ export function CreatorDetailClient({
                 className={`w-full py-3.5 rounded-full font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 ${
                   brandEligibilityReport && !brandEligibilityReport.eligible
                     ? "bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 cursor-not-allowed"
-                    : "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] shadow-[0_4px_14px_rgba(255,210,31,0.4)] border border-black/10 active:scale-98 cursor-pointer"
+                    : "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] shadow-[0_4px_14px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10 active:scale-98 cursor-pointer"
                 }`}
               >
                 {isSubmittingProposal ? (
@@ -690,7 +690,7 @@ export function CreatorDetailClient({
                   </>
                 ) : (
                   <>
-                    <Sparkles className="w-4 h-4 text-[#0A0A0E]" />
+                    <Sparkles className="w-4 h-4 text-[#0B0A14]" />
                     <span>Confirm &amp; Send Campaign Brief {brandEligibilityReport?.score ? `(${brandEligibilityReport.score}% Fit)` : ""}</span>
                   </>
                 )}

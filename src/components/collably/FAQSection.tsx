@@ -31,14 +31,14 @@ export function FAQSection() {
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#FAFAFC] border-t border-black/8 relative overflow-hidden text-[#0A0A0E] select-none">
+    <section className="py-20 sm:py-28 bg-[#FAFAFC] border-t border-black/8 relative overflow-hidden text-[#0B0A14] select-none">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/5 border border-black/10 text-xs font-mono font-bold text-[#0A0A0E]">
-            <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/5 border border-black/10 text-xs font-mono font-bold text-[#0B0A14]">
+            <span className="w-2 h-2 rounded-full bg-primary" />
             <span>Questions &amp; Answers</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0A0A0E] font-display text-center">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B0A14] font-display text-center">
             Frequently asked questions.
           </h2>
         </div>
@@ -57,10 +57,10 @@ export function FAQSection() {
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   className="w-full p-5 text-left flex items-center justify-between gap-4 select-none hover:bg-black/[0.02] transition-colors"
                 >
-                  <span className="text-sm sm:text-base font-bold text-[#0A0A0E] font-sans">
+                  <span className="text-sm sm:text-base font-bold text-[#0B0A14] font-sans">
                     {faq.q}
                   </span>
-                  <div className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center shrink-0 text-[#0A0A0E]">
+                  <div className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center shrink-0 text-[#0B0A14]">
                     {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                   </div>
                 </button>

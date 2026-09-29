@@ -60,12 +60,12 @@ export function EditorialCreatorCard({
   return (
     <InteractiveTiltCard
       maxTilt={8}
-      glowColor="rgba(255, 210, 31, 0.28)"
-      className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 hover:border-[#FFD21F] dark:hover:border-[#FFD21F] shadow-[0_10px_35px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] transition-all p-4 flex flex-col justify-between group select-none font-sans cursor-pointer hover-lift"
+      glowColor="rgba(var(--theme-primary-rgb), 0.28)"
+      className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 hover:border-primary dark:hover:border-primary shadow-[0_10px_35px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] transition-all p-4 flex flex-col justify-between group select-none font-sans cursor-pointer hover-lift"
     >
       <div className="space-y-4">
         {/* Layered Visual Portrait Container */}
-        <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden bg-[#0A0A0E]">
+        <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden bg-[#0B0A14]">
           {/* Ambient blurred backdrop for letterbox aspect ratios */}
           <SafeImage
             src={creator.avatarUrl || creator.heroImage || "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800"}
@@ -105,7 +105,7 @@ export function EditorialCreatorCard({
                   aria-label="Save Creator"
                   className={`p-1.5 rounded-full backdrop-blur-md border transition-all ${
                     localBookmarked
-                      ? "bg-[#FFD21F] text-[#0A0A0E] border-[#FFD21F] shadow-sm"
+                      ? "bg-primary text-[#0B0A14] border-primary shadow-sm"
                       : "bg-black/50 text-white/90 border-white/20 hover:bg-white/20 hover:text-white"
                   }`}
                 >
@@ -116,7 +116,7 @@ export function EditorialCreatorCard({
               <span
                 className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-extrabold shadow-sm flex items-center gap-1 ${
                   creator.isSignedTalent
-                    ? "bg-[#FFD21F] text-[#0A0A0E]"
+                    ? "bg-primary text-[#0B0A14]"
                     : "bg-black/60 text-white border border-white/20"
                 }`}
                 title={creator.isSignedTalent ? "Verified Fixed Deliverable Rate" : "Market Rate Benchmark"}
@@ -135,7 +135,7 @@ export function EditorialCreatorCard({
                 e.stopPropagation();
                 onQuickView(creator);
               }}
-              className="absolute bottom-16 right-3 z-20 w-20 sm:w-22 aspect-square rounded-xl overflow-hidden border-2 border-white dark:border-white/20 shadow-[0_8px_20px_rgba(0,0,0,0.35)] bg-black group-hover:border-[#FFD21F] transition-colors"
+              className="absolute bottom-16 right-3 z-20 w-20 sm:w-22 aspect-square rounded-xl overflow-hidden border-2 border-white dark:border-white/20 shadow-[0_8px_20px_rgba(0,0,0,0.35)] bg-black group-hover:border-primary transition-colors"
             >
               <SafeImage
                 src={creator.sampleDeliverables[0].imageUrl}
@@ -170,14 +170,14 @@ export function EditorialCreatorCard({
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center gap-1 text-[11px] font-mono font-medium text-white/95 hover:text-[#FFD21F] transition-colors drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]"
+              className="inline-flex items-center gap-1 text-[11px] font-mono font-medium text-white/95 hover:text-primary transition-colors drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]"
               title={`View @${cleanHandle} on Instagram`}
             >
               <span>@{cleanHandle}</span>
               <ExternalLink className="w-2.5 h-2.5 opacity-80" />
             </a>
             <div className="flex items-center gap-1.5 pt-0.5">
-              <TitleIcon title={creator.niche} category={creator.category} className="w-3.5 h-3.5 text-[#FFD21F] shrink-0 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]" />
+              <TitleIcon title={creator.niche} category={creator.category} className="w-3.5 h-3.5 text-primary shrink-0 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]" />
               <p className="text-[11px] text-white font-medium font-sans truncate drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">{creator.niche}</p>
             </div>
           </div>
@@ -186,7 +186,7 @@ export function EditorialCreatorCard({
         {/* Tags & Telemetry */}
         <div className="space-y-2">
           <div className="flex items-center justify-between text-xs font-mono text-[#5A5A68] dark:text-[#8E8EA4]">
-            <span className="font-bold text-[#0A0A0E] dark:text-white flex items-center gap-1">
+            <span className="font-bold text-[#0B0A14] dark:text-white flex items-center gap-1">
               <span>{creator.reach}</span>
               <span className="text-[10px] font-normal text-[#7A7A8A]">IG reach</span>
             </span>
@@ -197,7 +197,7 @@ export function EditorialCreatorCard({
 
           <div className="flex flex-wrap gap-1 font-mono text-[10px]">
             {creator.location && (
-              <span className="px-2 py-0.5 rounded-md border text-[10px] font-mono font-bold flex items-center gap-1 bg-[#F4F4F8] dark:bg-[#181824] border-black/8 dark:border-white/10 text-[#0A0A0E] dark:text-[#E0E0EC]">
+              <span className="px-2 py-0.5 rounded-md border text-[10px] font-mono font-bold flex items-center gap-1 bg-[#F4F4F8] dark:bg-[#181824] border-black/8 dark:border-white/10 text-[#0B0A14] dark:text-[#E0E0EC]">
                 <span>{creator.location.includes("India") ? "🇮🇳" : creator.location.includes("United States") ? "🇺🇸" : "🇦🇪"}</span>
                 <span className="truncate max-w-[130px]">{creator.location}</span>
               </span>
@@ -220,11 +220,11 @@ export function EditorialCreatorCard({
                     key={tag}
                     className={`px-2 py-0.5 rounded-md border text-[10px] flex items-center gap-1 transition-colors ${
                       isSpecial
-                        ? "bg-[#FFD21F]/15 dark:bg-[#FFD21F]/20 border-[#FFD21F]/30 dark:border-[#FFD21F]/40 text-[#0A0A0E] dark:text-[#FFD21F] font-bold"
+                        ? "bg-primary/15 dark:bg-primary/20 border-primary/30 dark:border-primary/40 text-[#0B0A14] dark:text-accent font-bold"
                         : "bg-[#F4F4F8] dark:bg-[#181824] border-black/5 dark:border-white/10 text-[#4A4A58] dark:text-[#C0C0D4]"
                     }`}
                   >
-                    <TitleIcon title={tag} category={creator.category} className={`w-2.5 h-2.5 ${isSpecial ? "text-[#0A0A0E] dark:text-[#FFD21F]" : "text-[#0A0A0E] dark:text-[#FFD21F]"}`} />
+                    <TitleIcon title={tag} category={creator.category} className={`w-2.5 h-2.5 ${isSpecial ? "text-[#0B0A14] dark:text-accent" : "text-[#0B0A14] dark:text-accent"}`} />
                     <span>{tag}</span>
                   </span>
                 );
@@ -238,7 +238,7 @@ export function EditorialCreatorCard({
       <div className="pt-3 border-t border-black/6 dark:border-white/10 flex items-center justify-between text-xs gap-2">
         <button
           onClick={() => onQuickView(creator)}
-          className="px-3 py-1.5 rounded-full bg-[#F4F4F8] hover:bg-[#EAEAEF] dark:bg-[#1C1C28] dark:hover:bg-[#252535] text-[#0A0A0E] dark:text-[#E0E0EC] text-[11px] font-bold transition-colors flex items-center gap-1 cursor-pointer"
+          className="px-3 py-1.5 rounded-full bg-[#F4F4F8] hover:bg-[#EAEAEF] dark:bg-[#1C1C28] dark:hover:bg-[#252535] text-[#0B0A14] dark:text-[#E0E0EC] text-[11px] font-bold transition-colors flex items-center gap-1 cursor-pointer"
         >
           <Eye className="w-3 h-3 text-[#7A7A8A]" />
           <span>Quick View</span>
@@ -246,10 +246,10 @@ export function EditorialCreatorCard({
 
         <Link
           href={`/creators/${creator.id}`}
-          className="px-3.5 py-1.5 rounded-full bg-[#FFD21F] hover:bg-[#FFE052] dark:bg-[#FFD21F] dark:hover:bg-[#FFE052] text-[#0A0A0E] dark:text-[#0A0A0E] font-sans font-bold text-xs transition-colors flex items-center gap-1 border border-black/10 shadow-xs hover-lift"
+          className="px-3.5 py-1.5 rounded-full bg-primary hover:bg-accent dark:bg-primary dark:hover:bg-accent text-[#0B0A14] dark:text-[#0B0A14] font-sans font-bold text-xs transition-colors flex items-center gap-1 border border-black/10 shadow-xs hover-lift"
         >
-          <span className="text-[#0A0A0E] dark:text-[#0A0A0E] font-bold">Media Kit</span>
-          <ArrowRight className="w-3 h-3 text-[#0A0A0E] dark:text-[#0A0A0E]" />
+          <span className="text-[#0B0A14] dark:text-[#0B0A14] font-bold">Media Kit</span>
+          <ArrowRight className="w-3 h-3 text-[#0B0A14] dark:text-[#0B0A14]" />
         </Link>
       </div>
     </InteractiveTiltCard>

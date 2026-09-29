@@ -144,15 +144,15 @@ export default function AdminDisputesArbitrationPage() {
   const STAGES = ["Open", "Under_Review", "Evidence_Requested", "Decision", "Resolved"];
 
   return (
-    <div className="space-y-8 text-[#0A0A0E] dark:text-[#F4F4F8] select-none">
+    <div className="space-y-8 text-[#0B0A14] dark:text-[#F4F4F8] select-none">
       <div className="pb-6 border-b border-black/8 dark:border-white/10">
         <div className="flex items-center gap-2 mb-1">
-          <span className="text-xs font-mono font-bold uppercase text-[#0A0A0E] dark:text-[#EAEAEF] flex items-center gap-1.5">
+          <span className="text-xs font-mono font-bold uppercase text-[#0B0A14] dark:text-[#EAEAEF] flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             Tribunal &amp; Arbitration Desk
           </span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0B0A14] dark:text-white tracking-tight font-display">
           5-Stage Dispute Arbitration Court
         </h1>
         <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4] mt-0.5 font-sans">
@@ -165,7 +165,7 @@ export default function AdminDisputesArbitrationPage() {
           {disputes.length === 0 ? (
             <div className="py-12 text-center text-[#8A8A9A] dark:text-[#8E8EA4]">
               <CheckCircle2 className="w-8 h-8 mx-auto mb-2 text-emerald-500" />
-              <p className="text-sm font-bold text-[#0A0A0E] dark:text-white">Zero Active Disputes</p>
+              <p className="text-sm font-bold text-[#0B0A14] dark:text-white">Zero Active Disputes</p>
               <p className="text-xs">All collaborations are operating within acceptable terms.</p>
             </div>
           ) : (
@@ -177,7 +177,7 @@ export default function AdminDisputesArbitrationPage() {
                 <div key={d.id} className="py-6 flex flex-col lg:flex-row lg:items-start justify-between gap-6">
                   <div className="space-y-3 flex-1 font-sans">
                     <div className="flex flex-wrap items-center gap-2">
-                      <h4 className="font-bold text-sm text-[#0A0A0E] dark:text-white font-display">{d.campaignTitle}</h4>
+                      <h4 className="font-bold text-sm text-[#0B0A14] dark:text-white font-display">{d.campaignTitle}</h4>
                       <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase border ${
                         isResolved
                           ? "bg-emerald-50 dark:bg-emerald-500/15 text-emerald-800 dark:text-emerald-400 border-emerald-300 dark:border-emerald-500/30"
@@ -197,7 +197,7 @@ export default function AdminDisputesArbitrationPage() {
                           <div key={s} className="flex items-center gap-1.5 shrink-0">
                             <span className={`px-2 py-0.5 rounded-md text-[9px] font-mono font-bold whitespace-nowrap ${
                               isPastOrCurrent
-                                ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E]"
+                                ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14]"
                                 : "bg-black/5 dark:bg-white/10 text-[#8A8A9A] dark:text-[#8E8EA4]"
                             }`}>
                               {s.replace(/_/g, " ")}
@@ -211,11 +211,11 @@ export default function AdminDisputesArbitrationPage() {
                     </div>
 
                     <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4]">
-                      Brand: <strong className="text-[#0A0A0E] dark:text-white">{d.brandName}</strong> • Creator: <strong className="text-[#0A0A0E] dark:text-white">{d.creatorName}</strong>
+                      Brand: <strong className="text-[#0B0A14] dark:text-white">{d.brandName}</strong> • Creator: <strong className="text-[#0B0A14] dark:text-white">{d.creatorName}</strong>
                     </p>
 
                     <div className="p-3.5 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 text-xs text-[#5A5A68] dark:text-[#A0A0B4] space-y-1">
-                      <strong className="block text-[#0A0A0E] dark:text-white font-display">Dispute Reason: {d.reason.replace(/_/g, " ")}</strong>
+                      <strong className="block text-[#0B0A14] dark:text-white font-display">Dispute Reason: {d.reason.replace(/_/g, " ")}</strong>
                       <p>{d.description}</p>
                     </div>
 
@@ -230,7 +230,7 @@ export default function AdminDisputesArbitrationPage() {
                               href={link}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="px-2.5 py-1 rounded-md bg-[#F8F8FC] dark:bg-[#181824] border border-black/10 dark:border-white/10 text-[11px] font-mono text-[#0A0A0E] dark:text-white hover:underline flex items-center gap-1"
+                              className="px-2.5 py-1 rounded-md bg-[#F8F8FC] dark:bg-[#181824] border border-black/10 dark:border-white/10 text-[11px] font-mono text-[#0B0A14] dark:text-white hover:underline flex items-center gap-1"
                             >
                               <span>Evidence #{i + 1}</span>
                               <ExternalLink className="w-3 h-3" />
@@ -255,7 +255,7 @@ export default function AdminDisputesArbitrationPage() {
                   <div className="flex lg:flex-col items-center lg:items-end justify-between gap-4 shrink-0 font-mono">
                     <div>
                       <span className="text-[#7A7A8A] dark:text-[#8E8EA4] block text-[10px]">Frozen Escrow</span>
-                      <span className="text-base font-extrabold text-[#0A0A0E] dark:text-white">
+                      <span className="text-base font-extrabold text-[#0B0A14] dark:text-white">
                         {formatCurrency(d.amountInDispute)}
                       </span>
                     </div>
@@ -269,7 +269,7 @@ export default function AdminDisputesArbitrationPage() {
                               const nextStage = STAGES[Math.min(STAGES.length - 2, currentIdx + 1)];
                               handleAdvanceStage(d.id, nextStage);
                             }}
-                            className="w-full px-3 py-1.5 rounded-full bg-[#F8F8FC] dark:bg-[#181824] hover:bg-black/5 dark:hover:bg-white/10 text-[#0A0A0E] dark:text-white border border-black/10 dark:border-white/10 text-xs font-bold transition-all"
+                            className="w-full px-3 py-1.5 rounded-full bg-[#F8F8FC] dark:bg-[#181824] hover:bg-black/5 dark:hover:bg-white/10 text-[#0B0A14] dark:text-white border border-black/10 dark:border-white/10 text-xs font-bold transition-all"
                           >
                             Advance Stage
                           </button>
@@ -280,9 +280,9 @@ export default function AdminDisputesArbitrationPage() {
                             handleOutcomeChange("FULL_CREATOR_PAYOUT");
                             setIsResolveModalOpen(true);
                           }}
-                          className="w-full px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1.5"
+                          className="w-full px-4 py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1.5"
                         >
-                          <Scale className="w-3.5 h-3.5 text-[#0A0A0E]" />
+                          <Scale className="w-3.5 h-3.5 text-[#0B0A14]" />
                           <span>Issue Ruling</span>
                         </button>
                       </div>
@@ -302,7 +302,7 @@ export default function AdminDisputesArbitrationPage() {
         title="Issue Binding Arbitration Ruling"
         description="Select from 6 standardized legal outcomes and execute automated double-entry ledger settlement."
       >
-        <form onSubmit={handleResolve} className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
+        <form onSubmit={handleResolve} className="space-y-4 text-[#0B0A14] dark:text-[#F4F4F8]">
           {selectedDispute && (
             <div className="p-3.5 rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/10 dark:border-white/10 text-xs space-y-1">
               <div>Campaign: <strong>{selectedDispute.campaignTitle}</strong></div>
@@ -315,7 +315,7 @@ export default function AdminDisputesArbitrationPage() {
             <select
               value={resolutionOutcome}
               onChange={(e) => handleOutcomeChange(e.target.value as DisputeResolutionOutcome)}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#181824] border border-black/15 dark:border-white/15 text-xs font-sans text-[#0A0A0E] dark:text-white font-medium"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#181824] border border-black/15 dark:border-white/15 text-xs font-sans text-[#0B0A14] dark:text-white font-medium"
             >
               <option value="FULL_CREATOR_PAYOUT">1. Full Creator Payout (100% to creator, 0% to brand)</option>
               <option value="PARTIAL_CREATOR_PAYOUT">2. Partial Creator Payout (e.g. 70% to creator, 30% to brand)</option>
@@ -329,7 +329,7 @@ export default function AdminDisputesArbitrationPage() {
           <div className="grid grid-cols-2 gap-3 p-3.5 rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/10 dark:border-white/10 text-xs font-mono">
             <div>
               <span className="text-[#6A6A78] dark:text-[#8E8EA4] block">Brand Refund</span>
-              <span className="font-extrabold text-[#0A0A0E] dark:text-white">{formatCurrency(brandRefundAmount)}</span>
+              <span className="font-extrabold text-[#0B0A14] dark:text-white">{formatCurrency(brandRefundAmount)}</span>
             </div>
             <div>
               <span className="text-[#6A6A78] dark:text-[#8E8EA4] block">Creator Payout</span>
@@ -349,7 +349,7 @@ export default function AdminDisputesArbitrationPage() {
           <button
             type="submit"
             disabled={isSubmitting || !resolutionNotes.trim()}
-            className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-black transition-all shadow-xs border border-black/10 disabled:opacity-50"
+            className="w-full py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-black transition-all shadow-xs border border-black/10 disabled:opacity-50"
           >
             {isSubmitting ? "Executing Settlement..." : "Sign Ruling & Execute Ledger Settlement"}
           </button>

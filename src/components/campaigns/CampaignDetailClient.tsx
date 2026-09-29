@@ -199,7 +199,7 @@ export function CampaignDetailClient({
 
   if (loading) {
     return (
-      <div className="py-32 text-center bg-[#FAFAFC] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] min-h-screen flex items-center justify-center">
+      <div className="py-32 text-center bg-[#FAFAFC] dark:bg-[#07070B] text-[#0B0A14] dark:text-[#F4F4F8] min-h-screen flex items-center justify-center">
         <CreativeLoader
           size="lg"
           label="Loading Campaign Brief"
@@ -211,10 +211,10 @@ export function CampaignDetailClient({
 
   if (!campaign) {
     return (
-      <div className="py-32 text-center space-y-4 bg-[#FAFAFC] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] min-h-screen">
-        <h2 className="text-2xl font-bold font-display text-[#0A0A0E] dark:text-white">Campaign brief not found</h2>
+      <div className="py-32 text-center space-y-4 bg-[#FAFAFC] dark:bg-[#07070B] text-[#0B0A14] dark:text-[#F4F4F8] min-h-screen">
+        <h2 className="text-2xl font-bold font-display text-[#0B0A14] dark:text-white">Campaign brief not found</h2>
         <Link href="/campaigns">
-          <button className="px-6 py-2.5 rounded-full bg-white dark:bg-[#14141E] border border-black/10 dark:border-white/10 text-xs font-bold text-[#0A0A0E] dark:text-white hover:bg-[#F5F5F9] dark:hover:bg-[#1C1C28] cursor-pointer">
+          <button className="px-6 py-2.5 rounded-full bg-white dark:bg-[#14141E] border border-black/10 dark:border-white/10 text-xs font-bold text-[#0B0A14] dark:text-white hover:bg-[#F5F5F9] dark:hover:bg-[#1C1C28] cursor-pointer">
             Back to Campaigns
           </button>
         </Link>
@@ -223,7 +223,7 @@ export function CampaignDetailClient({
   }
 
   return (
-    <div className="py-6 sm:py-12 lg:py-16 bg-[#FAFAFC] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] min-h-screen">
+    <div className="py-6 sm:py-12 lg:py-16 bg-[#FAFAFC] dark:bg-[#07070B] text-[#0B0A14] dark:text-[#F4F4F8] min-h-screen">
       <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
         {/* Campaign Master Card */}
         <div className="rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 overflow-hidden shadow-xs">
@@ -277,11 +277,11 @@ export function CampaignDetailClient({
               <div className="font-mono text-right shrink-0">
                 <span className="text-xs text-white/80 block drop-shadow-xs">Creator Budget</span>
                 <span className="text-2xl font-extrabold text-white flex items-center gap-1.5 drop-shadow-xs">
-                  <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
+                  <span className="w-2 h-2 rounded-full bg-primary" />
                   {formatCurrency(campaign.budget.perCreatorBudget, campaign.budget?.currency)}
                 </span>
                 {campaign.budget?.currency && campaign.budget.currency.toUpperCase() !== displayCurrency.toUpperCase() && (
-                  <span className="text-xs text-[#FFD21F] font-semibold block mt-0.5 drop-shadow-xs">
+                  <span className="text-xs text-primary font-semibold block mt-0.5 drop-shadow-xs">
                     {convertAndFormat(campaign.budget.perCreatorBudget, campaign.budget.currency)}
                   </span>
                 )}
@@ -314,7 +314,7 @@ export function CampaignDetailClient({
               </div>
               <Link
                 href="/app/profile"
-                className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs transition-colors shrink-0 shadow-xs border border-black/10 cursor-pointer"
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-xs transition-colors shrink-0 shadow-xs border border-black/10 cursor-pointer"
               >
                 <span>Complete Profile First</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -326,13 +326,13 @@ export function CampaignDetailClient({
           <div className="p-4 sm:p-6 lg:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-black/8 dark:border-white/10 bg-white dark:bg-[#12121A]">
             <div className="flex flex-wrap items-center gap-3 sm:gap-6 text-xs text-[#6A6A78] dark:text-[#9A9AA8] font-mono">
               <div className="flex items-center gap-1.5">
-                <Users className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />
+                <Users className="w-4 h-4 text-[#0B0A14] dark:text-accent" />
                 <span>
                   {campaign.acceptedCount}/{campaign.maxCreators} Creators Accepted
                 </span>
               </div>
               <div className="flex items-center gap-1.5">
-                <Calendar className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />
+                <Calendar className="w-4 h-4 text-[#0B0A14] dark:text-accent" />
                 <span>Content Due: {campaign.timeline.contentSubmissionDeadline}</span>
               </div>
             </div>
@@ -351,10 +351,10 @@ export function CampaignDetailClient({
             ) : (
               <button
                 onClick={() => setIsApplyModalOpen(true)}
-                className="w-full sm:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs sm:text-sm transition-all shadow-[0_4px_14px_rgba(255,210,31,0.4)] border border-black/10 flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full sm:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-bold text-xs sm:text-sm transition-all shadow-[0_4px_14px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10 flex items-center justify-center gap-2 cursor-pointer"
               >
                 <span>Pitch Creative Angle &amp; Apply</span>
-                <ArrowRight className="w-4 h-4 text-[#0A0A0E]" />
+                <ArrowRight className="w-4 h-4 text-[#0B0A14]" />
               </button>
             )}
           </div>
@@ -365,13 +365,13 @@ export function CampaignDetailClient({
           {/* Left: Brief Narrative */}
           <div className="lg:col-span-8 space-y-6">
             <div className="p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
-              <h2 className="text-lg sm:text-xl font-bold text-[#0A0A0E] dark:text-white font-display">Campaign Brief &amp; Direction</h2>
+              <h2 className="text-lg sm:text-xl font-bold text-[#0B0A14] dark:text-white font-display">Campaign Brief &amp; Direction</h2>
               <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#9A9AA8] leading-relaxed whitespace-pre-line font-sans font-medium">
                 {campaign.description}
               </p>
 
               <div className="pt-4 border-t border-black/8 dark:border-white/10">
-                <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white mb-3 font-display">Required Deliverables</h3>
+                <h3 className="text-sm font-bold text-[#0B0A14] dark:text-white mb-3 font-display">Required Deliverables</h3>
                 <div className="space-y-3">
                   {campaign.deliverables.map((del) => (
                     <div
@@ -381,7 +381,7 @@ export function CampaignDetailClient({
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
                           <DeliverableBadge type={del.type} />
-                          <span className="text-xs font-mono font-bold text-[#0A0A0E] dark:text-white uppercase">
+                          <span className="text-xs font-mono font-bold text-[#0B0A14] dark:text-white uppercase">
                             × {del.count}
                           </span>
                         </div>
@@ -400,32 +400,32 @@ export function CampaignDetailClient({
           {/* Right: Requirements & Escrow terms */}
           <div className="lg:col-span-4 space-y-4 sm:space-y-6">
             <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4">
-              <h3 className="text-xs font-bold text-[#0A0A0E] dark:text-white uppercase tracking-wider font-mono">
+              <h3 className="text-xs font-bold text-[#0B0A14] dark:text-white uppercase tracking-wider font-mono">
                 Creator Criteria
               </h3>
               <div className="space-y-3 font-mono text-xs">
                 <div className="flex justify-between text-[#6A6A78] dark:text-[#8E8EA4]">
                   <span>Min Followers:</span>
-                  <span className="font-bold text-[#0A0A0E] dark:text-white">{formatNumber(campaign.creatorRequirements.minFollowers)}</span>
+                  <span className="font-bold text-[#0B0A14] dark:text-white">{formatNumber(campaign.creatorRequirements.minFollowers)}</span>
                 </div>
                 <div className="flex justify-between text-[#6A6A78] dark:text-[#8E8EA4]">
                   <span>Min Engagement:</span>
-                  <span className="font-bold text-[#0A0A0E] dark:text-white flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F]" />
+                  <span className="font-bold text-[#0B0A14] dark:text-white flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                     {campaign.creatorRequirements.minEngagementRate}%
                   </span>
                 </div>
                 <div className="flex justify-between text-[#6A6A78] dark:text-[#8E8EA4]">
                   <span>Target Geographies:</span>
-                  <span className="font-bold text-[#0A0A0E] dark:text-white">{campaign.targetAudience.locations.join(", ")}</span>
+                  <span className="font-bold text-[#0B0A14] dark:text-white">{campaign.targetAudience.locations.join(", ")}</span>
                 </div>
               </div>
             </div>
 
             <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#F8F8FC] dark:bg-[#14141E] border border-black/8 dark:border-white/10 flex items-start gap-3">
-              <ShieldCheck className="w-5 h-5 text-[#0A0A0E] dark:text-[#FFD21F] shrink-0 mt-0.5" />
+              <ShieldCheck className="w-5 h-5 text-[#0B0A14] dark:text-accent shrink-0 mt-0.5" />
               <div>
-                <h4 className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">Pre-Funded Escrow Pool</h4>
+                <h4 className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">Pre-Funded Escrow Pool</h4>
                 <p className="text-xs text-[#5A5A68] dark:text-[#9A9AA8] mt-1 leading-relaxed font-sans font-medium">
                   The brand has deposited 100% of this campaign budget in escrow. Funds are guaranteed upon milestone approval.
                 </p>
@@ -471,7 +471,7 @@ export function CampaignDetailClient({
             onRefresh={() => checkEligibility()}
           />
 
-          <form onSubmit={handleApply} className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8] pt-2 border-t border-black/8 dark:border-white/10">
+          <form onSubmit={handleApply} className="space-y-4 text-[#0B0A14] dark:text-[#F4F4F8] pt-2 border-t border-black/8 dark:border-white/10">
             <div>
               <Input
                 label={`Proposed Fee (${getCurrencySymbol(campaign.budget?.currency || "INR")} ${campaign.budget?.currency || "INR"})`}
@@ -520,7 +520,7 @@ export function CampaignDetailClient({
                     ? "bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/30 cursor-not-allowed"
                     : eligibilityReport && !eligibilityReport.eligible
                     ? "bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 cursor-not-allowed"
-                    : "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] shadow-[0_4px_14px_rgba(255,210,31,0.4)] border border-black/10 active:scale-98 cursor-pointer"
+                    : "bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] shadow-[0_4px_14px_rgba(var(--theme-primary-rgb),0.4)] border border-black/10 active:scale-98 cursor-pointer"
                 }`}
               >
                 {isSubmitting ? (
@@ -537,7 +537,7 @@ export function CampaignDetailClient({
                   </>
                 ) : (
                   <>
-                    <Sparkles className="w-4 h-4 text-[#0A0A0E]" />
+                    <Sparkles className="w-4 h-4 text-[#0B0A14]" />
                     <span>Submit Verified Application {eligibilityReport?.score ? `(${eligibilityReport.score}% Fit)` : ""}</span>
                   </>
                 )}

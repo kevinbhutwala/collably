@@ -88,7 +88,7 @@ export function MobileBottomDock() {
               {isActive && (
                 <motion.div
                   layoutId="mobile-dock-active"
-                  className="absolute inset-0 rounded-2xl bg-[#FFD21F]/20 border border-[#FFD21F]/40 shadow-xs"
+                  className="absolute inset-0 rounded-2xl bg-primary/20 border border-primary/40 shadow-xs"
                   transition={{ type: "spring", stiffness: 420, damping: 32 }}
                 />
               )}
@@ -103,7 +103,7 @@ export function MobileBottomDock() {
                   <Icon
                     className={cn(
                       "w-5 h-5 transition-colors duration-200",
-                      isActive ? "text-[#0A0A0E] dark:text-[#FFD21F]" : "text-[#7A7A8A] dark:text-[#8E8EA4]"
+                      isActive ? "text-[#0B0A14] dark:text-accent" : "text-[#7A7A8A] dark:text-[#8E8EA4]"
                     )}
                     strokeWidth={isActive ? 2.3 : 1.8}
                   />
@@ -111,7 +111,7 @@ export function MobileBottomDock() {
 
                 {/* Gold indicator dot under active icon */}
                 {isActive && (
-                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#FFD21F] shadow-[0_0_8px_1px_rgba(255,210,31,0.9)]" />
+                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_1px_rgba(var(--theme-primary-rgb),0.9)]" />
                 )}
               </div>
 
@@ -119,7 +119,7 @@ export function MobileBottomDock() {
               <span
                 className={cn(
                   "text-[10px] font-bold leading-none tracking-tight font-sans transition-colors duration-200",
-                  isActive ? "text-[#0A0A0E] dark:text-[#FFD21F]" : "text-[#7A7A8A] dark:text-[#8E8EA4]"
+                  isActive ? "text-[#0B0A14] dark:text-accent" : "text-[#7A7A8A] dark:text-[#8E8EA4]"
                 )}
               >
                 {item.label}

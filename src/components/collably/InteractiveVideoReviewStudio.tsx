@@ -12,18 +12,18 @@ export { DeliverableReviewCard };
  */
 export function InteractiveVideoReviewStudio() {
   return (
-    <section className="py-20 sm:py-28 bg-white dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] select-none border-t border-black/8 dark:border-white/10 relative overflow-hidden font-sans">
+    <section className="py-20 sm:py-28 bg-white dark:bg-[#07070B] text-[#0B0A14] dark:text-[#F4F4F8] select-none border-t border-black/8 dark:border-white/10 relative overflow-hidden font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFFDF5] dark:bg-[#14141E] border border-[#FFD21F]/50 text-xs font-mono font-bold text-[#0A0A0E] dark:text-white shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 dark:bg-[#14141E] border border-primary/50 text-xs font-mono font-bold text-[#0B0A14] dark:text-white shadow-2xs">
+            <Sparkles className="w-3.5 h-3.5 text-primary fill-primary" />
             <span>SIMPLE LINK REVIEWS</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#0A0A0E] dark:text-white tracking-tight font-display">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#0B0A14] dark:text-white tracking-tight font-display">
             Easy Link Reviews. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD21F] via-[#FFAE00] to-[#FFD21F]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-[#FFAE00] to-primary">
               No Upload Hassles.
             </span>
           </h2>

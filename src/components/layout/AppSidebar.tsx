@@ -113,7 +113,7 @@ export function AppSidebar() {
     role === "creator" ? creatorNavItems : role === "brand" ? brandNavItems : adminNavItems;
 
   return (
-    <aside className="hidden lg:flex flex-col w-64 border-r border-black/8 dark:border-white/10 bg-white dark:bg-[#0E0E14] shrink-0 h-full text-[#0A0A0E] dark:text-[#F4F4F8] shadow-2xs select-none justify-between">
+    <aside className="hidden lg:flex flex-col w-64 border-r border-black/8 dark:border-white/10 bg-white dark:bg-[#0E0E14] shrink-0 h-full text-[#0B0A14] dark:text-[#F4F4F8] shadow-2xs select-none justify-between">
       {/* Scrollable Nav List */}
       <nav className="flex-1 px-3 py-3 space-y-0.5 overflow-hidden">
         {navItems.map((item) => {
@@ -128,10 +128,10 @@ export function AppSidebar() {
               className={cn(
                 "flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-medium transition-all select-none",
                 isActive
-                  ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] font-bold shadow-[0_2px_10px_rgba(255,210,31,0.35)] border border-black/10"
+                  ? "bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] font-bold shadow-[0_2px_10px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10"
                   : item.highlight
-                  ? "bg-[#FFD21F]/15 dark:bg-[#FFD21F]/10 text-[#0A0A0E] dark:text-[#FFD21F] hover:bg-[#FFD21F]/25 dark:hover:bg-[#FFD21F]/20 border border-[#FFD21F]/30 font-bold"
-                  : "text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-white hover:bg-[#F4F4F8] dark:hover:bg-white/5"
+                  ? "bg-primary/15 dark:bg-primary/10 text-[#0B0A14] dark:text-accent hover:bg-primary/25 dark:hover:bg-primary/20 border border-primary/30 font-bold"
+                  : "text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-white hover:bg-[#F4F4F8] dark:hover:bg-white/5"
               )}
             >
               <div className="flex items-center gap-3">
@@ -139,9 +139,9 @@ export function AppSidebar() {
                   className={cn(
                     "w-4 h-4 transition-colors",
                     isActive
-                      ? "text-[#0A0A0E]"
+                      ? "text-[#0B0A14]"
                       : item.highlight
-                      ? "text-[#0A0A0E] dark:text-[#FFD21F]"
+                      ? "text-[#0B0A14] dark:text-accent"
                       : "text-[#7A7A8A] dark:text-[#8E8EA4]"
                   )}
                 />
@@ -153,9 +153,9 @@ export function AppSidebar() {
                   className={cn(
                     "text-[9px] px-2 py-0.5 rounded-full font-mono font-bold flex items-center gap-1",
                     isGated
-                      ? "bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] border border-[#FFD21F]/40"
+                      ? "bg-primary/20 text-[#0B0A14] dark:text-accent border border-primary/40"
                       : isActive
-                      ? "bg-black/15 text-[#0A0A0E] border border-black/20"
+                      ? "bg-black/15 text-[#0B0A14] border border-black/20"
                       : "bg-black/5 dark:bg-white/10 text-[#5A5A68] dark:text-[#A0A0B4] border border-black/8 dark:border-white/10"
                   )}
                 >
@@ -171,13 +171,13 @@ export function AppSidebar() {
       {/* ── Upgrade CTA — pinned permanently at bottom ── */}
       {role !== "agency_admin" && role !== "super_admin" && (
         <div className="shrink-0 p-3 border-t border-black/8 dark:border-white/10">
-          <div className="p-3.5 rounded-2xl bg-gradient-to-br from-[#FFFDF5] via-[#FFF9E6] to-[#FFF3D0] dark:from-[#181826] dark:via-[#161622] dark:to-[#1C1C2A] border border-[#FFD21F]/40 space-y-2 shadow-xs text-[#0A0A0E] dark:text-white">
+          <div className="p-3.5 rounded-2xl bg-gradient-to-br from-primary/5 via-accent/10 to-accent/15 dark:from-[#181826] dark:via-[#161622] dark:to-[#1C1C2A] border border-primary/40 space-y-2 shadow-xs text-[#0B0A14] dark:text-white">
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1.5 text-xs font-bold text-[#0A0A0E] dark:text-white">
-                <Zap className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F] fill-[#FFD21F]" />
+              <div className="flex items-center gap-1.5 text-xs font-bold text-[#0B0A14] dark:text-white">
+                <Zap className="w-3.5 h-3.5 text-[#0B0A14] dark:text-accent fill-primary" />
                 <span>{role === "creator" ? "Creator Pro" : "Brand Growth"}</span>
               </div>
-              <span className="text-[9px] font-mono px-1.5 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] font-bold border border-black/10">
+              <span className="text-[9px] font-mono px-1.5 py-0.5 rounded-full bg-primary text-[#0B0A14] font-bold border border-black/10">
                 UPGRADE
               </span>
             </div>
@@ -188,7 +188,7 @@ export function AppSidebar() {
             </p>
             <button
               onClick={() => openUpgradeModal()}
-              className="w-full py-2 rounded-xl bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-[0_2px_12px_rgba(255,210,31,0.35)] border border-black/10 active:scale-98"
+              className="w-full py-2 rounded-xl bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold transition-all shadow-[0_2px_12px_rgba(var(--theme-primary-rgb),0.35)] border border-black/10 active:scale-98"
             >
               Upgrade Plan
             </button>

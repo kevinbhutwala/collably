@@ -97,7 +97,7 @@ export function MultiSelectDropdown({
     <div className={cn("w-full space-y-1.5 font-sans text-left relative", className)} ref={dropdownRef}>
       {label && (
         <div className="flex items-center justify-between">
-          <label className="block text-xs font-bold text-[#0A0A0E] tracking-tight">
+          <label className="block text-xs font-bold text-[#0B0A14] tracking-tight">
             {label}
           </label>
           {selectedValues.length > 0 && (
@@ -112,9 +112,9 @@ export function MultiSelectDropdown({
       <div
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          "min-h-[48px] w-full rounded-2xl bg-[#F8F8FC] border border-black/10 p-2 text-sm text-[#0A0A0E] cursor-pointer transition-all flex items-center justify-between gap-2",
-          "hover:bg-white hover:border-[#FFD21F] focus:outline-none focus:ring-2 focus:ring-[#FFD21F]/30 shadow-2xs",
-          isOpen ? "border-[#FFD21F] bg-white ring-2 ring-[#FFD21F]/20" : "",
+          "min-h-[48px] w-full rounded-2xl bg-[#F8F8FC] border border-black/10 p-2 text-sm text-[#0B0A14] cursor-pointer transition-all flex items-center justify-between gap-2",
+          "hover:bg-white hover:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 shadow-2xs",
+          isOpen ? "border-primary bg-white ring-2 ring-primary/20" : "",
           error ? "border-red-500 bg-red-50/30" : ""
         )}
       >
@@ -132,13 +132,13 @@ export function MultiSelectDropdown({
               return (
                 <span
                   key={val}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-white border border-black/10 text-xs font-bold text-[#0A0A0E] shadow-2xs group"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-white border border-black/10 text-xs font-bold text-[#0B0A14] shadow-2xs group"
                 >
                   <span className="truncate max-w-[160px]">{displayLabel}</span>
                   <button
                     type="button"
                     onClick={(e) => handleRemove(val, e)}
-                    className="p-0.5 rounded-md hover:bg-black/10 text-[#7A7A8A] hover:text-[#0A0A0E] transition-colors"
+                    className="p-0.5 rounded-md hover:bg-black/10 text-[#7A7A8A] hover:text-[#0B0A14] transition-colors"
                   >
                     <X className="w-3 h-3" />
                   </button>
@@ -150,7 +150,7 @@ export function MultiSelectDropdown({
 
         <div className="flex items-center gap-1 shrink-0 pr-1 text-[#7A7A8A]">
           <ChevronDown
-            className={cn("w-4 h-4 transition-transform duration-200", isOpen ? "rotate-180 text-[#0A0A0E]" : "")}
+            className={cn("w-4 h-4 transition-transform duration-200", isOpen ? "rotate-180 text-[#0B0A14]" : "")}
           />
         </div>
       </div>
@@ -166,7 +166,7 @@ export function MultiSelectDropdown({
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search or type to add..."
-              className="w-full bg-transparent text-xs font-medium text-[#0A0A0E] placeholder:text-[#8A8A9A] focus:outline-none"
+              className="w-full bg-transparent text-xs font-medium text-[#0B0A14] placeholder:text-[#8A8A9A] focus:outline-none"
               onClick={(e) => e.stopPropagation()}
               onKeyDown={(e) => {
                 if (e.key === "Enter" && allowCustom && search.trim()) {
@@ -182,7 +182,7 @@ export function MultiSelectDropdown({
                   e.stopPropagation();
                   setSearch("");
                 }}
-                className="p-1 text-[#7A7A8A] hover:text-[#0A0A0E]"
+                className="p-1 text-[#7A7A8A] hover:text-[#0B0A14]"
               >
                 <X className="w-3 h-3" />
               </button>
@@ -194,7 +194,7 @@ export function MultiSelectDropdown({
             <button
               type="button"
               onClick={handleSelectAll}
-              className="text-[#0A0A0E] hover:underline"
+              className="text-[#0B0A14] hover:underline"
             >
               Select All
             </button>
@@ -216,7 +216,7 @@ export function MultiSelectDropdown({
                   <button
                     type="button"
                     onClick={handleAddCustom}
-                    className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-xs font-bold shadow-xs hover:bg-[#FFE052]"
+                    className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-primary text-[#0B0A14] text-xs font-bold shadow-xs hover:bg-accent"
                   >
                     <Plus className="w-3 h-3" />
                     <span>Add &ldquo;{search.trim()}&rdquo;</span>
@@ -237,7 +237,7 @@ export function MultiSelectDropdown({
                     className={cn(
                       "w-full px-3 py-2.5 rounded-xl text-left text-xs transition-colors flex items-center justify-between gap-2",
                       isSelected
-                        ? "bg-[#FFFDF5] text-[#0A0A0E] font-bold"
+                        ? "bg-primary/5 text-[#0B0A14] font-bold"
                         : "hover:bg-black/5 text-[#4A4A58]"
                     )}
                   >
@@ -246,7 +246,7 @@ export function MultiSelectDropdown({
                         className={cn(
                           "w-4 h-4 rounded-md border flex items-center justify-center shrink-0 transition-colors",
                           isSelected
-                            ? "bg-[#FFD21F] border-black/20 text-[#0A0A0E]"
+                            ? "bg-primary border-black/20 text-[#0B0A14]"
                             : "border-black/20 bg-white"
                         )}
                       >

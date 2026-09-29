@@ -433,12 +433,12 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
   const approvedCount = deliverables.filter((d) => d.status === "approved").length;
 
   return (
-    <div className="p-4 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] transition-all">
+    <div className="p-4 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6 text-[#0B0A14] dark:text-[#F4F4F8] transition-all">
       {/* ── Top Executive Deal Header ── */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-black/8 dark:border-white/10">
         <div className="space-y-2 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] dark:text-[#F4F4F8] flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#F4F4F8] dark:bg-[#181824] border border-black/5 dark:border-white/10">
+            <span className="text-[10px] font-mono font-bold uppercase text-[#0B0A14] dark:text-[#F4F4F8] flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#F4F4F8] dark:bg-[#181824] border border-black/5 dark:border-white/10">
               <ShieldCheck className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
               <span>Escrow Workspace</span>
             </span>
@@ -455,14 +455,14 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
             )}
           </div>
 
-          <h2 className="text-xl sm:text-2xl font-black text-[#0A0A0E] dark:text-white tracking-tight font-display">
+          <h2 className="text-xl sm:text-2xl font-black text-[#0B0A14] dark:text-white tracking-tight font-display">
             {collab.campaignTitle}
           </h2>
 
           <div className="flex flex-wrap items-center gap-2 pt-0.5">
             <span className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-mono">Partner:</span>
             {role === "creator" ? (
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#F4F4F8] dark:bg-[#181824] border border-black/5 dark:border-white/10 text-xs text-[#0A0A0E] dark:text-[#F4F4F8] font-bold">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#F4F4F8] dark:bg-[#181824] border border-black/5 dark:border-white/10 text-xs text-[#0B0A14] dark:text-[#F4F4F8] font-bold">
                 <Building2 className="w-3.5 h-3.5 text-[#8A8A9A]" />
                 <span>{collab.brand?.companyName || "Brand Partner"}</span>
                 {collab.brand?.industry && (
@@ -470,7 +470,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
                 )}
               </span>
             ) : (
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#F4F4F8] dark:bg-[#181824] border border-black/5 dark:border-white/10 text-xs text-[#0A0A0E] dark:text-[#F4F4F8] font-bold">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#F4F4F8] dark:bg-[#181824] border border-black/5 dark:border-white/10 text-xs text-[#0B0A14] dark:text-[#F4F4F8] font-bold">
                 <Users className="w-3.5 h-3.5 text-[#8A8A9A]" />
                 <span>{collab.creator?.fullName || "Creator Partner"}</span>
                 {collab.creator?.handle && (
@@ -481,7 +481,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
 
             <Link
               href="/app/messages"
-              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white dark:bg-[#181824] hover:bg-[#F8F8FC] dark:hover:bg-[#202030] border border-black/8 dark:border-white/10 text-[11px] font-bold text-[#0A0A0E] dark:text-[#F4F4F8] transition-colors shadow-2xs"
+              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white dark:bg-[#181824] hover:bg-[#F8F8FC] dark:hover:bg-[#202030] border border-black/8 dark:border-white/10 text-[11px] font-bold text-[#0B0A14] dark:text-[#F4F4F8] transition-colors shadow-2xs"
             >
               <MessageSquare className="w-3 h-3 text-[#7A7A8A]" />
               <span>Message</span>
@@ -497,7 +497,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
         <div className="flex flex-wrap items-center gap-3 self-start lg:self-center">
           <div className="text-left lg:text-right font-mono">
             <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-bold block">Escrow Vault</span>
-            <span className="text-base sm:text-lg font-black text-[#0A0A0E] dark:text-white">
+            <span className="text-base sm:text-lg font-black text-[#0B0A14] dark:text-white">
               {formatCurrency(collab.totalAgreedBudget, collab.currency)}
             </span>
           </div>
@@ -518,7 +518,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
               type="button"
               onClick={handleFundEscrow}
               disabled={isFunding}
-              className="px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs shadow-xs border border-black/10 transition-all flex items-center gap-1.5 disabled:opacity-50"
+              className="px-4 py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-xs shadow-xs border border-black/10 transition-all flex items-center gap-1.5 disabled:opacity-50"
             >
               <Lock className="w-3 h-3" />
               <span>{isFunding ? "Funding..." : "Fund Escrow Vault"}</span>
@@ -529,7 +529,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
           <button
             type="button"
             onClick={() => setIsExpanded(!isExpanded)}
-            className="px-3.5 py-2 rounded-full bg-[#F8F8FC] dark:bg-[#181824] hover:bg-[#EEEEF5] dark:hover:bg-[#222234] border border-black/10 dark:border-white/10 text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8] transition-all flex items-center gap-1.5 shadow-2xs"
+            className="px-3.5 py-2 rounded-full bg-[#F8F8FC] dark:bg-[#181824] hover:bg-[#EEEEF5] dark:hover:bg-[#222234] border border-black/10 dark:border-white/10 text-xs font-bold text-[#0B0A14] dark:text-[#F4F4F8] transition-all flex items-center gap-1.5 shadow-2xs"
           >
             <span>{isExpanded ? "Collapse" : "Open Workspace"}</span>
             <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-200", isExpanded ? "rotate-180" : "")} />
@@ -570,7 +570,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
                   <button
                     onClick={handleFundEscrow}
                     disabled={isFunding}
-                    className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs shadow-xs border border-black/10 transition-all flex items-center gap-2 disabled:opacity-50"
+                    className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-xs shadow-xs border border-black/10 transition-all flex items-center gap-2 disabled:opacity-50"
                   >
                     <Lock className="w-3.5 h-3.5" />
                     <span>{isFunding ? "Funding Vault..." : `Fund Escrow Vault (${formatCurrency(collab.totalAgreedBudget, collab.currency)})`}</span>
@@ -640,7 +640,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
             <div className="p-4 sm:p-5 rounded-2xl bg-black/5 border border-black/10 flex items-center gap-3">
               <XCircle className="w-5 h-5 text-[#8A8A9A] shrink-0" />
               <div className="space-y-0.5 flex-1">
-                <h4 className="font-bold text-sm text-[#0A0A0E]">Project Cancelled</h4>
+                <h4 className="font-bold text-sm text-[#0B0A14]">Project Cancelled</h4>
                 <p className="text-xs text-[#6A6A78]">
                   {collab.cancellationDetails?.reason || "This project was cancelled under platform terms."}
                 </p>
@@ -654,8 +654,8 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
               onClick={() => setActiveTab("deliverables")}
               className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all shrink-0 ${
                 activeTab === "deliverables"
-                  ? "bg-[#FFD21F] text-[#0A0A0E] dark:text-[#0A0A0E] shadow-xs border border-black/10"
-                  : "bg-[#F8F8FC] dark:bg-[#181824] text-[#6A6A78] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-[#F4F4F8] border border-black/5 dark:border-white/10"
+                  ? "bg-primary text-[#0B0A14] dark:text-[#0B0A14] shadow-xs border border-black/10"
+                  : "bg-[#F8F8FC] dark:bg-[#181824] text-[#6A6A78] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-[#F4F4F8] border border-black/5 dark:border-white/10"
               }`}
             >
               Deliverables ({deliverables.length})
@@ -664,8 +664,8 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
               onClick={() => setActiveTab("review_card")}
               className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 ${
                 activeTab === "review_card"
-                  ? "bg-[#FFD21F] text-[#0A0A0E] dark:text-[#0A0A0E] shadow-xs border border-black/10"
-                  : "bg-[#F8F8FC] dark:bg-[#181824] text-[#6A6A78] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-[#F4F4F8] border border-black/5 dark:border-white/10"
+                  ? "bg-primary text-[#0B0A14] dark:text-[#0B0A14] shadow-xs border border-black/10"
+                  : "bg-[#F8F8FC] dark:bg-[#181824] text-[#6A6A78] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-[#F4F4F8] border border-black/5 dark:border-white/10"
               }`}
             >
               <FileCheck2 className="w-3.5 h-3.5" />
@@ -675,8 +675,8 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
               onClick={() => setActiveTab("post_proof")}
               className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 ${
                 activeTab === "post_proof"
-                  ? "bg-[#FFD21F] text-[#0A0A0E] dark:text-[#0A0A0E] shadow-xs border border-black/10"
-                  : "bg-[#F8F8FC] dark:bg-[#181824] text-[#6A6A78] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-[#F4F4F8] border border-black/5 dark:border-white/10"
+                  ? "bg-primary text-[#0B0A14] dark:text-[#0B0A14] shadow-xs border border-black/10"
+                  : "bg-[#F8F8FC] dark:bg-[#181824] text-[#6A6A78] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-[#F4F4F8] border border-black/5 dark:border-white/10"
               }`}
             >
               <UploadCloud className="w-3.5 h-3.5" />
@@ -686,8 +686,8 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
               onClick={() => setActiveTab("negotiation")}
               className={`px-3.5 py-1.5 rounded-full font-sans text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 ${
                 activeTab === "negotiation"
-                  ? "bg-[#FFD21F] text-[#0A0A0E] dark:text-[#0A0A0E] shadow-xs border border-black/10"
-                  : "bg-[#F8F8FC] dark:bg-[#181824] text-[#6A6A78] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-[#F4F4F8] border border-black/5 dark:border-white/10"
+                  ? "bg-primary text-[#0B0A14] dark:text-[#0B0A14] shadow-xs border border-black/10"
+                  : "bg-[#F8F8FC] dark:bg-[#181824] text-[#6A6A78] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-[#F4F4F8] border border-black/5 dark:border-white/10"
               }`}
             >
               <DollarSign className="w-3.5 h-3.5" />
@@ -713,14 +713,14 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
                 >
                   <div className="space-y-2 flex-1">
                     <div className="flex items-center gap-2">
-                      <h4 className="font-bold text-sm text-[#0A0A0E] dark:text-[#F4F4F8] font-display">{del.title}</h4>
+                      <h4 className="font-bold text-sm text-[#0B0A14] dark:text-[#F4F4F8] font-display">{del.title}</h4>
                       <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold ${
                         isApproved
                           ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800"
                           : isRevision
                           ? "bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800"
                           : isSubmitted
-                          ? "bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] border border-[#FFD21F]/50"
+                          ? "bg-primary/20 text-[#0B0A14] dark:text-accent border border-primary/50"
                           : "bg-black/5 dark:bg-white/10 text-[#5A5A68] dark:text-[#A0A0B4]"
                       }`}>
                         {del.status.replace(/_/g, " ").toUpperCase()}
@@ -744,7 +744,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
                           href={currentAssetUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-[#0A0A0E] dark:text-[#F4F4F8] font-bold hover:underline flex items-center gap-1 bg-[#F8F8FC] dark:bg-[#181824] px-2.5 py-1 rounded-md border border-black/5 dark:border-white/10"
+                          className="text-[#0B0A14] dark:text-[#F4F4F8] font-bold hover:underline flex items-center gap-1 bg-[#F8F8FC] dark:bg-[#181824] px-2.5 py-1 rounded-md border border-black/5 dark:border-white/10"
                         >
                           <span>Open in {getPlatformLabel(currentAssetUrl)} / New Tab</span>
                           <ExternalLink className="w-3 h-3" />
@@ -753,9 +753,9 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
                     )}
 
                     <div className="flex items-center gap-4 text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-mono pt-1">
-                      <span>Due: <strong className="text-[#0A0A0E] dark:text-[#F4F4F8]">{del.dueDate}</strong></span>
+                      <span>Due: <strong className="text-[#0B0A14] dark:text-[#F4F4F8]">{del.dueDate}</strong></span>
                       <span>•</span>
-                      <span>Milestone Escrow: <strong className="text-[#0A0A0E] dark:text-[#FFD21F] font-extrabold">{formatCurrency(del.payoutAmount, collab.currency)}</strong></span>
+                      <span>Milestone Escrow: <strong className="text-[#0B0A14] dark:text-accent font-extrabold">{formatCurrency(del.payoutAmount, collab.currency)}</strong></span>
                     </div>
                   </div>
 
@@ -779,7 +779,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
                         disabled={!isFunded}
                         className={`px-4 py-2 rounded-full font-bold text-xs transition-all shadow-xs border flex items-center gap-1.5 ${
                           isFunded
-                            ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] border-black/10 hover:shadow-sm"
+                            ? "bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] border-black/10 hover:shadow-sm"
                             : "bg-black/5 dark:bg-white/10 text-[#8A8A9A] dark:text-[#6A6A7E] border-black/5 dark:border-white/10 cursor-not-allowed"
                         }`}
                       >
@@ -794,15 +794,15 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
                           setSelectedDel(del);
                           setIsReviewModalOpen(true);
                         }}
-                        className="px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] font-bold text-xs transition-all shadow-xs border border-black/10 flex items-center gap-1.5"
+                        className="px-4 py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] font-bold text-xs transition-all shadow-xs border border-black/10 flex items-center gap-1.5"
                       >
-                        <FileCheck2 className="w-3.5 h-3.5 text-[#0A0A0E]" />
+                        <FileCheck2 className="w-3.5 h-3.5 text-[#0B0A14]" />
                         <span>Review &amp; Approve</span>
                       </button>
                     )}
 
                     {isApproved && (
-                      <div className="flex items-center gap-1.5 text-xs text-[#0A0A0E] dark:text-emerald-300 font-mono font-bold bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 px-3.5 py-1.5 rounded-full">
+                      <div className="flex items-center gap-1.5 text-xs text-[#0B0A14] dark:text-emerald-300 font-mono font-bold bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 px-3.5 py-1.5 rounded-full">
                         <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                         <span>Payment Released</span>
                       </div>
@@ -853,7 +853,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
         <div className="pt-2 space-y-4">
           <div className="p-5 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="space-y-1">
-              <h3 className="font-bold text-sm text-[#0A0A0E] dark:text-[#F4F4F8] flex items-center gap-2">
+              <h3 className="font-bold text-sm text-[#0B0A14] dark:text-[#F4F4F8] flex items-center gap-2">
                 <span>Public Post Verification</span>
                 {collab.verificationProof?.status === "verified" ? (
                   <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 text-[10px] font-mono font-bold border border-emerald-200 dark:border-emerald-700">
@@ -873,7 +873,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
             {role === "creator" && (
               <button
                 onClick={() => setIsPostProofModalOpen(true)}
-                className="px-4 py-2 rounded-full bg-[#FFD21F] text-[#0A0A0E] font-bold text-xs shadow-xs border border-black/10 hover:bg-[#FFE052] transition-all flex items-center gap-1.5 shrink-0"
+                className="px-4 py-2 rounded-full bg-primary text-[#0B0A14] font-bold text-xs shadow-xs border border-black/10 hover:bg-accent transition-all flex items-center gap-1.5 shrink-0"
               >
                 <UploadCloud className="w-3.5 h-3.5" />
                 <span>{collab.verificationProof ? "Update Post Proof" : "Submit Live Post Proof"}</span>
@@ -888,14 +888,14 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
                 <span className="text-xs text-[#8A8A9A] dark:text-[#707080] font-mono">Published: {collab.verificationProof.publishedAt.split("T")[0]}</span>
               </div>
               <div className="flex items-center justify-between gap-4">
-                <span className="text-xs font-mono text-[#0A0A0E] dark:text-[#F4F4F8] font-bold truncate max-w-md">
+                <span className="text-xs font-mono text-[#0B0A14] dark:text-[#F4F4F8] font-bold truncate max-w-md">
                   {collab.verificationProof.postUrl}
                 </span>
                 <a
                   href={collab.verificationProof.postUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3 py-1.5 rounded-full bg-[#F8F8FC] dark:bg-[#12121A] border border-black/10 dark:border-white/10 text-xs font-bold text-[#0A0A0E] dark:text-[#F4F4F8] hover:underline flex items-center gap-1"
+                  className="px-3 py-1.5 rounded-full bg-[#F8F8FC] dark:bg-[#12121A] border border-black/10 dark:border-white/10 text-xs font-bold text-[#0B0A14] dark:text-[#F4F4F8] hover:underline flex items-center gap-1"
                 >
                   <span>View Live Post</span>
                   <ExternalLink className="w-3 h-3" />
@@ -924,7 +924,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
         title="Submit Deliverable External Link"
         description="Share your cloud link (Google Drive, Dropbox, Frame.io) for brand review and escrow release."
       >
-        <form onSubmit={handleSubmitContent} className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
+        <form onSubmit={handleSubmitContent} className="space-y-4 text-[#0B0A14] dark:text-[#F4F4F8]">
           <div className="space-y-1.5">
             <Input
               label="Deliverable Link (Google Drive, Dropbox, Frame.io, etc.)"
@@ -943,10 +943,10 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
               </p>
             )}
 
-            <div className="flex items-start gap-2 p-3 rounded-xl bg-[#FFFDF5] dark:bg-[#1A1A26] border border-[#FFD21F]/40 text-xs text-[#6A6A78] dark:text-[#8E8EA4]">
-              <Info className="w-4 h-4 text-[#0A0A0E] dark:text-[#F4F4F8] shrink-0 mt-0.5" />
+            <div className="flex items-start gap-2 p-3 rounded-xl bg-primary/5 dark:bg-[#1A1A26] border border-primary/40 text-xs text-[#6A6A78] dark:text-[#8E8EA4]">
+              <Info className="w-4 h-4 text-[#0B0A14] dark:text-[#F4F4F8] shrink-0 mt-0.5" />
               <span>
-                <strong className="text-[#0A0A0E] dark:text-[#F4F4F8]">Sharing Requirement:</strong> Make sure link sharing is set to &ldquo;Anyone with the link can view&rdquo;.
+                <strong className="text-[#0B0A14] dark:text-[#F4F4F8]">Sharing Requirement:</strong> Make sure link sharing is set to &ldquo;Anyone with the link can view&rdquo;.
               </span>
             </div>
           </div>
@@ -960,7 +960,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
           />
 
           <div className="p-3.5 rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 text-xs text-[#5A5A68] dark:text-[#8E8EA4] space-y-1">
-            <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E] dark:text-[#F4F4F8]">
+            <div className="flex items-center gap-1.5 font-bold text-[#0B0A14] dark:text-[#F4F4F8]">
               <Clock className="w-3.5 h-3.5" />
               <span>120-Hour Review SLA Guarantee</span>
             </div>
@@ -973,9 +973,9 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-black text-xs transition-all shadow-xs border border-black/10 disabled:opacity-50 flex items-center justify-center gap-2"
+              className="w-full py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-black text-xs transition-all shadow-xs border border-black/10 disabled:opacity-50 flex items-center justify-center gap-2"
             >
-              <Send className="w-4 h-4 text-[#0A0A0E]" />
+              <Send className="w-4 h-4 text-[#0B0A14]" />
               <span>{isSubmitting ? "Submitting..." : "Submit Deliverable & Start 120h SLA"}</span>
             </button>
           </div>
@@ -989,24 +989,24 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
         title="Review Submitted Milestone Deliverable"
         description="Inspect creator external link and release escrow or request changes."
       >
-        <div className="space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8]">
+        <div className="space-y-6 text-[#0B0A14] dark:text-[#F4F4F8]">
           <div className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 space-y-2.5">
             <div className="flex items-center justify-between">
               <span className="text-[10px] text-[#6A6A78] dark:text-[#8E8EA4] uppercase font-mono font-bold">External Asset Link</span>
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] text-[10px] font-mono font-bold">
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/20 text-[#0B0A14] dark:text-accent text-[10px] font-mono font-bold">
                 <Clock className="w-3 h-3" /> 120h SLA Active
               </span>
             </div>
 
             <div className="flex items-center justify-between gap-3 pt-1">
-              <span className="text-xs text-[#0A0A0E] dark:text-[#F4F4F8] font-mono font-bold truncate max-w-[280px]">
+              <span className="text-xs text-[#0B0A14] dark:text-[#F4F4F8] font-mono font-bold truncate max-w-[280px]">
                 {selectedDel?.assetUrl || assetUrl}
               </span>
               <a
                 href={selectedDel?.assetUrl || assetUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] to-[#FFE052] text-[#0A0A0E] text-xs font-bold shadow-xs hover:underline flex items-center gap-1.5 shrink-0"
+                className="px-4 py-2 rounded-full bg-gradient-to-r from-primary to-accent text-[#0B0A14] text-xs font-bold shadow-xs hover:underline flex items-center gap-1.5 shrink-0"
               >
                 <span>Open in {getPlatformLabel(selectedDel?.assetUrl || assetUrl)}</span>
                 <ExternalLink className="w-3.5 h-3.5" />
@@ -1026,7 +1026,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <button
               type="button"
-              className="flex-1 py-3 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0A0A0E] dark:text-[#F4F4F8] text-xs font-bold transition-all border border-black/10 dark:border-white/10 flex items-center justify-center gap-1.5"
+              className="flex-1 py-3 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0B0A14] dark:text-[#F4F4F8] text-xs font-bold transition-all border border-black/10 dark:border-white/10 flex items-center justify-center gap-1.5"
               onClick={() => {
                 setIsReviewModalOpen(false);
                 setIsDisputeModalOpen(true);
@@ -1037,10 +1037,10 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
             </button>
             <button
               type="button"
-              className="flex-1 py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-black transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1.5"
+              className="flex-1 py-3 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-black transition-all shadow-xs border border-black/10 flex items-center justify-center gap-1.5"
               onClick={() => selectedDel && handleApproveDeliverable(selectedDel.id)}
             >
-              <CheckCircle2 className="w-4 h-4 text-[#0A0A0E]" />
+              <CheckCircle2 className="w-4 h-4 text-[#0B0A14]" />
               <span>Approve &amp; Release Escrow</span>
             </button>
           </div>
@@ -1054,7 +1054,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
         title="Revision or Formal Dispute"
         description="Enforces revision boundaries and dispute protection."
       >
-        <div className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
+        <div className="space-y-4 text-[#0B0A14] dark:text-[#F4F4F8]">
           {selectedDel && (
             <div className="p-3 rounded-xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 text-xs font-mono flex items-center justify-between">
               <span>Revisions Used: <strong>{selectedDel.revisionCount} / {selectedDel.maxRevisions}</strong></span>
@@ -1102,7 +1102,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
         title="Submit Live Post Proof"
         description="Verify public content publication to complete collaboration."
       >
-        <form onSubmit={handleSubmitPostProof} className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
+        <form onSubmit={handleSubmitPostProof} className="space-y-4 text-[#0B0A14] dark:text-[#F4F4F8]">
           <Input
             label="Live Post URL"
             placeholder="https://www.youtube.com/watch?v=... or https://instagram.com/p/..."
@@ -1116,7 +1116,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
             <select
               value={postPlatform}
               onChange={(e) => setPostPlatform(e.target.value as PlatformType)}
-              className="w-full px-3.5 py-2 rounded-xl bg-white dark:bg-[#181824] border border-black/15 dark:border-white/10 text-xs font-sans text-[#0A0A0E] dark:text-[#F4F4F8] focus:outline-none focus:border-[#FFD21F]"
+              className="w-full px-3.5 py-2 rounded-xl bg-white dark:bg-[#181824] border border-black/15 dark:border-white/10 text-xs font-sans text-[#0B0A14] dark:text-[#F4F4F8] focus:outline-none focus:border-primary"
             >
               <option value="youtube">YouTube</option>
               <option value="instagram">Instagram</option>
@@ -1144,9 +1144,9 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
           <button
             type="submit"
             disabled={isVerifyingPost}
-            className="w-full py-3 rounded-full bg-[#FFD21F] hover:bg-[#FFE052] text-[#0A0A0E] font-black text-xs transition-all border border-black/10 disabled:opacity-50 flex items-center justify-center gap-2"
+            className="w-full py-3 rounded-full bg-primary hover:bg-accent text-[#0B0A14] font-black text-xs transition-all border border-black/10 disabled:opacity-50 flex items-center justify-center gap-2"
           >
-            <UploadCloud className="w-4 h-4 text-[#0A0A0E]" />
+            <UploadCloud className="w-4 h-4 text-[#0B0A14]" />
             <span>{isVerifyingPost ? "Verifying Proof..." : "Submit & Verify Post Proof"}</span>
           </button>
         </form>
@@ -1159,10 +1159,10 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
         title="Stage-Aware Collaboration Cancellation"
         description="Platform rules automatically calculate fair refunds and creator kill-fees based on progress."
       >
-        <div className="space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
+        <div className="space-y-4 text-[#0B0A14] dark:text-[#F4F4F8]">
           <div className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/10 dark:border-white/10 space-y-2">
             <span className="text-[10px] font-mono font-bold text-[#6A6A78] dark:text-[#8E8EA4] uppercase">Financial Settlement Preview</span>
-            <p className="text-xs text-[#0A0A0E] dark:text-[#F4F4F8] font-bold leading-relaxed">
+            <p className="text-xs text-[#0B0A14] dark:text-[#F4F4F8] font-bold leading-relaxed">
               {getCancellationPreview().desc}
             </p>
           </div>
@@ -1180,7 +1180,7 @@ export function DeliverablesPipeline({ collaboration: initialCollab }: { collabo
             <button
               type="button"
               onClick={() => setIsCancelModalOpen(false)}
-              className="px-4 py-2.5 rounded-full bg-black/5 dark:bg-white/10 text-[#0A0A0E] dark:text-[#F4F4F8] font-bold text-xs border border-black/10 dark:border-white/10 hover:bg-black/10 dark:hover:bg-white/15"
+              className="px-4 py-2.5 rounded-full bg-black/5 dark:bg-white/10 text-[#0B0A14] dark:text-[#F4F4F8] font-bold text-xs border border-black/10 dark:border-white/10 hover:bg-black/10 dark:hover:bg-white/15"
             >
               Back
             </button>

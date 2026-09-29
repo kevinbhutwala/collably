@@ -156,7 +156,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           dangerouslySetInnerHTML={{ __html: JSON.stringify(globalStructuredData) }}
         />
       </head>
-      <body className="min-h-screen bg-white text-[#0A0A0E] antialiased font-sans selection:bg-[#FFD21F] selection:text-[#0A0A0E]">
+      <body className="min-h-screen bg-white text-[#0B0A14] antialiased font-sans selection:bg-primary selection:text-[#0B0A14]">
         {children}
         {process.env.NODE_ENV === "production" && (
           <>

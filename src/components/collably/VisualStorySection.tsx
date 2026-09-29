@@ -13,7 +13,7 @@ export function VisualStorySection() {
       title: "AI-Powered Matching",
       description: "Post a campaign brief or search 50,000+ vetted creators. Get matched by audience data, engagement, and verified rates in under 60 seconds.",
       icon: Sparkles,
-      accent: "bg-[#FFD21F]/20 text-[#0A0A0E] border-[#FFD21F]/40",
+      accent: "bg-primary/20 text-[#0B0A14] border-primary/40",
       image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
     },
     {
@@ -44,14 +44,14 @@ export function VisualStorySection() {
   ];
 
   return (
-    <section className="py-14 sm:py-20 bg-[#FAFAFC] text-[#0A0A0E] select-none relative overflow-hidden border-t border-black/5">
+    <section className="py-14 sm:py-20 bg-[#FAFAFC] text-[#0B0A14] select-none relative overflow-hidden border-t border-black/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
         {/* Section Header */}
         <div className="text-center space-y-2 max-w-2xl mx-auto">
           <span className="text-[11px] font-mono font-bold tracking-[0.16em] text-[#6A6A78] uppercase block">
             HOW ABEYCOLLAB WORKS
           </span>
-          <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#0A0A0E] font-display">
+          <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#0B0A14] font-display">
             Frictionless collaboration <br className="sm:hidden" />
             <span className="font-serif italic font-normal text-[#5A5A68] lowercase">from brief to payout</span>
           </h2>
@@ -65,12 +65,12 @@ export function VisualStorySection() {
               <InteractiveTiltCard
                 key={step.num}
                 maxTilt={7}
-                glowColor="rgba(255, 210, 31, 0.2)"
+                glowColor="rgba(var(--theme-primary-rgb), 0.2)"
                 className="rounded-3xl bg-white border border-black/8 p-6 sm:p-8 space-y-5 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.06)] transition-all flex flex-col justify-between"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className="text-2xl font-black text-[#0A0A0E] font-mono">
+                    <span className="text-2xl font-black text-[#0B0A14] font-mono">
                       {step.num}
                     </span>
                     <div className={`px-2.5 py-1 rounded-full text-[10px] font-mono font-bold border ${step.accent}`}>
@@ -78,11 +78,11 @@ export function VisualStorySection() {
                     </div>
                   </div>
 
-                  <div className="w-10 h-10 rounded-2xl bg-[#F4F4F8] border border-black/6 flex items-center justify-center text-[#0A0A0E]">
-                    <Icon className="w-5 h-5 text-[#0A0A0E]" />
+                  <div className="w-10 h-10 rounded-2xl bg-[#F4F4F8] border border-black/6 flex items-center justify-center text-[#0B0A14]">
+                    <Icon className="w-5 h-5 text-[#0B0A14]" />
                   </div>
 
-                  <h3 className="text-lg font-bold font-display text-[#0A0A0E]">
+                  <h3 className="text-lg font-bold font-display text-[#0B0A14]">
                     {step.title}
                   </h3>
 
@@ -106,7 +106,7 @@ export function VisualStorySection() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 rounded-3xl bg-white border border-black/8 shadow-xs text-center font-mono">
           {metrics.map((m) => (
             <div key={m.label} className="p-3">
-              <span className="text-2xl sm:text-3xl font-black text-[#0A0A0E] font-display block">
+              <span className="text-2xl sm:text-3xl font-black text-[#0B0A14] font-display block">
                 {m.value}
               </span>
               <span className="text-xs text-[#6A6A78] font-sans mt-1 block font-medium">

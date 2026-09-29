@@ -96,7 +96,7 @@ export function EditorialProductStory() {
         particleCount: 85,
         spread: 65,
         origin: { y: 0.6 },
-        colors: ["#101010", "#FFD21F", "#626262", "#FAFAF8", "#FFFFFF"],
+        colors: ["#101010", "#7C3AED", "#626262", "#FAFAF8", "#FFFFFF"],
       });
     } catch {}
   };
@@ -107,7 +107,7 @@ export function EditorialProductStory() {
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E7E4] text-xs font-mono font-bold text-[#101010] shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
+            <span className="w-2 h-2 rounded-full bg-primary" />
             <span>04 / FRAME-ACCURATE REVIEW</span>
           </div>
 
@@ -132,11 +132,11 @@ export function EditorialProductStory() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#101010]/85 via-transparent to-transparent pointer-events-none" />
 
-                {/* Overlapping 98% Match Card with #FFD21F */}
+                {/* Overlapping 98% Match Card with #7C3AED */}
                 <div className="absolute top-4 left-4 p-3 rounded-xl bg-white/95 backdrop-blur-md border border-[#E7E7E4] shadow-editorial font-mono text-xs">
                   <span className="text-[10px] text-[#626262] block font-bold font-sans uppercase tracking-wider">MATCH ENGINE</span>
                   <span className="text-sm font-extrabold text-[#101010] flex items-center gap-1.5 font-display">
-                    <span className="w-2 h-2 rounded-full bg-[#FFD21F]" />
+                    <span className="w-2 h-2 rounded-full bg-primary" />
                     <span className="numeric-tabular">98%</span> COMPATIBILITY
                   </span>
                 </div>
@@ -147,7 +147,7 @@ export function EditorialProductStory() {
                     <span className="text-[10px] text-[#626262] block font-sans uppercase tracking-wider">CREATOR RATE</span>
                     <span className="font-extrabold text-sm text-[#101010] font-display numeric-tabular">{format(32000, "INR")}</span>
                   </div>
-                  <span className="px-2 py-0.5 rounded bg-[#101010] text-[#FFD21F] font-bold text-[10px]">
+                  <span className="px-2 py-0.5 rounded bg-[#101010] text-primary font-bold text-[10px]">
                     ✓ READY FOR SIGN-OFF
                   </span>
                 </div>
@@ -160,12 +160,12 @@ export function EditorialProductStory() {
             {/* Top HUD */}
             <div className="flex items-center justify-between pb-3 border-b border-[#E7E7E4] text-xs font-mono">
               <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#FFD21F] animate-pulse" />
+                <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" />
                 <span className="text-[#101010] font-display font-bold text-sm">Dipti Parihar • Sustainable Fashion Reel</span>
                 <span className="text-[#626262] hidden sm:inline">• Cut v2 (4K 60FPS)</span>
               </div>
               <span className="px-2.5 py-0.5 rounded-full bg-[#FAFAF8] border border-[#E7E7E4] text-[#101010] font-bold flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                 <span className="numeric-tabular">{format(32000, "INR")}</span> ESCROW
               </span>
             </div>
@@ -212,7 +212,7 @@ export function EditorialProductStory() {
                   className="w-full bg-white/30 hover:bg-white/40 h-2 rounded-full overflow-hidden relative cursor-pointer"
                 >
                   <div
-                    className="bg-[#FFD21F] h-full"
+                    className="bg-primary h-full"
                     style={{ width: `${((currentTimeSec / (duration || 60)) * 100).toFixed(1)}%` }}
                   />
                 </div>
@@ -224,7 +224,7 @@ export function EditorialProductStory() {
                       {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
                     </button>
                   </div>
-                  <span className="text-[#FFD21F] font-bold">Cut v2 Verified</span>
+                  <span className="text-primary font-bold">Cut v2 Verified</span>
                 </div>
               </div>
             </div>
@@ -259,17 +259,17 @@ export function EditorialProductStory() {
               {approved ? (
                 <div className="p-4 rounded-xl bg-[#FAFAF8] border border-[#E7E7E4] text-[#101010] text-xs font-mono flex items-center justify-between">
                   <span className="font-bold flex items-center gap-2 font-sans">
-                    <span className="w-2 h-2 rounded-full bg-[#FFD21F]" /> ✓ Deliverable approved • <span className="numeric-tabular">{format(28800, "INR")}</span> Creator Net Disbursed via Razorpay / UPI
+                    <span className="w-2 h-2 rounded-full bg-primary" /> ✓ Deliverable approved • <span className="numeric-tabular">{format(28800, "INR")}</span> Creator Net Disbursed via Razorpay / UPI
                   </span>
-                  <span className="font-extrabold text-[10px] text-[#101010] bg-[#FFD21F] px-2 py-0.5 rounded">DISBURSED</span>
+                  <span className="font-extrabold text-[10px] text-[#101010] bg-primary px-2 py-0.5 rounded">DISBURSED</span>
                 </div>
               ) : (
                 <button
                   type="button"
                   onClick={() => setConfirmModalOpen(true)}
-                  className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-sm shadow-xs flex items-center justify-center gap-2 transition-all font-sans cursor-pointer group border border-black/10"
+                  className="w-full py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-bold text-sm shadow-xs flex items-center justify-center gap-2 transition-all font-sans cursor-pointer group border border-black/10"
                 >
-                  <CheckCircle2 className="w-4 h-4 text-[#0A0A0E]" />
+                  <CheckCircle2 className="w-4 h-4 text-[#0B0A14]" />
                   <span>Approve Deliverable &amp; Disburse Milestone</span>
                 </button>
               )}
@@ -295,7 +295,7 @@ export function EditorialProductStory() {
             <div className="flex justify-between text-[#101010]">
               <span>Creator Payout (90%):</span>
               <span className="font-bold flex items-center gap-1 numeric-tabular">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                 {format(28800, "INR")}
               </span>
             </div>
@@ -316,9 +316,9 @@ export function EditorialProductStory() {
             <button
               type="button"
               onClick={handleConfirmApprove}
-              className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] font-bold flex items-center gap-1.5 shadow-xs transition-all border border-black/10"
+              className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] font-bold flex items-center gap-1.5 shadow-xs transition-all border border-black/10"
             >
-              <Check className="w-3.5 h-3.5 text-[#0A0A0E]" />
+              <Check className="w-3.5 h-3.5 text-[#0B0A14]" />
               <span>Confirm &amp; Disburse</span>
             </button>
           </div>

@@ -104,7 +104,7 @@ export function OverlappingCardsDeck() {
       : CREATORS_OVERLAPPING.filter((c) => c.category === activeTab);
 
   return (
-    <section className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] select-none overflow-hidden border-t border-black/6 dark:border-white/10 font-sans">
+    <section className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#07070B] text-[#0B0A14] dark:text-[#F4F4F8] select-none overflow-hidden border-t border-black/6 dark:border-white/10 font-sans">
       <div className="max-w-7xl mx-auto w-full space-y-12">
         {/* Section Header with smooth in-view entrance */}
         <motion.div
@@ -115,11 +115,11 @@ export function OverlappingCardsDeck() {
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/6 dark:border-white/10"
         >
           <div className="space-y-2">
-            <span className="text-xs font-mono font-bold tracking-tight text-[#0A0A0E] dark:text-[#FFD21F] uppercase flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
+            <span className="text-xs font-mono font-bold tracking-tight text-[#0B0A14] dark:text-accent uppercase flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-primary fill-primary" />
               FEATURED CREATORS &amp; VISUALS
             </span>
-            <h2 className="text-2xl sm:text-4xl font-black font-display tracking-tight text-[#0A0A0E] dark:text-white">
+            <h2 className="text-2xl sm:text-4xl font-black font-display tracking-tight text-[#0B0A14] dark:text-white">
               Vetted Talent with Layered 4K Deliverables.
             </h2>
           </div>
@@ -132,8 +132,8 @@ export function OverlappingCardsDeck() {
                 onClick={() => setActiveTab(cat.id)}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-sans font-bold transition-all ${
                   activeTab === cat.id
-                    ? "bg-[#0A0A0E] text-white dark:bg-[#FFD21F] dark:text-[#0A0A0E] shadow-sm"
-                    : "text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
+                    ? "bg-[#0B0A14] text-white dark:bg-primary dark:text-[#0B0A14] shadow-sm"
+                    : "text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
                 }`}
               >
                 {cat.label}
@@ -156,12 +156,12 @@ export function OverlappingCardsDeck() {
               >
                 <InteractiveTiltCard
                   maxTilt={9}
-                  glowColor="rgba(255, 210, 31, 0.28)"
-                  className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 hover:border-[#FFD21F] dark:hover:border-[#FFD21F] shadow-[0_12px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] transition-all p-4 flex flex-col justify-between group cursor-pointer"
+                  glowColor="rgba(var(--theme-primary-rgb), 0.28)"
+                  className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 hover:border-primary dark:hover:border-primary shadow-[0_12px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] transition-all p-4 flex flex-col justify-between group cursor-pointer"
                 >
                   <div className="space-y-4">
                     {/* Layered / Overlapping Image Container */}
-                    <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden bg-[#0A0A0E]">
+                    <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden bg-[#0B0A14]">
                       {/* 1. Main Primary Portrait */}
                       <SafeImage
                         src={creator.mainPortrait}
@@ -175,10 +175,10 @@ export function OverlappingCardsDeck() {
                       {/* Top Badges */}
                       <div className="absolute top-3 inset-x-3 flex items-center justify-between z-10">
                         <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold text-white flex items-center gap-1 border border-white/15">
-                          <Star className="w-3 h-3 text-[#FFD21F] fill-[#FFD21F]" />
+                          <Star className="w-3 h-3 text-primary fill-primary" />
                           <span>{creator.rating.toFixed(1)}</span>
                         </span>
-                        <span className="px-2.5 py-1 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-[10px] font-mono font-extrabold shadow-sm">
+                        <span className="px-2.5 py-1 rounded-full bg-primary text-[#0B0A14] text-[10px] font-mono font-extrabold shadow-sm">
                           {creator.rateNumber ? formatCurrency(creator.rateNumber) : creator.rate}
                         </span>
                       </div>
@@ -222,7 +222,7 @@ export function OverlappingCardsDeck() {
                             key={tag}
                             className={`px-2 py-0.5 rounded-md border text-[10px] transition-colors ${
                               isMatch
-                                ? "bg-[#FFD21F]/15 dark:bg-[#FFD21F]/20 border-[#FFD21F]/30 dark:border-[#FFD21F]/40 text-[#0A0A0E] dark:text-[#FFD21F] font-bold"
+                                ? "bg-primary/15 dark:bg-primary/20 border-primary/30 dark:border-primary/40 text-[#0B0A14] dark:text-accent font-bold"
                                 : "bg-[#F4F4F8] dark:bg-[#181824] border-black/5 dark:border-white/10 text-[#4A4A58] dark:text-[#C0C0D4]"
                             }`}
                           >
@@ -238,7 +238,7 @@ export function OverlappingCardsDeck() {
                     <span className="font-mono text-[11px] text-[#6A6A78] dark:text-[#8E8EA4]">{creator.reach} Reach</span>
                     <Link
                       href="/creators"
-                      className="px-3.5 py-1.5 rounded-full bg-[#FAF9F5] dark:bg-[#FFD21F] hover:bg-[#FFD21F] dark:hover:bg-[#FFE052] text-[#0A0A0E] font-sans font-bold text-xs transition-colors flex items-center gap-1 border border-black/8 dark:border-transparent hover-lift"
+                      className="px-3.5 py-1.5 rounded-full bg-[#FAF9F5] dark:bg-primary hover:bg-primary dark:hover:bg-accent text-[#0B0A14] font-sans font-bold text-xs transition-colors flex items-center gap-1 border border-black/8 dark:border-transparent hover-lift"
                     >
                       <span>Book</span>
                       <ArrowRight className="w-3 h-3" />
@@ -259,10 +259,10 @@ export function OverlappingCardsDeck() {
         >
           <Link
             href="/creators"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#FAF9F5] dark:bg-[#14141E] hover:bg-white dark:hover:bg-[#1C1C28] border border-black/10 dark:border-white/10 text-xs sm:text-sm font-bold text-[#0A0A0E] dark:text-white transition-all shadow-xs hover-lift"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#FAF9F5] dark:bg-[#14141E] hover:bg-white dark:hover:bg-[#1C1C28] border border-black/10 dark:border-white/10 text-xs sm:text-sm font-bold text-[#0B0A14] dark:text-white transition-all shadow-xs hover-lift"
           >
             <span>Explore All 50,000+ Verified Creators</span>
-            <ArrowRight className="w-4 h-4 text-[#FFD21F]" />
+            <ArrowRight className="w-4 h-4 text-primary" />
           </Link>
         </motion.div>
       </div>

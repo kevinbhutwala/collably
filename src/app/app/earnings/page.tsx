@@ -108,20 +108,20 @@ export default function EarningsAndEscrowPage() {
   };
 
   return (
-    <div className="space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] select-none">
+    <div className="space-y-6 text-[#0B0A14] dark:text-[#F4F4F8] select-none">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 sm:pb-5 border-b border-black/8 dark:border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] dark:text-[#EAEAEF] flex items-center gap-1.5">
+            <span className="text-[10px] font-mono font-bold uppercase text-[#0B0A14] dark:text-[#EAEAEF] flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               Payments &amp; Earnings
             </span>
             <span className="text-[#8A8A9A] dark:text-[#6A6A7E]">•</span>
-            <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] dark:text-yellow-400 font-mono text-[10px] font-bold">
+            <span className="px-2 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-[#0B0A14] dark:text-yellow-400 font-mono text-[10px] font-bold">
               Protected Payments ({config.flag} {currency})
             </span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
+          <h1 className="text-xl sm:text-2xl font-extrabold text-[#0B0A14] dark:text-white tracking-tight font-display">
             {role === "creator" ? "Earnings & Payouts" : "Payments & Invoices"}
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4]">
@@ -136,20 +136,20 @@ export default function EarningsAndEscrowPage() {
             type="button"
             onClick={() => fetchData(true)}
             disabled={loading || isRefreshing}
-            className="px-3.5 py-2.5 rounded-full bg-white dark:bg-[#161622] hover:bg-black/5 dark:hover:bg-white/5 border border-black/8 dark:border-white/10 text-xs font-bold transition-all shadow-xs flex items-center gap-1.5 text-[#0A0A0E] dark:text-white"
+            className="px-3.5 py-2.5 rounded-full bg-white dark:bg-[#161622] hover:bg-black/5 dark:hover:bg-white/5 border border-black/8 dark:border-white/10 text-xs font-bold transition-all shadow-xs flex items-center gap-1.5 text-[#0B0A14] dark:text-white"
             title="Refresh Earnings & Payouts"
           >
-            <RefreshCw className={`w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F] ${isRefreshing ? "animate-spin" : ""}`} />
+            <RefreshCw className={`w-3.5 h-3.5 text-[#0B0A14] dark:text-accent ${isRefreshing ? "animate-spin" : ""}`} />
             <span>{isRefreshing ? "Refreshing..." : "Refresh"}</span>
           </button>
 
           {role === "creator" && (
             <button
               onClick={handleWithdraw}
-              className="px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5"
+              className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5"
             >
               <span>Withdraw Balance</span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#0A0A0E]" />
+              <ArrowRight className="w-3.5 h-3.5 text-[#0B0A14]" />
             </button>
           )}
         </div>
@@ -161,30 +161,30 @@ export default function EarningsAndEscrowPage() {
           title={`Available Balance (${currency})`}
           value={formatCurrency(availableForPayout, currency)}
           subtitle={availableForPayout > 0 ? "Ready to withdraw anytime" : "No pending payouts"}
-          icon={<Wallet className="w-4 h-4 text-[#FFD21F]" />}
+          icon={<Wallet className="w-4 h-4 text-primary" />}
         />
         <StatsCard
           title={`Protected in Escrow (${currency})`}
           value={formatCurrency(securedInEscrow, currency)}
           subtitle={securedInEscrow > 0 ? "Held safely until work is approved" : "No active projects"}
-          icon={<ShieldCheck className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />}
+          icon={<ShieldCheck className="w-4 h-4 text-[#0B0A14] dark:text-accent" />}
         />
         <StatsCard
           title={`Total Paid (${currency})`}
           value={formatCurrency(lifetimeProcessed, currency)}
           subtitle={lifetimeProcessed > 0 ? "All completed milestones" : "No completed payouts yet"}
-          icon={<CheckCircle2 className="w-4 h-4 text-[#0A0A0E] dark:text-emerald-400" />}
+          icon={<CheckCircle2 className="w-4 h-4 text-[#0B0A14] dark:text-emerald-400" />}
         />
       </div>
 
       {/* Worldwide Banking & Payout Infrastructure Dock */}
       <div className="p-4 sm:p-5 rounded-2xl bg-[#FAFAFC] dark:bg-[#151520] border border-black/8 dark:border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-[#FFD21F]/20 flex items-center justify-center text-[#0A0A0E] dark:text-[#FFD21F] shrink-0">
+          <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center text-[#0B0A14] dark:text-accent shrink-0">
             <Globe className="w-5 h-5" />
           </div>
           <div>
-            <h4 className="text-xs font-bold text-[#0A0A0E] dark:text-white flex items-center gap-2">
+            <h4 className="text-xs font-bold text-[#0B0A14] dark:text-white flex items-center gap-2">
               <span>Global Payment &amp; Payout Methods Supported</span>
               <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-[10px] font-mono font-extrabold">120+ COUNTRIES</span>
             </h4>
@@ -221,7 +221,7 @@ export default function EarningsAndEscrowPage() {
               Mode: {process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID?.startsWith("rzp_live_") ? "Production (Live)" : "Sandbox (Test)"}
             </span>
           </div>
-          <h4 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display">
+          <h4 className="text-sm font-bold text-[#0B0A14] dark:text-white font-display">
             Secure Payment Gateway
           </h4>
           <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
@@ -249,7 +249,7 @@ export default function EarningsAndEscrowPage() {
             href="https://razorpay.me/@abeycollab"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2.5 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0A0A0E] dark:text-white font-bold text-xs border border-black/10 dark:border-white/15 transition-all flex items-center justify-center gap-1.5 active:scale-98"
+            className="px-4 py-2.5 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0B0A14] dark:text-white font-bold text-xs border border-black/10 dark:border-white/15 transition-all flex items-center justify-center gap-1.5 active:scale-98"
           >
             <span>Direct Handle (@abeycollab)</span>
             <ExternalLink className="w-3.5 h-3.5 text-[#7A7A8A]" />
@@ -258,14 +258,14 @@ export default function EarningsAndEscrowPage() {
       </div>
 
       {/* Transaction History */}
-      <div className="p-4 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4 text-[#0A0A0E] dark:text-[#F4F4F8]">
+      <div className="p-4 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4 text-[#0B0A14] dark:text-[#F4F4F8]">
         <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
           <div>
-            <h3 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">Payout History</h3>
+            <h3 className="text-base font-bold text-[#0B0A14] dark:text-white font-display">Payout History</h3>
             <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4]">Record of all completed project payments and deposits.</p>
           </div>
           {payouts.length > 0 && (
-            <button className="px-3 py-1.5 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0A0A0E] dark:text-white text-xs font-mono transition-all flex items-center gap-1.5 border border-black/5 dark:border-white/10">
+            <button className="px-3 py-1.5 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0B0A14] dark:text-white text-xs font-mono transition-all flex items-center gap-1.5 border border-black/5 dark:border-white/10">
               <Download className="w-3 h-3" />
               <span>Export</span>
             </button>
@@ -274,7 +274,7 @@ export default function EarningsAndEscrowPage() {
 
         {payouts.length === 0 ? (
           <AnimatedEmptyState
-            icon={<Receipt className="w-7 h-7 text-[#0A0A0E] dark:text-[#FFD21F]" />}
+            icon={<Receipt className="w-7 h-7 text-[#0B0A14] dark:text-accent" />}
             badgeText="Payment History"
             title="No Payments Yet"
             description="When project milestones are approved, your earnings and download receipts will appear here."
@@ -289,8 +289,8 @@ export default function EarningsAndEscrowPage() {
               <div key={p.id} className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div className="space-y-0.5">
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-[#0A0A0E] dark:text-white text-sm font-sans">{p.campaignTitle}</span>
-                    <span className="px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10 border border-black/10 dark:border-white/15 text-[#0A0A0E] dark:text-[#EAEAEF] text-[10px] font-bold">
+                    <span className="font-bold text-[#0B0A14] dark:text-white text-sm font-sans">{p.campaignTitle}</span>
+                    <span className="px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10 border border-black/10 dark:border-white/15 text-[#0B0A14] dark:text-[#EAEAEF] text-[10px] font-bold">
                       {p.brandName}
                     </span>
                   </div>
@@ -302,7 +302,7 @@ export default function EarningsAndEscrowPage() {
                 <div className="flex items-center justify-between sm:justify-end gap-4 pt-1 sm:pt-0 border-t sm:border-t-0 border-black/5 dark:border-white/5">
                   <div>
                     <span className="text-[#6A6A78] dark:text-[#8E8EA4] block text-[10px]">Net ({currency})</span>
-                    <span className="text-[#0A0A0E] dark:text-white font-extrabold text-sm numeric-tabular">
+                    <span className="text-[#0B0A14] dark:text-white font-extrabold text-sm numeric-tabular">
                       {formatGlobal(p.netAmount, (p as any).currency || "USD")}
                     </span>
                   </div>
@@ -317,10 +317,10 @@ export default function EarningsAndEscrowPage() {
                   <button
                     type="button"
                     onClick={() => handleOpenInvoice(p)}
-                    className="p-1.5 rounded-full hover:bg-black/5 dark:hover:bg-white/10 text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white transition-all"
+                    className="p-1.5 rounded-full hover:bg-black/5 dark:hover:bg-white/10 text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white transition-all"
                     title="View &amp; Print Tax Invoice"
                   >
-                    <FileText className="w-4 h-4 text-[#FFD21F]" />
+                    <FileText className="w-4 h-4 text-primary" />
                   </button>
                 </div>
               </div>

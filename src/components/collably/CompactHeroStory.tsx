@@ -69,9 +69,9 @@ export function CompactHeroStory() {
   const activeCreator = HERO_CREATORS[activeIdx];
 
   return (
-    <section className="relative min-h-[92vh] sm:min-h-screen bg-white text-[#0A0A0E] flex flex-col justify-between pt-20 sm:pt-24 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden select-none">
+    <section className="relative min-h-[92vh] sm:min-h-screen bg-white text-[#0B0A14] flex flex-col justify-between pt-20 sm:pt-24 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden select-none">
       {/* Background Ambience */}
-      <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] sm:w-[900px] h-[350px] bg-gradient-to-b from-[#FFD21F]/20 via-[#FFD21F]/5 to-transparent rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] sm:w-[900px] h-[350px] bg-gradient-to-b from-primary/20 via-primary/5 to-transparent rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto w-full flex-1 flex flex-col justify-center my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center">
@@ -81,16 +81,16 @@ export function CompactHeroStory() {
           <div className="lg:col-span-6 space-y-5 sm:space-y-6 text-left">
             {/* Status Live Pill */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF9F5] border border-black/8 shadow-2xs">
-              <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
-              <span className="text-xs font-mono font-bold tracking-tight text-[#0A0A0E]">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              <span className="text-xs font-mono font-bold tracking-tight text-[#0B0A14]">
                 COLLABLY CREATOR COMMERCE PLATFORM
               </span>
             </div>
 
             {/* High-Impact Punchy Title */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black font-display tracking-tight text-[#0A0A0E] leading-[1.08]">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black font-display tracking-tight text-[#0B0A14] leading-[1.08]">
               Where High-Growth Brands{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] underline decoration-black/10 decoration-wavy">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-[#9333EA] to-accent underline decoration-black/10 decoration-wavy">
                 Hire Vetted Creators
               </span>{" "}
               in Minutes.
@@ -105,15 +105,15 @@ export function CompactHeroStory() {
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <Link
                 href="/for-brands"
-                className="px-6 py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(255,210,31,0.5)] hover:shadow-[0_6px_24px_rgba(255,210,31,0.7)] inline-flex items-center gap-2 group active:scale-[0.98] border border-black/10"
+                className="px-6 py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.5)] hover:shadow-[0_6px_24px_rgba(var(--theme-primary-rgb),0.7)] inline-flex items-center gap-2 group active:scale-[0.98] border border-black/10"
               >
                 <span>Start Campaign</span>
-                <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-0.5 transition-transform" />
+                <ArrowRight className="w-4 h-4 text-[#0B0A14] group-hover:translate-x-0.5 transition-transform" />
               </Link>
 
               <Link
                 href="/register?role=creator"
-                className="px-6 py-3.5 rounded-full bg-white hover:bg-[#F8F8FC] border border-black/10 text-[#0A0A0E] font-bold text-xs sm:text-sm transition-all shadow-[0_2px_8px_rgba(0,0,0,0.04)] active:scale-[0.98] inline-flex items-center"
+                className="px-6 py-3.5 rounded-full bg-white hover:bg-[#F8F8FC] border border-black/10 text-[#0B0A14] font-bold text-xs sm:text-sm transition-all shadow-[0_2px_8px_rgba(0,0,0,0.04)] active:scale-[0.98] inline-flex items-center"
               >
                 <span>Join Roster</span>
               </Link>
@@ -132,7 +132,7 @@ export function CompactHeroStory() {
                 ))}
               </div>
               <div className="flex items-center gap-3 text-xs font-sans">
-                <span className="font-bold text-[#0A0A0E]">50,000+ Creators</span>
+                <span className="font-bold text-[#0B0A14]">50,000+ Creators</span>
                 <span className="text-[#888898]">•</span>
                 <span className="text-[#087F5B] font-semibold flex items-center gap-1">
                   <ShieldCheck className="w-3.5 h-3.5" /> 100% Escrow Guaranteed
@@ -153,13 +153,13 @@ export function CompactHeroStory() {
                   onClick={() => setActiveIdx(i)}
                   className={`px-3.5 py-1.5 rounded-full text-xs font-sans font-bold transition-all flex items-center gap-1.5 ${
                     activeIdx === i
-                      ? "bg-white text-[#0A0A0E] shadow-sm border border-black/8"
-                      : "text-[#6A6A78] hover:text-[#0A0A0E]"
+                      ? "bg-white text-[#0B0A14] shadow-sm border border-black/8"
+                      : "text-[#6A6A78] hover:text-[#0B0A14]"
                   }`}
                 >
                   <span
                     className={`w-2 h-2 rounded-full ${
-                      activeIdx === i ? "bg-[#FFD21F]" : "bg-black/20"
+                      activeIdx === i ? "bg-primary" : "bg-black/20"
                     }`}
                   />
                   <span>{creator.name.split(" ")[0]}</span>
@@ -170,8 +170,8 @@ export function CompactHeroStory() {
             {/* Main Interactive 3D Tilt Animated Portrait Card */}
             <InteractiveTiltCard
               maxTilt={10}
-              glowColor="rgba(255, 210, 31, 0.28)"
-              className="relative w-full max-w-[360px] sm:max-w-[420px] aspect-[4/5] rounded-3xl overflow-hidden border-2 border-white shadow-[0_20px_60px_rgba(0,0,0,0.14)] bg-[#0A0A0E] group"
+              glowColor="rgba(var(--theme-primary-rgb), 0.28)"
+              className="relative w-full max-w-[360px] sm:max-w-[420px] aspect-[4/5] rounded-3xl overflow-hidden border-2 border-white shadow-[0_20px_60px_rgba(0,0,0,0.14)] bg-[#0B0A14] group"
             >
               <AnimatePresence mode="wait">
                 <motion.div
@@ -195,20 +195,20 @@ export function CompactHeroStory() {
               <motion.div
                 initial={{ y: -10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="absolute top-4 left-4 z-20 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-white/40 shadow-lg flex items-center gap-1.5 text-xs font-mono font-bold text-[#0A0A0E]"
+                className="absolute top-4 left-4 z-20 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-white/40 shadow-lg flex items-center gap-1.5 text-xs font-mono font-bold text-[#0B0A14]"
               >
-                <Sparkles className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
+                <Sparkles className="w-3.5 h-3.5 text-primary fill-primary" />
                 <span>{activeCreator.matchScore}</span>
               </motion.div>
 
               {/* Floating Top Right Live Reel Badge */}
               <div className="absolute top-4 right-4 z-20 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-[10px] font-mono font-semibold text-white flex items-center gap-1">
-                <Flame className="w-3 h-3 text-[#FFD21F]" />
+                <Flame className="w-3 h-3 text-primary" />
                 <span>{activeCreator.reach} Reach</span>
               </div>
 
               {/* Bottom Glass Creator Identity & Rate Card */}
-              <div className="absolute bottom-4 inset-x-4 z-20 p-4 rounded-2xl bg-white/95 backdrop-blur-xl border border-black/8 shadow-xl space-y-2 text-[#0A0A0E]">
+              <div className="absolute bottom-4 inset-x-4 z-20 p-4 rounded-2xl bg-white/95 backdrop-blur-xl border border-black/8 shadow-xl space-y-2 text-[#0B0A14]">
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="flex items-center gap-1.5">
@@ -219,7 +219,7 @@ export function CompactHeroStory() {
                   </div>
                   <div className="text-right font-mono">
                     <span className="text-[10px] text-[#888898] block uppercase">Starts at</span>
-                    <span className="text-xs font-extrabold text-[#0A0A0E]">{format(activeCreator.rateAmount || 25000, "INR")}</span>
+                    <span className="text-xs font-extrabold text-[#0B0A14]">{format(activeCreator.rateAmount || 25000, "INR")}</span>
                   </div>
                 </div>
 
@@ -227,7 +227,7 @@ export function CompactHeroStory() {
                   <span className="text-[#5A5A68] truncate max-w-[200px]">{activeCreator.tag}</span>
                   <Link
                     href={`/creators`}
-                    className="text-xs font-bold text-[#0A0A0E] hover:underline flex items-center gap-0.5 shrink-0"
+                    className="text-xs font-bold text-[#0B0A14] hover:underline flex items-center gap-0.5 shrink-0"
                   >
                     <span>View Deck</span>
                     <ArrowRight className="w-3 h-3" />

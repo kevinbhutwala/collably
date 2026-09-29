@@ -102,13 +102,13 @@ export function MarketplaceLeaderboards() {
           ══════════════════════════════════════════════════════════════════════ */}
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 pb-6 border-b border-black/8 dark:border-white/10">
         <div className="space-y-3 max-w-2xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-yellow-500/30 bg-yellow-500/10 px-3.5 py-1 text-xs font-semibold text-[#0A0A0E] dark:text-[#FFD21F]">
+          <div className="inline-flex items-center gap-2 rounded-full border border-yellow-500/30 bg-yellow-500/10 px-3.5 py-1 text-xs font-semibold text-[#0B0A14] dark:text-accent">
             <Trophy className="w-3.5 h-3.5" />
             <span>Performance &amp; Growth Index</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
           </div>
 
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0A0A0E] dark:text-white tracking-tight font-display">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0B0A14] dark:text-white tracking-tight font-display">
             Creator Marketplace Leaderboards
           </h2>
 
@@ -127,8 +127,8 @@ export function MarketplaceLeaderboards() {
                 onClick={() => setTimeframe(tf)}
                 className={`rounded-lg px-3 py-1.5 text-xs font-bold transition-all ${
                   timeframe === tf
-                    ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs"
-                    : "text-neutral-600 dark:text-neutral-400 hover:text-[#0A0A0E] dark:hover:text-white"
+                    ? "bg-primary text-[#0B0A14] shadow-xs"
+                    : "text-neutral-600 dark:text-neutral-400 hover:text-[#0B0A14] dark:hover:text-white"
                 }`}
               >
                 {tf === "7d" ? "7 Days" : tf === "30d" ? "30 Days" : "90 Days"}
@@ -143,7 +143,7 @@ export function MarketplaceLeaderboards() {
               aria-label="Card View"
               className={`p-1.5 rounded-lg text-xs transition-colors ${
                 mobileDisplayMode === "cards"
-                  ? "bg-white dark:bg-white/20 text-[#0A0A0E] dark:text-white shadow-xs"
+                  ? "bg-white dark:bg-white/20 text-[#0B0A14] dark:text-white shadow-xs"
                   : "text-neutral-500 hover:text-black dark:hover:text-white"
               }`}
             >
@@ -154,7 +154,7 @@ export function MarketplaceLeaderboards() {
               aria-label="Table View"
               className={`p-1.5 rounded-lg text-xs transition-colors ${
                 mobileDisplayMode === "table"
-                  ? "bg-white dark:bg-white/20 text-[#0A0A0E] dark:text-white shadow-xs"
+                  ? "bg-white dark:bg-white/20 text-[#0B0A14] dark:text-white shadow-xs"
                   : "text-neutral-500 hover:text-black dark:hover:text-white"
               }`}
             >
@@ -169,7 +169,7 @@ export function MarketplaceLeaderboards() {
           ══════════════════════════════════════════════════════════════════════ */}
       <div className="p-3.5 sm:p-4 rounded-2xl bg-neutral-50 dark:bg-white/[0.03] border border-black/6 dark:border-white/8 flex flex-col lg:flex-row lg:items-center justify-between gap-3 sm:gap-4">
         <div className="flex items-center gap-2 text-xs font-mono font-bold text-neutral-500 dark:text-neutral-400 shrink-0">
-          <SlidersHorizontal className="w-3.5 h-3.5 text-[#FFD21F]" />
+          <SlidersHorizontal className="w-3.5 h-3.5 text-primary" />
           <span>Filters:</span>
         </div>
 
@@ -179,7 +179,7 @@ export function MarketplaceLeaderboards() {
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="w-full appearance-none rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#181824] px-3 py-2 pr-7 text-xs font-semibold text-[#0A0A0E] dark:text-white focus:border-[#FFD21F] focus:outline-none transition-colors cursor-pointer"
+              className="w-full appearance-none rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#181824] px-3 py-2 pr-7 text-xs font-semibold text-[#0B0A14] dark:text-white focus:border-primary focus:outline-none transition-colors cursor-pointer"
             >
               {CATEGORIES.map((c) => (
                 <option key={c} value={c}>
@@ -195,7 +195,7 @@ export function MarketplaceLeaderboards() {
             <select
               value={location}
               onChange={(e) => setLocation(e.target.value)}
-              className="w-full appearance-none rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#181824] px-3 py-2 pr-7 text-xs font-semibold text-[#0A0A0E] dark:text-white focus:border-[#FFD21F] focus:outline-none transition-colors cursor-pointer"
+              className="w-full appearance-none rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#181824] px-3 py-2 pr-7 text-xs font-semibold text-[#0B0A14] dark:text-white focus:border-primary focus:outline-none transition-colors cursor-pointer"
             >
               {LOCATIONS.map((l) => (
                 <option key={l} value={l}>
@@ -211,7 +211,7 @@ export function MarketplaceLeaderboards() {
             <select
               value={tier}
               onChange={(e) => setTier(e.target.value)}
-              className="w-full appearance-none rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#181824] px-3 py-2 pr-7 text-xs font-semibold text-[#0A0A0E] dark:text-white focus:border-[#FFD21F] focus:outline-none transition-colors cursor-pointer"
+              className="w-full appearance-none rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#181824] px-3 py-2 pr-7 text-xs font-semibold text-[#0B0A14] dark:text-white focus:border-primary focus:outline-none transition-colors cursor-pointer"
             >
               {TIERS.map((t) => (
                 <option key={t} value={t}>
@@ -227,7 +227,7 @@ export function MarketplaceLeaderboards() {
             <select
               value={platform}
               onChange={(e) => setPlatform(e.target.value as PlatformType | "")}
-              className="w-full appearance-none rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#181824] px-3 py-2 pr-7 text-xs font-semibold text-[#0A0A0E] dark:text-white focus:border-[#FFD21F] focus:outline-none transition-colors cursor-pointer"
+              className="w-full appearance-none rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#181824] px-3 py-2 pr-7 text-xs font-semibold text-[#0B0A14] dark:text-white focus:border-primary focus:outline-none transition-colors cursor-pointer"
             >
               <option value="">All Platforms</option>
               <option value="youtube">YouTube</option>
@@ -245,7 +245,7 @@ export function MarketplaceLeaderboards() {
           {hasActiveFilters && (
             <button
               onClick={resetFilters}
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-neutral-200 dark:bg-white/10 text-[#0A0A0E] dark:text-white font-bold hover:bg-[#FFD21F] hover:text-[#0A0A0E] transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-neutral-200 dark:bg-white/10 text-[#0B0A14] dark:text-white font-bold hover:bg-primary hover:text-[#0B0A14] transition-colors"
             >
               <RotateCcw className="w-3 h-3" />
               <span>Reset</span>
@@ -260,7 +260,7 @@ export function MarketplaceLeaderboards() {
       {!loading && leaderboard.length >= 3 && (
         <div className="pt-2 pb-4">
           <div className="text-center mb-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-xs font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F]">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-xs font-mono font-bold text-[#0B0A14] dark:text-accent">
               <Sparkles className="w-3.5 h-3.5" />
               <span>TOP PERFORMERS THIS WEEK</span>
             </div>
@@ -289,7 +289,7 @@ export function MarketplaceLeaderboards() {
                   )}
                 </div>
                 <div className="mt-2.5 w-full truncate">
-                  <h4 className="text-xs sm:text-sm font-bold text-[#0A0A0E] dark:text-white truncate group-hover:text-[#FFD21F] transition-colors">
+                  <h4 className="text-xs sm:text-sm font-bold text-[#0B0A14] dark:text-white truncate group-hover:text-primary transition-colors">
                     {top2.creator.fullName}
                   </h4>
                   <p className="text-[10px] text-neutral-500 dark:text-neutral-400 truncate">
@@ -307,14 +307,14 @@ export function MarketplaceLeaderboards() {
             {top1 && (
               <div className="relative group -mt-4 sm:-mt-6">
                 {/* Ambient Golden Halo Glow */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFB800] rounded-3xl blur-md opacity-35 group-hover:opacity-75 transition duration-500 group-hover:duration-200 animate-pulse pointer-events-none" />
+                <div className="absolute -inset-1 bg-gradient-to-r from-primary via-accent to-[#FFB800] rounded-3xl blur-md opacity-35 group-hover:opacity-75 transition duration-500 group-hover:duration-200 animate-pulse pointer-events-none" />
 
                 <Link
                   href={`/creators/${top1.creator.id}`}
-                  className="relative flex flex-col items-center text-center p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#FFFDF0] via-[#FFFBE6] to-[#FFF6C8] dark:from-[#221F10] dark:via-[#1C1A0D] dark:to-[#141208] border-2 border-[#FFD21F] shadow-[0_12px_40px_rgba(255,210,31,0.32)] transition-all group-hover:-translate-y-1.5 active:scale-[0.98] block"
+                  className="relative flex flex-col items-center text-center p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#FFFDF0] via-[#FFFBE6] to-[#FFF6C8] dark:from-[#221F10] dark:via-[#1C1A0D] dark:to-[#141208] border-2 border-primary shadow-[0_12px_40px_rgba(var(--theme-primary-rgb),0.32)] transition-all group-hover:-translate-y-1.5 active:scale-[0.98] block"
                 >
                   {/* Luxury Corner Tag */}
-                  <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-[#FFD21F]/30 border border-[#FFD21F]/60 text-[9px] font-mono font-black text-[#0A0A0E] dark:text-[#FFD21F] tracking-wider uppercase">
+                  <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-primary/30 border border-primary/60 text-[9px] font-mono font-black text-[#0B0A14] dark:text-accent tracking-wider uppercase">
                     #1 Leader
                   </div>
 
@@ -322,7 +322,7 @@ export function MarketplaceLeaderboards() {
                     <span>👑</span>
                     <span className="text-lg sm:text-xl">🥇</span>
                   </div>
-                  <div className="relative w-15 h-15 sm:w-22 sm:h-22 rounded-full overflow-hidden border-2 sm:border-3 border-[#FFD21F] bg-neutral-200 dark:bg-neutral-800 shadow-xl ring-4 ring-[#FFD21F]/30 group-hover:ring-[#FFD21F]/60 transition-all">
+                  <div className="relative w-15 h-15 sm:w-22 sm:h-22 rounded-full overflow-hidden border-2 sm:border-3 border-primary bg-neutral-200 dark:bg-neutral-800 shadow-xl ring-4 ring-primary/30 group-hover:ring-primary/60 transition-all">
                     {top1.creator.avatarUrl ? (
                       <Image
                         src={top1.creator.avatarUrl}
@@ -338,7 +338,7 @@ export function MarketplaceLeaderboards() {
                   </div>
                   <div className="mt-2.5 w-full truncate">
                     <div className="flex items-center justify-center gap-1">
-                      <h4 className="text-xs sm:text-base font-extrabold text-[#0A0A0E] dark:text-white truncate group-hover:text-amber-600 dark:group-hover:text-[#FFD21F] transition-colors">
+                      <h4 className="text-xs sm:text-base font-extrabold text-[#0B0A14] dark:text-white truncate group-hover:text-amber-600 dark:group-hover:text-accent transition-colors">
                         {top1.creator.fullName}
                       </h4>
                       <CheckCircle2 className="w-3.5 h-3.5 text-[#087F5B] shrink-0" />
@@ -347,8 +347,8 @@ export function MarketplaceLeaderboards() {
                       @{top1.creator.handle}
                     </p>
                   </div>
-                  <div className="mt-2 inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-gradient-to-r from-[#FFD21F] to-[#FFC700] text-[10px] font-mono font-extrabold text-[#0A0A0E] shadow-sm">
-                    <Flame className="w-3 h-3 fill-[#0A0A0E]" />
+                  <div className="mt-2 inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-gradient-to-r from-primary to-accent text-[10px] font-mono font-extrabold text-[#0B0A14] shadow-sm">
+                    <Flame className="w-3 h-3 fill-[#0B0A14]" />
                     <span>Score: {top1.trendingScore}</span>
                   </div>
                 </Link>
@@ -377,7 +377,7 @@ export function MarketplaceLeaderboards() {
                   )}
                 </div>
                 <div className="mt-2.5 w-full truncate">
-                  <h4 className="text-xs sm:text-sm font-bold text-[#0A0A0E] dark:text-white truncate group-hover:text-[#FFD21F] transition-colors">
+                  <h4 className="text-xs sm:text-sm font-bold text-[#0B0A14] dark:text-white truncate group-hover:text-primary transition-colors">
                     {top3.creator.fullName}
                   </h4>
                   <p className="text-[10px] text-neutral-500 dark:text-neutral-400 truncate">
@@ -415,7 +415,7 @@ export function MarketplaceLeaderboards() {
             {hasActiveFilters && (
               <button
                 onClick={resetFilters}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-[#FFD21F] text-[#0A0A0E] shadow-sm hover:scale-105 transition-all"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-primary text-[#0B0A14] shadow-sm hover:scale-105 transition-all"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
                 <span>Reset Filters</span>
@@ -434,7 +434,7 @@ export function MarketplaceLeaderboards() {
                     key={creator.id}
                     className={`p-3.5 rounded-2xl border transition-all ${
                       isPodium
-                        ? "border-[#FFD21F]/40 bg-gradient-to-r from-[#FFFDF2] to-white dark:from-[#1A180E] dark:to-[#12121A] shadow-xs"
+                        ? "border-primary/40 bg-gradient-to-r from-[#FFFDF2] to-white dark:from-[#1A180E] dark:to-[#12121A] shadow-xs"
                         : "border-black/6 dark:border-white/10 bg-neutral-50/60 dark:bg-white/[0.02]"
                     }`}
                   >
@@ -465,7 +465,7 @@ export function MarketplaceLeaderboards() {
                         {/* Name & Handle */}
                         <div className="min-w-0">
                           <div className="flex items-center gap-1">
-                            <span className="font-bold text-xs text-[#0A0A0E] dark:text-white truncate">
+                            <span className="font-bold text-xs text-[#0B0A14] dark:text-white truncate">
                               {creator.fullName}
                             </span>
                             {creator.verified && (
@@ -479,7 +479,7 @@ export function MarketplaceLeaderboards() {
                       </div>
 
                       {/* Trending Score Flame */}
-                      <span className="inline-flex items-center gap-1 rounded-full border border-[#FFD21F]/40 bg-[#FFD21F]/15 px-2 py-0.5 text-xs font-mono font-extrabold text-[#0A0A0E] dark:text-[#FFD21F] shrink-0">
+                      <span className="inline-flex items-center gap-1 rounded-full border border-primary/40 bg-primary/15 px-2 py-0.5 text-xs font-mono font-extrabold text-[#0B0A14] dark:text-accent shrink-0">
                         🔥 {item.trendingScore}
                       </span>
                     </div>
@@ -501,7 +501,7 @@ export function MarketplaceLeaderboards() {
                         </div>
                         <div>
                           <span className="text-[9px] uppercase block text-neutral-400">Deals</span>
-                          <span className="font-bold text-[#0A0A0E] dark:text-white">
+                          <span className="font-bold text-[#0B0A14] dark:text-white">
                             {item.completedDeals}
                           </span>
                         </div>
@@ -515,7 +515,7 @@ export function MarketplaceLeaderboards() {
 
                       <Link
                         href={`/creators/${creator.id}`}
-                        className="px-3 py-1.5 rounded-lg bg-[#FFD21F] hover:bg-[#FFE052] text-[#0A0A0E] font-bold text-xs flex items-center gap-1 shadow-xs shrink-0 transition-transform active:scale-95"
+                        className="px-3 py-1.5 rounded-lg bg-primary hover:bg-accent text-[#0B0A14] font-bold text-xs flex items-center gap-1 shadow-xs shrink-0 transition-transform active:scale-95"
                       >
                         <span>Profile</span>
                         <ArrowRight className="w-3 h-3" />
@@ -571,14 +571,14 @@ export function MarketplaceLeaderboards() {
                                   className="object-cover"
                                 />
                               ) : (
-                                <div className="flex h-full w-full items-center justify-center font-bold text-[#0A0A0E] dark:text-white text-xs">
+                                <div className="flex h-full w-full items-center justify-center font-bold text-[#0B0A14] dark:text-white text-xs">
                                   {creator.fullName.charAt(0)}
                                 </div>
                               )}
                             </div>
                             <div className="min-w-0">
                               <div className="flex items-center gap-1.5">
-                                <span className="font-bold text-[#0A0A0E] dark:text-white truncate">
+                                <span className="font-bold text-[#0B0A14] dark:text-white truncate">
                                   {creator.fullName}
                                 </span>
                                 {creator.verified && (
@@ -602,7 +602,7 @@ export function MarketplaceLeaderboards() {
 
                         {/* Trending Score */}
                         <td className="py-3.5 text-center font-mono">
-                          <span className="inline-flex items-center gap-1 rounded-full border border-[#FFD21F]/30 bg-[#FFD21F]/15 px-2.5 py-0.5 font-extrabold text-[#0A0A0E] dark:text-[#FFD21F]">
+                          <span className="inline-flex items-center gap-1 rounded-full border border-primary/30 bg-primary/15 px-2.5 py-0.5 font-extrabold text-[#0B0A14] dark:text-accent">
                             🔥 {item.trendingScore}
                           </span>
                         </td>
@@ -613,7 +613,7 @@ export function MarketplaceLeaderboards() {
                         </td>
 
                         {/* Deals */}
-                        <td className="py-3.5 text-center font-mono font-bold text-[#0A0A0E] dark:text-white">
+                        <td className="py-3.5 text-center font-mono font-bold text-[#0B0A14] dark:text-white">
                           {item.completedDeals}
                         </td>
 
@@ -626,7 +626,7 @@ export function MarketplaceLeaderboards() {
                         <td className="py-3.5 pr-3 text-right">
                           <Link
                             href={`/creators/${creator.id}`}
-                            className="inline-flex items-center gap-1 rounded-xl border border-black/10 dark:border-white/10 bg-neutral-100 dark:bg-white/10 px-3 py-1.5 text-xs font-semibold text-[#0A0A0E] dark:text-white hover:bg-[#FFD21F] hover:text-[#0A0A0E] dark:hover:bg-[#FFD21F] dark:hover:text-[#0A0A0E] transition-all shadow-2xs"
+                            className="inline-flex items-center gap-1 rounded-xl border border-black/10 dark:border-white/10 bg-neutral-100 dark:bg-white/10 px-3 py-1.5 text-xs font-semibold text-[#0B0A14] dark:text-white hover:bg-primary hover:text-[#0B0A14] dark:hover:bg-primary dark:hover:text-[#0B0A14] transition-all shadow-2xs"
                           >
                             <span>Profile</span>
                             <ArrowRight className="w-3 h-3" />

@@ -24,7 +24,7 @@ export function SubscriptionBadge({
     return (
       <span
         className={cn(
-          "inline-flex items-center gap-1.5 rounded-full font-mono font-bold uppercase tracking-wider bg-black text-[#FFD21F] border border-[#FFD21F]/40 shadow-[0_0_12px_rgba(255,210,31,0.25)]",
+          "inline-flex items-center gap-1.5 rounded-full font-mono font-bold uppercase tracking-wider bg-black text-primary border border-primary/40 shadow-[0_0_12px_rgba(var(--theme-primary-rgb),0.25)]",
           size === "sm" ? "text-[9px] px-2 py-0.5" : size === "lg" ? "text-xs px-3.5 py-1.5" : "text-[10px] px-2.5 py-1",
           className
         )}
@@ -48,11 +48,11 @@ export function SubscriptionBadge({
     },
     creator_pro: {
       label: "PRO CREATOR",
-      bg: "bg-gradient-to-r from-[#FFD21F] to-[#FFE052]",
-      text: "text-[#0A0A0E]",
+      bg: "bg-gradient-to-r from-primary to-accent",
+      text: "text-[#0B0A14]",
       border: "border-black/15",
       icon: <Sparkles className={size === "sm" ? "w-2.5 h-2.5" : "w-3 h-3"} />,
-      glow: "shadow-[0_2px_10px_rgba(255,210,31,0.35)]",
+      glow: "shadow-[0_2px_10px_rgba(var(--theme-primary-rgb),0.35)]",
     },
     creator_enterprise: {
       label: "STUDIO COLLECTIVE",

@@ -82,11 +82,11 @@ function CallbackHandler() {
         <div className="w-12 h-12 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center mx-auto">
           <AlertCircle className="w-6 h-6" />
         </div>
-        <h2 className="text-xl font-bold text-[#0A0A0E]">Authentication Failed</h2>
+        <h2 className="text-xl font-bold text-[#0B0A14]">Authentication Failed</h2>
         <p className="text-xs text-[#6A6A78] leading-relaxed">{error}</p>
         <Link
           href="/login"
-          className="inline-block px-6 py-2.5 rounded-full bg-[#0A0A0E] text-white text-xs font-bold hover:bg-[#2A2A34] transition-all"
+          className="inline-block px-6 py-2.5 rounded-full bg-[#0B0A14] text-white text-xs font-bold hover:bg-[#2A2A34] transition-all"
         >
           Return to Sign In
         </Link>

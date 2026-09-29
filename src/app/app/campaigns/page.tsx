@@ -37,21 +37,21 @@ export default function AppCampaignsPage() {
   const isCreatorBlocked = role === "creator" && !profileStatus.canApplyToCampaigns;
 
   return (
-    <div className="space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans">
+    <div className="space-y-6 text-[#0B0A14] dark:text-[#F4F4F8] select-none font-sans">
       {/* Desktop Header */}
       <div className="hidden lg:flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-black/8 dark:border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] dark:text-[#EAEAEF] flex items-center gap-1.5">
+            <span className="text-[10px] font-mono font-bold uppercase text-[#0B0A14] dark:text-[#EAEAEF] flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               Campaign Marketplace
             </span>
             <span className="text-[#8A8A9A] dark:text-[#6A6A7E]">•</span>
-            <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] dark:text-yellow-400 font-mono text-[10px] font-bold">
+            <span className="px-2 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-[#0B0A14] dark:text-yellow-400 font-mono text-[10px] font-bold">
               Protected Brand Payments
             </span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-black text-[#0A0A0E] dark:text-white font-display tracking-tight">
+          <h1 className="text-xl sm:text-2xl font-black text-[#0B0A14] dark:text-white font-display tracking-tight">
             Discover Campaigns
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4]">
@@ -84,7 +84,7 @@ export default function AppCampaignsPage() {
             </div>
           </div>
           <Link href="/app/profile" className="shrink-0">
-            <button className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs flex items-center justify-center gap-1.5 shadow-xs border border-black/10 transition-all cursor-pointer">
+            <button className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-xs flex items-center justify-center gap-1.5 shadow-xs border border-black/10 transition-all cursor-pointer">
               <span>Complete Profile Details</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
@@ -101,11 +101,11 @@ export default function AppCampaignsPage() {
             className={cn(
               "px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap shrink-0 flex items-center gap-1.5",
               selectedCategory === "all"
-                ? "bg-white dark:bg-[#1E1E2C] text-[#0A0A0E] dark:text-white shadow-[0_2px_8px_rgba(0,0,0,0.06)] border border-black/8 dark:border-white/10"
-                : "text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5"
+                ? "bg-white dark:bg-[#1E1E2C] text-[#0B0A14] dark:text-white shadow-[0_2px_8px_rgba(0,0,0,0.06)] border border-black/8 dark:border-white/10"
+                : "text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5"
             )}
           >
-            <Sparkles className={cn("w-3.5 h-3.5", selectedCategory === "all" ? "text-[#0A0A0E] dark:text-[#FFD21F]" : "text-[#7A7A8A] dark:text-[#8E8EA4]")} />
+            <Sparkles className={cn("w-3.5 h-3.5", selectedCategory === "all" ? "text-[#0B0A14] dark:text-accent" : "text-[#7A7A8A] dark:text-[#8E8EA4]")} />
             <span>All Campaigns</span>
           </button>
 
@@ -118,8 +118,8 @@ export default function AppCampaignsPage() {
                 className={cn(
                   "px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all whitespace-nowrap shrink-0 flex items-center gap-1.5",
                   isSelected
-                    ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] font-bold shadow-xs"
-                    : "text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5"
+                    ? "bg-[#0B0A14] dark:bg-primary text-white dark:text-[#0B0A14] font-bold shadow-xs"
+                    : "text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0B0A14] dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5"
                 )}
               >
                 <span>{cat}</span>
@@ -136,7 +136,7 @@ export default function AppCampaignsPage() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search campaigns, brands, or topics..."
-            className="w-full bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 rounded-2xl pl-9 pr-3 py-2 text-xs font-medium text-[#0A0A0E] dark:text-white placeholder:text-[#8A8A9A] dark:placeholder:text-[#6A6A7E] focus:outline-none focus:border-[#FFD21F] focus:ring-2 focus:ring-[#FFD21F]/20 shadow-xs transition-all"
+            className="w-full bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 rounded-2xl pl-9 pr-3 py-2 text-xs font-medium text-[#0B0A14] dark:text-white placeholder:text-[#8A8A9A] dark:placeholder:text-[#6A6A7E] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 shadow-xs transition-all"
           />
         </div>
       </div>
@@ -147,7 +147,7 @@ export default function AppCampaignsPage() {
       ) : campaigns.length === 0 ? (
         <div className="py-16 text-center rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-6 space-y-2 shadow-xs">
           <Compass className="w-7 h-7 text-[#7A7A8A] dark:text-[#8E8EA4] mx-auto" />
-          <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display">No campaigns found</h3>
+          <h3 className="text-sm font-bold text-[#0B0A14] dark:text-white font-display">No campaigns found</h3>
           <p className="text-xs text-[#6A6A78] dark:text-[#A0A0B4]">Try selecting another category or typing different search terms.</p>
         </div>
       ) : (

@@ -79,7 +79,7 @@ export default function SingleCollaborationWorkspacePage() {
           <AlertTriangle className="w-8 h-8" />
         </div>
         <div className="space-y-2">
-          <h2 className="text-2xl font-bold text-[#0A0A0E] dark:text-white font-display">
+          <h2 className="text-2xl font-bold text-[#0B0A14] dark:text-white font-display">
             Collaboration Not Found
           </h2>
           <p className="text-sm text-[#5A5A68] dark:text-[#9A9AA6]">
@@ -101,19 +101,19 @@ export default function SingleCollaborationWorkspacePage() {
   const partnerRole = role === "creator" ? "Sponsor Brand" : "Creator";
 
   return (
-    <div className="space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans">
+    <div className="space-y-6 text-[#0B0A14] dark:text-[#F4F4F8] select-none font-sans">
       {/* ── Breadcrumbs & Quick Navigation ── */}
       <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-black/8 dark:border-white/10">
         <div className="flex items-center gap-2 text-xs">
           <Link
             href="/app/collaborations"
-            className="inline-flex items-center gap-1.5 text-[#5A5A68] dark:text-[#9A9AA6] hover:text-[#0A0A0E] dark:hover:text-white transition-colors font-medium"
+            className="inline-flex items-center gap-1.5 text-[#5A5A68] dark:text-[#9A9AA6] hover:text-[#0B0A14] dark:hover:text-white transition-colors font-medium"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             Collaborations
           </Link>
           <span className="text-[#8A8A9A]">/</span>
-          <span className="font-semibold text-[#0A0A0E] dark:text-white truncate max-w-[200px] sm:max-w-md">
+          <span className="font-semibold text-[#0B0A14] dark:text-white truncate max-w-[200px] sm:max-w-md">
             {collab.campaignTitle}
           </span>
         </div>
@@ -121,14 +121,14 @@ export default function SingleCollaborationWorkspacePage() {
         <div className="flex items-center gap-3">
           <Link
             href="/app/messages"
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-xs font-semibold text-[#0A0A0E] dark:text-white transition-all"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-xs font-semibold text-[#0B0A14] dark:text-white transition-all"
           >
-            <MessageSquare className="w-3.5 h-3.5 text-[#FFD21F]" />
+            <MessageSquare className="w-3.5 h-3.5 text-primary" />
             Direct Messages
           </Link>
           <Link
             href={`/campaigns/${collab.campaignId}`}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-black/10 dark:border-white/10 hover:border-black/20 text-xs font-semibold text-[#5A5A68] dark:text-[#9A9AA6] hover:text-[#0A0A0E] dark:hover:text-white transition-all"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-black/10 dark:border-white/10 hover:border-black/20 text-xs font-semibold text-[#5A5A68] dark:text-[#9A9AA6] hover:text-[#0B0A14] dark:hover:text-white transition-all"
           >
             <ExternalLink className="w-3.5 h-3.5" />
             View Brief
@@ -140,7 +140,7 @@ export default function SingleCollaborationWorkspacePage() {
       <div className="p-6 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div className="space-y-2">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="px-2.5 py-0.5 rounded-full bg-black/5 dark:bg-white/10 border border-black/8 dark:border-white/10 text-[11px] font-mono font-bold text-[#0A0A0E] dark:text-[#F4F4F8]">
+            <span className="px-2.5 py-0.5 rounded-full bg-black/5 dark:bg-white/10 border border-black/8 dark:border-white/10 text-[11px] font-mono font-bold text-[#0B0A14] dark:text-[#F4F4F8]">
               {collab.id}
             </span>
             <span
@@ -157,13 +157,13 @@ export default function SingleCollaborationWorkspacePage() {
             </span>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0A0A0E] dark:text-white font-display tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0B0A14] dark:text-white font-display tracking-tight">
             {collab.campaignTitle}
           </h1>
 
           <p className="text-sm text-[#5A5A68] dark:text-[#9A9AA6] flex items-center gap-2">
             <span>{partnerRole}:</span>
-            <strong className="text-[#0A0A0E] dark:text-white">{partnerName}</strong>
+            <strong className="text-[#0B0A14] dark:text-white">{partnerName}</strong>
           </p>
         </div>
 
@@ -172,7 +172,7 @@ export default function SingleCollaborationWorkspacePage() {
             <span className="text-[10px] font-mono text-[#7A7A8A] uppercase tracking-wider block">
               Agreed Budget
             </span>
-            <span className="text-2xl font-extrabold font-mono text-[#0A0A0E] dark:text-white">
+            <span className="text-2xl font-extrabold font-mono text-[#0B0A14] dark:text-white">
               {formatCurrency(collab.totalAgreedBudget, collab.currency)}
             </span>
           </div>
@@ -181,7 +181,7 @@ export default function SingleCollaborationWorkspacePage() {
             <span className="text-[10px] font-mono text-[#7A7A8A] uppercase tracking-wider block">
               Deliverables
             </span>
-            <span className="text-2xl font-extrabold font-mono text-[#0A0A0E] dark:text-white">
+            <span className="text-2xl font-extrabold font-mono text-[#0B0A14] dark:text-white">
               {collab.deliverables?.length || 1}
             </span>
           </div>

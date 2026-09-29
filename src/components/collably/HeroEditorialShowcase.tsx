@@ -54,7 +54,7 @@ const HERO_TALENT: HeroTalent[] = [
     specs: "4K Master Styling • Color Graded",
     badgeText: "Editorial Reel",
     verifiedSponsor: "Fashion & Style",
-    glowColor: "rgba(255, 210, 31, 0.35)",
+    glowColor: "rgba(var(--theme-primary-rgb), 0.35)",
   },
   {
     id: "kushihanamsagar",
@@ -147,7 +147,7 @@ export function HeroEditorialShowcase() {
   }, []);
 
   return (
-    <section className="relative min-h-[calc(100svh-4rem)] lg:min-h-[85vh] bg-white dark:bg-[#08080C] text-[#0A0A0E] dark:text-white flex flex-col justify-center pt-20 sm:pt-24 lg:pt-28 pb-12 sm:pb-16 lg:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden font-sans">
+    <section className="relative min-h-[calc(100svh-4rem)] lg:min-h-[85vh] bg-white dark:bg-[#08080C] text-[#0B0A14] dark:text-white flex flex-col justify-center pt-20 sm:pt-24 lg:pt-28 pb-12 sm:pb-16 lg:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden font-sans">
       {/* Background Solar Flare with Gentle Breathing Cycle */}
       <motion.div
         animate={{
@@ -159,7 +159,7 @@ export function HeroEditorialShowcase() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] sm:w-[950px] h-[400px] bg-gradient-to-b from-[#FFD21F]/25 via-[#FFD21F]/8 to-transparent rounded-full blur-[140px] pointer-events-none"
+        className="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] sm:w-[950px] h-[400px] bg-gradient-to-b from-primary/25 via-primary/8 to-transparent rounded-full blur-[140px] pointer-events-none"
       />
 
       <div className="max-w-7xl mx-auto w-full flex-1 flex flex-col justify-center my-auto relative z-10">
@@ -176,8 +176,8 @@ export function HeroEditorialShowcase() {
             {/* Live Trust Pill + Live Dynamic Social Proof Ticker */}
             <div className="flex flex-col sm:flex-row sm:items-center gap-2 max-w-full">
               <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-[#FAF9F5] dark:bg-[#14141E] border border-black/8 dark:border-white/10 shadow-2xs max-w-full shrink-0">
-                <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse shrink-0" />
-                <span className="text-[10px] sm:text-[11px] font-mono font-bold tracking-tight text-[#0A0A0E] dark:text-white truncate">
+                <span className="w-2 h-2 rounded-full bg-primary animate-pulse shrink-0" />
+                <span className="text-[10px] sm:text-[11px] font-mono font-bold tracking-tight text-[#0B0A14] dark:text-white truncate">
                   “ABEY, LET’S COLLAB.” • COMMERCE PLATFORM
                 </span>
               </div>
@@ -194,19 +194,19 @@ export function HeroEditorialShowcase() {
                     transition={{ duration: 0.22 }}
                     className="truncate text-left"
                   >
-                    <span className="font-bold text-[#0A0A0E] dark:text-white">{LIVE_DEALS[dealIdx].creator}</span>{" "}
+                    <span className="font-bold text-[#0B0A14] dark:text-white">{LIVE_DEALS[dealIdx].creator}</span>{" "}
                     <span>{LIVE_DEALS[dealIdx].action}</span> with{" "}
-                    <span className="font-bold text-[#0A0A0E] dark:text-white">{LIVE_DEALS[dealIdx].brand}</span> •{" "}
-                    <span className="font-extrabold text-[#9A7000] dark:text-[#FFD21F]">{LIVE_DEALS[dealIdx].amount}</span>
+                    <span className="font-bold text-[#0B0A14] dark:text-white">{LIVE_DEALS[dealIdx].brand}</span> •{" "}
+                    <span className="font-extrabold text-[#9A7000] dark:text-accent">{LIVE_DEALS[dealIdx].amount}</span>
                   </motion.span>
                 </AnimatePresence>
               </div>
             </div>
 
             {/* Confident Large Headline */}
-            <h1 className="max-w-xl lg:max-w-2xl text-[clamp(2.15rem,5.2vw,4.5rem)] font-black font-display tracking-tight text-[#0A0A0E] dark:text-white leading-[1.08] sm:leading-[1.04]">
+            <h1 className="max-w-xl lg:max-w-2xl text-[clamp(2.15rem,5.2vw,4.5rem)] font-black font-display tracking-tight text-[#0B0A14] dark:text-white leading-[1.08] sm:leading-[1.04]">
               Where visionary brands meet{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFB800] dark:from-[#FFD21F] dark:via-[#FFE575] dark:to-[#FFC700]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-[#FFB800] dark:from-primary dark:via-[#FFE575] dark:to-accent">
                 cinematic creators.
               </span>
             </h1>
@@ -220,35 +220,35 @@ export function HeroEditorialShowcase() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-3.5 pt-1 sm:pt-2">
               <Link
                 href="/register"
-                className="w-full sm:w-auto min-h-12 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-sm transition-all shadow-[0_4px_20px_rgba(255,210,31,0.5)] flex items-center justify-center gap-2 group active:scale-[0.98] border border-black/10 font-sans hover-lift"
+                className="w-full sm:w-auto min-h-12 px-8 py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-extrabold text-sm transition-all shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.5)] flex items-center justify-center gap-2 group active:scale-[0.98] border border-black/10 font-sans hover-lift"
               >
                 <span>Post a Campaign</span>
-                <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-1 transition-transform shrink-0" />
+                <ArrowRight className="w-4 h-4 text-[#0B0A14] group-hover:translate-x-1 transition-transform shrink-0" />
               </Link>
 
               <Link
                 href="/creators"
-                className="w-full sm:w-auto min-h-12 px-7 py-3.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#14141E] dark:hover:bg-[#1E1E2C] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-sm transition-all shadow-xs active:scale-[0.98] flex items-center justify-center gap-2 hover-lift"
+                className="w-full sm:w-auto min-h-12 px-7 py-3.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#14141E] dark:hover:bg-[#1E1E2C] border border-black/10 dark:border-white/10 text-[#0B0A14] dark:text-white font-bold text-sm transition-all shadow-xs active:scale-[0.98] flex items-center justify-center gap-2 hover-lift"
               >
-                <Users className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F] shrink-0" />
+                <Users className="w-4 h-4 text-[#0B0A14] dark:text-accent shrink-0" />
                 <span>Browse 40+ Creators</span>
               </Link>
             </div>
 
             {/* Proof Micro Bar */}
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-3 border-t border-black/6 dark:border-white/10 text-[11px] sm:text-xs font-mono text-[#5A5A68] dark:text-[#8E8EA4]">
-              <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E] dark:text-white">
+              <div className="flex items-center gap-1.5 font-bold text-[#0B0A14] dark:text-white">
                 <ShieldCheck className="w-4 h-4 text-[#087F5B] shrink-0" />
                 <span>Protected Payments</span>
               </div>
               <span className="hidden sm:inline text-black/20 dark:text-white/20">•</span>
-              <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E] dark:text-white">
-                <Zap className="w-4 h-4 text-[#FFD21F] shrink-0" />
+              <div className="flex items-center gap-1.5 font-bold text-[#0B0A14] dark:text-white">
+                <Zap className="w-4 h-4 text-primary shrink-0" />
                 <span>Fast Payout on Approval</span>
               </div>
               <span className="hidden sm:inline text-black/20 dark:text-white/20">•</span>
-              <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E] dark:text-white">
-                <Lock className="w-4 h-4 text-[#0A0A0E] dark:text-white shrink-0" />
+              <div className="flex items-center gap-1.5 font-bold text-[#0B0A14] dark:text-white">
+                <Lock className="w-4 h-4 text-[#0B0A14] dark:text-white shrink-0" />
                 <span>Clear Upfront Pricing</span>
               </div>
             </div>
@@ -283,13 +283,13 @@ export function HeroEditorialShowcase() {
                       aria-label={`Show ${t.name}'s creator profile`}
                       className={`relative overflow-hidden px-3.5 py-1.5 rounded-full text-xs font-sans font-bold transition-all flex items-center gap-1.5 shrink-0 ${
                         isActive
-                          ? "bg-[#0A0A0E] text-white dark:bg-white dark:text-[#0A0A0E] shadow-sm ring-2 ring-[#FFD21F]"
-                          : "bg-[#F4F4F8] dark:bg-[#14141E] text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/6 dark:border-white/10"
+                          ? "bg-[#0B0A14] text-white dark:bg-white dark:text-[#0B0A14] shadow-sm ring-2 ring-primary"
+                          : "bg-[#F4F4F8] dark:bg-[#14141E] text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/6 dark:border-white/10"
                       }`}
                     >
                       <span
                         className={`w-1.5 h-1.5 rounded-full z-10 ${
-                          isActive ? "bg-[#FFD21F] animate-pulse" : "bg-black/20 dark:bg-white/20"
+                          isActive ? "bg-primary animate-pulse" : "bg-black/20 dark:bg-white/20"
                         }`}
                       />
                       <span className="z-10">{t.name.split(" ")[0]}</span>
@@ -299,7 +299,7 @@ export function HeroEditorialShowcase() {
                           initial={{ width: "0%" }}
                           animate={{ width: "100%" }}
                           transition={{ duration: 5, ease: "linear" }}
-                          className="absolute bottom-0 left-0 h-0.5 bg-[#FFD21F] pointer-events-none"
+                          className="absolute bottom-0 left-0 h-0.5 bg-primary pointer-events-none"
                         />
                       )}
                     </button>
@@ -316,8 +316,8 @@ export function HeroEditorialShowcase() {
             {/* Main Interactive Overlapping Portrait Card with 3D Tilt */}
             <InteractiveTiltCard
               maxTilt={9}
-              glowColor={activeTalent.glowColor || "rgba(255, 210, 31, 0.32)"}
-              className="relative w-full max-w-[300px] xs:max-w-[340px] sm:max-w-[400px] lg:max-w-[430px] aspect-[4/5] rounded-3xl overflow-hidden border-2 border-white dark:border-white/15 shadow-[0_24px_70px_rgba(10,10,14,0.16)] bg-[#0A0A0E] group mx-auto"
+              glowColor={activeTalent.glowColor || "rgba(var(--theme-primary-rgb), 0.32)"}
+              className="relative w-full max-w-[300px] xs:max-w-[340px] sm:max-w-[400px] lg:max-w-[430px] aspect-[4/5] rounded-3xl overflow-hidden border-2 border-white dark:border-white/15 shadow-[0_24px_70px_rgba(10,10,14,0.16)] bg-[#0B0A14] group mx-auto"
             >
               {/* Prev / Next Quick Nav Controls (Accessible on touch and hover) */}
               <div className="absolute inset-y-0 inset-x-2 z-20 flex items-center justify-between pointer-events-none opacity-0 group-hover:opacity-100 sm:transition-opacity">
@@ -353,7 +353,7 @@ export function HeroEditorialShowcase() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.45, ease: "easeOut" }}
-                  className="absolute inset-0 bg-[#0A0A0E] overflow-hidden"
+                  className="absolute inset-0 bg-[#0B0A14] overflow-hidden"
                 >
                   {/* Ambient Blurred Extension */}
                   <SafeImage
@@ -379,15 +379,15 @@ export function HeroEditorialShowcase() {
               <motion.div
                 initial={{ y: -10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="absolute top-3 sm:top-4 left-3 sm:left-4 z-20 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-white/95 dark:bg-[#14141E]/95 backdrop-blur-md border border-white/40 dark:border-white/20 shadow-lg flex items-center gap-1.5 text-[11px] sm:text-xs font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F]"
+                className="absolute top-3 sm:top-4 left-3 sm:left-4 z-20 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-white/95 dark:bg-[#14141E]/95 backdrop-blur-md border border-white/40 dark:border-white/20 shadow-lg flex items-center gap-1.5 text-[11px] sm:text-xs font-mono font-bold text-[#0B0A14] dark:text-accent"
               >
-                <Sparkles className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
-                <span className="text-[#0A0A0E] dark:text-white">{activeTalent.matchScore}</span>
+                <Sparkles className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-primary fill-primary" />
+                <span className="text-[#0B0A14] dark:text-white">{activeTalent.matchScore}</span>
               </motion.div>
 
               {/* Top Right Live Reach Badge */}
               <div className="absolute top-3 sm:top-4 right-3 sm:right-4 z-20 px-2 sm:px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-[9px] sm:text-[10px] font-mono font-semibold text-white flex items-center gap-1">
-                <Flame className="w-3 h-3 text-[#FFD21F]" />
+                <Flame className="w-3 h-3 text-primary" />
                 <span>{activeTalent.reach}</span>
               </div>
 
@@ -412,15 +412,15 @@ export function HeroEditorialShowcase() {
               </motion.div>
 
               {/* Bottom Glass Identity Bar */}
-              <div className="absolute bottom-2.5 sm:bottom-4 inset-x-2.5 sm:inset-x-4 z-20 p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/95 dark:bg-[#0E0E16]/95 backdrop-blur-xl border border-black/8 dark:border-white/10 shadow-xl space-y-1 sm:space-y-2 text-[#0A0A0E] dark:text-[#F4F4F8]">
+              <div className="absolute bottom-2.5 sm:bottom-4 inset-x-2.5 sm:inset-x-4 z-20 p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/95 dark:bg-[#0E0E16]/95 backdrop-blur-xl border border-black/8 dark:border-white/10 shadow-xl space-y-1 sm:space-y-2 text-[#0B0A14] dark:text-[#F4F4F8]">
                 <div className="flex items-center justify-between gap-2">
                   <div className="min-w-0">
                     <div className="flex items-center gap-1.5">
-                      <h3 className="text-xs sm:text-sm font-bold font-display text-[#0A0A0E] dark:text-white truncate">{activeTalent.name}</h3>
+                      <h3 className="text-xs sm:text-sm font-bold font-display text-[#0B0A14] dark:text-white truncate">{activeTalent.name}</h3>
                       <CheckCircle2 className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#087F5B] shrink-0" />
                     </div>
                     <div className="flex items-center gap-1.5 mt-0.5">
-                      <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-md bg-[#FFD21F]/20 flex items-center justify-center text-[#0A0A0E] dark:text-[#FFD21F] shrink-0">
+                      <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-md bg-primary/20 flex items-center justify-center text-[#0B0A14] dark:text-accent shrink-0">
                         <TitleIcon title={activeTalent.niche} category={activeTalent.verifiedSponsor} className="w-2 sm:w-2.5 h-2 sm:h-2.5" />
                       </div>
                       <p className="text-[9px] sm:text-[11px] text-[#6A6A78] dark:text-[#A0A0B4] font-sans truncate">{activeTalent.niche}</p>
@@ -428,7 +428,7 @@ export function HeroEditorialShowcase() {
                   </div>
                   <div className="text-right font-mono shrink-0">
                     <span className="text-[8px] sm:text-[10px] text-[#888898] dark:text-[#8E8EA4] block uppercase">Starts at</span>
-                    <span suppressHydrationWarning className="text-xs sm:text-sm font-extrabold text-[#0A0A0E] dark:text-white">{format(activeTalent.startingPriceAmount, "INR")}</span>
+                    <span suppressHydrationWarning className="text-xs sm:text-sm font-extrabold text-[#0B0A14] dark:text-white">{format(activeTalent.startingPriceAmount, "INR")}</span>
                   </div>
                 </div>
 
@@ -436,7 +436,7 @@ export function HeroEditorialShowcase() {
                   <span className="text-[#5A5A68] dark:text-[#8E8EA4] truncate max-w-[130px] sm:max-w-[180px]">{activeTalent.specs}</span>
                   <Link
                     href={`/creators/${activeTalent.id}`}
-                    className="text-[10px] sm:text-xs font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-amber-600 dark:hover:text-white flex items-center gap-0.5 shrink-0 transition-colors"
+                    className="text-[10px] sm:text-xs font-bold text-[#0B0A14] dark:text-accent hover:text-amber-600 dark:hover:text-white flex items-center gap-0.5 shrink-0 transition-colors"
                   >
                     <span>View Deck</span>
                     <ArrowRight className="w-3 h-3" />

@@ -64,15 +64,15 @@ export default function AdminCampaignsQueuePage() {
   };
 
   return (
-    <div className="space-y-8 text-[#0A0A0E] dark:text-[#F4F4F8] select-none">
+    <div className="space-y-8 text-[#0B0A14] dark:text-[#F4F4F8] select-none">
       <div className="pb-6 border-b border-black/8 dark:border-white/10">
         <div className="flex items-center gap-2 mb-1">
-          <span className="text-xs font-mono font-bold uppercase text-[#0A0A0E] dark:text-[#EAEAEF] flex items-center gap-1.5">
+          <span className="text-xs font-mono font-bold uppercase text-[#0B0A14] dark:text-[#EAEAEF] flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             Moderation Queue
           </span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0B0A14] dark:text-white tracking-tight font-display">
           Campaign Approval &amp; Quality Queue
         </h1>
         <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4] mt-0.5 font-sans">
@@ -91,8 +91,8 @@ export default function AdminCampaignsQueuePage() {
             <div key={c.id} className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                  <span className="font-bold text-sm text-[#0A0A0E] dark:text-white font-display">{c.title}</span>
-                  <span className="px-2.5 py-0.5 rounded-full bg-black/5 dark:bg-white/10 border border-black/8 dark:border-white/10 text-[#0A0A0E] dark:text-[#EAEAEF] font-mono text-[10px] font-bold">
+                  <span className="font-bold text-sm text-[#0B0A14] dark:text-white font-display">{c.title}</span>
+                  <span className="px-2.5 py-0.5 rounded-full bg-black/5 dark:bg-white/10 border border-black/8 dark:border-white/10 text-[#0B0A14] dark:text-[#EAEAEF] font-mono text-[10px] font-bold">
                     {c.brand?.companyName || "Brand Partner"}
                   </span>
                 </div>
@@ -104,21 +104,21 @@ export default function AdminCampaignsQueuePage() {
               <div className="flex items-center justify-between sm:justify-start gap-3 sm:gap-4 font-mono text-xs flex-wrap pt-2 sm:pt-0 border-t sm:border-t-0 border-black/5 dark:border-white/5">
                 <div>
                   <span className="text-[#7A7A8A] dark:text-[#8E8EA4] block text-[10px]">Total Escrow</span>
-                  <span className="text-[#0A0A0E] dark:text-white font-extrabold">{formatCurrency(c.budget?.totalBudget || 5000)}</span>
+                  <span className="text-[#0B0A14] dark:text-white font-extrabold">{formatCurrency(c.budget?.totalBudget || 5000)}</span>
                 </div>
                 <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30 text-[10px] font-mono font-bold uppercase shrink-0">
                   {c.status}
                 </span>
                 <div className="flex items-center gap-2 flex-wrap">
                   <Link href={`/campaigns/${c.id}`} target="_blank">
-                    <button className="px-4 py-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0A0A0E] dark:text-white text-xs font-bold transition-all border border-black/10 dark:border-white/10">
+                    <button className="px-4 py-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0B0A14] dark:text-white text-xs font-bold transition-all border border-black/10 dark:border-white/10">
                       Inspect
                     </button>
                   </Link>
                   {c.status !== "active" ? (
                     <button
                       onClick={() => handleUpdateStatus(c.id, "active")}
-                      className="px-4 py-2 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs font-bold transition-all shadow-xs border border-black/10"
+                      className="px-4 py-2 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] text-xs font-bold transition-all shadow-xs border border-black/10"
                     >
                       Approve Brief
                     </button>

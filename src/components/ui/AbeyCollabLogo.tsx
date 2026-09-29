@@ -77,8 +77,8 @@ export function AbeyCollabLogo({
     theme === "light"
       ? "text-white"
       : theme === "dark"
-      ? "text-[#0A0A0E]"
-      : "text-[#0A0A0E] dark:text-white";
+      ? "text-[#0B0A14]"
+      : "text-[#0B0A14] dark:text-white";
 
   const subtextColor =
     theme === "light"
@@ -90,13 +90,13 @@ export function AbeyCollabLogo({
   const logoIcon = (
     <div
       className={cn(
-        "relative flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105 shadow-[0_2px_14px_rgba(255,210,31,0.28)]",
-        "bg-[#181b22] border border-[#FFD21F]/40 text-white overflow-hidden",
+        "relative flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105 shadow-[0_2px_14px_rgba(var(--theme-primary-rgb),0.28)]",
+        "bg-[#181b22] border border-primary/40 text-white overflow-hidden",
         iconSizes[size]
       )}
     >
       {/* Specular Ambient Glow */}
-      <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-[#FFD21F]/25 blur-md pointer-events-none" />
+      <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-primary/25 blur-md pointer-events-none" />
 
       {/* Brand Logo Icon */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -133,13 +133,13 @@ export function AbeyCollabLogo({
             )}
           >
             Abey
-            <span className="relative inline-block text-[#FFD21F] ml-[1px]">
+            <span className="relative inline-block text-primary ml-[1px]">
               Collab
-              <span className="absolute -bottom-[2px] left-0 right-0 h-[2px] bg-[#FFD21F] rounded-full shadow-[0_0_8px_rgba(255,210,31,0.6)]" />
+              <span className="absolute -bottom-[2px] left-0 right-0 h-[2px] bg-primary rounded-full shadow-[0_0_8px_rgba(var(--theme-primary-rgb),0.6)]" />
             </span>
           </span>
           {showTag && (
-            <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] font-extrabold tracking-wider leading-none shadow-[0_0_10px_rgba(255,210,31,0.4)]">
+            <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-primary text-[#0B0A14] font-extrabold tracking-wider leading-none shadow-[0_0_10px_rgba(var(--theme-primary-rgb),0.4)]">
               PRO
             </span>
           )}

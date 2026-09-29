@@ -27,7 +27,7 @@ const FLIP_ITEMS_ROW1: FlipItem[] = [
     brand: "Snitch",
     brandCategory: "Men's & Unisex Style",
     dealAmount: "₹45,000",
-    brandColor: "#0A0A0E",
+    brandColor: "#0B0A14",
   },
   {
     id: "vasudha",
@@ -60,7 +60,7 @@ const FLIP_ITEMS_ROW1: FlipItem[] = [
     brand: "Nothing India",
     brandCategory: "Ear (3) Audio Launch",
     dealAmount: "₹85,000",
-    brandColor: "#0A0A0E",
+    brandColor: "#0B0A14",
   },
   {
     id: "chetali",

@@ -60,7 +60,7 @@ export function Modal({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
             onClick={onClose}
-            className="fixed inset-0 bg-[#0A0A0E]/60 dark:bg-black/80 backdrop-blur-xs will-change-[opacity]"
+            className="fixed inset-0 bg-[#0B0A14]/60 dark:bg-black/80 backdrop-blur-xs will-change-[opacity]"
           />
 
           {/* Modal Card */}

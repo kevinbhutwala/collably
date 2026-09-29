@@ -113,7 +113,7 @@ export class BadgeService {
         colorTheme: {
           bg: "bg-yellow-500/10",
           border: "border-yellow-500/30",
-          text: "text-[#FFD21F]",
+          text: "text-primary",
         },
       });
     }

@@ -87,19 +87,19 @@ export function InteractiveCampaignStudio() {
   const estimatedRoas = (3.4 + (budget / 10000) * 1.8).toFixed(1);
 
   return (
-    <section className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white text-[#0A0A0E] select-none overflow-hidden">
+    <section className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white text-[#0B0A14] select-none overflow-hidden">
       {/* Dynamic Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[1000px] h-[400px] bg-gradient-to-r from-[#FFD21F]/15 to-[#087F5B]/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[1000px] h-[400px] bg-gradient-to-r from-primary/15 to-[#087F5B]/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto w-full space-y-10 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/6">
           <div className="space-y-2">
-            <span className="text-xs font-mono font-bold tracking-tight text-[#0A0A0E] uppercase flex items-center gap-1.5">
-              <Sliders className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
+            <span className="text-xs font-mono font-bold tracking-tight text-[#0B0A14] uppercase flex items-center gap-1.5">
+              <Sliders className="w-3.5 h-3.5 text-primary fill-primary" />
               INTERACTIVE CAMPAIGN STUDIO
             </span>
-            <h2 className="text-2xl sm:text-4xl font-black font-display tracking-tight text-[#0A0A0E]">
+            <h2 className="text-2xl sm:text-4xl font-black font-display tracking-tight text-[#0B0A14]">
               Forecast Your Creator Campaign in Real-Time.
             </h2>
           </div>
@@ -127,7 +127,7 @@ export function InteractiveCampaignStudio() {
                       onClick={() => setSelectedNicheId(niche.id)}
                       className={`p-3 rounded-2xl text-left font-sans font-bold text-xs sm:text-sm transition-all flex items-center gap-2.5 border border-black/5 ${
                         selectedNicheId === niche.id
-                          ? "bg-[#0A0A0E] text-white shadow-md"
+                          ? "bg-[#0B0A14] text-white shadow-md"
                           : "bg-[#F4F4F8] text-[#4A4A58] hover:bg-[#EBEBEF]"
                       }`}
                     >
@@ -144,7 +144,7 @@ export function InteractiveCampaignStudio() {
                   <label className="text-xs font-mono font-bold text-[#6A6A78] uppercase tracking-wider">
                     2. Target Campaign Budget
                   </label>
-                  <span className="text-lg font-black text-[#0A0A0E] font-display">
+                  <span className="text-lg font-black text-[#0B0A14] font-display">
                     ${budget.toLocaleString()}
                   </span>
                 </div>
@@ -157,7 +157,7 @@ export function InteractiveCampaignStudio() {
                       onClick={() => setBudget(val)}
                       className={`py-2 px-2 rounded-xl text-xs font-mono font-bold transition-all text-center border ${
                         budget === val
-                          ? "bg-[#FFD21F] text-[#0A0A0E] border-[#FFD21F] shadow-sm"
+                          ? "bg-primary text-[#0B0A14] border-primary shadow-sm"
                           : "bg-white text-[#4A4A58] border-black/10 hover:border-black/20"
                       }`}
                     >
@@ -184,7 +184,7 @@ export function InteractiveCampaignStudio() {
                         className="w-10 h-10 rounded-full object-cover border border-white shrink-0 shadow-xs"
                       />
                       <div className="min-w-0">
-                        <p className="text-xs font-bold text-[#0A0A0E] truncate font-display">{c.name}</p>
+                        <p className="text-xs font-bold text-[#0B0A14] truncate font-display">{c.name}</p>
                         <p className="text-[10px] text-[#6A6A78] font-sans truncate">{c.followers} • {c.role}</p>
                       </div>
                     </div>
@@ -199,16 +199,16 @@ export function InteractiveCampaignStudio() {
             <div className="lg:col-span-6">
               <InteractiveTiltCard
                 maxTilt={8}
-                glowColor="rgba(255, 210, 31, 0.28)"
-                className="rounded-2xl bg-gradient-to-br from-[#0A0A0E] via-[#14141A] to-[#0A0A0E] text-white p-6 sm:p-8 space-y-6 shadow-xl relative overflow-hidden"
+                glowColor="rgba(var(--theme-primary-rgb), 0.28)"
+                className="rounded-2xl bg-gradient-to-br from-[#0B0A14] via-[#14141A] to-[#0B0A14] text-white p-6 sm:p-8 space-y-6 shadow-xl relative overflow-hidden"
               >
                 {/* Gold Glow inside card */}
-                <div className="absolute top-0 right-0 w-48 h-48 bg-[#FFD21F]/20 rounded-full blur-[80px] pointer-events-none" />
+                <div className="absolute top-0 right-0 w-48 h-48 bg-primary/20 rounded-full blur-[80px] pointer-events-none" />
 
                 {/* Header Metrics */}
                 <div className="grid grid-cols-2 gap-4 pb-4 border-b border-white/10 relative z-10">
                   <div>
-                    <span className="text-[10px] font-mono text-[#FFD21F] font-bold uppercase tracking-wider flex items-center gap-1">
+                    <span className="text-[10px] font-mono text-primary font-bold uppercase tracking-wider flex items-center gap-1">
                       <TrendingUp className="w-3 h-3" /> Projected Reach
                     </span>
                     <span className="text-2xl sm:text-3xl font-black font-display tracking-tight text-white block mt-1">
@@ -221,7 +221,7 @@ export function InteractiveCampaignStudio() {
                     <span className="text-[10px] font-mono text-[#087F5B] font-bold uppercase tracking-wider flex items-center gap-1">
                       <Zap className="w-3 h-3" /> Forecasted ROAS
                     </span>
-                    <span className="text-2xl sm:text-3xl font-black font-display tracking-tight text-[#FFD21F] block mt-1">
+                    <span className="text-2xl sm:text-3xl font-black font-display tracking-tight text-primary block mt-1">
                       {estimatedRoas}×
                     </span>
                     <span className="text-[10px] text-white/50 font-sans">Based on category data</span>
@@ -249,9 +249,9 @@ export function InteractiveCampaignStudio() {
                 {/* Launch Action */}
                 <div className="pt-2 relative z-10">
                   <Link href="/for-brands">
-                    <button className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-black text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(255,210,31,0.5)] flex items-center justify-center gap-2 group active:scale-[0.98]">
+                    <button className="w-full py-3.5 rounded-full bg-gradient-to-r from-primary via-[#9333EA] to-accent hover:from-accent hover:to-primary text-[#0B0A14] font-black text-xs sm:text-sm transition-all shadow-[0_4px_20px_rgba(var(--theme-primary-rgb),0.5)] flex items-center justify-center gap-2 group active:scale-[0.98]">
                       <span>Lock In Campaign Brief (${budget.toLocaleString()})</span>
-                      <ArrowRight className="w-4 h-4 text-[#0A0A0E] group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="w-4 h-4 text-[#0B0A14] group-hover:translate-x-1 transition-transform" />
                     </button>
                   </Link>
                   <p className="text-[10px] font-mono text-center text-white/50 mt-2">

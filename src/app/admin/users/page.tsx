@@ -367,11 +367,11 @@ export default function AdminUsersPanel() {
       {/* Top Banner / Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-black/8 dark:border-white/10 pb-6">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-xs font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F] mb-2">
-            <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-xs font-mono font-bold text-[#0B0A14] dark:text-accent mb-2">
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
             <span>Master User Control Center</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0B0A14] dark:text-white tracking-tight font-display">
             User Directory & Cohorts
           </h1>
           <p className="text-sm text-[#5A5A68] dark:text-[#8E8EA4] font-sans font-medium mt-1">
@@ -384,16 +384,16 @@ export default function AdminUsersPanel() {
             type="button"
             onClick={fetchUsers}
             disabled={loading}
-            className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl border border-black/8 dark:border-white/10 bg-white dark:bg-[#12121A] text-xs font-semibold text-[#0A0A0E] dark:text-white hover:bg-[#F4F4F8] dark:hover:bg-[#1C1C28] transition-all shadow-2xs"
+            className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl border border-black/8 dark:border-white/10 bg-white dark:bg-[#12121A] text-xs font-semibold text-[#0B0A14] dark:text-white hover:bg-[#F4F4F8] dark:hover:bg-[#1C1C28] transition-all shadow-2xs"
           >
-            <RefreshCw className={`w-3.5 h-3.5 ${loading ? "animate-spin text-[#FFD21F]" : ""}`} />
+            <RefreshCw className={`w-3.5 h-3.5 ${loading ? "animate-spin text-primary" : ""}`} />
             <span>Refresh</span>
           </button>
 
           <button
             type="button"
             onClick={exportUsersCSV}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] text-[#0A0A0E] font-bold text-xs shadow-xs hover:brightness-105 active:scale-95 transition-all border border-black/10"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-primary via-[#9333EA] to-accent text-[#0B0A14] font-bold text-xs shadow-xs hover:brightness-105 active:scale-95 transition-all border border-black/10"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Export CSV</span>
@@ -408,7 +408,7 @@ export default function AdminUsersPanel() {
             <span>Total Accounts</span>
             <Users className="w-4 h-4 text-[#5A5A68] dark:text-[#8E8EA4]" />
           </div>
-          <div className="text-2xl font-black text-[#0A0A0E] dark:text-white font-display">
+          <div className="text-2xl font-black text-[#0B0A14] dark:text-white font-display">
             {stats ? stats.total : users.length}
           </div>
           <div className="text-[11px] font-mono text-[#5A5A68] dark:text-[#8E8EA4] mt-1">
@@ -449,11 +449,11 @@ export default function AdminUsersPanel() {
         </div>
 
         <div className="p-4 rounded-2xl bg-white dark:bg-[#111118] border border-black/8 dark:border-white/10 shadow-2xs">
-          <div className="flex items-center justify-between text-xs font-mono text-amber-600 dark:text-[#FFD21F] mb-1">
+          <div className="flex items-center justify-between text-xs font-mono text-amber-600 dark:text-accent mb-1">
             <span>Creators</span>
             <Sparkles className="w-4 h-4 text-amber-500" />
           </div>
-          <div className="text-2xl font-black text-[#0A0A0E] dark:text-white font-display">
+          <div className="text-2xl font-black text-[#0B0A14] dark:text-white font-display">
             {stats ? stats.creators : users.filter((u) => u.role === "creator").length}
           </div>
           <div className="text-[11px] font-mono text-[#5A5A68] dark:text-[#8E8EA4] mt-1">
@@ -466,7 +466,7 @@ export default function AdminUsersPanel() {
             <span>Brand Accounts</span>
             <Building2 className="w-4 h-4 text-blue-500" />
           </div>
-          <div className="text-2xl font-black text-[#0A0A0E] dark:text-white font-display">
+          <div className="text-2xl font-black text-[#0B0A14] dark:text-white font-display">
             {stats ? stats.brands : users.filter((u) => u.role === "brand" || u.role.includes("brand")).length}
           </div>
           <div className="text-[11px] font-mono text-[#5A5A68] dark:text-[#8E8EA4] mt-1">
@@ -479,7 +479,7 @@ export default function AdminUsersPanel() {
             <span>Verified Status</span>
             <CheckCircle2 className="w-4 h-4 text-purple-500" />
           </div>
-          <div className="text-2xl font-black text-[#0A0A0E] dark:text-white font-display">
+          <div className="text-2xl font-black text-[#0B0A14] dark:text-white font-display">
             {stats ? stats.verified : users.filter((u) => u.verified).length}
           </div>
           <div className="text-[11px] font-mono text-[#5A5A68] dark:text-[#8E8EA4] mt-1">
@@ -500,8 +500,8 @@ export default function AdminUsersPanel() {
             }}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
               activeTab === "all"
-                ? "bg-[#0A0A0E] dark:bg-white text-white dark:text-[#0A0A0E] shadow-xs"
-                : "bg-white dark:bg-[#12121A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/8 dark:border-white/10"
+                ? "bg-[#0B0A14] dark:bg-white text-white dark:text-[#0B0A14] shadow-xs"
+                : "bg-white dark:bg-[#12121A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/8 dark:border-white/10"
             }`}
           >
             All Users ({users.length})
@@ -516,7 +516,7 @@ export default function AdminUsersPanel() {
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all inline-flex items-center gap-2 ${
               activeTab === "loggedin"
                 ? "bg-emerald-600 text-white shadow-xs"
-                : "bg-white dark:bg-[#12121A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/8 dark:border-white/10"
+                : "bg-white dark:bg-[#12121A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/8 dark:border-white/10"
             }`}
           >
             <span className="w-2 h-2 rounded-full bg-emerald-400" />
@@ -532,7 +532,7 @@ export default function AdminUsersPanel() {
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all inline-flex items-center gap-2 ${
               activeTab === "active"
                 ? "bg-emerald-600 text-white shadow-xs"
-                : "bg-white dark:bg-[#12121A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/8 dark:border-white/10"
+                : "bg-white dark:bg-[#12121A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/8 dark:border-white/10"
             }`}
           >
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -548,7 +548,7 @@ export default function AdminUsersPanel() {
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all inline-flex items-center gap-2 ${
               activeTab === "new"
                 ? "bg-emerald-600 text-white shadow-xs"
-                : "bg-white dark:bg-[#12121A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/8 dark:border-white/10"
+                : "bg-white dark:bg-[#12121A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/8 dark:border-white/10"
             }`}
           >
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -566,8 +566,8 @@ export default function AdminUsersPanel() {
             }}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
               activeTab === "creator"
-                ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs"
-                : "bg-white dark:bg-[#12121A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/8 dark:border-white/10"
+                ? "bg-primary text-[#0B0A14] shadow-xs"
+                : "bg-white dark:bg-[#12121A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/8 dark:border-white/10"
             }`}
           >
             Creators ({users.filter((u) => u.role === "creator").length})
@@ -582,7 +582,7 @@ export default function AdminUsersPanel() {
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
               activeTab === "brand"
                 ? "bg-blue-600 text-white shadow-xs"
-                : "bg-white dark:bg-[#12121A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/8 dark:border-white/10"
+                : "bg-white dark:bg-[#12121A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/8 dark:border-white/10"
             }`}
           >
             Brands ({users.filter((u) => u.role === "brand" || u.role.includes("brand")).length})
@@ -597,7 +597,7 @@ export default function AdminUsersPanel() {
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
               activeTab === "admin"
                 ? "bg-purple-600 text-white shadow-xs"
-                : "bg-white dark:bg-[#12121A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white border border-black/8 dark:border-white/10"
+                : "bg-white dark:bg-[#12121A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white border border-black/8 dark:border-white/10"
             }`}
           >
             Staff & Admins ({users.filter((u) => u.role.includes("admin") || u.role.includes("owner")).length})
@@ -616,7 +616,7 @@ export default function AdminUsersPanel() {
               onClick={() => setSelectedCategory("all")}
               className={`px-3 py-1 rounded-lg text-xs font-medium shrink-0 transition-all ${
                 selectedCategory === "all"
-                  ? "bg-[#FFD21F] text-[#0A0A0E] font-bold shadow-2xs"
+                  ? "bg-primary text-[#0B0A14] font-bold shadow-2xs"
                   : "bg-white dark:bg-[#14141E] text-[#5A5A68] dark:text-[#8E8EA4] border border-black/8 dark:border-white/10 hover:border-black/20"
               }`}
             >
@@ -629,7 +629,7 @@ export default function AdminUsersPanel() {
                 onClick={() => setSelectedCategory(cat.name)}
                 className={`px-3 py-1 rounded-lg text-xs font-medium shrink-0 transition-all ${
                   selectedCategory.toLowerCase() === cat.name.toLowerCase()
-                    ? "bg-[#FFD21F] text-[#0A0A0E] font-bold shadow-2xs"
+                    ? "bg-primary text-[#0B0A14] font-bold shadow-2xs"
                     : "bg-white dark:bg-[#14141E] text-[#5A5A68] dark:text-[#8E8EA4] border border-black/8 dark:border-white/10 hover:border-black/20"
                 }`}
               >
@@ -648,13 +648,13 @@ export default function AdminUsersPanel() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by name, email, @handle, company, category, country..."
-              className="w-full pl-10 pr-4 py-2 rounded-xl bg-[#F8F8FB] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-xs text-[#0A0A0E] dark:text-white placeholder-[#8E8EA4] focus:outline-hidden focus:border-[#FFD21F]"
+              className="w-full pl-10 pr-4 py-2 rounded-xl bg-[#F8F8FB] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-xs text-[#0B0A14] dark:text-white placeholder-[#8E8EA4] focus:outline-hidden focus:border-primary"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => setSearchQuery("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
@@ -665,7 +665,7 @@ export default function AdminUsersPanel() {
             <select
               value={statusFilter}
               onChange={(e: any) => setStatusFilter(e.target.value)}
-              className="px-3 py-2 rounded-xl bg-[#F8F8FB] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-xs font-medium text-[#0A0A0E] dark:text-white focus:outline-hidden"
+              className="px-3 py-2 rounded-xl bg-[#F8F8FB] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-xs font-medium text-[#0B0A14] dark:text-white focus:outline-hidden"
             >
               <option value="all">All Statuses</option>
               <option value="verified">Verified Only</option>
@@ -675,7 +675,7 @@ export default function AdminUsersPanel() {
             <select
               value={genderFilter}
               onChange={(e: any) => setGenderFilter(e.target.value)}
-              className="px-3 py-2 rounded-xl bg-[#F8F8FB] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-xs font-medium text-[#0A0A0E] dark:text-white focus:outline-hidden"
+              className="px-3 py-2 rounded-xl bg-[#F8F8FB] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-xs font-medium text-[#0B0A14] dark:text-white focus:outline-hidden"
             >
               <option value="all">All Genders</option>
               <option value="male">Male (♂)</option>
@@ -685,7 +685,7 @@ export default function AdminUsersPanel() {
             <select
               value={sortBy}
               onChange={(e: any) => setSortBy(e.target.value)}
-              className="px-3 py-2 rounded-xl bg-[#F8F8FB] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-xs font-medium text-[#0A0A0E] dark:text-white focus:outline-hidden"
+              className="px-3 py-2 rounded-xl bg-[#F8F8FB] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-xs font-medium text-[#0B0A14] dark:text-white focus:outline-hidden"
             >
               <option value="newest">Newest First</option>
               <option value="active">Recently Active</option>
@@ -698,7 +698,7 @@ export default function AdminUsersPanel() {
               <button
                 type="button"
                 onClick={resetAllFilters}
-                className="px-3 py-2 rounded-xl bg-amber-500/15 text-amber-700 dark:text-[#FFD21F] border border-amber-500/30 text-xs font-bold hover:bg-amber-500/25 transition-colors shrink-0 flex items-center gap-1"
+                className="px-3 py-2 rounded-xl bg-amber-500/15 text-amber-700 dark:text-accent border border-amber-500/30 text-xs font-bold hover:bg-amber-500/25 transition-colors shrink-0 flex items-center gap-1"
                 title="Reset all filters"
               >
                 <X className="w-3.5 h-3.5" />
@@ -717,7 +717,7 @@ export default function AdminUsersPanel() {
               <Users className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-[#0A0A0E] dark:text-white flex items-center gap-2">
+              <h4 className="text-sm font-bold text-[#0B0A14] dark:text-white flex items-center gap-2">
                 <span>Active Authenticated Sessions</span>
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-700 dark:text-emerald-300">
                   {filteredUsers.length} Users Listed
@@ -742,10 +742,10 @@ export default function AdminUsersPanel() {
         {/* Table Title Bar */}
         <div className="px-6 py-4 border-b border-black/8 dark:border-white/10 flex items-center justify-between text-xs font-mono text-[#5A5A68] dark:text-[#8E8EA4] bg-white dark:bg-[#111118]">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-[#0A0A0E] dark:text-white text-sm">
+            <span className="font-bold text-[#0B0A14] dark:text-white text-sm">
               {activeTab === "loggedin" ? "Logged In & Active Users" : "User Directory"}
             </span>
-            <span className="px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-[11px] font-bold text-[#0A0A0E] dark:text-white">
+            <span className="px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-[11px] font-bold text-[#0B0A14] dark:text-white">
               {filteredUsers.length}
             </span>
           </div>
@@ -764,7 +764,7 @@ export default function AdminUsersPanel() {
 
         {loading ? (
           <div className="py-20 text-center">
-            <RefreshCw className="w-6 h-6 animate-spin text-[#FFD21F] mx-auto mb-3" />
+            <RefreshCw className="w-6 h-6 animate-spin text-primary mx-auto mb-3" />
             <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] font-mono">
               Loading user directory and categorized cohorts...
             </p>
@@ -772,7 +772,7 @@ export default function AdminUsersPanel() {
         ) : filteredUsers.length === 0 ? (
           <div className="py-20 text-center">
             <Users className="w-10 h-10 text-[#8E8EA4] mx-auto mb-3 opacity-40" />
-            <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display">
+            <h3 className="text-sm font-bold text-[#0B0A14] dark:text-white font-display">
               No Users Found
             </h3>
             <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] font-mono max-w-sm mx-auto mt-1">
@@ -782,7 +782,7 @@ export default function AdminUsersPanel() {
               <button
                 type="button"
                 onClick={resetAllFilters}
-                className="mt-4 px-4 py-2 rounded-xl text-xs font-bold bg-[#FFD21F] text-[#0A0A0E] hover:bg-[#FFE052] transition-colors shadow-xs"
+                className="mt-4 px-4 py-2 rounded-xl text-xs font-bold bg-primary text-[#0B0A14] hover:bg-accent transition-colors shadow-xs"
               >
                 Reset All Filters
               </button>
@@ -841,7 +841,7 @@ export default function AdminUsersPanel() {
 
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2">
-                          <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white group-hover:text-[#D97706] dark:group-hover:text-[#FFD21F] transition-colors truncate">
+                          <h3 className="text-sm font-bold text-[#0B0A14] dark:text-white group-hover:text-[#D97706] dark:group-hover:text-accent transition-colors truncate">
                             {user.name}
                           </h3>
                           {user.verified && (
@@ -858,11 +858,11 @@ export default function AdminUsersPanel() {
 
                         <div className="flex items-center gap-2 text-xs text-[#5A5A68] dark:text-[#8E8EA4] font-mono mt-0.5">
                           {user.handle ? (
-                            <span className="text-[#0A0A0E] dark:text-white font-semibold shrink-0">
+                            <span className="text-[#0B0A14] dark:text-white font-semibold shrink-0">
                               @{user.handle}
                             </span>
                           ) : user.companyName ? (
-                            <span className="text-[#0A0A0E] dark:text-white font-semibold truncate max-w-[120px]">
+                            <span className="text-[#0B0A14] dark:text-white font-semibold truncate max-w-[120px]">
                               {user.companyName}
                             </span>
                           ) : null}
@@ -870,7 +870,7 @@ export default function AdminUsersPanel() {
                           <button
                             type="button"
                             onClick={(e) => copyToClipboard(user.email, "Email", e)}
-                            className="hover:text-[#0A0A0E] dark:hover:text-white shrink-0 p-0.5"
+                            className="hover:text-[#0B0A14] dark:hover:text-white shrink-0 p-0.5"
                             title="Copy Email"
                           >
                             <Copy className="w-3 h-3" />
@@ -884,7 +884,7 @@ export default function AdminUsersPanel() {
                       <span
                         className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider ${
                           isCreator
-                            ? "bg-amber-500/15 text-amber-700 dark:text-[#FFD21F] border border-amber-500/30"
+                            ? "bg-amber-500/15 text-amber-700 dark:text-accent border border-amber-500/30"
                             : isBrand
                             ? "bg-blue-500/15 text-blue-700 dark:text-blue-400 border border-blue-500/30"
                             : "bg-purple-500/15 text-purple-700 dark:text-purple-300 border border-purple-500/30"
@@ -950,7 +950,7 @@ export default function AdminUsersPanel() {
 
                     {/* Col 10: Reach / Metric */}
                     <div className="col-span-1 text-right">
-                      <div className="text-xs font-bold text-[#0A0A0E] dark:text-white font-mono">
+                      <div className="text-xs font-bold text-[#0B0A14] dark:text-white font-mono">
                         {user.followers !== undefined
                           ? formatNumber(user.followers)
                           : user.campaignsCount !== undefined
@@ -975,7 +975,7 @@ export default function AdminUsersPanel() {
                         className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border inline-flex items-center gap-1.5 shrink-0 ${
                           user.verified
                             ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border-emerald-500/30 hover:bg-emerald-500/25"
-                            : "bg-[#F4F4F8] dark:bg-[#1E1E2C] text-[#5A5A68] dark:text-[#A0A0B8] border-black/8 dark:border-white/10 hover:border-[#FFD21F] hover:text-[#0A0A0E] dark:hover:text-white"
+                            : "bg-[#F4F4F8] dark:bg-[#1E1E2C] text-[#5A5A68] dark:text-[#A0A0B8] border-black/8 dark:border-white/10 hover:border-primary hover:text-[#0B0A14] dark:hover:text-white"
                         }`}
                         title={user.verified ? "Click to revoke verification" : "Click to approve and verify"}
                       >
@@ -1000,7 +1000,7 @@ export default function AdminUsersPanel() {
                           e.stopPropagation();
                           setSelectedUser(user);
                         }}
-                        className="p-1.5 rounded-lg text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+                        className="p-1.5 rounded-lg text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
                         title="Inspect Profile"
                       >
                         <ChevronRight className="w-4 h-4" />
@@ -1041,7 +1041,7 @@ export default function AdminUsersPanel() {
                         </div>
                         <div className="min-w-0">
                           <div className="flex items-center gap-1.5 flex-wrap">
-                            <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white truncate">
+                            <h3 className="text-sm font-bold text-[#0B0A14] dark:text-white truncate">
                               {user.name}
                             </h3>
                             {user.verified && (
@@ -1068,7 +1068,7 @@ export default function AdminUsersPanel() {
                         <span
                           className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider ${
                             isCreator
-                              ? "bg-amber-500/15 text-amber-700 dark:text-[#FFD21F] border border-amber-500/30"
+                              ? "bg-amber-500/15 text-amber-700 dark:text-accent border border-amber-500/30"
                               : isBrand
                               ? "bg-blue-500/15 text-blue-700 dark:text-blue-400 border border-blue-500/30"
                               : "bg-purple-500/15 text-purple-700 dark:text-purple-300 border border-purple-500/30"
@@ -1140,7 +1140,7 @@ export default function AdminUsersPanel() {
               <button
                 type="button"
                 onClick={() => setSelectedUser(null)}
-                className="p-1.5 rounded-lg bg-[#F4F4F8] dark:bg-[#1E1E2A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
+                className="p-1.5 rounded-lg bg-[#F4F4F8] dark:bg-[#1E1E2A] text-[#5A5A68] dark:text-[#8E8EA4] hover:text-[#0B0A14] dark:hover:text-white"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -1149,7 +1149,7 @@ export default function AdminUsersPanel() {
             {/* Profile Avatar & Primary Info */}
             <div className="text-center space-y-3">
               {selectedUser.role === "brand" ? (
-                <div className="w-36 h-20 rounded-2xl mx-auto overflow-hidden bg-white border-2 border-[#FFD21F] p-3 flex items-center justify-center shadow-md">
+                <div className="w-36 h-20 rounded-2xl mx-auto overflow-hidden bg-white border-2 border-primary p-3 flex items-center justify-center shadow-md">
                   <img
                     src={selectedUser.avatarUrl || (selectedUser.name.toLowerCase().includes("snitch") ? "/brands/snitch.png" : "/brands/the-whole-truth.png")}
                     alt={selectedUser.name}
@@ -1157,7 +1157,7 @@ export default function AdminUsersPanel() {
                   />
                 </div>
               ) : (
-                <div className="w-20 h-20 rounded-3xl mx-auto overflow-hidden border-2 border-[#FFD21F] relative shadow-md">
+                <div className="w-20 h-20 rounded-3xl mx-auto overflow-hidden border-2 border-primary relative shadow-md">
                   <SafeImage
                     src={selectedUser.avatarUrl || ""}
                     alt={selectedUser.name}
@@ -1170,16 +1170,16 @@ export default function AdminUsersPanel() {
               )}
 
               <div>
-                <h2 className="text-xl font-extrabold text-[#0A0A0E] dark:text-white font-display">
+                <h2 className="text-xl font-extrabold text-[#0B0A14] dark:text-white font-display">
                   {selectedUser.name}
                 </h2>
                 {selectedUser.handle && (
-                  <p className="text-xs font-mono text-[#D97706] dark:text-[#FFD21F] font-semibold">
+                  <p className="text-xs font-mono text-[#D97706] dark:text-accent font-semibold">
                     @{selectedUser.handle}
                   </p>
                 )}
                 {selectedUser.companyName && (
-                  <p className="text-xs font-semibold text-[#0A0A0E] dark:text-white">
+                  <p className="text-xs font-semibold text-[#0B0A14] dark:text-white">
                     {selectedUser.companyName}
                   </p>
                 )}
@@ -1187,7 +1187,7 @@ export default function AdminUsersPanel() {
 
               {/* Status and Role badges */}
               <div className="flex items-center justify-center gap-2 flex-wrap">
-                <span className="px-2.5 py-1 rounded-full text-xs font-mono font-bold uppercase bg-amber-500/15 text-amber-700 dark:text-[#FFD21F] border border-amber-500/30">
+                <span className="px-2.5 py-1 rounded-full text-xs font-mono font-bold uppercase bg-amber-500/15 text-amber-700 dark:text-accent border border-amber-500/30">
                   {selectedUser.role}
                 </span>
                 <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-[#F0F0F5] dark:bg-[#1E1E2C] text-[#475569] dark:text-[#A0A0B8]">
@@ -1230,7 +1230,7 @@ export default function AdminUsersPanel() {
 
               <a
                 href={`mailto:${selectedUser.email}`}
-                className="w-full py-2.5 rounded-xl text-xs font-bold bg-[#F4F4F8] dark:bg-[#1E1E2A] text-[#0A0A0E] dark:text-white border border-black/8 dark:border-white/10 hover:bg-[#EAEAEF] inline-flex items-center justify-center gap-2"
+                className="w-full py-2.5 rounded-xl text-xs font-bold bg-[#F4F4F8] dark:bg-[#1E1E2A] text-[#0B0A14] dark:text-white border border-black/8 dark:border-white/10 hover:bg-[#EAEAEF] inline-flex items-center justify-center gap-2"
               >
                 <Mail className="w-3.5 h-3.5" /> Send Email
               </a>
@@ -1255,7 +1255,7 @@ export default function AdminUsersPanel() {
               {selectedUser.lastActiveAt && (
                 <div className="flex justify-between items-center py-1 border-b border-black/5 dark:border-white/5">
                   <span className="text-[#5A5A68] dark:text-[#8E8EA4]">Last Active:</span>
-                  <span className="text-[#0A0A0E] dark:text-white font-bold">
+                  <span className="text-[#0B0A14] dark:text-white font-bold">
                     {new Date(selectedUser.lastActiveAt).toLocaleString()}
                   </span>
                 </div>
@@ -1264,7 +1264,7 @@ export default function AdminUsersPanel() {
               {selectedUser.lastLoginAt && (
                 <div className="flex justify-between items-center py-1 border-b border-black/5 dark:border-white/5">
                   <span className="text-[#5A5A68] dark:text-[#8E8EA4]">Last Logged In:</span>
-                  <span className="text-[#0A0A0E] dark:text-white font-bold">
+                  <span className="text-[#0B0A14] dark:text-white font-bold">
                     {new Date(selectedUser.lastLoginAt).toLocaleString()}
                   </span>
                 </div>
@@ -1272,28 +1272,28 @@ export default function AdminUsersPanel() {
 
               <div className="flex justify-between items-center py-1 border-b border-black/5 dark:border-white/5">
                 <span className="text-[#5A5A68] dark:text-[#8E8EA4]">User ID:</span>
-                <span className="text-[#0A0A0E] dark:text-white font-bold select-all truncate max-w-[200px]">
+                <span className="text-[#0B0A14] dark:text-white font-bold select-all truncate max-w-[200px]">
                   {selectedUser.id}
                 </span>
               </div>
 
               <div className="flex justify-between items-center py-1 border-b border-black/5 dark:border-white/5">
                 <span className="text-[#5A5A68] dark:text-[#8E8EA4]">Email:</span>
-                <span className="text-[#0A0A0E] dark:text-white font-bold select-all truncate max-w-[200px]">
+                <span className="text-[#0B0A14] dark:text-white font-bold select-all truncate max-w-[200px]">
                   {selectedUser.email}
                 </span>
               </div>
 
               <div className="flex justify-between items-center py-1 border-b border-black/5 dark:border-white/5">
                 <span className="text-[#5A5A68] dark:text-[#8E8EA4]">Registered On:</span>
-                <span className="text-[#0A0A0E] dark:text-white font-bold">
+                <span className="text-[#0B0A14] dark:text-white font-bold">
                   {new Date(selectedUser.createdAt).toLocaleString()}
                 </span>
               </div>
 
               <div className="flex justify-between items-center py-1 border-b border-black/5 dark:border-white/5">
                 <span className="text-[#5A5A68] dark:text-[#8E8EA4]">Location / Region:</span>
-                <span className="text-[#0A0A0E] dark:text-white font-bold">
+                <span className="text-[#0B0A14] dark:text-white font-bold">
                   {selectedUser.country || "Global"}
                 </span>
               </div>
@@ -1301,7 +1301,7 @@ export default function AdminUsersPanel() {
               {selectedUser.gender && (
                 <div className="flex justify-between items-center py-1 border-b border-black/5 dark:border-white/5">
                   <span className="text-[#5A5A68] dark:text-[#8E8EA4]">Gender:</span>
-                  <span className="text-[#0A0A0E] dark:text-white font-bold capitalize">
+                  <span className="text-[#0B0A14] dark:text-white font-bold capitalize">
                     {selectedUser.gender}
                   </span>
                 </div>
@@ -1310,7 +1310,7 @@ export default function AdminUsersPanel() {
               {selectedUser.followers !== undefined && (
                 <div className="flex justify-between items-center py-1 border-b border-black/5 dark:border-white/5">
                   <span className="text-[#5A5A68] dark:text-[#8E8EA4]">Followers:</span>
-                  <span className="text-[#0A0A0E] dark:text-white font-bold">
+                  <span className="text-[#0B0A14] dark:text-white font-bold">
                     {formatNumber(selectedUser.followers)}
                   </span>
                 </div>
@@ -1319,7 +1319,7 @@ export default function AdminUsersPanel() {
               {selectedUser.tier && (
                 <div className="flex justify-between items-center py-1 border-b border-black/5 dark:border-white/5">
                   <span className="text-[#5A5A68] dark:text-[#8E8EA4]">Creator Tier:</span>
-                  <span className="text-[#0A0A0E] dark:text-white font-bold">
+                  <span className="text-[#0B0A14] dark:text-white font-bold">
                     {selectedUser.tier}
                   </span>
                 </div>
@@ -1328,7 +1328,7 @@ export default function AdminUsersPanel() {
               {selectedUser.campaignsCount !== undefined && (
                 <div className="flex justify-between items-center py-1">
                   <span className="text-[#5A5A68] dark:text-[#8E8EA4]">Campaigns Count:</span>
-                  <span className="text-[#0A0A0E] dark:text-white font-bold">
+                  <span className="text-[#0B0A14] dark:text-white font-bold">
                     {selectedUser.campaignsCount}
                   </span>
                 </div>
@@ -1341,7 +1341,7 @@ export default function AdminUsersPanel() {
                 <label className="text-xs font-mono font-bold text-[#5A5A68] dark:text-[#8E8EA4]">
                   Bio / Statement:
                 </label>
-                <p className="text-xs text-[#0A0A0E] dark:text-[#E2E2E8] leading-relaxed p-3 rounded-xl bg-[#F8F8FC] dark:bg-[#14141E] border border-black/5 dark:border-white/5">
+                <p className="text-xs text-[#0B0A14] dark:text-[#E2E2E8] leading-relaxed p-3 rounded-xl bg-[#F8F8FC] dark:bg-[#14141E] border border-black/5 dark:border-white/5">
                   {selectedUser.bio}
                 </p>
               </div>
@@ -1353,7 +1353,7 @@ export default function AdminUsersPanel() {
                 <Link
                   href={`/creators/${selectedUser.profileId}`}
                   target="_blank"
-                  className="w-full py-2.5 rounded-xl text-xs font-bold bg-[#FFD21F]/15 text-[#0A0A0E] dark:text-[#FFD21F] border border-[#FFD21F]/30 hover:bg-[#FFD21F]/25 inline-flex items-center justify-center gap-2 transition-all"
+                  className="w-full py-2.5 rounded-xl text-xs font-bold bg-primary/15 text-[#0B0A14] dark:text-accent border border-primary/30 hover:bg-primary/25 inline-flex items-center justify-center gap-2 transition-all"
                 >
                   <ExternalLink className="w-3.5 h-3.5" /> View Public Media Kit
                 </Link>
@@ -1364,7 +1364,7 @@ export default function AdminUsersPanel() {
                   href={selectedUser.websiteUrl.startsWith("http") ? selectedUser.websiteUrl : `https://${selectedUser.websiteUrl}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full py-2.5 rounded-xl text-xs font-bold bg-[#F4F4F8] dark:bg-[#1E1E2A] text-[#0A0A0E] dark:text-white border border-black/8 dark:border-white/10 hover:bg-[#EAEAEF] inline-flex items-center justify-center gap-2 transition-all"
+                  className="w-full py-2.5 rounded-xl text-xs font-bold bg-[#F4F4F8] dark:bg-[#1E1E2A] text-[#0B0A14] dark:text-white border border-black/8 dark:border-white/10 hover:bg-[#EAEAEF] inline-flex items-center justify-center gap-2 transition-all"
                 >
                   <Globe className="w-3.5 h-3.5" /> Visit Brand Website
                 </a>

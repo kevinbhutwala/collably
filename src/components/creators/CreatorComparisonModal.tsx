@@ -33,7 +33,7 @@ export function CreatorComparisonModal({
       description="Compare audience demographics, rate cards, and engagement authenticity across shortlisted creators."
       maxWidth="4xl"
     >
-      <div className="space-y-6 text-[#0A0A0E] dark:text-white">
+      <div className="space-y-6 text-[#0B0A14] dark:text-white">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full">
           {creators.map((c) => (
             <div
@@ -43,7 +43,7 @@ export function CreatorComparisonModal({
               {onRemoveCreator && (
                 <button
                   onClick={() => onRemoveCreator(c.id)}
-                  className="absolute top-4 right-4 p-1 rounded-full text-[#6A6A78] dark:text-slate-400 hover:text-[#0A0A0E] dark:hover:text-white bg-black/5 dark:bg-white/10 border border-black/8 dark:border-white/10"
+                  className="absolute top-4 right-4 p-1 rounded-full text-[#6A6A78] dark:text-slate-400 hover:text-[#0B0A14] dark:hover:text-white bg-black/5 dark:bg-white/10 border border-black/8 dark:border-white/10"
                 >
                   <X className="w-3.5 h-3.5" />
                 </button>
@@ -62,7 +62,7 @@ export function CreatorComparisonModal({
                     />
                   </div>
                   <div>
-                    <h4 className="font-bold text-sm text-[#0A0A0E] dark:text-white flex items-center gap-1 font-display">
+                    <h4 className="font-bold text-sm text-[#0B0A14] dark:text-white flex items-center gap-1 font-display">
                       {c.fullName}
                       {c.verified && <CheckCircle2 className="w-3.5 h-3.5 fill-sky-400 text-[#0a070a]" />}
                     </h4>
@@ -81,7 +81,7 @@ export function CreatorComparisonModal({
                 <div className="p-3.5 rounded-2xl bg-white dark:bg-white/[0.03] border border-black/8 dark:border-white/10 space-y-2 text-xs font-mono">
                   <div className="flex justify-between">
                     <span className="text-[#6A6A78] dark:text-slate-400">Reach:</span>
-                    <span className="font-bold text-[#0A0A0E] dark:text-white">{formatNumber(c.totalFollowers)}</span>
+                    <span className="font-bold text-[#0B0A14] dark:text-white">{formatNumber(c.totalFollowers)}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-[#6A6A78] dark:text-slate-400">Eng. Rate:</span>
@@ -89,11 +89,11 @@ export function CreatorComparisonModal({
                   </div>
                   <div className="flex justify-between">
                     <span className="text-[#6A6A78] dark:text-slate-400">Starting Price:</span>
-                    <span className="font-bold text-[#D7A900] dark:text-[#FFD21F]">{format(c.startingPrice, (c as any).currency || "INR")}</span>
+                    <span className="font-bold text-[#D7A900] dark:text-accent">{format(c.startingPrice, (c as any).currency || "INR")}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-[#6A6A78] dark:text-slate-400">Completed:</span>
-                    <span className="font-bold text-[#0A0A0E] dark:text-white">{c.completedCampaignsCount || 0} Deals</span>
+                    <span className="font-bold text-[#0B0A14] dark:text-white">{c.completedCampaignsCount || 0} Deals</span>
                   </div>
                 </div>
               </div>

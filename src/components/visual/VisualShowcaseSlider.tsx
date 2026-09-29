@@ -47,23 +47,23 @@ const SHOWCASE_WORKS = [
 
 export function VisualShowcaseSlider() {
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#FAF9F5] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] select-none overflow-hidden border-t border-black/6 dark:border-white/10 font-sans">
+    <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#FAF9F5] dark:bg-[#07070B] text-[#0B0A14] dark:text-[#F4F4F8] select-none overflow-hidden border-t border-black/6 dark:border-white/10 font-sans">
       <div className="max-w-7xl mx-auto w-full space-y-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/6 dark:border-white/10">
           <div className="space-y-2">
-            <span className="text-xs font-mono font-bold tracking-tight text-[#0A0A0E] dark:text-[#FFD21F] uppercase flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
+            <span className="text-xs font-mono font-bold tracking-tight text-[#0B0A14] dark:text-accent uppercase flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-primary fill-primary" />
               SELECTED CAMPAIGN DELIVERABLES
             </span>
-            <h2 className="text-2xl sm:text-4xl font-black font-display tracking-tight text-[#0A0A0E] dark:text-white">
+            <h2 className="text-2xl sm:text-4xl font-black font-display tracking-tight text-[#0B0A14] dark:text-white">
               Crafted for High-Growth Brands.
             </h2>
           </div>
 
           <Link
             href="/case-studies"
-            className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#0A0A0E] dark:text-white hover:underline"
+            className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#0B0A14] dark:text-white hover:underline"
           >
             <span>View All Case Studies</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -76,11 +76,11 @@ export function VisualShowcaseSlider() {
             <InteractiveTiltCard
               key={work.title}
               maxTilt={8}
-              glowColor="rgba(255, 210, 31, 0.25)"
-              className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 hover:border-[#FFD21F] dark:hover:border-[#FFD21F] shadow-[0_12px_40px_rgba(0,0,0,0.06)] dark:shadow-[0_12px_36px_rgba(0,0,0,0.4)] transition-all p-4 space-y-3 flex flex-col justify-between group cursor-pointer"
+              glowColor="rgba(var(--theme-primary-rgb), 0.25)"
+              className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 hover:border-primary dark:hover:border-primary shadow-[0_12px_40px_rgba(0,0,0,0.06)] dark:shadow-[0_12px_36px_rgba(0,0,0,0.4)] transition-all p-4 space-y-3 flex flex-col justify-between group cursor-pointer"
             >
               {/* Overlapping Image Visual */}
-              <div className="relative aspect-[4/4.5] w-full rounded-2xl overflow-hidden bg-[#0A0A0E]">
+              <div className="relative aspect-[4/4.5] w-full rounded-2xl overflow-hidden bg-[#0B0A14]">
                 <SafeImage
                   src={work.mainImage}
                   alt={work.title}
@@ -105,7 +105,7 @@ export function VisualShowcaseSlider() {
                 <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md text-[10px] font-mono font-bold text-white border border-white/10">
                   {work.brand}
                 </span>
-                <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-[10px] font-mono font-extrabold shadow-sm">
+                <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-primary text-[#0B0A14] text-[10px] font-mono font-extrabold shadow-sm">
                   {work.roas}
                 </span>
 
@@ -123,7 +123,7 @@ export function VisualShowcaseSlider() {
                 <span>Campaign Master</span>
                 <Link
                   href="/case-studies"
-                  className="text-xs font-bold text-[#0A0A0E] dark:text-white hover:text-amber-600 dark:hover:text-[#FFD21F] flex items-center gap-1 transition-colors"
+                  className="text-xs font-bold text-[#0B0A14] dark:text-white hover:text-amber-600 dark:hover:text-accent flex items-center gap-1 transition-colors"
                 >
                   <span>Reel</span>
                   <ArrowRight className="w-3 h-3" />
