@@ -5,6 +5,7 @@ import { campaignService } from "@/services/campaign.service";
 import { Campaign, CreatorCategory } from "@/core/types";
 import { CATEGORIES } from "@/core/constants";
 import { CampaignCard } from "@/components/campaigns/CampaignCard";
+import { CampaignsSkeleton } from "@/components/skeletons";
 import { CreativeLoader } from "@/components/ui/CreativeLoader";
 import { Search, Compass, Sparkles, Filter, Lock, AlertTriangle, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -142,11 +143,7 @@ export default function AppCampaignsPage() {
 
       {/* Grid */}
       {loading ? (
-        <CreativeLoader
-          size="md"
-          label="Loading Campaigns"
-          subtext="Finding the latest brand campaigns..."
-        />
+        <CampaignsSkeleton />
       ) : campaigns.length === 0 ? (
         <div className="py-16 text-center rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-6 space-y-2 shadow-xs">
           <Compass className="w-7 h-7 text-[#7A7A8A] dark:text-[#8E8EA4] mx-auto" />

@@ -3,6 +3,6 @@
 import React from "react";
 import { DashboardSkeleton } from "@/components/skeletons";
 
-export default function AppLoading() {
+export default function DashboardLoading() {
   return <DashboardSkeleton />;
 }

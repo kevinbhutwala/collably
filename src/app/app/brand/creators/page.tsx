@@ -5,6 +5,7 @@ import { creatorService } from "@/services/creator.service";
 import { CreatorProfile } from "@/core/types";
 import { CreatorCard } from "@/components/creators/CreatorCard";
 import { CreatorFilterBar } from "@/components/creators/CreatorFilterBar";
+import { CreatorsSkeleton } from "@/components/skeletons";
 import { useFilterStore } from "@/stores/filter.store";
 import { Users, Sparkles, SlidersHorizontal } from "lucide-react";
 import { CATEGORIES } from "@/core/constants";
@@ -319,7 +320,9 @@ export default function BrandCreatorDiscoveryPage() {
           </div>
 
           {/* Full-Width Creator Roster Grid */}
-          {filteredCreators.length === 0 ? (
+          {loading ? (
+            <CreatorsSkeleton />
+          ) : filteredCreators.length === 0 ? (
             <div className="py-16 text-center rounded-3xl bg-white dark:bg-[#14141E] border border-black/8 dark:border-white/10 p-8 space-y-3 shadow-xs">
               <Users className="w-8 h-8 text-[#8A8A9A] mx-auto" />
               <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white">No creators found</h3>

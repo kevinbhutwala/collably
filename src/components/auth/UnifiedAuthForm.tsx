@@ -63,6 +63,7 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
 
   // UI state
   const [isLoading, setIsLoading] = useState(false);
+  const [loadingPhase, setLoadingPhase] = useState<"idle" | "submitting" | "redirecting">("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
   // Sync tab with props or URL params
@@ -137,27 +138,27 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
   // Form Submit Handler
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
-    setErrorMessage("");
+    if (isLoading) return;
 
     const trimmedEmail = email.trim();
     if (!trimmedEmail) {
       setErrorMessage("Please enter your email address.");
-      setIsLoading(false);
       return;
     }
 
     if (!password) {
       setErrorMessage("Please enter your password.");
-      setIsLoading(false);
       return;
     }
 
     if (activeTab === "register" && !name.trim()) {
       setErrorMessage(role === "brand" ? "Please enter your company or brand name." : "Please enter your name.");
-      setIsLoading(false);
       return;
     }
+
+    setIsLoading(true);
+    setLoadingPhase("submitting");
+    setErrorMessage("");
 
     try {
       if (activeTab === "signin") {
@@ -169,6 +170,7 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
           message: "Signed in successfully to AbeyCollab.",
         });
 
+        setLoadingPhase("redirecting");
         const activeUser = useAuthStore.getState().user;
         const target =
           redirect !== "/app/dashboard"
@@ -177,6 +179,7 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
             ? "/app/brand/campaigns"
             : "/app/dashboard";
         router.push(target);
+        // Do NOT set isLoading(false) on success: keep loader active until page unmounts!
       } else {
         // Sign Up Flow (with optional Instagram and YouTube handles)
         const res = await authService.register({
@@ -199,8 +202,13 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
             message: `Welcome to AbeyCollab, ${name.trim()}!`,
           });
 
+          setLoadingPhase("redirecting");
           const target = role === "brand" ? "/app/brand/campaigns" : "/app/dashboard";
           router.push(target);
+          // Do NOT set isLoading(false) on success: keep loader active until page unmounts!
+        } else {
+          setIsLoading(false);
+          setLoadingPhase("idle");
         }
       }
     } catch (err: any) {
@@ -210,13 +218,19 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
             ? "Invalid email or password. Please try again."
             : "Registration failed. Please try again.")
       );
-    } finally {
       setIsLoading(false);
+      setLoadingPhase("idle");
     }
   };
 
   return (
-    <div className="w-full max-w-md mx-auto rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-7 space-y-5 shadow-[0_16px_40px_rgba(0,0,0,0.06)] relative z-10 text-[#0A0A0E] dark:text-[#F4F4F8] select-none transition-all">
+    <div className="w-full max-w-md mx-auto rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-7 space-y-5 shadow-[0_16px_40px_rgba(0,0,0,0.06)] relative z-10 text-[#0A0A0E] dark:text-[#F4F4F8] select-none transition-all overflow-hidden">
+      {/* Top Gold Indeterminate Loading Bar */}
+      {isLoading && (
+        <div className="absolute top-0 left-0 right-0 h-1 bg-[#FFD21F]/20 overflow-hidden rounded-t-3xl z-20">
+          <div className="h-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFD21F] w-2/3 animate-[shimmer_1.2s_infinite] shadow-[0_0_12px_rgba(255,210,31,0.8)]" />
+        </div>
+      )}
       {/* Header with Title & Security Badge */}
       <div className="text-center space-y-1">
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/40 text-[#0A0A0E] dark:text-[#FFD21F] text-[10px] font-mono font-bold uppercase tracking-wider mb-1">
@@ -237,11 +251,12 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
       <div className="grid grid-cols-2 gap-1.5 p-1 rounded-2xl bg-black/[0.04] dark:bg-white/[0.05] border border-black/8 dark:border-white/10">
         <button
           type="button"
+          disabled={isLoading}
           onClick={() => {
             setActiveTab("signin");
             setErrorMessage("");
           }}
-          className={`py-2 px-3 rounded-xl text-xs font-bold font-sans transition-all cursor-pointer ${
+          className={`py-2 px-3 rounded-xl text-xs font-bold font-sans transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${
             activeTab === "signin"
               ? "bg-white dark:bg-[#1E1E2C] text-[#0A0A0E] dark:text-white shadow-xs border border-black/10 dark:border-white/15"
               : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
@@ -252,11 +267,12 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
 
         <button
           type="button"
+          disabled={isLoading}
           onClick={() => {
             setActiveTab("register");
             setErrorMessage("");
           }}
-          className={`py-2 px-3 rounded-xl text-xs font-bold font-sans transition-all cursor-pointer ${
+          className={`py-2 px-3 rounded-xl text-xs font-bold font-sans transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${
             activeTab === "register"
               ? "bg-white dark:bg-[#1E1E2C] text-[#0A0A0E] dark:text-white shadow-xs border border-black/10 dark:border-white/15"
               : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
@@ -275,8 +291,9 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
           <div className="grid grid-cols-2 gap-2">
             <button
               type="button"
+              disabled={isLoading}
               onClick={() => setRole("creator")}
-              className={`py-2 px-3 rounded-xl text-xs font-bold font-sans flex items-center justify-center gap-1.5 transition-all cursor-pointer border ${
+              className={`py-2 px-3 rounded-xl text-xs font-bold font-sans flex items-center justify-center gap-1.5 transition-all cursor-pointer border disabled:opacity-50 disabled:cursor-not-allowed ${
                 role === "creator"
                   ? "bg-[#FFD21F]/15 dark:bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] border-[#FFD21F]/60 shadow-xs"
                   : "bg-black/[0.02] dark:bg-white/[0.03] text-[#7A7A8A] dark:text-[#8E8EA4] border-black/8 dark:border-white/8 hover:text-[#0A0A0E] dark:hover:text-white"
@@ -288,8 +305,9 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
 
             <button
               type="button"
+              disabled={isLoading}
               onClick={() => setRole("brand")}
-              className={`py-2 px-3 rounded-xl text-xs font-bold font-sans flex items-center justify-center gap-1.5 transition-all cursor-pointer border ${
+              className={`py-2 px-3 rounded-xl text-xs font-bold font-sans flex items-center justify-center gap-1.5 transition-all cursor-pointer border disabled:opacity-50 disabled:cursor-not-allowed ${
                 role === "brand"
                   ? "bg-[#FFD21F]/15 dark:bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] border-[#FFD21F]/60 shadow-xs"
                   : "bg-black/[0.02] dark:bg-white/[0.03] text-[#7A7A8A] dark:text-[#8E8EA4] border-black/8 dark:border-white/8 hover:text-[#0A0A0E] dark:hover:text-white"
@@ -445,13 +463,21 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_16px_rgba(255,210,31,0.35)] border border-black/10 flex items-center justify-center gap-2 disabled:opacity-50 active:scale-98 cursor-pointer mt-1"
+          className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_16px_rgba(255,210,31,0.35)] border border-black/10 flex items-center justify-center gap-2 disabled:opacity-85 disabled:cursor-wait active:scale-98 cursor-pointer mt-1"
         >
           {isLoading ? (
-            <>
+            <div className="flex items-center gap-2">
               <Loader2 className="w-4 h-4 animate-spin text-[#0A0A0E]" />
-              <span>{activeTab === "signin" ? "Signing In..." : "Creating Account..."}</span>
-            </>
+              <span>
+                {loadingPhase === "redirecting"
+                  ? activeTab === "signin"
+                    ? "Opening Workspace..."
+                    : "Preparing Your Workspace..."
+                  : activeTab === "signin"
+                  ? "Signing In..."
+                  : "Creating Account..."}
+              </span>
+            </div>
           ) : (
             <>
               <span>{activeTab === "signin" ? "Sign In" : `Create ${role === "brand" ? "Brand" : "Creator"} Account`}</span>
@@ -469,11 +495,12 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
               New to AbeyCollab?{" "}
               <button
                 type="button"
+                disabled={isLoading}
                 onClick={() => {
                   setActiveTab("register");
                   setErrorMessage("");
                 }}
-                className="text-[#0A0A0E] dark:text-[#FFD21F] hover:underline font-bold cursor-pointer"
+                className="text-[#0A0A0E] dark:text-[#FFD21F] hover:underline font-bold cursor-pointer disabled:opacity-50 disabled:pointer-events-none"
               >
                 Create an Account
               </button>
@@ -483,11 +510,12 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
               Already have an account?{" "}
               <button
                 type="button"
+                disabled={isLoading}
                 onClick={() => {
                   setActiveTab("signin");
                   setErrorMessage("");
                 }}
-                className="text-[#0A0A0E] dark:text-[#FFD21F] hover:underline font-bold cursor-pointer"
+                className="text-[#0A0A0E] dark:text-[#FFD21F] hover:underline font-bold cursor-pointer disabled:opacity-50 disabled:pointer-events-none"
               >
                 Sign In
               </button>
