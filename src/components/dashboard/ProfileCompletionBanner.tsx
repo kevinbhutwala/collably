@@ -53,12 +53,10 @@ export function ProfileCompletionBanner({ creator: customCreator }: { creator?: 
   const hasAvatar = Boolean(creator.avatarUrl && creator.avatarUrl.trim().length > 0);
   const hasRates = Boolean(creator.startingPrice && creator.startingPrice > 0);
   const hasSocials = Boolean(creator.socialAccounts && creator.socialAccounts.length > 0);
-  const hasVerifiedSocial = Boolean(
-    creator.socialAccounts &&
-    creator.socialAccounts.some(
-      (s: any) => s.verifiedBadge || s.verificationStatus === "verified" || s.verifiedVia
-    )
+  const unverifiedSocials = (creator.socialAccounts || []).filter(
+    (s: any) => !s.verifiedBadge && s.verificationStatus !== "verified" && !s.verifiedVia
   );
+  const allSocialsVerified = hasSocials && unverifiedSocials.length === 0;
 
   const checklist = [
     {
@@ -75,23 +73,35 @@ export function ProfileCompletionBanner({ creator: customCreator }: { creator?: 
     },
     {
       id: "rates",
-      label: "Starting Collaboration Rate",
+      label: "Starting Rate",
       done: hasRates,
       href: "/app/profile",
     },
     {
       id: "socials",
-      label: "Connect YouTube / Instagram",
+      label: "Connect Channels",
       done: hasSocials,
+      href: "/app/profile",
+    },
+    {
+      id: "verification",
+      label:
+        unverifiedSocials.length > 0
+          ? `Verify Channels (${unverifiedSocials.length} Unverified)`
+          : "Channel Ownership Verified",
+      done: allSocialsVerified,
       href: "/app/profile",
     },
   ];
 
   const completedCount = checklist.filter((item) => item.done).length;
   const progressPercent = Math.round((completedCount / checklist.length) * 100);
+  const isConfirmed = progressPercent === 100 && allSocialsVerified;
 
-  // If 100% complete, do not show banner
-  if (progressPercent === 100) return null;
+  // If 100% complete and all socials verified, do not show banner
+  if (isConfirmed) return null;
+
+  const isBlockedByUnverified = hasSocials && !allSocialsVerified;
 
   return (
     <div className="rounded-3xl bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent dark:from-amber-500/15 dark:via-amber-500/5 dark:to-transparent border border-amber-500/30 dark:border-amber-500/25 p-5 sm:p-6 shadow-sm relative overflow-hidden text-[#0A0A0E] dark:text-white transition-all">
@@ -104,7 +114,11 @@ export function ProfileCompletionBanner({ creator: customCreator }: { creator?: 
           <div className="flex items-center gap-2">
             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-800 dark:text-amber-300 text-[10px] font-mono font-bold uppercase tracking-wider">
               <AlertTriangle className="w-3 h-3 text-amber-600 dark:text-amber-400" />
-              <span>Profile Incomplete • Applications Locked</span>
+              <span>
+                {isBlockedByUnverified
+                  ? "Profile Unconfirmed • Channels Unverified"
+                  : "Profile Incomplete • Applications Locked"}
+              </span>
             </span>
             <span className="text-xs font-mono font-bold text-amber-700 dark:text-amber-300">
               {progressPercent}% Complete
@@ -113,11 +127,17 @@ export function ProfileCompletionBanner({ creator: customCreator }: { creator?: 
 
           <div>
             <h2 className="text-base sm:text-lg font-black text-[#0A0A0E] dark:text-white tracking-tight font-display flex items-center gap-2">
-              <span>Complete your creator profile to unlock brand deals</span>
+              <span>
+                {isBlockedByUnverified
+                  ? "Verify your connected social channels to confirm your profile"
+                  : "Complete your creator profile to unlock brand deals"}
+              </span>
               <Lock className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
             </h2>
             <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] mt-1 font-sans">
-              Brands review your verified channel statistics, rates, and bio before approving collaborations. Finish your profile setup to start applying.
+              {isBlockedByUnverified
+                ? `You have connected social channels (${unverifiedSocials.map((s: any) => s.platform).join(", ")}) that are not verified. Until and unless all added channels are verified, your profile cannot be confirmed and campaign applications remain locked.`
+                : "Brands review your verified channel statistics, rates, and bio before approving collaborations. Finish your profile setup to start applying."}
             </p>
           </div>
 

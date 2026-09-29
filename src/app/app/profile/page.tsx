@@ -292,8 +292,14 @@ export default function ProfileEditPage() {
     [creatorCurrency]
   );
 
-  // Profile Completeness calculation
+  // Profile Completeness & Confirmation calculation
   const completeness = useMemo(() => {
+    const unverifiedSocials = (socialAccounts || []).filter(
+      (s) => !s.verifiedBadge && s.verificationStatus !== "verified" && !s.verifiedVia
+    );
+    const hasSocials = Boolean(socialAccounts && socialAccounts.length > 0);
+    const allSocialsVerified = hasSocials && unverifiedSocials.length === 0;
+
     const checks = [
       {
         id: "headline",
@@ -312,8 +318,13 @@ export default function ProfileEditPage() {
       },
       {
         id: "socials",
-        label: "Social Channel",
-        done: Boolean(socialAccounts && socialAccounts.length > 0),
+        label: "Social Channels Added",
+        done: hasSocials,
+      },
+      {
+        id: "socials_verified",
+        label: "Channel Ownership Verified",
+        done: allSocialsVerified,
       },
       {
         id: "avatar",
@@ -321,9 +332,21 @@ export default function ProfileEditPage() {
         done: Boolean(avatarUrl && avatarUrl.trim().length > 0),
       },
     ];
+
     const completedCount = checks.filter((c) => c.done).length;
     const score = Math.round((completedCount / checks.length) * 100);
-    return { score, checks, isComplete: score === 100 };
+    // Profile is ONLY confirmed if all required fields are complete AND all added social channels are verified
+    const isConfirmed = score === 100 && allSocialsVerified;
+
+    return {
+      score,
+      checks,
+      isConfirmed,
+      hasSocials,
+      allSocialsVerified,
+      hasUnverifiedSocials: unverifiedSocials.length > 0,
+      unverifiedSocials,
+    };
   }, [headline, bio, startingPrice, socialAccounts, avatarUrl]);
 
   // Social account management
@@ -567,6 +590,12 @@ export default function ProfileEditPage() {
           .map((s) => s.trim())
           .filter(Boolean);
 
+        const unverifiedSocials = (socialAccounts || []).filter(
+          (s) => !s.verifiedBadge && s.verificationStatus !== "verified" && !s.verifiedVia
+        );
+        const hasSocials = socialAccounts && socialAccounts.length > 0;
+        const allSocialsVerified = hasSocials && unverifiedSocials.length === 0;
+
         const payload = {
           fullName: fullName.trim() || user?.name || "Creator",
           handle:
@@ -587,6 +616,8 @@ export default function ProfileEditPage() {
           totalFollowers,
           avgEngagementRate: avgEngagement,
           tier,
+          verified: allSocialsVerified,
+          isAbeyCollabVerified: allSocialsVerified,
         };
 
         if (currentCreator) {
@@ -603,11 +634,19 @@ export default function ProfileEditPage() {
           }
         }
 
-        addToast({
-          type: "success",
-          title: "Profile & Media Kit Saved",
-          message: "All changes are live and visible to partnering brands.",
-        });
+        if (unverifiedSocials.length > 0) {
+          addToast({
+            type: "warning",
+            title: "Profile Saved (Pending Verification)",
+            message: `Profile saved, but remains unconfirmed until ${unverifiedSocials.length} connected channel(s) (${unverifiedSocials.map((s) => `${s.platform.toUpperCase()} @${s.handle}`).join(", ")}) are verified.`,
+          });
+        } else {
+          addToast({
+            type: "success",
+            title: "Profile Confirmed & Saved",
+            message: "All channels verified! Your profile is 100% confirmed and ready for campaigns.",
+          });
+        }
       }
     } catch (err: any) {
       addToast({
@@ -845,10 +884,28 @@ export default function ProfileEditPage() {
         <div className="flex flex-wrap items-center gap-3 self-start md:self-center">
           {/* Readiness Pill */}
           <div className="flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-[#FAF9F5] dark:bg-[#181826] border border-black/8 dark:border-white/10 text-xs font-mono">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="font-bold text-[#0A0A0E] dark:text-white">
-              {completeness.score}% Ready
-            </span>
+            {completeness.isConfirmed ? (
+              <>
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="font-bold text-emerald-800 dark:text-emerald-400">
+                  Profile Confirmed (100%)
+                </span>
+              </>
+            ) : completeness.hasUnverifiedSocials ? (
+              <>
+                <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+                <span className="font-bold text-amber-800 dark:text-amber-400">
+                  Unconfirmed • {completeness.unverifiedSocials.length} Channel(s) Unverified
+                </span>
+              </>
+            ) : (
+              <>
+                <span className="w-2 h-2 rounded-full bg-black/30 dark:bg-white/30" />
+                <span className="font-bold text-[#0A0A0E] dark:text-white">
+                  {completeness.score}% Setup • Incomplete
+                </span>
+              </>
+            )}
           </div>
 
           {Boolean(currentCreator?.handle || currentCreator?.id || user?.id) && (
@@ -1103,6 +1160,21 @@ export default function ProfileEditPage() {
             </div>
           </div>
 
+          {/* Unverified Channel Warning Alert */}
+          {completeness.hasUnverifiedSocials && (
+            <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-start gap-3 text-xs text-amber-950 dark:text-amber-300">
+              <ShieldAlert className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+              <div className="space-y-1">
+                <p className="font-extrabold text-sm text-[#0A0A0E] dark:text-white">
+                  Channel Ownership Verification Required
+                </p>
+                <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
+                  Until and unless all added channels (Instagram, YouTube, etc.) are verified, your profile remains <strong>unconfirmed</strong> and campaign applications are locked. Click <strong>Verify Ownership</strong> on unverified channels below.
+                </p>
+              </div>
+            </div>
+          )}
+
           {/* Connected Accounts List */}
           <div className="space-y-2 pt-1">
             {socialAccounts.length === 0 ? (
@@ -1121,7 +1193,11 @@ export default function ProfileEditPage() {
                 return (
                   <div
                     key={acc.id}
-                    className="p-3.5 rounded-2xl bg-[#FAF9F5] dark:bg-[#181824] border border-black/6 dark:border-white/10 flex items-center justify-between gap-3"
+                    className={`p-3.5 rounded-2xl border transition-all flex items-center justify-between gap-3 ${
+                      isVerified
+                        ? "bg-[#FAF9F5] dark:bg-[#181824] border-black/6 dark:border-white/10"
+                        : "bg-amber-500/5 dark:bg-amber-500/10 border-amber-500/30"
+                    }`}
                   >
                     <div className="flex items-center gap-3 min-w-0">
                       <div className="w-8 h-8 rounded-xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 flex items-center justify-center text-[#0A0A0E] dark:text-white shrink-0">
@@ -1142,14 +1218,20 @@ export default function ProfileEditPage() {
                         )}
                       </div>
                       <div className="min-w-0">
-                        <div className="flex items-center gap-1.5">
+                        <div className="flex flex-wrap items-center gap-2">
                           <span className="font-bold text-xs text-[#0A0A0E] dark:text-white truncate">
                             @{acc.handle}
                           </span>
                           {isVerified ? (
-                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-800 dark:text-emerald-300 text-[10px] font-mono font-bold">
+                              <CheckCircle2 className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
+                              <span>Verified</span>
+                            </span>
                           ) : (
-                            <Circle className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-900 dark:text-amber-300 text-[10px] font-mono font-bold">
+                              <ShieldAlert className="w-3 h-3 text-amber-600 dark:text-amber-400" />
+                              <span>Unverified Channel</span>
+                            </span>
                           )}
                         </div>
                         <span className="text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4]">
@@ -1166,9 +1248,10 @@ export default function ProfileEditPage() {
                             setSelectedVerifyAccount(acc);
                             setShowVerifyModal(true);
                           }}
-                          className="px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-300 text-[10px] font-mono font-bold cursor-pointer hover:bg-amber-500/25"
+                          className="px-3 py-1.5 rounded-full bg-gradient-to-r from-[#FFD21F] to-[#FFE052] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-[11px] font-bold font-mono cursor-pointer shadow-xs transition-all active:scale-95 flex items-center gap-1"
                         >
-                          Verify Code
+                          <ShieldCheck className="w-3.5 h-3.5" />
+                          <span>Verify Ownership</span>
                         </button>
                       )}
                       <button

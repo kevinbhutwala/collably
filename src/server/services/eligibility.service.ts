@@ -187,6 +187,35 @@ export class EligibilityService {
         status: "passed",
         critical: true,
       });
+
+      // Strict Channel Ownership Verification Check:
+      // Until and unless all added channels (Instagram, YouTube, etc.) are verified,
+      // the profile is not confirmed and cannot apply to campaigns.
+      const unverifiedAccounts = socialAccounts.filter(
+        (s) => !s.verifiedBadge && s.verificationStatus !== "verified" && !s.verifiedVia
+      );
+
+      if (unverifiedAccounts.length > 0) {
+        checks.push({
+          id: "social_channel_verification",
+          category: "social_presence",
+          title: "Channel Ownership Verification",
+          description: `${unverifiedAccounts.length} connected channel(s) (${unverifiedAccounts.map((s) => `${s.platform.toUpperCase()} @${s.handle}`).join(", ")}) are unverified.`,
+          status: "failed",
+          critical: true,
+          details: "Profile is not confirmed. Every social media channel added by the creator (Instagram, YouTube, etc.) must be verified before the profile is confirmed and campaign applications are unlocked.",
+          fixAction: { label: "Verify Channels", url: "/app/profile" },
+        });
+      } else {
+        checks.push({
+          id: "social_channel_verification",
+          category: "social_presence",
+          title: "Channel Ownership Verification",
+          description: `All ${socialAccounts.length} connected channel(s) are authenticated and verified.`,
+          status: "passed",
+          critical: true,
+        });
+      }
     }
 
     // Consistency Audit: Total claimed followers vs sum of connected channel followers

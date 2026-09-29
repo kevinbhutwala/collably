@@ -59,6 +59,7 @@ export interface SocialAccount {
   verificationCode?: string;
   verifiedAt?: string;
   verificationMethod?: 'bio_token' | 'instant_auth';
+  verifiedVia?: string;
 }
 
 export interface AudienceDemographics {
