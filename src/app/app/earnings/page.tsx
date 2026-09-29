@@ -180,7 +180,7 @@ export default function EarningsAndEscrowPage() {
       {/* Worldwide Banking & Payout Infrastructure Dock */}
       <div className="p-4 sm:p-5 rounded-2xl bg-[#FAFAFC] dark:bg-[#151520] border border-black/8 dark:border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-[#FFD21F]/20 flex items-center justify-center text-[#8A7000] dark:text-[#FFD21F] shrink-0">
+          <div className="w-10 h-10 rounded-xl bg-[#FFD21F]/20 flex items-center justify-center text-[#0A0A0E] dark:text-[#FFD21F] shrink-0">
             <Globe className="w-5 h-5" />
           </div>
           <div>

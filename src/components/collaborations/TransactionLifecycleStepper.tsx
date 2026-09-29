@@ -82,7 +82,7 @@ export function TransactionLifecycleStepper({
           </span>
           <h4 className="text-sm font-bold text-[#0A0A0E] dark:text-white flex items-center gap-2">
             <span>Current Stage:</span>
-            <span className="text-[#8A6500] dark:text-[#FFD21F] font-mono font-bold">
+            <span className="text-[#0A0A0E] dark:text-[#FFD21F] font-mono font-bold">
               {currentStep.label} ({currentPhase + 1} of {CORE_PHASES.length})
             </span>
           </h4>
@@ -218,7 +218,7 @@ export function TransactionLifecycleStepper({
           </div>
           <div className="shrink-0 text-left sm:text-right sm:self-center font-mono pt-1 sm:pt-0 border-t sm:border-t-0 border-black/6">
             <span className="text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] block uppercase font-bold">Next Action</span>
-            <span className="text-xs font-bold text-[#8A6500] dark:text-[#FFD21F]">
+            <span className="text-xs font-bold text-amber-700 dark:text-[#FFD21F]">
               {currentPhase <= 1 ? "Fund Escrow" : currentPhase === 2 ? "Awaiting Draft" : currentPhase === 3 ? "Review Draft" : "Verify Live"}
             </span>
           </div>

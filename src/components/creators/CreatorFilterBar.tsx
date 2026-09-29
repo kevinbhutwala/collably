@@ -144,7 +144,7 @@ export function CreatorFilterBar() {
                   )}
                 >
                   <span>All Categories</span>
-                  {creatorCategory === "all" && <Check className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F]" />}
+                  {creatorCategory === "all" && <Check className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F]" />}
                 </button>
 
                 <div className="my-1 border-t border-black/5 dark:border-white/10" />
@@ -165,7 +165,7 @@ export function CreatorFilterBar() {
                     )}
                   >
                     <span className="truncate">{cat}</span>
-                    {creatorCategory === cat && <Check className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F]" />}
+                    {creatorCategory === cat && <Check className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F]" />}
                   </button>
                 ))}
               </div>
@@ -218,7 +218,7 @@ export function CreatorFilterBar() {
                   )}
                 >
                   <span>All Platforms</span>
-                  {creatorPlatform === "all" && <Check className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F]" />}
+                  {creatorPlatform === "all" && <Check className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F]" />}
                 </button>
 
                 <div className="my-1 border-t border-black/5 dark:border-white/10" />
@@ -244,7 +244,7 @@ export function CreatorFilterBar() {
                       </div>
                       <span className="capitalize font-medium">{plat.name}</span>
                     </div>
-                    {creatorPlatform === plat.id && <Check className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F]" />}
+                    {creatorPlatform === plat.id && <Check className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F]" />}
                   </button>
                 ))}
               </div>
@@ -298,7 +298,7 @@ export function CreatorFilterBar() {
                       <span className="block text-xs font-mono font-bold">{tier.label}</span>
                       <span className="block text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] font-sans font-normal">{tier.subtext}</span>
                     </div>
-                    {creatorMinFollowers === tier.val && <Check className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F] shrink-0" />}
+                    {creatorMinFollowers === tier.val && <Check className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F] shrink-0" />}
                   </button>
                 ))}
               </div>
@@ -352,7 +352,7 @@ export function CreatorFilterBar() {
                       <span className="block text-xs font-mono font-bold">{tier.label}</span>
                       <span className="block text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] font-sans font-normal">{tier.subtext}</span>
                     </div>
-                    {creatorMinEngagement === tier.val && <Check className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F] shrink-0" />}
+                    {creatorMinEngagement === tier.val && <Check className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F] shrink-0" />}
                   </button>
                 ))}
               </div>
@@ -401,7 +401,7 @@ export function CreatorFilterBar() {
                   )}
                 >
                   <span>Worldwide (All Locations)</span>
-                  {(creatorLocation === "all" || !creatorLocation) && <Check className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F]" />}
+                  {(creatorLocation === "all" || !creatorLocation) && <Check className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F]" />}
                 </button>
 
                 <div className="my-1 border-t border-black/5 dark:border-white/10" />
@@ -422,7 +422,7 @@ export function CreatorFilterBar() {
                     )}
                   >
                     <span className="truncate">{hub}</span>
-                    {creatorLocation === hub && <Check className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F]" />}
+                    {creatorLocation === hub && <Check className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F]" />}
                   </button>
                 ))}
               </div>
@@ -466,7 +466,7 @@ export function CreatorFilterBar() {
 
           {creatorCategory !== "all" && (
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white dark:bg-[#181824] border border-black/10 dark:border-white/10 text-xs font-bold text-[#0A0A0E] dark:text-white shadow-2xs">
-              <Sparkles className="w-3 h-3 text-[#8A7000] dark:text-[#FFD21F]" />
+              <Sparkles className="w-3 h-3 text-[#0A0A0E] dark:text-[#FFD21F]" />
               <span>{creatorCategory}</span>
               <button onClick={() => setCreatorCategory("all")} className="hover:text-red-600 dark:hover:text-red-400">
                 <X className="w-3 h-3" />
@@ -506,7 +506,7 @@ export function CreatorFilterBar() {
 
           {creatorLocation !== "all" && creatorLocation && creatorLocation !== "Worldwide" && (
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white dark:bg-[#181824] border border-black/10 dark:border-white/10 text-xs font-bold text-[#0A0A0E] dark:text-white shadow-2xs">
-              <MapPin className="w-3 h-3 text-[#8A7000] dark:text-[#FFD21F]" />
+              <MapPin className="w-3 h-3 text-[#0A0A0E] dark:text-[#FFD21F]" />
               <span>{creatorLocation}</span>
               <button onClick={() => setCreatorLocation("all")} className="hover:text-red-600 dark:hover:text-red-400">
                 <X className="w-3 h-3" />

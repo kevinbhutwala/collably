@@ -80,7 +80,7 @@ export function CurrencySelector({
       >
         <span className="text-sm">🇮🇳</span>
         <span className="font-mono text-[11px] font-extrabold text-[#0A0A0E] dark:text-white">INR</span>
-        <span className="font-mono text-[11px] text-[#8A7000] dark:text-[#FFD21F] font-black">(₹)</span>
+        <span className="font-mono text-[11px] text-[#0A0A0E] dark:text-[#FFD21F] font-black">(₹)</span>
       </div>
     </div>
   );

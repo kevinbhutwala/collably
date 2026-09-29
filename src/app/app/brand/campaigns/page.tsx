@@ -148,7 +148,7 @@ export default function BrandCampaignsManagementPage() {
                     : "text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5"
                 )}
               >
-                <Icon className={cn("w-3.5 h-3.5", isActive ? "text-[#8A7000] dark:text-[#FFD21F]" : "text-[#7A7A8A] dark:text-[#8E8EA4]")} />
+                <Icon className={cn("w-3.5 h-3.5", isActive ? "text-[#0A0A0E] dark:text-[#FFD21F]" : "text-[#7A7A8A] dark:text-[#8E8EA4]")} />
                 <span>{tab.label}</span>
                 <span
                   className={cn(

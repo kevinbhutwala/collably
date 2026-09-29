@@ -183,7 +183,7 @@ export default function CollaborationsWorkspacePage() {
         <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-1">
           <div className="flex items-center justify-between text-xs text-[#6A6A78] dark:text-[#8E8EA4]">
             <span className="font-medium">Active Projects</span>
-            <FileCheck2 className="w-4 h-4 text-[#8A7000] dark:text-[#FFD21F]" />
+            <FileCheck2 className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />
           </div>
           <span className="text-2xl font-black text-[#0A0A0E] dark:text-white font-display block">
             {stats.activeCount}

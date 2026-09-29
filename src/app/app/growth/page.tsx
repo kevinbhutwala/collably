@@ -224,10 +224,10 @@ export default function CreatorGrowthCenterPage() {
             Market Opportunity Score
           </span>
           <div className="flex items-baseline gap-2">
-            <span className="text-3xl font-black text-[#8A6500] dark:text-[#FFD21F] font-display">
+            <span className="text-3xl font-black text-[#0A0A0E] dark:text-[#FFD21F] font-display">
               {opportunityScore}<span className="text-lg text-[#7A7A8A]">/100</span>
             </span>
-            <span className="text-xs font-mono font-bold text-[#8A6500] dark:text-[#FFD21F]">
+            <span className="text-xs font-mono font-bold text-amber-700 dark:text-[#FFD21F]">
               {opportunityTier}
             </span>
           </div>
@@ -270,7 +270,7 @@ export default function CreatorGrowthCenterPage() {
                   {item.done ? (
                     <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                   ) : (
-                    <AlertCircle className="w-5 h-5 text-[#8A6500] dark:text-[#FFD21F] shrink-0" />
+                    <AlertCircle className="w-5 h-5 text-amber-500 dark:text-[#FFD21F] shrink-0" />
                   )}
                   <span className={cn("font-medium", item.done ? "" : "font-bold")}>
                     {item.label}

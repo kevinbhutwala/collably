@@ -104,7 +104,7 @@ export default function AppCampaignsPage() {
                 : "text-[#5A5A68] dark:text-[#A0A0B4] hover:text-[#0A0A0E] dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5"
             )}
           >
-            <Sparkles className={cn("w-3.5 h-3.5", selectedCategory === "all" ? "text-[#8A7000] dark:text-[#FFD21F]" : "text-[#7A7A8A] dark:text-[#8E8EA4]")} />
+            <Sparkles className={cn("w-3.5 h-3.5", selectedCategory === "all" ? "text-[#0A0A0E] dark:text-[#FFD21F]" : "text-[#7A7A8A] dark:text-[#8E8EA4]")} />
             <span>All Campaigns</span>
           </button>
 

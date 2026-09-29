@@ -102,7 +102,7 @@ export function MarketplaceLeaderboards() {
           ══════════════════════════════════════════════════════════════════════ */}
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 pb-6 border-b border-black/8 dark:border-white/10">
         <div className="space-y-3 max-w-2xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-yellow-500/30 bg-yellow-500/10 px-3.5 py-1 text-xs font-semibold text-[#8A6500] dark:text-[#FFD21F]">
+          <div className="inline-flex items-center gap-2 rounded-full border border-yellow-500/30 bg-yellow-500/10 px-3.5 py-1 text-xs font-semibold text-[#0A0A0E] dark:text-[#FFD21F]">
             <Trophy className="w-3.5 h-3.5" />
             <span>Performance &amp; Growth Index</span>
             <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-pulse" />
@@ -260,7 +260,7 @@ export function MarketplaceLeaderboards() {
       {!loading && leaderboard.length >= 3 && (
         <div className="pt-2 pb-4">
           <div className="text-center mb-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-xs font-mono font-bold text-[#8A6500] dark:text-[#FFD21F]">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-xs font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F]">
               <Sparkles className="w-3.5 h-3.5" />
               <span>TOP PERFORMERS THIS WEEK</span>
             </div>
@@ -314,7 +314,7 @@ export function MarketplaceLeaderboards() {
                   className="relative flex flex-col items-center text-center p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#FFFDF0] via-[#FFFBE6] to-[#FFF6C8] dark:from-[#221F10] dark:via-[#1C1A0D] dark:to-[#141208] border-2 border-[#FFD21F] shadow-[0_12px_40px_rgba(255,210,31,0.32)] transition-all group-hover:-translate-y-1.5 active:scale-[0.98] block"
                 >
                   {/* Luxury Corner Tag */}
-                  <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-[#FFD21F]/30 border border-[#FFD21F]/60 text-[9px] font-mono font-black text-[#8A6500] dark:text-[#FFD21F] tracking-wider uppercase">
+                  <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-[#FFD21F]/30 border border-[#FFD21F]/60 text-[9px] font-mono font-black text-[#0A0A0E] dark:text-[#FFD21F] tracking-wider uppercase">
                     #1 Leader
                   </div>
 
@@ -479,7 +479,7 @@ export function MarketplaceLeaderboards() {
                       </div>
 
                       {/* Trending Score Flame */}
-                      <span className="inline-flex items-center gap-1 rounded-full border border-[#FFD21F]/40 bg-[#FFD21F]/15 px-2 py-0.5 text-xs font-mono font-extrabold text-[#8A6500] dark:text-[#FFD21F] shrink-0">
+                      <span className="inline-flex items-center gap-1 rounded-full border border-[#FFD21F]/40 bg-[#FFD21F]/15 px-2 py-0.5 text-xs font-mono font-extrabold text-[#0A0A0E] dark:text-[#FFD21F] shrink-0">
                         🔥 {item.trendingScore}
                       </span>
                     </div>
@@ -602,7 +602,7 @@ export function MarketplaceLeaderboards() {
 
                         {/* Trending Score */}
                         <td className="py-3.5 text-center font-mono">
-                          <span className="inline-flex items-center gap-1 rounded-full border border-[#FFD21F]/30 bg-[#FFD21F]/15 px-2.5 py-0.5 font-extrabold text-[#8A6500] dark:text-[#FFD21F]">
+                          <span className="inline-flex items-center gap-1 rounded-full border border-[#FFD21F]/30 bg-[#FFD21F]/15 px-2.5 py-0.5 font-extrabold text-[#0A0A0E] dark:text-[#FFD21F]">
                             🔥 {item.trendingScore}
                           </span>
                         </td>

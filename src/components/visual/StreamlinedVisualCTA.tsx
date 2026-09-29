@@ -89,7 +89,7 @@ export function StreamlinedVisualCTA() {
 
           <Link href="/register">
             <button className="w-full sm:w-auto px-7 py-4 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#14141E] dark:hover:bg-[#1E1E2C] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs sm:text-sm transition-all shadow-xs active:scale-[0.98] flex items-center justify-center gap-2 hover-lift">
-              <Sparkles className="w-4 h-4 text-[#8A7000] dark:text-[#FFD21F]" />
+              <Sparkles className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />
               <span>Join as a Creator</span>
             </button>
           </Link>

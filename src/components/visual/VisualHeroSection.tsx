@@ -131,7 +131,7 @@ export function VisualHeroSection() {
 
               <Link href="/creators">
                 <button className="px-6 py-4 rounded-full bg-white dark:bg-[#14141E] hover:bg-[#F8F8FC] dark:hover:bg-[#1C1C28] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs sm:text-sm transition-all shadow-xs active:scale-[0.98] flex items-center gap-2 hover-lift cursor-pointer">
-                  <Users className="w-4 h-4 text-[#8A7000] dark:text-[#FFD21F]" />
+                  <Users className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />
                   <span>Explore Roster</span>
                 </button>
               </Link>
@@ -140,7 +140,7 @@ export function VisualHeroSection() {
             {/* Proof Micro Bar */}
             <div className="flex items-center gap-4 pt-3 border-t border-black/6 dark:border-white/10 text-xs font-mono text-[#5A5A68] dark:text-[#8E8EA4]">
               <div className="flex items-center gap-1.5 font-bold text-[#0A0A0E] dark:text-white">
-                <ShieldCheck className="w-4 h-4 text-[#087F5B] dark:text-emerald-400" />
+                <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                 <span>₹12.5 Cr Escrow Vaults</span>
               </div>
               <span>•</span>
@@ -267,7 +267,7 @@ export function VisualHeroSection() {
                   <span className="text-[#5A5A68] dark:text-[#8E8EA4] truncate max-w-[180px]">{activePortrait.specs}</span>
                   <Link
                     href={`/creators`}
-                    className="text-xs font-bold text-[#0A0A0E] dark:text-white hover:text-[#8A7000] dark:hover:text-[#FFD21F] flex items-center gap-0.5 shrink-0 transition-colors"
+                    className="text-xs font-bold text-[#0A0A0E] dark:text-white hover:text-amber-600 dark:hover:text-[#FFD21F] flex items-center gap-0.5 shrink-0 transition-colors"
                   >
                     <span>View Deck</span>
                     <ArrowRight className="w-3 h-3" />

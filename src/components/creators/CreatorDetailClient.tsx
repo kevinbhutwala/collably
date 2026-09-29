@@ -477,7 +477,7 @@ export function CreatorDetailClient({
                     Final quotes confirmed on campaign brief review.
                   </p>
                 </div>
-                <span className="px-3 py-1 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#8A6500] dark:text-[#FFD21F] text-[10px] font-mono font-bold">
+                <span className="px-3 py-1 rounded-full bg-[#FFD21F]/15 border border-[#FFD21F]/30 text-[#0A0A0E] dark:text-[#FFD21F] text-[10px] font-mono font-bold">
                   {creator.isSignedTalent ? "✓ Verified Rate Card" : "Market Benchmark"}
                 </span>
               </div>

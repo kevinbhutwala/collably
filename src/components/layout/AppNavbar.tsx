@@ -351,7 +351,7 @@ export function AppNavbar() {
                     onClick={() => setShowProfileMenu(false)}
                     className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-black/5 dark:hover:bg-white/10 hover:text-[#0A0A0E] dark:hover:text-white transition-colors"
                   >
-                    <Sparkles className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F]" />
+                    <Sparkles className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F]" />
                     <span>Profile &amp; Media Kit</span>
                   </Link>
 

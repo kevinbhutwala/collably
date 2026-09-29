@@ -118,7 +118,7 @@ export function NaturalLanguageMatchSearch() {
             <span className="text-xs font-bold text-[#0A0A0E] dark:text-neutral-300">
               Extracted Campaign Parameters:
             </span>
-            <span className="text-[11px] text-[#8A6500] dark:text-[#FFD21F] font-mono font-bold">
+            <span className="text-[11px] text-[#0A0A0E] dark:text-[#FFD21F] font-mono font-bold">
               Deterministic 6-Factor Parser
             </span>
           </div>
@@ -254,7 +254,7 @@ export function NaturalLanguageMatchSearch() {
 
                       {/* Why this creator? Data-Derived Callout */}
                       <div className="p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#1E1C14] border border-[#FFD21F]/30 text-xs">
-                        <h5 className="font-extrabold text-[#8A6500] dark:text-[#FFD21F] flex items-center gap-1.5 font-display text-xs">
+                        <h5 className="font-extrabold text-[#0A0A0E] dark:text-[#FFD21F] flex items-center gap-1.5 font-display text-xs">
                           <span>💡</span> Why this creator?
                         </h5>
                         <p className="text-[#3A3A48] dark:text-neutral-200 mt-1 leading-relaxed">

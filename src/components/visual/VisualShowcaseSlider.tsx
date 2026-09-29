@@ -52,7 +52,7 @@ export function VisualShowcaseSlider() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/6 dark:border-white/10">
           <div className="space-y-2">
-            <span className="text-xs font-mono font-bold tracking-tight text-[#8A7000] dark:text-[#FFD21F] uppercase flex items-center gap-1.5">
+            <span className="text-xs font-mono font-bold tracking-tight text-[#0A0A0E] dark:text-[#FFD21F] uppercase flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
               SELECTED CAMPAIGN DELIVERABLES
             </span>
@@ -123,7 +123,7 @@ export function VisualShowcaseSlider() {
                 <span>Campaign Master</span>
                 <Link
                   href="/case-studies"
-                  className="text-xs font-bold text-[#0A0A0E] dark:text-white hover:text-[#8A7000] dark:hover:text-[#FFD21F] flex items-center gap-1 transition-colors"
+                  className="text-xs font-bold text-[#0A0A0E] dark:text-white hover:text-amber-600 dark:hover:text-[#FFD21F] flex items-center gap-1 transition-colors"
                 >
                   <span>Reel</span>
                   <ArrowRight className="w-3 h-3" />

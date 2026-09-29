@@ -443,7 +443,7 @@ export function CampaignWizard() {
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-[10px] font-mono uppercase font-bold tracking-wider text-[#8A7000] dark:text-[#FFD21F] bg-[#FFD21F]/15 px-2 py-0.5 rounded-full">
+              <span className="text-[10px] font-mono uppercase font-bold tracking-wider text-[#0A0A0E] dark:text-[#FFD21F] bg-[#FFD21F]/15 px-2 py-0.5 rounded-full">
                 Sponsorship Brief Studio
               </span>
               <span className="text-[11px] font-mono text-neutral-400 hidden sm:inline">
@@ -594,7 +594,7 @@ export function CampaignWizard() {
         {step === 1 && (
           <div className="space-y-6">
             <div>
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#8A7000] dark:text-[#FFD21F] font-mono">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0A0A0E] dark:text-[#FFD21F] font-mono">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Step 1: Campaign Overview &amp; Basics</span>
               </div>
@@ -616,7 +616,7 @@ export function CampaignWizard() {
                   <div>
                     <h3 className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-1.5">
                       <span>AI Brief Co-Pilot</span>
-                      <span className="text-[10px] font-mono uppercase bg-[#FFD21F]/20 text-[#8A7000] dark:text-[#FFD21F] px-1.5 py-0.2 rounded font-extrabold">
+                      <span className="text-[10px] font-mono uppercase bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] px-1.5 py-0.2 rounded font-extrabold">
                         Instant Draft
                       </span>
                     </h3>
@@ -785,7 +785,7 @@ export function CampaignWizard() {
         {step === 2 && (
           <div className="space-y-6">
             <div>
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#8A7000] dark:text-[#FFD21F] font-mono">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0A0A0E] dark:text-[#FFD21F] font-mono">
                 <Globe className="w-3.5 h-3.5" />
                 <span>Step 2: Audience &amp; Demographics</span>
               </div>
@@ -871,7 +871,7 @@ export function CampaignWizard() {
         {step === 3 && (
           <div className="space-y-6">
             <div>
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#8A7000] dark:text-[#FFD21F] font-mono">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0A0A0E] dark:text-[#FFD21F] font-mono">
                 <Users className="w-3.5 h-3.5" />
                 <span>Step 3: Creator Eligibility Benchmarks</span>
               </div>
@@ -921,7 +921,7 @@ export function CampaignWizard() {
                           {plat.value}
                         </span>
                         {isSelected && (
-                          <Check className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F]" />
+                          <Check className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F]" />
                         )}
                       </button>
                     );
@@ -988,7 +988,7 @@ export function CampaignWizard() {
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#8A7000] dark:text-[#FFD21F] font-mono">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0A0A0E] dark:text-[#FFD21F] font-mono">
                   <Clapperboard className="w-3.5 h-3.5" />
                   <span>Step 4: Required Deliverables</span>
                 </div>
@@ -1038,7 +1038,7 @@ export function CampaignWizard() {
                       <span className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
                         {del.type}
                       </span>
-                      <span className="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold bg-[#FFD21F]/15 text-[#8A7000] dark:text-[#FFD21F]">
+                      <span className="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold bg-[#FFD21F]/15 text-[#0A0A0E] dark:text-[#FFD21F]">
                         {del.count}x Assets
                       </span>
                     </div>
@@ -1117,7 +1117,7 @@ export function CampaignWizard() {
         {step === 5 && (
           <div className="space-y-6">
             <div>
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#8A7000] dark:text-[#FFD21F] font-mono">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0A0A0E] dark:text-[#FFD21F] font-mono">
                 <DollarSign className="w-3.5 h-3.5" />
                 <span>Step 5: Budget &amp; Escrow Vault</span>
               </div>
@@ -1236,7 +1236,7 @@ export function CampaignWizard() {
         {step === 6 && (
           <div className="space-y-6">
             <div>
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#8A7000] dark:text-[#FFD21F] font-mono">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0A0A0E] dark:text-[#FFD21F] font-mono">
                 <Calendar className="w-3.5 h-3.5" />
                 <span>Step 6: Production Timeline</span>
               </div>
@@ -1312,7 +1312,7 @@ export function CampaignWizard() {
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#8A7000] dark:text-[#FFD21F] font-mono">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0A0A0E] dark:text-[#FFD21F] font-mono">
                   <CheckCircle2 className="w-3.5 h-3.5" />
                   <span>Step 7: Final Review &amp; Pre-Authorization</span>
                 </div>
@@ -1401,7 +1401,7 @@ export function CampaignWizard() {
             )}
 
             {/* Escrow Disclaimer Notice */}
-            <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-[#8A7000] dark:text-amber-300 flex items-start gap-2.5">
+            <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-800 dark:text-amber-300 flex items-start gap-2.5">
               <Lock className="w-4 h-4 shrink-0 mt-0.5" />
               <p>
                 By publishing, this campaign will be listed in the AbeyCollab directory. Your allocated escrow collateral ({formatCurrency(formData.totalBudget, formData.currency)}) will be pre-authorized and held in institutional custody until work is verified.

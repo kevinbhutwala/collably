@@ -844,7 +844,7 @@ export default function SettingsPage() {
                 <span className="text-[11px] font-bold uppercase tracking-wider text-[#7A7A8A] dark:text-[#8E8EA4]">
                   Platform Currency Standards (₹50,000 INR Base)
                 </span>
-                <span className="text-[10px] font-mono font-bold text-[#8A7000] dark:text-[#FFD21F] bg-[#FFD21F]/15 px-2 py-0.5 rounded-full">
+                <span className="text-[10px] font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F] bg-[#FFD21F]/15 px-2 py-0.5 rounded-full">
                   INR Native Standard
                 </span>
               </div>

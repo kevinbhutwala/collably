@@ -220,11 +220,11 @@ export function EditorialCreatorCard({
                     key={tag}
                     className={`px-2 py-0.5 rounded-md border text-[10px] flex items-center gap-1 transition-colors ${
                       isSpecial
-                        ? "bg-[#FFD21F]/15 dark:bg-[#FFD21F]/20 border-[#FFD21F]/30 dark:border-[#FFD21F]/40 text-[#8A6500] dark:text-[#FFD21F] font-bold"
+                        ? "bg-[#FFD21F]/15 dark:bg-[#FFD21F]/20 border-[#FFD21F]/30 dark:border-[#FFD21F]/40 text-[#0A0A0E] dark:text-[#FFD21F] font-bold"
                         : "bg-[#F4F4F8] dark:bg-[#181824] border-black/5 dark:border-white/10 text-[#4A4A58] dark:text-[#C0C0D4]"
                     }`}
                   >
-                    <TitleIcon title={tag} category={creator.category} className={`w-2.5 h-2.5 ${isSpecial ? "text-[#8A6500] dark:text-[#FFD21F]" : "text-[#A37F00] dark:text-[#FFD21F]"}`} />
+                    <TitleIcon title={tag} category={creator.category} className={`w-2.5 h-2.5 ${isSpecial ? "text-[#0A0A0E] dark:text-[#FFD21F]" : "text-[#0A0A0E] dark:text-[#FFD21F]"}`} />
                     <span>{tag}</span>
                   </span>
                 );

@@ -241,7 +241,7 @@ function DashboardContent() {
                 </Link>
                 <Link href="/app/profile" className="w-full sm:w-auto">
                   <button className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#1C1C28] dark:hover:bg-[#252535] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs cursor-pointer">
-                    <Sparkles className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F] shrink-0" />
+                    <Sparkles className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F] shrink-0" />
                     <span className="truncate">My Media Kit</span>
                   </button>
                 </Link>
@@ -272,7 +272,7 @@ function DashboardContent() {
               </Link>
               <Link href="/app/brand/creators" className="w-full sm:w-auto">
                 <button className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#1C1C28] dark:hover:bg-[#252535] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs">
-                  <Users className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F] shrink-0" />
+                  <Users className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F] shrink-0" />
                   <span className="truncate">Find Creators</span>
                 </button>
               </Link>

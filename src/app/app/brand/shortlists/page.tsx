@@ -243,7 +243,7 @@ export default function BrandShortlistsPage() {
                   </div>
                   <Link href="/app/brand/creators">
                     <button className="mx-auto px-4 py-2 rounded-2xl bg-[#F5F5F9] dark:bg-[#181824] border border-black/8 dark:border-white/10 text-[#0A0A0E] dark:text-white text-xs font-bold inline-flex items-center gap-1.5 hover:bg-black/5 dark:hover:bg-white/5 transition-all">
-                      <Sparkles className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F]" />
+                      <Sparkles className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F]" />
                       Discover Creators
                     </button>
                   </Link>

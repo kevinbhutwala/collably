@@ -140,7 +140,7 @@ export function TrendingShowcase() {
                   <div className="w-6 h-6 rounded-lg bg-[#F8F8FC] dark:bg-white/10 flex items-center justify-center shrink-0 border border-black/5 dark:border-white/10 group-hover:bg-[#FFD21F] transition-colors">
                     <TitleIcon title={item.campaign.title} category={item.campaign.category} className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-white" />
                   </div>
-                  <h3 className="text-lg font-bold text-[#0A0A0E] dark:text-white font-display line-clamp-1 group-hover:text-[#8A6500] dark:group-hover:text-[#FFD21F] transition-colors">
+                  <h3 className="text-lg font-bold text-[#0A0A0E] dark:text-white font-display line-clamp-1 group-hover:text-amber-600 dark:group-hover:text-[#FFD21F] transition-colors">
                     {item.campaign.title}
                   </h3>
                 </div>
@@ -223,7 +223,7 @@ export function TrendingShowcase() {
                     </div>
                     <div className="min-w-0">
                       <div className="flex items-center gap-1.5">
-                        <h4 className="truncate font-extrabold text-[#0A0A0E] dark:text-white text-sm font-display group-hover:text-[#8A6500] dark:group-hover:text-[#FFD21F] transition-colors">
+                        <h4 className="truncate font-extrabold text-[#0A0A0E] dark:text-white text-sm font-display group-hover:text-amber-600 dark:group-hover:text-[#FFD21F] transition-colors">
                           {creator.fullName}
                         </h4>
                         {creator.verified && (

@@ -170,7 +170,7 @@ export function CampaignsDirectoryClient() {
 
                     {/* Title & Description */}
                     <div className="space-y-1.5">
-                      <h3 className="text-base font-bold font-display text-[#0A0A0E] dark:text-white group-hover:text-[#8A7000] dark:group-hover:text-[#FFD21F] transition-colors line-clamp-1">
+                      <h3 className="text-base font-bold font-display text-[#0A0A0E] dark:text-white group-hover:text-amber-600 dark:group-hover:text-[#FFD21F] transition-colors line-clamp-1">
                         {camp.title}
                       </h3>
                       <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] font-sans line-clamp-2 leading-relaxed">
@@ -181,7 +181,7 @@ export function CampaignsDirectoryClient() {
                     {/* Deliverables Chip Bar */}
                     <div className="flex items-center gap-2 pt-2 border-t border-black/6 dark:border-white/10 text-[11px] font-mono text-[#5A5A68] dark:text-[#8E8EA4]">
                       <div className="flex items-center gap-1">
-                        <ShieldCheck className="w-3.5 h-3.5 text-[#087F5B] dark:text-emerald-400" />
+                        <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                         <span>100% Escrow</span>
                       </div>
                       <span>•</span>

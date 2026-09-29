@@ -141,7 +141,7 @@ export function AppSidebar() {
                     isActive
                       ? "text-[#0A0A0E]"
                       : item.highlight
-                      ? "text-[#8A7000] dark:text-[#FFD21F]"
+                      ? "text-[#0A0A0E] dark:text-[#FFD21F]"
                       : "text-[#7A7A8A] dark:text-[#8E8EA4]"
                   )}
                 />

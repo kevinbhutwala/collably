@@ -115,7 +115,7 @@ export function OverlappingCardsDeck() {
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/6 dark:border-white/10"
         >
           <div className="space-y-2">
-            <span className="text-xs font-mono font-bold tracking-tight text-[#8A7000] dark:text-[#FFD21F] uppercase flex items-center gap-1.5">
+            <span className="text-xs font-mono font-bold tracking-tight text-[#0A0A0E] dark:text-[#FFD21F] uppercase flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-[#FFD21F] fill-[#FFD21F]" />
               FEATURED CREATORS &amp; VISUALS
             </span>
@@ -222,7 +222,7 @@ export function OverlappingCardsDeck() {
                             key={tag}
                             className={`px-2 py-0.5 rounded-md border text-[10px] transition-colors ${
                               isMatch
-                                ? "bg-[#FFD21F]/15 dark:bg-[#FFD21F]/20 border-[#FFD21F]/30 dark:border-[#FFD21F]/40 text-[#8A6500] dark:text-[#FFD21F] font-bold"
+                                ? "bg-[#FFD21F]/15 dark:bg-[#FFD21F]/20 border-[#FFD21F]/30 dark:border-[#FFD21F]/40 text-[#0A0A0E] dark:text-[#FFD21F] font-bold"
                                 : "bg-[#F4F4F8] dark:bg-[#181824] border-black/5 dark:border-white/10 text-[#4A4A58] dark:text-[#C0C0D4]"
                             }`}
                           >
