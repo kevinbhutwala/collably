@@ -64,7 +64,7 @@ export function WishlinkStickyCTA() {
           ) : (
             <Link
               href="/register"
-              className="px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs sm:text-sm font-extrabold shadow-[0_2px_12px_rgba(255,210,31,0.4)] flex items-center gap-1.5 shrink-0 transition-transform active:scale-95 border border-black/8"
+              className="px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFCA18] to-[#FFBF00] hover:from-[#FFCA18] hover:to-[#FFAE00] text-[#0A0A0E] text-xs sm:text-sm font-extrabold shadow-[0_4px_16px_rgba(255,210,31,0.4)] flex items-center gap-1.5 shrink-0 transition-transform active:scale-95 border border-black/8"
             >
               <span>Sign up</span>
               <ArrowRight className="w-3.5 h-3.5" />

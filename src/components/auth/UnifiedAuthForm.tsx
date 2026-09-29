@@ -463,7 +463,7 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_16px_rgba(255,210,31,0.35)] border border-black/10 flex items-center justify-center gap-2 disabled:opacity-85 disabled:cursor-wait active:scale-98 cursor-pointer mt-1"
+          className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFCA18] to-[#FFBF00] hover:from-[#FFCA18] hover:to-[#FFAE00] text-[#0A0A0E] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_16px_rgba(255,210,31,0.35)] border border-black/10 flex items-center justify-center gap-2 disabled:opacity-85 disabled:cursor-wait active:scale-98 cursor-pointer mt-1"
         >
           {isLoading ? (
             <div className="flex items-center gap-2">

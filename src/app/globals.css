@@ -22,10 +22,15 @@
     --color-text-secondary: #4A4A58;
     --color-text-muted: #7A7A8C;
     --color-theme: #FFD21F;
-    --color-theme-hover: #FFE052;
+    --color-theme-hover: #FFC700;
+    --color-theme-active: #E5A500;
+    --color-theme-amber: #F59E0B;
     --color-theme-ink: #0A0A0E;
+    --color-trust-emerald: #10B981;
+    --color-trust-emerald-dark: #059669;
+    --color-trust-emerald-soft: rgba(16, 185, 129, 0.12);
     --color-infrared: #FF3B30;
-    --color-success: #087F5B;
+    --color-success: #10B981;
 
     /* Core Canvas & Surfaces */
     --background: #FFFFFF;
@@ -66,33 +71,38 @@
 
   .dark {
     /* ══════════════════════════════════════════════════════════════════════════
-       ABEYCOLLAB — STANDARDIZED LIGHT THEME SYSTEM & HIGH-CLARITY SURFACES
+       ABEYCOLLAB — PITCH OBSIDIAN & SOLAR GOLD DARK THEME
        ══════════════════════════════════════════════════════════════════════════ */
-    --color-text-primary: #0A0A0E;
-    --color-text-secondary: #4A4A58;
-    --color-text-muted: #7A7A8C;
+    --color-text-primary: #F4F4F8;
+    --color-text-secondary: #B0B0C4;
+    --color-text-muted: #8E8EA4;
     --color-theme: #FFD21F;
-    --color-theme-hover: #FFE052;
+    --color-theme-hover: #FFC700;
+    --color-theme-active: #E5A500;
+    --color-theme-amber: #F59E0B;
     --color-theme-ink: #0A0A0E;
+    --color-trust-emerald: #10B981;
+    --color-trust-emerald-dark: #059669;
+    --color-trust-emerald-soft: rgba(16, 185, 129, 0.15);
     --color-infrared: #FF3B30;
-    --color-success: #087F5B;
+    --color-success: #10B981;
 
     /* Core Canvas & Surfaces */
-    --background: #FFFFFF;
-    --background-alt: #F8F8FB;
-    --foreground: #0A0A0E;
-    --foreground-muted: #666678;
+    --background: #0A0A0F;
+    --background-alt: #12121A;
+    --foreground: #F4F4F8;
+    --foreground-muted: #A0A0B4;
     
     /* Surfaces */
-    --card: #FFFFFF;
-    --card-foreground: #0A0A0E;
-    --surface-secondary: #F4F4F8;
-    --surface-chrome: #EAEAEF;
+    --card: #12121A;
+    --card-foreground: #F4F4F8;
+    --surface-secondary: #181824;
+    --surface-chrome: #222232;
     
     /* Borders & Hairlines */
-    --border: #E8E8EE;
-    --border-light: #F0F0F5;
-    --input: #E2E2EA;
+    --border: rgba(255, 255, 255, 0.10);
+    --border-light: rgba(255, 255, 255, 0.06);
+    --input: rgba(255, 255, 255, 0.12);
     --ring: #FFD21F;
     
     /* Accent & Micro Accent */
@@ -104,10 +114,10 @@
     /* Semantic Compatibility */
     --primary: #FFD21F;
     --primary-foreground: #0A0A0E;
-    --secondary: #F4F4F8;
-    --secondary-foreground: #0A0A0E;
-    --muted: #F8F8FB;
-    --muted-foreground: #767688;
+    --secondary: #181824;
+    --secondary-foreground: #F4F4F8;
+    --muted: #14141E;
+    --muted-foreground: #8E8EA4;
     --destructive: #FF3B30;
     --destructive-foreground: #FFFFFF;
   }
@@ -300,25 +310,28 @@
 }
 
 /* Buttons */
-.btn-carbon-primary {
+.btn-carbon-primary,
+.btn-solar-primary {
   font-family: var(--font-ui);
   font-size: 14px;
   font-weight: 700;
-  background: linear-gradient(135deg, #FFD21F 0%, #FFE052 50%, #FFC700 100%);
+  background: linear-gradient(135deg, #FFD21F 0%, #FFCA18 50%, #FFBF00 100%);
   color: #0A0A0E;
   border-radius: 9999px;
   letter-spacing: -0.01em;
-  box-shadow: 0 4px 14px rgba(255, 210, 31, 0.4);
-  transition: all 0.2s ease-in-out;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(255, 210, 31, 0.35);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(10, 10, 14, 0.1);
 }
-.btn-carbon-primary:hover {
-  box-shadow: 0 6px 20px rgba(255, 210, 31, 0.6);
+.btn-carbon-primary:hover,
+.btn-solar-primary:hover {
+  box-shadow: 0 6px 24px rgba(255, 210, 31, 0.55);
   transform: translateY(-1px);
-  background: linear-gradient(135deg, #FFE052 0%, #FFEC85 50%, #FFD21F 100%);
+  background: linear-gradient(135deg, #FFCA18 0%, #FFBF00 50%, #FFAE00 100%);
 }
-.btn-carbon-primary:active {
-  transform: translateY(0);
+.btn-carbon-primary:active,
+.btn-solar-primary:active {
+  transform: scale(0.97);
 }
 
 .btn-carbon-secondary {
