@@ -60,6 +60,9 @@ export default function SettingsPage() {
     localStorage.setItem("abeycollab_theme", "light");
   }, []);
   const [isAnnual, setIsAnnual] = useState(subscription?.interval === "annual");
+  const [selectedMobilePlan, setSelectedMobilePlan] = useState<string>(
+    role?.startsWith("brand") ? "brand_growth" : "creator_pro"
+  );
   const [processingPlanId, setProcessingPlanId] = useState<string | null>(null);
   const [isCancelling, setIsCancelling] = useState(false);
   const [payoutAccount, setPayoutAccount] = useState("bank_account_verified_default");
@@ -554,6 +557,28 @@ export default function SettingsPage() {
               </div>
             </div>
 
+            {/* Mobile Plan Selector Tabs */}
+            <div className="flex md:hidden items-center justify-center p-1 rounded-2xl bg-[#F4F4F8] dark:bg-[#181824] border border-black/8 dark:border-white/10 mb-4 gap-1">
+              {plans.map((p) => {
+                const isSelected = selectedMobilePlan === p.id;
+                return (
+                  <button
+                    key={p.id}
+                    type="button"
+                    onClick={() => setSelectedMobilePlan(p.id)}
+                    className={`flex-1 py-2 px-1.5 rounded-xl text-xs font-bold transition-all text-center flex items-center justify-center gap-1 ${
+                      isSelected
+                        ? "bg-white dark:bg-[#242436] text-[#0A0A0E] dark:text-white shadow-xs font-extrabold"
+                        : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E]"
+                    }`}
+                  >
+                    <span className="truncate">{p.name.replace("Creator ", "").replace("Brand ", "")}</span>
+                    {p.highlight && <span className="text-[10px] text-amber-500 font-black">★</span>}
+                  </button>
+                );
+              })}
+            </div>
+
             {/* Plan Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {plans.map((p) => {
@@ -564,7 +589,9 @@ export default function SettingsPage() {
                 return (
                   <div
                     key={p.id}
-                    className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between transition-all relative border ${
+                    className={`rounded-3xl p-6 sm:p-7 flex-col justify-between transition-all relative border ${
+                      selectedMobilePlan === p.id ? "flex" : "hidden md:flex"
+                    } ${
                       p.highlight
                         ? "bg-gradient-to-b from-[#FFFDF5] to-white dark:from-[#1A1A28] dark:to-[#12121C] border-2 border-[#FFD21F] shadow-[0_8px_30px_rgba(255,210,31,0.15)]"
                         : isCurrent

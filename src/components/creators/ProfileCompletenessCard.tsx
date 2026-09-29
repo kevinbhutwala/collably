@@ -120,24 +120,24 @@ export function ProfileCompletenessCard({ creator }: { creator?: CreatorProfile 
       <div className="space-y-1.5 relative z-10">
         <div className="p-3 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/5 dark:border-white/10 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <CheckCircle2 className="w-3.5 h-3.5 text-[#FFD21F] shrink-0" />
+            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
             <div>
               <p className="text-xs font-bold text-[#0A0A0E] dark:text-white">Social Channels</p>
               <p className="text-[10px] text-[#6A6A78] dark:text-[#8E8EA4] font-mono">Connected &amp; verified</p>
             </div>
           </div>
-          <span className="text-[10px] font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F]">+35 pts</span>
+          <span className="text-[10px] font-mono font-bold text-emerald-700 dark:text-emerald-400">+35 pts</span>
         </div>
 
         <div className="p-3 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/5 dark:border-white/10 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <CheckCircle2 className="w-3.5 h-3.5 text-[#FFD21F] shrink-0" />
+            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
             <div>
               <p className="text-xs font-bold text-[#0A0A0E] dark:text-white">Rate Card</p>
               <p className="text-[10px] text-[#6A6A78] dark:text-[#8E8EA4] font-mono">Starting rate set</p>
             </div>
           </div>
-          <span className="text-[10px] font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F]">+25 pts</span>
+          <span className="text-[10px] font-mono font-bold text-emerald-700 dark:text-emerald-400">+25 pts</span>
         </div>
 
         <div className="p-3 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/5 dark:border-white/10 flex items-center justify-between">

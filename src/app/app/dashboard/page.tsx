@@ -321,7 +321,7 @@ function DashboardContent() {
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
                     Add social links, past examples, and standard pricing so brands hire you directly.
                   </p>
-                  <Link href="/app/profile" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8A7000] dark:text-[#FFD21F] hover:underline pt-1">
+                  <Link href="/app/profile" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-amber-600 dark:hover:text-[#FFE052] pt-1 transition-colors">
                     Edit Media Kit <ChevronRight className="w-3 h-3" />
                   </Link>
                 </div>
@@ -334,7 +334,7 @@ function DashboardContent() {
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
                     Browse open brand briefs with guaranteed payments. Send your creative idea and quote.
                   </p>
-                  <Link href="/app/campaigns" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8A7000] dark:text-[#FFD21F] hover:underline pt-1">
+                  <Link href="/app/campaigns" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-amber-600 dark:hover:text-[#FFE052] pt-1 transition-colors">
                     Explore Campaigns <ChevronRight className="w-3 h-3" />
                   </Link>
                 </div>
@@ -347,7 +347,7 @@ function DashboardContent() {
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
                     Upload drafts to workspace. Once approved, payment releases with 24-hour protection.
                   </p>
-                  <Link href="/app/collaborations" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8A7000] dark:text-[#FFD21F] hover:underline pt-1">
+                  <Link href="/app/collaborations" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-amber-600 dark:hover:text-[#FFE052] pt-1 transition-colors">
                     My Deals <ChevronRight className="w-3 h-3" />
                   </Link>
                 </div>
@@ -362,7 +362,7 @@ function DashboardContent() {
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
                     Describe requirements (Reels, Videos) and set budgets and deadlines.
                   </p>
-                  <Link href="/app/brand/campaigns/create" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8A7000] dark:text-[#FFD21F] hover:underline pt-1">
+                  <Link href="/app/brand/campaigns/create" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-amber-600 dark:hover:text-[#FFE052] pt-1 transition-colors">
                     Create Campaign <ChevronRight className="w-3 h-3" />
                   </Link>
                 </div>
@@ -375,7 +375,7 @@ function DashboardContent() {
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
                     Search vetted creators by niche, reach, and engagement. Save to roster.
                   </p>
-                  <Link href="/app/brand/creators" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8A7000] dark:text-[#FFD21F] hover:underline pt-1">
+                  <Link href="/app/brand/creators" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-amber-600 dark:hover:text-[#FFE052] pt-1 transition-colors">
                     Find Creators <ChevronRight className="w-3 h-3" />
                   </Link>
                 </div>
@@ -388,7 +388,7 @@ function DashboardContent() {
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
                     Funds stay locked in escrow until you approve the creator deliverable.
                   </p>
-                  <Link href="/app/collaborations" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8A7000] dark:text-[#FFD21F] hover:underline pt-1">
+                  <Link href="/app/collaborations" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-amber-600 dark:hover:text-[#FFE052] pt-1 transition-colors">
                     Review Content <ChevronRight className="w-3 h-3" />
                   </Link>
                 </div>
@@ -404,11 +404,11 @@ function DashboardContent() {
           <>
             <StatsCard
               title="Secured Payments"
-              value={format(totalEscrowInTransit, "USD")}
+              value={format(totalEscrowInTransit, "INR")}
               change={totalEscrowInTransit > 0 ? "Secured" : "—"}
               trend="up"
               subtitle="Held safely in escrow"
-              icon={<ShieldCheck className="w-4 h-4 text-[#8A7000]" />}
+              icon={<ShieldCheck className="w-4 h-4 text-emerald-600" />}
             />
             <StatsCard
               title="Active Projects"
@@ -416,7 +416,7 @@ function DashboardContent() {
               change={activeCollabsCount > 0 ? "Active" : "—"}
               trend="up"
               subtitle="Content in progress"
-              icon={<FileCheck2 className="w-4 h-4 text-[#8A7000] dark:text-[#FFD21F]" />}
+              icon={<FileCheck2 className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />}
             />
             <StatsCard
               title="Engagement Rate"
@@ -424,22 +424,22 @@ function DashboardContent() {
               change={currentCreator?.avgEngagementRate ? "Audited" : "No data"}
               trend="up"
               subtitle="Audience score"
-              icon={<TrendingUp className="w-4 h-4 text-[#8A7000]" />}
+              icon={<TrendingUp className="w-4 h-4 text-amber-600" />}
             />
             <StatsCard
               title="Total Earned"
-              value={format(lifetimeEarned, "USD")}
+              value={format(lifetimeEarned, "INR")}
               change={lifetimeEarned > 0 ? "Paid out" : "—"}
               trend="up"
               subtitle="Paid out to date"
-              icon={<Wallet className="w-4 h-4 text-[#0A0A0E]" />}
+              icon={<Wallet className="w-4 h-4 text-[#0A0A0E] dark:text-white" />}
             />
           </>
         ) : (
           <>
             <StatsCard
               title="Protected Escrow"
-              value={format(brandTotalBudget, "USD")}
+              value={format(brandTotalBudget, "INR")}
               change={brandTotalBudget > 0 ? "100% Funded" : "—"}
               trend="up"
               subtitle="Locked safely in vault"
@@ -459,7 +459,7 @@ function DashboardContent() {
               change="Live Briefs"
               trend="up"
               subtitle="Sponsorship campaigns"
-              icon={<Building2 className="w-4 h-4 text-[#8A7000] dark:text-[#FFD21F]" />}
+              icon={<Building2 className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />}
             />
             <StatsCard
               title="Active Deals"
@@ -494,7 +494,7 @@ function DashboardContent() {
             <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10 gap-2">
               <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#FFD21F]/15 dark:bg-[#FFD21F]/10 border border-[#FFD21F]/30 flex items-center justify-center shrink-0">
-                  <FileCheck2 className="w-4 h-4 text-[#8A7000] dark:text-[#FFD21F]" />
+                  <FileCheck2 className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />
                 </div>
                 <div className="min-w-0">
                   <h2 className="text-sm sm:text-base font-bold text-[#0A0A0E] dark:text-white font-display truncate">
@@ -510,7 +510,7 @@ function DashboardContent() {
 
               <Link
                 href="/app/collaborations"
-                className="text-xs font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-[#FFE052] transition-colors flex items-center gap-1 shrink-0"
+                className="text-xs font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-amber-600 dark:hover:text-[#FFE052] transition-colors flex items-center gap-1 shrink-0"
               >
                 <span className="hidden sm:inline">View all ({collaborations.length})</span>
                 <span className="sm:hidden">All ({collaborations.length})</span>
@@ -570,7 +570,7 @@ function DashboardContent() {
                               // eslint-disable-next-line @next/next/no-img-element
                               <img src={collab.creator.avatarUrl} alt={collab.creator.fullName || "Creator"} className="w-full h-full object-cover" />
                             ) : (
-                              <Users className="w-4 h-4 text-[#8A7000] dark:text-[#FFD21F]" />
+                              <Users className="w-4 h-4 text-[#0A0A0E] dark:text-[#FFD21F]" />
                             )
                           ) : (
                             <BrandIcon
@@ -584,7 +584,7 @@ function DashboardContent() {
                             {collab.campaignTitle}
                           </h3>
                           <p className="text-[10px] sm:text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4] truncate">
-                            {role === "brand" ? (collab.creator?.fullName || "Assigned Creator") : collab.brand?.companyName} • {format(collab.totalAgreedBudget, collab.currency || "USD")}
+                            {role === "brand" ? (collab.creator?.fullName || "Assigned Creator") : collab.brand?.companyName} • {format(collab.totalAgreedBudget, collab.currency || "INR")}
                           </p>
                         </div>
                       </div>
@@ -596,12 +596,12 @@ function DashboardContent() {
 
                     <div className="flex items-center justify-between pt-1.5 sm:pt-2 border-t border-black/6 dark:border-white/10 text-xs font-mono gap-2">
                       <span className="text-[#5A5A68] dark:text-[#8E8EA4] text-[10px] sm:text-[11px] flex items-center gap-1.5 min-w-0">
-                        <Clapperboard className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F] shrink-0" />
+                        <Clapperboard className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-[#FFD21F] shrink-0" />
                         <span className="truncate">Content: <strong className="text-[#0A0A0E] dark:text-white">{collab.deliverables?.[0]?.title || "Draft #1"}</strong></span>
                       </span>
                       <Link
                         href="/app/collaborations"
-                        className="text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-[#FFE052] font-bold flex items-center gap-1 transition-colors text-[10px] sm:text-[11px] shrink-0"
+                        className="text-[#0A0A0E] dark:text-[#FFD21F] hover:text-amber-600 dark:hover:text-[#FFE052] font-bold flex items-center gap-1 transition-colors text-[10px] sm:text-[11px] shrink-0"
                       >
                         <span>Workspace</span>
                         <ArrowUpRight className="w-3 h-3" />
@@ -628,7 +628,7 @@ function DashboardContent() {
 
                 <Link
                   href="/app/campaigns"
-                  className="text-xs font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-[#FFE052] transition-colors flex items-center gap-1 shrink-0"
+                  className="text-xs font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-amber-600 dark:hover:text-[#FFE052] transition-colors flex items-center gap-1 shrink-0"
                 >
                   <span className="hidden sm:inline">View all ({activeCampaigns.length})</span>
                   <span className="sm:hidden">All ({activeCampaigns.length})</span>
@@ -649,10 +649,10 @@ function DashboardContent() {
                           {c.category}
                         </span>
                         <span className="text-[11px] font-mono text-[#0A0A0E] dark:text-white font-bold shrink-0">
-                          {format(c.budget?.totalBudget ?? 0, c.budget?.currency || "USD")}
+                          {format(c.budget?.totalBudget ?? 0, c.budget?.currency || "INR")}
                         </span>
                       </div>
-                      <h3 className="font-bold text-xs sm:text-sm text-[#0A0A0E] dark:text-white group-hover:text-[#8A7000] dark:group-hover:text-[#FFD21F] transition-colors line-clamp-1">
+                      <h3 className="font-bold text-xs sm:text-sm text-[#0A0A0E] dark:text-white group-hover:text-amber-600 dark:group-hover:text-[#FFD21F] transition-colors line-clamp-1">
                         {c.title}
                       </h3>
                       <p className="text-[11px] text-[#5A5A68] dark:text-[#8E8EA4] line-clamp-1 mt-0.5">
@@ -684,7 +684,7 @@ function DashboardContent() {
 
                 <Link
                   href="/app/brand/creators"
-                  className="text-xs font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-[#FFE052] transition-colors flex items-center gap-1 shrink-0"
+                  className="text-xs font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-amber-600 dark:hover:text-[#FFE052] transition-colors flex items-center gap-1 shrink-0"
                 >
                   <span className="hidden sm:inline">Explore all ({featuredCreators.length})</span>
                   <span className="sm:hidden">All ({featuredCreators.length})</span>
@@ -705,7 +705,7 @@ function DashboardContent() {
                           {creator.primaryCategory}
                         </span>
                         <span className="text-[11px] font-mono text-[#0A0A0E] dark:text-white font-bold shrink-0">
-                          From {format(creator.startingPrice || 500, (creator as any).currency || "USD")}
+                          From {format(creator.startingPrice || 500, (creator as any).currency || "INR")}
                         </span>
                       </div>
                       <div className="flex items-center gap-2.5">
@@ -718,7 +718,7 @@ function DashboardContent() {
                           )}
                         </div>
                         <div className="min-w-0 flex-1">
-                          <h3 className="font-bold text-xs sm:text-sm text-[#0A0A0E] dark:text-white group-hover:text-[#8A7000] dark:group-hover:text-[#FFD21F] transition-colors truncate">
+                          <h3 className="font-bold text-xs sm:text-sm text-[#0A0A0E] dark:text-white group-hover:text-amber-600 dark:group-hover:text-[#FFD21F] transition-colors truncate">
                             {creator.fullName}
                           </h3>
                           <p className="text-[10px] sm:text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4] truncate">
@@ -766,7 +766,7 @@ function DashboardContent() {
                   href="/app/brand/campaigns/create"
                   className="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all flex flex-col items-center text-center gap-1.5"
                 >
-                  <FolderPlus className="w-4 h-4 sm:w-5 sm:h-5 text-[#8A7000] dark:text-[#FFD21F]" />
+                  <FolderPlus className="w-4 h-4 sm:w-5 sm:h-5 text-[#0A0A0E] dark:text-[#FFD21F]" />
                   <span className="font-bold text-[#0A0A0E] dark:text-white text-[11px]">Post Campaign</span>
                 </Link>
                 <Link
@@ -787,7 +787,7 @@ function DashboardContent() {
                   href="/app/brand/shortlists"
                   className="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all flex flex-col items-center text-center gap-1.5"
                 >
-                  <Layers className="w-4 h-4 sm:w-5 sm:h-5 text-[#8A7000] dark:text-[#FFD21F]" />
+                  <Layers className="w-4 h-4 sm:w-5 sm:h-5 text-[#0A0A0E] dark:text-[#FFD21F]" />
                   <span className="font-bold text-[#0A0A0E] dark:text-white text-[11px]">Shortlists</span>
                 </Link>
               </div>
@@ -802,7 +802,7 @@ function DashboardContent() {
               </h3>
               <Link
                 href={role === "creator" ? "/app/earnings" : "/app/collaborations"}
-                className="text-[11px] font-mono text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-[#FFE052] font-bold"
+                className="text-[11px] font-mono text-[#0A0A0E] dark:text-[#FFD21F] hover:text-amber-600 dark:hover:text-[#FFE052] font-bold"
               >
                 View all
               </Link>
@@ -824,7 +824,7 @@ function DashboardContent() {
                     </div>
                     <div className="text-right shrink-0">
                       <span className="font-bold text-[#0A0A0E] dark:text-white block text-xs">
-                        {role === "creator" ? `+${format(p.netAmount, (p as any).currency || "USD")}` : format(p.netAmount, (p as any).currency || "USD")}
+                        {role === "creator" ? `+${format(p.netAmount, (p as any).currency || "INR")}` : format(p.netAmount, (p as any).currency || "INR")}
                       </span>
                       <span className="text-[9px] text-[#7A7A8A] dark:text-[#8E8EA4] uppercase font-bold">{p.status}</span>
                     </div>

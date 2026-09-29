@@ -59,7 +59,7 @@ export function CreatorMarketPulseWidget({ creatorId }: { creatorId?: string }) 
             <span className="text-[10.5px] sm:text-[11px] font-bold text-[#0A0A0E] dark:text-white">
               Market Demand Score
             </span>
-            <span className="text-xs font-semibold text-[#8A6500] dark:text-[#FFD21F]">
+            <span className="text-xs font-bold text-amber-700 dark:text-[#FFD21F]">
               {pulse.opportunityTier}
             </span>
           </div>
@@ -154,7 +154,7 @@ export function CreatorMarketPulseWidget({ creatorId }: { creatorId?: string }) 
 
           <div className="mt-5 pt-3 border-t border-black/6 dark:border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] font-mono">
             <span>Based on verified platform deals</span>
-            <span className="text-[#8A6500] dark:text-[#FFD21F] font-bold">Real-time marketplace data</span>
+            <span className="text-[#0A0A0E] dark:text-[#FFD21F] font-bold">Real-time marketplace data</span>
           </div>
         </div>
       </div>
