@@ -47,7 +47,7 @@ export function ProfileCompletionBanner({ creator: customCreator }: { creator?: 
             <span className="text-xs font-bold text-[#0B0A14] dark:text-white font-display">
               Creator Setup ({status.completedCount}/{status.totalRequirements} Complete)
             </span>
-            <span className="text-[10px] font-mono font-bold text-amber-800 dark:text-amber-300 bg-primary/20 px-2 py-0.5 rounded-full">
+            <span className="text-[10px] font-mono font-bold text-primary dark:text-accent bg-primary/20 px-2 py-0.5 rounded-full">
               {status.score}%
             </span>
           </div>
@@ -128,12 +128,12 @@ export function ProfileCompletionBanner({ creator: customCreator }: { creator?: 
                     {item.done ? (
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                     ) : (
-                      <Circle className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                      <Circle className="w-3.5 h-3.5 text-primary dark:text-accent shrink-0" />
                     )}
                     <span className="truncate font-medium">{item.label}</span>
                   </div>
                   {!item.done && (
-                    <span className="text-[10px] font-mono text-amber-700 dark:text-amber-400 font-bold shrink-0">
+                    <span className="text-[10px] font-mono text-primary dark:text-accent font-bold shrink-0">
                       Pending →
                     </span>
                   )}

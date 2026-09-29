@@ -192,7 +192,7 @@ function DashboardContent() {
                 className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold transition-all border ${
                   profileStatus.canApplyToCampaigns
                     ? "bg-emerald-500/15 border-emerald-500/30 text-emerald-800 dark:text-emerald-300 hover:bg-emerald-500/25"
-                    : "bg-amber-500/12 border-amber-500/30 text-amber-900 dark:text-amber-200 hover:bg-amber-500/20"
+                    : "bg-primary/12 border-primary/30 text-primary dark:text-accent hover:bg-primary/20"
                 }`}
                 title={
                   profileStatus.canApplyToCampaigns
@@ -208,7 +208,7 @@ function DashboardContent() {
                   </>
                 ) : (
                   <>
-                    <Sparkles className="w-3 h-3 text-amber-500 dark:text-amber-300 shrink-0" />
+                    <Sparkles className="w-3 h-3 text-primary dark:text-accent shrink-0" />
                     <span className="hidden sm:inline">{profileStatus.score}% Setup • Unlock 1-Click Pitches</span>
                     <span className="sm:hidden">{profileStatus.score}% Setup • Tap to Finish</span>
                   </>
@@ -397,7 +397,7 @@ function DashboardContent() {
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
                     Add social links, past examples, and standard pricing so brands hire you directly.
                   </p>
-                  <Link href="/app/profile" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#0B0A14] dark:text-accent hover:text-amber-600 dark:hover:text-accent pt-1 transition-colors">
+                  <Link href="/app/profile" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#0B0A14] dark:text-accent hover:text-primary dark:hover:text-accent pt-1 transition-colors">
                     Edit Media Kit <ChevronRight className="w-3 h-3" />
                   </Link>
                 </div>
@@ -410,7 +410,7 @@ function DashboardContent() {
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
                     Browse open brand briefs with guaranteed payments. Send your creative idea and quote.
                   </p>
-                  <Link href="/app/campaigns" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#0B0A14] dark:text-accent hover:text-amber-600 dark:hover:text-accent pt-1 transition-colors">
+                  <Link href="/app/campaigns" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#0B0A14] dark:text-accent hover:text-primary dark:hover:text-accent pt-1 transition-colors">
                     Explore Campaigns <ChevronRight className="w-3 h-3" />
                   </Link>
                 </div>
@@ -423,7 +423,7 @@ function DashboardContent() {
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
                     Upload drafts to workspace. Once approved, payment releases with 24-hour protection.
                   </p>
-                  <Link href="/app/collaborations" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#0B0A14] dark:text-accent hover:text-amber-600 dark:hover:text-accent pt-1 transition-colors">
+                  <Link href="/app/collaborations" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#0B0A14] dark:text-accent hover:text-primary dark:hover:text-accent pt-1 transition-colors">
                     My Deals <ChevronRight className="w-3 h-3" />
                   </Link>
                 </div>
@@ -438,7 +438,7 @@ function DashboardContent() {
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
                     Describe requirements (Reels, Videos) and set budgets and deadlines.
                   </p>
-                  <Link href="/app/brand/campaigns/create" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#0B0A14] dark:text-accent hover:text-amber-600 dark:hover:text-accent pt-1 transition-colors">
+                  <Link href="/app/brand/campaigns/create" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#0B0A14] dark:text-accent hover:text-primary dark:hover:text-accent pt-1 transition-colors">
                     Create Campaign <ChevronRight className="w-3 h-3" />
                   </Link>
                 </div>
@@ -451,7 +451,7 @@ function DashboardContent() {
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
                     Search vetted creators by niche, reach, and engagement. Save to roster.
                   </p>
-                  <Link href="/app/brand/creators" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#0B0A14] dark:text-accent hover:text-amber-600 dark:hover:text-accent pt-1 transition-colors">
+                  <Link href="/app/brand/creators" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#0B0A14] dark:text-accent hover:text-primary dark:hover:text-accent pt-1 transition-colors">
                     Find Creators <ChevronRight className="w-3 h-3" />
                   </Link>
                 </div>
@@ -464,7 +464,7 @@ function DashboardContent() {
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
                     Funds stay locked in escrow until you approve the creator deliverable.
                   </p>
-                  <Link href="/app/collaborations" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#0B0A14] dark:text-accent hover:text-amber-600 dark:hover:text-accent pt-1 transition-colors">
+                  <Link href="/app/collaborations" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#0B0A14] dark:text-accent hover:text-primary dark:hover:text-accent pt-1 transition-colors">
                     Review Content <ChevronRight className="w-3 h-3" />
                   </Link>
                 </div>
@@ -511,7 +511,7 @@ function DashboardContent() {
 
               <Link
                 href="/app/collaborations"
-                className="text-xs font-mono font-bold text-[#0B0A14] dark:text-accent hover:text-amber-600 dark:hover:text-accent transition-colors flex items-center gap-1 shrink-0"
+                className="text-xs font-mono font-bold text-[#0B0A14] dark:text-accent hover:text-primary dark:hover:text-accent transition-colors flex items-center gap-1 shrink-0"
               >
                 <span className="hidden sm:inline">View all ({collaborations.length})</span>
                 <span className="sm:hidden">All ({collaborations.length})</span>
@@ -602,7 +602,7 @@ function DashboardContent() {
                       </span>
                       <Link
                         href="/app/collaborations"
-                        className="text-[#0B0A14] dark:text-accent hover:text-amber-600 dark:hover:text-accent font-bold flex items-center gap-1 transition-colors text-[10px] sm:text-[11px] shrink-0"
+                        className="text-[#0B0A14] dark:text-accent hover:text-primary dark:hover:text-accent font-bold flex items-center gap-1 transition-colors text-[10px] sm:text-[11px] shrink-0"
                       >
                         <span>Workspace</span>
                         <ArrowUpRight className="w-3 h-3" />
@@ -629,7 +629,7 @@ function DashboardContent() {
 
                 <Link
                   href="/app/campaigns"
-                  className="text-xs font-mono font-bold text-[#0B0A14] dark:text-accent hover:text-amber-600 dark:hover:text-accent transition-colors flex items-center gap-1 shrink-0"
+                  className="text-xs font-mono font-bold text-[#0B0A14] dark:text-accent hover:text-primary dark:hover:text-accent transition-colors flex items-center gap-1 shrink-0"
                 >
                   <span className="hidden sm:inline">View all ({activeCampaigns.length})</span>
                   <span className="sm:hidden">All ({activeCampaigns.length})</span>
@@ -653,7 +653,7 @@ function DashboardContent() {
                           {format(c.budget?.totalBudget ?? 0, c.budget?.currency || "INR")}
                         </span>
                       </div>
-                      <h3 className="font-bold text-xs sm:text-sm text-[#0B0A14] dark:text-white group-hover:text-amber-600 dark:group-hover:text-accent transition-colors line-clamp-1">
+                      <h3 className="font-bold text-xs sm:text-sm text-[#0B0A14] dark:text-white group-hover:text-primary dark:group-hover:text-accent transition-colors line-clamp-1">
                         {c.title}
                       </h3>
                       <p className="text-[11px] text-[#5A5A68] dark:text-[#8E8EA4] line-clamp-1 mt-0.5">
@@ -685,7 +685,7 @@ function DashboardContent() {
 
                 <Link
                   href="/app/brand/creators"
-                  className="text-xs font-mono font-bold text-[#0B0A14] dark:text-accent hover:text-amber-600 dark:hover:text-accent transition-colors flex items-center gap-1 shrink-0"
+                  className="text-xs font-mono font-bold text-[#0B0A14] dark:text-accent hover:text-primary dark:hover:text-accent transition-colors flex items-center gap-1 shrink-0"
                 >
                   <span className="hidden sm:inline">Explore all ({featuredCreators.length})</span>
                   <span className="sm:hidden">All ({featuredCreators.length})</span>
@@ -719,7 +719,7 @@ function DashboardContent() {
                           )}
                         </div>
                         <div className="min-w-0 flex-1">
-                          <h3 className="font-bold text-xs sm:text-sm text-[#0B0A14] dark:text-white group-hover:text-amber-600 dark:group-hover:text-accent transition-colors truncate">
+                          <h3 className="font-bold text-xs sm:text-sm text-[#0B0A14] dark:text-white group-hover:text-primary dark:group-hover:text-accent transition-colors truncate">
                             {creator.fullName}
                           </h3>
                           <p className="text-[10px] sm:text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4] truncate">
@@ -803,7 +803,7 @@ function DashboardContent() {
               </h3>
               <Link
                 href={role === "creator" ? "/app/earnings" : "/app/collaborations"}
-                className="text-[11px] font-mono text-[#0B0A14] dark:text-accent hover:text-amber-600 dark:hover:text-accent font-bold"
+                className="text-[11px] font-mono text-[#0B0A14] dark:text-accent hover:text-primary dark:hover:text-accent font-bold"
               >
                 View all
               </Link>

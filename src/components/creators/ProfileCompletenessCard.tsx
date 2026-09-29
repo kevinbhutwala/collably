@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { CreatorProfile } from "@/core/types";
 import { calculateProfileCompleteness } from "@/core/utils/scoring";
@@ -50,6 +50,15 @@ export function ProfileCompletenessCard({ creator }: { creator?: CreatorProfile 
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (score / 100) * circumference;
 
+  // Read theme CSS variables dynamically so the SVG gradient adapts to male/female theme
+  const [gaugeColors, setGaugeColors] = useState({ primary: "#7C3AED", accent: "#C084FC" });
+  useEffect(() => {
+    const style = getComputedStyle(document.documentElement);
+    const primary = style.getPropertyValue("--theme-primary").trim() || "#7C3AED";
+    const accent = style.getPropertyValue("--theme-accent").trim() || "#C084FC";
+    setGaugeColors({ primary, accent });
+  }, []);
+
   return (
     <div className="p-4 sm:p-5 lg:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4 text-[#0B0A14] dark:text-[#F4F4F8] select-none relative overflow-hidden">
       {/* Background Ambient Aura */}
@@ -97,9 +106,9 @@ export function ProfileCompletenessCard({ creator }: { creator?: CreatorProfile 
             />
             <defs>
               <linearGradient id="goldGaugeGradientLight" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#7C3AED" />
-                <stop offset="60%" stopColor="#C084FC" />
-                <stop offset="100%" stopColor="#C084FC" />
+                <stop offset="0%" stopColor={gaugeColors.primary} />
+                <stop offset="60%" stopColor={gaugeColors.accent} />
+                <stop offset="100%" stopColor={gaugeColors.accent} />
               </linearGradient>
             </defs>
           </svg>
