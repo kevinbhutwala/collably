@@ -43,19 +43,15 @@ import {
   Check,
   Loader2,
   Sparkles,
-  Eye,
+  Coins,
   Camera,
   Clock,
   Layers,
-  Star,
   Zap,
   ShieldAlert,
   X,
-  Tag,
   Languages,
   BadgeCheck,
-  Coins,
-  Palette,
 } from "lucide-react";
 import { useGlobalCurrency } from "@/context/CurrencyContext";
 import { getCurrencySymbol } from "@/core/utils/currency";
@@ -93,25 +89,6 @@ const DELIVERABLE_OPTIONS: DeliverableType[] = [
 
 const CURRENCIES = ["INR", "USD", "EUR", "GBP", "AED", "CAD", "AUD"];
 
-const PRESET_COVERS = [
-  {
-    name: "Golden Dawn",
-    url: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
-  },
-  {
-    name: "Cyber Gradient",
-    url: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=1200&auto=format&fit=crop&q=80",
-  },
-  {
-    name: "Minimalist Studio",
-    url: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=1200&auto=format&fit=crop&q=80",
-  },
-  {
-    name: "Neon Sunset",
-    url: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&auto=format&fit=crop&q=80",
-  },
-];
-
 export default function ProfileEditPage() {
   const {
     user,
@@ -128,11 +105,6 @@ export default function ProfileEditPage() {
   const isBrand =
     role === "brand" || role === "brand_owner" || role === "brand_manager";
 
-  // Active navigation tab
-  const [activeTab, setActiveTab] = useState<
-    "identity" | "socials" | "rates" | "preview"
-  >("identity");
-
   // ── Creator Profile State ──
   const [fullName, setFullName] = useState(
     currentCreator?.fullName || user?.name || ""
@@ -147,15 +119,15 @@ export default function ProfileEditPage() {
   const [avatarUrl, setAvatarUrl] = useState(
     currentCreator?.avatarUrl || user?.avatarUrl || (user as any)?.image || ""
   );
-  const [coverImageUrl, setCoverImageUrl] = useState(
-    currentCreator?.coverImageUrl || ""
-  );
   const [primaryCategory, setPrimaryCategory] = useState<CreatorCategory>(
     currentCreator?.primaryCategory || "Technology & AI"
   );
   const [location, setLocation] = useState(currentCreator?.location || "");
   const [languages, setLanguages] = useState<string>(
     (currentCreator?.languages || ["English"]).join(", ")
+  );
+  const [availableForHire, setAvailableForHire] = useState<boolean>(
+    currentCreator?.availableForHire ?? true
   );
   const [startingPrice, setStartingPrice] = useState<number>(
     currentCreator?.startingPrice || 0
@@ -252,10 +224,10 @@ export default function ProfileEditPage() {
       setAvatarUrl(
         currentCreator.avatarUrl || user?.avatarUrl || (user as any)?.image || ""
       );
-      setCoverImageUrl(currentCreator.coverImageUrl || "");
       setPrimaryCategory(currentCreator.primaryCategory || "Technology & AI");
       setLocation(currentCreator.location || "");
       setLanguages((currentCreator.languages || ["English"]).join(", "));
+      setAvailableForHire(currentCreator.availableForHire ?? true);
       setStartingPrice(currentCreator.startingPrice || 0);
       setCreatorCurrency(
         (currentCreator.currency as string) || globalCurrency || "INR"
@@ -332,7 +304,7 @@ export default function ProfileEditPage() {
     const checks = [
       {
         id: "headline",
-        label: "Profile Headline",
+        label: "Headline",
         done: Boolean(headline && headline.trim().length >= 5),
       },
       {
@@ -347,7 +319,7 @@ export default function ProfileEditPage() {
       },
       {
         id: "socials",
-        label: "Connected Channel",
+        label: "Social Channel",
         done: Boolean(socialAccounts && socialAccounts.length > 0),
       },
       {
@@ -611,10 +583,10 @@ export default function ProfileEditPage() {
           headline: headline.trim(),
           bio: bio.trim(),
           avatarUrl: avatarUrl.trim(),
-          coverImageUrl: coverImageUrl.trim(),
           primaryCategory,
           location: location.trim(),
           languages: langArray.length > 0 ? langArray : ["English"],
+          availableForHire,
           startingPrice: Number(startingPrice) || 0,
           currency: creatorCurrency,
           socialAccounts,
@@ -656,37 +628,41 @@ export default function ProfileEditPage() {
   };
 
   // ─────────────────────────────────────────────────────────────
-  // BRAND VIEW
+  // BRAND VIEW (Bento Workspace)
   // ─────────────────────────────────────────────────────────────
   if (isBrand) {
     return (
       <div className="space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans max-w-6xl mx-auto pb-16">
-        {/* Header */}
+        {/* Compact Clean Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-black/8 dark:border-white/10">
-          <div>
-            <div className="flex items-center gap-2 mb-1.5">
-              <span className="text-[10px] font-mono font-bold uppercase text-[#0A0A0E] dark:text-[#EAEAEF] flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                Brand Workspace
-              </span>
-              <span className="text-[#8A8A9A] dark:text-[#6A6A7E]">•</span>
-              <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] dark:text-yellow-400 font-mono text-[10px] font-bold">
-                Verified Sponsor
-              </span>
+          <div className="flex items-center gap-3.5">
+            <div className="w-14 h-14 rounded-2xl bg-white dark:bg-[#181826] border border-black/10 dark:border-white/10 flex items-center justify-center font-bold text-lg text-[#0A0A0E] dark:text-white shadow-xs shrink-0 overflow-hidden relative">
+              {brandLogoUrl ? (
+                <SafeImage src={brandLogoUrl} alt={companyName} fill className="object-cover" />
+              ) : (
+                <Building2 className="w-6 h-6 text-[#FFD21F]" />
+              )}
             </div>
-            <h1 className="text-2xl sm:text-3xl font-black text-[#0A0A0E] dark:text-white font-display tracking-tight">
-              Brand Profile &amp; Settings
-            </h1>
-            <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4] mt-0.5">
-              Manage your company information, brand bio, and public presence for creators.
-            </p>
+            <div>
+              <div className="flex items-center gap-2">
+                <h1 className="text-xl sm:text-2xl font-black text-[#0A0A0E] dark:text-white font-display tracking-tight">
+                  {companyName || "Your Brand"}
+                </h1>
+                <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] dark:text-yellow-400 font-mono text-[10px] font-bold">
+                  Verified Sponsor
+                </span>
+              </div>
+              <p className="text-xs text-[#6A6A78] dark:text-[#8E8EA4]">
+                {industry || "Brand Partner"} • {brandLocation || "Global"}
+              </p>
+            </div>
           </div>
 
-          <div className="flex items-center gap-2.5 self-start sm:self-center">
+          <div className="flex items-center gap-2.5">
             <Link
               href="/brands"
               target="_blank"
-              className="px-4 py-2.5 rounded-full bg-white dark:bg-[#181824] hover:bg-[#F8F8FC] dark:hover:bg-[#202030] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-2xs"
+              className="px-4 py-2 rounded-full bg-white dark:bg-[#181824] hover:bg-[#F8F8FC] dark:hover:bg-[#202030] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-2xs"
             >
               <ExternalLink className="w-3.5 h-3.5" />
               <span>Browse Directory</span>
@@ -705,22 +681,21 @@ export default function ProfileEditPage() {
               ) : (
                 <>
                   <Save className="w-3.5 h-3.5" />
-                  <span>Save Changes</span>
+                  <span>Save Brand Profile</span>
                 </>
               )}
             </button>
           </div>
         </div>
 
-        {/* Brand Edit Form */}
-        <form onSubmit={handleSaveProfile} className="space-y-6">
-          <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
-            <div className="flex items-center gap-2 text-sm font-bold text-[#0A0A0E] dark:text-white font-display">
+        {/* Brand Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="p-6 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4">
+            <h2 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">
               <Building2 className="w-4 h-4 text-[#FFD21F]" />
               <span>Company Information</span>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            </h2>
+            <div className="space-y-3">
               <Input
                 label="Company Name"
                 value={companyName}
@@ -733,31 +708,27 @@ export default function ProfileEditPage() {
                 value={industry}
                 onChange={(e) => setIndustry(e.target.value)}
                 required
-                placeholder="e.g. Technology & AI, Consumer Tech"
+                placeholder="e.g. Consumer Tech, AI, Gaming"
+              />
+              <Input
+                label="Brand Headline"
+                value={brandHeadline}
+                onChange={(e) => setBrandHeadline(e.target.value)}
+                placeholder="e.g. Next-Generation Developer Productivity Tools"
               />
             </div>
+          </div>
 
-            <Input
-              label="Brand Headline"
-              value={brandHeadline}
-              onChange={(e) => setBrandHeadline(e.target.value)}
-              placeholder="e.g. Next-Generation Developer Productivity Tools"
-            />
-
-            <Textarea
-              label="Company Overview & Mission"
-              value={brandDescription}
-              onChange={(e) => setBrandDescription(e.target.value)}
-              rows={4}
-              placeholder="Tell creators about your brand, product philosophy, and sponsorship expectations..."
-            />
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+          <div className="p-6 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4">
+            <h2 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">
+              <Globe className="w-4 h-4 text-[#FFD21F]" />
+              <span>Operations &amp; Presence</span>
+            </h2>
+            <div className="space-y-3">
               <Input
                 label="Website URL"
                 value={websiteUrl}
                 onChange={(e) => setWebsiteUrl(e.target.value)}
-                required
                 placeholder="https://acme.com"
                 icon={<Globe className="w-3.5 h-3.5 text-[#8A8A9A]" />}
               />
@@ -776,974 +747,578 @@ export default function ProfileEditPage() {
                 icon={<Users className="w-3.5 h-3.5 text-[#8A8A9A]" />}
               />
             </div>
-
-            <div className="pt-2">
-              <Input
-                label="Brand Logo URL"
-                value={brandLogoUrl}
-                onChange={(e) => setBrandLogoUrl(e.target.value)}
-                placeholder="https://example.com/logo.png"
-              />
-            </div>
           </div>
-        </form>
+
+          <div className="md:col-span-2 p-6 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4">
+            <Textarea
+              label="Company Overview & Collaboration Expectations"
+              value={brandDescription}
+              onChange={(e) => setBrandDescription(e.target.value)}
+              rows={4}
+              placeholder="Tell creators about your brand, products, target audience, and collaboration guidelines..."
+            />
+          </div>
+        </div>
       </div>
     );
   }
 
   // ─────────────────────────────────────────────────────────────
-  // CREATOR VIEW (World-Class Redesigned Media Kit & Profile Studio)
+  // CREATOR VIEW: Bento Grid Studio (Modern, Minimal & High-End)
   // ─────────────────────────────────────────────────────────────
   return (
-    <div className="space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans max-w-7xl mx-auto pb-24">
-      {/* ── HERO BANNER: Identity Command Strip ── */}
-      <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-[0_6px_28px_rgba(0,0,0,0.04)] overflow-hidden relative">
-        {/* Cover Backdrop */}
-        <div className="h-36 sm:h-48 w-full bg-gradient-to-r from-amber-500/20 via-orange-400/10 to-purple-500/15 dark:from-[#FFD21F]/15 dark:via-[#1A1A28] dark:to-[#12121A] relative overflow-hidden">
-          {coverImageUrl ? (
-            <SafeImage
-              src={coverImageUrl}
-              alt="Cover Banner"
-              fill
-              className="object-cover"
-            />
-          ) : (
-            <div className="absolute inset-0 bg-[radial-gradient(#FFD21F_1px,transparent_1px)] [background-size:16px_16px] opacity-35" />
-          )}
-
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 pointer-events-none" />
-
-          <div className="absolute top-3 right-3 sm:top-4 sm:right-4 flex items-center gap-2">
+    <div className="space-y-6 text-[#0A0A0E] dark:text-[#F4F4F8] select-none font-sans max-w-7xl mx-auto pb-20">
+      {/* ── TOP COMPACT HEADER (Clean, Minimal, High-Status) ── */}
+      <div className="p-5 sm:p-6 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.03)] flex flex-col md:flex-row md:items-center justify-between gap-5">
+        {/* Creator Info */}
+        <div className="flex items-center gap-4">
+          <div className="relative group shrink-0">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#FAF9F5] dark:bg-[#1A1A24] ring-4 ring-black/5 dark:ring-white/10 shadow-sm overflow-hidden relative flex items-center justify-center text-xl font-black text-[#0A0A0E] dark:text-white isolate">
+              {avatarUrl ? (
+                <SafeImage
+                  src={avatarUrl}
+                  alt={fullName}
+                  fill
+                  className="object-cover rounded-full"
+                />
+              ) : (
+                <span>{fullName?.charAt(0) || "C"}</span>
+              )}
+            </div>
             <button
               type="button"
               onClick={() => setShowPhotoModal(true)}
-              className="px-3.5 py-1.5 rounded-full bg-black/50 hover:bg-black/75 backdrop-blur-md text-white text-[11px] font-mono font-medium transition-all flex items-center gap-1.5 shadow-sm border border-white/20 cursor-pointer"
+              className="absolute -bottom-1 -right-1 p-2 rounded-full bg-[#FFD21F] hover:bg-[#FFE052] text-[#0A0A0E] shadow-sm border-2 border-white dark:border-[#12121A] transition-all cursor-pointer group-hover:scale-110 active:scale-95 z-10"
+              title="Change profile avatar"
             >
-              <Palette className="w-3.5 h-3.5 text-[#FFD21F]" />
-              <span>Change Cover / Avatar</span>
+              <Camera className="w-3.5 h-3.5 text-[#0A0A0E]" />
             </button>
+          </div>
+
+          <div className="space-y-1">
+            <div className="flex flex-wrap items-center gap-2">
+              <h1 className="text-xl sm:text-2xl font-black text-[#0A0A0E] dark:text-white font-display tracking-tight">
+                {fullName || "Creator"}
+              </h1>
+              <span className="text-xs font-mono font-bold text-[#6A6A78] dark:text-[#8E8EA4]">
+                @{handle || "handle"}
+              </span>
+              <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] font-mono text-[10px] font-black uppercase tracking-wider shadow-2xs">
+                {tier} Tier
+              </span>
+              {socialAccounts.some((s) => s.verifiedBadge) && (
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-800 dark:text-emerald-300 text-[10px] font-mono font-bold">
+                  <BadgeCheck className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
+                  <span>Verified</span>
+                </span>
+              )}
+            </div>
+
+            <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4] line-clamp-1 max-w-lg font-medium">
+              {headline || "Set your creator headline to attract brand sponsorships"}
+            </p>
+
+            {/* Quick Metrics Badges */}
+            <div className="flex flex-wrap items-center gap-3 text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4] pt-0.5">
+              <span className="flex items-center gap-1">
+                <Users className="w-3.5 h-3.5 text-[#FFD21F]" />
+                <strong className="text-[#0A0A0E] dark:text-white">
+                  {(totalFollowers || 0).toLocaleString()}
+                </strong>{" "}
+                reach
+              </span>
+              <span>•</span>
+              <span className="flex items-center gap-1">
+                <Zap className="w-3.5 h-3.5 text-[#FFD21F]" />
+                <strong className="text-[#0A0A0E] dark:text-white">
+                  {avgEngagement.toFixed(1)}%
+                </strong>{" "}
+                eng
+              </span>
+              <span>•</span>
+              <span className="flex items-center gap-1">
+                <Coins className="w-3.5 h-3.5 text-amber-500" />
+                <strong className="text-[#0A0A0E] dark:text-white">
+                  {startingPrice > 0
+                    ? `${currencySymbol}${startingPrice.toLocaleString()}`
+                    : "Unset"}
+                </strong>
+              </span>
+            </div>
           </div>
         </div>
 
-        {/* Identity Row */}
-        <div className="px-5 sm:px-8 pb-6 pt-0 relative">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 -mt-14 sm:-mt-16">
-            {/* Avatar + Main Title */}
-            <div className="flex flex-col sm:flex-row sm:items-end gap-4 sm:gap-5">
-              {/* Circular Avatar with Camera Action */}
-              <div className="relative group shrink-0">
-                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-[#FAF9F5] dark:bg-[#1A1A24] ring-4 ring-white dark:ring-[#12121A] shadow-xl overflow-hidden relative flex items-center justify-center text-2xl font-black text-[#0A0A0E] dark:text-white isolate">
-                  {avatarUrl ? (
-                    <SafeImage
-                      src={avatarUrl}
-                      alt={fullName}
-                      fill
-                      className="object-cover rounded-full"
-                    />
-                  ) : (
-                    <span>{fullName?.charAt(0) || "C"}</span>
-                  )}
+        {/* Action Controls & Readiness */}
+        <div className="flex flex-wrap items-center gap-3 self-start md:self-center">
+          {/* Readiness Pill */}
+          <div className="flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-[#FAF9F5] dark:bg-[#181826] border border-black/8 dark:border-white/10 text-xs font-mono">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="font-bold text-[#0A0A0E] dark:text-white">
+              {completeness.score}% Ready
+            </span>
+          </div>
+
+          {Boolean(currentCreator?.handle || currentCreator?.id || user?.id) && (
+            <Link
+              href={`/creators/${
+                currentCreator?.handle || currentCreator?.id || user?.id
+              }`}
+              target="_blank"
+              className="px-4 py-2.5 rounded-full bg-white dark:bg-[#181824] hover:bg-[#F8F8FC] dark:hover:bg-[#202030] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-2xs cursor-pointer"
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+              <span>Public View</span>
+            </Link>
+          )}
+
+          <button
+            type="button"
+            onClick={() => handleSaveProfile()}
+            disabled={isSaving}
+            className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs transition-all shadow-[0_4px_16px_rgba(255,210,31,0.35)] border border-black/10 flex items-center gap-1.5 active:scale-98 disabled:opacity-50 cursor-pointer"
+          >
+            {isSaving ? (
+              <>
+                <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                <span>Saving...</span>
+              </>
+            ) : (
+              <>
+                <Save className="w-3.5 h-3.5" />
+                <span>Save Changes</span>
+              </>
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* ── BENTO GRID STUDIO CANVAS ── */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
+        {/* ── BENTO CARD 1: STORY & POSITIONING (8 Cols) ── */}
+        <div className="lg:col-span-8 p-6 sm:p-7 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-5">
+          <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
+            <h2 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-[#FFD21F]" />
+              <span>Identity &amp; Editorial Positioning</span>
+            </h2>
+            <span className="text-[10px] font-mono text-[#8A8A9A] dark:text-[#6A6A7E] uppercase font-bold">
+              Core Profile
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Input
+              label="Full Name / Display Name"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              required
+              placeholder="e.g. Alex Morgan"
+            />
+            <Input
+              label="Handle"
+              value={handle}
+              onChange={(e) =>
+                setHandle(e.target.value.replace(/[^a-zA-Z0-9_]/g, ""))
+              }
+              required
+              placeholder="e.g. alexmorgan"
+              icon={<span className="text-xs font-mono font-bold">@</span>}
+            />
+          </div>
+
+          <Input
+            label="Editorial Headline (Pitch to Brands)"
+            value={headline}
+            onChange={(e) => setHeadline(e.target.value)}
+            placeholder="e.g. AI & Tech Storyteller • High-Conversion Video Producer"
+            required
+          />
+
+          <Textarea
+            label="About You & Content Style"
+            value={bio}
+            onChange={(e) => setBio(e.target.value)}
+            rows={4}
+            placeholder="Tell brands about what kind of content you create, your production standard, and why your audience converts..."
+            required
+          />
+
+          {/* Niche Categories Pill Cloud */}
+          <div className="space-y-2 pt-1">
+            <label className="text-xs font-bold text-[#0A0A0E] dark:text-[#EAEAEF] block font-display">
+              Primary Niche Category
+            </label>
+            <div className="flex flex-wrap gap-2">
+              {AVAILABLE_CATEGORIES.map((cat) => {
+                const isSelected = primaryCategory === cat;
+                return (
+                  <button
+                    key={cat}
+                    type="button"
+                    onClick={() => setPrimaryCategory(cat)}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all border cursor-pointer ${
+                      isSelected
+                        ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] border-[#0A0A0E] dark:border-[#FFD21F] font-bold shadow-2xs"
+                        : "bg-[#F8F8FC] dark:bg-[#181824] hover:bg-[#EFEFF8] dark:hover:bg-[#202030] text-[#5A5A68] dark:text-[#A0A0B4] border-black/6 dark:border-white/10"
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        {/* ── BENTO CARD 2: COMMERCIAL PRICING (4 Cols) ── */}
+        <div className="lg:col-span-4 p-6 sm:p-7 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-5 flex flex-col justify-between">
+          <div className="space-y-5">
+            <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
+              <h2 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">
+                <Coins className="w-4 h-4 text-amber-500" />
+                <span>Commercial Pricing</span>
+              </h2>
+              <span className="text-[10px] font-mono text-[#8A8A9A] dark:text-[#6A6A7E] uppercase font-bold">
+                Rates
+              </span>
+            </div>
+
+            <div className="space-y-3">
+              <Input
+                label={`Starting Rate (${currencySymbol} ${creatorCurrency})`}
+                type="number"
+                min={0}
+                step={10}
+                placeholder="e.g. 500"
+                value={startingPrice === 0 ? "" : startingPrice}
+                onChange={(e) =>
+                  setStartingPrice(Number(e.target.value) || 0)
+                }
+                required
+              />
+
+              <div>
+                <label className="text-xs font-bold text-[#0A0A0E] dark:text-[#EAEAEF] block mb-1.5 font-display">
+                  Primary Currency
+                </label>
+                <select
+                  value={creatorCurrency}
+                  onChange={(e) => setCreatorCurrency(e.target.value)}
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-black/10 dark:border-white/10 text-xs font-mono font-bold bg-[#F8F8FC] dark:bg-[#181824] text-[#0A0A0E] dark:text-white cursor-pointer"
+                >
+                  {CURRENCIES.map((cur) => (
+                    <option key={cur} value={cur}>
+                      {cur} ({getCurrencySymbol(cur)})
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Availability Toggle */}
+              <div className="pt-2 flex items-center justify-between p-3.5 rounded-2xl bg-[#FAF9F5] dark:bg-[#181824] border border-black/6 dark:border-white/10">
+                <div>
+                  <span className="text-xs font-bold text-[#0A0A0E] dark:text-white block">
+                    Available for Sponsorships
+                  </span>
+                  <span className="text-[11px] text-[#6A6A78] dark:text-[#8E8EA4]">
+                    Show &apos;Available&apos; badge to brands
+                  </span>
                 </div>
                 <button
                   type="button"
-                  onClick={() => setShowPhotoModal(true)}
-                  className="absolute -bottom-1 -right-1 p-2 rounded-full bg-[#FFD21F] hover:bg-[#FFE052] text-[#0A0A0E] shadow-md border-2 border-white dark:border-[#12121A] transition-all cursor-pointer group-hover:scale-110 active:scale-95 z-10"
-                  title="Update profile avatar"
+                  onClick={() => setAvailableForHire(!availableForHire)}
+                  className={`w-11 h-6 rounded-full transition-colors relative cursor-pointer ${
+                    availableForHire ? "bg-emerald-500" : "bg-black/20 dark:bg-white/20"
+                  }`}
                 >
-                  <Camera className="w-3.5 h-3.5 text-[#0A0A0E]" />
+                  <span
+                    className={`w-4 h-4 rounded-full bg-white absolute top-1 transition-transform shadow-xs ${
+                      availableForHire ? "left-6" : "left-1"
+                    }`}
+                  />
                 </button>
               </div>
-
-              <div className="space-y-1.5">
-                <div className="flex flex-wrap items-center gap-2">
-                  <h1 className="text-xl sm:text-2xl font-black text-[#0A0A0E] dark:text-white font-display tracking-tight">
-                    {fullName || "Your Creator Name"}
-                  </h1>
-                  <span className="text-xs font-mono font-bold text-[#6A6A78] dark:text-[#8E8EA4]">
-                    @{handle || "handle"}
-                  </span>
-                  <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] font-mono text-[10px] font-black uppercase tracking-wider shadow-2xs">
-                    {tier} Tier
-                  </span>
-                  {socialAccounts.some((s) => s.verifiedBadge) && (
-                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-800 dark:text-emerald-300 text-[10px] font-mono font-bold">
-                      <BadgeCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                      <span>Verified</span>
-                    </span>
-                  )}
-                </div>
-
-                <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4] line-clamp-1 max-w-xl font-medium">
-                  {headline || "No headline set yet. Add a catchy title for brands."}
-                </p>
-
-                {/* Micro Stats Strip with Clean Universal Currency */}
-                <div className="flex flex-wrap items-center gap-4 text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4] pt-0.5">
-                  <span className="flex items-center gap-1.5">
-                    <Users className="w-3.5 h-3.5 text-[#FFD21F]" />
-                    <strong className="text-[#0A0A0E] dark:text-white">
-                      {(totalFollowers || 0).toLocaleString()}
-                    </strong>{" "}
-                    Total Reach
-                  </span>
-                  <span>•</span>
-                  <span className="flex items-center gap-1.5">
-                    <Zap className="w-3.5 h-3.5 text-[#FFD21F]" />
-                    <strong className="text-[#0A0A0E] dark:text-white">
-                      {avgEngagement.toFixed(1)}%
-                    </strong>{" "}
-                    Avg Engagement
-                  </span>
-                  <span>•</span>
-                  <span className="flex items-center gap-1.5">
-                    <Coins className="w-3.5 h-3.5 text-amber-500" />
-                    <span>Rate:</span>
-                    <strong className="text-[#0A0A0E] dark:text-white font-bold">
-                      {startingPrice > 0
-                        ? `${currencySymbol}${startingPrice.toLocaleString()}`
-                        : "Not set"}
-                    </strong>
-                  </span>
-                </div>
-              </div>
             </div>
+          </div>
 
-            {/* Top Action Buttons & Completeness Meter */}
-            <div className="flex flex-wrap items-center gap-3">
-              {/* Completeness Capsule */}
-              <div className="flex items-center gap-2.5 px-3.5 py-2 rounded-2xl bg-[#FAF9F5] dark:bg-[#181826] border border-black/8 dark:border-white/10">
-                <div className="relative w-8 h-8 flex items-center justify-center shrink-0">
-                  <svg className="w-8 h-8 -rotate-90" viewBox="0 0 36 36">
-                    <circle
-                      cx="18"
-                      cy="18"
-                      r="14"
-                      fill="none"
-                      className="stroke-black/10 dark:stroke-white/10"
-                      strokeWidth="3.5"
-                    />
-                    <circle
-                      cx="18"
-                      cy="18"
-                      r="14"
-                      fill="none"
-                      stroke="#FFD21F"
-                      strokeWidth="3.5"
-                      strokeDasharray={88}
-                      strokeDashoffset={88 - (88 * completeness.score) / 100}
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                  <span className="absolute text-[9px] font-mono font-black text-[#0A0A0E] dark:text-white">
-                    {completeness.score}%
-                  </span>
-                </div>
-                <div>
-                  <span className="text-[10px] font-mono uppercase font-bold text-[#6A6A78] dark:text-[#8E8EA4] block leading-none">
-                    Media Kit Health
-                  </span>
-                  <span className="text-xs font-bold text-[#0A0A0E] dark:text-white">
-                    {completeness.isComplete ? "100% Ready" : "Incomplete"}
-                  </span>
-                </div>
-              </div>
-
-              {Boolean(currentCreator?.handle || currentCreator?.id || user?.id) && (
-                <Link
-                  href={`/creators/${
-                    currentCreator?.handle || currentCreator?.id || user?.id
-                  }`}
-                  target="_blank"
-                  className="px-4 py-2.5 rounded-full bg-white dark:bg-[#181824] hover:bg-[#F8F8FC] dark:hover:bg-[#202030] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-2xs cursor-pointer"
-                >
-                  <ExternalLink className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">Preview Public Media Kit</span>
-                  <span className="sm:hidden">Preview</span>
-                </Link>
-              )}
-
-              <button
-                type="button"
-                onClick={() => handleSaveProfile()}
-                disabled={isSaving}
-                className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs transition-all shadow-[0_4px_16px_rgba(255,210,31,0.4)] border border-black/10 flex items-center gap-1.5 active:scale-98 disabled:opacity-50 cursor-pointer"
-              >
-                {isSaving ? (
-                  <>
-                    <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                    <span>Saving...</span>
-                  </>
-                ) : (
-                  <>
-                    <Save className="w-3.5 h-3.5" />
-                    <span>Save Changes</span>
-                  </>
-                )}
-              </button>
+          <div className="pt-3 border-t border-black/6 dark:border-white/10">
+            <div className="flex items-center justify-between text-xs font-mono">
+              <span className="text-[#6A6A78] dark:text-[#8E8EA4]">Active Packages:</span>
+              <strong className="text-[#0A0A0E] dark:text-white">{rateCards.length} defined</strong>
             </div>
           </div>
         </div>
 
-        {/* ── Segmented Navigation Tabs ── */}
-        <div className="px-5 sm:px-8 border-t border-black/6 dark:border-white/10 bg-[#FAF9F5]/70 dark:bg-[#151520]/70 flex items-center gap-2 overflow-x-auto scrollbar-none py-2.5">
-          {[
-            {
-              id: "identity",
-              label: "Story & Identity",
-              icon: Sparkles,
-              count: null,
-            },
-            {
-              id: "socials",
-              label: "Verified Channels",
-              icon: Zap,
-              count: socialAccounts.length,
-            },
-            {
-              id: "rates",
-              label: "Rates & Deliverables",
-              icon: Coins,
-              count: rateCards.length,
-            },
-            {
-              id: "preview",
-              label: "Live Media Kit",
-              icon: Eye,
-              count: null,
-            },
-          ].map((tab) => {
-            const Icon = tab.icon;
-            const isActive = activeTab === tab.id;
-            return (
-              <button
-                key={tab.id}
-                type="button"
-                onClick={() => setActiveTab(tab.id as any)}
-                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 shrink-0 cursor-pointer ${
-                  isActive
-                    ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] shadow-sm"
-                    : "text-[#6A6A78] dark:text-[#9A9AA8] hover:bg-black/5 dark:hover:bg-white/5 hover:text-[#0A0A0E] dark:hover:text-white"
-                }`}
-              >
-                <Icon className="w-3.5 h-3.5 shrink-0" />
-                <span>{tab.label}</span>
-                {tab.count !== null && (
-                  <span
-                    className={`px-1.5 py-0.2 rounded-full text-[10px] font-mono ${
-                      isActive
-                        ? "bg-white/20 dark:bg-black/20 text-white dark:text-[#0A0A0E]"
-                        : "bg-black/5 dark:bg-white/10 text-[#6A6A78] dark:text-[#9A9AA8]"
-                    }`}
-                  >
-                    {tab.count}
-                  </span>
-                )}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* ── MAIN STUDIO CONTENT (2-Column Grid) ── */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-        {/* ── LEFT COLUMN: Active Settings Tab (8 Cols) ── */}
-        <div className="lg:col-span-8 space-y-6">
-          {/* TAB 1: STORY & IDENTITY */}
-          {activeTab === "identity" && (
-            <div className="space-y-6 animate-in fade-in duration-200">
-              {/* Basic Info */}
-              <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-5">
-                <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
-                  <div>
-                    <h2 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">
-                      Creator Story &amp; Headline
-                    </h2>
-                    <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4]">
-                      Tell brands who you are and why your audience engages with your content.
-                    </p>
-                  </div>
-                  <span className="text-[10px] font-mono text-[#8A8A9A] dark:text-[#6A6A7E] uppercase font-bold">
-                    Tab 1 of 3
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <Input
-                    label="Full Name / Brand Name"
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    required
-                    placeholder="e.g. Alex Morgan"
-                  />
-                  <Input
-                    label="Creator Handle"
-                    value={handle}
-                    onChange={(e) =>
-                      setHandle(e.target.value.replace(/[^a-zA-Z0-9_]/g, ""))
-                    }
-                    required
-                    placeholder="e.g. alexmorgan"
-                    icon={<span className="text-xs font-mono font-bold">@</span>}
-                  />
-                </div>
-
-                <Input
-                  label="Profile Headline"
-                  value={headline}
-                  onChange={(e) => setHeadline(e.target.value)}
-                  placeholder="e.g. AI & Tech Storyteller • Short-Form Video Producer"
-                  required
-                />
-
-                <Textarea
-                  label="Editorial Bio"
-                  value={bio}
-                  onChange={(e) => setBio(e.target.value)}
-                  rows={4}
-                  placeholder="Write a compelling overview of your content focus, production aesthetic, and the brands you love to partner with..."
-                  required
-                />
-              </div>
-
-              {/* Niche & Category Selection */}
-              <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4">
-                <div>
-                  <h2 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">
-                    <Tag className="w-4 h-4 text-[#FFD21F]" />
-                    <span>Primary Editorial Category</span>
-                  </h2>
-                  <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] mt-0.5">
-                    Select your core niche so matching brand campaigns surface in your feed.
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {AVAILABLE_CATEGORIES.map((cat) => {
-                    const isSelected = primaryCategory === cat;
-                    return (
-                      <button
-                        key={cat}
-                        type="button"
-                        onClick={() => setPrimaryCategory(cat)}
-                        className={`px-3.5 py-2 rounded-xl text-xs font-medium transition-all border cursor-pointer ${
-                          isSelected
-                            ? "bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] border-[#0A0A0E] dark:border-[#FFD21F] font-bold shadow-xs"
-                            : "bg-[#F8F8FC] dark:bg-[#181824] hover:bg-[#EFEFF8] dark:hover:bg-[#202030] text-[#4A4A58] dark:text-[#B0B0C0] border-black/6 dark:border-white/10"
-                        }`}
-                      >
-                        {cat}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Location & Languages */}
-              <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-4">
-                <div>
-                  <h2 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">
-                    <Globe className="w-4 h-4 text-[#FFD21F]" />
-                    <span>Geographic &amp; Language Reach</span>
-                  </h2>
-                  <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] mt-0.5">
-                    Helps international brands verify demographic suitability for targeted deals.
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-                  <Input
-                    label="Home Base / City & Country"
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)}
-                    placeholder="e.g. Mumbai, India or New York, USA"
-                    icon={<MapPin className="w-3.5 h-3.5 text-[#8A8A9A]" />}
-                  />
-                  <Input
-                    label="Content Languages (Comma-separated)"
-                    value={languages}
-                    onChange={(e) => setLanguages(e.target.value)}
-                    placeholder="e.g. English, Hindi"
-                    icon={<Languages className="w-3.5 h-3.5 text-[#8A8A9A]" />}
-                  />
-                </div>
-              </div>
+        {/* ── BENTO CARD 3: VERIFIED SOCIAL CHANNELS (7 Cols) ── */}
+        <div className="lg:col-span-7 p-6 sm:p-7 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-5">
+          <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
+            <div>
+              <h2 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">
+                <Zap className="w-4 h-4 text-[#FFD21F]" />
+                <span>Audience Reach &amp; Connected Channels</span>
+              </h2>
+              <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] mt-0.5">
+                Official OAuth sync &amp; audited social channels
+              </p>
             </div>
-          )}
 
-          {/* TAB 2: VERIFIED CHANNELS */}
-          {activeTab === "socials" && (
-            <div className="space-y-6 animate-in fade-in duration-200">
-              <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-black/8 dark:border-white/10">
-                  <div>
-                    <h2 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">
-                      <Zap className="w-4 h-4 text-[#FFD21F]" />
-                      <span>Connected Social Channels</span>
-                    </h2>
-                    <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] mt-0.5">
-                      Sync live metrics via OAuth or add manual links with our verification handshake.
-                    </p>
-                  </div>
+            <button
+              type="button"
+              onClick={() => setShowAddSocialModal(true)}
+              className="px-3.5 py-1.5 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] hover:bg-[#20202B] dark:hover:bg-[#FFE052] text-white dark:text-[#0A0A0E] text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs"
+            >
+              <Plus className="w-3.5 h-3.5" />
+              <span>Connect</span>
+            </button>
+          </div>
 
-                  <button
-                    type="button"
-                    onClick={() => setShowAddSocialModal(true)}
-                    className="px-4 py-2 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] hover:bg-[#20202B] dark:hover:bg-[#FFE052] text-white dark:text-[#0A0A0E] text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-xs self-start sm:self-auto"
-                  >
-                    <Plus className="w-3.5 h-3.5" />
-                    <span>Connect Channel</span>
-                  </button>
-                </div>
-
-                {/* Instant Official Handshake Banners */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/20 flex flex-col justify-between gap-3">
-                    <div>
-                      <span className="text-xs font-bold text-red-900 dark:text-red-300 flex items-center gap-1.5">
-                        <Youtube className="w-4 h-4 text-red-600" />
-                        <span>Official YouTube OAuth</span>
-                      </span>
-                      <p className="text-[11px] text-red-800/80 dark:text-red-300/80 mt-1">
-                        1-click Google OAuth verification. Instantly syncs subscriber count and watch metrics.
-                      </p>
-                    </div>
-                    <GoogleSignInButton
-                      mode="connect_youtube"
-                      label="Connect YouTube"
-                      className="!h-8.5 !py-0 !px-4 !text-xs !rounded-xl !bg-red-600 hover:!bg-red-700 !text-white font-bold border-0 cursor-pointer shadow-xs"
-                    />
-                  </div>
-
-                  <div className="p-4 rounded-2xl bg-pink-500/10 border border-pink-500/20 flex flex-col justify-between gap-3">
-                    <div>
-                      <span className="text-xs font-bold text-pink-900 dark:text-pink-300 flex items-center gap-1.5">
-                        <Instagram className="w-4 h-4 text-pink-600" />
-                        <span>Official Instagram Handshake</span>
-                      </span>
-                      <p className="text-[11px] text-pink-800/80 dark:text-pink-300/80 mt-1">
-                        Meta OAuth connection. Syncs live followers and grants verified platform status.
-                      </p>
-                    </div>
-                    <InstagramSignInButton
-                      mode="connect_instagram"
-                      label="Connect Instagram"
-                      className="!h-8.5 !py-0 !px-4 !text-xs !rounded-xl !bg-gradient-to-r !from-purple-600 !via-pink-600 !to-rose-500 !text-white font-bold border-0 cursor-pointer shadow-xs"
-                    />
-                  </div>
-                </div>
-
-                {/* Accounts List */}
-                <div className="space-y-3 pt-2">
-                  <h3 className="text-xs font-mono font-bold uppercase text-[#7A7A8A] dark:text-[#8E8EA4]">
-                    Active Media Kit Channels ({socialAccounts.length})
-                  </h3>
-
-                  {socialAccounts.length === 0 ? (
-                    <div className="p-8 text-center rounded-2xl border-2 border-dashed border-black/10 dark:border-white/10 bg-[#FAFAFC] dark:bg-[#161622] space-y-3">
-                      <div className="w-10 h-10 mx-auto rounded-full bg-amber-50 dark:bg-amber-500/15 flex items-center justify-center text-amber-600 dark:text-amber-400">
-                        <ShieldAlert className="w-5 h-5" />
-                      </div>
-                      <div className="space-y-1">
-                        <p className="text-sm font-bold text-[#0A0A0E] dark:text-white">
-                          No Channels Linked
-                        </p>
-                        <p className="text-xs text-[#6A6A78] dark:text-[#9A9AA8] max-w-sm mx-auto">
-                          Connect at least one channel above to establish your verified audience reach and qualify for brand campaigns.
-                        </p>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      {socialAccounts.map((acc) => {
-                        const isVerified =
-                          acc.verifiedBadge || acc.verificationStatus === "verified";
-                        return (
-                          <div
-                            key={acc.id}
-                            className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/6 dark:border-white/10 flex flex-col justify-between gap-3 transition-all hover:border-[#FFD21F]/60"
-                          >
-                            <div className="flex items-center justify-between gap-2">
-                              <div className="flex items-center gap-2.5 min-w-0">
-                                <div className="w-9 h-9 rounded-xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 flex items-center justify-center text-[#0A0A0E] dark:text-white shadow-2xs shrink-0">
-                                  {acc.platform === "youtube" && (
-                                    <Youtube className="w-4 h-4 text-red-600" />
-                                  )}
-                                  {acc.platform === "instagram" && (
-                                    <Instagram className="w-4 h-4 text-pink-600" />
-                                  )}
-                                  {acc.platform === "x" && (
-                                    <Twitter className="w-4 h-4 text-[#0A0A0E] dark:text-white" />
-                                  )}
-                                  {acc.platform === "linkedin" && (
-                                    <Linkedin className="w-4 h-4 text-blue-600" />
-                                  )}
-                                  {acc.platform === "tiktok" && (
-                                    <Video className="w-4 h-4 text-[#0A0A0E] dark:text-white" />
-                                  )}
-                                </div>
-                                <div className="min-w-0">
-                                  <div className="flex items-center gap-1.5">
-                                    <span className="font-bold text-xs text-[#0A0A0E] dark:text-white truncate">
-                                      @{acc.handle}
-                                    </span>
-                                    {isVerified ? (
-                                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                                    ) : (
-                                      <Circle className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-                                    )}
-                                  </div>
-                                  <span className="text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4] block">
-                                    {(acc.followers || 0).toLocaleString()} followers
-                                    {acc.engagementRate
-                                      ? ` • ${acc.engagementRate}% ER`
-                                      : ""}
-                                  </span>
-                                </div>
-                              </div>
-
-                              <button
-                                type="button"
-                                onClick={() => handleRemoveSocial(acc.id)}
-                                className="text-[#8A8A9A] dark:text-[#6A6A7E] hover:text-red-600 dark:hover:text-red-400 p-1.5 transition-colors rounded-lg hover:bg-red-50 dark:hover:bg-red-500/10 cursor-pointer"
-                                title="Remove channel"
-                              >
-                                <Trash2 className="w-3.5 h-3.5" />
-                              </button>
-                            </div>
-
-                            <div className="flex items-center justify-between pt-2 border-t border-black/5 dark:border-white/5 text-[11px] font-mono">
-                              <a
-                                href={acc.url || `https://${acc.platform}.com/${acc.handle}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-[#0055D6] dark:text-[#FFD21F] hover:underline flex items-center gap-1"
-                              >
-                                <span>Visit Profile</span>
-                                <ExternalLink className="w-3 h-3" />
-                              </a>
-
-                              {!isVerified && (
-                                <button
-                                  type="button"
-                                  onClick={() => {
-                                    setSelectedVerifyAccount(acc);
-                                    setShowVerifyModal(true);
-                                  }}
-                                  className="text-amber-700 dark:text-amber-400 hover:underline font-bold flex items-center gap-1 cursor-pointer"
-                                >
-                                  <ShieldCheck className="w-3 h-3" />
-                                  <span>Verify Code</span>
-                                </button>
-                              )}
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
+          {/* Quick OAuth Connect Buttons */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="p-3.5 rounded-2xl bg-red-500/10 border border-red-500/20 flex flex-col justify-between gap-2">
+              <div className="flex items-center gap-2">
+                <Youtube className="w-4 h-4 text-red-600" />
+                <span className="text-xs font-bold text-red-900 dark:text-red-300">
+                  YouTube Verification
+                </span>
               </div>
+              <GoogleSignInButton
+                mode="connect_youtube"
+                label="Connect YouTube"
+                className="!h-8 !py-0 !px-3 !text-xs !rounded-xl !bg-red-600 hover:!bg-red-700 !text-white font-bold border-0 cursor-pointer shadow-2xs"
+              />
             </div>
-          )}
 
-          {/* TAB 3: RATES & COMMERCIAL SERVICES */}
-          {activeTab === "rates" && (
-            <div className="space-y-6 animate-in fade-in duration-200">
-              {/* Baseline Rate & Currency */}
-              <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-5">
-                <div>
-                  <h2 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">
-                    <Coins className="w-4 h-4 text-amber-500" />
-                    <span>Commercial Starting Rate</span>
-                  </h2>
-                  <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] mt-0.5">
-                    Your baseline floor price for brand sponsorships and creative deliverables.
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-                  <div>
-                    <Input
-                      label={`Starting Rate (${currencySymbol} ${creatorCurrency})`}
-                      type="number"
-                      min={0}
-                      step={10}
-                      placeholder="e.g. 500"
-                      value={startingPrice === 0 ? "" : startingPrice}
-                      onChange={(e) =>
-                        setStartingPrice(Number(e.target.value) || 0)
-                      }
-                      required
-                    />
-                    <p className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] font-mono mt-1">
-                      Display equivalent in brand discovery catalogs.
-                    </p>
-                  </div>
-
-                  <div>
-                    <label className="text-xs font-bold text-[#0A0A0E] dark:text-[#EAEAEF] block mb-1.5 font-display">
-                      Settlement Currency
-                    </label>
-                    <select
-                      value={creatorCurrency}
-                      onChange={(e) => setCreatorCurrency(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-black/10 dark:border-white/10 text-xs font-mono font-bold bg-[#F8F8FC] dark:bg-[#181824] text-[#0A0A0E] dark:text-white"
-                    >
-                      {CURRENCIES.map((cur) => (
-                        <option key={cur} value={cur}>
-                          {cur} ({getCurrencySymbol(cur)})
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
+            <div className="p-3.5 rounded-2xl bg-pink-500/10 border border-pink-500/20 flex flex-col justify-between gap-2">
+              <div className="flex items-center gap-2">
+                <Instagram className="w-4 h-4 text-pink-600" />
+                <span className="text-xs font-bold text-pink-900 dark:text-pink-300">
+                  Instagram Handshake
+                </span>
               </div>
+              <InstagramSignInButton
+                mode="connect_instagram"
+                label="Connect Instagram"
+                className="!h-8 !py-0 !px-3 !text-xs !rounded-xl !bg-gradient-to-r !from-purple-600 !via-pink-600 !to-rose-500 !text-white font-bold border-0 cursor-pointer shadow-2xs"
+              />
+            </div>
+          </div>
 
-              {/* Deliverable Rate Cards */}
-              <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-5">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-black/8 dark:border-white/10">
-                  <div>
-                    <h2 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">
-                      <Layers className="w-4 h-4 text-[#FFD21F]" />
-                      <span>Commercial Deliverable Packages</span>
-                    </h2>
-                    <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] mt-0.5">
-                      Define standalone services brands can book directly from your media kit.
-                    </p>
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={() => setShowAddRateCardModal(true)}
-                    className="px-4 py-2 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] hover:bg-[#20202B] dark:hover:bg-[#FFE052] text-white dark:text-[#0A0A0E] text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-xs self-start sm:self-auto"
+          {/* Connected Accounts List */}
+          <div className="space-y-2 pt-1">
+            {socialAccounts.length === 0 ? (
+              <div className="p-6 text-center rounded-2xl border-2 border-dashed border-black/10 dark:border-white/10 bg-[#FAF9F5] dark:bg-[#161622] space-y-2">
+                <p className="text-xs font-bold text-[#0A0A0E] dark:text-white">
+                  No Connected Channels Yet
+                </p>
+                <p className="text-[11px] text-[#6A6A78] dark:text-[#9A9AA8] max-w-sm mx-auto">
+                  Connect YouTube or Instagram to verify your follower reach and receive brand proposals.
+                </p>
+              </div>
+            ) : (
+              socialAccounts.map((acc) => {
+                const isVerified =
+                  acc.verifiedBadge || acc.verificationStatus === "verified";
+                return (
+                  <div
+                    key={acc.id}
+                    className="p-3.5 rounded-2xl bg-[#FAF9F5] dark:bg-[#181824] border border-black/6 dark:border-white/10 flex items-center justify-between gap-3"
                   >
-                    <Plus className="w-3.5 h-3.5" />
-                    <span>Add Package</span>
-                  </button>
-                </div>
-
-                {rateCards.length === 0 ? (
-                  <div className="p-6 text-center rounded-2xl border-2 border-dashed border-black/10 dark:border-white/10 bg-[#FAFAFC] dark:bg-[#161622] space-y-3">
-                    <p className="text-xs text-[#6A6A78] dark:text-[#9A9AA8]">
-                      No individual packages listed yet. Add your standard formats (e.g. 60s Reel, Dedicated Video, Newsletter Integration) with turnaround days.
-                    </p>
-                    <button
-                      type="button"
-                      onClick={() => setShowAddRateCardModal(true)}
-                      className="px-4 py-1.5 rounded-full border border-black/10 dark:border-white/10 hover:border-[#FFD21F] text-xs font-bold transition-colors cursor-pointer"
-                    >
-                      + Create First Package
-                    </button>
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                    {rateCards.map((rc) => (
-                      <div
-                        key={rc.id}
-                        className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/6 dark:border-white/10 space-y-2 flex flex-col justify-between"
-                      >
-                        <div className="space-y-1">
-                          <div className="flex items-center justify-between">
-                            <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] font-mono text-[10px] font-bold">
-                              {rc.deliverableType}
-                            </span>
-                            <button
-                              type="button"
-                              onClick={() => handleRemoveRateCard(rc.id)}
-                              className="text-[#8A8A9A] hover:text-red-500 p-1 transition-colors"
-                            >
-                              <Trash2 className="w-3.5 h-3.5" />
-                            </button>
-                          </div>
-                          <h4 className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
-                            {rc.title}
-                          </h4>
-                          {rc.description && (
-                            <p className="text-[11px] text-[#6A6A78] dark:text-[#8E8EA4] line-clamp-2">
-                              {rc.description}
-                            </p>
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className="w-8 h-8 rounded-xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 flex items-center justify-center text-[#0A0A0E] dark:text-white shrink-0">
+                        {acc.platform === "youtube" && (
+                          <Youtube className="w-4 h-4 text-red-600" />
+                        )}
+                        {acc.platform === "instagram" && (
+                          <Instagram className="w-4 h-4 text-pink-600" />
+                        )}
+                        {acc.platform === "x" && (
+                          <Twitter className="w-4 h-4 text-[#0A0A0E] dark:text-white" />
+                        )}
+                        {acc.platform === "linkedin" && (
+                          <Linkedin className="w-4 h-4 text-blue-600" />
+                        )}
+                        {acc.platform === "tiktok" && (
+                          <Video className="w-4 h-4 text-[#0A0A0E] dark:text-white" />
+                        )}
+                      </div>
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-bold text-xs text-[#0A0A0E] dark:text-white truncate">
+                            @{acc.handle}
+                          </span>
+                          {isVerified ? (
+                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                          ) : (
+                            <Circle className="w-3.5 h-3.5 text-amber-500 shrink-0" />
                           )}
                         </div>
-
-                        <div className="flex items-center justify-between pt-2 border-t border-black/5 dark:border-white/5 font-mono text-xs">
-                          <span className="text-[#6A6A78] dark:text-[#8E8EA4] flex items-center gap-1">
-                            <Clock className="w-3 h-3" />
-                            {rc.turnaroundDays}d turnaround
-                          </span>
-                          <span className="font-bold text-[#0A0A0E] dark:text-white">
-                            {currencySymbol}
-                            {rc.basePrice.toLocaleString()}
-                          </span>
-                        </div>
+                        <span className="text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4]">
+                          {(acc.followers || 0).toLocaleString()} reach • {acc.engagementRate}% ER
+                        </span>
                       </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
+                    </div>
 
-          {/* TAB 4: LIVE MEDIA KIT PREVIEW */}
-          {activeTab === "preview" && (
-            <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6 animate-in fade-in duration-200">
-              <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
-                <div>
-                  <h2 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">
-                    <Eye className="w-4 h-4 text-[#FFD21F]" />
-                    <span>Brand Perspective Preview</span>
-                  </h2>
-                  <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] mt-0.5">
-                    This is how Fortune 500 &amp; top agencies see your media kit card.
-                  </p>
-                </div>
-                {Boolean(currentCreator?.handle || currentCreator?.id || user?.id) && (
-                  <Link
-                    href={`/creators/${
-                      currentCreator?.handle || currentCreator?.id || user?.id
-                    }`}
-                    target="_blank"
-                    className="text-xs font-bold text-[#0055D6] dark:text-[#FFD21F] hover:underline flex items-center gap-1 font-mono"
-                  >
-                    <span>Full Public View</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </Link>
-                )}
-              </div>
-
-              {/* Full Interactive Preview */}
-              <div className="rounded-2xl border border-black/10 dark:border-white/10 overflow-hidden bg-[#FAF9F5] dark:bg-[#181826]">
-                <div className="h-32 bg-gradient-to-r from-amber-500/20 via-orange-400/15 to-transparent relative">
-                  {coverImageUrl && (
-                    <SafeImage
-                      src={coverImageUrl}
-                      alt="Cover"
-                      fill
-                      className="object-cover"
-                    />
-                  )}
-                </div>
-
-                <div className="p-5 sm:p-6 space-y-4 -mt-10 relative">
-                  <div className="flex items-end justify-between gap-4">
-                    <div className="w-20 h-20 rounded-full bg-white dark:bg-[#12121A] ring-4 ring-[#FAF9F5] dark:ring-[#181826] overflow-hidden relative shadow-md flex items-center justify-center font-bold text-xl">
-                      {avatarUrl ? (
-                        <SafeImage
-                          src={avatarUrl}
-                          alt={fullName}
-                          fill
-                          className="object-cover rounded-full"
-                        />
-                      ) : (
-                        <span>{fullName?.charAt(0) || "C"}</span>
+                    <div className="flex items-center gap-2 shrink-0">
+                      {!isVerified && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setSelectedVerifyAccount(acc);
+                            setShowVerifyModal(true);
+                          }}
+                          className="px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-300 text-[10px] font-mono font-bold cursor-pointer hover:bg-amber-500/25"
+                        >
+                          Verify Code
+                        </button>
                       )}
-                    </div>
-                    <div className="text-right">
-                      <span className="text-[10px] font-mono uppercase text-[#7A7A8A] dark:text-[#8E8EA4] block">
-                        Starting Rate
-                      </span>
-                      <span className="text-base sm:text-lg font-black font-mono text-[#0A0A0E] dark:text-white">
-                        {startingPrice > 0
-                          ? `${currencySymbol}${startingPrice.toLocaleString()}`
-                          : "Custom Quote"}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="text-base font-black text-[#0A0A0E] dark:text-white font-display">
-                      {fullName || "Creator Name"}
-                    </h3>
-                    <p className="text-xs text-[#0A0A0E] dark:text-[#FFD21F] font-mono font-medium">
-                      @{handle || "handle"} • {primaryCategory}
-                    </p>
-                    <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] mt-2 italic font-serif">
-                      &ldquo;{headline || "No headline declared"}&rdquo;
-                    </p>
-                  </div>
-
-                  {bio && (
-                    <p className="text-xs text-[#4A4A58] dark:text-[#B0B0C4] leading-relaxed whitespace-pre-line font-sans border-t border-black/6 dark:border-white/10 pt-3">
-                      {bio}
-                    </p>
-                  )}
-
-                  {/* Connected channels preview */}
-                  <div className="pt-2 flex flex-wrap items-center gap-2">
-                    {socialAccounts.map((s) => (
-                      <span
-                        key={s.id}
-                        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 text-xs font-mono font-bold"
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveSocial(acc.id)}
+                        className="text-[#8A8A9A] hover:text-red-500 p-1 transition-colors"
                       >
-                        {s.platform === "youtube" && (
-                          <Youtube className="w-3.5 h-3.5 text-red-600" />
-                        )}
-                        {s.platform === "instagram" && (
-                          <Instagram className="w-3.5 h-3.5 text-pink-600" />
-                        )}
-                        {s.platform === "x" && (
-                          <Twitter className="w-3.5 h-3.5 text-[#0A0A0E] dark:text-white" />
-                        )}
-                        <span>@{s.handle}</span>
-                        {s.verifiedBadge && (
-                          <CheckCircle2 className="w-3 h-3 text-emerald-500" />
-                        )}
-                      </span>
-                    ))}
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          )}
+                );
+              })
+            )}
+          </div>
         </div>
 
-        {/* ── RIGHT COLUMN: Sticky Real-time Card & Health (4 Cols) ── */}
-        <div className="lg:col-span-4 space-y-6 lg:sticky lg:top-6">
-          {/* Real-time Mini Card Preview */}
-          <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#6A6A78] dark:text-[#8E8EA4] flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-pulse" />
-                Live Card Feed
-              </span>
-              <span className="px-2 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-[10px] font-mono font-bold">
-                {tier}
-              </span>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-[#FAF9F5] dark:bg-[#1A1A26] ring-2 ring-black/10 dark:ring-white/10 overflow-hidden relative shrink-0 flex items-center justify-center font-bold text-sm">
-                {avatarUrl ? (
-                  <SafeImage
-                    src={avatarUrl}
-                    alt={fullName}
-                    fill
-                    className="object-cover rounded-full"
-                  />
-                ) : (
-                  <span>{fullName?.charAt(0) || "C"}</span>
-                )}
-              </div>
-              <div className="min-w-0">
-                <h4 className="text-sm font-bold text-[#0A0A0E] dark:text-white truncate">
-                  {fullName || "Your Name"}
-                </h4>
-                <p className="text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4] truncate">
-                  @{handle || "handle"} • {primaryCategory}
-                </p>
-              </div>
-            </div>
-
-            <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] line-clamp-2 leading-relaxed">
-              {headline || "Add a catchy headline to show in brand search results."}
-            </p>
-
-            <div className="flex items-center justify-between pt-2 border-t border-black/6 dark:border-white/10 text-xs font-mono">
-              <span className="text-[#6A6A78] dark:text-[#8E8EA4]">
-                {(totalFollowers || 0).toLocaleString()} reach
-              </span>
-              <span className="font-bold text-[#0A0A0E] dark:text-white">
-                {startingPrice > 0
-                  ? `${currencySymbol}${startingPrice.toLocaleString()}`
-                  : "No rate"}
-              </span>
-            </div>
+        {/* ── BENTO CARD 4: TERRITORY & AUDIENCE (5 Cols) ── */}
+        <div className="lg:col-span-5 p-6 sm:p-7 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-5">
+          <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
+            <h2 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">
+              <Globe className="w-4 h-4 text-[#FFD21F]" />
+              <span>Territory &amp; Content Language</span>
+            </h2>
+            <span className="text-[10px] font-mono text-[#8A8A9A] dark:text-[#6A6A7E] uppercase font-bold">
+              Audience
+            </span>
           </div>
 
-          {/* Completeness Checklist Card */}
-          <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-4">
-            <div className="flex items-center justify-between">
-              <h3 className="text-xs font-mono font-bold uppercase text-[#0A0A0E] dark:text-white">
-                Profile Readiness
-              </h3>
-              <span className="text-xs font-mono font-bold text-[#FFD21F]">
-                {completeness.score}%
+          <div className="space-y-4">
+            <Input
+              label="Operational Territory / Base"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              placeholder="e.g. Mumbai, India or San Francisco, USA"
+              icon={<MapPin className="w-3.5 h-3.5 text-[#8A8A9A]" />}
+            />
+
+            <Input
+              label="Content Languages"
+              value={languages}
+              onChange={(e) => setLanguages(e.target.value)}
+              placeholder="e.g. English, Hindi"
+              icon={<Languages className="w-3.5 h-3.5 text-[#8A8A9A]" />}
+            />
+
+            <div className="p-4 rounded-2xl bg-[#FAF9F5] dark:bg-[#181824] border border-black/6 dark:border-white/10 text-xs space-y-1.5">
+              <span className="font-bold text-[#0A0A0E] dark:text-white flex items-center gap-1.5">
+                <ShieldCheck className="w-4 h-4 text-emerald-500" />
+                <span>Escrow Guarantee</span>
               </span>
+              <p className="text-[11px] text-[#6A6A78] dark:text-[#8E8EA4] leading-relaxed">
+                All collaborations booked through AbeyCollab are backed by 100% upfront brand escrow protection.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* ── BENTO CARD 5: DELIVERABLE PACKAGES & TURNAROUND (12 Cols) ── */}
+        <div className="lg:col-span-12 p-6 sm:p-7 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-black/8 dark:border-white/10">
+            <div>
+              <h2 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">
+                <Layers className="w-4 h-4 text-[#FFD21F]" />
+                <span>Custom Deliverable Packages &amp; Turnaround Times</span>
+              </h2>
+              <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] mt-0.5">
+                Stand-alone packages brands can select when drafting proposals
+              </p>
             </div>
 
-            <div className="space-y-2">
-              {completeness.checks.map((c) => (
+            <button
+              type="button"
+              onClick={() => setShowAddRateCardModal(true)}
+              className="px-4 py-2 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] hover:bg-[#20202B] dark:hover:bg-[#FFE052] text-white dark:text-[#0A0A0E] text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs self-start sm:self-auto"
+            >
+              <Plus className="w-3.5 h-3.5" />
+              <span>Add Package</span>
+            </button>
+          </div>
+
+          {rateCards.length === 0 ? (
+            <div className="p-8 text-center rounded-2xl border-2 border-dashed border-black/10 dark:border-white/10 bg-[#FAF9F5] dark:bg-[#161622] space-y-3">
+              <p className="text-xs text-[#6A6A78] dark:text-[#9A9AA8]">
+                No custom packages yet. Add your standard formats (e.g. 60s Reel, Dedicated Video, Newsletter Integration) with turnaround days.
+              </p>
+              <button
+                type="button"
+                onClick={() => setShowAddRateCardModal(true)}
+                className="px-4 py-1.5 rounded-full border border-black/10 dark:border-white/10 hover:border-[#FFD21F] text-xs font-bold transition-colors cursor-pointer"
+              >
+                + Create First Package
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {rateCards.map((rc) => (
                 <div
-                  key={c.id}
-                  className="flex items-center justify-between text-xs font-medium"
+                  key={rc.id}
+                  className="p-4 rounded-2xl bg-[#FAF9F5] dark:bg-[#181824] border border-black/6 dark:border-white/10 space-y-2.5 flex flex-col justify-between"
                 >
-                  <span
-                    className={
-                      c.done
-                        ? "text-[#0A0A0E] dark:text-white"
-                        : "text-[#8A8A9A] dark:text-[#6A6A7E]"
-                    }
-                  >
-                    {c.label}
-                  </span>
-                  {c.done ? (
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                  ) : (
-                    <Circle className="w-4 h-4 text-amber-500" />
-                  )}
+                  <div className="space-y-1">
+                    <div className="flex items-center justify-between">
+                      <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] font-mono text-[10px] font-bold">
+                        {rc.deliverableType}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveRateCard(rc.id)}
+                        className="text-[#8A8A9A] hover:text-red-500 p-1 transition-colors"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                    <h4 className="text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
+                      {rc.title}
+                    </h4>
+                    {rc.description && (
+                      <p className="text-[11px] text-[#6A6A78] dark:text-[#8E8EA4] line-clamp-2">
+                        {rc.description}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="flex items-center justify-between pt-2 border-t border-black/5 dark:border-white/5 font-mono text-xs">
+                    <span className="text-[#6A6A78] dark:text-[#8E8EA4] flex items-center gap-1">
+                      <Clock className="w-3 h-3" />
+                      {rc.turnaroundDays}d turnaround
+                    </span>
+                    <span className="font-bold text-[#0A0A0E] dark:text-white">
+                      {currencySymbol}
+                      {rc.basePrice.toLocaleString()}
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>
-
-            {!completeness.isComplete && (
-              <p className="text-[11px] text-amber-700 dark:text-amber-400/90 leading-tight pt-1">
-                Complete all items above to unlock campaign applications and priority brand discovery.
-              </p>
-            )}
-          </div>
-
-          {/* Pro Sponsorship Tip */}
-          <div className="p-4 rounded-3xl bg-gradient-to-br from-amber-500/10 via-[#FFD21F]/5 to-transparent border border-amber-500/20 text-xs space-y-2">
-            <span className="font-bold text-[#0A0A0E] dark:text-white flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-[#FFD21F]" />
-              <span>Sponsorship Pro-Tip</span>
-            </span>
-            <p className="text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed text-[11px]">
-              Profiles with connected YouTube or Instagram channels close deals <strong>3.4x faster</strong> because brands can instantly verify real engagement metrics.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* ── MOBILE FLOATING ACTION BAR ── */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 p-3 bg-white/95 dark:bg-[#12121A]/95 backdrop-blur-md border-t border-black/8 dark:border-white/10 z-40 flex items-center justify-between gap-3">
-        <div className="flex items-center gap-2">
-          <span className="text-xs font-mono font-bold text-[#FFD21F]">
-            {completeness.score}%
-          </span>
-          <span className="text-[11px] text-[#6A6A78] dark:text-[#8E8EA4]">
-            {completeness.isComplete ? "Ready" : "Incomplete"}
-          </span>
-        </div>
-
-        <button
-          type="button"
-          onClick={() => handleSaveProfile()}
-          disabled={isSaving}
-          className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all shadow-md border border-black/10 flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
-        >
-          {isSaving ? (
-            <>
-              <Loader2 className="w-3.5 h-3.5 animate-spin" />
-              <span>Saving...</span>
-            </>
-          ) : (
-            <>
-              <Save className="w-3.5 h-3.5" />
-              <span>Save Profile</span>
-            </>
           )}
-        </button>
+        </div>
       </div>
 
       {/* ── MODALS ── */}
 
-      {/* 1. Photo & Visual Assets Modal */}
+      {/* 1. Photo Avatar Modal */}
       {showPhotoModal && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center z-50 p-4">
-          <div className="bg-white dark:bg-[#12121A] rounded-3xl p-6 sm:p-8 max-w-lg w-full border border-black/10 dark:border-white/10 shadow-2xl space-y-5 animate-in fade-in zoom-in-95 duration-200">
+          <div className="bg-white dark:bg-[#12121A] rounded-3xl p-6 sm:p-8 max-w-md w-full border border-black/10 dark:border-white/10 shadow-2xl space-y-5 animate-in fade-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
               <h3 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">
-                Profile Images &amp; Artwork
+                Profile Avatar
               </h3>
               <button
                 type="button"
@@ -1773,39 +1348,6 @@ export default function ProfileEditPage() {
                   <span>Use Connected Account Avatar</span>
                 </button>
               )}
-
-              <Input
-                label="Cover Banner URL (Custom Image)"
-                value={coverImageUrl}
-                onChange={(e) => setCoverImageUrl(e.target.value)}
-                placeholder="https://example.com/banner.jpg"
-              />
-
-              {/* 1-Click Preset Themes */}
-              <div className="space-y-2 pt-1">
-                <span className="text-xs font-mono uppercase text-[#7A7A8A] dark:text-[#8E8EA4] font-bold block">
-                  Or pick a Studio Banner Theme:
-                </span>
-                <div className="grid grid-cols-2 gap-2">
-                  {PRESET_COVERS.map((preset) => (
-                    <button
-                      key={preset.name}
-                      type="button"
-                      onClick={() => setCoverImageUrl(preset.url)}
-                      className={`p-2.5 rounded-xl border text-xs font-bold text-left transition-all flex items-center justify-between cursor-pointer ${
-                        coverImageUrl === preset.url
-                          ? "border-[#FFD21F] bg-[#FFD21F]/10 text-[#0A0A0E] dark:text-[#FFD21F]"
-                          : "border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 text-[#5A5A68] dark:text-[#A0A0B4]"
-                      }`}
-                    >
-                      <span>{preset.name}</span>
-                      {coverImageUrl === preset.url && (
-                        <Check className="w-3.5 h-3.5 text-[#FFD21F]" />
-                      )}
-                    </button>
-                  ))}
-                </div>
-              </div>
             </div>
 
             <div className="flex items-center justify-end gap-2 pt-3 border-t border-black/8 dark:border-white/10">
@@ -1846,7 +1388,7 @@ export default function ProfileEditPage() {
                 <select
                   value={newPlatform}
                   onChange={(e) => setNewPlatform(e.target.value as PlatformType)}
-                  className="w-full px-3 py-2.5 rounded-xl border border-black/10 dark:border-white/10 text-xs font-sans bg-[#F8F8FC] dark:bg-[#181824] text-[#0A0A0E] dark:text-white font-medium"
+                  className="w-full px-3 py-2.5 rounded-xl border border-black/10 dark:border-white/10 text-xs font-sans bg-[#F8F8FC] dark:bg-[#181824] text-[#0A0A0E] dark:text-white font-medium cursor-pointer"
                 >
                   <option value="youtube">YouTube</option>
                   <option value="instagram">Instagram</option>
@@ -1938,7 +1480,7 @@ export default function ProfileEditPage() {
                   onChange={(e) =>
                     setNewRateType(e.target.value as DeliverableType)
                   }
-                  className="w-full px-3 py-2.5 rounded-xl border border-black/10 dark:border-white/10 text-xs font-sans bg-[#F8F8FC] dark:bg-[#181824] text-[#0A0A0E] dark:text-white font-medium"
+                  className="w-full px-3 py-2.5 rounded-xl border border-black/10 dark:border-white/10 text-xs font-sans bg-[#F8F8FC] dark:bg-[#181824] text-[#0A0A0E] dark:text-white font-medium cursor-pointer"
                 >
                   {DELIVERABLE_OPTIONS.map((opt) => (
                     <option key={opt} value={opt}>
