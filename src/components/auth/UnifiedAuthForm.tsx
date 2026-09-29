@@ -51,6 +51,9 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
     queryRole === "brand" ? "brand" : "creator"
   );
 
+  // Gender Persona for Creator Theme: "male" | "female"
+  const [gender, setGender] = useState<"male" | "female">("male");
+
   // Form Fields
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -189,6 +192,7 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
           role,
           companyName: role === "brand" ? name.trim() : undefined,
           contactName: role === "brand" ? name.trim() : undefined,
+          gender: role === "creator" ? gender : undefined,
           instagramHandle: role === "creator" && instagramInput.trim() ? instagramInput.trim() : undefined,
           youtubeHandle: role === "creator" && youtubeInput.trim() ? youtubeInput.trim() : undefined,
         });
@@ -315,6 +319,49 @@ export function UnifiedAuthForm({ initialTab = "signin" }: UnifiedAuthFormProps)
             >
               <Building2 className={`w-3.5 h-3.5 ${role === "brand" ? "text-[#0F766E] dark:text-[#34D399]" : "text-[#7A7A8A]"}`} />
               <span>🟢 Brand / Business</span>
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Gender / Theme Selector (Only shown for Creators on Register) */}
+      {activeTab === "register" && role === "creator" && (
+        <div className="space-y-1.5 pt-0.5">
+          <div className="flex items-center justify-between">
+            <label className="text-[11px] font-bold text-[#5A5A68] dark:text-[#A0A0B4] font-sans">
+              Creator Theme &amp; Persona:
+            </label>
+            <span className="text-[10px] font-semibold text-[#7A7A8A] dark:text-[#8E8EA4]">
+              {gender === "male" ? "🟣 Midnight Purple" : "🌸 Soft Pink + Red"}
+            </span>
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <button
+              type="button"
+              disabled={isLoading}
+              onClick={() => setGender("male")}
+              className={`py-2 px-3 rounded-xl text-xs font-bold font-sans flex items-center justify-center gap-1.5 transition-all cursor-pointer border disabled:opacity-50 disabled:cursor-not-allowed ${
+                gender === "male"
+                  ? "bg-[#7C3AED]/15 dark:bg-[#7C3AED]/25 text-[#7C3AED] dark:text-[#C084FC] border-[#7C3AED]/60 shadow-xs ring-1 ring-[#7C3AED]/40"
+                  : "bg-black/[0.02] dark:bg-white/[0.03] text-[#7A7A8A] dark:text-[#8E8EA4] border-black/8 dark:border-white/8 hover:text-[#0B0A14] dark:hover:text-white"
+              }`}
+            >
+              <span className="w-2 h-2 rounded-full bg-[#7C3AED]" />
+              <span>Male (Midnight Purple)</span>
+            </button>
+
+            <button
+              type="button"
+              disabled={isLoading}
+              onClick={() => setGender("female")}
+              className={`py-2 px-3 rounded-xl text-xs font-bold font-sans flex items-center justify-center gap-1.5 transition-all cursor-pointer border disabled:opacity-50 disabled:cursor-not-allowed ${
+                gender === "female"
+                  ? "bg-[#E11D48]/15 dark:bg-[#E11D48]/25 text-[#E11D48] dark:text-[#FB7185] border-[#E11D48]/60 shadow-xs ring-1 ring-[#E11D48]/40"
+                  : "bg-black/[0.02] dark:bg-white/[0.03] text-[#7A7A8A] dark:text-[#8E8EA4] border-black/8 dark:border-white/8 hover:text-[#0B0A14] dark:hover:text-white"
+              }`}
+            >
+              <span className="w-2 h-2 rounded-full bg-[#E11D48]" />
+              <span>Female (Soft Pink)</span>
             </button>
           </div>
         </div>

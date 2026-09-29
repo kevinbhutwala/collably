@@ -27,6 +27,7 @@ import {
   Sun,
   Moon,
   Globe,
+  Palette,
   Receipt,
   CheckCircle2,
   RefreshCw,
@@ -37,7 +38,7 @@ import { convertCurrency, formatCurrency, getExchangeRateToUSD } from "@/core/ut
 import { useGlobalCurrency } from "@/context/CurrencyContext";
 
 export default function SettingsPage() {
-  const { user, role } = useAuthStore();
+  const { user, role, currentCreator, setUser, updateCreatorProfile } = useAuthStore();
   const {
     subscription,
     currentPlan,
@@ -96,6 +97,39 @@ export default function SettingsPage() {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isChangingPassword, setIsChangingPassword] = useState(false);
+
+  const rawGender = (user?.gender || currentCreator?.gender || "").toLowerCase().trim();
+  const isFemale = rawGender === "female" || rawGender === "f" || rawGender === "woman" || rawGender === "she/her";
+
+  const handleGenderThemeChange = async (newGender: "male" | "female") => {
+    try {
+      if (user) {
+        setUser({ ...user, gender: newGender });
+      }
+      if (currentCreator) {
+        await updateCreatorProfile({ gender: newGender });
+      }
+      await fetch("/api/auth/me", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ gender: newGender }),
+      });
+      addToast({
+        type: "success",
+        title: newGender === "female" ? "Soft Pink + Red Theme Activated" : "Midnight Purple Theme Activated",
+        message:
+          newGender === "female"
+            ? "Switched workspace theme to Soft Pink + Red 🌸"
+            : "Switched workspace theme to Midnight Purple 🟣",
+      });
+    } catch (err: any) {
+      addToast({
+        type: "error",
+        title: "Update Failed",
+        message: err.message || "Failed to update theme",
+      });
+    }
+  };
 
   const isBrand = role === "brand" || role === "brand_owner" || role === "brand_manager";
   const plans = isBrand ? Object.values(BRAND_PLANS) : Object.values(CREATOR_PLANS);
@@ -868,6 +902,103 @@ export default function SettingsPage() {
               </div>
             </div>
           </div>
+
+          {/* Creator Theme & Gender Persona (Only for Creators) */}
+          {role === "creator" && (
+            <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-6">
+              <div>
+                <h2 className="text-base sm:text-lg font-black text-[#0B0A14] dark:text-white tracking-tight font-display flex items-center gap-2">
+                  <Palette className="w-5 h-5 text-primary" />
+                  <span>Creator Workspace Theme &amp; Persona</span>
+                </h2>
+                <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#8E8EA4] mt-1 font-sans">
+                  Personalize your workspace palette. Select your preferred color persona below. Changes apply instantly across your creator dashboard, deals, and campaigns.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Midnight Purple Option (Male Creator) */}
+                <button
+                  type="button"
+                  onClick={() => handleGenderThemeChange("male")}
+                  className={`p-5 rounded-2xl border-2 text-left transition-all cursor-pointer relative overflow-hidden ${
+                    !isFemale
+                      ? "border-[#7C3AED] bg-[#7C3AED]/5 shadow-sm ring-2 ring-[#7C3AED]/30"
+                      : "border-black/10 dark:border-white/10 hover:border-[#7C3AED]/40 bg-white dark:bg-[#161622]"
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-2.5">
+                    <div className="flex items-center gap-2">
+                      <span className="w-4 h-4 rounded-full bg-[#7C3AED] shadow-[0_0_8px_rgba(124,58,237,0.6)]" />
+                      <span className="text-sm font-extrabold text-[#0B0A14] dark:text-white font-display">
+                        Midnight Purple 🟣
+                      </span>
+                    </div>
+                    {!isFemale && (
+                      <span className="px-2.5 py-0.5 rounded-full bg-[#7C3AED] text-white text-[10px] font-mono font-bold flex items-center gap-1">
+                        <Check className="w-3 h-3" />
+                        <span>Active Theme</span>
+                      </span>
+                    )}
+                  </div>
+
+                  <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] mb-3 leading-relaxed">
+                    Signature Midnight Purple palette with deep violet tones, electric lilac highlights, and modern slate surfaces.
+                  </p>
+
+                  <div className="flex items-center justify-between pt-2 border-t border-black/5 dark:border-white/5">
+                    <div className="flex -space-x-1.5">
+                      <div className="w-5 h-5 rounded-full border-2 border-white dark:border-[#12121A] bg-[#7C3AED]" title="Primary #7C3AED" />
+                      <div className="w-5 h-5 rounded-full border-2 border-white dark:border-[#12121A] bg-[#C084FC]" title="Accent #C084FC" />
+                      <div className="w-5 h-5 rounded-full border-2 border-white dark:border-[#12121A] bg-[#0B0A14]" title="Midnight #0B0A14" />
+                      <div className="w-5 h-5 rounded-full border-2 border-white dark:border-[#12121A] bg-[#F8FAFC]" title="Canvas #F8FAFC" />
+                    </div>
+                    <span className="text-[11px] font-mono font-semibold text-[#7C3AED]">Male Creator Default</span>
+                  </div>
+                </button>
+
+                {/* Soft Pink + Red Option (Female Creator) */}
+                <button
+                  type="button"
+                  onClick={() => handleGenderThemeChange("female")}
+                  className={`p-5 rounded-2xl border-2 text-left transition-all cursor-pointer relative overflow-hidden ${
+                    isFemale
+                      ? "border-[#E11D48] bg-[#E11D48]/5 shadow-sm ring-2 ring-[#E11D48]/30"
+                      : "border-black/10 dark:border-white/10 hover:border-[#E11D48]/40 bg-white dark:bg-[#161622]"
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-2.5">
+                    <div className="flex items-center gap-2">
+                      <span className="w-4 h-4 rounded-full bg-[#E11D48] shadow-[0_0_8px_rgba(225,29,72,0.6)]" />
+                      <span className="text-sm font-extrabold text-[#0B0A14] dark:text-white font-display">
+                        Soft Pink + Red 🌸
+                      </span>
+                    </div>
+                    {isFemale && (
+                      <span className="px-2.5 py-0.5 rounded-full bg-[#E11D48] text-white text-[10px] font-mono font-bold flex items-center gap-1">
+                        <Check className="w-3 h-3" />
+                        <span>Active Theme</span>
+                      </span>
+                    )}
+                  </div>
+
+                  <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] mb-3 leading-relaxed">
+                    Vibrant crimson red action buttons, soft blossom pink accents, delicate blush canvas, and dark velvet contrast.
+                  </p>
+
+                  <div className="flex items-center justify-between pt-2 border-t border-black/5 dark:border-white/5">
+                    <div className="flex -space-x-1.5">
+                      <div className="w-5 h-5 rounded-full border-2 border-white dark:border-[#12121A] bg-[#E11D48]" title="Primary #E11D48" />
+                      <div className="w-5 h-5 rounded-full border-2 border-white dark:border-[#12121A] bg-[#FB7185]" title="Accent #FB7185" />
+                      <div className="w-5 h-5 rounded-full border-2 border-white dark:border-[#12121A] bg-[#1F1720]" title="Midnight #1F1720" />
+                      <div className="w-5 h-5 rounded-full border-2 border-white dark:border-[#12121A] bg-[#FFF7FA]" title="Canvas #FFF7FA" />
+                    </div>
+                    <span className="text-[11px] font-mono font-semibold text-[#E11D48]">Female Creator Default</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+          )}
 
           <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/8 shadow-xs space-y-6 text-[#0B0A14]">
             <div>

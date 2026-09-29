@@ -108,6 +108,7 @@ export async function GET(req: NextRequest) {
         email: user.email,
         role: user.role,
         avatarUrl: user.avatarUrl,
+        gender: user.gender || creatorProfile?.gender || undefined,
         verified: user.verified,
         lastLoginAt: user.lastLoginAt,
         lastActiveAt: nowIso,
@@ -142,7 +143,7 @@ export async function PATCH(req: NextRequest) {
     }
 
     const body = await req.json().catch(() => ({}));
-    const { preferredCurrency, preferred_currency, country } = body;
+    const { preferredCurrency, preferred_currency, country, gender } = body;
 
     const { getDefaultCurrencyForCountry } = await import("@/core/utils/currency");
     const rawCurrency = (preferredCurrency || preferred_currency)?.toUpperCase();
@@ -166,6 +167,12 @@ export async function PATCH(req: NextRequest) {
         updates.preferred_currency = detected;
       }
     }
+    if (gender && (gender === "male" || gender === "female" || gender === "other")) {
+      updates.gender = gender;
+      try {
+        creatorRepo.updateCreator(payload.userId, { gender });
+      } catch {}
+    }
 
     const updated = userRepo.updateUser(payload.userId, updates);
 
@@ -177,6 +184,7 @@ export async function PATCH(req: NextRequest) {
         email: updated.email,
         role: updated.role,
         avatarUrl: updated.avatarUrl,
+        gender: updated.gender,
         verified: updated.verified,
         preferredCurrency: updated.preferredCurrency || updated.preferred_currency || "USD",
         preferred_currency: updated.preferred_currency || updated.preferredCurrency || "USD",

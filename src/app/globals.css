@@ -217,6 +217,68 @@
   }
 
   /* ══════════════════════════════════════════════════════════════════════════
+     CREATORS (FEMALE) → SOFT PINK + RED 🌸 THEME
+     Soft Pink + Red palette for female creator workspaces:
+     Canvas: #FFF7FA • Primary: #E11D48 • Accent: #FB7185 • Midnight: #1F1720
+     ══════════════════════════════════════════════════════════════════════════ */
+  [data-role="creator-female"],
+  .theme-creator-female {
+    --theme-midnight: #1F1720;
+    --theme-midnight-rgb: 31 23 32;
+
+    --theme-primary: #E11D48;
+    --theme-primary-hover: #BE123C;
+    --theme-primary-active: #9F1239;
+    --theme-primary-rgb: 225 29 72;
+    --theme-primary-hover-rgb: 190 18 60;
+
+    --theme-accent: #FB7185;
+    --theme-accent-hover: #FDA4AF;
+    --theme-accent-rgb: 251 113 133;
+    --theme-accent-hover-rgb: 253 164 175;
+
+    --theme-canvas: #FFF7FA;
+    --theme-canvas-rgb: 255 247 250;
+
+    --theme-glow: 0 4px 20px rgba(225, 29, 72, 0.35);
+    --theme-glow-lg: 0 8px 32px rgba(225, 29, 72, 0.50);
+
+    --color-text-primary: var(--theme-midnight);
+    --color-theme: var(--theme-primary);
+    --color-theme-hover: var(--theme-primary-hover);
+    --color-theme-active: var(--theme-primary-active);
+    --color-theme-lilac: var(--theme-accent);
+    --color-theme-midnight: var(--theme-midnight);
+    --color-theme-ink: var(--theme-midnight);
+
+    --background: var(--theme-canvas);
+    --foreground: var(--theme-midnight);
+    --card: #FFFFFF;
+    --card-foreground: var(--theme-midnight);
+    --ring: var(--theme-primary);
+
+    --primary: var(--theme-primary);
+    --primary-foreground: #FFFFFF;
+    --accent: var(--theme-accent);
+    --accent-foreground: var(--theme-midnight);
+    --micro-accent: var(--theme-primary);
+    --micro-accent-text: #FFFFFF;
+  }
+
+  [data-role="creator-female"].dark,
+  .dark[data-role="creator-female"],
+  .dark .theme-creator-female,
+  [data-role="creator-female"] .dark {
+    --theme-midnight: #1F1720;
+    --background: #1F1720 !important;
+    --foreground: #FFF7FA !important;
+    --card: #2B1F2D !important;
+    --card-foreground: #FFF7FA !important;
+    --color-theme-ink: #FFF7FA !important;
+    --ring: var(--theme-primary);
+  }
+
+  /* ══════════════════════════════════════════════════════════════════════════
      BRANDS → EMERALD 🟢 THEME
      Feels professional, growth-oriented, trustworthy and business-focused.
      Emerald + White — Premium & trustworthy
