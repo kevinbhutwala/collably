@@ -18,15 +18,15 @@ export default function AuthenticatedAppLayout({
 
         <AppNavbar />
         
-        {/* Main Body: Fixed Static Sidebar on Left, Independent Scrollable Main Screen on Right */}
-        <div className="flex flex-1 overflow-hidden relative z-10">
-          <AppSidebar />
-          <main className="flex-1 h-full overflow-y-auto overflow-x-hidden p-4 sm:p-7 lg:p-9 pb-24 lg:pb-10 w-full">
-            <div className="max-w-7xl mx-auto w-full">
-              {children}
-            </div>
-          </main>
-        </div>
+          {/* Main Body: Fixed Static Sidebar on Left, Independent Scrollable Main Screen on Right */}
+          <div className="flex flex-1 overflow-hidden relative z-10">
+            <AppSidebar />
+            <main className="flex-1 h-full overflow-y-auto overflow-x-hidden px-3 sm:px-6 lg:px-8 py-3.5 sm:py-6 lg:py-8 pb-24 lg:pb-10 w-full">
+              <div className="max-w-7xl mx-auto w-full">
+                {children}
+              </div>
+            </main>
+          </div>
 
         <MobileBottomDock />
         <PlanUpgradeModal />

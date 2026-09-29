@@ -169,13 +169,13 @@ function DashboardContent() {
   const profileStatus = checkCreatorProfileStatus(currentCreator);
 
   return (
-    <div className="space-y-8 text-[#0A0A0E] dark:text-[#F4F4F8] font-sans select-none">
+    <div className="space-y-4 sm:space-y-6 lg:space-y-8 text-[#0A0A0E] dark:text-[#F4F4F8] font-sans select-none">
       {/* ── Welcome Banner ── */}
-      <div className="rounded-3xl bg-gradient-to-br from-[#FFFDF5] via-white to-[#FFF9E6] dark:from-[#161622] dark:via-[#12121A] dark:to-[#181824] border border-[#FFD21F]/30 dark:border-white/10 p-5 sm:p-7 shadow-[0_10px_30px_rgba(0,0,0,0.04)] relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-5">
+      <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#FFFDF5] via-white to-[#FFF9E6] dark:from-[#161622] dark:via-[#12121A] dark:to-[#181824] border border-[#FFD21F]/30 dark:border-white/10 p-4 sm:p-6 lg:p-7 shadow-[0_10px_30px_rgba(0,0,0,0.04)] relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-5">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#FFD21F]/15 dark:bg-[#FFD21F]/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="space-y-1.5 relative z-10 max-w-xl">
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[10px] font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-pulse" />
               Live
@@ -202,76 +202,78 @@ function DashboardContent() {
                 {profileStatus.canApplyToCampaigns ? (
                   <>
                     <CheckCircle2 className="w-3 h-3 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                    <span>Profile Confirmed (100%) • Ready to Apply</span>
+                    <span className="hidden sm:inline">Profile Confirmed (100%) • Ready to Apply</span>
+                    <span className="sm:hidden">Confirmed (100%) • Ready</span>
                   </>
                 ) : (
                   <>
                     <Lock className="w-3 h-3 text-amber-600 dark:text-amber-400 shrink-0" />
-                    <span>Profile Incomplete ({profileStatus.score}%) • Applications Locked</span>
+                    <span className="hidden sm:inline">Profile Incomplete ({profileStatus.score}%) • Applications Locked</span>
+                    <span className="sm:hidden">Incomplete ({profileStatus.score}%) • Locked</span>
                   </>
                 )}
               </Link>
             )}
           </div>
 
-          <h1 className="text-xl sm:text-2xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
+          <h1 className="text-lg sm:text-2xl font-extrabold text-[#0A0A0E] dark:text-white tracking-tight font-display">
             Welcome back, <span className="font-black">{user?.name || "Collaborator"}</span>
           </h1>
           <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#A0A0B4]">
             {role === "creator"
               ? profileStatus.canApplyToCampaigns
                 ? "Here is your hub for active projects, earnings, and open campaigns."
-                : "Complete and verify your creator profile first to unlock campaign pitches and brand collaborations."
+                : "Complete and verify your creator profile to unlock brand campaigns."
               : "Here is your hub for campaigns, creator discovery, and escrow payments."}
           </p>
         </div>
 
         {/* Quick Action CTAs */}
-        <div className="flex flex-wrap items-center gap-2.5 relative z-10 w-full sm:w-auto">
+        <div className="grid grid-cols-2 sm:flex sm:items-center gap-2 relative z-10 w-full sm:w-auto">
           {role === "creator" ? (
             profileStatus.canApplyToCampaigns ? (
               <>
-                <Link href="/app/campaigns" className="flex-1 sm:flex-initial">
-                  <button className="w-full sm:w-auto px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs border border-black/10 cursor-pointer">
-                    <Compass className="w-3.5 h-3.5 text-[#0A0A0E]" />
-                    <span>Find Campaigns</span>
+                <Link href="/app/campaigns" className="w-full sm:w-auto">
+                  <button className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs border border-black/10 cursor-pointer">
+                    <Compass className="w-3.5 h-3.5 text-[#0A0A0E] shrink-0" />
+                    <span className="truncate">Find Campaigns</span>
                   </button>
                 </Link>
-                <Link href="/app/profile" className="flex-1 sm:flex-initial">
-                  <button className="w-full sm:w-auto px-4 py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#1C1C28] dark:hover:bg-[#252535] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs cursor-pointer">
-                    <Sparkles className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F]" />
-                    <span>My Media Kit</span>
+                <Link href="/app/profile" className="w-full sm:w-auto">
+                  <button className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#1C1C28] dark:hover:bg-[#252535] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs cursor-pointer">
+                    <Sparkles className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F] shrink-0" />
+                    <span className="truncate">My Media Kit</span>
                   </button>
                 </Link>
               </>
             ) : (
               <>
-                <Link href="/app/profile" className="flex-1 sm:flex-initial">
-                  <button className="w-full sm:w-auto px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs border border-black/10 cursor-pointer">
-                    <Sparkles className="w-3.5 h-3.5 text-[#0A0A0E]" />
-                    <span>First: Complete Profile</span>
+                <Link href="/app/profile" className="w-full sm:w-auto">
+                  <button className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs border border-black/10 cursor-pointer">
+                    <Sparkles className="w-3.5 h-3.5 text-[#0A0A0E] shrink-0" />
+                    <span className="truncate">Complete Profile</span>
                   </button>
                 </Link>
-                <Link href="/app/campaigns" className="flex-1 sm:flex-initial">
-                  <button className="w-full sm:w-auto px-4 py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#1C1C28] dark:hover:bg-[#252535] border border-black/10 dark:border-white/10 text-[#6A6A78] dark:text-[#A0A0B4] font-medium text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs cursor-pointer">
-                    <Lock className="w-3.5 h-3.5 text-amber-500" />
-                    <span>Browse Briefs (View Only)</span>
+                <Link href="/app/campaigns" className="w-full sm:w-auto">
+                  <button className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#1C1C28] dark:hover:bg-[#252535] border border-black/10 dark:border-white/10 text-[#6A6A78] dark:text-[#A0A0B4] font-medium text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs cursor-pointer">
+                    <Lock className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                    <span className="truncate">Browse Briefs</span>
                   </button>
                 </Link>
               </>
             )
           ) : (
             <>
-              <Link href="/app/brand/campaigns/create" className="flex-1 sm:flex-initial">
-                <button className="w-full sm:w-auto px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs border border-black/10">
-                  <FolderPlus className="w-3.5 h-3.5 text-[#0A0A0E]" />
-                  <span>Post Campaign</span>
+              <Link href="/app/brand/campaigns/create" className="w-full sm:w-auto">
+                <button className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs border border-black/10">
+                  <FolderPlus className="w-3.5 h-3.5 text-[#0A0A0E] shrink-0" />
+                  <span className="truncate">Post Campaign</span>
                 </button>
               </Link>
-              <Link href="/app/brand/creators" className="flex-1 sm:flex-initial">
-                <button className="w-full sm:w-auto px-4 py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#1C1C28] dark:hover:bg-[#252535] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs">
-                  <Users className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F]" />
-                  <span>Find Creators</span>
+              <Link href="/app/brand/creators" className="w-full sm:w-auto">
+                <button className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-full bg-white hover:bg-[#F8F8FC] dark:bg-[#1C1C28] dark:hover:bg-[#252535] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-xs">
+                  <Users className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F] shrink-0" />
+                  <span className="truncate">Find Creators</span>
                 </button>
               </Link>
             </>
@@ -286,13 +288,13 @@ function DashboardContent() {
 
       {/* ── Quick Start: How AbeyCollab Works ── */}
       {showQuickStart && (
-        <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-[#FFD21F]/40 dark:border-white/10 p-5 sm:p-6 shadow-[0_6px_24px_rgba(0,0,0,0.06)] relative overflow-hidden transition-all">
-          <div className="flex items-center justify-between gap-3 pb-3.5 border-b border-black/8 dark:border-white/10">
+        <div className="rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-[#FFD21F]/40 dark:border-white/10 p-4 sm:p-6 shadow-[0_6px_24px_rgba(0,0,0,0.06)] relative overflow-hidden transition-all">
+          <div className="flex items-center justify-between gap-3 pb-3 border-b border-black/8 dark:border-white/10">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />
-              <h2 className="text-sm sm:text-base font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-1.5">
+              <h2 className="text-xs sm:text-base font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-1.5">
                 <span>Quick Start Guide</span>
-                <span className="text-xs font-mono font-normal text-[#6A6A78] dark:text-[#8E8EA4]">
+                <span className="text-[11px] font-mono font-normal text-[#6A6A78] dark:text-[#8E8EA4] hidden sm:inline">
                   • 3 Simple Steps as a {role === "creator" ? "Creator" : "Brand"}
                 </span>
               </h2>
@@ -308,42 +310,42 @@ function DashboardContent() {
             </button>
           </div>
 
-          <div className="flex md:grid md:grid-cols-3 gap-3 pt-3 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-none">
+          <div className="-mx-4 px-4 sm:mx-0 sm:px-0 flex md:grid md:grid-cols-3 gap-2.5 sm:gap-3 pt-3 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-none">
             {role === "creator" ? (
               <>
-                <div className="min-w-[260px] sm:min-w-0 snap-start flex-1 p-3.5 sm:p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-1.5">
+                <div className="min-w-[240px] sm:min-w-0 snap-center flex-1 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/[0.07] dark:border-white/10 space-y-1.5">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
-                    <span className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-black shrink-0">1</span>
+                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-[11px] sm:text-xs font-black shrink-0">1</span>
                     <span>Set Up Your Media Kit</span>
                   </div>
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
-                    Add your social links, past content examples, and standard pricing so brands can hire you directly.
+                    Add social links, past examples, and standard pricing so brands hire you directly.
                   </p>
                   <Link href="/app/profile" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8A7000] dark:text-[#FFD21F] hover:underline pt-1">
                     Edit Media Kit <ChevronRight className="w-3 h-3" />
                   </Link>
                 </div>
 
-                <div className="min-w-[260px] sm:min-w-0 snap-start flex-1 p-3.5 sm:p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-1.5">
+                <div className="min-w-[240px] sm:min-w-0 snap-center flex-1 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/[0.07] dark:border-white/10 space-y-1.5">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
-                    <span className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-black shrink-0">2</span>
+                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-[11px] sm:text-xs font-black shrink-0">2</span>
                     <span>Pitch to Paid Campaigns</span>
                   </div>
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
-                    Browse open brand briefs with guaranteed payments. Send your creative idea and custom quote.
+                    Browse open brand briefs with guaranteed payments. Send your creative idea and quote.
                   </p>
                   <Link href="/app/campaigns" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8A7000] dark:text-[#FFD21F] hover:underline pt-1">
                     Explore Campaigns <ChevronRight className="w-3 h-3" />
                   </Link>
                 </div>
 
-                <div className="min-w-[260px] sm:min-w-0 snap-start flex-1 p-3.5 sm:p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-1.5">
+                <div className="min-w-[240px] sm:min-w-0 snap-center flex-1 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/[0.07] dark:border-white/10 space-y-1.5">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
-                    <span className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-black shrink-0">3</span>
+                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-[11px] sm:text-xs font-black shrink-0">3</span>
                     <span>Submit Work &amp; Get Paid</span>
                   </div>
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
-                    Upload your drafts to the project workspace. Once approved, payment is sent with 120-hour automatic protection.
+                    Upload drafts to workspace. Once approved, payment releases with 24-hour protection.
                   </p>
                   <Link href="/app/collaborations" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8A7000] dark:text-[#FFD21F] hover:underline pt-1">
                     My Deals <ChevronRight className="w-3 h-3" />
@@ -352,39 +354,39 @@ function DashboardContent() {
               </>
             ) : (
               <>
-                <div className="min-w-[260px] sm:min-w-0 snap-start flex-1 p-3.5 sm:p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-1.5">
+                <div className="min-w-[240px] sm:min-w-0 snap-center flex-1 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/[0.07] dark:border-white/10 space-y-1.5">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
-                    <span className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-black shrink-0">1</span>
+                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-[11px] sm:text-xs font-black shrink-0">1</span>
                     <span>Post a Campaign</span>
                   </div>
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
-                    Describe what you need (e.g. YouTube video, Instagram Reel) and set your budget and deadlines.
+                    Describe requirements (Reels, Videos) and set budgets and deadlines.
                   </p>
                   <Link href="/app/brand/campaigns/create" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8A7000] dark:text-[#FFD21F] hover:underline pt-1">
                     Create Campaign <ChevronRight className="w-3 h-3" />
                   </Link>
                 </div>
 
-                <div className="min-w-[260px] sm:min-w-0 snap-start flex-1 p-3.5 sm:p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-1.5">
+                <div className="min-w-[240px] sm:min-w-0 snap-center flex-1 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/[0.07] dark:border-white/10 space-y-1.5">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
-                    <span className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-black shrink-0">2</span>
+                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-[11px] sm:text-xs font-black shrink-0">2</span>
                     <span>Find &amp; Save Creators</span>
                   </div>
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
-                    Search vetted creators by topic, follower count, and engagement. Save favorites to your contact list.
+                    Search vetted creators by niche, reach, and engagement. Save to roster.
                   </p>
                   <Link href="/app/brand/creators" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8A7000] dark:text-[#FFD21F] hover:underline pt-1">
                     Find Creators <ChevronRight className="w-3 h-3" />
                   </Link>
                 </div>
 
-                <div className="min-w-[260px] sm:min-w-0 snap-start flex-1 p-3.5 sm:p-4 rounded-2xl bg-[#FFFDF5] dark:bg-[#181826] border border-[#FFD21F]/30 space-y-1.5">
+                <div className="min-w-[240px] sm:min-w-0 snap-center flex-1 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/[0.07] dark:border-white/10 space-y-1.5">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0A0A0E] dark:text-white font-display">
-                    <span className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-xs font-black shrink-0">3</span>
-                    <span>Approve Content &amp; Pay</span>
+                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center text-[11px] sm:text-xs font-black shrink-0">3</span>
+                    <span>Approve &amp; Release Pay</span>
                   </div>
                   <p className="text-[11px] text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
-                    Your budget stays locked and safe in escrow while the creator works. You only release money when satisfied.
+                    Funds stay locked in escrow until you approve the creator deliverable.
                   </p>
                   <Link href="/app/collaborations" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8A7000] dark:text-[#FFD21F] hover:underline pt-1">
                     Review Content <ChevronRight className="w-3 h-3" />
@@ -397,7 +399,7 @@ function DashboardContent() {
       )}
 
       {/* ── Stats Grid ── */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
         {role === "creator" ? (
           <>
             <StatsCard
@@ -486,19 +488,19 @@ function DashboardContent() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
 
         {/* Left Column: Active Pipelines & Opportunities */}
-        <div className="lg:col-span-8 space-y-6">
+        <div className="lg:col-span-8 space-y-4 sm:space-y-6">
           {/* Active Collaborations Pipeline */}
-          <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-5">
-            <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-[#FFD21F]/15 dark:bg-[#FFD21F]/10 border border-[#FFD21F]/30 flex items-center justify-center shrink-0">
+          <div className="rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-4 sm:p-6 lg:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-4 sm:space-y-5">
+            <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10 gap-2">
+              <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#FFD21F]/15 dark:bg-[#FFD21F]/10 border border-[#FFD21F]/30 flex items-center justify-center shrink-0">
                   <FileCheck2 className="w-4 h-4 text-[#8A7000] dark:text-[#FFD21F]" />
                 </div>
-                <div>
-                  <h2 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">
+                <div className="min-w-0">
+                  <h2 className="text-sm sm:text-base font-bold text-[#0A0A0E] dark:text-white font-display truncate">
                     {role === "creator" ? "Active Projects & Content" : "Content Review & Approvals"}
                   </h2>
-                  <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
+                  <p className="text-[11px] sm:text-xs text-[#5A5A68] dark:text-[#8E8EA4] truncate">
                     {role === "creator"
                       ? "Track drafts, revisions, and approval progress."
                       : "Review creator submissions and approve payments."}
@@ -510,17 +512,18 @@ function DashboardContent() {
                 href="/app/collaborations"
                 className="text-xs font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-[#FFE052] transition-colors flex items-center gap-1 shrink-0"
               >
-                <span>View all ({collaborations.length})</span>
+                <span className="hidden sm:inline">View all ({collaborations.length})</span>
+                <span className="sm:hidden">All ({collaborations.length})</span>
                 <ArrowRight className="w-3 h-3" />
               </Link>
             </div>
 
             {isLoading ? (
-              <div className="space-y-3">
+              <div className="space-y-2.5 sm:space-y-3">
                 {[1, 2].map((i) => (
                   <div
                     key={i}
-                    className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 animate-pulse space-y-3"
+                    className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 animate-pulse space-y-3"
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
@@ -553,15 +556,15 @@ function DashboardContent() {
                 actionHref={role === "creator" ? "/app/campaigns" : "/app/brand/campaigns/create"}
               />
             ) : (
-              <div className="space-y-3">
+              <div className="space-y-2.5 sm:space-y-3">
                 {collaborations.map((collab) => (
                   <div
                     key={collab.id}
-                    className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all space-y-2.5"
+                    className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all space-y-2"
                   >
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                      <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl bg-white dark:bg-[#222234] border border-black/8 dark:border-white/10 flex items-center justify-center shrink-0 shadow-2xs overflow-hidden">
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
+                        <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white dark:bg-[#222234] border border-black/8 dark:border-white/10 flex items-center justify-center shrink-0 shadow-2xs overflow-hidden">
                           {role === "brand" ? (
                             collab.creator?.avatarUrl ? (
                               // eslint-disable-next-line @next/next/no-img-element
@@ -576,29 +579,29 @@ function DashboardContent() {
                             />
                           )}
                         </div>
-                        <div>
-                          <h3 className="font-bold text-xs sm:text-sm text-[#0A0A0E] dark:text-white line-clamp-1">
+                        <div className="min-w-0 flex-1">
+                          <h3 className="font-bold text-xs sm:text-sm text-[#0A0A0E] dark:text-white truncate">
                             {collab.campaignTitle}
                           </h3>
-                          <p className="text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4]">
+                          <p className="text-[10px] sm:text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4] truncate">
                             {role === "brand" ? (collab.creator?.fullName || "Assigned Creator") : collab.brand?.companyName} • {format(collab.totalAgreedBudget, collab.currency || "USD")}
                           </p>
                         </div>
                       </div>
 
-                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase self-start sm:self-auto bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] border border-[#FFD21F]/40">
+                      <span className="px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-mono font-bold uppercase shrink-0 bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] border border-[#FFD21F]/40">
                         {collab.status.replace(/_/g, " ")}
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between pt-2 border-t border-black/6 dark:border-white/10 text-xs font-mono gap-2">
-                      <span className="text-[#5A5A68] dark:text-[#8E8EA4] text-[11px] flex items-center gap-1.5 min-w-0">
+                    <div className="flex items-center justify-between pt-1.5 sm:pt-2 border-t border-black/6 dark:border-white/10 text-xs font-mono gap-2">
+                      <span className="text-[#5A5A68] dark:text-[#8E8EA4] text-[10px] sm:text-[11px] flex items-center gap-1.5 min-w-0">
                         <Clapperboard className="w-3.5 h-3.5 text-[#8A7000] dark:text-[#FFD21F] shrink-0" />
                         <span className="truncate">Content: <strong className="text-[#0A0A0E] dark:text-white">{collab.deliverables?.[0]?.title || "Draft #1"}</strong></span>
                       </span>
                       <Link
                         href="/app/collaborations"
-                        className="text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-[#FFE052] font-bold flex items-center gap-1 transition-colors text-[11px] shrink-0"
+                        className="text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-[#FFE052] font-bold flex items-center gap-1 transition-colors text-[10px] sm:text-[11px] shrink-0"
                       >
                         <span>Workspace</span>
                         <ArrowUpRight className="w-3 h-3" />
@@ -612,14 +615,14 @@ function DashboardContent() {
 
           {/* Discovery Section (Adaptive: Briefs for Creators, Talent for Brands) */}
           {role === "creator" ? (
-            <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-5">
-              <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
-                <div>
-                  <h2 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">
+            <div className="rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-4 sm:p-6 lg:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-4 sm:space-y-5">
+              <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10 gap-2">
+                <div className="min-w-0">
+                  <h2 className="text-sm sm:text-base font-bold text-[#0A0A0E] dark:text-white font-display truncate">
                     Open Paid Campaigns
                   </h2>
-                  <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
-                    Sponsorship briefs with guaranteed payments held in escrow.
+                  <p className="text-[11px] sm:text-xs text-[#5A5A68] dark:text-[#8E8EA4] truncate">
+                    Sponsorship briefs with guaranteed payments in escrow.
                   </p>
                 </div>
 
@@ -627,24 +630,25 @@ function DashboardContent() {
                   href="/app/campaigns"
                   className="text-xs font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-[#FFE052] transition-colors flex items-center gap-1 shrink-0"
                 >
-                  <span>View all ({activeCampaigns.length})</span>
+                  <span className="hidden sm:inline">View all ({activeCampaigns.length})</span>
+                  <span className="sm:hidden">All ({activeCampaigns.length})</span>
                   <ArrowRight className="w-3 h-3" />
                 </Link>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3.5">
                 {activeCampaigns.slice(0, 4).map((c) => (
                   <Link
                     key={c.id}
                     href={`/campaigns/${c.id}`}
-                    className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all group flex flex-col justify-between space-y-2.5"
+                    className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all group flex flex-col justify-between space-y-2"
                   >
                     <div>
-                      <div className="flex items-center justify-between mb-1.5">
-                        <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] text-[10px] font-mono font-bold uppercase border border-[#FFD21F]/30">
+                      <div className="flex items-center justify-between mb-1.5 gap-2">
+                        <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] text-[9.5px] sm:text-[10px] font-mono font-bold uppercase border border-[#FFD21F]/30 truncate">
                           {c.category}
                         </span>
-                        <span className="text-[11px] font-mono text-[#0A0A0E] dark:text-white font-bold">
+                        <span className="text-[11px] font-mono text-[#0A0A0E] dark:text-white font-bold shrink-0">
                           {format(c.budget?.totalBudget ?? 0, c.budget?.currency || "USD")}
                         </span>
                       </div>
@@ -656,7 +660,7 @@ function DashboardContent() {
                       </p>
                     </div>
 
-                    <div className="flex items-center justify-between pt-2 border-t border-black/6 dark:border-white/10 text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4]">
+                    <div className="flex items-center justify-between pt-1.5 sm:pt-2 border-t border-black/6 dark:border-white/10 text-[10.5px] sm:text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4]">
                       <span>{c.acceptedCount}/{c.maxCreators} filled</span>
                       <span className="text-[#0A0A0E] dark:text-[#FFD21F] font-bold group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5">
                         Apply <ArrowRight className="w-2.5 h-2.5" />
@@ -667,13 +671,13 @@ function DashboardContent() {
               </div>
             </div>
           ) : (
-            <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-5">
-              <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
-                <div>
-                  <h2 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">
+            <div className="rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-4 sm:p-6 lg:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-4 sm:space-y-5">
+              <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10 gap-2">
+                <div className="min-w-0">
+                  <h2 className="text-sm sm:text-base font-bold text-[#0A0A0E] dark:text-white font-display truncate">
                     Recommended Creators for You
                   </h2>
-                  <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4]">
+                  <p className="text-[11px] sm:text-xs text-[#5A5A68] dark:text-[#8E8EA4] truncate">
                     Vetted creators matched to your industry and brand niche.
                   </p>
                 </div>
@@ -682,29 +686,30 @@ function DashboardContent() {
                   href="/app/brand/creators"
                   className="text-xs font-mono font-bold text-[#0A0A0E] dark:text-[#FFD21F] hover:text-[#8A7000] dark:hover:text-[#FFE052] transition-colors flex items-center gap-1 shrink-0"
                 >
-                  <span>Explore all ({featuredCreators.length})</span>
+                  <span className="hidden sm:inline">Explore all ({featuredCreators.length})</span>
+                  <span className="sm:hidden">All ({featuredCreators.length})</span>
                   <ArrowRight className="w-3 h-3" />
                 </Link>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3.5">
                 {featuredCreators.slice(0, 4).map((creator) => (
                   <Link
                     key={creator.id}
                     href={`/creators/${creator.id}`}
-                    className="p-4 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all group flex flex-col justify-between space-y-2.5"
+                    className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all group flex flex-col justify-between space-y-2"
                   >
                     <div>
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] text-[10px] font-mono font-bold uppercase border border-[#FFD21F]/30">
+                      <div className="flex items-center justify-between mb-2 gap-2">
+                        <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] text-[9.5px] sm:text-[10px] font-mono font-bold uppercase border border-[#FFD21F]/30 truncate">
                           {creator.primaryCategory}
                         </span>
-                        <span className="text-[11px] font-mono text-[#0A0A0E] dark:text-white font-bold">
+                        <span className="text-[11px] font-mono text-[#0A0A0E] dark:text-white font-bold shrink-0">
                           From {format(creator.startingPrice || 500, (creator as any).currency || "USD")}
                         </span>
                       </div>
                       <div className="flex items-center gap-2.5">
-                        <div className="w-9 h-9 rounded-full bg-white dark:bg-[#222234] border border-black/8 dark:border-white/10 overflow-hidden shrink-0 flex items-center justify-center font-bold text-xs text-[#0A0A0E] dark:text-white shadow-2xs">
+                        <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white dark:bg-[#222234] border border-black/8 dark:border-white/10 overflow-hidden shrink-0 flex items-center justify-center font-bold text-xs text-[#0A0A0E] dark:text-white shadow-2xs">
                           {creator.avatarUrl ? (
                             // eslint-disable-next-line @next/next/no-img-element
                             <img src={creator.avatarUrl} alt={creator.fullName} className="w-full h-full object-cover" />
@@ -712,19 +717,19 @@ function DashboardContent() {
                             creator.fullName.charAt(0)
                           )}
                         </div>
-                        <div className="min-w-0">
+                        <div className="min-w-0 flex-1">
                           <h3 className="font-bold text-xs sm:text-sm text-[#0A0A0E] dark:text-white group-hover:text-[#8A7000] dark:group-hover:text-[#FFD21F] transition-colors truncate">
                             {creator.fullName}
                           </h3>
-                          <p className="text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4] truncate">
+                          <p className="text-[10px] sm:text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4] truncate">
                             {creator.handle} • {((creator.totalFollowers || 0) / 1000).toFixed(0)}k reach
                           </p>
                         </div>
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between pt-2 border-t border-black/6 dark:border-white/10 text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4]">
-                      <span>{creator.avgEngagementRate}% avg engagement</span>
+                    <div className="flex items-center justify-between pt-1.5 sm:pt-2 border-t border-black/6 dark:border-white/10 text-[10.5px] sm:text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4]">
+                      <span>{creator.avgEngagementRate}% engagement</span>
                       <span className="text-[#0A0A0E] dark:text-[#FFD21F] font-bold group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5">
                         Profile <ArrowRight className="w-2.5 h-2.5" />
                       </span>
@@ -737,21 +742,21 @@ function DashboardContent() {
         </div>
 
         {/* Right Column: Profile & Financial Ledger */}
-        <div className="lg:col-span-4 space-y-6">
+        <div className="lg:col-span-4 space-y-4 sm:space-y-6">
           {role === "creator" ? (
             <ProfileCompletenessCard creator={currentCreator || undefined} />
           ) : (
-            <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-4">
-              <div className="flex items-center justify-between pb-2.5 border-b border-black/8 dark:border-white/10">
-                <div>
-                  <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display">
+            <div className="rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-4 sm:p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-3.5 sm:space-y-4">
+              <div className="flex items-center justify-between pb-2.5 border-b border-black/8 dark:border-white/10 gap-2">
+                <div className="min-w-0">
+                  <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display truncate">
                     Brand Quick Actions
                   </h3>
-                  <p className="text-[11px] text-[#5A5A68] dark:text-[#8E8EA4]">
-                    Fast shortcuts to manage your campaigns
+                  <p className="text-[11px] text-[#5A5A68] dark:text-[#8E8EA4] truncate">
+                    Shortcuts to manage campaigns
                   </p>
                 </div>
-                <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] text-[10px] font-mono font-bold">
+                <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] text-[10px] font-mono font-bold shrink-0 truncate max-w-[120px]">
                   {currentBrand?.companyName || "Brand"}
                 </span>
               </div>
@@ -759,38 +764,38 @@ function DashboardContent() {
               <div className="grid grid-cols-2 gap-2 text-xs font-medium">
                 <Link
                   href="/app/brand/campaigns/create"
-                  className="p-3 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all flex flex-col items-center text-center gap-1.5"
+                  className="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all flex flex-col items-center text-center gap-1.5"
                 >
-                  <FolderPlus className="w-5 h-5 text-[#8A7000] dark:text-[#FFD21F]" />
+                  <FolderPlus className="w-4 h-4 sm:w-5 sm:h-5 text-[#8A7000] dark:text-[#FFD21F]" />
                   <span className="font-bold text-[#0A0A0E] dark:text-white text-[11px]">Post Campaign</span>
                 </Link>
                 <Link
                   href="/app/brand/creators"
-                  className="p-3 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all flex flex-col items-center text-center gap-1.5"
+                  className="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all flex flex-col items-center text-center gap-1.5"
                 >
-                  <Users className="w-5 h-5 text-[#0A0A0E] dark:text-white" />
+                  <Users className="w-4 h-4 sm:w-5 sm:h-5 text-[#0A0A0E] dark:text-white" />
                   <span className="font-bold text-[#0A0A0E] dark:text-white text-[11px]">Find Creators</span>
                 </Link>
                 <Link
                   href="/app/brand/crm"
-                  className="p-3 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all flex flex-col items-center text-center gap-1.5"
+                  className="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all flex flex-col items-center text-center gap-1.5"
                 >
-                  <FolderGit2 className="w-5 h-5 text-[#0A0A0E] dark:text-white" />
-                  <span className="font-bold text-[#0A0A0E] dark:text-white text-[11px]">Saved Contacts</span>
+                  <FolderGit2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#0A0A0E] dark:text-white" />
+                  <span className="font-bold text-[#0A0A0E] dark:text-white text-[11px]">Contacts</span>
                 </Link>
                 <Link
                   href="/app/brand/shortlists"
-                  className="p-3 rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all flex flex-col items-center text-center gap-1.5"
+                  className="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-[#F8F8FC] dark:bg-[#181826] border border-black/6 dark:border-white/10 hover:border-[#FFD21F] hover:bg-white dark:hover:bg-[#1E1E30] transition-all flex flex-col items-center text-center gap-1.5"
                 >
-                  <Layers className="w-5 h-5 text-[#8A7000] dark:text-[#FFD21F]" />
-                  <span className="font-bold text-[#0A0A0E] dark:text-white text-[11px]">Shortlisted Talent</span>
+                  <Layers className="w-4 h-4 sm:w-5 sm:h-5 text-[#8A7000] dark:text-[#FFD21F]" />
+                  <span className="font-bold text-[#0A0A0E] dark:text-white text-[11px]">Shortlists</span>
                 </Link>
               </div>
             </div>
           )}
 
           {/* Quick Payout / Escrow Activity Ledger */}
-          <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-5 sm:p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-3.5">
+          <div className="rounded-2xl sm:rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 p-4 sm:p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-3 sm:space-y-3.5">
             <div className="flex items-center justify-between pb-2.5 border-b border-black/8 dark:border-white/10">
               <h3 className="text-sm font-bold text-[#0A0A0E] dark:text-white font-display">
                 {role === "creator" ? "Recent Payouts" : "Recent Escrow Payments"}
@@ -810,9 +815,9 @@ function DashboardContent() {
             ) : (
               <div className="divide-y divide-black/5 dark:divide-white/5 font-mono text-xs">
                 {recentPayouts.slice(0, 3).map((p) => (
-                  <div key={p.id} className="py-2.5 flex items-center justify-between gap-3">
+                  <div key={p.id} className="py-2.5 flex items-center justify-between gap-2.5">
                     <div className="min-w-0 flex-1">
-                      <span className="font-bold text-[#0A0A0E] dark:text-white block truncate max-w-[140px] sm:max-w-[200px] xl:max-w-[240px] font-sans text-xs">
+                      <span className="font-bold text-[#0A0A0E] dark:text-white block truncate font-sans text-xs">
                         {p.campaignTitle}
                       </span>
                       <span className="text-[10px] text-[#6A6A78] dark:text-[#8E8EA4] block truncate">{p.brandName}</span>
