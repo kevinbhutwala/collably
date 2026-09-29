@@ -48,7 +48,7 @@ export function WishlinkHeroShowcase() {
       </div>
 
       {/* ── Seamless Bottom Gradient Blend into Canvas ── */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-[#0F172A]/70 to-[var(--theme-canvas)] pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-[#0F172A]/70 to-[#FAF8F5] pointer-events-none z-10" />
 
       {/* ── Main Hero Content ── */}
       <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center">
@@ -216,6 +216,31 @@ export function WishlinkHeroShowcase() {
             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
             <span>0% Chasing Invoices</span>
           </span>
+        </motion.div>
+
+        {/* Sleek Brand Partner Ribbon */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.55 }}
+          className="mt-7 sm:mt-9 pt-4 border-t border-white/10 w-full max-w-3xl flex flex-col items-center gap-2"
+        >
+          <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/50">
+            Trusted by creators collaborating with
+          </span>
+          <div className="flex flex-wrap items-center justify-center gap-x-5 sm:gap-x-8 gap-y-1.5 text-xs sm:text-sm font-display font-black text-white/80 tracking-widest uppercase">
+            <span className="hover:text-white transition-colors">Snitch</span>
+            <span className="text-white/20">•</span>
+            <span className="hover:text-white transition-colors">Plum</span>
+            <span className="text-white/20">•</span>
+            <span className="hover:text-white transition-colors">DermaCo</span>
+            <span className="text-white/20">•</span>
+            <span className="hover:text-white transition-colors">Boldfit</span>
+            <span className="text-white/20">•</span>
+            <span className="hover:text-white transition-colors">FabIndia</span>
+            <span className="text-white/20">•</span>
+            <span className="hover:text-white transition-colors">Littlebox</span>
+          </div>
         </motion.div>
       </div>
 

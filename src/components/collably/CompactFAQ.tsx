@@ -27,7 +27,7 @@ export function CompactFAQ() {
   ];
 
   return (
-    <section className="py-16 sm:py-24 bg-[#F8FAFC] dark:bg-[#0B0A14] text-[#0B0A14] dark:text-[#F8FAFC] select-none relative overflow-hidden border-t border-black/[0.06] dark:border-white/10">
+    <section className="py-16 sm:py-24 bg-[#FAF8F5] dark:bg-[#0B0A14] text-[#0B0A14] dark:text-[#F8FAFC] select-none relative overflow-hidden border-t border-black/[0.06] dark:border-white/10">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -36,10 +36,10 @@ export function CompactFAQ() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="text-center space-y-2"
         >
-          <span className="text-[11px] font-mono font-bold tracking-[0.18em] text-[#64748B] dark:text-[#94A3B8] uppercase block">
+          <span className="text-[11px] font-mono font-bold tracking-[0.18em] text-[#0F766E] uppercase block">
             FAQ
           </span>
-          <h2 className="text-3xl sm:text-4xl font-black text-[#0B0A14] dark:text-white font-display">
+          <h2 className="text-3xl sm:text-4xl font-black text-[#0F172A] dark:text-white font-display">
             Frequently asked questions.
           </h2>
         </motion.div>
@@ -56,17 +56,23 @@ export function CompactFAQ() {
             return (
               <div
                 key={index}
-                className="rounded-2xl bg-white dark:bg-[#121020] border border-black/[0.08] dark:border-white/10 overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.02)] transition-all hover:border-black/15"
+                className={`rounded-2xl bg-white dark:bg-[#121020] border transition-all ${
+                  isOpen
+                    ? "border-[#0F766E]/40 shadow-[0_6px_24px_rgba(15,118,110,0.08)] ring-1 ring-[#0F766E]/20"
+                    : "border-black/[0.08] dark:border-white/10 shadow-[0_2px_12px_rgba(0,0,0,0.02)] hover:border-black/15"
+                }`}
               >
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 select-none hover:bg-black/[0.01] dark:hover:bg-white/[0.02] transition-colors"
                 >
-                  <span className="text-xs sm:text-sm font-bold text-[#0B0A14] dark:text-white font-sans">
+                  <span className={`text-xs sm:text-sm font-bold font-sans ${isOpen ? "text-[#0F766E]" : "text-[#0F172A] dark:text-white"}`}>
                     {faq.q}
                   </span>
-                  <div className="w-7 h-7 rounded-full bg-[#F1F5F9] dark:bg-card flex items-center justify-center shrink-0 text-foreground dark:text-accent">
+                  <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-colors ${
+                    isOpen ? "bg-[#0F766E] text-white shadow-xs" : "bg-[#FAF8F5] text-[#0F172A] border border-black/5"
+                  }`}>
                     {isOpen ? <Minus className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
                   </div>
                 </button>
@@ -79,7 +85,7 @@ export function CompactFAQ() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.25, ease: "easeInOut" }}
                     >
-                      <div className="p-4 sm:p-5 pt-0 text-xs sm:text-sm text-[#5A5A68] dark:text-[#9A9AA8] leading-relaxed font-sans border-t border-black/[0.06] dark:border-white/10">
+                      <div className="p-4 sm:p-5 pt-0 text-xs sm:text-sm text-[#475569] dark:text-[#9A9AA8] leading-relaxed font-sans border-t border-black/[0.06] dark:border-white/10">
                         {faq.a}
                       </div>
                     </motion.div>

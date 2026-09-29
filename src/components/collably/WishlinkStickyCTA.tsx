@@ -35,7 +35,7 @@ export function WishlinkStickyCTA() {
                 <SafeImage src="/creators/prarthana.jpg" alt="Creator" fill className="object-cover" />
               </div>
               <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden border-2 border-white relative">
-                <SafeImage src="/creators/vasudha-rai.jpg" alt="Creator" fill className="object-cover" />
+                <SafeImage src="/creators/chetali-chadha.jpg" alt="Creator" fill className="object-cover" />
               </div>
               <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden border-2 border-white relative">
                 <SafeImage src="/creators/kunal-rajput.jpg" alt="Creator" fill className="object-cover" />
@@ -56,7 +56,7 @@ export function WishlinkStickyCTA() {
           {isAuthenticated ? (
             <Link
               href={user?.role === "brand" ? "/app/brand/campaigns" : "/app/dashboard"}
-              className="px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-primary hover:opacity-90 text-white text-xs sm:text-sm font-extrabold shadow-sm flex items-center gap-1.5 shrink-0 transition-transform active:scale-95"
+              className="px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-[#0F766E] hover:bg-[#0D9488] text-white text-xs sm:text-sm font-extrabold shadow-sm flex items-center gap-1.5 shrink-0 transition-transform active:scale-95"
             >
               <span>Dashboard</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -64,7 +64,7 @@ export function WishlinkStickyCTA() {
           ) : (
             <Link
               href="/register"
-              className="px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:opacity-95 text-white text-xs sm:text-sm font-extrabold shadow-[0_4px_16px_rgba(var(--theme-primary-rgb),0.35)] flex items-center gap-1.5 shrink-0 transition-transform active:scale-95 border border-white/10"
+              className="px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#0F766E] to-[#34D399] hover:from-[#0D9488] hover:to-[#059669] text-white text-xs sm:text-sm font-extrabold shadow-[0_4px_16px_rgba(15,118,110,0.35)] flex items-center gap-1.5 shrink-0 transition-transform active:scale-95 border border-white/10"
             >
               <span>Sign up</span>
               <ArrowRight className="w-3.5 h-3.5 text-white" />

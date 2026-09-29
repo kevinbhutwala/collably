@@ -30,15 +30,15 @@ const FLIP_ITEMS_ROW1: FlipItem[] = [
     brandColor: "#0B0A14",
   },
   {
-    id: "vasudha",
-    name: "Vasudha Rai",
-    handle: "@vasudha.rai",
-    category: "Beauty & Wellness",
-    image: "/creators/vasudha-rai.jpg",
+    id: "chetali",
+    name: "Chetali Chadha",
+    handle: "@chetalichadha",
+    category: "Beauty & Style",
+    image: "/creators/chetali-chadha.jpg",
     brand: "Plum Goodness",
     brandCategory: "Clean Skincare Drop",
     dealAmount: "₹65,000",
-    brandColor: "#6B21A8",
+    brandColor: "#0F766E",
   },
   {
     id: "kunal",
@@ -195,7 +195,7 @@ function FlipCard({ item, autoFlipped }: { item: FlipItem; autoFlipped: boolean 
             <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-white/95 backdrop-blur-md text-[#0B0A14] shadow-2xs">
               {item.category}
             </span>
-            <span className="w-5 h-5 rounded-full bg-[#7C3AED] text-white flex items-center justify-center font-bold text-[10px] shadow-2xs">
+            <span className="w-5 h-5 rounded-full bg-[#0F766E] text-[#34D399] flex items-center justify-center font-bold text-[10px] shadow-2xs">
               ★
             </span>
           </div>
@@ -211,7 +211,7 @@ function FlipCard({ item, autoFlipped }: { item: FlipItem; autoFlipped: boolean 
 
         {/* BACK: Brand Collaboration & Escrow Deal */}
         <div
-          className="absolute inset-0 w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden p-4 sm:p-5 flex flex-col justify-between text-left border-2 border-primary bg-white shadow-md"
+          className="absolute inset-0 w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden p-4 sm:p-5 flex flex-col justify-between text-left border-2 border-[#0F766E] bg-white shadow-[0_12px_30px_rgba(15,118,110,0.18)]"
           style={{
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
@@ -221,7 +221,7 @@ function FlipCard({ item, autoFlipped }: { item: FlipItem; autoFlipped: boolean 
           {/* Header */}
           <div className="space-y-1">
             <div className="flex items-center justify-between">
-              <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-extrabold uppercase tracking-wider bg-primary text-white">
+              <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-extrabold uppercase tracking-wider bg-[#0F766E] text-white">
                 VERIFIED DEAL
               </span>
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
@@ -234,12 +234,12 @@ function FlipCard({ item, autoFlipped }: { item: FlipItem; autoFlipped: boolean 
           </div>
 
           {/* Deal Value Pill */}
-          <div className="p-2.5 sm:p-3 rounded-xl bg-[#F8FAFC] border border-black/[0.06] shadow-2xs space-y-0.5">
+          <div className="p-2.5 sm:p-3 rounded-xl bg-[#FAF8F5] border border-black/[0.06] shadow-2xs space-y-0.5">
             <div className="flex items-center justify-between text-[9px] sm:text-[10px] font-mono text-[#79768F]">
               <span>Milestone Payout</span>
-              <span className="text-emerald-700 font-bold">24h Release</span>
+              <span className="text-[#0F766E] font-bold">24h Release</span>
             </div>
-            <div className="text-lg sm:text-xl font-black text-[#0B0A14] font-mono">
+            <div className="text-lg sm:text-xl font-black text-[#0F172A] font-mono">
               {item.dealAmount}
             </div>
           </div>
@@ -267,7 +267,7 @@ export function WishlinkFlipMarquee() {
   }, []);
 
   return (
-    <section className="py-14 sm:py-24 bg-[#F8FAFC] border-b border-black/[0.06] select-none overflow-hidden font-sans">
+    <section className="py-14 sm:py-24 bg-[#FAF8F5] border-b border-black/[0.06] select-none overflow-hidden font-sans">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -276,7 +276,7 @@ export function WishlinkFlipMarquee() {
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3 mb-10 sm:mb-14"
       >
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-black/[0.08] shadow-2xs">
-          <Sparkles className="w-3.5 h-3.5 text-[#7C3AED]" />
+          <Sparkles className="w-3.5 h-3.5 text-[#0F766E]" />
           <span className="text-xs font-mono font-bold tracking-tight text-[#0B0A14]">
             EXCLUSIVE ROSTER &amp; BRAND DEALS
           </span>
@@ -297,8 +297,8 @@ export function WishlinkFlipMarquee() {
         transition={{ duration: 0.7 }}
         className="relative w-full overflow-hidden mb-4 sm:mb-5"
       >
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-32 bg-gradient-to-r from-[#F8FAFC] to-transparent z-10" />
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-32 bg-gradient-to-l from-[#F8FAFC] to-transparent z-10" />
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-32 bg-gradient-to-r from-[#FAF8F5] to-transparent z-10" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-32 bg-gradient-to-l from-[#FAF8F5] to-transparent z-10" />
 
         <div className="flex gap-3 sm:gap-6 animate-marquee-left hover:[animation-play-state:paused] w-max">
           {[...FLIP_ITEMS_ROW1, ...FLIP_ITEMS_ROW1, ...FLIP_ITEMS_ROW1].map((item, idx) => (
@@ -319,8 +319,8 @@ export function WishlinkFlipMarquee() {
         transition={{ duration: 0.7, delay: 0.1 }}
         className="relative w-full overflow-hidden"
       >
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-32 bg-gradient-to-r from-[#F8FAFC] to-transparent z-10" />
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-32 bg-gradient-to-l from-[#F8FAFC] to-transparent z-10" />
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-32 bg-gradient-to-r from-[#FAF8F5] to-transparent z-10" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-32 bg-gradient-to-l from-[#FAF8F5] to-transparent z-10" />
 
         <div className="flex gap-3 sm:gap-6 animate-marquee-right hover:[animation-play-state:paused] w-max">
           {[...FLIP_ITEMS_ROW2, ...FLIP_ITEMS_ROW2, ...FLIP_ITEMS_ROW2].map((item, idx) => (
