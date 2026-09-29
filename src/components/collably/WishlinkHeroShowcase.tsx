@@ -2,6 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import {
   Play,
   Volume2,
@@ -27,9 +28,9 @@ export function WishlinkHeroShowcase() {
   return (
     <section
       id="hero"
-      className="relative min-h-[92vh] sm:min-h-[94vh] w-full flex items-center justify-center overflow-hidden bg-[#08080A] pt-20 sm:pt-28 pb-16 sm:pb-20 select-none"
+      className="relative min-h-[90vh] sm:min-h-[94vh] w-full flex items-center justify-center overflow-hidden bg-[#08080A] pt-20 sm:pt-28 pb-20 sm:pb-24 select-none"
     >
-      {/* ── Background Cinematic Video Loop (Elton-Style Fullscreen Precision) ── */}
+      {/* ── Background Cinematic Video Loop ── */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <video
           ref={videoRef}
@@ -41,26 +42,39 @@ export function WishlinkHeroShowcase() {
           playsInline
           className="w-full h-full object-cover opacity-85 transition-opacity duration-1000"
         />
-        {/* Balanced Vignette: Maintains Dark UI Contrast While Leaving Center Video Crystal Clear */}
+        {/* Balanced Vignette */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#08080A] via-[#08080A]/60 to-[#08080A]/50 pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(8,8,10,0.45)_0%,rgba(8,8,10,0.92)_85%)] opacity-85 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(8,8,10,0.4)_0%,rgba(8,8,10,0.92)_85%)] opacity-85 pointer-events-none" />
       </div>
+
+      {/* ── Seamless Bottom Gradient Blend into Canvas ── */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-[#08080A]/70 to-[#FBFBFD] pointer-events-none z-10" />
 
       {/* ── Main Hero Content ── */}
       <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center">
         {/* Top Status & Availability Pill */}
-        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-xl mb-5 sm:mb-7 shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:border-white/20 transition-colors">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.05] backdrop-blur-xl mb-4 sm:mb-6 shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:border-white/20 transition-colors"
+        >
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
           </span>
-          <span className="text-xs font-medium text-neutral-200 tracking-wide drop-shadow-sm">
+          <span className="text-[11px] sm:text-xs font-medium text-neutral-200 tracking-wide drop-shadow-sm">
             Available for Creators &amp; Brands · 100% Escrow Protected
           </span>
-        </div>
+        </motion.div>
 
         {/* Role Switcher Pill */}
-        <div className="inline-flex p-1 rounded-full bg-white/[0.06] border border-white/10 backdrop-blur-xl mb-5 sm:mb-6 shadow-lg">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="inline-flex p-1 rounded-full bg-white/[0.06] border border-white/10 backdrop-blur-xl mb-4 sm:mb-6 shadow-lg"
+        >
           <button
             type="button"
             onClick={() => setActiveTab('creator')}
@@ -83,36 +97,56 @@ export function WishlinkHeroShowcase() {
           >
             For Brands
           </button>
-        </div>
+        </motion.div>
 
         {/* Hero Title with Directorial Tracking */}
-        <div className="relative select-none my-1 sm:my-2">
-          <h1 className="relative text-5xl sm:text-7xl md:text-[9.5rem] lg:text-[11.5rem] font-display font-black tracking-tighter text-white uppercase leading-[0.9] drop-shadow-[0_20px_50px_rgba(0,0,0,0.95)]">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="relative select-none my-1 sm:my-2 w-full"
+        >
+          <h1 className="text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] xl:text-[11rem] font-display font-black tracking-tight text-white uppercase leading-[0.92] drop-shadow-[0_20px_50px_rgba(0,0,0,0.95)]">
             ABEYCOLLAB
           </h1>
-        </div>
+        </motion.div>
 
         {/* Editorial Subtitle with Stylized Delimiters */}
-        <div className="mt-4 sm:mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-base md:text-xl lg:text-2xl font-display font-semibold tracking-wide uppercase text-neutral-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-3 sm:mt-5 flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 text-xs sm:text-base md:text-xl font-display font-semibold tracking-wide uppercase text-neutral-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
+        >
           <span>{activeTab === 'creator' ? 'Direct Brand Deals' : 'Audited Creators'}</span>
           <span className="text-[#FFD21F] font-light">/</span>
           <span className="text-white">Meta Auto-DMs</span>
           <span className="text-[#FFD21F] font-light">/</span>
           <span className="text-[#FFD21F]">24h Escrow Payouts</span>
-        </div>
+        </motion.div>
 
         {/* Punchy Concise Tagline */}
-        <p className="mt-3 sm:mt-4 text-sm sm:text-lg md:text-xl text-neutral-300 font-display font-light tracking-wide max-w-xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-2.5 sm:mt-3 text-xs sm:text-base md:text-lg text-neutral-300 font-display font-light tracking-wide max-w-xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
+        >
           {activeTab === 'creator'
             ? 'Monetise your content. Guaranteed escrow payouts.'
-            : 'Scale high-ROI campaigns with India’s top creators.'}
-        </p>
+            : 'Scale high-ROI campaigns with India’s top verified creators.'}
+        </motion.p>
 
         {/* Magnetic Hero CTA Actions + Sound Toggle */}
-        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-9 w-full sm:w-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 mt-5 sm:mt-8 w-full sm:w-auto"
+        >
           <Link
             href={activeTab === 'creator' ? '/register?role=creator' : '/register?role=brand'}
-            className="group relative px-6 sm:px-7 py-3 sm:py-3.5 bg-[#FFD21F] text-[#0A0A0E] hover:bg-[#FFE052] font-sans font-bold text-xs tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-2.5 rounded-full shadow-[0_10px_30px_rgba(255,210,31,0.25)] hover:shadow-[0_15px_40px_rgba(255,210,31,0.4)] hover:scale-105 active:scale-95 cursor-pointer"
+            className="group relative px-6 sm:px-7 py-3 sm:py-3.5 bg-[#FFD21F] text-[#0A0A0E] hover:bg-[#FFE052] font-sans font-bold text-xs tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-2 rounded-full shadow-[0_10px_30px_rgba(255,210,31,0.25)] hover:shadow-[0_15px_40px_rgba(255,210,31,0.4)] hover:scale-105 active:scale-95 cursor-pointer"
           >
             <Play className="w-3.5 h-3.5 fill-current transition-transform duration-300 group-hover:scale-110" />
             <span>{activeTab === 'creator' ? 'Join as Creator (Free)' : 'Launch Campaign'}</span>
@@ -125,18 +159,18 @@ export function WishlinkHeroShowcase() {
             {activeTab === 'creator' ? 'Explore Briefs' : 'Browse Creators'}
           </Link>
 
-          {/* Sound Toggle with Live Equalizer Visualizer (Matching Elton's exact implementation) */}
+          {/* Sound Toggle */}
           <button
             type="button"
             onClick={toggleVideoSound}
-            className="group flex items-center justify-center gap-2 px-4 py-3 sm:py-3.5 border border-white/20 hover:border-white/40 text-neutral-300 hover:text-white transition-all duration-200 rounded-full bg-white/[0.05] hover:bg-white/[0.1] backdrop-blur-xl cursor-pointer"
+            className="group flex items-center justify-center gap-2 px-3.5 sm:px-4 py-2.5 sm:py-3 border border-white/20 hover:border-white/40 text-neutral-300 hover:text-white transition-all duration-200 rounded-full bg-white/[0.05] hover:bg-white/[0.1] backdrop-blur-xl cursor-pointer"
             title={isVideoMuted ? 'Turn Sound On' : 'Turn Sound Off'}
             aria-label={isVideoMuted ? 'Turn Sound On' : 'Turn Sound Off'}
           >
             {isVideoMuted ? (
               <VolumeX className="w-4 h-4 text-neutral-400 group-hover:text-white" />
             ) : (
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5">
                 <Volume2 className="w-4 h-4 text-[#FFD21F]" />
                 <span className="flex items-center gap-0.5 h-3">
                   <span className="w-0.5 h-2 bg-[#FFD21F] animate-pulse" />
@@ -145,14 +179,19 @@ export function WishlinkHeroShowcase() {
                 </span>
               </div>
             )}
-            <span className="text-[11px] font-mono font-medium">
+            <span className="text-[10px] sm:text-[11px] font-mono font-medium">
               {isVideoMuted ? 'MUTE' : 'AUDIO ON'}
             </span>
           </button>
-        </div>
+        </motion.div>
 
         {/* Micro Trust Indicators */}
-        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mt-7 sm:mt-8 text-[11px] sm:text-xs font-mono text-neutral-300 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.45 }}
+          className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mt-6 sm:mt-7 text-[10px] sm:text-xs font-mono text-neutral-300 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]"
+        >
           <span className="flex items-center gap-1.5 font-bold text-neutral-100">
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
             <span>100% Escrow Protection</span>
@@ -167,7 +206,7 @@ export function WishlinkHeroShowcase() {
             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
             <span>0% Chasing Invoices</span>
           </span>
-        </div>
+        </motion.div>
       </div>
 
       {/* Bottom Subtle Scroll Indicator */}

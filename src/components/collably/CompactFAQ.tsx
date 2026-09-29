@@ -10,41 +10,53 @@ export function CompactFAQ() {
   const faqs = [
     {
       q: "How does payment protection work?",
-      a: "When a brand starts a project, they set aside the fee safely with AbeyCollab. The creator knows the money is waiting, and the brand only releases it once they review and approve the final work.",
+      a: "When a brand starts a project, they deposit 100% of the payment safely into Razorpay Escrow. Creators can begin work knowing their payout is already secured, and funds are automatically released within 24 hours of deliverable approval.",
     },
     {
       q: "What is AbeyCollab's fee?",
-      a: "AbeyCollab charges a simple 10% fee on completed projects. There are no fees to sign up, no hidden charges, and creators keep 90% of what they earn.",
+      a: "AbeyCollab is free to join with no monthly subscription fees for Starter creators. A transparent 10% fee applies only on successfully completed brand deals.",
     },
     {
       q: "How do revisions and feedback work?",
-      a: "Creators share draft links directly in the project space. Brands can leave notes, point out specific moments in the video, and request small tweaks easily.",
+      a: "Creators submit deliverables directly within the campaign workspace. Brands leave frame-by-frame timestamps and notes, keeping communication clear and turnaround times fast.",
     },
     {
       q: "How quickly do creators receive their money?",
-      a: "Once the brand approves the final post, payment is sent directly to the creator's bank account within 24 hours (or in as little as 2 hours on Creator Pro).",
+      a: "As soon as the brand signs off on final assets, funds are transferred via IMPS/NEFT directly into the creator's verified bank account in under 24 hours (or 2 hours with Creator Pro).",
     },
   ];
 
   return (
-    <section className="py-14 sm:py-20 bg-[#FAFAFC] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] select-none relative overflow-hidden border-t border-black/5 dark:border-white/10">
+    <section className="py-16 sm:py-24 bg-[#FBFBFD] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] select-none relative overflow-hidden border-t border-black/[0.06] dark:border-white/10">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <div className="text-center space-y-2">
-          <span className="text-[11px] font-mono font-bold tracking-[0.16em] text-[#6A6A78] dark:text-[#8E8EA4] uppercase block">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center space-y-2"
+        >
+          <span className="text-[11px] font-mono font-bold tracking-[0.18em] text-[#6A6A78] dark:text-[#8E8EA4] uppercase block">
             FAQ
           </span>
           <h2 className="text-3xl sm:text-4xl font-black text-[#0A0A0E] dark:text-white font-display">
             Frequently asked questions.
           </h2>
-        </div>
+        </motion.div>
 
-        <div className="space-y-3">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.15 }}
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="space-y-3"
+        >
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
               <div
                 key={index}
-                className="rounded-2xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 overflow-hidden shadow-2xs transition-all"
+                className="rounded-2xl bg-white dark:bg-[#12121A] border border-black/[0.08] dark:border-white/10 overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.02)] transition-all hover:border-black/15"
               >
                 <button
                   type="button"
@@ -65,9 +77,9 @@ export function CompactFAQ() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
+                      transition={{ duration: 0.25, ease: "easeInOut" }}
                     >
-                      <div className="p-4 sm:p-5 pt-0 text-xs sm:text-sm text-[#5A5A68] dark:text-[#9A9AA8] leading-relaxed font-sans border-t border-black/5 dark:border-white/10">
+                      <div className="p-4 sm:p-5 pt-0 text-xs sm:text-sm text-[#5A5A68] dark:text-[#9A9AA8] leading-relaxed font-sans border-t border-black/[0.06] dark:border-white/10">
                         {faq.a}
                       </div>
                     </motion.div>
@@ -76,7 +88,7 @@ export function CompactFAQ() {
               </div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

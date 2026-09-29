@@ -3,12 +3,11 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Check, ArrowRight, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 import { InteractiveTiltCard } from "@/components/ui/InteractiveTiltCard";
-import { useGlobalCurrency } from "@/context/CurrencyContext";
 
 export function StreamlinedPricing() {
   const [isAnnual, setIsAnnual] = useState(true);
-  const { format } = useGlobalCurrency();
 
   const tiers = [
     {
@@ -39,7 +38,6 @@ export function StreamlinedPricing() {
         "Deep audience analytics & demographic data",
         "Verified Pro Creator checkmark",
       ],
-
       ctaText: "Upgrade to Pro",
       ctaHref: "/register?role=creator",
       popular: true,
@@ -63,60 +61,74 @@ export function StreamlinedPricing() {
   ];
 
   return (
-    <section className="py-14 sm:py-20 bg-white dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] select-none relative overflow-hidden border-t border-black/5 dark:border-white/5">
+    <section className="py-16 sm:py-24 bg-[#FBFBFD] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] select-none relative overflow-hidden border-t border-black/[0.06] dark:border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Header & Toggle */}
-        <div className="text-center space-y-3 max-w-2xl mx-auto">
-          <span className="text-[11px] font-mono font-bold tracking-[0.16em] text-[#6A6A78] dark:text-[#8E8EA4] uppercase block">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center space-y-3 max-w-2xl mx-auto"
+        >
+          <span className="text-[11px] font-mono font-bold tracking-[0.18em] text-[#6A6A78] dark:text-[#8E8EA4] uppercase block">
             TRANSPARENT VALUE
           </span>
           <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#0A0A0E] dark:text-white font-display">
-            Simple, honest <br className="sm:hidden" />
+            Simple, honest{" "}
             <span className="font-serif italic font-normal text-[#5A5A68] dark:text-[#8E8EA4] lowercase">pricing</span>
           </h2>
 
           {/* Toggle */}
           <div className="pt-2 flex items-center justify-center gap-3">
-              {/* Annual / Monthly Toggle */}
-              <div className="inline-flex items-center p-1 rounded-full bg-[#F4F4F8] dark:bg-[#14141E] border border-black/8 dark:border-white/10 text-xs font-sans">
-                <button
-                  onClick={() => setIsAnnual(false)}
-                  className={`px-3.5 py-1.5 rounded-full transition-all font-bold ${
-                    !isAnnual
-                      ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs"
-                      : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
-                  }`}
-                >
-                  Monthly
-                </button>
-                <button
-                  onClick={() => setIsAnnual(true)}
-                  className={`px-3.5 py-1.5 rounded-full transition-all font-bold flex items-center gap-1.5 ${
-                    isAnnual
-                      ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs"
-                      : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
-                  }`}
-                >
-                  <span>Annual</span>
-                  <span className="px-1.5 py-0.5 rounded-full bg-[#0A0A0E] text-white text-[10px] font-mono font-extrabold">
-                    Save 20%
-                  </span>
-                </button>
-              </div>
+            <div className="inline-flex items-center p-1 rounded-full bg-[#F0EFF4] dark:bg-[#14141E] border border-black/8 dark:border-white/10 text-xs font-sans shadow-2xs">
+              <button
+                type="button"
+                onClick={() => setIsAnnual(false)}
+                className={`px-4 py-1.5 rounded-full transition-all font-bold ${
+                  !isAnnual
+                    ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs"
+                    : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
+                }`}
+              >
+                Monthly
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsAnnual(true)}
+                className={`px-4 py-1.5 rounded-full transition-all font-bold flex items-center gap-1.5 ${
+                  isAnnual
+                    ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs"
+                    : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
+                }`}
+              >
+                <span>Annual</span>
+                <span className="px-1.5 py-0.5 rounded-full bg-[#0A0A0E] text-white text-[10px] font-mono font-extrabold">
+                  Save 20%
+                </span>
+              </button>
             </div>
           </div>
+        </motion.div>
 
-          {/* Pricing Cards with 3D Tilt & Cursor Reflection Sheen */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {tiers.map((tier) => (
+        {/* Pricing Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+          {tiers.map((tier, index) => (
+            <motion.div
+              key={tier.name}
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.15 }}
+              transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="flex"
+            >
               <InteractiveTiltCard
-                key={tier.name}
-                maxTilt={7}
-                glowColor="rgba(255, 210, 31, 0.22)"
-                className={`rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all relative ${
+                maxTilt={6}
+                glowColor="rgba(255, 210, 31, 0.25)"
+                className={`rounded-3xl p-6 sm:p-8 flex flex-col justify-between w-full transition-all relative ${
                   tier.popular
-                    ? "bg-gradient-to-b from-[#FFFDF5] to-white dark:from-[#1A1A28] dark:to-[#12121C] border-2 border-[#FFD21F] shadow-[0_12px_40px_rgba(255,210,31,0.18)]"
-                    : "bg-white dark:bg-[#14141E] border border-black/8 dark:border-white/10 shadow-sm hover:border-black/15"
+                    ? "bg-white dark:bg-[#12121C] border-2 border-[#FFD21F] shadow-[0_16px_48px_rgba(255,210,31,0.22)]"
+                    : "bg-white dark:bg-[#14141E] border border-black/[0.08] dark:border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_14px_36px_rgba(0,0,0,0.07)] hover:border-black/15"
                 }`}
               >
                 {tier.popular && (
@@ -133,11 +145,13 @@ export function StreamlinedPricing() {
                   </div>
 
                   <div className="flex items-baseline gap-1 font-mono pt-2">
-                    <span suppressHydrationWarning className="text-4xl font-black text-[#0A0A0E] dark:text-white font-display">{tier.price}</span>
+                    <span suppressHydrationWarning className="text-4xl font-black text-[#0A0A0E] dark:text-white font-display">
+                      {tier.price}
+                    </span>
                     <span className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-sans">{tier.period}</span>
                   </div>
 
-                  <div className="pt-3 border-t border-black/6 dark:border-white/10 space-y-2.5">
+                  <div className="pt-3 border-t border-black/[0.06] dark:border-white/10 space-y-2.5">
                     {tier.features.map((f, i) => (
                       <div key={i} className="flex items-center gap-2.5 text-xs text-[#4A4A58] dark:text-[#C8C8DC] font-sans">
                         <div className="w-4 h-4 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] flex items-center justify-center shrink-0">
@@ -149,18 +163,19 @@ export function StreamlinedPricing() {
                   </div>
                 </div>
 
-                  <Link
-                    href={tier.ctaHref}
-                    className={`mt-6 w-full py-3.5 rounded-full text-xs font-bold transition-all flex items-center justify-center gap-1.5 active:scale-98 shadow-sm ${
-                      tier.popular
-                        ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] shadow-[0_4px_16px_rgba(255,210,31,0.4)]"
-                        : "bg-[#0A0A0E] dark:bg-[#FFD21F] hover:bg-[#1A1A24] dark:hover:bg-[#FFE052] text-white dark:text-[#0A0A0E] font-bold shadow-md"
-                    }`}
-                  >
-                    <span>{tier.ctaText}</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-            </InteractiveTiltCard>
+                <Link
+                  href={tier.ctaHref}
+                  className={`mt-6 w-full py-3.5 rounded-full text-xs font-bold transition-all flex items-center justify-center gap-1.5 active:scale-98 shadow-sm ${
+                    tier.popular
+                      ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] shadow-[0_4px_16px_rgba(255,210,31,0.4)]"
+                      : "bg-[#0A0A0E] dark:bg-[#FFD21F] hover:bg-[#1A1A24] dark:hover:bg-[#FFE052] text-white dark:text-[#0A0A0E] font-bold shadow-md"
+                  }`}
+                >
+                  <span>{tier.ctaText}</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </InteractiveTiltCard>
+            </motion.div>
           ))}
         </div>
       </div>

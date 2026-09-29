@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { ShieldCheck, Sparkles, CheckCircle2, TrendingUp } from "lucide-react";
 
@@ -163,11 +164,11 @@ function FlipCard({ item, autoFlipped }: { item: FlipItem; autoFlipped: boolean 
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={() => setHovered(!hovered)}
-      className="shrink-0 w-44 sm:w-52 h-64 sm:h-72 cursor-pointer select-none"
+      className="shrink-0 w-38 xs:w-44 sm:w-48 md:w-52 h-56 xs:h-64 sm:h-70 md:h-72 cursor-pointer select-none"
       style={{ perspective: "1200px" }}
     >
       <div
-        className="relative w-full h-full rounded-2xl transition-transform duration-700 ease-out shadow-xs border border-black/8 hover:shadow-xl"
+        className="relative w-full h-full rounded-2xl sm:rounded-3xl transition-transform duration-700 ease-out shadow-xs border border-black/[0.07] hover:shadow-xl"
         style={{
           transformStyle: "preserve-3d",
           transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
@@ -175,7 +176,7 @@ function FlipCard({ item, autoFlipped }: { item: FlipItem; autoFlipped: boolean 
       >
         {/* FRONT: Creator Portrait & Handle */}
         <div
-          className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden bg-white"
+          className="absolute inset-0 w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden bg-white"
           style={{
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
@@ -191,10 +192,10 @@ function FlipCard({ item, autoFlipped }: { item: FlipItem; autoFlipped: boolean 
 
           {/* Top category badge */}
           <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
-            <span className="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-white/90 backdrop-blur-md text-[#0A0A0E] shadow-2xs">
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-white/95 backdrop-blur-md text-[#0A0A0E] shadow-2xs">
               {item.category}
             </span>
-            <span className="w-6 h-6 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center font-bold text-xs shadow-2xs">
+            <span className="w-5 h-5 rounded-full bg-[#FFD21F] text-[#0A0A0E] flex items-center justify-center font-bold text-[10px] shadow-2xs">
               ★
             </span>
           </div>
@@ -204,48 +205,47 @@ function FlipCard({ item, autoFlipped }: { item: FlipItem; autoFlipped: boolean 
             <h4 className="font-extrabold text-sm sm:text-base leading-tight font-display drop-shadow-xs">
               {item.name}
             </h4>
-            <p className="text-[11px] font-mono text-white/80">{item.handle}</p>
+            <p className="text-[10px] sm:text-[11px] font-mono text-white/80">{item.handle}</p>
           </div>
         </div>
 
         {/* BACK: Brand Collaboration & Escrow Deal */}
         <div
-          className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden p-5 flex flex-col justify-between text-left border-2 border-[#FFD21F]"
+          className="absolute inset-0 w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden p-4 sm:p-5 flex flex-col justify-between text-left border-2 border-[#FFD21F] bg-white shadow-md"
           style={{
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
-            background: "linear-gradient(145deg, #FFFFFF 0%, #FFFDF5 100%)",
           }}
         >
           {/* Header */}
           <div className="space-y-1">
             <div className="flex items-center justify-between">
               <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-extrabold uppercase tracking-wider bg-[#FFD21F] text-[#0A0A0E]">
-                VERIFIED COLLAB
+                VERIFIED DEAL
               </span>
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
             </div>
             <p className="text-[10px] font-mono text-[#7A7A8A] pt-1">Brand Partner</p>
-            <h3 className="text-lg font-black text-[#0A0A0E] font-display leading-tight">
+            <h3 className="text-base sm:text-lg font-black text-[#0A0A0E] font-display leading-tight">
               {item.brand}
             </h3>
-            <p className="text-xs text-[#5A5A68] line-clamp-1">{item.brandCategory}</p>
+            <p className="text-[11px] text-[#5A5A68] line-clamp-1">{item.brandCategory}</p>
           </div>
 
           {/* Deal Value Pill */}
-          <div className="p-3 rounded-xl bg-white border border-black/8 shadow-2xs space-y-0.5">
-            <div className="flex items-center justify-between text-[10px] font-mono text-[#7A7A8A]">
+          <div className="p-2.5 sm:p-3 rounded-xl bg-[#FBFBFD] border border-black/[0.06] shadow-2xs space-y-0.5">
+            <div className="flex items-center justify-between text-[9px] sm:text-[10px] font-mono text-[#7A7A8A]">
               <span>Milestone Payout</span>
               <span className="text-emerald-700 font-bold">24h Release</span>
             </div>
-            <div className="text-xl font-black text-[#0A0A0E] font-mono">
+            <div className="text-lg sm:text-xl font-black text-[#0A0A0E] font-mono">
               {item.dealAmount}
             </div>
           </div>
 
           {/* Footer Escrow Seal */}
-          <div className="flex items-center gap-1.5 text-[10px] font-mono text-[#0A0A0E] font-bold">
+          <div className="flex items-center gap-1.5 text-[9.5px] sm:text-[10px] font-mono text-[#0A0A0E] font-bold">
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
             <span className="truncate">Escrow Protected • 0% Fee</span>
           </div>
@@ -258,7 +258,7 @@ function FlipCard({ item, autoFlipped }: { item: FlipItem; autoFlipped: boolean 
 export function WishlinkFlipMarquee() {
   const [autoFlipRow, setAutoFlipRow] = useState(false);
 
-  // Automatically flip a subset of cards every 3.5s for continuous delight
+  // Automatically flip a subset of cards every 3.8s for visual delight
   React.useEffect(() => {
     const timer = setInterval(() => {
       setAutoFlipRow((prev) => !prev);
@@ -267,9 +267,15 @@ export function WishlinkFlipMarquee() {
   }, []);
 
   return (
-    <section className="py-20 sm:py-28 bg-[#FAF9F6] border-y border-black/6 select-none overflow-hidden font-sans">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 mb-12 sm:mb-16">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-black/8 shadow-2xs">
+    <section className="py-14 sm:py-24 bg-[#FBFBFD] border-b border-black/[0.06] select-none overflow-hidden font-sans">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.2 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3 mb-10 sm:mb-14"
+      >
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-black/[0.08] shadow-2xs">
           <Sparkles className="w-3.5 h-3.5 text-[#E98415]" />
           <span className="text-xs font-mono font-bold tracking-tight text-[#0A0A0E]">
             EXCLUSIVE ROSTER &amp; BRAND DEALS
@@ -278,17 +284,23 @@ export function WishlinkFlipMarquee() {
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A0A0E] font-display tracking-tight">
           We have The Best With Us
         </h2>
-        <p className="text-base sm:text-lg text-[#5A5A68] max-w-lg mx-auto font-sans font-medium">
+        <p className="text-sm sm:text-base text-[#5A5A68] max-w-lg mx-auto font-sans font-medium">
           Top creators match with category-leading brands. Flip any card to view verified escrow deals.
         </p>
-      </div>
+      </motion.div>
 
       {/* Track 1: Moving Left */}
-      <div className="relative w-full overflow-hidden mb-5">
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-[#FAF9F6] to-transparent z-10" />
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-[#FAF9F6] to-transparent z-10" />
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false, amount: 0.1 }}
+        transition={{ duration: 0.7 }}
+        className="relative w-full overflow-hidden mb-4 sm:mb-5"
+      >
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-32 bg-gradient-to-r from-[#FBFBFD] to-transparent z-10" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-32 bg-gradient-to-l from-[#FBFBFD] to-transparent z-10" />
 
-        <div className="flex gap-4 sm:gap-6 animate-marquee-left hover:[animation-play-state:paused] w-max">
+        <div className="flex gap-3 sm:gap-6 animate-marquee-left hover:[animation-play-state:paused] w-max">
           {[...FLIP_ITEMS_ROW1, ...FLIP_ITEMS_ROW1, ...FLIP_ITEMS_ROW1].map((item, idx) => (
             <FlipCard
               key={`row1-${item.id}-${idx}`}
@@ -297,14 +309,20 @@ export function WishlinkFlipMarquee() {
             />
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* Track 2: Moving Right */}
-      <div className="relative w-full overflow-hidden">
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-[#FAF9F6] to-transparent z-10" />
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-[#FAF9F6] to-transparent z-10" />
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false, amount: 0.1 }}
+        transition={{ duration: 0.7, delay: 0.1 }}
+        className="relative w-full overflow-hidden"
+      >
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-32 bg-gradient-to-r from-[#FBFBFD] to-transparent z-10" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-32 bg-gradient-to-l from-[#FBFBFD] to-transparent z-10" />
 
-        <div className="flex gap-4 sm:gap-6 animate-marquee-right hover:[animation-play-state:paused] w-max">
+        <div className="flex gap-3 sm:gap-6 animate-marquee-right hover:[animation-play-state:paused] w-max">
           {[...FLIP_ITEMS_ROW2, ...FLIP_ITEMS_ROW2, ...FLIP_ITEMS_ROW2].map((item, idx) => (
             <FlipCard
               key={`row2-${item.id}-${idx}`}
@@ -313,7 +331,7 @@ export function WishlinkFlipMarquee() {
             />
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
