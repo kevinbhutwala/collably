@@ -23,8 +23,8 @@ export function WishlinkPillarsSection() {
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, amount: 0.1, margin: "0px 0px -40px 0px" }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-2xl mx-auto space-y-3 mb-12 sm:mb-16"
         >
           <span className="px-3.5 py-1.5 rounded-full text-xs font-mono font-extrabold uppercase tracking-tight bg-white border border-black/[0.08] text-[#0A0A0E] shadow-2xs">
@@ -42,10 +42,10 @@ export function WishlinkPillarsSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {/* Pillar 1: Monetise with Escrow */}
           <motion.div
-            initial={{ opacity: 0, y: 35 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, amount: 0.1, margin: "0px 0px -40px 0px" }}
+            transition={{ duration: 0.55, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ y: -6, transition: { duration: 0.25 } }}
             className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-black/[0.07] hover:border-[#FFD21F] shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] transition-all flex flex-col justify-between group relative overflow-hidden"
           >
@@ -104,10 +104,10 @@ export function WishlinkPillarsSection() {
 
           {/* Pillar 2: Engage & Automate DMs */}
           <motion.div
-            initial={{ opacity: 0, y: 35 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, amount: 0.1, margin: "0px 0px -40px 0px" }}
+            transition={{ duration: 0.55, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ y: -6, transition: { duration: 0.25 } }}
             className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-black/[0.07] hover:border-[#FFD21F] shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] transition-all flex flex-col justify-between group relative overflow-hidden"
           >
@@ -164,10 +164,10 @@ export function WishlinkPillarsSection() {
 
           {/* Pillar 3: Collaborate Directly */}
           <motion.div
-            initial={{ opacity: 0, y: 35 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, amount: 0.1, margin: "0px 0px -40px 0px" }}
+            transition={{ duration: 0.55, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ y: -6, transition: { duration: 0.25 } }}
             className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-black/[0.07] hover:border-[#FFD21F] shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] transition-all flex flex-col justify-between group relative overflow-hidden"
           >

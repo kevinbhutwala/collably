@@ -116,12 +116,12 @@ export function WishlinkSpaciousShowcase() {
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, amount: 0.08, margin: "0px 0px -40px 0px" }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-3xl mx-auto space-y-3 mb-10 sm:mb-14"
         >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-black/[0.08] shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-[#E98415]" />
+            <Sparkles className="w-3.5 h-3.5 text-[#FFCA18]" />
             <span className="text-xs font-mono font-extrabold uppercase text-[#0A0A0E] tracking-tight">
               COLLABORATION ESSENTIALS
             </span>
@@ -129,7 +129,7 @@ export function WishlinkSpaciousShowcase() {
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A0A0E] font-display tracking-tight leading-[1.1]">
             Unlock your reach and{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D97706] to-[#E98415] underline decoration-[#FFD21F] decoration-4 underline-offset-4">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFCA18] to-[#FF9E00] underline decoration-[#FFD21F] decoration-4 underline-offset-4">
               maximize earnings
             </span>
           </h2>
@@ -185,7 +185,7 @@ export function WishlinkSpaciousShowcase() {
 
                 <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0A0A0E] font-display tracking-tight leading-[1.15]">
                   {activeFeature.title}{" "}
-                  <span className="text-[#E98415] underline decoration-[#FFD21F] decoration-4 underline-offset-4">
+                  <span className="text-[#FF9E00] underline decoration-[#FFD21F] decoration-4 underline-offset-4">
                     {activeFeature.highlight}
                   </span>
                 </h3>
@@ -210,7 +210,7 @@ export function WishlinkSpaciousShowcase() {
                 <div className="pt-2">
                   <Link
                     href={activeFeature.ctaLink}
-                    className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_18px_rgba(255,210,31,0.4)] border border-black/10 active:scale-95 cursor-pointer"
+                    className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFCA18] to-[#FFBF00] hover:from-[#FFCA18] hover:to-[#FFAE00] text-[#0A0A0E] font-extrabold text-xs sm:text-sm transition-all shadow-[0_6px_25px_rgba(255,202,24,0.4)] border border-black/10 active:scale-95 cursor-pointer"
                   >
                     <span>{activeFeature.ctaText}</span>
                     <ArrowRight className="w-3.5 h-3.5 text-[#0A0A0E]" />

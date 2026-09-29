@@ -12,7 +12,7 @@ export function WishlinkLaunchpadCTA() {
         <motion.div
           initial={{ opacity: 0, scale: 0.96, y: 30 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.08, margin: "0px 0px -40px 0px" }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="p-6 sm:p-14 lg:p-20 rounded-2xl sm:rounded-[40px] bg-white border border-black/[0.08] text-[#0A0A0E] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.06)] relative overflow-hidden text-center"
         >
@@ -27,7 +27,7 @@ export function WishlinkLaunchpadCTA() {
 
             <h2 className="text-2xl min-[400px]:text-3xl sm:text-5xl lg:text-6xl font-black font-display tracking-tight text-[#0A0A0E] leading-[1.08]">
               Your launchpad to{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D98700] via-[#F29F05] to-[#FFD21F] underline decoration-[#FFD21F] decoration-4 underline-offset-8">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF9E00] via-[#FFCA18] to-[#FFD21F] underline decoration-[#FFD21F] decoration-4 underline-offset-8">
                 success!!
               </span>
             </h2>
@@ -41,7 +41,7 @@ export function WishlinkLaunchpadCTA() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-3">
               <Link
                 href="/register?role=creator"
-                className="w-full sm:w-auto px-8 py-3.5 sm:py-4 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-sm sm:text-base shadow-[0_4px_22px_rgba(255,210,31,0.45)] border border-black/10 transition-all flex items-center justify-center gap-2 active:scale-95"
+                className="w-full sm:w-auto px-8 py-3.5 sm:py-4 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFCA18] to-[#FFBF00] hover:from-[#FFCA18] hover:to-[#FFAE00] text-[#0A0A0E] font-extrabold text-sm sm:text-base shadow-[0_6px_25px_rgba(255,202,24,0.45)] border border-black/10 transition-all flex items-center justify-center gap-2 active:scale-95"
               >
                 <span>Sign up as Creator</span>
                 <ArrowRight className="w-4 h-4 text-[#0A0A0E]" />

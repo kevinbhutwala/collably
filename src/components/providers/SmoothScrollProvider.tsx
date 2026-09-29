@@ -18,13 +18,14 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
   useEffect(() => {
     // Initialize Lenis smooth virtual inertia scroll
     const lenis = new Lenis({
-      duration: 1.0,
+      duration: 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 0.95,
-      touchMultiplier: 1.0,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.6,
+      syncTouch: true,
       infinite: false,
     });
 
@@ -59,7 +60,7 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
     <>
       {/* Top Scroll Progress Indicator */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] origin-left z-[100] pointer-events-none shadow-[0_0_12px_rgba(255,210,31,0.8)]"
+        className="fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-[#FFD21F] via-[#FFCA18] to-[#FFAE00] origin-left z-[100] pointer-events-none shadow-[0_0_12px_rgba(255,210,31,0.8)]"
         style={{ scaleX }}
       />
       {children}

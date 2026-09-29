@@ -271,12 +271,12 @@ export function WishlinkFlipMarquee() {
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.08, margin: "0px 0px -40px 0px" }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3 mb-10 sm:mb-14"
       >
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-black/[0.08] shadow-2xs">
-          <Sparkles className="w-3.5 h-3.5 text-[#E98415]" />
+          <Sparkles className="w-3.5 h-3.5 text-[#FFCA18]" />
           <span className="text-xs font-mono font-bold tracking-tight text-[#0A0A0E]">
             EXCLUSIVE ROSTER &amp; BRAND DEALS
           </span>
@@ -293,7 +293,7 @@ export function WishlinkFlipMarquee() {
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: false, amount: 0.1 }}
+        viewport={{ once: true, amount: 0.05 }}
         transition={{ duration: 0.7 }}
         className="relative w-full overflow-hidden mb-4 sm:mb-5"
       >
@@ -315,7 +315,7 @@ export function WishlinkFlipMarquee() {
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: false, amount: 0.1 }}
+        viewport={{ once: true, amount: 0.05 }}
         transition={{ duration: 0.7, delay: 0.1 }}
         className="relative w-full overflow-hidden"
       >

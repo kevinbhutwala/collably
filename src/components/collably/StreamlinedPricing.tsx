@@ -67,7 +67,7 @@ export function StreamlinedPricing() {
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.08, margin: "0px 0px -40px 0px" }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="text-center space-y-3 max-w-2xl mx-auto"
         >
@@ -118,7 +118,7 @@ export function StreamlinedPricing() {
               key={tier.name}
               initial={{ opacity: 0, y: 35 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.15 }}
+              viewport={{ once: true, amount: 0.08, margin: "0px 0px -40px 0px" }}
               transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="flex"
             >

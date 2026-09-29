@@ -94,7 +94,7 @@ export function WishlinkCreatorStories() {
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.08, margin: "0px 0px -40px 0px" }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-14"
         >
@@ -104,7 +104,7 @@ export function WishlinkCreatorStories() {
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A0A0E] font-display tracking-tight leading-[1.1]">
               Loved by Creators,{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D97706] to-[#E98415] underline decoration-[#FFD21F] decoration-4 underline-offset-4">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFCA18] to-[#FF9E00] underline decoration-[#FFD21F] decoration-4 underline-offset-4">
                 trusted by Brands
               </span>
             </h2>
@@ -138,7 +138,7 @@ export function WishlinkCreatorStories() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.08, margin: "0px 0px -40px 0px" }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="p-5 sm:p-10 lg:p-12 rounded-2xl sm:rounded-3xl bg-white border border-black/[0.07] shadow-[0_4px_30px_rgba(0,0,0,0.03)] relative overflow-hidden"
         >
