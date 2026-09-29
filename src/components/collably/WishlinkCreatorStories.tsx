@@ -88,7 +88,7 @@ export function WishlinkCreatorStories() {
   const active = STORIES[currentIdx];
 
   return (
-    <section className="py-16 sm:py-24 bg-[#FBFBFD] select-none font-sans overflow-hidden">
+    <section className="py-16 sm:py-24 bg-[#F8FAFC] select-none font-sans overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Header */}
         <motion.div
@@ -99,16 +99,16 @@ export function WishlinkCreatorStories() {
           className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-14"
         >
           <div className="space-y-3 text-left">
-            <span className="px-3.5 py-1.5 rounded-full text-xs font-mono font-extrabold uppercase tracking-tight bg-white border border-black/[0.08] text-[#0A0A0E] shadow-2xs">
+            <span className="px-3.5 py-1.5 rounded-full text-xs font-mono font-extrabold uppercase tracking-tight bg-white border border-black/[0.08] text-[#0B0A14] shadow-2xs">
               COMMUNITY VOICES
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A0A0E] font-display tracking-tight leading-[1.1]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0B0A14] font-display tracking-tight leading-[1.1]">
               Loved by Creators,{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFCA18] to-[#FF9E00] underline decoration-[#FFD21F] decoration-4 underline-offset-4">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7C3AED] via-[#9333EA] to-[#C084FC] underline decoration-[#C084FC] decoration-4 underline-offset-4">
                 trusted by Brands
               </span>
             </h2>
-            <p className="text-sm sm:text-base text-[#5A5A68] max-w-xl">
+            <p className="text-sm sm:text-base text-[#545266] max-w-xl">
               Real creators sharing why milestone escrow and direct brand briefs changed how they work.
             </p>
           </div>
@@ -118,7 +118,7 @@ export function WishlinkCreatorStories() {
             <button
               type="button"
               onClick={prevStory}
-              className="w-11 h-11 rounded-full border border-black/[0.1] hover:border-black bg-white hover:bg-[#F2F1EC] flex items-center justify-center text-[#0A0A0E] transition-all cursor-pointer shadow-xs active:scale-95"
+              className="w-11 h-11 rounded-full border border-black/[0.1] hover:border-[#7C3AED] bg-white hover:bg-[#F1F5F9] flex items-center justify-center text-[#0B0A14] transition-all cursor-pointer shadow-xs active:scale-95"
               aria-label="Previous story"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -126,7 +126,7 @@ export function WishlinkCreatorStories() {
             <button
               type="button"
               onClick={nextStory}
-              className="w-11 h-11 rounded-full border border-black/[0.1] hover:border-black bg-white hover:bg-[#F2F1EC] flex items-center justify-center text-[#0A0A0E] transition-all cursor-pointer shadow-xs active:scale-95"
+              className="w-11 h-11 rounded-full border border-black/[0.1] hover:border-[#7C3AED] bg-white hover:bg-[#F1F5F9] flex items-center justify-center text-[#0B0A14] transition-all cursor-pointer shadow-xs active:scale-95"
               aria-label="Next story"
             >
               <ChevronRight className="w-5 h-5" />
@@ -143,7 +143,7 @@ export function WishlinkCreatorStories() {
           className="p-5 sm:p-10 lg:p-12 rounded-2xl sm:rounded-3xl bg-white border border-black/[0.07] shadow-[0_4px_30px_rgba(0,0,0,0.03)] relative overflow-hidden"
         >
           {/* Subtle Ambient Radial Highlight */}
-          <div className="absolute top-0 right-0 w-80 h-80 bg-[#FFD21F]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-0 w-80 h-80 bg-[#7C3AED]/12 rounded-full blur-3xl pointer-events-none" />
 
           <AnimatePresence mode="wait">
             <motion.div
@@ -169,7 +169,7 @@ export function WishlinkCreatorStories() {
                   <div className="absolute bottom-4 left-4 right-4 text-white">
                     <p className="text-base font-extrabold font-display leading-tight">{active.name}</p>
                     <p className="text-xs font-mono text-white/80">{active.handle}</p>
-                    <span className="inline-block mt-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-[#FFD21F] text-[#0A0A0E]">
+                    <span className="inline-block mt-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-[#7C3AED] text-white">
                       {active.followers}
                     </span>
                   </div>
@@ -178,22 +178,22 @@ export function WishlinkCreatorStories() {
 
               {/* Story Narrative & Proof */}
               <div className="lg:col-span-7 space-y-6 text-left">
-                <Quote className="w-10 h-10 text-[#FFD21F] fill-[#FFD21F]/30" />
+                <Quote className="w-10 h-10 text-[#C084FC] fill-[#C084FC]/25" />
 
-                <blockquote className="text-base sm:text-xl lg:text-2xl font-bold font-display text-[#0A0A0E] leading-relaxed sm:leading-snug">
+                <blockquote className="text-base sm:text-xl lg:text-2xl font-bold font-display text-[#0B0A14] leading-relaxed sm:leading-snug">
                   &ldquo;{active.quote}&rdquo;
                 </blockquote>
 
                 {/* Proof Metric Grid */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-3 border-t border-black/[0.06]">
-                  <div className="p-3 rounded-2xl bg-[#FBFBFD] border border-black/[0.06] space-y-0.5">
-                    <p className="text-[10px] font-mono text-[#7A7A8A]">Brand Partner</p>
-                    <p className="text-sm font-black text-[#0A0A0E]">{active.brandPartner}</p>
+                  <div className="p-3 rounded-2xl bg-[#F8FAFC] border border-black/[0.06] space-y-0.5">
+                    <p className="text-[10px] font-mono text-[#79768F]">Brand Partner</p>
+                    <p className="text-sm font-black text-[#0B0A14]">{active.brandPartner}</p>
                   </div>
 
-                  <div className="p-3 rounded-2xl bg-[#FBFBFD] border border-black/[0.06] space-y-0.5">
-                    <p className="text-[10px] font-mono text-[#7A7A8A]">Deal Amount</p>
-                    <p className="text-sm font-black font-mono text-[#0A0A0E]">{active.brandDealAmount}</p>
+                  <div className="p-3 rounded-2xl bg-[#F8FAFC] border border-black/[0.06] space-y-0.5">
+                    <p className="text-[10px] font-mono text-[#79768F]">Deal Amount</p>
+                    <p className="text-sm font-black font-mono text-[#0B0A14]">{active.brandDealAmount}</p>
                   </div>
 
                   <div className="col-span-2 sm:col-span-1 p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 space-y-0.5">
@@ -206,14 +206,14 @@ export function WishlinkCreatorStories() {
                 <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                   <div className="flex items-center gap-2">
                     <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
-                    <span className="text-xs font-mono font-bold text-[#0A0A0E]">
+                    <span className="text-xs font-mono font-bold text-[#0B0A14]">
                       Verified AbeyCollab Creator Deal
                     </span>
                   </div>
 
                   <Link
                     href="/register?role=creator"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0A0A0E] hover:text-amber-600 transition-colors self-start sm:self-auto"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0B0A14] hover:text-[#7C3AED] transition-colors self-start sm:self-auto"
                   >
                     <span>Join Roster</span>
                     <ArrowRight className="w-3.5 h-3.5" />

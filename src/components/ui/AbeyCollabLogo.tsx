@@ -28,14 +28,14 @@ export function AbeyCollabSymbol({
   return (
     <div
       className={cn(
-        "relative flex items-center justify-center shrink-0 select-none overflow-hidden rounded-xl bg-[#181b22] border border-[#FFD21F]/35 shadow-[0_2px_12px_rgba(255,210,31,0.22)] transition-all duration-300",
+        "relative flex items-center justify-center shrink-0 select-none overflow-hidden rounded-xl bg-[#0B0A14] border border-[#7C3AED]/40 shadow-[0_2px_14px_rgba(124,58,237,0.25)] transition-all duration-300",
         className
       )}
       style={{ width: size, height: size }}
       aria-label="AbeyCollab Emblem"
     >
-      {/* Ambient solar gold glow */}
-      <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-[#FFD21F]/25 blur-sm pointer-events-none" />
+      {/* Ambient violet lilac glow */}
+      <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-[#C084FC]/30 blur-sm pointer-events-none" />
 
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img

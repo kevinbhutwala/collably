@@ -28,7 +28,7 @@ export function WishlinkHeroShowcase() {
   return (
     <section
       id="hero"
-      className="relative min-h-[90vh] sm:min-h-[94vh] w-full flex items-center justify-center overflow-hidden bg-[#08080A] pt-20 sm:pt-28 pb-20 sm:pb-24 select-none"
+      className="relative min-h-[90vh] sm:min-h-[94vh] w-full flex items-center justify-center overflow-hidden bg-[#0B0A14] pt-20 sm:pt-28 pb-20 sm:pb-24 select-none"
     >
       {/* ── Background Cinematic Video Loop ── */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -43,12 +43,12 @@ export function WishlinkHeroShowcase() {
           className="w-full h-full object-cover opacity-85 transition-opacity duration-1000"
         />
         {/* Balanced Vignette */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#08080A] via-[#08080A]/60 to-[#08080A]/50 pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(8,8,10,0.4)_0%,rgba(8,8,10,0.92)_85%)] opacity-85 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0A14] via-[#0B0A14]/65 to-[#0B0A14]/50 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(11,10,20,0.4)_0%,rgba(11,10,20,0.94)_85%)] opacity-85 pointer-events-none" />
       </div>
 
       {/* ── Seamless Bottom Gradient Blend into Canvas ── */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-[#08080A]/70 to-[#FBFBFD] pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-[#0B0A14]/70 to-[#F8FAFC] pointer-events-none z-10" />
 
       {/* ── Main Hero Content ── */}
       <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center">
@@ -80,7 +80,7 @@ export function WishlinkHeroShowcase() {
             onClick={() => setActiveTab('creator')}
             className={`px-5 sm:px-6 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
               activeTab === 'creator'
-                ? 'bg-[#FFD21F] text-[#0A0A0E] shadow-sm'
+                ? 'bg-[#7C3AED] text-white shadow-sm'
                 : 'text-white/60 hover:text-white'
             }`}
           >
@@ -91,7 +91,7 @@ export function WishlinkHeroShowcase() {
             onClick={() => setActiveTab('brand')}
             className={`px-5 sm:px-6 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
               activeTab === 'brand'
-                ? 'bg-[#FFD21F] text-[#0A0A0E] shadow-sm'
+                ? 'bg-[#7C3AED] text-white shadow-sm'
                 : 'text-white/60 hover:text-white'
             }`}
           >
@@ -119,10 +119,10 @@ export function WishlinkHeroShowcase() {
           className="mt-3 sm:mt-5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 sm:gap-3 text-xs sm:text-base md:text-xl font-display font-semibold tracking-wide uppercase text-neutral-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] max-w-xl mx-auto"
         >
           <span className="whitespace-nowrap">{activeTab === 'creator' ? 'Direct Brand Deals' : 'Audited Creators'}</span>
-          <span className="text-[#FFD21F] font-light hidden min-[360px]:inline">/</span>
+          <span className="text-[#C084FC] font-light hidden min-[360px]:inline">/</span>
           <span className="text-white whitespace-nowrap">Meta Auto-DMs</span>
-          <span className="text-[#FFD21F] font-light hidden min-[360px]:inline">/</span>
-          <span className="text-[#FFD21F] whitespace-nowrap">24h Escrow Payouts</span>
+          <span className="text-[#C084FC] font-light hidden min-[360px]:inline">/</span>
+          <span className="text-[#C084FC] whitespace-nowrap font-bold">24h Escrow Payouts</span>
         </motion.div>
 
         {/* Punchy Concise Tagline */}
@@ -146,7 +146,7 @@ export function WishlinkHeroShowcase() {
         >
           <Link
             href={activeTab === 'creator' ? '/register?role=creator' : '/register?role=brand'}
-            className="group relative w-full sm:w-auto px-6 sm:px-7 py-3.5 sm:py-3.5 bg-[#FFD21F] text-[#0A0A0E] hover:bg-[#FFE052] font-sans font-bold text-xs tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-2 rounded-full shadow-[0_10px_30px_rgba(255,210,31,0.25)] hover:shadow-[0_15px_40px_rgba(255,210,31,0.4)] hover:scale-105 active:scale-95 cursor-pointer text-center"
+            className="group relative w-full sm:w-auto px-6 sm:px-7 py-3.5 sm:py-3.5 bg-gradient-to-r from-[#7C3AED] via-[#9333EA] to-[#C084FC] text-white hover:from-[#6D28D9] hover:to-[#A855F7] font-sans font-bold text-xs tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-2 rounded-full shadow-[0_10px_30px_rgba(124,58,237,0.35)] hover:shadow-[0_15px_40px_rgba(124,58,237,0.5)] hover:scale-105 active:scale-95 cursor-pointer text-center"
           >
             <Play className="w-3.5 h-3.5 fill-current transition-transform duration-300 group-hover:scale-110 shrink-0" />
             <span className="whitespace-nowrap">{activeTab === 'creator' ? 'Join as Creator (Free)' : 'Launch Campaign'}</span>
@@ -154,7 +154,7 @@ export function WishlinkHeroShowcase() {
 
           <Link
             href={activeTab === 'creator' ? '/campaigns' : '/creators'}
-            className="w-full sm:w-auto px-6 sm:px-7 py-3.5 sm:py-3.5 border border-white/20 hover:border-[#FFD21F]/60 text-white hover:text-[#FFD21F] font-sans font-medium text-xs tracking-wider uppercase transition-all duration-300 bg-white/[0.05] hover:bg-white/[0.1] backdrop-blur-xl rounded-full shadow-lg hover:scale-105 active:scale-95 cursor-pointer flex items-center justify-center text-center whitespace-nowrap"
+            className="w-full sm:w-auto px-6 sm:px-7 py-3.5 sm:py-3.5 border border-white/20 hover:border-[#C084FC]/60 text-white hover:text-[#C084FC] font-sans font-medium text-xs tracking-wider uppercase transition-all duration-300 bg-white/[0.05] hover:bg-white/[0.1] backdrop-blur-xl rounded-full shadow-lg hover:scale-105 active:scale-95 cursor-pointer flex items-center justify-center text-center whitespace-nowrap"
           >
             {activeTab === 'creator' ? 'Explore Briefs' : 'Browse Creators'}
           </Link>
@@ -171,11 +171,11 @@ export function WishlinkHeroShowcase() {
               <VolumeX className="w-4 h-4 text-neutral-400 group-hover:text-white" />
             ) : (
               <div className="flex items-center gap-1.5">
-                <Volume2 className="w-4 h-4 text-[#FFD21F]" />
+                <Volume2 className="w-4 h-4 text-[#C084FC]" />
                 <span className="flex items-center gap-0.5 h-3">
-                  <span className="w-0.5 h-2 bg-[#FFD21F] animate-pulse" />
-                  <span className="w-0.5 h-3 bg-[#FFD21F] animate-pulse delay-75" />
-                  <span className="w-0.5 h-1.5 bg-[#FFD21F] animate-pulse delay-150" />
+                  <span className="w-0.5 h-2 bg-[#C084FC] animate-pulse" />
+                  <span className="w-0.5 h-3 bg-[#C084FC] animate-pulse delay-75" />
+                  <span className="w-0.5 h-1.5 bg-[#C084FC] animate-pulse delay-150" />
                 </span>
               </div>
             )}
@@ -198,7 +198,7 @@ export function WishlinkHeroShowcase() {
           </span>
           <span className="hidden sm:inline text-white/30">•</span>
           <span className="flex items-center gap-1.5 font-bold text-neutral-100">
-            <Zap className="w-3.5 h-3.5 text-[#FFD21F]" />
+            <Zap className="w-3.5 h-3.5 text-[#C084FC]" />
             <span>24h Approval Guarantee</span>
           </span>
           <span className="hidden sm:inline text-white/30">•</span>

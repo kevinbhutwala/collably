@@ -43,10 +43,10 @@ export function WishlinkStickyCTA() {
             </div>
 
             <div className="min-w-0">
-              <p className="text-xs sm:text-sm font-extrabold text-[#0A0A0E] font-display truncate">
+              <p className="text-xs sm:text-sm font-extrabold text-[#0B0A14] font-display truncate">
                 Join AbeyCollab Today
               </p>
-              <p className="text-[10px] sm:text-[11px] font-mono text-[#6A6A78] truncate">
+              <p className="text-[10px] sm:text-[11px] font-mono text-[#64748B] truncate">
                 100% Escrow Protected • 24h Payouts
               </p>
             </div>
@@ -56,7 +56,7 @@ export function WishlinkStickyCTA() {
           {isAuthenticated ? (
             <Link
               href={user?.role === "brand" ? "/app/brand/campaigns" : "/app/dashboard"}
-              className="px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-[#FFD21F] hover:bg-[#FFE052] text-[#0A0A0E] text-xs sm:text-sm font-extrabold shadow-sm flex items-center gap-1.5 shrink-0 transition-transform active:scale-95"
+              className="px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-xs sm:text-sm font-extrabold shadow-sm flex items-center gap-1.5 shrink-0 transition-transform active:scale-95"
             >
               <span>Dashboard</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -64,10 +64,10 @@ export function WishlinkStickyCTA() {
           ) : (
             <Link
               href="/register"
-              className="px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFCA18] to-[#FFBF00] hover:from-[#FFCA18] hover:to-[#FFAE00] text-[#0A0A0E] text-xs sm:text-sm font-extrabold shadow-[0_4px_16px_rgba(255,210,31,0.4)] flex items-center gap-1.5 shrink-0 transition-transform active:scale-95 border border-black/8"
+              className="px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#7C3AED] via-[#9333EA] to-[#C084FC] hover:from-[#6D28D9] hover:to-[#A855F7] text-white text-xs sm:text-sm font-extrabold shadow-[0_4px_16px_rgba(124,58,237,0.4)] flex items-center gap-1.5 shrink-0 transition-transform active:scale-95 border border-white/10"
             >
               <span>Sign up</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight className="w-3.5 h-3.5 text-white" />
             </Link>
           )}
         </div>

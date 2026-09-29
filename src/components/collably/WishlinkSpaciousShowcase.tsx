@@ -110,7 +110,7 @@ export function WishlinkSpaciousShowcase() {
   const activeFeature = FEATURES.find((f) => f.id === activeTabId) || FEATURES[0];
 
   return (
-    <section className="py-16 sm:py-24 bg-[#FBFBFD] select-none font-sans overflow-hidden">
+    <section className="py-16 sm:py-24 bg-[#F8FAFC] select-none font-sans overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Top Header */}
         <motion.div
@@ -121,20 +121,20 @@ export function WishlinkSpaciousShowcase() {
           className="text-center max-w-3xl mx-auto space-y-3 mb-10 sm:mb-14"
         >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-black/[0.08] shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-[#FFCA18]" />
-            <span className="text-xs font-mono font-extrabold uppercase text-[#0A0A0E] tracking-tight">
+            <Sparkles className="w-3.5 h-3.5 text-[#7C3AED]" />
+            <span className="text-xs font-mono font-extrabold uppercase text-[#0B0A14] tracking-tight">
               COLLABORATION ESSENTIALS
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A0A0E] font-display tracking-tight leading-[1.1]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0B0A14] font-display tracking-tight leading-[1.1]">
             Unlock your reach and{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFCA18] to-[#FF9E00] underline decoration-[#FFD21F] decoration-4 underline-offset-4">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7C3AED] via-[#9333EA] to-[#C084FC] underline decoration-[#C084FC] decoration-4 underline-offset-4">
               maximize earnings
             </span>
           </h2>
 
-          <p className="text-sm sm:text-base text-[#5A5A68] max-w-xl mx-auto">
+          <p className="text-sm sm:text-base text-[#545266] max-w-xl mx-auto">
             Everything you need to partner with top brands, automate DMs, and get paid on time.
           </p>
         </motion.div>
@@ -150,11 +150,11 @@ export function WishlinkSpaciousShowcase() {
                 onClick={() => setActiveTabId(item.id)}
                 className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap transition-all flex items-center gap-2 cursor-pointer ${
                   isActive
-                    ? "bg-[#FFD21F] text-[#0A0A0E] shadow-[0_4px_16px_rgba(255,210,31,0.35)] border border-black/10 scale-[1.02]"
-                    : "bg-white text-[#5A5A68] hover:text-[#0A0A0E] border border-black/[0.07] hover:bg-black/[0.03]"
+                    ? "bg-[#7C3AED] text-white shadow-[0_4px_16px_rgba(124,58,237,0.35)] border border-[#7C3AED]/30 scale-[1.02]"
+                    : "bg-white text-[#545266] hover:text-[#0B0A14] border border-black/[0.07] hover:bg-black/[0.03]"
                 }`}
               >
-                {isActive && <span className="w-2 h-2 rounded-full bg-[#0A0A0E]" />}
+                {isActive && <span className="w-2 h-2 rounded-full bg-white" />}
                 <span>{item.tabLabel}</span>
               </button>
             );
@@ -178,19 +178,19 @@ export function WishlinkSpaciousShowcase() {
                   <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-extrabold uppercase bg-emerald-500/10 text-emerald-800 border border-emerald-500/20">
                     {activeFeature.badge}
                   </span>
-                  <span className="text-[11px] font-mono text-[#7A7A8A] font-semibold uppercase">
+                  <span className="text-[11px] font-mono text-[#79768F] font-semibold uppercase">
                     {activeFeature.tagline}
                   </span>
                 </div>
 
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0A0A0E] font-display tracking-tight leading-[1.15]">
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0B0A14] font-display tracking-tight leading-[1.15]">
                   {activeFeature.title}{" "}
-                  <span className="text-[#FF9E00] underline decoration-[#FFD21F] decoration-4 underline-offset-4">
+                  <span className="text-[#7C3AED] underline decoration-[#C084FC] decoration-4 underline-offset-4">
                     {activeFeature.highlight}
                   </span>
                 </h3>
 
-                <p className="text-sm sm:text-base text-[#5A5A68] leading-relaxed">
+                <p className="text-sm sm:text-base text-[#545266] leading-relaxed">
                   {activeFeature.description}
                 </p>
 
@@ -201,7 +201,7 @@ export function WishlinkSpaciousShowcase() {
                       <div className="w-4 h-4 rounded-full bg-emerald-500/15 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
                         <CheckCircle2 className="w-3 h-3" />
                       </div>
-                      <span className="text-xs sm:text-sm font-semibold text-[#0A0A0E]">{pt}</span>
+                      <span className="text-xs sm:text-sm font-semibold text-[#0B0A14]">{pt}</span>
                     </div>
                   ))}
                 </div>
@@ -210,10 +210,10 @@ export function WishlinkSpaciousShowcase() {
                 <div className="pt-2">
                   <Link
                     href={activeFeature.ctaLink}
-                    className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFCA18] to-[#FFBF00] hover:from-[#FFCA18] hover:to-[#FFAE00] text-[#0A0A0E] font-extrabold text-xs sm:text-sm transition-all shadow-[0_6px_25px_rgba(255,202,24,0.4)] border border-black/10 active:scale-95 cursor-pointer"
+                    className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 rounded-full bg-gradient-to-r from-[#7C3AED] via-[#9333EA] to-[#C084FC] hover:from-[#6D28D9] hover:to-[#A855F7] text-white font-extrabold text-xs sm:text-sm transition-all shadow-[0_6px_25px_rgba(124,58,237,0.35)] border border-white/10 active:scale-95 cursor-pointer"
                   >
                     <span>{activeFeature.ctaText}</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#0A0A0E]" />
+                    <ArrowRight className="w-3.5 h-3.5 text-white" />
                   </Link>
                 </div>
               </div>
@@ -221,15 +221,15 @@ export function WishlinkSpaciousShowcase() {
               {/* ── RIGHT: Dedicated High-Fidelity Spacious Visual ── */}
               <div className="lg:col-span-6 relative flex items-center justify-center w-full">
                 {activeFeature.visualType === "escrow" && (
-                  <div className="w-full max-w-full sm:max-w-[440px] p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FBFBFD] border border-black/[0.08] shadow-lg relative overflow-hidden">
+                  <div className="w-full max-w-full sm:max-w-[440px] p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#F8FAFC] border border-black/[0.08] shadow-lg relative overflow-hidden">
                     <div className="flex items-center justify-between pb-4 border-b border-black/[0.06]">
                       <div className="flex items-center gap-2.5">
                         <div className="w-9 h-9 rounded-xl bg-emerald-500/15 text-emerald-700 flex items-center justify-center font-bold">
                           <Lock className="w-4 h-4" />
                         </div>
                         <div>
-                          <p className="text-[10px] font-mono text-[#7A7A8A] font-bold">ESCROW VAULT</p>
-                          <p className="text-sm font-extrabold text-[#0A0A0E]">Milestone Protected</p>
+                          <p className="text-[10px] font-mono text-[#79768F] font-bold">ESCROW VAULT</p>
+                          <p className="text-sm font-extrabold text-[#0B0A14]">Milestone Protected</p>
                         </div>
                       </div>
                       <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/10 text-emerald-700">
@@ -237,10 +237,10 @@ export function WishlinkSpaciousShowcase() {
                       </span>
                     </div>
 
-                    <div className="my-5 p-4 sm:p-5 rounded-2xl bg-gradient-to-b from-[#FFFDF0] via-white to-[#FFFDF0] border border-[#FFD21F]/30 text-center space-y-1.5 relative overflow-hidden shadow-2xs">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-[#FFD21F]/15 rounded-full blur-2xl pointer-events-none" />
-                      <p className="text-[10px] font-mono text-[#0A0A0E] font-bold uppercase tracking-wider">Escrow Funds Reserved</p>
-                      <h4 className="text-3xl sm:text-4xl font-black font-mono text-[#0A0A0E]">₹1,25,000</h4>
+                    <div className="my-5 p-4 sm:p-5 rounded-2xl bg-gradient-to-b from-[#FAF5FF] via-white to-[#FAF5FF] border border-[#7C3AED]/30 text-center space-y-1.5 relative overflow-hidden shadow-2xs">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-[#7C3AED]/15 rounded-full blur-2xl pointer-events-none" />
+                      <p className="text-[10px] font-mono text-[#0B0A14] font-bold uppercase tracking-wider">Escrow Funds Reserved</p>
+                      <h4 className="text-3xl sm:text-4xl font-black font-mono text-[#0B0A14]">₹1,25,000</h4>
                       <p className="text-[10.5px] font-mono text-emerald-700 font-bold">
                         ✓ Deposited by Snitch India • Campaign #AC-884
                       </p>
@@ -248,44 +248,44 @@ export function WishlinkSpaciousShowcase() {
 
                     <div className="space-y-2 text-xs font-mono">
                       <div className="flex items-center justify-between p-2 rounded-xl bg-white border border-black/[0.06]">
-                        <span className="text-[#6A6A78]">Milestone 1: Reel Draft</span>
+                        <span className="text-[#64748B]">Milestone 1: Reel Draft</span>
                         <span className="text-emerald-700 font-bold">₹50,000 (Released)</span>
                       </div>
                       <div className="flex items-center justify-between p-2 rounded-xl bg-white border border-black/[0.06]">
-                        <span className="text-[#6A6A78]">Milestone 2: Live Metrics</span>
-                        <span className="text-amber-600 font-bold">₹75,000 (Locked)</span>
+                        <span className="text-[#64748B]">Milestone 2: Live Metrics</span>
+                        <span className="text-[#7C3AED] font-bold">₹75,000 (Locked)</span>
                       </div>
                     </div>
                   </div>
                 )}
 
                 {activeFeature.visualType === "dm" && (
-                  <div className="w-full max-w-full sm:max-w-[440px] p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FBFBFD] border border-black/[0.08] shadow-lg space-y-4">
+                  <div className="w-full max-w-full sm:max-w-[440px] p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#F8FAFC] border border-black/[0.08] shadow-lg space-y-4">
                     <div className="flex items-center justify-between pb-3 border-b border-black/[0.06]">
                       <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] text-white flex items-center justify-center font-bold text-xs">
+                        <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#7C3AED] via-[#9333EA] to-[#C084FC] text-white flex items-center justify-center font-bold text-xs">
                           IG
                         </div>
                         <div>
-                          <p className="text-xs font-bold text-[#0A0A0E]">Instagram Direct</p>
+                          <p className="text-xs font-bold text-[#0B0A14]">Instagram Direct</p>
                           <p className="text-[10px] font-mono text-emerald-700 font-bold">● Active Auto-Response</p>
                         </div>
                       </div>
-                      <span className="text-[10px] font-mono text-[#7A7A8A]">Meta Verified</span>
+                      <span className="text-[10px] font-mono text-[#79768F]">Meta Verified</span>
                     </div>
 
                     <div className="space-y-3 text-xs">
                       {/* Incoming comment */}
                       <div className="p-3 rounded-2xl bg-white border border-black/[0.06] shadow-2xs space-y-1">
-                        <p className="text-[10px] font-mono text-[#7A7A8A]">@plumgoodness commented on your reel:</p>
-                        <p className="font-semibold text-[#0A0A0E]">&ldquo;Hey! Loved this review. Can we get your rates for a 3-reel series?&rdquo;</p>
+                        <p className="text-[10px] font-mono text-[#79768F]">@plumgoodness commented on your reel:</p>
+                        <p className="font-semibold text-[#0B0A14]">&ldquo;Hey! Loved this review. Can we get your rates for a 3-reel series?&rdquo;</p>
                       </div>
 
                       {/* Auto-DM Response */}
-                      <div className="p-3.5 rounded-2xl bg-gradient-to-b from-[#FFFDF0] via-white to-[#FFFDF0] border border-[#FFD21F]/35 text-[#0A0A0E] space-y-2 shadow-2xs">
-                        <div className="flex items-center justify-between text-[10px] font-mono text-amber-800 font-bold">
+                      <div className="p-3.5 rounded-2xl bg-gradient-to-b from-[#FAF5FF] via-white to-[#FAF5FF] border border-[#7C3AED]/35 text-[#0B0A14] space-y-2 shadow-2xs">
+                        <div className="flex items-center justify-between text-[10px] font-mono text-[#7C3AED] font-bold">
                           <span className="flex items-center gap-1">
-                            <Send className="w-3 h-3 text-amber-600" />
+                            <Send className="w-3 h-3 text-[#7C3AED]" />
                             <span>Auto-Sent in 1.8 seconds</span>
                           </span>
                           <span className="text-emerald-700 font-bold">Delivered</span>
@@ -299,57 +299,57 @@ export function WishlinkSpaciousShowcase() {
                 )}
 
                 {activeFeature.visualType === "mediakit" && (
-                  <div className="w-full max-w-full sm:max-w-[440px] p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FBFBFD] border border-black/[0.08] shadow-lg space-y-4">
+                  <div className="w-full max-w-full sm:max-w-[440px] p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#F8FAFC] border border-black/[0.08] shadow-lg space-y-4">
                     <div className="flex items-center justify-between pb-3 border-b border-black/[0.06]">
                       <div className="flex items-center gap-2.5">
                         <div className="w-10 h-10 rounded-full overflow-hidden relative border-2 border-white shadow-xs">
                           <SafeImage src="/creators/vasudha-rai.jpg" alt="Vasudha" fill className="object-cover" />
                         </div>
                         <div>
-                          <p className="text-xs font-bold text-[#0A0A0E]">Vasudha Rai</p>
-                          <p className="text-[10px] font-mono text-[#7A7A8A]">@vasudha.rai • Beauty &amp; Wellness</p>
+                          <p className="text-xs font-bold text-[#0B0A14]">Vasudha Rai</p>
+                          <p className="text-[10px] font-mono text-[#79768F]">@vasudha.rai • Beauty &amp; Wellness</p>
                         </div>
                       </div>
-                      <span className="px-2 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-[10px] font-mono font-bold">
+                      <span className="px-2.5 py-0.5 rounded-full bg-[#7C3AED] text-white text-[10px] font-mono font-bold">
                         Audited
                       </span>
                     </div>
 
                     <div className="grid grid-cols-3 gap-2 text-center">
                       <div className="p-2.5 rounded-xl bg-white border border-black/[0.06]">
-                        <p className="text-base font-black text-[#0A0A0E] font-mono">115K</p>
-                        <p className="text-[9.5px] font-mono text-[#7A7A8A]">Reach</p>
+                        <p className="text-base font-black text-[#0B0A14] font-mono">115K</p>
+                        <p className="text-[9.5px] font-mono text-[#79768F]">Reach</p>
                       </div>
                       <div className="p-2.5 rounded-xl bg-white border border-black/[0.06]">
                         <p className="text-base font-black text-emerald-700 font-mono">5.8%</p>
-                        <p className="text-[9.5px] font-mono text-[#7A7A8A]">Engagement</p>
+                        <p className="text-[9.5px] font-mono text-[#79768F]">Engagement</p>
                       </div>
                       <div className="p-2.5 rounded-xl bg-white border border-black/[0.06]">
-                        <p className="text-base font-black text-[#0A0A0E] font-mono">₹45,000</p>
-                        <p className="text-[9.5px] font-mono text-[#7A7A8A]">Starting Rate</p>
+                        <p className="text-base font-black text-[#0B0A14] font-mono">₹45,000</p>
+                        <p className="text-[9.5px] font-mono text-[#79768F]">Starting Rate</p>
                       </div>
                     </div>
 
                     <div className="p-3 rounded-2xl bg-white border border-black/[0.06] flex items-center justify-between text-xs">
-                      <span className="font-semibold text-[#0A0A0E]">Instagram Dedicated Reel</span>
-                      <span className="font-mono font-bold text-[#0A0A0E]">₹45,000 INR</span>
+                      <span className="font-semibold text-[#0B0A14]">Instagram Dedicated Reel</span>
+                      <span className="font-mono font-bold text-[#0B0A14]">₹45,000 INR</span>
                     </div>
                   </div>
                 )}
 
                 {activeFeature.visualType === "brands" && (
-                  <div className="w-full max-w-full sm:max-w-[440px] p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FBFBFD] border border-black/[0.08] shadow-lg space-y-4">
+                  <div className="w-full max-w-full sm:max-w-[440px] p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#F8FAFC] border border-black/[0.08] shadow-lg space-y-4">
                     <div className="flex items-center justify-between pb-3 border-b border-black/[0.06]">
                       <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-xl bg-[#FFF9E6] border border-[#FFD21F]/40 text-[#0A0A0E] flex items-center justify-center font-bold text-xs">
+                        <div className="w-8 h-8 rounded-xl bg-[#F3E8FF] border border-[#7C3AED]/30 text-[#7C3AED] flex items-center justify-center font-bold text-xs">
                           AC
                         </div>
                         <div>
-                          <p className="text-xs font-bold text-[#0A0A0E]">Active Brand Briefs</p>
+                          <p className="text-xs font-bold text-[#0B0A14]">Active Brand Briefs</p>
                           <p className="text-[10px] font-mono text-emerald-700 font-bold">250+ Verified Sponsors</p>
                         </div>
                       </div>
-                      <span className="text-[10px] font-mono text-[#7A7A8A]">Pre-Funded</span>
+                      <span className="text-[10px] font-mono text-[#79768F]">Pre-Funded</span>
                     </div>
 
                     <div className="space-y-2.5">
@@ -360,10 +360,10 @@ export function WishlinkSpaciousShowcase() {
                       ].map((item, i) => (
                         <div key={i} className="p-3 rounded-2xl bg-white border border-black/[0.06] flex items-center justify-between gap-3">
                           <div className="min-w-0">
-                            <span className="text-[9.5px] font-mono text-[#7A7A8A] uppercase font-bold">{item.brand}</span>
-                            <p className="text-xs font-bold text-[#0A0A0E] truncate">{item.brief}</p>
+                            <span className="text-[9.5px] font-mono text-[#79768F] uppercase font-bold">{item.brand}</span>
+                            <p className="text-xs font-bold text-[#0B0A14] truncate">{item.brief}</p>
                           </div>
-                          <span className="px-2.5 py-1 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-xs font-mono font-extrabold shrink-0">
+                          <span className="px-2.5 py-1 rounded-full bg-[#7C3AED] text-white text-xs font-mono font-extrabold shrink-0">
                             {item.budget}
                           </span>
                         </div>

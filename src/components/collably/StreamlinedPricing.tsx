@@ -61,7 +61,7 @@ export function StreamlinedPricing() {
   ];
 
   return (
-    <section className="py-16 sm:py-24 bg-[#FBFBFD] dark:bg-[#07070B] text-[#0A0A0E] dark:text-[#F4F4F8] select-none relative overflow-hidden border-t border-black/[0.06] dark:border-white/5">
+    <section className="py-16 sm:py-24 bg-[#F8FAFC] dark:bg-[#0B0A14] text-[#0B0A14] dark:text-[#F8FAFC] select-none relative overflow-hidden border-t border-black/[0.06] dark:border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Header & Toggle */}
         <motion.div
@@ -71,24 +71,24 @@ export function StreamlinedPricing() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="text-center space-y-3 max-w-2xl mx-auto"
         >
-          <span className="text-[11px] font-mono font-bold tracking-[0.18em] text-[#6A6A78] dark:text-[#8E8EA4] uppercase block">
+          <span className="text-[11px] font-mono font-bold tracking-[0.18em] text-[#64748B] dark:text-[#94A3B8] uppercase block">
             TRANSPARENT VALUE
           </span>
-          <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#0A0A0E] dark:text-white font-display">
+          <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#0B0A14] dark:text-white font-display">
             Simple, honest{" "}
-            <span className="font-serif italic font-normal text-[#5A5A68] dark:text-[#8E8EA4] lowercase">pricing</span>
+            <span className="font-serif italic font-normal text-[#545266] dark:text-[#94A3B8] lowercase">pricing</span>
           </h2>
 
           {/* Toggle */}
           <div className="pt-2 flex items-center justify-center gap-3">
-            <div className="inline-flex items-center p-1 rounded-full bg-[#F0EFF4] dark:bg-[#14141E] border border-black/8 dark:border-white/10 text-xs font-sans shadow-2xs">
+            <div className="inline-flex items-center p-1 rounded-full bg-[#F1F5F9] dark:bg-[#1A172E] border border-black/8 dark:border-white/10 text-xs font-sans shadow-2xs">
               <button
                 type="button"
                 onClick={() => setIsAnnual(false)}
                 className={`px-4 py-1.5 rounded-full transition-all font-bold ${
                   !isAnnual
-                    ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs"
-                    : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
+                    ? "bg-[#7C3AED] text-white shadow-xs"
+                    : "text-[#64748B] dark:text-[#94A3B8] hover:text-[#0B0A14] dark:hover:text-white"
                 }`}
               >
                 Monthly
@@ -98,8 +98,8 @@ export function StreamlinedPricing() {
                 onClick={() => setIsAnnual(true)}
                 className={`px-4 py-1.5 rounded-full transition-all font-bold flex items-center gap-1.5 ${
                   isAnnual
-                    ? "bg-[#FFD21F] text-[#0A0A0E] shadow-xs"
-                    : "text-[#6A6A78] dark:text-[#8E8EA4] hover:text-[#0A0A0E] dark:hover:text-white"
+                    ? "bg-[#7C3AED] text-white shadow-xs"
+                    : "text-[#64748B] dark:text-[#94A3B8] hover:text-[#0B0A14] dark:hover:text-white"
                 }`}
               >
                 <span>Annual</span>
@@ -124,15 +124,15 @@ export function StreamlinedPricing() {
             >
               <InteractiveTiltCard
                 maxTilt={6}
-                glowColor="rgba(255, 210, 31, 0.25)"
+                glowColor="rgba(124, 58, 237, 0.25)"
                 className={`rounded-3xl p-6 sm:p-8 flex flex-col justify-between w-full transition-all relative ${
                   tier.popular
-                    ? "bg-white dark:bg-[#12121C] border-2 border-[#FFD21F] shadow-[0_16px_48px_rgba(255,210,31,0.22)]"
-                    : "bg-white dark:bg-[#14141E] border border-black/[0.08] dark:border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_14px_36px_rgba(0,0,0,0.07)] hover:border-black/15"
+                    ? "bg-white dark:bg-[#121020] border-2 border-[#7C3AED] shadow-[0_16px_48px_rgba(124,58,237,0.22)]"
+                    : "bg-white dark:bg-[#121020] border border-black/[0.08] dark:border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_14px_36px_rgba(0,0,0,0.07)] hover:border-black/15"
                 }`}
               >
                 {tier.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[#FFD21F] text-[#0A0A0E] font-mono font-extrabold text-[10px] tracking-wider uppercase shadow-xs flex items-center gap-1 z-30">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[#7C3AED] text-white font-mono font-extrabold text-[10px] tracking-wider uppercase shadow-xs flex items-center gap-1 z-30">
                     <Sparkles className="w-3 h-3" />
                     <span>RECOMMENDED</span>
                   </div>
@@ -140,22 +140,22 @@ export function StreamlinedPricing() {
 
                 <div className="space-y-4">
                   <div>
-                    <h3 className="text-lg font-bold font-display text-[#0A0A0E] dark:text-white">{tier.name}</h3>
-                    <p className="text-xs text-[#6A6A78] dark:text-[#9A9AA8] font-sans mt-1">{tier.desc}</p>
+                    <h3 className="text-lg font-bold font-display text-[#0B0A14] dark:text-white">{tier.name}</h3>
+                    <p className="text-xs text-[#64748B] dark:text-[#94A3B8] font-sans mt-1">{tier.desc}</p>
                   </div>
 
                   <div className="flex items-baseline gap-1 font-mono pt-2">
-                    <span suppressHydrationWarning className="text-4xl font-black text-[#0A0A0E] dark:text-white font-display">
+                    <span suppressHydrationWarning className="text-4xl font-black text-[#0B0A14] dark:text-white font-display">
                       {tier.price}
                     </span>
-                    <span className="text-xs text-[#6A6A78] dark:text-[#8E8EA4] font-sans">{tier.period}</span>
+                    <span className="text-xs text-[#64748B] dark:text-[#94A3B8] font-sans">{tier.period}</span>
                   </div>
 
                   <div className="pt-3 border-t border-black/[0.06] dark:border-white/10 space-y-2.5">
                     {tier.features.map((f, i) => (
-                      <div key={i} className="flex items-center gap-2.5 text-xs text-[#4A4A58] dark:text-[#C8C8DC] font-sans">
-                        <div className="w-4 h-4 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] flex items-center justify-center shrink-0">
-                          <Check className="w-3 h-3 text-[#0A0A0E] dark:text-[#FFD21F]" />
+                      <div key={i} className="flex items-center gap-2.5 text-xs text-[#474554] dark:text-[#CBD5E1] font-sans">
+                        <div className="w-4 h-4 rounded-full bg-[#7C3AED]/15 text-[#7C3AED] dark:text-[#C084FC] flex items-center justify-center shrink-0">
+                          <Check className="w-3 h-3 text-[#7C3AED] dark:text-[#C084FC]" />
                         </div>
                         <span>{f}</span>
                       </div>
@@ -167,8 +167,8 @@ export function StreamlinedPricing() {
                   href={tier.ctaHref}
                   className={`mt-6 w-full py-3.5 rounded-full text-xs font-bold transition-all flex items-center justify-center gap-1.5 active:scale-98 shadow-sm ${
                     tier.popular
-                      ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] shadow-[0_4px_16px_rgba(255,210,31,0.4)]"
-                      : "bg-[#F4F4F8] hover:bg-[#EAEAF0] text-[#0A0A0E] border border-black/10 font-bold shadow-2xs hover:border-black/20"
+                      ? "bg-gradient-to-r from-[#7C3AED] via-[#9333EA] to-[#C084FC] hover:from-[#6D28D9] hover:to-[#A855F7] text-white shadow-[0_4px_20px_rgba(124,58,237,0.4)]"
+                      : "bg-[#F1F5F9] hover:bg-[#E2E8F0] dark:bg-[#1A172E] dark:hover:bg-[#252042] text-[#0B0A14] dark:text-white border border-black/10 dark:border-white/10 font-bold shadow-2xs hover:border-black/20"
                   }`}
                 >
                   <span>{tier.ctaText}</span>

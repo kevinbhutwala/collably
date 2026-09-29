@@ -8,7 +8,8 @@
 @layer base {
   :root {
     /* ══════════════════════════════════════════════════════════════════════════
-       ABEYCOLLAB — PURE WHITE & SOLAR YELLOW (#FFD21F) MAIN THEME SYSTEM
+       ABEYCOLLAB — MIDNIGHT PURPLE THEME SYSTEM
+       #0B0A14 (Midnight Void) • #7C3AED (Royal Violet) • #C084FC (Lilac Glow) • #F8FAFC (Canvas)
        ══════════════════════════════════════════════════════════════════════════ */
     
     /* Typography Tokens */
@@ -18,14 +19,15 @@
     --font-mono: var(--font-mono, 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace);
 
     /* Typographic & Palette Colors */
-    --color-text-primary: #0A0A0E;
-    --color-text-secondary: #4A4A58;
-    --color-text-muted: #7A7A8C;
-    --color-theme: #FFD21F;
-    --color-theme-hover: #FFC700;
-    --color-theme-active: #E5A500;
-    --color-theme-amber: #F59E0B;
-    --color-theme-ink: #0A0A0E;
+    --color-text-primary: #0B0A14;
+    --color-text-secondary: #474554;
+    --color-text-muted: #79768F;
+    --color-theme: #7C3AED;
+    --color-theme-hover: #6D28D9;
+    --color-theme-active: #5B21B6;
+    --color-theme-lilac: #C084FC;
+    --color-theme-midnight: #0B0A14;
+    --color-theme-ink: #0B0A14;
     --color-trust-emerald: #10B981;
     --color-trust-emerald-dark: #059669;
     --color-trust-emerald-soft: rgba(16, 185, 129, 0.12);
@@ -33,36 +35,36 @@
     --color-success: #10B981;
 
     /* Core Canvas & Surfaces */
-    --background: #FFFFFF;
-    --background-alt: #F8F8FB;
-    --foreground: #0A0A0E;
-    --foreground-muted: #666678;
+    --background: #F8FAFC;
+    --background-alt: #FFFFFF;
+    --foreground: #0B0A14;
+    --foreground-muted: #626075;
     
     /* Surfaces */
     --card: #FFFFFF;
-    --card-foreground: #0A0A0E;
-    --surface-secondary: #F4F4F8;
-    --surface-chrome: #EAEAEF;
+    --card-foreground: #0B0A14;
+    --surface-secondary: #F1F5F9;
+    --surface-chrome: #E2E8F0;
     
     /* Borders & Hairlines */
-    --border: #E8E8EE;
-    --border-light: #F0F0F5;
-    --input: #E2E2EA;
-    --ring: #FFD21F;
+    --border: #E2E8F0;
+    --border-light: #F1F5F9;
+    --input: #CBD5E1;
+    --ring: #7C3AED;
     
     /* Accent & Micro Accent */
-    --accent: #FFD21F;
-    --accent-foreground: #0A0A0E;
-    --micro-accent: #FFD21F;
-    --micro-accent-text: #0A0A0E;
+    --accent: #7C3AED;
+    --accent-foreground: #FFFFFF;
+    --micro-accent: #7C3AED;
+    --micro-accent-text: #FFFFFF;
     
     /* Semantic Compatibility */
-    --primary: #FFD21F;
-    --primary-foreground: #0A0A0E;
-    --secondary: #F4F4F8;
-    --secondary-foreground: #0A0A0E;
-    --muted: #F8F8FB;
-    --muted-foreground: #767688;
+    --primary: #7C3AED;
+    --primary-foreground: #FFFFFF;
+    --secondary: #F1F5F9;
+    --secondary-foreground: #0B0A14;
+    --muted: #F8FAFC;
+    --muted-foreground: #64748B;
     --destructive: #FF3B30;
     --destructive-foreground: #FFFFFF;
     
@@ -71,16 +73,17 @@
 
   .dark {
     /* ══════════════════════════════════════════════════════════════════════════
-       ABEYCOLLAB — PITCH OBSIDIAN & SOLAR GOLD DARK THEME
+       ABEYCOLLAB — MIDNIGHT PURPLE DEEP VOID
        ══════════════════════════════════════════════════════════════════════════ */
-    --color-text-primary: #F4F4F8;
-    --color-text-secondary: #B0B0C4;
-    --color-text-muted: #8E8EA4;
-    --color-theme: #FFD21F;
-    --color-theme-hover: #FFC700;
-    --color-theme-active: #E5A500;
-    --color-theme-amber: #F59E0B;
-    --color-theme-ink: #0A0A0E;
+    --color-text-primary: #F8FAFC;
+    --color-text-secondary: #CBD5E1;
+    --color-text-muted: #94A3B8;
+    --color-theme: #7C3AED;
+    --color-theme-hover: #9333EA;
+    --color-theme-active: #C084FC;
+    --color-theme-lilac: #C084FC;
+    --color-theme-midnight: #0B0A14;
+    --color-theme-ink: #F8FAFC;
     --color-trust-emerald: #10B981;
     --color-trust-emerald-dark: #059669;
     --color-trust-emerald-soft: rgba(16, 185, 129, 0.15);
@@ -88,36 +91,36 @@
     --color-success: #10B981;
 
     /* Core Canvas & Surfaces */
-    --background: #0A0A0F;
-    --background-alt: #12121A;
-    --foreground: #F4F4F8;
-    --foreground-muted: #A0A0B4;
+    --background: #0B0A14;
+    --background-alt: #121020;
+    --foreground: #F8FAFC;
+    --foreground-muted: #94A3B8;
     
     /* Surfaces */
-    --card: #12121A;
-    --card-foreground: #F4F4F8;
-    --surface-secondary: #181824;
-    --surface-chrome: #222232;
+    --card: #121020;
+    --card-foreground: #F8FAFC;
+    --surface-secondary: #1A172E;
+    --surface-chrome: #252042;
     
     /* Borders & Hairlines */
     --border: rgba(255, 255, 255, 0.10);
     --border-light: rgba(255, 255, 255, 0.06);
     --input: rgba(255, 255, 255, 0.12);
-    --ring: #FFD21F;
+    --ring: #7C3AED;
     
     /* Accent & Micro Accent */
-    --accent: #FFD21F;
-    --accent-foreground: #0A0A0E;
-    --micro-accent: #FFD21F;
-    --micro-accent-text: #0A0A0E;
+    --accent: #7C3AED;
+    --accent-foreground: #FFFFFF;
+    --micro-accent: #7C3AED;
+    --micro-accent-text: #FFFFFF;
     
     /* Semantic Compatibility */
-    --primary: #FFD21F;
-    --primary-foreground: #0A0A0E;
-    --secondary: #181824;
-    --secondary-foreground: #F4F4F8;
-    --muted: #14141E;
-    --muted-foreground: #8E8EA4;
+    --primary: #7C3AED;
+    --primary-foreground: #FFFFFF;
+    --secondary: #1A172E;
+    --secondary-foreground: #F8FAFC;
+    --muted: #121020;
+    --muted-foreground: #94A3B8;
     --destructive: #FF3B30;
     --destructive-foreground: #FFFFFF;
   }
@@ -136,16 +139,16 @@
     -moz-osx-font-smoothing: grayscale;
     background-color: var(--background);
     background-image:
-      radial-gradient(ellipse 90% 45% at 50% -5%, rgba(255, 210, 31, 0.10) 0%, rgba(255, 252, 241, 0.48) 40%, transparent 80%),
-      linear-gradient(180deg, #FFFFFF 0%, #FCFCFD 52%, #F7F7FA 100%);
+      radial-gradient(ellipse 90% 45% at 50% -5%, rgba(124, 58, 237, 0.08) 0%, rgba(192, 132, 252, 0.03) 40%, transparent 80%),
+      linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 52%, #F1F5F9 100%);
     background-attachment: fixed;
   }
   .dark html, .dark body, html.dark, html.dark body {
-    background-color: #09090D !important;
+    background-color: #0B0A14 !important;
     background-image:
-      radial-gradient(ellipse 90% 45% at 50% -5%, rgba(255, 210, 31, 0.08) 0%, rgba(20, 18, 10, 0.4) 40%, transparent 80%),
-      linear-gradient(180deg, #09090D 0%, #0D0D14 52%, #08080C 100%) !important;
-    color: #F4F4F8 !important;
+      radial-gradient(ellipse 90% 45% at 50% -5%, rgba(124, 58, 237, 0.15) 0%, rgba(11, 10, 20, 0.8) 40%, transparent 80%),
+      linear-gradient(180deg, #0B0A14 0%, #121020 52%, #08070F 100%) !important;
+    color: #F8FAFC !important;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display), 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -153,88 +156,94 @@
     font-weight: 700;
     color: inherit;
   }
-  ::selection { background: #FFD21F; color: #0A0A0E; }
+  ::selection { background: #7C3AED; color: #FFFFFF; }
   :focus-visible {
-    outline: 2px solid #FFD21F;
+    outline: 2px solid #7C3AED;
     outline-offset: 3px;
   }
   button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
-   #FFD21F & PURE WHITE LUXURY GRADIENT UTILITIES
+   MIDNIGHT PURPLE LUXURY GRADIENT UTILITIES (#0B0A14, #7C3AED, #C084FC, #F8FAFC)
    ══════════════════════════════════════════════════════════════════════════ */
 
 /* Background Textures & Scroll Atmospheres */
 .bg-texture-carbon {
-  background-color: #08080C;
+  background-color: #0B0A14;
   background-image: 
-    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 210, 31, 0.14) 0%, rgba(20, 18, 10, 0.35) 45%, transparent 80%),
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(124, 58, 237, 0.15) 0%, rgba(11, 10, 20, 0.45) 45%, transparent 80%),
     radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.04) 1px, transparent 0),
-    linear-gradient(180deg, #0A0A0F 0%, #08080C 50%, #050508 100%);
+    linear-gradient(180deg, #0B0A14 0%, #121020 50%, #08070F 100%);
   background-size: 100% 100%, 24px 24px, 100% 100%;
 }
 
 .bg-texture-paper-white {
-  background-color: #FFFFFF;
+  background-color: #F8FAFC;
   background-image: 
-    radial-gradient(circle at 50% 0%, rgba(255, 210, 31, 0.12) 0%, rgba(245, 245, 250, 0.5) 40%, transparent 80%),
+    radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.10) 0%, rgba(241, 245, 249, 0.5) 40%, transparent 80%),
     radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.04) 1px, transparent 0),
-    linear-gradient(180deg, #FFFFFF 0%, #F8F8FC 50%, #F0F1F5 100%);
+    linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 50%, #F1F5F9 100%);
   background-size: 100% 100%, 20px 20px, 100% 100%;
-  color: #0A0A0E;
+  color: #0B0A14;
 }
 
 .bg-texture-sand {
-  background-color: #F8F8FB;
+  background-color: #F8FAFC;
   background-image: 
     radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.04) 1px, transparent 0),
-    linear-gradient(180deg, #FFFFFF 0%, #F5F5FA 100%);
+    linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
   background-size: 16px 16px, 100% 100%;
-  color: #0A0A0E;
+  color: #0B0A14;
 }
 
-.bg-gold-mesh {
+.bg-gold-mesh,
+.bg-purple-mesh {
   background: 
-    radial-gradient(circle at 50% 0%, rgba(255, 210, 31, 0.18) 0%, rgba(245, 245, 250, 0.8) 40%, #FFFFFF 80%),
-    linear-gradient(135deg, #FFFFFF 0%, #F9F9FC 50%, #FFFFFF 100%);
+    radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.15) 0%, rgba(248, 250, 252, 0.8) 40%, #FFFFFF 80%),
+    linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 50%, #FFFFFF 100%);
 }
 
-.bg-gold-gradient-hero {
-  background: linear-gradient(135deg, #FFFFFF 0%, #FFFDF5 40%, #FFF9E6 80%, #FFF6D6 100%);
-  border: 1px solid rgba(255, 210, 31, 0.35);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05), 0 0 35px rgba(255, 210, 31, 0.15);
+.bg-gold-gradient-hero,
+.bg-purple-gradient-hero {
+  background: linear-gradient(135deg, #FFFFFF 0%, #FAF5FF 40%, #F3E8FF 80%, #EDE9FE 100%);
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05), 0 0 35px rgba(124, 58, 237, 0.15);
 }
 
-.bg-gold-glass {
+.bg-gold-glass,
+.bg-purple-glass {
   background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 210, 31, 0.3);
+  border: 1px solid rgba(124, 58, 237, 0.25);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.8);
 }
 
-.bg-gold-glass-card {
+.bg-gold-glass-card,
+.bg-purple-glass-card {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 210, 31, 0.25);
+  border: 1px solid rgba(124, 58, 237, 0.2);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 /* Gradient Text */
-.text-gradient-gold {
-  background: linear-gradient(135deg, #0A0A0E 0%, #D97706 50%, #FFD21F 100%);
+.text-gradient-gold,
+.text-gradient-purple {
+  background: linear-gradient(135deg, #0B0A14 0%, #7C3AED 50%, #C084FC 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.text-gradient-dark-gold {
-  background: linear-gradient(135deg, #0A0A0E 20%, #3D3512 65%, #C29B00 100%);
+.text-gradient-dark-gold,
+.text-gradient-dark-purple {
+  background: linear-gradient(135deg, #0B0A14 20%, #4C1D95 65%, #7C3AED 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-white {
-  background: linear-gradient(135deg, #0A0A0E 0%, #333340 100%);
+  background: linear-gradient(135deg, #F8FAFC 0%, #CBD5E1 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -246,7 +255,7 @@
   line-height: 1.05;
   letter-spacing: -0.04em;
   font-weight: 800;
-  color: #0A0A0E;
+  color: #0B0A14;
 }
 
 /* Section Display Headline */
@@ -256,7 +265,7 @@
   line-height: 1.08;
   letter-spacing: -0.035em;
   font-weight: 700;
-  color: #0A0A0E;
+  color: #0B0A14;
 }
 
 /* Editorial Accent Quote / Word */
@@ -272,7 +281,7 @@
   font-family: var(--font-ui);
   font-size: clamp(0.9375rem, 1.05vw, 1.0625rem);
   line-height: 1.6;
-  color: #4A4A58;
+  color: #474554;
   max-width: 600px;
 }
 
@@ -283,7 +292,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #0A0A0E;
+  color: #0B0A14;
 }
 
 /* Tabular Financial Numerics */
@@ -294,7 +303,7 @@
 
 /* Accents */
 .text-theme {
-  color: #FFD21F;
+  color: #7C3AED;
 }
 
 .text-infrared {
@@ -302,7 +311,7 @@
 }
 
 .bg-theme {
-  background-color: #FFD21F;
+  background-color: #7C3AED;
 }
 
 .bg-infrared {
@@ -315,19 +324,19 @@
   font-family: var(--font-ui);
   font-size: 14px;
   font-weight: 700;
-  background: linear-gradient(135deg, #FFD21F 0%, #FFCA18 50%, #FFBF00 100%);
-  color: #0A0A0E;
+  background: linear-gradient(135deg, #7C3AED 0%, #9333EA 50%, #A855F7 100%);
+  color: #FFFFFF;
   border-radius: 9999px;
   letter-spacing: -0.01em;
-  box-shadow: 0 4px 16px rgba(255, 210, 31, 0.35);
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.35);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  border: 1px solid rgba(10, 10, 14, 0.1);
+  border: 1px solid rgba(124, 58, 237, 0.2);
 }
 .btn-carbon-primary:hover,
 .btn-solar-primary:hover {
-  box-shadow: 0 6px 24px rgba(255, 210, 31, 0.55);
+  box-shadow: 0 6px 24px rgba(124, 58, 237, 0.55);
   transform: translateY(-1px);
-  background: linear-gradient(135deg, #FFCA18 0%, #FFBF00 50%, #FFAE00 100%);
+  background: linear-gradient(135deg, #6D28D9 0%, #7C3AED 50%, #9333EA 100%);
 }
 .btn-carbon-primary:active,
 .btn-solar-primary:active {
