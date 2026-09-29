@@ -43,26 +43,19 @@ import {
   Check,
   Loader2,
   Sparkles,
-  DollarSign,
   Eye,
   Camera,
   Clock,
   Layers,
   Star,
   Zap,
-  AlertTriangle,
-  ArrowRight,
   ShieldAlert,
-  Award,
-  FileText,
-  Compass,
-  ChevronRight,
-  RefreshCw,
   X,
-  Sliders,
   Tag,
   Languages,
   BadgeCheck,
+  Coins,
+  Palette,
 } from "lucide-react";
 import { useGlobalCurrency } from "@/context/CurrencyContext";
 import { getCurrencySymbol } from "@/core/utils/currency";
@@ -98,7 +91,26 @@ const DELIVERABLE_OPTIONS: DeliverableType[] = [
   "Keynote / Event Appearance",
 ];
 
-const CURRENCIES = ["USD", "INR", "EUR", "GBP", "AED", "CAD", "AUD"];
+const CURRENCIES = ["INR", "USD", "EUR", "GBP", "AED", "CAD", "AUD"];
+
+const PRESET_COVERS = [
+  {
+    name: "Golden Dawn",
+    url: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+  },
+  {
+    name: "Cyber Gradient",
+    url: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=1200&auto=format&fit=crop&q=80",
+  },
+  {
+    name: "Minimalist Studio",
+    url: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=1200&auto=format&fit=crop&q=80",
+  },
+  {
+    name: "Neon Sunset",
+    url: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&auto=format&fit=crop&q=80",
+  },
+];
 
 export default function ProfileEditPage() {
   const {
@@ -149,7 +161,7 @@ export default function ProfileEditPage() {
     currentCreator?.startingPrice || 0
   );
   const [creatorCurrency, setCreatorCurrency] = useState<string>(
-    (currentCreator?.currency as string) || globalCurrency || "USD"
+    (currentCreator?.currency as string) || globalCurrency || "INR"
   );
   const [socialAccounts, setSocialAccounts] = useState<SocialAccount[]>(
     currentCreator?.socialAccounts || []
@@ -246,7 +258,7 @@ export default function ProfileEditPage() {
       setLanguages((currentCreator.languages || ["English"]).join(", "));
       setStartingPrice(currentCreator.startingPrice || 0);
       setCreatorCurrency(
-        (currentCreator.currency as string) || globalCurrency || "USD"
+        (currentCreator.currency as string) || globalCurrency || "INR"
       );
       setSocialAccounts(currentCreator.socialAccounts || []);
       setRateCards(currentCreator.rateCards || []);
@@ -787,25 +799,27 @@ export default function ProfileEditPage() {
       {/* ── HERO BANNER: Identity Command Strip ── */}
       <div className="rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-[0_6px_28px_rgba(0,0,0,0.04)] overflow-hidden relative">
         {/* Cover Backdrop */}
-        <div className="h-32 sm:h-44 w-full bg-gradient-to-r from-[#FFD21F]/20 via-[#FFE052]/10 to-amber-500/15 dark:from-[#FFD21F]/15 dark:via-[#1A1A28] dark:to-[#12121A] relative overflow-hidden">
+        <div className="h-36 sm:h-48 w-full bg-gradient-to-r from-amber-500/20 via-orange-400/10 to-purple-500/15 dark:from-[#FFD21F]/15 dark:via-[#1A1A28] dark:to-[#12121A] relative overflow-hidden">
           {coverImageUrl ? (
             <SafeImage
               src={coverImageUrl}
               alt="Cover Banner"
               fill
-              className="object-cover opacity-60"
+              className="object-cover"
             />
           ) : (
-            <div className="absolute inset-0 bg-[radial-gradient(#FFD21F_1px,transparent_1px)] [background-size:16px_16px] opacity-30" />
+            <div className="absolute inset-0 bg-[radial-gradient(#FFD21F_1px,transparent_1px)] [background-size:16px_16px] opacity-35" />
           )}
+
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 pointer-events-none" />
 
           <div className="absolute top-3 right-3 sm:top-4 sm:right-4 flex items-center gap-2">
             <button
               type="button"
               onClick={() => setShowPhotoModal(true)}
-              className="px-3 py-1.5 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md text-white text-[11px] font-mono font-medium transition-all flex items-center gap-1.5 shadow-sm border border-white/20 cursor-pointer"
+              className="px-3.5 py-1.5 rounded-full bg-black/50 hover:bg-black/75 backdrop-blur-md text-white text-[11px] font-mono font-medium transition-all flex items-center gap-1.5 shadow-sm border border-white/20 cursor-pointer"
             >
-              <Camera className="w-3 h-3 text-[#FFD21F]" />
+              <Palette className="w-3.5 h-3.5 text-[#FFD21F]" />
               <span>Change Cover / Avatar</span>
             </button>
           </div>
@@ -813,17 +827,18 @@ export default function ProfileEditPage() {
 
         {/* Identity Row */}
         <div className="px-5 sm:px-8 pb-6 pt-0 relative">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 -mt-12 sm:-mt-16">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 -mt-14 sm:-mt-16">
             {/* Avatar + Main Title */}
             <div className="flex flex-col sm:flex-row sm:items-end gap-4 sm:gap-5">
+              {/* Circular Avatar with Camera Action */}
               <div className="relative group shrink-0">
-                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl sm:rounded-3xl bg-[#FAF9F5] dark:bg-[#1A1A24] border-4 border-white dark:border-[#12121A] shadow-md overflow-hidden flex items-center justify-center text-2xl font-black text-[#0A0A0E] dark:text-white">
+                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-[#FAF9F5] dark:bg-[#1A1A24] ring-4 ring-white dark:ring-[#12121A] shadow-xl overflow-hidden relative flex items-center justify-center text-2xl font-black text-[#0A0A0E] dark:text-white isolate">
                   {avatarUrl ? (
                     <SafeImage
                       src={avatarUrl}
                       alt={fullName}
                       fill
-                      className="object-cover"
+                      className="object-cover rounded-full"
                     />
                   ) : (
                     <span>{fullName?.charAt(0) || "C"}</span>
@@ -832,10 +847,10 @@ export default function ProfileEditPage() {
                 <button
                   type="button"
                   onClick={() => setShowPhotoModal(true)}
-                  className="absolute bottom-1 right-1 p-2 rounded-xl bg-[#FFD21F] hover:bg-[#FFE052] text-[#0A0A0E] shadow-sm transition-all cursor-pointer group-hover:scale-105"
+                  className="absolute -bottom-1 -right-1 p-2 rounded-full bg-[#FFD21F] hover:bg-[#FFE052] text-[#0A0A0E] shadow-md border-2 border-white dark:border-[#12121A] transition-all cursor-pointer group-hover:scale-110 active:scale-95 z-10"
                   title="Update profile avatar"
                 >
-                  <Camera className="w-3.5 h-3.5" />
+                  <Camera className="w-3.5 h-3.5 text-[#0A0A0E]" />
                 </button>
               </div>
 
@@ -847,12 +862,12 @@ export default function ProfileEditPage() {
                   <span className="text-xs font-mono font-bold text-[#6A6A78] dark:text-[#8E8EA4]">
                     @{handle || "handle"}
                   </span>
-                  <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F]/20 border border-[#FFD21F]/40 text-[#0A0A0E] dark:text-[#FFD21F] font-mono text-[10px] font-bold uppercase tracking-wider">
+                  <span className="px-2.5 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] font-mono text-[10px] font-black uppercase tracking-wider shadow-2xs">
                     {tier} Tier
                   </span>
                   {socialAccounts.some((s) => s.verifiedBadge) && (
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-800 dark:text-emerald-300 text-[10px] font-mono font-bold">
-                      <BadgeCheck className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
+                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-800 dark:text-emerald-300 text-[10px] font-mono font-bold">
+                      <BadgeCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                       <span>Verified</span>
                     </span>
                   )}
@@ -862,32 +877,32 @@ export default function ProfileEditPage() {
                   {headline || "No headline set yet. Add a catchy title for brands."}
                 </p>
 
-                {/* Micro Stats Strip */}
+                {/* Micro Stats Strip with Clean Universal Currency */}
                 <div className="flex flex-wrap items-center gap-4 text-[11px] font-mono text-[#6A6A78] dark:text-[#8E8EA4] pt-0.5">
-                  <span className="flex items-center gap-1">
-                    <Users className="w-3 h-3 text-[#FFD21F]" />
+                  <span className="flex items-center gap-1.5">
+                    <Users className="w-3.5 h-3.5 text-[#FFD21F]" />
                     <strong className="text-[#0A0A0E] dark:text-white">
                       {(totalFollowers || 0).toLocaleString()}
                     </strong>{" "}
                     Total Reach
                   </span>
                   <span>•</span>
-                  <span className="flex items-center gap-1">
-                    <Zap className="w-3 h-3 text-[#FFD21F]" />
+                  <span className="flex items-center gap-1.5">
+                    <Zap className="w-3.5 h-3.5 text-[#FFD21F]" />
                     <strong className="text-[#0A0A0E] dark:text-white">
                       {avgEngagement.toFixed(1)}%
                     </strong>{" "}
                     Avg Engagement
                   </span>
                   <span>•</span>
-                  <span className="flex items-center gap-1">
-                    <DollarSign className="w-3 h-3 text-emerald-500" />
-                    <strong className="text-[#0A0A0E] dark:text-white">
+                  <span className="flex items-center gap-1.5">
+                    <Coins className="w-3.5 h-3.5 text-amber-500" />
+                    <span>Rate:</span>
+                    <strong className="text-[#0A0A0E] dark:text-white font-bold">
                       {startingPrice > 0
-                        ? `${currencySymbol}${startingPrice}`
-                        : "Rate not set"}
-                    </strong>{" "}
-                    Starting
+                        ? `${currencySymbol}${startingPrice.toLocaleString()}`
+                        : "Not set"}
+                    </strong>
                   </span>
                 </div>
               </div>
@@ -939,7 +954,7 @@ export default function ProfileEditPage() {
                     currentCreator?.handle || currentCreator?.id || user?.id
                   }`}
                   target="_blank"
-                  className="px-4 py-2.5 rounded-full bg-white dark:bg-[#181824] hover:bg-[#F8F8FC] dark:hover:bg-[#202030] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-2xs"
+                  className="px-4 py-2.5 rounded-full bg-white dark:bg-[#181824] hover:bg-[#F8F8FC] dark:hover:bg-[#202030] border border-black/10 dark:border-white/10 text-[#0A0A0E] dark:text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-2xs cursor-pointer"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
                   <span className="hidden sm:inline">Preview Public Media Kit</span>
@@ -987,7 +1002,7 @@ export default function ProfileEditPage() {
             {
               id: "rates",
               label: "Rates & Deliverables",
-              icon: DollarSign,
+              icon: Coins,
               count: rateCards.length,
             },
             {
@@ -1338,7 +1353,7 @@ export default function ProfileEditPage() {
               <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#12121A] border border-black/8 dark:border-white/10 shadow-xs space-y-5">
                 <div>
                   <h2 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display flex items-center gap-2">
-                    <DollarSign className="w-4 h-4 text-emerald-500" />
+                    <Coins className="w-4 h-4 text-amber-500" />
                     <span>Commercial Starting Rate</span>
                   </h2>
                   <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] mt-0.5">
@@ -1497,26 +1512,26 @@ export default function ProfileEditPage() {
 
               {/* Full Interactive Preview */}
               <div className="rounded-2xl border border-black/10 dark:border-white/10 overflow-hidden bg-[#FAF9F5] dark:bg-[#181826]">
-                <div className="h-32 bg-gradient-to-r from-[#FFD21F]/30 via-amber-400/20 to-transparent relative">
+                <div className="h-32 bg-gradient-to-r from-amber-500/20 via-orange-400/15 to-transparent relative">
                   {coverImageUrl && (
                     <SafeImage
                       src={coverImageUrl}
                       alt="Cover"
                       fill
-                      className="object-cover opacity-60"
+                      className="object-cover"
                     />
                   )}
                 </div>
 
                 <div className="p-5 sm:p-6 space-y-4 -mt-10 relative">
                   <div className="flex items-end justify-between gap-4">
-                    <div className="w-20 h-20 rounded-2xl bg-white dark:bg-[#12121A] border-4 border-[#FAF9F5] dark:border-[#181826] overflow-hidden relative shadow-md flex items-center justify-center font-bold text-xl">
+                    <div className="w-20 h-20 rounded-full bg-white dark:bg-[#12121A] ring-4 ring-[#FAF9F5] dark:ring-[#181826] overflow-hidden relative shadow-md flex items-center justify-center font-bold text-xl">
                       {avatarUrl ? (
                         <SafeImage
                           src={avatarUrl}
                           alt={fullName}
                           fill
-                          className="object-cover"
+                          className="object-cover rounded-full"
                         />
                       ) : (
                         <span>{fullName?.charAt(0) || "C"}</span>
@@ -1590,19 +1605,19 @@ export default function ProfileEditPage() {
                 <span className="w-1.5 h-1.5 rounded-full bg-[#FFD21F] animate-pulse" />
                 Live Card Feed
               </span>
-              <span className="px-2 py-0.5 rounded-full bg-[#FFD21F]/20 text-[#0A0A0E] dark:text-[#FFD21F] text-[10px] font-mono font-bold">
+              <span className="px-2 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-[10px] font-mono font-bold">
                 {tier}
               </span>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-2xl bg-[#FAF9F5] dark:bg-[#1A1A26] border border-black/10 dark:border-white/10 overflow-hidden relative shrink-0 flex items-center justify-center font-bold text-sm">
+              <div className="w-12 h-12 rounded-full bg-[#FAF9F5] dark:bg-[#1A1A26] ring-2 ring-black/10 dark:ring-white/10 overflow-hidden relative shrink-0 flex items-center justify-center font-bold text-sm">
                 {avatarUrl ? (
                   <SafeImage
                     src={avatarUrl}
                     alt={fullName}
                     fill
-                    className="object-cover"
+                    className="object-cover rounded-full"
                   />
                 ) : (
                   <span>{fullName?.charAt(0) || "C"}</span>
@@ -1628,7 +1643,7 @@ export default function ProfileEditPage() {
               </span>
               <span className="font-bold text-[#0A0A0E] dark:text-white">
                 {startingPrice > 0
-                  ? `${currencySymbol}${startingPrice}`
+                  ? `${currencySymbol}${startingPrice.toLocaleString()}`
                   : "No rate"}
               </span>
             </div>
@@ -1725,7 +1740,7 @@ export default function ProfileEditPage() {
       {/* 1. Photo & Visual Assets Modal */}
       {showPhotoModal && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center z-50 p-4">
-          <div className="bg-white dark:bg-[#12121A] rounded-3xl p-6 sm:p-8 max-w-md w-full border border-black/10 dark:border-white/10 shadow-2xl space-y-5 animate-in fade-in zoom-in-95 duration-200">
+          <div className="bg-white dark:bg-[#12121A] rounded-3xl p-6 sm:p-8 max-w-lg w-full border border-black/10 dark:border-white/10 shadow-2xl space-y-5 animate-in fade-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between pb-3 border-b border-black/8 dark:border-white/10">
               <h3 className="text-base font-bold text-[#0A0A0E] dark:text-white font-display">
                 Profile Images &amp; Artwork
@@ -1733,7 +1748,7 @@ export default function ProfileEditPage() {
               <button
                 type="button"
                 onClick={() => setShowPhotoModal(false)}
-                className="text-[#8A8A9A] hover:text-[#0A0A0E] dark:hover:text-white"
+                className="text-[#8A8A9A] hover:text-[#0A0A0E] dark:hover:text-white p-1"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -1760,11 +1775,37 @@ export default function ProfileEditPage() {
               )}
 
               <Input
-                label="Cover Banner URL (Optional)"
+                label="Cover Banner URL (Custom Image)"
                 value={coverImageUrl}
                 onChange={(e) => setCoverImageUrl(e.target.value)}
                 placeholder="https://example.com/banner.jpg"
               />
+
+              {/* 1-Click Preset Themes */}
+              <div className="space-y-2 pt-1">
+                <span className="text-xs font-mono uppercase text-[#7A7A8A] dark:text-[#8E8EA4] font-bold block">
+                  Or pick a Studio Banner Theme:
+                </span>
+                <div className="grid grid-cols-2 gap-2">
+                  {PRESET_COVERS.map((preset) => (
+                    <button
+                      key={preset.name}
+                      type="button"
+                      onClick={() => setCoverImageUrl(preset.url)}
+                      className={`p-2.5 rounded-xl border text-xs font-bold text-left transition-all flex items-center justify-between cursor-pointer ${
+                        coverImageUrl === preset.url
+                          ? "border-[#FFD21F] bg-[#FFD21F]/10 text-[#0A0A0E] dark:text-[#FFD21F]"
+                          : "border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 text-[#5A5A68] dark:text-[#A0A0B4]"
+                      }`}
+                    >
+                      <span>{preset.name}</span>
+                      {coverImageUrl === preset.url && (
+                        <Check className="w-3.5 h-3.5 text-[#FFD21F]" />
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
 
             <div className="flex items-center justify-end gap-2 pt-3 border-t border-black/8 dark:border-white/10">
@@ -1773,7 +1814,7 @@ export default function ProfileEditPage() {
                 onClick={() => setShowPhotoModal(false)}
                 className="px-5 py-2.5 rounded-full bg-[#0A0A0E] dark:bg-[#FFD21F] text-white dark:text-[#0A0A0E] text-xs font-bold cursor-pointer"
               >
-                Apply Images
+                Done
               </button>
             </div>
           </div>
