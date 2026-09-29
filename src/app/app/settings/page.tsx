@@ -811,7 +811,7 @@ export default function SettingsPage() {
                 <span>Global Currency &amp; Regional Localization</span>
               </h2>
               <p className="text-xs sm:text-sm text-[#5A5A68] dark:text-[#8E8EA4] mt-1 font-sans">
-                Choose your default display and settlement currency. AbeyCollab natively supports INR (₹) and USD ($), with extensible rails for GBP and AED.
+                Choose your default display and settlement currency. AbeyCollab operates natively in Indian Rupees (INR / ₹) with UPI and IMPS bank rails. Multi-currency settlements (USD, EUR, GBP) will be introduced in Phase 2.
               </p>
             </div>
 

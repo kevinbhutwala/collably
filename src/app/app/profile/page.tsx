@@ -87,8 +87,6 @@ const DELIVERABLE_OPTIONS: DeliverableType[] = [
   "Keynote / Event Appearance",
 ];
 
-const CURRENCIES = ["INR", "USD", "EUR", "GBP", "AED", "CAD", "AUD"];
-
 export default function ProfileEditPage() {
   const {
     user,
@@ -132,9 +130,7 @@ export default function ProfileEditPage() {
   const [startingPrice, setStartingPrice] = useState<number>(
     currentCreator?.startingPrice || 0
   );
-  const [creatorCurrency, setCreatorCurrency] = useState<string>(
-    (currentCreator?.currency as string) || globalCurrency || "INR"
-  );
+  const creatorCurrency = "INR";
   const [socialAccounts, setSocialAccounts] = useState<SocialAccount[]>(
     currentCreator?.socialAccounts || []
   );
@@ -229,9 +225,6 @@ export default function ProfileEditPage() {
       setLanguages((currentCreator.languages || ["English"]).join(", "));
       setAvailableForHire(currentCreator.availableForHire ?? true);
       setStartingPrice(currentCreator.startingPrice || 0);
-      setCreatorCurrency(
-        (currentCreator.currency as string) || globalCurrency || "INR"
-      );
       setSocialAccounts(currentCreator.socialAccounts || []);
       setRateCards(currentCreator.rateCards || []);
     }
@@ -985,7 +978,7 @@ export default function ProfileEditPage() {
 
             <div className="space-y-3">
               <Input
-                label={`Starting Rate (${currencySymbol} ${creatorCurrency})`}
+                label="Starting Rate (₹ INR)"
                 type="number"
                 min={0}
                 step={10}
@@ -997,21 +990,28 @@ export default function ProfileEditPage() {
                 required
               />
 
+              {/* Settlement Currency Rail */}
               <div>
                 <label className="text-xs font-bold text-[#0A0A0E] dark:text-[#EAEAEF] block mb-1.5 font-display">
-                  Primary Currency
+                  Settlement Currency
                 </label>
-                <select
-                  value={creatorCurrency}
-                  onChange={(e) => setCreatorCurrency(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-black/10 dark:border-white/10 text-xs font-mono font-bold bg-[#F8F8FC] dark:bg-[#181824] text-[#0A0A0E] dark:text-white cursor-pointer"
-                >
-                  {CURRENCIES.map((cur) => (
-                    <option key={cur} value={cur}>
-                      {cur} ({getCurrencySymbol(cur)})
-                    </option>
-                  ))}
-                </select>
+                <div className="w-full px-3.5 py-2.5 rounded-xl border border-black/10 dark:border-white/10 bg-[#F8F8FC] dark:bg-[#181824] flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="text-base" role="img" aria-label="India Flag">🇮🇳</span>
+                    <span className="text-xs font-mono font-extrabold text-[#0A0A0E] dark:text-white">
+                      INR (₹)
+                    </span>
+                    <span className="text-[11px] text-[#6A6A78] dark:text-[#8E8EA4]">
+                      • Indian Rupee
+                    </span>
+                  </div>
+                  <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-800 dark:text-emerald-300 font-mono text-[10px] font-bold">
+                    Active Rails
+                  </span>
+                </div>
+                <p className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4] mt-1.5 leading-relaxed font-sans">
+                  Rates are settled in <strong>INR (₹)</strong>. Multi-currency payouts (USD, EUR, GBP) are scheduled for <strong>Phase 2</strong>.
+                </p>
               </div>
 
               {/* Availability Toggle */}
@@ -1500,9 +1500,9 @@ export default function ProfileEditPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <Input
-                  label={`Price (${currencySymbol})`}
+                  label="Price (₹ INR)"
                   type="number"
-                  placeholder="e.g. 800"
+                  placeholder="e.g. 5000"
                   value={newRatePrice}
                   onChange={(e) =>
                     setNewRatePrice(

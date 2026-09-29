@@ -25,8 +25,8 @@ export function CurrencySelector({
             <div className="flex items-center gap-2.5">
               <span className="text-2xl" role="img" aria-label="Indian Rupee">🇮🇳</span>
               <div>
-                <span className="font-extrabold text-sm text-[#0A0A0E] dark:text-white block">INR</span>
-                <span className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4]">Indian Rupee (Platform Currency)</span>
+                <span className="font-extrabold text-sm text-[#0A0A0E] dark:text-white block">INR (₹)</span>
+                <span className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4]">Indian Rupee (Phase 1 Platform Currency)</span>
               </div>
             </div>
             <span className="px-2 py-0.5 rounded-full bg-[#FFD21F] text-[#0A0A0E] text-[10px] font-bold flex items-center gap-1">
@@ -39,6 +39,30 @@ export function CurrencySelector({
             <span className="text-[#7A7A8A] dark:text-[#8E8EA4]">Settlement Rails</span>
             <span className="font-mono font-extrabold text-[#0A0A0E] dark:text-white bg-black/5 dark:bg-white/10 px-2 py-0.5 rounded-md">
               UPI • Netbanking • IMPS (₹)
+            </span>
+          </div>
+        </div>
+
+        <div
+          className="p-4 rounded-2xl border border-dashed border-black/10 dark:border-white/10 bg-[#FAFAFC] dark:bg-[#12121A] opacity-75 flex flex-col justify-between gap-3 text-left"
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2.5">
+              <span className="text-2xl" role="img" aria-label="Global Currencies">🌐</span>
+              <div>
+                <span className="font-extrabold text-sm text-[#0A0A0E] dark:text-white block">USD, EUR, GBP</span>
+                <span className="text-[11px] text-[#7A7A8A] dark:text-[#8E8EA4]">Global Multi-Currency Escrow</span>
+              </div>
+            </div>
+            <span className="px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10 text-[#6A6A78] dark:text-[#8E8EA4] text-[10px] font-mono font-bold">
+              Phase 2
+            </span>
+          </div>
+
+          <div className="pt-2 border-t border-black/5 dark:border-white/5 flex items-center justify-between text-xs">
+            <span className="text-[#7A7A8A] dark:text-[#8E8EA4]">Cross-Border Rails</span>
+            <span className="font-mono text-[11px] text-[#8E8EA4]">
+              Stripe International • Wire
             </span>
           </div>
         </div>

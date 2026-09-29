@@ -279,7 +279,7 @@ export default function CreatorOnboardingWizardPage() {
             <div className="space-y-4 font-mono text-xs">
               <h3 className="text-xl font-bold text-[#0A0A0E] dark:text-white font-display">Step 7: Minimum Starting Fee</h3>
               <Input
-                label="Minimum Starting Fee"
+                label="Minimum Starting Fee (₹ INR)"
                 type="number"
                 value={formData.startingFee}
                 onChange={(e) => setFormData({ ...formData, startingFee: parseInt(e.target.value) || 0 })}
