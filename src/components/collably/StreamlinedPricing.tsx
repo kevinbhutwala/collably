@@ -103,7 +103,7 @@ export function StreamlinedPricing() {
                 }`}
               >
                 <span>Annual</span>
-                <span className="px-1.5 py-0.5 rounded-full bg-[#0A0A0E] text-white text-[10px] font-mono font-extrabold">
+                <span className="px-1.5 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-mono font-extrabold">
                   Save 20%
                 </span>
               </button>
@@ -168,7 +168,7 @@ export function StreamlinedPricing() {
                   className={`mt-6 w-full py-3.5 rounded-full text-xs font-bold transition-all flex items-center justify-center gap-1.5 active:scale-98 shadow-sm ${
                     tier.popular
                       ? "bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] shadow-[0_4px_16px_rgba(255,210,31,0.4)]"
-                      : "bg-[#0A0A0E] dark:bg-[#FFD21F] hover:bg-[#1A1A24] dark:hover:bg-[#FFE052] text-white dark:text-[#0A0A0E] font-bold shadow-md"
+                      : "bg-[#F4F4F8] hover:bg-[#EAEAF0] text-[#0A0A0E] border border-black/10 font-bold shadow-2xs hover:border-black/20"
                   }`}
                 >
                   <span>{tier.ctaText}</span>

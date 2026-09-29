@@ -150,11 +150,11 @@ export function WishlinkSpaciousShowcase() {
                 onClick={() => setActiveTabId(item.id)}
                 className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap transition-all flex items-center gap-2 cursor-pointer ${
                   isActive
-                    ? "bg-[#0A0A0E] text-white shadow-md scale-102"
-                    : "bg-white text-[#5A5A68] hover:text-[#0A0A0E] border border-black/[0.07] hover:bg-[#F2F1EC]"
+                    ? "bg-[#FFD21F] text-[#0A0A0E] shadow-[0_4px_16px_rgba(255,210,31,0.35)] border border-black/10 scale-102"
+                    : "bg-white text-[#5A5A68] hover:text-[#0A0A0E] border border-black/[0.07] hover:bg-black/[0.03]"
                 }`}
               >
-                {isActive && <span className="w-2 h-2 rounded-full bg-[#FFD21F] animate-pulse" />}
+                {isActive && <span className="w-2 h-2 rounded-full bg-[#0A0A0E]" />}
                 <span>{item.tabLabel}</span>
               </button>
             );
@@ -210,10 +210,10 @@ export function WishlinkSpaciousShowcase() {
                 <div className="pt-2">
                   <Link
                     href={activeFeature.ctaLink}
-                    className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 rounded-full bg-[#0A0A0E] hover:bg-[#202028] text-white font-extrabold text-xs sm:text-sm transition-all shadow-md active:scale-95 cursor-pointer"
+                    className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] font-extrabold text-xs sm:text-sm transition-all shadow-[0_4px_18px_rgba(255,210,31,0.4)] border border-black/10 active:scale-95 cursor-pointer"
                   >
                     <span>{activeFeature.ctaText}</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#FFD21F]" />
+                    <ArrowRight className="w-3.5 h-3.5 text-[#0A0A0E]" />
                   </Link>
                 </div>
               </div>
@@ -237,11 +237,11 @@ export function WishlinkSpaciousShowcase() {
                       </span>
                     </div>
 
-                    <div className="my-5 p-5 rounded-2xl bg-[#0A0A0E] text-white text-center space-y-1.5 relative overflow-hidden">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-[#FFD21F]/20 rounded-full blur-2xl pointer-events-none" />
-                      <p className="text-[10px] font-mono text-white/70 uppercase">Escrow Funds Reserved</p>
-                      <h4 className="text-3xl sm:text-4xl font-black font-mono text-[#FFD21F]">₹1,25,000</h4>
-                      <p className="text-[10.5px] font-mono text-emerald-400 font-semibold">
+                    <div className="my-5 p-5 rounded-2xl bg-gradient-to-b from-[#FFFDF0] via-white to-[#FFFDF0] border border-[#FFD21F]/30 text-center space-y-1.5 relative overflow-hidden shadow-2xs">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-[#FFD21F]/15 rounded-full blur-2xl pointer-events-none" />
+                      <p className="text-[10px] font-mono text-[#8A5A00] font-bold uppercase tracking-wider">Escrow Funds Reserved</p>
+                      <h4 className="text-3xl sm:text-4xl font-black font-mono text-[#0A0A0E]">₹1,25,000</h4>
+                      <p className="text-[10.5px] font-mono text-emerald-700 font-bold">
                         ✓ Deposited by Snitch India • Campaign #AC-884
                       </p>
                     </div>
@@ -282,15 +282,15 @@ export function WishlinkSpaciousShowcase() {
                       </div>
 
                       {/* Auto-DM Response */}
-                      <div className="p-3.5 rounded-2xl bg-[#0A0A0E] text-white space-y-2">
-                        <div className="flex items-center justify-between text-[10px] font-mono text-[#FFD21F]">
+                      <div className="p-3.5 rounded-2xl bg-gradient-to-b from-[#FFFDF0] via-white to-[#FFFDF0] border border-[#FFD21F]/35 text-[#0A0A0E] space-y-2 shadow-2xs">
+                        <div className="flex items-center justify-between text-[10px] font-mono text-[#8A5A00] font-bold">
                           <span className="flex items-center gap-1">
-                            <Send className="w-3 h-3" />
+                            <Send className="w-3 h-3 text-[#E09000]" />
                             <span>Auto-Sent in 1.8 seconds</span>
                           </span>
-                          <span>Delivered</span>
+                          <span className="text-emerald-700 font-bold">Delivered</span>
                         </div>
-                        <p className="text-xs text-white/90">
+                        <p className="text-xs text-[#2A2A38] leading-relaxed">
                           &ldquo;Hi team Plum! Here is my live media kit, previous beauty deliverables, and 1-click escrow booking link: abeycollab.com/creator/vasudha&rdquo;
                         </p>
                       </div>
@@ -341,7 +341,7 @@ export function WishlinkSpaciousShowcase() {
                   <div className="w-full max-w-[440px] p-6 rounded-3xl bg-[#FBFBFD] border border-black/[0.08] shadow-lg space-y-4">
                     <div className="flex items-center justify-between pb-3 border-b border-black/[0.06]">
                       <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-xl bg-[#0A0A0E] text-[#FFD21F] flex items-center justify-center font-bold text-xs">
+                        <div className="w-8 h-8 rounded-xl bg-[#FFF9E6] border border-[#FFD21F]/40 text-[#8A5A00] flex items-center justify-center font-bold text-xs">
                           AC
                         </div>
                         <div>
