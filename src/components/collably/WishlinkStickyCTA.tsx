@@ -23,11 +23,11 @@ export function WishlinkStickyCTA() {
 
   return (
     <>
-      <div className="fixed bottom-4 sm:bottom-6 inset-x-0 z-40 px-4 pointer-events-none transition-all duration-300 animate-in fade-in slide-in-from-bottom-5">
-        <div className="pointer-events-auto max-w-xl mx-auto rounded-full bg-white/95 backdrop-blur-xl border border-black/10 shadow-[0_12px_36px_rgba(0,0,0,0.12)] p-2 sm:p-2.5 flex items-center justify-between gap-3 select-none">
+      <div className="fixed bottom-3 sm:bottom-6 inset-x-0 z-40 px-3 sm:px-4 pointer-events-none transition-all duration-300 animate-in fade-in slide-in-from-bottom-5">
+        <div className="pointer-events-auto max-w-xl mx-auto rounded-full bg-white/95 backdrop-blur-xl border border-black/10 shadow-[0_12px_36px_rgba(0,0,0,0.12)] p-1.5 sm:p-2.5 flex items-center justify-between gap-2 sm:gap-3 select-none">
           {/* Left: Avatar Stack & Text */}
-          <div className="flex items-center gap-2.5 pl-1.5 min-w-0">
-            <div className="flex -space-x-2 shrink-0">
+          <div className="flex items-center gap-2 sm:gap-2.5 pl-1.5 min-w-0">
+            <div className="hidden min-[400px]:flex -space-x-2 shrink-0">
               <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden border-2 border-white relative">
                 <SafeImage src="/creators/prarthana.jpg" alt="Creator" fill className="object-cover" />
               </div>
@@ -53,7 +53,7 @@ export function WishlinkStickyCTA() {
           {isAuthenticated ? (
             <Link
               href={user?.role === "brand" ? "/app/brand/campaigns" : "/app/dashboard"}
-              className="px-4 sm:px-6 py-2 sm:py-2.5 rounded-full bg-[#FFD21F] hover:bg-[#FFE052] text-[#0A0A0E] text-xs sm:text-sm font-extrabold shadow-sm flex items-center gap-1.5 shrink-0 transition-transform active:scale-95"
+              className="px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-[#FFD21F] hover:bg-[#FFE052] text-[#0A0A0E] text-xs sm:text-sm font-extrabold shadow-sm flex items-center gap-1.5 shrink-0 transition-transform active:scale-95"
             >
               <span>Dashboard</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -61,7 +61,7 @@ export function WishlinkStickyCTA() {
           ) : (
             <Link
               href="/register"
-              className="px-4 sm:px-6 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs sm:text-sm font-extrabold shadow-[0_2px_12px_rgba(255,210,31,0.4)] flex items-center gap-1.5 shrink-0 transition-transform active:scale-95 border border-black/8"
+              className="px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#FFD21F] via-[#FFE052] to-[#FFC700] hover:from-[#FFE052] hover:to-[#FFD21F] text-[#0A0A0E] text-xs sm:text-sm font-extrabold shadow-[0_2px_12px_rgba(255,210,31,0.4)] flex items-center gap-1.5 shrink-0 transition-transform active:scale-95 border border-black/8"
             >
               <span>Sign up</span>
               <ArrowRight className="w-3.5 h-3.5" />

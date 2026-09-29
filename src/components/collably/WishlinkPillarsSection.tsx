@@ -47,7 +47,7 @@ export function WishlinkPillarsSection() {
             viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ y: -6, transition: { duration: 0.25 } }}
-            className="p-6 sm:p-8 rounded-3xl bg-white border border-black/[0.07] hover:border-[#FFD21F] shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] transition-all flex flex-col justify-between group relative overflow-hidden"
+            className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-black/[0.07] hover:border-[#FFD21F] shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] transition-all flex flex-col justify-between group relative overflow-hidden"
           >
             <div className="space-y-4">
               <div className="flex items-center justify-between">
@@ -93,7 +93,7 @@ export function WishlinkPillarsSection() {
             <div className="pt-6 border-t border-black/[0.06] mt-6 flex items-center justify-between">
               <Link
                 href="/register?role=creator"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0A0A0E] group-hover:text-[#D97706] transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0A0A0E] group-hover:text-amber-600 transition-colors"
               >
                 <span>Sign up as Creator</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -109,14 +109,14 @@ export function WishlinkPillarsSection() {
             viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ y: -6, transition: { duration: 0.25 } }}
-            className="p-6 sm:p-8 rounded-3xl bg-white border border-black/[0.07] hover:border-[#FFD21F] shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] transition-all flex flex-col justify-between group relative overflow-hidden"
+            className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-black/[0.07] hover:border-[#FFD21F] shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] transition-all flex flex-col justify-between group relative overflow-hidden"
           >
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <div className="w-12 h-12 rounded-2xl bg-[#0A0A0E] text-[#FFD21F] flex items-center justify-center font-bold shadow-xs">
                   <MessageSquare className="w-6 h-6 text-[#FFD21F]" />
                 </div>
-                <span className="text-[10px] font-mono font-bold text-[#9A7000] bg-[#FFD21F]/20 px-2.5 py-1 rounded-full border border-[#FFD21F]/30">
+                <span className="text-[10px] font-mono font-bold text-amber-800 bg-[#FFD21F]/20 px-2.5 py-1 rounded-full border border-[#FFD21F]/30">
                   AUTO-DM ENGINE
                 </span>
               </div>
@@ -153,7 +153,7 @@ export function WishlinkPillarsSection() {
             <div className="pt-6 border-t border-black/[0.06] mt-6 flex items-center justify-between">
               <Link
                 href="/creators"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0A0A0E] group-hover:text-[#D97706] transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0A0A0E] group-hover:text-amber-600 transition-colors"
               >
                 <span>View Audited Media Kits</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -169,7 +169,7 @@ export function WishlinkPillarsSection() {
             viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ y: -6, transition: { duration: 0.25 } }}
-            className="p-6 sm:p-8 rounded-3xl bg-white border border-black/[0.07] hover:border-[#FFD21F] shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] transition-all flex flex-col justify-between group relative overflow-hidden"
+            className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-black/[0.07] hover:border-[#FFD21F] shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] transition-all flex flex-col justify-between group relative overflow-hidden"
           >
             <div className="space-y-4">
               <div className="flex items-center justify-between">
@@ -212,7 +212,7 @@ export function WishlinkPillarsSection() {
             <div className="pt-6 border-t border-black/[0.06] mt-6 flex items-center justify-between">
               <Link
                 href="/campaigns"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0A0A0E] group-hover:text-[#D97706] transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0A0A0E] group-hover:text-amber-600 transition-colors"
               >
                 <span>Explore Open Briefs</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />

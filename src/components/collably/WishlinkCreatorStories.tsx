@@ -96,7 +96,7 @@ export function WishlinkCreatorStories() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-14"
+          className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-14"
         >
           <div className="space-y-3 text-left">
             <span className="px-3.5 py-1.5 rounded-full text-xs font-mono font-extrabold uppercase tracking-tight bg-white border border-black/[0.08] text-[#0A0A0E] shadow-2xs">
@@ -114,7 +114,7 @@ export function WishlinkCreatorStories() {
           </div>
 
           {/* Navigation Controls */}
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2.5 self-start sm:self-auto">
             <button
               type="button"
               onClick={prevStory}
@@ -140,7 +140,7 @@ export function WishlinkCreatorStories() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="p-6 sm:p-10 lg:p-12 rounded-3xl bg-white border border-black/[0.07] shadow-[0_4px_30px_rgba(0,0,0,0.03)] relative overflow-hidden"
+          className="p-5 sm:p-10 lg:p-12 rounded-2xl sm:rounded-3xl bg-white border border-black/[0.07] shadow-[0_4px_30px_rgba(0,0,0,0.03)] relative overflow-hidden"
         >
           {/* Subtle Ambient Radial Highlight */}
           <div className="absolute top-0 right-0 w-80 h-80 bg-[#FFD21F]/10 rounded-full blur-3xl pointer-events-none" />
@@ -180,7 +180,7 @@ export function WishlinkCreatorStories() {
               <div className="lg:col-span-7 space-y-6 text-left">
                 <Quote className="w-10 h-10 text-[#FFD21F] fill-[#FFD21F]/30" />
 
-                <blockquote className="text-lg sm:text-2xl font-bold font-display text-[#0A0A0E] leading-snug">
+                <blockquote className="text-base sm:text-xl lg:text-2xl font-bold font-display text-[#0A0A0E] leading-relaxed sm:leading-snug">
                   &ldquo;{active.quote}&rdquo;
                 </blockquote>
 
@@ -203,9 +203,9 @@ export function WishlinkCreatorStories() {
                 </div>
 
                 {/* Footer Creator Tag */}
-                <div className="pt-2 flex items-center justify-between">
+                <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                   <div className="flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                    <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
                     <span className="text-xs font-mono font-bold text-[#0A0A0E]">
                       Verified AbeyCollab Creator Deal
                     </span>
@@ -213,7 +213,7 @@ export function WishlinkCreatorStories() {
 
                   <Link
                     href="/register?role=creator"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0A0A0E] hover:text-[#D97706] transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0A0A0E] hover:text-amber-600 transition-colors self-start sm:self-auto"
                   >
                     <span>Join Roster</span>
                     <ArrowRight className="w-3.5 h-3.5" />

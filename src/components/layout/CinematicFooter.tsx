@@ -8,8 +8,8 @@ import { ArrowRight, ShieldCheck, Mail, MapPin } from "lucide-react";
 export function CinematicFooter() {
   return (
     <footer className="border-t border-black/8 dark:border-white/10 bg-[#F6F6F9] dark:bg-[#07070B] text-[#5A5A68] dark:text-[#8E8EA4] text-xs font-sans select-none">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8">
-        <div className="col-span-1 sm:col-span-2 space-y-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 grid grid-cols-2 md:grid-cols-5 gap-8">
+        <div className="col-span-2 space-y-4">
           <AbeyCollabLogo href="/" size="sm" subtext="CREATOR COLLABORATION PLATFORM" />
           <p className="text-xs text-[#6A6A78] dark:text-[#9A9AA8] max-w-sm font-sans leading-relaxed">
             The creator × brand collaboration platform. Run high-impact campaigns, discover vetted talent, and receive secure milestone payments.

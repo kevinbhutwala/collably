@@ -14,18 +14,18 @@ export function WishlinkLaunchpadCTA() {
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="p-8 sm:p-14 lg:p-20 rounded-3xl sm:rounded-[40px] bg-white border border-black/[0.08] text-[#0A0A0E] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.06)] relative overflow-hidden text-center"
+          className="p-6 sm:p-14 lg:p-20 rounded-2xl sm:rounded-[40px] bg-white border border-black/[0.08] text-[#0A0A0E] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.06)] relative overflow-hidden text-center"
         >
           {/* Ambient Warm Golden Aura */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[320px] bg-gradient-to-r from-[#FFD21F]/18 via-[#FFF4C2]/30 to-transparent rounded-full blur-[90px] pointer-events-none" />
 
           <div className="relative z-10 max-w-3xl mx-auto space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFF9E6] border border-[#FFD21F]/40 text-[11px] font-mono font-bold text-[#8A5A00]">
-              <Sparkles className="w-3.5 h-3.5 text-[#E09000]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFF9E6] border border-[#FFD21F]/40 text-[11px] font-mono font-bold text-[#0A0A0E]">
+              <Sparkles className="w-3.5 h-3.5 text-amber-600" />
               <span>OFFICIAL META &amp; RAZORPAY ESCROW PARTNER</span>
             </div>
 
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black font-display tracking-tight text-[#0A0A0E] leading-[1.08]">
+            <h2 className="text-2xl min-[400px]:text-3xl sm:text-5xl lg:text-6xl font-black font-display tracking-tight text-[#0A0A0E] leading-[1.08]">
               Your launchpad to{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D98700] via-[#F29F05] to-[#FFD21F] underline decoration-[#FFD21F] decoration-4 underline-offset-8">
                 success!!

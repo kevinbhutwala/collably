@@ -164,7 +164,7 @@ function FlipCard({ item, autoFlipped }: { item: FlipItem; autoFlipped: boolean 
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={() => setHovered(!hovered)}
-      className="shrink-0 w-38 xs:w-44 sm:w-48 md:w-52 h-56 xs:h-64 sm:h-70 md:h-72 cursor-pointer select-none"
+      className="shrink-0 w-40 min-[400px]:w-44 sm:w-48 md:w-52 h-60 min-[400px]:h-64 sm:h-72 cursor-pointer select-none"
       style={{ perspective: "1200px" }}
     >
       <div
