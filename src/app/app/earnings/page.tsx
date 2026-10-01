@@ -149,7 +149,7 @@ export default function EarningsAndEscrowPage() {
               className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5"
             >
               <span>Withdraw Balance</span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#0B0A14]" />
+              <ArrowRight className="w-3.5 h-3.5" />
             </button>
           )}
         </div>
@@ -233,15 +233,15 @@ export default function EarningsAndEscrowPage() {
           <RazorpayCheckoutButton
             amount={500}
             currency="INR"
-            name="AbeyCollab Escrow Deposit"
+            name="Collably Escrow Deposit"
             description="Milestone Escrow Payment Protection"
             prefill={{
-              name: "AbeyCollab Client",
-              email: "brand@abeycollab.io",
-              contact: "9820098200",
+              name: (role === "creator" ? currentCreator?.fullName : currentBrand?.companyName) || "",
+              email: "",
+              contact: "",
             }}
             notes={{
-              platform: "AbeyCollab",
+              platform: "Collably",
               type: "escrow_deposit",
             }}
           />
@@ -265,7 +265,11 @@ export default function EarningsAndEscrowPage() {
             <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4]">Record of all completed project payments and deposits.</p>
           </div>
           {payouts.length > 0 && (
-            <button className="px-3 py-1.5 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0B0A14] dark:text-white text-xs font-mono transition-all flex items-center gap-1.5 border border-black/5 dark:border-white/10">
+            <button
+              onClick={() => addToast({ type: "info", title: "Export Coming Soon", message: "CSV export of payout history will be available shortly." })}
+              className="px-3 py-1.5 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0B0A14] dark:text-white text-xs font-mono transition-all flex items-center gap-1.5 border border-black/5 dark:border-white/10 cursor-pointer"
+              title="Export Payout History — Coming Soon"
+            >
               <Download className="w-3 h-3" />
               <span>Export</span>
             </button>

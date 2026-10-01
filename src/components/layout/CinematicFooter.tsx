@@ -3,23 +3,22 @@
 import React from "react";
 import Link from "next/link";
 import { AbeyCollabLogo } from "@/components/ui/AbeyCollabLogo";
-import { ArrowRight, ShieldCheck, Mail, MapPin } from "lucide-react";
 
 export function CinematicFooter() {
   return (
     <footer className="border-t border-black/8 dark:border-white/10 bg-[#F6F6F9] dark:bg-[#07070B] text-[#5A5A68] dark:text-[#8E8EA4] text-xs font-sans select-none">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 grid grid-cols-2 md:grid-cols-5 gap-8">
-        <div className="col-span-2 space-y-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 grid grid-cols-2 min-[540px]:grid-cols-3 md:grid-cols-5 gap-8">
+        <div className="col-span-2 min-[540px]:col-span-3 md:col-span-2 space-y-4">
           <AbeyCollabLogo href="/" size="sm" subtext="CREATOR COLLABORATION PLATFORM" />
           <p className="text-xs text-[#6A6A78] dark:text-[#9A9AA8] max-w-sm font-sans leading-relaxed">
             The creator × brand collaboration platform. Run high-impact campaigns, discover vetted talent, and receive secure milestone payments.
           </p>
-          <div className="space-y-1 text-xs text-[#7A7A8A] dark:text-[#8E8EA4] font-mono">
-            <p>support@abeycollab.com / kevinbhutwala417@gmail.com</p>
+          <div className="space-y-1 text-xs text-[#7A7A8A] dark:text-[#8E8EA4] font-mono break-words">
+            <p>support@abeycollab.com</p>
             <p>Delaware, United States &amp; Mumbai, India</p>
           </div>
           <div className="flex items-center gap-2 text-xs text-[#0B0A14] dark:text-white font-sans pt-1 font-semibold">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse shrink-0" />
             <span>Escrow-Protected Milestone Rails via Stripe Connect</span>
           </div>
         </div>
@@ -61,10 +60,10 @@ export function CinematicFooter() {
         </div>
       </div>
 
-      <div className="border-t border-black/8 dark:border-white/10 py-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#7A7A8A] dark:text-[#8E8EA4]">
+      <div className="border-t border-black/8 dark:border-white/10 py-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#7A7A8A] dark:text-[#8E8EA4]">
         <p>© {new Date().getFullYear()} AbeyCollab Inc. All rights reserved.</p>
         <p className="font-mono text-[11px] text-[#5A5A68] dark:text-[#8E8EA4] flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+          <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
           <span>The Creator × Brand Collaboration Platform</span>
         </p>
       </div>

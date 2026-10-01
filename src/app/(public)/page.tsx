@@ -123,11 +123,11 @@ export default function AbeyCollabLandingPage() {
           <StreamlinedPricing />
         </div>
 
-        {/* 07 — Wishlink Signature "Your launchpad to success!!" High-Conversion Closing Banner */}
-        <WishlinkLaunchpadCTA />
-
         {/* 07 — Clean, Spacious FAQ & Objection Handlers */}
         <CompactFAQ />
+
+        {/* 08 — Wishlink Signature "Your launchpad to success!!" High-Conversion Closing Banner */}
+        <WishlinkLaunchpadCTA />
 
         {/* 08 — Signature Wishlink Floating Sticky Bottom Quick Sign-Up Bar */}
         <WishlinkStickyCTA />

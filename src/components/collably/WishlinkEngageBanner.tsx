@@ -6,16 +6,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { SafeImage } from "@/components/ui/SafeImage";
 import {
   ArrowRight,
-  Sparkles,
-  Send,
   MessageSquare,
   Banknote,
   Instagram,
   CheckCircle2,
   Zap,
-  ShieldCheck,
+  Send,
   Star,
-  Check,
 } from "lucide-react";
 
 interface FeatureBullet {
@@ -127,13 +124,13 @@ export function WishlinkEngageBanner() {
   const active = ENGAGE_FEATURES.find((f) => f.id === activeId) || ENGAGE_FEATURES[0];
 
   return (
-    <section className="py-8 sm:py-12 pb-24 sm:pb-32 bg-[#FAF8F5] relative overflow-hidden select-none font-sans border-t border-black/[0.06]">
+    <section className="py-10 sm:py-16 pb-20 sm:pb-28 bg-[#FAF8F5] relative overflow-hidden select-none font-sans border-t border-black/[0.06]">
       {/* Background Soft Atmospheric Theme Glows */}
       <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[450px] bg-emerald-100/35 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-10 right-1/4 w-[450px] h-[400px] bg-[#34D399]/15 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Heading — Tight, Compact Spacing without Awkward Void */}
+        {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-4 space-y-2">
           <h2 className="text-2xl sm:text-4xl lg:text-[42px] font-black font-display tracking-tight text-[#0F172A] leading-[1.15]">
             Discover and explore endless <br className="hidden sm:inline" />
@@ -141,13 +138,13 @@ export function WishlinkEngageBanner() {
           </h2>
 
           {/* Quick Pill Switcher for Features */}
-          <div className="flex items-center justify-center gap-2 pt-1 flex-wrap">
+          <div className="flex items-center justify-center gap-1.5 sm:gap-2 pt-1 flex-wrap">
             {ENGAGE_FEATURES.map((item) => (
               <button
                 key={item.id}
                 type="button"
                 onClick={() => setActiveId(item.id)}
-                className={`px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
+                className={`px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
                   activeId === item.id
                     ? "bg-[#0F172A] text-white shadow-md scale-[1.02] ring-2 ring-[#34D399]/40"
                     : "bg-white text-[#64748B] hover:text-[#0F172A] border border-black/10 shadow-xs hover:border-black/20"
@@ -160,7 +157,7 @@ export function WishlinkEngageBanner() {
         </div>
 
         {/* ── 3D HERO BANNER: MANAGEABLE SPACING, FILLED CONTENT & PRARTHANA ORIGINAL PHOTO ── */}
-        <div className="max-w-5xl lg:max-w-6xl mx-auto pt-10 sm:pt-14" style={{ perspective: 1200 }}>
+        <div className="max-w-5xl lg:max-w-6xl mx-auto pt-8 sm:pt-12" style={{ perspective: 1200 }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={active.id}
@@ -168,16 +165,16 @@ export function WishlinkEngageBanner() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className={`rounded-[28px] sm:rounded-[36px] bg-gradient-to-r ${active.gradientBg} shadow-[0_25px_60px_-15px_rgba(15,118,110,0.38),0_12px_28px_rgba(0,0,0,0.18)] relative text-white border border-white/20`}
+              className={`rounded-[24px] sm:rounded-[36px] bg-gradient-to-r ${active.gradientBg} shadow-[0_25px_60px_-15px_rgba(15,118,110,0.38),0_12px_28px_rgba(0,0,0,0.18)] relative text-white border border-white/20`}
             >
               {/* Subtle 3D Radial Atmospheric Glow */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.22)_0%,transparent_60%)] rounded-[28px] sm:rounded-[36px] pointer-events-none" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.22)_0%,transparent_60%)] rounded-[24px] sm:rounded-[36px] pointer-events-none" />
 
-              <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-6 sm:gap-10 p-6 sm:p-10 lg:p-12 relative z-10">
-                {/* ── LEFT COLUMN: Rich Product Copy & Feature Grid (Fills Space Gracefully) ── */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-6 sm:gap-8 lg:gap-10 p-5 sm:p-8 lg:p-12 pb-14 sm:pb-16 lg:pb-12 relative z-10">
+                {/* ── LEFT COLUMN: Rich Product Copy & Feature Grid ── */}
                 <div className="lg:col-span-7 space-y-4 text-left">
                   {/* Tagline Pill */}
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-[11px] font-mono font-bold tracking-wide uppercase text-white shadow-xs">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-[10px] sm:text-[11px] font-mono font-bold tracking-wide uppercase text-white shadow-xs">
                     <Zap className="w-3 h-3 text-[#34D399]" />
                     <span>{active.tagline}</span>
                   </div>
@@ -188,7 +185,7 @@ export function WishlinkEngageBanner() {
                   </p>
 
                   {/* Main Title */}
-                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black font-display tracking-tight text-white uppercase leading-none drop-shadow-xs">
+                  <h3 className="text-xl sm:text-3xl lg:text-4xl font-black font-display tracking-tight text-white uppercase leading-none drop-shadow-xs">
                     {active.title}
                   </h3>
 
@@ -197,7 +194,7 @@ export function WishlinkEngageBanner() {
                     {active.description}
                   </p>
 
-                  {/* 3 Key Benefit Micro-Bullets (Eliminates the empty gap in middle!) */}
+                  {/* 3 Key Benefit Micro-Bullets */}
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
                     {active.bullets.map((b, idx) => (
                       <div
@@ -216,31 +213,31 @@ export function WishlinkEngageBanner() {
                   </div>
 
                   {/* Action Row: CTA Pill + 3 Circular Glass Discs + Social Proof */}
-                  <div className="flex flex-wrap items-center gap-4 pt-2">
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
                     <Link
                       href={active.ctaLink}
-                      className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white text-[#0F172A] hover:bg-[#F8FAF9] font-extrabold text-xs tracking-wider uppercase shadow-[0_6px_16px_rgba(0,0,0,0.15)] transition-all hover:scale-[1.02] active:scale-95 cursor-pointer font-sans"
+                      className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-white text-[#0F172A] hover:bg-[#F8FAF9] font-extrabold text-xs tracking-wider uppercase shadow-[0_6px_16px_rgba(0,0,0,0.15)] transition-all hover:scale-[1.02] active:scale-95 cursor-pointer font-sans text-center"
                     >
                       <span>{active.ctaText}</span>
                       <ArrowRight className="w-3.5 h-3.5 text-[#0F172A]" />
                     </Link>
 
                     {/* 3 Circular Glass Action Discs */}
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center justify-center gap-2">
                       <div
-                        className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-xs hover:scale-105 transition-transform"
+                        className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-xs hover:scale-105 transition-transform"
                         title="Milestone Escrow Payouts"
                       >
                         <Banknote className="w-4 h-4 text-white" />
                       </div>
                       <div
-                        className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-xs hover:scale-105 transition-transform"
+                        className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-xs hover:scale-105 transition-transform"
                         title="Automated Instagram Comments"
                       >
                         <MessageSquare className="w-4 h-4 text-white" />
                       </div>
                       <div
-                        className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-xs hover:scale-105 transition-transform"
+                        className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-xs hover:scale-105 transition-transform"
                         title="Instant Direct Messages"
                       >
                         <Send className="w-4 h-4 text-white" />
@@ -248,7 +245,7 @@ export function WishlinkEngageBanner() {
                     </div>
 
                     {/* Social proof rating */}
-                    <div className="hidden sm:flex items-center gap-1.5 text-[11px] font-mono font-medium text-white/85 pl-2">
+                    <div className="hidden sm:flex items-center gap-1.5 text-[11px] font-mono font-medium text-white/85 sm:pl-2">
                       <div className="flex items-center text-[#34D399]">
                         {Array.from({ length: 5 }).map((_, i) => (
                           <Star key={i} className="w-3 h-3 fill-current" />
@@ -259,51 +256,54 @@ export function WishlinkEngageBanner() {
                   </div>
                 </div>
 
-                {/* ── RIGHT COLUMN: PRARTHANA ORIGINAL PHOTO 3D POPPING OUT OF THE BOX ── */}
-                <div className="lg:col-span-5 relative flex items-center justify-center lg:justify-end min-h-[260px] sm:min-h-[300px] lg:min-h-[340px]">
-                  {/* Prarthana's Original Photo Card with 3D Tilt and Overflowing Elevation */}
-                  <motion.div
-                    whileHover={{ scale: 1.03, rotateY: 0, rotateX: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="relative w-64 sm:w-76 lg:w-84 aspect-[4/5] -mt-16 sm:-mt-24 lg:-mt-32 rounded-[28px] sm:rounded-[36px] overflow-hidden border-4 border-white/95 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5),0_12px_24px_rgba(15,118,110,0.35)] ring-2 ring-white/30 transform lg:rotate-y-[-5deg] lg:rotate-x-[3deg] transition-transform bg-neutral-900"
-                  >
-                    <SafeImage
-                      src={active.creatorImage}
-                      alt={active.creatorName}
-                      fill
-                      className="object-cover object-top"
-                      priority
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                {/* ── RIGHT COLUMN: PRARTHANA ORIGINAL PHOTO & FLOATING BADGE ── */}
+                <div className="lg:col-span-5 flex items-center justify-center lg:justify-end pt-4 lg:pt-0 pb-8 sm:pb-10 lg:pb-0">
+                  {/* Photo & Badge Wrapped Together with bottom clearance so it never hangs out of the banner */}
+                  <div className="relative inline-flex flex-col items-center mb-6 sm:mb-8 lg:mb-2">
+                    {/* Photo Card with 3D Tilt */}
+                    <motion.div
+                      whileHover={{ scale: 1.03, rotateY: 0, rotateX: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="relative w-56 min-[380px]:w-64 sm:w-72 md:w-80 lg:w-[310px] aspect-[4/5] mt-2 sm:mt-4 lg:-mt-28 xl:-mt-32 rounded-[24px] sm:rounded-[36px] overflow-hidden border-4 border-white/95 shadow-[0_25px_50px_-15px_rgba(0,0,0,0.5),0_10px_20px_rgba(15,118,110,0.3)] ring-2 ring-white/30 transform lg:rotate-y-[-5deg] lg:rotate-x-[3deg] transition-transform bg-neutral-900"
+                    >
+                      <SafeImage
+                        src={active.creatorImage}
+                        alt={active.creatorName}
+                        fill
+                        className="object-cover object-top"
+                        priority
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
 
-                    {/* Top Creator Live Verified Badge */}
-                    <div className="absolute top-3.5 left-3.5 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/65 backdrop-blur-md border border-white/20 text-[10px] font-mono font-bold text-white shadow-sm">
-                      <span className="w-2 h-2 rounded-full bg-[#34D399] animate-pulse" />
-                      <span>{active.statBadge}</span>
-                    </div>
-                  </motion.div>
+                      {/* Top Creator Live Verified Badge */}
+                      <div className="absolute top-3.5 left-3.5 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/65 backdrop-blur-md border border-white/20 text-[10px] font-mono font-bold text-white shadow-sm">
+                        <span className="w-2 h-2 rounded-full bg-[#34D399] animate-pulse" />
+                        <span>{active.statBadge}</span>
+                      </div>
+                    </motion.div>
 
-                  {/* 3D Overlapping Pill Stat Badge Centered Below Prarthana */}
-                  <motion.div
-                    initial={{ y: 15, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.15 }}
-                    className={`absolute -bottom-5 sm:-bottom-6 left-1/2 -translate-x-1/2 lg:left-auto lg:translate-x-0 lg:right-4 w-[85%] sm:w-[88%] lg:w-[260px] py-2.5 px-3.5 rounded-2xl sm:rounded-3xl ${active.pillBg} ${active.pillText} shadow-[0_16px_36px_rgba(0,0,0,0.25)] border-2 border-white flex flex-col items-center justify-center text-center z-20 backdrop-blur-md`}
-                  >
-                    <div className="flex items-center gap-1.5">
-                      <p className="font-extrabold text-xs sm:text-sm font-sans tracking-tight">
-                        {active.creatorHandle}
+                    {/* Centered Overlapping Stat Badge: Perfectly centered using left-0 right-0 mx-auto (immune to Framer Motion transform overrides!) */}
+                    <motion.div
+                      initial={{ y: 15, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.15 }}
+                      className={`absolute -bottom-5 left-0 right-0 mx-auto w-[86%] max-w-[230px] py-2 px-3 rounded-2xl ${active.pillBg} ${active.pillText} shadow-[0_12px_28px_rgba(0,0,0,0.22)] border-2 border-white flex flex-col items-center justify-center text-center z-20 backdrop-blur-md`}
+                    >
+                      <div className="flex items-center gap-1.5 justify-center">
+                        <p className="font-extrabold text-xs sm:text-sm font-sans tracking-tight">
+                          {active.creatorHandle}
+                        </p>
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#064E3B] shrink-0" />
+                      </div>
+                      <p className="text-[10px] sm:text-[11px] font-sans font-medium text-neutral-800 whitespace-nowrap truncate max-w-full">
+                        {active.creatorCategory}
                       </p>
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#064E3B]" />
-                    </div>
-                    <p className="text-[11px] font-sans font-medium text-neutral-800">
-                      {active.creatorCategory}
-                    </p>
-                    <div className="flex items-center gap-1 pt-0.5 text-[10px] font-mono font-bold text-neutral-900">
-                      <Instagram className="w-3 h-3 text-[#064E3B]" />
-                      <span>{active.creatorFollowers}</span>
-                    </div>
-                  </motion.div>
+                      <div className="flex items-center gap-1 pt-0.5 text-[9px] sm:text-[10px] font-mono font-bold text-neutral-900 justify-center">
+                        <Instagram className="w-3 h-3 text-[#064E3B] shrink-0" />
+                        <span>{active.creatorFollowers}</span>
+                      </div>
+                    </motion.div>
+                  </div>
                 </div>
               </div>
             </motion.div>

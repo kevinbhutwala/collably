@@ -4,13 +4,10 @@ import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
-  Play,
+  ArrowRight,
   Volume2,
   VolumeX,
   ArrowDown,
-  ShieldCheck,
-  Zap,
-  CheckCircle2,
 } from 'lucide-react';
 
 export function WishlinkHeroShowcase() {
@@ -25,10 +22,12 @@ export function WishlinkHeroShowcase() {
     }
   };
 
+  const brandPartners = ['Snitch', 'Plum', 'DermaCo', 'Boldfit', 'FabIndia', 'Littlebox'];
+
   return (
     <section
       id="hero"
-      className="relative min-h-[90vh] sm:min-h-[94vh] w-full flex items-center justify-center overflow-hidden bg-[#0F172A] pt-20 sm:pt-28 pb-20 sm:pb-24 select-none"
+      className="relative min-h-[85vh] sm:min-h-[92vh] w-full flex items-center justify-center overflow-hidden bg-[#0F172A] pt-16 sm:pt-24 pb-16 sm:pb-24 select-none"
     >
       {/* ── Background Cinematic Video Loop ── */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -48,205 +47,144 @@ export function WishlinkHeroShowcase() {
       </div>
 
       {/* ── Seamless Bottom Gradient Blend into Canvas ── */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-[#0F172A]/70 to-[#FAF8F5] pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 sm:h-32 bg-gradient-to-b from-transparent via-[#0F172A]/70 to-[#FAF8F5] pointer-events-none z-10" />
 
       {/* ── Main Hero Content ── */}
-      <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center">
-        {/* Top Status & Availability Pill */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.05] backdrop-blur-xl mb-4 sm:mb-6 shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:border-white/20 transition-colors"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-          </span>
-          <span className="text-[11px] sm:text-xs font-medium text-neutral-200 tracking-wide drop-shadow-sm">
-            Available for Creators &amp; Brands · 100% Escrow Protected
-          </span>
-        </motion.div>
-
+      <div className="relative z-20 w-full max-w-5xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center">
         {/* Role Switcher Pill */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="inline-flex p-1 rounded-full bg-white/[0.06] border border-white/10 backdrop-blur-xl mb-4 sm:mb-6 shadow-lg"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="inline-flex p-1 rounded-full bg-white/[0.08] border border-white/15 backdrop-blur-xl mb-5 sm:mb-6 shadow-lg"
         >
-          <button
-            type="button"
-            onClick={() => setActiveTab('creator')}
-            className={`px-5 sm:px-6 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${
-              activeTab === 'creator'
-                ? 'bg-[#7C3AED] text-white shadow-[0_2px_12px_rgba(124,58,237,0.45)]'
-                : 'text-white/60 hover:text-white'
-            }`}
-          >
-            <span>🟣</span>
-            <span>For Creators</span>
-          </button>
           <button
             type="button"
             onClick={() => setActiveTab('brand')}
             className={`px-5 sm:px-6 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${
               activeTab === 'brand'
-                ? 'bg-[#0F766E] text-white shadow-[0_2px_12px_rgba(15,118,110,0.45)]'
-                : 'text-white/60 hover:text-white'
+                ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md ring-1 ring-emerald-400/40'
+                : 'text-white/70 hover:text-white'
             }`}
           >
-            <span>🟢</span>
             <span>For Brands</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab('creator')}
+            className={`px-5 sm:px-6 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${
+              activeTab === 'creator'
+                ? 'bg-gradient-to-r from-teal-600 to-emerald-600 text-white shadow-md ring-1 ring-emerald-400/40'
+                : 'text-white/70 hover:text-white'
+            }`}
+          >
+            <span>For Creators</span>
           </button>
         </motion.div>
 
-        {/* Hero Title with Directorial Tracking */}
+        {/* Dynamic & Impactful Headline */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          key={`headline-${activeTab}`}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="relative select-none my-1 sm:my-2 w-full px-2"
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="relative select-none w-full px-2"
         >
-          <h1 className="text-[2.2rem] min-[380px]:text-[2.6rem] min-[480px]:text-5xl sm:text-7xl md:text-8xl lg:text-[9.5rem] xl:text-[11rem] font-display font-black tracking-tight sm:tracking-normal text-white uppercase leading-[0.95] drop-shadow-[0_20px_50px_rgba(0,0,0,0.95)]">
-            ABEYCOLLAB
+          <h1 className="text-[2.2rem] min-[360px]:text-[2.6rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] font-display font-black tracking-tight text-white leading-[1.08] max-w-4xl mx-auto drop-shadow-[0_12px_40px_rgba(0,0,0,0.85)] break-words">
+            {activeTab === 'brand' ? (
+              <>
+                Scale campaigns with{' '}
+                <span className="text-emerald-400">verified creators.</span>
+              </>
+            ) : (
+              <>
+                Direct brand deals.{' '}
+                <span className="text-emerald-400">Guaranteed 24h escrow.</span>
+              </>
+            )}
           </h1>
         </motion.div>
 
-        {/* Editorial Subtitle with Stylized Delimiters */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-3 sm:mt-5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 sm:gap-3 text-xs sm:text-base md:text-xl font-display font-semibold tracking-wide uppercase text-neutral-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] max-w-xl mx-auto"
-        >
-          <span className="whitespace-nowrap">{activeTab === 'creator' ? 'Direct Brand Deals' : 'Audited Creators'}</span>
-          <span className={`${activeTab === 'creator' ? 'text-[#C084FC]' : 'text-[#34D399]'} font-light hidden min-[360px]:inline`}>/</span>
-          <span className="text-white whitespace-nowrap">Meta Auto-DMs</span>
-          <span className={`${activeTab === 'creator' ? 'text-[#C084FC]' : 'text-[#34D399]'} font-light hidden min-[360px]:inline`}>/</span>
-          <span className={`${activeTab === 'creator' ? 'text-[#C084FC]' : 'text-[#34D399]'} whitespace-nowrap font-bold`}>24h Escrow Payouts</span>
-        </motion.div>
-
-        {/* Punchy Concise Tagline */}
+        {/* Clean, Persuasive Value Statement */}
         <motion.p
+          key={`sub-${activeTab}`}
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-2.5 sm:mt-3 text-xs sm:text-base md:text-lg text-neutral-300 font-display font-light tracking-wide max-w-xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] px-4"
+          transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-4 sm:mt-5 text-sm sm:text-lg md:text-xl text-neutral-200/90 font-sans font-normal leading-relaxed max-w-2xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] px-3"
         >
-          {activeTab === 'creator'
-            ? 'Monetise your content. Guaranteed escrow payouts.'
-            : 'Scale high-ROI campaigns with India’s top verified creators.'}
+          {activeTab === 'brand'
+            ? 'Connect with audited creators, lock campaign budgets in milestone escrow, and track verified deliverable performance.'
+            : 'Access pre-funded briefs from 250+ top brands. Your fee is locked in escrow before you produce, with automated payouts in 24 hours.'}
         </motion.p>
 
-        {/* Magnetic Hero CTA Actions + Sound Toggle */}
+        {/* Focused Conversion Actions */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-4 mt-5 sm:mt-8 w-full max-w-xs sm:max-w-none"
+          transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-8 w-full max-w-xs sm:max-w-none"
         >
           <Link
             href={activeTab === 'creator' ? '/register?role=creator' : '/register?role=brand'}
-            className={`group relative w-full sm:w-auto px-6 sm:px-7 py-3.5 sm:py-3.5 text-white font-sans font-bold text-xs tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-2 rounded-full cursor-pointer text-center ${
-              activeTab === 'creator'
-                ? 'bg-gradient-to-r from-[#7C3AED] to-[#C084FC] hover:from-[#6D28D9] hover:to-[#A855F7] shadow-[0_10px_30px_rgba(124,58,237,0.35)] hover:shadow-[0_15px_40px_rgba(124,58,237,0.5)]'
-                : 'bg-gradient-to-r from-[#0F766E] to-[#34D399] hover:from-[#0D9488] hover:to-[#059669] shadow-[0_10px_30px_rgba(15,118,110,0.35)] hover:shadow-[0_15px_40px_rgba(15,118,110,0.5)]'
-            }`}
+            className="group relative w-full sm:w-auto px-7 sm:px-8 py-3.5 text-white font-sans font-bold text-xs tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-2 rounded-full cursor-pointer text-center bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 shadow-[0_10px_30px_rgba(16,185,129,0.35)] hover:shadow-[0_15px_40px_rgba(16,185,129,0.5)] border border-white/10 hover:scale-[1.02] active:scale-[0.98]"
           >
-            <Play className="w-3.5 h-3.5 fill-current transition-transform duration-300 group-hover:scale-110 shrink-0" />
-            <span className="whitespace-nowrap">{activeTab === 'creator' ? 'Join as Creator (Free)' : 'Launch Campaign'}</span>
+            <span>{activeTab === 'creator' ? 'Join as Creator' : 'Launch Campaign'}</span>
+            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
 
           <Link
             href={activeTab === 'creator' ? '/campaigns' : '/creators'}
-            className={`w-full sm:w-auto px-6 sm:px-7 py-3.5 sm:py-3.5 border font-sans font-medium text-xs tracking-wider uppercase transition-all duration-300 bg-white/[0.05] hover:bg-white/[0.1] backdrop-blur-xl rounded-full shadow-lg hover:scale-105 active:scale-95 cursor-pointer flex items-center justify-center text-center whitespace-nowrap text-white ${
-              activeTab === 'creator'
-                ? 'border-white/20 hover:border-[#C084FC]/60 hover:text-[#C084FC]'
-                : 'border-white/20 hover:border-[#34D399]/60 hover:text-[#34D399]'
-            }`}
+            className="w-full sm:w-auto px-7 sm:px-8 py-3.5 border font-sans font-medium text-xs tracking-wider uppercase transition-all duration-300 bg-white/10 hover:bg-white/15 backdrop-blur-xl rounded-full shadow-lg hover:scale-[1.02] active:scale-[0.98] cursor-pointer flex items-center justify-center text-center whitespace-nowrap text-white border-white/20 hover:border-emerald-400/60 hover:text-emerald-300"
           >
-            {activeTab === 'creator' ? 'Explore Briefs' : 'Browse Creators'}
+            {activeTab === 'creator' ? 'Explore Open Briefs' : 'Browse Creators'}
           </Link>
-
-          {/* Sound Toggle */}
-          <button
-            type="button"
-            onClick={toggleVideoSound}
-            className="group flex items-center justify-center gap-2 px-4 py-2.5 sm:py-3 border border-white/20 hover:border-white/40 text-neutral-300 hover:text-white transition-all duration-200 rounded-full bg-white/[0.05] hover:bg-white/[0.1] backdrop-blur-xl cursor-pointer self-center sm:self-auto"
-            title={isVideoMuted ? 'Turn Sound On' : 'Turn Sound Off'}
-            aria-label={isVideoMuted ? 'Turn Sound On' : 'Turn Sound Off'}
-          >
-            {isVideoMuted ? (
-              <VolumeX className="w-4 h-4 text-neutral-400 group-hover:text-white" />
-            ) : (
-              <div className="flex items-center gap-1.5">
-                <Volume2 className={`w-4 h-4 ${activeTab === 'creator' ? 'text-[#C084FC]' : 'text-[#34D399]'}`} />
-                <span className="flex items-center gap-0.5 h-3">
-                  <span className={`w-0.5 h-2 ${activeTab === 'creator' ? 'bg-[#C084FC]' : 'bg-[#34D399]'} animate-pulse`} />
-                  <span className={`w-0.5 h-3 ${activeTab === 'creator' ? 'bg-[#C084FC]' : 'bg-[#34D399]'} animate-pulse delay-75`} />
-                  <span className={`w-0.5 h-1.5 ${activeTab === 'creator' ? 'bg-[#C084FC]' : 'bg-[#34D399]'} animate-pulse delay-150`} />
-                </span>
-              </div>
-            )}
-            <span className="text-[10px] sm:text-[11px] font-mono font-medium">
-              {isVideoMuted ? 'MUTE' : 'AUDIO ON'}
-            </span>
-          </button>
-        </motion.div>
-
-        {/* Micro Trust Indicators */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.45 }}
-          className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mt-6 sm:mt-7 text-[10px] sm:text-xs font-mono text-neutral-300 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]"
-        >
-          <span className="flex items-center gap-1.5 font-bold text-neutral-100">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-            <span>100% Escrow Protection</span>
-          </span>
-          <span className="hidden sm:inline text-white/30">•</span>
-          <span className="flex items-center gap-1.5 font-bold text-neutral-100">
-            <Zap className={`w-3.5 h-3.5 ${activeTab === 'creator' ? 'text-[#C084FC]' : 'text-[#34D399]'}`} />
-            <span>24h Approval Guarantee</span>
-          </span>
-          <span className="hidden sm:inline text-white/30">•</span>
-          <span className="flex items-center gap-1.5 font-bold text-neutral-100">
-            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-            <span>0% Chasing Invoices</span>
-          </span>
         </motion.div>
 
         {/* Sleek Brand Partner Ribbon */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.55 }}
-          className="mt-7 sm:mt-9 pt-4 border-t border-white/10 w-full max-w-3xl flex flex-col items-center gap-2"
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-8 sm:mt-12 pt-4 sm:pt-6 border-t border-white/10 w-full max-w-3xl flex flex-col items-center gap-2.5"
         >
-          <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/50">
+          <span className="text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.22em] text-white/50">
             Trusted by creators collaborating with
           </span>
-          <div className="flex flex-wrap items-center justify-center gap-x-5 sm:gap-x-8 gap-y-1.5 text-xs sm:text-sm font-display font-black text-white/80 tracking-widest uppercase">
-            <span className="hover:text-white transition-colors">Snitch</span>
-            <span className="text-white/20">•</span>
-            <span className="hover:text-white transition-colors">Plum</span>
-            <span className="text-white/20">•</span>
-            <span className="hover:text-white transition-colors">DermaCo</span>
-            <span className="text-white/20">•</span>
-            <span className="hover:text-white transition-colors">Boldfit</span>
-            <span className="text-white/20">•</span>
-            <span className="hover:text-white transition-colors">FabIndia</span>
-            <span className="text-white/20">•</span>
-            <span className="hover:text-white transition-colors">Littlebox</span>
+          <div className="flex flex-wrap items-center justify-center gap-x-5 sm:gap-x-7 gap-y-2 text-xs sm:text-sm font-display font-bold text-white/80 tracking-widest uppercase">
+            {brandPartners.map((brand, i) => (
+              <React.Fragment key={brand}>
+                <span className="hover:text-white transition-colors">{brand}</span>
+                {i < brandPartners.length - 1 && (
+                  <span className="text-white/25 select-none hidden min-[380px]:inline">•</span>
+                )}
+              </React.Fragment>
+            ))}
           </div>
         </motion.div>
       </div>
 
+      {/* Discreet Corner Sound Toggle */}
+      <button
+        type="button"
+        onClick={toggleVideoSound}
+        className="absolute bottom-6 right-6 z-30 group flex items-center gap-2 px-3.5 py-2 border border-white/15 hover:border-white/35 text-white/80 hover:text-white transition-all duration-200 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md cursor-pointer shadow-lg"
+        title={isVideoMuted ? 'Turn Sound On' : 'Turn Sound Off'}
+        aria-label={isVideoMuted ? 'Turn Sound On' : 'Turn Sound Off'}
+      >
+        {isVideoMuted ? (
+          <VolumeX className="w-3.5 h-3.5 text-neutral-400 group-hover:text-white" />
+        ) : (
+          <Volume2 className="w-3.5 h-3.5 text-emerald-400" />
+        )}
+        <span className="text-[10px] font-mono tracking-wider font-medium uppercase">
+          {isVideoMuted ? 'Mute' : 'Audio On'}
+        </span>
+      </button>
+
       {/* Bottom Subtle Scroll Indicator */}
       <a
-        href="#pillars"
+        href="#brands-showcase"
         className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 hidden md:flex items-center gap-2 text-xs font-medium text-neutral-400 hover:text-white transition-colors py-1.5 sm:py-2 px-3.5 sm:px-4 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md"
       >
         <span>Explore Platform</span>

@@ -61,8 +61,8 @@ export function StreamlinedPricing() {
   ];
 
   return (
-    <section className="py-16 sm:py-24 bg-[#FAF8F5] dark:bg-[#0B0A14] text-[#0B0A14] dark:text-[#F8FAFC] select-none relative overflow-hidden border-t border-black/[0.06] dark:border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <section className="py-14 sm:py-20 lg:py-24 bg-[#FAF8F5] dark:bg-[#0B0A14] text-[#0B0A14] dark:text-[#F8FAFC] select-none relative overflow-hidden border-t border-black/[0.06] dark:border-white/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
         {/* Header & Toggle */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -74,7 +74,7 @@ export function StreamlinedPricing() {
           <span className="text-[11px] font-mono font-bold tracking-[0.18em] text-[#0F766E] uppercase block">
             TRANSPARENT VALUE
           </span>
-          <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#0F172A] dark:text-white font-display">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-[#0F172A] dark:text-white font-display">
             Simple, honest{" "}
             <span className="font-serif italic font-normal text-[#0F766E] dark:text-[#34D399] lowercase">pricing</span>
           </h2>
@@ -85,7 +85,7 @@ export function StreamlinedPricing() {
               <button
                 type="button"
                 onClick={() => setIsAnnual(false)}
-                className={`px-4 py-1.5 rounded-full transition-all font-bold ${
+                className={`px-3.5 sm:px-4 py-1.5 rounded-full transition-all font-bold cursor-pointer ${
                   !isAnnual
                     ? "bg-[#0F766E] text-white shadow-xs"
                     : "text-[#64748B] dark:text-[#94A3B8] hover:text-[#0B0A14] dark:hover:text-white"
@@ -96,7 +96,7 @@ export function StreamlinedPricing() {
               <button
                 type="button"
                 onClick={() => setIsAnnual(true)}
-                className={`px-4 py-1.5 rounded-full transition-all font-bold flex items-center gap-1.5 ${
+                className={`px-3.5 sm:px-4 py-1.5 rounded-full transition-all font-bold flex items-center gap-1.5 cursor-pointer ${
                   isAnnual
                     ? "bg-[#0F766E] text-white shadow-xs"
                     : "text-[#64748B] dark:text-[#94A3B8] hover:text-[#0B0A14] dark:hover:text-white"
@@ -112,7 +112,7 @@ export function StreamlinedPricing() {
         </motion.div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch pt-2">
           {tiers.map((tier, index) => (
             <motion.div
               key={tier.name}
@@ -120,8 +120,16 @@ export function StreamlinedPricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.08, margin: "0px 0px -40px 0px" }}
               transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="flex"
+              className="flex relative pt-3.5"
             >
+              {/* Popular Badge Placed Outside InteractiveTiltCard to Avoid Overflow Clipping */}
+              {tier.popular && (
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-[#0F766E] to-[#047857] text-white font-mono font-extrabold text-[10px] tracking-wider uppercase shadow-md flex items-center gap-1.5 z-30 border border-[#34D399]/40">
+                  <Sparkles className="w-3 h-3 text-[#34D399]" />
+                  <span>RECOMMENDED</span>
+                </div>
+              )}
+
               <InteractiveTiltCard
                 maxTilt={6}
                 glowColor={tier.popular ? "rgba(15, 118, 110, 0.35)" : "rgba(0, 0, 0, 0.05)"}
@@ -131,13 +139,6 @@ export function StreamlinedPricing() {
                     : "bg-white dark:bg-[#132238] border border-black/[0.08] dark:border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_14px_36px_rgba(0,0,0,0.07)] hover:border-black/15"
                 }`}
               >
-                {tier.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-gradient-to-r from-[#0F766E] to-[#047857] text-white font-mono font-extrabold text-[10px] tracking-wider uppercase shadow-xs flex items-center gap-1.5 z-30">
-                    <Sparkles className="w-3 h-3 text-[#34D399]" />
-                    <span>RECOMMENDED</span>
-                  </div>
-                )}
-
                 <div className="space-y-4">
                   <div>
                     <h3 className="text-lg font-bold font-display text-[#0F172A] dark:text-white">{tier.name}</h3>
@@ -145,7 +146,7 @@ export function StreamlinedPricing() {
                   </div>
 
                   <div className="flex items-baseline gap-1 font-mono pt-2">
-                    <span suppressHydrationWarning className="text-4xl font-black text-[#0F172A] dark:text-white font-display">
+                    <span suppressHydrationWarning className="text-3xl sm:text-4xl font-black text-[#0F172A] dark:text-white font-display">
                       {tier.price}
                     </span>
                     <span className="text-xs text-[#64748B] dark:text-[#94A3B8] font-sans">{tier.period}</span>
@@ -157,7 +158,7 @@ export function StreamlinedPricing() {
                         <div className="w-4 h-4 rounded-full bg-emerald-500/15 text-[#0F766E] flex items-center justify-center shrink-0">
                           <Check className="w-3 h-3 text-[#0F766E]" />
                         </div>
-                        <span>{f}</span>
+                        <span className="leading-snug">{f}</span>
                       </div>
                     ))}
                   </div>

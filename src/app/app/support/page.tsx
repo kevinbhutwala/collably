@@ -12,6 +12,8 @@ import {
   HelpCircle,
   ShieldAlert,
   Plus,
+  MessageSquare,
+  Scale,
 } from "lucide-react";
 
 export default function SupportAndDisputePage() {
@@ -19,6 +21,7 @@ export default function SupportAndDisputePage() {
   const { addToast } = useUIStore();
   const [tickets, setTickets] = useState<SupportTicket[]>([]);
   const [disputes, setDisputes] = useState<DisputeRecord[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [isTicketModalOpen, setIsTicketModalOpen] = useState(false);
   const [isDisputeModalOpen, setIsDisputeModalOpen] = useState(false);
 
@@ -28,21 +31,29 @@ export default function SupportAndDisputePage() {
   const [ticketPriority, setTicketPriority] = useState<SupportTicket["priority"]>("Medium");
   const [ticketMessage, setTicketMessage] = useState("");
 
-  // Dispute Form
-  const [disputeCampaign, setDisputeCampaign] = useState("Linear 2.0: High-Velocity Engineering");
+  // Dispute Form — cleared of all placeholder defaults
+  const [disputeCampaign, setDisputeCampaign] = useState("");
   const [disputeReason, setDisputeReason] = useState<DisputeRecord["reason"]>("Scope_Mismatch");
-  const [disputeAmount, setDisputeAmount] = useState(3500);
+  const [disputeAmount, setDisputeAmount] = useState(0);
   const [disputeDesc, setDisputeDesc] = useState("");
-  const [disputeEvidence, setDisputeEvidence] = useState("https://vimeo.com/preview/evidence-draft");
+  const [disputeEvidence, setDisputeEvidence] = useState("");
 
   useEffect(() => {
-    const fetch = async () => {
-      const tkts = await disputeService.getTickets();
-      setTickets(tkts || []);
-      const disps = await disputeService.getDisputes();
-      setDisputes(disps || []);
+    const load = async () => {
+      try {
+        const [tkts, disps] = await Promise.all([
+          disputeService.getTickets(),
+          disputeService.getDisputes(),
+        ]);
+        setTickets(tkts || []);
+        setDisputes(disps || []);
+      } catch (e) {
+        console.warn("Failed to load support data:", e);
+      } finally {
+        setIsLoading(false);
+      }
     };
-    fetch();
+    load();
   }, []);
 
   const handleCreateTicket = async (e: React.FormEvent) => {
@@ -75,21 +86,57 @@ export default function SupportAndDisputePage() {
       raisedByRole: role,
       raisedByName: user?.name || "Participant",
       respondentRole: role === "brand" ? "creator" : "brand",
-      respondentName: role === "brand" ? "Elena Rostova" : "Linear Dynamics",
+      respondentName: role === "brand" ? "Creator" : "Brand",
       reason: disputeReason,
       amountInDispute: disputeAmount,
       description: disputeDesc,
-      evidenceMediaUrls: [disputeEvidence],
+      evidenceMediaUrls: disputeEvidence ? [disputeEvidence] : [],
     });
     setDisputes((prev) => [created, ...prev]);
     setIsDisputeModalOpen(false);
     setDisputeDesc("");
+    setDisputeCampaign("");
+    setDisputeEvidence("");
+    setDisputeAmount(0);
     addToast({
       type: "warning",
       title: "Arbitration Case Opened",
       message: "Escrow release frozen pending supervisor determination (<4 hr SLA).",
     });
   };
+
+  const formatDate = (dateStr: string) => {
+    try {
+      return new Date(dateStr).toLocaleDateString("en-IN", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      });
+    } catch {
+      return dateStr;
+    }
+  };
+
+  // Loading Skeleton
+  if (isLoading) {
+    return (
+      <div className="space-y-6">
+        <div className="h-16 rounded-2xl animate-pulse bg-black/5 dark:bg-white/5" />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div className="lg:col-span-6 space-y-3">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="h-24 rounded-2xl animate-pulse bg-black/5 dark:bg-white/5" />
+            ))}
+          </div>
+          <div className="lg:col-span-6 space-y-3">
+            {[1, 2].map((i) => (
+              <div key={i} className="h-32 rounded-2xl animate-pulse bg-black/5 dark:bg-white/5" />
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6 text-[#0B0A14] dark:text-[#F4F4F8] select-none">
@@ -102,7 +149,7 @@ export default function SupportAndDisputePage() {
               Help Desk
             </span>
             <span className="text-[#8A8A9A] dark:text-[#6A6A7E]">•</span>
-            <span className="px-2 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-primary dark:text-accent dark:text-yellow-400 font-mono text-[10px] font-bold">
+            <span className="px-2 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-primary dark:text-accent font-mono text-[10px] font-bold">
               Help &amp; Support
             </span>
           </div>
@@ -117,7 +164,7 @@ export default function SupportAndDisputePage() {
         <div className="flex items-center gap-2.5">
           <button
             onClick={() => setIsDisputeModalOpen(true)}
-            className="px-3.5 py-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0B0A14] dark:text-white text-xs font-bold transition-all flex items-center gap-1.5 border border-black/10 dark:border-white/10 shadow-xs"
+            className="px-3.5 py-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 text-[#0B0A14] dark:text-white text-xs font-bold transition-all flex items-center gap-1.5 border border-black/10 dark:border-white/10 shadow-xs cursor-pointer"
           >
             <ShieldAlert className="w-3.5 h-3.5 text-[#0B0A14] dark:text-accent" />
             <span>Report an Issue</span>
@@ -125,9 +172,9 @@ export default function SupportAndDisputePage() {
 
           <button
             onClick={() => setIsTicketModalOpen(true)}
-            className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5"
+            className="px-4 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white text-xs font-bold transition-all shadow-xs border border-black/10 flex items-center gap-1.5 cursor-pointer"
           >
-            <Plus className="w-3.5 h-3.5 text-[#0B0A14]" />
+            <Plus className="w-3.5 h-3.5" />
             <span>Contact Support</span>
           </button>
         </div>
@@ -147,32 +194,50 @@ export default function SupportAndDisputePage() {
             </span>
           </div>
 
-          <div className="divide-y divide-black/5 dark:divide-white/5 space-y-3">
-            {tickets.map((t) => (
-              <div key={t.id} className="pt-3 space-y-2">
-                <div className="flex items-center justify-between">
-                  <h4 className="font-bold text-sm text-[#0B0A14] dark:text-white font-sans">{t.subject}</h4>
-                  <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase ${
-                    t.status === "Resolved"
-                      ? "bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30"
-                      : "bg-black/5 dark:bg-white/10 text-[#5A5A68] dark:text-[#A0A0B4]"
-                  }`}>
-                    {t.status.replace(/_/g, " ")}
-                  </span>
-                </div>
-                <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed font-sans">
-                  {t.messages[t.messages.length - 1]?.content}
-                </p>
-                <div className="flex items-center gap-4 text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] font-mono">
-                  <span>Category: {t.category}</span>
-                  <span>•</span>
-                  <span>Priority: {t.priority}</span>
-                  <span>•</span>
-                  <span>Updated: {t.updatedAt}</span>
-                </div>
+          {tickets.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-12 text-center space-y-3">
+              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+                <MessageSquare className="w-6 h-6 text-primary" />
               </div>
-            ))}
-          </div>
+              <p className="text-sm font-bold text-[#0B0A14] dark:text-white">No support tickets yet</p>
+              <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] max-w-xs">
+                Open a ticket if you need help with billing, campaigns, or technical issues.
+              </p>
+              <button
+                onClick={() => setIsTicketModalOpen(true)}
+                className="mt-1 px-4 py-2 rounded-full bg-primary hover:bg-accent text-white text-xs font-bold transition-all cursor-pointer"
+              >
+                Open a Ticket
+              </button>
+            </div>
+          ) : (
+            <div className="divide-y divide-black/5 dark:divide-white/5 space-y-3">
+              {tickets.map((t) => (
+                <div key={t.id} className="pt-3 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-bold text-sm text-[#0B0A14] dark:text-white">{t.subject}</h4>
+                    <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase ${
+                      t.status === "Resolved"
+                        ? "bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30"
+                        : "bg-black/5 dark:bg-white/10 text-[#5A5A68] dark:text-[#A0A0B4]"
+                    }`}>
+                      {t.status.replace(/_/g, " ")}
+                    </span>
+                  </div>
+                  <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">
+                    {t.messages[t.messages.length - 1]?.content}
+                  </p>
+                  <div className="flex items-center gap-3 text-[10px] text-[#7A7A8A] dark:text-[#8E8EA4] font-mono flex-wrap">
+                    <span>Category: {t.category}</span>
+                    <span>•</span>
+                    <span>Priority: {t.priority}</span>
+                    <span>•</span>
+                    <span>Updated: {formatDate(t.updatedAt)}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Right: Active Disputes & Escrow Mediation */}
@@ -187,28 +252,40 @@ export default function SupportAndDisputePage() {
             </span>
           </div>
 
-          <div className="space-y-4 font-mono text-xs">
-            {disputes.map((d) => (
-              <div key={d.id} className="p-5 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 space-y-2.5">
-                <div className="flex justify-between items-center">
-                  <h4 className="font-bold text-sm text-[#0B0A14] dark:text-white font-sans">{d.campaignTitle}</h4>
-                  <span className="px-2.5 py-0.5 rounded-full bg-amber-50 dark:bg-amber-500/15 text-amber-800 dark:text-amber-400 border border-amber-200 dark:border-amber-500/30 text-[10px] font-mono font-bold">
-                    {d.status.replace(/_/g, " ")}
-                  </span>
-                </div>
-                <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] font-sans leading-relaxed">{d.description}</p>
-                {d.adminArbitrationNotes && (
-                  <div className="p-3 rounded-xl bg-amber-50/50 dark:bg-amber-500/10 border border-amber-200/60 dark:border-amber-500/20 text-[#0B0A14] dark:text-[#F4F4F8] text-[11px] font-sans shadow-2xs">
-                    <strong className="text-[#0B0A14] dark:text-amber-400">Admin Arbitration Note:</strong> {d.adminArbitrationNotes}
-                  </div>
-                )}
-                <div className="flex justify-between text-[#6A6A78] dark:text-[#8E8EA4] pt-2 border-t border-black/5 dark:border-white/5">
-                  <span>Disputed Amount: <strong className="text-[#0B0A14] dark:text-white">{formatCurrency(d.amountInDispute, (d as any).currency)}</strong></span>
-                  <span>Reason: {d.reason.replace(/_/g, " ")}</span>
-                </div>
+          {disputes.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-12 text-center space-y-3">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center">
+                <Scale className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
               </div>
-            ))}
-          </div>
+              <p className="text-sm font-bold text-[#0B0A14] dark:text-white">No active disputes</p>
+              <p className="text-xs text-[#5A5A68] dark:text-[#8E8EA4] max-w-xs">
+                Disputes are only opened when there&apos;s a milestone disagreement. All your collaborations look clear.
+              </p>
+            </div>
+          ) : (
+            <div className="space-y-4 text-xs">
+              {disputes.map((d) => (
+                <div key={d.id} className="p-5 rounded-2xl bg-[#F8F8FC] dark:bg-[#181824] border border-black/5 dark:border-white/10 space-y-2.5">
+                  <div className="flex justify-between items-center">
+                    <h4 className="font-bold text-sm text-[#0B0A14] dark:text-white">{d.campaignTitle}</h4>
+                    <span className="px-2.5 py-0.5 rounded-full bg-amber-50 dark:bg-amber-500/15 text-amber-800 dark:text-amber-400 border border-amber-200 dark:border-amber-500/30 text-[10px] font-mono font-bold">
+                      {d.status.replace(/_/g, " ")}
+                    </span>
+                  </div>
+                  <p className="text-xs text-[#5A5A68] dark:text-[#A0A0B4] leading-relaxed">{d.description}</p>
+                  {d.adminArbitrationNotes && (
+                    <div className="p-3 rounded-xl bg-amber-50/50 dark:bg-amber-500/10 border border-amber-200/60 dark:border-amber-500/20 text-[#0B0A14] dark:text-[#F4F4F8] text-[11px] shadow-2xs">
+                      <strong className="text-[#0B0A14] dark:text-amber-400">Admin Arbitration Note:</strong> {d.adminArbitrationNotes}
+                    </div>
+                  )}
+                  <div className="flex justify-between text-[#6A6A78] dark:text-[#8E8EA4] pt-2 border-t border-black/5 dark:border-white/5 font-mono">
+                    <span>Disputed: <strong className="text-[#0B0A14] dark:text-white">{formatCurrency(d.amountInDispute, (d as any).currency)}</strong></span>
+                    <span>Reason: {d.reason.replace(/_/g, " ")}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
@@ -229,7 +306,7 @@ export default function SupportAndDisputePage() {
             required
           />
           <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-1.5 text-left font-sans">
+            <div className="space-y-1.5 text-left">
               <label className="text-xs font-semibold text-[#0B0A14] dark:text-[#EAEAEF]">Category</label>
               <select
                 value={ticketCategory}
@@ -242,7 +319,7 @@ export default function SupportAndDisputePage() {
                 <option value="Technical">Technical Bug</option>
               </select>
             </div>
-            <div className="space-y-1.5 text-left font-sans">
+            <div className="space-y-1.5 text-left">
               <label className="text-xs font-semibold text-[#0B0A14] dark:text-[#EAEAEF]">Priority</label>
               <select
                 value={ticketPriority}
@@ -264,7 +341,7 @@ export default function SupportAndDisputePage() {
             rows={4}
             required
           />
-          <button type="submit" className="w-full py-3 rounded-full bg-gradient-to-r from-primary to-accent text-white text-xs font-bold shadow-xs border border-black/10">
+          <button type="submit" className="w-full py-3 rounded-full bg-gradient-to-r from-primary to-accent text-white text-xs font-bold shadow-xs border border-black/10 cursor-pointer">
             Submit Ticket
           </button>
         </form>
@@ -283,10 +360,11 @@ export default function SupportAndDisputePage() {
             label="Campaign Brief Title"
             value={disputeCampaign}
             onChange={(e) => setDisputeCampaign(e.target.value)}
+            placeholder="Enter the campaign name involved in this dispute"
             required
           />
           <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-1.5 text-left font-sans">
+            <div className="space-y-1.5 text-left">
               <label className="text-xs font-semibold text-[#0B0A14] dark:text-[#EAEAEF]">Dispute Reason</label>
               <select
                 value={disputeReason}
@@ -302,13 +380,14 @@ export default function SupportAndDisputePage() {
             <Input
               label="Disputed Escrow Amount"
               type="number"
-              value={disputeAmount}
+              value={disputeAmount || ""}
               onChange={(e) => setDisputeAmount(parseInt(e.target.value) || 0)}
+              placeholder="0"
               required
             />
           </div>
           <Textarea
-            label="Detailed Evidence & Statement"
+            label="Detailed Evidence &amp; Statement"
             value={disputeDesc}
             onChange={(e) => setDisputeDesc(e.target.value)}
             placeholder="Describe the discrepancy with timestamp references or contract terms..."
@@ -316,12 +395,12 @@ export default function SupportAndDisputePage() {
             required
           />
           <Input
-            label="Supporting Evidence URL / Video Link"
+            label="Supporting Evidence URL / Video Link (optional)"
             value={disputeEvidence}
             onChange={(e) => setDisputeEvidence(e.target.value)}
-            required
+            placeholder="https://..."
           />
-          <button type="submit" className="w-full py-3 rounded-full bg-gradient-to-r from-primary to-accent text-white text-xs font-bold shadow-xs border border-black/10">
+          <button type="submit" className="w-full py-3 rounded-full bg-gradient-to-r from-primary to-accent text-white text-xs font-bold shadow-xs border border-black/10 cursor-pointer">
             Submit Dispute &amp; Request Mediation
           </button>
         </form>

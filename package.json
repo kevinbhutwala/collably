@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "node scripts/run-tests.mjs",
+    "test:responsive": "node scripts/test-landing-page-responsive.mjs",
     "test:security": "node scripts/run-tests.mjs",
     "test:currency": "node scripts/test-multi-currency-engine.mjs",
     "test:subscriptions": "node scripts/test-subscriptions.mjs",
